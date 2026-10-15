@@ -1,5 +1,5 @@
-const CACHE='wealth-life-v27.9-event-pacing-1';
-const ASSETS=['./','./index.html','./core.js','./flow.js?v=27.9','./journey.js?v=27.9','./batch.js?v=27.9','./revision.js?v=27.9','./annual.js?v=27.9','./core.js?v=27.9','./presentation.js?v=27.9','./presentation.css?v=27.9','./city.svg','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png'];
+const CACHE='wealth-life-v27.10-monthly-restore-2';
+const ASSETS=['./','./index.html','./core.js','./flow.js?v=27.10','./journey.js?v=27.10','./batch.js?v=27.10','./revision.js?v=27.10','./annual.js?v=27.10','./core.js?v=27.10','./presentation.js?v=27.10','./presentation.css?v=27.10','./city.svg','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)))});
 self.addEventListener('activate',e=>e.waitUntil(Promise.all([caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('wealth-life-')&&k!==CACHE).map(k=>caches.delete(k)))),self.clients.claim()])));
 self.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==self.location.origin)return;e.respondWith(fetch(e.request).then(r=>{if(r.ok){const copy=r.clone();e.waitUntil(caches.open(CACHE).then(c=>c.put(e.request,copy)))}return r}).catch(async()=>{const r=await caches.match(e.request);if(r)return r;if(e.request.mode==='navigate')return caches.match('./index.html');return Response.error()}))});

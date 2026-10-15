@@ -87,3 +87,35 @@ refreshCardHeader=function(){eventPacingHeader();if(state?.annualMode){$('qNext'
 $('qNext').onclick=$('hubNext').onclick=continueLife;
 
 $('wlResume').onclick=()=>{$('wlCloseMenu').click();continueLife()};
+
+// V27.10: return to manual monthly decisions. Keep all existing transactions.
+function restoreMonthlyPlay(){
+ if(!state)return;
+ const migrating=state.annualMode===true;
+ state.annualMode=false;annualPlanning=false;clearTimeout(annualTimer);
+ if(state.annualRun)state.annualRun.paused=true;
+ if(migrating){
+  state.turn={month:state.month,index:0,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};
+  state.monthlyModeRestored=state.month;
+ }
+}
+annualActive=function(){return false};
+scheduleAnnual=function(){clearTimeout(annualTimer)};
+const monthlyRender=render;
+render=function(){restoreMonthlyPlay();monthlyRender();document.body.classList.remove('annual-mode')};
+const monthlyOpen=openGame;
+openGame=function(){restoreMonthlyPlay();monthlyOpen();save()};
+const monthlyShow=showEvent;
+showEvent=function(type,title,desc,data=[],actions=[]){
+ if(type==='START'){
+  restoreMonthlyPlay();type='月度起点';
+  desc='初始现金 $5,000，目前未就业。先选择住房，再安排本月生活和工作。每次只结算一个月，所有消费确认后才付款。';
+  actions=[['开始本月安排',()=>{clearModals();startV24Turn(false)},true]];
+ }
+ monthlyShow(type,title,desc,data,actions);
+};
+continueLife=function(){restoreMonthlyPlay();if(state.requiredIncident)return openRequiredIncident();if(state.gameOver?.final)return showGameOver();if(state.crisis&&state.crisis.ackMonth!==state.month)return showRecovery();startV24Turn(false)};
+showAnnualPlan=useMonthly;showAnnualProgress=useMonthly;
+menuYear.remove();
+$('qNext').onclick=$('hubNext').onclick=continueLife;
+$('wlResume').onclick=()=>{$('wlCloseMenu').click();continueLife()};
