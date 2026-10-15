@@ -1,0 +1,197 @@
+{
+  "version": "V27.4 双阶段人生",
+  "base": "V27.3",
+  "cacheVersion": "wealth-life-v27.4-income-cover-1",
+  "generatedUTC": "2026-10-15T03:36:47.839206+00:00",
+  "scope": "Actual insured job-loss event at monthly settlement, repeated reload/idempotence and two unemployment monthly cycles; preview and retirement contribution assertions; previous regression suites",
+  "limitations": [
+    "No real iPhone Safari or original user save tested",
+    "Forced RNG covers loss branch; late-game and exception cases use explicit financial fixtures",
+    "Not every random event triggered"
+  ],
+  "sources": [
+    "https://www.irs.gov/retirement-plans/401k-plans",
+    "https://www.irs.gov/retirement-plans/individual-retirement-arrangements-iras"
+  ],
+  "suites": {
+    "income-retirement": {
+      "results": [
+        "收入保障说明可展开；勾选不扣款，确认65保费只扣一次",
+        "IRA/401(k)说明区分现实与模拟；查看返回保持完整state不变",
+        "IRA确认现金转资产500、净值守恒；401(k)设置不立即扣款",
+        "真实月末触发失业：当月原工资结清，补助2016.67一次到账；401(k)220+雇主110，理赔不算被动收入",
+        "重复调用及读档不重复理赔；两次失业月末工资/缴费/匹配为0，持续生活保费照扣，结束后恢复工资",
+        "未投保失业无赔付，事后购买不补赔",
+        "主动辞职、退休及未就业均不触发收入保障赔付",
+        "未来独立失业事件可重新理赔，以事件ID隔离",
+        "保险/IRA/401(k)长说明在320/390/430px短屏可滚动关闭"
+      ],
+      "errors": [],
+      "scope": "Actual insured new-slot month-end event and two unemployed monthly UI cycles; forced RNG and explicit eligibility fixtures; Chromium touch, not Safari"
+    },
+    "first-job-cd": {
+      "results": [
+        "新档未就业、工资零、现金5000，选择背景只设置学历专业资格",
+        "首月工作阶段寻找工作，预览取消不就业，护士专业执照门槛保留",
+        "求职失败不发工资，主动确认成功后入职，继续进入生活阶段",
+        "财富页CD按钮可见，预览取消不扣，确认现金-1000资产+1000净值守恒、期限12月",
+        "次月已就业继续当前工作，不强制重新选工作",
+        "读取已有存档保留工作/CD，不被新建规则清空，购买按钮不重复",
+        "三种手机宽度财富页CD按钮/预览可触控且弹窗不溢出"
+      ],
+      "errors": [],
+      "scope": "Actual new-slot monthly choices and wealth CD purchase/reload; Chromium touch emulation"
+    },
+    "settlement": {
+      "results": [
+        "第二个月旧pending标志不阻塞第三个月；弹窗未处理前再次调用不重复结算",
+        "中途异常恢复完整账目、释放按钮，重试只增加一个月/一次收入",
+        "第三个月刷新读档后仍可继续"
+      ],
+      "errors": [],
+      "scope": "Actual new-slot first settlement, explicit stale pending and injected failure boundary fixtures; Chromium mobile touch"
+    },
+    "hobby-next": {
+      "results": [
+        "摄影确认扣费/XP一次，继续实际跳转保险，取消不推进",
+        "电影创作确认扣费/XP一次，继续实际跳转保险，取消不推进",
+        "烹饪确认扣费/XP一次，继续实际跳转保险，取消不推进",
+        "音乐确认扣费/XP一次，继续实际跳转保险，取消不推进",
+        "园艺确认扣费/XP一次，继续实际跳转保险，取消不推进",
+        "语言学习确认扣费/XP一次，继续实际跳转保险，取消不推进",
+        "刷新读档保留正确的下一阶段",
+        "练习后完整推进保险、投资、机会与月末结算",
+        "总览独立练习不误改月度阶段"
+      ],
+      "errors": [],
+      "scope": "Actual new-slot buttons through month 1, six hobby paths plus overview and reload; Chromium touch emulation"
+    },
+    "flow": {
+      "results": [
+        "新存档5000，关系网只有同学/老师",
+        "家人住房预览不扣钱→卡片确认扣450，无搬入费，直接进入生活成本",
+        "返回住房重复确认不重复扣租金",
+        "生活成本一张卡确认立即扣2142；返回/重复点击不再收费",
+        "生活卡片列费用/效果和状态表；运动实际健康+4精力-3，只生效一次",
+        "关系先预览具体互动，确认咖啡后扣15并增加关系",
+        "教育取消不报名、兴趣XP；保险同卡选择不扣款、确认扣255并投保",
+        "ETF四类预览/取消不记账，国际ETF买入200→2份/净资产守恒，无伪造历史",
+        "股票份额/成本和CD期限保存于统一资产",
+        "应急金打开/取消不改现金；银行贷款到账守恒；房产预览确认购入",
+        "还款先预览，取消不扣，确认本金1000只执行一次",
+        "三个不同机会读档固定、最多选一、结果不可重复领取",
+        "首月仅补扣剩余款、已付2847不重扣，工作后由事件认识同事",
+        "第二个月继续住房工作，按新月收费，工作事件认识上司",
+        "完整按钮推进12个月：CD到期1040、年度进度、逐月价格/持仓一致",
+        "多存档现金/报价/机会/已付凭证互相隔离，切回原档恢复",
+        "320/390/430px全部新卡片无页面横向溢出，按钮至少44px",
+        "删除第二档不改变第一档的现金、资产和已付记录",
+        "完整流程无页面JavaScript异常"
+      ],
+      "errors": [],
+      "environment": "Chromium mobile touch emulation; 12 months real buttons"
+    },
+    "extended": {
+      "results": [
+        "12期银行贷款摊销至零/总付=本金+利息",
+        "360期房贷摊销至零/总付=本金+利息/还清后租金现金流增加",
+        "学历毕业工资提升一次/年度经验加薪/次月无重复学历加薪",
+        "V24.6住房/投资/房产/银行/保险旧数据一次迁移、重复读取不重复记账",
+        "旧版已资本化到期CD迁移不再重复计利息",
+        "主动偿还银行本金1000/现金-1000/净资产守恒",
+        "投资房提前还本及出售按市值清偿房贷/净资产守恒",
+        "资产目标是里程碑，第一阶段不误弹游戏通关",
+        "辞职/未就业工资为零、税为零、不累计经验",
+        "高学历和20年总经验仍不能绕过专业/执照/相关经验",
+        "旧关系progression保留：恋爱未满6月锁定结婚，6次真实结算后可确认结婚",
+        "16个保留入口打开与X取消：现金/资产/负债/退休/保险/应急金不变",
+        "宠物一次扣430启动费，已付生活费后新增105月成本仍待付",
+        "宠物重复领养锁定且不再次收费",
+        "车辆首付3000/资产24000/车贷21000；150运行费及165车险未被已付生活费抵消",
+        "兴趣三次真实确认：XP105升级Lv1",
+        "现金0/-500/449：取消借款不记账，确认借款到账450，租房扣450后直接下一步",
+        "V25旧档升级不自动扣款或退款，返回住房确认待付450并记录一次",
+        "本月搬便宜住房不重复租金、不退已花租金，不用多付的住房抵消生活费",
+        "已付住房遇负现金仍可继续，零成本不要求新贷款",
+        "银行拒绝小于一美分精度，避免现金与本金舍入不一致",
+        "生活突发事件打开不扣钱，确认费用后才扣一次",
+        "新缓存包含flow.js，离线重载和已付住房凭证恢复",
+        "扩展测试无JavaScript异常"
+      ],
+      "errors": [],
+      "fixtureNote": "12/360 installments accelerated using actual engine; UI monthly flow separately exercised"
+    },
+    "education": {
+      "results": [
+        "教育预览→返回/X/遮罩：完整state不变，无报名、扣款或贷款",
+        "取消贷款及X返回课程预览，资金和报名不变",
+        "学生贷款先到账现金+19450、负债+19450；未交学费、不报名、净资产不变",
+        "单独确认学费：现金-24000、学习开始一次，未重复贷款",
+        "新报名可撤销并退学费，已确认的学生贷款保留",
+        "刷新读档保留分开的贷款到账、学费及撤销记录",
+        "学生贷款连续两次月末只扣一次月供/余额按APR摊销，学业进度各+1，无重复学费",
+        "旧第0月案例：显式撤销退现金5700、撤自动学生债18300，独立银行贷款2500保留",
+        "无法核对凭证的旧课程：退出不凭空退款或抹掉历史债务",
+        "320/390/430px贷款按钮横排，页面无溢出，顶部不覆盖正文",
+        "银行预览关闭后保留浏览位置，不强制跳回顶部"
+      ],
+      "errors": [],
+      "scope": "Chromium touch emulation, fixtures do not access user browser saves"
+    },
+    "visual": {
+      "results": [
+        "住房/生活成本/小生活卡/单卡保险/三个机会视觉检查素材生成",
+        "320/390/430px及500px短视口投资弹窗高度受限、可滚动到确认",
+        "弹窗关闭后菜单可打开关闭，背景触控锁释放",
+        "旧自住房/旧rent存档继续住房不丢失、不重复付款"
+      ],
+      "errors": [],
+      "note": "Chromium touch emulation, internal screenshots only; not actual Safari keyboard"
+    },
+    "journey": {
+      "results": [
+        "实际新档从阶段1开始，资金/工资不能代替被动收入解锁",
+        "等于支出/高工资现金/住房未选/已预付支出/新增贷款月供五种边界均不误解锁",
+        "旧档/已达条件仍需确认；升级不改现金资产债务净值，基准固定且已有收入不算快车道新增",
+        "快车道每月三项、预览/取消不付款，刷新读档不重抽且阶段保留",
+        "本月已经选过普通机会，升级后不赠送第二次投资机会",
+        "快车道现金不足禁用投资，不自动贷款或扣款",
+        "企业失败：现金-600000、残值资产300000、净值损失300000，无虚增收入",
+        "实际快车道购买+后续月度流程达到新增50000/月通关；买入守恒、同月不重复购买、通关后仍可结算",
+        "通关存档刷新保留，不反复弹胜利窗口或重复奖励",
+        "新增收入虽达50000，但贷款造成被动收入不足以覆盖支出时不通关",
+        "出售快车道资产后新增收入随之减少，不保留已售资产的收入",
+        "财务/旅行/酒店/公益四种梦想：先预览，支出/资产/净值符合各自性质，确认通关且不能重复扣费",
+        "梦想现金/目标进度不足、未进入第二阶段都不能误通关",
+        "新建第二档不继承快车道、资产、基准或通关记录",
+        "三种手机宽度阶段卡不溢出，打开窗口后阶段入口也被背景锁保护",
+        "双阶段专项无页面JavaScript异常"
+      ],
+      "errors": [],
+      "scope": "New game actual UI; phase/win fixtures use explicit financial state; successful projects then actual monthly UI; Chromium touch emulation, not Safari"
+    },
+    "stage-visual": {
+      "results": [
+        "快车道大型金额卡片在320/390/430px无横向溢出，600px高弹窗受限且触控44px",
+        "酒店梦想预览确认、胜利窗口及继续生活视觉/操作通过",
+        "新增journey模块已缓存，离线读档恢复阶段和通关记录"
+      ],
+      "errors": [],
+      "scope": "Chromium touch emulation, large-state fixture for visual QA; internal screenshots only"
+    }
+  },
+  "sourceSHA256": {
+    "QA_REPORT.md": "a41fe7b842af794e506f0615a52a6e0693c58f303e681898f692548a51f4c06b",
+    "city.svg": "4928458337dfa1e8f6737daf577c66eea1aa6ff4249e9bc599e916a0392857a2",
+    "core.js": "9ccd9ae0d6eb0153d3d2493dc938bcab8d629de34ef225e5ecb2f84c151305de",
+    "flow.js": "7c9164b40679d6c30e85e389813798c5107111d4fc124986b384f700c9b78227",
+    "icons/icon-192.png": "19c78ce67534f41091f25d8782f0841a1aea379f41ef08f2b63dedaee7f52585",
+    "icons/icon-512.png": "c0c69fd2279cfc9ef9abfe77372248f7157102c402370f1700f56b1689c5e910",
+    "index.html": "64bee3dd2b539510e5ab96aa921cd5c9f192f602e893a673ea8a86cd3826b0d2",
+    "journey.js": "a68ec8bc1f2bc982a0946e1835d4911232f30044c33d0997583b19c7729a79f5",
+    "manifest.webmanifest": "885f71a2730f1bef93311ebd2e8d3ffde8b8792d326471e2079b2b99ef130c35",
+    "presentation.css": "98afe1386622e55b3b312cc5762a32b43f2179da9f169a2c77418ce4f9b3b6f7",
+    "presentation.js": "781c1ff8eff038961036c82b3a32135bd332907aa8d441bdeaaf65dd3994e8fc",
+    "sw.js": "e24cf6749a417a5b5cc42665786cbd824d941f1f31c050ab20280d0e5e5d00b1"
+  }
+}

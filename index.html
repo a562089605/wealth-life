@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>财富人生 Wealth Life · V27.4 双阶段人生</title><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#111827;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--good:#087f5b;--bad:#b42318}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,Arial,sans-serif;background:var(--bg);color:var(--ink)}main{max-width:760px;margin:auto;padding:calc(16px + env(safe-area-inset-top)) 14px calc(32px + env(safe-area-inset-bottom))}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}h1{font-size:23px;margin:0}.sub{font-size:12px;color:var(--muted)}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{padding:12px;border:1px solid var(--line);border-radius:14px}.label{font-size:12px;color:var(--muted)}.value{font-size:19px;font-weight:700;margin-top:4px}.row{display:flex;justify-content:space-between;gap:12px;align-items:center}.btns{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}button,select{min-height:46px;border-radius:13px;border:1px solid var(--line);font-size:16px;padding:0 14px;background:#fff;color:var(--ink)}button.primary{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:650}button.secondary{font-weight:600}button:disabled{opacity:.45}.progress{height:10px;background:#eceff3;border-radius:999px;overflow:hidden}.bar{height:100%;background:var(--good);width:0}.event{border-left:4px solid var(--accent)}
+.event.event-active{position:fixed!important;left:12px!important;right:12px!important;top:calc(12px + env(safe-area-inset-top))!important;bottom:auto!important;max-height:calc(100vh - 90px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overflow:auto;z-index:1001;box-shadow:0 20px 60px rgba(0,0,0,.28);display:block!important;margin:0 auto!important;max-width:720px}.event{position:relative}.event-backdrop{position:fixed;inset:0;background:rgba(17,24,39,.48);z-index:1000;display:none}.event-backdrop.active{display:block}body.event-open{overflow:hidden}.good{color:var(--good)}.bad{color:var(--bad)}.asset{padding:9px 0;border-bottom:1px solid var(--line)}.asset:last-child{border:0}.hidden{display:none!important}.pill{font-size:12px;padding:5px 9px;border-radius:999px;background:#eef2ff}.save{font-size:12px;color:var(--muted)}@media(min-width:650px){.grid{grid-template-columns:repeat(4,1fr)}}
+.beta{font-size:11px;padding:4px 8px;border-radius:999px;background:#111827;color:#fff}.quickbar{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:18px;padding:8px;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;box-shadow:0 10px 30px rgba(0,0,0,.12)}.quickbar button{min-height:42px;padding:0 5px;font-size:12px}.annual{background:#f8fafc;border:1px solid #dbeafe}.onboard{background:#fffbeb;border:1px solid #fde68a}.sectionTitle{display:flex;align-items:center;justify-content:space-between}.compact-note{font-size:12px;color:var(--muted);line-height:1.55}
+</style>
+<style id="v23-style">
+:root{--cream:#fff4df;--cream2:#f8ead3;--nav:#172126;--yellow:#ffca45;--softblue:#eaf3ff}
+body{background:#f4efe7}
+main{max-width:760px;padding-left:16px;padding-right:16px}
+#game{padding-bottom:96px}
+#game>.card{border:0;box-shadow:0 8px 28px rgba(26,32,44,.06);border-radius:26px}
+#topStats{position:sticky;top:calc(8px + env(safe-area-inset-top));z-index:18;background:rgba(244,239,231,.92);backdrop-filter:blur(18px);padding:8px 0;margin-bottom:8px}
+#topStats .stat{background:var(--cream);border:0;border-radius:22px;text-align:center;padding:13px 7px}
+#topStats .label{font-size:11px}
+#topStats .value{font-size:18px}
+#v21Hub{background:transparent!important;box-shadow:none!important;padding:4px 0!important}
+#v21Hub .grid{grid-template-columns:repeat(3,1fr)}
+#hubNext{grid-column:1/-1;background:var(--yellow);border:0;color:#1c2328}
+#hubCareer,#hubLife,#hubWealth{background:var(--cream);border:0}
+#careerSummaryCard{background:linear-gradient(145deg,#fff4df,#fff)}
+#homeLifeCard{background:linear-gradient(145deg,#eef6ff,#fff)}
+#careerActionsCard,#studyCard{background:linear-gradient(145deg,#f3efff,#fff)}
+#assetsCard,#retirementCard,#rentalCard{background:linear-gradient(145deg,#effaf3,#fff)}
+#networkCard,#wellbeingCard,#lifestyleCard{background:linear-gradient(145deg,#fff1f0,#fff)}
+.event.event-active{border-radius:28px!important;border-left:7px solid #3478f6!important;padding:22px!important}
+.event.event-active button.primary{background:#111827}
+.event.event-active #actions button{flex:1 1 42%}
+.v23nav{position:fixed;left:14px;right:14px;bottom:calc(10px + env(safe-area-inset-bottom));max-width:732px;margin:auto;background:rgba(23,33,38,.96);border:0;border-radius:24px;padding:8px;z-index:999;box-shadow:0 15px 45px rgba(0,0,0,.28)}
+.v23nav button{background:transparent;border:0;color:#aeb7bc;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:54px}
+.v23nav button span{font-size:21px;line-height:1}
+.v23nav button small{font-size:11px}
+.v23nav button.active{color:var(--yellow)}
+.v23nav button.primary{background:var(--yellow);color:#172126;border-radius:18px}
+.v23-section-title{font-size:30px;font-weight:800;margin:22px 2px 8px}
+.v23-section-note{color:#6b7280;margin:0 2px 16px;line-height:1.55}
+.v23-hidden{display:none!important}
+@media(max-width:520px){
+ .grid{gap:8px}
+ #topStats{grid-template-columns:repeat(2,1fr)}
+ #topStats .stat:nth-child(n+5){display:none}
+ h2{font-size:24px}
+ button,select{font-size:15px}
+}
+</style>
+
+<style id="v24-style">
+#v24Turn{display:none;min-height:70vh}
+#v24Turn.active{display:block}
+#game.v24-running> :not(#topStats):not(#v24Turn):not(#eventBackdrop):not(.event-active):not(.quickbar){
+ display:none!important
+}
+#game.v24-running #v24Turn{display:block!important}
+#game.v24-running #topStats{display:grid!important}
+.v24-progress{display:flex;gap:5px;margin:8px 0 18px}
+.v24-progress i{height:6px;flex:1;background:#ddd4c6;border-radius:99px}
+.v24-progress i.done{background:#ffca45}.v24-progress i.now{background:#172126}
+.v24-title{font-size:30px;font-weight:900;margin:4px 0}
+.v24-sub{color:#687078;line-height:1.55;margin-bottom:16px}
+.v24-layout{display:grid;grid-template-columns:minmax(210px,.72fr) minmax(0,1.28fr);gap:14px;align-items:start}
+.v24-status,.v24-choice{background:#fff;border-radius:28px;padding:18px;box-shadow:0 10px 32px rgba(20,25,30,.07)}
+.v24-status{background:#fff4df;position:sticky;top:98px}
+.v24-status h3,.v24-choice h3{margin:0 0 12px;font-size:20px}
+.v24-metric{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,.07)}
+.v24-metric:last-child{border-bottom:0}
+.v24-options{display:grid;gap:10px}
+.v24-option{border:1px solid #e5dfd5;background:#fff;border-radius:20px;padding:15px;text-align:left}
+.v24-option strong{display:block;font-size:17px;margin-bottom:4px}
+.v24-option small{color:#697078;line-height:1.45}
+.v24-option.primary{background:#172126;color:#fff;border-color:#172126}
+.v24-option.primary small{color:#d9e0e3}
+.v24-option:disabled{opacity:.42}
+.v24-footer{display:flex;gap:10px;margin-top:14px}
+.v24-footer button{flex:1}
+.v24-summary{background:#eef6ff;border-radius:20px;padding:14px;margin-top:12px;line-height:1.55}
+@media(max-width:620px){
+ .v24-layout{grid-template-columns:1fr}
+ .v24-status{position:static}
+ .v24-status{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+ .v24-status h3{grid-column:1/-1}
+ .v24-title{font-size:27px}
+}
+</style>
+
+<style id="v242-re-style">
+#v242RE{position:fixed;inset:0;background:rgba(13,18,20,.72);z-index:99999;display:none;align-items:flex-end;justify-content:center}
+#v242RE.open{display:flex}
+.v242sheet{width:min(760px,100%);max-height:88vh;overflow:auto;background:#f8eedf;border-radius:30px 30px 0 0;padding:20px}
+.v242head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.v242head button{width:44px;height:44px;border-radius:50%}
+.v242grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.v242prop{background:#fff;border-radius:22px;padding:16px;border:1px solid #e6dac8}
+.v242prop h3{margin:0 0 5px}.v242prop p{font-size:13px;line-height:1.55;color:#62676b}
+.v242prop button{width:100%;margin-top:8px}
+@media(max-width:560px){.v242grid{grid-template-columns:1fr}.v242sheet{max-height:91vh}}
+</style>
+
+<style id="v245-housing-style">
+#v245Housing{position:fixed;inset:0;background:rgba(13,18,20,.72);z-index:100001;display:none;align-items:flex-end;justify-content:center}
+#v245Housing.open{display:flex}.v245sheet{width:min(720px,100%);max-height:90vh;overflow:auto;background:#f8eedf;border-radius:30px 30px 0 0;padding:20px}
+.v245house{background:#fff;border:1px solid #e6dac8;border-radius:20px;padding:15px;margin:10px 0}.v245house button{width:100%;margin-top:8px}
+</style>
+
+<style id="v246-save-style">
+#slots{display:grid!important;gap:10px!important}
+.saveRow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:stretch}
+.saveRow>button:first-child{text-align:left}
+.miniSave{min-width:72px}.addSave{width:100%;margin-top:4px}
+</style>
+<style>
+#game.v24-running>.event.event-active{display:block!important}
+.event.event-active{max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;overflow-y:auto;overscroll-behavior:contain}
+.v245sheet,.v242sheet{max-height:calc(100dvh - 20px - env(safe-area-inset-top));padding-bottom:calc(24px + env(safe-area-inset-bottom));overscroll-behavior:contain}
+body{padding-bottom:calc(110px + env(safe-area-inset-bottom))}button{touch-action:manipulation;min-height:44px!important}.v24-option{overflow-wrap:anywhere}.v24-layout>*{min-width:0}
+</style><link rel="stylesheet" href="presentation.css?v=27.4"></head><body><main>
+<div class="top"><div><h1>财富人生</h1><div class="sub">Wealth Life · 多路线人生理财模拟器 · 城市、年龄阶段与Turn-Based V27.4 双阶段人生</div></div><div style="text-align:right"><span class="beta">V27.4 双阶段人生</span><br><span id="saveState" class="save">自动存档</span></div></div>
+<section id="home" class="card"><h2 style="margin-top:0">开始 / 读档</h2><p class="sub">选择一个存档位。新角色以未就业毕业生身份开局，需在工作阶段主动求职；职业工资按佛州 2025 OEWS 的低位/入门工资思路建模。工作经验、求职、转行、创业和学习都是可选路线。每个存档独立保留年龄、学历、工作年限、资产、债务和进度。V19 的宏观事件、通胀和行业冲击均为教学用模拟情景，不是现实预测。</p><div class="btns" id="slots"></div><div id="newGame" class="hidden" style="margin-top:16px"><label class="label">选择教育与专业背景</label><select id="job" style="width:100%;margin-top:6px"></select><label class="label" style="display:block;margin-top:14px">选择人生目标</label><select id="lifeGoal" style="width:100%;margin-top:6px"><option value="retire39">39岁提前退休</option><option value="world50">50岁环游世界一年</option><option value="fi50">50岁财富自由</option><option value="million50">50岁净资产 $1,000,000</option><option value="hotel55">55岁拥有自己的精品酒店</option><option value="care60">60岁建立朋友共居养老社区</option><option value="park60">60岁开一座自己的主题乐园</option><option value="foundation55">55岁建立 $5M 公益基金</option></select><p id="goalPreview" class="sub" style="margin:8px 2px 0">目标会根据你的实际支出、年龄和通胀动态计算，而不是固定死一个数字。</p><div class="btns"><button class="primary" id="start">开始新人生</button><button id="cancel">取消</button></div></div></section>
+<section id="game" class="hidden"><section id="v24Turn" class="active"></section><div id="onboardCard" class="card onboard"><div class="sectionTitle"><h2 style="margin:0">第一次玩？</h2><button id="dismissOnboard" style="min-height:34px;font-size:12px">知道了</button></div><p class="compact-note">每个月先看现金流，再处理事件。前期优先避免现金归零；投资、学习、换工作、创业都不是强制任务。你的开局目标会一直显示在最上方。</p></div><div class="card annual"><div class="sectionTitle"><div><div class="label">年度摘要 Annual Review</div><div id="annualHeadline" class="value">第 1 年 · 建立生活基础</div></div><span id="annualAge" class="pill"></span></div><div id="annualSummary" class="compact-note" style="margin-top:10px"></div></div><div class="card" style="border:2px solid #dbeafe"><div class="row"><div><div class="label">当前人生目标 Life Goal</div><div id="lifeGoalName" class="value"></div></div><div id="goalDeadline" class="pill"></div></div><div class="progress" style="margin-top:14px"><div id="lifeGoalBar" class="bar"></div></div><div id="lifeGoalProgress" class="sub" style="margin-top:8px"></div><div id="goalAdvice" class="asset" style="margin-top:8px"></div></div>
+<div id="dreamCard" class="card" style="border:2px solid #ede9fe"><div class="row"><div><div class="label">梦想工程 Dream Project</div><div id="dreamStage" class="value">尚未启动</div></div><span id="dreamCapital" class="pill"></span></div><div id="dreamDesc" class="sub" style="margin-top:8px"></div><div class="btns"><button id="dreamBtn" class="secondary">推进梦想工程</button></div></div>
+<div id="careerSummaryCard" class="card"><div class="row"><div><div class="label">职业</div><div id="jobName" class="value"></div><div id="age" class="sub" style="margin-top:3px"></div><div id="education" class="sub" style="margin-top:3px"></div></div><div style="text-align:right"><div class="label">游戏时间</div><div id="month" class="value"></div></div></div><div style="margin-top:14px" class="progress"><div id="bar" class="bar"></div></div><div id="goal" class="sub" style="margin-top:7px"></div></div>
+<div id="topStats" class="grid"><div class="stat"><div class="label">现金 Cash</div><div id="cash" class="value"></div></div><div class="stat"><div class="label">工资 Salary</div><div id="salary" class="value"></div><div id="annualSalary" class="sub" style="font-size:11px;margin-top:3px"></div></div><div class="stat"><div class="label">被动收入 Passive</div><div id="passive" class="value good"></div></div><div class="stat"><div class="label">月净现金流</div><div id="net" class="value"></div></div><div class="stat"><div class="label">净资产 Net Worth</div><div id="netWorth" class="value"></div></div><div class="stat"><div class="label">应急金覆盖</div><div id="emergencyMonths" class="value"></div></div><div class="stat"><div class="label">幸福度 Happiness</div><div id="happiness" class="value"></div></div><div class="stat"><div class="label">生活平衡</div><div id="balanceScore" class="value"></div></div></div>
+<div id="eventBackdrop" class="event-backdrop"></div><div id="v21Hub" class="card" style="background:#fffaf0"><div class="label">V27.4 双阶段人生 · 月度人生回合</div><div class="row" style="margin-top:6px"><div><div class="value">先处理一件重要的事</div><div id="v21Expense" class="sub" style="margin-top:5px"></div></div><span id="v21City" class="pill">Orlando</span></div><div class="grid" style="margin-top:12px"><button class="secondary" id="hubCareer">💼 人生</button><button class="secondary" id="hubLife">🏠 生活</button><button class="secondary" id="hubWealth">💰 财富</button><button class="primary" id="hubNext">进入下个月</button></div></div><div class="card event"><button id="eventClose" type="button" aria-label="关闭" style="position:absolute;right:14px;top:14px;z-index:2;width:44px;height:44px;min-height:44px;border-radius:50%;padding:0;font-size:26px;background:#fff;border:1px solid var(--line)">×</button><div class="row" style="padding-right:54px"><span id="eventType" class="pill"></span><span id="eventMonth" class="sub"></span></div><h2 id="eventTitle"></h2><p id="eventDesc"></p><div id="eventData" class="grid"></div><div id="actions" class="btns"></div></div>
+<div class="card" style="border:2px solid #fee2e2"><div class="row"><div><div class="label">世界状态 World System</div><div id="worldEra" class="value">稳定年代</div></div><span id="inflationPill" class="pill"></span></div><div class="grid" style="margin-top:12px"><div class="stat"><div class="label">累计物价指数</div><div id="cpiIndex" class="value" style="font-size:15px"></div></div><div class="stat"><div class="label">你的行业景气</div><div id="industryHealth" class="value" style="font-size:15px"></div></div></div><p id="worldDesc" class="sub" style="margin-top:10px"></p></div>
+<div class="card"><div class="row"><div><div class="label">经济环境 Economy</div><div id="economyName" class="value"></div></div><div style="text-align:right"><div class="label">基准利率</div><div id="rate" class="value"></div></div></div><div class="grid" style="margin-top:12px"><div class="stat"><div class="label">股市周期</div><div id="stockCycle" class="value" style="font-size:15px"></div></div><div class="stat"><div class="label">房价趋势</div><div id="homeTrend" class="value" style="font-size:15px"></div></div></div><p id="economyDesc" class="sub" style="margin-top:10px"></p></div>
+<div id="assetsCard" class="card"><div class="row"><h2 style="margin:0">资产 Assets</h2><span id="assetCount" class="sub"></span></div><div id="assets"></div></div>
+<div id="careerActionsCard" class="card"><h2 style="margin-top:0">人生路线</h2><p class="sub">没有固定主线。你可以只工作积累经验，也可以主动求职、转行、创业；学习仍然只是其中一个可选路径。</p><div class="btns"><button id="jobMarketBtn" class="secondary">查看工作机会</button><button id="businessBtn" class="secondary">尝试创业</button></div></div><div id="cityCard" class="card"><h2 style="margin-top:0">城市与人生阶段</h2><p class="sub">不同城市采用游戏化的生活成本、职业机会与住房压力修正。年龄也会改变更容易遇到的生活事件。</p><div id="cityStatus" class="asset"></div><div class="btns"><button id="cityBtn" class="secondary">考虑搬家</button></div></div><div id="wellbeingCard" class="card"><h2 style="margin-top:0">身心与关系</h2><p class="sub">财富只是人生的一部分。健康、精力、压力和关系会随工作、家庭与生活选择变化，并影响职业与幸福。</p><div class="grid"><div class="stat"><div class="label">健康 Health</div><div id="healthStat" class="value"></div></div><div class="stat"><div class="label">精力 Energy</div><div id="energyStat" class="value"></div></div><div class="stat"><div class="label">心情 Mood</div><div id="moodStat" class="value"></div></div><div class="stat"><div class="label">压力 Stress</div><div id="stressStat" class="value"></div></div><div class="stat"><div class="label">关系 Social</div><div id="socialStat" class="value"></div></div></div><div id="relationshipStatus" class="asset" style="margin-top:10px"></div><div class="btns"><button id="socialBtn" class="secondary">联系重要的人</button><button id="wellnessBtn" class="secondary">照顾自己</button><button id="hobbyBtn" class="secondary">发展兴趣</button><button id="petBtn" class="secondary">宠物生活</button></div></div><div id="lifestyleCard" class="card"><h2 style="margin-top:0">生活与消费</h2><p class="sub">钱不是唯一目标。休息、社交、兴趣、旅行和提升生活品质会影响幸福度；长期压抑消费会累积压力，过度消费则会侵蚀现金流。</p><div id="lifestyleStatus" class="asset"></div><div class="btns"><button id="lifestyleBtn" class="secondary">安排这个月的生活</button></div></div><div id="networkCard" class="card"><div class="row"><div><h2 style="margin:0">人生关系网</h2><p class="sub" style="margin:6px 0 0">朋友和重要的人会有自己的工作、城市、人生变化，并和你一起变老。关系需要长期维护。</p></div><span id="networkCount" class="pill"></span></div><div id="peopleNetwork" style="margin-top:10px"></div><div class="btns"><button id="networkBtn" class="secondary">联系关系网</button></div></div><div id="recordCard" class="card"><div class="row"><h2 style="margin:0">人生记录</h2><span id="achievementCount" class="sub"></span></div><div id="achievements" class="asset"></div><div id="timeline" class="sub" style="margin-top:10px"></div></div>
+<div id="studyCard" class="card"><h2 style="margin-top:0">可选学习路径</h2><p class="sub">学习不是必选任务。你可以一直工作、投资和积累经验，也可以在合适的时候继续学历。工作经验本身也会推动工资成长；学历只是另一条可能提高职业上限的路径。</p><div id="studyInfo" class="asset"></div><div class="btns"><button id="studyBtn" class="secondary">继续学习</button></div></div>
+<div id="homeLifeCard" class="card"><h2 style="margin-top:0">家庭与居住</h2><p class="sub">家庭是可选人生路线。结婚、生孩子、租房、买自住房和买车都会改变现金流；不选择也可以一直单身、租房并继续工作或投资。</p><div id="lifeStatus" class="asset"></div><div class="btns"><button id="relationshipBtn" class="secondary">家庭选择</button><button id="housingBtn" class="secondary">住房选择</button><button id="carBtn" class="secondary">交通选择</button></div></div>
+<div id="vehicleCostCard" class="card">
+<h2 style="margin-top:0">车辆成本</h2>
+<p class="small">购买车辆后会产生汽车保险、燃油、定期保养和偶发维修。没有车辆时不会产生这些费用。</p>
+</div>
+<div id="rentalCard" class="card"><h2 style="margin-top:0">房地产投资</h2><p class="sub">出租房是投资资产，不等同于自住房。系统会计算首付、贷款利率、租金、Property Tax、Insurance、HOA、维修准备金与空置率。</p><div class="btns"><button id="rentalBtn" class="secondary">查看投资房机会</button></div></div><div id="riskCard" class="card"><h2 style="margin-top:0">风险管理与保险</h2><p class="sub">保险不是投资。它用固定保费转移低概率、高损失风险；应急金则用于短期失业和意外支出。</p><div id="riskStatus" class="asset"></div><div class="btns"><button id="emergencyBtn" class="secondary">划入 $1,000 应急金</button><button id="healthBtn" class="secondary">医疗保险</button><button id="incomeBtn" class="secondary">收入保障</button></div></div><div id="retirementCard" class="card"><h2 style="margin-top:0">退休与长期投资</h2><p class="sub">退休账户是长期路线，不是通关必选。你可以选择 401(k)、IRA 和普通投资账户；系统按月模拟投入与市场回报。税务规则为教学简化模型。</p><div id="retireStatus" class="asset"></div><div class="btns"><button id="k401Btn" class="secondary">设置 401(k)</button><button id="iraBtn" class="secondary">投入 IRA $500</button><button id="brokerageBtn" class="secondary">投入普通账户 $500</button><button id="retireBtn" class="secondary">退休选择</button></div></div>
+<div id="bankLoanCard" class="card">
+<h2 style="margin-top:0">银行贷款</h2>
+<p class="small">需要学费、搬家或其他资金时可以申请贷款。期限越长，月供通常越低，但总利息更高。</p>
+<div class="row"><div><b>个人贷款</b><div class="small">金额、期限和利率在申请时确认；固定利率签约后不会因之后通胀而改变。</div></div>
+<button id="v24LoanBtn">申请贷款</button></div>
+</div>
+<div id="debtCard" class="card"><h2 style="margin-top:0">负债 Liabilities</h2><div id="debts"></div></div>
+<div class="btns"><button id="next" class="primary">进入下个月</button><button id="saveExit" class="secondary">保存并返回</button><button id="restart">删除本存档</button></div><div class="quickbar v23nav">
+<button id="qOverview"><span>◇</span><small>总览</small></button>
+<button id="qCareer"><span>♟</span><small>人生</small></button>
+<button id="qLife"><span>♡</span><small>关系</small></button>
+<button id="qAssets"><span>▰</span><small>财富</small></button>
+<button id="qNext" class="primary"><span>→</span><small>下月</small></button>
+</div>
+</section>
+<script>
+const JOBS={teacher:['小学教师',44000,3150,2600,{车贷:4500,学生贷款:9000},'bachelor'],designer:['平面设计师',41000,3100,2800,{车贷:5000,学生贷款:7000},'bachelor'],police:['巡警',52000,3650,2500,{车贷:5500},'highschool'],nurse:['注册护士 RN',68000,4550,3300,{车贷:6500,学生贷款:12000},'bachelor'],engineer:['机械工程师',70000,4800,3800,{车贷:7500,学生贷款:15000},'bachelor'],chef:['主厨 / Head Cook',39000,3050,2400,{车贷:4500,信用卡:1200},'highschool'],editor:['影视剪辑师',40000,3050,2700,{设备贷款:5000,学生贷款:7000},'bachelor'],doctor:['住院医师 / Resident',65000,4700,3000,{学生贷款:165000,车贷:7000},'professional'],server:['餐厅服务员',33000,2700,2200,{车贷:3800,信用卡:1200},'highschool'],developer:['初级软件开发者',78000,5150,4000,{车贷:7000,学生贷款:12000},'bachelor'],mechanic:['汽车技师',39000,3050,2700,{车贷:4200,工具贷款:3500},'associate'],photographer:['摄影师',35000,2800,2400,{信用卡:1500,设备贷款:4200},'associate']};
+const CAREERS=[
+{name:'行政助理',edu:'highschool',minExp:0,salary:36000,expenses:2750},{name:'餐厅主管',edu:'highschool',minExp:2,salary:43000,expenses:3050},{name:'汽车技师',edu:'associate',minExp:0,salary:39000,expenses:3050},{name:'平面设计师',edu:'associate',minExp:1,salary:43000,expenses:3150},{name:'影视剪辑助理',edu:'associate',minExp:0,salary:38000,expenses:3000},{name:'影视剪辑师',edu:'bachelor',minExp:2,salary:52000,expenses:3350},{name:'小学教师',edu:'bachelor',minExp:0,salary:44000,expenses:3150},{name:'注册护士 RN',edu:'bachelor',minExp:0,salary:68000,expenses:4550},{name:'机械工程师',edu:'bachelor',minExp:0,salary:70000,expenses:4800},{name:'软件开发者',edu:'bachelor',minExp:1,salary:78000,expenses:5150},{name:'高级软件开发者',edu:'bachelor',minExp:5,salary:108000,expenses:6100},{name:'项目经理',edu:'bachelor',minExp:5,salary:90000,expenses:5600}];
+const EDU_RANK={highschool:0,associate:1,bachelor:2,master:3,professional:4};
+const EDU={highschool:{name:'高中 / High School',next:'associate',months:24,cost:7000,mult:1},associate:{name:'副学士 / Associate',next:'bachelor',months:24,cost:12000,mult:1.175},bachelor:{name:'学士 / Bachelor',next:'master',months:24,cost:24000,mult:1.633},master:{name:'硕士 / Master',next:null,months:0,cost:0,mult:1.942},professional:{name:'专业学位 / Professional',next:null,months:0,cost:0,mult:2.374}};
+const DEALS=[['自动售货机','已有稳定点位的二手机器。',2600,135],['出租停车位','公寓附近的长期停车位。',4200,190],['宽基指数基金','长期分散投资；游戏把2%年分红简化为每月发放，市值会波动。',1200,2],['摄影器材出租','购买热门器材出租给本地创作者。',3100,155],['自助洗衣设备','两台二手商用设备。',5000,260],['小型网站业务','购买一个已有订阅收入的小网站。',6500,330],['小型出租屋首付','支付首付取得一套出租物业。',9000,410],['本地咖啡摊合伙','少数股权投资。',7200,290]];
+const STOCKS=[['NOVA科技',18,8,34],['SUN零售',12,6,24],['BLUE能源',26,15,42],['ORBIT物流',9,4,20]];
+const CDS=[['12个月CD',1000,0.04],['高收益储蓄',500,0.032]];
+const WORLD_SHOCKS=[
+{name:'AI生产力浪潮',desc:'新一轮自动化工具快速进入办公室与创意行业。技能更新快的人获得机会，重复性岗位承压。',months:18,inflation:.001,market:.006,jobs:{'影视剪辑师':-.08,'平面设计师':-.10,'软件开发者':.06,'初级软件开发者':.03,'高级软件开发者':.05,'注册护士 RN':.02,'小学教师':.01}},
+{name:'能源与运输冲击',desc:'能源和物流成本突然上升，生活成本短期增加，消费行业利润承压。',months:12,inflation:.006,market:-.008,jobs:{'餐厅服务员':-.05,'主厨 / Head Cook':-.04,'餐厅主管':-.04,'机械工程师':.02}},
+{name:'住房供应紧张',desc:'人口流入与住房供应错配，租金和房价压力上升。',months:20,inflation:.003,market:0,home:.006,jobs:{}},
+{name:'信贷紧缩',desc:'融资环境突然收紧。大型项目、房地产与创业更难获得便宜资金。',months:15,inflation:-.001,market:-.012,rate:.012,jobs:{'项目经理':-.03,'软件开发者':-.02}},
+{name:'生产率繁荣',desc:'企业投资与生产率改善，就业和风险资产环境偏强，但资产价格也更贵。',months:24,inflation:.001,market:.010,home:.003,jobs:{'机械工程师':.04,'软件开发者':.05,'高级软件开发者':.05,'注册护士 RN':.02}}
+];
+function industryScore(){let score=100;const sh=state?.worldShock;if(sh&&sh.monthsLeft>0){const w=WORLD_SHOCKS[sh.index];score*=1+(w.jobs[state.job]||0)}if(state?.economy===1)score+=8;if(state?.economy===3)score-=18;return Math.max(55,Math.min(125,score))}
+function maybeWorldShock(){state.worldShock??=null;if(state.worldShock?.monthsLeft>0){state.worldShock.monthsLeft--;if(state.worldShock.monthsLeft<=0){(state.timeline||=[]).push((state.age||22)+'岁：世界事件「'+WORLD_SHOCKS[state.worldShock.index].name+'」结束');state.worldShock=null}return false}if(state.month>6&&Math.random()<.025){const i=Math.floor(Math.random()*WORLD_SHOCKS.length),w=WORLD_SHOCKS[i];state.worldShock={index:i,monthsLeft:w.months};(state.timeline||=[]).push((state.age||22)+'岁：世界事件「'+w.name+'」开始');showEvent('WORLD EVENT',w.name,w.desc,[['预计影响期',w.months+'个月'],['你的行业景气',Math.round(industryScore())+'/100'],['提示','这是游戏化宏观情景，不是现实预测。']],[['继续',finish,true]]);return true}return false}
+const ECONOMIES=[{name:'正常增长',rate:.055,stock:1,home:.003,desc:'就业和消费保持正常，资产价格没有明显极端趋势。'},{name:'经济繁荣',rate:.062,stock:1.012,home:.006,desc:'企业盈利与需求较强，股市和房价更容易上涨，但融资成本偏高。'},{name:'经济放缓',rate:.047,stock:.994,home:.001,desc:'增长减速，资产回报承压，利率开始下降。'},{name:'经济衰退',rate:.038,stock:.982,home:-.004,desc:'就业和风险资产承压，利率较低，房价可能回落。'},{name:'高通胀',rate:.072,stock:.997,home:.005,desc:'物价上涨较快，借贷成本明显上升，住房运营成本也更高。'}];
+const RENTALS=[{name:'一居室公寓',price:165000,rent:1650,hoa:260,tax:.012,ins:110,maint:.07,vac:.06},{name:'两居室联排',price:245000,rent:2250,hoa:190,tax:.012,ins:145,maint:.075,vac:.055},{name:'小型独栋出租屋',price:310000,rent:2700,hoa:0,tax:.012,ins:190,maint:.08,vac:.06}];
+const CITIES={orlando:{name:'Orlando, FL',cost:1.00,salary:1.00,housing:1.00,rentStudio:1432,rent1:1450,rent2:1695,homeValue:372775,desc:'默认城市。'},tampa:{name:'Tampa, FL',cost:1.04,salary:1.03,housing:1.08,desc:'生活成本略高。'},miami:{name:'Miami, FL',cost:1.22,salary:1.12,housing:1.38,desc:'机会更多，住房更贵。'},fortlauderdale:{name:'Fort Lauderdale, FL',cost:1.18,salary:1.09,housing:1.31,desc:'南佛州沿海城市。'},jacksonville:{name:'Jacksonville, FL',cost:.96,salary:.98,housing:.91,desc:'住房压力相对较低。'},atlanta:{name:'Atlanta, GA',cost:1.08,salary:1.08,housing:1.13,desc:'较大的就业市场。'},dallas:{name:'Dallas, TX',cost:1.06,salary:1.09,housing:1.05,desc:'就业市场较大。'},austin:{name:'Austin, TX',cost:1.13,salary:1.12,housing:1.20,desc:'科技与创意行业机会较多。'},chicago:{name:'Chicago, IL',cost:1.14,salary:1.13,housing:1.18,desc:'大型综合就业市场。'},denver:{name:'Denver, CO',cost:1.18,salary:1.13,housing:1.28,desc:'生活成本偏高。'},boston:{name:'Boston, MA',cost:1.40,salary:1.25,housing:1.65,desc:'高教育与医疗产业集中。'},la:{name:'Los Angeles, CA',cost:1.42,salary:1.22,housing:1.72,desc:'影视行业机会多，住房昂贵。'},sf:{name:'San Francisco, CA',cost:1.58,salary:1.38,housing:2.00,desc:'高薪与高成本并存。'},nyc:{name:'New York City, NY',cost:1.55,salary:1.32,housing:2.05,desc:'高收入机会与极高生活成本并存。'},seattle:{name:'Seattle, WA',cost:1.34,salary:1.28,housing:1.58,desc:'高薪职业机会较多。'}};
+const AGE_EVENTS={young:[['室友搬走','室友突然决定搬走，你需要承担更高房租或寻找新室友。',420],['朋友临时旅行','朋友约你来一次说走就走的周末旅行。',360],['职业证书','一个行业证书课程可能提高未来求职竞争力。',480],['搬家押金','你看中一个更适合自己的住处，但需要押金和搬家费。',900]],adult:[['父母需要帮助','家里临时需要一笔支持。',650],['孩子活动费','学校、兴趣班或家庭活动产生额外支出。',380],['房屋维修','家中出现需要处理的维修项目。',850],['职业瓶颈','你开始认真考虑升职、转行或减少工作压力。',0]],mid:[['年度体检','你决定认真做一次体检和健康管理。',320],['父母照护','父母逐渐需要更多时间和经济支持。',780],['老朋友重聚','多年朋友计划一次聚会或旅行。',420],['第二事业','你开始思考是否把兴趣发展成第二事业。',600]],later:[['退休旅行','你有更多时间，开始规划一段较长旅行。',1200],['居家适老改造','你考虑让住宅更安全、更方便长期生活。',1800],['老友相聚','朋友们希望固定安排共同活动。',280],['健康管理','更系统的健康管理成为生活的一部分。',450]]};
+
+const NPC_NAMES=['Maya','Daniel','Nora','Leo','Sofia','Ethan','Ava','Marcus','Lina','Jamie'];
+const NPC_JOBS=['老师','护士','设计师','工程师','餐厅经理','摄影师','软件开发者','会计','社工','小企业主'];
+function makePeople(){const names=[...NPC_NAMES].sort(()=>Math.random()-.5).slice(0,4);return names.map((name,i)=>({id:'p'+i,name,age:(state?.age||22)+[-2,-1,0,2][i],job:NPC_JOBS[Math.floor(Math.random()*NPC_JOBS.length)],city:state?.city||'orlando',relation:48+Math.floor(Math.random()*25),status:'朋友',life:'正在建立自己的生活',joinedDream:false,wealth:5000+Math.floor(Math.random()*35000),careerLevel:1,partnerRole:null,businessPartner:false}))}
+function peopleLabel(p){return `${p.name} · ${p.age}岁 · ${p.job} · ${CITIES[p.city]?.name||p.city}`}
+function npcSynergy(p){const j=(p.job||'').toLowerCase();if(j.includes('engineer')||j.includes('工程'))return{role:'工程与设施顾问',project:['hotel','park','care']};if(j.includes('designer')||j.includes('设计'))return{role:'品牌与空间设计顾问',project:['hotel','park','care']};if(j.includes('nurse')||j.includes('护士')||j.includes('doctor')||j.includes('医生'))return{role:'健康与照护顾问',project:['care']};if(j.includes('software')||j.includes('developer')||j.includes('软件'))return{role:'数字系统与运营顾问',project:['hotel','park']};if(j.includes('teacher')||j.includes('教师'))return{role:'教育与社区活动顾问',project:['care','foundation']};if(j.includes('chef')||j.includes('厨师'))return{role:'餐饮运营伙伴',project:['hotel','park','care']};return{role:'项目支持伙伴',project:['hotel','park','care','foundation']}}
+function maybeNetworkCareerStory(){if(!(state.people||[]).length||Math.random()>.18)return false;const p=state.people[Math.floor(Math.random()*state.people.length)];p.wealth??=12000;p.careerLevel??=1;const gs=goalStats(),syn=npcSynergy(p);const roll=Math.random();if(roll<.32){const raise=2500+Math.floor(Math.random()*9000);p.wealth+=raise;p.careerLevel=Math.min(5,p.careerLevel+1);p.life='事业有了新的进展';showEvent('NETWORK · CAREER',p.name+' 的事业有了变化',`${p.name} 最近工作发展不错。朋友的人生会独立推进，不会永远停留在你认识TA的那一年。`,[['职业',p.job],['关系',Math.round(p.relation)+'/100'],['事业阶段','Lv.'+p.careerLevel]],[['祝贺并保持联系 · $45',()=>{if(state.cash<45)return;state.cash-=45;p.relation=Math.min(100,p.relation+5);state.happiness=Math.min(100,state.happiness+3);finish()},true,state.cash<45],['简单祝贺',()=>{p.relation=Math.min(100,p.relation+2);finish()},false]]);return true}
+if(roll<.58&&p.relation>=62){const ask=400+Math.floor(Math.random()*1600);showEvent('NETWORK · MONEY',p.name+' 遇到临时资金困难',`${p.name} 因搬家、失业或家庭支出出现短期缺口，问你能否帮忙。借钱可能加深关系，也存在无法按时归还的风险。`,[['请求金额',money(ask)],['关系',Math.round(p.relation)+'/100'],['你的现金',money(state.cash)]],[['借给TA',()=>{if(state.cash<ask)return;state.cash-=ask;p.relation=Math.min(100,p.relation+8);p.owesYou=(p.owesYou||0)+ask;(state.timeline||=[]).push((state.age||22)+'岁：借给 '+p.name+' '+money(ask));finish()},true,state.cash<ask],['只帮一点 · $100',()=>{if(state.cash<100)return;state.cash-=100;p.relation=Math.min(100,p.relation+3);finish()},false,state.cash<100],['拒绝',()=>{p.relation=Math.max(0,p.relation-4);finish()},false]]);return true}
+if(gs.g.type==='project'&&syn.project.includes(gs.g.project)&&p.relation>=70&&!p.partnerRole){showEvent('NETWORK · DREAM',p.name+' 可能帮助你的梦想工程',`${p.name} 的职业经历与「${gs.g.name}」产生了交集。你可以邀请TA成为顾问/合作伙伴，但真实合作需要明确职责和利益，不能只靠友情。`,[['可能角色',syn.role],['关系',Math.round(p.relation)+'/100'],['朋友事业','Lv.'+p.careerLevel]],[['正式邀请 · $1,200 前期费用',()=>{if(state.cash<1200)return;state.cash-=1200;p.partnerRole=syn.role;p.relation=Math.min(100,p.relation+4);state.dreamProject??={stage:0,invested:0};state.dreamProject.networkBonus=(state.dreamProject.networkBonus||0)+.04;(state.timeline||=[]).push((state.age||22)+'岁：'+p.name+'成为梦想工程的'+syn.role);finish()},true,state.cash<1200],['先保持朋友关系',finish,false]]);return true}
+if(roll>.82&&p.relation>=68&&!p.businessPartner){const stake=2500+Math.floor(Math.random()*3500);showEvent('NETWORK · BUSINESS',p.name+' 邀请你一起做小生意',`${p.name} 想把一个周末项目做成小型生意。友情不会保证项目成功；你需要决定是否把关系和资金放在同一件事里。`,[['你的投入',money(stake)],['关系',Math.round(p.relation)+'/100'],['风险','中等']],[['合伙尝试',()=>{if(state.cash<stake)return;state.cash-=stake;p.businessPartner=true;if(Math.random()<.62){const cf=120+Math.floor(Math.random()*260);state.passive+=cf;state.assets.push({name:'与 '+p.name+' 的合伙项目',cost:stake,cf,kind:'business'});p.relation=Math.min(100,p.relation+6)}else{p.relation=Math.max(0,p.relation-8);state.stress=Math.min(100,state.stress+8)}finish()},true,state.cash<stake],['不把友情和生意混在一起',()=>{p.relation=Math.min(100,p.relation+1);finish()},false]]);return true}return false}
+function maybePeopleStory(){if(!state.people?.length||Math.random()>.20)return false;const p=state.people[Math.floor(Math.random()*state.people.length)],roll=Math.random();if(roll<.24){p.job=NPC_JOBS[Math.floor(Math.random()*NPC_JOBS.length)];p.life='最近换了工作';showEvent('RELATIONSHIP',p.name+' 换工作了',`${p.name} 告诉你，TA 最近换到新的工作。你们的人生不会完全同步，但保持联系会让关系继续成长。`,[['新工作',p.job],['关系',Math.round(p.relation)+'/100']],[['约出来庆祝 · $70',()=>{if(state.cash<70)return;state.cash-=70;p.relation=Math.min(100,p.relation+8);state.happiness=Math.min(100,state.happiness+5);finish()},true,state.cash<70],['发消息祝贺',()=>{p.relation=Math.min(100,p.relation+3);finish()},false]]);return true}
+if(roll<.46){const opts=Object.keys(CITIES).filter(x=>x!==p.city);p.city=opts[Math.floor(Math.random()*opts.length)];p.life='搬去了 '+CITIES[p.city].name;showEvent('RELATIONSHIP',p.name+' 搬家了',`${p.name} 搬去了 ${CITIES[p.city].name}。距离会让见面变难，但不一定意味着友情结束。`,[['新城市',CITIES[p.city].name],['关系',Math.round(p.relation)+'/100']],[['计划以后去看TA · $40',()=>{if(state.cash<40)return;state.cash-=40;p.relation=Math.min(100,p.relation+5);state.happiness=Math.min(100,state.happiness+2);finish()},true,state.cash<40],['保持线上联系',()=>{p.relation=Math.min(100,p.relation+2);finish()},false]]);return true}
+if(roll<.67){p.life='进入了一段重要关系';showEvent('RELATIONSHIP',p.name+' 有了新的人生阶段',`${p.name} 分享了自己的感情与生活变化。`,[['关系',Math.round(p.relation)+'/100'],['近况',p.life]],[['一起吃饭 · $85',()=>{if(state.cash<85)return;state.cash-=85;p.relation=Math.min(100,p.relation+7);state.happiness=Math.min(100,state.happiness+5);finish()},true,state.cash<85],['认真聊一会儿',()=>{p.relation=Math.min(100,p.relation+4);finish()},false]]);return true}
+const gs=goalStats();if(gs.g.project==='care'&&p.relation>=65&&!p.joinedDream){showEvent('SHARED DREAM',p.name+' 对共居养老计划感兴趣',`${p.name} 说，如果你们多年后仍然是好朋友，TA愿意认真考虑加入你规划的朋友共居社区。`,[['关系',Math.round(p.relation)+'/100'],['梦想伙伴',state.people.filter(x=>x.joinedDream).length+' 人']],[['邀请成为长期规划成员',()=>{p.joinedDream=true;p.relation=Math.min(100,p.relation+6);(state.timeline||=[]).push((state.age||22)+'岁：'+p.name+'加入朋友共居长期规划');finish()},true],['先不做承诺',finish,false]]);return true}
+p.life='最近想和老朋友见面';showEvent('RELATIONSHIP',p.name+' 联系了你',`${p.name} 主动问你最近过得怎么样。`,[['关系',Math.round(p.relation)+'/100'],['近况',p.life]],[['见面 · $65',()=>{if(state.cash<65)return;state.cash-=65;p.relation=Math.min(100,p.relation+8);state.happiness=Math.min(100,state.happiness+5);state.stress=Math.max(0,state.stress-4);finish()},true,state.cash<65],['聊聊天',()=>{p.relation=Math.min(100,p.relation+4);finish()},false],['最近太忙',()=>{p.relation=Math.max(0,p.relation-3);finish()},false]]);return true}
+
+function lifeStage(){const a=state?.age||22;return a<30?'young':a<45?'adult':a<60?'mid':'later'}
+function stageName(){return {young:'探索期 18–29',adult:'建立期 30–44',mid:'转型期 45–59',later:'自由/退休期 60+'}[lifeStage()]}
+const LIFE=[['汽车维修','车辆需要维修。',650],['朋友婚礼','朋友邀请你参加婚礼。',280],['医疗自付额','一次意外的小额医疗支出。',420],['家电损坏','家里的常用电器突然坏了。',510],['保险上涨','本月保费调整。',190],['宠物临时照护','临时需要宠物寄养或护理。',240],['手机摔坏','手机屏幕严重损坏，需要决定修还是换。',320],['牙科账单','常规牙科治疗产生自付费用。',360]];
+const LIFESTYLE=[{name:'宅家休息',cost:45,happy:4,desc:'买点喜欢的食物，在家看电影或玩游戏。'},{name:'朋友聚餐',cost:85,happy:7,desc:'和朋友吃饭聊天，维持社交关系。'},{name:'兴趣爱好',cost:120,happy:8,desc:'为摄影、电影、游戏、手工或其他兴趣留预算。'},{name:'周末短途旅行',cost:380,happy:14,desc:'两三天换个环境休息。'},{name:'演唱会 / 主题乐园',cost:210,happy:11,desc:'一次较高质量的娱乐体验。'},{name:'升级手机',cost:950,happy:7,desc:'换一台新手机。快乐明显，但新鲜感不会持续太久。'},{name:'品质餐厅',cost:150,happy:8,desc:'和重要的人吃一顿更好的晚餐。'},{name:'什么都不花',cost:0,happy:-3,desc:'这个月严格压缩可选消费，把钱全部留下。'}];
+const DREAM_STORIES={
+hotel:[
+{name:'选址：市中心还是郊区？',desc:'市中心客流更强，但土地与停车成本更高。郊区成本低，但需要更强的目的地吸引力。',cost:18000,happy:2,choice:'做市场与客源调研'},
+{name:'设计方案超出预算',desc:'建筑师提出更有辨识度的公共空间与客房方案，但会增加前期设计费。',cost:42000,happy:3,choice:'保留核心设计'},
+{name:'投资人提出条件',desc:'潜在投资人愿意参与，但希望未来项目拥有更明确的盈利目标。',cost:0,happy:-1,choice:'继续谈判'},
+{name:'开业前团队招聘',desc:'总经理、前台、客房和市场团队决定了开业体验。',cost:65000,happy:4,choice:'提前组建核心团队'}],
+park:[
+{name:'原创IP与主题世界观',desc:'你需要决定乐园靠普通游乐设施，还是建立自己的角色与世界观。',cost:90000,happy:5,choice:'开发原创IP'},
+{name:'主力游乐设施方案',desc:'供应商给出一套更有吸引力的主力设施方案，但资本开支明显提高。',cost:420000,happy:4,choice:'保留主力设施'},
+{name:'安全与工程复核',desc:'第三方工程团队要求增加冗余安全系统与员工培训预算。',cost:160000,happy:1,choice:'按高标准整改'},
+{name:'游客动线测试',desc:'试运营发现排队区、餐饮和卫生间动线需要重新优化。',cost:75000,happy:2,choice:'优化游客体验'}],
+care:[
+{name:'朋友真的愿意一起住吗？',desc:'理想中的“朋友一起养老”需要提前讨论隐私、费用、照护和退出机制。',cost:3500,happy:5,choice:'组织共居规划周末'},
+{name:'公共空间还是更多房间？',desc:'更大的厨房、花园和活动室会减少可出售/出租的私人空间。',cost:28000,happy:5,choice:'保留高质量公共空间'},
+{name:'无障碍与照护设计',desc:'坡道、扶手、宽门、备用电源和未来护理空间会增加建设成本。',cost:85000,happy:3,choice:'按长期居住设计'},
+{name:'社区运营协议',desc:'朋友关系不能替代规则。需要明确费用、维修、访客和重大决策机制。',cost:12000,happy:2,choice:'聘请专业团队制定协议'}],
+foundation:[
+{name:'确定公益方向',desc:'教育、艺术、社区和弱势群体支持都值得投入，但基金需要清晰使命。',cost:5000,happy:5,choice:'完成使命与资助框架'},
+{name:'第一批项目尽调',desc:'好的愿望也需要评估执行能力、财务透明度和真实影响。',cost:15000,happy:3,choice:'建立尽调流程'},
+{name:'长期投资政策',desc:'基金不能只考虑捐出多少钱，也需要决定本金如何长期投资。',cost:9000,happy:1,choice:'制定投资政策'},
+{name:'年度影响报告',desc:'公开资金去向与实际成果会增加管理成本，但提高长期可信度。',cost:18000,happy:3,choice:'坚持透明披露'}]
+};
+function goalDelayEstimate(cost){const gs=goalStats();const monthly=Math.max(1,gs.monthlyNeed||Math.max(1,state.salary+state.passive-state.expenses));return Math.max(1,Math.round(cost/monthly))}
+function maybeDreamStory(){const gs=goalStats();if(gs.g.type!=='project'||(state.dreamProject?.stage||0)<1||Math.random()>.24)return false;state.dreamStorySeen??={};const pool=(DREAM_STORIES[gs.g.project]||[]).filter((_,i)=>!state.dreamStorySeen[gs.g.project+'_'+i]);if(!pool.length)return false;const all=DREAM_STORIES[gs.g.project],e=pool[Math.floor(Math.random()*pool.length)],idx=all.indexOf(e),key=gs.g.project+'_'+idx;const delay=goalDelayEstimate(e.cost);showEvent('DREAM STORY',e.name,e.desc,[['现实成本',money(e.cost)],['对目标的影响',e.cost?`约相当于当前目标进度 ${delay} 个月的资金需求`:'主要是战略取舍'],['当前梦想',gs.g.name]],[['投入：'+e.choice,()=>{if(state.cash<e.cost)return;state.cash-=e.cost;state.dreamProject.invested=(state.dreamProject.invested||0)+e.cost;state.happiness=Math.max(0,Math.min(100,state.happiness+e.happy));state.dreamStorySeen[key]=1;(state.timeline||=[]).push((state.age||22)+'岁：'+e.name);finish()},true,state.cash<e.cost],['保守处理',()=>{state.happiness=Math.max(0,state.happiness-2);state.dreamStorySeen[key]=1;finish()},false]]);return true}
+const LIFE_GOALS={
+retire39:{name:'39岁提前退休',age:39,type:'earlyRetire',desc:'以当前核心年支出÷3.5%估算长期提前退休资产需求；3.5%是本游戏对超长退休期采用的保守规划假设。'},
+world50:{name:'50岁环游世界一年',age:50,type:'travel',desc:'以2026年约 $40,000 的一年环球旅行预算为基准，并按游戏内 2.5% 年通胀滚动到目标年龄。'},
+fi50:{name:'50岁财富自由',age:50,type:'fi',desc:'以当前年支出÷4%估算投资资产目标，使投资组合可按约4%首年提取框架覆盖生活。'},
+million50:{name:'50岁净资产 $1,000,000',age:50,type:'networth',desc:'在50岁前建立至少 $1,000,000 净资产，包含现金、投资账户、资产净值并扣除债务。'},
+hotel55:{name:'55岁拥有自己的精品酒店',age:55,type:'project',project:'hotel',target:6500000,desc:'以约30间有限服务/精品酒店为游戏原型。2026 HVS数据显示有限服务酒店开发中位成本约 $170K–$197K/间；游戏再预留开业资本与缓冲，目标约 $6.5M。'},
+care60:{name:'60岁建立朋友共居养老社区',age:60,type:'project',project:'care',target:4500000,desc:'原创“朋友一起养老”的小型共居社区：住宅、公共厨房、活动空间、照护准备金与运营资本。$4.5M 为游戏规划预算，不代表具体项目报价。'},
+park60:{name:'60岁开一座自己的主题乐园',age:60,type:'project',project:'park',target:30000000,desc:'定位为小型区域主题乐园，而非迪士尼规模；土地、设施、游乐项目、主题化、安全系统和开业资本使目标进入数千万美元级。'},
+foundation55:{name:'55岁建立 $5M 公益基金',age:55,type:'project',project:'foundation',target:5000000,desc:'建立长期公益基金，以本金投资收益持续支持教育、艺术或社区项目。'}
+};
+function calcMetrics(){const debtTotal=Object.values(state?.debt||{}).reduce((a,b)=>a+(+b||0),0);const rr=state?.retirement||{};const assetValue=(state?.assets||[]).reduce((sum,a)=>sum+(a.kind==='rental'?(a.value||a.purchasePrice||a.cost):a.cost||0),0)+(state?.homeEquity||0)+(state?.emergencyFund||0)+(rr.k401Balance||0)+(rr.iraBalance||0)+(rr.brokerageBalance||0)+(state?.cash||0);const nw=assetValue-debtTotal;const investable=(state?.cash||0)+(state?.emergencyFund||0)+(rr.k401Balance||0)+(rr.iraBalance||0)+(rr.brokerageBalance||0)+(state?.assets||[]).reduce((sum,a)=>sum+(a.kind==='rental'?(a.equity||0):(a.cost||0)),0);return{debtTotal,assetValue,nw,investable}}
+function goalStats(){const g=LIFE_GOALS[state.lifeGoal||'fi50'],m=calcMetrics(),age=state.age||22,years=Math.max(0,g.age-age),months=Math.max(1,years*12-(state.month%12));let computed=0,current=0,label='净资产';if(g.target)computed=g.target;else if(g.type==='earlyRetire')computed=Math.max(250000,(state.goalBaseExpenses||state.expenses)*12/.035);else if(g.type==='fi')computed=Math.max(200000,(state.goalBaseExpenses||state.expenses)*12/.04);else if(g.type==='travel'){const startAge=state.startAge||22;computed=40000*Math.pow(1.025,Math.max(0,g.age-startAge));}else computed=1000000;if(!state.goalTarget)state.goalTarget=Math.round(computed);const target=state.goalTarget;if(g.type==='earlyRetire'||g.type==='fi'){current=m.investable;label='可投资资产'}else if(g.type==='travel'){current=Math.max(0,(state.cash||0)+(state.retirement?.brokerageBalance||0)+(state.emergencyFund||0)-Math.min(state.emergencyFund||0,state.expenses*3));label='可动用资金'}else{current=Math.max(0,m.nw);label='净资产'}const pct=Math.max(0,Math.min(100,current/Math.max(1,target)*100));const remaining=Math.max(0,target-current);const monthlyNeed=remaining/Math.max(1,months);return{g,target,current,label,pct,remaining,monthlyNeed,years,ready:current>=target}}
+
+let state=null,slot=1,pending=false;const $=x=>document.getElementById(x),money=n=>(n<0?'-$':'$')+Math.abs(Math.round(n)).toLocaleString('en-US');
+function key(s){return 'wealthLifeV1_slot_'+s}function save(){if(!state)return;localStorage.setItem(key(slot),JSON.stringify(state));$('saveState').textContent='已自动存档';setTimeout(()=>$('saveState').textContent='自动存档',900)}function load(s){try{return JSON.parse(localStorage.getItem(key(s)))}catch{return null}}
+function slotCount(){return Math.max(3,Number(localStorage.getItem('wealthLife_slotCount')||3))}
+function setSlotCount(n){localStorage.setItem('wealthLife_slotCount',String(Math.max(3,n)))}
+function slotLabel(d,s){
+ if(!d)return `存档 ${s} · 新游戏`;
+ const cash=Number(d.cash||0),age=d.age||'',mo=d.month||1;
+ return `存档 ${s} · ${age?age+'岁 · ':''}${mo}月 · $${Math.round(cash).toLocaleString()}`;
+}
+function buildHome(){
+ const wrap=$('slots');wrap.innerHTML='';
+ for(let s=1;s<=slotCount();s++){
+  const d=load(s),row=document.createElement('div');row.className='saveRow';
+  const b=document.createElement('button');b.className=d?'secondary':'primary';b.textContent=slotLabel(d,s);
+  b.onclick=()=>{slot=s;if(d){state=d;openGame();showEvent('读档成功','欢迎回来',`已读取存档 ${s}。你的资产和财务数据都已恢复。`,[]);pending=false;$('next').disabled=false}else{$('newGame').classList.remove('hidden')}};
+  row.appendChild(b);
+  if(d){
+   const del=document.createElement('button');del.className='danger miniSave';del.textContent='删除';
+   del.onclick=()=>{if(confirm(`确定删除存档 ${s}？此操作无法撤销。`)){localStorage.removeItem(key(s));buildHome()}};
+   row.appendChild(del);
+  }
+  wrap.appendChild(row);
+ }
+ const add=document.createElement('button');add.className='primary addSave';add.textContent='＋ 新建存档';
+ add.onclick=()=>{const n=slotCount()+1;setSlotCount(n);buildHome();setTimeout(()=>{const rows=wrap.querySelectorAll('.saveRow');rows[rows.length-1]?.scrollIntoView({behavior:'smooth',block:'center'})},50)};
+ wrap.appendChild(add);
+}
+Object.entries(JOBS).forEach(([k,v])=>{const o=document.createElement('option');o.value=k;o.textContent=`${v[0]}方向 · ${EDU[v[5]].name}`;$('job').appendChild(o)});
+$('lifeGoal').onchange=()=>{const g=LIFE_GOALS[$('lifeGoal').value];$('goalPreview').textContent=g.desc};$('start').onclick=()=>{const j=JOBS[$('job').value];state={job:null,annualSalary:0,salary:0,major:inferDomain(j[0]),licenses:(inferDomain(j[0])==='education'?['teaching']:inferDomain(j[0])==='nursing'?['RN']:[]),expenses:Math.round(j[2]*.68),cash:5000,debt:{},education:j[5],experienceYears:0,passive:0,month:0,age:(j[5]==='professional'?26:(j[5]==='bachelor'?22:(j[5]==='associate'?20:18))),study:null,assets:[],history:[],relationship:'single',children:0,housing:'unselected',housingCost:0,homeEquity:0,homeMortgage:0,carOwned:false,economy:0,economyMonths:0,marketIndex:100,homeIndex:100,retirement:{k401Balance:0,k401Rate:0,iraBalance:0,brokerageBalance:0,totalContrib:0},retired:false,retirementAge:67,happiness:68,lifetimeFunSpend:0,achievements:[],timeline:[],lifeGoal:$('lifeGoal').value,goalTarget:0,goalBaseExpenses:Math.round(j[2]*.68),goalProgressHistory:[],startAge:(j[5]==='professional'?26:(j[5]==='bachelor'?22:(j[5]==='associate'?20:18))),goalCompleted:false,dreamProject:{stage:0,invested:0},dreamStorySeen:{},health:82,energy:76,mood:70,stress:28,social:65,friendship:60,partnerQuality:0,pet:null,hobbies:{},burnoutMonths:0,city:'orlando',cityBaseExpenses:j[2],moves:0,people:[],cpiIndex:100,annualInflation:.025,worldShock:null,onboardDone:false,yearStartNetWorth:0,yearStartCash:5000};state.people=makePeople();save();openGame();showEvent('START','开始新人生','初始现金 $5,000，目前未就业。先安排住房和生活，再在工作阶段主动求职；成功入职后才有工资。',[['初始现金','$5,000'],['当前工作','未就业'],['工资结算','主动入职后按月结算']],[['先选择住房',()=>{finish();setTimeout(()=>document.getElementById('housingBtn')?.click(),120)},true]])};$('cancel').onclick=()=>{$('newGame').classList.add('hidden')};
+function openGame(){state.economy ??= 0;state.economyMonths ??= 0;state.marketIndex ??= 100;state.homeIndex ??= 100;state.emergencyFund ??= 0;state.healthInsurance ??= false;state.incomeProtection ??= false;state.unemployedMonths ??= 0;state.happiness ??= 68;state.lifetimeFunSpend ??= 0;state.achievements ??= [];state.timeline ??= [];state.lifeGoal ??= 'fi50';state.goalTarget ??= 0;state.goalBaseExpenses ??= state.expenses;state.goalProgressHistory ??= [];state.startAge ??= state.age||22;state.goalCompleted ??= false;state.dreamProject ??= {stage:0,invested:0};state.dreamStorySeen ??= {};state.health ??= 82;state.energy ??= 76;state.mood ??= Math.max(50,state.happiness??70);state.stress ??= 28;state.social ??= 65;state.friendship ??= 60;state.partnerQuality ??= state.relationship==='married'?65:0;state.pet ??= null;state.hobbies ??= {};state.burnoutMonths ??= 0;state.city ??= 'orlando';state.cityBaseExpenses ??= state.expenses;state.moves ??= 0;state.cpiIndex ??= 100;state.annualInflation ??= .025;state.worldShock ??= null;state.people ??= makePeople();state.onboardDone ??= false;state.yearStartNetWorth ??= calcMetrics().nw;state.yearStartCash ??= state.cash;state.people.forEach(p=>{p.age??=state.age;p.relation??=55;p.city??=state.city;p.life??='过着自己的生活';p.joinedDream??=false});$('home').classList.add('hidden');$('game').classList.remove('hidden');render()}function home(){$('game').classList.add('hidden');$('home').classList.remove('hidden');$('newGame').classList.add('hidden');buildHome()}
+function render(){if(!state)return;const city=CITIES[state.city||'orlando'];$('onboardCard').style.display=state.onboardDone?'none':'block';const yr=Math.floor((state.month||0)/12)+1;const cm=calcMetrics();const delta=cm.nw-(state.yearStartNetWorth||0);$('annualHeadline').textContent='第 '+yr+' 年 · '+(delta>=0?'净资产正在增长':'需要检查现金流');$('annualAge').textContent=(state.age||22)+' 岁';$('annualSummary').innerHTML='当前净资产 <b>'+money(cm.nw)+'</b> · 本年度变化 <b class="'+(delta>=0?'good':'bad')+'">'+(delta>=0?'+':'')+money(delta)+'</b> · 现金 '+money(state.cash)+' · 被动收入 '+money(state.passive)+'/月。';$('cityStatus').innerHTML='<b>'+city.name+'</b> · '+stageName()+'<br><span class="sub">'+city.desc+' · 搬家次数 '+(state.moves||0)+'</span>';if(!state.education)state.education='bachelor';if(state.experienceYears==null)state.experienceYears=Math.max(0,Math.floor(state.month/12));$('jobName').textContent=state.job;$('month').textContent=`第 ${state.month} 月`;$('cash').textContent=money(state.cash);$('salary').textContent=money(state.salary)+'/月';$('annualSalary').textContent='当前年薪 '+money(state.annualSalary||state.salary*12);$('age').textContent=(state.age||22)+' 岁 · 工作经验 '+(state.experienceYears||0)+' 年';$('education').textContent='学历：'+EDU[state.education||'bachelor'].name;const si=$('studyInfo');if(state.study){si.innerHTML='<strong>'+EDU[state.study.target].name+'</strong><br><span class="sub">学习进度 '+state.study.progress+'/'+state.study.total+' 个月</span>'}else{const ed=EDU[state.education||'bachelor'];si.innerHTML=ed.next?'可选路线：'+EDU[ed.next].name+' · 学制 '+ed.months+' 个月 · 学费 '+money(ed.cost)+'<br><span class="sub">不学习也可以正常推进人生，工作经验会继续累积。</span>':'当前没有更高学历路线；可继续通过工作经验、投资和职业事件成长。'};$('studyBtn').disabled=!state.study&&!EDU[state.education||'bachelor'].next;$('studyBtn').textContent=state.study?'查看学习进度 / 取消':'查看学历学习';if(state.relationship==null)state.relationship='single';if(state.children==null)state.children=0;if(state.housing==null)state.housing='rent';if(state.housingCost==null)state.housingCost=Math.round(state.expenses*.32);if(state.homeEquity==null)state.homeEquity=0;if(state.homeMortgage==null)state.homeMortgage=0;if(state.carOwned==null)state.carOwned=false;const rel=state.relationship==='married'?'已婚':'单身';const house=state.housing==='own'?'自住房':state.housing==='unselected'?'尚未选择住房':state.housing==='family'?'与家人同住':state.housing==='shared'?'合租':state.housing==='studio'?'Studio':state.housing==='rent1'?'1B1B租房':'租房';$('lifeStatus').innerHTML=`<strong>${rel} · ${state.children} 个孩子 · ${house}</strong><br><span class="sub">本月必要开支 ${money(state.expenses)}/月 · 住房 ${money(state.housingCost)}/月${state.housing==='own'?' · 房屋净值 '+money(state.homeEquity)+' · 房贷余额 '+money(state.homeMortgage):''}${state.carOwned?' · 已购车':''}</span>`;$('passive').textContent=money(state.passive);const metrics=calcMetrics(),debtTotal=metrics.debtTotal,assetValue=metrics.assetValue,nw=metrics.nw;$('netWorth').textContent=money(nw);$('netWorth').className='value '+(nw>=0?'good':'bad');const gs=goalStats();$('lifeGoalName').textContent=gs.g.name;$('goalDeadline').textContent=gs.g.age+'岁目标';$('lifeGoalBar').style.width=gs.pct.toFixed(1)+'%';$('lifeGoalProgress').textContent=gs.label+' '+money(gs.current)+' / '+money(gs.target)+' · 完成 '+gs.pct.toFixed(1)+'%';const deadline=(state.age||22)>gs.g.age?'已超过原定年龄 '+((state.age||22)-gs.g.age)+' 年':gs.years+' 年后到目标年龄';$('goalAdvice').innerHTML='<strong>'+deadline+'</strong><br><span class="sub">还差 '+money(gs.remaining)+' · 按剩余时间平均约需新增 '+money(gs.monthlyNeed)+'/月。'+gs.g.desc+'</span>';const hist=(state.goalProgressHistory||[]).slice(-5);$('goalAdvice').innerHTML += '<div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line)"><strong>年度目标进度</strong><br><span class="sub">'+(hist.length?hist.map(h=>'第'+h.year+'年 '+h.age+'岁：'+h.pct.toFixed(1)+'% · '+money(h.current)).join('<br>'):'完成第1年后自动记录年度进度')+'</span></div>';const dp=state.dreamProject||{stage:0,invested:0};const isDream=gs.g.type==='project';$('dreamCard').style.display=isDream?'block':'none';if(isDream){const stages=['梦想构想','可行性研究','土地/选址','融资与许可','建设/筹备','开业准备','梦想实现'];$('dreamStage').textContent=stages[Math.min(dp.stage,stages.length-1)];$('dreamCapital').textContent='已投入 '+money(dp.invested||0);$('dreamDesc').textContent=gs.g.desc+' 目标资产 '+money(gs.target)+'。达到目标资产即视为梦想成功；系统每年自动记录一次进度。';const carePartners=(state.people||[]).filter(p=>p.joinedDream).length;$('dreamBtn').disabled=false;$('dreamBtn').textContent='查看梦想进度';$('dreamDesc').textContent+=(gs.g.project==='care'?' 当前已有 '+carePartners+' 位朋友加入长期共居规划；关系网络会影响这个梦想的故事线。':'');}if(gs.ready&&!state.goalCompleted){state.goalCompleted=true;(state.timeline||=[]).push((state.age||22)+'岁：完成目标「'+gs.g.name+'」');state.achievements=[...new Set([...(state.achievements||[]),'资产目标里程碑：'+gs.g.name])];}$('emergencyMonths').textContent=((state.emergencyFund||0)/Math.max(1,state.expenses)).toFixed(1)+' 月';state.happiness=Math.max(50,Math.min(100,state.happiness??68));$('happiness').textContent=Math.round(state.happiness)+'/100';$('happiness').className='value '+(state.happiness>=60?'good':state.happiness<35?'bad':'');const safety=Math.min(100,((state.emergencyFund||0)/Math.max(1,state.expenses*6))*100);const freedom=Math.min(100,(state.passive/Math.max(1,state.expenses))*100);const balance=Math.round(state.happiness*.5+safety*.25+freedom*.25);$('balanceScore').textContent=balance+'/100';$('lifestyleStatus').innerHTML='<strong>幸福度 '+Math.round(state.happiness)+'/100</strong><br><span class="sub">累计可选生活消费 '+money(state.lifetimeFunSpend||0)+' · 幸福度会自然回落，需要在生活与储蓄之间持续取舍。</span>';const unlocked=[];if(nw>=10000)unlocked.push('净资产 $10K');if(nw>=100000)unlocked.push('净资产 $100K');if((state.emergencyFund||0)>=state.expenses*3)unlocked.push('3个月应急金');if(state.passive>=state.expenses)unlocked.push('财务自由');if((state.assets||[]).some(a=>a.kind==='rental'))unlocked.push('第一套投资房');if(Object.keys(state.debt||{}).length===0)unlocked.push('无债人生');state.achievements=[...new Set([...(state.achievements||[]),...unlocked])];$('achievementCount').textContent=state.achievements.length+' 项';$('achievements').innerHTML=state.achievements.length?state.achievements.map(x=>'🏅 '+x).join(' · '):'<span class="sub">继续生活会解锁成就。</span>';$('timeline').textContent=(state.timeline||[]).slice(-4).join(' · ')||'人生故事刚刚开始。';state.health=Math.max(50,Math.min(100,state.health??82));state.energy=Math.max(50,Math.min(100,state.energy??76));state.mood=Math.max(50,Math.min(100,state.mood??state.happiness??70));state.stress=Math.max(0,Math.min(100,state.stress??28));state.social=Math.max(0,Math.min(100,state.social??65));$('healthStat').textContent=Math.round(state.health)+'/100';$('energyStat').textContent=Math.round(state.energy)+'/100';$('moodStat').textContent=Math.round(state.mood)+'/100';$('stressStat').textContent=Math.round(state.stress)+'/100';$('socialStat').textContent=Math.round(state.social)+'/100';$('relationshipStatus').innerHTML='<strong>朋友关系 '+Math.round(state.friendship||0)+'/100'+(state.relationship==='married'?' · 伴侣关系 '+Math.round(state.partnerQuality||0)+'/100':'')+(state.pet?' · 宠物：'+state.pet:' · 暂无宠物')+'</strong><br><span class="sub">兴趣：'+(Object.entries(state.hobbies||{}).map(([k,v])=>k+' Lv.'+v).join(' · ')||'尚未培养')+(state.burnoutMonths>0?' · ⚠️ 倦怠恢复期 '+state.burnoutMonths+' 月':'')+'</span>';$('riskStatus').innerHTML='<strong>应急金 '+money(state.emergencyFund||0)+'</strong><br><span class="sub">医疗保险：'+(state.healthInsurance?'已投保':'未投保')+' · 收入保障：'+(state.incomeProtection?'已投保':'未投保')+' · '+(state.unemployedMonths>0?'失业剩余 '+state.unemployedMonths+' 月':'当前在职')+'</span>';const net=(state.unemployedMonths>0?0:state.salary)+state.passive-state.expenses;$('net').textContent=money(net);$('net').className='value '+(net>=0?'good':'bad');const p=Math.min(100,Math.round(state.passive/state.expenses*100));$('bar').style.width=p+'%';$('goal').textContent='被动收入覆盖率 '+p+'% · 主目标：'+LIFE_GOALS[state.lifeGoal||'fi50'].name;$('assetCount').textContent=`${state.assets.length} 项`;$('assets').innerHTML=state.assets.length?state.assets.map((a,i)=>`<div class="asset row"><span>${a.name}<br><small class="sub">投入 ${money(a.cost)}</small></span><span><span class="good">+${money(a.cf||0)}/月</span> <button data-sell="${i}" style="min-height:34px;font-size:12px;padding:0 9px">卖出</button></span></div>`).join(''):'<p class="sub">暂无投资资产</p>';$('debts').innerHTML=Object.entries(state.debt).map(([n,v])=>`<div class="asset row"><span>${debtDisplayName(n)}</span><span>${money(v)} <button data-debt="${n}" style="min-height:34px;font-size:12px;padding:0 9px">还 $1,000</button></span></div>`).join('');document.querySelectorAll('[data-sell]').forEach(b=>b.onclick=()=>sellAsset(+b.dataset.sell));document.querySelectorAll('[data-debt]').forEach(b=>b.onclick=()=>payDebt(b.dataset.debt));const ec=ECONOMIES[state.economy||0],shock=state.worldShock&&state.worldShock.monthsLeft>0?WORLD_SHOCKS[state.worldShock.index]:null;$('worldEra').textContent=shock?shock.name:'稳定年代';$('inflationPill').textContent='年化通胀 '+((state.annualInflation||.025)*100).toFixed(1)+'%';$('cpiIndex').textContent=(state.cpiIndex||100).toFixed(1)+'（开局=100）';$('industryHealth').textContent=Math.round(industryScore())+'/100';$('worldDesc').textContent=shock?shock.desc+' · 剩余约 '+state.worldShock.monthsLeft+' 个月。':'当前没有大型世界冲击。通胀仍会缓慢改变生活成本与长期目标。';$('economyName').textContent=ec.name;$('rate').textContent=(ec.rate*100).toFixed(1)+'%';$('stockCycle').textContent=(ec.stock>1?'偏强':ec.stock<1?'偏弱':'中性')+' · 指数 '+(state.marketIndex||100).toFixed(1);$('homeTrend').textContent=(ec.home>0?'上涨倾向':ec.home<0?'下跌倾向':'平稳')+' · 指数 '+(state.homeIndex||100).toFixed(1);$('economyDesc').textContent=ec.desc;if(!state.retirement)state.retirement={k401Balance:0,k401Rate:0,iraBalance:0,brokerageBalance:0,totalContrib:0};const rr=state.retirement;const totalRet=(rr.k401Balance||0)+(rr.iraBalance||0)+(rr.brokerageBalance||0);$('retireStatus').innerHTML='<strong>长期账户 '+money(totalRet)+'</strong><br><span class="sub">401(k) '+money(rr.k401Balance||0)+' · IRA '+money(rr.iraBalance||0)+' · 普通账户 '+money(rr.brokerageBalance||0)+' · 401(k)缴费率 '+Math.round((rr.k401Rate||0)*100)+'% · 计划退休 '+(state.retirementAge||67)+' 岁'+(state.retired?' · 已退休':'')+'</span>';save()}
+function showEvent(type,title,desc,data=[],actions=[]){const ec=$('eventTitle').closest('.card');ec.classList.add('event-active');$('eventBackdrop').classList.add('active');document.body.classList.add('event-open');$('eventType').textContent=type;$('eventMonth').textContent=`第 ${Math.floor((state?.month||0)/12)+1} 年 · 第 ${(state?.month||0)%12+1} 月`;$('eventTitle').textContent=title;$('eventDesc').textContent=desc;$('eventData').innerHTML=(data||[]).map(x=>`<div class="stat"><div class="label">${x[0]}</div><div class="value">${x[1]}</div></div>`).join('');const box=$('actions');box.innerHTML='';let safeActions=Array.isArray(actions)?actions.filter(a=>Array.isArray(a)&&a.length):[];if(!safeActions.length)safeActions=[['继续',()=>finish(),true,false]];safeActions.forEach(a=>{const b=document.createElement('button');b.type='button';b.textContent=a[0]||'继续';b.className=a[2]?'primary':'secondary';b.disabled=!!a[3];b.onclick=(ev)=>{ev.preventDefault();ev.stopPropagation();try{(typeof a[1]==='function'?a[1]:finish)()}catch(err){console.error(err);finish()}};box.appendChild(b)});ec.scrollTop=0}
+function sellAsset(i){const a=state.assets[i];if(!a)return;const resale=Math.round(a.cost*(a.kind==='stock'?(0.75+Math.random()*.7):(0.7+Math.random()*.45)));state.cash+=resale;state.passive-=a.cf||0;state.assets.splice(i,1);showEvent('SALE','资产已出售',`你出售了 ${a.name}。`,[['收到现金',money(resale)]],[['继续',finish,true]]);render()}
+function payDebt(name){const owed=state.debt[name]||0;if(owed<=0||state.cash<=0)return;const amt=Math.min(owed,state.cash,1000);state.cash-=amt;state.debt[name]-=amt;if(state.debt[name]<=0)delete state.debt[name];showEvent('DEBT','主动还债',`你用现金偿还了 ${name} 的部分本金。`,[['本次还款',money(amt)]],[['继续',finish,true]]);render()}
+function finish(){const ec=$('eventTitle').closest('.card');ec.classList.remove('event-active');$('eventBackdrop').classList.remove('active');document.body.classList.remove('event-open');pending=false;render();$('next').disabled=false;const gs=goalStats();if(gs.ready&&state.goalCompleted&&!state.goalCelebrated&&!state.gameProgress){state.goalCelebrated=true;showEvent('LIFE GOAL','目标达成：'+gs.g.name,'你已达到人生资产目标的里程碑。双阶段通关还需进入财务自由，并确认实现梦想，或达到快车道收入目标。存档可以继续。',[['目标资产',money(gs.target)],['当前',money(gs.current)],['达成年龄',(state.age||22)+'岁']],[['继续人生',finish,true]])}}
+$('eventClose').onclick=()=>finish();$('eventBackdrop').onclick=()=>finish();
+$('next').onclick=()=>settleMonth();
+
+$('dreamBtn').onclick=()=>{const gs=goalStats();showEvent('DREAM','梦想资产进度','所有人生目标都按明确资产数字计算。达到目标资产即成功；每满一年系统会自动把当年的进度写入进度表。',[['目标',gs.g.name],['目标资产',money(gs.target)],['当前计入资产',money(gs.current)],['完成度',gs.pct.toFixed(1)+'%'],['还差',money(gs.remaining)]],[['返回',finish,true]])};
+$('jobMarketBtn').onclick=()=>{if(!state)return;const exp=state.experienceYears||0,rank=EDU_RANK[state.education]??0;const picks=[...CAREERS].sort((a,b)=>a.salary-b.salary);const data=picks.map(c=>{const miss=[];if(rank<EDU_RANK[c.edu])miss.push('需 '+EDU[c.edu].name);if(exp<c.minExp)miss.push('需 '+c.minExp+' 年经验');return[c.name,money(c.salary)+'/年 · '+(miss.length?'🔒 '+miss.join(' · '):'✓ 可申请')];});const acts=picks.map(c=>{const locked=rank<EDU_RANK[c.edu]||exp<c.minExp;return['申请 '+c.name,()=>{if(locked)return;const chance=.55+Math.min(.25,exp*.03);if(Math.random()<chance){state.job=c.name;state.annualSalary=c.salary;state.salary=Math.round(c.salary/12);showEvent('CAREER','求职成功','你获得了 '+c.name+' 的工作。新工资从下个月开始计入。',[['新年薪',money(c.salary)],['学历',EDU[c.edu].name],['经验要求',c.minExp+' 年']],[['继续',finish,true]]);}else showEvent('CAREER','这次没有录取','条件已经达到，但求职仍有竞争。',[['当前经验',exp+' 年']],[['继续',finish,true]])},false,locked]});acts.push(['返回',finish,true]);showEvent('JOB MARKET','工作机会','高薪职位必须先满足学历和工作经验要求。锁定职位仍会显示，让你知道下一步需要补什么。',data,acts)};
+$('businessBtn').onclick=()=>{if(!state)return;const opts=[{name:'周末摄影接单',cost:900,cf:65},{name:'线上剪辑服务',cost:1400,cf:95},{name:'移动咖啡摊',cost:4800,cf:230},{name:'家政小团队',cost:3200,cf:175}];const b=opts[Math.floor(Math.random()*opts.length)];showEvent('BUSINESS','创业机会：'+b.name,'创业是可选路线。投入现金后可能建立持续现金流，但也存在失败风险。',[['启动资金',money(b.cost)],['成功后月现金流','+'+money(b.cf)],['失败概率','25%']],[['投入创业',()=>{if(state.cash<b.cost)return;state.cash-=b.cost;if(Math.random()<.25){showEvent('BUSINESS','创业失败',`${b.name} 没有形成稳定业务，启动资金已投入。`,[['损失',money(b.cost)]],[['继续',finish,true]])}else{state.passive+=b.cf;state.assets.push({name:b.name,cost:b.cost,cf:b.cf,kind:'business'});showEvent('BUSINESS','业务开始盈利',`${b.name} 建立了稳定客户来源。`,[['月现金流','+'+money(b.cf)]],[['继续',finish,true]])}},true,state.cash<b.cost],['暂时不创业',finish,false]])};
+
+$('cityBtn').onclick=()=>{if(!state)return;const current=CITIES[state.city||'orlando'];const choices=Object.entries(CITIES).filter(([k])=>k!==state.city).sort(()=>Math.random()-.5).slice(0,4);const data=choices.map(([k,c])=>[c.name,'生活成本 ×'+c.cost.toFixed(2)+' · 工资机会 ×'+c.salary.toFixed(2)]);const acts=choices.map(([k,c])=>['搬去 '+c.name,()=>{const moving=2200;if(state.cash<moving)return;const old=current;state.cash-=moving;state.moves=(state.moves||0)+1;state.city=k;const ratio=c.cost/old.cost;state.expenses=Math.round(state.expenses*ratio);state.housingCost=Math.round((state.housingCost||state.expenses*.32)*(c.housing/old.housing));if(!state.retired&&state.unemployedMonths===0){const salaryRatio=Math.pow(c.salary/old.salary,.45);state.salary=Math.round(state.salary*salaryRatio);state.annualSalary=state.salary*12;}state.stress=Math.min(100,state.stress+6);state.energy=Math.max(0,state.energy-5);state.happiness=Math.min(100,state.happiness+3);(state.timeline||=[]).push((state.age||22)+'岁：搬到 '+c.name);showEvent('MOVE','搬到 '+c.name,'新城市改变了住房与生活成本，也可能改变职业收入。城市参数是游戏化模型，用于制造现实中的取舍，并非实时生活成本报价。',[['搬家成本',money(moving)],['新月支出',money(state.expenses)],['新月薪',money(state.salary)]],[['开始新生活',finish,true]])},false,state.cash<2200]);acts.push(['留在 '+current.name,finish,true]);showEvent('CITY','考虑搬家','搬家可能带来更好的机会，也可能显著提高住房和日常开支。',['当前城市',current.name]?[['当前城市',current.name],['人生阶段',stageName()]]:[],acts)};
+$('lifestyleBtn').onclick=()=>{if(!state)return;const opts=[...LIFESTYLE].sort(()=>Math.random()-.5).slice(0,4);const data=opts.map(o=>[o.name,money(o.cost)+' · 幸福 '+(o.happy>=0?'+':'')+o.happy]);const acts=opts.map(o=>[o.name,()=>{if(state.cash<o.cost)return;state.cash-=o.cost;state.lifetimeFunSpend=(state.lifetimeFunSpend||0)+o.cost;state.happiness=Math.max(0,Math.min(100,(state.happiness??68)+o.happy));if(o.name.includes('朋友')||o.name.includes('餐厅')){state.social=Math.min(100,state.social+6);state.friendship=Math.min(100,state.friendship+5);}if(o.name.includes('休息')||o.name.includes('旅行')){state.energy=Math.min(100,state.energy+10);state.stress=Math.max(0,state.stress-9);}if(o.name.includes('兴趣')){state.energy=Math.min(100,state.energy+5);state.stress=Math.max(0,state.stress-6);}(state.timeline||=[]).push((state.age||22)+'岁：'+o.name);showEvent('LIFESTYLE',o.name,o.desc,[['花费',money(o.cost)],['幸福变化',(o.happy>=0?'+':'')+o.happy],['当前幸福度',Math.round(state.happiness)+'/100']],[['继续',finish,true]])},o.happy>0,state.cash<o.cost]);showEvent('LIFESTYLE','这个月怎么生活？','这些都是可选消费。价格是游戏化的日常预算，不代表必须消费；选择本身会改变现金、幸福度和长期目标速度。目标不是要求你停止生活，而是让你看见取舍。',data,acts)};
+$('studyBtn').onclick=()=>openEducation();
+
+$('networkBtn').onclick=()=>{const ppl=[...(state.people||[])].sort((a,b)=>a.relation-b.relation).slice(0,4);const data=ppl.map(p=>[p.name,`${Math.round(p.relation)}/100 · ${p.job} · ${CITIES[p.city]?.name||p.city}${p.partnerRole?' · '+p.partnerRole:''}`]);const acts=ppl.map(p=>['联系 '+p.name,()=>{const same=p.city===state.city,cost=same?55:20;if(state.cash<cost)return;const before=Math.round(p.relation);state.cash-=cost;p.relation=Math.min(100,p.relation+(same?8:5));p.life='最近和你保持联系';state.social=Math.min(100,state.social+4);state.happiness=Math.min(100,state.happiness+3);state.mood=Math.min(100,(state.mood??state.happiness)+3);(state.timeline||=[]).push((state.age||22)+'岁：联系了 '+p.name);showEvent('RELATIONSHIP','你联系了 '+p.name,`${same?'你们见面聊了聊。':'你们在线上保持了联系。'} 这次互动已经生效。`,[['花费',money(cost)],['朋友关系',before+' → '+Math.round(p.relation)],['幸福度',Math.round(state.happiness)+'/100'],['心情',Math.round(state.mood)+'/100']],[['继续',finish,true]])},true,state.cash<(p.city===state.city?55:20)]);acts.push(['这个月先不联系',()=>{showEvent('RELATIONSHIP','这个月先不联系朋友','你把时间留给了自己。本次不会产生花费或关系加成。',[['花费','$0'],['关系变化','无']],[['继续',finish,true]])},false]);showEvent('RELATIONSHIP NETWORK','联系谁？','关系会随着时间慢慢变化。不同城市的朋友仍可以保持联系；长期投入时间，几十年后的关系也会不同。',data,acts)};
+$('socialBtn').onclick=()=>{const married=state.relationship==='married';showEvent('RELATIONSHIP','把时间留给重要的人','关系需要时间维护。你可以联系朋友，或在有伴侣时安排一次约会。',[['朋友关系',Math.round(state.friendship)+'/100'],['伴侣关系',married?Math.round(state.partnerQuality)+'/100':'—']],[['和朋友见面 · $60',()=>{if(state.cash<60)return;state.cash-=60;state.friendship=Math.min(100,state.friendship+9);state.social=Math.min(100,state.social+8);state.happiness=Math.min(100,state.happiness+6);state.energy=Math.max(0,state.energy-2);finish()},true,state.cash<60],['安排约会 · $120',()=>{if(!married||state.cash<120)return;state.cash-=120;state.partnerQuality=Math.min(100,state.partnerQuality+10);state.happiness=Math.min(100,state.happiness+7);state.stress=Math.max(0,state.stress-4);finish()},false,!married||state.cash<120],['这月先忙自己的',()=>{state.stress=Math.min(100,state.stress+2);finish()},false]])};
+$('wellnessBtn').onclick=()=>{showEvent('WELLNESS','照顾自己','休息不是浪费时间。持续高压力和低精力会降低健康，并可能触发职业倦怠。',[['健康',Math.round(state.health)+'/100'],['精力',Math.round(state.energy)+'/100'],['压力',Math.round(state.stress)+'/100']],[['完整休息日 · $35',()=>{if(state.cash<35)return;state.cash-=35;state.energy=Math.min(100,state.energy+18);state.stress=Math.max(0,state.stress-13);state.health=Math.min(100,state.health+2);state.happiness=Math.min(100,state.happiness+4);finish()},true,state.cash<35],['健身/户外 · $25',()=>{if(state.cash<25)return;state.cash-=25;state.energy=Math.min(100,state.energy+8);state.stress=Math.max(0,state.stress-8);state.health=Math.min(100,state.health+4);finish()},false,state.cash<25],['继续工作',()=>{state.energy=Math.max(0,state.energy-7);state.stress=Math.min(100,state.stress+7);finish()},false]])};
+$('hobbyBtn').onclick=()=>{const hs=[['摄影',90],['电影创作',120],['烹饪',65],['音乐',80],['园艺',55],['语言学习',45]];const h=hs[Math.floor(Math.random()*hs.length)];const lv=state.hobbies[h[0]]||0;showEvent('HOBBY','兴趣：'+h[0],'兴趣会逐渐形成技能。达到较高等级后，可能转化为副业机会，但也可以永远只是喜欢做的事。',[['当前等级','Lv.'+lv],['本次投入',money(h[1])],['作用','幸福 / 减压 / 技能']],[['练习',()=>{if(state.cash<h[1])return;state.cash-=h[1];state.hobbies[h[0]]=Math.min(10,lv+1);state.happiness=Math.min(100,state.happiness+6);state.stress=Math.max(0,state.stress-5);if(state.hobbies[h[0]]>=5&&Math.random()<.25){const cf=35+state.hobbies[h[0]]*8;state.passive+=cf;state.assets.push({name:h[0]+'兴趣副业',cost:0,cf,kind:'business'});state.achievements=[...new Set([...(state.achievements||[]),'兴趣变副业：'+h[0]])];}finish()},true,state.cash<h[1]],['以后再说',finish,false]])};
+$('petBtn').onclick=()=>{if(!state.pet){showEvent('PET','要不要养宠物？','宠物会带来陪伴，也意味着稳定的食品、护理和医疗支出。',[['领养启动成本','$350'],['固定支出','约 $95/月'],['影响','幸福与责任']],[['领养一只狗',()=>{if(state.cash<350)return;state.cash-=350;state.pet='狗';state.expenses+=95;state.happiness=Math.min(100,state.happiness+12);state.social=Math.min(100,state.social+4);(state.timeline||=[]).push((state.age||22)+'岁：领养了一只狗');finish()},true,state.cash<350],['现在不养',finish,false]])}else{showEvent('PET','和宠物相处','今天给宠物留一点时间。',[['宠物',state.pet],['当前幸福度',Math.round(state.happiness)+'/100']],[['一起出去玩 · $20',()=>{if(state.cash<20)return;state.cash-=20;state.happiness=Math.min(100,state.happiness+7);state.stress=Math.max(0,state.stress-6);state.energy=Math.min(100,state.energy+4);finish()},true,state.cash<20],['日常陪伴',()=>{state.happiness=Math.min(100,state.happiness+3);state.stress=Math.max(0,state.stress-3);finish()},false]])}};
+$('relationshipBtn').onclick=()=>{if(!state)return;if(state.relationship==='single'){showEvent('FAMILY','家庭选择','你可以选择结婚，也可以继续单身。结婚会增加部分共同生活支出；游戏不把婚姻设为必选或财务奖励。',[['当前','单身'],['结婚后固定支出','+$450/月']],[['结婚',()=>{state.relationship='married';state.partnerQuality=68;state.social=Math.min(100,state.social+8);state.expenses+=450;showEvent('FAMILY','进入婚姻','家庭固定支出增加。之后可以选择是否要孩子。',[['新支出',money(state.expenses)+'/月']],[['继续',finish,true]])},true],['继续单身',finish,false]])}else{showEvent('FAMILY','家庭选择','你可以选择要孩子，也可以保持当前家庭规模。孩子会带来持续育儿支出。',[['当前孩子',state.children+' 个'],['每个孩子','约 +$750/月']],[['要一个孩子',()=>{if(state.children>=4)return;state.children++;state.expenses+=750;showEvent('FAMILY','家庭增加新成员','育儿费用已加入每月支出。',[['孩子',state.children+' 个'],['新支出',money(state.expenses)+'/月']],[['继续',finish,true]])},true,state.children>=4],['暂时不要',finish,false]])}};
+$('housingBtn').onclick=()=>{if(!state)return;const city=CITIES[state.city||'orlando'];const infl=(state.cpiIndex||100)/100;const opts=[['与家人同住',Math.round(450*infl),300,'family'],['2B2B 合租',Math.round((city.rent2||1695)*.52*infl),Math.round((city.rent2||1695)*.52*infl+350),'shared'],['Studio',Math.round((city.rentStudio||1432)*infl),Math.round((city.rentStudio||1432)*infl*2),'studio'],['1B1B Apartment',Math.round((city.rent1||1450)*infl),Math.round((city.rent1||1450)*infl*2),'rent1']];const data=opts.map(o=>[o[0],money(o[1])+'/月 · 入住约 '+money(o[2])+(state.cash<o[2]?' · 还差 '+money(o[2]-state.cash):' · 可选择')]);const acts=opts.map(o=>['选择 '+o[0],()=>{if(state.cash<o[2])return;state.cash-=o[2];state.expenses=Math.max(0,state.expenses-(state.housingCost||0))+o[1];state.housing=o[3];state.housingCost=o[1];state.happiness=Math.max(50,Math.min(100,state.happiness+(o[3]==='family'?-1:2)));state.mood=Math.max(50,Math.min(100,state.mood+(o[3]==='family'?0:2)));(state.timeline||=[]).push((state.age||22)+'岁：在 '+city.name+' 选择 '+o[0]);showEvent('HOUSING','住房已确定','以后随时可以重新进入住房选择。',[['住房',o[0]],['月租',money(o[1])],['剩余现金',money(state.cash)]],[['继续',finish,true]])},true,state.cash<o[2]]);acts.push(['暂不决定 / 返回',finish,false]);showEvent('HOUSING',state.housing==='unselected'?'毕业后的第一件事：住哪里？':'更换住房','当前城市 '+city.name+'。选择住房不是强制弹窗；你可以返回后继续查看其他项目。',data,acts)};
+$('carBtn').onclick=()=>{if(!state)return;if(!state.carOwned){const price=24000,down=3000,monthly=480;showEvent('TRANSPORT','购买车辆','购买一辆普通二手/入门车辆。首付后增加车贷、保险与维护的简化月成本。',[['车价',money(price)],['首付',money(down)],['新增月支出',money(monthly)]],[['买车',()=>{if(state.cash<down)return;state.cash-=down;state.carOwned=true;state.debt['汽车贷款']=(state.debt['汽车贷款']||0)+(price-down);state.expenses+=monthly;showEvent('TRANSPORT','已购车','车辆提高便利性，但也提高固定支出。',[['贷款',money(price-down)],['新支出',money(state.expenses)+'/月']],[['继续',finish,true]])},true,state.cash<down],['暂时不买',finish,false]])}else showEvent('TRANSPORT','车辆','你已经拥有车辆。可以继续持有；车辆会通过生活事件产生维修成本。',[['状态','已购车']],[['继续',finish,true]])};
+$('rentalBtn').onclick=()=>{if(!state)return;const r=RENTALS[Math.floor(Math.random()*RENTALS.length)],ec=ECONOMIES[state.economy||0],price=Math.round(r.price*(state.homeIndex||100)/100),down=Math.round(price*.20),mortgage=price-down,monthlyRate=ec.rate/12,n=360,payment=Math.round(mortgage*(monthlyRate*Math.pow(1+monthlyRate,n))/(Math.pow(1+monthlyRate,n)-1)),tax=Math.round(price*r.tax/12),maint=Math.round(r.rent*r.maint),vac=Math.round(r.rent*r.vac),operating=r.hoa+r.ins+tax+maint+vac,cf=r.rent-payment-operating;showEvent('REAL ESTATE','出租房机会：'+r.name,'这是投资物业。现金流已经扣除房贷、房产税、保险、HOA、维修准备金和预期空置成本；实际月份仍可能出现空置或维修事件。',[['房价',money(price)],['20%首付',money(down)],['租金',money(r.rent)+'/月'],['房贷',money(payment)+'/月'],['运营成本',money(operating)+'/月'],['预计净现金流',(cf>=0?'+':'')+money(cf)+'/月']],[['购买出租房',()=>{if(state.cash<down)return;state.cash-=down;state.passive+=cf;state.assets.push({name:r.name,cost:down,cf:cf,kind:'rental',purchasePrice:price,value:price,mortgage:mortgage,equity:down,payment:payment,rent:r.rent,vacancy:r.vac});state.debt['投资房贷款']= (state.debt['投资房贷款']||0)+mortgage;showEvent('REAL ESTATE','出租房已购入','物业已加入资产。之后经济周期、房价、空置和维修都会影响结果。',[['首付',money(down)],['预计月现金流',(cf>=0?'+':'')+money(cf)]],[['继续',finish,true]])},true,state.cash<down],['跳过',finish,false]])};
+
+$('emergencyBtn').onclick=()=>{if(!state)return;const amt=Math.min(1000,state.cash);if(amt<=0){showEvent('EMERGENCY FUND','现金不足','当前没有可划入应急金的现金。',[],[['继续',finish,true]]);return;}state.cash-=amt;state.emergencyFund=(state.emergencyFund||0)+amt;showEvent('EMERGENCY FUND','增加应急金','这笔钱仍属于你的资产，但单独保留用于失业或意外支出。',[['本次划入',money(amt)],['应急金',money(state.emergencyFund)]],[['继续',finish,true]]);render()};
+$('healthBtn').onclick=()=>{if(!state)return;if(state.healthInsurance){showEvent('INSURANCE','医疗保险','你已经有医疗保险。游戏中它会降低医疗随机事件的自付金额。',[['状态','已投保'],['保费','$220/月']],[['继续',finish,true]]);return;}showEvent('INSURANCE','购买医疗保险','每月保费 $220。它不会产生收益，但会降低医疗事件的财务冲击。',[['保费','$220/月'],['作用','降低医疗自付风险']],[['购买',()=>{state.healthInsurance=true;state.expenses+=220;finish()},true],['暂不购买',finish,false]])};
+$('incomeBtn').onclick=()=>{if(!state)return;if(state.incomeProtection){showEvent('INSURANCE','收入保障','你已经有收入保障。游戏中失业事件发生时会提供简化的临时给付。',[['状态','已投保'],['保费','$65/月']],[['继续',finish,true]]);return;}showEvent('INSURANCE','购买收入保障','每月保费 $65。失业事件发生时，游戏会提供相当于部分月工资的简化给付。',[['保费','$65/月'],['失业给付','约 55% 月工资']],[['购买',()=>{state.incomeProtection=true;state.expenses+=65;finish()},true],['暂不购买',finish,false]])};
+$('k401Btn').onclick=()=>{if(!state)return;if(!state.retirement)state.retirement={k401Balance:0,k401Rate:0,iraBalance:0,brokerageBalance:0,totalContrib:0};const rate=state.retirement.k401Rate||0;showEvent('RETIREMENT','401(k) 缴费设置','401(k) 从工资中按月投入。游戏简化为雇主最多匹配工资的 3%；现实计划规则因雇主而异。',[['当前缴费率',Math.round(rate*100)+'%'],['游戏雇主匹配','最高工资 3%']],[['设为 3%',()=>{state.retirement.k401Rate=.03;finish()},true],['设为 6%',()=>{state.retirement.k401Rate=.06;finish()},false],['暂停缴费',()=>{state.retirement.k401Rate=0;finish()},false]])};
+$('iraBtn').onclick=()=>{if(!state)return;if(!state.retirement)state.retirement={k401Balance:0,k401Rate:0,iraBalance:0,brokerageBalance:0,totalContrib:0};showEvent('RETIREMENT','IRA 长期投资','投入 $500 到 IRA。游戏只模拟长期账户增长，不模拟完整税法、收入限制或年度额度。',[['投入','$500'],['当前 IRA',money(state.retirement.iraBalance||0)]],[['投入 $500',()=>{if(state.cash<500)return;state.cash-=500;state.retirement.iraBalance=(state.retirement.iraBalance||0)+500;state.retirement.totalContrib=(state.retirement.totalContrib||0)+500;finish()},true,state.cash<500],['取消',finish,false]])};
+$('brokerageBtn').onclick=()=>{if(!state)return;if(!state.retirement)state.retirement={k401Balance:0,k401Rate:0,iraBalance:0,brokerageBalance:0,totalContrib:0};showEvent('INVESTING','普通投资账户','投入 $500 到普通投资账户。它比退休账户更灵活；游戏暂不逐笔模拟资本利得税。',[['投入','$500'],['当前普通账户',money(state.retirement.brokerageBalance||0)]],[['投入 $500',()=>{if(state.cash<500)return;state.cash-=500;state.retirement.brokerageBalance=(state.retirement.brokerageBalance||0)+500;finish()},true,state.cash<500],['取消',finish,false]])};
+$('retireBtn').onclick=()=>{if(!state)return;const age=state.age||22;if(state.retired){showEvent('RETIREMENT','已退休','你已经退出工资工作。长期账户继续随市场变化；被动收入与现金承担生活支出。',[['年龄',age+' 岁'],['工资','$0/月']],[['继续',finish,true]]);return;}showEvent('RETIREMENT','退休选择','退休不是强制节点。达到 60 岁后你可以主动退出工资工作；过早退休需要足够的现金、投资和被动收入。',[['当前年龄',age+' 岁'],['计划退休年龄',(state.retirementAge||67)+' 岁']],[['60岁后退休',()=>{if(age<60)return;state.retired=true;showEvent('RETIREMENT','正式退休','工资收入停止。你的长期账户、现金与被动收入将成为主要财务来源。',[['退休年龄',age+' 岁']],[['继续',finish,true]])},true,age<60],['继续工作',finish,false]])};
+$('dismissOnboard').onclick=()=>{state.onboardDone=true;save();render()};$('qNext').onclick=()=>$('next').click();$('qOverview').onclick=()=>document.querySelector('#game .card').scrollIntoView({behavior:'smooth'});$('qLife').onclick=()=>$('lifestyleStatus').closest('.card').scrollIntoView({behavior:'smooth'});$('qAssets').onclick=()=>$('assets').closest('.card').scrollIntoView({behavior:'smooth'});$('saveExit').onclick=()=>{save();home()};$('restart').onclick=()=>{if(confirm(`删除存档 ${slot} 并重新开始？`)){localStorage.removeItem(key(slot));state=null;home()}};
+
+// V21 UI: simple top-level categories; existing simulation systems remain underneath.
+let v21Section='overview';
+function clampV21(){if(!state)return;state.happiness=Math.max(50,Math.min(100,state.happiness??70));state.health=Math.max(50,Math.min(100,state.health??82));state.energy=Math.max(50,Math.min(100,state.energy??76));state.mood=Math.max(50,Math.min(100,state.mood??state.happiness));}
+function markV21Sections(){const cards=[...document.querySelectorAll('#game>.card')];cards.forEach(c=>c.dataset.v21='overview');
+ const set=(id,sec)=>{const e=$(id);if(e){const c=e.closest('.card');if(c)c.dataset.v21=sec}};
+ ['jobMarketBtn','businessBtn','studyBtn','dreamBtn'].forEach(x=>set(x,'career'));
+ ['cityBtn','socialBtn','wellnessBtn','hobbyBtn','petBtn','lifestyleBtn','networkBtn','relationshipBtn','housingBtn','carBtn'].forEach(x=>set(x,'life'));
+ ['v24LoanBtn','assets','rentalBtn','emergencyBtn','healthBtn','incomeBtn','k401Btn','iraBtn','brokerageBtn','retireBtn','debts','economyName','worldEra'].forEach(x=>set(x,'wealth'));
+ // Always keep event and V21 hub visible in overview only.
+ const ev=$('eventTitle')?.closest('.card');if(ev)ev.dataset.v21='event';const hub=$('v21Hub');if(hub)hub.dataset.v21='overview';
+}
+function showV21Section(sec){v21Section=sec;markV21Sections();document.querySelectorAll('#game>.card').forEach(c=>{if(['onboardCard'].includes(c.id)){c.style.display='none';return} c.style.display=(c.dataset.v21===sec||c.dataset.v21==='event')?'block':'none'});const hub=$('v21Hub');if(hub&&sec==='overview')hub.style.display='block';}
+const oldRenderV21=render;render=function(){clampV21();oldRenderV21();clampV21();if($('moodStat'))$('moodStat').textContent=Math.round(state.mood)+'/100';if($('v21Expense'))$('v21Expense').textContent='必要开支 '+money(state.expenses)+'/月 · 住房 '+money(state.housingCost||0)+'/月 · 随通胀变化';if($('v21City'))$('v21City').textContent=CITIES[state.city||'orlando'].name;showV21Section(v21Section)};
+$('qOverview').onclick=()=>showV21Section('overview');$('qCareer').onclick=()=>showV21Section('career');$('qLife').onclick=()=>showV21Section('life');$('qAssets').onclick=()=>showV21Section('wealth');
+$('hubCareer').onclick=()=>showV21Section('career');$('hubLife').onclick=()=>showV21Section('life');$('hubWealth').onclick=()=>showV21Section('wealth');$('hubNext').onclick=()=>$('next').click();
+// Make all feature buttons visibly react: their result card is brought into view by showEvent.
+// New graduates must resolve housing; prompt once when entering Life.
+const oldQLife=$('qLife').onclick;$('qLife').onclick=()=>{showV21Section('life');if(state&&state.housing==='unselected')setTimeout(()=>$('housingBtn').click(),120)};
+
+
+// ===== V22 playability systems =====
+function safe50(){if(!state)return;['happiness','health','energy','mood'].forEach(k=>state[k]=Math.max(50,Math.min(100,state[k]??70)));}
+function relationStage(p){const r=p.relation||0;return r<15?'认识':r<30?'同事/熟人':r<50?'普通朋友':r<70?'较好朋友':r<88?'好朋友':'挚友'}
+const PETS={狗:{adopt:350,monthly:105,setup:80},猫:{adopt:250,monthly:80,setup:120},蜘蛛:{adopt:70,monthly:18,setup:120},变色龙:{adopt:180,monthly:45,setup:320},蜥蜴:{adopt:120,monthly:35,setup:240},乌龟:{adopt:90,monthly:28,setup:180}};
+function petMonthly(){return (state.pets||[]).reduce((a,p)=>a+(PETS[p.type]?.monthly||0),0)}
+function hobbyXP(name){state.hobbyXP??={};return state.hobbyXP[name]||0}
+function hobbyLevel(name){return Math.floor(hobbyXP(name)/100)}
+// CD overview + pet overview + state floor note
+function v22Panels(){if(!state)return; const life=$('lifeStatus')?.closest('.card'); if(life&&!$('v22Pets')){const d=document.createElement('div');d.id='v22Pets';d.className='asset';d.style.marginTop='12px';life.appendChild(d)}
+ const wealth=$('assets')?.closest('.card'); if(wealth&&!$('v22CDs')){const d=document.createElement('div');d.id='v22CDs';d.className='asset';d.style.marginTop='12px';wealth.insertBefore(d,$('assets'))}
+ if($('v22Pets')){const ps=state.pets||[];$('v22Pets').innerHTML='<b>我的宠物</b><br><span class="sub">'+(ps.length?ps.map(p=>p.type+' · '+money(PETS[p.type].monthly)+'/月').join(' · ')+'<br>宠物固定照顾成本 '+money(petMonthly())+'/月':'暂无宠物')+'</span>'}
+ if($('v22CDs')){const cds=(state.assets||[]).filter(a=>a.kind==='cd');$('v22CDs').innerHTML='<b>CD 定期存款</b><br><span class="sub">'+(cds.length?cds.map(a=>money(a.cost)+' · '+(a.rate*100).toFixed(1)+'% · 剩余 '+Math.max(0,(a.maturesAt||0)-state.month)+' 个月').join('<br>'):'暂无 CD。CD 计入净资产，但到期前不能作为可用现金。')+'</span>'}
+ document.querySelectorAll('#healthStat,#energyStat,#moodStat').forEach(e=>{if(e&&!e.parentElement.querySelector('.floor-note')){const n=document.createElement('div');n.className='sub floor-note';n.textContent='日常最低 50';e.parentElement.appendChild(n)}})
+}
+const renderBaseV22=render;render=function(){safe50();renderBaseV22();safe50();v22Panels(); if($('balanceScore')){$('balanceScore').textContent='—';$('balanceScore').previousElementSibling.textContent='状态详见生活页'}; if($('relationshipStatus')){const ppl=(state.people||[]).slice(0,4).map(p=>p.name+'：'+relationStage(p)).join(' · ');$('relationshipStatus').innerHTML='<strong>关系网络</strong><br><span class="sub">'+(ppl||'开始工作和生活后会认识新的人')+'</span>'} save()};
+// Interest: browse all choices, no auto-select; XP visible and cancellable
+$('hobbyBtn').onclick=()=>{const hs=[['摄影',90],['电影创作',120],['烹饪',65],['音乐',80],['园艺',55],['语言学习',45]];const data=hs.map(h=>[h[0],'Lv.'+hobbyLevel(h[0])+' · '+(hobbyXP(h[0])%100)+'/100 XP · '+money(h[1])]);const acts=hs.map(h=>['练习 '+h[0],()=>{if(state.cash<h[1])return;state.cash-=h[1];state.hobbyXP??={};state.hobbyXP[h[0]]=(state.hobbyXP[h[0]]||0)+35;state.hobbies[h[0]]=hobbyLevel(h[0]);state.happiness=Math.min(100,state.happiness+4);state.energy=Math.min(100,state.energy+2);state.mood=Math.min(100,state.mood+4);state.stress=Math.max(0,state.stress-4);safe50();showEvent('HOBBY','完成一次练习',h[0]+' 获得 35 XP。',[['等级','Lv.'+hobbyLevel(h[0])],['经验',(hobbyXP(h[0])%100)+'/100 XP']],[['继续',finish,true]])},false,state.cash<h[1]]);acts.push(['暂时不选',finish,false]);showEvent('HOBBY','发展兴趣','打开选项不会自动选择。只有明确点击练习才会扣钱和增加经验。',data,acts)};
+// Pets: multiple species, persistent, duplicate protected
+$('petBtn').onclick=()=>{state.pets??=[];const data=Object.entries(PETS).map(([k,v])=>[k,'领养 '+money(v.adopt)+' · 设备 '+money(v.setup)+' · '+money(v.monthly)+'/月']);const acts=Object.entries(PETS).map(([k,v])=>['领养'+k,()=>{if(state.pets.some(p=>p.type===k)){showEvent('PET','已经养了'+k,'不能重复点击同一种宠物造成重复扣款。',[],[['返回',finish,true]]);return}const cost=v.adopt+v.setup;if(state.cash<cost)return;state.cash-=cost;state.pets.push({type:k,adoptMonth:state.month});state.happiness=Math.min(100,state.happiness+6);state.mood=Math.min(100,state.mood+5);safe50();showEvent('PET','领养成功','以后每月必要开支会包含食物、基础用品与常规照顾。突发医疗和保险会作为后续事件。',[['宠物',k],['本次支出',money(cost)],['每月照顾',money(v.monthly)]],[['继续',finish,true]])},false,state.pets.some(p=>p.type===k)||state.cash<v.adopt+v.setup]);acts.push(['暂时不养',finish,false]);showEvent('PET','宠物生活','不同宠物有不同启动设备与持续照顾成本。',data,acts)};
+// Relationship 2.0: coworkers/friends, interaction stages
+$('networkBtn').onclick=()=>{const ppl=[...(state.people||[])].slice(0,6);const data=ppl.map(p=>[p.name,(p.status||'认识的人')+' · '+relationStage(p)+' · '+Math.round(p.relation)+'/100 · '+p.job]);const acts=ppl.map(p=>['和 '+p.name+' 互动',()=>{showEvent('RELATIONSHIP',p.name+' · '+relationStage(p),'选择一次具体互动。',[['当前关系',Math.round(p.relation)+'/100'],['身份',p.job]],[['一起吃饭 · $45',()=>{if(state.cash<45)return;state.cash-=45;p.relation=Math.min(100,p.relation+8);state.happiness=Math.min(100,state.happiness+4);state.mood=Math.min(100,state.mood+4);safe50();finish()},true,state.cash<45],['喝咖啡/聊天 · $15',()=>{if(state.cash<15)return;state.cash-=15;p.relation=Math.min(100,p.relation+5);state.mood=Math.min(100,state.mood+3);safe50();finish()},false,state.cash<15],['这次不约',finish,false]])},false]);acts.push(['返回，不联系任何人',finish,false]);showEvent('RELATIONSHIP NETWORK','关系网','关系会从认识/同事逐步发展到普通朋友、较好朋友、好朋友和挚友。',data,acts)};
+$('socialBtn').onclick=()=>$('networkBtn').click();
+// Family cannot directly marry. Romance unlocks from developed relationships.
+$('relationshipBtn').onclick=()=>{state.romance??=null;if(state.relationship==='married'){showEvent('FAMILY','家庭','你已进入婚姻。家庭支出会部分共享；孩子会产生随年龄变化的额外成本。',[['伴侣',state.romance?.name||'伴侣'],['孩子',state.children+' 个']],[['暂时保持现状',finish,true],['考虑孩子',()=>{if(state.children>=4)return;state.children++;state.expenses+=550;showEvent('FAMILY','家庭增加新成员','育儿费用已加入必要开支，当前版本采用固定月度育儿预算。',[['当前孩子',state.children+' 个'],['当前育儿成本',money(550*state.children)+'/月']],[['继续',finish,true]])},false,state.children>=4]]) ;return}
+ const eligible=(state.people||[]).filter(p=>p.relation>=70);if(!state.romance){const data=eligible.map(p=>[p.name,relationStage(p)+' · '+Math.round(p.relation)+'/100']);const acts=eligible.map(p=>['尝试和 '+p.name+' 约会',()=>{state.romance={name:p.name,months:0};p.relation=Math.min(100,p.relation+3);showEvent('ROMANCE','开始约会','你们决定进一步了解彼此。结婚不会立即解锁，需要继续发展关系和时间。',[['对象',p.name],['阶段','约会']],[['继续',finish,true]])},false]);acts.push(['保持单身',finish,false]);showEvent('FAMILY','感情与家庭','结婚不能直接选择。先通过工作和生活认识人、发展关系，较好朋友以上才可能出现约会选项。',eligible.length?data:[['尚未解锁','先把某段关系发展到较好朋友']],acts);return}
+ const p=(state.people||[]).find(x=>x.name===state.romance.name);const rel=p?.relation||70;const canMarry=rel>=85&&(state.romance.months||0)>=6;showEvent('ROMANCE','和 '+state.romance.name+' 的关系','恋爱关系需要时间和互动发展。',[['亲密度',Math.round(rel)+'/100'],['恋爱时间',(state.romance.months||0)+' 个月'],['阶段',canMarry?'可以考虑结婚':'恋爱中']],[['约会 · $90',()=>{if(state.cash<90)return;state.cash-=90;if(p)p.relation=Math.min(100,p.relation+6);state.happiness=Math.min(100,state.happiness+5);state.mood=Math.min(100,state.mood+5);safe50();finish()},true,state.cash<90],['结婚',()=>{if(!canMarry)return;state.relationship='married';state.partnerQuality=rel;state.expenses=Math.max(0,state.expenses-250);showEvent('FAMILY','结婚','共同生活使部分住房与日常支出得到分摊。',[['每月共同生活节省','约 $250'],['伴侣关系',Math.round(rel)+'/100']],[['继续',finish,true]])},false,!canMarry],['以后再说',finish,false]])};
+// City browser: all cities, preview first, then move and reselect housing
+$('cityBtn').onclick=()=>{const current=CITIES[state.city||'orlando'];const entries=Object.entries(CITIES).filter(([k])=>k!==state.city);const data=entries.map(([k,c])=>[c.name,'生活 ×'+c.cost.toFixed(2)+' · 工资 ×'+c.salary.toFixed(2)+' · 住房 ×'+c.housing.toFixed(2)]);const acts=entries.map(([k,c])=>['查看 '+c.name,()=>{const moving=Math.round(1200*c.cost);showEvent('CITY',c.name,c.desc,[['预计搬家成本',money(moving)],['生活成本',Math.round((c.cost-1)*100)+'% vs Orlando'],['住房水平',Math.round((c.housing-1)*100)+'% vs Orlando']],[['搬去 '+c.name,()=>{if(state.cash<moving)return;const old=CITIES[state.city];state.cash-=moving;state.city=k;state.moves=(state.moves||0)+1;state.expenses=Math.round((state.expenses-(state.housingCost||0))*(c.cost/old.cost));state.housing='unselected';state.housingCost=0;(state.timeline||=[]).push((state.age||22)+'岁：搬到 '+c.name);showEvent('MOVE','已经搬到 '+c.name,'接下来需要重新选择当地住房。',[['剩余现金',money(state.cash)]],[['选择住房',()=>{$('housingBtn').click()},true],['稍后选择',finish,false]])},true,state.cash<moving],['返回城市列表',()=>{$('cityBtn').click()},false]])},false]);acts.push(['留在 '+current.name,finish,true]);showEvent('CITY','考虑搬家','先查看城市，再决定是否搬家。打开城市信息不会自动搬家。',data,acts)};
+// Lifestyle affects multiple states and respects floor 50
+$('lifestyleBtn').onclick=()=>{const opts=[...LIFESTYLE].sort(()=>Math.random()-.5).slice(0,4);const acts=opts.map(o=>[o.name,()=>{if(state.cash<o.cost)return;state.cash-=o.cost;state.lifetimeFunSpend=(state.lifetimeFunSpend||0)+o.cost;state.happiness+=o.happy;if(o.name==='宅家休息'){state.energy+=8;state.mood+=5;state.stress-=6}else if(o.name.includes('朋友')||o.name.includes('餐厅')){state.mood+=5;state.social+=6;state.energy-=2}else if(o.name.includes('旅行')){state.energy+=6;state.mood+=8;state.stress-=8}else if(o.name.includes('兴趣')){state.energy+=3;state.mood+=6;state.stress-=5}else if(o.name==='什么都不花'){state.mood-=2;state.energy-=1}safe50();showEvent('LIFESTYLE',o.name,o.desc,[['花费',money(o.cost)],['幸福',Math.round(state.happiness)+'/100'],['精力',Math.round(state.energy)+'/100'],['心情',Math.round(state.mood)+'/100']],[['继续',finish,true]])},false,state.cash<o.cost]);acts.push(['返回，不安排',finish,false]);showEvent('LIFESTYLE','安排这个月的生活','普通生活选择不会让健康、精力、心情或幸福低于 50。',opts.map(o=>[o.name,money(o.cost)]),acts)};
+// Prevent selling locked CDs
+const sellBaseV22=sellAsset;sellAsset=function(i){const a=state.assets[i];if(a?.kind==='cd'&&state.month<(a.maturesAt||9999)){showEvent('CD','尚未到期','这笔 CD 不能作为可用现金随意取出。',[['剩余期限',((a.maturesAt||0)-state.month)+' 个月']],[['继续',finish,true]]);return}sellBaseV22(i)};
+// Patch monthly lifecycle for CDs, pets, romance, floors
+
+
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});buildHome();
+</script></main>
+
+
+<script id="v24-turn-controller">
+(function(){
+ const steps=[
+  {key:'housing',title:'住房',sub:'先处理本月住房。已有住房可以继续居住，也可以查看其他住房。'},
+  {key:'cost',title:'必要生活成本',sub:'确认本月必须支付的基础生活费用。城市、住房、家庭与通胀都会影响金额。'},
+  {key:'work',title:'工作',sub:'已有工作时不需要重新求职。你可以继续工作，或辞职后重新进入职业市场。'},
+  {key:'life',title:'生活',sub:'安排本月生活。活动会同时影响健康、精力、心情与幸福。'},
+  {key:'relations',title:'关系',sub:'选择是否与同事、朋友或其他认识的人互动。'},
+  {key:'learning',title:'学习与技能',sub:'本月可以学习、练习技能或为转行做准备，也可以跳过。'},
+  {key:'insurance',title:'保险与保障',sub:'根据当前人生阶段决定是否购买健康、人寿、汽车或宠物保障。'},
+  {key:'money',title:'储蓄与投资',sub:'管理现金、CD、ETF、股票、基金与债务。不要把短期生活资金全部锁定。'},
+  {key:'opportunity',title:'机会',sub:'处理本月出现的创业、投资或人生机会。'},
+  {key:'review',title:'月度确认',sub:'检查本月结果，然后进入下个月。'}
+ ];
+ let idx=0, monthStartCash=0, active=false;
+ const $=id=>document.getElementById(id);
+ function st(){return (typeof state!=='undefined'&&state)||{}}
+ function money(n){const v=Number(n)||0;return(v<0?'-$':'$')+Math.abs(Math.round(v)).toLocaleString('en-US')}
+ function metric(label,value){return `<div class="v24-metric"><span>${label}</span><b>${value}</b></div>`}
+ function status(){
+   const s=st(), m=(typeof calcMetrics==='function'?calcMetrics():{});
+   const cash=s.cash??(document.querySelector('#topStats')?.innerText.match(/\$([\d,]+)/)?.[1]?.replaceAll(',','')*1||0);
+   return `<div class="v24-status"><h3>我的状态</h3>
+    ${metric('可用现金',money(cash))}
+    ${metric('本月可用现金流',money(m.monthlyCF??m.freeCF??0))}
+    ${metric('健康',`${Math.round(Math.max(50,s.health??70))}/100`)}
+    ${metric('精力',`${Math.round(Math.max(50,s.energy??70))}/100`)}
+    ${metric('心情',`${Math.round(Math.max(50,s.mood??s.happiness??70))}/100`)}
+    ${metric('幸福',`${Math.round(Math.max(50,s.happiness??70))}/100`)}
+    ${metric('住房',({family:'与家人同住',shared:'合租',studio:'Studio',rent1:'1B1B',own:'自住房',rent:'租房',unselected:'尚未选择'})[s.housing]||'尚未选择')}
+    ${metric('工作',s.job?.name||s.jobName||s.job||'尚未就业')}</div>`;
+ }
+ function prog(){
+   return `<div class="v24-progress">${steps.map((_,i)=>`<i class="${i<idx?'done':i===idx?'now':''}"></i>`).join('')}</div>`;
+ }
+ function call(id){
+   const b=$(id); if(b){b.click();return true} return false;
+ }
+ function next(){ if(idx<steps.length-1){idx++;st().turn.index=idx;save();draw();window.scrollTo({top:0,behavior:'instant'})} }
+ function back(){ if(idx>0){idx--;st().turn.index=idx;save();draw();window.scrollTo({top:0,behavior:'instant'})} }
+ let turnActionId=0;const actionHandlers=new Map();document.addEventListener('click',e=>{const b=e.target.closest('[data-turn-action]');if(b&&!b.disabled)actionHandlers.get(b.id)?.()});
+ function option(title,desc,fn,primary=false,disabled=false){
+   const id='v24o'+(++turnActionId);
+   actionHandlers.set(id,fn);
+   return `<button id="${id}" aria-label="${title}" data-turn-action class="v24-option ${primary?'primary':''}" ${disabled?'disabled':''}><span class="wl-art" aria-hidden="true">${window.cardArt?window.cardArt(title):''}</span><strong>${title}</strong><small>${desc}</small><span class="wl-price">${window.cardPrice?window.cardPrice(title):''}</span><span class="wl-plus" aria-hidden="true">${/继续|确认|进入|保持|等待|本月不|跳过|简单生活/.test(title)?'→':'+'}</span></button>`;
+ }
+ function choices(key){
+   const s=st(), m=(typeof calcMetrics==='function'?calcMetrics():{});
+   const custom=window.v26Choices?.(key,{option,next,call,metric});if(custom!==undefined)return custom;
+   if(key==='housing'){
+     const has=!!s.housing&&s.housing!=='unselected';
+     let cards=has?option('继续当前住房','沿用现住房，不再支付搬入费。',()=>next(),true):'';
+     const homes=typeof housingOptions==='function'?housingOptions():[];
+     cards+=homes.filter(h=>h[3]!==s.housing).map(h=>option('选择 '+h[0],money(h[1])+'/月 · 搬入 '+money(h[2])+(s.cash<h[2]?' · 还差 '+money(h[2]-s.cash):''),()=>{call('housingBtn');const button=[...document.querySelectorAll('#actions button')].find(b=>b.textContent==='选择 '+h[0]);if(button&&!button.disabled)button.click()},false,s.cash<h[2])).join('');
+     if(homes.some(h=>s.cash<h[2]))cards+=option('住房资金不足？','查看差额、银行贷款或已有资产。',()=>call('housingBtn'));
+     return cards+option('查看其他住房','查看完整住房信息和筹款入口。',()=>call('housingBtn'));
+   }
+   if(key==='cost'){
+     const cost=Math.max(0,Math.round(m.monthlyExpenses??s.expenses??0));
+     return `<div class="v24-summary">本月预计必要生活成本：<b>${money(cost)}</b><br><small>包括当前住房及基础生活支出；正式结算仍由游戏月末引擎处理，避免重复扣款。</small></div>`
+       + option('确认本月必要支出','确认预算并继续。',()=>next(),true);
+   }
+   if(key==='work'){
+     if(s.retired)return option('保持退休','没有工资收入，资产和生活成本继续结算。',()=>next(),true);if(s.unemployedMonths>0)return option('等待复职','暂时停工还剩 '+s.unemployedMonths+' 个月，本月工资为零。',()=>next(),true)+option('寻找其他工作','可以申请满足资格的新岗位。',()=>call('jobMarketBtn'));const employed=!!s.job;
+     return employed
+       ? option('继续当前工作','本月保持现有工作，不重新求职。',()=>next(),true)+option('辞职并寻找新工作','离开当前岗位后打开职业市场。',()=>{s.job=null;s.salary=0;s.annualSalary=0;s.unemployedMonths=0; if(typeof save==='function')save(); call('jobMarketBtn')||call('careerBtn')})
+       : option('寻找工作','根据学历、专业、相关经验与执照显示可申请职位。',()=>call('jobMarketBtn'),true)+option('本月暂不工作','本月没有工资收入。',()=>next());
+   }
+   if(key==='life'){
+     return option('安排本月生活','打开生活选择；活动应影响多项身体/情绪数值。',()=>call('lifestyleBtn')||call('lifeBtn'),true)+option('本月简单生活','不增加额外自主消费，继续下一步。',()=>next());
+   }
+   if(key==='relations'){
+     return option('与认识的人互动','查看同事、朋友及关系阶段。',()=>call('networkBtn')||call('relationBtn'),true)+option('本月不安排社交','跳过关系互动。',()=>next());
+   }
+   if(key==='learning'){
+     return option('学历学习','先看学制和学费，确认付款才报名。',()=>call('studyBtn'),true)+option('练习兴趣技能','选择要练习的兴趣，确认后再扣费。',()=>call('hobbyBtn'))+option('本月不学习','保留现金和精力。',()=>next());
+   }
+   if(key==='insurance'){
+     const hasCar=!!s.carOwned;
+     const hasPet=!!(s.pet||s.pets?.length);
+     let x=option('健康保险','降低重大医疗事件的自付风险。',()=>v241BuyInsurance('health'),true)
+       +option('人寿保险','查看人寿保单与持续保费。',()=>v241BuyInsurance('life'));
+     if(hasCar)x+=option('汽车保险','拥有车辆后必须考虑的持续成本。',()=>v241BuyInsurance('auto'));
+     if(hasPet)x+=option('宠物保险','查看宠物保单与持续保费。',()=>v241BuyInsurance('pet'));
+     return x+option('本月暂不购买保险','保留现金，但自行承担相关风险。',()=>next());
+   }
+   if(key==='money'){
+     return option('ETF','分散持有一篮子资产，适合长期投资。',()=>v241Invest('ETF'),true)
+       +option('股票','单家公司股票，波动和公司特定风险通常更高。',()=>v241Invest('股票'))
+       +option('基金','基础基金投资选项，按游戏市场周期变化。',()=>v241Invest('基金'))
+       +option('CD 定期存款','锁定一段时间，计入资产但不能作为日常现金使用。',()=>openCD())
+       +option('房产投资','比较不同档次的出租物业、首付、租金和预计净现金流。',()=>v242RealEstate())
+       +option('查看完整财富页面','管理现有资产、贷款和长期投资。',()=>{document.getElementById('game').classList.remove('v24-running');showV21Section('wealth');window.scrollTo({top:0,behavior:'smooth'})})
+       +option('本月不调整资产','保持当前资产配置。',()=>next());
+   }
+   /* legacy money branch disabled */
+   if(false&&key==='money'){
+     return option('管理储蓄与投资','查看现金、CD、长期投资及债务。',()=>{document.getElementById('game').classList.remove('v24-running');showV21Section('wealth');window.scrollTo({top:0,behavior:'smooth'})},true)+option('本月不调整资产','保持当前资产配置。',()=>next());
+   }
+   if(key==='opportunity'){
+     return option('查看本月机会','如果本月有可处理机会，进入机会/创业区域。',()=>call('businessBtn'),true)+option('跳过机会','本月不承担新的机会成本或风险。',()=>next());
+   }
+   const cash=s.cash??0, delta=cash-monthStartCash;
+   return `<div class="v24-summary"><b>本月流程完成</b><br>月初现金：${money(monthStartCash)}<br>当前现金：${money(cash)}<br>目前现金变化：${delta>=0?'+':''}${money(delta)}</div>`
+      + option('进入下个月','执行游戏原有月末结算并开始新的月度流程。',()=>{const before=st().month;call('next');if(st().month>before)start(true)},true);
+ }
+ function draw(){
+   const box=$('v24Turn'); if(!box)return;
+   const step=steps[idx];actionHandlers.clear();
+   box.innerHTML=`<div class="wl-step-line"><span>本月安排</span><span>${idx+1} / ${steps.length}</span></div>${prog()}<div class="wl-heading"><div class="v24-title">${step.title}</div><button type="button" class="wl-help" id="wlStepHelp" aria-label="了解${step.title}">?</button></div><p class="wl-step-note">${step.key==='housing'?'查看费用，点击卡片确认住房。':step.key==='cost'?'核对成本，确认后立即付款。':step.key==='life'?'查看费用与状态变化，确认一个生活安排。':step.key==='insurance'?'勾选需要的保障，统一确认。':step.key==='opportunity'?'三个机会最多选一个，也可以全不选。':step.key==='review'?'看一眼收支，再进入下个月。':'左右滑动，选择这个月想做的事。'}</p>
+    <div class="v24-layout"><div class="v24-choice"><div class="v24-options" aria-label="${step.title}选项">${choices(step.key)}</div><div class="wl-swipe-hint">← 左右滑动查看更多 →</div>
+    <div class="v24-footer">${idx>0?'<button id="v24back">← 上一步</button>':''}<button id="v24exit">查看总览</button></div></div></div>`;
+   box.dataset.step=step.key;window.v26Bind?.(step.key,next);
+   $('wlStepHelp').onclick=()=>showEvent('帮助',step.title,step.sub,[],[['知道了',finish,true]]);
+   window.refreshCardHeader?.();
+   $('v24back')?.addEventListener('click',back);
+   $('v24exit')?.addEventListener('click',()=>{document.getElementById('game').classList.remove('v24-running');showV21Section('overview');window.scrollTo({top:0,behavior:'smooth'})});
+ }
+ function start(reset=false){
+   const game=$('game'); if(!game||game.classList.contains('hidden'))return;
+   const s=st();if(reset||!s.turn||s.turn.month!==s.month)s.turn={month:s.month,index:0,startCash:s.cash};idx=s.turn.index;monthStartCash=s.turn.startCash;
+   active=true; game.classList.add('v24-running'); $('v24Turn').classList.add('active'); draw();
+ }
+
+ window.v241BuyInsurance=type=>buyInsurance(type);
+ window.v241Invest=kind=>buyInvestment(kind);
+
+ window.startV24Turn=start;window.refreshV24Turn=()=>{if(active&&!$('game').classList.contains('hidden')){idx=st().turn?.index||0;monthStartCash=st().turn?.startCash??st().cash;draw()}};
+ // New games enter the guided monthly turn after the initial intro modal is handled.
+ document.addEventListener('DOMContentLoaded',()=>{if(!$('game').classList.contains('hidden'))start(false)});
+
+})();
+</script>
+
+<script id="v24-loan">
+document.addEventListener('click',e=>{if(e.target.closest('button')?.id==='v24LoanBtn')openBankLoan()});
+</script>
+
+<div id="v242RE"><div class="v242sheet">
+ <div class="v242head"><div><h2 style="margin:0">房产投资</h2><div class="small">出租物业 · 房价和现金流会受城市与经济周期影响</div></div><button id="v242CloseRE">✕</button></div>
+ <div id="v242REGrid" class="v242grid"></div>
+</div></div>
+
+<script id="v242-real-estate">
+(function(){
+ const props=[
+  {name:'经济型公寓',price:145000,down:.20,rent:1350,hoa:180,tax:.011,maint:.007},
+  {name:'标准公寓',price:235000,down:.20,rent:2050,hoa:260,tax:.011,maint:.007},
+  {name:'高级住宅',price:390000,down:.25,rent:3150,hoa:140,tax:.011,maint:.008},
+  {name:'豪华级物业',price:650000,down:.30,rent:4800,hoa:220,tax:.011,maint:.010}
+ ];
+ const fmt=n=>'$'+Math.round(n).toLocaleString();
+ function apr(){const s=(typeof state!=='undefined'&&state)||{};const inf=s.annualInflation||.025;return Math.min(.095,Math.max(.05,.065+(inf-.025)*.5))}
+ function calc(x){
+   const a=apr(), loan=x.price*(1-x.down), r=a/12,n=360;
+   const mort=loan*r/(1-Math.pow(1+r,-n));
+   const tax=x.price*x.tax/12, maint=x.price*x.maint/12, ins=x.price*.004/12;
+   const vacancy=x.rent*.05, net=x.rent-vacancy-mort-tax-maint-ins-x.hoa;
+   return {a,loan,mort,tax,maint,ins,vacancy,net,cash:x.price*x.down};
+ }
+ function render(){
+   const g=document.getElementById('v242REGrid'); if(!g)return;
+   g.innerHTML=props.map((x,i)=>{const c=calc(x);return `<div class="v242prop"><h3>${x.name}</h3>
+    <p>房价 <b>${fmt(x.price)}</b><br>首付 ${(x.down*100).toFixed(0)}% · ${fmt(c.cash)}<br>
+    30年固定房贷 ${(c.a*100).toFixed(2)}%<br>预计租金 ${fmt(x.rent)}/月<br>
+    预计空置 ${fmt(c.vacancy)} · HOA ${fmt(x.hoa)}<br>
+    税/保险/维护约 ${fmt(c.tax+c.ins+c.maint)}/月<br>
+    <b>预计净现金流 ${c.net>=0?'+':''}${fmt(c.net)}/月</b></p>
+    <button data-buyre="${i}">购买</button></div>`}).join('');
+ }
+ window.v242RealEstate=function(){render();document.getElementById('v242RE').classList.add('open')};
+ document.addEventListener('click',e=>{
+   if(e.target?.id==='v242CloseRE'||e.target?.id==='v242RE'){document.getElementById('v242RE').classList.remove('open');finish();}
+   const i=e.target?.dataset?.buyre;if(i===undefined)return;
+   const x=props[Number(i)],c=calc(x),s=(typeof state!=='undefined'&&state)||{};
+   if((s.cash||0)<c.cash){alert(`首付需要 ${fmt(c.cash)}，当前现金不足。`);return}
+   if(!confirm(`购买${x.name}？\n首付 ${fmt(c.cash)}\n贷款 ${fmt(c.loan)}\n预计净现金流 ${c.net>=0?'+':''}${fmt(c.net)}/月`))return;
+   s.cash-=c.cash;s.assets.push({id:assetId(),name:x.name,kind:'rental',cost:c.cash,purchasePrice:x.price,value:x.price,mortgage:c.loan,apr:c.a,monthsLeft:360,payment:c.mort,rent:x.rent,operating:c.tax+c.maint+c.ins+x.hoa+c.vacancy,cf:c.net,equity:c.cash});
+   if(typeof save==='function')save();if(typeof render==='function')render();
+   document.getElementById('v242RE').classList.remove('open');finish();
+   alert('房产已加入资产。之后可在资产/房产区域查看。');
+ });
+})();
+</script>
+
+
+
+<div id="v245Housing"><div class="v245sheet">
+<div style="display:flex;justify-content:space-between;align-items:center"><div><h2 style="margin:0">选择住房</h2><div class="small">第一个月必须选择；之后每月可以继续居住。</div></div><button id="v245CloseHousing">✕</button></div>
+<div id="v245HousingList"></div></div></div>
+
+<script id="v245-housing">
+window.v245OpenHousing=()=>document.getElementById('housingBtn').click();
+</script>
+<script src="core.js?v=27.4"></script>
+<script src="presentation.js?v=27.4"></script>
+<script src="flow.js?v=27.4"></script>
+<script src="journey.js?v=27.4"></script>
+</body></html>
