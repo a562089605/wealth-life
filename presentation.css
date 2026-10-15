@@ -72,3 +72,32 @@ main{max-width:620px;padding:calc(14px + env(safe-area-inset-top)) 18px 26px}.to
 #v24Turn[data-step=money] .v24-option strong,#v24Turn[data-step=work] .v24-option strong,#v24Turn[data-step=money] .v24-option small,#v24Turn[data-step=work] .v24-option small{max-width:calc(100% - 55px)}
 #v24Turn[data-step=money] .wl-swipe-hint,#v24Turn[data-step=work] .wl-swipe-hint{display:none}
 .wl-careers{display:grid;grid-template-columns:1fr;gap:10px}.wl-careers .wl-panel{margin:0;padding:16px}.wl-careers h3{font-size:18px;margin-bottom:5px}.wl-check{display:flex;gap:10px;align-items:flex-start;margin-top:18px}.wl-check input{width:22px;min-width:22px;height:22px}#eventData .wl-review{font-size:12px}#eventData .wl-review th{text-align:left;font-weight:500}#eventData .wl-review td{white-space:nowrap}
+
+/* Keep the primary monthly navigation readable when selected. */
+.quickbar button.primary.active,
+.quickbar button.primary:focus,
+.quickbar button.primary:active{color:#243439;background:var(--wl-yellow)}
+#qNext{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+#qNext span,#qNext small{color:inherit;opacity:1;visibility:visible}
+
+/* Long statements scroll independently; the next action stays in view. */
+#game>.event.event-active{display:flex!important;flex-direction:column;overflow:hidden!important;max-height:calc(100dvh - 30px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important}
+.event.event-active> .row,.event.event-active>#eventTitle,.event.event-active>#eventDesc{flex-shrink:0}
+.event.event-active>#eventData{min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;flex:1 1 auto}
+.event.event-active>#actions{flex:0 0 auto;background:var(--wl-cream);padding-top:10px;margin-top:8px;max-height:35dvh;overflow-y:auto}
+#game.v24-running>.event.event-active{display:flex!important}
+/* Financial confirmations use the same visible action colour as other choices. */
+.event [data-batch=payLoan]:not(:disabled),[data-batch=loanPayments],.event .wl-loan-form select{background:var(--wl-yellow)!important;color:var(--wl-ink)!important;border:1px solid #b59a31;min-height:48px}
+.event .wl-loan-form select{width:100%;font-weight:700}
+.event.event-active #actions button.primary{background:var(--wl-yellow)!important;color:var(--wl-ink)!important}
+.wl-choice-card .wl-chart{width:100%;height:85px;min-height:85px}
+#v24Turn[data-step=relations] .v24-options{display:block;overflow:visible;scroll-snap-type:none}
+#v24Turn[data-step=relations] .v24-option{width:100%;min-height:130px;margin-bottom:12px}
+#v24Turn[data-step=relations] .wl-panel{width:100%;margin-bottom:12px}
+#v24Turn[data-step=relations] .wl-swipe-hint{display:none}
+.event #eventClose{position:absolute!important;top:14px!important;right:14px!important;margin:0;float:none}
+#annualDashboard{display:none!important}
+.annual-mode #game.v24-running>#annualDashboard{display:block!important}
+.annual-mode #game.v24-running>#v24Turn{display:none!important}
+#annualDashboard button{width:100%;margin-top:12px;min-height:48px}
+#eventData select{width:100%;margin:8px 0 14px;white-space:normal}

@@ -1,13 +1,11 @@
 # 财富人生 Wealth Life
 
-当前发布版本：V27.6。生产地址：https://wealth-life.a562089605.workers.dev/
+V27.9：事件回合节奏、失败补救与年度账本。用户已授权发布；本次提交触发 Cloudflare Workers 部署，线上结果另行核验。
 
-纯静态PWA。入口index.html，无依赖安装或后端。当前通过GitHub仓库连接Cloudflare Workers静态托管。
+年度模式集中安排住房、工作、学习和生活重点。已经确定的合同延续，后台逐月结算；关键事件或资金不足时暂停。年末汇总由实际月账本生成。可以切回按月操作，保留原存档与已经发生的交易。
 
-用户已明确授权上传本批更新，提交 GitHub 后由现有 Cloudflare Workers 连接自动部署。部署结果另行在线核验。
+低生活状态进入三个月补救期，可以休息、联系朋友、治疗。现金缺口可用应急金、出售流动资产、减少预算或查看贷款；可预览延长期限的贷款重组合同。没有自动免债或凭空加现金。
 
-本批包括学习流程、职业预览、月末收支明细、还款卡、医疗与关系事件、14项机会池、ETF自动购买/分红再投资和政府债券。
+纯静态PWA，无依赖或后端。须完整同步index.html、core.js、presentation.js、flow.js、journey.js、batch.js、revision.js、annual.js、presentation.css及其他资源。SW版本wealth-life-v27.9-event-pacing-1。
 
-测试范围、规则和已知限制见QA_REPORT.md。新建存档实际连续12个月及明确边界存档分别有证据，不宣称零bug或真实iPhone Safari已通过。
-
-修改运行代码时须同步页面资源版本和sw.js缓存。不要手工清空玩家存档。存档属于浏览器域名，不会自动从Netlify迁移。
+QA范围和限制见QA_REPORT.md。原截图23项历史对照见REQUIREMENTS_V27_7.md，其中即时结束规则已由本版补救期替代。只有用户明确说“上传更新”才提交GitHub并触发既有Cloudflare部署。
