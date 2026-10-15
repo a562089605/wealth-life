@@ -57,3 +57,18 @@ main{max-width:620px;padding:calc(14px + env(safe-area-inset-top)) 18px 26px}.to
 #wlJourney svg{width:52px;height:52px}#wlJourney strong{display:block;font-size:15px;line-height:1.5}#wlJourney small{display:block;font-size:11px;color:#5d7371;line-height:1.7}#wlJourney i{display:block;height:4px;background:#d7dfd3;border-radius:3px;margin:5px 0;overflow:hidden}#wlJourney i b{display:block;height:100%;background:#3b9a8c}#wlJourney>span:last-child{font-size:25px}
 
 .wl-explanation{margin:12px 0;padding:0 10px;border:1px solid #d9d5c9;border-radius:12px}.wl-explanation summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:700}.wl-explanation p{font-size:14px;line-height:1.65}.event #eventData a{display:block;min-height:44px;padding:12px 0;overflow-wrap:anywhere}
+/* Learning keeps a visible completion action outside the horizontal carousel. */
+#v24Turn[data-step=learning] .v24-options{display:block;overflow:visible;scroll-snap-type:none}
+#v24Turn[data-step=learning] .v24-option{width:100%;min-height:110px;margin-bottom:14px;align-items:flex-start;text-align:left;padding:20px}
+#v24Turn[data-step=learning] .wl-art,#v24Turn[data-step=learning] .wl-price{display:none}
+#v24Turn[data-step=learning] .wl-plus{position:absolute;right:18px;top:15px;width:42px;height:42px;margin:0;font-size:28px}
+#v24Turn[data-step=learning] .v24-option strong,#v24Turn[data-step=learning] .v24-option small{max-width:calc(100% - 55px)}
+#v24Turn[data-step=learning] .wl-swipe-hint{display:none}
+/* Direct vertical choices keep nested completion/repayment buttons touchable. */
+#v24Turn[data-step=money] .v24-options,#v24Turn[data-step=work] .v24-options{display:block;overflow:visible;scroll-snap-type:none}
+#v24Turn[data-step=money] .v24-option,#v24Turn[data-step=work] .v24-option{width:100%;min-height:100px;margin-bottom:14px;text-align:left;align-items:flex-start;padding:20px}
+#v24Turn[data-step=money] .wl-art,#v24Turn[data-step=work] .wl-art,#v24Turn[data-step=money] .wl-price{display:none}
+#v24Turn[data-step=money] .wl-plus,#v24Turn[data-step=work] .wl-plus{position:absolute;right:16px;top:16px;width:42px;height:42px;margin:0}
+#v24Turn[data-step=money] .v24-option strong,#v24Turn[data-step=work] .v24-option strong,#v24Turn[data-step=money] .v24-option small,#v24Turn[data-step=work] .v24-option small{max-width:calc(100% - 55px)}
+#v24Turn[data-step=money] .wl-swipe-hint,#v24Turn[data-step=work] .wl-swipe-hint{display:none}
+.wl-careers{display:grid;grid-template-columns:1fr;gap:10px}.wl-careers .wl-panel{margin:0;padding:16px}.wl-careers h3{font-size:18px;margin-bottom:5px}.wl-check{display:flex;gap:10px;align-items:flex-start;margin-top:18px}.wl-check input{width:22px;min-width:22px;height:22px}#eventData .wl-review{font-size:12px}#eventData .wl-review th{text-align:left;font-weight:500}#eventData .wl-review td{white-space:nowrap}

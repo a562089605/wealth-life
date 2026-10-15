@@ -1,0 +1,18 @@
+{
+  "results": [
+    "实际V27.4存档加载V27.6：现金、净资产、学业、CD和贷款本金不变",
+    "新旧两个存档切换，贷款/资产/现金不串档",
+    "平价行情分红除息+DRIP：1.50分红不凭空增加净资产",
+    "关闭DRIP时分红留现金，除息后总资产仍守恒",
+    "最后一期只支付剩余本金100+利息1；重复点击不可再次扣款",
+    "额外还本金1000后，剩余月供按余额重算且额外还款入账",
+    "机会失败损失900、不生成月收入、再次调用不重扣或重抽",
+    "关系订单失败不产生报酬，仍能关闭继续",
+    "月末概率入口确实触发疾病事件，非仅静态文案",
+    "摄影技能提升机会成功率；预览和实际解析使用同一公式",
+    "月末简洁摘要与展开明细均可操作",
+    "Service Worker缓存含新脚本；离线刷新、新建、住房付款与职业市场可用"
+  ],
+  "errors": [],
+  "scope": "Local Chromium; old-version migration, separate slots, isolated arithmetic/failure fixtures, offline startup; visual font supplied only for QA"
+}
