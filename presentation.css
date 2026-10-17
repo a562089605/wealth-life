@@ -101,3 +101,68 @@ main{max-width:620px;padding:calc(14px + env(safe-area-inset-top)) 18px 26px}.to
 .annual-mode #game.v24-running>#v24Turn{display:none!important}
 #annualDashboard button{width:100%;margin-top:12px;min-height:48px}
 #eventData select{width:100%;margin:8px 0 14px;white-space:normal}
+
+#townView{display:none}.town-map #game>#townView{display:block!important}.town-map #game>:not(#townView):not(#eventBackdrop):not(.event-active):not(.quickbar){display:none!important}.town-map #v24Turn{display:none!important}.town-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.town-toolbar button{font-size:13px;min-height:44px;padding:8px}.town-hint{font-size:13px;color:#e8e0c9}.town-map-scene{position:relative;max-width:680px;margin:auto;border-radius:20px;overflow:hidden}.town-map-scene img{display:block;width:100%;height:auto}.town-route{position:absolute;inset:0}.town-node{position:absolute;transform:translate(-50%,-50%) rotate(var(--road-angle));width:5.4%;height:3.7%;display:flex;align-items:center;justify-content:center;box-sizing:border-box;background:#f5e4b8e8;border:1px solid #a8936780;border-radius:18%;color:#365746;text-align:center;box-shadow:inset 0 0 4px #fff8e8a0;font-size:clamp(10px,2.6vw,19px);line-height:1.05}.town-paving-label{display:block;transform:rotate(calc(-1 * var(--road-angle)))}.town-node small{display:block;font-size:.6em;line-height:1.1}.town-node.opportunity{background:#e9bd62e8}.town-node.market{background:#9fbdc6e8}.town-node.life{background:#e8afa2e8}.town-node.growth{background:#a7be9be8}.town-node.career,.town-node.community{background:#c6b5cce8}.town-node.risk{background:#d4a074e8}.town-node.payday{background:#f6ce52ed;color:#493e1c}.town-node.current{outline:2px solid #a85232;outline-offset:1px;z-index:2}.town-player{position:absolute;transform:translate(-50%,-130%);color:#b54b32;font-size:18px;line-height:1;text-shadow:0 0 2px white,0 1px 2px white;pointer-events:none;z-index:3}.town-status{background:#fff3d9;color:#233c32;border-radius:20px;padding:18px;margin-top:12px}.town-status p{font-size:14px}.town-status button{min-height:48px;margin:4px;max-width:100%}.town-status .primary{background:#ffd658;color:#283c32;min-width:140px}.town-map #game{padding-bottom:110px}
+
+.town-toolbar>b{color:#fff3d9}
+
+.town-vitals{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0}.town-vitals span{background:#e5e9d5;border-radius:10px;padding:9px 2px;text-align:center;font-size:12px}.town-vitals b{display:block;font-size:18px}.town-legend{margin:12px 0}.town-legend summary{cursor:pointer;min-height:44px;display:flex;align-items:center;text-decoration:underline}.town-work-hint{padding:10px;border-left:3px solid #b98545;background:#f6e6c3}
+
+.town-toolbar>b{flex:1 0 100%}.town-toolbar button{flex:1}
+
+.coffee-income .wl-review{width:100%;font-size:14px}.coffee-income .wl-review th{text-align:left;font-weight:500}.coffee-income .wl-review td{text-align:right;white-space:nowrap}.coffee-event-entry button{width:100%;min-height:48px}.coffee-options .wl-panel{padding:12px;margin:8px 0}.coffee-options p{font-size:14px;line-height:1.6;overflow-wrap:anywhere}
+
+/* Approved barista starting-page illustration; native data reflows on narrow screens. */
+body:has(#home:not(.hidden) #newGame:not(.hidden) #coffeeIntro) main{max-width:1200px}
+body:has(#home:not(.hidden) #newGame:not(.hidden) #coffeeIntro) .wl-home-brand{display:none}
+#home:has(#newGame:not(.hidden) #coffeeIntro){padding:12px!important;border-radius:18px}
+#coffeeIntro{text-align:left;background:#faf0d9;color:#183c2c;border-radius:16px;overflow:hidden}
+#coffeeIntro .coffee-intro-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px;flex-wrap:wrap}
+#coffeeIntro .coffee-intro-toolbar span{font-size:13px}
+#coffeeIntro .coffee-intro-toolbar button{width:auto;min-height:44px;padding:8px 10px;font-size:14px;background:#f2dfb8;border-radius:12px;color:#67452b}
+.coffee-intro-board{display:grid;grid-template-columns:minmax(0,1fr);position:relative}
+.coffee-intro-half{position:relative;aspect-ratio:720 / 1092;overflow:hidden}
+#wlJob .coffee-intro-half img{display:block;position:absolute;inset:0 auto auto 0;width:200%;height:100%;max-width:none}
+#wlJob .coffee-intro-art-data img{left:-100%}
+.coffee-intro-art-data{display:none}
+#wlJob .coffee-intro-hotspot{position:absolute;z-index:1;background:transparent;border:0;border-radius:22px;min-height:44px;color:transparent;padding:0;font-size:16px;cursor:pointer}
+#wlJob .coffee-intro-choose{left:16%;bottom:2.5%;width:73%;height:9%}
+#wlJob .coffee-intro-other{left:26%;bottom:1.2%;width:62%;height:6.5%}
+#wlJob .coffee-intro-hotspot:focus-visible{outline:3px solid #315f45;outline-offset:-2px;background:#fff1a022}
+#wlJob .coffee-intro-hotspot:hover{box-shadow:inset 0 0 0 2px #bd8a3b88}
+.coffee-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#coffeeIntro .coffee-intro-text{padding:14px 18px;text-align:left}
+#coffeeIntro .coffee-intro-text h3{font-size:24px;margin:0 0 8px}
+#coffeeIntro .coffee-intro-text h4{font-size:18px;margin:20px 0 10px;color:#69452d}
+#coffeeIntro .coffee-intro-text p{font-size:15px;line-height:1.7;color:#254338;margin:8px 0}
+.coffee-intro-text dl{margin:0}.coffee-intro-text dl>div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #dcc89d;font-size:14px}.coffee-intro-text dt{flex-shrink:0}.coffee-intro-text dd{margin:0;text-align:right;font-weight:650;overflow-wrap:anywhere}.coffee-intro-text ul{padding-left:20px;margin:8px 0;font-size:14px;line-height:1.9}
+.coffee-intro-branches{display:grid;grid-template-columns:1fr 1fr;gap:8px}.coffee-intro-branches span{padding:12px 6px;border-radius:12px;background:#e5e6ca;text-align:center;font-size:14px}.coffee-intro-branches small{font-size:12px}
+#wlJob .coffee-intro-note{margin:4px 16px 14px;font-size:12px;line-height:1.7;color:#6c5a3e}
+@media(min-width:900px){.coffee-intro-board{grid-template-columns:repeat(2,minmax(0,1fr))}.coffee-intro-art-data{display:block}.coffee-intro-text{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;padding:0!important}}
+@media(max-width:350px){#coffeeIntro .coffee-intro-toolbar span{display:none}#coffeeIntro .coffee-intro-text{padding:12px}.coffee-intro-text dl>div{font-size:13px}}
+
+/* Five career cards share one palette, painted scene, icon family and real text choices. */
+.coffee-painted-event{background:#fbf0d7!important;border:2px solid #b79365!important;box-shadow:0 14px 50px #182b2466!important}
+.coffee-painted-event #eventTitle{color:#45321f;font-size:clamp(24px,6vw,32px)}
+.coffee-painted-event #eventDesc{color:#694c33;line-height:1.65}
+.coffee-event-scene{position:relative;aspect-ratio:1.8;overflow:hidden;border-radius:16px;margin-bottom:12px}
+.coffee-event-scene img{position:absolute;width:200%;height:auto;max-width:none;top:-85%;left:0}
+.coffee-event-meta{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px;font-size:12px;color:#654f33}
+.coffee-event-meta span{background:#e6dfbd;padding:6px 9px;border-radius:10px}
+.coffee-painted-options{display:grid;gap:12px}
+#eventData .coffee-painted-choice{width:100%;display:block;text-align:left;padding:14px;border-radius:18px;border:2px solid #d7b46b;background:#fff2c9;color:#493621;white-space:normal;min-height:64px;box-shadow:inset 0 0 15px #fff8e5}
+#eventData .coffee-painted-choice.coffee-choice-blue{background:#e7eef0;border-color:#b0c5cb}
+.coffee-painted-choice>strong{display:flex;align-items:center;gap:10px;font-size:20px;line-height:1.4}
+.coffee-painted-choice>strong>span{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:#c77d50;color:#fff4dd;flex-shrink:0}
+.coffee-choice-blue>strong>span{background:#6b929b}
+.coffee-change-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 6px;margin:14px 0}
+.coffee-change-grid>span{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;min-width:0}
+.coffee-change-grid svg{width:27px;height:27px}.coffee-change-grid b{font-size:18px}.coffee-change-grid small{font-size:12px}
+.coffee-benefit{color:#35744e}.coffee-cost{color:#ad5338}
+.coffee-painted-choice p{margin:14px 0;line-height:1.65}.coffee-painted-choice em{display:block;text-align:right;font-size:13px;font-style:normal;color:#75583b}
+#eventData .coffee-painted-choice:focus-visible{outline:3px solid #365c40;outline-offset:2px}#eventData .coffee-painted-choice:disabled{opacity:.65;cursor:not-allowed}
+@media(min-width:650px){.coffee-change-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+.event.event-active.coffee-painted-event{background:#fbf0d7!important;border:2px solid #b79365!important}
+.coffee-painted-event #eventData .coffee-painted-choice{background:#fff2c9!important;border-color:#d7b46b!important}
+.coffee-painted-event #eventData .coffee-painted-choice.coffee-choice-blue{background:#e7eef0!important;border-color:#b0c5cb!important}

@@ -1,9 +1,9 @@
-# 财富人生 Wealth Life
+# 财富人生 Wealth Life — V28.2
 
-V27.10：恢复按月安排，加入职业参考卡。用户已授权上传；提交后由现有 Cloudflare Workers 连接部署，线上结果另行核验。
+保留月度结算、24格小镇、存档、投资/保险/贷款和双阶段目标。咖啡师与值班主管共10张主事件，以及6张后续结果已接入。17张已确认原画包含职业起始页；游戏金额和选择使用原生动态UI。
 
-新存档和已有年度模式存档统一按月进行；已有工作、住房、学习和保单保留。年度旧档回到当前月第一步，已付款由月度付款记录抵扣，不退款、不重扣、不跳月。年度自动推进和切换入口停用。保留失败补救、贷款重组及财务修复。
+本版规则、存档与验证范围见 [COFFEE_CAREERS_V28_2.md](COFFEE_CAREERS_V28_2.md)。历史QA报告仅代表相应旧版本，不代表本版全部实机回归。
 
-静态 PWA，部署时须完整同步所有运行文件，包含 annual.js（现仍承载补救与兼容代码）。SW：wealth-life-v27.10-monthly-restore-2。只在用户说“上传更新”后发布。
+Cloudflare Workers现有Git集成可用根目录 `npx wrangler deploy`，wrangler.jsonc指定静态目录和wealth-life Worker；不需要编译，保留原workers.dev网址和本地存档。
 
-学习与技能新增只读职业卡：当前岗位/实际税前薪资、已有游戏关联技能、同领域更高岗位及当前缺失资格。无对应兴趣技能的岗位明确显示学历/执照要求，不添加新技能机制。
+验证：`node qa/coffee-rules.test.cjs`、`node qa/shift-lead.test.cjs`。手机真实Safari/PWA尚未验证。

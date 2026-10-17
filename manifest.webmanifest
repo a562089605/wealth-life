@@ -3,8 +3,8 @@
   "short_name": "财富人生",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#1d2f36",
-  "theme_color": "#1e292e",
+  "background_color": "#f4efdf",
+  "theme_color": "#f4efdf",
   "lang": "zh-CN",
   "icons": [
     {

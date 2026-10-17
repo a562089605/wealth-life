@@ -1,0 +1,19 @@
+{
+  "barista-staff": "44302ece-6222-4ca3-9973-5edf8e72286c",
+  "barista-busy": "95d8d5df-316a-4909-a111-a4d6409a98aa",
+  "barista-cut": "0bbc85d3-7437-45cd-a029-536e02e8ea10",
+  "barista-tip": "85bd7c76-5787-441c-900d-f7033ca27234",
+  "barista-departure": "24787615-ae13-4210-afef-67f10b3c5bd2",
+  "shift-training": "23302309-34cb-46f8-ba1f-b704abed9bca",
+  "shift-schedule": "eb2508b0-56a8-4f76-b4ce-12d1ffe87908",
+  "shift-schedule-success": "9d34de07-33cb-4408-806b-2f909a1352e4",
+  "shift-schedule-failure": "b7eb1a7d-dd18-4a93-8f1d-82620a38e6a6",
+  "shift-complaint": "572a375d-7fc5-4eb3-9937-3abf380010c6",
+  "shift-complaint-success": "cfe5ef06-a477-4f83-a760-4ea0f0b7d01b",
+  "shift-complaint-failure": "226b2056-e8ef-4ca3-8c59-ad9816e18091",
+  "shift-acting": "03c4c2cd-77fe-4c68-a0b7-42c07b5f0861",
+  "shift-acting-success": "63fc647d-0248-47b5-949a-432829169896",
+  "shift-acting-failure": "8b972a08-d0d6-4263-ac12-015d48c9cba5",
+  "shift-praise": "f0d64fa4-16b8-45cc-8f94-0929f6748441",
+  "intro": "3a6f2bcd-356e-429d-8716-0a1af31afc59"
+}

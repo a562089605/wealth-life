@@ -1,0 +1,67 @@
+/* Paper/crayon art direction. Presentation only: no game state or settlement changes. */
+:root{--wl-cream:#f8f3e7;--wl-yellow:#efd16d;--wl-ink:#30473c;--wl-muted:#6f7265;--wl-nav:#f4eddb;--bg:#f4efdf;--card:#fbf7ed;--ink:#30473c;--muted:#6f7265;--line:#d9cdb6;--accent:#477563;--good:#3d7055;--bad:#a44835;--cream:#f8f3e7;--cream2:#eee5d2;--nav:#f4eddb;--yellow:#efd16d;--softblue:#dfeae6}
+body{background:#f4efdf;color:var(--wl-ink)}
+body:before{background:radial-gradient(ellipse at 20% 15%,#d6e3d245,transparent 50%),radial-gradient(ellipse at 90% 75%,#eed9b840,transparent 45%);opacity:.7}
+button,select,input{font:inherit;color:var(--wl-ink)}
+button{border-color:#cbbca3;border-radius:16px 13px 17px 14px;box-shadow:none}
+button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #477563;outline-offset:3px}
+button:disabled{opacity:.55}
+#wlHeader{background:transparent;color:#30473c}
+.wl-topline button,.wl-topline strong,.v24-title,.wl-help,.wl-home-brand,.town-toolbar>b{color:#30473c}
+.wl-topline small,.wl-topline .wl-version,.wl-home-brand p,.wl-step-note,.wl-step-line,.wl-swipe-hint,.wl-step-note,.town-hint{color:#627064}
+.wl-help{border-color:#8e9d86}
+.wl-total{border:1px solid #d9cdb6;background:#fbf7ed;border-radius:21px 18px 22px 19px;box-shadow:0 2px 0 #d8ccb94d}
+.wl-total span{color:#667064}
+.wl-totals .wl-total:nth-child(1) svg{fill:#7aa5a4}.wl-totals .wl-total:nth-child(2) svg{fill:#568570}.wl-totals .wl-total:nth-child(3) svg{fill:#d99576}
+.v24-progress i{background:#d9dece}.v24-progress i.now,.v24-progress i.done{background:#8ba889}
+.v24-option,.v24-option.primary,.v24-option:nth-of-type(2n),.v242prop{background:#f8edcf;border:1px solid #d9c9aa;box-shadow:none}
+.v24-option:nth-of-type(2n){background:#e3ece5}
+.v24-option{border-radius:29px 24px 30px 25px}.v24-option strong,.wl-price{color:#30473c}
+.v24-option small,.v24-option.primary small{color:#667064}
+.wl-plus{background:#e9ca70;border-radius:17px 14px 18px 15px;color:#3a4e3f}
+.v24-footer button{background:#fbf7ed;color:#405646;border:1px solid #d9cdb6}
+.quickbar.v23nav{background:#f4eddb;border-top:1px solid #cfbfa5;box-shadow:none}
+.quickbar button{color:#6b7769}.quickbar button.active{color:#2d6549;background:#e0e8d8}.quickbar button.primary{background:#efd16d;color:#30473c}
+#game>.card:not(#v24Turn),#home.card,.v242sheet,.wl-drawer-panel{background:#fbf7ed;border:1px solid #d9cdb6;box-shadow:none;border-radius:24px 20px 25px 21px}
+#game>.card:not(#v24Turn) button,.saveRow>button:first-child,.wl-menu-items button{background:#f5efdf;border-color:#d9cdb6}
+#game>.card:not(#v24Turn) button.primary,.wl-menu-items button.primary{background:#efd16d;color:#30473c}
+.card .stat,.wl-panel,.wl-bank-results>div{background:#f2eddf;border-color:#ded2bc}
+.event.event-active,.event.event-active.coffee-painted-event{background:#fbf7ed!important;border:1px solid #cdbd9e!important;box-shadow:0 12px 35px #3f4c362b!important;border-radius:25px 21px 26px 22px!important}
+.event #eventDesc,.coffee-painted-event #eventDesc{color:#636d60}
+.event-backdrop,#wlDrawer{background:#2c3d3673}
+.event #eventClose{background:#f3ead5!important}
+.event #actions{background:#fbf7ed}
+.event #actions button{background:#e8e3d4;color:#30473c;border-color:#d3c4a9}
+.event #actions button.primary{background:#efd16d;color:#30473c}
+.coffee-painted-event #eventTitle{color:#30473c}
+.coffee-event-scene{aspect-ratio:3 / 2;border-radius:17px;max-height:230px;background:#f8f3e7}
+.coffee-event-scene img{position:static;display:block;width:100%;height:100%;max-width:100%;object-fit:contain}
+.coffee-event-meta{color:#5d6b5d}.coffee-event-meta span{background:#e7eadb;border-radius:11px 9px 12px 10px}
+.coffee-painted-event #eventData .coffee-painted-choice{background:#f5eac8!important;border:1px solid #cfb97c!important;box-shadow:none;border-radius:18px 15px 19px 16px;color:#30473c}
+.coffee-painted-event #eventData .coffee-painted-choice.coffee-choice-blue{background:#e0ebe7!important;border-color:#a5beb2!important}
+.coffee-painted-choice>strong>span{background:#c88867}.coffee-choice-blue>strong>span{background:#658f8b}
+.coffee-benefit{color:#35664c}.coffee-cost{color:#a44835}
+.coffee-painted-choice em{color:#50674f}
+#home:has(#newGame:not(.hidden) #coffeeIntro){padding:12px!important}
+#coffeeIntro{background:#fbf7ed;color:#30473c}
+.coffee-intro-board{display:grid;grid-template-columns:minmax(0,1fr)}
+#wlJob .coffee-paper-scene{padding:8px 12px 16px;text-align:center}
+#wlJob .coffee-paper-scene img{display:block;width:100%;max-width:430px;height:auto;margin:0 auto}
+#wlJob .coffee-paper-scene .coffee-intro-choose{position:static;width:100%;min-height:50px;padding:12px;margin-top:12px;color:#30473c;background:#efd16d;border:1px solid #cfb97c;font-size:18px;font-weight:700;border-radius:16px}
+#coffeeIntro .coffee-intro-text{position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:normal;padding:14px 18px!important}
+#coffeeIntro .coffee-intro-text h3{color:#30473c}
+.coffee-intro-text dl>div{border-color:#d9cdb6}
+.coffee-intro-branches span{background:#e3e9d9}
+#coffeeIntro .coffee-intro-toolbar button{background:#f2e9d3;color:#5e624b}
+.town-toolbar button{background:#f8f3e7;color:#30473c;border-color:#cfbfa5}
+.town-map-scene{border:1px solid #d9cdb6;border-radius:22px 19px 24px 20px}
+.town-place{position:absolute;transform:translate(-50%,-50%);background:#fbf7edea;border:1px solid #c9bba2;border-radius:8px 6px 9px 7px;padding:3px 5px;color:#30473c;font-size:clamp(8px,2vw,13px);font-weight:650;pointer-events:none;white-space:nowrap}
+.town-node{border-color:#99886a80;box-shadow:none}.town-status{background:#fbf7ed;border:1px solid #d9cdb6}
+.town-status .primary{background:#efd16d;color:#30473c}
+.town-vitals span,.town-work-hint{background:#e3e9d9;color:#30473c}
+.wl-art svg{filter:saturate(.65)}
+@media(min-width:900px){.coffee-intro-board{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}.coffee-paper-scene{position:sticky;top:10px}}
+@media(max-width:350px){#coffeeIntro .coffee-intro-text{padding:12px!important}.coffee-change-grid{gap:12px 4px}.coffee-painted-choice>strong{font-size:18px}}
+.wl-note{color:#627064}
+button.primary{background:#efd16d;color:#30473c;border-color:#cfb97c}
+.coffee-painted-event #eventData .coffee-painted-choice:disabled{opacity:.55}

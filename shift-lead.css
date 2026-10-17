@@ -1,0 +1,19 @@
+.shift-event .coffee-painted-options{display:grid;grid-template-columns:1fr;gap:12px}
+.shift-event .coffee-painted-choice{width:100%;min-width:0;text-align:left;white-space:normal;overflow-wrap:anywhere}
+.shift-event .coffee-painted-choice>strong{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.shift-change-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(115px,100%),1fr));gap:10px;padding:12px 0}
+.shift-change{display:flex;flex-direction:column;gap:5px;min-width:0;color:#30473c}
+.shift-change small{font-size:13px}.shift-change b{font-size:17px;overflow-wrap:anywhere}
+.shift-followup #eventType{background:#dce9e4;color:#30473c;border-radius:12px;padding:6px 10px}
+.shift-followup #eventData{grid-template-columns:repeat(auto-fit,minmax(min(130px,100%),1fr))}
+@media(max-width:390px){.shift-event .coffee-painted-choice{padding:14px}.shift-event .coffee-painted-choice>strong{font-size:19px}.shift-change b{font-size:16px}}
+/* Scene windows deliberately hide baked example figures; live HTML owns all choices and quotes. */
+.career-hero{position:relative;aspect-ratio:16/7;overflow:hidden;border-radius:18px 15px;background:#f6ecd6;grid-column:1/-1;width:100%;min-width:0}
+.career-hero img{display:block;width:100%;height:auto;transform:translateY(-8%);pointer-events:none}
+.career-hero.career-wide{aspect-ratio:16/6}.career-hero.career-wide img{transform:none}
+.shift-followup #eventData,.shift-event #eventData{display:block!important}
+.shift-change svg{width:30px;height:30px;flex-shrink:0}.shift-change .coffee-benefit{color:#286345}.shift-change .coffee-cost{color:#b23d31}
+.shift-event .coffee-painted-choice:nth-child(3){background:#e4ebd4}.shift-event .coffee-painted-choice:nth-child(4){background:#f4daca}
+.coffee-growth button{margin:6px 8px 0 0;white-space:normal}.coffee-growth{min-width:0;overflow-wrap:anywhere}
+.shift-followup .career-hero{margin-bottom:12px}.event #eventData:has(.career-hero){min-width:0}
+@media(max-width:390px){.career-hero{aspect-ratio:16/8}.shift-change-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.coffee-painted-options{min-width:0}}

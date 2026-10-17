@@ -90,9 +90,12 @@ function learningCareerCard(){
  const c=CAREERS.find(c=>c.name===state.job),domain=c?.domain||inferDomain(state.job),skill=c?careerSkill(c):null;
  const working=!!state.job&&!state.retired&&!(state.unemployedMonths>0),salary=working?state.salary||0:0;
  const higher=c?CAREERS.filter(x=>x.name!==c.name&&(x.domain||inferDomain(x.name))===domain&&x.salary>c.salary).sort((a,b)=>a.salary-b.salary).slice(0,2):[];
- const recommended=skill?batchEscape(skill)+' · 当前 Lv.'+hobbyLevel(skill)+'（游戏关联技能）':c?'优先补足相关学历、专业与执照；当前岗位没有关联的兴趣技能加薪项。':'先在工作阶段选择职业，再按岗位要求安排学习。';
+ const recommended=skill?batchEscape(skill)+' · 当前 Lv.'+hobbyLevel(skill)+'':c?'优先提升岗位所需的专业知识、学历与执照。':'先在工作阶段选择职业，再按岗位要求安排学习。';
  const direction=higher.length?higher.map(x=>batchEscape(x.name)+'：'+batchEscape(careerMissing(x).length?'尚缺 '+careerMissing(x).join('、'):'当前资格符合，可到工作市场申请')).join('<br>'):c?'积累相关经验与技能，争取当前岗位成长；换岗需另行申请。':'选择起点 → 积累经验与相关技能 → 查看符合资格的岗位。';
- return '<section class="wl-panel" id="learningCareerCard" aria-label="职业参考"><h3>我的职业</h3><p><b>'+batchEscape(state.retired?'已退休':state.job||'未就业')+'</b>'+(state.unemployedMonths>0?' · 暂时失业':'')+'<br>当前税前月薪 <b>'+priceText(salary)+'</b> · 折合年薪 '+priceText(salary*12)+'</p><p><b>推荐技能</b><br>'+recommended+'</p><p><b>职业发展方向</b><br>'+direction+'</p><small>薪资以当前工作状态为准；学习不会立即保证加薪或自动换岗。</small></section>';
+ return '<section class="wl-panel" id="learningCareerCard" aria-label="职业参考"><h3>我的职业</h3><p><b>'+batchEscape(state.retired?'已退休':state.job||'未就业')+'</b>'+(state.unemployedMonths>0?' · 暂时失业':'')+'<br>当前税前月薪 <b>'+priceText(salary)+'</b> · 折合年薪 '+priceText(salary*12)+'</p><p><b>推荐技能</b><br>'+recommended+'</p><p><b>职业发展方向</b><br>'+direction+'</p><small>完成更高学历后按规定比例提高当前薪资，下月起结算；换岗需要另行申请。</small></section>';
 }
 const careerLearningChoices=window.v26Choices;
 window.v26Choices=function(key,api){const content=careerLearningChoices(key,api);return key==='learning'?learningCareerCard()+content:content};
+
+const educationPreviewBeforeRaise=openEducation;
+openEducation=function(){educationPreviewBeforeRaise();const target=state.study?.target||EDU[state.education]?.next;if(!target)return;const rate=educationRaiseRate(target),note=document.createElement('p');note.className='wl-note';note.textContent='完成'+EDU[target].name+'后，当前税前薪资提高 '+Math.round(rate*100)+'%，从毕业后的下个月起结算。报名或贷款不会立刻加薪；未就业时没有工资可增加。';$('eventData').append(note);$('eventData').style.display='block'};

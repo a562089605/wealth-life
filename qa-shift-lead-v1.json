@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "checks": [
+    "training option 0",
+    "training option 1",
+    "schedule option 0",
+    "schedule option 1 success",
+    "schedule option 1 failure",
+    "schedule option 2",
+    "schedule option 3",
+    "complaint option 0",
+    "complaint option 1 success",
+    "complaint option 1 failure",
+    "complaint option 2",
+    "acting option 0 success",
+    "acting option 0 failure",
+    "acting option 1",
+    "praise automatic exactly once",
+    "all followups reload before/after settlement preserve result and idempotency",
+    "13 months: Aug→Sep→Oct→Nov→Dec→Jan seasonal tips, income snapshot, temporary hours cleared",
+    "acting success 50/60/70/80/90 uses pre-choice skill level",
+    "main card hides followup detail and zero fields; praise weight grows but never guaranteed",
+    "XP clamps zero/max and result shows actual applied change",
+    "time budget guards include potential failed coordination shift",
+    "monthly settlement blocks pending main/followup and resumes once resolved",
+    "Barista routing unchanged; never samples Shift Lead event",
+    "all followup branches hidden on main card",
+    "actual core calcMetrics + settleMonthUnsafe: 13 monthly payrolls, tax/401k, cash, history, season rollover"
+  ],
+  "caseCount": 25,
+  "scope": "Node VM integration/state tests; no real browser/mobile layout validation",
+  "uploaded": false
+}
