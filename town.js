@@ -77,7 +77,7 @@ const townFinishBefore=finish;finish=function(){townFinishBefore();if(!townEnabl
 const townMonthlyEventBefore=monthlyEvent;monthlyEvent=function(){if(townEnabled()){finish();return}townMonthlyEventBefore()};
 const townSettlementBefore=settleMonth;settleMonth=function(){if(townEnabled()){const move=state.town?.movement;if(!move||move.resolved||!move.payExpected||state.month>=move.payExpected)return}townSettlementBefore()};
 const townOpenBefore=openGame;openGame=function(){townVisible=!!state.townMode;townOpenBefore();if(townEnabled()&&townPending()){clearModals();resumeTownMove()}};
-const townShowBefore=showEvent;showEvent=function(type,title,desc,data=[],actions=[]){if(type==='读档成功'&&townEnabled()&&townPending())return;if(type==='START'){type='小镇起点';desc='初始现金 $5,000。先确认住房，再自由安排工作与学习。出门掷骰子，经过发薪日才结算一个月。';actions=[['进入起步小镇',townStart,true],['开始本月安排',()=>{state.townMode=false;townVisible=false;clearModals();startV24Turn(false)},false]]}townShowBefore(type,title,desc,data,actions)};
+const townShowBefore=showEvent;showEvent=function(type,title,desc,data=[],actions=[]){if(type==='读档成功'&&townEnabled()&&townPending())return;if(type==='START'){type='小镇起点';desc=state.job?'初始现金 $10,000，已入职咖啡师。先确认住房，再安排本月生活、工作与学习；工资月末到账，不提前发放。':'初始现金 $10,000。先确认住房，再安排本月工作与学习。';actions=[['进入起步小镇',townStart,true],['开始本月安排',()=>{state.townMode=false;townVisible=false;clearModals();startV24Turn(false)},false]]}townShowBefore(type,title,desc,data,actions)};
 for(const id of ['qOverview','qCareer','qLife','qAssets']){const previous=$(id).onclick;$(id).onclick=()=>{townVisible=false;document.body.classList.remove('town-map');previous?.()}}
 $('qNext').onclick=$('hubNext').onclick=()=>townEnabled()?showTown():continueLife();
 $('wlResume').onclick=()=>{$('wlCloseMenu').click();if(townEnabled())showTown();else continueLife()};
@@ -85,3 +85,4 @@ const townMenu=document.createElement('button');townMenu.textContent='进入起�
 document.addEventListener('click',e=>{const button=e.target.closest('[data-town]');if(!button)return;const action=button.dataset.town;if(action==='roll')rollTown();if(action==='resume')resumeTownMove();if(action==='home')townHome();if(action==='livingFund')fundShortfall(roundCash(Math.max(0,livingTotal()-(paymentReceipt().living||0))),openTownLiving);if(action==='monthly')originalMonthlyPlay();if(action==='stage')$('wlJourney').click()});
 
 function openTownSecurities(){showEvent('证券市场','查看证券产品','查看当前价格与持仓，确认后才购买。',[],V26_INSTRUMENTS.map(i=>[i.name,()=>openInstrument(i.id),false]).concat([['离开市场',finish,true]]))}
+

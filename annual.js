@@ -28,7 +28,7 @@ const auditBefore278=showMonthlyAudit;showMonthlyAudit=function(s){if(!annualAct
 const finishBefore278=finish;finish=function(){finishBefore278();if(!state||document.querySelector('.event-active'))return;if(annualPlanning){showAnnualPlan();return}scheduleAnnual()};
 const renderBefore278=render;render=function(){if(!state)return;state.annualMode??=true;renderBefore278();updateRecovery();document.body.classList.toggle('annual-mode',state.annualMode);let box=$('annualDashboard');if(!box){box=document.createElement('div');box.id='annualDashboard';box.className='card';$('v24Turn').before(box)}box.innerHTML='<h2>这一年，你想怎样生活？</h2><p>工作与日常安排默认延续，把决定留给真正重要的事情。</p><p>当前现金 '+priceText(state.cash)+' · 月收支结余 '+priceText(calcMetrics().monthlyCF)+'</p><button class="primary" data-year="plan">'+(annualActive()?'继续本年':'安排这一年')+'</button>'+(state.crisis?'<button data-year="recovery">生活状态需要调整</button>':'')+'<button data-year="monthly">按月查看与安排</button>';if(state.gameOver?.final)showGameOver()};
 const headerBefore278=refreshCardHeader;refreshCardHeader=function(){headerBefore278();if(!state)return;if(state.annualMode){$('wlDate').textContent='第'+(Math.floor(state.month/12)+1)+'年 · 第'+(Math.floor(state.month%12/3)+1)+'季';$('qNext').innerHTML='<span>→</span><small>本年</small>'}else $('qNext').innerHTML='<span>→</span><small>本月</small>'};
-const eventBefore278=showEvent;showEvent=function(type,title,desc,data=[],actions=[]){if(type==='START'){type='年度起点';state.annualMode=true;actions=[['安排这一年',showAnnualPlan,true],['先按月试玩',useMonthly,false]];desc='初始现金 $5,000，目前未就业。先选择住房和工作，再确定今年的生活重点；逐月财务由年度回合自动处理。'}eventBefore278(type,title,desc,data,actions);if(state?.annualMode)$('eventMonth').textContent=type==='年度结算'?'第'+(Math.floor(state.annualRun.start/12)+1)+'年 · 年度总结':'第'+(Math.floor(state.month/12)+1)+'年 · 第'+(Math.floor(state.month%12/3)+1)+'季'};
+const eventBefore278=showEvent;showEvent=function(type,title,desc,data=[],actions=[]){if(type==='START'){type='年度起点';state.annualMode=true;actions=[['安排这一年',showAnnualPlan,true],['先按月试玩',useMonthly,false]];desc='初始现金 $10,000。先选择住房，再确定今年的生活重点；工资按月末账本结算，不提前发放。'}eventBefore278(type,title,desc,data,actions);if(state?.annualMode)$('eventMonth').textContent=type==='年度结算'?'第'+(Math.floor(state.annualRun.start/12)+1)+'年 · 年度总结':'第'+(Math.floor(state.month/12)+1)+'年 · 第'+(Math.floor(state.month%12/3)+1)+'季'};
 const openBefore278=openGame;openGame=function(){if(state.gameOver&&!state.gameOver.final){state.crisis={started:state.month,deadline:state.month+3,actions:{}};delete state.gameOver}openBefore278();updateRecovery();if(state.requiredIncident)return openRequiredIncident();if(state.crisis)return showRecovery()};
 $('qNext').onclick=$('hubNext').onclick=()=>{if(state.annualMode)showAnnualPlan();else startV24Turn(false)};
 for(const id of ['qOverview','qCareer','qLife','qAssets']){const old=$(id).onclick;$(id).onclick=()=>{pauseAnnual();annualPlanning=false;old?.()}};
@@ -109,7 +109,7 @@ const monthlyShow=showEvent;
 showEvent=function(type,title,desc,data=[],actions=[]){
  if(type==='START'){
   restoreMonthlyPlay();type='月度起点';
-  desc='初始现金 $5,000，目前未就业。先选择住房，再安排本月生活和工作。每次只结算一个月，所有消费确认后才付款。';
+  desc=state.job?'初始现金 $10,000，已入职咖啡师。先选择住房，再安排本月生活；工资月末到账。':'初始现金 $10,000。先选择住房，再安排本月生活和工作。每次只结算一个月，所有消费确认后才付款。';
   actions=[['开始本月安排',()=>{clearModals();startV24Turn(false)},true]];
  }
  monthlyShow(type,title,desc,data,actions);
@@ -119,3 +119,4 @@ showAnnualPlan=useMonthly;showAnnualProgress=useMonthly;
 menuYear.remove();
 $('qNext').onclick=$('hubNext').onclick=continueLife;
 $('wlResume').onclick=()=>{$('wlCloseMenu').click();continueLife()};
+

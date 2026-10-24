@@ -55,7 +55,7 @@ save=function(){if(!state)return;syncFinance();try{localStorage.setItem(key(slot
 function clearModals(){document.querySelectorAll('.event-active').forEach(e=>e.classList.remove('event-active'));$('eventBackdrop').classList.remove('active');$('v242RE').classList.remove('open');$('v245Housing').classList.remove('open');document.body.classList.remove('event-open');pending=false;$('next').disabled=false;}
 const openBase=openGame;openGame=function(){clearModals();syncFinance();openBase();window.startV24Turn?.(false)};
 const homeBase=home;home=function(){clearModals();homeBase();state=null;};
-const startBase=$('start').onclick;$('start').onclick=()=>{startBase();state.yearStartNetWorth=5000;state.turn={month:0,index:0,startCash:5000};save();window.startV24Turn?.(false)};
+const startBase=$('start').onclick;$('start').onclick=()=>{startBase();state.yearStartNetWorth=state.cash;state.turn={month:state.month,index:0,startCash:state.cash};save();window.startV24Turn?.(false)};
 $('saveExit').onclick=()=>{save();home()};
 $('qNext').onclick=$('hubNext').onclick=()=>{if(state)window.startV24Turn?.(false)};
 const finishBase=finish;finish=function(){finishBase();if(window.refreshV24Turn)window.refreshV24Turn()};
@@ -163,3 +163,4 @@ function openEducation(){
 }
 
 function debtDisplayName(name){const l=state.loans.find(l=>loanDebtName(l)===name);return l?(l.type||'银行贷款')+' · 剩余'+l.monthsLeft+'期':name}
+
