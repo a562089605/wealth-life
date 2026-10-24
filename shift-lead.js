@@ -2,19 +2,19 @@
 const SHIFT_ROLE='值班主管 Shift Lead';
 const SHIFT_EVENTS={
  training:{name:'新人培训',scene:'staff',desc:'门店来了新员工，对咖啡工作很有热情，但还不熟悉门店流程。经理安排你负责带教。',choices:[
-  {label:'认真带教',effects:{energy:-2,stress:1,management:15,trust:1}},
-  {label:'只做基础交接',effects:{energy:-1,management:5}}]},
+  {label:'认真带教',effects:{hours:4,energy:-2,stress:1,management:15,trust:1}},
+  {label:'只做基础交接',effects:{hours:1,energy:-1,management:5}}]},
  schedule:{name:'排班冲突',scene:'cut',desc:'两位员工同一天都无法上班，门店出现一个完整8小时班次缺口。经理希望你协调处理。',choices:[
   {label:'重新协调排班',effects:{energy:-1,stress:1,management:12,trust:1}},
   {label:'让两位同事自行协调',follow:'schedule'},
-  {label:'自己加班补上',effects:{extraShift:true,hours:8,energy:-4,stress:4,management:5,trust:1}},
+  {label:'自己加班补上',effects:{extraShift:true,hours:8,energy:-4,stress:2,management:3,trust:1}},
   {label:'请经理决定',desc:'说明排班缺口，请经理安排。',effects:{energy:1,stress:-1}}]},
  complaint:{name:'顾客严重投诉',scene:'busy',desc:'一位顾客的饮品连续做错两次。顾客非常生气，要求负责人立即处理。你需要决定如何解决。',choices:[
   {label:'亲自处理并补偿',effects:{energy:-1,stress:2,service:12,management:8,trust:1}},
   {label:'让员工先处理',follow:'complaint'},
-  {label:'直接退款',effects:{stress:1,management:3,service:-5,storeRefund:true}}]},
+  {label:'直接退款',effects:{stress:1,management:3,storeRefund:true}}]},
  acting:{name:'临时代理经理',scene:'departure',desc:'经理临时有事无法到店，询问你是否愿意额外多上一整个8小时班，并负责这一班的整体门店运营。',choices:[
-  {label:'接受代理',effects:{extraShift:true,hours:8,energy:-4,stress:4,management:15,trust:2},follow:'acting'},
+  {label:'接受代理',effects:{extraShift:true,hours:8,energy:-4,stress:2,management:10,trust:1},follow:'acting'},
   {label:'婉拒',effects:{}}]},
  praise:{name:'团队表现优秀 / 门店受到表扬',scene:'tip',desc:'这个月门店整体运营表现很好，顾客反馈良好、团队合作顺畅。经理特别表扬你的带班表现。',reward:{bonus:150,management:10,service:5,trust:1,happiness:3,stress:-2}}
 };
@@ -34,9 +34,9 @@ function shiftApply(r,phase,effects){if(r.applied.includes(phase))return false;c
  if(e.storeCost){c.storeLedger??=[];c.storeLedger.push({cycle:r.cycle,eventId:r.eventId,phase,kind:'customerRefund',amount:e.storeCost});}
  r.receipts.push({phase,effects:e});return true}
 function generateShiftFollow(r,type,random=Math.random){if(r.followGenerated)return r.follow;const level=r.managementLevelAtChoice??shiftLevel(),prob=type==='acting'?.4+level*.1:.5,success=random()<prob;let effects,title,desc;
- if(type==='schedule'){title=success?'协调成功':'协调失败';desc=success?'两位员工成功找到替班人，排班问题解决。':'两位员工没有找到替班人，你必须亲自补上完整8小时班。';effects=success?{energy:1,stress:-1,management:5}:{extraShift:true,hours:8,energy:-5,stress:5,management:2};}
- if(type==='complaint'){title=success?'处理成功':'处理失败';desc=success?'员工成功安抚顾客，并重新制作了正确饮品。':'员工未能解决问题，顾客更加不满，你最终亲自介入。';effects=success?{management:6,service:5,stress:1}:{stress:3,service:8,management:5};}
- if(type==='acting'){title=success?'代理非常成功':'忙不过来';desc=success?'门店运行顺利，你成功处理了高峰与各种问题。':'客流和事务超出应对能力，出现较多投诉和现场混乱。';effects=success?{bonus:100,management:10,service:5,trust:1,stress:-1}:{management:-5,service:-5,trust:-1,stress:3,energy:-2};}
+ if(type==='schedule'){title=success?'协调成功':'协调失败';desc=success?'两位员工成功找到替班人，排班问题解决。':'两位员工没有找到替班人，你必须亲自补上完整8小时班。';effects=success?{energy:1,stress:-1,management:5}:{extraShift:true,hours:8,energy:-4,stress:2,management:3,trust:1};}
+ if(type==='complaint'){title=success?'处理成功':'处理失败';desc=success?'员工成功安抚顾客，并重新制作了正确饮品。':'员工未能解决问题，顾客更加不满，你最终亲自介入。';effects=success?{management:6,service:6}:{trust:-1,stress:1,service:3};}
+ if(type==='acting'){title=success?'代理非常成功':'忙不过来';desc=success?'门店运行顺利，你成功处理了高峰与各种问题。':'客流和事务超出应对能力，出现较多投诉和现场混乱。';effects=success?{bonus:100}:{trust:-1};}
  r.followGenerated=true;r.follow={type,success,probability:prob,managementLevel:level,title,desc,effects:shiftEffects(effects,r.calendarMonth,r.quoteContext),settled:false};r.status='followup';return r.follow}
 function shiftChangeRows(e){const rows=[],sign=n=>(n>0?'+':'')+n;for(const [key,label,unit]of [['wages','工资','$'],['tips','额外小费','$'],['bonus','奖金','$'],['hours','工作时间','h'],['energy','能量',''],['stress','压力',''],['management','Management XP',' XP'],['service','Service XP',' XP'],['trust','经理好感',''],['happiness','幸福','']]){const n=e[key];if(!n)continue;rows.push([label,unit==='$'?(n>0?'+':'')+priceText(n):sign(n)+unit]);if(key==='hours')rows.push(['自由时间',sign(-n)+'h']);}if(e.storeCost)rows.push(['门店退款成本',priceText(e.storeCost)+'（门店承担）']);return rows}
 function shiftRowsMarkup(e){return careerEffectsMarkup(e)}
@@ -65,3 +65,4 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-shift-choi
 CAREERS.push({name:SHIFT_ROLE,edu:'highschool',minExp:1,salary:44000,domain:'hospitality',weeklyHours:40,skill:'咖啡制作'});
 
 const shiftIncomeMarkupBefore=coffeeIncomeMarkup;coffeeIncomeMarkup=function(x,heading){if(x.role!=='shiftLead')return shiftIncomeMarkupBefore(x,heading);let html=shiftIncomeMarkupBefore(x,heading);return html.replace('<th>职业事件额外工资</th><td>'+priceText(x.extraWages)+'</td>', '<th>职业事件额外工资</th><td>'+priceText(x.eventWages)+'</td>').replace('<tr><th>职业事件额外小费</th>', '<tr><th>职业事件奖金</th><td>'+priceText(x.eventBonus)+'</td></tr><tr><th>职业事件额外小费</th>')};
+
