@@ -6,6 +6,7 @@ function paymentFor(balance,apr,months){const r=apr/12;return r?balance*r/(1-Mat
 const INSURANCE={health:['健康保险',220],life:['人寿保险',35],auto:['汽车保险',165],pet:['宠物保险',45],income:['收入保障',65]};
 function inferDomain(job){if(/护士|护理/.test(job||''))return'nursing';if(/教师/.test(job||''))return'education';if(/机械工程/.test(job||''))return'engineering';if(/软件/.test(job||''))return'computing';if(/汽车技师/.test(job||''))return'automotive';if(/剪辑/.test(job||''))return'film';if(/设计/.test(job||''))return'design';if(/主厨|餐厅/.test(job||''))return'hospitality';return'general'}
 function loanDebtName(l){return(l.type==='学生贷款'?'学生贷款':'银行贷款')+' · '+l.id}
+function livingBaseAmount(s=state){return Math.max(0,(s.baseLiving||0)-(s.livingBudgetVersion===1&&s.carOwned?150*(s.cpiIndex||100)/100:0))}
 function syncFinance(){
  if(!state)return;const s=state;s.assets??=[];s.debt??={};s.loans??=[];s.insurance??={};s.pets??=[];s.retirement??={k401Balance:0,iraBalance:0,brokerageBalance:0,k401Rate:0};
  if(s.schemaVersion!==247){
@@ -36,7 +37,7 @@ function syncFinance(){
  s.debtSchedules??={};for(const [k,v]of Object.entries(s.debt)){if(!represented.has(k)&&v>0&&!s.debtSchedules[k])s.debtSchedules[k]={apr:.055,monthsLeft:60,payment:paymentFor(v,.055,60)};}
  const loanMonthly=typeof loanBudgetTotal==='function'?loanBudgetTotal():s.loans.reduce((n,l)=>n+(l.balance>0?Math.min(l.monthsLeft===1?l.balance*(1+l.apr/12):l.payment,l.balance*(1+l.apr/12)):0),0)+Object.entries(s.debtSchedules).reduce((n,[k,l])=>n+(s.debt[k]>0?Math.min(l.monthsLeft===1?s.debt[k]*(1+l.apr/12):l.payment,s.debt[k]*(1+l.apr/12)):0),0);
  const premiums=Object.values(s.insurance).reduce((n,i)=>n+(i.active?i.monthly:0),0);
- s.expenses=roundCash(s.baseLiving+(s.housingCost||0)+petMonthly()+premiums+(s.carRunningCost||0)+loanMonthly);s._computedExpenses=s.expenses;
+ s.expenses=roundCash(livingBaseAmount(s)+(s.housingCost||0)+petMonthly()+premiums+(s.carRunningCost||0)+loanMonthly);s._computedExpenses=s.expenses;
  s.passive=roundCash(s.assets.reduce((n,a)=>n+(a.cf||0),0)+(typeof expectedInvestmentIncome==='function'?expectedInvestmentIncome():0));s.cash=roundCash(s.cash);
 }
 calcMetrics=function(){
