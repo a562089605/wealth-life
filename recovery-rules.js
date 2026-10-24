@@ -19,9 +19,9 @@ function payTreatment(s,id){const t=s.treatments?.[id];if(!t)throw Error('Missin
 }
 function isRecoveryMonth(s){return Object.values(s.treatments||{}).some(t=>t.paid&&t.status!=='completed'&&t.startMonth===s.month)}
 function recoveryMonthEffects(s){return isRecoveryMonth(s)?{wages:false,tips:false,bonus:false,workXP:false,workTenure:false,studyProgress:false,tuition:false,ordinaryFreeHours:0,necessaryBills:true,eligibleDividends:true}:null}
-function completeTreatment(s,{id,completedMonth,pressureCap,monthEffectsComplete}){
+function completeTreatment(s,{id,completedMonth,pressureCap=40,monthEffectsComplete}){
  const t=s.treatments?.[id];if(!t)throw Error('Missing treatment');if(t.status==='completed')return false;
- if(!monthEffectsComplete||!t.paid||completedMonth!==t.startMonth||![39,40].includes(pressureCap))throw Error('Recovery completion requirements not met');
+ if(!monthEffectsComplete||!t.paid||completedMonth!==t.startMonth||pressureCap!==40)throw Error('Recovery completion requirements not met');
  // Execute after this month's ordinary state penalties, never before.
  s.health=30;s.energy=Math.max(s.energy,60);s.stress=Math.min(s.stress,pressureCap);
  t.status='completed';t.completedMonth=completedMonth;return true;
