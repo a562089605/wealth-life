@@ -6,7 +6,7 @@ function openHealthTreatment(){if(state.requiredIncident){openRequiredIncident()
  if(t.paid){continueTreatment(t);return true;}
  showEvent('医疗与康复',t.quote.kind==='special'?'严重健康问题':'整月康复安排','完整疗程包含1个月康复，只收费一次。费用按本次触发时的有效保单锁定，之后投保不追溯赔付。',[
  ['治疗与康复总费用',priceText(t.quote.gross)],['保险承担',priceText(t.quote.gross-t.quote.due)],['本次自付',priceText(t.quote.due)],['支付后现金',priceText(state.cash-t.quote.due)],['康复月份','第'+(Math.floor(t.startMonth/12)+1)+'年·第'+(t.startMonth%12+1)+'月']],
- [['确认支付并安排康复',()=>{const result=payTreatment(state,t.id);if(!result.paid){openHealthTreatment();return;}save();continueTreatment(t);},true,state.cash<t.quote.due],['筹措治疗费用',()=>openBankLoan(Math.max(1,Math.ceil(t.quote.due-state.cash)),{after:openHealthTreatment}),false]]);$('eventClose').hidden=true;return true;}
+ [['确认支付并安排康复',()=>{const result=payTreatment(state,t.id);if(!result.paid){openHealthTreatment();return;}save();continueTreatment(t);},true,state.cash<t.quote.due],['查看资金补救',()=>showFundingOptions(t.quote.due,openHealthTreatment),false],['筹措治疗费用',()=>openBankLoan(Math.max(1,Math.ceil(t.quote.due-state.cash)),{after:openHealthTreatment}),false]]);$('eventClose').hidden=true;return true;}
 function continueTreatment(t){
  if(t.startMonth>state.month){const prior=timeReturnPending()?state.forcedTimeReturn:null;state.forcedTimeReturn={month:state.month,id:prior?.id||t.id,debt:prior?.debt||0,reasons:[...(prior?.reasons||[]),'健康过低，治疗已安排']};save();
  if(unfinishedCareerGroup()){const r=shiftRecord();if(r?.follow&&!r.follow.settled)openShiftFollow();else if(r?.status==='pending')openShiftEvent();else openCoffeeCareerEvent();return;}openForcedTimeReturn();return;}
@@ -20,6 +20,6 @@ const healthFinishBefore=finish;finish=function(){if(unfinishedTreatment()||heal
 const healthOpenBefore=openGame;openGame=function(){const result=healthOpenBefore();if(unfinishedTreatment()||healthTreatmentKind(state.health))openHealthTreatment();return result;};
 // Critical health intercepts the next event display after its effects were saved.
 // The existing event record remains intact; treatment does not reroll its result.
-const healthShowBefore=showEvent;showEvent=function(...args){if(state&&state.health<=15&&!state.requiredIncident&&!unfinishedTreatment())return openHealthTreatment();return healthShowBefore(...args);};
+const healthShowBefore=showEvent;showEvent=function(...args){if(state&&state.health<=15&&!['资金处理','破产确认','宠物托付','人生结束'].includes(args[0])&&!state.requiredIncident&&!unfinishedTreatment())return openHealthTreatment();return healthShowBefore(...args);};
 const recoveryWorkBefore=openWorkAdjustment;openWorkAdjustment=function(){if(isRecoveryMonth(state))return openHealthTreatment();return recoveryWorkBefore();};
 const recoveryEducationBefore=openEducation;openEducation=function(){if(isRecoveryMonth(state))return openHealthTreatment();return recoveryEducationBefore();};
