@@ -10,20 +10,20 @@ function completeMonthlyStep(index){if(state.turn?.index===index&&document.getEl
 function monthSelection(name){return state.monthChoices?.month===state.month?state.monthChoices[name]:null}
 function setMonthSelection(name,value){if(state.monthChoices?.month!==state.month)state.monthChoices={month:state.month};state.monthChoices[name]=value}
 function fundShortfall(amount,after){openBankLoan(Math.max(1,Math.ceil(amount-state.cash)),{after})}
-const V26_STATS={health:'健康',energy:'精力',mood:'心情',happiness:'幸福',stress:'压力',social:'社交'};
+const V26_STATS={health:'健康',energy:'精力',happiness:'幸福',stress:'压力',social:'社交'};
 const V26_LIFE=[
- {name:'运动 / 户外',cost:25,desc:'散步、轻运动或户外活动。',effects:{health:4,energy:-3,mood:4,happiness:2,stress:-6}},
- {name:'宅家休息',cost:45,desc:'留出时间休息，吃点喜欢的食物。',effects:{energy:8,mood:5,happiness:4,stress:-6}},
- {name:'朋友聚餐',cost:85,desc:'维持友情，也要付出精力。',effects:{energy:-2,mood:5,happiness:7,social:6}},
- {name:'兴趣爱好',cost:120,desc:'为自己喜欢的事情留出时间。',effects:{energy:3,mood:6,happiness:8,stress:-5}},
- {name:'周末短途旅行',cost:380,desc:'换个环境放松。',effects:{energy:6,mood:8,happiness:14,stress:-8}},
- {name:'演唱会 / 主题乐园',cost:210,desc:'享受体验，但会消耗精力。',effects:{energy:-6,mood:7,happiness:11,stress:-4}},
- {name:'升级手机',cost:950,desc:'新鲜感带来短期快乐。',effects:{mood:3,happiness:7}},
- {name:'品质餐厅',cost:150,desc:'和重要的人吃一顿更好的晚餐。',effects:{energy:-2,mood:5,happiness:8,social:6}},
- {name:'本月简单生活',cost:0,desc:'不额外消费，但缺少休息与娱乐。',effects:{energy:-1,mood:-2,happiness:-3}}
+ {name:'运动 / 户外',cost:25,desc:'散步、轻运动或户外活动。',effects:{health:4,energy:-3,happiness:2,stress:-6}},
+ {name:'宅家休息',cost:45,desc:'留出时间休息，吃点喜欢的食物。',effects:{energy:8,happiness:4,stress:-6}},
+ {name:'朋友聚餐',cost:85,desc:'维持友情，也要付出精力。',effects:{energy:-2,happiness:7,social:6}},
+ {name:'兴趣爱好',cost:120,desc:'为自己喜欢的事情留出时间。',effects:{energy:3,happiness:8,stress:-5}},
+ {name:'周末短途旅行',cost:380,desc:'换个环境放松。',effects:{energy:6,happiness:14,stress:-8}},
+ {name:'演唱会 / 主题乐园',cost:210,desc:'享受体验，但会消耗精力。',effects:{energy:-6,happiness:11,stress:-4}},
+ {name:'升级手机',cost:950,desc:'新鲜感带来短期快乐。',effects:{happiness:7}},
+ {name:'品质餐厅',cost:150,desc:'和重要的人吃一顿更好的晚餐。',effects:{energy:-2,happiness:8,social:6}},
+ {name:'本月简单生活',cost:0,desc:'不额外消费，但缺少休息与娱乐。',effects:{energy:-1,happiness:-3}}
 ];
 function effectText(e){return Object.entries(e).map(([k,v])=>V26_STATS[k]+' '+(v>0?'+':'')+v).join(' · ')}
-function statTable(){return '<div class="wl-stat-reference"><b>当前状态</b><table><tbody>'+Object.entries(V26_STATS).map(([k,n])=>'<tr><th>'+n+'</th><td>'+Math.round(state[k]??0)+' / 100</td></tr>').join('')+'</tbody></table><small>各项满分100，压力越低越好。幸福低于50，或健康≤20、精力≤15、心情≤20、社交≤10时，进入3个月补救期；按提示恢复状态后可继续。</small></div>'}
+function statTable(){return '<div class="wl-stat-reference"><b>当前状态</b><table><tbody>'+Object.entries(V26_STATS).map(([k,n])=>'<tr><th>'+n+'</th><td>'+Math.round(state[k]??0)+' / 100</td></tr>').join('')+'</tbody></table><small>各项满分100，压力越低越好。出门要求：健康≥30、能量≥20、幸福度≥20、压力＜80，并有剩余时间。低健康按医疗康复处理。</small></div>'}
 function chooseLife(i){const o=V26_LIFE[i];if(monthSelection('life'))return;if(!spendConfirmed('lifestyle',o.cost,{choice:o.name}))return;for(const[k,v]of Object.entries(o.effects))state[k]=Math.max(k==='stress'||k==='social'?0:0,Math.min(100,(state[k]||0)+v));state.lifetimeFunSpend=(state.lifetimeFunSpend||0)+o.cost;setMonthSelection('life',o.name);completeMonthlyStep(3)}
 function lifeMarkup(){const chosen=monthSelection('life');return (chosen?'<div class="wl-panel"><h3>本月已安排：'+chosen+'</h3><p>费用与状态已生效，不会重复执行。</p><button class="primary" data-v26="lifeContinue">继续下一步 →</button></div>':'<div class="wl-mini-grid">'+V26_LIFE.map((o,i)=>'<button class="wl-choice-card" data-v26="life" data-i="'+i+'" aria-label="确认 '+o.name+'" '+(state.cash<o.cost?'disabled':'')+'><strong>'+o.name+'</strong><b>'+money(o.cost)+'</b><small>'+effectText(o.effects)+'</small><small>'+o.desc+'</small><span>确认安排 →</span></button>').join('')+'</div>')+statTable()}
 const housingOptionsBeforeV26=housingOptions;housingOptions=function(){const fees={family:0,shared:350,studio:500,rent1:700},infl=(state.cpiIndex||100)/100;return housingOptionsBeforeV26().map(h=>[h[0],h[1],Math.round(fees[h[3]]*infl),h[3]])};
@@ -74,7 +74,7 @@ const V26_OFFERS=[
  {id:'editing',name:'线上剪辑服务',cost:1400,cf:95,chance:.75,effects:{energy:-5},desc:'搭建服务和宣传渠道，客户获取有失败风险。'},
  {id:'stall',name:'周末社区摊位',cost:150,reward:300,chance:.7,effects:{energy:-6,social:3},desc:'支付摊位与原料费；客流不足可能无法收回成本。'},
  {id:'rental',name:'二手器材出租',cost:800,cf:40,chance:.8,effects:{stress:2},desc:'设备和出租渠道前期投入，后续净收入已简化扣除维护。'},
- {id:'volunteer',name:'社区公益活动',cost:25,reward:0,chance:1,effects:{mood:5,social:6,energy:-3},desc:'支付交通和物资费用，不产生金融回报。'}
+ {id:'volunteer',name:'社区公益活动',cost:25,reward:0,chance:1,effects:{happiness:5,social:6,energy:-3},desc:'支付交通和物资费用，不产生金融回报。'}
 ];
 function monthlyOffers(){if(state.monthlyOpportunities?.month===state.month)return state.monthlyOpportunities;state.offerSeed??=Math.floor(Math.random()*1000000);let x=(state.offerSeed+state.month*7919)>>>0;const rand=()=>{x=(1664525*x+1013904223)>>>0;return x/4294967296},pool=[...V26_OFFERS];for(let i=pool.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}state.monthlyOpportunities={month:state.month,ids:pool.slice(0,4).map(o=>o.id),resolved:null};save();return state.monthlyOpportunities}
 function opportunityMarkup(){const offer=monthlyOffers();if(offer.resolved)return '<div class="wl-panel"><h3>本月已处理：'+offer.resolved+'</h3><p>每月最多选择一个机会。刷新与返回不会重置结果。</p><button data-v26="opportunityContinue" class="primary">继续月度确认 →</button></div>';return '<div class="wl-mini-grid wl-three">'+offer.ids.map(id=>{const o=V26_OFFERS.find(o=>o.id===id);return '<button class="wl-choice-card" data-v26="opportunity" data-key="'+id+'" aria-label="确认机会 '+o.name+'" '+(state.cash<o.cost?'disabled':'')+'><strong>'+o.name+'</strong><b>投入 '+money(o.cost)+'</b><small>'+o.desc+'</small><small>成功率 '+Math.round((typeof opportunityChance==='function'?opportunityChance(o):o.chance)*100)+'%<br>'+(o.cf?'成功后净收入 '+money(o.cf)+'/月':'成功后收入 '+money(o.reward))+'<br>失败可能损失 '+money(o.chance<1?o.cost:0)+'<br>'+effectText(o.effects)+'</small><span>确认选择 →</span></button>'}).join('')+'</div><button data-v26="opportunitySkip" class="wl-secondary">四个都不选，保留现金 →</button>'}
@@ -166,7 +166,7 @@ $('hobbyBtn').onclick=()=>{
   if(monthSelection('hobby')||state.cash<cost)return;
   if(!spendConfirmed('hobbyPractice',cost,{hobby:name}))return;
   state.hobbyXP??={};state.hobbies??={};state.hobbyXP[name]=(state.hobbyXP[name]||0)+35;state.hobbies[name]=hobbyLevel(name);
-  for(const k of ['happiness','mood'])state[k]=Math.min(100,state[k]+4);state.energy=Math.min(100,state.energy+2);state.stress=Math.max(0,state.stress-4);
+  for(const k of ['happiness'])state[k]=Math.min(100,state[k]+4);state.energy=Math.min(100,state.energy+2);state.stress=Math.max(0,state.stress-4);
   setMonthSelection('hobby',name);safe50();save();
   showEvent('HOBBY','完成一次练习',name+' 获得 35 XP。学历课程继续保留。',[['等级','Lv.'+hobbyLevel(name)],['经验',(hobbyXP(name)%100)+'/100 XP']],[['继续',finish,true]]);
  },false,!!done||state.cash<cost]);
