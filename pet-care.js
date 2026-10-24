@@ -31,3 +31,5 @@ function openPetCare(){if(state.petCareDraft?.month!==state.month)state.petCareD
  [...actions,['确认支付已选护理',()=>payPetCare(draft),true,!!q.blocked||!q.rows?.length||state.cash<q.cost||currentCareerTime().free<q.hours],['资金不足，前往银行',()=>openBankLoan(Math.max(1,Math.ceil((q.cost||0)-state.cash)),{after:openPetCare}),false],['返回',finish,false]]);}
 const careTimeBefore=currentCareerTime;currentCareerTime=function(){const t=careTimeBefore(),used=state.petCareTime?.month===state.month?state.petCareTime.hours:0;return {...t,free:Math.max(0,t.free-used),petCareHours:used};};
 const petsBeforeCare=$('petBtn').onclick;$('petBtn').onclick=()=>{if((state.pets||[]).length)return openPetCare();return petsBeforeCare();};
+
+function necessaryPetCareHours(){if(isRecoveryMonth(state))return 0;const selected=state.petCareDraft?.month===state.month?state.petCareDraft.selections:{},choices={};for(const t of petCareTasks()){if(t.unsupported)return Infinity;choices[t.key]=selected[t.key]||(t.kind==='Annual'?'annual':'pro');}return petCareQuote(state,choices).hours||0;}
