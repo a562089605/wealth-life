@@ -46,8 +46,8 @@ calcMetrics=function(){
  const assetValue=(s.cash||0)+(s.emergencyFund||0)+(rr.k401Balance||0)+(rr.iraBalance||0)+(rr.brokerageBalance||0)+(s.carValue||0)+(s.homeEquity||0)+(s.homeMortgage||0)+(s.assets||[]).reduce((n,a)=>n+(a.kind==='rental'?(a.value||a.purchasePrice||0):(a.value??a.cost??0))+(a.kind==='cd'?(a.interestAccrued||0):0),0);
  const recovery=typeof isRecoveryMonth==='function'&&isRecoveryMonth(s);
  const careerIncome=!recovery&&typeof coffeeMonthlyIncome==='function'?coffeeMonthlyIncome():null;
- const salary=recovery?0:careerIncome?careerIncome.total:(s.job&&!s.retired&&!s.unemployedMonths?s.salary:0),contrib=roundCash(salary*(rr.k401Rate||0)),tax=roundCash(Math.max(0,salary-contrib)*(s.taxRate??.15));
- const recurring=careerIncome?careerIncome.recurring:salary,recurringContrib=roundCash(recurring*(rr.k401Rate||0)),recurringTax=roundCash(Math.max(0,recurring-recurringContrib)*(s.taxRate??.15));
+ const salary=recovery?0:careerIncome?careerIncome.total:(s.job&&!s.retired&&!s.unemployedMonths?s.salary:0),contrib=roundCash(salary*(rr.k401Rate||0)),tax=0;
+ const recurring=careerIncome?careerIncome.recurring:salary,recurringContrib=roundCash(recurring*(rr.k401Rate||0)),recurringTax=0;
  return{careerIncome,debtTotal,assetValue,nw:assetValue-debtTotal,investable:assetValue-(s.carValue||0)-(s.homeEquity||0)-(s.homeMortgage||0)-debtTotal,monthlyExpenses:roundCash(remainingExpenses()+paidThisMonth()),grossSalary:salary,tax,kContrib:contrib,monthlyCF:roundCash(recurring-recurringTax-recurringContrib+(s.passive||0)-remainingExpenses()-paidThisMonth()),remainingExpenses:remainingExpenses(),prepaidExpenses:paidThisMonth(),remainingCF:roundCash(salary-tax-contrib+(s.passive||0)-remainingExpenses())};
 };
 const savedRender=render;
