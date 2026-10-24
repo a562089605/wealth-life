@@ -1,10 +1,13 @@
 // Schedule follow-up integration. Recovery engine must provide isRecoveryMonth(s).
 function timeReturnPending(){return !!state?.forcedTimeReturn&&state.forcedTimeReturn.month===state.month}
 const timeBudgetBefore=currentCareerTime;
-currentCareerTime=function(){const t=timeBudgetBefore();if(!state?.eventTimeLedger)return t;
+currentCareerTime=function(){const t=timeBudgetBefore();if(!state)return t;
  const recovery=typeof isRecoveryMonth==='function'&&isRecoveryMonth(state);
+ if(state.health<30&&!recovery)return {...t,free:0,recoveryPending:true};
+ if(!state.eventTimeLedger&&!recovery)return t;
  const a=allocateEventTimeDebt(state,{month:state.month,baseHours:t.baseFree,recovery:!!recovery});
  return {...t,free:a.blocked||recovery?0:Math.max(0,t.baseFree-t.workHoursDelta-(t.courseHours||0)-a.applied),timeDebtApplied:a.applied||0,timeDebtBlocked:!!a.blocked};};
+
 function explorationReturnReasons(){const reasons=[];
  if(state.energy<20)reasons.push('能量低于20');
  if(state.stress>=80)reasons.push('压力达到80或以上');

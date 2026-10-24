@@ -72,7 +72,7 @@ const workBeforeCoffee=openWorkAdjustment;openWorkAdjustment=function(){workBefo
 const workplaceBeforeCoffee=workplaceEvent;workplaceEvent=function(){if(coffeeWorking()&&townEnabled()){const r=ensureCoffeeMonth();if(r.status==='pending')return openCoffeeCareerEvent()}return workplaceBeforeCoffee()};
 const settleBeforeCoffee=settleMonth;settleMonth=function(){
  const move=state?.town?.movement,validTown=!townEnabled()||(move&&!move.resolved&&move.payExpected&&state.month<move.payExpected);
- if(coffeeWorking()&&validTown&&state.turn?.index===9&&!state.requiredIncident&&!document.querySelector('.event-active')&&!state.gameOver?.final){const r=ensureCoffeeMonth();if(r.status==='pending'){openCoffeeCareerEvent();return}}
+ if(coffeeWorking()&&validTown&&!(typeof isRecoveryMonth==='function'&&isRecoveryMonth(state))&&state.turn?.index===9&&!state.requiredIncident&&!document.querySelector('.event-active')&&!state.gameOver?.final){const r=ensureCoffeeMonth();if(r.status==='pending'){openCoffeeCareerEvent();return}}
  return settleBeforeCoffee();
 };
 const auditBeforeCoffee=showMonthlyAudit;showMonthlyAudit=function(s){auditBeforeCoffee(s);if(s.careerIncome&&$('eventTitle').textContent.includes('结算完成')){$('eventMonth').textContent='第'+s.careerIncome.year+'年 · 第'+s.careerIncome.calendarMonth+'月';$('eventData').insertAdjacentHTML('afterbegin',coffeeIncomeMarkup(s.careerIncome,'咖啡师本月结算'));$('eventData').style.display='block'}};
