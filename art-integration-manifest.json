@@ -374,17 +374,23 @@
         ]
       },
       "resourcePath": "assets/career/intro.webp",
-      "gitBlobSha": "2edf440de0d459ad8b81f7cfc72a49a202d5fe88",
+      "gitBlobSha": "7a1fde42399e0483fbd3c97f40d9d35a3f974739",
       "pageOrEvent": "开局介绍",
       "integrationStatus": "existing-integration",
       "addedInExistingPR": false,
       "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
       "verification": {
-        "bytes": "git-blob-verified",
-        "visualReview": "not-performed-in-this-session",
+        "bytes": "edited-derivative; original archived",
+        "visualReview": "2026-10-25: initial cash $10,000, poster content visually checked",
         "browser": "pending"
       },
-      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源",
+      "derivation": {
+        "change": "用户确认初始现金5000→10000，其余沿原图；保留原稿",
+        "originalGitBlobSha": "2edf440de0d459ad8b81f7cfc72a49a202d5fe88",
+        "originalArchivePath": "assets/archive/intro-before-cash-10000.webp",
+        "method": "image_gen edit; PNG converted to WebP"
+      }
     },
     {
       "id": "learning",

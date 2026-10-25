@@ -13,5 +13,19 @@
 #home.career-preview #coffeeIntro .coffee-intro-choose{position:static;width:100%;min-height:48px;padding:12px;left:auto;bottom:auto;background:#efd16e;font-size:18px}
 
 #home.career-preview #newGame>label:first-of-type{display:none}
-.career-entry-preview-art{position:relative;aspect-ratio:1086/370;overflow:hidden;border-radius:14px}
+.career-entry-preview-art{position:relative;aspect-ratio:1024/1410;overflow:hidden;border-radius:14px}
 #home.career-preview #coffeeIntro .career-entry-preview-art img{position:absolute;left:0;top:0;width:100%;height:auto}
+/* Preview the corrected poster; real controls below it keep the original actions. */
+#home.career-preview #coffeeIntro .coffee-intro-toolbar,
+#home.career-preview #coffeeIntro .coffee-intro-text,
+#home.career-preview #coffeeIntro .coffee-intro-choose,
+#home.career-preview #coffeeIntro .coffee-intro-note,
+#home.career-preview #newGame>label,
+#home.career-preview #lifeGoal,
+#home.career-preview #goalPreview{display:none!important}
+#home.career-preview #coffeeIntro .coffee-intro-board{grid-template-columns:minmax(0,1fr)}
+#home.career-preview #wlJob .coffee-paper-scene{position:static;padding:0}
+#home.career-preview #wlJob .coffee-paper-scene img{max-width:none}
+#home.career-preview #newGame>.btns{display:flex;gap:10px}
+#home.career-preview #start,#home.career-preview #cancel{flex:1;width:auto;min-height:48px!important;font-size:18px}
+#home.career-preview #cancel{background:#f2e9d3;color:#30473c}

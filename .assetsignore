@@ -10,4 +10,5 @@ art-integration-manifest.json
 ART_PACKAGE_README.txt
 CANDIDATE_ART_MANIFEST.json
 assets/candidates/
+assets/archive/
 scripts/

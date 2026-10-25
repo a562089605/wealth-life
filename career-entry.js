@@ -9,6 +9,8 @@
  function preview(){starting=false;$('job').value='barista';$('job').dispatchEvent(new Event('change',{bubbles:true}));const img=$('coffeeIntro')?.querySelector('.coffee-paper-scene img');if(img){const frame=document.createElement('div');frame.className='career-entry-preview-art';img.before(frame);frame.append(img)}setMode('preview');$('coffeeIntro')?.scrollIntoView({block:'start'});}
  const originalMarkup=window.coffeeStartMarkup;
  window.coffeeStartMarkup=function(){return originalMarkup().replace('← 返回存档','← 返回职业选择')};
+ $('start').textContent='选择这个人生';
+ $('cancel').textContent='看看其他职业';
  $('careerPreview').onclick=preview;
  $('careerLoadSaves').onclick=()=>{setMode('saves');buildHome();$('slots').querySelector('button')?.focus()};
  const originalBuild=buildHome;
