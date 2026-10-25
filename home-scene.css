@@ -1,0 +1,14 @@
+.room-screen #game>:not(#roomView):not(.event):not(#eventBackdrop){display:none!important}
+.room-screen #game>.event{display:none}
+.room-screen #game>.event.event-active{display:block}
+#roomView[hidden]{display:none!important}
+#roomView{max-width:720px;margin:0 auto;padding:12px 8px 90px;color:#183e2d}
+#roomView h2,#roomView p{text-align:center}
+.room-art{position:relative}
+.room-art img{display:block;width:100%;height:auto;border-radius:20px}
+.room-hotspots{position:absolute;inset:0}
+.room-hotspots button{position:absolute;padding:0;background:transparent;border:0;border-radius:40px;cursor:pointer;box-shadow:none;min-height:0}
+.room-hotspots button:hover{background:#fff2bd33}
+.room-hotspots button:focus-visible{outline:4px solid #184d3b;outline-offset:2px;background:#fff2bd55}
+.room-tools{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.room-tools button{min-height:44px}
