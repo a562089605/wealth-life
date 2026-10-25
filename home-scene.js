@@ -5,6 +5,7 @@ function renderRoom(){
  const visible=roomVisible()&&!$('game').classList.contains('hidden');
  room.hidden=!visible;document.body.classList.toggle('room-screen',visible);
  if(!visible)return;
+ $('game').classList.remove('v24-running');
  const buttons=[['工作',4,25,16,7,'work'],['学习',26,16,16,6,'learn'],['休息',60,20,15,6,'rest'],['生活',81,16,15,7,'life'],['关系',67,50,16,6,'social'],['财务',13,70,16,6,'finance'],['确认完成，现在出门',26,91,49,8,'leave']];
  room.innerHTML='<h2>我的家 · '+townCalendar()+'</h2><p>先安排本月生活，再出门探索。</p><div class="room-art"><img src="assets/career/home.webp" alt="温暖的家：书桌工作、书架学习、床上休息、厨房生活、沙发关系、茶几财务"><div class="room-hotspots">'+buttons.map(([label,x,y,w,h,action])=>'<button aria-label="'+label+'" title="'+label+'" data-room="'+action+'" style="left:'+x+'%;top:'+y+'%;width:'+w+'%;height:'+h+'%"></button>').join('')+'</div></div><div class="room-tools"><button data-room="housing">住房</button><button data-room="bills">本月必要安排</button><button data-room="insurance">保险</button><button data-room="pets">宠物</button></div>';
 }
