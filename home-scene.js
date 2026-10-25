@@ -22,7 +22,7 @@ finish=function(){const result=roomFinishBefore();if(roomVisible())render();retu
 document.addEventListener('click',e=>{
  const action=e.target.closest('[data-room]')?.dataset.room;if(!action)return;
  if(action==='work')return openWorkAdjustment();
- if(action==='learn')return showEvent('学习与技能','安排学习','选择学历、职业课程或兴趣练习。',[],[['学历学习',openEducation,true],['职业课程',()=>{showEvent('职业课程','学习与成长','选择课程前查看费用与课时。',[],[['返回房屋',townHome,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block'},false],['兴趣练习',()=>$('hobbyBtn').click(),false],['返回房屋',townHome,false]]);
+ if(action==='learn')return openLearning();
  if(action==='rest')return openExtraRest();
  if(action==='life')return $('lifestyleBtn').click();
  if(action==='social')return $('networkBtn').click();

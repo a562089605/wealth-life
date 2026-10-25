@@ -12,6 +12,9 @@
 .room-hotspots button:focus-visible{outline:4px solid #184d3b;outline-offset:2px;background:#fff2bd55}
 .room-tools{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
 .room-tools button{min-height:44px}
+.learning-art-time{position:absolute;left:60%;top:74.8%;width:11%;height:4.2%;display:flex;align-items:center;justify-content:center;background:#fff3d6;color:#163e2d;font-weight:800;font-size:clamp(12px,3.8vw,25px)}
+.course-art-window{position:relative;width:100%;aspect-ratio:640/224;overflow:hidden;border-radius:18px;margin-bottom:16px}
+.course-art-window img{position:absolute;width:187.344%;max-width:none!important;height:auto;left:-43.75%;top:-120.536%}
 .hobby-art-menu{position:relative;max-width:600px;margin:auto}
 .hobby-art-menu img{display:block;width:100%;height:auto;border-radius:16px}
 .hobby-art-menu button{position:absolute;background:transparent;border:0;box-shadow:none;min-height:0;padding:0;border-radius:20px;cursor:pointer}
