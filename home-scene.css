@@ -12,6 +12,9 @@
 .room-hotspots button:focus-visible{outline:4px solid #184d3b;outline-offset:2px;background:#fff2bd55}
 .room-tools{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
 .room-tools button{min-height:44px}
+.room-pet-label{display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:#fff5df;color:#183e2d;border:2px solid #7c5935;border-radius:40px;font-weight:800;font-size:clamp(14px,3.5vw,23px)}
+.room-check{position:absolute;right:-12%;top:5%;background:#f6ffe9;color:#27613b;border:2px solid #27613b;border-radius:50%;width:1.4em;height:1.4em;line-height:1.2;font-size:clamp(14px,3.5vw,24px);font-weight:900}
+.room-hotspots button[data-room="leave"]:disabled{background:#f8f0dcaa;cursor:not-allowed}
 .health-art-window{position:relative;width:100%;overflow:hidden;border-radius:18px;margin-bottom:16px}
 .health-art-window img{position:absolute;max-width:none!important;height:auto}
 .associate-art-window{position:relative;width:100%;aspect-ratio:640/170;overflow:hidden;border-radius:18px;margin-bottom:16px}

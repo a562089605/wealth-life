@@ -5,6 +5,8 @@
 现有草稿PR：https://github.com/a562089605/wealth-life/pull/1
 当前开发检查点：V28.3-mapcards1（以远端该分支最新提交为准）。
 
+最新本地增量先读 `progress/room-arrangements-2026-10-25.md`：直接进房屋、生活收拢子项、七项按月确认打勾门槛。另有职业预览图10000与按钮核对见 `docs/confirmed/opening-review-2026-10-25.md`。这些本地提交尚未推送，不能用远端旧文件覆盖。
+
 本地后续增量：先读 `progress/home-month-end-2026-10-25.md`，记录0h居家月结修复、测试及未覆盖项；原地图检查点保留。此增量尚未推送远端，核对本地提交和远端差异，不覆盖。
 
 先fetch核对最新，不用main或旧ZIP覆盖，不硬重置本地修改。按顺序读取：

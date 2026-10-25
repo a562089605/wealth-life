@@ -33,8 +33,9 @@ function renderRoom(){
  room.hidden=!visible;document.body.classList.toggle('room-screen',visible);
  if(!visible)return;
  $('game').classList.remove('v24-running');
- const buttons=[['工作',4,25,16,7,'work'],['学习',26,16,16,6,'learn'],['休息',60,20,15,6,'rest'],['生活',81,16,15,7,'life'],['关系',67,50,16,6,'social'],['财务',13,70,16,6,'finance'],['确认完成，现在出门',26,91,49,8,'leave']];
- room.innerHTML='<h2>我的家 · '+townCalendar()+'</h2><p>先安排本月生活，再出门探索。</p><div class="room-art"><img src="assets/career/home.webp" alt="温暖的家：书桌工作、书架学习、床上休息、厨房生活、沙发关系、茶几财务"><div class="room-hotspots">'+buttons.map(([label,x,y,w,h,action])=>'<button aria-label="'+label+'" title="'+label+'" data-room="'+action+'" style="left:'+x+'%;top:'+y+'%;width:'+w+'%;height:'+h+'%"></button>').join('')+'</div></div><div class="room-tools"><button data-room="housing">住房</button><button data-room="bills">本月必要安排</button><button data-room="insurance">保险</button><button data-room="pets">宠物</button></div>';
+ const buttons=[['工作',4,25,16,7,'work'],['学习',26,16,16,6,'learn'],['休息',60,20,15,6,'rest'],['生活',81,16,15,7,'life'],['关系',67,50,16,6,'social'],['财务',13,70,16,6,'finance'],['宠物',47,78,19,6,'pets'],['确认完成，现在出门',26,91,49,8,'leave']];
+ room.innerHTML='<h2>我的家 · '+townCalendar()+'</h2><p>逐项打开并确认本月安排，完成后再出门。</p><div class="room-art"><img src="assets/career/home.webp" alt="温暖的家：书桌工作、书架学习、床上休息、厨房生活、沙发关系、茶几财务"><div class="room-hotspots">'+buttons.map(([label,x,y,w,h,action])=>'<button aria-label="'+label+'" title="'+label+'" data-room="'+action+'" style="left:'+x+'%;top:'+y+'%;width:'+w+'%;height:'+h+'%">'+(action==='pets'?'<span class="room-pet-label">宠物</span>':'')+'</button>').join('')+'</div></div>';
+ if(typeof renderRoomChecks==='function')renderRoomChecks();
 }
 townHome=function(){townVisible=false;townState().screen='home';$('game').classList.remove('v24-running');clearModals();save();render()};
 townStart=function(){state.townMode=true;townState();townHome()};
@@ -48,6 +49,7 @@ const roomFinishBefore=finish;
 finish=function(){const result=roomFinishBefore();if(homeMonthEndCompleted()&&!document.querySelector('.event-active')){resolveTownMove();townHome()}if(roomVisible())render();return result};
 document.addEventListener('click',e=>{
  const action=e.target.closest('[data-room]')?.dataset.room;if(!action)return;
+ if(typeof roomOpenArrangement==='function'&&['work','learn','rest','life','social','finance','pets'].includes(action))return roomOpenArrangement(action);
  if(action==='work')return openWorkAdjustment();
  if(action==='learn')return openLearning();
  if(action==='rest')return openExtraRest();
@@ -59,6 +61,7 @@ document.addEventListener('click',e=>{
  if(action==='insurance')return openInsurance();
  if(action==='pets')return $('petBtn').click();
  if(action==='leave'){
+  if(typeof roomArrangementsReady==='function'&&!roomArrangementsReady())return openRoomChecklist();
   if(currentCareerTime().free<=0)return openHomeMonthEnd();
   if(necessaryBills().length)return openNecessaryBills();
   if(explorationReturnReasons().length)return showEvent('暂时不能出门','先在房屋调整状态',explorationReturnReasons().join('；'),[],[['返回房屋',townHome,true]]);

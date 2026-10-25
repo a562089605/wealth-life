@@ -21,7 +21,7 @@
   let target=requestedSlot&&!load(requestedSlot)?requestedSlot:null;
   if(!target){for(let i=1;i<=slotCount();i++)if(!load(i)){target=i;break}}
   if(!target){target=slotCount()+1;setSlotCount(target)}
-  slot=target;requestedSlot=null;mode='playing';originalStart();
+  slot=target;requestedSlot=null;mode='playing';originalStart();townStart();
  };
  $('cancel').onclick=selection;
  const originalHome=home;home=function(){originalHome();requestedSlot=null;selection()};
