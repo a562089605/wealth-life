@@ -64,7 +64,7 @@ with sync_playwright() as p:
  ctx=b.new_context();page=ctx.new_page();page.goto('http://127.0.0.1:8765',wait_until='networkidle')
  page.evaluate('navigator.serviceWorker.ready');page.reload(wait_until='networkidle')
  page.wait_for_function('navigator.serviceWorker.controller!==null')
- assert page.evaluate('caches.keys()')==['wealth-life-v28.3-room-layout3']
+ assert page.evaluate('caches.keys()')==['wealth-life-v28.3-room-layout4']
  ctx.set_offline(True);page.reload(wait_until='networkidle')
  (page.locator('#careerPreview') if page.locator('#careerPreview').is_visible() else page.get_by_role('button',name='存档 1 · 新游戏',exact=True)).click();page.locator('#job').select_option('barista')
  assert page.locator('#coffeeIntro img').evaluate('(x)=>x.complete&&x.naturalWidth>0')

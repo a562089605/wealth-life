@@ -48,6 +48,28 @@ body.room-screen:before{display:none}
 .room-hud-feelings i b{display:block;height:100%;background:var(--room-state-color);border-radius:4px}
 .room-hud-time{display:flex;justify-content:space-between;align-items:center;min-height:40px;padding:8px 12px;background:#e7e9d2;border:1px solid #d4d7b8;box-shadow:none;border-radius:10px;color:#3f5940}
 .room-hud-time span{font-size:12px}.room-hud-time strong{font-size:18px}.room-hud-time small{font-size:12px;font-weight:400}
+/* Warm paper and soft pigment shapes echo the illustrated room. */
+body.room-screen,.room-screen #roomView{background-color:#f7ebd2}
+.room-hud{isolation:isolate;background:radial-gradient(ellipse at 0 0,#e3d6ab70,transparent 45%),radial-gradient(ellipse at 100% 100%,#dcb28d38,transparent 50%),#f7ebd2}
+.room-hud:before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.24;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.3' filter='url(%23p)'/%3E%3C/svg%3E");mix-blend-mode:multiply}
+.room-hud:after{content:'';position:absolute;left:0;right:0;bottom:-5px;height:10px;background:linear-gradient(#f7ebd2,transparent);pointer-events:none;z-index:3}
+.room-hud-top{color:#56624a;font-weight:500}
+.room-hud-top>strong{font-family:Georgia,'Songti SC','STSong',serif;font-size:24px;font-weight:700;letter-spacing:.12em;color:#344f3b}
+.room-hud-top button{background:#ece1c9;border:1px solid #d8c7a6;border-radius:13px 10px 14px 11px;color:#526346}
+.room-hud-profile{gap:8px;padding:0;color:#7f735c}
+.room-hud-profile span:first-child{padding:5px 12px;background:#e2e4ce;border:1px solid #c7ceb1;border-radius:7px 11px 8px 10px;color:#456047;letter-spacing:.04em;font-size:12px}
+.room-hud-profile span+span{border:0;padding-left:2px}
+.room-hud-stats{gap:12px}
+.room-hud-stats button{position:relative;text-align:left;min-height:74px;padding:12px 16px;background:#fff8e68c;border:1px solid #d8c6a3;border-radius:16px 21px 15px 19px;box-shadow:inset 0 1px 0 #fff8e4,0 2px 0 #c7b28a17}
+.room-hud-stats button+button{border:1px solid #d8c6a3;background:#e5e7d694;border-radius:20px 15px 21px 16px}
+.room-hud-stats span{color:#7f785f;margin-bottom:3px}
+.room-hud-stats strong{font-family:Georgia,'Songti SC',serif;font-weight:600;letter-spacing:-.03em;font-size:clamp(23px,6vw,30px)}
+.room-hud-finance{border-bottom:1px dashed #cdbb97;padding-bottom:10px;gap:8px}
+.room-hud-finance button{color:#8a7b60}.room-hud-finance strong{font-weight:600;color:#655c43}
+.room-hud-feelings button{padding:6px 0}.room-hud-feelings strong{font-family:Georgia,serif;font-weight:600;font-size:23px}
+.room-hud-feelings i{height:5px;background:#e3d5b8;border-radius:60% 25% 35% 40%}
+.room-hud-time{background:#dfe3ca90;border-color:#c6ceb0;border-radius:13px 8px 12px 9px;box-shadow:inset 0 1px 0 #fff9df80;padding:10px 13px}
+.room-hud-time strong{font-family:Georgia,serif;font-size:21px;font-weight:600}
 .health-art-window{position:relative;width:100%;overflow:hidden;border-radius:18px;margin-bottom:16px}
 .health-art-window img{position:absolute;max-width:none!important;height:auto}
 .associate-art-window{position:relative;width:100%;aspect-ratio:640/170;overflow:hidden;border-radius:18px;margin-bottom:16px}
