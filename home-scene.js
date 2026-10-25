@@ -2,7 +2,12 @@
 function roomVisible(){return townEnabled()&&!townPending()&&state.town?.screen==='home'}
 function roomStatusMarkup(){
  const value=(id,fallback)=>$(id)?.textContent||fallback;
- return '<div class="room-hud"><div class="room-hud-top"><button data-room="menu" aria-label="打开菜单">☰</button><span>'+townCalendar()+'</span></div><div class="room-hud-stats"><button data-room="assets" aria-label="查看投资资产"><span>资产</span><strong>'+value('wlInvestValue','$0')+'</strong></button><button data-room="cash" aria-label="查看现金与收支"><span>现金</span><strong>'+value('wlCashValue','$'+Number(state.cash||0).toLocaleString())+'</strong></button><button data-room="happiness" aria-label="查看身体状态"><span>幸福度</span><strong>'+value('wlHappyValue',Math.round(state.happiness||0))+'</strong></button></div></div>';
+ const metric=calcMetrics(),time=currentCareerTime();
+ const moneyButton=(action,label,amount)=>'<button data-room="'+action+'"><span>'+label+'</span><strong>'+amount+'</strong></button>';
+ const feelings=[['happiness','幸福度','#b87e49'],['health','健康','#658351'],['energy','能量','#b28d35'],['stress','压力','#a36e62']].map(([key,label,color])=>{
+  const n=Math.round(state[key]||0);return '<button data-room="'+key+'" aria-label="'+(key==='happiness'?'查看身体状态':'查看'+label)+'"><span>'+label+'</span><strong>'+n+'<small> / 100</small></strong><i style="--room-state-color:'+color+'"><b style="width:'+Math.max(0,Math.min(100,n))+'%"></b></i></button>';
+ }).join('');
+ return '<div class="room-hud"><div class="room-hud-top"><button data-room="menu" aria-label="打开菜单">☰</button><span>'+townCalendar()+'</span><strong>我的家</strong></div><div class="room-hud-profile"><span>'+String(state.job||'暂无工作').replace(/ Barista$/,'')+'</span><span>'+state.age+'岁</span></div><div class="room-hud-stats">'+moneyButton('assets','资产',value('wlInvestValue','$0'))+moneyButton('cash','现金',value('wlCashValue','$'+Number(state.cash||0).toLocaleString()))+'</div><div class="room-hud-finance">'+moneyButton('cash','每月必要支出',priceText(state.expenses||0))+moneyButton('cash','负债',priceText(metric.debtTotal||0))+'</div><div class="room-hud-feelings">'+feelings+'</div><button class="room-hud-time" data-room="time"><span>本月剩余自由时间</span><strong>'+time.free+'<small> h</small></strong></button></div>';
 }
 // Stay home when the month's time is exhausted; use the existing settlement ledger.
 function openHomeMonthEnd(){
@@ -54,8 +59,9 @@ const roomFinishBefore=finish;
 finish=function(){const result=roomFinishBefore();if(homeMonthEndCompleted()&&!document.querySelector('.event-active')){resolveTownMove();townHome()}if(roomVisible())render();return result};
 document.addEventListener('click',e=>{
  const action=e.target.closest('[data-room]')?.dataset.room;if(!action)return;
- const statusActions={menu:'wlMenu',assets:'wlInvest',cash:'wlCash',happiness:'wlHappy'};
+ const statusActions={menu:'wlMenu',assets:'wlInvest',cash:'wlCash',happiness:'wlHappy',health:'wlHappy',energy:'wlHappy',stress:'wlHappy'};
  if(statusActions[action])return $(statusActions[action]).click();
+ if(action==='time'){const t=currentCareerTime();return showEvent('时间安排','本月自由时间','查看时间预算不会消耗时间。',[['本月剩余自由时间',t.free+'h']],[['返回房屋',townHome,true]])}
  if(typeof roomOpenArrangement==='function'&&['work','learn','rest','life','social','finance','pets'].includes(action))return roomOpenArrangement(action);
  if(action==='work')return openWorkAdjustment();
  if(action==='learn')return openLearning();

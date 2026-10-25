@@ -25,14 +25,29 @@ body.room-screen:before{display:none}
 .room-screen #roomView>h2,.room-screen #roomView>p{display:none}
 .room-screen .room-art{height:auto;min-height:0}
 .room-screen .room-art>img{display:block;width:100%;height:auto;border-radius:0}
-.room-hud{position:relative;padding:calc(8px + env(safe-area-inset-top,0px)) 16px 14px;color:#234333;background:linear-gradient(110deg,#fff5de,#f7e9cb 60%,#fff3d9)}
+.room-hud{position:relative;box-sizing:border-box;min-height:max(310px,calc(100svh - min(100vw,760px) * 1312 / 1199 - 12px));display:flex;flex-direction:column;justify-content:space-between;gap:12px;padding:calc(12px + env(safe-area-inset-top,0px)) 20px 20px;color:#234333;background:radial-gradient(ellipse at 90% 0,#f0dfba88,transparent 65%),#fbf0d7}
 .room-hud-top{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;text-shadow:0 1px 3px #fff6db}
 .room-hud-top button{width:36px;min-height:36px;padding:0;border:0;background:#fff4daaa;color:#234333;border-radius:50%;font-size:20px}
-.room-hud-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:4px}
+.room-hud-top>strong{margin-left:auto;letter-spacing:.1em;font-size:15px}
+.room-hud-profile{display:flex;gap:10px;align-items:center;padding-left:4px;font-size:12px;color:#6f765e}
+.room-hud-profile span+span{border-left:1px solid #d9c49b;padding-left:10px}
+.room-hud-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:0}
 .room-hud-stats button{min-width:0;min-height:52px;padding:6px 4px;background:transparent;border:0;border-radius:0;box-shadow:none;color:#234333}
 .room-hud-stats button+button{border-left:1px solid #d9c49b}
 .room-hud-stats span{display:block;font-size:11px}
-.room-hud-stats strong{display:block;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:clamp(14px,4vw,21px)}
+.room-hud-stats strong{display:block;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:clamp(21px,6vw,29px)}
+.room-hud-finance{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding-bottom:12px;border-bottom:1px solid #dfcdab}
+.room-hud-finance button{background:none;border:0;box-shadow:none;min-height:32px;padding:0;color:#6b7059;font-size:11px}
+.room-hud-finance strong{margin-left:8px;color:#3b503a;font-size:13px}
+.room-hud-feelings{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.room-hud-feelings button{min-width:0;background:none;box-shadow:none;border:0;padding:4px 0;color:#34523d;text-align:left}
+.room-hud-feelings span{display:block;font-size:12px;margin-bottom:5px;color:#74755d}
+.room-hud-feelings strong{display:block;font-size:21px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.room-hud-feelings small{font-size:9px;color:#928871;font-weight:400}
+.room-hud-feelings i{display:block;height:4px;background:#e8dbbd;border-radius:4px;margin-top:9px;overflow:hidden}
+.room-hud-feelings i b{display:block;height:100%;background:var(--room-state-color);border-radius:4px}
+.room-hud-time{display:flex;justify-content:space-between;align-items:center;min-height:40px;padding:8px 12px;background:#e7e9d2;border:1px solid #d4d7b8;box-shadow:none;border-radius:10px;color:#3f5940}
+.room-hud-time span{font-size:12px}.room-hud-time strong{font-size:18px}.room-hud-time small{font-size:12px;font-weight:400}
 .health-art-window{position:relative;width:100%;overflow:hidden;border-radius:18px;margin-bottom:16px}
 .health-art-window img{position:absolute;max-width:none!important;height:auto}
 .associate-art-window{position:relative;width:100%;aspect-ratio:640/170;overflow:hidden;border-radius:18px;margin-bottom:16px}
