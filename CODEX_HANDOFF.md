@@ -50,7 +50,7 @@
 - 尚未合并、没有新版部署；不要把PR、GitHub提交或本地预览写成已上线。
 
 ## 规则与历史资料
-先读本文件，再读progress/各批记录和既有领域规则实现，之后对照：
+先读本文件，再读progress/各批记录和既有领域规则实现。下列docs/reference文件仅随私有交接压缩包提供，未上传GitHub；解压交接包后读取：
 - docs/reference/wealth-life-complete-handoff-2026-10-24.md：较完整设计及历史确认，含互相覆盖的旧段，按文件内最新明确更正优先。
 - docs/reference/wealth-life-coffee-chat-recovery-2026-10-24.md：找回的原规则链。
 - docs/reference/wealth-life-artwork-index-2026-10-24.md：459条候选图片索引，含原名称与Library ID。
