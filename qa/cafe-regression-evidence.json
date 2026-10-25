@@ -1,0 +1,192 @@
+{
+  "passed": true,
+  "count": 37,
+  "syntaxFailures": [],
+  "tests": [
+    {
+      "test": "qa/art-inventory.test.cjs",
+      "passed": true,
+      "output": "PASS: 53 original/supplied illustration hashes, 35 tagged PR additions, unique paths, complete precache and exact HTML script/style URLs."
+    },
+    {
+      "test": "qa/bank-contract.test.cjs",
+      "passed": true,
+      "output": "PASS: six confirmed terms, next-month first payment, legacy timing, fixed APR, original accounting and rejected obsolete term."
+    },
+    {
+      "test": "qa/barista-confirmed-events.test.cjs",
+      "passed": true,
+      "output": "PASS: departure seasonal quote/32h gate/8 XP/status/idempotency; tip happiness cap and removed legacy bonuses."
+    },
+    {
+      "test": "qa/cafe-rules.test.cjs",
+      "passed": true,
+      "output": "PASS: role payroll/absence/once-only work, qualified manager pool, event resources/receipts, frozen follows, unresolved-cost blockers, permanent research, monthly store accounting/reserve/losses, old-history quarantine and conditional escrow lifecycle."
+    },
+    {
+      "test": "qa/candidate-art.test.cjs",
+      "passed": true,
+      "output": "PASS: real shortage conditions, species-specific routing, unchanged actions and post-form decoration."
+    },
+    {
+      "test": "qa/coffee-rules.test.cjs",
+      "passed": true,
+      "output": "{\n  \"passed\": true,\n  \"checks\": [\n    \"13 months × five Barista events: quote, payroll, tips, state, reload, duplicate prevention, temporary hours reset\",\n    \"all locked ordinary-month monetary examples, extra XP and cut options\",\n    \"special tips fixed; busy total tips season-scaled; personnel probabilities unchanged\",\n    \"event quote frozen at trigger despite later pay/role changes\",\n    \"higher effective salary applied to new quote; Shift Lead tips exactly 1.3 × weekday pool\",\n    \"normal no-event/no-course route meets promotion after ten working months\",\n    \"confirmation persists; promotion next month once; market cannot bypass qualifications\",\n    \"active learning can qualify at month six, never earlier; shared three-course monthly cap\",\n    \"course preview no deduction; cash/time gates; temporary course time clears\",\n    \"cut shift reduces unissued monthly XP proportionally; month growth idempotent\",\n    \"unemployed month does not award work tenure or XP\",\n    \"old recorded coffee payroll migrates tenure and growth once without inventing unrelated experience\",\n    \"all service worker assets exist, including approved art and new module\",\n    \"decline cards hide every zero effect; approved art used with live native choices\",\n    \"clamped attributes and maxed skills do not display nonexistent result changes\",\n    \"highest-degree salary bases and exact independent seasonal business eligibility rates\"\n  ],\n  \"count\": 16,\n  \"browserTested\": false\n}"
+    },
+    {
+      "test": "qa/coffee-salary.test.cjs",
+      "passed": true,
+      "output": "PASS: milestone next-month pay, no current income rewrite, permanent earned tiers, highest education, promotion rebase, management applicability, four roles and no repeated compounding."
+    },
+    {
+      "test": "qa/course-limits.test.cjs",
+      "passed": true,
+      "output": "PASS: shared 3-course cap, 20 XP, unchanged fee/time, stale confirmation, legacy count, XP cap, nursing reservation, recovery pause and no immediate wage change."
+    },
+    {
+      "test": "qa/education-art.test.cjs",
+      "passed": true,
+      "output": "PASS: preview-only degree menu, progression eligibility, unavailable route, existing study and original payment action."
+    },
+    {
+      "test": "qa/financial-crisis.test.cjs",
+      "passed": true,
+      "output": "PASS: no automatic bankruptcy, net-worth boundary, borrow rescue without net-worth growth, stale confirmation, final confirmation, mandatory all-pet placement/reload/no cash and negative-balance shortfall."
+    },
+    {
+      "test": "qa/four-state.test.cjs",
+      "passed": true,
+      "output": "PASS: dual fields keep happiness once, mood-only preserved, legacy feeling migration/zero/idempotency, actual activity effects and no three-month state Game Over."
+    },
+    {
+      "test": "qa/health-art.test.cjs",
+      "passed": true,
+      "output": "PASS: all health-art routes preserve data/actions; critical-health redirection and unrelated events are not decorated."
+    },
+    {
+      "test": "qa/hobby-art.test.cjs",
+      "passed": true,
+      "output": "PASS: name-based mapping, preview without payment, original confirm action, disabled confirmation and dynamic time."
+    },
+    {
+      "test": "qa/home-scene.test.cjs",
+      "passed": true,
+      "output": "PASS: home entry, seven hotspots, unchanged cash/month, map navigation, pending-event resume and save reopen."
+    },
+    {
+      "test": "qa/housing-art.test.cjs",
+      "passed": true,
+      "output": "PASS: housing preview defers confirmation, requotes stale choices, distinguishes reservations, preserves cash and updates button labels."
+    },
+    {
+      "test": "qa/housing-lease.test.cjs",
+      "passed": true,
+      "output": "PASS: 1000 rent/1000 deposit, deposit asset, duplicate rent, free/cancellable booking, next-month net handover, refund on family move, insufficient funds atomicity, legacy no invented refund and annual renewal."
+    },
+    {
+      "test": "qa/learning-art.test.cjs",
+      "passed": true,
+      "output": "PASS: learning navigation, dynamic time, course-art mapping and unchanged confirmation actions."
+    },
+    {
+      "test": "qa/living-budget.test.cjs",
+      "passed": true,
+      "output": "PASS: new $800 budget, vehicle replaces $150 transit, consistent inflation and legacy base preserved without silent migration."
+    },
+    {
+      "test": "qa/map-card-rules.test.cjs",
+      "passed": true,
+      "output": "PASS: fixed category shares, no insurance/pet-count probability inflation, locked incident quotes, once-only payment and forced time difference, monthly pet cooldown, repeat companion, preview/recent-three project identity, delayed income, monthly market quote lock, real holdings/debt sale and independent fixed-unit fund lots."
+    },
+    {
+      "test": "qa/medical-insurance.test.cjs",
+      "passed": true,
+      "output": "PASS: initial paid coverage, duplicate confirmation, next-month switching/cancellation, serialized pending contract, legacy coverage preservation, insufficient cash and shared receipt accounting."
+    },
+    {
+      "test": "qa/month-settlement-guard.test.cjs",
+      "passed": true,
+      "output": "PASS: core modal/unpaid-incident gates, error rollback; town repeat-click/reload/month-advance guard. Underlying ledger and browser not covered."
+    },
+    {
+      "test": "qa/necessary-bills.test.cjs",
+      "passed": true,
+      "output": "PASS: unpaid housing/living/premiums/loan/care gate departure, completed receipts unblock, recovery also requires bills/care, checks do not charge or advance month, valid car insurance gate."
+    },
+    {
+      "test": "qa/opening-state.test.cjs",
+      "passed": true,
+      "output": "PASS: actual opening initializer and core wrapper, all initial snapshots, no advance wages, opening ledger, cache URL alignment. Browser and old-save migration not covered."
+    },
+    {
+      "test": "qa/pet-adoption.test.cjs",
+      "passed": true,
+      "output": "PASS: confirmed seven-species quotes, included first-month care, legacy budgets, per-pet next-month policy cancellation/replacement and idempotency."
+    },
+    {
+      "test": "qa/pet-care.test.cjs",
+      "passed": true,
+      "output": "PASS: recovery delegation same fees/zero time, preview and repeat no charge, cross-year deadlines, normal time cost, multiple pets and atomic insufficient funding."
+    },
+    {
+      "test": "qa/recovery-month-end.test.cjs",
+      "passed": true,
+      "output": "PASS: actual calcMetrics and settleMonthUnsafe execute recovery month with zero labor income/tax/contribution, necessary expenses and passive income, paused study/work tenure, final restoration and next-month wage resumption. Other services stubbed; browser not covered."
+    },
+    {
+      "test": "qa/recovery-rules.test.cjs",
+      "passed": true,
+      "output": "PASS: health priority, six insurance quotes, one payment/recovery month, funding shortfall, final restoration, high energy/low stress preservation, cross-year and time-debt recovery bridge. Domain only; not live month-end."
+    },
+    {
+      "test": "qa/recovery-ui.test.cjs",
+      "passed": true,
+      "output": "PASS: house treatment preview/pay/execute, payment and month confirmation deduplication, map-to-next-month scheduling and quote frozen before policy change. Browser not covered."
+    },
+    {
+      "test": "qa/rest-state.test.cjs",
+      "passed": true,
+      "output": "PASS: free 4h rest actual capped effects, stale confirmation, nursing reservation, no low-health bypass; health penalty threshold combinations add once per month."
+    },
+    {
+      "test": "qa/return-art.test.cjs",
+      "passed": true,
+      "output": "PASS: insurance form ordering, medical/payday/reason mapping, unchanged data and confirm callbacks, unrelated and redirected events."
+    },
+    {
+      "test": "qa/service-worker.test.cjs",
+      "passed": true,
+      "output": "PASS: synchronous cache lifetime, quota isolation, offline resource and navigation fallback, missing-shell Response.error."
+    },
+    {
+      "test": "qa/shift-confirmed-effects.test.cjs",
+      "passed": true,
+      "output": "PASS: training hours, four schedule choices, dynamic overtime, complaint branches, acting Lv1–5 locked probability and one-time rewards."
+    },
+    {
+      "test": "qa/shift-lead.test.cjs",
+      "passed": true,
+      "output": "{\n  \"passed\": true,\n  \"checks\": [\n    \"training option 0\",\n    \"training option 1\",\n    \"schedule option 0\",\n    \"schedule option 1 success\",\n    \"schedule option 1 failure\",\n    \"schedule option 2\",\n    \"schedule option 3\",\n    \"complaint option 0\",\n    \"complaint option 1 success\",\n    \"complaint option 1 failure\",\n    \"complaint option 2\",\n    \"acting option 0 success\",\n    \"acting option 0 failure\",\n    \"acting option 1\",\n    \"praise automatic exactly once\",\n    \"all followups reload before/after settlement preserve result and idempotency\",\n    \"13 months: Aug→Sep→Oct→Nov→Dec→Jan seasonal tips, income snapshot, temporary hours cleared\",\n    \"acting success 50/60/70/80/90 uses pre-choice skill level\",\n    \"main card hides followup detail and zero fields; praise weight grows but never guaranteed\",\n    \"XP clamps zero/max and result shows actual applied change\",\n    \"time budget guards include potential failed coordination shift\",\n    \"monthly settlement blocks pending main/followup and resumes once resolved\",\n    \"Barista routing unchanged; never samples Shift Lead event\",\n    \"all followup branches hidden on main card\",\n    \"actual core calcMetrics + settleMonthUnsafe: 13 monthly payrolls, confirmed zero tax/401k, cash, history, season rollover\"\n  ],\n  \"caseCount\": 25,\n  \"scope\": \"Node VM integration/state tests; no real browser/mobile layout validation\",\n  \"uploaded\": false\n}"
+    },
+    {
+      "test": "qa/state-return.test.cjs",
+      "passed": true,
+      "output": "PASS: merged state reasons, exact thresholds, one settlement, low-state home gate, event group completion and reload return recovery. Full health treatment and real browser not covered."
+    },
+    {
+      "test": "qa/time-flow.test.cjs",
+      "passed": true,
+      "output": "PASS: risky coordination allowed at 3h, voluntary 8h blocked, forced return stops rolling, confirm twice advances once, next month debt=5. Browser and recovery engine not covered."
+    },
+    {
+      "test": "qa/time-ledger.test.cjs",
+      "passed": true,
+      "output": "PASS: forced-time conservation, event deduplication, exact zero, two recovery months, year boundary, reload and one-time normal-month deduction; extreme debt rejected without mutation. Not yet connected to UI."
+    },
+    {
+      "test": "qa/town-route.test.cjs",
+      "passed": true,
+      "output": "PASS: 144 start/die combinations; landing-only payday, year boundary target, pending movement blocks repeat roll."
+    }
+  ]
+}

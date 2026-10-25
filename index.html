@@ -118,7 +118,8 @@ main{max-width:760px;padding-left:16px;padding-right:16px}
 .v245sheet,.v242sheet{max-height:calc(100dvh - 20px - env(safe-area-inset-top));padding-bottom:calc(24px + env(safe-area-inset-bottom));overscroll-behavior:contain}
 body{padding-bottom:calc(110px + env(safe-area-inset-bottom))}button{touch-action:manipulation;min-height:44px!important}.v24-option{overflow-wrap:anywhere}.v24-layout>*{min-width:0}
 </style><link rel="stylesheet" href="presentation.css?v=28.3-internal1"><link rel="stylesheet" href="paper.css?v=28.3-internal1">
-<link rel="stylesheet" href="shift-lead.css?v=28.3-internal1"></head><body><main>
+<link rel="stylesheet" href="shift-lead.css?v=28.3-internal1"><link rel="stylesheet" href="map-card.css?v=28.3-mapcards1">
+</head><body><main>
 <div class="top"><div><h1>财富人生</h1><div class="sub">Wealth Life · 多路线人生理财模拟器 · 城市、年龄阶段与Turn-Based V28.3 内部试玩2</div></div><div style="text-align:right"><span class="beta">V28.3 内部试玩2</span><br><span id="saveState" class="save">自动存档</span></div></div>
 <section id="home" class="card"><h2 style="margin-top:0">开始 / 读档</h2><p class="sub">选择一个存档位。新角色以未就业毕业生身份开局，需在工作阶段主动求职；职业工资按佛州 2025 OEWS 的低位/入门工资思路建模。工作经验、求职、转行、创业和学习都是可选路线。每个存档独立保留年龄、学历、工作年限、资产、债务和进度。V19 的宏观事件、通胀和行业冲击均为教学用模拟情景，不是现实预测。</p><div class="btns" id="slots"></div><div id="newGame" class="hidden" style="margin-top:16px"><label class="label">选择教育与专业背景</label><select id="job" style="width:100%;margin-top:6px"></select><label class="label" style="display:block;margin-top:14px">选择人生目标</label><select id="lifeGoal" style="width:100%;margin-top:6px"><option value="retire39">39岁提前退休</option><option value="world50">50岁环游世界一年</option><option value="fi50">50岁财富自由</option><option value="million50">50岁净资产 $1,000,000</option><option value="hotel55">55岁拥有自己的精品酒店</option><option value="care60">60岁建立朋友共居养老社区</option><option value="park60">60岁开一座自己的主题乐园</option><option value="foundation55">55岁建立 $5M 公益基金</option></select><p id="goalPreview" class="sub" style="margin:8px 2px 0">目标会根据你的实际支出、年龄和通胀动态计算，而不是固定死一个数字。</p><div class="btns"><button class="primary" id="start">开始新人生</button><button id="cancel">取消</button></div></div></section>
 <section id="game" class="hidden"><section id="v24Turn" class="active"></section><div id="onboardCard" class="card onboard"><div class="sectionTitle"><h2 style="margin:0">第一次玩？</h2><button id="dismissOnboard" style="min-height:34px;font-size:12px">知道了</button></div><p class="compact-note">每个月先看现金流，再处理事件。前期优先避免现金归零；投资、学习、换工作、创业都不是强制任务。你的开局目标会一直显示在最上方。</p></div><div class="card annual"><div class="sectionTitle"><div><div class="label">年度摘要 Annual Review</div><div id="annualHeadline" class="value">第 1 年 · 建立生活基础</div></div><span id="annualAge" class="pill"></span></div><div id="annualSummary" class="compact-note" style="margin-top:10px"></div></div><div class="card" style="border:2px solid #dbeafe"><div class="row"><div><div class="label">当前人生目标 Life Goal</div><div id="lifeGoalName" class="value"></div></div><div id="goalDeadline" class="pill"></div></div><div class="progress" style="margin-top:14px"><div id="lifeGoalBar" class="bar"></div></div><div id="lifeGoalProgress" class="sub" style="margin-top:8px"></div><div id="goalAdvice" class="asset" style="margin-top:8px"></div></div>
@@ -548,16 +549,16 @@ document.addEventListener('click',e=>{if(e.target.closest('button')?.id==='v24Lo
 <script id="v245-housing">
 window.v245OpenHousing=()=>document.getElementById('housingBtn').click();
 </script>
-<script src="core.js?v=28.3-candidate1"></script>
+<script src="core.js?v=28.3-mapcards1"></script>
 <script src="presentation.js?v=28.3-candidate1"></script>
 <script src="flow.js?v=28.3-internal1"></script>
 <script src="journey.js?v=28.3-internal1"></script>
-<script src="batch.js?v=28.3-candidate1"></script><script src="revision.js?v=28.3-internal1"></script>
+<script src="batch.js?v=28.3-mapcards1"></script><script src="revision.js?v=28.3-internal1"></script>
 <script src="annual.js?v=28.3-internal1"></script>
 <script src="town.js?v=28.3-internal1"></script>
 <script src="coffee.js?v=28.3-internal1"></script>
 <script src="shift-lead.js?v=28.3-internal1"></script>
-<script src="coffee-career.js?v=28.3-internal1"></script>
+<script src="coffee-career.js?v=28.3-mapcards1"></script>
 <script src="recovery-rules.js?v=28.3-internal1"></script>
 <script src="time-ledger.js?v=28.3-internal1"></script>
 <script src="time-flow.js?v=28.3-internal1"></script>
@@ -583,4 +584,9 @@ window.v245OpenHousing=()=>document.getElementById('housingBtn').click();
 <script src="candidate-art.js?v=28.3-candidate1"></script>
 <link rel="stylesheet" href="career-entry.css?v=28.3-entry1">
 <script src="career-entry.js?v=28.3-entry1"></script>
+<script src="cafe-rules.js?v=28.3-manager1"></script>
+<script src="cafe-system.js?v=28.3-manager1"></script>
+<script src="map-card-data.js?v=28.3-mapcards1"></script>
+<script src="map-card-rules.js?v=28.3-mapcards1"></script>
+<script src="map-card-system.js?v=28.3-mapcards1"></script>
 </body></html>
