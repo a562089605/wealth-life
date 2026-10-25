@@ -12,8 +12,15 @@ with sync_playwright() as p:
  page.get_by_role('button',name='查看职业预览',exact=True).click();page.get_by_role('button',name='选择这个人生',exact=True).click()
  assert page.locator('#roomView').is_visible() and page.locator('.event-active').count()==0
  assert page.evaluate('state.cash')==10000 and page.evaluate('state.month')==0
+ assert not page.locator('#wlHeader').is_visible()
+ assert page.locator('.room-hud [data-room="cash"]').inner_text()=='现金\n$10,000'
+ assert page.locator('.room-art').bounding_box()['y']==0
+ page.screenshot(path='qa/browser-evidence/room-full-page.png',full_page=True)
+ page.locator('.room-hud [data-room="happiness"]').click()
+ assert page.locator('#eventTitle').inner_text()=='照顾自己的状态'
+ page.get_by_role('button',name='返回',exact=True).click()
  assert page.locator('#roomView [data-room="leave"]').is_disabled()
- assert page.locator('#roomView [data-room]').count()==8
+ assert page.locator('#roomView .room-hotspots [data-room]').count()==8
  assert page.locator('#roomView [data-room="housing"]').count()==0
  checks.append('选择人生直接进入房屋，无开局提示；七类按钮及出门，住房保险必要事项不再独立占房屋按钮')
  page.locator('[data-room="learn"]').click();assert not page.evaluate('roomChecks().learn?.confirmed||false')

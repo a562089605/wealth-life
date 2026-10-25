@@ -15,6 +15,23 @@
 .room-pet-label{display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:#fff5df;color:#183e2d;border:2px solid #7c5935;border-radius:40px;font-weight:800;font-size:clamp(14px,3.5vw,23px)}
 .room-check{position:absolute;right:-12%;top:5%;background:#f6ffe9;color:#27613b;border:2px solid #27613b;border-radius:50%;width:1.4em;height:1.4em;line-height:1.2;font-size:clamp(14px,3.5vw,24px);font-weight:900}
 .room-hotspots button[data-room="leave"]:disabled{background:#f8f0dcaa;cursor:not-allowed}
+/* The room is the page; status lives over the plants inside the illustration. */
+body.room-screen{padding:0!important;background:#e9d3a7}
+body.room-screen:before{display:none}
+.room-screen main{width:100%;max-width:none;padding:0!important;margin:0}
+.room-screen #wlHeader,.room-screen .wl-home-brand{display:none!important}
+.room-screen #game{padding:0!important;margin:0}
+.room-screen #roomView{width:100%;max-width:760px;padding:0;margin:0 auto}
+.room-screen #roomView>h2,.room-screen #roomView>p{display:none}
+.room-screen .room-art{height:100svh;min-height:560px}
+.room-screen .room-art>img{width:100%;height:100%;object-fit:fill;border-radius:0}
+.room-hud{position:absolute;z-index:2;top:env(safe-area-inset-top,0px);left:4%;right:4%;color:#234333}
+.room-hud-top{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;text-shadow:0 1px 3px #fff6db}
+.room-hud-top button{width:36px;min-height:36px;padding:0;border:0;background:#fff4daaa;color:#234333;border-radius:50%;font-size:20px}
+.room-hud-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:4px}
+.room-hud-stats button{min-width:0;min-height:52px;padding:6px 4px;background:#fff6dce8;border:1px solid #e1c899;border-radius:12px;box-shadow:0 2px 5px #60451f18;color:#234333}
+.room-hud-stats span{display:block;font-size:11px}
+.room-hud-stats strong{display:block;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:clamp(14px,4vw,21px)}
 .health-art-window{position:relative;width:100%;overflow:hidden;border-radius:18px;margin-bottom:16px}
 .health-art-window img{position:absolute;max-width:none!important;height:auto}
 .associate-art-window{position:relative;width:100%;aspect-ratio:640/170;overflow:hidden;border-radius:18px;margin-bottom:16px}
