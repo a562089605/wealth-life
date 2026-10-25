@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "53 production resources; 8 map checkpoint additions, not 78 fully implemented cards; 459 candidates remain separate.",
+  "scope": "54 production resources including one explicitly requested new mobile home illustration; original 459 candidates unchanged.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1274,6 +1274,29 @@
         "browser": "runtime mapped and source visually reviewed; individual page browser validation remains pending"
       },
       "rules": "动态数值来自真实报价和状态；不采用旧图数字"
+    },
+    {
+      "id": "home-mobile",
+      "source": {
+        "originalName": "New smartphone portrait home illustration",
+        "libraryId": null,
+        "evidence": [
+          "progress/mobile-room-2026-10-25.md"
+        ],
+        "generation": "image_gen, original home.webp reference, explicitly requested new drawing"
+      },
+      "resourcePath": "assets/career/home-mobile.webp",
+      "gitBlobSha": "f3f401de7164b81cec953bb07654534b3db8f048",
+      "pageOrEvent": "进入我的房屋后的手机竖版房屋",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "new requested artwork; original home.webp retained as overview entry image",
+      "verification": {
+        "bytes": "generated PNG converted to WebP; no crop/stretch",
+        "visualReview": "853x1844, seven labelled sections plus leave button, all original home scene elements",
+        "browser": "passed: qa/browser-room-arrangements.py; actual overview/interior/back/seven confirmations/reload/exit at 390px"
+      },
+      "rules": "Only art/layout changed; existing actions, monthly checklist and saves remain canonical"
     }
   ],
   "candidateEntries": [
@@ -10513,5 +10536,5 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 35
+  "prAddedImageCount": 36
 }

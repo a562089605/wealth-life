@@ -17,7 +17,7 @@ with sync_playwright() as p:
  page.evaluate('clearModals();openTownLiving()');page.locator('[data-v26="living"]').click()
  assert page.evaluate('necessaryBills().length')==0
  page.evaluate('MapCards.data(state).hours[state.month]=100;state.town.position=5;clearModals();townHome();save()')
- page.evaluate('state.roomArrangements??={};state.roomArrangements[state.month]=Object.fromEntries(Object.keys(ROOM_SECTIONS).map(k=>[k,{confirmed:true,month:state.month}])) ;render()')
+ page.evaluate('state.town.roomInterior=true;state.roomArrangements??={};state.roomArrangements[state.month]=Object.fromEntries(Object.keys(ROOM_SECTIONS).map(k=>[k,{confirmed:true,month:state.month}])) ;render()')
  assert page.evaluate('currentCareerTime().free')==0
  cash=page.evaluate('state.cash')
  page.locator('[data-room="leave"]').click()

@@ -34,18 +34,22 @@ function openHomeMonthEnd(){
  },true],['返回房屋',townHome,false]]);
 }
 function homeMonthEndCompleted(){const move=state?.town?.movement;return move&&!move.resolved&&move.returnReason==='home-time'&&state.month>=move.payExpected}
+const ROOM_PORTRAIT_BUTTONS=[['工作',3.1,20.6,18,5.5,'work'],['学习',25.7,13.8,18,5.5,'learn'],['休息',58.3,14.5,18,5.5,'rest'],['生活',78.8,15.3,18.2,5.5,'life'],['关系',73.9,46.4,20.5,5.5,'social'],['财务',8.7,64.5,20,5.5,'finance'],['宠物',73.8,74.3,19.3,5.5,'pets'],['确认完成，现在出门',16.5,91.1,67,6,'leave']];
 const roomResumeBefore=resumeTownMove;
 resumeTownMove=function(){if(homeMonthEndCompleted()){resolveTownMove();return townHome()}return roomResumeBefore()};
 function renderRoom(){
  let room=$('roomView');if(!room){room=document.createElement('section');room.id='roomView';$('game').append(room)}
  const visible=roomVisible()&&!$('game').classList.contains('hidden');
- room.hidden=!visible;document.body.classList.toggle('room-screen',visible);
+ room.hidden=!visible;document.body.classList.toggle('room-screen',visible);document.body.classList.toggle('room-interior',visible&&!!state.town?.roomInterior);
  if(!visible)return;
  $('game').classList.remove('v24-running');
- const buttons=[['工作',4,25,16,7,'work'],['学习',26,16,16,6,'learn'],['休息',60,20,15,6,'rest'],['生活',81,16,15,7,'life'],['关系',67,50,16,6,'social'],['财务',13,70,16,6,'finance'],['宠物',47,78,19,6,'pets'],['确认完成，现在出门',26,91,49,8,'leave']];
- room.innerHTML='<h2>我的家 · '+townCalendar()+'</h2><p>逐项打开并确认本月安排，完成后再出门。</p><div class="room-art"><img src="assets/career/home.webp" alt="温暖的家：书桌工作、书架学习、床上休息、厨房生活、沙发关系、茶几财务"><div class="room-hotspots">'+buttons.map(([label,x,y,w,h,action])=>'<button aria-label="'+label+'" title="'+label+'" data-room="'+action+'" style="left:'+x+'%;top:'+y+'%;width:'+w+'%;height:'+h+'%">'+(action==='pets'?'<span class="room-pet-label">宠物</span>':'')+'</button>').join('')+'</div></div>';
+ if(!state.town?.roomInterior){
+  room.innerHTML='<button class="room-entry" data-room="enter" aria-label="进入我的房屋"><div class="room-entry-art"><img src="assets/career/home.webp" alt="我的温暖房屋"></div><span>进入我的房屋 <b aria-hidden="true">→</b></span></button>';
+  if(room.insertAdjacentHTML)room.insertAdjacentHTML('afterbegin',roomStatusMarkup());
+  return;
+ }
+ room.innerHTML='<div class="room-art room-portrait"><img src="assets/career/home-mobile.webp" alt="手机竖版手绘房屋：工作书桌、学习书架、休息床铺、生活厨房、关系沙发、财务茶几和宠物柯基"><div class="room-hotspots">'+ROOM_PORTRAIT_BUTTONS.map(([label,x,y,w,h,action])=>'<button aria-label="'+label+'" title="'+label+'" data-room="'+action+'" style="left:'+x+'%;top:'+y+'%;width:'+w+'%;height:'+h+'%"></button>').join('')+'</div><div class="room-interior-nav"><button data-room="overview">‹ 返回概览</button><span>'+townCalendar()+'</span></div></div>';
  if(typeof renderRoomChecks==='function')renderRoomChecks();
- if(room.insertAdjacentHTML)room.insertAdjacentHTML('afterbegin',roomStatusMarkup());
 }
 townHome=function(){townVisible=false;townState().screen='home';$('game').classList.remove('v24-running');clearModals();save();render()};
 townStart=function(){state.townMode=true;townState();townHome()};
@@ -59,6 +63,7 @@ const roomFinishBefore=finish;
 finish=function(){const result=roomFinishBefore();if(homeMonthEndCompleted()&&!document.querySelector('.event-active')){resolveTownMove();townHome()}if(roomVisible())render();return result};
 document.addEventListener('click',e=>{
  const action=e.target.closest('[data-room]')?.dataset.room;if(!action)return;
+ if(action==='enter'||action==='overview'){townState().roomInterior=action==='enter';clearModals();save();render();globalThis.scrollTo?.({top:0,left:0,behavior:'instant'});return;}
  const statusActions={menu:'wlMenu',assets:'wlInvest',cash:'wlCash',happiness:'wlHappy',health:'wlHappy',energy:'wlHappy',stress:'wlHappy'};
  if(statusActions[action])return $(statusActions[action]).click();
  if(action==='time'){const t=currentCareerTime();return showEvent('时间安排','本月自由时间','查看时间预算不会消耗时间。',[['本月剩余自由时间',t.free+'h']],[['返回房屋',townHome,true]])}

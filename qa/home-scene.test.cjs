@@ -4,7 +4,10 @@ const c={state:{month:3,cash:4321,townMode:true,town:{movement:null}},document:{
 c.resumeTownMove=()=>{};c.document.querySelector=()=>null;
 vm.createContext(c);vm.runInContext(fs.readFileSync('home-scene.js','utf8'),c);
 c.townStart();assert.equal(c.state.town.screen,'home');assert.equal(c.state.cash,4321);assert.equal(c.state.month,3);assert.equal(c.mapCalls,0);assert.equal(node('roomView').hidden,false);
-for(const action of ['work','learn','rest','life','social','finance','leave'])assert.ok(node('roomView').innerHTML.includes('data-room="'+action+'"'));
+assert.ok(node('roomView').innerHTML.includes('data-room="enter"'));
+c.state.town.roomInterior=true;c.renderRoom();
+for(const action of ['work','learn','rest','life','social','finance','pets','leave'])assert.ok(node('roomView').innerHTML.includes('data-room="'+action+'"'));
+assert.ok(node('roomView').innerHTML.includes('assets/career/home-mobile.webp'));
 c.showTown();c.render();assert.equal(c.state.town.screen,'map');assert.equal(node('roomView').hidden,true);
 c.state.town.movement={resolved:false,id:7};c.openGame();assert.equal(c.state.town.screen,'map');assert.equal(c.state.town.movement.id,7);
 c.state.town.movement.resolved=true;c.openGame();assert.equal(c.state.town.screen,'home');assert.equal(c.state.cash,4321);assert.equal(c.state.month,3);

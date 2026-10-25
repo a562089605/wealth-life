@@ -70,6 +70,18 @@ body.room-screen,.room-screen #roomView{background-color:#f7ebd2}
 .room-hud-feelings i{height:5px;background:#e3d5b8;border-radius:60% 25% 35% 40%}
 .room-hud-time{background:#dfe3ca90;border-color:#c6ceb0;border-radius:13px 8px 12px 9px;box-shadow:inset 0 1px 0 #fff9df80;padding:10px 13px}
 .room-hud-time strong{font-family:Georgia,serif;font-size:21px;font-weight:600}
+.room-entry{display:block;width:100%;padding:0;border:0;border-radius:0;background:#f7ebd2;color:#344f3b;box-shadow:none;text-align:center;overflow:hidden}
+.room-entry-art{position:relative;aspect-ratio:1199/1050;overflow:hidden}
+.room-entry-art img{display:block;width:100%;height:auto}
+.room-entry>span{display:flex;align-items:center;justify-content:center;gap:16px;min-height:62px;margin:0 18px 18px;border:1px solid #b59a5f;border-radius:17px 21px 18px 15px;background:#edd188;font-size:21px;font-weight:700;color:#2e4d34}
+.room-entry>span b{font-size:27px;font-weight:400}
+.room-interior #roomView{max-width:min(560px,calc(100svh * 853 / 1844))}
+.room-interior .room-portrait{position:relative;min-height:0;background:#f7ebd2}
+.room-interior .room-portrait>img{width:100%;height:auto;display:block}
+.room-interior-nav{position:absolute;top:calc(8px + env(safe-area-inset-top,0px));left:4%;right:4%;display:flex;justify-content:space-between;align-items:center;gap:12px;color:#34503b;font-size:12px;pointer-events:none}
+.room-interior-nav button{pointer-events:auto;min-height:36px;background:#fff3d9ed;border:1px solid #bda27a;border-radius:13px;padding:4px 10px;color:#34503b;font-size:12px;box-shadow:none}
+.room-interior-nav>span{background:#fff3d9d9;border-radius:8px;padding:5px 8px}
+.room-entry:focus-visible,.room-interior-nav button:focus-visible{outline:3px solid #315d3d;outline-offset:-4px}
 .health-art-window{position:relative;width:100%;overflow:hidden;border-radius:18px;margin-bottom:16px}
 .health-art-window img{position:absolute;max-width:none!important;height:auto}
 .associate-art-window{position:relative;width:100%;aspect-ratio:640/170;overflow:hidden;border-radius:18px;margin-bottom:16px}
