@@ -5,3 +5,5 @@ design/
 *.md
 qa*.json
 wrangler.jsonc
+art-integration-manifest.json
+

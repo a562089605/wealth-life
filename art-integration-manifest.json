@@ -1,0 +1,809 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
+  "scope": "Only 36 existing repository illustrations; not the unavailable 459-candidate inventory.",
+  "candidatePackage": {
+    "status": "not-visible-in-current-workspace-or-remote-tree",
+    "expectedCount": 459,
+    "missing": [
+      "ART_PACKAGE_README.txt",
+      "CANDIDATE_ART_MANIFEST.json",
+      "assets/candidates/",
+      "docs/reference/"
+    ]
+  },
+  "entries": [
+    {
+      "id": "associate-preview",
+      "source": {
+        "originalName": "Handpainted Associate Degree Preview.png",
+        "libraryId": "libfile_3e3f08f9e8708191859d696b754cb3af",
+        "evidence": [
+          "progress/education-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/associate-preview.webp",
+      "gitBlobSha": "c2c1c3b5f91c41e2a4b99d0848ad5d9d249d4ee5",
+      "pageOrEvent": "专科报名预览",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "barista-busy",
+      "source": {
+        "originalName": null,
+        "libraryId": "95d8d5df-316a-4909-a111-a4d6409a98aa",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/barista-busy.webp",
+      "gitBlobSha": "b35c249ff91fb7b71e8ca6966a3104b57a123c46",
+      "pageOrEvent": "咖啡师：客流繁忙",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "barista-cut",
+      "source": {
+        "originalName": null,
+        "libraryId": "0bbc85d3-7437-45cd-a029-536e02e8ea10",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/barista-cut.webp",
+      "gitBlobSha": "a2aa79fd79fec469a0c203cc5eddde74d3e46a98",
+      "pageOrEvent": "咖啡师：缩减排班",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "barista-departure",
+      "source": {
+        "originalName": null,
+        "libraryId": "24787615-ae13-4210-afef-67f10b3c5bd2",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/barista-departure.webp",
+      "gitBlobSha": "c6529f35ffac4396f97d3e1f79540f4df2a3ca1e",
+      "pageOrEvent": "咖啡师：同事突然离职",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "barista-staff",
+      "source": {
+        "originalName": null,
+        "libraryId": "44302ece-6222-4ca3-9973-5edf8e72286c",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/barista-staff.webp",
+      "gitBlobSha": "aca27a9ba3e50c0ee69e172f9d75eb7b11633105",
+      "pageOrEvent": "咖啡师：同事缺勤",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "barista-tip",
+      "source": {
+        "originalName": null,
+        "libraryId": "85bd7c76-5787-441c-900d-f7033ca27234",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/barista-tip.webp",
+      "gitBlobSha": "fc793d1c3dff0968b440e7a86cd47ffcdbd067bb",
+      "pageOrEvent": "咖啡师：常客小费",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "degrees",
+      "source": {
+        "originalName": "Handpainted degree selection menu.png",
+        "libraryId": "libfile_699fcdf7e4cc819181d3f76ee30f640b",
+        "evidence": [
+          "progress/education-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/degrees.webp",
+      "gitBlobSha": "89bd8ea51ac7234a6c8397de4272e112cc585667",
+      "pageOrEvent": "学历选择",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "hobbies",
+      "source": {
+        "originalName": "Cozy Six-Hobby Learning Menu.png",
+        "libraryId": "libfile_833da875862881919fa4ca0a195bea46",
+        "evidence": [
+          "progress/hobby-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/hobbies.webp",
+      "gitBlobSha": "441ab6729b99b66b48d5dce62965c06ccfa2ba35",
+      "pageOrEvent": "六项兴趣详情",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "home",
+      "source": {
+        "originalName": "Cozy coffee home menu with six hotspots.png",
+        "libraryId": "libfile_4cf13741f9908191ae001455eaabc804",
+        "evidence": [
+          "progress/home-scene-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/home.webp",
+      "gitBlobSha": "e6039f9295332625a325e8e97d59bc736dfee561",
+      "pageOrEvent": "房屋六个入口与出门",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "hospital-recovery",
+      "source": {
+        "originalName": "Hospital Recovery Plan Preview.png",
+        "libraryId": "libfile_12449c350a1c819195864d62d36a3c6b",
+        "evidence": [
+          "progress/health-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/hospital-recovery.webp",
+      "gitBlobSha": "4485f0fd41f969b649ffd94a358a456ab35c55a7",
+      "pageOrEvent": "严重健康问题",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "housing-reserve",
+      "source": {
+        "originalName": "Studio move-in reservation preview.png",
+        "libraryId": "libfile_4fb72752a9b481918a55aedd568e8d72",
+        "evidence": [
+          "progress/housing-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/housing-reserve.webp",
+      "gitBlobSha": "7b60dceabca9a2a44cdb7aa96280abc774cb977c",
+      "pageOrEvent": "Studio次月预约预览",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "housing-select",
+      "source": {
+        "originalName": "Updated housing selection cost preview.png",
+        "libraryId": "libfile_a6b329d3b5d08191813d3d7e4a57df92",
+        "evidence": [
+          "progress/housing-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/housing-select.webp",
+      "gitBlobSha": "844a19dc23763b6a31ea32e4317bcc450217f505",
+      "pageOrEvent": "住房选择与付款预览",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "insurance",
+      "source": {
+        "originalName": "Cozy health and renters insurance.png",
+        "libraryId": "libfile_16a1809822148191a0beb012e6500404",
+        "evidence": [
+          "progress/return-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/insurance.webp",
+      "gitBlobSha": "c641e3a8f0fd210ac260d09ddf0410c162cad61a",
+      "pageOrEvent": "医疗保障选择及保险表单",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "intro",
+      "source": {
+        "originalName": null,
+        "libraryId": "3a6f2bcd-356e-429d-8716-0a1af31afc59",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/intro.webp",
+      "gitBlobSha": "2edf440de0d459ad8b81f7cfc72a49a202d5fe88",
+      "pageOrEvent": "开局介绍",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "learning",
+      "source": {
+        "originalName": "Cozy Chinese Learning Menu.png",
+        "libraryId": "libfile_cf083e9e4fc081918ff749a822bbc6f7",
+        "evidence": [
+          "progress/learning-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/learning.webp",
+      "gitBlobSha": "6d1351e1050ec48d08225440b8742aa6f81bfb32",
+      "pageOrEvent": "学习总菜单",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "living-cost",
+      "source": {
+        "originalName": "Cozy monthly living cost screen.png",
+        "libraryId": "libfile_7f31c84d52708191986164ae4f88f3aa",
+        "evidence": [
+          "progress/housing-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/living-cost.webp",
+      "gitBlobSha": "b4bdb5a506d9c2b6ca65c69600a7afb966bbf03e",
+      "pageOrEvent": "本月必要生活成本",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "management-course",
+      "source": {
+        "originalName": "Cozy Management Skills Course Preview.png",
+        "libraryId": "libfile_b82290137bf8819191da2d3d0018689e",
+        "evidence": [
+          "progress/learning-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/management-course.webp",
+      "gitBlobSha": "7d9215f1d466c91ef24afec75cf5db2f7b1da051",
+      "pageOrEvent": "门店管理基础预览",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "month-recovery",
+      "source": {
+        "originalName": "Full-Month Recovery Game Popup.png",
+        "libraryId": "libfile_7f6025e477b08191bf7b35e75deb12fe",
+        "evidence": [
+          "progress/health-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/month-recovery.webp",
+      "gitBlobSha": "17220b62c2a25a79583bef32d381c86ab700dc7f",
+      "pageOrEvent": "整月康复安排与完成",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "payday",
+      "source": {
+        "originalName": "A Cheerful Payday in Town.png",
+        "libraryId": "libfile_0292b91af4988191821957ae1ea7e051",
+        "evidence": [
+          "progress/return-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/payday.webp",
+      "gitBlobSha": "ba635f0384281a6f707fb3612cec72dca031aa21",
+      "pageOrEvent": "核对本月收支",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "rest-arrange",
+      "source": {
+        "originalName": "Cozy Rest Arrangement Game Screen.png",
+        "libraryId": "libfile_e84b3825c7f0819185f4d3d2f9306588",
+        "evidence": [
+          "progress/health-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/rest-arrange.webp",
+      "gitBlobSha": "fb3231f66bcb88bf9654969ea76107fde22ac0bf",
+      "pageOrEvent": "额外休息4小时预览",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "rest-complete",
+      "source": {
+        "originalName": "Cozy Rest Completed at Home.png",
+        "libraryId": "libfile_29c09dc6e8b081918a4e6696b62f2422",
+        "evidence": [
+          "progress/health-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/rest-complete.webp",
+      "gitBlobSha": "f4d69ba62d01b834e9dd93cb3515b175e044b189",
+      "pageOrEvent": "休息完成",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "return-energy",
+      "source": {
+        "originalName": "Low energy, time to head home.png",
+        "libraryId": "libfile_fd8e67d7d48081919ce71076cf2c7a17",
+        "evidence": [
+          "progress/return-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/return-energy.webp",
+      "gitBlobSha": "c4909ba5c43c08627d9af29f77dffd60273ed37f",
+      "pageOrEvent": "能量不足返家",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "return-stress",
+      "source": {
+        "originalName": "Stress Overload Ends Town Exploration.png",
+        "libraryId": "libfile_e58d6b9e21008191bbbc866eb744d786",
+        "evidence": [
+          "progress/return-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/return-stress.webp",
+      "gitBlobSha": "fcc239d25ce93f38b509cce754e60b242b12e19f",
+      "pageOrEvent": "压力过高返家",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "service-course",
+      "source": {
+        "originalName": "Service skills course preview.png",
+        "libraryId": "libfile_b9a4566a05cc81918a734afaf1122bee",
+        "evidence": [
+          "progress/learning-art-integration.md"
+        ]
+      },
+      "resourcePath": "assets/career/service-course.webp",
+      "gitBlobSha": "c67150ad7f55eff74f4750e9d2b096d015501417",
+      "pageOrEvent": "顾客服务基础预览",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "shift-acting-failure",
+      "source": {
+        "originalName": null,
+        "libraryId": "8b972a08-d0d6-4263-ac12-015d48c9cba5",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/shift-acting-failure.webp",
+      "gitBlobSha": "33dbe391bffd1d99ad5d0a49697f54540cb7fe89",
+      "pageOrEvent": "主管：临时代理经理 / 失败后续结果",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "shift-acting-success",
+      "source": {
+        "originalName": null,
+        "libraryId": "63fc647d-0248-47b5-949a-432829169896",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/shift-acting-success.webp",
+      "gitBlobSha": "7821818c6224bf88f134e4f0b81a56805d8c9275",
+      "pageOrEvent": "主管：临时代理经理 / 成功后续结果",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "shift-acting",
+      "source": {
+        "originalName": null,
+        "libraryId": "03c4c2cd-77fe-4c68-a0b7-42c07b5f0861",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/shift-acting.webp",
+      "gitBlobSha": "748b885150f092cc98d493b90e28698fff683854",
+      "pageOrEvent": "主管：临时代理经理",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "shift-complaint-failure",
+      "source": {
+        "originalName": null,
+        "libraryId": "226b2056-e8ef-4ca3-8c59-ad9816e18091",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/shift-complaint-failure.webp",
+      "gitBlobSha": "63a7e0acfc0915bada19f7ffc5182b0efb760fa1",
+      "pageOrEvent": "主管：顾客严重投诉 / 失败后续结果",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "shift-complaint-success",
+      "source": {
+        "originalName": null,
+        "libraryId": "cfe5ef06-a477-4f83-a760-4ea0f0b7d01b",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/shift-complaint-success.webp",
+      "gitBlobSha": "d38f0abecb052ccba2b88f9e1fbfce9633adcc22",
+      "pageOrEvent": "主管：顾客严重投诉 / 成功后续结果",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "shift-complaint",
+      "source": {
+        "originalName": null,
+        "libraryId": "572a375d-7fc5-4eb3-9937-3abf380010c6",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/shift-complaint.webp",
+      "gitBlobSha": "a69d5fe14bf907fc956c593be5130e2decaa7933",
+      "pageOrEvent": "主管：顾客严重投诉",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "shift-praise",
+      "source": {
+        "originalName": null,
+        "libraryId": "f0d64fa4-16b8-45cc-8f94-0929f6748441",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/shift-praise.webp",
+      "gitBlobSha": "87e111118742506599fc79d2f35c05178f5475e7",
+      "pageOrEvent": "主管：团队表现优秀",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "shift-schedule-failure",
+      "source": {
+        "originalName": null,
+        "libraryId": "b7eb1a7d-dd18-4a93-8f1d-82620a38e6a6",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/shift-schedule-failure.webp",
+      "gitBlobSha": "ca9be72a4213880b9a7fb4da7e28f8c8b1bbe731",
+      "pageOrEvent": "主管：排班冲突 / 失败后续结果",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "shift-schedule-success",
+      "source": {
+        "originalName": null,
+        "libraryId": "9d34de07-33cb-4408-806b-2f909a1352e4",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/shift-schedule-success.webp",
+      "gitBlobSha": "55881632f96bf96ab32e0447e0841709f2828ca0",
+      "pageOrEvent": "主管：排班冲突 / 成功后续结果",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "shift-schedule",
+      "source": {
+        "originalName": null,
+        "libraryId": "eb2508b0-56a8-4f76-b4ce-12d1ffe87908",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/shift-schedule.webp",
+      "gitBlobSha": "adbddfa1f3862fc5dec5957c36b308fc56dd6107",
+      "pageOrEvent": "主管：排班冲突",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "shift-training",
+      "source": {
+        "originalName": null,
+        "libraryId": "23302309-34cb-46f8-ba1f-b704abed9bca",
+        "evidence": [
+          "assets/career/manifest.json"
+        ]
+      },
+      "resourcePath": "assets/career/shift-training.webp",
+      "gitBlobSha": "aec18c64e94e2863f11c8963f790cf93e80d8ca4",
+      "pageOrEvent": "主管：新人培训",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    },
+    {
+      "id": "town",
+      "source": {
+        "originalName": null,
+        "libraryId": null,
+        "evidence": [
+          "town.js"
+        ]
+      },
+      "resourcePath": "assets/career/town.webp",
+      "gitBlobSha": "ea9230431fca8cc53881cd3a977d31470f3894f5",
+      "pageOrEvent": "24格小镇地图",
+      "integrationStatus": "existing-integration",
+      "addedInExistingPR": false,
+      "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
+      "verification": {
+        "bytes": "git-blob-verified",
+        "visualReview": "not-performed-in-this-session",
+        "browser": "pending"
+      },
+      "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
+    }
+  ]
+}
