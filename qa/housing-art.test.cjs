@@ -1,0 +1,7 @@
+const fs=require('fs'),vm=require('vm'),a=require('node:assert/strict');let last,confirmed=0,revision=0;
+const c={state:{month:0,cash:2650},syncFinance(){},housingHandoverDue:()=>false,openHousingHandover(){},housingChoices:()=>[['合租',881,0,'shared'],['Studio',1432,0,'studio']],housingQuote:h=>({monthly:h[1],deposit:h[1],total:revision?0:1762,scheduled:!!revision}),heldHousingDeposit:()=>881,priceText:String,showEvent(...args){last=args},confirmHousing(){confirmed++},appendReturnScene(){},housingMarkup:()=>'<button data-v26="housing" data-key="shared">确认支付 1762</button>',document:{addEventListener(){}},openHousing(){},openTownLiving(){},$:()=>({})};
+vm.createContext(c);vm.runInContext(fs.readFileSync('housing-art.js','utf8'),c);
+c.previewHousingChoice('shared');a.equal(c.state.cash,2650);a.equal(confirmed,0);a.equal(last[1],'住房付款预览');last[4][0][1]();a.equal(confirmed,1);
+c.previewHousingChoice('shared');revision=1;last[4][0][1]();a.equal(confirmed,1);a.equal(last[1],'换房预约预览');a.equal(last[3].find(x=>x[0]==='本次支付')[1],'0');
+c.previewHousingChoice('studio');a.ok(c.housingArtScene('studio',true).file.includes('reserve'));a.equal(c.housingArtScene('own',false),null);
+const markup=c.housingMarkup();a.ok(markup.includes('data-housing-preview'));a.ok(!markup.includes('data-v26="housing"'));a.ok(markup.includes('查看付款详情'));console.log('PASS: housing preview defers confirmation, requotes stale choices, distinguishes reservations, preserves cash and updates button labels.');
