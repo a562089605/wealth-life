@@ -11,6 +11,7 @@ with sync_playwright() as p:
  page.get_by_role('button',name='查看职业预览',exact=True).click();page.get_by_role('button',name='选择这个人生',exact=True).click()
  before=page.evaluate('({cash:state.cash,month:state.month,free:currentCareerTime().free,pets:state.pets.length})')
  page.locator('#roomView [data-room="pets"]').click()
+ page.get_by_role('button',name='返回我的宠物',exact=True).click()
  assert page.locator('.event-active.pet-hub-painted').count()==1
  assert page.locator('#petHubIllustration img').evaluate('(i)=>i.complete&&i.naturalWidth>0')
  assert page.locator('.pet-hub-empty').is_visible()

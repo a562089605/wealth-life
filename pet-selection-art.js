@@ -31,7 +31,11 @@
   function action(label,x,y,w,h,run){const b=document.createElement('button');b.type='button';b.className='pet-sheet-action';b.setAttribute('aria-label',label);b.style.cssText='left:'+x+'%;top:'+y+'%;width:'+w+'%;height:'+h+'%';b.onclick=()=>{if(active())run()};sheet.append(b)}
   action('返回我的宠物',2.8,2.4,9.5,5.4,openPetHub);
   action('下一步：取名与费用',4.5,88,91,6.3,()=>previewPetAdoption(selected));
-  action('返回宠物页',29,95,42,4.4,openPetHub);
+  const confirm=[...$('actions').querySelectorAll('button')].find(b=>b.textContent==='确认本月宠物安排，返回房屋');
+  if(!(state.pets||[]).length&&confirm){
+   overlay('pet-sheet-confirm-label','确认本月宠物安排，返回房屋',12,95.2,76,3.8);
+   action('确认本月宠物安排，返回房屋',12,95,76,4.4,()=>confirm.click());
+  }else action('返回宠物页',29,95,42,4.4,openPetHub);
   $('eventData').replaceChildren(sheet);$('eventData').style.display='block';update();
   return result;
  };

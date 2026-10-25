@@ -31,7 +31,7 @@ function openRoomLife(){
 function roomOpenArrangement(key){
  if(!ROOM_SECTIONS[key])return;
  roomReview={owner:state,month:state.month,key};
- const open={work:()=>openWorkAdjustment(),learn:()=>openLearning(),rest:()=>openExtraRest(),life:openRoomLife,social:()=>$('networkBtn').click(),pets:()=>openPetHub(),finance:()=>{
+ const open={work:()=>openWorkAdjustment(),learn:()=>openLearning(),rest:()=>openExtraRest(),life:openRoomLife,social:()=>$('networkBtn').click(),pets:()=>((state.pets||[]).length?openPetHub():openPetAdoptions()),finance:()=>{
   showEvent('财务','本月财务安排','查看资产与贷款；本月可以不新增投资或借款。',[
    ['可用现金',priceText(state.cash)],['月度被动收入',priceText(state.passive||0)],['必要月支出',priceText(state.expenses||0)]
   ],[['查看资产与投资',()=>{townState().screen='panel';renderRoom();$('qAssets').click()},false],['贷款与还款',openLoanPayments,false],['银行',()=>openBankLoan(),false],['返回房屋',townHome,false]]);

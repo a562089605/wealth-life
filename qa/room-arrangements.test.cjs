@@ -3,6 +3,7 @@ let modal,required=[],care=[],blocked=0,mapped=0;
 const fresh=()=>({month:4,cash:9000,townMode:true,town:{screen:'home'},assets:[{id:'old',cost:123}],legacyQuarterly:{owed:900}});
 const c={state:fresh(),document:{querySelector:()=>null},showEvent:(...x)=>modal=x,townHome(){c.state.town.screen='home'},showTown(){mapped++},rollTown(){mapped++},townEnabled:()=>true,townPending:()=>false,explorationStarted:()=>false,townState:()=>c.state.town,save(){},renderRoom(){},necessaryBills:()=>required,petCareTasks:()=>care,openNecessaryBills(){blocked++},openPetCare(){blocked++},openWorkAdjustment(){c.showEvent('职业','工作安排','',[],[])},openLearning(){c.showEvent('学习','学习安排','',[],[])},openExtraRest(){c.showEvent('休息','休息安排','',[],[])},openPetHub(){c.showEvent('宠物','我的宠物','',[],[])},openHousing(){},openTownLiving(){},openInsurance(){},openLoanPayments(){},openBankLoan(){},priceText:String,$:()=>({click(){}})};
 c.queueMicrotask=()=>{};
+c.openPetAdoptions=()=>c.showEvent('宠物领养','选择新伙伴','',[],[]);
 vm.createContext(c);vm.runInContext(fs.readFileSync('room-arrangements.js','utf8'),c);
 const before=JSON.stringify(c.state);c.roomOpenArrangement('learn');a.equal(JSON.stringify(c.state),before,'viewing has no save effects');
 const confirm=modal[4].at(-1)[1];confirm();confirm();a.equal(c.roomChecks().learn.confirmed,true);a.equal(c.state.cash,9000);

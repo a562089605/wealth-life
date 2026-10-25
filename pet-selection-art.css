@@ -1,4 +1,4 @@
-.event.event-active.pet-selection-painted{padding:0!important;border:0!important;border-radius:20px!important;max-width:440px;background:#fbf1d9!important}
+.event.event-active.pet-selection-painted{padding:0!important;border:0!important;border-radius:20px!important;max-width:440px;background:#fbf1d9!important;top:calc(28px + env(safe-area-inset-top,0px))!important;max-height:calc(100dvh - 48px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))!important;scroll-padding-top:12px}
 .pet-selection-painted>.row,.pet-selection-painted>#eventTitle,.pet-selection-painted>#eventDesc,.pet-selection-painted>#actions,.pet-selection-painted #eventClose{display:none!important}
 .pet-selection-painted #eventData{display:block!important;margin:0;padding:0;max-height:none!important;overflow:visible!important}
 .pet-adoption-sheet{position:relative;width:100%;container-type:inline-size}
@@ -11,3 +11,4 @@
 .pet-sheet-price{font-size:4cqw;border-radius:4px}
 .pet-sheet-choice{position:absolute;display:flex;align-items:center;justify-content:center;border:2px solid #ac8d59;border-radius:50%;background:#f6edd3;color:white;pointer-events:none;font-size:4.2cqw;font-weight:700}
 .pet-sheet-choice.selected{background:#356431;border-color:#2b5427}
+.pet-sheet-confirm-label{position:absolute;display:flex;align-items:center;justify-content:center;background:#f8f0d7;color:#24462d;font-size:2.9cqw;font-weight:650;pointer-events:none;white-space:nowrap;border-radius:5px}
