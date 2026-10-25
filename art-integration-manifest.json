@@ -1287,14 +1287,14 @@
       },
       "resourcePath": "assets/career/home-mobile.webp",
       "gitBlobSha": "f3f401de7164b81cec953bb07654534b3db8f048",
-      "pageOrEvent": "进入我的房屋后的手机竖版房屋",
+      "pageOrEvent": "手机竖版房屋单页主界面，基本信息位于顶部",
       "integrationStatus": "new-integration",
       "addedInExistingPR": true,
       "duplicateOrOldDraft": "new requested artwork; original home.webp retained as overview entry image",
       "verification": {
         "bytes": "generated PNG converted to WebP; no crop/stretch",
         "visualReview": "853x1844, seven labelled sections plus leave button, all original home scene elements",
-        "browser": "passed: qa/browser-room-arrangements.py; actual overview/interior/back/seven confirmations/reload/exit at 390px"
+        "browser": "passed: qa/browser-room-arrangements.py; direct single room page, seven confirmations/reload/exit; 320/390px/desktop status and target non-overlap checked"
       },
       "rules": "Only art/layout changed; existing actions, monthly checklist and saves remain canonical"
     }

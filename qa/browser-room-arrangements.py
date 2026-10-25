@@ -14,27 +14,22 @@ with sync_playwright() as p:
  assert page.evaluate('state.cash')==10000 and page.evaluate('state.month')==0
  assert not page.locator('#wlHeader').is_visible()
  assert page.locator('.room-hud-stats [data-room="cash"]').inner_text()=='现金\n$10,000'
- assert page.locator('.room-hud').bounding_box()['y']==0
- assert page.locator('.room-entry').bounding_box()['y']>=page.locator('.room-hud').bounding_box()['height']
+ assert page.get_by_role('button',name='进入我的房屋',exact=True).count()==0
+ assert page.locator('[data-room="overview"]').count()==0
+ assert page.locator('.room-hud-profile').inner_text()=='职业：咖啡师\n20岁'
  for key in ['health','energy','stress','happiness']:
   expected=page.evaluate(f'Math.round(state.{key})')
   assert page.locator(f'.room-hud-feelings [data-room="{key}"] strong').inner_text()==f'{expected} / 100'
- assert page.locator('.room-hud-time strong').inner_text()=='100 h'
- page.screenshot(path='qa/browser-evidence/room-overview.png',full_page=True)
+ assert page.locator('.room-hud-stats [data-room="time"] strong').inner_text()=='100 h'
+ assert page.locator('.room-art>img').evaluate('(img)=>Math.abs(img.clientWidth/img.clientHeight-img.naturalWidth/img.naturalHeight)<.01')
+ page.screenshot(path='qa/browser-evidence/room-mobile.png',full_page=True)
  page.locator('.room-hud [data-room="happiness"]').click()
  assert page.locator('#eventTitle').inner_text()=='照顾自己的状态'
  page.get_by_role('button',name='返回',exact=True).click()
- page.get_by_role('button',name='进入我的房屋',exact=True).click()
- assert page.locator('.room-art>img').evaluate('(img)=>Math.abs(img.clientWidth/img.clientHeight-img.naturalWidth/img.naturalHeight)<.01')
- assert page.locator('.room-hud').count()==0
- page.screenshot(path='qa/browser-evidence/room-mobile.png',full_page=True)
- page.get_by_role('button',name='‹ 返回概览',exact=True).click()
- assert page.locator('.room-hud').is_visible()
- page.get_by_role('button',name='进入我的房屋',exact=True).click()
  assert page.locator('#roomView [data-room="leave"]').is_disabled()
  assert page.locator('#roomView .room-hotspots [data-room]').count()==8
  assert page.locator('#roomView [data-room="housing"]').count()==0
- checks.append('选择人生进入概览，进入我的房屋打开手机竖版图；可返回概览；七类按钮及出门，无拉伸')
+ checks.append('选择人生直达单一手机房屋页；职业/年龄/资产现金/四状态/时间在图内，无概览和二次入口，无拉伸')
  page.locator('[data-room="learn"]').click();assert not page.evaluate('roomChecks().learn?.confirmed||false')
  page.evaluate('clearModals();townHome();showTown()');assert page.locator('#eventTitle').inner_text()=='请先确认本月安排'
  page.get_by_role('button',name='返回房屋',exact=True).click()

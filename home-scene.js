@@ -2,12 +2,12 @@
 function roomVisible(){return townEnabled()&&!townPending()&&state.town?.screen==='home'}
 function roomStatusMarkup(){
  const value=(id,fallback)=>$(id)?.textContent||fallback;
- const metric=calcMetrics(),time=currentCareerTime();
+ const time=currentCareerTime();
  const moneyButton=(action,label,amount)=>'<button data-room="'+action+'"><span>'+label+'</span><strong>'+amount+'</strong></button>';
  const feelings=[['happiness','幸福度','#b87e49'],['health','健康','#658351'],['energy','能量','#b28d35'],['stress','压力','#a36e62']].map(([key,label,color])=>{
   const n=Math.round(state[key]||0);return '<button data-room="'+key+'" aria-label="'+(key==='happiness'?'查看身体状态':'查看'+label)+'"><span>'+label+'</span><strong>'+n+'<small> / 100</small></strong><i style="--room-state-color:'+color+'"><b style="width:'+Math.max(0,Math.min(100,n))+'%"></b></i></button>';
  }).join('');
- return '<div class="room-hud"><div class="room-hud-top"><button data-room="menu" aria-label="打开菜单">☰</button><span>'+townCalendar()+'</span><strong>我的家</strong></div><div class="room-hud-profile"><span>职业：'+String(state.job||'暂无工作').replace(/ Barista$/,'')+'</span><span>'+state.age+'岁</span></div><div class="room-hud-stats">'+moneyButton('assets','资产',value('wlInvestValue','$0'))+moneyButton('cash','现金',value('wlCashValue','$'+Number(state.cash||0).toLocaleString()))+'</div><div class="room-hud-finance">'+moneyButton('cash','每月必要支出',priceText(state.expenses||0))+moneyButton('cash','负债',priceText(metric.debtTotal||0))+'</div><div class="room-hud-feelings">'+feelings+'</div><button class="room-hud-time" data-room="time"><span>本月剩余自由时间</span><strong>'+time.free+'<small> h</small></strong></button></div>';
+ return '<div class="room-hud room-hud-integrated"><div class="room-hud-top"><button data-room="menu" aria-label="打开菜单">☰</button><div class="room-hud-profile"><span>职业：'+String(state.job||'暂无工作').replace(/ Barista$/,'')+'</span><span>'+state.age+'岁</span></div><span class="room-hud-date">'+townCalendar()+'</span></div><div class="room-hud-stats">'+moneyButton('cash','现金',value('wlCashValue','$'+Number(state.cash||0).toLocaleString()))+moneyButton('assets','资产',value('wlInvestValue','$0'))+moneyButton('time','剩余时间',time.free+'<small> h</small>')+'</div><div class="room-hud-feelings">'+feelings+'</div></div>';
 }
 // Stay home when the month's time is exhausted; use the existing settlement ledger.
 function openHomeMonthEnd(){
@@ -40,15 +40,11 @@ resumeTownMove=function(){if(homeMonthEndCompleted()){resolveTownMove();return t
 function renderRoom(){
  let room=$('roomView');if(!room){room=document.createElement('section');room.id='roomView';$('game').append(room)}
  const visible=roomVisible()&&!$('game').classList.contains('hidden');
- room.hidden=!visible;document.body.classList.toggle('room-screen',visible);document.body.classList.toggle('room-interior',visible&&!!state.town?.roomInterior);
+ room.hidden=!visible;document.body.classList.toggle('room-screen',visible);document.body.classList.toggle('room-interior',visible);
  if(!visible)return;
  $('game').classList.remove('v24-running');
- if(!state.town?.roomInterior){
-  room.innerHTML='<button class="room-entry" data-room="enter" aria-label="进入我的房屋"><div class="room-entry-art"><img src="assets/career/home.webp" alt="我的温暖房屋"></div><span>进入我的房屋 <b aria-hidden="true">→</b></span></button>';
-  if(room.insertAdjacentHTML)room.insertAdjacentHTML('afterbegin',roomStatusMarkup());
-  return;
- }
- room.innerHTML='<div class="room-art room-portrait"><img src="assets/career/home-mobile.webp" alt="手机竖版手绘房屋：工作书桌、学习书架、休息床铺、生活厨房、关系沙发、财务茶几和宠物柯基"><div class="room-hotspots">'+ROOM_PORTRAIT_BUTTONS.map(([label,x,y,w,h,action])=>'<button aria-label="'+label+'" title="'+label+'" data-room="'+action+'" style="left:'+x+'%;top:'+y+'%;width:'+w+'%;height:'+h+'%"></button>').join('')+'</div><div class="room-interior-nav"><button data-room="overview">‹ 返回概览</button><span>'+townCalendar()+'</span></div></div>';
+ room.innerHTML='<div class="room-art room-portrait"><img src="assets/career/home-mobile.webp" alt="手机竖版手绘房屋：工作书桌、学习书架、休息床铺、生活厨房、关系沙发、财务茶几和宠物柯基"><div class="room-hotspots">'+ROOM_PORTRAIT_BUTTONS.map(([label,x,y,w,h,action])=>'<button aria-label="'+label+'" title="'+label+'" data-room="'+action+'" style="left:'+x+'%;top:'+y+'%;width:'+w+'%;height:'+h+'%"></button>').join('')+'</div></div>';
+ const art=room.querySelector?.('.room-portrait');if(art)art.insertAdjacentHTML('beforeend',roomStatusMarkup());
  if(typeof renderRoomChecks==='function')renderRoomChecks();
 }
 townHome=function(){townVisible=false;townState().screen='home';$('game').classList.remove('v24-running');clearModals();save();render()};
@@ -63,7 +59,6 @@ const roomFinishBefore=finish;
 finish=function(){const result=roomFinishBefore();if(homeMonthEndCompleted()&&!document.querySelector('.event-active')){resolveTownMove();townHome()}if(roomVisible())render();return result};
 document.addEventListener('click',e=>{
  const action=e.target.closest('[data-room]')?.dataset.room;if(!action)return;
- if(action==='enter'||action==='overview'){townState().roomInterior=action==='enter';clearModals();save();render();globalThis.scrollTo?.({top:0,left:0,behavior:'instant'});return;}
  const statusActions={menu:'wlMenu',assets:'wlInvest',cash:'wlCash',happiness:'wlHappy',health:'wlHappy',energy:'wlHappy',stress:'wlHappy'};
  if(statusActions[action])return $(statusActions[action]).click();
  if(action==='time'){const t=currentCareerTime();return showEvent('时间安排','本月自由时间','查看时间预算不会消耗时间。',[['本月剩余自由时间',t.free+'h']],[['返回房屋',townHome,true]])}
