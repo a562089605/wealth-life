@@ -23,7 +23,21 @@ with sync_playwright() as p:
   page.locator('[data-v26="living"]').click()
   assert page.evaluate('necessaryBills().length')==0
   page.evaluate('clearModals();townHome()')
+  entry_cash=page.evaluate('state.cash')
   page.locator('[data-room="leave"]').click(timeout=5000)
+  if month==0:
+   assert page.evaluate('state.town.position')==0
+   assert page.evaluate('state.town.movement===null')
+   assert page.evaluate('state.month')==0 and page.evaluate('state.history.length')==0
+   assert page.evaluate('state.cash')==entry_cash and page.locator('.event-active').count()==0
+   page.reload(wait_until='networkidle')
+   page.get_by_role('button',name='读取已有存档',exact=True).click()
+   page.get_by_role('button',name='存档 1',exact=False).first.click()
+   page.evaluate('Math.random=()=>.999;clearModals();showTown()')
+   assert page.evaluate('state.town.position')==0 and page.evaluate('state.town.movement===null')
+   assert page.evaluate('state.month')==0 and page.evaluate('state.history.length')==0
+   assert page.evaluate('state.cash')==entry_cash and page.locator('.event-active').count()==0
+   checks.append('首次入图可在第1格发薪日，但不弹月结、不发工资、不推进；刷新读档重新入图亦不结算')
   page.locator('[data-town="roll"]').click()
   assert page.locator('#eventTitle').inner_text()=='核对本月收支'
   assert page.evaluate('state.month')==month
