@@ -4,7 +4,7 @@ function loanTargets(){return [...(state.loans||[]).filter(l=>l.balance>0).map(l
 function currentLoanCycle(){
  if(state.loanCycle?.month!==state.month)state.loanCycle={month:state.month,items:[]};
  const cycle=state.loanCycle;
- for(const t of loanTargets())if(!cycle.items.some(x=>x.key===t.key)){
+ for(const t of loanTargets())if((!Number.isInteger(t.l.firstPaymentMonth)||t.l.firstPaymentMonth<=state.month)&&!cycle.items.some(x=>x.key===t.key)){
  const interest=roundCash(t.balance*t.l.apr/12),due=roundCash(t.l.monthsLeft===1?t.balance+interest:Math.min(t.l.payment,t.balance+interest));
  cycle.items.push({key:t.key,name:t.name,openingBalance:t.balance,apr:t.l.apr,due,interest,principal:roundCash(Math.max(0,due-interest)),status:'unpaid'});
  }
