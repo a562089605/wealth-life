@@ -40,7 +40,7 @@ function renderRoom(){
  const buttons=[['工作',4,25,16,7,'work'],['学习',26,16,16,6,'learn'],['休息',60,20,15,6,'rest'],['生活',81,16,15,7,'life'],['关系',67,50,16,6,'social'],['财务',13,70,16,6,'finance'],['宠物',47,78,19,6,'pets'],['确认完成，现在出门',26,91,49,8,'leave']];
  room.innerHTML='<h2>我的家 · '+townCalendar()+'</h2><p>逐项打开并确认本月安排，完成后再出门。</p><div class="room-art"><img src="assets/career/home.webp" alt="温暖的家：书桌工作、书架学习、床上休息、厨房生活、沙发关系、茶几财务"><div class="room-hotspots">'+buttons.map(([label,x,y,w,h,action])=>'<button aria-label="'+label+'" title="'+label+'" data-room="'+action+'" style="left:'+x+'%;top:'+y+'%;width:'+w+'%;height:'+h+'%">'+(action==='pets'?'<span class="room-pet-label">宠物</span>':'')+'</button>').join('')+'</div></div>';
  if(typeof renderRoomChecks==='function')renderRoomChecks();
- const art=room.querySelector?.('.room-art');if(art)art.insertAdjacentHTML('beforeend',roomStatusMarkup());
+ if(room.insertAdjacentHTML)room.insertAdjacentHTML('afterbegin',roomStatusMarkup());
 }
 townHome=function(){townVisible=false;townState().screen='home';$('game').classList.remove('v24-running');clearModals();save();render()};
 townStart=function(){state.townMode=true;townState();townHome()};

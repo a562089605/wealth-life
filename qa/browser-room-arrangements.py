@@ -14,7 +14,9 @@ with sync_playwright() as p:
  assert page.evaluate('state.cash')==10000 and page.evaluate('state.month')==0
  assert not page.locator('#wlHeader').is_visible()
  assert page.locator('.room-hud [data-room="cash"]').inner_text()=='现金\n$10,000'
- assert page.locator('.room-art').bounding_box()['y']==0
+ assert page.locator('.room-hud').bounding_box()['y']==0
+ assert page.locator('.room-art').bounding_box()['y']>=page.locator('.room-hud').bounding_box()['height']
+ assert page.locator('.room-art>img').evaluate('(img)=>Math.abs(img.clientWidth/img.clientHeight-img.naturalWidth/img.naturalHeight)<.01')
  page.screenshot(path='qa/browser-evidence/room-full-page.png',full_page=True)
  page.locator('.room-hud [data-room="happiness"]').click()
  assert page.locator('#eventTitle').inner_text()=='照顾自己的状态'
