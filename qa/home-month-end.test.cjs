@@ -1,0 +1,26 @@
+const fs=require('fs'),vm=require('vm'),a=require('node:assert/strict');
+let modal,free=0,bills=[],medical=false,paid=0,resumed=0,settled=0;
+const nodes={};const node=id=>nodes[id]??={classList:{contains:()=>false,remove(){},toggle(){}},append(){},addEventListener(){}};
+const fresh=()=>({month:7,cash:4321,townMode:true,town:{position:5,rolls:9,movement:null,screen:'home'},turn:{month:7,startCash:5000},legacyQuarterly:{owed:900},assets:[{id:'old',cost:123}]});
+let click;
+const c={state:fresh(),townEnabled:()=>true,townPending:()=>!!c.state.town.movement&&!c.state.town.movement.resolved,townState:()=>c.state.town,townCalendar:()=>'',currentCareerTime:()=>({free}),unfinishedTreatment:()=>medical,healthTreatmentKind:()=>null,openHealthTreatment(){paid++},necessaryBills:()=>bills,openNecessaryBills(){paid++},calcMetrics:()=>({remainingCF:100}),priceText:String,showEvent:(...x)=>modal=x,settleMonth(){settled++;c.state.cash+=100;c.state.month++},resumeTownMove(){resumed++},save(){},render(){},clearModals(){},showTown(){},openGame(){},finish(){},$:node,document:{createElement:()=>node('roomView'),body:{classList:{toggle(){}}},addEventListener:(type,fn)=>{click=fn}},explorationStarted:()=>false,continueLife(){}};
+c.document.querySelector=()=>null;c.resolveTownMove=()=>{c.state.town.movement.resolved=true};
+vm.createContext(c);vm.runInContext(fs.readFileSync('home-scene.js','utf8'),c);
+const before=JSON.stringify(c.state);
+click({target:{closest:()=>({dataset:{room:'leave'}})}});
+a.equal(JSON.stringify(c.state),before,'preview does not modify player state');
+a.equal(modal[1],'留在房屋，核对本月收支');
+const confirm=modal[4][0][1];confirm();confirm();
+a.equal(settled,1);a.equal(c.state.month,8);a.equal(c.state.cash,4421);
+a.equal(c.state.town.movement.returnReason,'home-time');a.equal(c.state.town.movement.payExpected,8);
+a.equal(c.state.legacyQuarterly.owed,900);a.equal(c.state.assets[0].cost,123);
+const afterSettlement=JSON.stringify(c.state);
+c.finish();a.equal(c.state.town.movement.resolved,true,'continue returns home without dispatching the map tile');
+c.state=JSON.parse(afterSettlement);c.resumeTownMove();a.equal(c.state.town.movement.resolved,true,'reload closes a completed home settlement without dispatching the map tile');a.equal(resumed,0);
+// Reopen a serialized old save without adding a separate settlement namespace.
+c.state=JSON.parse(before);c.openHomeMonthEnd();const stale=modal[4][0][1];c.state=JSON.parse(before);stale();a.equal(settled,1);
+c.openHomeMonthEnd();const guarded=modal[4][0][1];bills=[{}];guarded();a.equal(paid,1);a.equal(c.state.town.movement,null);
+bills=[];medical=true;c.openHomeMonthEnd();a.equal(paid,2);
+medical=false;free=4;c.openHomeMonthEnd();a.equal(settled,1);
+free=0;c.state.town.movement={id:10,resolved:false};c.openHomeMonthEnd();a.equal(resumed,1);
+console.log('PASS: 0h home preview, once-only canonical settlement, stale-save guard, bills/medical/time/pending-event guards and legacy fields.');

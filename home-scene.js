@@ -1,5 +1,32 @@
 // Existing room artwork; all hotspots reuse the original actions and ledgers.
 function roomVisible(){return townEnabled()&&!townPending()&&state.town?.screen==='home'}
+// Stay home when the month's time is exhausted; use the existing settlement ledger.
+function openHomeMonthEnd(){
+ if(!state||!townEnabled())return;
+ if(unfinishedTreatment()||healthTreatmentKind(state.health))return openHealthTreatment();
+ if(townPending())return resumeTownMove();
+ if(necessaryBills().length)return openNecessaryBills();
+ if(currentCareerTime().free>0)return townHome();
+ const owner=state,month=state.month;
+ const m=calcMetrics();
+ showEvent('本月安排完成','留在房屋，核对本月收支','本月自由时间已用完。确认后沿用原月末账本结算，已付费用不会重复收取；查看或返回不推进月份。',[
+  ['尚待月末收付',priceText(m.remainingCF)],['预计结算后现金',priceText(state.cash+m.remainingCF)]
+ ],[['确认不出门，结算本月',()=>{
+  if(state!==owner||state.month!==month)return;
+  if(unfinishedTreatment()||healthTreatmentKind(state.health))return openHealthTreatment();
+  if(townPending())return resumeTownMove();
+  if(necessaryBills().length)return openNecessaryBills();
+  if(currentCareerTime().free>0)return townHome();
+  const t=townState();
+  t.movement={id:++t.rolls,to:t.position,die:0,month,resolved:false,payExpected:month+1,returnReason:'home-time'};
+  clearModals();pending=false;townVisible=false;
+  state.turn={month,index:9,startCash:state.turn?.month===month?state.turn.startCash:state.cash};
+  save();settleMonth();
+ },true],['返回房屋',townHome,false]]);
+}
+function homeMonthEndCompleted(){const move=state?.town?.movement;return move&&!move.resolved&&move.returnReason==='home-time'&&state.month>=move.payExpected}
+const roomResumeBefore=resumeTownMove;
+resumeTownMove=function(){if(homeMonthEndCompleted()){resolveTownMove();return townHome()}return roomResumeBefore()};
 function renderRoom(){
  let room=$('roomView');if(!room){room=document.createElement('section');room.id='roomView';$('game').append(room)}
  const visible=roomVisible()&&!$('game').classList.contains('hidden');
@@ -18,7 +45,7 @@ render=function(){roomRenderBefore();renderRoom()};
 const roomOpenBefore=openGame;
 openGame=function(){if(state?.townMode&&!townPending())townState().screen='home';const result=roomOpenBefore();if(roomVisible()){townVisible=false;render()}return result};
 const roomFinishBefore=finish;
-finish=function(){const result=roomFinishBefore();if(roomVisible())render();return result};
+finish=function(){const result=roomFinishBefore();if(homeMonthEndCompleted()&&!document.querySelector('.event-active')){resolveTownMove();townHome()}if(roomVisible())render();return result};
 document.addEventListener('click',e=>{
  const action=e.target.closest('[data-room]')?.dataset.room;if(!action)return;
  if(action==='work')return openWorkAdjustment();
@@ -32,6 +59,7 @@ document.addEventListener('click',e=>{
  if(action==='insurance')return openInsurance();
  if(action==='pets')return $('petBtn').click();
  if(action==='leave'){
+  if(currentCareerTime().free<=0)return openHomeMonthEnd();
   if(necessaryBills().length)return openNecessaryBills();
   if(explorationReturnReasons().length)return showEvent('暂时不能出门','先在房屋调整状态',explorationReturnReasons().join('；'),[],[['返回房屋',townHome,true]]);
   clearModals();showTown();save();

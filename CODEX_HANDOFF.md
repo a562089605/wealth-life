@@ -1,5 +1,9 @@
 # 财富人生 Wealth Life — Codex 接手说明
 
+## 本地增量补充：0h居家月结（2026-10-25）
+
+在远端 `56e8a535` / V28.3-mapcards1 基础上修复家中0h无月结出口（审查A01），复用原账本与存档；详见 [本轮进度](progress/home-month-end-2026-10-25.md)。38个Node测试通过，隔离Chromium居家确认/读档及原三月闭环通过；缓存 `wealth-life-v28.3-home-end1`。其他缺口仍按下文及原地图检查点处理。本补充为本地保存，未推送、合并或部署。
+
 ## 最新开发检查点：V28.3-mapcards1（2026-10-25）
 
 用户已明确要求“保存目前进度 上传 更新”。本检查点继续原分支/PR，未合并main、未部署。请优先读取 [NEXT_SESSION.md](NEXT_SESSION.md) 与 [本轮进度/限制](progress/map-card-checkpoint-2026-10-25.md)，再读 [地图六类确认规则](docs/confirmed/map-events-2026-10-25.md) 和 [店长合伙确认规则](docs/confirmed/manager-partner-2026-10-25.md)。它们更新下文较早状态，完整私人聊天/恢复档未入库。

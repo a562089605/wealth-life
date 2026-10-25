@@ -5,6 +5,8 @@
 现有草稿PR：https://github.com/a562089605/wealth-life/pull/1
 当前开发检查点：V28.3-mapcards1（以远端该分支最新提交为准）。
 
+本地后续增量：先读 `progress/home-month-end-2026-10-25.md`，记录0h居家月结修复、测试及未覆盖项；原地图检查点保留。此增量尚未推送远端，核对本地提交和远端差异，不覆盖。
+
 先fetch核对最新，不用main或旧ZIP覆盖，不硬重置本地修改。按顺序读取：
 
 1. CODEX_HANDOFF.md顶部最新补充。
