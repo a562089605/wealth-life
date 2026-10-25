@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "54 production resources including one explicitly requested new mobile home illustration; original 459 candidates unchanged.",
+  "scope": "55 production resources including two explicitly requested new illustrations (mobile home and pet hub); original 459 candidates unchanged.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1297,6 +1297,29 @@
         "browser": "passed: qa/browser-room-arrangements.py; direct single room page, seven confirmations/reload/exit; 320/390px/desktop status and target non-overlap checked"
       },
       "rules": "Only art/layout changed; existing actions, monthly checklist and saves remain canonical"
+    },
+    {
+      "id": "pet-hub",
+      "source": {
+        "originalName": "New illustrated pet care corner",
+        "libraryId": null,
+        "evidence": [
+          "progress/pet-hub-art-2026-10-25.md"
+        ],
+        "generation": "image_gen; home-mobile.webp style reference, user requested illustrated pet card"
+      },
+      "resourcePath": "assets/career/pet-hub.webp",
+      "gitBlobSha": "401595187ef1d89ee0c9788cefe60f64f5fe9654",
+      "pageOrEvent": "我的宠物主卡装饰场景；宠物名单仍来自实际存档",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "new requested decorative illustration, not a historical candidate",
+      "verification": {
+        "bytes": "generated PNG converted to WebP",
+        "visualReview": "warm gouache pet care corner; no printed prices or rules",
+        "browser": "passed: qa/browser-pet-hub-art.py; 320/390px, empty and owned-pet fixture, original adoption/care/back/confirmation actions"
+      },
+      "rules": "Decoration only; original adoption/care/insurance/payment/room confirmation actions retained"
     }
   ],
   "candidateEntries": [
@@ -10536,5 +10559,5 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 36
+  "prAddedImageCount": 37
 }
