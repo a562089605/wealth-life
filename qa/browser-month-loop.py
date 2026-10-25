@@ -9,7 +9,7 @@ with sync_playwright() as p:
  ctx=b.new_context(service_workers='block');page=ctx.new_page();errors=[]
  page.on('pageerror',lambda e:errors.append(str(e)))
  page.goto('http://127.0.0.1:8765',wait_until='networkidle')
- page.get_by_role('button',name='存档 1 · 新游戏',exact=True).click();page.locator('#job').select_option('barista');page.locator('#start').click()
+ (page.locator('#careerPreview') if page.locator('#careerPreview').is_visible() else page.get_by_role('button',name='存档 1 · 新游戏',exact=True)).click();page.locator('#job').select_option('barista');page.locator('#start').click()
  page.evaluate('Math.random=()=>.999;clearModals();townStart();openHousing()')
  page.locator('#eventData [data-housing-preview][data-key="shared"]').click()
  page.get_by_role('button',name='确认住房付款',exact=True).click()
@@ -40,6 +40,7 @@ with sync_playwright() as p:
   assert not page.evaluate('townPending()')
   checks.append(f'月{month+1}:住房/生活原按钮支付→六点落发薪→账目对账→唯一月结')
  page.evaluate('save()');cash=page.evaluate('state.cash');page.reload(wait_until='networkidle')
+ page.get_by_role('button',name='读取已有存档',exact=True).click()
  page.get_by_role('button',name='存档 1',exact=False).first.click();assert page.evaluate('state.month')==3;assert page.evaluate('state.cash')==cash
  assert not errors,errors
  checks.append('连续三月后刷新读档现金/月份保留；无浏览器脚本异常')
@@ -48,10 +49,10 @@ with sync_playwright() as p:
  ctx=b.new_context();page=ctx.new_page();page.goto('http://127.0.0.1:8765',wait_until='networkidle')
  page.evaluate('navigator.serviceWorker.ready');page.reload(wait_until='networkidle')
  page.wait_for_function('navigator.serviceWorker.controller!==null')
- assert page.evaluate('caches.keys()')==['wealth-life-v28.3-candidate1']
+ assert page.evaluate('caches.keys()')==['wealth-life-v28.3-entry1']
  ctx.set_offline(True);page.reload(wait_until='networkidle')
- page.get_by_role('button',name='存档 1 · 新游戏',exact=True).click();page.locator('#job').select_option('barista')
- assert page.locator('#newGame .candidate-barista-portrait').evaluate('(x)=>x.complete&&x.naturalWidth>0')
+ (page.locator('#careerPreview') if page.locator('#careerPreview').is_visible() else page.get_by_role('button',name='存档 1 · 新游戏',exact=True)).click();page.locator('#job').select_option('barista')
+ assert page.locator('#coffeeIntro img').evaluate('(x)=>x.complete&&x.naturalWidth>0')
  checks.append('真实Service Worker安装控制页面；断网刷新仍能显示新游戏入口及缓存人物图（桌面Chromium）')
  ctx.close();b.close()
 out=Path(__file__).parent/'browser-evidence';out.mkdir(exist_ok=True)

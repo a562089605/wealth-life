@@ -9,7 +9,7 @@ with sync_playwright() as p:
  ctx=b.new_context(service_workers='block',viewport={'width':1280,'height':900});page=ctx.new_page()
  errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
  page.goto('http://127.0.0.1:8765',wait_until='networkidle')
- page.get_by_role('button',name='存档 1 · 新游戏',exact=True).click();page.locator('#job').select_option('barista');page.locator('#start').click()
+ (page.locator('#careerPreview') if page.locator('#careerPreview').is_visible() else page.get_by_role('button',name='存档 1 · 新游戏',exact=True)).click();page.locator('#job').select_option('barista');page.locator('#start').click()
  result['opening']=page.evaluate('({cash:state.cash,health:state.health,energy:state.energy,people:state.people})')
  page.evaluate("clearModals();townStart();confirmHousing('shared');payMonthly('living',livingTotal());state.energy=80;state.health=80;state.happiness=68;state.stress=28;window.auditBaseline=JSON.stringify(state)")
  def reset(extra=''):

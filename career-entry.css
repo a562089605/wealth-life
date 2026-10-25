@@ -1,0 +1,17 @@
+#careerSelection{text-align:center;padding:12px 0 20px;color:#183e2d}
+#careerSelection[hidden]{display:none!important}
+#careerSelection h2{font-size:28px;margin:0 0 20px}
+.career-entry-card{max-width:340px;margin:0 auto 20px;padding:20px;background:#faf0d9;border:1px solid #dcc89d;border-radius:22px}
+.career-entry-card img{display:block;width:230px;max-width:100%;height:auto;margin:auto;border-radius:18px}
+.career-entry-card h3{font-size:24px;margin:12px 0 20px}.career-entry-card h3 span{font-size:17px;font-weight:normal}
+.career-entry-card button{width:100%;min-height:48px}
+#home.career-select>#slots,#home.career-select>h2,#home.career-preview>h2{display:none!important}
+#home.career-preview #newGame>.candidate-barista-portrait{display:none}
+#home.career-preview #coffeeIntro [data-coffee-intro="other"]{display:none}
+#home.career-preview #coffeeIntro .coffee-intro-text{position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:normal;padding:14px 18px!important}
+#home.career-preview #coffeeIntro .coffee-paper-scene img{display:block;width:100%;height:auto}
+#home.career-preview #coffeeIntro .coffee-intro-choose{position:static;width:100%;min-height:48px;padding:12px;left:auto;bottom:auto;background:#efd16e;font-size:18px}
+
+#home.career-preview #newGame>label:first-of-type{display:none}
+.career-entry-preview-art{position:relative;aspect-ratio:1086/370;overflow:hidden;border-radius:14px}
+#home.career-preview #coffeeIntro .career-entry-preview-art img{position:absolute;left:0;top:0;width:100%;height:auto}

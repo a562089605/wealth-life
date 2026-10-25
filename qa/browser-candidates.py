@@ -12,9 +12,9 @@ with sync_playwright() as p:
     page = context.new_page()
     page.on('pageerror', lambda e: errors.append(str(e)))
     page.goto('http://127.0.0.1:8765', wait_until='networkidle')
-    page.get_by_role('button', name='存档 1 · 新游戏', exact=True).click()
+    (page.locator('#careerPreview') if page.locator('#careerPreview').is_visible() else (page.locator('#careerPreview') if page.locator('#careerPreview').is_visible() else page.get_by_role('button',name='存档 1 · 新游戏',exact=True))).click()
     page.locator('#job').select_option('barista')
-    assert page.locator('#newGame .candidate-barista-portrait').is_visible()
+    assert page.locator('#coffeeIntro').is_visible()
     assert page.evaluate('state===null')
     page.locator('#start').click()
     page.evaluate('clearModals();townStart()')
@@ -39,6 +39,7 @@ with sync_playwright() as p:
     assert page.evaluate('state.loans[0].firstPaymentMonth') == 1
     checks.append('银行六期限、预览/取消不借款、十年放款2000、旧按钮重复确认不再放款、首月无月供')
     page.reload(wait_until='networkidle')
+    page.get_by_role('button',name='读取已有存档',exact=True).click()
     page.get_by_role('button', name='存档 1', exact=False).first.click()
     page.evaluate('clearModals();openLoanPayments()')
     assert page.evaluate('state.cash') == 12000
