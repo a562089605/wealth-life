@@ -70,6 +70,8 @@ for index, f in enumerate(source['files']):
     records.append({
         'index': index, 'libraryId': f['library_file_id'], 'originalName': f['original_name'],
         'packagePath': f['path'], 'productionResourcePath': resource,
+        'repositoryResourcePath': f['path'],
+        'repositoryBytesVerified': (root/f['path']).is_file() and (root/f['path']).read_bytes()==data,
         'dimensions': [f['width'], f['height']], 'actualBytes': len(data),
         'webpSha256': hashlib.sha256(data).hexdigest(), 'originalPngSha256': f['original_sha256'],
         'exactOriginalDuplicateGroup': groups[f['original_sha256']] if len(groups[f['original_sha256']]) > 1 else [],
@@ -87,7 +89,7 @@ manifest['candidatePackage'] = {
     'uniqueReadableWebpHashes': len({r['webpSha256'] for r in records if not r['validationError']}),
     'duplicateReadableWebpRows': len(records)-len(bad)-len({r['webpSha256'] for r in records if not r['validationError']}),
     'uniqueOriginalPngHashes': len(groups), 'exactOriginalDuplicateRows': sum(len(v)-1 for v in groups.values()),
-    'note': 'Original PNG hashes are provenance only; supplied WebPs are lossy conversions. All candidate bytes remain in separate handoff directory, only selected production images are committed. Private references are not published.'
+    'note': 'Original PNG hashes are provenance only; supplied WebPs are lossy conversions. All supplied candidate files are archived under assets/candidates/ and excluded from deployment; only selected production images are integrated. Private references are not published.'
 }
 manifest['candidateEntries'] = records
 manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
