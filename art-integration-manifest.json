@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "55 production resources including two explicitly requested new illustrations (mobile home and pet hub); original 459 candidates unchanged.",
+  "scope": "56 production resources; original seven-pet selection artwork integrated with live cash/quotes; 459 candidates unchanged.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1320,6 +1320,29 @@
         "browser": "passed: qa/browser-pet-hub-art.py; 320/390px, empty and owned-pet fixture, original adoption/care/back/confirmation actions"
       },
       "rules": "Decoration only; original adoption/care/insurance/payment/room confirmation actions retained"
+    },
+    {
+      "id": "pet-selection",
+      "source": {
+        "originalName": "Seven-pet adoption selection screen.png",
+        "libraryId": "libfile_9fc814642ebc81919a916e2158273feb",
+        "evidence": [
+          "CANDIDATE_ART_MANIFEST.json",
+          "progress/pet-selection-2026-10-25.md"
+        ]
+      },
+      "resourcePath": "assets/career/pet-selection.webp",
+      "gitBlobSha": "d31a4e57670664e3515961948a9fc1e0e32547a1",
+      "pageOrEvent": "领养新伙伴：原七宠缩略图，动态现金/报价/选择，下一步复用原取名费用预览",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "original candidate bytes retained; old cash and prices covered by live UI",
+      "verification": {
+        "bytes": "exact archived WebP, no generation or edits",
+        "visualReview": "all seven species and original buttons checked; old $3000 masked by current cash",
+        "browser": "passed: qa/browser-pet-selection.py; all seven selection buttons, unchanged cash/time/pets, selected-species next preview, 320/390px and returns"
+      },
+      "rules": "Selecting a species is local preview only; next opens existing name/fee confirmation; no direct adoption or charge"
     }
   ],
   "candidateEntries": [
@@ -7621,7 +7644,7 @@
       "libraryId": "libfile_9fc814642ebc81919a916e2158273feb",
       "originalName": "Seven-pet adoption selection screen.png",
       "packagePath": "assets/candidates/libfile_9fc814642ebc81919a916e2158273feb.webp",
-      "productionResourcePath": null,
+      "productionResourcePath": "assets/career/pet-selection.webp",
       "dimensions": [
         941,
         1672
@@ -7630,9 +7653,9 @@
       "webpSha256": "831a8f99d425d6d0b5895be5b901383b0d6827b3719beb02001a6f51e62f8dff",
       "originalPngSha256": "ad35a42607428d12d799984fbbb9ee71dfaa79f725a2af2cb2fad875deeb43fc",
       "exactOriginalDuplicateGroup": [],
-      "status": "reviewed-deferred",
+      "status": "integrated",
       "validationError": null,
-      "oldDraftReview": "七种领养选择：当前使用真实物种与动态费用，未套用静态截图",
+      "oldDraftReview": "Original seven-pet sheet requested; old cash and prices masked with live UI, original candidate preserved",
       "repositoryResourcePath": "assets/candidates/libfile_9fc814642ebc81919a916e2158273feb.webp",
       "repositoryBytesVerified": true
     },
@@ -10559,5 +10582,5 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 37
+  "prAddedImageCount": 38
 }
