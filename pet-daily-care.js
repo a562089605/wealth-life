@@ -22,7 +22,7 @@
    const actual=cleanTask(p);if(!actual||actual.key!==task?.key)return openPetCare();
    const fresh=petCareQuote(state,{[actual.key]:method});if(fresh.blocked||fresh.cost!==q.cost||fresh.hours!==q.hours)return previewBath(p,method);
    if(payPetCare({[actual.key]:method}))paid=true;
-  },true,!ready||state.cash<(q.cost||0)||currentCareerTime().free<(q.hours||0)],['返回日常照顾',openPetCare,false]]);
+  },true,!ready||state.cash>=(q.cost||0)&&currentCareerTime().free<(q.hours||0)],['返回日常照顾',openPetCare,false]]);
   previewToken=token;
  }
  openPetCare=function(){

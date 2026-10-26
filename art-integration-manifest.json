@@ -998,19 +998,20 @@
         "libraryId": "libfile_4c1af686f5108191ab283b095f9b4c35",
         "evidence": [
           "CANDIDATE_ART_MANIFEST.json",
-          "docs/reference/wealth-life-artwork-index-2026-10-24.md (private handoff)"
+          "docs/reference/wealth-life-artwork-index-2026-10-24.md (private handoff)",
+          "progress/pet-funds-shortage-2026-10-26.md"
         ]
       },
       "resourcePath": "assets/career/pet-funds-shortage.webp",
       "gitBlobSha": "7986586158368668bae6f3d9d08243550f725600",
-      "pageOrEvent": "到期宠物照护：已选费用大于现金",
+      "pageOrEvent": "照护费用不足：付款时显示真实现金/本次待支付/差额，原银行和返回调整",
       "integrationStatus": "new-integration",
       "addedInExistingPR": true,
       "duplicateOrOldDraft": "scene-only; historical UI excluded",
       "verification": {
         "bytes": "exact-supplied-WebP",
         "visualReview": "仅钱包及护理物品区域，排除旧金额及按钮",
-        "browser": "passed: qa/browser-candidates.py; desktop Chromium and 390px viewport; fixture limits in evidence"
+        "browser": "passed qa/browser-pet-funds-shortage.py: hub/detail routes, draft/no-spend, editable loan/cancel/disbursement then explicit care payment, centered 320/390/desktop; isolated Chromium, not real-device"
       },
       "rules": "真实数据及原动作保持权威；不复制图片静态数值"
     },

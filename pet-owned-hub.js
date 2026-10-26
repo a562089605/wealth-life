@@ -32,7 +32,7 @@
     const fresh=petCareQuote(state,draft),now=JSON.stringify({cost:fresh.cost,hours:fresh.hours,keys:(fresh.rows||[]).map(r=>[r.key,r.method])});
     if(now!==frozen||fresh.blocked)return openPetHub();
     if(payPetCare(draft)){paid=true;openPetHub()}
-   },true,!!q.blocked||!q.rows?.length||state.cash<(q.cost||0)||currentCareerTime().free<(q.hours||0)],['返回房屋',townHome,false]
+   },true,!!q.blocked||!q.rows?.length||state.cash>=(q.cost||0)&&currentCareerTime().free<(q.hours||0)],['返回房屋',townHome,false]
   ]);
   if($('eventTitle').textContent!=='我的宠物')return;
   $('eventTitle').closest('.event').classList.add('pet-owned-painted');

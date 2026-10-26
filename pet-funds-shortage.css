@@ -1,0 +1,18 @@
+#game>.event.event-active.pet-funds-painted{max-width:420px;padding:20px!important;border:1px solid #c1a77a!important;border-radius:23px 18px 24px 19px!important;background:radial-gradient(ellipse at top left,#d4d9b455,transparent 60%),#fbefd5!important;color:#4d5e37;box-shadow:0 12px 50px #30271470}
+.pet-funds-painted:before{content:'';position:absolute;inset:7px;border:1px dashed #c9ad7a;border-radius:18px 14px 19px 15px;pointer-events:none}
+.pet-funds-painted>.row,.pet-funds-painted #eventDesc{display:none}
+.pet-funds-painted #eventTitle{text-align:center;padding:0!important;font-family:'Songti SC','STSong',serif;font-size:27px;margin:4px 0 12px;color:#3e5735}
+.pet-funds-painted #eventTitle:before{content:'!';display:inline-block;border-radius:50%;width:30px;height:34px;background:#bb712d;color:#fff;margin-right:8px;font-family:Georgia,serif}
+.pet-funds-art{position:relative;aspect-ratio:750/285;overflow:hidden;border-radius:14px;mix-blend-mode:multiply}
+.pet-funds-art img{position:absolute;max-width:none!important;width:125.4667%;height:auto;left:-13.3333%;top:-115.7895%}
+.pet-funds-panel dl{border:1px solid #c9b284;border-radius:12px 17px 13px 15px;padding:5px 10px;margin:10px 0;background:#fff5dc}
+.pet-funds-panel dl>div{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 6px;font-size:15px}.pet-funds-panel dl>div+div{border-top:1px dashed #d6c29a}
+.pet-funds-panel dd{margin:0;font-family:Georgia,serif;font-size:26px;font-weight:bold;color:#385235}.pet-funds-panel .short{color:#ad552f;background:#f4dfb9;border-radius:9px}.pet-funds-panel .short dd{color:#ad552f}
+.pet-funds-required{text-align:center;background:#eae4bd90;border-radius:12px;padding:10px 5px;margin:12px 0 9px;line-height:1.6;font-size:14px;font-family:'Songti SC',serif;font-weight:650}
+.pet-funds-saved{text-align:center;font-size:12px;color:#82704d;margin:9px 0}
+.pet-funds-advice{text-align:center;font-size:12px;color:#a06537;margin:10px 0 8px}
+.pet-funds-panel small{display:block;text-align:center;font-size:10px;color:#99835b;line-height:1.6}
+.pet-funds-painted #actions{gap:7px;padding-top:12px!important}
+.event.event-active.pet-funds-painted #actions [data-pet-funds-action="bank"]{min-height:45px!important;border:1px solid #b4934f;background:linear-gradient(110deg,#ecc05a,#f6d98c)!important;color:#3f5330!important;border-radius:14px 18px 13px 16px;font-family:'Songti SC',serif;font-size:20px}
+.event.event-active.pet-funds-painted #actions [data-pet-funds-action="adjust"]{min-height:37px!important;border:1px solid #bca67b;background:#faf0d7!important;color:#6a6748!important;font-size:14px}
+.event.event-active.pet-funds-painted #actions [data-pet-funds-action="review"]{min-height:28px!important;border:0;background:transparent!important;color:#958260!important;font-size:11px}
