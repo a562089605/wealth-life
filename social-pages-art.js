@@ -15,7 +15,7 @@
  function monthly(b){
   const r=socialRecord();if(!r){b.append(note('本月尚未交流。先查看，再确认相处方式；每月可与一位联系人互动一次。'));return;}
   const p=(state.people||[]).find(p=>(p.id||p.name)===r.person);
-  b.append(row('✓ 本月已交流',p?.name||'已记录的联系人'),row('本月交流',r.scene),note('本月交流已完成。查看联系人不会再次扣费或改变关系，下个月可以继续互动。'));
+  b.append(row('✓ 本月已交流',p?.name||'已记录的联系人'),row('本月交流',r.scene));if(Number.isFinite(r.hours))b.append(row('本次自由时间减少',r.hours+'小时'));b.append(note('本月交流已完成。查看联系人不会再次扣费或改变关系，下个月可以继续互动。'));
  }
  const networkBefore=$('networkBtn').onclick;
  $('networkBtn').onclick=function(...args){
@@ -38,17 +38,19 @@
   const result=personBefore(i),p=state.people?.[i];if(!p)return result;
   const title=p.name+' · '+relationStage(p),buttons=[...$('actions').querySelectorAll('button')],b=board(title,0);if(!b)return result;
   b.classList.add('social-person-paper');$('eventTitle').textContent=p.name+(relationStage(p)?' · '+relationStage(p):'');
-  b.append(row('身份',p.status||p.job||'已认识的人'),row('亲密度',Math.round(p.relation)+'/100'));monthly(b);
+  b.append(row('身份',p.status||p.job||'已认识的人'),row('亲密度',Math.round(p.relation)+'/100'),row('剩余自由时间',currentCareerTime().free+'小时'));monthly(b);
   const descriptions=['在小餐馆坐下来，一起吃顿饭。','找个舒服的位置，聊聊近况。','沿着小路走走，边走边聊。'];
   const options=[['确认一起吃饭 · $45','一起吃饭','$45',1],['确认聊天 · $15','聊天','$15',2],['确认散步交流 · $0','散步交流','$0',3]],list=document.createElement('div');list.className='social-option-list';
   options.forEach(([label,name,cost,s],n)=>{
    const button=buttons.find(x=>x.textContent===label);if(!button)return;const original=button.onclick,owner=state,month=state.month;
    button.onclick=function(e){if(state!==owner||state.month!==month||!b.isConnected||!state.people.includes(p))return;return original.call(this,e)};
    button.className='social-option';button.setAttribute('aria-label',label);button.dataset.socialScene=s;
-   const copy=document.createElement('span'),heading=document.createElement('strong'),desc=document.createElement('small'),price=document.createElement('b');heading.textContent=name;desc.textContent=descriptions[n];price.textContent=cost+' · 确认互动';copy.append(heading,desc,price);button.replaceChildren(scene(s),copy);list.append(button);
+   const hours=n===0?2:1;button.disabled=button.disabled||currentCareerTime().free<hours;
+   const copy=document.createElement('span'),heading=document.createElement('strong'),desc=document.createElement('small'),time=document.createElement('small'),price=document.createElement('b');heading.textContent=name;desc.textContent=descriptions[n];time.textContent='自由时间减少'+hours+'小时';price.textContent=cost+' · 确认互动';copy.append(heading,desc,time,price);button.replaceChildren(scene(s),copy);list.append(button);
   });b.append(list);
   b.append(note('确认后能量减少2，社交增加3（受状态上下限影响）；亲密度和幸福度以本次交流结果为准。'));
   if(!socialRecord()&&state.cash<45)b.append(note('灰色选项暂不可选；现金不足时，也可以选择免费的散步交流。'));
+  if(!socialRecord()&&currentCareerTime().free<2)b.append(note('自由时间不足的互动暂不可选；不会扣款或预支下个月时间。'));
   actions();return result;
  };
  const socialBefore=doSocial;
@@ -56,7 +58,7 @@
   const previous=socialRecord(),before={energy:state.energy,social:state.social,happiness:state.happiness},result=socialBefore(...args),r=socialRecord();
   if(!r||r===previous)return result;
   const kind=args[3],i=kind==='socialMeal'?1:kind==='socialCoffee'?2:3,b=board(r.scene,i,true);if(!b)return result;
-  const p=args[0];b.append(row('本次交流',p.name),row('本次已支付',priceText(r.cost)),row('能量变化',signed(state.energy-before.energy)),row('社交变化',signed(state.social-before.social)),row('幸福度变化',signed(state.happiness-before.happiness)),note('本月交流已记录。返回联系人只查看结果，不会重复付款或再次抽取结果。'));
+  const p=args[0];b.append(row('本次交流',p.name),row('本次已支付',priceText(r.cost)));if(Number.isFinite(r.hours))b.append(row('本次自由时间减少',r.hours+'小时'));b.append(row('能量变化',signed(state.energy-before.energy)),row('社交变化',signed(state.social-before.social)),row('幸福度变化',signed(state.happiness-before.happiness)),note('本月交流已记录。返回联系人只查看结果，不会重复付款或再次抽取结果。'));
   const returnButton=document.createElement('button');returnButton.textContent='返回联系人';returnButton.onclick=()=>$('networkBtn').click();$('actions').prepend(returnButton);actions();return result;
  };
  function signed(n){return(n>0?'+':'')+n;}

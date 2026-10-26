@@ -27,11 +27,12 @@
     "recovery redirect and empty contacts",
     "explicit room acknowledgement without interaction",
     "320/390/desktop centered without horizontal overflow",
-    "real service worker and offline art"
+    "real service worker and offline art",
+    "confirmed1/1/2 hours, time changed after preview, exact zero, next month and old receipt compatibility"
   ],
   "pageErrors": [],
   "limits": [
     "isolated Chromium, not real phone",
-    "existing social time gap remains, no new hours added"
+    "only confirmed room interaction hours added; other activity proposals unchanged"
   ]
 }
