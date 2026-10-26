@@ -14,7 +14,7 @@
   const ready=!!task&&!q.blocked&&!(recovery&&method==='self');
   const token={};let paid=false;
   showEvent('宠物日常照顾',label(p,method),!task?'现在还不用洗，下次时间是'+monthText(p.care.nextClean)+'。这里只查看，不会扣款。':recovery?'康复期间由专业机构代为清洁，不占本人时间。':'为'+(p.name||rule.name)+'安排本次清洁。确认后才扣款并计入时间。',[
-   ['涉及宠物',p.name||rule.name],['本次费用',priceText(q.cost||0)],['本人时间',(q.hours||0)+'h'],['洗后下次时间',monthText(state.month+rule[method+'Months'])]
+   ['涉及宠物',p.name||rule.name],['本次费用',priceText(q.cost||0)],['自由时间',(q.hours||0)>0?'减少 '+q.hours+' 小时':'不减少'],['下次洗澡',monthText(state.month+rule[method+'Months'])]
   ],[['确认'+label(p,method),()=>{
    if(paid||state!==owner||state.month!==month||previewToken!==token||!document.querySelector('.event-active'))return;
    const actual=cleanTask(p);if(!actual||actual.key!==task?.key)return openPetCare();
@@ -42,7 +42,7 @@
   for(const method of ['self','pro']){
    const b=document.createElement('button');b.type='button';b.className='pet-care-square '+method;b.setAttribute('aria-label',label(p,method));
    const cost=roundCash(rule[method]*(state.cpiIndex||100)/100),hours=recovery?0:rule[method+'Hours'];
-   b.innerHTML=icon(method)+'<strong>'+label(p,method)+'</strong><span>'+priceText(cost)+' · '+hours+'小时</span><small>洗后间隔'+rule[method+'Months']+'个月</small>';
+   b.innerHTML=icon(method)+'<strong>'+label(p,method)+'</strong><span>费用：'+priceText(cost)+'</span><span class="pet-care-time">'+(hours>0?'自由时间减少 '+hours+' 小时':'不消耗自由时间')+'</span><small>洗完后，隔 '+rule[method+'Months']+' 个月再洗</small>';
    b.disabled=recovery&&method==='self';b.onclick=()=>{if(state===owner&&state.month===month&&panel.isConnected)previewBath(p,method)};panel.querySelector('.pet-care-choices').append(b);
   }
   if(recovery){const note=document.createElement('p');note.className='pet-care-recovery';note.textContent='康复期间请选择专业照顾，由机构代为处理。';panel.append(note)}
