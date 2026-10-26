@@ -4,8 +4,8 @@
   "runtimeOriginalUnique": 16,
   "referenceOriginalUnique": 14,
   "duplicateFiles": 1,
-  "newGeneratedRuntime": 2,
-  "runtimePetResources": 18,
+  "newGeneratedRuntime": 3,
+  "runtimePetResources": 19,
   "rows": [
     {
       "index": 305,
@@ -203,7 +203,7 @@
       "sha256": "4083e0b0803d51e8aa0adb38e3963675e101c4ffd533f3f3175dc8d5dfdee7c9",
       "status": "待逐张确认",
       "page": "绒毛银猫角色设定",
-      "note": "猫咪外形修订版，留待与325比较"
+      "note": "猫咪外形修订版，留待与325比较；现按用户要求作为新绘银渐层洗澡双场景的外形参考，未替换已确认主页画像"
     },
     {
       "index": 327,

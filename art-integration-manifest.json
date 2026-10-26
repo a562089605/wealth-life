@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "64 production resources; pet artwork mapped by real flow, 459 original candidates retained.",
+  "scope": "65 production resources; silver-cat cleaning scene atlas added; 459 candidates retained.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1528,6 +1528,31 @@
         "browser": "passed qa/browser-pet-art-mapping.py: actual all-seven adoption, species-specific insurance/cleaning/payment; time shortfall has no payment; isolated Chromium, not real-device"
       },
       "rules": "Original domain state and handlers authoritative; illustration only"
+    },
+    {
+      "id": "pet-cat-cleaning-scenes",
+      "source": {
+        "originalName": "New silver-cat home and professional cleaning scenes",
+        "evidence": [
+          "progress/cat-cleaning-scenes-2026-10-26.md"
+        ],
+        "referenceCandidates": [
+          326
+        ],
+        "generation": "User requested two silver-cat scenes from archived character reference; one two-scene atlas, separate CSS windows"
+      },
+      "resourcePath": "assets/career/pet-cat-cleaning-scenes.webp",
+      "gitBlobSha": "b4ecb390364699d62e6e99ab1fe6b700b9284ec8",
+      "pageOrEvent": "银渐层清洁护理：自己洗澡/外出洗澡两张独立场景窗口",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "new user-requested illustration; original cat reference and older screenshots retained",
+      "verification": {
+        "bytes": "new generated PNG optimized as WebP; no archived original modified",
+        "visualReview": "round silver shaded cat matching candidate326, two text-free scenes",
+        "browser": "passed qa/browser-pet-cat-cleaning.py: actual cat adoption, both scene windows, 320/390/desktop centering, original self10/2h/2months and pro60/1h/3months, no early/double payment"
+      },
+      "rules": "Artwork only; original cat10/2h/2months and60/1h/3months unchanged"
     }
   ],
   "candidateEntries": [
@@ -10768,5 +10793,5 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 46
+  "prAddedImageCount": 47
 }

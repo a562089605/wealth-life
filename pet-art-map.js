@@ -1,8 +1,8 @@
 // Reviewed scene windows: never display the archived names, balances or checkmarks.
 const PetArt={
- window(file,box,alt,extra=''){
+ window(file,box,alt,extra='',sourceWidth=941){
   const [x,y,w,h]=box;
-  return '<div class="pet-scene-window '+extra+'" style="aspect-ratio:'+w+'/'+h+'"><img src="assets/career/'+file+'.webp" alt="'+alt+'" style="width:'+941/w*100+'%;left:'+(-x/w*100)+'%;top:'+(-y/h*100)+'%"></div>';
+  return '<div class="pet-scene-window '+extra+'" style="aspect-ratio:'+w+'/'+h+'"><img src="assets/career/'+file+'.webp" alt="'+alt+'" style="width:'+sourceWidth/w*100+'%;left:'+(-x/w*100)+'%;top:'+(-y/h*100)+'%"></div>';
  },
  portrait(species,context='home'){
   if(species==='dog')return this.window('pet-owned-sheet',[40,238,410,430],'柯基插画');
@@ -14,5 +14,6 @@ const PetArt={
   const box=({gecko:[505,570,280,230],spider:[44,880,270,230],tortoise:[505,890,270,220],chameleon:[160,1155,400,220]})[species];
   return box?this.window('pet-selection',box,PET_ADOPTION[species].name+'插画'):'';
  },
- crocodile(part){return this.window('pet-crocodile-cleaning',({hero:[40,255,530,295],self:[120,610,280,255],pro:[120,930,280,275]})[part],part==='hero'?'鳄鱼与栖息池':part==='self'?'自行清洁栖息池工具':'专业栖息池清洁工具','pet-reptile-scene')}
+ crocodile(part){return this.window('pet-crocodile-cleaning',({hero:[40,255,530,295],self:[120,610,280,255],pro:[120,930,280,275]})[part],part==='hero'?'鳄鱼与栖息池':part==='self'?'自行清洁栖息池工具':'专业栖息池清洁工具','pet-reptile-scene')},
+ catCleaning(part){return this.window('pet-cat-cleaning-scenes',part==='self'?[365,8,700,565]:[395,602,660,510],part==='self'?'银渐层在家洗澡':'银渐层在宠物店专业清洁','pet-cat-cleaning-scene',1402)}
 };
