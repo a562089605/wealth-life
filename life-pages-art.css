@@ -1,0 +1,21 @@
+#game>.event.event-active.life-pages-painted{max-width:460px;padding:17px!important;background:radial-gradient(ellipse at top left,#e1ddb96b,transparent 65%),#faf0d8!important;border:1px solid #c4ac7d!important;border-radius:23px 19px 25px 18px!important;box-shadow:0 16px 55px #342e2055!important}
+.life-pages-painted>.row,.life-pages-painted #eventDesc{display:none}
+.life-pages-painted #eventTitle{font-family:'Songti SC','STSong',serif;font-size:23px;text-align:center;letter-spacing:.04em;color:#455e37;margin:0 0 10px;padding:0 35px!important;line-height:1.5;white-space:normal!important;overflow-wrap:anywhere;box-sizing:border-box;text-wrap:balance}
+.life-paper{color:#576343}.life-paper>.life-paper-row:first-child{font-size:10px;background:transparent;border:0;padding:0 0 9px;color:#87764d}.life-paper>.life-paper-row:first-child strong{font-size:11px}
+.life-paper-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 11px;border-bottom:1px dashed #c7b58b;font-size:12px;background:#fff8e533;line-height:1.5}.life-paper-row strong{text-align:right;font-family:Georgia,'Songti SC',serif;font-size:14px;color:#5b663d}
+.life-paper-note{margin:10px 3px;font-size:11px;line-height:1.8;color:#89734d;text-align:center}
+.life-paper-table{margin:0;border-radius:14px;overflow:hidden;mix-blend-mode:multiply}.life-paper-table img{width:100%;height:auto;display:block}
+.life-bill-list{display:grid;gap:9px;margin:12px 0}
+#game button.life-bill-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 12px!important;background:#fff9e8!important;border:1px solid #c5b184;border-radius:12px 17px 13px 15px;text-align:left;color:#52613b;min-height:58px!important}.life-bill-item strong{font-family:'Songti SC',serif;font-size:15px}.life-bill-item span{flex-shrink:0;font-size:12px;color:#927947}
+.life-activity-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 9px;margin:13px 0}
+#game button.life-activity-card{display:block!important;padding:5px 5px 9px!important;min-width:0;min-height:0!important;text-align:left;background:#fff8e4!important;border:1px solid #c9b48a;border-radius:12px 16px 11px 14px;overflow:hidden;box-shadow:0 3px 6px #977e4520;white-space:normal}
+.life-activity-scene{width:100%;aspect-ratio:1;background-image:url('assets/career/life-activities.webp');background-size:300% 300%;background-position:var(--scene-x) var(--scene-y);border-radius:9px 12px 8px 11px;flex:none}
+.life-activity-card strong{display:block;font-family:'Songti SC',serif;color:#4c613d;font-size:14px;line-height:1.6;margin:6px 4px 2px}.life-activity-card>span{display:block;font-size:10px;color:#967c4b;margin:0 4px;line-height:1.7}
+.life-paper>.life-activity-scene{max-width:290px;margin:0 auto 12px}.life-funding-scene{margin:4px 0 15px;border-radius:16px;overflow:hidden;mix-blend-mode:multiply}
+.life-pages-painted #actions{padding-top:9px!important;background:transparent!important;gap:6px;max-height:43vh!important;overflow:auto}
+.event.event-active.life-pages-painted #actions button{white-space:normal;line-height:1.5;min-height:36px!important;border-radius:12px 15px 11px 14px;border:1px solid #c8b487;background:#fff5db!important;color:#657047!important;font-size:12px;padding:7px 10px}
+.event.event-active.life-pages-painted #actions button[data-life-paper-action=confirm],.event.event-active.life-pages-painted #actions button[data-life-paper-action=review]{background:linear-gradient(110deg,#e8bf61,#f3d98e)!important;color:#4b6139!important;border-color:#b49758;font-family:'Songti SC',serif;font-size:14px}
+.event.event-active.life-pages-painted #actions button:disabled{opacity:.45}
+@media(max-width:350px){.life-pages-painted #eventTitle{font-size:21px}.life-activity-card strong{font-size:12px}.life-bill-item strong{font-size:13px}.life-paper-row{font-size:11px;padding:8px}.life-paper-row strong{font-size:12px}}
+
+.life-funding-scene img{display:block;width:100%;height:auto}
