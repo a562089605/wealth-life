@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "73 production resources; remaining life checklist, nine activities, preview/result and funding pages illustrated; 459 candidates retained.",
+  "scope": "74 production resources; illustrated relationship contacts, original interactions and outcomes; 459 candidates retained.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1768,6 +1768,33 @@
         "browser": "See qa/browser-evidence/life-pages-art.json"
       },
       "rules": "Original funding crisis, loan, emergency withdrawal, investments and bankruptcy actions retained"
+    },
+    {
+      "id": "social-scenes",
+      "source": {
+        "originalName": "Picture-book contact book, shared table, coffee and walking scenes",
+        "generatedOriginal": "/workspace/generated_images/exec-2acaee71-f7e1-4721-8c8c-6c80a06dd7d8.png",
+        "referenceResources": [
+          "assets/career/home-mobile.webp",
+          "assets/career/life-activities.webp"
+        ],
+        "evidence": [
+          "progress/social-pages-art-2026-10-26.md"
+        ],
+        "generation": "Continue confirmed original picture-book style, object-only scenes avoid assigning fictional portraits or gender to saved contacts"
+      },
+      "resourcePath": "assets/career/social-scenes.webp",
+      "gitBlobSha": "09c87db6d4604a98ad70990e7eb42a736f2d7896",
+      "pageOrEvent": "关系联系人、三种互动与原交流结果页",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "New consistent scene atlas; original candidates and all saved contacts retained",
+      "verification": {
+        "bytes": "Generated PNG optimized as WebP; CSS shows four respective scene windows",
+        "visualReview": "Warm chunky gouache and forest green/ochre; address book, dinner, two coffees, empty park bench; no static amounts or portraits",
+        "browser": "See qa/browser-evidence/social-pages-art.json"
+      },
+      "rules": "Original45/15/0 fees, monthly one interaction, original scene rolls and state effects; no new activity hours"
     }
   ],
   "candidateEntries": [

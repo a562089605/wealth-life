@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "interactions": [
+    {
+      "cost": 45,
+      "record": "共同爱好",
+      "once": true
+    },
+    {
+      "cost": 15,
+      "record": "共同爱好",
+      "once": true
+    },
+    {
+      "cost": 0,
+      "record": "共同爱好",
+      "once": true
+    }
+  ],
+  "checks": [
+    "saved contacts and new acquaintances; no invented people",
+    "browsing no costs, effects, time or checks",
+    "three original payments and monthly guard, repeat/reload and capped relation",
+    "original failure description and loss retained",
+    "free walk at zero cash",
+    "stale detached/month/save callbacks blocked",
+    "recovery redirect and empty contacts",
+    "explicit room acknowledgement without interaction",
+    "320/390/desktop centered without horizontal overflow",
+    "real service worker and offline art"
+  ],
+  "pageErrors": [],
+  "limits": [
+    "isolated Chromium, not real phone",
+    "existing social time gap remains, no new hours added"
+  ]
+}

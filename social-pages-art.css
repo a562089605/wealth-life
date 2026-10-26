@@ -1,0 +1,12 @@
+.social-scene{aspect-ratio:1;width:100%;background-image:url('assets/career/social-scenes.webp');background-size:200% 200%;background-position:var(--social-x) var(--social-y);border-radius:13px 17px 12px 15px}
+.social-paper>.social-scene{aspect-ratio:1;max-width:225px;margin:0 auto 11px}
+.social-person-paper>.social-scene{display:none}
+.social-contact-list{display:grid;gap:10px;margin:12px 0}
+#game button.social-contact{display:flex;gap:11px;align-items:center;width:100%;padding:12px 10px!important;background:#fff8e4!important;border:1px solid #c8b387;border-radius:12px 17px 11px 14px;min-height:88px!important;text-align:left;color:#5d6c44;white-space:normal}
+.social-contact-seal{display:grid;place-items:center;width:40px;height:43px;flex:none;background:#e1e5c3;border:1px solid #b7bf91;border-radius:48% 43% 46% 42%;color:#65734b;font-family:'Songti SC',serif;font-size:23px;transform:rotate(-5deg)}
+.social-contact-copy{flex:1;min-width:0}.social-contact-copy strong{display:block;font-family:'Songti SC',serif;font-size:18px;color:#485f39;line-height:1.6}.social-contact-copy small{display:block;font-size:10px;line-height:1.8;color:#8a7952;overflow-wrap:anywhere}
+.social-option-list{display:grid;gap:10px;margin:12px 0}
+#game button.social-option{display:flex;align-items:center;gap:12px;padding:6px!important;width:100%;background:#fff7df!important;border:1px solid #c9b58a;border-radius:12px 17px 12px 15px;text-align:left;white-space:normal;min-height:104px!important}
+.social-option>.social-scene{width:94px;flex:none;border-radius:9px 12px 8px 11px}.social-option>span{display:block;flex:1;min-width:0;padding-right:5px}.social-option strong{display:block;font-family:'Songti SC',serif;font-size:18px;color:#4e623b;line-height:1.6}.social-option small{display:block;font-size:10px;line-height:1.7;color:#8a7850}.social-option b{display:block;margin-top:6px;font-size:12px;color:#97712d}.social-option:disabled{opacity:.48}
+.social-paper table{width:100%;font-size:12px;color:#63704a}.social-paper table td,.social-paper table th{padding:8px}
+@media(max-width:350px){.social-option>.social-scene{width:75px}.social-option strong{font-size:16px}.social-option small{font-size:9px}.social-option b{font-size:11px}.social-contact-copy strong{font-size:16px}}
