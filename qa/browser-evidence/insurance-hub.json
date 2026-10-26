@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checks": [
+    "medical selection has no charge; original200/80% once; switching/cancel next month, keep cancels pending without refund",
+    "income65 paid, next-month cancel/withdraw; month fixture applies full medical400, shared premium paid once",
+    "unowned auto cannot buy; empty pets have no flat pet policy; actual insured dog430 adoption, shared400+30 paid receipt, original per-pet detail",
+    "insufficient cash cannot activate; bank cancel no mutation, confirmed loan returns with selection then separate explicit policy payment",
+    "legacy220 medical/150 auto/45 merged pet retained, no automatic repricing or pet conversion",
+    "owned auto165 activates, stopping next month preserves current coverage then required-bill gate; no new unsupported life contract, legacy life cancellation no refund",
+    "actual original income claim55% once, not recurring",
+    "new medical policy does not reprice an already quoted treatment; critical-health redirect is not overwritten by insurance UI"
+  ],
+  "pageErrors": [],
+  "limits": [
+    "isolated Chromium, non-real-device",
+    "month/car/legacy/low-cash/health fixtures explicit",
+    "no new renters/life/car injury payout rules invented"
+  ]
+}

@@ -1,0 +1,12 @@
+const a=require('node:assert/strict'),R=require('../insurance-rules.js');
+let s={month:0,cash:5000,insurance:{health:{active:true,monthly:200},'pet:p1':{active:true,monthly:30},'pet:p2':{active:true,monthly:30}},monthlyPayments:{month:0,premiums:260}};
+const original=JSON.stringify(s);a.deepEqual(R.quote(s),{month:0,monthly:260,paid:260,due:0});a.equal(JSON.stringify(s),original);
+a.deepEqual(R.quote(s,{key:'income',monthly:65}),{month:0,monthly:325,paid:260,due:65});
+s.monthlyPayments.premiums=30;a.equal(R.quote(s).due,230,'unpaid medical and second pet remain due; one pet payment does not pay every policy');
+a.equal(R.quote(s,{key:'health',monthly:400}).monthly,260,'active current medical contract is retained until its explicit switch');
+s.insurance.health={active:true,monthly:220};s.insurance.auto={active:true,monthly:150};a.equal(R.quote(s).monthly,430,'legacy220/150 contracts preserve actual rates');
+s.pendingInsuranceChanges={auto:{active:false,effectiveMonth:1}};R.applyChanges(s);a.equal(s.insurance.auto.active,true);a.equal(s.cash,5000);
+s=JSON.parse(JSON.stringify(s));s.month=1;R.applyChanges(s);a.equal(s.insurance.auto.active,false);a.equal(s.insurance.auto.monthly,150);a.equal(s.insurance.health.monthly,220);a.equal(s.cash,5000);a.equal(s.pendingInsuranceChanges.auto,undefined);
+a.deepEqual(R.quote(s),{month:1,monthly:280,paid:0,due:280});const after=JSON.stringify(s);R.applyChanges(s);a.equal(JSON.stringify(s),after);
+s.monthlyPayments={month:1,premiums:500};a.equal(R.quote(s).due,0);a.equal(s.cash,5000,'no automatic refund or cash mutation from an overpaid receipt');
+console.log('PASS: all actual per-pet/legacy policies counted, shared paid receipts offset once, switching does not overwrite current medical contract, serialized next-month cancellation is idempotent/no refund.');

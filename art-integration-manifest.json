@@ -348,19 +348,20 @@
         "originalName": "Cozy health and renters insurance.png",
         "libraryId": "libfile_16a1809822148191a0beb012e6500404",
         "evidence": [
-          "progress/return-art-integration.md"
+          "progress/return-art-integration.md",
+          "progress/insurance-module-2026-10-26.md"
         ]
       },
       "resourcePath": "assets/career/insurance.webp",
       "gitBlobSha": "c641e3a8f0fd210ac260d09ddf0410c162cad61a",
-      "pageOrEvent": "医疗保障选择及保险表单",
+      "pageOrEvent": "保险管理、医疗方案、收入保障、车险条件、逐宠入口和本月保费核对：只用原医疗箱/房屋/盾牌局部",
       "integrationStatus": "existing-integration",
       "addedInExistingPR": true,
       "duplicateOrOldDraft": "not-reviewed-against-candidate-package",
       "verification": {
         "bytes": "git-blob-verified",
         "visualReview": "not-performed-in-this-session",
-        "browser": "pending"
+        "browser": "passed qa/browser-insurance-hub.py: actual medical/income/auto purchases, receipt once-only, scheduled changes/cancellation, pets/legacy policies, low cash/loan return, locked treatment quote and critical-health redirect; isolated Chromium"
       },
       "rules": "运行时原函数与账本为准；图片静态数字不是规则来源"
     },
