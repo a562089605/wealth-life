@@ -9,6 +9,7 @@
  const icon=method=>method==='self'?'<svg viewBox="0 0 100 78" aria-hidden="true"><path d="M13 39h74l-7 23H22zM25 63l-3 8m53-8 3 8M22 38V21q0-11 12-10h9v8h-9v19"/><path d="M45 37q-6-13 5-17l4 6 7-6q13 4 7 17M51 32h1m10 0h1"/><circle cx="78" cy="14" r="5"/><circle cx="87" cy="26" r="3"/></svg>':'<svg viewBox="0 0 100 78" aria-hidden="true"><path d="M15 30l8-18h55l8 18M19 31v39h63V31M37 70V47h26v23M13 31h74M24 13v18m17-18v18m18-18v18m17-18v18"/><path d="M36 38q4 6 8 0m12 0q4 6 8 0"/></svg>';
  function currentPet(){const pets=ensurePetCare(state);return pets.find(p=>petId(p)===selectedId)||pets[0]}
  function cleanTask(p){return petCareTasks().find(t=>!t.unsupported&&t.pet===p&&t.kind==='Clean')}
+ globalThis.openPetCareForPet=function(pet){selectedId=pet;return openPetCare()};
  function previewBath(p,method){
   const rule=PET_CARE_RULES[petCareSpecies(p)],task=cleanTask(p),owner=state,month=state.month,recovery=isRecoveryMonth(state);
   const q=task?petCareQuote(state,{[task.key]:method}):{cost:roundCash(rule[method]*(state.cpiIndex||100)/100),hours:recovery?0:rule[method+'Hours']};
@@ -30,7 +31,8 @@
   selectedId=petId(p);const due=!!cleanTask(p),recovery=isRecoveryMonth(state);
   const annualDue=petCareTasks().some(t=>t.kind==='Annual');
   const owner=state,month=state.month,key=month+':'+selectedId;
-  let methodSelected=recovery?'pro':selectedMethods[key]||'self',panel;
+  const savedMethod=state.petCareDraft?.month===month?state.petCareDraft.selections?.[cleanTask(p)?.key]:null;
+  let methodSelected=recovery?'pro':savedMethod||selectedMethods[key]||'self',panel;
   showEvent('宠物日常照顾','清洁护理','选择一种方式，确认选择后核对并付款。',[],[
    ['确认选择',()=>{if(state===owner&&state.month===month&&panel?.isConnected)previewBath(p,methodSelected)},true],
    ...(annualDue?[['查看已到期的年度体检',legacyCare,false]]:[]),['返回我的宠物',openPetHub,false]

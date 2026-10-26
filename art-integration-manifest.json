@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "58 production resources including one three-scene corgi cleaning atlas; original 459 candidates preserved.",
+  "scope": "59 production resources; original editable-name pet board portraits integrated, original 459 candidates retained.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1393,6 +1393,29 @@
         "browser": "passed: qa/browser-pet-daily-care.py; vertical illustration options, selection summary and confirmation, original due/payment rules, 320/390px/desktop"
       },
       "rules": "Art only; original due dates, money/time costs and care payment continue unchanged"
+    },
+    {
+      "id": "pet-owned-sheet",
+      "source": {
+        "originalName": "Cozy pet homepage with editable corgi name.png",
+        "libraryId": "libfile_86f1424a13708191a6efc33792eec712",
+        "evidence": [
+          "CANDIDATE_ART_MANIFEST.json",
+          "progress/pet-owned-reference-2026-10-26.md"
+        ]
+      },
+      "resourcePath": "assets/career/pet-owned-sheet.webp",
+      "gitBlobSha": "9c3fb66d4d0094645531a7d36170d42c4ed5d63f",
+      "pageOrEvent": "我的宠物：原狗猫肖像局部用于真实逐宠卡，所有金额/姓名/选项由DOM显示",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "original candidate bytes; old names/dates/money/checkboxes excluded from portrait crops",
+      "verification": {
+        "bytes": "exact archived WebP",
+        "visualReview": "matches user photo reference, portrait crops exclude original text",
+        "browser": "passed isolated Chromium: actual dog/cat adoption, due selection, once-only batch payment, rename, centered 320/390/desktop; not real-device tested"
+      },
+      "rules": "No predetermined pet count or pricing; per-pet state, effective policies and original care ledger are canonical"
     }
   ],
   "candidateEntries": [
@@ -7777,7 +7800,7 @@
       "libraryId": "libfile_86f1424a13708191a6efc33792eec712",
       "originalName": "Cozy pet homepage with editable corgi name.png",
       "packagePath": "assets/candidates/libfile_86f1424a13708191a6efc33792eec712.webp",
-      "productionResourcePath": null,
+      "productionResourcePath": "assets/career/pet-owned-sheet.webp",
       "dimensions": [
         941,
         1672
@@ -7789,9 +7812,9 @@
         "libfile_681d4a162b7c81918f6707dbb0656add",
         "libfile_86f1424a13708191a6efc33792eec712"
       ],
-      "status": "candidate-not-visually-reviewed",
+      "status": "integrated",
       "validationError": null,
-      "oldDraftReview": "pending-visual-and-rule-review",
+      "oldDraftReview": "Matches user reference; dog/cat portrait crops only, dynamic list and values",
       "repositoryResourcePath": "assets/candidates/libfile_86f1424a13708191a6efc33792eec712.webp",
       "repositoryBytesVerified": true
     },
@@ -10632,5 +10655,5 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 40
+  "prAddedImageCount": 41
 }
