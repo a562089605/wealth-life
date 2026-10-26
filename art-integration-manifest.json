@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "65 production resources; silver-cat cleaning scene atlas added; 459 candidates retained.",
+  "scope": "66 production resources; distinct silver-cat professional groomer scene; original 459 candidates retained.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1553,6 +1553,31 @@
         "browser": "passed qa/browser-pet-cat-cleaning.py: actual cat adoption, both scene windows, 320/390/desktop centering, original self10/2h/2months and pro60/1h/3months, no early/double payment"
       },
       "rules": "Artwork only; original cat10/2h/2months and60/1h/3months unchanged"
+    },
+    {
+      "id": "pet-cat-professional",
+      "source": {
+        "originalName": "Silver-cat professional groomer scene revision",
+        "referenceCandidates": [
+          326
+        ],
+        "evidence": [
+          "progress/cat-cleaning-scenes-2026-10-26.md"
+        ],
+        "generation": "User requested visually distinct professional-care picture, groomer brushing standing cat"
+      },
+      "resourcePath": "assets/career/pet-cat-professional.webp",
+      "gitBlobSha": "05fa8c589b868cbefd94c0d0d8e788ae9b403a6a",
+      "pageOrEvent": "银渐层外出洗澡：美容师梳理毛发；自己洗澡原图保留",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "new scene; old professional scene retained within archived/current home atlas",
+      "verification": {
+        "bytes": "new PNG optimized as WebP",
+        "visualReview": "standing cat, groomer/brush/table clearly distinguish from home basin",
+        "browser": "passed cat browser regression: distinct professional/home images loaded, centered 320/390/desktop, original payment/interval and repeat protection"
+      },
+      "rules": "Image-only revision, original price/time/interval unchanged"
     }
   ],
   "candidateEntries": [
@@ -10793,5 +10818,5 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 47
+  "prAddedImageCount": 48
 }
