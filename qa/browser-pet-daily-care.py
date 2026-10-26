@@ -18,9 +18,9 @@ try:
   page.get_by_role('button',name='查看我的宠物',exact=True).click();page.get_by_role('button',name='宠物日常照顾',exact=True).click()
   assert page.locator('.pet-care-square').count()==2
   assert '首次清洁已包含' in page.locator('.pet-care-pet').inner_text()
-  assert '2个月' in page.get_by_role('button',name='自己洗澡',exact=True).inner_text()
-  assert '3个月' in page.get_by_role('button',name='外出洗澡',exact=True).inner_text()
-  page.wait_for_function('document.querySelector(".pet-care-portrait img")?.naturalWidth>0')
+  assert '2个月' in page.get_by_role('button',name='自己洗澡',exact=True).inner_text().replace(' ','')
+  assert '3个月' in page.get_by_role('button',name='外出洗澡',exact=True).inner_text().replace(' ','')
+  page.wait_for_function('document.querySelector(".pet-clean-art.hero img")?.naturalWidth>0')
   page.screenshot(path='qa/browser-evidence/pet-daily-two-choices.png',full_page=True)
   for width,height in [(320,568),(390,844),(1280,900)]:
    page.set_viewport_size({'width':width,'height':height});box=page.locator('.event-active').bounding_box()
@@ -29,12 +29,12 @@ try:
    assert box['y']>=19 and box['y']+box['height']<=height-19
    assert page.locator('.event-active').evaluate('(e)=>e.scrollWidth<=e.clientWidth')
   page.set_viewport_size({'width':390,'height':844})
-  page.get_by_role('button',name='自己洗澡',exact=True).click();assert page.get_by_role('button',name='确认自己洗澡',exact=True).is_disabled()
+  page.get_by_role('button',name='自己洗澡',exact=True).click();page.get_by_role('button',name='确认选择',exact=True).click();assert page.get_by_role('button',name='确认自己洗澡',exact=True).is_disabled()
   assert page.evaluate('state.cash')==9600 and page.evaluate('state.pets[0].care.nextClean')==2
   # Jump to the first actual clean due month in this isolated test save, not a natural long playthrough.
   page.evaluate('state.month=2;clearModals();openPetCare();window.careDueFixture=JSON.stringify(state)')
   before=page.evaluate('currentCareerTime().free')
-  page.get_by_role('button',name='自己洗澡',exact=True).click()
+  page.get_by_role('button',name='自己洗澡',exact=True).click();page.get_by_role('button',name='确认选择',exact=True).click()
   page.evaluate('() => {window.qaCareAgain=document.querySelector("#actions button").onclick}')
   page.get_by_role('button',name='确认自己洗澡',exact=True).click()
   assert page.evaluate('state.cash')==9590 and page.evaluate('currentCareerTime().free')==before-2
@@ -43,10 +43,10 @@ try:
   assert page.evaluate('state.cash')==9590
   page.evaluate('state=JSON.parse(window.careDueFixture);clearModals();openPetCare()')
   before=page.evaluate('currentCareerTime().free')
-  page.get_by_role('button',name='外出洗澡',exact=True).click();page.get_by_role('button',name='确认外出洗澡',exact=True).click()
+  page.get_by_role('button',name='外出洗澡',exact=True).click();page.get_by_role('button',name='确认选择',exact=True).click();page.get_by_role('button',name='确认外出洗澡',exact=True).click()
   assert page.evaluate('state.cash')==9540 and page.evaluate('currentCareerTime().free')==before-1
   assert page.evaluate('state.pets[0].care.nextClean')==5
   assert not errors,errors
-  result={'passed':True,'checks':['原真实领养后显示两个手绘选项，首次包含与下次时间明确，未到期无法提前扣款','320矮屏/390px/桌面卡片居中、保留边距且无横向溢出','到期月份fixture：自己洗10/2h并延后2月，重复回调不重扣','同一到期fixture：外出洗60/1h并延后3月，沿原账本/日期更新'],'pageErrors':errors,'limitations':['隔离Chromium，非真机','清洁到期月份用fixture；不是自然长期试玩','年度体检/康复/全部物种仍沿原规则，未穷举全部UI组合']}
+  result={'passed':True,'checks':['原真实领养后显示两张纵向插画选项与选中汇总，首次包含与下次时间明确，未到期无法提前扣款','320矮屏/390px/桌面卡片居中、保留边距且无横向溢出','到期月份fixture：自己洗10/2h并延后2月，重复回调不重扣','同一到期fixture：外出洗60/1h并延后3月，沿原账本/日期更新'],'pageErrors':errors,'limitations':['隔离Chromium，非真机','清洁到期月份用fixture；不是自然长期试玩','年度体检/康复/全部物种仍沿原规则，未穷举全部UI组合']}
   Path('qa/browser-evidence/pet-daily-care.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps(result,ensure_ascii=False,indent=2));ctx.close();b.close()
 finally:server.shutdown();server.server_close()

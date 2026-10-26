@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "57 production resources including original corgi adoption scene; original 459 candidates unchanged.",
+  "scope": "58 production resources including one three-scene corgi cleaning atlas; original 459 candidates preserved.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1366,6 +1366,33 @@
         "browser": "passed: qa/browser-pet-adoption-art.py; centered at 320/390px/desktop, live name/insurance/quote, isolated once-only adoption"
       },
       "rules": "No price/rule changes; original form nodes, handlers and transaction remain canonical"
+    },
+    {
+      "id": "pet-cleaning-scenes",
+      "source": {
+        "originalName": "Corgi cleaning three-scene illustration atlas",
+        "libraryId": null,
+        "evidence": [
+          "progress/pet-cleaning-reference-2026-10-26.md"
+        ],
+        "generation": "image_gen; archive crocodile cleaning reference plus original corgi character; user corrected illustration layout",
+        "referenceLibraryIds": [
+          "libfile_f5bacd2878388191b11ce0d7c6fa010f",
+          "libfile_2b649bac35d88191b5d31e660a78ae8e"
+        ]
+      },
+      "resourcePath": "assets/career/pet-cleaning-scenes.webp",
+      "gitBlobSha": "8986385ca98bc56ce87f8fee9ee087484842e580",
+      "pageOrEvent": "柯基清洁护理卡：宠物主图、自己洗澡、专业清洁三幅场景",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "new corgi scenes adapted to user reference; original crocodile card preserved",
+      "verification": {
+        "bytes": "generated PNG converted to WebP; three scenes in one asset",
+        "visualReview": "warm botanical gouache, dog portrait and two cleaning scenes; no printed amounts",
+        "browser": "passed: qa/browser-pet-daily-care.py; vertical illustration options, selection summary and confirmation, original due/payment rules, 320/390px/desktop"
+      },
+      "rules": "Art only; original due dates, money/time costs and care payment continue unchanged"
     }
   ],
   "candidateEntries": [
@@ -10605,5 +10632,5 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 39
+  "prAddedImageCount": 40
 }
