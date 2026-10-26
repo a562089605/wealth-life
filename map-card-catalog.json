@@ -1189,7 +1189,7 @@
         }
       ],
       "follow": false,
-      "cooldown": "陪伴明确可重复；不舒服/受伤/小意外同卡月一次；交流重复范围保留核对",
+      "cooldown": "宠物交流每月最多一次，每次最多认识一位新朋友，不按宠物只数叠加；陪伴自己的宠物仍可重复",
       "art": {
         "candidate": "assets/candidates/libfile_20ca90be7df08191b00aa673862ccd9e.webp",
         "originalName": "Pet Friendship Day in Town.png",
@@ -1201,7 +1201,8 @@
       "conflicts": [],
       "sources": [
         "2026-10-22分享对话原卡与用户确认；仅摘录游戏规则，不保存完整历史聊天",
-        "2026-10-26用户确认宠物简化玩法与自动交流好友"
+        "2026-10-26用户确认宠物简化玩法与自动交流好友",
+        "2026-10-26用户确认宠物交流每月最多一次，每次最多一位新朋友"
       ],
       "tested": true,
       "weight": 20

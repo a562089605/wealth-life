@@ -17,6 +17,12 @@ const quoted=JSON.stringify(r.quote.contact);a.equal(R.drawLife(s,{id:1},80,()=>
 a.equal(R.execute(s,r,{free:80}),true);a.equal(s.cash,980);a.equal(s.people.length,1);a.equal(s.people[0].relation,10);a.equal(s.people[0].id,p.id);a.equal(s.people[0].age,p.age);a.equal(s.people[0].job,p.job);a.equal(s.people[0].gender,p.gender);
 a.equal(R.execute(s,r,{free:80}),false);a.equal(s.people.length,1);a.equal(JSON.stringify(r.quote.contact),quoted);
 let next=C.prepare(s,{...config,random:()=>.9});a.notEqual(next.id,p.id);a.equal(next.gender,'male');a.equal(s.people.length,1,'replenishing the finite name pool must not enroll a friend');
+// The monthly cap is global across owned pets, survives reload, and resets next month.
+s.pets.push({id:'second-pet',species:'cat',name:'小银'});
+a.equal(R.petChoices(s,'pet-social',80).length,0);
+s=JSON.parse(JSON.stringify(s));a.equal(R.petChoices(s,'pet-social',80).length,0);
+a.equal(R.petChoices(s,'pet-companion',80).length,2,'companionship remains repeatable');
+s.month++;a.equal(R.petChoices(s,'pet-social',80).length,2,'a new month restores eligibility for either actual pet');
 // Legacy pending quotes and actual friends must survive profile upgrades byte-for-byte.
 s=fresh();const legacy={id:'old',name:'Old',age:77,job:'旧职业',gender:'male'};s.mapContactCandidates=[structuredClone(legacy)];s.mapCards={events:{pending:{status:'pending',quote:{contact:structuredClone(legacy)}}}};
 C.prepare(s,{...config,random:()=>{throw Error('rerolled locked legacy contact')}});a.deepEqual(s.mapContactCandidates[0],legacy);a.deepEqual(s.mapCards.events.pending.quote.contact,legacy);
