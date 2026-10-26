@@ -42,7 +42,7 @@ function roomOpenArrangement(key){
 const roomArrangementShowBefore=showEvent;
 showEvent=function(type,title,desc,data=[],actions=[]){
  const review=roomReview;
- const eligible=review&&state===review.owner&&state.month===review.month&&!townPending()&&townState().screen==='home'&&!['房屋安排','资金处理','破产确认','宠物托付','人生结束'].includes(type);
+ const eligible=review&&state===review.owner&&state.month===review.month&&!townPending()&&townState().screen==='home'&&!['房屋安排','资金处理','宠物照护缺款','宠物照护缺时','破产确认','宠物托付','人生结束'].includes(type);
  if(eligible){
   actions=[...actions,['确认本月'+ROOM_SECTIONS[review.key]+'安排，返回房屋',()=>roomConfirmArrangement(review),true]];
  }

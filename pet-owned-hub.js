@@ -4,12 +4,7 @@
  const monthText=n=>'第'+(Math.floor(n/12)+1)+'年 · 第'+(n%12+1)+'月';
  const id=p=>p.id||p.careId;
  const methodName=(p,m)=>['dog','cat'].includes(petCareSpecies(p))?(m==='self'?'自己洗澡':'外出洗澡'):(m==='self'?'自行清洁':'专业清洁');
- function portrait(p){
-  const sp=petCareSpecies(p),box=sp==='dog'?[40,238,410,430]:sp==='cat'?[40,712,410,430]:({crocodile:[42,570,270,230],gecko:[505,570,280,230],spider:[44,880,270,230],tortoise:[505,890,270,220],chameleon:[160,1155,400,220]})[sp];
-  if(!box)return '<span class="pet-owned-unknown" aria-hidden="true">✿</span>';
-  const [x,y,w,h]=box,src=['dog','cat'].includes(sp)?'assets/career/pet-owned-sheet.webp':'assets/career/pet-selection.webp';
-  return '<div class="pet-owned-portrait" style="aspect-ratio:'+w+'/'+h+'"><img src="'+src+'" alt="'+PET_CARE_RULES[sp].name+'插画" style="width:'+941/w*100+'%;left:'+(-x/w*100)+'%;top:'+(-y/h*100)+'%"></div>';
- }
+ function portrait(p){return '<div class="pet-owned-portrait">'+PetArt.portrait(petCareSpecies(p))+'</div>'}
  function renamePet(p){
   const owner=state,month=state.month;let input,done=false;
   showEvent('宠物取名','修改名字','只修改这只宠物的名字，不收费。',[],[['保存名字',()=>{
@@ -32,7 +27,7 @@
     const fresh=petCareQuote(state,draft),now=JSON.stringify({cost:fresh.cost,hours:fresh.hours,keys:(fresh.rows||[]).map(r=>[r.key,r.method])});
     if(now!==frozen||fresh.blocked)return openPetHub();
     if(payPetCare(draft)){paid=true;openPetHub()}
-   },true,!!q.blocked||!q.rows?.length||state.cash>=(q.cost||0)&&currentCareerTime().free<(q.hours||0)],['返回房屋',townHome,false]
+   },true,!!q.blocked||!q.rows?.length],['返回房屋',townHome,false]
   ]);
   if($('eventTitle').textContent!=='我的宠物')return;
   $('eventTitle').closest('.event').classList.add('pet-owned-painted');

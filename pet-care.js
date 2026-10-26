@@ -19,7 +19,7 @@ function petCareQuote(s,selections){const recovery=isRecoveryMonth(s),factor=(s.
  return {cost:roundCash(cost),hours,rows,recovery};}
 function payPetCare(selections){const quote=petCareQuote(state,selections);if(quote.blocked||!quote.rows.length)return false;
  if(state.cash<quote.cost){if(typeof openPetFundsShortage==='function')openPetFundsShortage(selections);return false;}
- if(currentCareerTime().free<quote.hours)return false;
+ if(currentCareerTime().free<quote.hours){if(typeof openPetTimeShortage==='function')openPetTimeShortage(selections);return false;}
  if(!spendConfirmed('petCare',quote.cost,{projects:quote.rows.map(r=>r.key)}))return false;
  if(state.petCareTime?.month!==state.month)state.petCareTime={month:state.month,hours:0};state.petCareTime.hours+=quote.hours;
  for(const r of quote.rows){r.pet.care['next'+r.kind]=state.month+(r.kind==='Annual'?12:r.rule[r.method+'Months']);r.pet.care.history.push({month:state.month,key:r.key,kind:r.kind,method:r.method,cost:r.cost,hours:r.hours,delegated:quote.recovery});}
@@ -29,7 +29,7 @@ function openPetCare(){if(state.petCareDraft?.month!==state.month)state.petCareD
  const options=t.kind==='Annual'?['annual']:recovery?['pro']:['self','pro'];for(const method of options)actions.push([name+' · '+(method==='annual'?'年度体检':method==='self'?'在家清洁':'专业清洁')+(recovery?'（委托）':''),()=>{draft[t.key]=method;save();openPetCare();},false]);}
  showEvent('宠物照护',recovery?'康复月委托专业照护':'本月到期宠物照护',recovery?'主动选择委托后确认付款；沿用既定费用，不占本人护理时间，日常养护费仍照付。':'先选择护理方式，再统一确认费用与耗时；预览不扣款。',[
  ['到期项目',tasks.length+'项'],['已选项目',q.rows?.length||0],['本次费用',priceText(q.cost||0)],['本人护理时间',(q.hours||0)+'h'],...(q.blocked?[['待处理',q.blocked]]:[])],
- [...actions,['确认支付已选护理',()=>payPetCare(draft),true,!!q.blocked||!q.rows?.length||state.cash>=q.cost&&currentCareerTime().free<q.hours],['查看资金补救',()=>showFundingOptions(q.cost||0,openPetCare),false],['资金不足，前往银行',()=>openBankLoan(Math.max(1,Math.ceil((q.cost||0)-state.cash)),{after:openPetCare}),false],['返回',finish,false]]);}
+ [...actions,['确认支付已选护理',()=>payPetCare(draft),true,!!q.blocked||!q.rows?.length],['查看资金补救',()=>showFundingOptions(q.cost||0,openPetCare),false],['资金不足，前往银行',()=>openBankLoan(Math.max(1,Math.ceil((q.cost||0)-state.cash)),{after:openPetCare}),false],['返回',finish,false]]);}
 const careTimeBefore=currentCareerTime;currentCareerTime=function(){const t=careTimeBefore(),used=state.petCareTime?.month===state.month?state.petCareTime.hours:0;return {...t,free:Math.max(0,t.free-used),petCareHours:used};};
 const petsBeforeCare=$('petBtn').onclick;$('petBtn').onclick=()=>{if((state.pets||[]).length)return openPetCare();return petsBeforeCare();};
 

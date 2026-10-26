@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "60 production resources; original adoption-success artwork integrated; 459 candidates retained.",
+  "scope": "64 production resources; pet artwork mapped by real flow, 459 original candidates retained.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1440,6 +1440,94 @@
         "browser": "passed isolated Chromium: actual crocodile insured/dog uninsured, actual receipt, repeated callback no double charge, hub navigation and 320/390/desktop centering"
       },
       "rules": "Display only after canonical adoption succeeds; actual pet/quote/insurance/cash, no additional charge"
+    },
+    {
+      "id": "pet-policy",
+      "source": {
+        "originalName": "Little Green's Pet Insurance Screen.png",
+        "libraryId": "libfile_cd20f46dac5c8191b4691bf69945fc3e",
+        "evidence": [
+          "progress/pet-art-mapping-2026-10-26.md"
+        ]
+      },
+      "resourcePath": "assets/career/pet-policy.webp",
+      "gitBlobSha": "65af4d82096b9441ab3200b1fae0f3b4388c87d3",
+      "pageOrEvent": "每只宠物保险详情；鳄鱼使用原带盾牌画像，其他物种实际画像",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "scene-only; archived fixed money/names/state excluded",
+      "verification": {
+        "bytes": "exact archived WebP",
+        "visualReview": "reviewed original page and text-free crops",
+        "browser": "passed qa/browser-pet-art-mapping.py: actual all-seven adoption, species-specific insurance/cleaning/payment; time shortfall has no payment; isolated Chromium, not real-device"
+      },
+      "rules": "Original domain state and handlers authoritative; illustration only"
+    },
+    {
+      "id": "pet-crocodile-cleaning",
+      "source": {
+        "originalName": "Crocodile Care Selection Screen.png",
+        "libraryId": "libfile_f5bacd2878388191b11ce0d7c6fa010f",
+        "evidence": [
+          "progress/pet-art-mapping-2026-10-26.md"
+        ]
+      },
+      "resourcePath": "assets/career/pet-crocodile-cleaning.webp",
+      "gitBlobSha": "ae3cbed209bbe873c7279d8af346d1c33f9f7e86",
+      "pageOrEvent": "鳄鱼清洁护理：原宠物/自行清洁/专业清洁三个场景",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "scene-only; archived fixed money/names/state excluded",
+      "verification": {
+        "bytes": "exact archived WebP",
+        "visualReview": "reviewed original page and text-free crops",
+        "browser": "passed qa/browser-pet-art-mapping.py: actual all-seven adoption, species-specific insurance/cleaning/payment; time shortfall has no payment; isolated Chromium, not real-device"
+      },
+      "rules": "Original domain state and handlers authoritative; illustration only"
+    },
+    {
+      "id": "pet-crocodile-adoption",
+      "source": {
+        "originalName": "Crocodile Adoption: Name and Fees.png",
+        "libraryId": "libfile_77a72d5489ec81919598edf19e923de2",
+        "evidence": [
+          "progress/pet-art-mapping-2026-10-26.md"
+        ]
+      },
+      "resourcePath": "assets/career/pet-crocodile-adoption.webp",
+      "gitBlobSha": "a6178b044dd2ec1d10888ee107a7697eb4cc6591",
+      "pageOrEvent": "鳄鱼取名及费用",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "scene-only; archived fixed money/names/state excluded",
+      "verification": {
+        "bytes": "exact archived WebP",
+        "visualReview": "reviewed original page and text-free crops",
+        "browser": "passed qa/browser-pet-art-mapping.py: actual all-seven adoption, species-specific insurance/cleaning/payment; time shortfall has no payment; isolated Chromium, not real-device"
+      },
+      "rules": "Original domain state and handlers authoritative; illustration only"
+    },
+    {
+      "id": "pet-cat-adoption",
+      "source": {
+        "originalName": "Corgi and silver tabby adoption screen.png",
+        "libraryId": "libfile_0942246ac4608191b6149004b309ab25",
+        "evidence": [
+          "progress/pet-art-mapping-2026-10-26.md"
+        ]
+      },
+      "resourcePath": "assets/career/pet-cat-adoption.webp",
+      "gitBlobSha": "ab209a1ab522b54caf76efaaded8871e5b01479c",
+      "pageOrEvent": "银渐层取名及费用：仅猫画像，不展示未选柯基",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "scene-only; archived fixed money/names/state excluded",
+      "verification": {
+        "bytes": "exact archived WebP",
+        "visualReview": "reviewed original page and text-free crops",
+        "browser": "passed qa/browser-pet-art-mapping.py: actual all-seven adoption, species-specific insurance/cleaning/payment; time shortfall has no payment; isolated Chromium, not real-device"
+      },
+      "rules": "Original domain state and handlers authoritative; illustration only"
     }
   ],
   "candidateEntries": [
@@ -7621,7 +7709,7 @@
       "libraryId": "libfile_cd20f46dac5c8191b4691bf69945fc3e",
       "originalName": "Little Green's Pet Insurance Screen.png",
       "packagePath": "assets/candidates/libfile_cd20f46dac5c8191b4691bf69945fc3e.webp",
-      "productionResourcePath": null,
+      "productionResourcePath": "assets/career/pet-policy.webp",
       "dimensions": [
         941,
         1672
@@ -7630,9 +7718,9 @@
       "webpSha256": "ec0b2fe295df20c1c63a98092b38f4c95ec81504189850b31124aab5525160e5",
       "originalPngSha256": "91de7dbd14173a471036794f3ff507913d7572c1470041932a447bd815b138ff",
       "exactOriginalDuplicateGroup": [],
-      "status": "reviewed-deferred",
+      "status": "integrated",
       "validationError": null,
-      "oldDraftReview": "每只鳄鱼保险画面：有旧保单状态，不作为通用保险图",
+      "oldDraftReview": "每只宠物保险详情；鳄鱼使用原带盾牌画像，其他物种实际画像；仅局部画像/场景，数值动态",
       "repositoryResourcePath": "assets/candidates/libfile_cd20f46dac5c8191b4691bf69945fc3e.webp",
       "repositoryBytesVerified": true
     },
@@ -7641,7 +7729,7 @@
       "libraryId": "libfile_f5bacd2878388191b11ce0d7c6fa010f",
       "originalName": "Crocodile Care Selection Screen.png",
       "packagePath": "assets/candidates/libfile_f5bacd2878388191b11ce0d7c6fa010f.webp",
-      "productionResourcePath": null,
+      "productionResourcePath": "assets/career/pet-crocodile-cleaning.webp",
       "dimensions": [
         941,
         1672
@@ -7650,9 +7738,9 @@
       "webpSha256": "2de56076f615b952fed7663576b2324f3b525bcacc3e7f028bd3a84a0bf67660",
       "originalPngSha256": "1d0e785b4d46b2c40cdf9233ea666189db03313ac6fe7418c4b7b8d3f6ae2aba",
       "exactOriginalDuplicateGroup": [],
-      "status": "candidate-not-visually-reviewed",
+      "status": "integrated",
       "validationError": null,
-      "oldDraftReview": "pending-visual-and-rule-review",
+      "oldDraftReview": "鳄鱼清洁护理：原宠物/自行清洁/专业清洁三个场景；仅局部画像/场景，数值动态",
       "repositoryResourcePath": "assets/candidates/libfile_f5bacd2878388191b11ce0d7c6fa010f.webp",
       "repositoryBytesVerified": true
     },
@@ -7722,7 +7810,7 @@
       "libraryId": "libfile_77a72d5489ec81919598edf19e923de2",
       "originalName": "Crocodile Adoption: Name and Fees.png",
       "packagePath": "assets/candidates/libfile_77a72d5489ec81919598edf19e923de2.webp",
-      "productionResourcePath": null,
+      "productionResourcePath": "assets/career/pet-crocodile-adoption.webp",
       "dimensions": [
         941,
         1672
@@ -7731,9 +7819,9 @@
       "webpSha256": "ab15a728e145338268e86254f88b25f2da478ac4eebd7f3dfd92a1b592b73280",
       "originalPngSha256": "c4b13b9dee808dcb82ede4236da65cc2511ee9fb0ba4148dd635fcb2ae6210ec",
       "exactOriginalDuplicateGroup": [],
-      "status": "reviewed-deferred",
+      "status": "integrated",
       "validationError": null,
-      "oldDraftReview": "鳄鱼领养示例：保留真实命名/费用表单，暂未接旧图",
+      "oldDraftReview": "鳄鱼取名及费用；仅局部画像/场景，数值动态",
       "repositoryResourcePath": "assets/candidates/libfile_77a72d5489ec81919598edf19e923de2.webp",
       "repositoryBytesVerified": true
     },
@@ -7782,7 +7870,7 @@
       "libraryId": "libfile_0942246ac4608191b6149004b309ab25",
       "originalName": "Corgi and silver tabby adoption screen.png",
       "packagePath": "assets/candidates/libfile_0942246ac4608191b6149004b309ab25.webp",
-      "productionResourcePath": null,
+      "productionResourcePath": "assets/career/pet-cat-adoption.webp",
       "dimensions": [
         941,
         1672
@@ -7791,9 +7879,9 @@
       "webpSha256": "a838cd3fdb2d157f8f6940dc4dcb2abbba86fdc63f333171e2f5ed207da33ad6",
       "originalPngSha256": "e11707eb13a66acb7a2ae384151340a3e34bd4cdcf4c5f5bc15ef43b1e4cc854",
       "exactOriginalDuplicateGroup": [],
-      "status": "candidate-not-visually-reviewed",
+      "status": "integrated",
       "validationError": null,
-      "oldDraftReview": "pending-visual-and-rule-review",
+      "oldDraftReview": "银渐层取名及费用：仅猫画像，不展示未选柯基；仅局部画像/场景，数值动态",
       "repositoryResourcePath": "assets/candidates/libfile_0942246ac4608191b6149004b309ab25.webp",
       "repositoryBytesVerified": true
     },
@@ -10680,5 +10768,5 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 42
+  "prAddedImageCount": 46
 }

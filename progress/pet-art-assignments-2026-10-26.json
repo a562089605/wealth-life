@@ -1,0 +1,290 @@
+{
+  "originalFiles": 31,
+  "originalUnique": 30,
+  "runtimeOriginalUnique": 16,
+  "referenceOriginalUnique": 14,
+  "duplicateFiles": 1,
+  "newGeneratedRuntime": 2,
+  "runtimePetResources": 18,
+  "rows": [
+    {
+      "index": 305,
+      "originalName": "Pet care time shortage.png",
+      "source": "assets/candidates/libfile_dee4ef64416081918ef366c4730a1e1d.webp",
+      "sha256": "07e6b2c37e58eb9635bda2b785447d2baafd8295425426741a2a4b9bc742f4f6",
+      "status": "已接入",
+      "page": "照护时间不足",
+      "note": "付款缺时间时显示时钟和清单，真实剩余/需要/差额"
+    },
+    {
+      "index": 306,
+      "originalName": "Cozy pet care funds shortfall.png",
+      "source": "assets/candidates/libfile_4c1af686f5108191ab283b095f9b4c35.webp",
+      "sha256": "34875306994ca6d88f5111c564b23b6ead19e24d9e59666c33dfb6fd0c600436",
+      "status": "已接入",
+      "page": "照护费用不足",
+      "note": "原钱包清单，实际现金/待支付/差额，借贷和返回调整"
+    },
+    {
+      "index": 307,
+      "originalName": "Little Green's Pet Insurance Screen.png",
+      "source": "assets/candidates/libfile_cd20f46dac5c8191b4691bf69945fc3e.webp",
+      "sha256": "ec0b2fe295df20c1c63a98092b38f4c95ec81504189850b31124aab5525160e5",
+      "status": "已接入",
+      "page": "宠物保险详情",
+      "note": "鳄鱼使用原盾牌画像；各物种显示实际宠物，保留原投保/取消动作"
+    },
+    {
+      "index": 308,
+      "originalName": "Crocodile Care Selection Screen.png",
+      "source": "assets/candidates/libfile_f5bacd2878388191b11ce0d7c6fa010f.webp",
+      "sha256": "2de56076f615b952fed7663576b2324f3b525bcacc3e7f028bd3a84a0bf67660",
+      "status": "已接入",
+      "page": "鳄鱼清洁护理",
+      "note": "原鳄鱼主图与两种清洁工具，原30/4h/2月及150/1h/3月"
+    },
+    {
+      "index": 309,
+      "originalName": "Cozy Three-Pet Care Dashboard.png",
+      "source": "assets/candidates/libfile_3cfaa9fac910819197457281b8256bf2.webp",
+      "sha256": "a670377bbc99353fa0504217bf2a8088179ac8bee45bd790864b5fb716c205bb",
+      "status": "待逐张确认",
+      "page": "三宠管理备选稿",
+      "note": "真实三宠已有动态管理页，此稿作为布局参考，不固定为三只"
+    },
+    {
+      "index": 310,
+      "originalName": "Little Green’s cozy pet management.png",
+      "source": "assets/candidates/libfile_bae8068878788191b395d7fba76265de.webp",
+      "sha256": "965c81197dede12a1f1a01e1f75e93b19c146a106c2b8ccdbdb1f16f2d447e1b",
+      "status": "已接入",
+      "page": "已有鳄鱼的管理及付款画像",
+      "note": "原宠物主页画像；原提前清洁按钮不启用，仍按到期规则"
+    },
+    {
+      "index": 311,
+      "originalName": "Cozy Crocodile Adoption Success Screen.png",
+      "source": "assets/candidates/libfile_02180ccc73708191b939aac28f85ccb5.webp",
+      "sha256": "3743c1b5b7eb32a01875c5811e77d359f8440b9421f5998c42545cae8b4952fb",
+      "status": "已接入",
+      "page": "领养成功",
+      "note": "鳄鱼原画与动态回执，其他物种显示自己的画像"
+    },
+    {
+      "index": 312,
+      "originalName": "Crocodile Adoption: Name and Fees.png",
+      "source": "assets/candidates/libfile_77a72d5489ec81919598edf19e923de2.webp",
+      "sha256": "ab15a728e145338268e86254f88b25f2da478ac4eebd7f3dfd92a1b592b73280",
+      "status": "已接入",
+      "page": "鳄鱼取名及费用",
+      "note": "原鳄鱼领养画、原姓名/保单输入与真实报价"
+    },
+    {
+      "index": 313,
+      "originalName": "Seven-pet adoption selection screen.png",
+      "source": "assets/candidates/libfile_9fc814642ebc81919a916e2158273feb.webp",
+      "sha256": "831a8f99d425d6d0b5895be5b901383b0d6827b3719beb02001a6f51e62f8dff",
+      "status": "已接入",
+      "page": "七宠选择",
+      "note": "原七宠选择图，实际现金及价格动态覆盖"
+    },
+    {
+      "index": 314,
+      "originalName": "Five Gentle Pet Companions.png",
+      "source": "assets/candidates/libfile_4016e82ed5c0819195e388afbc1fc71b.webp",
+      "sha256": "6629c752e9a84324765ae8e843dec8ef36242c1690d0a36efd328f79bcfb9fa9",
+      "status": "待逐张确认",
+      "page": "五种异宠集合图",
+      "note": "与七宠选择用途重叠，保留为候选，不删减七宠入口"
+    },
+    {
+      "index": 315,
+      "originalName": "Corgi and silver tabby adoption screen.png",
+      "source": "assets/candidates/libfile_0942246ac4608191b6149004b309ab25.webp",
+      "sha256": "a838cd3fdb2d157f8f6940dc4dcb2abbba86fdc63f333171e2f5ed207da33ad6",
+      "status": "已接入",
+      "page": "猫咪取名及费用",
+      "note": "只用选中银渐层画像，不把未选柯基也画成已领养"
+    },
+    {
+      "index": 316,
+      "originalName": "Cozy pet game with editable corgi.png",
+      "source": "assets/candidates/libfile_681d4a162b7c81918f6707dbb0656add.webp",
+      "sha256": "f49741346912d6d12ea255a50df83e746c15db733f191779959dfb1d07efbdc5",
+      "status": "重复原件",
+      "page": "与317完全相同",
+      "note": "WebP字节相同，仅按317算一张；原件保留"
+    },
+    {
+      "index": 317,
+      "originalName": "Cozy pet homepage with editable corgi name.png",
+      "source": "assets/candidates/libfile_86f1424a13708191a6efc33792eec712.webp",
+      "sha256": "f49741346912d6d12ea255a50df83e746c15db733f191779959dfb1d07efbdc5",
+      "status": "已接入",
+      "page": "我的宠物狗猫画像卡",
+      "note": "用户已确认版；真实只数、名字、保险、清洁和结算"
+    },
+    {
+      "index": 318,
+      "originalName": "Cozy pet care with seated Bobo.png",
+      "source": "assets/candidates/libfile_48d2a1169dfc8191a4781b4707c5bd13.webp",
+      "sha256": "ab55651d2260fa7f7a7417c5cf025787c6fe3396ed8d9bcb5092a400934edf82",
+      "status": "待逐张确认",
+      "page": "坐姿Bobo主页备选稿",
+      "note": "与已确认317相同用途，不擅自替换角色外形"
+    },
+    {
+      "index": 319,
+      "originalName": "Bobo’s cozy seated portrait.png",
+      "source": "assets/candidates/libfile_098ccb6aefdc81919fbdacf87a4fe1f5.webp",
+      "sha256": "dba9755350a130288e28e45d448077a0679d30f079d4aac97093a392aa5b1acf",
+      "status": "待逐张确认",
+      "page": "坐姿柯基立绘",
+      "note": "角色外形备选；目前保留已确认317/327中的画像"
+    },
+    {
+      "index": 320,
+      "originalName": "Cozy Pet Care Homepage.png",
+      "source": "assets/candidates/libfile_f6f1ac95dbc48191a729748a9b6a0af8.webp",
+      "sha256": "410c35741ddcdca3a4c69845a564108e136fdca6d0c25c670ed5b5b17fa5a37e",
+      "status": "待逐张确认",
+      "page": "宠物主页另一版",
+      "note": "与已确认317重叠，留待选版"
+    },
+    {
+      "index": 321,
+      "originalName": "Bobo’s Cozy Corgi Portrait.png",
+      "source": "assets/candidates/libfile_e687b5b836cc81919aa4a30bb053b1f2.webp",
+      "sha256": "2283e9b60d9d58d2a6d3da20e1e556d30556fcb1ee2685996fc094c4711e301d",
+      "status": "待逐张确认",
+      "page": "站姿柯基立绘",
+      "note": "角色外形备选，不能同时当作不同宠物"
+    },
+    {
+      "index": 322,
+      "originalName": "Bobo's cozy dog character sheet.png",
+      "source": "assets/candidates/libfile_9f2e960759848191a6f3ad9d1ed7cf44.webp",
+      "sha256": "b438e5c00b0179f6a6bc04f9f35da289599e5e22ef9cdb3d8bacbb9015fa6095",
+      "status": "待逐张确认",
+      "page": "柯基角色设定",
+      "note": "多姿态设定图，无对应独立玩法页"
+    },
+    {
+      "index": 323,
+      "originalName": "Slimmer Bobo Corgi Character Sheet.png",
+      "source": "assets/candidates/libfile_cae711ff85408191af2efb4d5498e2ca.webp",
+      "sha256": "fa4abaed5298c872d5ce1296da92842962af8b5ee93971a57101c70d88722460",
+      "status": "待逐张确认",
+      "page": "偏瘦柯基角色设定",
+      "note": "外形改稿，保留待选，不自动替换"
+    },
+    {
+      "index": 324,
+      "originalName": "Bobo’s Tricolor Corgi Character Sheet.png",
+      "source": "assets/candidates/libfile_c5dfe0e06a708191ac2b9f6d231d40d5.webp",
+      "sha256": "0c4c6d700135c90a33f514caa7dabfc92dfdd3ff09b260ed5b1a30691154c0b9",
+      "status": "待逐张确认",
+      "page": "三色柯基角色设定",
+      "note": "外形改稿，保留待选，不自动替换"
+    },
+    {
+      "index": 325,
+      "originalName": "Cozy Silver Cat Character Sheet.png",
+      "source": "assets/candidates/libfile_c738d25ada448191948159b4584a4dcc.webp",
+      "sha256": "e7c9fb8e96bb5928bf35f9f792eb539d7a843c09ac4ef711172114651f3427a1",
+      "status": "待逐张确认",
+      "page": "银猫角色设定",
+      "note": "多姿态设定图，供后续统一角色外形"
+    },
+    {
+      "index": 326,
+      "originalName": "Silver Plush Cat Identity Sheet.png",
+      "source": "assets/candidates/libfile_5b3f8dff945c81918c0379f581250642.webp",
+      "sha256": "4083e0b0803d51e8aa0adb38e3963675e101c4ffd533f3f3175dc8d5dfdee7c9",
+      "status": "待逐张确认",
+      "page": "绒毛银猫角色设定",
+      "note": "猫咪外形修订版，留待与325比较"
+    },
+    {
+      "index": 327,
+      "originalName": "Cozy corgi adoption screen.png",
+      "source": "assets/candidates/libfile_2b649bac35d88191b5d31e660a78ae8e.webp",
+      "sha256": "3376076fde6b7dd00cdd380409f789ec7a80c78411e8247322d86d0500d20a49",
+      "status": "已接入",
+      "page": "柯基取名及费用",
+      "note": "保持用户已确认的居中手绘表单"
+    },
+    {
+      "index": 328,
+      "originalName": "Cozy pet care payment preview.png",
+      "source": "assets/candidates/libfile_ce453f14ebac8191abfb04699a7acddd.webp",
+      "sha256": "469ff37c3fe0301d86a31119e6c2f2d4845a311a49506a9ded86fb05ff277248",
+      "status": "待逐张确认",
+      "page": "管理与照护费用预览备选稿",
+      "note": "当前管理页已有真实逐宠选择/汇总；此稿作为另一版布局，尚未替换"
+    },
+    {
+      "index": 329,
+      "originalName": "Corgi’s Cushion Mishap.png",
+      "source": "assets/candidates/libfile_8b650e5b81288191a1f9858539cad3fd.webp",
+      "sha256": "fdada777187fca75998ed28f187797f791d89754c051b60be296a383fcd3a00d",
+      "status": "已接入",
+      "page": "捣乱小意外地图事件",
+      "note": "原柯基撕坏坐垫场景，原事件/物种条件保留"
+    },
+    {
+      "index": 330,
+      "originalName": "Pet Friendship Day in Town.png",
+      "source": "assets/candidates/libfile_20ca90be7df08191b00aa673862ccd9e.webp",
+      "sha256": "d9bce1670bacdfd02fa22e72ffd1735c7adcda8aad28ccb09399f7439f81ae62",
+      "status": "已接入",
+      "page": "宠物交友日地图事件",
+      "note": "原交友场景，原事件/物种条件保留"
+    },
+    {
+      "index": 331,
+      "originalName": "Sunny Park Moment With Your Corgi.png",
+      "source": "assets/candidates/libfile_29ab121f87248191a6cb69b0b4c909c2.webp",
+      "sha256": "e54d6330d5193d09d2625812af0827afd546f18e628f097f1bf5a12ef1342772",
+      "status": "已接入",
+      "page": "陪伴晒太阳地图事件",
+      "note": "原公园陪伴场景，原事件/物种条件保留"
+    },
+    {
+      "index": 332,
+      "originalName": "Cozy Cat Clinic Visit.png",
+      "source": "assets/candidates/libfile_30383784bdc081918e38b623d59684c5.webp",
+      "sha256": "8c1288a93808aaf48842ddd05d58e96eaabb03ef39a482ee81299dd0175a4a54",
+      "status": "已接入",
+      "page": "猫咪受伤地图事件",
+      "note": "原猫咪诊所场景，原事件/物种条件保留"
+    },
+    {
+      "index": 333,
+      "originalName": "Cozy Corgi Vet Visit.png",
+      "source": "assets/candidates/libfile_27340af2ffc88191b9ca8230e55aa2ec.webp",
+      "sha256": "d2909d622df256825ac6623c8e0d8a2975e9cfd16eae045f3647e41373df8b95",
+      "status": "已接入",
+      "page": "柯基不舒服地图事件",
+      "note": "原柯基看病场景，原事件/物种条件保留"
+    },
+    {
+      "index": 334,
+      "originalName": "Cozy corgi and cat preview.png",
+      "source": "assets/candidates/libfile_866825ae077c819199cea4af09c6bfca.webp",
+      "sha256": "6c1ebcf02976b397ba6e49d42e1e244f22fd3f09f9699c45eecf264f2d2f842e",
+      "status": "待逐张确认",
+      "page": "狗猫外形预览",
+      "note": "外形参考图，无需为它新造游戏页面"
+    },
+    {
+      "index": 335,
+      "originalName": "Cozy barista and sleeping corgi.png",
+      "source": "assets/candidates/libfile_1168b24f5eb08191ba1de11da6388177.webp",
+      "sha256": "ccfff443bf919a3d57e1a20f90ede340bf0b8030fdac669fc1709c0283640b9a",
+      "status": "待逐张确认",
+      "page": "咖啡师与睡犬氛围画",
+      "note": "可能用于后续陪伴或房屋氛围；现无明确对应事件，不替换已确认咖啡师人物/房屋"
+    }
+  ]
+}
