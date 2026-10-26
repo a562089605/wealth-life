@@ -14,7 +14,7 @@ try:
   page.evaluate('window.socialFixture=structuredClone(state)')
   def reset(extra=''):
    page.evaluate('(extra)=>{clearModals();state=structuredClone(socialFixture);townHome();if(extra)eval(extra);roomOpenArrangement("social")}',extra)
-  def snap():return page.evaluate('JSON.stringify({cash:state.cash,month:state.month,energy:state.energy,happiness:state.happiness,social:state.social,free:currentCareerTime().free,people:state.people,record:state.socialMonth,ledger:state.financeLedger,checks:state.roomArrangements})')
+  def snap():return page.evaluate('JSON.stringify({cash:state.cash,month:state.month,energy:state.energy,happiness:state.happiness,social:state.social,free:currentCareerTime().free,people:state.people,record:state.socialMonth,interactions:state.socialInteractions,ledger:state.financeLedger,checks:state.roomArrangements})')
   def shot(n):page.screenshot(path='progress/evidence/social-'+n+'-2026-10-26.png',full_page=True)
   def layout():
    for w,h in [(320,568),(390,844),(1280,900)]:
@@ -40,9 +40,30 @@ try:
    shot(['meal-result','chat-result','walk-result'][i]);layout()
    page.get_by_role('button',name='返回联系人',exact=True).click();assert snap()==after;assert '本月已交流' in page.locator('.social-paper').inner_text()
    if i==0:shot('month-complete')
-   page.locator('.social-contact').last.click();assert page.locator('.social-option:disabled').count()==3
+   page.locator('.social-contact').last.click();assert page.locator('.social-option:enabled').count()==3
+   page.evaluate('$("networkBtn").click()');page.locator('.social-contact').first.click();assert page.locator('.social-option:disabled').count()==3
    page.evaluate('state=JSON.parse(JSON.stringify(state));$("networkBtn").click()');assert snap()==after
    results.append({'cost':cost,'record':record['scene'],'once':True})
+  # Every saved contact has their own monthly quota; hours sum across all receipts.
+  reset();page.evaluate('Math.random=()=>.01');count=page.evaluate('state.people.length');free=page.evaluate('currentCareerTime().free')
+  for i in range(count):
+   page.evaluate('$("networkBtn").click()');page.locator('.social-contact').nth(i).click();assert page.locator('.social-option').nth(0).is_enabled();page.locator('.social-option').nth(0).click()
+  assert page.evaluate('state.cash')==10000-45*count
+  assert page.evaluate('currentCareerTime().free')==free-2*count
+  assert page.evaluate('SocialRecords.all(state).length')==count
+  saved=snap();page.evaluate('state=JSON.parse(JSON.stringify(state));$("networkBtn").click()');assert snap()==saved;shot('all-contacts-complete')
+  page.evaluate('state.month+=1;$("networkBtn").click()');page.locator('.social-contact').first.click();assert page.locator('.social-option:enabled').count()==3
+  # Identical display names still represent separate contact IDs.
+  reset('state.people=[{id:"same-a",name:"同名",job:"同学",relation:50},{id:"same-b",name:"同名",job:"邻居",relation:50}]')
+  assert page.locator('.social-contact').count()==2
+  for i in range(2):
+   page.evaluate('$("networkBtn").click()');page.locator('.social-contact').nth(i).click();page.locator('.social-option').nth(2).click()
+  assert page.evaluate('SocialRecords.all(state).length')==2
+  # Old one-person receipt keeps that contact blocked, other contacts available, and its hours conserved.
+  reset('state.socialMonth={month:state.month,person:state.people[0].id||state.people[0].name,scene:"旧交流",cost:15,gain:5,hours:1}')
+  free=page.evaluate('currentCareerTime().free');page.locator('.social-contact').first.click();assert page.locator('.social-option:disabled').count()==3
+  page.evaluate('$("networkBtn").click()');page.locator('.social-contact').last.click();page.locator('.social-option').nth(2).click();assert page.evaluate('currentCareerTime().free')==free-1
+  assert page.evaluate('SocialRecords.all(state).length')==2
   # Zero cash still allows the original free walk; disabled paid cards never execute.
   reset('state.cash=0');page.locator('.social-contact').first.click();assert page.locator('.social-option:disabled').count()==2;shot('no-cash')
   page.locator('.social-option').nth(2).click();assert page.evaluate('state.cash')==0 and page.evaluate('socialRecord().cost')==0
@@ -71,8 +92,8 @@ try:
   reset();before=page.evaluate('({cash:state.cash,people:JSON.stringify(state.people)})');page.get_by_role('button',name='确认本月关系安排，返回房屋',exact=True).click();assert page.evaluate('roomChecks().social.confirmed') is True;assert page.evaluate('state.cash')==before['cash'];assert page.evaluate('JSON.stringify(state.people)')==before['people']
   assert not errors,errors;context.close()
   # Install actual SW and reopen the relationship page offline with the new image.
-  context=browser.new_context(viewport={'width':390,'height':844});page=context.new_page();page.goto(f'http://127.0.0.1:{server.server_port}',wait_until='networkidle');page.evaluate('navigator.serviceWorker.ready');page.reload(wait_until='networkidle');page.wait_for_function('navigator.serviceWorker.controller!==null');assert page.evaluate('caches.keys()')==['wealth-life-v28.3-social-time1']
+  context=browser.new_context(viewport={'width':390,'height':844});page=context.new_page();page.goto(f'http://127.0.0.1:{server.server_port}',wait_until='networkidle');page.evaluate('navigator.serviceWorker.ready');page.reload(wait_until='networkidle');page.wait_for_function('navigator.serviceWorker.controller!==null');assert page.evaluate('caches.keys()')==['wealth-life-v28.3-social-per-person1']
   context.set_offline(True);page.reload(wait_until='networkidle');page.get_by_role('button',name='查看职业预览',exact=True).click();page.get_by_role('button',name='选择这个人生',exact=True).click();page.evaluate('roomOpenArrangement("social")');assert page.locator('.social-contact').count()>0
   assert page.evaluate('new Promise((resolve,reject)=>{const i=new Image;i.onload=()=>resolve(i.naturalWidth);i.onerror=reject;i.src="assets/career/social-scenes.webp"})')>0
-  context.close();browser.close();result={'passed':True,'interactions':results,'checks':['saved contacts and new acquaintances; no invented people','browsing no costs, effects, time or checks','three original payments and monthly guard, repeat/reload and capped relation','confirmed1/1/2 hours, time changed after preview, exact zero, next month and old receipt compatibility','original failure description and loss retained','free walk at zero cash','stale detached/month/save callbacks blocked','recovery redirect and empty contacts','explicit room acknowledgement without interaction','320/390/desktop centered without horizontal overflow','real service worker and offline art'],'pageErrors':errors,'limits':['isolated Chromium, not real phone','only confirmed room interaction hours added; other activity proposals unchanged']};Path('qa/browser-evidence/social-pages-art.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps(result,ensure_ascii=False,indent=2))
+  context.close();browser.close();result={'passed':True,'interactions':results,'checks':['saved contacts and new acquaintances; no invented people','browsing no costs, effects, time or checks','three original payments, per-contact monthly quota, multiple contacts accumulated hours, old receipt migration, same-name distinct IDs, reload and next month','confirmed1/1/2 hours, time changed after preview, exact zero, next month and old receipt compatibility','original failure description and loss retained','free walk at zero cash','stale detached/month/save callbacks blocked','recovery redirect and empty contacts','explicit room acknowledgement without interaction','320/390/desktop centered without horizontal overflow','real service worker and offline art'],'pageErrors':errors,'limits':['isolated Chromium, not real phone','only confirmed room interaction hours added; other activity proposals unchanged']};Path('qa/browser-evidence/social-pages-art.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps(result,ensure_ascii=False,indent=2))
 finally:server.shutdown();server.server_close()
