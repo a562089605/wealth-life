@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "66 production resources; distinct silver-cat professional groomer scene; original 459 candidates retained.",
+  "scope": "70 production resources; all seven pet cleaning pages illustrated; user-confirmed simple pet rules and automatic pet-friend profiles.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1578,6 +1578,110 @@
         "browser": "passed cat browser regression: distinct professional/home images loaded, centered 320/390/desktop, original payment/interval and repeat protection"
       },
       "rules": "Image-only revision, original price/time/interval unchanged"
+    },
+    {
+      "id": "pet-gecko-cleaning",
+      "source": {
+        "originalName": "豹纹守宫 self and professional habitat cleaning scenes",
+        "referenceCandidates": [
+          313,
+          308
+        ],
+        "evidence": [
+          "progress/pet-simple-rules-2026-10-26.md"
+        ],
+        "generation": "User requested missing artwork; one two-scene atlas, two independent CSS windows"
+      },
+      "resourcePath": "assets/career/pet-gecko-cleaning.webp",
+      "gitBlobSha": "cbf5afd98e67e22d122a48a9fdd13d76b1c70853",
+      "pageOrEvent": "豹纹守宫清洁护理：自行/专业清理栖息环境",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "new generated artwork, prior original images retained",
+      "verification": {
+        "bytes": "new generated PNG optimized as WebP",
+        "visualReview": "species-specific habitat care, different home/professional scene, no UI text",
+        "browser": "passed actual seven-pet adoption and four cleaning pages: 2 scenes per species, no generic icons, no cash/care/time change; isolated Chromium, no page errors"
+      },
+      "rules": "Illustration only; original fees/hours/intervals retained"
+    },
+    {
+      "id": "pet-spider-cleaning",
+      "source": {
+        "originalName": "捕鸟蛛 self and professional habitat cleaning scenes",
+        "referenceCandidates": [
+          313,
+          308
+        ],
+        "evidence": [
+          "progress/pet-simple-rules-2026-10-26.md"
+        ],
+        "generation": "User requested missing artwork; one two-scene atlas, two independent CSS windows"
+      },
+      "resourcePath": "assets/career/pet-spider-cleaning.webp",
+      "gitBlobSha": "9dac854f3d59a827a4000471fdad2981953806c6",
+      "pageOrEvent": "捕鸟蛛清洁护理：自行/专业清理栖息环境",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "new generated artwork, prior original images retained",
+      "verification": {
+        "bytes": "new generated PNG optimized as WebP",
+        "visualReview": "species-specific habitat care, different home/professional scene, no UI text",
+        "browser": "passed actual seven-pet adoption and four cleaning pages: 2 scenes per species, no generic icons, no cash/care/time change; isolated Chromium, no page errors"
+      },
+      "rules": "Illustration only; original fees/hours/intervals retained"
+    },
+    {
+      "id": "pet-tortoise-cleaning",
+      "source": {
+        "originalName": "陆龟 self and professional habitat cleaning scenes",
+        "referenceCandidates": [
+          313,
+          308
+        ],
+        "evidence": [
+          "progress/pet-simple-rules-2026-10-26.md"
+        ],
+        "generation": "User requested missing artwork; one two-scene atlas, two independent CSS windows"
+      },
+      "resourcePath": "assets/career/pet-tortoise-cleaning.webp",
+      "gitBlobSha": "3b97e9258d7126a9753aa6a596e96102bc9f5258",
+      "pageOrEvent": "陆龟清洁护理：自行/专业清理栖息环境",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "new generated artwork, prior original images retained",
+      "verification": {
+        "bytes": "new generated PNG optimized as WebP",
+        "visualReview": "species-specific habitat care, different home/professional scene, no UI text",
+        "browser": "passed actual seven-pet adoption and four cleaning pages: 2 scenes per species, no generic icons, no cash/care/time change; isolated Chromium, no page errors"
+      },
+      "rules": "Illustration only; original fees/hours/intervals retained"
+    },
+    {
+      "id": "pet-chameleon-cleaning",
+      "source": {
+        "originalName": "变色龙 self and professional habitat cleaning scenes",
+        "referenceCandidates": [
+          313,
+          308
+        ],
+        "evidence": [
+          "progress/pet-simple-rules-2026-10-26.md"
+        ],
+        "generation": "User requested missing artwork; one two-scene atlas, two independent CSS windows"
+      },
+      "resourcePath": "assets/career/pet-chameleon-cleaning.webp",
+      "gitBlobSha": "7b5d8d393db36856c06aa14c8b6b58b942dc69f3",
+      "pageOrEvent": "变色龙清洁护理：自行/专业清理栖息环境",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "new generated artwork, prior original images retained",
+      "verification": {
+        "bytes": "new generated PNG optimized as WebP",
+        "visualReview": "species-specific habitat care, different home/professional scene, no UI text",
+        "browser": "passed actual seven-pet adoption and four cleaning pages: 2 scenes per species, no generic icons, no cash/care/time change; isolated Chromium, no page errors"
+      },
+      "rules": "Illustration only; original fees/hours/intervals retained"
     }
   ],
   "candidateEntries": [
@@ -10818,5 +10922,5 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 48
+  "prAddedImageCount": 52
 }

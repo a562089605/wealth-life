@@ -1,3 +1,4 @@
+function mapContactLabel(p){return [p.name,p.gender==='female'?'女':p.gender==='male'?'男':null,Number.isFinite(p.age)?p.age+'岁':null,p.job].filter(Boolean).join(' · ')}
 // Additive adapters for six map categories. Payday continues through town.js/core.js.
 function mapMove(){return townEnabled()&&townPending()?townState().movement:null}
 function mapRecord(){const move=mapMove();return move&&state.mapCards?.events[state.month+':'+move.id]}
@@ -6,12 +7,12 @@ function mapHero(r){const c=MapCards.card(r.cardId),a=c?.art;if(!a?.runtimePath)
  const frame=document.createElement('div');frame.className='map-card-art'+(r.category==='opportunity'?' map-investment-art':'');const img=document.createElement('img');img.src=a.runtimePath;img.alt=c.name+'插画';frame.append(img);$('eventData').prepend(frame);$('eventData').style.display='block';}
 function mapContinue(){clearModals();pending=false;finish()}
 function showMapRecord(r=mapRecord()){if(!r)return false;if(r.status==='empty'){showEvent(TOWN_LABELS[r.category]||'地图事件','这次没有合适的事件','本次没有收支或时间变化，可以继续探索。',[],[['继续探索',mapContinue,true]]);return true;}
- if(['resolved','declined'].includes(r.status)){showEvent('地图事件结果',r.status==='declined'?'已放弃本次机会':'本次事件已完成','结果已保存。同一笔收支与时间不会再次结算。',mapEffectsRows(r.receipt?.effects),[['继续探索',mapContinue,true]]);return true;}
+ if(['resolved','declined'].includes(r.status)){showEvent('地图事件结果',r.status==='declined'?'已放弃本次机会':'本次事件已完成','结果已保存。同一笔收支与时间不会再次结算。',[...mapEffectsRows(r.receipt?.effects),...(r.status==='resolved'&&r.cardId==='pet-social'&&r.quote?.contact?[['新增好友',mapContactLabel(r.quote.contact)]]:[])],[['继续探索',mapContinue,true]]);return true;}
  const c=MapCards.card(r.cardId),owner=state;
  $('eventClose').hidden=true;
  function active(){return state===owner&&mapRecord()===r&&state.month===r.month&&r.status==='pending'}
  if(r.category==='life'||r.category==='community'){
-  const q=r.quote,e=q.effects,free=currentCareerTime().free,debt=Math.max(0,(e.hours||0)-free),rows=[...(q.petName?[['涉及宠物',q.petName]]:[]),...mapEffectsRows({...e,cash:(e.cash||0)-(e.cost||0)}),...(debt?[['本次可能欠时',debt+'h；完成本组后返回房屋结算']]:[])];
+  const q=r.quote,e=q.effects,free=currentCareerTime().free,debt=Math.max(0,(e.hours||0)-free),rows=[...(q.petName?[['涉及宠物',q.petName]]:[]),...(q.contact?[['将认识的新朋友',mapContactLabel(q.contact)]]:[]),...mapEffectsRows({...e,cash:(e.cash||0)-(e.cost||0)}),...(debt?[['本次可能欠时',debt+'h；完成本组后返回房屋结算']]:[])];
   showEvent('地图'+(r.category==='life'?'生活':'关系')+'事件',c?.name||r.cardId,'确认后才执行。本次费用按发生时的有效保单锁定。',rows,[[c?.options?.[0]?.label||'确认处理',()=>{if(!active())return;const before=currentCareerTime().free;if(MapCards.execute(state,r,{free:before,forcedTime:x=>recordForcedEventTime(state,x)})){if(r.receipt.timeEntry?.returnRequired)state.forcedTimeReturn={month:state.month,id:r.id,debt:r.receipt.timeEntry.debt};save();render();showMapRecord(r)}},true,state.cash<(e.cost||0)||!r.forced&&free<(e.hours||0)],...state.cash<(e.cost||0)?[['查看资金处理',()=>showFundingOptions(e.cost,()=>showMapRecord(r)),false]]:[]]);mapHero(r);$('eventClose').hidden=true;return true;
  }
  if(r.category==='opportunity'){
@@ -61,7 +62,7 @@ const mapGroupsBefore=unfinishedCareerGroup;unfinishedCareerGroup=function(){con
 const mapRollBefore=rollTown;rollTown=function(){if(unfinishedCareerGroup()&&(coffeeRecord()?.mapMoveId||shiftRecord()?.mapMoveId))return openCoffeeCareerEvent();return mapRollBefore()};
 
 // These names were already in the original NPC pool. Stable IDs prevent repeated introductions.
-function mapPrepareContacts(){if(state.mapContactCandidates)return;const names=NPC_NAMES.filter(name=>!(state.people||[]).some(p=>p.name===name));for(let i=names.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[names[i],names[j]]=[names[j],names[i]]}state.mapContactCandidates=names.map((name,i)=>({id:'map-npc-'+name,name,gender:Math.random()<.5?'female':'male',status:'兴趣活动朋友',origin:'map',age:state.age,city:state.city,job:'小镇居民',life:'在小镇活动中认识'}));}
+function mapPrepareContacts(){return MapPetContacts.prepare(state,{names:NPC_NAMES,jobs:NPC_JOBS})}
 const mapContactsBefore=openTownLanding;openTownLanding=function(){mapPrepareContacts();return mapContactsBefore()};
 
 const mapPendingGroupBefore=unfinishedCareerGroup;unfinishedCareerGroup=function(){return mapRecord()?.status==='pending'||mapPendingGroupBefore()};

@@ -15,6 +15,7 @@ const PetArt={
   return box?this.window('pet-selection',box,PET_ADOPTION[species].name+'插画'):'';
  },
  crocodile(part){return this.window('pet-crocodile-cleaning',({hero:[40,255,530,295],self:[120,610,280,255],pro:[120,930,280,275]})[part],part==='hero'?'鳄鱼与栖息池':part==='self'?'自行清洁栖息池工具':'专业栖息池清洁工具','pet-reptile-scene')},
- catCleaning(part){return part==='self'?this.window('pet-cat-cleaning-scenes',[365,8,700,565],'银渐层在家洗澡','pet-cat-cleaning-scene',1402):'<div class="pet-scene-window pet-cat-cleaning-scene" style="aspect-ratio:1"><img src="assets/career/pet-cat-professional.webp" alt="宠物店美容师为银渐层梳理毛发" style="width:100%;left:0;top:0"></div>'}
+ catCleaning(part){return part==='self'?this.window('pet-cat-cleaning-scenes',[365,8,700,565],'银渐层在家洗澡','pet-cat-cleaning-scene',1402):'<div class="pet-scene-window pet-cat-cleaning-scene" style="aspect-ratio:1"><img src="assets/career/pet-cat-professional.webp" alt="宠物店美容师为银渐层梳理毛发" style="width:100%;left:0;top:0"></div>'},
+ exoticCleaning(species,part){return this.window('pet-'+species+'-cleaning',part==='self'?[0,0,1024,750]:[0,785,1024,750],PET_ADOPTION[species].name+(part==='self'?'自行清理栖息环境':'专业人员清理栖息环境'),'pet-exotic-cleaning-scene',1024)}
 
 };
