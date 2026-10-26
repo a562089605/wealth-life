@@ -40,16 +40,16 @@
   b.classList.add('social-person-paper');$('eventTitle').textContent=p.name+(relationStage(p)?' · '+relationStage(p):'');
   b.append(row('身份',p.status||p.job||'已认识的人'),row('亲密度',Math.round(p.relation)+'/100'),row('剩余自由时间',currentCareerTime().free+'小时'));monthly(b,p);
   const descriptions=['在小餐馆坐下来，一起吃顿饭。','找个舒服的位置，聊聊近况。','沿着小路走走，边走边聊。'];
-  const options=[['确认一起吃饭 · $45','一起吃饭','$45',1],['确认聊天 · $15','聊天','$15',2],['确认散步交流 · $0','散步交流','$0',3]],list=document.createElement('div');list.className='social-option-list';
+  const options=[['确认一起吃饭 · $45','一起吃饭','$45',1],['确认聊天 · $0','聊天','$0',2],['确认散步交流 · $0','散步交流','$0',3]],list=document.createElement('div');list.className='social-option-list';
   options.forEach(([label,name,cost,s],n)=>{
    const button=buttons.find(x=>x.textContent===label);if(!button)return;const original=button.onclick,owner=state,month=state.month;
    button.onclick=function(e){if(state!==owner||state.month!==month||!b.isConnected||!state.people.includes(p))return;return original.call(this,e)};
    button.className='social-option';button.setAttribute('aria-label',label);button.dataset.socialScene=s;
    const hours=n===0?2:1;button.disabled=button.disabled||currentCareerTime().free<hours;
-   const copy=document.createElement('span'),heading=document.createElement('strong'),desc=document.createElement('small'),time=document.createElement('small'),price=document.createElement('b');heading.textContent=name;desc.textContent=descriptions[n];time.textContent='自由时间减少'+hours+'小时';price.textContent=cost+' · 确认互动';copy.append(heading,desc,time,price);button.replaceChildren(scene(s),copy);list.append(button);
+   const copy=document.createElement('span'),heading=document.createElement('strong'),desc=document.createElement('small'),time=document.createElement('small'),price=document.createElement('b');heading.textContent=name;desc.textContent=descriptions[n];time.textContent='自由时间减少'+hours+'小时';price.textContent=(cost==='$0'?'免费':cost)+' · 确认互动';copy.append(heading,desc,time,price);button.replaceChildren(scene(s),copy);list.append(button);
   });b.append(list);
   b.append(note('确认后能量减少2，社交增加3（受状态上下限影响）；亲密度和幸福度以本次交流结果为准。'));
-  if(!socialRecord(p)&&state.cash<45)b.append(note('灰色选项暂不可选；现金不足时，也可以选择免费的散步交流。'));
+  if(!socialRecord(p)&&state.cash<45)b.append(note('灰色选项暂不可选；现金不足时，也可以选择免费的聊天或散步交流。'));
   if(!socialRecord(p)&&currentCareerTime().free<2)b.append(note('自由时间不足的互动暂不可选；不会扣款或预支下个月时间。'));
   actions();return result;
  };

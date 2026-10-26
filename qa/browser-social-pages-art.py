@@ -24,7 +24,7 @@ try:
   shot('contacts');layout();assert snap()==before
   page.locator('.social-contact').first.click();assert snap()==before;assert page.locator('.social-option').count()==3;shot('person');layout()
   results=[]
-  for i,cost in enumerate([45,15,0]):
+  for i,cost in enumerate([45,0,0]):
    reset();page.evaluate('Math.random=()=>.01');before=snap();page.locator('.social-contact').first.click();assert snap()==before
    prior=page.evaluate('({cash:state.cash,energy:state.energy,social:state.social,happiness:state.happiness,relation:state.people[0].relation,free:currentCareerTime().free})')
    page.evaluate('(i)=>{window.oldSocialConfirm=document.querySelectorAll(".social-option")[i].onclick}',i)
@@ -65,8 +65,12 @@ try:
   page.evaluate('$("networkBtn").click()');page.locator('.social-contact').last.click();page.locator('.social-option').nth(2).click();assert page.evaluate('currentCareerTime().free')==free-1
   assert page.evaluate('SocialRecords.all(state).length')==2
   # Zero cash still allows the original free walk; disabled paid cards never execute.
-  reset('state.cash=0');page.locator('.social-contact').first.click();assert page.locator('.social-option:disabled').count()==2;shot('no-cash')
+  reset('state.cash=0');page.locator('.social-contact').first.click();assert page.locator('.social-option:disabled').count()==1;assert page.locator('.social-option').nth(1).is_enabled();shot('no-cash')
   page.locator('.social-option').nth(2).click();assert page.evaluate('state.cash')==0 and page.evaluate('socialRecord().cost')==0
+  # Free chat works at zero cash, spends one hour, and uses only this person's quota.
+  reset('state.cash=0');page.locator('.social-contact').first.click();page.locator('.social-option').nth(1).click();assert page.evaluate('state.cash')==0 and page.evaluate('socialRecord().cost')==0 and page.evaluate('socialRecord().hours')==1
+  assert page.evaluate('currentCareerTime().free')==99
+  page.evaluate('$("networkBtn").click()');page.locator('.social-contact').first.click();assert page.locator('.social-option:disabled').count()==3
   # Exactly one hour allows chat/walk but not dinner. Changed time is rechecked at confirmation.
   reset('state.petCareTime={month:state.month,hours:currentCareerTime().free-1}')
   page.locator('.social-contact').first.click();assert page.locator('.social-option').nth(0).is_disabled();assert page.locator('.social-option').nth(1).is_enabled()
@@ -92,8 +96,8 @@ try:
   reset();before=page.evaluate('({cash:state.cash,people:JSON.stringify(state.people)})');page.get_by_role('button',name='确认本月关系安排，返回房屋',exact=True).click();assert page.evaluate('roomChecks().social.confirmed') is True;assert page.evaluate('state.cash')==before['cash'];assert page.evaluate('JSON.stringify(state.people)')==before['people']
   assert not errors,errors;context.close()
   # Install actual SW and reopen the relationship page offline with the new image.
-  context=browser.new_context(viewport={'width':390,'height':844});page=context.new_page();page.goto(f'http://127.0.0.1:{server.server_port}',wait_until='networkidle');page.evaluate('navigator.serviceWorker.ready');page.reload(wait_until='networkidle');page.wait_for_function('navigator.serviceWorker.controller!==null');assert page.evaluate('caches.keys()')==['wealth-life-v28.3-social-per-person1']
+  context=browser.new_context(viewport={'width':390,'height':844});page=context.new_page();page.goto(f'http://127.0.0.1:{server.server_port}',wait_until='networkidle');page.evaluate('navigator.serviceWorker.ready');page.reload(wait_until='networkidle');page.wait_for_function('navigator.serviceWorker.controller!==null');assert page.evaluate('caches.keys()')==['wealth-life-v28.3-social-price1']
   context.set_offline(True);page.reload(wait_until='networkidle');page.get_by_role('button',name='查看职业预览',exact=True).click();page.get_by_role('button',name='选择这个人生',exact=True).click();page.evaluate('roomOpenArrangement("social")');assert page.locator('.social-contact').count()>0
   assert page.evaluate('new Promise((resolve,reject)=>{const i=new Image;i.onload=()=>resolve(i.naturalWidth);i.onerror=reject;i.src="assets/career/social-scenes.webp"})')>0
-  context.close();browser.close();result={'passed':True,'interactions':results,'checks':['saved contacts and new acquaintances; no invented people','browsing no costs, effects, time or checks','three original payments, per-contact monthly quota, multiple contacts accumulated hours, old receipt migration, same-name distinct IDs, reload and next month','confirmed1/1/2 hours, time changed after preview, exact zero, next month and old receipt compatibility','original failure description and loss retained','free walk at zero cash','stale detached/month/save callbacks blocked','recovery redirect and empty contacts','explicit room acknowledgement without interaction','320/390/desktop centered without horizontal overflow','real service worker and offline art'],'pageErrors':errors,'limits':['isolated Chromium, not real phone','only confirmed room interaction hours added; other activity proposals unchanged']};Path('qa/browser-evidence/social-pages-art.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps(result,ensure_ascii=False,indent=2))
+  context.close();browser.close();result={'passed':True,'interactions':results,'checks':['saved contacts and new acquaintances; no invented people','browsing no costs, effects, time or checks','three original payments, per-contact monthly quota, multiple contacts accumulated hours, old receipt migration, same-name distinct IDs, reload and next month','confirmed1/1/2 hours, time changed after preview, exact zero, next month and old receipt compatibility','original failure description and loss retained','free chat and walk at zero cash; chat uses one hour and contact monthly quota','stale detached/month/save callbacks blocked','recovery redirect and empty contacts','explicit room acknowledgement without interaction','320/390/desktop centered without horizontal overflow','real service worker and offline art'],'pageErrors':errors,'limits':['isolated Chromium, not real phone','only confirmed room interaction hours added; other activity proposals unchanged']};Path('qa/browser-evidence/social-pages-art.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps(result,ensure_ascii=False,indent=2))
 finally:server.shutdown();server.server_close()
