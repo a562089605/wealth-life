@@ -1714,22 +1714,28 @@
       "id": "life-activities",
       "source": {
         "originalName": "Nine cozy optional life activity scenes",
-        "generatedOriginal": "/workspace/generated_images/exec-0ab93068-62e6-42de-a294-823aeb0ae5aa.png",
+        "generatedOriginal": "/workspace/generated_images/exec-14766d82-a59d-47b5-8959-7373dfc61847.png",
         "retainedFirstDraft": "/workspace/generated_images/exec-bdd9e140-f5f2-4c3d-893a-6bd176fd5040.png",
         "evidence": [
-          "progress/life-pages-art-2026-10-26.md"
+          "progress/life-pages-art-2026-10-26.md",
+          "progress/life-style-correction-2026-10-26.md"
         ],
-        "generation": "User requested all remaining life content in matching illustrated style; 3x3 scene atlas without embedded labels or fixed figures; no pet implied by home scene"
+        "generation": "User rejected realistic style; same nine scenes redrawn to match original room character and gouache picture-book references supplied to image editing tool",
+        "previousGeneratedOriginal": "/workspace/generated_images/exec-0ab93068-62e6-42de-a294-823aeb0ae5aa.png",
+        "referenceResources": [
+          "assets/career/home-mobile.webp",
+          "assets/career/pet-hub.webp"
+        ]
       },
       "resourcePath": "assets/career/life-activities.webp",
-      "gitBlobSha": "6f311589693a7eb5307ec58af338e2e4b090fc9c",
+      "gitBlobSha": "7a753b64bcf6d3ed0dc4f0e7745a2ddef7356584",
       "pageOrEvent": "九项可选生活活动列表、单项预览与确认后结果；文字金额和状态由游戏实时显示",
       "integrationStatus": "new-integration",
       "addedInExistingPR": true,
-      "duplicateOrOldDraft": "New requested illustrations; original candidate archive and generated first draft retained",
+      "duplicateOrOldDraft": "Rejected realistic version retained at assets/archive/life-pages-realistic-2026-10-26/life-activities.webp",
       "verification": {
         "bytes": "Generated PNG optimized as WebP, full 3x3 atlas displayed by CSS windows",
-        "visualReview": "Nine distinct cozy botanical scenes; removed decorative cat to avoid implying ownership",
+        "visualReview": "Round rosy faces, simple dot eyes, brown bun, black top and cream pants matching room character; warm chunky gouache, nine matching scenes, no pets or labels",
         "browser": "See qa/browser-evidence/life-pages-art.json"
       },
       "rules": "Original nine costs/effects and once-per-month choice; no new activity hours; explicit confirmation only"
@@ -1738,21 +1744,27 @@
       "id": "life-funding",
       "source": {
         "originalName": "Cozy household cash shortage still life",
-        "generatedOriginal": "/workspace/generated_images/exec-ec63bc5f-e508-49a0-bcd6-8fea40d7bb0f.png",
+        "generatedOriginal": "/workspace/generated_images/exec-5538ec71-a5d0-47e0-b081-d7389b502df9.png",
         "evidence": [
-          "progress/life-pages-art-2026-10-26.md"
+          "progress/life-pages-art-2026-10-26.md",
+          "progress/life-style-correction-2026-10-26.md"
         ],
-        "generation": "Matching household funding art without pet symbols, fixed cash figures or text"
+        "generation": "User requested return to original cozy picture-book gouache style; style references explicitly supplied to image editing tool",
+        "previousGeneratedOriginal": "/workspace/generated_images/exec-ec63bc5f-e508-49a0-bcd6-8fea40d7bb0f.png",
+        "referenceResources": [
+          "assets/career/home-mobile.webp",
+          "assets/career/pet-hub.webp"
+        ]
       },
       "resourcePath": "assets/career/life-funding.webp",
-      "gitBlobSha": "a92ce8a4927f67a68d0849deefe72146961e6e03",
+      "gitBlobSha": "fb82cf22dc62ac2527598145cd1eeb78bf817183",
       "pageOrEvent": "资金处理：当前现金、待付所需、差额、净资产与原筹款操作",
       "integrationStatus": "new-integration",
       "addedInExistingPR": true,
-      "duplicateOrOldDraft": "Original pet-specific shortage scene remains untouched; distinct household scene",
+      "duplicateOrOldDraft": "Earlier finer watercolor version retained at assets/archive/life-pages-realistic-2026-10-26/life-funding.webp",
       "verification": {
         "bytes": "Generated PNG optimized as WebP",
-        "visualReview": "Open purse, coins, blank household bills and plants; no prices or animal symbols",
+        "visualReview": "Chunky gouache shapes, warm ochre and forest green, matching original room furnishings; no animal symbols or static UI",
         "browser": "See qa/browser-evidence/life-pages-art.json"
       },
       "rules": "Original funding crisis, loan, emergency withdrawal, investments and bankruptcy actions retained"
