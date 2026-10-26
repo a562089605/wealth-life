@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "59 production resources; original editable-name pet board portraits integrated, original 459 candidates retained.",
+  "scope": "60 production resources; original adoption-success artwork integrated; 459 candidates retained.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1416,6 +1416,29 @@
         "browser": "passed isolated Chromium: actual dog/cat adoption, due selection, once-only batch payment, rename, centered 320/390/desktop; not real-device tested"
       },
       "rules": "No predetermined pet count or pricing; per-pet state, effective policies and original care ledger are canonical"
+    },
+    {
+      "id": "pet-adoption-success",
+      "source": {
+        "originalName": "Cozy Crocodile Adoption Success Screen.png",
+        "libraryId": "libfile_02180ccc73708191b939aac28f85ccb5",
+        "evidence": [
+          "CANDIDATE_ART_MANIFEST.json",
+          "progress/pet-adoption-success-2026-10-26.md"
+        ]
+      },
+      "resourcePath": "assets/career/pet-adoption-success.webp",
+      "gitBlobSha": "2b81af65ee7c75844c78c8e1836ba67b26416e5b",
+      "pageOrEvent": "领养成功：原鳄鱼画像与动态完成事项/结算",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "original candidate bytes; old names/dates/money/checkboxes excluded from portrait crops",
+      "verification": {
+        "bytes": "exact archived WebP",
+        "visualReview": "matches user photo; crop excludes baked text",
+        "browser": "passed isolated Chromium: actual crocodile insured/dog uninsured, actual receipt, repeated callback no double charge, hub navigation and 320/390/desktop centering"
+      },
+      "rules": "Display only after canonical adoption succeeds; actual pet/quote/insurance/cash, no additional charge"
     }
   ],
   "candidateEntries": [
@@ -7677,7 +7700,7 @@
       "libraryId": "libfile_02180ccc73708191b939aac28f85ccb5",
       "originalName": "Cozy Crocodile Adoption Success Screen.png",
       "packagePath": "assets/candidates/libfile_02180ccc73708191b939aac28f85ccb5.webp",
-      "productionResourcePath": null,
+      "productionResourcePath": "assets/career/pet-adoption-success.webp",
       "dimensions": [
         941,
         1672
@@ -7686,11 +7709,12 @@
       "webpSha256": "3743c1b5b7eb32a01875c5811e77d359f8440b9421f5998c42545cae8b4952fb",
       "originalPngSha256": "85d663c1e7815a011c5c8a8c87980618007f75c65dabbd3c5d3102d39b0c3747",
       "exactOriginalDuplicateGroup": [],
-      "status": "reviewed-deferred",
+      "status": "integrated",
       "validationError": null,
-      "oldDraftReview": "领养完成示例：固定鳄鱼及名字/费用，当前使用真实结果UI",
+      "oldDraftReview": "用户确认领养成功页参考；仅复用鳄鱼肖像，原固定名字/金额/保险状态由实时DOM替代",
       "repositoryResourcePath": "assets/candidates/libfile_02180ccc73708191b939aac28f85ccb5.webp",
-      "repositoryBytesVerified": true
+      "repositoryBytesVerified": true,
+      "integrationStatus": "new-integration"
     },
     {
       "index": 312,
@@ -10655,5 +10679,5 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 41
+  "prAddedImageCount": 42
 }

@@ -42,7 +42,8 @@ function previewPetAdoption(species){
   settled=true;syncFinance();save();render();
   showEvent('宠物领养','领养成功','首次体检与清洁已包含；猫狗本月驱虫已包含。后续按每只宠物的到期日期处理，不重复收费。',[
    ['新伙伴',batchEscape(name)+' · '+cfg.name],['本次支付',priceText(q.total)],['当前现金',priceText(state.cash)],['保险',q.insured?'本只宠物保障已生效':'未购买，可自行决定']],
-   [['查看我的宠物',openPetHub,true],['返回房屋',townHome,false]]);return true;
+   [['查看我的宠物',openPetHub,true],['返回房屋',townHome,false]]);
+  if(typeof paintPetAdoptionSuccess==='function')paintPetAdoptionSuccess(p,q);return true;
  }
  showEvent('宠物领养','领养'+cfg.name,'查看不扣款、不占用照护时间。取名字、选择是否投保，确认才支付。',[],[['确认领养',confirm,true],['返回品种选择',openPetAdoptions,false]]);
  const form=document.createElement('div');form.className='wl-loan-form';
