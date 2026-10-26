@@ -1,0 +1,20 @@
+#game>.event.event-active.life-hub-painted{max-width:460px;padding:17px!important;background:radial-gradient(ellipse at top left,#e5dfb96b,transparent 60%),#faf0d8!important;border:1px solid #c4ac7d!important;border-radius:23px 19px 25px 18px!important;box-shadow:0 16px 55px #342e2055!important}
+.life-hub-painted:before{content:'';position:absolute;inset:6px;border:1px solid #d8c69980;border-radius:18px 15px 20px 14px;pointer-events:none}
+.life-hub-painted>.row,.life-hub-painted #eventDesc{display:none}
+.life-hub-painted #eventTitle{margin:0 0 9px;padding:0!important;font-family:'Songti SC','STSong',serif;font-size:28px;letter-spacing:.08em;text-align:center;color:#3e5936}
+.life-hub-toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11px;color:#89754d;margin-bottom:10px}.life-hub-toolbar strong{font-size:12px;font-family:Georgia,'Songti SC',serif;color:#607047;font-weight:600}
+.life-hub-scene{margin:0;overflow:hidden;border-radius:16px 20px 12px 17px;mix-blend-mode:multiply}.life-hub-scene img{display:block;width:100%;height:auto}
+.life-hub-month{position:relative;margin:-8px 8px 12px;padding:9px 8px;text-align:center;border:1px solid #d0ba89;border-radius:12px 9px 14px 10px;background:#f8edd0;box-shadow:0 2px 5px #a3854620}
+.life-hub-month strong{display:block;font-family:'Songti SC',serif;color:#5b6e40;font-size:15px;line-height:1.5}.life-hub-month small{display:block;font-size:9px;color:#96815a;line-height:1.7}
+.life-hub-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+#game .life-hub-option{display:flex;align-items:center;gap:7px;min-width:0;min-height:82px!important;padding:9px 7px;background:radial-gradient(ellipse at top left,#f5e8ba88,transparent 90%),#fff8e5!important;border:1px solid #c8b186;border-radius:12px 16px 10px 14px;box-shadow:inset 0 1px 0 #fffcef,0 2px 0 #a88f5a0d;color:#52633d;text-align:left;white-space:normal}
+.life-hub-icon{display:flex;align-items:center;justify-content:center;flex:none;width:31px;height:36px;background:#e9d9a76b;border-radius:44% 50% 42% 47%;color:#75834f;transform:rotate(-4deg)}
+.life-hub-icon svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.life-hub-copy{min-width:0;flex:1}.life-hub-copy strong{display:block;font-family:'Songti SC','STSong',serif;font-size:15px;color:#455d36;line-height:1.45;font-weight:700}.life-hub-copy small{display:block;font-size:9px;line-height:1.65;color:#9a8358;margin-top:4px}
+.life-hub-arrow{font-size:21px;color:#b8a06d;flex:none}
+#game .life-hub-option-wide{grid-column:1/-1;min-height:62px!important;padding-left:15px;background:#e9ebd46e!important}.life-hub-option-wide .life-hub-icon{width:38px}.life-hub-option-wide .life-hub-copy small{margin-top:1px}
+.life-hub-hint{text-align:center;font-size:10px;color:#9a8660;line-height:1.6;margin:11px 0 0}
+.life-hub-painted #actions{gap:5px;background:transparent!important;max-height:none!important;padding-top:10px!important}
+.event.event-active.life-hub-painted #actions [data-life-hub-action="review"]{min-height:43px!important;background:linear-gradient(110deg,#e8bf61,#f3d98e)!important;border:1px solid #b49758;border-radius:14px 18px 13px 16px;color:#4b6139!important;font-family:'Songti SC',serif;font-size:15px}
+.event.event-active.life-hub-painted #actions [data-life-hub-action="back"]{min-height:28px!important;padding:3px;background:transparent!important;color:#8d7c56!important;border:0;box-shadow:none;font-size:11px}
+@media(max-width:350px){#game .life-hub-option{padding:8px 6px;gap:5px}.life-hub-icon{width:24px}.life-hub-icon svg{width:23px}.life-hub-copy strong{font-size:13px}.life-hub-copy small{font-size:8px}.life-hub-arrow{display:none}}

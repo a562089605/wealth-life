@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "70 production resources; all seven pet cleaning pages illustrated; user-confirmed simple pet rules and automatic pet-friend profiles.",
+  "scope": "71 production resources; illustrated monthly life arrangements menu integrated; 459 candidates retained.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1682,6 +1682,32 @@
         "browser": "passed actual seven-pet adoption and four cleaning pages: 2 scenes per species, no generic icons, no cash/care/time change; isolated Chromium, no page errors"
       },
       "rules": "Illustration only; original fees/hours/intervals retained"
+    },
+    {
+      "id": "life-arrangements",
+      "source": {
+        "originalName": "New cozy monthly life arrangements still life",
+        "referenceResources": [
+          "assets/career/home-mobile.webp",
+          "assets/career/living-cost.webp"
+        ],
+        "evidence": [
+          "progress/life-hub-art-2026-10-26.md"
+        ],
+        "generation": "User requested matching illustrated life menu; no fixed prices or labels in artwork"
+      },
+      "resourcePath": "assets/career/life-arrangements.webp",
+      "gitBlobSha": "0eedbfe67b13ab72f33a8b5b2ac909901e3fe73a",
+      "pageOrEvent": "房屋生活入口：生活安排主插画和实际原按钮/待办汇总",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "new user-requested art; old life menu screenshot and all original assets retained",
+      "verification": {
+        "bytes": "new generated PNG optimized as WebP",
+        "visualReview": "warm hand-painted house/key/groceries/shield/planner/teacup, no UI or static amounts",
+        "browser": "passed isolated Chromium: five original routes, no browsing spend/time/state changes, dynamic bills, 320/390/desktop centering, required-bill gate and actual original450/800 payment then monthly acknowledgement; not real-device"
+      },
+      "rules": "Visual only; original navigation, required bills, spending and monthly acknowledgement preserved"
     }
   ],
   "candidateEntries": [
@@ -10922,5 +10948,5 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 52
+  "prAddedImageCount": 53
 }
