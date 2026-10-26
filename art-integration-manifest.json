@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "56 production resources; original seven-pet selection artwork integrated with live cash/quotes; 459 candidates unchanged.",
+  "scope": "57 production resources including original corgi adoption scene; original 459 candidates unchanged.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1343,6 +1343,29 @@
         "browser": "passed: qa/browser-pet-selection.py; all seven selection buttons, unchanged cash/time/pets, selected-species next preview, 320/390px and returns"
       },
       "rules": "Selecting a species is local preview only; next opens existing name/fee confirmation; no direct adoption or charge"
+    },
+    {
+      "id": "pet-corgi-adoption",
+      "source": {
+        "originalName": "Cozy corgi adoption screen.png",
+        "libraryId": "libfile_2b649bac35d88191b5d31e660a78ae8e",
+        "evidence": [
+          "CANDIDATE_ART_MANIFEST.json",
+          "progress/corgi-adoption-art-2026-10-26.md"
+        ]
+      },
+      "resourcePath": "assets/career/pet-corgi-adoption.webp",
+      "gitBlobSha": "6784cef3fb99f53900ed0c882c26f1b8c5370eaa",
+      "pageOrEvent": "柯基取名与费用卡：只显示原图柯基场景，实际输入/保单/报价沿原代码",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "scene-only CSS window; old month/cash/prices/cat excluded; archive original retained",
+      "verification": {
+        "bytes": "exact archived WebP",
+        "visualReview": "original corgi scene verified, old text excluded",
+        "browser": "passed: qa/browser-pet-adoption-art.py; centered at 320/390px/desktop, live name/insurance/quote, isolated once-only adoption"
+      },
+      "rules": "No price/rule changes; original form nodes, handlers and transaction remain canonical"
     }
   ],
   "candidateEntries": [
@@ -7930,7 +7953,7 @@
       "libraryId": "libfile_2b649bac35d88191b5d31e660a78ae8e",
       "originalName": "Cozy corgi adoption screen.png",
       "packagePath": "assets/candidates/libfile_2b649bac35d88191b5d31e660a78ae8e.webp",
-      "productionResourcePath": null,
+      "productionResourcePath": "assets/career/pet-corgi-adoption.webp",
       "dimensions": [
         1024,
         1536
@@ -7939,9 +7962,9 @@
       "webpSha256": "3376076fde6b7dd00cdd380409f789ec7a80c78411e8247322d86d0500d20a49",
       "originalPngSha256": "81ce595831d6d410328aec3841f5e0228a3aa6da9a83d9377d8b02decb8e6553",
       "exactOriginalDuplicateGroup": [],
-      "status": "candidate-not-visually-reviewed",
+      "status": "integrated",
       "validationError": null,
-      "oldDraftReview": "pending-visual-and-rule-review",
+      "oldDraftReview": "Corgi portrait window only; original static text and prices not used",
       "repositoryResourcePath": "assets/candidates/libfile_2b649bac35d88191b5d31e660a78ae8e.webp",
       "repositoryBytesVerified": true
     },
@@ -10582,5 +10605,5 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 38
+  "prAddedImageCount": 39
 }

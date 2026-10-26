@@ -1,5 +1,7 @@
 # 新会话接手
 
+本地最新（2026-10-26）：先读 `progress/corgi-adoption-art-2026-10-26.md`，柯基取名/费用卡已改居中手绘排版，仍沿原输入/保险/交易。生产资源57，缓存 `wealth-life-v28.3-pet-form1`，本地未上传。之前宠物选择居中与直接入口保留。
+
 仓库：a562089605/wealth-life
 分支：fix/illustrated-home-scene
 现有草稿PR：https://github.com/a562089605/wealth-life/pull/1

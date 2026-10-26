@@ -50,7 +50,8 @@ function previewPetAdoption(species){
  $('eventData').append(form);$('eventData').style.display='block';input=$('petAdoptionName');checkbox=$('petAdoptionInsurance');
  function update(){quoted=quote();$('petAdoptionQuote').innerHTML='<p>领养及初始设施 '+priceText(quoted.adopt)+'<br>本月基础养护 '+priceText(quoted.monthly)+'<br>本月可选保费 '+priceText(quoted.premium)+'<br>本次合计 '+priceText(quoted.total)+'<br>支付后现金 '+priceText(state.cash-quoted.total)+'</p>';
   $('actions').firstElementChild.disabled=!input.value.trim()||state.cash<quoted.total;}
- input.oninput=update;checkbox.onchange=update;update();
+ const updateView=()=>{update();if(typeof paintPetAdoptionQuote==='function')paintPetAdoptionQuote(quoted)};
+ input.oninput=updateView;checkbox.onchange=updateView;updateView();
 }
 function applyPetPolicyChanges(){for(const p of state?.pets||[]){const change=p.policyChange;if(!change||change.effectiveMonth>state.month)continue;
  const policy=state.insurance[p.insuranceKey];if(change.active){state.insurance[p.insuranceKey]={name:p.name+' · 宠物保险',active:true,monthly:change.monthly,coverage:.8,petId:p.id,startMonth:state.month};}else if(policy)policy.active=false;
