@@ -75,7 +75,7 @@ function openPetPolicy(id){
 function openPetHub(){
  syncFinance();showEvent('宠物','我的宠物','每只宠物分别保存名字、保单及到期照护。日常不可出售或送养。',
  (state.pets||[]).map(p=>[batchEscape(p.name||p.type), (PET_ADOPTION[petCareSpecies(p)]?.name||batchEscape(p.type))+' · 月养护 '+priceText(petIndividualMonthly(p))]),
- [['领养新伙伴',openPetAdoptions,true],...((state.pets||[]).length?[['处理本月到期照护',openPetCare,false]]:[]),
+ [['领养新伙伴',openPetAdoptions,true],...((state.pets||[]).length?[['宠物日常照顾',openPetCare,false]]:[]),
  ...(state.pets||[]).filter(p=>p.petRulesVersion===1).map(p=>[p.name+' · 保险',()=>openPetPolicy(p.id),false]),['返回房屋',townHome,false]]);
 }
 $('petBtn').onclick=openPetHub;

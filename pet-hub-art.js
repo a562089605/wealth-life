@@ -17,7 +17,7 @@
   for(const b of $('actions').querySelectorAll('button')){
    const label=b.textContent;
    if(!b.hasAttribute('aria-label'))b.setAttribute('aria-label',label);
-   b.dataset.petPaint=label==='领养新伙伴'?'adopt':label==='处理本月到期照护'?'care':label==='返回房屋'?'back':label.includes('确认本月宠物安排')?'confirm':'policy';
+   b.dataset.petPaint=label==='领养新伙伴'?'adopt':label==='宠物日常照顾'?'care':label==='返回房屋'?'back':label.includes('确认本月宠物安排')?'confirm':'policy';
   }
   return result;
  };

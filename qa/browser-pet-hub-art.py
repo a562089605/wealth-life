@@ -24,7 +24,7 @@ with sync_playwright() as p:
  assert page.get_by_role('button',name='查看变色龙',exact=True).is_visible()
  page.get_by_role('button',name='返回我的宠物',exact=True).click()
  assert page.locator('.event-active.pet-hub-painted').count()==1
- assert page.get_by_role('button',name='处理本月到期照护',exact=True).count()==0
+ assert page.get_by_role('button',name='宠物日常照顾',exact=True).count()==0
  assert page.evaluate('({cash:state.cash,month:state.month,free:currentCareerTime().free,pets:state.pets.length})')==before
  page.evaluate('clearModals();townHome()');page.locator('#roomView [data-room="pets"]').click()
  for width,height in [(320,740),(390,844)]:
@@ -39,7 +39,7 @@ with sync_playwright() as p:
  assert page.locator('.pet-hub-empty').count()==0
  assert '豆豆' in page.locator('#eventData').inner_text()
  assert page.get_by_role('button',name='豆豆 · 保险',exact=True).is_visible()
- page.get_by_role('button',name='处理本月到期照护',exact=True).click()
+ page.get_by_role('button',name='宠物日常照顾',exact=True).click()
  assert page.locator('.event-active.pet-hub-painted').count()==0
  assert not errors,errors
  result={'passed':True,'checks':['新卡实际加载插画，未养宠不显示到期照护，打开不扣款不耗时','领养/返回/到期照护真实按钮沿原动作，子页不会残留宠物主页样式','320/390px无横向溢出，确认回屋保留打勾','已养宠fixture展示真实名字与逐宠保险按钮'],'pageErrors':errors,'limitations':['隔离Chromium，非真机','已养宠仅显示fixture，未重测全部领养与理赔规则']}
