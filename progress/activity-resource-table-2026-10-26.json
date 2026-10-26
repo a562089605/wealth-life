@@ -3129,5 +3129,17 @@
       "work-review acknowledgement is not an execution receipt",
       "monthly state baseline, health threshold sampling and actual capped state changes must be explicit"
     ]
-  }
+  },
+  "subsequentUpdates": [
+    {
+      "kind": "implementedRecoveryGuards",
+      "evidence": "progress/recovery-activity-guards-2026-10-26.md",
+      "newTimeCostsApplied": false
+    },
+    {
+      "kind": "proposedTimeCostsOnly",
+      "evidence": "progress/activity-time-proposal-2026-10-26.md",
+      "approved": false
+    }
+  ]
 }
