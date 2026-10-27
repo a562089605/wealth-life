@@ -1,7 +1,7 @@
 {
-  "scope": "All 26 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
-  "count": 26,
-  "totalBytes": 77200459,
+  "scope": "All 27 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
+  "count": 27,
+  "totalBytes": 79867343,
   "files": [
     {
       "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
@@ -258,6 +258,16 @@
       "repositoryPath": "assets/archive/generated-originals/insurance-premiums-document.png",
       "bytes": 2655461,
       "sha256": "4d594c57209ce259c28eaf802f5cb9d2a35054f2355c990227709d9146a0025c",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-e8f0385c-9697-4e37-b036-e2345e28b058.png",
+      "repositoryPath": "assets/archive/generated-originals/necessary-arrangements-embedded.png",
+      "bytes": 2666884,
+      "sha256": "498cc9ee32d17e3decb6f31486c0738b37263e32e991fdf411915d8d7d957ddd",
       "dimensions": [
         1024,
         1536

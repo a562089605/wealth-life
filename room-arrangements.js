@@ -51,7 +51,7 @@ showEvent=function(type,title,desc,data=[],actions=[]){
  if(eligible)queueMicrotask(()=>{
   if(roomReview!==review||state!==review.owner||state.month!==review.month||!document.querySelector('.event-active'))return;
   const label='确认本月'+ROOM_SECTIONS[review.key]+'安排，返回房屋';
-  if([...$('actions').querySelectorAll('button')].some(b=>b.textContent===label))return;
+  if([...document.querySelector('.event-active').querySelectorAll('button')].some(b=>b.textContent===label))return;
   const b=document.createElement('button');b.textContent=label;b.className='primary';b.onclick=()=>roomConfirmArrangement(review);$('actions').append(b);
  });
  return result;

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "83 production resources including retained old art; insurance detail documents unified.",
+  "scope": "84 production resources including retained old art; essential arrangements embedded.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -2077,6 +2077,34 @@
         "browser": "IAB actual controls and explicit fixtures; income65/auto165/pet30/premiums65 checked, 320/390/desktop, legacy and shortages. No real-device/offline retest."
       },
       "rules": "Visual only: existing nodes, live quotes, callbacks, disabled flags and original contracts preserved."
+    },
+    {
+      "id": "necessary-arrangements-embedded",
+      "source": {
+        "originalName": "Embedded essential monthly arrangements",
+        "referenceResources": [
+          "assets/career/insurance-premiums-document.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/necessary-arrangements-embedded.png"
+        ],
+        "evidence": [
+          "progress/necessary-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen. Exact prompt: progress/image-prompts/necessary-arrangements-embedded.txt."
+      },
+      "resourcePath": "assets/career/necessary-arrangements-embedded.webp",
+      "gitBlobSha": "9b3c807884cf1979ebccb39b470eec728092d41e",
+      "pageOrEvent": "必要安排：动态待付/原待办/银行筹款/月度确认嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Old landscape life art and all prior screenshots retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Warm gouache house/food/policy, blank ledger, two auxiliary labels and golden monthly acknowledgement",
+        "browser": "Actual IAB fresh save: unpaid confirm gated, bank cancel no debit, original450/800 payment ->8750, due0 and explicit monthly check; one monthly button only. Non-real-device."
+      },
+      "rules": "Visual only; original bill actions and monthly gate preserved, acknowledgement fallback checks the full event to avoid a duplicate after moving its original node."
     }
   ],
   "candidateEntries": [
@@ -11320,8 +11348,8 @@
   "prAddedImageCount": 53,
   "generatedOriginalArchive": {
     "manifest": "assets/archive/generated-originals/manifest.json",
-    "count": 26,
-    "totalBytes": 77200459,
+    "count": 27,
+    "totalBytes": 79867343,
     "excludedFromRuntimeAndDeployment": true
   }
 }
