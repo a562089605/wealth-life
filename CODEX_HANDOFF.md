@@ -1,5 +1,8 @@
 # 财富人生 Wealth Life — Codex 接手说明
 
+最新第二项耗时确认（2026-10-26）：用户明确宅家休息4h，已接入，运动2h保留，原费用/效果/月限及独立免费额外休息不变；其余七项耗时待逐项确认。48项Node及IAB九项原数值/已确认2h和4h/回执回归通过。见[确认表](docs/confirmed/life-activity-time-2026-10-26.md)和[检查点](progress/home-rest-time-2026-10-26.md)。缓存wealth-life-v28.3-home-rest-time1，本地未上传。下一项朋友聚餐待确认。
+
+
 最新逐项耗时确认（2026-10-26）：用户对运动/户外2h回复“好”，已接入扣时/不足时间检查/原预览与回执；原25/效果/月限保留，旧完成记录不追扣。其余八项仍待逐项确认，不使用旧草案。48项Node与IAB2h边界/九项原数值回归通过，非真机/完整离线。见[确认表](docs/confirmed/life-activity-time-2026-10-26.md)和[检查点](progress/outdoor-time-2026-10-26.md)。缓存wealth-life-v28.3-outdoor-time1，本地未上传。下一项宅家休息待确认。
 
 
