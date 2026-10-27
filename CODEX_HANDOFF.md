@@ -1,5 +1,8 @@
 # 财富人生 Wealth Life — Codex 接手说明
 
+最新第四项耗时确认（2026-10-26）：用户指定生活兴趣爱好3h，已接入，未采用助手原4h建议。前四项2/4/2/3h确认，原费用/效果/月限/随机后续不变，其余五项待确认。48项Node及IAB九项原数值与已确认耗时回归通过；见[确认表](docs/confirmed/life-activity-time-2026-10-26.md)和[检查点](progress/hobby-life-time-2026-10-26.md)。缓存wealth-life-v28.3-hobby-life-time1，本地未上传。下一项周末短途旅行待确认。
+
+
 最新第三项耗时确认（2026-10-26）：朋友聚餐2h已由用户明确确认并接入，运动2h/宅家4h保留。原85/效果/月限/随机后续不改，其余六项仍待逐项确认。48项Node及IAB九项原数值与2/4/2h扣时回归通过；见[确认表](docs/confirmed/life-activity-time-2026-10-26.md)和[检查点](progress/friends-meal-time-2026-10-26.md)。缓存wealth-life-v28.3-friends-meal-time1，本地未上传。下一项兴趣爱好待确认。
 
 
