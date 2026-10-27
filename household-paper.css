@@ -14,3 +14,15 @@
 .household-inline{display:block;margin:10px auto!important;min-height:38px!important;background:#f3e7c3!important;border:1px solid #c7b285;border-radius:12px 17px 11px 14px;color:#607046!important;font-family:'Songti SC',serif}
 .household-rest-scene{width:100%;max-width:230px;aspect-ratio:1;margin:0 auto 12px;background:url('assets/career/life-activities.webp') 50% 0/300% 300%;border-radius:13px 18px 12px 16px}
 @media(max-width:350px){.household-option>strong{font-size:14px}.household-option>b{font-size:12px}.household-option>small,.household-option>span{font-size:9px}.household-options{gap:9px 7px}}
+.living-painted-scene{position:relative;margin:0;border-radius:14px 19px 13px 17px;overflow:hidden;isolation:isolate}
+.living-painted-scene>img{display:block;width:100%;height:auto;aspect-ratio:2/3}
+.living-painted-ledger{position:absolute;left:15%;top:33%;width:70%;height:45%;display:flex;flex-direction:column;justify-content:center;color:#56603c}
+.living-painted-ledger .household-total{margin:0 0 6px;padding:0;background:transparent;border:0;box-shadow:none;border-radius:0}
+.living-painted-ledger .household-total span{font-size:12px}.living-painted-ledger .household-total strong{font-size:clamp(21px,6vw,29px);line-height:1.4}
+.living-painted-ledger .life-paper-row{padding:7px 0;gap:5px;font-size:10px;background:transparent;border-color:#b5a27588;flex-wrap:wrap}
+.living-painted-ledger .life-paper-row strong{font-size:12px;overflow-wrap:anywhere}
+#game .household-painted button.living-embedded-pay{position:absolute;left:12%;top:79.5%;width:76%;height:9.5%;min-height:40px!important;display:flex;align-items:center;justify-content:center;margin:0!important;padding:4px 8px!important;border:0!important;border-radius:13px 18px 12px 17px;background:transparent!important;box-shadow:none!important;color:#4d6038!important;font-family:'Songti SC','STSong',serif;font-size:17px;font-weight:700;white-space:normal;line-height:1.4;text-align:center;z-index:1}
+#game .household-painted button.living-embedded-pay:disabled{opacity:.45;cursor:not-allowed}
+#game .household-painted button.living-embedded-pay:focus-visible{outline:3px solid #506b40;outline-offset:-4px}
+#game .household-painted button.living-embedded-pay:not(:disabled):hover{background:#fff2c522!important}
+@media(max-width:350px){.living-painted-ledger .life-paper-row{padding:5px 0;font-size:9px}.living-painted-ledger .life-paper-row strong{font-size:10px}.living-painted-ledger .household-total span{font-size:10px}#game .household-painted button.living-embedded-pay{font-size:15px}}

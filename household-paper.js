@@ -45,9 +45,12 @@
   const result=livingBefore(...args);if($('eventTitle').textContent!=='本月必要生活成本')return result;
   const pay=$('eventData').querySelector('[data-v26="living"]'),fund=$('eventData').querySelector('[data-town="livingFund"]'),b=board('本月必要生活成本');if(!b)return result;
   const due=roundCash(Math.max(0,livingTotal()-(paymentReceipt().living||0)));
-  b.append(art(4));const amount=document.createElement('div');amount.className='household-total';const label=document.createElement('span'),value=document.createElement('strong');label.textContent=due?'本次尚需支付':'✓ 本月生活费已付清';value.textContent=priceText(due);amount.append(label,value);b.append(amount);
-  b.append(row('基础生活',priceText(livingBaseAmount(state))),row('宠物日常养护',priceText(petMonthly())),row('车辆燃油及维护',priceText(state.carRunningCost||0)),row('本月生活费已付',priceText(paymentReceipt().living||0)),note('先核对，再确认支付。已付费用保留到月末，发薪结算不会重复扣除。'),note('住房、保险和贷款分别在对应入口处理。'));
-  if(pay)$('actions').prepend(pay);if(fund)$('actions').insertBefore(fund,pay?.nextSibling||$('actions').firstChild);actions();return result;
+  $('eventTitle').closest('.event').classList.add('living-embedded');
+  const scene=document.createElement('figure');scene.className='living-painted-scene';const image=document.createElement('img');image.src='assets/career/living-bill-scene.webp';image.alt='阳光下的生活食材、手写账单纸和付款木牌';scene.append(image);
+  const ledger=document.createElement('div');ledger.className='living-painted-ledger';const amount=document.createElement('div');amount.className='household-total';const label=document.createElement('span'),value=document.createElement('strong');label.textContent=due?'本次尚需支付':'✓ 本月生活费已付清';value.textContent=priceText(due);amount.append(label,value);ledger.append(amount);
+  ledger.append(row('基础生活',priceText(livingBaseAmount(state))),row('宠物日常养护',priceText(petMonthly())),row('车辆燃油及维护',priceText(state.carRunningCost||0)),row('本月生活费已付',priceText(paymentReceipt().living||0)));scene.append(ledger);
+  if(pay){pay.classList.add('living-embedded-pay');scene.append(pay);}b.append(scene,note('确认才支付，已付费用不会重复扣除。'),note('住房、保险和贷款分别在对应入口处理。'));
+  if(fund)$('actions').prepend(fund);actions();return result;
  };
  function restBoard(title,done=false){
   const b=board(title);if(!b)return;const missing=done?[]:restMissing();
@@ -59,5 +62,5 @@
  function signed(n){return(n>0?'+':'')+n;}
  const restBefore=openExtraRest;openExtraRest=function(...args){const result=restBefore(...args);restBoard('额外休息4小时');return result;};
  const restConfirmBefore=confirmExtraRest;confirmExtraRest=function(...args){const result=restConfirmBefore(...args);if(result===true)restBoard('休息完成',true);return result;};
- const before=showEvent;showEvent=function(...args){document.querySelector('.household-painted')?.classList.remove('household-painted');return before(...args)};
+ const before=showEvent;showEvent=function(...args){document.querySelector('.household-painted')?.classList.remove('household-painted','living-embedded');return before(...args)};
 })();

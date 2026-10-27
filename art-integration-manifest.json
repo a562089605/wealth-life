@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "75 production resources; hand-painted household housing, living bills and rest cards; 459 candidates retained.",
+  "scope": "76 production resources; embedded illustrated living bill and real payment button; 459 candidates retained.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1822,6 +1822,33 @@
         "browser": "See qa/browser-evidence/household-paper.json"
       },
       "rules": "Presentation only; original real buttons and housing/living/rest transactions and stale guards retained"
+    },
+    {
+      "id": "living-bill-scene",
+      "source": {
+        "originalName": "Picture-book grocery bill clipboard and embedded payment plaque",
+        "generatedOriginal": "/workspace/generated_images/exec-657ad293-f04d-4e67-bfcd-e3f9fb26070e.png",
+        "referenceResources": [
+          "assets/career/home-mobile.webp",
+          "assets/career/household-scenes.webp"
+        ],
+        "evidence": [
+          "progress/living-embedded-2026-10-26.md"
+        ],
+        "generation": "User requested button embedded inside illustration; blank bill and plaque receive live HTML text and the original real payment button"
+      },
+      "resourcePath": "assets/career/living-bill-scene.webp",
+      "gitBlobSha": "c9056dfeac104a50ba4393cb26e8cc1690f78205",
+      "pageOrEvent": "基本生活费：整幅食材/账单/付款牌场景，金额和明细动态叠放，确认支付按钮嵌入画中",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Earlier separate illustration/amount card/footer pay version retained in progress/evidence/living-before-embedded; old atlas unchanged",
+      "verification": {
+        "bytes": "1024x1536 generated PNG optimized as WebP; preserve full2:3 aspect",
+        "visualReview": "Warm chunky gouache groceries, blank ivory bill and single ochre plaque; no fixed prices or fake image text",
+        "browser": "See qa/browser-evidence/household-paper.json"
+      },
+      "rules": "Original living payment node/delegation and amount remain unchanged; viewing no spend; paid reopen no duplicate; funding route retained"
     }
   ],
   "candidateEntries": [
