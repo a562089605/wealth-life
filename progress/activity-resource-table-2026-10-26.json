@@ -200,7 +200,9 @@
             "energy": -3,
             "happiness": 2,
             "stress": -6
-          }
+          },
+          "hours": 2,
+          "hoursStatus": "user-confirmed-and-integrated"
         },
         {
           "name": "宅家休息",
@@ -210,7 +212,9 @@
             "energy": 8,
             "happiness": 4,
             "stress": -6
-          }
+          },
+          "hours": 4,
+          "hoursStatus": "user-confirmed-and-integrated"
         },
         {
           "name": "朋友聚餐",
@@ -220,7 +224,9 @@
             "energy": -2,
             "happiness": 7,
             "social": 6
-          }
+          },
+          "hours": 2,
+          "hoursStatus": "user-confirmed-and-integrated"
         },
         {
           "name": "兴趣爱好",
@@ -230,7 +236,9 @@
             "energy": 3,
             "happiness": 8,
             "stress": -5
-          }
+          },
+          "hours": 3,
+          "hoursStatus": "user-confirmed-and-integrated"
         },
         {
           "name": "周末短途旅行",
@@ -240,7 +248,9 @@
             "energy": 6,
             "happiness": 14,
             "stress": -8
-          }
+          },
+          "hours": 12,
+          "hoursStatus": "user-confirmed-and-integrated"
         },
         {
           "name": "演唱会 / 主题乐园",
@@ -250,7 +260,9 @@
             "energy": -6,
             "happiness": 11,
             "stress": -4
-          }
+          },
+          "hours": 8,
+          "hoursStatus": "user-confirmed-and-integrated"
         },
         {
           "name": "升级手机",
@@ -258,7 +270,9 @@
           "desc": "新鲜感带来短期快乐。",
           "effects": {
             "happiness": 7
-          }
+          },
+          "hours": 2,
+          "hoursStatus": "user-confirmed-and-integrated"
         },
         {
           "name": "品质餐厅",
@@ -268,7 +282,9 @@
             "energy": -2,
             "happiness": 8,
             "social": 6
-          }
+          },
+          "hours": 2,
+          "hoursStatus": "user-confirmed-and-integrated"
         },
         {
           "name": "本月简单生活",
@@ -277,9 +293,12 @@
           "effects": {
             "energy": -1,
             "happiness": -3
-          }
+          },
+          "hours": 0,
+          "hoursStatus": "user-confirmed-and-integrated"
         }
-      ]
+      ],
+      "timeFile": "life-activity-time.js"
     },
     "petCare": {
       "file": "pet-care.js",
@@ -3041,7 +3060,8 @@
   },
   "missingTime": {
     "life": {
-      "names": [
+      "names": [],
+      "resolvedNames": [
         "运动 / 户外",
         "宅家休息",
         "朋友聚餐",
@@ -3052,8 +3072,18 @@
         "品质餐厅",
         "本月简单生活"
       ],
-      "hours": null,
-      "note": "Not every purchase needs activity time; distinguish instant shopping/simple budget from actual outings/rest."
+      "confirmedHours": {
+        "运动 / 户外": 2,
+        "宅家休息": 4,
+        "朋友聚餐": 2,
+        "兴趣爱好": 3,
+        "周末短途旅行": 12,
+        "演唱会 / 主题乐园": 8,
+        "升级手机": 2,
+        "品质餐厅": 2,
+        "本月简单生活": 0
+      },
+      "note": "All nine individually confirmed and integrated; 0 simple-life hours is explicit, not missing."
     },
     "hobbies": {
       "names": [
@@ -3141,5 +3171,10 @@
       "evidence": "progress/activity-time-proposal-2026-10-26.md",
       "approved": false
     }
-  ]
+  ],
+  "confirmedLifeUpdate": {
+    "rules": "docs/confirmed/life-activity-time-2026-10-26.md",
+    "timeSource": "life-activity-time.js",
+    "note": "Life hours updated to user-confirmed current runtime. Other groups retain their original audit snapshot; read later confirmed rules for overrides."
+  }
 }
