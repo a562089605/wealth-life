@@ -61,17 +61,18 @@ function applyPetPolicyChanges(){for(const p of state?.pets||[]){const change=p.
 const petPolicySyncBefore=syncFinance;syncFinance=function(){if(state){state.insurance??={};applyPetPolicyChanges()}return petPolicySyncBefore()};
 function openPetPolicy(id){
  const p=state.pets.find(p=>p.id===id),cfg=PET_ADOPTION[petCareSpecies(p||{})];if(!p||!cfg)return;
- const policy=state.insurance[p.insuranceKey],active=!!policy?.active,cycle=state.month;let confirmed=false;
- const premium=roundCash(cfg.premium*(state.cpiIndex||100)/100),afterExploring=explorationStarted();
+ const policy=state.insurance[p.insuranceKey],active=!!policy?.active,cycle=state.month,owner=state;let confirmed=false,controls;
+ const premium=roundCash(cfg.premium*(state.cpiIndex||100)/100),afterExploring=explorationStarted(),snapshot=JSON.stringify([policy,p.policyChange]);
+ const live=()=>state===owner&&state.month===cycle&&state.pets.includes(p)&&explorationStarted()===afterExploring&&JSON.stringify([state.insurance[p.insuranceKey],p.policyChange])===snapshot&&controls?.some(b=>eventActionCurrent(b,p.name+' · 保障'));
  showEvent('宠物保险',p.name+' · 保障','疾病和意外治疗赔付80%，不赔例行照护。保单按每只宠物单独记录；不追溯已发生费用。',[
- ['当前保障',active?'本月有效':'未生效'],['月保费',priceText(active?policy.monthly:premium)],['下月变更',p.policyChange?(p.policyChange.active?'投保':'停止保障'):'无']],
- [[active?'预约下月取消':'确认投保',()=>{if(confirmed||state.month!==cycle)return;
+ ['当前保障',active?'本月有效':'未生效'],['月保费',priceText(active?policy.monthly:premium)],['下月变更',p.policyChange?(p.policyChange.active?'投保':'停止保障'):'无'],['生效时间',active?'本月保障有效':afterExploring?'次月生效，本次不扣款':'确认付款后本月生效']],
+ [[active?'预约下月取消':afterExploring?'确认预约下月投保':'确认投保',()=>{if(confirmed||!live())return;
   if(active){p.policyChange={active:false,effectiveMonth:cycle+1};}
   else if(afterExploring){p.policyChange={active:true,effectiveMonth:cycle+1,monthly:premium};}
   else{if(!payMonthly('premiums',premium))return;state.insurance[p.insuranceKey]={name:p.name+' · 宠物保险',active:true,monthly:premium,coverage:.8,petId:p.id,startMonth:cycle};}
   confirmed=true;save();openPetHub();},true,!active&&!afterExploring&&state.cash<premium],
- ...active&&p.policyChange?.active===false&&!afterExploring?[['撤销取消，保留原保单',()=>{delete p.policyChange;save();openPetHub()},false]]:[],
- ...active&&p.policyChange?.active===false&&afterExploring?[['新合同下月接续',()=>{p.policyChange={active:true,effectiveMonth:cycle+1,monthly:premium};save();openPetHub()},false]]:[],['返回我的宠物',openPetHub,false]]);
+ ...active&&p.policyChange?.active===false&&!afterExploring?[['撤销取消，保留原保单',()=>{if(!live())return;delete p.policyChange;save();openPetHub()},false]]:[],
+ ...active&&p.policyChange?.active===false&&afterExploring?[['新合同下月接续',()=>{if(!live())return;p.policyChange={active:true,effectiveMonth:cycle+1,monthly:premium};save();openPetHub()},false]]:[],['返回我的宠物',openPetHub,false]]);controls=[...$('actions').querySelectorAll('button')];
 }
 function openPetHub(){
  syncFinance();showEvent('宠物','我的宠物','每只宠物分别保存名字、保单及到期照护。日常不可出售或送养。',

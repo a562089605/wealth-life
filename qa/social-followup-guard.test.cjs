@@ -1,0 +1,11 @@
+const fs=require('fs'),vm=require('vm'),a=require('node:assert/strict');let modal,nodes=[],title='',active=true;
+const fresh=()=>({month:0,cash:10000,people:[{id:'p',name:'朋友',relation:40}],hobbyXP:{},social:40,happiness:60,energy:70});
+const c={state:fresh(),Math:Object.create(Math),roundCash:n=>Math.round(n*100)/100,hobbyLevel:()=>0,save(){},finish(){active=false},priceText:String,$:id=>id==='eventTitle'?{textContent:title}:{querySelectorAll:()=>nodes},showEvent(...args){for(const n of nodes)n.isConnected=false;modal=args;title=args[1];active=true;nodes=args[4].map(()=>({isConnected:true,closest:()=>active?{}:null}))}};c.Math.random=()=>0;vm.createContext(c);let source=fs.readFileSync('flow.js','utf8');vm.runInContext(source.slice(0,source.indexOf('function completeMonthlyStep')),c);source=fs.readFileSync('batch.js','utf8');vm.runInContext(source.slice(source.indexOf('function maybeSocialFollowUp'),source.indexOf('const lifeBeforeBatch')),c);
+const open=()=>{c.state=fresh();c.maybeSocialFollowUp(c.state.people[0]);return modal[4][0][1]};
+let cb=open();c.state=JSON.parse(JSON.stringify(c.state));cb();a.equal(c.state.cash,10000,'old-save follow-up must not reward new save');
+cb=open();active=false;cb();a.equal(c.state.cash,10000,'closed follow-up must not execute');
+cb=open();c.state.month++;cb();a.equal(c.state.cash,10000,'old-month follow-up must not execute');
+cb=open();cb();a.equal(c.state.cash,10160);a.equal(c.state.people[0].relation,48);a.equal(c.state.social,44);a.equal(c.state.happiness,63);a.equal(c.state.energy,66);cb();a.equal(c.state.cash,10160,'one reward only');
+open();const skip=modal[4][1][1];skip();a.equal(c.state.cash,10000);a.equal(c.state.socialEvents['0:p'].skipped,true);
+cb=open();c.Math.random=()=>.99;cb();a.equal(c.state.cash,10000);a.equal(modal[1],'订单未通过验收');
+console.log('PASS: original160 success/0 failure, original social effects and skip, stale owner/month/closed callback rejection and no duplicate follow-up.');

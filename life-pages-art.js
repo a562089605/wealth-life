@@ -47,7 +47,7 @@
   const owner=state,month=state.month,frozen=signature();let panel,used=false;
   showEvent('生活','确认生活安排','',[],[
    ['确认安排 · '+priceText(o.cost),()=>{
-    if(used||state!==owner||state.month!==month||!panel?.isConnected)return;
+    if(used||state!==owner||state.month!==month||!eventActionCurrent(panel,'确认生活安排'))return;
     if(ordinaryRecoveryActivityBlocked())return showRecoveryActivityRestriction();
     if(signature()!==frozen)return preview(i);
     if(monthSelection('life')||state.cash<o.cost)return menu();

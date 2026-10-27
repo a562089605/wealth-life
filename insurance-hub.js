@@ -42,25 +42,25 @@
   b.insertBefore(scene,b.children[1]||null);
  }
  function payAll(){
-  syncFinance();const owner=state,month=state.month,q=InsuranceRules.quote(state);let done=false;
+  syncFinance();const owner=state,month=state.month,q=InsuranceRules.quote(state);let done=false,controls;const live=()=>state===owner&&state.month===month&&controls?.some(b=>eventActionCurrent(b,'核对本月保费'));
   show('核对本月保费','只支付本月尚未付清的保费；已付金额不重复扣除。',[
-   ['确认支付本月保费',()=>{if(done||state!==owner||state.month!==month)return;syncFinance();if(JSON.stringify(InsuranceRules.quote(state))!==JSON.stringify(q))return payAll();if(payMonthly('premiums',q.due)){done=true;save();openInsurance()}},true,q.due<=0||state.cash<q.due],
+   ['确认支付本月保费',()=>{if(done||!live())return;syncFinance();if(JSON.stringify(InsuranceRules.quote(state))!==JSON.stringify(q))return payAll();if(payMonthly('premiums',q.due)){done=true;save();openInsurance()}},true,q.due<=0||state.cash<q.due],
    ...(state.cash<q.due?[['前往银行筹款',()=>openBankLoan(Math.max(1,Math.ceil(q.due-state.cash)),{after:payAll}),false]]:[]),['返回保险管理',back,false]
-  ]);const b=board();if(!b)return;b.append(section('本月保费',price(q.monthly)),section('本月已付',price(q.paid)),section('本次尚需支付',price(q.due)),section('支付后现金',price(state.cash-q.due)));styleActions();paintInsuranceDocument('premiums',{board:b,primary:$('actions').querySelector('button.primary')});
+  ]);controls=[...$('actions').querySelectorAll('button')];const b=board();if(!b)return;b.append(section('本月保费',price(q.monthly)),section('本月已付',price(q.paid)),section('本次尚需支付',price(q.due)),section('支付后现金',price(state.cash-q.due)));styleActions();paintInsuranceDocument('premiums',{board:b,primary:$('actions').querySelector('button.primary')});
  }
  function generic(key){
   syncFinance();const cfg=INSURANCE[key],p=state.insurance?.[key];if(!cfg&&!p)return back();
   const name=p?.name||cfg?.[0]||'原有保单',monthly=current(p)?Number(p.monthly)||0:cfg?.[1]||0;
-  const q=InsuranceRules.quote(state,{key,monthly}),owner=state,month=state.month;let done=false;
+  const q=InsuranceRules.quote(state,{key,monthly}),owner=state,month=state.month;let done=false,controls;const live=()=>state===owner&&state.month===month&&controls?.some(b=>eventActionCurrent(b,name));
   const allowed=key==='income'||key==='auto'&&state.carOwned;
   const pending=state.pendingInsuranceChanges?.[key];
   show(name,'先查看保障和费用，确认后才投保；已有保单停保从下月生效。',[
-   ...!current(p)&&allowed?[["确认投保并支付",()=>{if(done||state!==owner||state.month!==month)return;syncFinance();if(state.insurance?.[key]?.active)return generic(key);const fresh=InsuranceRules.quote(state,{key,monthly});if(JSON.stringify(fresh)!==JSON.stringify(q))return generic(key);if(!payMonthly('premiums',q.due))return;state.insurance[key]={name:cfg[0],active:true,monthly,effectiveMonth:month};done=true;syncFinance();save();generic(key)},true,state.cash<q.due]]:[],
-   ...current(p)&&!pending?[['预约下月停保',()=>{if(done||state!==owner||state.month!==month)return;done=true;state.pendingInsuranceChanges??={};state.pendingInsuranceChanges[key]={active:false,effectiveMonth:month+1};save();generic(key)},false]]:[],
-   ...pending?[['撤销停保，保留原保障',()=>{if(state!==owner||state.month!==month)return;delete state.pendingInsuranceChanges[key];save();generic(key)},false]]:[],
+   ...!current(p)&&allowed?[["确认投保并支付",()=>{if(done||!live())return;syncFinance();if(key==='auto'&&!state.carOwned)return generic(key);if(state.insurance?.[key]?.active)return generic(key);const fresh=InsuranceRules.quote(state,{key,monthly});if(JSON.stringify(fresh)!==JSON.stringify(q))return generic(key);if(!payMonthly('premiums',q.due))return;state.insurance[key]={name:cfg[0],active:true,monthly,effectiveMonth:month};done=true;syncFinance();save();generic(key)},true,state.cash<q.due]]:[],
+   ...current(p)&&!pending?[['预约下月停保',()=>{if(done||!live())return;done=true;state.pendingInsuranceChanges??={};state.pendingInsuranceChanges[key]={active:false,effectiveMonth:month+1};save();generic(key)},false]]:[],
+   ...pending?[['撤销停保，保留原保障',()=>{if(!live())return;delete state.pendingInsuranceChanges[key];save();generic(key)},false]]:[],
    ...!current(p)&&allowed&&state.cash<q.due?[['前往银行筹款',()=>openBankLoan(Math.max(1,Math.ceil(q.due-state.cash)),{after:()=>generic(key)}),false]]:[],['返回保险管理',back,false]
   ]);
-  const b=board();if(!b)return;b.append(section('当前状态',current(p)?'✓ 本月保障有效':'未投保'),section('每月保费',price(monthly)),section('保障说明',descriptions[key]||'原合同资料保留。'));
+  controls=[...$('actions').querySelectorAll('button')];const b=board();if(!b)return;b.append(section('当前状态',current(p)?'✓ 本月保障有效':'未投保'),section('每月保费',price(monthly)),section('保障说明',descriptions[key]||'原合同资料保留。'));
   if(current(p))b.append(section('本月保障与停保',pending?'已预约下月停止；本月保障和已付保费保留。':'预约取消后从下月停止，本月已付保费不退款。'));
   else if(allowed)b.append(section('本次需付保费',price(q.due)+'，包含其他有效保单本月尚未付清的保费。'),section('支付后现金',price(state.cash-q.due)));
   else b.append(section('投保条件',key==='auto'?'拥有车辆后再选择车险。':'目前保留原有保单，不开放新的投保。'));
@@ -98,7 +98,7 @@
   const policySnapshot=JSON.stringify(p);
   let selected=preferred!==undefined?preferred:pending?pending.plan:current(p)?p.plan||'keep':null,confirmButton,quoteBox,presentedQuote,loanButton;
   show('医疗保障选择','新投保确认付款后生效；已有保单切换或取消从下月生效。已发生治疗按原锁定报价，不追溯赔付。',[
-   ['确认医疗安排',()=>{if(state!==owner||state.month!==month||!confirmButton?.isConnected)return;if(JSON.stringify(state.insurance.health)!==policySnapshot)return openMedicalInsurance();const now=InsuranceRules.quote(state,!current(p)&&selected?{key:'health',monthly:MEDICAL_PLANS[selected].monthly}:null);if(JSON.stringify(now)!==presentedQuote){update();return;}if(selected==='keep'){delete state.pendingMedicalPolicy;save();return openMedicalInsurance();}return confirmMedicalPlan(selected)},true],['返回保险管理',back,false]
+   ['确认医疗安排',()=>{if(state!==owner||state.month!==month||!eventActionCurrent(confirmButton,'医疗保障选择'))return;if(JSON.stringify(state.insurance.health)!==policySnapshot)return openMedicalInsurance();const now=InsuranceRules.quote(state,!current(p)&&selected?{key:'health',monthly:MEDICAL_PLANS[selected].monthly}:null);if(JSON.stringify(now)!==presentedQuote){update();return;}if(selected==='keep'){delete state.pendingMedicalPolicy;save();return openMedicalInsurance();}return confirmMedicalPlan(selected)},true],['返回保险管理',back,false]
   ]);
   confirmButton=$('actions').querySelector('button');const b=board();if(!b)return;b.append(section('当前保障',current(p)?(p.name||'旧版医疗险')+' · '+price(p.monthly)+'/月 · 赔付'+Math.round(medicalCoverage()*100)+'%':'未投保'));
   if(pending)b.append(section('已预约下月安排',pending.plan?MEDICAL_PLANS[pending.plan].name:'停止医疗保障'));
