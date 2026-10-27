@@ -46,8 +46,12 @@ try:
   page.evaluate('window.qaSocialAgain()');assert page.evaluate('state.people.length')==count+1 and page.evaluate('state.cash')==cash-20
   page.screenshot(path='progress/evidence/pet-social-result-2026-10-26.png',full_page=True)
   page.get_by_role('button',name='继续探索',exact=True).click();page.evaluate('clearModals();townHome();document.getElementById("networkBtn").click()')
-  assert contact['name'] in page.locator('#actions').inner_text()
+  contact_button=page.get_by_role('button',name='联系 '+contact['name'],exact=True)
+  assert contact_button.count()==1
+  before=page.evaluate('state.cash');contact_button.click();assert page.locator('.social-option').count()==3 and page.evaluate('state.cash')==before
   assert not errors,errors
+  import json
+  Path('qa/browser-evidence/pet-exotic-and-social.json').write_text(json.dumps({'passed':True,'checks':['actual seven pet adoptions','four species two cleaning scenes each; browsing no spend','pet map social profile50/50, saved quote/reload, confirm once cost20/add friend','actual new contact button opens three interactions without charge'],'pageErrors':errors,'limits':['isolated Chromium; due month/map landing fixture']},ensure_ascii=False,indent=2)+'\n')
   print('PASS: four species × two illustrated scenes, no preview spend/care mutation; original pet social card 50/50 profile metadata, saved quote unchanged after reload, confirm once adds friend/20 cost, original relationship-list button present; no page errors')
   ctx.close();b.close()
 finally:server.shutdown();server.server_close()

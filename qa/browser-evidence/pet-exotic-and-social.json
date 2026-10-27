@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "actual seven pet adoptions",
+    "four species two cleaning scenes each; browsing no spend",
+    "pet map social profile50/50, saved quote/reload, confirm once cost20/add friend",
+    "actual new contact button opens three interactions without charge"
+  ],
+  "pageErrors": [],
+  "limits": [
+    "isolated Chromium; due month/map landing fixture"
+  ]
+}

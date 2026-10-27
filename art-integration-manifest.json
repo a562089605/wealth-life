@@ -372,6 +372,9 @@
         "libraryId": "3a6f2bcd-356e-429d-8716-0a1af31afc59",
         "evidence": [
           "assets/career/manifest.json"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/exec-b35bf656-cdb7-40cb-b3f6-60eda6e9df66.png"
         ]
       },
       "resourcePath": "assets/career/intro.webp",
@@ -1285,7 +1288,10 @@
         "evidence": [
           "progress/mobile-room-2026-10-25.md"
         ],
-        "generation": "image_gen, original home.webp reference, explicitly requested new drawing"
+        "generation": "image_gen, original home.webp reference, explicitly requested new drawing",
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/exec-1b46e9a4-925b-4271-a321-a68d82268993.png"
+        ]
       },
       "resourcePath": "assets/career/home-mobile.webp",
       "gitBlobSha": "f3f401de7164b81cec953bb07654534b3db8f048",
@@ -1308,7 +1314,10 @@
         "evidence": [
           "progress/pet-hub-art-2026-10-25.md"
         ],
-        "generation": "image_gen; home-mobile.webp style reference, user requested illustrated pet card"
+        "generation": "image_gen; home-mobile.webp style reference, user requested illustrated pet card",
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/exec-743504de-5549-4fc5-a0e5-9a0a7495f263.png"
+        ]
       },
       "resourcePath": "assets/career/pet-hub.webp",
       "gitBlobSha": "401595187ef1d89ee0c9788cefe60f64f5fe9654",
@@ -1381,6 +1390,9 @@
         "referenceLibraryIds": [
           "libfile_f5bacd2878388191b11ce0d7c6fa010f",
           "libfile_2b649bac35d88191b5d31e660a78ae8e"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/exec-78bd1805-10bb-45cb-afbf-1fd4dafa4d6a.png"
         ]
       },
       "resourcePath": "assets/career/pet-cleaning-scenes.webp",
@@ -1725,6 +1737,11 @@
         "referenceResources": [
           "assets/career/home-mobile.webp",
           "assets/career/pet-hub.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/exec-0ab93068-62e6-42de-a294-823aeb0ae5aa.png",
+          "assets/archive/generated-originals/exec-14766d82-a59d-47b5-8959-7373dfc61847.png",
+          "assets/archive/generated-originals/exec-bdd9e140-f5f2-4c3d-893a-6bd176fd5040.png"
         ]
       },
       "resourcePath": "assets/career/life-activities.webp",
@@ -1754,6 +1771,10 @@
         "referenceResources": [
           "assets/career/home-mobile.webp",
           "assets/career/pet-hub.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/exec-5538ec71-a5d0-47e0-b081-d7389b502df9.png",
+          "assets/archive/generated-originals/exec-ec63bc5f-e508-49a0-bcd6-8fea40d7bb0f.png"
         ]
       },
       "resourcePath": "assets/career/life-funding.webp",
@@ -1781,7 +1802,10 @@
         "evidence": [
           "progress/social-pages-art-2026-10-26.md"
         ],
-        "generation": "Continue confirmed original picture-book style, object-only scenes avoid assigning fictional portraits or gender to saved contacts"
+        "generation": "Continue confirmed original picture-book style, object-only scenes avoid assigning fictional portraits or gender to saved contacts",
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/exec-2acaee71-f7e1-4721-8c8c-6c80a06dd7d8.png"
+        ]
       },
       "resourcePath": "assets/career/social-scenes.webp",
       "gitBlobSha": "09c87db6d4604a98ad70990e7eb42a736f2d7896",
@@ -1808,7 +1832,10 @@
         "evidence": [
           "progress/household-paper-2026-10-26.md"
         ],
-        "generation": "User requested household cards match the approved hand-painted game style; six distinct object/room scenes without fixed text or prices"
+        "generation": "User requested household cards match the approved hand-painted game style; six distinct object/room scenes without fixed text or prices",
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/exec-6d8b25d8-37c3-4c7b-b5c0-d6d62788b648.png"
+        ]
       },
       "resourcePath": "assets/career/household-scenes.webp",
       "gitBlobSha": "c724ac613feb864c50a4b717bd7784b9e2ae9505",
@@ -1835,7 +1862,10 @@
         "evidence": [
           "progress/living-embedded-2026-10-26.md"
         ],
-        "generation": "User requested button embedded inside illustration; blank bill and plaque receive live HTML text and the original real payment button"
+        "generation": "User requested button embedded inside illustration; blank bill and plaque receive live HTML text and the original real payment button",
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/exec-657ad293-f04d-4e67-bfcd-e3f9fb26070e.png"
+        ]
       },
       "resourcePath": "assets/career/living-bill-scene.webp",
       "gitBlobSha": "c9056dfeac104a50ba4393cb26e8cc1690f78205",
@@ -11089,5 +11119,11 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 53
+  "prAddedImageCount": 53,
+  "generatedOriginalArchive": {
+    "manifest": "assets/archive/generated-originals/manifest.json",
+    "count": 19,
+    "totalBytes": 58157312,
+    "excludedFromRuntimeAndDeployment": true
+  }
 }

@@ -1,0 +1,197 @@
+{
+  "scope": "All19 project-related generated PNG originals and first/rejected drafts visually checked; active production art remains separately inventoried. Original files byte-for-byte copied, excluded from runtime cache and deployment.",
+  "count": 19,
+  "totalBytes": 58157312,
+  "files": [
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
+      "bytes": 3361253,
+      "sha256": "dddc7231d158bea4c602191837f7bc66a2bb7686d7bfe8263d2dac1d73ec6497",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-0ab93068-62e6-42de-a294-823aeb0ae5aa.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-0ab93068-62e6-42de-a294-823aeb0ae5aa.png",
+      "bytes": 3044214,
+      "sha256": "6a452d6b5e8c6bd153921a83c3f421829536a03437519af5d71cf34e4d81914e",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-14766d82-a59d-47b5-8959-7373dfc61847.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-14766d82-a59d-47b5-8959-7373dfc61847.png",
+      "bytes": 3132266,
+      "sha256": "f7f947a0e9f2d4fe2dfa580bc7a35175fea6d71dee7371c372bc51e7f6935248",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-1b46e9a4-925b-4271-a321-a68d82268993.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-1b46e9a4-925b-4271-a321-a68d82268993.png",
+      "bytes": 2737472,
+      "sha256": "8ea030fcaf1a879f64305f4ac1a72ec1887e2dfa0ca3d0e15b01f405ce6e15df",
+      "dimensions": [
+        853,
+        1844
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-27212456-4566-41b6-8963-4cae9332272c.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-27212456-4566-41b6-8963-4cae9332272c.png",
+      "bytes": 3152768,
+      "sha256": "a43ee06928831566ed5285a05aeb36aeaed1de8f1e47254ae58a194a2d1d0c63",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-2acaee71-f7e1-4721-8c8c-6c80a06dd7d8.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-2acaee71-f7e1-4721-8c8c-6c80a06dd7d8.png",
+      "bytes": 3117664,
+      "sha256": "659d794aab0e4b72ad81bc088fcd2ab51ee37c1cc05a8e15222ac7953507da48",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-5538ec71-a5d0-47e0-b081-d7389b502df9.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-5538ec71-a5d0-47e0-b081-d7389b502df9.png",
+      "bytes": 2659025,
+      "sha256": "d9b37beb3356367efaac0f35a3a0386f82e2983513caa0cea5ef8ddff835aa7d",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-57f72215-a439-46d8-b951-fdd3444ec728.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-57f72215-a439-46d8-b951-fdd3444ec728.png",
+      "bytes": 3271220,
+      "sha256": "623708bd2fc4d81bfab3ae1de25d20a132537cd98eb6fb3a73d782f138e02ef3",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-657ad293-f04d-4e67-bfcd-e3f9fb26070e.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-657ad293-f04d-4e67-bfcd-e3f9fb26070e.png",
+      "bytes": 2492917,
+      "sha256": "cf427452b1fa3e256624c67b4003eab79bf9e0af3eab136b35995f7c488b1d5d",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-6d8b25d8-37c3-4c7b-b5c0-d6d62788b648.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-6d8b25d8-37c3-4c7b-b5c0-d6d62788b648.png",
+      "bytes": 3163683,
+      "sha256": "ba692c860345d6e6753599edcdc73ebccabfab95907c289d4a42eb353ed9fd2b",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-743504de-5549-4fc5-a0e5-9a0a7495f263.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-743504de-5549-4fc5-a0e5-9a0a7495f263.png",
+      "bytes": 2864774,
+      "sha256": "d8e518ecfe0c88112a222b5f2a1752b13260656c5137b9832d2ba08f176b506e",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-78bd1805-10bb-45cb-afbf-1fd4dafa4d6a.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-78bd1805-10bb-45cb-afbf-1fd4dafa4d6a.png",
+      "bytes": 3645405,
+      "sha256": "20d840c43c75d36cc3c87f7a3cb0650a19e1b9d64cf635c330fdb0b1140be2fe",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-9754ba91-16a9-4587-8e44-925446967926.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-9754ba91-16a9-4587-8e44-925446967926.png",
+      "bytes": 3040119,
+      "sha256": "0e8093d8bf0c183ae142cc0facc2c3983b7460a14fad3ed5072f9e1f0b8378fc",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-b35bf656-cdb7-40cb-b3f6-60eda6e9df66.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-b35bf656-cdb7-40cb-b3f6-60eda6e9df66.png",
+      "bytes": 2226613,
+      "sha256": "65f170ba05b0d9ed301bf1bb6d2b05fe161171358377956b8901ea476f514c79",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-bdd9e140-f5f2-4c3d-893a-6bd176fd5040.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-bdd9e140-f5f2-4c3d-893a-6bd176fd5040.png",
+      "bytes": 3462757,
+      "sha256": "e5ef016a1437eeb8475f1d27e585c82a805c9300666872248222c7cdcd639344",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-c0f7e4d9-ee8e-45a4-8e6b-f3ea7f45a763.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-c0f7e4d9-ee8e-45a4-8e6b-f3ea7f45a763.png",
+      "bytes": 3212838,
+      "sha256": "2eb3c86d0451a935980de836aec23e5891770777f9a04e86fa0a272927aa7983",
+      "dimensions": [
+        1402,
+        1122
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-cc234542-b7e7-44ab-9c53-38a640b37b6d.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-cc234542-b7e7-44ab-9c53-38a640b37b6d.png",
+      "bytes": 3526932,
+      "sha256": "8ac2b7fabf180e0d3fdac06a2fcfbf0a64ea5067dd1773a7b70513976e4723f4",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-db8183c5-7276-4b6c-8d3f-4358a2862c06.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-db8183c5-7276-4b6c-8d3f-4358a2862c06.png",
+      "bytes": 3018505,
+      "sha256": "1923c039f46dca06d176b5ed4a773eed2cf635a89b74e10ebc48cc17b488ac03",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-ec63bc5f-e508-49a0-bcd6-8fea40d7bb0f.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-ec63bc5f-e508-49a0-bcd6-8fea40d7bb0f.png",
+      "bytes": 3026887,
+      "sha256": "b6e47bb3bb217fcba7f1ec3591cce138692a2c81cf5936ee8639c8aee47f0581",
+      "dimensions": [
+        1672,
+        941
+      ]
+    }
+  ]
+}
