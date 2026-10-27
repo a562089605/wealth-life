@@ -1,5 +1,8 @@
 # 新会话接手
 
+最新第五项耗时确认（2026-10-26）：周末短途旅行按用户指定12h接入，未采用助手8h建议。前五项2/4/2/3/12h确认，原费用/效果/月限不变，后四项待逐项确认。48项Node及IAB九项原数值与已确认耗时回归通过。见[确认表](docs/confirmed/life-activity-time-2026-10-26.md)和[检查点](progress/weekend-trip-time-2026-10-26.md)。缓存wealth-life-v28.3-weekend-trip-time1，本地未上传。下一项演唱会/主题乐园待确认。
+
+
 最新第四项耗时确认（2026-10-26）：用户指定生活兴趣爱好3h，已接入，未采用助手原4h建议。前四项2/4/2/3h确认，原费用/效果/月限/随机后续不变，其余五项待确认。48项Node及IAB九项原数值与已确认耗时回归通过；见[确认表](docs/confirmed/life-activity-time-2026-10-26.md)和[检查点](progress/hobby-life-time-2026-10-26.md)。缓存wealth-life-v28.3-hobby-life-time1，本地未上传。下一项周末短途旅行待确认。
 
 
