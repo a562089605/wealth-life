@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "74 production resources; illustrated relationship contacts, original interactions and outcomes; 459 candidates retained.",
+  "scope": "75 production resources; hand-painted household housing, living bills and rest cards; 459 candidates retained.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1795,6 +1795,33 @@
         "browser": "See qa/browser-evidence/social-pages-art.json"
       },
       "rules": "Original45/15/0 fees, monthly one interaction, original scene rolls and state effects; no new activity hours"
+    },
+    {
+      "id": "household-scenes",
+      "source": {
+        "originalName": "Approved picture-book household six-scene atlas",
+        "generatedOriginal": "/workspace/generated_images/exec-6d8b25d8-37c3-4c7b-b5c0-d6d62788b648.png",
+        "referenceResources": [
+          "assets/career/home-mobile.webp",
+          "assets/career/life-activities.webp"
+        ],
+        "evidence": [
+          "progress/household-paper-2026-10-26.md"
+        ],
+        "generation": "User requested household cards match the approved hand-painted game style; six distinct object/room scenes without fixed text or prices"
+      },
+      "resourcePath": "assets/career/household-scenes.webp",
+      "gitBlobSha": "c724ac613feb864c50a4b717bd7784b9e2ae9505",
+      "pageOrEvent": "住房四选项、付款/预约/交接、基本生活费手绘卡；休息复用已确认life-activities沙发场景",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Existing housing/living art and screenshots preserved; new atlas does not overwrite original candidates",
+      "verification": {
+        "bytes": "1536x1024 generated PNG optimized as WebP, six square CSS scene windows",
+        "visualReview": "Consistent chunky warm gouache; family bedroom/shared common room/open studio/separate-bedroom apartment/groceries/keys and contract; no amounts or pets",
+        "browser": "See qa/browser-evidence/household-paper.json"
+      },
+      "rules": "Presentation only; original real buttons and housing/living/rest transactions and stale guards retained"
     }
   ],
   "candidateEntries": [

@@ -1,0 +1,16 @@
+.household-painted{background-image:radial-gradient(ellipse at top left,#e4dfb678,transparent 65%)!important}
+.household-scene{width:100%;aspect-ratio:1;background-image:url('assets/career/household-scenes.webp');background-size:300% 200%;background-position:var(--house-x) var(--house-y);border-radius:12px 17px 10px 15px}
+.household-board>.household-scene{max-width:235px;margin:0 auto 12px}
+.household-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 9px;margin:12px 0}
+#game button.household-option{display:block!important;min-width:0;padding:6px 6px 10px!important;min-height:0!important;background:#fff8e4!important;border:1px solid #c7b181;border-radius:13px 18px 12px 16px;box-shadow:0 3px 7px #90743822,inset 0 0 0 3px #fffdf233;white-space:normal;text-align:left;color:#4d613a}
+.household-option>.household-scene{border-radius:9px 13px 8px 12px}
+.household-option>strong{display:block;font-family:'Songti SC','STSong',serif;font-size:16px;line-height:1.65;color:#4b6038;margin:6px 4px 2px;overflow-wrap:anywhere}
+.household-option>b{display:block;font-family:Georgia,'Songti SC',serif;font-size:14px;color:#78602e;margin:0 4px 5px;line-height:1.6}
+.household-option>small{display:block;font-size:10px;line-height:1.8;margin:0 4px 6px;color:#8a7850}
+.household-option>span{display:block;font-size:10px;line-height:1.7;padding:6px 4px;background:#f0db9d6e;border-radius:8px 11px 8px 9px;color:#746330}
+.household-option:disabled{opacity:.5}
+.household-total{margin:-4px 4px 12px;padding:12px;text-align:center;border:1px solid #cbb583;background:#f3e5b8;border-radius:13px 17px 11px 15px;box-shadow:0 3px 7px #ac915522}
+.household-total span{display:block;font-family:'Songti SC',serif;font-size:14px;color:#697146}.household-total strong{display:block;font-family:Georgia,'Songti SC',serif;font-size:30px;line-height:1.5;color:#4b6038}
+.household-inline{display:block;margin:10px auto!important;min-height:38px!important;background:#f3e7c3!important;border:1px solid #c7b285;border-radius:12px 17px 11px 14px;color:#607046!important;font-family:'Songti SC',serif}
+.household-rest-scene{width:100%;max-width:230px;aspect-ratio:1;margin:0 auto 12px;background:url('assets/career/life-activities.webp') 50% 0/300% 300%;border-radius:13px 18px 12px 16px}
+@media(max-width:350px){.household-option>strong{font-size:14px}.household-option>b{font-size:12px}.household-option>small,.household-option>span{font-size:9px}.household-options{gap:9px 7px}}
