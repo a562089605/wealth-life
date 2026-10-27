@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "84 production resources including retained old art; essential arrangements embedded.",
+  "scope": "85 production resources including retained old art; outdoor activity preview embedded.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -2105,6 +2105,34 @@
         "browser": "Actual IAB fresh save: unpaid confirm gated, bank cancel no debit, original450/800 payment ->8750, due0 and explicit monthly check; one monthly button only. Non-real-device."
       },
       "rules": "Visual only; original bill actions and monthly gate preserved, acknowledgement fallback checks the full event to avoid a duplicate after moving its original node."
+    },
+    {
+      "id": "outdoor-preview-embedded",
+      "source": {
+        "originalName": "Embedded outdoor activity preview",
+        "referenceResources": [
+          "assets/career/life-activities.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/outdoor-preview-embedded.png"
+        ],
+        "evidence": [
+          "progress/outdoor-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, reference top-left activity scene. Exact prompt: progress/image-prompts/outdoor-preview-embedded.txt."
+      },
+      "resourcePath": "assets/career/outdoor-preview-embedded.webp",
+      "gitBlobSha": "e853e1d053078913f55cf6409aa46d28bd01d817",
+      "pageOrEvent": "仅运动/户外确认预览，原费用效果/余额/确认按钮嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Original nine-scene sheet and other activity pages unchanged",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Original bun-haired round-face girl stretches by lake; foreground blank clipboard and golden plank",
+        "browser": "Actual IAB preview cash10000 unchanged; confirmation25 ->9975 and original4/-3/2/-6 effects; reopen receipt no duplicate. Non-real-device."
+      },
+      "rules": "Existing dynamic rows and original confirmation node moved; quote/save/month/recovery/resource checks untouched."
     }
   ],
   "candidateEntries": [
@@ -11348,8 +11376,8 @@
   "prAddedImageCount": 53,
   "generatedOriginalArchive": {
     "manifest": "assets/archive/generated-originals/manifest.json",
-    "count": 27,
-    "totalBytes": 79867343,
+    "count": 28,
+    "totalBytes": 82622010,
     "excludedFromRuntimeAndDeployment": true
   }
 }

@@ -62,7 +62,7 @@
   ]);
   panel=paper('确认生活安排');if(!panel)return;panel.insertAdjacentHTML('beforeend',scene(i));panel.append(row('本月选择',o.name),note(o.desc),row('本次费用',priceText(o.cost)));
   for(const[k,v]of Object.entries(o.effects))panel.append(row(labels[k]||k,(v>0?'+':'')+v));
-  panel.append(row(state.cash<o.cost?'还差':'确认后现金',priceText(state.cash<o.cost?o.cost-state.cash:state.cash-o.cost)),note('效果按状态的0～100范围结算。只有确认后才执行，本月九项中选择一次。'));actions();
+  panel.append(row(state.cash<o.cost?'还差':'确认后现金',priceText(state.cash<o.cost?o.cost-state.cash:state.cash-o.cost)),note('效果按状态的0～100范围结算。只有确认后才执行，本月九项中选择一次。'));actions();if(i===0)paintOutdoorPreview(panel);
  }
  function menu(){
   if(ordinaryRecoveryActivityBlocked())return showRecoveryActivityRestriction();

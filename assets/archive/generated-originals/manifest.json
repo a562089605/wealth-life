@@ -1,7 +1,7 @@
 {
-  "scope": "All 27 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
-  "count": 27,
-  "totalBytes": 79867343,
+  "scope": "All 28 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
+  "count": 28,
+  "totalBytes": 82622010,
   "files": [
     {
       "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
@@ -268,6 +268,16 @@
       "repositoryPath": "assets/archive/generated-originals/necessary-arrangements-embedded.png",
       "bytes": 2666884,
       "sha256": "498cc9ee32d17e3decb6f31486c0738b37263e32e991fdf411915d8d7d957ddd",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-bfdf4cbc-7d2f-42b9-87b6-34cbcd252344.png",
+      "repositoryPath": "assets/archive/generated-originals/outdoor-preview-embedded.png",
+      "bytes": 2754667,
+      "sha256": "9ebb4ba3f56d6cda0966fb1ba247e65f793766a61c6a98134a102cab101c8c49",
       "dimensions": [
         1024,
         1536
