@@ -1,5 +1,5 @@
-// Only individually confirmed activities have a time cost. Null means still unconfirmed.
-function optionalLifeHours(i){return ({0:2,1:4,2:2,3:3,4:12,5:8,6:2,7:2})[i]??null;}
+// Individually confirmed activity hours; null is reserved for an unknown activity.
+function optionalLifeHours(i){return ({0:2,1:4,2:2,3:3,4:12,5:8,6:2,7:2,8:0})[i]??null;}
 function optionalLifeTimeMissing(i){const hours=optionalLifeHours(i);return hours!==null&&currentCareerTime().free<hours;}
 (function(){
  const timeBefore=currentCareerTime;

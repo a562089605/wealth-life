@@ -1,5 +1,8 @@
 # 财富人生 Wealth Life — Codex 接手说明
 
+最新九项生活耗时全部确认（2026-10-26）：用户确认最后简单生活0h，九项最终2/4/2/3/12/8/2/2/0h全部接入，原费用/效果/月限/随机后续/插画与旧档保留，旧完成记录不追扣。48项Node及IAB完整生活25组检查通过，70次图片加载/320-390-800 CSS宽度和192项缓存清单核对；非真机/多年/真实断网验收。见[确认表](docs/confirmed/life-activity-time-2026-10-26.md)和[完成检查点](progress/life-time-confirmed-2026-10-26.md)。缓存wealth-life-v28.3-life-time-confirmed1，本地未上传；其他险种/旧宠物/地图规则边界未变。
+
+
 最新第八项耗时确认（2026-10-26）：品质餐厅2h已由用户明确确认并接入。前八项2/4/2/3/12/8/2/2h确认，原费用/效果/月限不变，最后本月简单生活待确认。48项Node及IAB九项原数值与已确认耗时回归通过。见[确认表](docs/confirmed/life-activity-time-2026-10-26.md)和[检查点](progress/fine-dining-time-2026-10-26.md)。缓存wealth-life-v28.3-fine-dining-time1，本地未上传。
 
 
