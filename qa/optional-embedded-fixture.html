@@ -20,7 +20,7 @@ async function runChecks(){const output=document.getElementById('result'),result
   const old=confirm.onclick;confirm.click();await Promise.resolve();const after=snapshot(),now=JSON.parse(after);
   expect(now.cash===prior.cash-expected.cost,'费用 '+i);expect(now.free===prior.free&&now.month===prior.month,'时间月份 '+i);expect(g.eval('monthSelection("life")')===expected.name,'月限 '+i);
   for(const [key,value] of Object.entries(expected.effects))expect(now.stats[key]===Math.max(0,Math.min(100,prior.stats[key]+value)),'效果 '+i+' '+key);
-  old({preventDefault(){},stopPropagation(){}});expect(snapshot()===after,'旧确认重复执行 '+i);g.document.getElementById('lifestyleBtn').click();expect(snapshot()===after,'重开重复 '+i);
+  old({preventDefault(){},stopPropagation(){}});expect(snapshot()===after,'旧确认重复执行 '+i);g.document.getElementById('lifestyleBtn').click();expect(snapshot()===after,'重开重复 '+i);expect(g.document.querySelector('.outdoor-painted-scene .outdoor-embedded-pay')?.textContent==='返回生活安排','回执返回未嵌画 '+i);
   results.push({name:expected.name,cost:expected.cost,effects:expected.effects,passed:true});
  }
  previewActivity(6,10);let g=w();expect(g.document.querySelector('.outdoor-embedded-pay').disabled,'低现金未禁用');expect(g.eval('state.cash')===10,'低现金扣款');
@@ -33,4 +33,24 @@ async function runChecks(){const output=document.getElementById('result'),result
  previewActivity(2);g=w();g.Math.random=()=>0;g.document.querySelector('.outdoor-embedded-pay').click();expect(g.document.getElementById('eventTitle').textContent==='朋友介绍小订单','原社交后续被覆盖');expect(g.eval('state.cash')===9915,'朋友后续费用');
  output.textContent=JSON.stringify({passed:true,cases:results,checks:['九项预览无状态改变','原费用/效果/时间/月限','原确认防重与重开回执','现金不足禁用','0现金免费活动','朋友原随机后续保留','旧存档/报价变化/康复限制保留'],limits:['明确独立fixture','非真机/长线/离线']},null,2);
  }catch(e){output.textContent=JSON.stringify({passed:false,error:String(e),cases:results},null,2)}finally{w().Math.random=originalRandom}}
+</script>
+<script>
+function houseState(){return w().eval('JSON.stringify({cash:state.cash,month:state.month,housing:state.housing,cost:state.housingCost,lease:state.housingLease,move:state.pendingHousingMove,payments:state.monthlyPayments,ledger:state.financeLedger})')}
+function housingCase(key){const g=reset();g.openHousing();if(key!=='menu')g.previewHousingChoice(key)}
+for(const key of ['menu','family','shared','studio','rent1']){const b=document.createElement('button');b.textContent='住房：'+key;b.onclick=()=>housingCase(key);document.getElementById('cases').append(b)}
+const testHouse=document.createElement('button');testHouse.textContent='执行住房嵌画交易回归';testHouse.onclick=runHouseChecks;document.getElementById('cases').append(testHouse);
+async function runHouseChecks(){const results=[];try{let g;
+ for(const key of ['family','shared','studio','rent1']){g=reset();g.openHousing();const button=g.document.querySelector('.event-active [data-housing-preview][data-key="'+key+'"]');expect(button.querySelector('img'),'住房选项未嵌画');const before=houseState();button.click();const quote=g.eval('JSON.parse(JSON.stringify(housingQuote(housingChoices().find(h=>h[3]==="'+key+'"))))');expect(houseState()===before,'住房预览消费');const pay=g.document.querySelector('.housing-painted-action');expect(pay&&pay.isConnected,'住房确认未嵌画');const callback=pay.onclick;pay.click();expect(g.eval('state.cash')===10000-quote.total,'住房支付数值');const paid=houseState();callback({preventDefault(){},stopPropagation(){}});expect(houseState()===paid,'住房旧确认重复扣款');g.previewHousingChoice(key);g.document.querySelector('.housing-painted-action').click();expect(houseState()===paid,'住房重开重复扣款');results.push(key+' 首次租金/押金/防重');}
+ g=reset();g.previewHousingChoice('shared');g.document.querySelector('.housing-painted-action').click();const cash=g.eval('state.cash');g.previewHousingChoice('studio');expect(g.document.getElementById('eventTitle').textContent==='换房预约预览','预约预览');g.document.querySelector('.housing-painted-action').click();expect(g.eval('state.cash')===cash,'预约扣款');expect(g.document.querySelector('[data-lease-cancel]'),'取消预约丢失');g.document.querySelector('[data-lease-cancel]').click();expect(g.eval('!state.pendingHousingMove')&&g.eval('state.cash')===cash,'取消改变现金');g.previewHousingChoice('studio');g.document.querySelector('.housing-painted-action').click();g.eval('state.month+=1');g.openHousingHandover();const q=g.eval('JSON.parse(JSON.stringify(housingHandoverQuote()))');const old=g.document.querySelector('.housing-painted-action').onclick;g.document.querySelector('.housing-painted-action').click();expect(g.eval('state.cash')===cash-q.net,'交接净额');const paid=houseState();old({preventDefault(){},stopPropagation(){}});expect(houseState()===paid,'交接重复');results.push('免费预约/取消/次月净额交接防重');
+ g.previewHousingChoice('rent1');g.document.querySelector('.housing-painted-action').click();g.eval('state.month+=1;state.cash=0');g.openHousingHandover();const frozen=houseState();expect(g.document.querySelector('.housing-painted-action').disabled,'交接缺款未禁用');g.document.querySelector('.housing-painted-action').click();expect(houseState()===frozen,'缺款部分扣款');results.push('交接缺款原禁用');
+ g=reset();g.previewHousingChoice('shared');const stale=g.document.querySelector('.housing-painted-action').onclick;g.eval('state=JSON.parse(JSON.stringify(state))');const snap=houseState();stale({preventDefault(){},stopPropagation(){}});expect(houseState()===snap,'旧档住房越权');results.push('旧档确认防护');
+ document.getElementById('result').textContent=JSON.stringify({passed:true,housing:results,limits:['显式独立fixture，非真机/长线/离线']},null,2);
+ }catch(e){document.getElementById('result').textContent=JSON.stringify({passed:false,error:String(e),housing:results},null,2)}}
+</script>
+<script>
+for(const [name,fn] of [
+ ['住房：预约画面',()=>{const g=reset();g.confirmHousing('shared');g.previewHousingChoice('studio')}],
+ ['住房：交接画面',()=>{const g=reset();g.confirmHousing('shared');g.confirmHousing('studio');g.eval('state.month+=1');g.openHousingHandover()}],
+ ['休息结果原数值回归',()=>{try{const g=reset();g.roomOpenArrangement('rest');g.openExtraRest();const cash=g.eval('state.cash'),free=g.eval('currentCareerTime().free');g.document.querySelector('#actions button.primary').click();expect(g.eval('state.cash')===cash&&g.eval('currentCareerTime().free')===free-4,'休息现金时间改变');expect(g.document.querySelector('.outdoor-painted-scene .outdoor-embedded-pay').textContent==='再安排一次休息','休息结果按钮未嵌画');document.getElementById('result').textContent=JSON.stringify({passed:true,rest:'原免费4h和再安排按钮，结果嵌画'},null,2)}catch(e){document.getElementById('result').textContent=String(e)}}]
+ ]){const b=document.createElement('button');b.textContent=name;b.onclick=fn;document.getElementById('cases').append(b)}
 </script>

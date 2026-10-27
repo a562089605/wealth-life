@@ -1,7 +1,7 @@
 {
-  "scope": "All 36 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
-  "count": 36,
-  "totalBytes": 103473373,
+  "scope": "All 41 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
+  "count": 41,
+  "totalBytes": 116437893,
   "files": [
     {
       "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
@@ -358,6 +358,56 @@
       "repositoryPath": "assets/archive/generated-originals/activity-simple-life-embedded.png",
       "bytes": 2630629,
       "sha256": "8d7dc12e243496c6f50dd0997301f0648163494e365e329ecd77ca5d869a99b1",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-ac7cfc2d-9777-401b-aaba-6731fba74b8e.png",
+      "repositoryPath": "assets/archive/generated-originals/housing-family-embedded.png",
+      "bytes": 2531978,
+      "sha256": "517100d64335e1d725a01567f25e7db08ab8a194c13a5b6cc2357f3bc5ca2e8b",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-e0d86eaf-2422-49db-8c44-072f016f1a01.png",
+      "repositoryPath": "assets/archive/generated-originals/housing-shared-embedded.png",
+      "bytes": 2607648,
+      "sha256": "da3251e089d33b1561daf3db4b5ff0c3870d4edb504c90fa71cd2aa96849e811",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-740a55a3-e8c7-405b-ae20-5fc02a5bc262.png",
+      "repositoryPath": "assets/archive/generated-originals/housing-studio-embedded.png",
+      "bytes": 2716932,
+      "sha256": "fd4548e3e62e2fec38e65fc2fd27f8e895be1942022acc18ca45c3dfe15e6d5a",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-3b327df4-81c3-40e0-968d-f9d9c1da7746.png",
+      "repositoryPath": "assets/archive/generated-originals/housing-one-bedroom-embedded.png",
+      "bytes": 2563691,
+      "sha256": "52c2df49781684cb0eaa6c16a8778ed8875b2ab829ce0eafb8fb6ee8adecf05b",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-a3b9c84b-e72a-4f77-9edc-cda876be6f8e.png",
+      "repositoryPath": "assets/archive/generated-originals/housing-handover-embedded.png",
+      "bytes": 2544271,
+      "sha256": "94fce7837727395abcb924af940a4edc070cdc6136355b0ea0432c9d014690ff",
       "dimensions": [
         1024,
         1536

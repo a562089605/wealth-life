@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "93 production resources including retained old art; all nine optional activity confirmation previews embedded.",
+  "scope": "98 production resources including retained art; activity receipts and remaining housing screens embedded.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -2365,6 +2365,146 @@
         "browser": "Live IAB nine-case fixture regression passed: original numeric baseline, preview no mutation, fees/effects/month/free-time, old callback/reopen idempotency, low funds/free activity, quote/owner/recovery and original friends follow-up; 320/390 CSS iframe visual checks, not real-device/offline."
       },
       "rules": "Visual only; unchanged source V26_LIFE, original transaction callback/quote/disabled state and result/follow-up priority."
+    },
+    {
+      "id": "housing-family-embedded",
+      "source": {
+        "originalName": "housing-family-embedded",
+        "referenceResources": [
+          "assets/career/activity-home-rest-embedded.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/housing-family-embedded.png"
+        ],
+        "evidence": [
+          "progress/household-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen; exact prompt in progress/image-prompts/housing-embedded.json"
+      },
+      "resourcePath": "assets/career/housing-family-embedded.webp",
+      "gitBlobSha": "01dfdb413231402d704252ba92522b39c684799e",
+      "pageOrEvent": "Housing choices, payment, reservation or deposit handover, original live nodes embedded",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All previous art and originals retained",
+      "verification": {
+        "bytes": "Converted from archived original PNG",
+        "visualReview": "Warm picture-book illustration with blank paper and action plank",
+        "browser": "See progress/household-embedded-2026-10-26.md for actual scope"
+      },
+      "rules": "Layout only; original rent/deposit/timing/payment and save data unchanged"
+    },
+    {
+      "id": "housing-shared-embedded",
+      "source": {
+        "originalName": "housing-shared-embedded",
+        "referenceResources": [
+          "assets/career/activity-home-rest-embedded.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/housing-shared-embedded.png"
+        ],
+        "evidence": [
+          "progress/household-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen; exact prompt in progress/image-prompts/housing-embedded.json"
+      },
+      "resourcePath": "assets/career/housing-shared-embedded.webp",
+      "gitBlobSha": "8b8d91804f8c2a3902884c3bab63bc0a4d5c61b2",
+      "pageOrEvent": "Housing choices, payment, reservation or deposit handover, original live nodes embedded",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All previous art and originals retained",
+      "verification": {
+        "bytes": "Converted from archived original PNG",
+        "visualReview": "Warm picture-book illustration with blank paper and action plank",
+        "browser": "See progress/household-embedded-2026-10-26.md for actual scope"
+      },
+      "rules": "Layout only; original rent/deposit/timing/payment and save data unchanged"
+    },
+    {
+      "id": "housing-studio-embedded",
+      "source": {
+        "originalName": "housing-studio-embedded",
+        "referenceResources": [
+          "assets/career/activity-home-rest-embedded.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/housing-studio-embedded.png"
+        ],
+        "evidence": [
+          "progress/household-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen; exact prompt in progress/image-prompts/housing-embedded.json"
+      },
+      "resourcePath": "assets/career/housing-studio-embedded.webp",
+      "gitBlobSha": "034944a71da4f5d3a7f6acb975ae052259e19294",
+      "pageOrEvent": "Housing choices, payment, reservation or deposit handover, original live nodes embedded",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All previous art and originals retained",
+      "verification": {
+        "bytes": "Converted from archived original PNG",
+        "visualReview": "Warm picture-book illustration with blank paper and action plank",
+        "browser": "See progress/household-embedded-2026-10-26.md for actual scope"
+      },
+      "rules": "Layout only; original rent/deposit/timing/payment and save data unchanged"
+    },
+    {
+      "id": "housing-one-bedroom-embedded",
+      "source": {
+        "originalName": "housing-one-bedroom-embedded",
+        "referenceResources": [
+          "assets/career/activity-home-rest-embedded.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/housing-one-bedroom-embedded.png"
+        ],
+        "evidence": [
+          "progress/household-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen; exact prompt in progress/image-prompts/housing-embedded.json"
+      },
+      "resourcePath": "assets/career/housing-one-bedroom-embedded.webp",
+      "gitBlobSha": "652495578f07d6a4b934eacbce2162556851304a",
+      "pageOrEvent": "Housing choices, payment, reservation or deposit handover, original live nodes embedded",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All previous art and originals retained",
+      "verification": {
+        "bytes": "Converted from archived original PNG",
+        "visualReview": "Warm picture-book illustration with blank paper and action plank",
+        "browser": "See progress/household-embedded-2026-10-26.md for actual scope"
+      },
+      "rules": "Layout only; original rent/deposit/timing/payment and save data unchanged"
+    },
+    {
+      "id": "housing-handover-embedded",
+      "source": {
+        "originalName": "housing-handover-embedded",
+        "referenceResources": [
+          "assets/career/activity-home-rest-embedded.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/housing-handover-embedded.png"
+        ],
+        "evidence": [
+          "progress/household-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen; exact prompt in progress/image-prompts/housing-embedded.json"
+      },
+      "resourcePath": "assets/career/housing-handover-embedded.webp",
+      "gitBlobSha": "1975746770377f20aa1a16d6da4cd36fdae2440d",
+      "pageOrEvent": "Housing choices, payment, reservation or deposit handover, original live nodes embedded",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All previous art and originals retained",
+      "verification": {
+        "bytes": "Converted from archived original PNG",
+        "visualReview": "Warm picture-book illustration with blank paper and action plank",
+        "browser": "See progress/household-embedded-2026-10-26.md for actual scope"
+      },
+      "rules": "Layout only; original rent/deposit/timing/payment and save data unchanged"
     }
   ],
   "candidateEntries": [
@@ -11605,11 +11745,11 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 75,
+  "prAddedImageCount": 80,
   "generatedOriginalArchive": {
     "manifest": "assets/archive/generated-originals/manifest.json",
-    "count": 36,
-    "totalBytes": 103473373,
+    "count": 41,
+    "totalBytes": 116437893,
     "excludedFromRuntimeAndDeployment": true
   }
 }

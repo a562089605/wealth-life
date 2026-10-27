@@ -1,0 +1,156 @@
+Browser tab: 6, Title: "可选活动嵌画隔离QA", URL: "http://127.0.0.1:8765/qa/optional-embedded-fixture.html".
+1 AXWebArea 可选活动嵌画隔离QA, URL: 127.0.0.1:8765/qa/optional-embedded-fixture.html
+	2 container
+		3 text 隔离QA，非用户存档
+		4 text 先在右侧新建试玩档。
+		5 container cases
+			6 button 预览：运动 / 户外
+			7 button 预览：宅家休息
+			8 button 预览：朋友聚餐
+			9 button 预览：兴趣爱好
+			10 button 预览：周末短途旅行
+			11 button 预览：演唱会 / 主题乐园
+			12 button 预览：升级手机
+			13 button 预览：品质餐厅
+			14 button 预览：本月简单生活
+			15 button 住房：menu
+			16 button 住房：family
+			17 button 住房：shared
+			18 button 住房：studio
+			19 button 住房：rent1
+			20 button 执行住房嵌画交易回归
+			21 button 住房：预约画面
+			22 button 住房：交接画面
+			23 button 休息结果原数值回归
+		24 button 执行九项真实控件回归
+		25 button 视口320
+		26 button 视口390
+		27 button 视口800
+		29 text {
+  "passed": true,
+  "cases": [
+    {
+      "name": "运动 / 户外",
+      "cost": 25,
+      "effects": {
+        "health": 4,
+        "energy": -3,
+        "happiness": 2,
+        "stress": -6
+      },
+      "passed": true
+    },
+    {
+      "name": "宅家休息",
+      "cost": 45,
+      "effects": {
+        "energy": 8,
+        "happiness": 4,
+        "stress": -6
+      },
+      "passed": true
+    },
+    {
+      "name": "朋友聚餐",
+      "cost": 85,
+      "effects": {
+        "energy": -2,
+        "happiness": 7,
+        "social": 6
+      },
+      "passed": true
+    },
+    {
+      "name": "兴趣爱好",
+      "cost": 120,
+      "effects": {
+        "energy": 3,
+        "happiness": 8,
+        "stress": -5
+      },
+      "passed": true
+    },
+    {
+      "name": "周末短途旅行",
+      "cost": 380,
+      "effects": {
+        "energy": 6,
+        "happiness": 14,
+        "stress": -8
+      },
+      "passed": true
+    },
+    {
+      "name": "演唱会 / 主题乐园",
+      "cost": 210,
+      "effects": {
+        "energy": -6,
+        "happiness": 11,
+        "stress": -4
+      },
+      "passed": true
+    },
+    {
+      "name": "升级手机",
+      "cost": 950,
+      "effects": {
+        "happiness": 7
+      },
+      "passed": true
+    },
+    {
+      "name": "品质餐厅",
+      "cost": 150,
+      "effects": {
+        "energy": -2,
+        "happiness": 8,
+        "social": 6
+      },
+      "passed": true
+    },
+    {
+      "name": "本月简单生活",
+      "cost": 0,
+      "effects": {
+        "energy": -1,
+        "happiness": -3
+      },
+      "passed": true
+    }
+  ],
+  "checks": [
+    "九项预览无状态改变",
+    "原费用/效果/时间/月限",
+    "原确认防重与重开回执",
+    "现金不足禁用",
+    "0现金免费活动",
+    "朋友原随机后续保留",
+    "旧存档/报价变化/康复限制保留"
+  ],
+  "limits": [
+    "明确独立fixture",
+    "非真机/长线/离线"
+  ]
+}
+		28 AXWebArea 财富人生 Wealth Life · V28.3 内部试玩2, URL: 127.0.0.1:8765/index.html
+			30 container game
+				31 container
+					32 button Description: 关闭, ID: eventClose
+					33 heading 朋友介绍小订单, Value: 2, ID: eventTitle
+						34 text 朋友介绍小订单
+					35 container
+						36 image 朋友聚餐结果回执绘本场景，纸板显示实际内容，木牌保留原操作
+						37 container 朋友聚餐安排费用与效果，可上下滚动
+							38 text Maya介绍了一份摄影小订单。需要投入时间，完成质量存在不确定性。
+							39 text 成本
+							40 text $0
+							41 text 可能收入
+							42 text $160（成功时）
+							43 text 成功率
+							44 text 65%
+						45 button 确认参加
+					46 container actions
+						47 button 这次不参加
+						48 button 确认本月生活安排，返回房屋
+
+The focused UI element is 24 button 执行九项真实控件回归

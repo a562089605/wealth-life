@@ -17,7 +17,7 @@ try:
    for w,h in [(320,568),(390,844),(1280,900)]:
     page.set_viewport_size({'width':w,'height':h});box=page.locator('.event-active').bounding_box();assert abs(box['y']+box['height']/2-h/2)<2,(w,h,box);assert page.locator('.event-active').evaluate('(e)=>e.scrollWidth<=e.clientWidth'),(w,h)
    page.set_viewport_size({'width':390,'height':844})
-  reset();before=snap();page.get_by_role('button',name='住房',exact=True).click();assert snap()==before;assert page.locator('.household-option').count()==4;assert page.locator('.household-option .household-scene').count()==4
+  reset();before=snap();page.get_by_role('button',name='住房',exact=True).click();assert snap()==before;assert page.locator('.household-option').count()==4;assert page.locator('.household-option > img').count()==4
   shot('housing-painted');layout()
   for key in ['family','shared','studio','rent1']:
    page.evaluate('openHousing()');before=snap();page.locator('#eventData [data-housing-preview][data-key="'+key+'"]').click();assert snap()==before;assert page.locator('.household-painted').count()==1

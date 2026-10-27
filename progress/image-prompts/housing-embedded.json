@@ -1,0 +1,17 @@
+{
+  "prompt": "Use case: illustration-story. Create a portrait 1024x1536 game illustration, same warm golden yellow / forest green grainy gouache picture-book style as reference. Simple round-faced brown bun-haired girl black top cream pants, no realism. Upper 38% depicts SUBJECT. Lower foreground: very large blank cream paper on wooden clipboard occupying x14%-86%, y42%-77%, perfectly front-facing and unobstructed, for real dynamic game text. Blank honey wooden button plank x12%-88% y82%-92%. No letters, numbers, prices, symbols or fake UI anywhere. Keep flowers/plants at edges, readable uncluttered paper. This is housing UI artwork, not a mockup.",
+  "subjects": [
+    "a cozy bedroom in family home, bed, family photos, girl holding house keys",
+    "a shared apartment communal lounge with two mugs and separate bedroom doors, girl arranging cushions",
+    "a compact studio with bed and kitchenette visibly in the same open room, girl unpacking",
+    "a one-bedroom apartment with separate bedroom doorway and living room, girl opening window",
+    "a housing handover desk, two sets of keys, old and new lease documents and deposit envelopes, girl calmly reviewing the papers"
+  ],
+  "paths": [
+    "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-ac7cfc2d-9777-401b-aaba-6731fba74b8e.png",
+    "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-e0d86eaf-2422-49db-8c44-072f016f1a01.png",
+    "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-740a55a3-e8c7-405b-ae20-5fc02a5bc262.png",
+    "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-3b327df4-81c3-40e0-968d-f9d9c1da7746.png",
+    "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-a3b9c84b-e72a-4f77-9edc-cda876be6f8e.png"
+  ]
+}

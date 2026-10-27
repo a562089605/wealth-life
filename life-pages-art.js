@@ -38,7 +38,7 @@
   const b=paper('本月生活已安排');if(!b)return;b.insertAdjacentHTML('beforeend',scene(i));b.append(row('✓ 本月选择',o.name));
   if(r){b.append(row('本次已支付',priceText(r.cost)));for(const[k,v]of Object.entries(r.deltas))b.append(row(labels[k]||k,(v>0?'+':'')+v));b.append(note('以上为确认当时的实际变化，已按状态上下限计算；后续事件另计。'));}
   else b.append(note('本月已经确认此项，原记录保留；不会再次扣费或执行效果。'));
-  b.append(row('当前现金',priceText(state.cash)),note('每月选择一次。查看结果、返回或读档不会重复执行。'));actions();
+  b.append(row('当前现金',priceText(state.cash)),note('每月选择一次。查看结果、返回或读档不会重复执行。'));actions();paintOutdoorPreview(b,i,true);
  }
  function signature(){return JSON.stringify([state.cash,...Object.keys(V26_STATS).map(k=>state[k]),monthSelection('life')]);}
  function preview(i){
