@@ -102,7 +102,7 @@ try:
   context.close()
   context=browser.new_context(viewport={'width':390,'height':844});page=context.new_page()
   page.goto(f'http://127.0.0.1:{server.server_port}',wait_until='networkidle');page.evaluate('navigator.serviceWorker.ready');page.reload(wait_until='networkidle');page.wait_for_function('navigator.serviceWorker.controller!==null')
-  assert page.evaluate('caches.keys()')==['wealth-life-v28.3-weekend-trip-time1']
+  assert page.evaluate('caches.keys()')==['wealth-life-v28.3-concert-time1']
   context.set_offline(True);page.reload(wait_until='networkidle');page.get_by_role('button',name='查看职业预览',exact=True).click();page.get_by_role('button',name='选择这个人生',exact=True).click()
   page.evaluate('roomOpenArrangement("life");$("lifestyleBtn").click()');assert page.locator('.life-activity-card').count()==9
   assert page.evaluate('new Promise((resolve,reject)=>{const i=new Image;i.onload=()=>resolve(i.naturalWidth);i.onerror=reject;i.src="assets/career/life-activities.webp"})')>0
