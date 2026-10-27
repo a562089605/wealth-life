@@ -1,7 +1,7 @@
 {
-  "scope": "All19 project-related generated PNG originals and first/rejected drafts visually checked; active production art remains separately inventoried. Original files byte-for-byte copied, excluded from runtime cache and deployment.",
-  "count": 19,
-  "totalBytes": 58157312,
+  "scope": "All 20 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
+  "count": 20,
+  "totalBytes": 61104801,
   "files": [
     {
       "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
@@ -191,6 +191,16 @@
       "dimensions": [
         1672,
         941
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-7c41a2f7-2191-4a16-857d-5483b316cc55.png",
+      "repositoryPath": "assets/archive/generated-originals/life-arrangements-embedded.png",
+      "bytes": 2947489,
+      "sha256": "e0a31931ccf3dad4da7e3c1857658159a5dc34c47b33fbf9d7ef1521af08770f",
+      "dimensions": [
+        1024,
+        1536
       ]
     }
   ]

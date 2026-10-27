@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "76 production resources; embedded illustrated living bill and real payment button; 459 candidates retained.",
+  "scope": "77 production resources; embedded life hub and living bill; all old resources retained.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1879,6 +1879,35 @@
         "browser": "See qa/browser-evidence/household-paper.json"
       },
       "rules": "Original living payment node/delegation and amount remain unchanged; viewing no spend; paid reopen no duplicate; funding route retained"
+    },
+    {
+      "id": "life-arrangements-embedded",
+      "source": {
+        "originalName": "Embedded monthly life tabletop",
+        "referenceResources": [
+          "assets/career/life-arrangements.webp",
+          "assets/career/living-bill-scene.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/life-arrangements-embedded.png"
+        ],
+        "evidence": [
+          "progress/life-hub-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen; new portrait tabletop with five blank labels and blank pending-bill plaque. Prompt retained in progress/image-prompts/life-hub-embedded.txt."
+      },
+      "resourcePath": "assets/career/life-arrangements-embedded.webp",
+      "gitBlobSha": "9ce42cd8db4b9706ccc28ce62829399bf8f4cd7b",
+      "pageOrEvent": "生活主页面五个原按钮与动态待付汇总嵌入画中标牌",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Original landscape and all existing archives retained unchanged",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "warm gouache tabletop, house/groceries/shield/planner/tea, blank labels overlaid with real DOM controls",
+        "browser": "Local IAB: actual five original routes, cash10000 retained, unpaid monthly-confirm gate retained; desktop screenshot. Not mobile/offline retest."
+      },
+      "rules": "Visual only; existing buttons moved, no changes to cost/time/required-bill checks."
     }
   ],
   "candidateEntries": [
@@ -11122,8 +11151,8 @@
   "prAddedImageCount": 53,
   "generatedOriginalArchive": {
     "manifest": "assets/archive/generated-originals/manifest.json",
-    "count": 19,
-    "totalBytes": 58157312,
+    "count": 20,
+    "totalBytes": 61104801,
     "excludedFromRuntimeAndDeployment": true
   }
 }
