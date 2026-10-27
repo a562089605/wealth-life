@@ -1,7 +1,7 @@
 {
-  "scope": "All 28 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
-  "count": 28,
-  "totalBytes": 82622010,
+  "scope": "All 36 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
+  "count": 36,
+  "totalBytes": 103473373,
   "files": [
     {
       "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
@@ -278,6 +278,86 @@
       "repositoryPath": "assets/archive/generated-originals/outdoor-preview-embedded.png",
       "bytes": 2754667,
       "sha256": "9ebb4ba3f56d6cda0966fb1ba247e65f793766a61c6a98134a102cab101c8c49",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-c1c0e60b-6451-41c9-91bb-6ae93b196fb6.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-home-rest-embedded.png",
+      "bytes": 2585641,
+      "sha256": "7565801b61ecf80496248fa95ab2b79c519548b5cc840b4e4a6f2396dba8093c",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-e2e43b29-fcf3-406c-b29a-20bff3856a1e.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-friends-meal-embedded.png",
+      "bytes": 2548383,
+      "sha256": "52ac2f287490b03c696a490f21b9ee6ff210119390a22ae9138c50578df496df",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-2c452ff6-799b-4ae4-9b94-42556cc51d02.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-hobby-embedded.png",
+      "bytes": 2579704,
+      "sha256": "a6663d3001abf2e347f597ec212dafe248ddbb67ecae64c8ebcf627659be6fa1",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-1b8a65f5-c198-4fb0-b414-93ff0177fb11.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-weekend-trip-embedded.png",
+      "bytes": 2695877,
+      "sha256": "fc190dc79248b628b608e5970522774361b6d0aca1b01c2052f3d510e2722685",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-2c26536f-db96-417f-a2b8-a505f46fa5df.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-concert-embedded.png",
+      "bytes": 2623576,
+      "sha256": "cb154e91b4bca7185b074a832e756dd09fb738ed0b6669a4571423e9f8422548",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-1001e422-4a66-4730-bd61-93bd6ad94e4a.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-phone-embedded.png",
+      "bytes": 2605750,
+      "sha256": "ff325fb2d198a56b60650f3a2862abee70bcfb746edf4f88367f2b78ef6c6e0e",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-61bab11d-004f-4691-8f5b-c25264ecd5ec.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-fine-dining-embedded.png",
+      "bytes": 2581803,
+      "sha256": "c253be8e490d8930ca7d3f0fd1357dc9d85edfba9e5725afbf69f4cc761853c2",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-5032d10c-a72d-4c99-81c3-2f2f0a81c41c.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-simple-life-embedded.png",
+      "bytes": 2630629,
+      "sha256": "8d7dc12e243496c6f50dd0997301f0648163494e365e329ecd77ca5d869a99b1",
       "dimensions": [
         1024,
         1536

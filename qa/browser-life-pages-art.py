@@ -49,7 +49,7 @@ try:
    if i==0:capture('life-activities');layout()
    page.locator('.life-activity-card').nth(i).click();assert snapshot()==before
    expected=page.evaluate(f'V26_LIFE[{i}]');prior=page.evaluate('Object.fromEntries(Object.keys(V26_STATS).map(k=>[k,state[k]||0]))')
-   page.evaluate('()=>{window.savedLifeConfirm=[...$("actions").querySelectorAll("button")].find(b=>b.textContent.startsWith("确认安排" )).onclick}')
+   page.evaluate('()=>{window.savedLifeConfirm=[...document.querySelector(".event-active").querySelectorAll("button")].find(b=>b.textContent.startsWith("确认安排" )).onclick}')
    capture('life-preview-'+str(i+1))
    if i==0:capture('life-activity-preview');layout()
    free=page.evaluate('currentCareerTime().free')
@@ -86,7 +86,7 @@ try:
   page.get_by_role('button',name='确认安排 · ',exact=False).click();assert page.evaluate('state.cash')==0
   # A stale detached callback or a month/owner change cannot execute a prior quote.
   reset();page.evaluate('$("lifestyleBtn").click()');page.locator('.life-activity-card').nth(0).click()
-  page.evaluate('window.staleLife=[...$("actions").querySelectorAll("button")].find(b=>b.textContent.startsWith("确认安排")).onclick;state=structuredClone(state)')
+  page.evaluate('window.staleLife=[...document.querySelector(".event-active").querySelectorAll("button")].find(b=>b.textContent.startsWith("确认安排")).onclick;state=structuredClone(state)')
   before=snapshot();page.evaluate('staleLife({preventDefault(){},stopPropagation(){}})');assert snapshot()==before
   reset();page.evaluate('$("lifestyleBtn").click()');page.locator('.life-activity-card').nth(0).click()
   page.evaluate('state.cash=9000');page.get_by_role('button',name='确认安排 · ',exact=False).click();assert page.evaluate('state.cash')==9000 and page.evaluate('monthSelection("life")') is None
@@ -102,7 +102,7 @@ try:
   context.close()
   context=browser.new_context(viewport={'width':390,'height':844});page=context.new_page()
   page.goto(f'http://127.0.0.1:{server.server_port}',wait_until='networkidle');page.evaluate('navigator.serviceWorker.ready');page.reload(wait_until='networkidle');page.wait_for_function('navigator.serviceWorker.controller!==null')
-  assert page.evaluate('caches.keys()')==['wealth-life-v28.3-life-style1']
+  assert page.evaluate('caches.keys()')==['wealth-life-v28.3-optional-embedded1']
   context.set_offline(True);page.reload(wait_until='networkidle');page.get_by_role('button',name='查看职业预览',exact=True).click();page.get_by_role('button',name='选择这个人生',exact=True).click()
   page.evaluate('roomOpenArrangement("life");$("lifestyleBtn").click()');assert page.locator('.life-activity-card').count()==9
   assert page.evaluate('new Promise((resolve,reject)=>{const i=new Image;i.onload=()=>resolve(i.naturalWidth);i.onerror=reject;i.src="assets/career/life-activities.webp"})')>0

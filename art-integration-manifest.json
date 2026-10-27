@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "85 production resources including retained old art; outdoor activity preview embedded.",
+  "scope": "93 production resources including retained old art; all nine optional activity confirmation previews embedded.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -2133,6 +2133,238 @@
         "browser": "Actual IAB preview cash10000 unchanged; confirmation25 ->9975 and original4/-3/2/-6 effects; reopen receipt no duplicate. Non-real-device."
       },
       "rules": "Existing dynamic rows and original confirmation node moved; quote/save/month/recovery/resource checks untouched."
+    },
+    {
+      "id": "activity-home-rest-embedded",
+      "source": {
+        "originalName": "宅家休息 embedded confirmation preview",
+        "referenceResources": [
+          "assets/career/outdoor-preview-embedded.webp",
+          "assets/career/life-activities.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/activity-home-rest-embedded.png"
+        ],
+        "evidence": [
+          "progress/optional-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, approved composition plus corresponding original activity scene. Exact prompt: progress/image-prompts/activity-home-rest-embedded.txt"
+      },
+      "resourcePath": "assets/career/activity-home-rest-embedded.webp",
+      "gitBlobSha": "fc33014675eaa9674ccf083b8247b225ec491614",
+      "pageOrEvent": "宅家休息确认预览：原费用/效果/余额与真实确认节点嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Original nine-scene sheet, approved outdoor art, prior screenshots and all archives retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Matching approved round-face/bun-haired character where present, themed activity scene, blank paper and golden action plank",
+        "browser": "Live IAB nine-case fixture regression passed: original numeric baseline, preview no mutation, fees/effects/month/free-time, old callback/reopen idempotency, low funds/free activity, quote/owner/recovery and original friends follow-up; 320/390 CSS iframe visual checks, not real-device/offline."
+      },
+      "rules": "Visual only; unchanged source V26_LIFE, original transaction callback/quote/disabled state and result/follow-up priority."
+    },
+    {
+      "id": "activity-friends-meal-embedded",
+      "source": {
+        "originalName": "朋友聚餐 embedded confirmation preview",
+        "referenceResources": [
+          "assets/career/outdoor-preview-embedded.webp",
+          "assets/career/life-activities.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/activity-friends-meal-embedded.png"
+        ],
+        "evidence": [
+          "progress/optional-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, approved composition plus corresponding original activity scene. Exact prompt: progress/image-prompts/activity-friends-meal-embedded.txt"
+      },
+      "resourcePath": "assets/career/activity-friends-meal-embedded.webp",
+      "gitBlobSha": "45143802a7602c224e3c2c212c44ebf1770b061c",
+      "pageOrEvent": "朋友聚餐确认预览：原费用/效果/余额与真实确认节点嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Original nine-scene sheet, approved outdoor art, prior screenshots and all archives retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Matching approved round-face/bun-haired character where present, themed activity scene, blank paper and golden action plank",
+        "browser": "Live IAB nine-case fixture regression passed: original numeric baseline, preview no mutation, fees/effects/month/free-time, old callback/reopen idempotency, low funds/free activity, quote/owner/recovery and original friends follow-up; 320/390 CSS iframe visual checks, not real-device/offline."
+      },
+      "rules": "Visual only; unchanged source V26_LIFE, original transaction callback/quote/disabled state and result/follow-up priority."
+    },
+    {
+      "id": "activity-hobby-embedded",
+      "source": {
+        "originalName": "兴趣爱好 embedded confirmation preview",
+        "referenceResources": [
+          "assets/career/outdoor-preview-embedded.webp",
+          "assets/career/life-activities.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/activity-hobby-embedded.png"
+        ],
+        "evidence": [
+          "progress/optional-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, approved composition plus corresponding original activity scene. Exact prompt: progress/image-prompts/activity-hobby-embedded.txt"
+      },
+      "resourcePath": "assets/career/activity-hobby-embedded.webp",
+      "gitBlobSha": "42b4a87a89342f44aac7015eade4b90f497574af",
+      "pageOrEvent": "兴趣爱好确认预览：原费用/效果/余额与真实确认节点嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Original nine-scene sheet, approved outdoor art, prior screenshots and all archives retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Matching approved round-face/bun-haired character where present, themed activity scene, blank paper and golden action plank",
+        "browser": "Live IAB nine-case fixture regression passed: original numeric baseline, preview no mutation, fees/effects/month/free-time, old callback/reopen idempotency, low funds/free activity, quote/owner/recovery and original friends follow-up; 320/390 CSS iframe visual checks, not real-device/offline."
+      },
+      "rules": "Visual only; unchanged source V26_LIFE, original transaction callback/quote/disabled state and result/follow-up priority."
+    },
+    {
+      "id": "activity-weekend-trip-embedded",
+      "source": {
+        "originalName": "周末短途旅行 embedded confirmation preview",
+        "referenceResources": [
+          "assets/career/outdoor-preview-embedded.webp",
+          "assets/career/life-activities.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/activity-weekend-trip-embedded.png"
+        ],
+        "evidence": [
+          "progress/optional-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, approved composition plus corresponding original activity scene. Exact prompt: progress/image-prompts/activity-weekend-trip-embedded.txt"
+      },
+      "resourcePath": "assets/career/activity-weekend-trip-embedded.webp",
+      "gitBlobSha": "193a9b341bf033b1e7ebb269926e23b4e4d1bb96",
+      "pageOrEvent": "周末短途旅行确认预览：原费用/效果/余额与真实确认节点嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Original nine-scene sheet, approved outdoor art, prior screenshots and all archives retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Matching approved round-face/bun-haired character where present, themed activity scene, blank paper and golden action plank",
+        "browser": "Live IAB nine-case fixture regression passed: original numeric baseline, preview no mutation, fees/effects/month/free-time, old callback/reopen idempotency, low funds/free activity, quote/owner/recovery and original friends follow-up; 320/390 CSS iframe visual checks, not real-device/offline."
+      },
+      "rules": "Visual only; unchanged source V26_LIFE, original transaction callback/quote/disabled state and result/follow-up priority."
+    },
+    {
+      "id": "activity-concert-embedded",
+      "source": {
+        "originalName": "演唱会 / 主题乐园 embedded confirmation preview",
+        "referenceResources": [
+          "assets/career/outdoor-preview-embedded.webp",
+          "assets/career/life-activities.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/activity-concert-embedded.png"
+        ],
+        "evidence": [
+          "progress/optional-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, approved composition plus corresponding original activity scene. Exact prompt: progress/image-prompts/activity-concert-embedded.txt"
+      },
+      "resourcePath": "assets/career/activity-concert-embedded.webp",
+      "gitBlobSha": "52c5dc72dccc7e944ad62ee1ccbb2af150a23cf7",
+      "pageOrEvent": "演唱会 / 主题乐园确认预览：原费用/效果/余额与真实确认节点嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Original nine-scene sheet, approved outdoor art, prior screenshots and all archives retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Matching approved round-face/bun-haired character where present, themed activity scene, blank paper and golden action plank",
+        "browser": "Live IAB nine-case fixture regression passed: original numeric baseline, preview no mutation, fees/effects/month/free-time, old callback/reopen idempotency, low funds/free activity, quote/owner/recovery and original friends follow-up; 320/390 CSS iframe visual checks, not real-device/offline."
+      },
+      "rules": "Visual only; unchanged source V26_LIFE, original transaction callback/quote/disabled state and result/follow-up priority."
+    },
+    {
+      "id": "activity-phone-embedded",
+      "source": {
+        "originalName": "升级手机 embedded confirmation preview",
+        "referenceResources": [
+          "assets/career/outdoor-preview-embedded.webp",
+          "assets/career/life-activities.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/activity-phone-embedded.png"
+        ],
+        "evidence": [
+          "progress/optional-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, approved composition plus corresponding original activity scene. Exact prompt: progress/image-prompts/activity-phone-embedded.txt"
+      },
+      "resourcePath": "assets/career/activity-phone-embedded.webp",
+      "gitBlobSha": "201bab1a011b66ce0d83b55415882622177ac7db",
+      "pageOrEvent": "升级手机确认预览：原费用/效果/余额与真实确认节点嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Original nine-scene sheet, approved outdoor art, prior screenshots and all archives retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Matching approved round-face/bun-haired character where present, themed activity scene, blank paper and golden action plank",
+        "browser": "Live IAB nine-case fixture regression passed: original numeric baseline, preview no mutation, fees/effects/month/free-time, old callback/reopen idempotency, low funds/free activity, quote/owner/recovery and original friends follow-up; 320/390 CSS iframe visual checks, not real-device/offline."
+      },
+      "rules": "Visual only; unchanged source V26_LIFE, original transaction callback/quote/disabled state and result/follow-up priority."
+    },
+    {
+      "id": "activity-fine-dining-embedded",
+      "source": {
+        "originalName": "品质餐厅 embedded confirmation preview",
+        "referenceResources": [
+          "assets/career/outdoor-preview-embedded.webp",
+          "assets/career/life-activities.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/activity-fine-dining-embedded.png"
+        ],
+        "evidence": [
+          "progress/optional-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, approved composition plus corresponding original activity scene. Exact prompt: progress/image-prompts/activity-fine-dining-embedded.txt"
+      },
+      "resourcePath": "assets/career/activity-fine-dining-embedded.webp",
+      "gitBlobSha": "da285ef5d488b280a0ff650da29418e142109e00",
+      "pageOrEvent": "品质餐厅确认预览：原费用/效果/余额与真实确认节点嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Original nine-scene sheet, approved outdoor art, prior screenshots and all archives retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Matching approved round-face/bun-haired character where present, themed activity scene, blank paper and golden action plank",
+        "browser": "Live IAB nine-case fixture regression passed: original numeric baseline, preview no mutation, fees/effects/month/free-time, old callback/reopen idempotency, low funds/free activity, quote/owner/recovery and original friends follow-up; 320/390 CSS iframe visual checks, not real-device/offline."
+      },
+      "rules": "Visual only; unchanged source V26_LIFE, original transaction callback/quote/disabled state and result/follow-up priority."
+    },
+    {
+      "id": "activity-simple-life-embedded",
+      "source": {
+        "originalName": "本月简单生活 embedded confirmation preview",
+        "referenceResources": [
+          "assets/career/outdoor-preview-embedded.webp",
+          "assets/career/life-activities.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/activity-simple-life-embedded.png"
+        ],
+        "evidence": [
+          "progress/optional-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, approved composition plus corresponding original activity scene. Exact prompt: progress/image-prompts/activity-simple-life-embedded.txt"
+      },
+      "resourcePath": "assets/career/activity-simple-life-embedded.webp",
+      "gitBlobSha": "ef1f455d2a2582d1ae2cc9f574b7794340a993ff",
+      "pageOrEvent": "本月简单生活确认预览：原费用/效果/余额与真实确认节点嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Original nine-scene sheet, approved outdoor art, prior screenshots and all archives retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Matching approved round-face/bun-haired character where present, themed activity scene, blank paper and golden action plank",
+        "browser": "Live IAB nine-case fixture regression passed: original numeric baseline, preview no mutation, fees/effects/month/free-time, old callback/reopen idempotency, low funds/free activity, quote/owner/recovery and original friends follow-up; 320/390 CSS iframe visual checks, not real-device/offline."
+      },
+      "rules": "Visual only; unchanged source V26_LIFE, original transaction callback/quote/disabled state and result/follow-up priority."
     }
   ],
   "candidateEntries": [
@@ -11373,11 +11605,11 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 53,
+  "prAddedImageCount": 75,
   "generatedOriginalArchive": {
     "manifest": "assets/archive/generated-originals/manifest.json",
-    "count": 28,
-    "totalBytes": 82622010,
+    "count": 36,
+    "totalBytes": 103473373,
     "excludedFromRuntimeAndDeployment": true
   }
 }

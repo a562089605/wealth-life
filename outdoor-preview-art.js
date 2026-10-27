@@ -1,9 +1,11 @@
 // Preview-only composition over the original optional-activity quote and callback.
-function paintOutdoorPreview(panel){
+function paintOutdoorPreview(panel,i=0){
+ const resources=['outdoor-preview-embedded','activity-home-rest-embedded','activity-friends-meal-embedded','activity-hobby-embedded','activity-weekend-trip-embedded','activity-concert-embedded','activity-phone-embedded','activity-fine-dining-embedded','activity-simple-life-embedded'];
+ const option=V26_LIFE[i];if(!option||!resources[i])return;
  const root=$('eventTitle').closest('.event');root.classList.add('outdoor-embedded');
  panel.querySelector('.life-activity-scene')?.remove();
- const scene=document.createElement('figure');scene.className='outdoor-painted-scene';const image=document.createElement('img');image.src='assets/career/outdoor-preview-embedded.webp';image.alt='原圆脸丸子头女孩在湖边树荫下舒展身体，前景为费用效果纸板与确认木牌';scene.append(image);
- const sheet=document.createElement('div');sheet.className='outdoor-painted-sheet';sheet.tabIndex=0;sheet.setAttribute('aria-label','运动户外安排费用与效果，可上下滚动');
+ const scene=document.createElement('figure');scene.className='outdoor-painted-scene';scene.dataset.activity=String(i);const image=document.createElement('img');image.src='assets/career/'+resources[i]+'.webp';image.alt=option.name+'绘本场景，前景为动态费用效果纸板与真实确认木牌';scene.append(image);
+ const sheet=document.createElement('div');sheet.className='outdoor-painted-sheet';sheet.tabIndex=0;sheet.setAttribute('aria-label',option.name+'安排费用与效果，可上下滚动');
  for(const node of [...panel.children].slice(1)){
   if(node.classList.contains('life-paper-row')&&['健康','能量','幸福度','压力','社交'].includes(node.firstElementChild?.textContent))node.classList.add('outdoor-effect');
   sheet.append(node);
