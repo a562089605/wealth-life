@@ -1,0 +1,29 @@
+#game>.event.event-active.insurance-document{max-width:450px;padding:17px!important;background:#fbf0d8!important;border:1px solid #c5ac7e!important;border-radius:22px 18px 24px 19px!important;color:#50623f}
+.insurance-document #eventTitle{font-family:'Songti SC','STSong',serif;font-size:25px;text-align:center;color:#3d5735;margin:0 0 8px}
+.insurance-document #eventDesc{font-size:10px;line-height:1.6;color:#8d7c56;margin:3px 0 8px}
+.insurance-document-scene{position:relative;margin:0;overflow:hidden;isolation:isolate;border-radius:14px 18px 12px 16px}
+.insurance-document-scene>img{display:block;width:100%;height:auto;aspect-ratio:2/3}
+.insurance-document-sheet{position:absolute;left:12%;top:29%;width:76%;height:40%;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#b7a16c transparent;padding:3px 7px 3px 3px;box-sizing:border-box;color:#51633b}
+.insurance-document-sheet .insurance-note{background:transparent;border:0;border-bottom:1px solid #b9a77b66;border-radius:0;box-shadow:none;margin:0 0 5px;padding:0 0 5px}
+.insurance-document-sheet .insurance-note h3{font-size:11px;line-height:1.4;margin:0 0 2px}.insurance-document-sheet .insurance-note p{font-size:10px;line-height:1.6}.insurance-document-sheet .insurance-money p{font-size:17px}
+#game .insurance-document-sheet button.insurance-option{min-height:48px!important;padding:5px 4px;margin:3px 0;background:transparent!important;border:0;border-bottom:1px solid #b9a77b66;border-radius:0;box-shadow:none;gap:2px 5px}
+.insurance-document-sheet .insurance-option strong{font-size:13px;overflow-wrap:anywhere}.insurance-document-sheet .insurance-option small{font-size:9px;line-height:1.5}.insurance-document-sheet .insurance-option>span{font-size:10px}
+#game .insurance-document button.insurance-document-action,.insurance-document-readonly{position:absolute;left:10%;top:75%;width:80%;height:10%;min-height:44px!important;margin:0!important;padding:3px 7px!important;box-sizing:border-box;border:0!important;border-radius:12px;background:transparent!important;box-shadow:none!important;color:#4d6338!important;font-family:'Songti SC','STSong',serif;font-size:clamp(13px,3.7vw,17px);font-weight:bold;white-space:normal;line-height:1.4;display:flex;align-items:center;justify-content:center;text-align:center}
+#game .insurance-document button.insurance-document-action:disabled{opacity:.45}
+#game .insurance-document button.insurance-document-action:focus-visible,.insurance-document-sheet:focus-visible{outline:3px solid #506b40;outline-offset:-3px}
+.insurance-document-sheet .pet-policy-hero{background:transparent;border:0;margin:0 0 6px;padding:0;gap:6px}.insurance-document-sheet .pet-policy-hero>.pet-scene-window{width:65px;flex:0 0 65px}.insurance-document-sheet .pet-policy-hero strong{font-size:12px}.insurance-document-sheet .pet-policy-hero span{font-size:10px}
+.insurance-document-sheet .pet-policy-scope{background:transparent;border:0;border-top:1px solid #b9a77b66;border-radius:0;padding:5px 0;margin:5px 0;font-size:10px;line-height:1.6}.insurance-document-sheet .pet-policy-scope h3{font-size:12px;text-align:left}.insurance-document-sheet .pet-policy-scope p{margin:3px 0}
+.insurance-document-sheet .kv{font-size:11px;background:transparent!important;padding:4px 0;border:0;border-bottom:1px solid #b9a77b66}
+@media(min-width:600px){.insurance-document-scene{max-width:min(100%,calc((100dvh - 265px)*2/3));margin-inline:auto}#game .insurance-document button.insurance-document-action,.insurance-document-readonly{font-size:13px}}
+
+[data-document-kind="auto"]>.insurance-document-sheet{top:27%;height:40%}
+[data-document-kind="pets"]>.insurance-document-sheet{top:30%;height:40%}
+#game [data-document-kind="pets"]>.insurance-document-action{top:77%}
+
+.insurance-document>.row{display:none}
+.insurance-document-sheet>.stat{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:5px 0!important;margin:0!important;background:transparent!important;border:0!important;border-bottom:1px solid #b9a77b66!important;border-radius:0!important;box-shadow:none!important}
+.insurance-document-sheet>.stat>.label{font-size:10px!important;line-height:1.5;color:#7e7754}.insurance-document-sheet>.stat>.value{font-size:12px!important;line-height:1.5;color:#50633b;overflow-wrap:anywhere}
+.insurance-document-sheet .insurance-money{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+[data-document-kind="premiums"] .insurance-note{padding:8px 0;margin:0}
+[data-document-kind="premiums"] .insurance-note h3{margin:0}
+[data-document-kind="premiums"] .insurance-money p{font-size:15px}

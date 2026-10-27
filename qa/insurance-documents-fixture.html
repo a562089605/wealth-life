@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8"><title>保险嵌画隔离QA fixture</title>
+<style>body{margin:0;background:#eee7d5;font:12px sans-serif}aside{position:absolute;left:0;top:0;width:225px;padding:8px;box-sizing:border-box}button{display:block;margin:6px 0;padding:8px;width:100%}iframe{position:absolute;left:225px;top:0;width:calc(100% - 225px);height:100vh;border:0}</style>
+<aside><strong>隔离测试 fixture，非用户存档</strong><p>先在右侧创建试玩档，再点击测试场景。</p>
+<button onclick="fixture('premiums')">测试：次月收入保费待付65</button>
+<button onclick="fixture('auto')">测试：已有车辆车险</button>
+<button onclick="fixture('legacy')">测试：旧人寿合同35</button>
+<button onclick="fixture('shortage')">测试：收入投保现金不足</button>
+<button onclick="fixture('pet')">测试：单只柯基未投保</button>
+<button onclick="fixture('many')">测试：12只宠物名单</button>
+<button onclick="fixture('legacyPet')">测试：旧合并宠物保单</button>
+<button onclick="resizeFrame(320)">测试视口320</button><button onclick="resizeFrame(390)">测试视口390</button><button onclick="resizeFrame(800)">测试视口800</button>
+</aside><iframe id="game" src="../index.html"></iframe>
+<script>
+function resizeFrame(width){document.querySelector('iframe').style.width=width+'px'}
+function fixture(kind){const w=document.querySelector('iframe').contentWindow,s=w.eval('state');if(!s?.insurance){document.querySelector('aside p').textContent='请先创建右侧试玩档';return;}w.clearModals();s.cash=10000;
+if(kind==='premiums'){s.month+=1;s.insurance.income={active:true,monthly:65,name:'收入保障'};s.monthlyPayments={month:s.month,premiums:0};w.openInsurance();return}
+if(kind==='auto'){s.carOwned=true;w.openInsurance('auto');return}
+if(kind==='legacy'){s.insurance.life={active:true,monthly:35,name:'原人寿合同'};w.openInsurance('life');return}
+if(kind==='shortage'){s.cash=0;s.insurance.income={active:false,monthly:65};s.monthlyPayments={month:s.month,premiums:0};w.openInsurance('income');return}
+if(kind==='legacyPet'){s.insurance.pet={active:true,monthly:45,name:'原合并宠物险'};w.openInsurance('pet');return}
+if(kind==='pet'||kind==='many'){s.pets=Array.from({length:kind==='many'?12:1},(_,i)=>({id:'qa-pet-'+i,careId:'qa-pet-'+i,species:'dog',type:'dog',name:'测试柯基'+(i+1),petRulesVersion:1,insuranceKey:'pet:qa-pet-'+i}));if(kind==='pet')w.openPetPolicy(s.pets[0].id);else w.openInsurance('pet')}
+}
+</script>

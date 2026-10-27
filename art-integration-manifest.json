@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "79 production resources including retained old art; embedded medical plans, insurance and life hub.",
+  "scope": "83 production resources including retained old art; insurance detail documents unified.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1965,6 +1965,118 @@
         "browser": "IAB fresh selection no charge; original200 payment cash10000→9800; full switch and stop retain current basic80% and cash9800. Final screenshot fresh selected but unpaid. Non-real-device."
       },
       "rules": "Visual only, original live buttons and callbacks moved; legacy keep and pending notices retained outside scene."
+    },
+    {
+      "id": "insurance-income-document",
+      "source": {
+        "originalName": "income insurance document illustration",
+        "referenceResources": [
+          "assets/career/medical-plans-embedded.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/insurance-income-document.png"
+        ],
+        "evidence": [
+          "progress/insurance-documents-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, themed variation with blank paper and wood action plaque. Prompt: progress/image-prompts/insurance-income-document.txt"
+      },
+      "resourcePath": "assets/career/insurance-income-document.webp",
+      "gitBlobSha": "0d78ab149ef2090d6ca10a08d6ddcca7a02ff5a5",
+      "pageOrEvent": "income合同/名单/付款核对的原内容与真实按钮嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All prior art and archives retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Matching warm gouache; themed top motif, large blank paper and golden action plaque",
+        "browser": "IAB actual controls and explicit fixtures; income65/auto165/pet30/premiums65 checked, 320/390/desktop, legacy and shortages. No real-device/offline retest."
+      },
+      "rules": "Visual only: existing nodes, live quotes, callbacks, disabled flags and original contracts preserved."
+    },
+    {
+      "id": "insurance-auto-document",
+      "source": {
+        "originalName": "auto insurance document illustration",
+        "referenceResources": [
+          "assets/career/medical-plans-embedded.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/insurance-auto-document.png"
+        ],
+        "evidence": [
+          "progress/insurance-documents-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, themed variation with blank paper and wood action plaque. Prompt: progress/image-prompts/insurance-auto-document.txt"
+      },
+      "resourcePath": "assets/career/insurance-auto-document.webp",
+      "gitBlobSha": "ba5ddac5bb5c0935f6ae81ec66f3b29f01d6e016",
+      "pageOrEvent": "auto合同/名单/付款核对的原内容与真实按钮嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All prior art and archives retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Matching warm gouache; themed top motif, large blank paper and golden action plaque",
+        "browser": "IAB actual controls and explicit fixtures; income65/auto165/pet30/premiums65 checked, 320/390/desktop, legacy and shortages. No real-device/offline retest."
+      },
+      "rules": "Visual only: existing nodes, live quotes, callbacks, disabled flags and original contracts preserved."
+    },
+    {
+      "id": "insurance-pets-document",
+      "source": {
+        "originalName": "pets insurance document illustration",
+        "referenceResources": [
+          "assets/career/medical-plans-embedded.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/insurance-pets-document.png"
+        ],
+        "evidence": [
+          "progress/insurance-documents-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, themed variation with blank paper and wood action plaque. Prompt: progress/image-prompts/insurance-pets-document.txt"
+      },
+      "resourcePath": "assets/career/insurance-pets-document.webp",
+      "gitBlobSha": "35d6e4c2e38e4aba744d6932617403b79f0c60b9",
+      "pageOrEvent": "pets合同/名单/付款核对的原内容与真实按钮嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All prior art and archives retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Matching warm gouache; themed top motif, large blank paper and golden action plaque",
+        "browser": "IAB actual controls and explicit fixtures; income65/auto165/pet30/premiums65 checked, 320/390/desktop, legacy and shortages. No real-device/offline retest."
+      },
+      "rules": "Visual only: existing nodes, live quotes, callbacks, disabled flags and original contracts preserved."
+    },
+    {
+      "id": "insurance-premiums-document",
+      "source": {
+        "originalName": "premiums insurance document illustration",
+        "referenceResources": [
+          "assets/career/medical-plans-embedded.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/insurance-premiums-document.png"
+        ],
+        "evidence": [
+          "progress/insurance-documents-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen, themed variation with blank paper and wood action plaque. Prompt: progress/image-prompts/insurance-premiums-document.txt"
+      },
+      "resourcePath": "assets/career/insurance-premiums-document.webp",
+      "gitBlobSha": "ee945448e915714bdaa6e5b9e10e534fa3f0fc87",
+      "pageOrEvent": "premiums合同/名单/付款核对的原内容与真实按钮嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All prior art and archives retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Matching warm gouache; themed top motif, large blank paper and golden action plaque",
+        "browser": "IAB actual controls and explicit fixtures; income65/auto165/pet30/premiums65 checked, 320/390/desktop, legacy and shortages. No real-device/offline retest."
+      },
+      "rules": "Visual only: existing nodes, live quotes, callbacks, disabled flags and original contracts preserved."
     }
   ],
   "candidateEntries": [
@@ -11208,8 +11320,8 @@
   "prAddedImageCount": 53,
   "generatedOriginalArchive": {
     "manifest": "assets/archive/generated-originals/manifest.json",
-    "count": 22,
-    "totalBytes": 66727252,
+    "count": 26,
+    "totalBytes": 77200459,
     "excludedFromRuntimeAndDeployment": true
   }
 }

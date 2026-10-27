@@ -1,7 +1,7 @@
 {
-  "scope": "All 22 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
-  "count": 22,
-  "totalBytes": 66727252,
+  "scope": "All 26 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
+  "count": 26,
+  "totalBytes": 77200459,
   "files": [
     {
       "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
@@ -218,6 +218,46 @@
       "repositoryPath": "assets/archive/generated-originals/medical-plans-embedded.png",
       "bytes": 2680861,
       "sha256": "310a43ac1d2a35340477b6e310365518e43a16d469c1fe16c7f0fcabfdf98771",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-5da7afd9-c352-4935-905a-fb53e2d7e242.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-income-document.png",
+      "bytes": 2559331,
+      "sha256": "326695df2d71e20f8dc5027a764ad8275a15fc3fce9c2448f932cc468e1febd7",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-f4a994c9-8ccd-46dd-9ddb-aafcd51cdb38.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-auto-document.png",
+      "bytes": 2604535,
+      "sha256": "265befed58f909f5c723c4ef2a2c1e958eb33ab761aecfcc4383f673f25aaaf5",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-7bc25f1d-b3dd-4ebd-93db-1472700d9a63.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-pets-document.png",
+      "bytes": 2653880,
+      "sha256": "a04be3ca571db8042f0de60e53245ef0c9e39b4025603342fd6b62bc88444c4f",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-113d894b-e5a3-470d-aa75-20c9abb7a8d5.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-premiums-document.png",
+      "bytes": 2655461,
+      "sha256": "4d594c57209ce259c28eaf802f5cb9d2a35054f2355c990227709d9146a0025c",
       "dimensions": [
         1024,
         1536

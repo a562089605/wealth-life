@@ -46,7 +46,7 @@
   show('核对本月保费','只支付本月尚未付清的保费；已付金额不重复扣除。',[
    ['确认支付本月保费',()=>{if(done||state!==owner||state.month!==month)return;syncFinance();if(JSON.stringify(InsuranceRules.quote(state))!==JSON.stringify(q))return payAll();if(payMonthly('premiums',q.due)){done=true;save();openInsurance()}},true,q.due<=0||state.cash<q.due],
    ...(state.cash<q.due?[['前往银行筹款',()=>openBankLoan(Math.max(1,Math.ceil(q.due-state.cash)),{after:payAll}),false]]:[]),['返回保险管理',back,false]
-  ]);const b=board();if(!b)return;b.append(section('本月保费',price(q.monthly)),section('本月已付',price(q.paid)),section('本次尚需支付',price(q.due)),section('支付后现金',price(state.cash-q.due)));styleActions();
+  ]);const b=board();if(!b)return;b.append(section('本月保费',price(q.monthly)),section('本月已付',price(q.paid)),section('本次尚需支付',price(q.due)),section('支付后现金',price(state.cash-q.due)));styleActions();paintInsuranceDocument('premiums',{board:b,primary:$('actions').querySelector('button.primary')});
  }
  function generic(key){
   syncFinance();const cfg=INSURANCE[key],p=state.insurance?.[key];if(!cfg&&!p)return back();
@@ -64,7 +64,7 @@
   if(current(p))b.append(section('本月保障与停保',pending?'已预约下月停止；本月保障和已付保费保留。':'预约取消后从下月停止，本月已付保费不退款。'));
   else if(allowed)b.append(section('本次需付保费',price(q.due)+'，包含其他有效保单本月尚未付清的保费。'),section('支付后现金',price(state.cash-q.due)));
   else b.append(section('投保条件',key==='auto'?'拥有车辆后再选择车险。':'目前保留原有保单，不开放新的投保。'));
-  styleActions();
+  styleActions();paintInsuranceDocument(key==='auto'?'auto':key==='pet'?'pets':'income',{board:b,primary:[...$('actions').querySelectorAll('button')].find(b=>/^(确认投保|预约下月停保|撤销停保)/.test(b.textContent))});
  }
  function petList(){
   syncFinance();const pets=state.pets||[];
@@ -76,7 +76,7 @@
   }
   if(!pets.length)b.append(section('尚未领养宠物','领养时可为新伙伴单独选择保险，现在无需购买宠物险。'));
   if(current(state.insurance.pet))b.append(card('旧版合并宠物保单','保留原合同，不自动拆分或重复投保',price(state.insurance.pet.monthly)+'/月',()=>generic('pet')));
-  styleActions();
+  styleActions();paintInsuranceDocument('pets',{board:b,primary:$('actions').querySelector('button.primary')});
  }
  openInsurance=function(type){
   if(type==='health')return openMedicalInsurance();if(type==='pet')return petList();if(['income','auto','life'].includes(type))return generic(type);
