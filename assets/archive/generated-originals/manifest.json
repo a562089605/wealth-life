@@ -1,7 +1,7 @@
 {
-  "scope": "All 20 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
-  "count": 20,
-  "totalBytes": 61104801,
+  "scope": "All 21 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
+  "count": 21,
+  "totalBytes": 64046391,
   "files": [
     {
       "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
@@ -198,6 +198,16 @@
       "repositoryPath": "assets/archive/generated-originals/life-arrangements-embedded.png",
       "bytes": 2947489,
       "sha256": "e0a31931ccf3dad4da7e3c1857658159a5dc34c47b33fbf9d7ef1521af08770f",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-404714b1-4cbc-424f-b2e2-59f238c790cc.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-hub-embedded.png",
+      "bytes": 2941590,
+      "sha256": "58652c78cd9cb8719584b35cf59b56f88f08fa1ef5a158d1ca8d6a1f0cf4b965",
       "dimensions": [
         1024,
         1536

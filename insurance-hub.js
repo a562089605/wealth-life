@@ -12,6 +12,23 @@
  function board(){if(!renderReady)return null;const b=document.createElement('div');b.className='insurance-board';const bar=document.createElement('div');bar.className='insurance-toolbar';bar.textContent='第'+(Math.floor(state.month/12)+1)+'年 · 第'+(state.month%12+1)+'月';const amount=document.createElement('strong');amount.textContent='现金 '+price(state.cash);bar.append(amount);b.append(bar,hero());$('eventData').replaceChildren(b);$('eventData').style.display='block';return b;}
  function card(label,summary,amount,action){const b=document.createElement('button');b.type='button';b.className='insurance-option';b.setAttribute('aria-label',label);const title=document.createElement('strong');title.textContent=label;const note=document.createElement('small');note.textContent=summary;const value=document.createElement('span');value.textContent=amount;b.append(title,note,value);b.onclick=action;return b;}
  function styleActions(){for(const b of $('actions').querySelectorAll('button'))b.dataset.insuranceAction=b.textContent.startsWith('确认本月')?'review':b.classList.contains('primary')?'confirm':'back';}
+ // Decorate only the hub, leaving all existing policy/transaction flows intact.
+ function embedHub(b,q){
+  $('eventTitle').closest('.event').classList.add('insurance-embedded');
+  b.querySelector('.insurance-hero')?.remove();
+  b.querySelector('.insurance-note')?.remove();
+  const scene=document.createElement('figure');scene.className='insurance-painted-scene';
+  const image=document.createElement('img');image.src='assets/career/insurance-hub-embedded.webp';image.alt='暖阳桌面上的医疗箱、工作挎包、汽车钥匙、猫狗木偶与保费账单';scene.append(image);
+  const options=[...b.querySelectorAll('.insurance-option')];
+  options.slice(0,4).forEach((button,i)=>{button.dataset.insuranceSpot=String(i);scene.append(button)});
+  const ledger=document.createElement('div');ledger.className='insurance-painted-ledger';
+  for(const [label,value] of [['本月保费',q.monthly],['本月已付',q.paid],['尚需支付',q.due]]){
+   const row=document.createElement('div'),name=document.createElement('span'),amount=document.createElement('strong');name.textContent=label;amount.textContent=price(value);row.append(name,amount);ledger.append(row);
+  }
+  scene.append(ledger);
+  const pay=$('actions').querySelector('button');if(pay){pay.classList.add('insurance-embedded-pay');scene.append(pay)}
+  b.insertBefore(scene,b.querySelector('.insurance-option'));
+ }
  function payAll(){
   syncFinance();const owner=state,month=state.month,q=InsuranceRules.quote(state);let done=false;
   show('核对本月保费','只支付本月尚未付清的保费；已付金额不重复扣除。',[
@@ -60,7 +77,7 @@
   b.append(card('宠物保险',(state.pets||[]).length?'逐只查看与管理，不购买重复的统一宠物险':'尚未领养宠物，暂不需要投保','逐只管理',petList));
   if(state.insurance.life)b.append(card('原有人寿保单',current(state.insurance.life)?'原保单持续有效':'原保单记录保留',price(state.insurance.life.monthly||INSURANCE.life[1])+'/月',()=>generic('life')));
   for(const key of Object.keys(state.insurance||{}).filter(k=>!['health','income','auto','pet','life'].includes(k)&&!k.startsWith('pet:'))){const v=state.insurance[key];if(v?.active)b.append(card(v.name||'原有保单','原合同与费用保留',price(v.monthly)+'/月',()=>generic(key)))}
-  styleActions();
+  styleActions();embedHub(b,q);
  };
  buyInsurance=type=>openInsurance(type);
  openMedicalInsurance=function(preferred){
@@ -91,5 +108,5 @@
  // Old monthly-wizard entry links to this same manager instead of selling a second flat pet policy.
  insuranceMarkup=function(){const q=InsuranceRules.quote(state);return '<div class="insurance-entry-bridge"><h3>本月保险安排</h3><p>本月有效保费 '+price(q.monthly)+'，尚待支付 '+price(q.due)+'。</p><button data-insurance-hub>查看与管理保单</button><button data-v26="insuranceSkip">继续，不新增保单</button></div>'};
  document.addEventListener('click',e=>{if(e.target.closest('[data-insurance-hub]'))openInsurance()});
- const showBefore=showEvent;showEvent=function(...args){document.querySelector('.insurance-painted')?.classList.remove('insurance-painted');return showBefore(...args)};
+ const showBefore=showEvent;showEvent=function(...args){document.querySelector('.insurance-painted')?.classList.remove('insurance-painted','insurance-embedded');return showBefore(...args)};
 })();

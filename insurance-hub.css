@@ -16,3 +16,23 @@
 @media(max-width:350px){.insurance-option strong{font-size:15px}.insurance-option small{font-size:9px}.insurance-option span{font-size:11px}.insurance-hero{max-width:150px}}
 
 .insurance-money p{font-family:Georgia,serif;font-size:23px;font-weight:700;color:#526b3e;line-height:1.4}
+
+/* Real hub navigation and premium review control on the painted blank labels. */
+.insurance-embedded #eventDesc{font-size:10px;margin:2px 0 8px}
+.insurance-painted-scene{position:relative;margin:0;isolation:isolate;overflow:hidden;border-radius:15px 18px 12px 16px}
+.insurance-painted-scene>img{display:block;width:100%;height:auto;aspect-ratio:2/3}
+#game .insurance-painted-scene>.insurance-option{position:absolute;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:0;margin:0!important;padding:2px!important;width:38%;height:9%;min-height:44px!important;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:7px;text-align:center}
+.insurance-painted-scene>.insurance-option strong{font-size:clamp(13px,3.8vw,17px);line-height:1.5}
+.insurance-painted-scene>.insurance-option>span{font-size:clamp(10px,2.8vw,12px);line-height:1.6;white-space:normal}
+.insurance-painted-scene>.insurance-option small{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+#game .insurance-painted-scene>[data-insurance-spot="0"]{left:8%;top:25%}
+#game .insurance-painted-scene>[data-insurance-spot="1"]{left:54%;top:25%;width:39%}
+#game .insurance-painted-scene>[data-insurance-spot="2"]{left:8%;top:50%}
+#game .insurance-painted-scene>[data-insurance-spot="3"]{left:54%;top:50%;width:39%}
+.insurance-painted-ledger{position:absolute;left:20%;top:65%;width:60%;height:14%;display:flex;flex-direction:column;justify-content:center;color:#52613a;font-size:clamp(10px,2.8vw,13px)}
+.insurance-painted-ledger>div{display:flex;justify-content:space-between;gap:8px;line-height:1.8}.insurance-painted-ledger strong{font-family:Georgia,serif}
+#game .insurance-embedded button.insurance-embedded-pay{position:absolute;left:12%;top:83%;width:76%;height:8%;min-height:44px!important;margin:0!important;padding:2px 4px!important;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:12px;color:#4c6136!important;font-family:'Songti SC','STSong',serif;font-size:clamp(13px,3.7vw,17px);font-weight:bold;white-space:normal;line-height:1.4}
+#game .insurance-embedded button.insurance-embedded-pay:disabled{opacity:.5}
+#game .insurance-painted-scene>button:focus-visible{outline:3px solid #506b40;outline-offset:-2px}
+#game .insurance-painted-scene>button:not(:disabled):hover{background:#fff3ce33!important}
+@media(min-width:600px){.insurance-painted-scene{max-width:min(100%,calc((100dvh - 265px)*2/3));margin-inline:auto}.insurance-painted-scene>.insurance-option strong{font-size:13px}.insurance-painted-scene>.insurance-option>span{font-size:10px}.insurance-painted-ledger{font-size:10px}#game .insurance-embedded button.insurance-embedded-pay{font-size:13px}}

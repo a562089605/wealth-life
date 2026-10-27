@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "77 production resources; embedded life hub and living bill; all old resources retained.",
+  "scope": "78 production resources including retained old art; embedded insurance and life hub.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1908,6 +1908,35 @@
         "browser": "Local IAB: actual five original routes, cash10000 retained, unpaid monthly-confirm gate retained; desktop screenshot. Not mobile/offline retest."
       },
       "rules": "Visual only; existing buttons moved, no changes to cost/time/required-bill checks."
+    },
+    {
+      "id": "insurance-hub-embedded",
+      "source": {
+        "originalName": "Embedded insurance tabletop",
+        "referenceResources": [
+          "assets/career/life-arrangements-embedded.webp",
+          "assets/career/insurance.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/insurance-hub-embedded.png"
+        ],
+        "evidence": [
+          "progress/insurance-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen; four blank labels, premium ledger and payment plaque. Exact prompt: progress/image-prompts/insurance-hub-embedded.txt."
+      },
+      "resourcePath": "assets/career/insurance-hub-embedded.webp",
+      "gitBlobSha": "79a2cad1a586a90b2fb6b61700302deacd1a6b77",
+      "pageOrEvent": "保险与保障入口：四个原控件/动态保费/核对按钮嵌画",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Old insurance art and screenshots retained unchanged",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "warm gouache medical kit/work bag/car keys/pet figures, no fixed prices in art",
+        "browser": "Local IAB four routes; preview no charge; original medical200 confirmation cash10000→9800, dynamic200 paid/0 due, paid button disabled. Not real-device/offline."
+      },
+      "rules": "Visual only; original contracts, callbacks, quotes and monthly confirmation preserved."
     }
   ],
   "candidateEntries": [
@@ -11151,8 +11180,8 @@
   "prAddedImageCount": 53,
   "generatedOriginalArchive": {
     "manifest": "assets/archive/generated-originals/manifest.json",
-    "count": 20,
-    "totalBytes": 61104801,
+    "count": 21,
+    "totalBytes": 64046391,
     "excludedFromRuntimeAndDeployment": true
   }
 }
