@@ -17,3 +17,7 @@
 ## 必要安排嵌画确认
 
 用户看过necessary-embedded实际页面后明确回复“确认”。确认范围为必要事项列表、动态待付金额、补救/银行纸牌入口及真实月度确认木牌的当前构图。截图progress/evidence/necessary-embedded-2026-10-26.png，实施与验证见progress/necessary-embedded-2026-10-26.md。不新增费用、耗时、付款或门禁规则，也不扩大为其他未核对页面均已验收。
+
+## 运动户外确认预览嵌画确认
+
+用户看过outdoor-embedded实际页面后明确回复“确认”。确认范围为运动/户外确认预览的湖边人物场景、费用/效果/确认后余额纸板及真实确认木牌构图。截图progress/evidence/outdoor-embedded-2026-10-26.png，实施与验证见progress/outdoor-embedded-2026-10-26.md。不扩大为其他八项活动、结果页或新费用/耗时/属性规则确认。
