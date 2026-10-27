@@ -38,9 +38,10 @@
   const b=paper('本月生活已安排');if(!b)return;b.insertAdjacentHTML('beforeend',scene(i));b.append(row('✓ 本月选择',o.name));
   if(r){b.append(row('本次已支付',priceText(r.cost)));for(const[k,v]of Object.entries(r.deltas))b.append(row(labels[k]||k,(v>0?'+':'')+v));b.append(note('以上为确认当时的实际变化，已按状态上下限计算；后续事件另计。'));}
   else b.append(note('本月已经确认此项，原记录保留；不会再次扣费或执行效果。'));
+  if(state.lifeActivityTime?.month===state.month&&state.lifeActivityTime.name===o.name)b.append(row('本次自由时间减少',state.lifeActivityTime.hours+'小时'));
   b.append(row('当前现金',priceText(state.cash)),note('每月选择一次。查看结果、返回或读档不会重复执行。'));actions();paintOutdoorPreview(b,i,true);
  }
- function signature(){return JSON.stringify([state.cash,...Object.keys(V26_STATS).map(k=>state[k]),monthSelection('life')]);}
+ function signature(){return JSON.stringify([state.cash,...Object.keys(V26_STATS).map(k=>state[k]),monthSelection('life'),currentCareerTime().free]);}
  function preview(i){
   if(ordinaryRecoveryActivityBlocked())return showRecoveryActivityRestriction();
   if(monthSelection('life'))return menu();const o=V26_LIFE[i];if(!o||o.name!==names[i])return;
@@ -50,17 +51,18 @@
     if(used||state!==owner||state.month!==month||!eventActionCurrent(panel,'确认生活安排'))return;
     if(ordinaryRecoveryActivityBlocked())return showRecoveryActivityRestriction();
     if(signature()!==frozen)return preview(i);
-    if(monthSelection('life')||state.cash<o.cost)return menu();
+    if(monthSelection('life')||state.cash<o.cost)return menu();if(optionalLifeTimeMissing(i))return preview(i);
     const before=Object.fromEntries(Object.keys(o.effects).map(k=>[k,state[k]||0]));
     chooseLife(i);if(monthSelection('life')!==o.name)return;
     used=true;state.lifeArtReceipt={month,name:o.name,cost:o.cost,deltas:Object.fromEntries(Object.keys(o.effects).map(k=>[k,(state[k]||0)-before[k]]))};save();
     // The existing friends/hobby event gets first priority; never dismiss or reroll it.
     if(!document.querySelector('.event-active'))receipt(i);
-   },true,state.cash<o.cost],
+   },true,state.cash<o.cost||optionalLifeTimeMissing(i)],
    ...(state.cash<o.cost?[['查看筹款方式',()=>showFundingOptions(o.cost,()=>preview(i)),false]]:[]),
    ['返回重选',menu,false]
   ]);
   panel=paper('确认生活安排');if(!panel)return;panel.insertAdjacentHTML('beforeend',scene(i));panel.append(row('本月选择',o.name),note(o.desc),row('本次费用',priceText(o.cost)));
+  if(optionalLifeHours(i)!==null)panel.append(row('自由时间消耗',optionalLifeHours(i)+'小时'),row('当前剩余自由时间',currentCareerTime().free+'小时'));
   for(const[k,v]of Object.entries(o.effects))panel.append(row(labels[k]||k,(v>0?'+':'')+v));
   panel.append(row(state.cash<o.cost?'还差':'确认后现金',priceText(state.cash<o.cost?o.cost-state.cash:state.cash-o.cost)),note('效果按状态的0～100范围结算。只有确认后才执行，本月九项中选择一次。'));actions();paintOutdoorPreview(panel,i);
  }
@@ -70,7 +72,7 @@
   showEvent('生活','安排本月生活','',[],[['返回，不安排',openRoomLife,false]]);
   const b=paper('安排本月生活');if(!b)return;b.append(note('给这个月留一点自己的生活。向下滑动查看全部九项，点击插画预览；确认前不扣款，每月选择一次。'));
   const grid=document.createElement('div');grid.className='life-activity-grid';
-  V26_LIFE.forEach((o,i)=>{if(o.name!==names[i])return;const button=document.createElement('button');button.className='life-activity-card';button.setAttribute('aria-label','查看 '+o.name);button.innerHTML=scene(i);const name=document.createElement('strong'),cost=document.createElement('span');name.textContent=o.name;cost.textContent=priceText(o.cost)+' · 查看安排 ›';button.append(name,cost);button.onclick=()=>preview(i);grid.append(button);});b.append(grid);actions();
+  V26_LIFE.forEach((o,i)=>{if(o.name!==names[i])return;const button=document.createElement('button');button.className='life-activity-card';button.setAttribute('aria-label','查看 '+o.name);button.innerHTML=scene(i);const name=document.createElement('strong'),cost=document.createElement('span');name.textContent=o.name;cost.textContent=priceText(o.cost)+(optionalLifeHours(i)!==null?' · '+optionalLifeHours(i)+'小时':'')+' · 查看安排 ›';button.append(name,cost);button.onclick=()=>preview(i);grid.append(button);});b.append(grid);actions();
  }
  $('lifestyleBtn').onclick=$('wellnessBtn').onclick=menu;
  const before=showEvent;showEvent=function(...args){document.querySelector('.life-pages-painted')?.classList.remove('life-pages-painted');return before(...args)};
