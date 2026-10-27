@@ -29,6 +29,18 @@
   const pay=$('actions').querySelector('button');if(pay){pay.classList.add('insurance-embedded-pay');scene.append(pay)}
   b.insertBefore(scene,b.querySelector('.insurance-option'));
  }
+ function embedMedical(b,buttons,quoteBox,confirmButton){
+  $('eventTitle').closest('.event').classList.add('medical-embedded');
+  b.querySelector('.insurance-hero')?.remove();
+  const scene=document.createElement('figure');scene.className='medical-painted-scene';
+  const image=document.createElement('img');image.src='assets/career/medical-plans-embedded.webp';image.alt='医疗箱和绿盾旁的三份医疗方案、费用纸条与确认木牌';scene.append(image);
+  const notes=[...b.querySelectorAll('.insurance-note')].filter(e=>e!==quoteBox),status=notes.shift();
+  if(status){status.classList.add('medical-painted-status');scene.append(status)}
+  buttons.slice(0,3).forEach(({button},i)=>{button.dataset.medicalSpot=String(i);scene.append(button)});
+  quoteBox.classList.add('medical-painted-quote');scene.append(quoteBox);
+  confirmButton.classList.add('medical-embedded-confirm');scene.append(confirmButton);
+  b.insertBefore(scene,b.children[1]||null);
+ }
  function payAll(){
   syncFinance();const owner=state,month=state.month,q=InsuranceRules.quote(state);let done=false;
   show('核对本月保费','只支付本月尚未付清的保费；已付金额不重复扣除。',[
@@ -103,10 +115,10 @@
    const text=immediate?'本次需付 '+price(due)+'（含其他保单本月未付保费）；支付后现金 '+price(state.cash-due):current(p)?'本次不扣款；变更或停保从下月生效，本月保障和已付保费保留。':'本次不投保，不扣款。';quoteBox.querySelector('p').textContent=text;
    confirmButton.disabled=!!immediate&&state.cash<due;confirmButton.textContent=immediate?'确认投保并支付 '+price(due):current(p)?selected==='keep'||selected===p.plan?'确认保留当前保障':selected===null?'确认下月停止保障':'确认下月切换方案':'保持不投保';
   }
-  update();styleActions();
+  update();styleActions();embedMedical(b,buttons,quoteBox,confirmButton);
  };
  // Old monthly-wizard entry links to this same manager instead of selling a second flat pet policy.
  insuranceMarkup=function(){const q=InsuranceRules.quote(state);return '<div class="insurance-entry-bridge"><h3>本月保险安排</h3><p>本月有效保费 '+price(q.monthly)+'，尚待支付 '+price(q.due)+'。</p><button data-insurance-hub>查看与管理保单</button><button data-v26="insuranceSkip">继续，不新增保单</button></div>'};
  document.addEventListener('click',e=>{if(e.target.closest('[data-insurance-hub]'))openInsurance()});
- const showBefore=showEvent;showEvent=function(...args){document.querySelector('.insurance-painted')?.classList.remove('insurance-painted','insurance-embedded');return showBefore(...args)};
+ const showBefore=showEvent;showEvent=function(...args){document.querySelector('.insurance-painted')?.classList.remove('insurance-painted','insurance-embedded','medical-embedded');return showBefore(...args)};
 })();

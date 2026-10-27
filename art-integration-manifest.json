@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "78 production resources including retained old art; embedded insurance and life hub.",
+  "scope": "79 production resources including retained old art; embedded medical plans, insurance and life hub.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -1937,6 +1937,34 @@
         "browser": "Local IAB four routes; preview no charge; original medical200 confirmation cash10000→9800, dynamic200 paid/0 due, paid button disabled. Not real-device/offline."
       },
       "rules": "Visual only; original contracts, callbacks, quotes and monthly confirmation preserved."
+    },
+    {
+      "id": "medical-plans-embedded",
+      "source": {
+        "originalName": "Medical plan selection embedded illustration",
+        "referenceResources": [
+          "assets/career/insurance-hub-embedded.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/medical-plans-embedded.png"
+        ],
+        "evidence": [
+          "progress/medical-embedded-2026-10-26.md"
+        ],
+        "generation": "Built-in image_gen. Exact prompt: progress/image-prompts/medical-plans-embedded.txt."
+      },
+      "resourcePath": "assets/career/medical-plans-embedded.webp",
+      "gitBlobSha": "024e009b5f65ed10e8d95d749fc2ca06b156160a",
+      "pageOrEvent": "医疗方案原选择/动态报价/确认按钮嵌入绘本纸牌",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "Old insurance image and prior screenshots retained",
+      "verification": {
+        "bytes": "WebP from archived original PNG",
+        "visualReview": "Three blank option plaques; shared status and quote panel; golden confirmation plank",
+        "browser": "IAB fresh selection no charge; original200 payment cash10000→9800; full switch and stop retain current basic80% and cash9800. Final screenshot fresh selected but unpaid. Non-real-device."
+      },
+      "rules": "Visual only, original live buttons and callbacks moved; legacy keep and pending notices retained outside scene."
     }
   ],
   "candidateEntries": [
@@ -11180,8 +11208,8 @@
   "prAddedImageCount": 53,
   "generatedOriginalArchive": {
     "manifest": "assets/archive/generated-originals/manifest.json",
-    "count": 21,
-    "totalBytes": 64046391,
+    "count": 22,
+    "totalBytes": 66727252,
     "excludedFromRuntimeAndDeployment": true
   }
 }

@@ -1,7 +1,7 @@
 {
-  "scope": "All 21 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
-  "count": 21,
-  "totalBytes": 64046391,
+  "scope": "All 22 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
+  "count": 22,
+  "totalBytes": 66727252,
   "files": [
     {
       "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
@@ -208,6 +208,16 @@
       "repositoryPath": "assets/archive/generated-originals/insurance-hub-embedded.png",
       "bytes": 2941590,
       "sha256": "58652c78cd9cb8719584b35cf59b56f88f08fa1ef5a158d1ca8d6a1f0cf4b965",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-0d0d8091-9c8b-44b3-b5f2-efe62d8274f9.png",
+      "repositoryPath": "assets/archive/generated-originals/medical-plans-embedded.png",
+      "bytes": 2680861,
+      "sha256": "310a43ac1d2a35340477b6e310365518e43a16d469c1fe16c7f0fcabfdf98771",
       "dimensions": [
         1024,
         1536

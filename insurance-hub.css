@@ -36,3 +36,24 @@
 #game .insurance-painted-scene>button:focus-visible{outline:3px solid #506b40;outline-offset:-2px}
 #game .insurance-painted-scene>button:not(:disabled):hover{background:#fff3ce33!important}
 @media(min-width:600px){.insurance-painted-scene{max-width:min(100%,calc((100dvh - 265px)*2/3));margin-inline:auto}.insurance-painted-scene>.insurance-option strong{font-size:13px}.insurance-painted-scene>.insurance-option>span{font-size:10px}.insurance-painted-ledger{font-size:10px}#game .insurance-embedded button.insurance-embedded-pay{font-size:13px}}
+
+.medical-embedded #eventDesc{font-size:10px;margin:2px 0 8px}
+.medical-painted-scene{position:relative;margin:0;overflow:hidden;isolation:isolate;border-radius:15px 18px 12px 16px}
+.medical-painted-scene>img{display:block;width:100%;height:auto;aspect-ratio:2/3}
+#game .medical-painted-scene>.insurance-option{position:absolute;left:10%;width:80%;height:10%;min-height:44px!important;display:grid;grid-template-columns:minmax(0,1fr) auto;align-content:center;gap:0 6px;margin:0!important;padding:4px 9px!important;border:0!important;box-shadow:none!important;background:transparent!important;border-radius:8px;text-align:left}
+#game .medical-painted-scene>[data-medical-spot="0"]{top:19.5%}
+#game .medical-painted-scene>[data-medical-spot="1"]{top:31%}
+#game .medical-painted-scene>[data-medical-spot="2"]{top:43%}
+.medical-painted-scene>.insurance-option strong{font-size:clamp(13px,3.8vw,17px);line-height:1.5}.medical-painted-scene>.insurance-option small{font-size:clamp(9px,2.4vw,11px);line-height:1.7}.medical-painted-scene>.insurance-option>span{font-size:clamp(11px,3vw,14px)}
+#game .medical-painted-scene>.insurance-option[aria-pressed="true"]{outline:2px solid #718448;outline-offset:-3px;background:#d5dfb33b!important}
+.medical-painted-scene>.insurance-note{position:absolute;left:14%;width:72%;margin:0;padding:0;background:transparent;border:0;box-shadow:none;display:flex;flex-direction:column;justify-content:center;color:#53633c}
+.medical-painted-scene>.medical-painted-status{top:57%;height:7%}
+.medical-painted-scene>.medical-painted-quote{top:64%;height:7%}
+.medical-painted-scene>.insurance-note h3{font-size:clamp(11px,3vw,14px);margin:0 0 2px;line-height:1.4}.medical-painted-scene>.insurance-note p{font-size:clamp(9px,2.5vw,11px);line-height:1.6;overflow-wrap:anywhere}
+.medical-painted-status .medical-pending{padding:0;margin:2px 0 0;background:transparent;border:0}.medical-painted-status .medical-pending h3{display:inline;font-size:9px}.medical-painted-status .medical-pending p{display:inline;font-size:9px}
+#game .medical-embedded button.medical-embedded-confirm{position:absolute;left:12%;top:75%;width:76%;height:10%;min-height:44px!important;margin:0!important;padding:3px!important;border:0!important;border-radius:10px;background:transparent!important;box-shadow:none!important;color:#4d6338!important;font-family:'Songti SC','STSong',serif;font-size:clamp(13px,3.7vw,17px);font-weight:bold;white-space:normal;line-height:1.4}
+#game .medical-embedded button.medical-embedded-confirm:disabled{opacity:.45}
+#game .medical-painted-scene>button:focus-visible{outline:3px solid #506b40;outline-offset:-3px}
+@media(min-width:600px){.medical-painted-scene{max-width:min(100%,calc((100dvh - 270px)*2/3));margin-inline:auto}.medical-painted-scene>.insurance-option strong{font-size:13px}.medical-painted-scene>.insurance-option small{font-size:9px}.medical-painted-scene>.insurance-option>span{font-size:11px}.medical-painted-scene>.insurance-note h3{font-size:11px}.medical-painted-scene>.insurance-note p{font-size:9px}#game .medical-embedded button.medical-embedded-confirm{font-size:13px}}
+
+.medical-painted-quote h3{display:none}
