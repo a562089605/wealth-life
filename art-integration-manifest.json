@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "98 production resources including retained art; activity receipts and remaining housing screens embedded.",
+  "scope": "100 production resources including all retained art; newly confirmed renters policy and incident receipts embedded.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -2505,6 +2505,62 @@
         "browser": "See progress/household-embedded-2026-10-26.md for actual scope"
       },
       "rules": "Layout only; original rent/deposit/timing/payment and save data unchanged"
+    },
+    {
+      "id": "insurance-renters-document",
+      "source": {
+        "originalName": "insurance-renters-document",
+        "referenceResources": [
+          "assets/career/insurance-income-document.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/insurance-renters-document.png"
+        ],
+        "evidence": [
+          "progress/renters-insurance-2026-10-28.md"
+        ],
+        "generation": "Built-in image_gen; exact prompts in progress/image-prompts/renters-2026-10-28.json"
+      },
+      "resourcePath": "assets/career/insurance-renters-document.webp",
+      "gitBlobSha": "708720ec319c6adeaac5ac3d950b084ddee20855",
+      "pageOrEvent": "Renters policy plans/payment and monthly personal-belongings incident receipt, real embedded controls",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All previous art and originals retained",
+      "verification": {
+        "bytes": "Converted from archived original PNG",
+        "visualReview": "Warm picture-book house/personal belongings; blank paper and plank",
+        "browser": "See progress/renters-insurance-2026-10-28.md"
+      },
+      "rules": "Only newly user-confirmed renters insurance rules; other contract values unchanged"
+    },
+    {
+      "id": "insurance-renters-receipt-document",
+      "source": {
+        "originalName": "insurance-renters-receipt-document",
+        "referenceResources": [
+          "assets/career/insurance-income-document.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/insurance-renters-receipt-document.png"
+        ],
+        "evidence": [
+          "progress/renters-insurance-2026-10-28.md"
+        ],
+        "generation": "Built-in image_gen; exact prompts in progress/image-prompts/renters-2026-10-28.json"
+      },
+      "resourcePath": "assets/career/insurance-renters-receipt-document.webp",
+      "gitBlobSha": "769ef3ed9c569e214825ce069fa68ae9e43a14a8",
+      "pageOrEvent": "Renters policy plans/payment and monthly personal-belongings incident receipt, real embedded controls",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All previous art and originals retained",
+      "verification": {
+        "bytes": "Converted from archived original PNG",
+        "visualReview": "Warm picture-book house/personal belongings; blank paper and plank",
+        "browser": "See progress/renters-insurance-2026-10-28.md"
+      },
+      "rules": "Only newly user-confirmed renters insurance rules; other contract values unchanged"
     }
   ],
   "candidateEntries": [
@@ -11745,11 +11801,11 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 80,
+  "prAddedImageCount": 82,
   "generatedOriginalArchive": {
     "manifest": "assets/archive/generated-originals/manifest.json",
-    "count": 41,
-    "totalBytes": 116437893,
-    "excludedFromRuntimeAndDeployment": true
+    "count": 43,
+    "totalBytes": 121501114,
+    "note": "All previous originals retained"
   }
 }

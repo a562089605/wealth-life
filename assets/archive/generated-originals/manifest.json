@@ -1,7 +1,7 @@
 {
-  "scope": "All 41 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
-  "count": 41,
-  "totalBytes": 116437893,
+  "scope": "All 43 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
+  "count": 43,
+  "totalBytes": 121501114,
   "files": [
     {
       "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
@@ -408,6 +408,26 @@
       "repositoryPath": "assets/archive/generated-originals/housing-handover-embedded.png",
       "bytes": 2544271,
       "sha256": "94fce7837727395abcb924af940a4edc070cdc6136355b0ea0432c9d014690ff",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-839572b0-8bf2-4d0a-834b-eac050090a8c.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-renters-document.png",
+      "bytes": 2533724,
+      "sha256": "e622f26ec82f4cd9a7e32d965f5ca2ef6546209a1d79958542aad701bb8c2fa3",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-a59412ed-979b-4a68-9740-48ad68c3b465.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-renters-receipt-document.png",
+      "bytes": 2529497,
+      "sha256": "f4353a98e88e6c432195fca7dd6d05b98984ad7fef6b8128ce37b624e5cd8b1e",
       "dimensions": [
         1024,
         1536
