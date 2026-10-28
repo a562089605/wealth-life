@@ -1,0 +1,10 @@
+.life-hub-entry{position:relative;width:min(100%,300px);margin:15px auto 0;border-radius:16px;overflow:hidden}
+.life-hub-entry>img{display:block;width:100%;aspect-ratio:2/3}
+.life-entry-label{position:absolute;left:14%;top:34%;width:72%;height:30%;display:flex;align-items:center;justify-content:center;white-space:pre-line;text-align:center;font:600 14px/1.9 'Songti SC',serif;color:#45603b}
+#game button.life-entry-action{position:absolute;left:10%;top:75%;width:80%;height:10%;padding:3px!important;min-height:44px!important;border:0!important;background:transparent!important;box-shadow:none!important;color:#45603b;font-weight:bold;font-size:14px}
+[data-document-kind^="life"]>.insurance-document-sheet{left:11%;width:78%;top:29%;height:41%;padding:3px 7px;box-sizing:border-box}
+#game [data-document-kind^="life"] .insurance-document-sheet button,#game [data-document-kind^="life"] select{white-space:normal;min-height:44px!important;font-size:11px;background:#efe3bf!important;color:#425a35;border:1px solid #c5b68e;border-radius:7px;margin:5px 0;width:100%;box-sizing:border-box}
+#game [data-document-kind^="life"] select{font-size:12px;padding:4px}
+#game [data-document-kind^="life"]>.insurance-document-action{top:75%;height:10%}
+#game [data-document-kind^="life"] summary{font-size:11px;color:#425a35;line-height:1.7;cursor:pointer}
+#game [data-document-kind^="life"]>.insurance-document-action:focus-visible,#game .life-entry-action:focus-visible{outline:3px solid #405a35;outline-offset:-4px}

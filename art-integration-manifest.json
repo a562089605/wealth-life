@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "100 production resources including all retained art; newly confirmed renters policy and incident receipts embedded.",
+  "scope": "102 production resources including all retained art; life insurance policy and lifetime ending embedded.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -2561,6 +2561,62 @@
         "browser": "See progress/renters-insurance-2026-10-28.md"
       },
       "rules": "Only newly user-confirmed renters insurance rules; other contract values unchanged"
+    },
+    {
+      "id": "insurance-life-document",
+      "source": {
+        "originalName": "insurance-life-document",
+        "referenceResources": [
+          "assets/career/insurance-income-document.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/insurance-life-document.png"
+        ],
+        "evidence": [
+          "progress/life-insurance-2026-10-28.md"
+        ],
+        "generation": "Built-in image_gen; exact prompts in progress/image-prompts/life-insurance-2026-10-28.json"
+      },
+      "resourcePath": "assets/career/insurance-life-document.webp",
+      "gitBlobSha": "664d324063c33cc330d0c21c322f964af12bf03f",
+      "pageOrEvent": "Life insurance policy/beneficiary controls and read-only natural-age lifetime ending with one-time family protection record",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All prior illustrations and originals retained",
+      "verification": {
+        "bytes": "Converted from archived original PNG",
+        "visualReview": "Warm picture-book family album/envelope and memory album/hourglass with paper and plank",
+        "browser": "See progress/life-insurance-2026-10-28.md"
+      },
+      "rules": "Five user-confirmed life insurance groups; no other contract values or NPC wealth changed"
+    },
+    {
+      "id": "insurance-life-ending-document",
+      "source": {
+        "originalName": "insurance-life-ending-document",
+        "referenceResources": [
+          "assets/career/insurance-income-document.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/insurance-life-ending-document.png"
+        ],
+        "evidence": [
+          "progress/life-insurance-2026-10-28.md"
+        ],
+        "generation": "Built-in image_gen; exact prompts in progress/image-prompts/life-insurance-2026-10-28.json"
+      },
+      "resourcePath": "assets/career/insurance-life-ending-document.webp",
+      "gitBlobSha": "3db619230b379b5789d8dc4292b3adf127d44e8d",
+      "pageOrEvent": "Life insurance policy/beneficiary controls and read-only natural-age lifetime ending with one-time family protection record",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All prior illustrations and originals retained",
+      "verification": {
+        "bytes": "Converted from archived original PNG",
+        "visualReview": "Warm picture-book family album/envelope and memory album/hourglass with paper and plank",
+        "browser": "See progress/life-insurance-2026-10-28.md"
+      },
+      "rules": "Five user-confirmed life insurance groups; no other contract values or NPC wealth changed"
     }
   ],
   "candidateEntries": [
@@ -11801,11 +11857,11 @@
     }
   ],
   "mainBaselineImageCount": 18,
-  "prAddedImageCount": 82,
+  "prAddedImageCount": 84,
   "generatedOriginalArchive": {
     "manifest": "assets/archive/generated-originals/manifest.json",
-    "count": 43,
-    "totalBytes": 121501114,
+    "count": 45,
+    "totalBytes": 126555311,
     "note": "All previous originals retained"
   }
 }

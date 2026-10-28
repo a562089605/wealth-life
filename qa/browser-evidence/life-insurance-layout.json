@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "rows": [
+    {
+      "width": 320,
+      "page": "policy",
+      "buttonHeight": 44,
+      "horizontalOverflow": false,
+      "scrollable": true,
+      "imagesLoaded": true
+    },
+    {
+      "width": 320,
+      "page": "ending",
+      "buttonHeight": 44,
+      "horizontalOverflow": false,
+      "scrollable": true,
+      "imagesLoaded": true
+    },
+    {
+      "width": 390,
+      "page": "policy",
+      "buttonHeight": 47.25,
+      "horizontalOverflow": false,
+      "scrollable": true,
+      "imagesLoaded": true
+    },
+    {
+      "width": 390,
+      "page": "ending",
+      "buttonHeight": 49.5,
+      "horizontalOverflow": false,
+      "scrollable": true,
+      "imagesLoaded": true
+    },
+    {
+      "width": 800,
+      "page": "policy",
+      "buttonHeight": 45.4921875,
+      "horizontalOverflow": false,
+      "scrollable": true,
+      "imagesLoaded": true
+    },
+    {
+      "width": 800,
+      "page": "ending",
+      "buttonHeight": 45.4921875,
+      "horizontalOverflow": false,
+      "scrollable": true,
+      "imagesLoaded": true
+    }
+  ]
+}

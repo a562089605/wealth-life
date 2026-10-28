@@ -1,7 +1,7 @@
 {
-  "scope": "All 43 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
-  "count": 43,
-  "totalBytes": 121501114,
+  "scope": "All 45 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
+  "count": 45,
+  "totalBytes": 126555311,
   "files": [
     {
       "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
@@ -428,6 +428,26 @@
       "repositoryPath": "assets/archive/generated-originals/insurance-renters-receipt-document.png",
       "bytes": 2529497,
       "sha256": "f4353a98e88e6c432195fca7dd6d05b98984ad7fef6b8128ce37b624e5cd8b1e",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-d5d8d297-7f51-4891-ab42-abbd41c05e02.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-life-document.png",
+      "bytes": 2480781,
+      "sha256": "e46b82af55299c930cdb063145c6ff5773a95e8c24c46de14bd460a1d6a58f6c",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-6ea6b9e1-5062-48c3-9481-553776249d5e.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-life-ending-document.png",
+      "bytes": 2573416,
+      "sha256": "6daee9a23585e0b179c490d1d996226faa809fad707d3c8917088ca93819016f",
       "dimensions": [
         1024,
         1536
