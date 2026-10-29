@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "rows": [
+    {
+      "width": 320,
+      "page": "policy",
+      "buttonHeight": 44,
+      "imagesLoaded": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 320,
+      "page": "receipt",
+      "buttonHeight": 44,
+      "imagesLoaded": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "page": "policy",
+      "buttonHeight": 49.5,
+      "imagesLoaded": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "page": "receipt",
+      "buttonHeight": 47.25,
+      "imagesLoaded": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 800,
+      "page": "policy",
+      "buttonHeight": 45.4921875,
+      "imagesLoaded": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 800,
+      "page": "receipt",
+      "buttonHeight": 45.4921875,
+      "imagesLoaded": true,
+      "horizontalOverflow": false
+    }
+  ]
+}
