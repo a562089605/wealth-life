@@ -20,7 +20,7 @@ function paintInsuranceDocument(kind,{board,primary}={}){
  const before=openPetPolicy;
  openPetPolicy=function(id){
   const result=before(id),p=(state.pets||[]).find(p=>p.id===id);
-  if(!p||$('eventTitle').textContent!==p.name+' · 保障')return result;
+  if(!p||$('eventTitle').textContent!==(p.name||p.type||'宠物')+' · 保障')return result;
   paintInsuranceDocument('pets',{board:$('eventData'),primary:$('actions').querySelector('button.primary')});return result;
  };
  const showBefore=showEvent;showEvent=function(...args){document.querySelector('.insurance-document')?.classList.remove('insurance-document');return showBefore(...args)};

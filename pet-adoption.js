@@ -28,7 +28,7 @@ function previewPetAdoption(species){
  function quote(){return petAdoptionQuote(species,checkbox?.checked||false)}
  function confirm(){
   if(settled||state!==owner||state.month!==cycle||$('petAdoptionName')!==input)return false;
-  const q=quote();if(JSON.stringify(q)!==JSON.stringify(quoted)){update();return false;}
+  const q=quote();if(q.insured&&typeof LegacyPetRules!=='undefined'&&LegacyPetRules.combinedActive(state))return false;if(JSON.stringify(q)!==JSON.stringify(quoted)){update();return false;}
   const name=input.value.trim();if(!name||name.length>40||state.cash<q.total)return false;
   // All payments are validated together before any mutation. Adoption is not a monthly bill.
   if(!spendConfirmed('petAdoption',q.adopt,{species,name}))return false;
@@ -55,7 +55,7 @@ function previewPetAdoption(species){
  input.oninput=updateView;checkbox.onchange=updateView;updateView();
 }
 function applyPetPolicyChanges(){for(const p of state?.pets||[]){const change=p.policyChange;if(!change||change.effectiveMonth>state.month)continue;
- const policy=state.insurance[p.insuranceKey];if(change.active){state.insurance[p.insuranceKey]={name:p.name+' · 宠物保险',active:true,monthly:change.monthly,coverage:.8,petId:p.id,startMonth:state.month};}else if(policy)policy.active=false;
+ const policy=state.insurance[p.insuranceKey];if(change.active&&typeof LegacyPetRules!=='undefined'&&LegacyPetRules.combinedActive(state)&&!policy?.active){(p.legacyHeldPolicyChanges??=[]).push({...change});delete p.policyChange;continue;}if(change.active){state.insurance[p.insuranceKey]={name:(p.name||p.type||'宠物')+' · 宠物保险',active:true,monthly:change.monthly,coverage:.8,petId:p.id,startMonth:state.month};}else if(policy)policy.active=false;
  delete p.policyChange;
 }}
 const petPolicySyncBefore=syncFinance;syncFinance=function(){if(state){state.insurance??={};applyPetPolicyChanges()}return petPolicySyncBefore()};
@@ -63,13 +63,13 @@ function openPetPolicy(id){
  const p=state.pets.find(p=>p.id===id),cfg=PET_ADOPTION[petCareSpecies(p||{})];if(!p||!cfg)return;
  const policy=state.insurance[p.insuranceKey],active=!!policy?.active,cycle=state.month,owner=state;let confirmed=false,controls;
  const premium=roundCash(cfg.premium*(state.cpiIndex||100)/100),afterExploring=explorationStarted(),snapshot=JSON.stringify([policy,p.policyChange]);
- const live=()=>state===owner&&state.month===cycle&&state.pets.includes(p)&&explorationStarted()===afterExploring&&JSON.stringify([state.insurance[p.insuranceKey],p.policyChange])===snapshot&&controls?.some(b=>eventActionCurrent(b,p.name+' · 保障'));
- showEvent('宠物保险',p.name+' · 保障','疾病和意外治疗赔付80%，不赔例行照护。保单按每只宠物单独记录；不追溯已发生费用。',[
+ const live=()=>state===owner&&state.month===cycle&&state.pets.includes(p)&&explorationStarted()===afterExploring&&JSON.stringify([state.insurance[p.insuranceKey],p.policyChange])===snapshot&&controls?.some(b=>eventActionCurrent(b,(p.name||p.type||'宠物')+' · 保障'));
+ showEvent('宠物保险',(p.name||p.type||'宠物')+' · 保障','疾病和意外治疗赔付'+Math.round((active?(policy.coverage??.8):.8)*100)+'%，不赔例行照护。保单按每只宠物单独记录；不追溯已发生费用。',[
  ['当前保障',active?'本月有效':'未生效'],['月保费',priceText(active?policy.monthly:premium)],['下月变更',p.policyChange?(p.policyChange.active?'投保':'停止保障'):'无'],['生效时间',active?'本月保障有效':afterExploring?'次月生效，本次不扣款':'确认付款后本月生效']],
- [[active?'预约下月取消':afterExploring?'确认预约下月投保':'确认投保',()=>{if(confirmed||!live())return;
+ [[active?'预约下月取消':afterExploring?'确认预约下月投保':'确认投保',()=>{if(confirmed||!live()||!active&&typeof LegacyPetRules!=='undefined'&&LegacyPetRules.combinedActive(state))return;
   if(active){p.policyChange={active:false,effectiveMonth:cycle+1};}
   else if(afterExploring){p.policyChange={active:true,effectiveMonth:cycle+1,monthly:premium};}
-  else{if(!payMonthly('premiums',premium))return;state.insurance[p.insuranceKey]={name:p.name+' · 宠物保险',active:true,monthly:premium,coverage:.8,petId:p.id,startMonth:cycle};}
+  else{if(!payMonthly('premiums',premium))return;state.insurance[p.insuranceKey]={name:(p.name||p.type||'宠物')+' · 宠物保险',active:true,monthly:premium,coverage:.8,petId:p.id,startMonth:cycle};}
   confirmed=true;save();openPetHub();},true,!active&&!afterExploring&&state.cash<premium],
  ...active&&p.policyChange?.active===false&&!afterExploring?[['撤销取消，保留原保单',()=>{if(!live())return;delete p.policyChange;save();openPetHub()},false]]:[],
  ...active&&p.policyChange?.active===false&&afterExploring?[['新合同下月接续',()=>{if(!live())return;p.policyChange={active:true,effectiveMonth:cycle+1,monthly:premium};save();openPetHub()},false]]:[],['返回我的宠物',openPetHub,false]]);controls=[...$('actions').querySelectorAll('button')];

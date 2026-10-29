@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "rows": [
+    {
+      "width": 320,
+      "page": "pets",
+      "horizontalOverflow": false,
+      "imagesLoaded": true
+    },
+    {
+      "width": 320,
+      "page": "combined",
+      "horizontalOverflow": false,
+      "imagesLoaded": true
+    },
+    {
+      "width": 320,
+      "page": "unknown",
+      "horizontalOverflow": false,
+      "imagesLoaded": true
+    },
+    {
+      "width": 390,
+      "page": "pets",
+      "horizontalOverflow": false,
+      "imagesLoaded": true
+    },
+    {
+      "width": 390,
+      "page": "combined",
+      "horizontalOverflow": false,
+      "imagesLoaded": true
+    },
+    {
+      "width": 390,
+      "page": "unknown",
+      "horizontalOverflow": false,
+      "imagesLoaded": true
+    },
+    {
+      "width": 800,
+      "page": "pets",
+      "horizontalOverflow": false,
+      "imagesLoaded": true
+    },
+    {
+      "width": 800,
+      "page": "combined",
+      "horizontalOverflow": false,
+      "imagesLoaded": true
+    },
+    {
+      "width": 800,
+      "page": "unknown",
+      "horizontalOverflow": false,
+      "imagesLoaded": true
+    }
+  ]
+}

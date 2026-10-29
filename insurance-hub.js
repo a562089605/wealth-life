@@ -72,7 +72,7 @@
   const b=board();if(!b)return;
   for(const p of pets){const cfg=PET_ADOPTION[petCareSpecies(p)],policy=state.insurance?.[p.insuranceKey];if(!cfg)continue;
    const v=current(policy)?policy.monthly:roundCash(cfg.premium*(state.cpiIndex||100)/100);
-   const button=card(p.name||cfg.name,current(policy)?'✓ 已投保 · 医疗赔付80%':'未投保 · 查看本只宠物保障',price(v)+'/月',()=>openPetPolicy(p.id));button.disabled=!p.id||p.petRulesVersion!==1;b.append(button);
+   const button=card(p.name||cfg.name,current(policy)?'✓ 已投保 · 医疗赔付'+Math.round((policy.coverage??.8)*100)+'%':'未投保 · 查看本只宠物保障',price(v)+'/月',()=>openPetPolicy(p.id));button.disabled=!p.id||(p.petRulesVersion!==1&&p.legacyPetVersion!==1);b.append(button);
   }
   if(!pets.length)b.append(section('尚未领养宠物','领养时可为新伙伴单独选择保险，现在无需购买宠物险。'));
   if(current(state.insurance.pet))b.append(card('旧版合并宠物保单','保留原合同，不自动拆分或重复投保',price(state.insurance.pet.monthly)+'/月',()=>generic('pet')));

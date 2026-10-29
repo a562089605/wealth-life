@@ -15,7 +15,7 @@ function petChoices(s,id,free){return (s.pets||[]).filter(p=>{const sp=species(p
  if(id==='pet-social'&&!availableContact(s))return false;return true})}
 function availableContact(s){return (s.mapContactCandidates||[]).find(p=>p.id&&p.name&&!(s.people||[]).some(x=>x.id===p.id))}
 function petQuote(s,id,p){const e={...card(id).options[0].effects};const sp=species(p);let gross=e.cost||0;if(id==='pet-unwell')gross=PET_COSTS[sp];if(id==='pet-injury')gross=500;
- const policy=s.insurance?.[p.insuranceKey],active=policy?.active&&(!Number.isInteger(policy.startMonth)||policy.startMonth<=s.month),insured=['pet-unwell','pet-injury'].includes(id)&&active;
+ const individual=s.insurance?.[p.insuranceKey],combined=s.insurance?.pet,policy=individual?.active?individual:combined?.coverage!=null&&Number.isFinite(Number(combined.coverage))&&combined.coverage>=0&&combined.coverage<=1?combined:null,active=policy?.active&&(!Number.isInteger(policy.startMonth)||policy.startMonth<=s.month),insured=['pet-unwell','pet-injury'].includes(id)&&active;
  e.cost=money(gross*(insured?1-(policy.coverage??.8):1));return {effects:e,gross,insurance:money(gross-e.cost),petId:p.id||p.careId,species:sp,petName:p.name||p.type,contact:id==='pet-social'?structuredClone(availableContact(s)):null};}
 function lifeCategory(s,free,random=Math.random){const w={...D.lifeWeights};const transfer=k=>{w.daily+=w[k];w[k]=0};
  if(!s.carOwned||s.carInUse===false)transfer('vehicle');if(s.housing!=='own')transfer('housing');if(!Object.keys(D.petWeights).some(id=>petChoices(s,id,free).length))transfer('pet');return weighted(w,random)}

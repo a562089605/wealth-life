@@ -34,7 +34,7 @@
   const board=document.createElement('div');board.className='pet-owned-board';
   const home=document.createElement('button');home.type='button';home.className='pet-owned-home';home.textContent='‹';home.setAttribute('aria-label','返回房屋');home.onclick=townHome;$('eventTitle').before(home);
   const cash=document.createElement('div');cash.className='pet-owned-cash';const date=document.createElement('span');date.textContent=monthText(month);const amount=document.createElement('strong');amount.textContent='当前现金 '+priceText(state.cash);cash.append(date,amount);board.append(cash);
-  let monthly=0,paidCare=0;
+  let monthly=petMonthly()+(state.insurance?.pet?.active?(Number(state.insurance.pet.monthly)||0):0),paidCare=0;
   for(const p of pets){
    const sp=petCareSpecies(p),cfg=PET_ADOPTION[sp],rule=PET_CARE_RULES[sp];
    if(!cfg||!rule){const note=document.createElement('p');note.textContent=(p.name||p.type)+'：旧记录需核对';board.append(note);continue;}
@@ -42,13 +42,13 @@
    const deworm=modern&&state.month!==p.adoptMonth?roundCash(cfg.deworm*factor):0;
    const recurring=petIndividualMonthly(p),base=modern?roundCash(recurring-deworm):recurring;
    const policy=state.insurance?.[p.insuranceKey],insured=!!policy?.active&&(!Number.isInteger(policy.startMonth)||policy.startMonth<=month),premium=insured?policy.monthly||0:0;
-   monthly+=recurring+premium;
+   monthly+=premium;
    paidCare+=(p.care?.history||[]).filter(h=>h.month===month&&['Annual','Clean'].includes(h.kind)).reduce((n,h)=>n+(h.cost||0),0);
    const clean=tasks.find(t=>t.pet===p&&t.kind==='Clean'),annual=tasks.find(t=>t.pet===p&&t.kind==='Annual');
    const article=document.createElement('article');article.className='pet-owned-card';article.innerHTML=portrait(p)+'<div class="pet-owned-details"><div class="pet-owned-name"></div><dl><div><dt>基础养护</dt><dd>'+priceText(base)+'</dd></div>'+(cfg.deworm?'<div><dt>驱虫护理</dt><dd>'+(modern&&month===p.adoptMonth?'本月已包含':modern?priceText(deworm):'沿旧记录')+'</dd></div>':'')+'<div><dt>宠物保险</dt><dd>'+priceText(premium)+'</dd></div></dl><div class="pet-owned-policy"></div><button class="pet-owned-care-link" type="button">清洁护理 ›</button><div class="pet-owned-methods"></div><p class="pet-owned-due '+(clean?'due':'')+'">'+(clean?'本次清洁已到期':'下次清洁：'+monthText(p.care.nextClean))+'</p></div><div class="pet-owned-annual"></div>';
    const name=document.createElement('strong');name.textContent=(p.name||rule.name)+' · '+rule.name;article.querySelector('.pet-owned-name').append(name);
    const pencil=document.createElement('button');pencil.type='button';pencil.className='pet-owned-rename';pencil.textContent='✎';pencil.setAttribute('aria-label','修改'+(p.name||rule.name)+'的名字');pencil.onclick=()=>renamePet(p);article.querySelector('.pet-owned-name').append(pencil);
-   const policyButton=document.createElement('button');policyButton.type='button';policyButton.textContent=insured?'医疗赔付 '+Math.round((policy.coverage??.8)*100)+'% · 查看保障':'未投保 · 查看保险';policyButton.setAttribute('aria-label',(p.name||rule.name)+' · 保险');policyButton.disabled=!p.id||!modern;policyButton.onclick=()=>openPetPolicy(p.id);article.querySelector('.pet-owned-policy').append(policyButton);
+   const policyButton=document.createElement('button');policyButton.type='button';policyButton.textContent=insured?'医疗赔付 '+Math.round((policy.coverage??.8)*100)+'% · 查看保障':'未投保 · 查看保险';policyButton.setAttribute('aria-label',(p.name||rule.name)+' · 保险');policyButton.disabled=!p.id||(!modern&&p.legacyPetVersion!==1);policyButton.onclick=()=>openPetPolicy(p.id);article.querySelector('.pet-owned-policy').append(policyButton);
    const careLink=article.querySelector('.pet-owned-care-link');careLink.setAttribute('aria-label',pets.length===1?'宠物日常照顾':(p.name||rule.name)+' · 宠物日常照顾');careLink.onclick=()=>openPetCareForPet(id(p));
    for(const method of ['self','pro']){
     const button=document.createElement('button');button.type='button';button.setAttribute('aria-label',(p.name||rule.name)+' · '+methodName(p,method));button.setAttribute('aria-pressed',String(!!clean&&draft[clean.key]===method));
