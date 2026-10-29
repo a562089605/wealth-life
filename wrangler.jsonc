@@ -2,5 +2,6 @@
   "name": "wealth-life",
   "compatibility_date": "2026-10-17",
   "workers_dev": true,
+  "previews": {},
   "assets": { "directory": ".", "not_found_handling": "404-page" }
 }
