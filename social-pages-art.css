@@ -10,3 +10,8 @@
 .social-option>.social-scene{width:94px;flex:none;border-radius:9px 12px 8px 11px}.social-option>span{display:block;flex:1;min-width:0;padding-right:5px}.social-option strong{display:block;font-family:'Songti SC',serif;font-size:18px;color:#4e623b;line-height:1.6}.social-option small{display:block;font-size:10px;line-height:1.7;color:#8a7850}.social-option b{display:block;margin-top:6px;font-size:12px;color:#97712d}.social-option:disabled{opacity:.48}
 .social-paper table{width:100%;font-size:12px;color:#63704a}.social-paper table td,.social-paper table th{padding:8px}
 @media(max-width:350px){.social-option>.social-scene{width:75px}.social-option strong{font-size:16px}.social-option small{font-size:9px}.social-option b{font-size:11px}.social-contact-copy strong{font-size:16px}}
+
+/* Saved receipts retain their activity scene; long contact names wrap on narrow phones. */
+.social-person-paper>.social-receipt-scene{display:block}
+.social-contact-copy strong,.social-paper .life-paper-row strong{overflow-wrap:anywhere;min-width:0}
+.social-paper .life-paper-row>span{flex-shrink:0}
