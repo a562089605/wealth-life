@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen",
+  "base": "Create a warm hand-painted gouache picture-book game background, portrait 2:3. Honey-colored wood, forest green, cream paper, leafy plants, daisies, golden afternoon sunlight, soft organic brush texture. Upper 42% depicts SCENE. Lower center x12–88% y45–80% is one large EMPTY cream paper panel naturally integrated into setting, for live game data. Bottom y84–94% contains two EMPTY rounded wooden plaques for live buttons. Absolutely NO text, numbers, symbols, logos, currency or UI baked into image. Adult figures only shown from back or side with indistinct faces; no fixed gender or age identity. No café aprons or profession-specific uniforms. SCENE: ",
+  "manager": "Profession-neutral workplace entrance, manager welcomes new colleague, clipboard, no cafe/uniform.",
+  "coworker": "Edit manager final image. Preserve exact portrait canvas/style/paper/plaques; upper scene coworker greeting in neutral staff lounge, shared table/coat hooks, no clipboard/reception.",
+  "referral": "Edit manager final image. Preserve exact portrait canvas/style/paper/plaques; upper scene friend passes blank task folder at desk, closed laptop, notebook, clock, no painting lesson/money/completed work.",
+  "rejected": "First coworker and referral attempts returned landscape photographs. Retained under rejected; never used in UI.",
+  "styleReference": "manager-welcome-generic.png",
+  "limitations": "Symbolic adults; not every demographic/occupation tailored. Task mechanics deferred."
+}

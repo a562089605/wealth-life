@@ -1,0 +1,38 @@
+{
+  "images": [
+    {
+      "id": "manager-welcome-generic",
+      "size": [
+        1024,
+        1536
+      ],
+      "original": "assets/archive/relationship-illustrations-followup-2026-10-30/manager-welcome-generic.png",
+      "production": "assets/career/manager-welcome-generic.webp",
+      "sha256": "b14d46fc2d6418bb20e35d27cae93935fa7758226411aed8de16a0e68a536620",
+      "webpSha256": "0658c9a626e67c68144513a48f3def5e07602edda52250afc2ec7f00087f6df9"
+    },
+    {
+      "id": "coworker-first-meeting-generic",
+      "size": [
+        1024,
+        1536
+      ],
+      "original": "assets/archive/relationship-illustrations-followup-2026-10-30/coworker-first-meeting-generic.png",
+      "production": "assets/career/coworker-first-meeting-generic.webp",
+      "sha256": "0103144915c6578169018ed31b3bc05057a55e72ab28598e903953249667fcaf",
+      "webpSha256": "490e7f1023057f285ecb0b9fe8392c734f27f0b0be4b34d0e49c1468b3bdef10"
+    },
+    {
+      "id": "friend-work-referral",
+      "size": [
+        1024,
+        1536
+      ],
+      "original": "assets/archive/relationship-illustrations-followup-2026-10-30/friend-work-referral.png",
+      "production": "assets/career/friend-work-referral.webp",
+      "sha256": "62d8e35feb6041b82856605010c278d6ae6947aa4e073747cdf48d414a1a952e",
+      "webpSha256": "636fbdb5b6daade9ea6bf9e25a3fd97359b099464b032fc5aa595c86c14145b8"
+    }
+  ],
+  "scope": "Symbolic shared workplace backgrounds; not all profession-specific scenes. Referral placeholder only, no task implementation."
+}

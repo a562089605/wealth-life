@@ -16,11 +16,11 @@
  showMapRecord=function(r=mapRecord()){
   if(!r)return before(r);
   if(['friend-hobby','friend-interest-help','hobby-help'].includes(r.cardId)&&r.status==='pending'){
-   RelationshipUI.paint('工作介绍规则待完善','friend-shared-interest-help',[['说明','这类帮助按最新规则介绍工作获取收入，不增加技能经验。'],['状态','报价、耗时和完成机制尚待确认，本次不执行旧经验奖励。']],[['返回探索',()=>{if(mapRecord()!==r||r.status!=='pending'||r.month!==state.month)return;r.status='declined';save();mapContinue()}]]);return true;
+   RelationshipUI.paint('工作介绍规则待完善','friend-work-referral',[['说明','这类帮助按最新规则介绍工作获取收入，不增加技能经验。'],['状态','报价、耗时和完成机制尚待确认，本次不执行旧经验奖励。']],[['返回探索',()=>{if(mapRecord()!==r||r.status!=='pending'||r.month!==state.month)return;r.status='declined';save();mapContinue()}]]);return true;
   }
   if(r.cardId==='meet-coworker'){
    if(r.status==='pending')return RelationshipWork.openCoworker(r);
-   if(r.status==='resolved'||r.status==='declined'){RelationshipUI.paint('同事相识结果','coworker-first-meeting',[['状态',r.status==='resolved'?'已加入通讯录':'本次未认识'],['姓名',r.contact?.name||''],['额外费用与耗时','0 · 0h']],[['继续探索',mapContinue]]);return true;}
+   if(r.status==='resolved'||r.status==='declined'){RelationshipUI.paint('同事相识结果','coworker-first-meeting-generic',[['状态',r.status==='resolved'?'已加入通讯录':'本次未认识'],['姓名',r.contact?.name||''],['额外费用与耗时','0 · 0h']],[['继续探索',mapContinue]]);return true;}
   }
   const kind=helpKinds[r.cardId];return kind?openHelp(r,kind):before(r);
  };
