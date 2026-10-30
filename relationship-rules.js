@@ -69,7 +69,7 @@
   const names=Array.isArray(old)?old:Object.keys(old||{});
   for(const skill of names){if(!skills.includes(skill))continue;const xp=p.hobbyXP?.[skill];rows.push({skill,xp:Number.isInteger(xp)&&xp>=0?xp:null,level:Number.isInteger(xp)&&xp>=0?Math.floor(xp/100):null});}return rows;
  }
- // Caller must supply confirmed background weights; no default uniform skill draw.
+ // Explicit pool helper retained; new contacts always use the confirmed uniform six-skill pool.
  function generateInterests(p,weights,random=Math.random){
   if(p.interestProfile||p.hobbies!=null||p.interests!=null)return false;
   let pool=Object.entries(weights||{}).filter(([name,w])=>skills.includes(name)&&Number.isFinite(w)&&w>0);
@@ -78,8 +78,9 @@
   for(let i=0;i<count;i++){let n=random()*pool.reduce((sum,[,w])=>sum+w,0),at=pool.length-1;for(let j=0;j<pool.length;j++){n-=pool[j][1];if(n<0){at=j;break;}}const [skill]=pool.splice(at,1)[0];chosen[skill]=Math.min(999,Math.floor(random()*1000));}
   p.interestProfile={version:1,skills:chosen};return p.interestProfile;
  }
+ function initializeInterests(p,random=Math.random){return generateInterests(p,Object.fromEntries(skills.map(skill=>[skill,1])),random);}
  function helpWeight(p,skill){const row=interestRows(p).find(x=>x.skill===skill);return row?.xp!=null?1+row.xp/100:null;}
- const api={plans,init,resetOpeningContacts,hours,begin,check,execute,helpEligible,acceptHelp,markContact,contacted,settleContacts,failureGain,interestRows,generateInterests,helpWeight};
+ const api={plans,init,resetOpeningContacts,hours,begin,check,execute,helpEligible,acceptHelp,markContact,contacted,settleContacts,failureGain,interestRows,generateInterests,initializeInterests,helpWeight};
  if(typeof module!=='undefined')module.exports=api;else root.RelationshipRules=api;
 })(globalThis);
 

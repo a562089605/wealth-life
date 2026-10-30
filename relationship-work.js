@@ -5,7 +5,7 @@
  function current(){return R.init(state).units.find(u=>u.id===state.currentWorkUnitId);}
  function person(u,role,index){const gender=Math.random()<.5?'male':'female',compatible=gender==='female'?['Maya','Nora','Sofia','Ava','Lina','Jamie']:['Daniel','Leo','Ethan','Marcus','Jamie'];const names=NPC_NAMES.filter(n=>compatible.includes(n)&&!state.people.some(p=>p.name===n)),name=names[Math.floor(Math.random()*names.length)]||('工作联系人'+(state.people.length+1));
   const professional=/医|律师|工程|教授/.test(state.job),min=role==='经理'?30:professional?23:18,max=60;
-  return {id:u.id+'-'+role+'-'+index,name,gender,age:min+Math.floor(Math.random()*(max-min+1)),job:state.job,origin:'work',status:role,workUnitId:u.id,relation:10,metMonth:state.month,city:state.city};
+  const p={id:u.id+'-'+role+'-'+index,name,gender,age:min+Math.floor(Math.random()*(max-min+1)),job:state.job,origin:'work',status:role,workUnitId:u.id,relation:10,metMonth:state.month,city:state.city};R.initializeInterests(p);return p;
  }
  function register(existingId){const d=R.init(state);state.people??=[];let u=d.units.find(u=>u.id===existingId);if(!u){u={id:'work-unit-'+(d.units.length+1),name:'工作单位 '+(d.units.length+1),entryJob:state.job,createdMonth:state.month};d.units.push(u)}state.currentWorkUnitId=u.id;
   if(!u.managerId){const p=person(u,'经理',0);state.people.push(p);u.managerId=p.id;u.managerNotice=true}return u;

@@ -12,7 +12,10 @@ function prepare(s,{names,jobs,random=Math.random}){
   if(!names.length||!jobs.length)return null;
   const usedIds=new Set([...known,...s.mapContactCandidates.map(p=>p.id),...locked]);let id;
   do{id='pet-friend-'+(s.nextPetFriendId=(s.nextPetFriendId||0)+1)}while(usedIds.has(id));
-  const p={id,name:pick(unused.length?unused:names)};s.mapContactCandidates.push(p);available=[p];
+  const p={id,name:pick(unused.length?unused:names)};
+  const relationships=typeof module!=='undefined'&&module.exports?require('./relationship-rules.js'):root.RelationshipRules;
+  if(relationships)relationships.initializeInterests(p,random);
+  s.mapContactCandidates.push(p);available=[p];
  }
  for(const p of available){
   if(p.petContactProfileVersion===1||locked.has(p.id))continue;
@@ -25,3 +28,4 @@ function prepare(s,{names,jobs,random=Math.random}){
 }
 const api={prepare};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.MapPetContacts=api;
 })(globalThis);
+

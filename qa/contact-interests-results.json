@@ -1,0 +1,691 @@
+{
+  "tests": [
+    {
+      "file": "qa/auto-insurance-rules.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/auto-insurance-save.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/bank-contract.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/barista-confirmed-events.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/cafe-rules.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/candidate-art.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/coffee-salary.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/contact-interests.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/course-limits.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/education-art.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/event-action.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/financial-crisis.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/four-state.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/health-art.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/hobby-art.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/home-month-end.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/home-scene.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/housing-art.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/housing-lease.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/insurance-rules.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/learning-art.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/legacy-pet-rules.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/legacy-pet-save.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/life-activity-time.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/life-insurance-rules.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/life-insurance-save.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/living-budget.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/map-card-rules.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/medical-insurance.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/month-settlement-guard.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/necessary-bills.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/opening-state.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/pet-adoption.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/pet-care.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/pet-social-contacts.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/recovery-activity-guards.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/recovery-month-end.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/recovery-rules.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/recovery-ui.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/relationship-followup.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/relationship-rules.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/relationship-save.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/relationship-ui-followup.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/renters-rules.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/rest-state.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/return-art.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/room-arrangements.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/service-worker.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/shift-confirmed-effects.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/shift-lead.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/social-followup-guard.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/social-logic-audit.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/social-presentation.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/social-records.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/social-time.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/state-return.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/time-flow.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/time-ledger.test.cjs",
+      "passed": true,
+      "output": "passed"
+    },
+    {
+      "file": "qa/town-route.test.cjs",
+      "passed": true,
+      "output": "passed"
+    }
+  ],
+  "syntax": [
+    {
+      "file": "journey.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-adoption.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-social-contacts.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-page-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "auto-insurance.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "legacy-pet-compat.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "coffee-salary.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "annual.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-adoption-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "map-card-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "return-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "release-info.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "time-ledger.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "learning-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-work.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "financial-crisis.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "life-insurance-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "home-scene.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "map-card-data.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "renters-insurance.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "revision.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "housing-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "outdoor-preview-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "coffee-career.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "insurance-details-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "life-activity-time.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "recovery-ui.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "map-card-system.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "coffee.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "housing-lease.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "career-entry.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "recovery-activity-guards.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "social-time.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "cafe-system.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "room-arrangements.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "candidate-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "life-pages-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "life-insurance.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "social-pages-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "four-state.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "insurance-hub.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "insurance-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "health-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "household-embedded.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "batch.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "flow.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-care.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "household-paper.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-ui.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "hobby-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "sw.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "necessary-bills.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "cafe-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "shift-lead.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-hub-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "auto-insurance-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-daily-care.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "recovery-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "renters-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "social-records.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-owned-hub.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-art-map.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "medical-insurance.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-funds-shortage.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "core.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "necessary-arrangements-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-selection-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "education-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-map.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-adoption-success.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "presentation.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "life-hub-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "time-flow.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "town.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "rest-state.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "legacy-pet-rules.js",
+      "passed": true,
+      "error": ""
+    }
+  ],
+  "notRun": [
+    "3 binary-art inventory tests: snapshot lacks complete image files/manifests",
+    "Browser: no new browser approval requested or test run"
+  ],
+  "scope": "New work and pet-acquaintance generators; no legacy backfill; map probabilities/orders unchanged"
+}
