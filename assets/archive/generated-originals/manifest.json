@@ -1,7 +1,7 @@
 {
-  "scope": "All 45 generated PNG originals and old drafts retained; excluded from runtime and deployment.",
-  "count": 45,
-  "totalBytes": 126555311,
+  "scope": "All generated PNG originals and old drafts retained; excluded from runtime and deployment.",
+  "count": 46,
+  "totalBytes": 129170353,
   "files": [
     {
       "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
@@ -448,6 +448,16 @@
       "repositoryPath": "assets/archive/generated-originals/insurance-life-ending-document.png",
       "bytes": 2573416,
       "sha256": "6daee9a23585e0b179c490d1d996226faa809fad707d3c8917088ca93819016f",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a1889b-491f-7b23-b18d-732214917151/exec-e0f1f2bf-3e0d-4de9-9249-5074a812c2c5.png",
+      "repositoryPath": "assets/archive/generated-originals/social-address-book-2026-10-29.png",
+      "bytes": 2615042,
+      "sha256": "b9cdceb61740436bd5df534292232fb756f221fa014f0ae8d3b94a39759ddb53",
       "dimensions": [
         1024,
         1536

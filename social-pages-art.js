@@ -20,7 +20,7 @@
  const networkBefore=$('networkBtn').onclick;
  $('networkBtn').onclick=function(...args){
   const result=networkBefore.apply(this,args),buttons=[...$('actions').querySelectorAll('button')],b=board('联系认识的人',0);if(!b)return result;
-  monthly(b);const list=document.createElement('div');list.className='social-contact-list';
+  b.classList.add('social-address-paper');const desk=document.createElement('div');desk.className='social-address-desk';const sheet=document.createElement('div');sheet.className='social-address-sheet';monthly(sheet);const list=document.createElement('div');list.className='social-contact-list';
   for(const [index,p] of (state.people||[]).entries()){
    const button=buttons[index];if(!button||(button.getAttribute('aria-label')!=='联系 '+p.name&&button.textContent!=='联系 '+p.name))continue;
    const original=button.onclick,owner=state,month=state.month;button.onclick=function(e){if(state!==owner||state.month!==month||!b.isConnected||!state.people.includes(p))return;return original.call(this,e)};
@@ -30,8 +30,8 @@
    name.textContent=p.name;identity.textContent=p.status||p.job||'已认识的人';stage.textContent=(relationStage(p)?relationStage(p)+' · ':'')+'亲密度 '+Math.round(p.relation)+'/100'+(socialRecord(p)?' · ✓ 本月已交流':' · 本月待交流');copy.append(name,identity,stage);
    const arrow=document.createElement('span');arrow.textContent='›';arrow.setAttribute('aria-hidden','true');button.replaceChildren(seal,copy,arrow);list.append(button);
   }
-  if(!list.children.length)b.append(note('暂时还没有联系人。以后认识的新朋友会显示在这里。'));else b.append(list);
-  b.append(note('打开联系人不会自动互动或消费。'));actions();return result;
+  if(!list.children.length)sheet.append(note('通讯录还是空白的。通过工作、地图等游戏中的实际相识，认识的人会记录在这里。'));else sheet.append(list);
+  sheet.append(note('打开联系人不会自动互动或消费。'));desk.append(sheet);const confirm=buttons.find(x=>x.textContent.startsWith('确认本月关系安排'));if(confirm){confirm.classList.add('social-address-confirm');desk.append(confirm)}b.append(desk);actions();return result;
  };
  const personBefore=openSocialPerson;
  openSocialPerson=function(i){

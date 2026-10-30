@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baselineCommit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
-  "scope": "102 production resources including all retained art; life insurance policy and lifetime ending embedded.",
+  "scope": "109 production resources including retained art and relationship scenes.",
   "candidatePackage": {
     "status": "downloaded-and-audited",
     "expectedCount": 459,
@@ -2617,6 +2617,141 @@
         "browser": "See progress/life-insurance-2026-10-28.md"
       },
       "rules": "Five user-confirmed life insurance groups; no other contract values or NPC wealth changed"
+    },
+    {
+      "id": "social-address-book",
+      "source": {
+        "originalName": "Embedded address book",
+        "referenceResources": [
+          "assets/career/social-scenes.webp"
+        ],
+        "archivedGeneratedOriginals": [
+          "assets/archive/generated-originals/social-address-book-2026-10-29.png"
+        ],
+        "generation": "Built-in image_gen; warm storybook desk, blank large cream address-book page and bottom wooden plaque; no names or portraits.",
+        "evidence": [
+          "progress/social-address-book-2026-10-29.md"
+        ]
+      },
+      "resourcePath": "assets/career/social-address-book.webp",
+      "gitBlobSha": "fcc487956f914e12e4618128b82beed5468d1964",
+      "pageOrEvent": "关系联系人通讯录",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "duplicateOrOldDraft": "All original scenes retained",
+      "verification": {
+        "bytes": "PNG original retained; WebP runtime",
+        "visualReview": "Blank cream page and golden plaque; dynamic UI in code",
+        "browser": "Pending: local server sandbox denied"
+      }
+    },
+    {
+      "id": "coworker-first-meeting",
+      "resourcePath": "assets/career/coworker-first-meeting.webp",
+      "source": {
+        "originalName": "同事首次相识",
+        "archivedRelationshipOriginal": "assets/archive/relationship-illustrations-2026-10-29/coworker-first-meeting.png",
+        "promptManifest": "assets/archive/relationship-illustrations-2026-10-29/prompts.json"
+      },
+      "gitBlobSha": "5ebb926745e2e4009fae09dd2e8ef88fb0ffe876",
+      "pageOrEvent": "同事首次相识",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "verification": {
+        "bytes": "Archived PNG and runtime WebP retained",
+        "visualReview": "Warm storybook cream panel and wooden buttons",
+        "browser": "Pending runtime verification"
+      }
+    },
+    {
+      "id": "manager-welcome",
+      "resourcePath": "assets/career/manager-welcome.webp",
+      "source": {
+        "originalName": "入职认识经理",
+        "archivedRelationshipOriginal": "assets/archive/relationship-illustrations-2026-10-29/manager-welcome.png",
+        "promptManifest": "assets/archive/relationship-illustrations-2026-10-29/prompts.json"
+      },
+      "gitBlobSha": "d44c5c3c04a1f908997606cb07335142762234d1",
+      "pageOrEvent": "入职认识经理",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "verification": {
+        "bytes": "Archived PNG and runtime WebP retained",
+        "visualReview": "Warm storybook cream panel and wooden buttons",
+        "browser": "Pending runtime verification"
+      }
+    },
+    {
+      "id": "friends-home-visit",
+      "resourcePath": "assets/career/friends-home-visit.webp",
+      "source": {
+        "originalName": "邀请朋友做客",
+        "archivedRelationshipOriginal": "assets/archive/relationship-illustrations-2026-10-29/friends-home-visit.png",
+        "promptManifest": "assets/archive/relationship-illustrations-2026-10-29/prompts.json"
+      },
+      "gitBlobSha": "0bacaee582fd98ea55eb2d67ef464ea12777d2b7",
+      "pageOrEvent": "邀请朋友做客",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "verification": {
+        "bytes": "Archived PNG and runtime WebP retained",
+        "visualReview": "Warm storybook cream panel and wooden buttons",
+        "browser": "Pending runtime verification"
+      }
+    },
+    {
+      "id": "friend-life-help",
+      "resourcePath": "assets/career/friend-life-help.webp",
+      "source": {
+        "originalName": "朋友生活帮助",
+        "archivedRelationshipOriginal": "assets/archive/relationship-illustrations-2026-10-29/friend-life-help.png",
+        "promptManifest": "assets/archive/relationship-illustrations-2026-10-29/prompts.json"
+      },
+      "gitBlobSha": "f97b98f0ba6366b69d43e86e7aa25dae6fa2f467",
+      "pageOrEvent": "朋友生活帮助",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "verification": {
+        "bytes": "Archived PNG and runtime WebP retained",
+        "visualReview": "Warm storybook cream panel and wooden buttons",
+        "browser": "Pending runtime verification"
+      }
+    },
+    {
+      "id": "friend-shared-interest-help",
+      "resourcePath": "assets/career/friend-shared-interest-help.webp",
+      "source": {
+        "originalName": "共同兴趣帮助",
+        "archivedRelationshipOriginal": "assets/archive/relationship-illustrations-2026-10-29/friend-shared-interest-help.png",
+        "promptManifest": "assets/archive/relationship-illustrations-2026-10-29/prompts.json"
+      },
+      "gitBlobSha": "f8da441b84a80562a22d55c04da15e6d912fae4d",
+      "pageOrEvent": "共同兴趣帮助",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "verification": {
+        "bytes": "Archived PNG and runtime WebP retained",
+        "visualReview": "Warm storybook cream panel and wooden buttons",
+        "browser": "Pending runtime verification"
+      }
+    },
+    {
+      "id": "classmate-study-help",
+      "resourcePath": "assets/career/classmate-study-help.webp",
+      "source": {
+        "originalName": "同学学习帮助",
+        "archivedRelationshipOriginal": "assets/archive/relationship-illustrations-2026-10-29/classmate-study-help.png",
+        "promptManifest": "assets/archive/relationship-illustrations-2026-10-29/prompts.json"
+      },
+      "gitBlobSha": "fce556b23c55dcaf53201431f1c15a87ad1a280a",
+      "pageOrEvent": "同学学习帮助",
+      "integrationStatus": "new-integration",
+      "addedInExistingPR": true,
+      "verification": {
+        "bytes": "Archived PNG and runtime WebP retained",
+        "visualReview": "Warm storybook cream panel and wooden buttons",
+        "browser": "Pending runtime verification"
+      }
     }
   ],
   "candidateEntries": [
@@ -11860,8 +11995,8 @@
   "prAddedImageCount": 84,
   "generatedOriginalArchive": {
     "manifest": "assets/archive/generated-originals/manifest.json",
-    "count": 45,
-    "totalBytes": 126555311,
+    "count": 46,
+    "totalBytes": 129170353,
     "note": "All previous originals retained"
   }
 }

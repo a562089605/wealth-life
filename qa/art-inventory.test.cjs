@@ -10,13 +10,13 @@ for(const row of manifest.entries){
  const bytes=fs.readFileSync(row.resourcePath);const sha=crypto.createHash('sha1').update('blob '+bytes.length+'\0').update(bytes).digest('hex');
  a.equal(sha,row.gitBlobSha,'original bytes changed: '+row.resourcePath);
 }
-a.equal(manifest.entries.length,102);a.equal(manifest.entries.filter(x=>x.addedInExistingPR).length,84);
+a.equal(manifest.entries.length,109);a.equal(manifest.entries.filter(x=>x.addedInExistingPR).length,91);
 a.deepEqual(manifest.entries.filter(x=>x.integrationStatus==='existing-integration').map(x=>x.resourcePath).sort(),baseline.tree.filter(x=>x.path.endsWith('.webp')).map(x=>x.path).sort());
 const html=fs.readFileSync('index.html','utf8');for(const match of html.matchAll(/(?:src|href)=["']([^"']+\.(?:js|css)(?:\?[^"']*)?)["']/g)){
  if(match[1].startsWith('http'))continue;
  const asset=match[1].replace(/^\.\//,'');a.ok(fs.existsSync(asset.split('?')[0]));
  a.ok(vm.runInContext('ASSETS',sw).some(p=>p.replace(/^\.\//,'')===asset),'script/style URL absent from precache: '+asset);
 }
-console.log('PASS: 102 production illustration hashes, 84 tagged PR additions, unique paths, complete precache and exact HTML script/style URLs.');
+console.log('PASS: 109 production illustration hashes, 91 tagged PR additions, unique paths, complete precache and exact HTML script/style URLs.');
 
-a.equal(manifest.candidateEntries.length,459);a.equal(manifest.candidateEntries.filter(x=>x.validationError).length,12);a.equal(manifest.entries.filter(x=>x.integrationStatus==='new-integration').length,66);
+a.equal(manifest.candidateEntries.length,459);a.equal(manifest.candidateEntries.filter(x=>x.validationError).length,12);a.equal(manifest.entries.filter(x=>x.integrationStatus==='new-integration').length,73);

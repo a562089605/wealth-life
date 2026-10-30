@@ -1,0 +1,77 @@
+{
+  "regression": {
+    "passed": true,
+    "rows": [
+      "第一月仅经理10/一次迁移/后来认识的人不删",
+      "亲密10吃饭禁用/同月重复聊天/时间累计/旧按钮不重扣/无社交奖励",
+      "5人做客150/10能量/3h整场一次/单笔防重",
+      "执行前能量复核/缺资源不扣",
+      "同单位沿用经理/新单位新增经理",
+      "同事候选稳定/认识5人截止",
+      "三类帮助真实卡面接受/无额外亲密度/永久成功一次"
+    ],
+    "limits": [
+      "合成QA存档",
+      "地图概率未改",
+      "非真机/多年/完整断网"
+    ]
+  },
+  "layouts": {
+    "passed": true,
+    "rows": [
+      {
+        "width": 320,
+        "page": "contacts",
+        "overflow": false,
+        "minTarget44": true
+      },
+      {
+        "width": 320,
+        "page": "visit",
+        "overflow": false,
+        "minTarget44": true
+      },
+      {
+        "width": 390,
+        "page": "contacts",
+        "overflow": false,
+        "minTarget44": true
+      },
+      {
+        "width": 390,
+        "page": "visit",
+        "overflow": false,
+        "minTarget44": true
+      },
+      {
+        "width": 800,
+        "page": "contacts",
+        "overflow": false,
+        "minTarget44": true
+      },
+      {
+        "width": 800,
+        "page": "visit",
+        "overflow": false,
+        "minTarget44": true
+      }
+    ]
+  },
+  "logs": [
+    {
+      "level": "error",
+      "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+      "timestamp": "2026-10-30T05:16:23.987Z"
+    },
+    {
+      "level": "error",
+      "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+      "timestamp": "2026-10-30T05:20:20.947Z"
+    },
+    {
+      "level": "error",
+      "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+      "timestamp": "2026-10-30T05:22:36.622Z"
+    }
+  ]
+}
