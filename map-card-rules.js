@@ -25,7 +25,7 @@ function drawLife(s,move,free,random=Math.random){const d=data(s),key=eventKey(s
 function upsertContact(s,p){if(!p?.id||!p.name)return false;s.people??=[];const old=s.people.find(x=>x.id===p.id);if(old)return old;const next={...p,relation:p.relation??10,lastInteractionMonth:s.month};s.people.push(next);return next}
 function execute(s,r,{free,forcedTime}={}){if(!r||r.status!=='pending'||r.month!==s.month)return false;const e=r.quote?.effects;if(!e||!Number.isFinite(free)||s.cash<(e.cost||0)||!r.forced&&free<(e.hours||0))return false;
  const pet=r.quote.petId&&(s.pets||[]).find(p=>(p.id||p.careId)===r.quote.petId);if(r.quote.petId&&!pet)return false;
- if(e.studyMonths){const p=(s.people||[]).find(p=>p.id===r.personId);if(!s.study||s.study.total-s.study.progress<3||data(s).permanent['classmate:'+p?.id]||!p||p.relation<=80||p.studyProjectId!==s.study.id)return false;}
+ if(e.studyMonths){const p=(s.people||[]).find(p=>p.id===r.personId);if(!s.study||s.study.total-s.study.progress<3||!p||p.relation<80||p.studyProjectId!==s.study.id)return false;}
  const actual={},oldCash=s.cash;const hours=e.hours||0;let timeEntry;
  if(hours>free){if(!forcedTime)return false;timeEntry=forcedTime({id:r.id,month:s.month,hours,available:free});}
  s.cash=money(s.cash-(e.cost||0)+(e.cash||0));if(s.cash!==oldCash)actual.cash=money(s.cash-oldCash);
@@ -52,3 +52,4 @@ function addFundUnits(s,r){if(!r||r.category!=='market'||r.subtype!=='fund'||r.s
 function refreshIncome(s){for(const a of s.assets||[])if(a.mapOrigin&&a.kind==='map-project')a.cf=s.month>a.entryMonth?a.mapMonthlyIncome:0;}
 const api={data,card,weighted,seen,mark,species,petChoices,petQuote,lifeCategory,drawLife,execute,upsertContact,opportunity,buy,decline,holdings,market,saleQuote,sell,securityQuote,advanceSecurityQuotes,addFundUnits,refreshIncome};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.MapCards=api;
 })(globalThis);
+

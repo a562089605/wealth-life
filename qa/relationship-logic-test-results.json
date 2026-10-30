@@ -1,0 +1,701 @@
+{
+  "tests": [
+    {
+      "file": "qa/art-inventory.test.cjs",
+      "status": "not-run",
+      "reason": "Cloud text snapshot lacks repository binary assets and full art manifests; original tree retained."
+    },
+    {
+      "file": "qa/auto-insurance-rules.test.cjs",
+      "status": "passed",
+      "output": "✔ confirmed tiers, eligibility, preview sync and no double payment (1.851052ms)\n✔ upgrade, downgrade, cancellation and revoke operate next month, no refunds (0.345672ms)\n✔ legacy prices/full tier and partial shared receipt allocate once alongside life and other premiums (0.703095ms)\n✔ independent 2% monthly draw, exact threshold, snapshot locks and reload never redraws (2.143604ms)\n✔ net 5000/1000/0, uncapped ratios, no time/attribute/value changes and no repeat (1.187567ms)\n✔ renter and vehicle accidents preflight and settle atomically; insufficient funds no partial writes (0.771073ms)\n✔ legacy renter-only pending and already paid batches remain valid (0.366541ms)\nℹ tests 7\nℹ suites 0\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 14.244463\n"
+    },
+    {
+      "file": "qa/auto-insurance-save.test.cjs",
+      "status": "passed",
+      "output": "✔ first auto-upgrade write preserves exact raw old slot and earlier backup, never overwrites either backup (2.494792ms)\n✔ backup quota failure leaves original slot untouched and blocks the new save (1.254332ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 11.752824\n"
+    },
+    {
+      "file": "qa/bank-contract.test.cjs",
+      "status": "passed",
+      "output": "PASS: six confirmed terms, next-month first payment, legacy timing, fixed APR, original accounting and rejected obsolete term.\n"
+    },
+    {
+      "file": "qa/barista-confirmed-events.test.cjs",
+      "status": "passed",
+      "output": "PASS: departure seasonal quote/32h gate/8 XP/status/idempotency; tip happiness cap and removed legacy bonuses.\n"
+    },
+    {
+      "file": "qa/cafe-rules.test.cjs",
+      "status": "passed",
+      "output": "PASS: role payroll/absence/once-only work, qualified manager pool, event resources/receipts, frozen follows, unresolved-cost blockers, permanent research, monthly store accounting/reserve/losses, old-history quarantine and conditional escrow lifecycle.\n"
+    },
+    {
+      "file": "qa/candidate-art.test.cjs",
+      "status": "passed",
+      "output": "PASS: real shortage conditions, species-specific routing, unchanged actions and post-form decoration.\n"
+    },
+    {
+      "file": "qa/coffee-rules.test.cjs",
+      "status": "not-run",
+      "reason": "Cloud text snapshot lacks repository binary assets and full art manifests; original tree retained."
+    },
+    {
+      "file": "qa/coffee-salary.test.cjs",
+      "status": "passed",
+      "output": "PASS: milestone next-month pay, no current income rewrite, permanent earned tiers, highest education, promotion rebase, management applicability, four roles and no repeated compounding.\n"
+    },
+    {
+      "file": "qa/course-limits.test.cjs",
+      "status": "passed",
+      "output": "PASS: shared 3-course cap, 20 XP, unchanged fee/time, stale confirmation, legacy count, XP cap, nursing reservation, recovery pause and no immediate wage change.\n"
+    },
+    {
+      "file": "qa/education-art.test.cjs",
+      "status": "passed",
+      "output": "PASS: preview-only degree menu, progression eligibility, unavailable route, existing study and original payment action.\n"
+    },
+    {
+      "file": "qa/event-action.test.cjs",
+      "status": "passed",
+      "output": "PASS: active event/title and connected original node required, including hidden-but-connected confirmations.\n"
+    },
+    {
+      "file": "qa/financial-crisis.test.cjs",
+      "status": "passed",
+      "output": "PASS: no automatic bankruptcy, net-worth boundary, borrow rescue without net-worth growth, stale confirmation, final confirmation, mandatory all-pet placement/reload/no cash and negative-balance shortfall.\n"
+    },
+    {
+      "file": "qa/four-state.test.cjs",
+      "status": "passed",
+      "output": "PASS: dual fields keep happiness once, mood-only preserved, legacy feeling migration/zero/idempotency, actual activity effects and no three-month state Game Over.\n"
+    },
+    {
+      "file": "qa/generated-originals.test.cjs",
+      "status": "not-run",
+      "reason": "Cloud text snapshot lacks repository binary assets and full art manifests; original tree retained."
+    },
+    {
+      "file": "qa/health-art.test.cjs",
+      "status": "passed",
+      "output": "PASS: all health-art routes preserve data/actions; critical-health redirection and unrelated events are not decorated.\n"
+    },
+    {
+      "file": "qa/hobby-art.test.cjs",
+      "status": "passed",
+      "output": "PASS: name-based mapping, preview without payment, original confirm action, disabled confirmation and dynamic time.\n"
+    },
+    {
+      "file": "qa/home-month-end.test.cjs",
+      "status": "passed",
+      "output": "PASS: 0h home preview, once-only canonical settlement, stale-save guard, bills/medical/time/pending-event guards and legacy fields.\n"
+    },
+    {
+      "file": "qa/home-scene.test.cjs",
+      "status": "passed",
+      "output": "PASS: home entry, seven hotspots, unchanged cash/month, map navigation, pending-event resume and save reopen.\n"
+    },
+    {
+      "file": "qa/housing-art.test.cjs",
+      "status": "passed",
+      "output": "PASS: housing preview defers confirmation, requotes stale choices, distinguishes reservations, preserves cash and updates button labels.\n"
+    },
+    {
+      "file": "qa/housing-lease.test.cjs",
+      "status": "passed",
+      "output": "PASS: 1000 rent/1000 deposit, deposit asset, duplicate rent, free/cancellable booking, next-month net handover, refund on family move, insufficient funds atomicity, legacy no invented refund and annual renewal.\n"
+    },
+    {
+      "file": "qa/insurance-rules.test.cjs",
+      "status": "passed",
+      "output": "PASS: all actual per-pet/legacy policies counted, shared paid receipts offset once, switching does not overwrite current medical contract, serialized next-month cancellation is idempotent/no refund.\n"
+    },
+    {
+      "file": "qa/learning-art.test.cjs",
+      "status": "passed",
+      "output": "PASS: learning navigation, dynamic time, course-art mapping and unchanged confirmation actions.\n"
+    },
+    {
+      "file": "qa/legacy-pet-rules.test.cjs",
+      "status": "passed",
+      "output": "✔ stable collision-free identities, preserve existing IDs and reload idempotency (1.504269ms)\n✔ unknown adoption date retained, missing care dates start at migration month with no money/time/history changes (0.912061ms)\n✔ existing overdue dates remain authoritative, fill only missing field and retain original price (0.214624ms)\n✔ approved lizard/turtle aliases, unknown species not guessed and no modern re-adoption (0.402033ms)\n✔ unknown species requires explicit free mapping, retains raw original and fee, no enrolment or backcharge (1.473484ms)\n✔ combined policy and overlaps retained exactly; old unactivated enrolment archived instead of automatic duplicate (0.712374ms)\n✔ modern adopted pet is untouched (0.212939ms)\n✔ existing map pet claims never stack; combined explicit coverage applies without inventing missing terms (3.016287ms)\n✔ existing modern pending enrolment is held rather than activated alongside a combined policy (2.122037ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 19.619325\n"
+    },
+    {
+      "file": "qa/legacy-pet-save.test.cjs",
+      "status": "passed",
+      "output": "✔ first legacy-pet upgrade write preserves exact raw old slot and earlier backup, never overwrites either backup (2.148384ms)\n✔ backup quota failure leaves original slot untouched and blocks the new save (0.708431ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 10.901843\n"
+    },
+    {
+      "file": "qa/life-activity-time.test.cjs",
+      "status": "passed",
+      "output": "PASS: all nine individually confirmed activity hours, cash/time atomicity, exact zero, replay/load/month reset, legacy no backcharge and annual preflight.\n"
+    },
+    {
+      "file": "qa/life-insurance-rules.test.cjs",
+      "status": "passed",
+      "output": "✔ new enrolment inclusive age boundaries, single policy, fixed terms, no forced enrolment (1.75102ms)\n✔ legacy contract preserves monthly and explicit benefit; absent benefit defaults; active alone not paid (0.912571ms)\n✔ aggregate verified legacy receipts are credited, partial receipts do not overcharge or falsely cover (0.302694ms)\n✔ renewal beyond 65, unpaid lapses, next-month cancel/revoke, old fees not credited on new contract (0.459648ms)\n✔ beneficiary changes are free, single recipient, names safely snapshotted and no NPC stat changes (0.50925ms)\n✔ natural-age ending after successful ledger, payout is separate, no resurrection, no repeated claim (0.415751ms)\n✔ no cover no payout; low health/illness/unemployment do not directly end; bankruptcy remains its own ending (0.349198ms)\n✔ month-end payment already inside original CF is recorded without charging twice; pending next-month stop does not erase cover (0.301803ms)\n✔ reading old age does not end or backfill history; post-ending serialization retains immutable receipt (0.41124ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 14.762896\n"
+    },
+    {
+      "file": "qa/life-insurance-save.test.cjs",
+      "status": "passed",
+      "output": "✔ first life-upgrade write preserves exact raw old slot and earlier backup, never overwrites either backup (2.22619ms)\n✔ backup quota failure leaves original slot untouched and blocks the new save (0.997682ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 13.190415\n"
+    },
+    {
+      "file": "qa/living-budget.test.cjs",
+      "status": "passed",
+      "output": "PASS: new $800 budget, vehicle replaces $150 transit, consistent inflation and legacy base preserved without silent migration.\n"
+    },
+    {
+      "file": "qa/map-card-rules.test.cjs",
+      "status": "passed",
+      "output": "PASS: fixed category shares, no insurance/pet-count probability inflation, locked incident quotes, once-only payment and forced time difference, monthly pet cooldown, repeat companion, preview/recent-three project identity, delayed income, monthly market quote lock, real holdings/debt sale and independent fixed-unit fund lots.\n"
+    },
+    {
+      "file": "qa/medical-insurance.test.cjs",
+      "status": "passed",
+      "output": "PASS: initial paid coverage, duplicate confirmation, next-month switching/cancellation, serialized pending contract, legacy coverage preservation, insufficient cash and shared receipt accounting.\n"
+    },
+    {
+      "file": "qa/month-settlement-guard.test.cjs",
+      "status": "passed",
+      "output": "PASS: core modal/unpaid-incident gates, error rollback; town repeat-click/reload/month-advance guard. Underlying ledger and browser not covered.\n"
+    },
+    {
+      "file": "qa/necessary-bills.test.cjs",
+      "status": "passed",
+      "output": "PASS: unpaid housing/living/premiums/loan/care gate departure, completed receipts unblock, recovery also requires bills/care, checks do not charge or advance month, valid car insurance gate.\n"
+    },
+    {
+      "file": "qa/opening-state.test.cjs",
+      "status": "passed",
+      "output": "PASS: actual opening initializer and core wrapper, all initial snapshots, no advance wages, opening ledger, cache URL alignment. Browser and old-save migration not covered.\n"
+    },
+    {
+      "file": "qa/pet-adoption.test.cjs",
+      "status": "passed",
+      "output": "PASS: confirmed seven-species quotes, included first-month care, legacy budgets, per-pet next-month policy cancellation/replacement and idempotency.\n"
+    },
+    {
+      "file": "qa/pet-care.test.cjs",
+      "status": "passed",
+      "output": "PASS: recovery delegation same fees/zero time, preview and repeat no charge, cross-year deadlines, normal time cost, multiple pets and atomic insufficient funding.\n"
+    },
+    {
+      "file": "qa/pet-social-contacts.test.cjs",
+      "status": "passed",
+      "output": "PASS: automatic pet friends 50/50 gender, assigned age/job, no preview enrollment, stable save/quote, once-only cost/contact, exhausted pool refill, old friends and pending quotes preserved.\n"
+    },
+    {
+      "file": "qa/recovery-activity-guards.test.cjs",
+      "status": "passed",
+      "output": "PASS: paid recovery and untreated low-health block elective effects, annual preparation pauses, financial/necessary/delegated care remains allowed, normal activity boundary preserved.\n"
+    },
+    {
+      "file": "qa/recovery-month-end.test.cjs",
+      "status": "passed",
+      "output": "PASS: actual calcMetrics and settleMonthUnsafe execute recovery month with zero labor income/tax/contribution, necessary expenses and passive income, paused study/work tenure, final restoration and next-month wage resumption. Other services stubbed; browser not covered.\nPASS: actual recovery and normal month settlement both decay idle contacts and exempt contacted month only.\n"
+    },
+    {
+      "file": "qa/recovery-rules.test.cjs",
+      "status": "passed",
+      "output": "PASS: health priority, six insurance quotes, one payment/recovery month, funding shortfall, final restoration, high energy/low stress preservation, cross-year and time-debt recovery bridge. Domain only; not live month-end.\n"
+    },
+    {
+      "file": "qa/recovery-ui.test.cjs",
+      "status": "passed",
+      "output": "PASS: house treatment preview/pay/execute, payment and month confirmation deduplication, map-to-next-month scheduling and quote frozen before policy change. Browser not covered.\n"
+    },
+    {
+      "file": "qa/relationship-followup.test.cjs",
+      "status": "passed",
+      "output": "✔ all activities recheck energy, health, recovery and resources before rolling (2.285271ms)\n✔ negative outcomes clamp and visits mark each attendee, including failed exchanges (1.322156ms)\n✔ month settlement exempts real contacts and introductions, not previews or declines; reload is idempotent (2.520107ms)\n✔ 80 boundary permits different help events forever, with old permanent records retained and single-event replay blocked (0.710587ms)\n✔ interest generation requires explicit background weights, freezes count/XP and never fills legacy profiles (0.745585ms)\n✔ current UI failure roll, signed receipts and interest data use actual relationship module (1.417152ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 15.945734\n"
+    },
+    {
+      "file": "qa/relationship-rules.test.cjs",
+      "status": "passed",
+      "output": "PASS: repeated paid interactions/time, once-only transactions, per-person visit rolls, whole-batch failure, meal threshold, legacy receipts, first-month one-time reset, repeat help qualification/transaction replay/effects.\n"
+    },
+    {
+      "file": "qa/relationship-save.test.cjs",
+      "status": "passed",
+      "output": "PASS: original raw relationship backup once, previous generations retained, denied backup never overwrites source slot.\n"
+    },
+    {
+      "file": "qa/relationship-ui-followup.test.cjs",
+      "status": "passed",
+      "output": "✔ actual contact page displays both fixed skills, including zero XP; viewing does not mark contact (4.464698ms)\n✔ actual chat callback rejects depleted energy then saves negative signed result and contact marker (3.143986ms)\n✔ actual map help UI permits a new event at80 while same event cannot repeat (1.647007ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 16.63584\n"
+    },
+    {
+      "file": "qa/renters-rules.test.cjs",
+      "status": "passed",
+      "output": "✔ eligibility, no forced enrolment, exact two tiers, no legacy mutation (2.36311ms)\n✔ next month upgrade/downgrade, no charge until renewal, lapse and revocation (1.061713ms)\n✔ rental move preserves paid/pending; own home terminates; same-month re-enrol pays full (0.275471ms)\n✔ independent exact thresholds, no insurance probability bias or duplicate roll after serialized reload (2.664659ms)\n✔ per-event caps, aggregate all-or-nothing and no attributes/time/possessions consumed (3.76957ms)\n✔ accident snapshots cannot gain retroactive coverage, re-quote after moves, or lose existing valid coverage (1.234364ms)\n✔ different months independent, no backfill of old months and large full coverage is uncapped (1.091557ms)\nℹ tests 7\nℹ suites 0\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 22.438805\n"
+    },
+    {
+      "file": "qa/rest-state.test.cjs",
+      "status": "passed",
+      "output": "PASS: free 4h rest actual capped effects, stale confirmation, nursing reservation, no low-health bypass; health penalty threshold combinations add once per month.\n"
+    },
+    {
+      "file": "qa/return-art.test.cjs",
+      "status": "passed",
+      "output": "PASS: insurance form ordering, medical/payday/reason mapping, unchanged data and confirm callbacks, unrelated and redirected events.\n"
+    },
+    {
+      "file": "qa/room-arrangements.test.cjs",
+      "status": "passed",
+      "output": "PASS: explicit confirmation, stale-save/month safety, required bills/care, alternate navigation gate, reload, monthly reset and legacy fields.\n"
+    },
+    {
+      "file": "qa/service-worker.test.cjs",
+      "status": "passed",
+      "output": "PASS: synchronous cache lifetime, quota isolation, offline resource and navigation fallback, missing-shell Response.error.\n"
+    },
+    {
+      "file": "qa/shift-confirmed-effects.test.cjs",
+      "status": "passed",
+      "output": "PASS: training hours, four schedule choices, dynamic overtime, complaint branches, acting Lv1–5 locked probability and one-time rewards.\n"
+    },
+    {
+      "file": "qa/shift-lead.test.cjs",
+      "status": "passed",
+      "output": "{\n  \"passed\": true,\n  \"checks\": [\n    \"training option 0\",\n    \"training option 1\",\n    \"schedule option 0\",\n    \"schedule option 1 success\",\n    \"schedule option 1 failure\",\n    \"schedule option 2\",\n    \"schedule option 3\",\n    \"complaint option 0\",\n    \"complaint option 1 success\",\n    \"complaint option 1 failure\",\n    \"complaint option 2\",\n    \"acting option 0 success\",\n    \"acting option 0 failure\",\n    \"acting option 1\",\n    \"praise automatic exactly once\",\n    \"all followups reload before/after settlement preserve result and idempotency\",\n    \"13 months: Aug→Sep→Oct→Nov→Dec→Jan seasonal tips, income snapshot, temporary hours cleared\",\n    \"acting success 50/60/70/80/90 uses pre-choice skill level\",\n    \"main card hides followup detail and zero fields; praise weight grows but never guaranteed\",\n    \"XP clamps zero/max and result shows actual applied change\",\n    \"time budget guards include potential failed coordination shift\",\n    \"monthly settlement blocks pending main/followup and resumes once resolved\",\n    \"Barista routing unchanged; never samples Shift Lead event\",\n    \"all followup branches hidden on main card\",\n    \"actual core calcMetrics + settleMonthUnsafe: 13 monthly payrolls, confirmed zero tax/401k, cash, history, season rollover\"\n  ],\n  \"caseCount\": 25,\n  \"scope\": \"Node VM integration/state tests; no real browser/mobile layout validation\",\n  \"uploaded\": false\n}\n"
+    },
+    {
+      "file": "qa/social-followup-guard.test.cjs",
+      "status": "passed",
+      "output": "PASS: original160 success/0 failure, original social effects and skip, stale owner/month/closed callback rejection and no duplicate follow-up.\n"
+    },
+    {
+      "file": "qa/social-logic-audit.test.cjs",
+      "status": "passed",
+      "output": "✔ actual social handler atomically saves kind, hours, roll and actual changes (9.494327ms)\n✔ same names with distinct IDs have independent quotas and cumulative hours; reload locks outcomes (1.671409ms)\n✔ stale person from another save, removed contact and invalid kinds cannot debit (5.316806ms)\n✔ resource recheck after preview and failed payment have no partial effects (2.592851ms)\n✔ failure and status bounds preserve existing outcomes while recording actual capped deltas (2.481939ms)\n✔ legacy receipts retain old cost and absent hours without retroactive effects (1.225893ms)\n✔ actual recovery wrapper blocks health below30 and paid recovery without effects;30 boundary allows (1.378428ms)\n✔ actual month-end uses relationship settlement for normal and recovery months (2.540601ms)\nℹ tests 8\nℹ suites 0\nℹ pass 8\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 39.661058\n"
+    },
+    {
+      "file": "qa/social-presentation.test.cjs",
+      "status": "passed",
+      "output": "PASS: three saved receipt art mappings, actual effect display, zero effects, legacy unknown preservation, unsuccessful/monthly/empty states and current-event callback guards.\n"
+    },
+    {
+      "file": "qa/social-records.test.cjs",
+      "status": "passed",
+      "output": "PASS: per-contact quota, duplicate rejection, stable IDs for same names, accumulated hours, legacy receipts, pure lookup, reload and month reset.\n"
+    },
+    {
+      "file": "qa/social-time.test.cjs",
+      "status": "passed",
+      "output": "PASS: confirmed1/1/2 hours, exact zero, insufficient time/cash no debit, once-only, reload/month reset, old receipt no retrospective charge.\n"
+    },
+    {
+      "file": "qa/state-return.test.cjs",
+      "status": "passed",
+      "output": "PASS: merged state reasons, exact thresholds, one settlement, low-state home gate, event group completion and reload return recovery. Full health treatment and real browser not covered.\n"
+    },
+    {
+      "file": "qa/time-flow.test.cjs",
+      "status": "passed",
+      "output": "PASS: risky coordination allowed at 3h, voluntary 8h blocked, forced return stops rolling, confirm twice advances once, next month debt=5. Browser and recovery engine not covered.\n"
+    },
+    {
+      "file": "qa/time-ledger.test.cjs",
+      "status": "passed",
+      "output": "PASS: forced-time conservation, event deduplication, exact zero, two recovery months, year boundary, reload and one-time normal-month deduction; extreme debt rejected without mutation. Not yet connected to UI.\n"
+    },
+    {
+      "file": "qa/town-route.test.cjs",
+      "status": "passed",
+      "output": "PASS: 144 start/die combinations; landing-only payday, year boundary target, pending movement blocks repeat roll.\n"
+    }
+  ],
+  "syntax": [
+    {
+      "file": "annual.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "auto-insurance-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "auto-insurance.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "batch.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "cafe-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "cafe-system.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "candidate-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "career-entry.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "coffee-career.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "coffee-salary.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "coffee.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "core.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "education-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "financial-crisis.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "flow.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "four-state.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "health-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "hobby-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "home-scene.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "household-embedded.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "household-paper.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "housing-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "housing-lease.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "insurance-details-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "insurance-hub.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "insurance-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "journey.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "learning-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "legacy-pet-compat.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "legacy-pet-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "life-activity-time.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "life-hub-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "life-insurance-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "life-insurance.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "life-pages-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "map-card-data.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "map-card-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "map-card-system.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "medical-insurance.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "necessary-arrangements-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "necessary-bills.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "outdoor-preview-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-adoption-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-adoption-success.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-adoption.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-art-map.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-care.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-daily-care.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-funds-shortage.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-hub-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-owned-hub.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-page-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-selection-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "pet-social-contacts.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "presentation.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "recovery-activity-guards.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "recovery-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "recovery-ui.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-map.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-ui.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-work.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "release-info.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "renters-insurance.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "renters-rules.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "rest-state.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "return-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "revision.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "room-arrangements.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "shift-lead.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "social-pages-art.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "social-records.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "social-time.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "sw.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "time-flow.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "time-ledger.js",
+      "passed": true,
+      "error": ""
+    },
+    {
+      "file": "town.js",
+      "passed": true,
+      "error": ""
+    }
+  ],
+  "limits": [
+    "Node and VM integration only",
+    "Browser not rerun: Chromium socket sandbox restriction established in prior round",
+    "Mac working tree and user saves inaccessible"
+  ]
+}

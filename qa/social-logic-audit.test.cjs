@@ -48,8 +48,8 @@ test('actual recovery wrapper blocks health below30 and paid recovery without ef
  recovering=true;c.state.health=80;let before=snap(c);c.doSocial(c.state.people[0],0,0,'socialWalk');a.equal(snap(c),before);
  recovering=false;c.state.health=30;a.equal(c.doSocial(c.state.people[0],0,0,'socialWalk'),true);a.equal(opened,5);
 });
-test('actual month-end decay applies to all contacts and clamps zero, recovery pauses it',()=>{
- const source=fs.readFileSync('core.js','utf8').split('\n').find(l=>l.includes('(s.people||[]).forEach(p=>p.relation=Math.max(0,p.relation-.22))'));
- a.ok(source);const c={s:{happiness:50,energy:50,stress:20,social:50,friendship:30,people:[{relation:50},{relation:.1},{relation:0}]},recovery:false};vm.createContext(c);vm.runInContext(source,c);a.equal(c.s.people[0].relation,49.78);a.equal(c.s.people[1].relation,0);a.equal(c.s.people[2].relation,0);
- c.recovery=true;const before=JSON.stringify(c.s);vm.runInContext(source,c);a.equal(JSON.stringify(c.s),before);
+test('actual month-end uses relationship settlement for normal and recovery months',()=>{
+ const source=fs.readFileSync('core.js','utf8');a.equal(source.includes('p.relation-.22'),false);
+ const line=source.split('\n').find(l=>l.includes('RelationshipRules.settleContacts(s,month-1)'));a.ok(line);
+ for(const recovery of [false,true]){const c={RelationshipRules:require('../relationship-rules.js'),s:{month:2,people:[{id:'a',relation:50},{id:'b',relation:.1},{id:'c',relation:80,lastContactMonth:1}]},settlement:{},month:2,recovery};vm.createContext(c);vm.runInContext(line,c);a.equal(c.s.people[0].relation,49);a.equal(c.s.people[1].relation,0);a.equal(c.s.people[2].relation,80);vm.runInContext(line,c);a.equal(c.s.people[0].relation,49);}
 });

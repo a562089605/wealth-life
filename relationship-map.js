@@ -8,7 +8,7 @@
   const action=r.relationshipHelp,image=kind==='life'?'friend-life-help':kind==='interest'?'friend-shared-interest-help':'classmate-study-help';
   if(r.status!=='pending')return RelationshipUI.paint('朋友帮助结果',image,[['联系人',p.name],['状态',r.status==='resolved'?'帮助已兑现':'本次未接受'],...Object.entries(action.receipt||{}).map(([k,v])=>[({energy:'能量变化',stress:'压力变化',hours:'自由时间增加',xp:'技能经验增加',skill:'对应技能',studyMonths:'学制变化'})[k]||k,v])],[['继续探索',mapContinue]]);
   const effects=kind==='life'?'压力−3 · 自由时间+2h · 能量+2':kind==='interest'?(action.skill||'共同技能')+' +10 XP · 压力−2 · 能量+2':'剩余学制−3月 · 压力−2 · 能量+2 · 总学费不减少';
-  RelationshipUI.paint('朋友帮助',image,[['联系人',p.name],['帮助效果',effects],['费用与额外耗时','免费 · 0h'],['次数','同一人同类型帮助仅可成功获得一次']],[['接受帮助',()=>{
+  RelationshipUI.paint('朋友帮助',image,[['联系人',p.name],['帮助效果',effects],['费用与额外耗时','免费 · 0h'],['次数','亲密度≥80可重复接受；每笔事件只结算一次']],[['接受帮助',()=>{
    if(mapRecord()!==r||r.month!==state.month||r.status!=='pending')return;
    if(R.acceptHelp(state,action)){r.status='resolved';r.receipt={effects:{energy:2,stress:kind==='life'?-3:-2}};save();showMapRecord(r)}
   },!R.helpEligible(state,p,kind,action.skill)],['这次不接受',()=>{if(mapRecord()!==r||r.status!=='pending'||r.month!==state.month)return;r.status='declined';action.status='declined';save();mapContinue()}]]);return true;
@@ -26,3 +26,4 @@
  };
  window.RelationshipMap={helpKinds,openHelp};
 })();
+

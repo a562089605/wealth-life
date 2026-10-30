@@ -5,7 +5,7 @@
  function current(){return R.init(state).units.find(u=>u.id===state.currentWorkUnitId);}
  function person(u,role,index){const gender=Math.random()<.5?'male':'female',compatible=gender==='female'?['Maya','Nora','Sofia','Ava','Lina','Jamie']:['Daniel','Leo','Ethan','Marcus','Jamie'];const names=NPC_NAMES.filter(n=>compatible.includes(n)&&!state.people.some(p=>p.name===n)),name=names[Math.floor(Math.random()*names.length)]||('工作联系人'+(state.people.length+1));
   const professional=/医|律师|工程|教授/.test(state.job),min=role==='经理'?30:professional?23:18,max=60;
-  return {id:u.id+'-'+role+'-'+index,name,gender,age:min+Math.floor(Math.random()*(max-min+1)),job:state.job,origin:'work',status:role,workUnitId:u.id,relation:10,city:state.city};
+  return {id:u.id+'-'+role+'-'+index,name,gender,age:min+Math.floor(Math.random()*(max-min+1)),job:state.job,origin:'work',status:role,workUnitId:u.id,relation:10,metMonth:state.month,city:state.city};
  }
  function register(existingId){const d=R.init(state);state.people??=[];let u=d.units.find(u=>u.id===existingId);if(!u){u={id:'work-unit-'+(d.units.length+1),name:'工作单位 '+(d.units.length+1),entryJob:state.job,createdMonth:state.month};d.units.push(u)}state.currentWorkUnitId=u.id;
   if(!u.managerId){const p=person(u,'经理',0);state.people.push(p);u.managerId=p.id;u.managerNotice=true}return u;
@@ -32,8 +32,9 @@
   record.contact??=structuredClone(q.p);record.unitId??=q.u.id;save();const owner=state;
   RelationshipUI.paint('认识新同事','coworker-first-meeting-generic',[['姓名',record.contact.name],['资料',[record.contact.gender==='male'?'男':'女',record.contact.age+'岁',q.u.name].join(' · ')],['初始亲密度',10],['花费与额外耗时','免费 · 0h']],[['打个招呼',()=>{
    if(state!==owner||!active()||current()?.id!==record.unitId||record.month!==state.month||record.status!=='pending'||state.people.filter(p=>p.workUnitId===record.unitId&&p.status==='同事').length>=5||state.people.some(p=>p.id===record.contact.id))return;
-   state.people.push({...record.contact});record.status='resolved';save();showMapRecord(record);
+   state.people.push({...record.contact,metMonth:state.month});record.status='resolved';save();showMapRecord(record);
   }],['暂不认识',()=>{if(state!==owner||record.status!=='pending'||record.month!==state.month)return;record.status='declined';save();mapContinue()}]]);return true;
  }
  window.RelationshipWork={register,current,managerNotice,coworkerCandidate,openCoworker};
 })();
+
