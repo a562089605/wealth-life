@@ -61,7 +61,24 @@ const SOCIAL_SCENES=[
 ];
 function socialRecord(p){return SocialRecords.find(state,p)}
 openSocialPerson=function(i){const p=state.people[i];if(!p)return;const done=socialRecord(p);showEvent('关系互动',p.name+' · '+relationStage(p),'选择相处方式。',[['身份',p.status||p.job],['亲密度',Math.round(p.relation)+'/100']],[['确认一起吃饭 · $45',()=>doSocial(p,45,8,'socialMeal'),true,!!done||state.cash<45],['确认聊天 · $0',()=>doSocial(p,0,5,'socialCoffee'),false,!!done],['确认散步交流 · $0',()=>doSocial(p,0,4,'socialWalk'),false,!!done],['返回',finish,false]])};
-doSocial=function(p,cost,points,kind){if(socialRecord(p)||!spendConfirmed(kind,cost,{person:p.id||p.name}))return;state.socialSequence=(state.socialSequence||0)+1;const personIndex=Math.max(0,state.people.indexOf(p)),scene=SOCIAL_SCENES[(state.month+personIndex*2+state.socialSequence)%SOCIAL_SCENES.length],success=Math.random()<Math.max(.2,Math.min(.98,.8+attributeModifier()+(roleTrait().socialBonus||0)*.025));const gain=success?scene.gain+(roleTrait().socialBonus||0):2;p.relation=Math.min(100,p.relation+gain);state.social=Math.min(100,state.social+3);state.happiness=Math.max(0,Math.min(100,state.happiness+(success?scene.happiness:-2)));state.energy=Math.max(0,state.energy-2);SocialRecords.add(state,p,{month:state.month,person:p.id||p.name,scene:scene.title,success,cost,gain});save();showEvent('关系结果',scene.title,scene.desc+(success?' 这次交流让彼此更了解。':' 你有些疲惫，对话很快结束。'),[['关系变化','+'+gain],['亲密度',Math.round(p.relation)+'/100']],[['继续',finish,true]])};
+doSocial=function(p,cost,points,kind){
+ if(!state?.people?.includes(p)||socialRecord(p))return false;
+ const confirmedCosts={socialMeal:45,socialCoffee:0,socialWalk:0};
+ if(!Object.prototype.hasOwnProperty.call(confirmedCosts,kind))return false;
+ cost=confirmedCosts[kind];
+ if(!spendConfirmed(kind,cost,{person:p.id??p.name}))return false;
+ const prior={relation:p.relation,energy:state.energy,social:state.social,happiness:state.happiness};
+ state.socialSequence=(state.socialSequence||0)+1;
+ const personIndex=state.people.indexOf(p),scene=SOCIAL_SCENES[(state.month+personIndex*2+state.socialSequence)%SOCIAL_SCENES.length],success=Math.random()<Math.max(.2,Math.min(.98,.8+attributeModifier()+(roleTrait().socialBonus||0)*.025));
+ const gain=success?scene.gain+(roleTrait().socialBonus||0):2;
+ p.relation=Math.min(100,p.relation+gain);state.social=Math.min(100,state.social+3);state.happiness=Math.max(0,Math.min(100,state.happiness+(success?scene.happiness:-2)));state.energy=Math.max(0,state.energy-2);
+ const receipt={month:state.month,person:p.id??p.name,kind,scene:scene.title,success,cost,gain,appliedGain:Math.round((p.relation-prior.relation)*100)/100,effects:{energy:state.energy-prior.energy,social:state.social-prior.social,happiness:state.happiness-prior.happiness}};
+ // Persist the time debit together with the outcome, not in a later save.
+ if(typeof socialInteractionHours==='function')receipt.hours=socialInteractionHours(kind);
+ SocialRecords.add(state,p,receipt);save();
+ showEvent('关系结果',scene.title,scene.desc+(success?' 这次交流让彼此更了解。':' 你有些疲惫，对话很快结束。'),[['关系变化','+'+receipt.appliedGain],['亲密度',Math.round(p.relation)+'/100']],[['继续',finish,true]]);
+ return true;
+};
 // Buyer offers settle the chosen asset exactly once, paying off its secured loan first.
 function createBuyerOffer(){state.buyerOffers??={};const saved=state.buyerOffers[state.month];if(saved)return saved;const eligible=state.assets.filter(a=>a.kind==='rental'||V26_INSTRUMENTS.some(i=>i.id===a.instrument&&i.kind==='股票'));if(!eligible.length)return null;const a=eligible[Math.floor(Math.random()*eligible.length)],premium=.04+Math.random()*.08;return state.buyerOffers[state.month]={assetId:a.id,gross:roundCash(a.value*(1+premium)),premium,status:'open',name:a.name}}
 function openBuyerOffer(){const o=createBuyerOffer();if(!o||o.status!=='open')return false;const a=state.assets.find(a=>a.id===o.assetId);if(!a){o.status='expired';return false}save();showEvent('市场买家',o.name+' · 收购报价','一位买家提出高于当前估价的收购价。确认后出售全部这笔资产；放弃则继续持有。',[['当前估价',priceText(a.value)],['买家报价',priceText(o.gross)],['清偿贷款',priceText(a.mortgage||0)],['预计净到账',priceText(o.gross-(a.mortgage||0))]],[['确认出售给买家',()=>{if(o.status!=='open'||state.cash+o.gross-(a.mortgage||0)<0)return;const i=state.assets.findIndex(a=>a.id===o.assetId);if(i<0)return;const net=roundCash(o.gross-(state.assets[i].mortgage||0));state.cash=roundCash(state.cash+net);state.assets.splice(i,1);o.status='sold';state.financeLedger??=[];state.financeLedger.push({kind:'assetSale',month:state.month,amount:net,assetId:o.assetId});save();finish()},true,state.cash+o.gross-(a.mortgage||0)<0],['继续持有',()=>{o.status='declined';save();finish()},false]]);return true}
