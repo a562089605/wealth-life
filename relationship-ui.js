@@ -1,6 +1,7 @@
 // Confirmed relationship changes; existing legacy social/month receipts are retained.
 (function(){
  const R=RelationshipRules,art='assets/career/';let generation=0;
+ const interestArt=Object.freeze({'摄影':'interest-photography','电影创作':'interest-filmmaking','烹饪':'interest-cooking','音乐':'interest-music','园艺':'interest-gardening','语言学习':'interest-language-learning'});
  function ensure(){const d=R.init(state);state.people??=[];for(const [i,p] of state.people.entries())if(p.id==null)p.id='legacy-relationship-'+i;return d;}
  function identity(p){const unit=R.init(state).units.find(u=>u.id===p.workUnitId),current=state.job&&!state.retired&&!state.unemployedMonths&&state.currentWorkUnitId===p.workUnitId;return [p.gender==='male'?'男':p.gender==='female'?'女':null,Number.isFinite(p.age)?Math.floor(p.age)+'岁':null,p.origin==='work'?(current?'':'原')+(p.status==='经理'||p.status==='上司'?'经理':'同事'):(p.status||p.job),unit?.name||(p.origin==='work'?'原单位未记录':null)].filter(Boolean).join(' · ');}
  function stylePanel(){const e=$('eventTitle').closest('.event');e.classList.add('life-pages-painted','social-pages-painted');}
@@ -32,12 +33,29 @@
   // showEvent already supplied the monthly acknowledgement; move that real node into the plaque.
   const confirm=[...$('actions').querySelectorAll('button')].find(b=>b.textContent.startsWith('确认本月关系安排'));if(confirm){confirm.classList.add('social-address-confirm');stage.append(confirm)}
  }
+ function interestGallery(p,pane,list){
+  const gallery=node('section',null,'relationship-interest-gallery');
+  const rows=R.interestRows(p);
+  if(!rows.length){gallery.append(node('p','兴趣未记录'));return gallery;}
+  gallery.append(node('h3','兴趣爱好'));
+  for(const row of rows){
+   const image=interestArt[row.skill];if(!image)continue;
+   const card=node('figure',null,'relationship-stage relationship-interest-card');
+   const picture=document.createElement('img');picture.className='relationship-interest-picture';picture.src=art+image+'.webp';picture.alt=row.skill+'兴趣插画';picture.width=1024;picture.height=1536;picture.loading='lazy';picture.decoding='async';
+   const sheet=node('figcaption',null,'relationship-sheet');
+   sheet.append(node('strong',row.skill),node('p',p.name),node('p',row.xp==null?'经验未记录':'Lv.'+row.level+' · '+row.xp+' XP'),node('p','已记录的兴趣资料'));
+   const controls=node('div',null,'relationship-controls');
+   controls.append(button('返回联系人',guarded(pane,openContacts)),button('互动选项',guarded(pane,()=>list.scrollIntoView({block:'start',behavior:'auto'}))));
+   card.append(picture,sheet,controls);gallery.append(card);
+  }
+  return gallery;
+ }
  $('networkBtn').onclick=openContacts;
  openSocialPerson=function(i){ensure();const p=state.people[i];if(!p)return;
   showEvent('关系互动',p.name,'每次确认分别结算，可重复安排。',[['人物资料',identity(p)],['亲密度',Math.round(p.relation)+'/100'],['剩余自由时间',currentCareerTime().free+'小时'],...((rows)=>rows.length?rows.map(x=>['兴趣技能',x.skill+(x.xp==null?' · 经验未记录':' · Lv.'+x.level+' · '+x.xp+' XP')]):[['兴趣资料','兴趣未记录']])(R.interestRows(p))],[]);stylePanel();const pane={owner:state,month:state.month,view:++generation,stage:null};
   const list=node('div',null,'social-option-list');pane.stage=list;[['一起吃饭 · 45 · 2h','socialMeal',1],['聊天 · 免费 · 1h','socialCoffee',2],['散步交流 · 免费 · 1h','socialWalk',3]].forEach(([label,kind,scene])=>{
    const plan=R.plans[kind],r=R.begin(state,kind,[p.id]),b=button(label,guarded(pane,()=>execute(r)),!R.check(state,r,context()));b.className='social-option';const img=node('div',null,'social-scene');img.style.setProperty('--social-x',(scene%2*100)+'%');img.style.setProperty('--social-y',(Math.floor(scene/2)*100)+'%');b.prepend(img);list.append(b);
-  });$('eventData').append(list,node('p','每次能量−2；亲密度和幸福度随交流结果变化。吃饭需亲密度≥21。'));
+  });$('eventData').append(list,interestGallery(p,pane,list),node('p','每次能量−2；亲密度和幸福度随交流结果变化。吃饭需亲密度≥21。'));
   $('actions').append(button('邀请做客 · 亲密度≥51',guarded(pane,()=>openVisit(p.id)),p.relation<51),button('返回联系人',guarded(pane,openContacts)));save();
  };
  // Old callback signatures cannot bypass the current preview transaction.

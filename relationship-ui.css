@@ -10,3 +10,12 @@
 #game>.event.event-active.social-pages-painted #eventData{max-height:min(68dvh,640px)}
 
 .relationship-controls:has(>button:only-child){justify-content:flex-end}#game .relationship-controls>button:only-child{flex:none;width:48%}
+
+/* Interest data sits on the full, uncropped picture; controls remain real buttons. */
+.relationship-interest-gallery{display:grid;gap:14px;margin-block:16px;min-width:0}
+.relationship-interest-gallery h3{margin:0;text-align:center;color:#44613d}
+.relationship-interest-card{margin:0 auto;overflow:visible}
+.relationship-interest-picture{display:block;width:100%;height:auto;aspect-ratio:2/3}
+.relationship-interest-card .relationship-sheet{inset:45% 12% 23%;overflow:auto;overflow-wrap:anywhere}
+.relationship-interest-card .relationship-sheet>strong{font-size:16px;display:block;margin-bottom:10px}
+.relationship-interest-card .relationship-controls{height:10%;bottom:8%;align-items:stretch}
