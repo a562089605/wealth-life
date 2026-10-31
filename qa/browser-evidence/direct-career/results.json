@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": [
+    "selection direct-start",
+    "preview and return do not create saves",
+    "direct start original 10000 month0 home",
+    "repeat callback ignored",
+    "occupied slots preserved",
+    "preview start retained",
+    "320/390/1280 no horizontal overflow"
+  ],
+  "pageErrors": [],
+  "realDevice": false
+}

@@ -1,0 +1,195 @@
+{
+  "commit": "62d66313c849fc980c47223064fda5d6fdfcbd36",
+  "tree": [
+    {
+      "path": "assets/career/associate-preview.webp",
+      "sha": "c2c1c3b5f91c41e2a4b99d0848ad5d9d249d4ee5",
+      "size": 214902
+    },
+    {
+      "path": "assets/career/barista-busy.webp",
+      "sha": "b35c249ff91fb7b71e8ca6966a3104b57a123c46",
+      "size": 217306
+    },
+    {
+      "path": "assets/career/barista-cut.webp",
+      "sha": "a2aa79fd79fec469a0c203cc5eddde74d3e46a98",
+      "size": 247314
+    },
+    {
+      "path": "assets/career/barista-departure.webp",
+      "sha": "c6529f35ffac4396f97d3e1f79540f4df2a3ca1e",
+      "size": 322584
+    },
+    {
+      "path": "assets/career/barista-staff.webp",
+      "sha": "aca27a9ba3e50c0ee69e172f9d75eb7b11633105",
+      "size": 256262
+    },
+    {
+      "path": "assets/career/barista-tip.webp",
+      "sha": "fc793d1c3dff0968b440e7a86cd47ffcdbd067bb",
+      "size": 239926
+    },
+    {
+      "path": "assets/career/degrees.webp",
+      "sha": "89bd8ea51ac7234a6c8397de4272e112cc585667",
+      "size": 215228
+    },
+    {
+      "path": "assets/career/hobbies.webp",
+      "sha": "441ab6729b99b66b48d5dce62965c06ccfa2ba35",
+      "size": 209836
+    },
+    {
+      "path": "assets/career/home.webp",
+      "sha": "e6039f9295332625a325e8e97d59bc736dfee561",
+      "size": 386030
+    },
+    {
+      "path": "assets/career/hospital-recovery.webp",
+      "sha": "4485f0fd41f969b649ffd94a358a456ab35c55a7",
+      "size": 300032
+    },
+    {
+      "path": "assets/career/housing-reserve.webp",
+      "sha": "7b60dceabca9a2a44cdb7aa96280abc774cb977c",
+      "size": 252962
+    },
+    {
+      "path": "assets/career/housing-select.webp",
+      "sha": "844a19dc23763b6a31ea32e4317bcc450217f505",
+      "size": 222098
+    },
+    {
+      "path": "assets/career/insurance.webp",
+      "sha": "c641e3a8f0fd210ac260d09ddf0410c162cad61a",
+      "size": 239192
+    },
+    {
+      "path": "assets/career/intro.webp",
+      "sha": "2edf440de0d459ad8b81f7cfc72a49a202d5fe88",
+      "size": 283140
+    },
+    {
+      "path": "assets/career/learning.webp",
+      "sha": "6d1351e1050ec48d08225440b8742aa6f81bfb32",
+      "size": 232292
+    },
+    {
+      "path": "assets/career/living-cost.webp",
+      "sha": "b4bdb5a506d9c2b6ca65c69600a7afb966bbf03e",
+      "size": 196942
+    },
+    {
+      "path": "assets/career/management-course.webp",
+      "sha": "7d9215f1d466c91ef24afec75cf5db2f7b1da051",
+      "size": 227470
+    },
+    {
+      "path": "assets/career/month-recovery.webp",
+      "sha": "17220b62c2a25a79583bef32d381c86ab700dc7f",
+      "size": 220944
+    },
+    {
+      "path": "assets/career/payday.webp",
+      "sha": "ba635f0384281a6f707fb3612cec72dca031aa21",
+      "size": 254700
+    },
+    {
+      "path": "assets/career/rest-arrange.webp",
+      "sha": "fb3231f66bcb88bf9654969ea76107fde22ac0bf",
+      "size": 307418
+    },
+    {
+      "path": "assets/career/rest-complete.webp",
+      "sha": "f4d69ba62d01b834e9dd93cb3515b175e044b189",
+      "size": 310628
+    },
+    {
+      "path": "assets/career/return-energy.webp",
+      "sha": "c4909ba5c43c08627d9af29f77dffd60273ed37f",
+      "size": 247694
+    },
+    {
+      "path": "assets/career/return-stress.webp",
+      "sha": "fcc239d25ce93f38b509cce754e60b242b12e19f",
+      "size": 339312
+    },
+    {
+      "path": "assets/career/service-course.webp",
+      "sha": "c67150ad7f55eff74f4750e9d2b096d015501417",
+      "size": 230650
+    },
+    {
+      "path": "assets/career/shift-acting-failure.webp",
+      "sha": "33dbe391bffd1d99ad5d0a49697f54540cb7fe89",
+      "size": 247566
+    },
+    {
+      "path": "assets/career/shift-acting-success.webp",
+      "sha": "7821818c6224bf88f134e4f0b81a56805d8c9275",
+      "size": 266016
+    },
+    {
+      "path": "assets/career/shift-acting.webp",
+      "sha": "748b885150f092cc98d493b90e28698fff683854",
+      "size": 266416
+    },
+    {
+      "path": "assets/career/shift-complaint-failure.webp",
+      "sha": "63a7e0acfc0915bada19f7ffc5182b0efb760fa1",
+      "size": 270734
+    },
+    {
+      "path": "assets/career/shift-complaint-success.webp",
+      "sha": "d38f0abecb052ccba2b88f9e1fbfce9633adcc22",
+      "size": 266482
+    },
+    {
+      "path": "assets/career/shift-complaint.webp",
+      "sha": "a69d5fe14bf907fc956c593be5130e2decaa7933",
+      "size": 272732
+    },
+    {
+      "path": "assets/career/shift-praise.webp",
+      "sha": "87e111118742506599fc79d2f35c05178f5475e7",
+      "size": 264860
+    },
+    {
+      "path": "assets/career/shift-schedule-failure.webp",
+      "sha": "ca9be72a4213880b9a7fb4da7e28f8c8b1bbe731",
+      "size": 204856
+    },
+    {
+      "path": "assets/career/shift-schedule-success.webp",
+      "sha": "55881632f96bf96ab32e0447e0841709f2828ca0",
+      "size": 198866
+    },
+    {
+      "path": "assets/career/shift-schedule.webp",
+      "sha": "adbddfa1f3862fc5dec5957c36b308fc56dd6107",
+      "size": 271352
+    },
+    {
+      "path": "assets/career/shift-training.webp",
+      "sha": "aec18c64e94e2863f11c8963f790cf93e80d8ca4",
+      "size": 209954
+    },
+    {
+      "path": "assets/career/town.webp",
+      "sha": "ea9230431fca8cc53881cd3a977d31470f3894f5",
+      "size": 400114
+    },
+    {
+      "path": "icons/icon-192.png",
+      "sha": "3769ba643c1b768a3686189c9e933ad50fe743a6",
+      "size": 54536
+    },
+    {
+      "path": "icons/icon-512.png",
+      "sha": "b6fa5faa2c9752454331f4ac8fec804bbe9f6cad",
+      "size": 316466
+    }
+  ]
+}

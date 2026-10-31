@@ -1,0 +1,1658 @@
+{
+  "baseline": "de200dc",
+  "scope": "isolated browser fixtures; no real player data",
+  "entrances": [
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "调整工作",
+      "type": "职业预览",
+      "buttons": [
+        {
+          "text": "查看其他工作机会",
+          "disabled": false
+        },
+        {
+          "text": "确认辞职",
+          "disabled": false
+        },
+        {
+          "text": "返回，不修改",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/barista-portrait.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "entrance": "work",
+      "previewCashDelta": 0,
+      "previewTimeDelta": 0
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "学习与技能",
+      "type": "LEARNING",
+      "buttons": [],
+      "images": [
+        "assets/career/learning.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "entrance": "learn",
+      "previewCashDelta": 0,
+      "previewTimeDelta": 0
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "额外休息4小时",
+      "type": "休息",
+      "buttons": [
+        {
+          "text": "确认休息4h",
+          "disabled": false
+        },
+        {
+          "text": "返回，不休息",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/rest-arrange.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "entrance": "rest",
+      "previewCashDelta": 0,
+      "previewTimeDelta": 0
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "安排本月生活",
+      "type": "生活",
+      "buttons": [
+        {
+          "text": "返回，不安排",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": false,
+      "room": true,
+      "entrance": "life",
+      "previewCashDelta": 0,
+      "previewTimeDelta": 0
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "联系认识的人",
+      "type": "关系网",
+      "buttons": [
+        {
+          "text": "联系 Maya",
+          "disabled": false
+        },
+        {
+          "text": "联系 Daniel",
+          "disabled": false
+        },
+        {
+          "text": "联系 Nora",
+          "disabled": false
+        },
+        {
+          "text": "返回",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": false,
+      "room": true,
+      "entrance": "social",
+      "previewCashDelta": 0,
+      "previewTimeDelta": 0
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": null,
+      "type": null,
+      "buttons": [
+        {
+          "text": "联系 Maya",
+          "disabled": false
+        },
+        {
+          "text": "联系 Daniel",
+          "disabled": false
+        },
+        {
+          "text": "联系 Nora",
+          "disabled": false
+        },
+        {
+          "text": "返回",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": false,
+      "room": false,
+      "entrance": "finance",
+      "previewCashDelta": 0,
+      "previewTimeDelta": 0
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "选择住房",
+      "type": "住房",
+      "buttons": [
+        {
+          "text": "返回",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/housing-select.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "entrance": "housing",
+      "previewCashDelta": 0,
+      "previewTimeDelta": 0
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "出门前完成本月必要事项",
+      "type": "必要安排",
+      "buttons": [
+        {
+          "text": "资金不足，查看补救",
+          "disabled": false
+        },
+        {
+          "text": "查看银行",
+          "disabled": false
+        },
+        {
+          "text": "返回房屋",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": false,
+      "room": true,
+      "entrance": "bills",
+      "previewCashDelta": 0,
+      "previewTimeDelta": 0
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "保险与保障",
+      "type": "保险",
+      "buttons": [
+        {
+          "text": "返回",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/insurance.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "entrance": "insurance",
+      "previewCashDelta": 0,
+      "previewTimeDelta": 0
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "我的宠物",
+      "type": "宠物",
+      "buttons": [
+        {
+          "text": "领养新伙伴",
+          "disabled": false
+        },
+        {
+          "text": "处理本月到期照护",
+          "disabled": false
+        },
+        {
+          "text": "返回房屋",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": false,
+      "room": true,
+      "entrance": "pets",
+      "previewCashDelta": 0,
+      "previewTimeDelta": 0
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": null,
+      "type": null,
+      "buttons": [
+        {
+          "text": "领养新伙伴",
+          "disabled": false
+        },
+        {
+          "text": "处理本月到期照护",
+          "disabled": false
+        },
+        {
+          "text": "返回房屋",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": false,
+      "room": false,
+      "entrance": "leave",
+      "previewCashDelta": 0,
+      "previewTimeDelta": 0
+    }
+  ],
+  "landings": [
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "核对本月收支",
+      "type": "发薪日",
+      "buttons": [
+        {
+          "text": "确认结算本月",
+          "disabled": false
+        },
+        {
+          "text": "查看/支付贷款月供",
+          "disabled": false
+        },
+        {
+          "text": "稍后处理，返回地图",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/payday.webp"
+      ],
+      "pending": true,
+      "room": false,
+      "tile": 1,
+      "tileType": "payday"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "路过一家新项目",
+      "type": "投资机会",
+      "buttons": [
+        {
+          "text": "放弃本次机会",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 2,
+      "tileType": "opportunity"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "安排本月生活",
+      "type": "生活",
+      "buttons": [
+        {
+          "text": "返回，不安排",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 3,
+      "tileType": "life"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "联系认识的人",
+      "type": "关系网",
+      "buttons": [
+        {
+          "text": "联系 Maya",
+          "disabled": false
+        },
+        {
+          "text": "联系 Daniel",
+          "disabled": false
+        },
+        {
+          "text": "联系 Nora",
+          "disabled": false
+        },
+        {
+          "text": "返回",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 4,
+      "tileType": "community"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "看看当前市场",
+      "type": "市场",
+      "buttons": [
+        {
+          "text": "查看证券与资产",
+          "disabled": false
+        },
+        {
+          "text": "查看固定收益产品",
+          "disabled": false
+        },
+        {
+          "text": "继续持有，离开",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 5,
+      "tileType": "market"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "调整工作",
+      "type": "职业预览",
+      "buttons": [
+        {
+          "text": "查看其他工作机会",
+          "disabled": false
+        },
+        {
+          "text": "确认辞职",
+          "disabled": false
+        },
+        {
+          "text": "返回，不修改",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/barista-portrait.webp"
+      ],
+      "pending": true,
+      "room": false,
+      "tile": 6,
+      "tileType": "career"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "核对本月收支",
+      "type": "发薪日",
+      "buttons": [
+        {
+          "text": "确认结算本月",
+          "disabled": false
+        },
+        {
+          "text": "查看/支付贷款月供",
+          "disabled": false
+        },
+        {
+          "text": "稍后处理，返回地图",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/payday.webp"
+      ],
+      "pending": true,
+      "room": false,
+      "tile": 7,
+      "tileType": "payday"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "投资自己",
+      "type": "学习成长",
+      "buttons": [
+        {
+          "text": "查看学历计划",
+          "disabled": false
+        },
+        {
+          "text": "练习兴趣技能",
+          "disabled": false
+        },
+        {
+          "text": "本次不安排",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 8,
+      "tileType": "growth"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "路过一家新项目",
+      "type": "投资机会",
+      "buttons": [
+        {
+          "text": "放弃本次机会",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 9,
+      "tileType": "opportunity"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "安排本月生活",
+      "type": "生活",
+      "buttons": [
+        {
+          "text": "返回，不安排",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 10,
+      "tileType": "life"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "调整工作",
+      "type": "职业预览",
+      "buttons": [
+        {
+          "text": "查看其他工作机会",
+          "disabled": false
+        },
+        {
+          "text": "确认辞职",
+          "disabled": false
+        },
+        {
+          "text": "返回，不修改",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/barista-portrait.webp"
+      ],
+      "pending": true,
+      "room": false,
+      "tile": 11,
+      "tileType": "career"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "路过一家新项目",
+      "type": "投资机会",
+      "buttons": [
+        {
+          "text": "放弃本次机会",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 12,
+      "tileType": "opportunity"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "核对本月收支",
+      "type": "发薪日",
+      "buttons": [
+        {
+          "text": "确认结算本月",
+          "disabled": false
+        },
+        {
+          "text": "查看/支付贷款月供",
+          "disabled": false
+        },
+        {
+          "text": "稍后处理，返回地图",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/payday.webp"
+      ],
+      "pending": true,
+      "room": false,
+      "tile": 13,
+      "tileType": "payday"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "联系认识的人",
+      "type": "关系网",
+      "buttons": [
+        {
+          "text": "联系 Maya",
+          "disabled": false
+        },
+        {
+          "text": "联系 Daniel",
+          "disabled": false
+        },
+        {
+          "text": "联系 Nora",
+          "disabled": false
+        },
+        {
+          "text": "返回",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 14,
+      "tileType": "community"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "看看当前市场",
+      "type": "市场",
+      "buttons": [
+        {
+          "text": "查看证券与资产",
+          "disabled": false
+        },
+        {
+          "text": "查看固定收益产品",
+          "disabled": false
+        },
+        {
+          "text": "继续持有，离开",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 15,
+      "tileType": "market"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "投资自己",
+      "type": "学习成长",
+      "buttons": [
+        {
+          "text": "查看学历计划",
+          "disabled": false
+        },
+        {
+          "text": "练习兴趣技能",
+          "disabled": false
+        },
+        {
+          "text": "本次不安排",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 16,
+      "tileType": "growth"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "路过一家新项目",
+      "type": "投资机会",
+      "buttons": [
+        {
+          "text": "放弃本次机会",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 17,
+      "tileType": "opportunity"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "安排本月生活",
+      "type": "生活",
+      "buttons": [
+        {
+          "text": "返回，不安排",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 18,
+      "tileType": "life"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "核对本月收支",
+      "type": "发薪日",
+      "buttons": [
+        {
+          "text": "确认结算本月",
+          "disabled": false
+        },
+        {
+          "text": "查看/支付贷款月供",
+          "disabled": false
+        },
+        {
+          "text": "稍后处理，返回地图",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/payday.webp"
+      ],
+      "pending": true,
+      "room": false,
+      "tile": 19,
+      "tileType": "payday"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "调整工作",
+      "type": "职业预览",
+      "buttons": [
+        {
+          "text": "查看其他工作机会",
+          "disabled": false
+        },
+        {
+          "text": "确认辞职",
+          "disabled": false
+        },
+        {
+          "text": "返回，不修改",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/barista-portrait.webp"
+      ],
+      "pending": true,
+      "room": false,
+      "tile": 20,
+      "tileType": "career"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "联系认识的人",
+      "type": "关系网",
+      "buttons": [
+        {
+          "text": "联系 Maya",
+          "disabled": false
+        },
+        {
+          "text": "联系 Daniel",
+          "disabled": false
+        },
+        {
+          "text": "联系 Nora",
+          "disabled": false
+        },
+        {
+          "text": "返回",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 21,
+      "tileType": "community"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "路过一家新项目",
+      "type": "投资机会",
+      "buttons": [
+        {
+          "text": "放弃本次机会",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 22,
+      "tileType": "opportunity"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "看看当前市场",
+      "type": "市场",
+      "buttons": [
+        {
+          "text": "查看证券与资产",
+          "disabled": false
+        },
+        {
+          "text": "查看固定收益产品",
+          "disabled": false
+        },
+        {
+          "text": "继续持有，离开",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 23,
+      "tileType": "market"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "投资自己",
+      "type": "学习成长",
+      "buttons": [
+        {
+          "text": "查看学历计划",
+          "disabled": false
+        },
+        {
+          "text": "练习兴趣技能",
+          "disabled": false
+        },
+        {
+          "text": "本次不安排",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": true,
+      "room": false,
+      "tile": 24,
+      "tileType": "growth"
+    }
+  ],
+  "careerCards": [
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "同事临时请假",
+      "type": "咖啡师职业机会",
+      "buttons": [
+        {
+          "text": "暂不决定",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/barista-staff.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "barista",
+      "id": "staff"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "周末爆单",
+      "type": "咖啡师职业机会",
+      "buttons": [
+        {
+          "text": "暂不决定",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/barista-busy.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "barista",
+      "id": "busy"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "经理削减排班",
+      "type": "咖啡师职业机会",
+      "buttons": [
+        {
+          "text": "暂不决定",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/barista-cut.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "barista",
+      "id": "cut"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "常客的大额小费",
+      "type": "咖啡师职业机会",
+      "buttons": [
+        {
+          "text": "暂不决定",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/barista-tip.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "barista",
+      "id": "tip"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "同事突然离职",
+      "type": "咖啡师职业机会",
+      "buttons": [
+        {
+          "text": "暂不决定",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/barista-departure.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "barista",
+      "id": "departure"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "新人培训",
+      "type": "SHIFT LEAD · 职业机会",
+      "buttons": [
+        {
+          "text": "稍后决定",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/shift-training.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "shiftLead",
+      "id": "training"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "排班冲突",
+      "type": "SHIFT LEAD · 职业机会",
+      "buttons": [
+        {
+          "text": "稍后决定",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/shift-schedule.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "shiftLead",
+      "id": "schedule"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "排班冲突 · 后续结果",
+      "type": "FOLLOW-UP RESULT · 后续结果",
+      "buttons": [
+        {
+          "text": "确认结果",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/shift-schedule-success.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "shiftLead",
+      "id": "schedule",
+      "followSuccess": true
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "排班冲突 · 后续结果",
+      "type": "FOLLOW-UP RESULT · 后续结果",
+      "buttons": [
+        {
+          "text": "确认结果",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/shift-schedule-failure.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "shiftLead",
+      "id": "schedule",
+      "followSuccess": false
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "顾客严重投诉",
+      "type": "SHIFT LEAD · 职业机会",
+      "buttons": [
+        {
+          "text": "稍后决定",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/shift-complaint.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "shiftLead",
+      "id": "complaint"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "顾客严重投诉 · 后续结果",
+      "type": "FOLLOW-UP RESULT · 后续结果",
+      "buttons": [
+        {
+          "text": "确认结果",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/shift-complaint-success.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "shiftLead",
+      "id": "complaint",
+      "followSuccess": true
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "顾客严重投诉 · 后续结果",
+      "type": "FOLLOW-UP RESULT · 后续结果",
+      "buttons": [
+        {
+          "text": "确认结果",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/shift-complaint-failure.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "shiftLead",
+      "id": "complaint",
+      "followSuccess": false
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "临时代理经理",
+      "type": "SHIFT LEAD · 职业机会",
+      "buttons": [
+        {
+          "text": "稍后决定",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/shift-acting.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "shiftLead",
+      "id": "acting"
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 92,
+      "title": "临时代理经理 · 后续结果",
+      "type": "FOLLOW-UP RESULT · 后续结果",
+      "buttons": [
+        {
+          "text": "确认结果",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/shift-acting-success.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "shiftLead",
+      "id": "acting",
+      "followSuccess": true
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 92,
+      "title": "临时代理经理 · 后续结果",
+      "type": "FOLLOW-UP RESULT · 后续结果",
+      "buttons": [
+        {
+          "text": "确认结果",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/shift-acting-failure.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "shiftLead",
+      "id": "acting",
+      "followSuccess": false
+    },
+    {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "团队表现优秀 / 门店受到表扬",
+      "type": "SHIFT LEAD · 职业结果",
+      "buttons": [
+        {
+          "text": "开心接受",
+          "disabled": false
+        }
+      ],
+      "images": [
+        "assets/career/shift-praise.webp"
+      ],
+      "pending": false,
+      "room": true,
+      "role": "shiftLead",
+      "id": "praise"
+    }
+  ],
+  "probes": {
+    "zeroHours": {
+      "month": 0,
+      "cash": 7438,
+      "free": 0,
+      "title": "先在房屋调整状态",
+      "type": "暂时不能出门",
+      "buttons": [
+        {
+          "text": "返回房屋",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": false,
+      "room": true
+    },
+    "socialTime": {
+      "before": {
+        "month": 0,
+        "cash": 7438,
+        "free": 100,
+        "title": "Maya · 较好朋友",
+        "type": "关系互动",
+        "buttons": [
+          {
+            "text": "确认一起吃饭 · $45",
+            "disabled": false
+          },
+          {
+            "text": "确认聊天 · $15",
+            "disabled": false
+          },
+          {
+            "text": "确认散步交流 · $0",
+            "disabled": false
+          },
+          {
+            "text": "返回",
+            "disabled": false
+          }
+        ],
+        "images": [],
+        "pending": false,
+        "room": true
+      },
+      "after": {
+        "month": 0,
+        "cash": 7423,
+        "free": 100,
+        "title": "共同爱好",
+        "type": "关系结果",
+        "buttons": [
+          {
+            "text": "继续",
+            "disabled": false
+          }
+        ],
+        "images": [],
+        "pending": false,
+        "room": true
+      },
+      "relation": 52
+    },
+    "studyTime": {
+      "free": 100,
+      "necessary": []
+    },
+    "recoveryHobby": {
+      "before": {
+        "cash": 6938,
+        "free": 0,
+        "recovery": true,
+        "xp": 0
+      },
+      "after": {
+        "cash": 6848,
+        "free": 0,
+        "recovery": true,
+        "xp": 35
+      }
+    },
+    "petPremiumUI": {
+      "actualTotal": 80,
+      "displayDue": "$0",
+      "formDue": 0,
+      "necessary": [
+        {
+          "kind": "premiums",
+          "name": "有效保单保费",
+          "due": 80,
+          "action": null
+        }
+      ],
+      "naturalPetTotal": 80
+    },
+    "manager": {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "调整工作",
+      "type": "职业预览",
+      "buttons": [
+        {
+          "text": "查看其他工作机会",
+          "disabled": false
+        },
+        {
+          "text": "确认辞职",
+          "disabled": false
+        },
+        {
+          "text": "返回，不修改",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": false,
+      "room": true
+    },
+    "secondStage": {
+      "month": 0,
+      "cash": 7438,
+      "free": 100,
+      "title": "第一阶段：积累资产",
+      "type": "人生阶段",
+      "buttons": [
+        {
+          "text": "确认进入财务自由",
+          "disabled": false
+        },
+        {
+          "text": "返回继续积累",
+          "disabled": false
+        }
+      ],
+      "images": [],
+      "pending": false,
+      "room": true
+    },
+    "earlyRepayment": {
+      "before": {
+        "cash": 10000,
+        "balance": 2000,
+        "payment": 177.6975773566832,
+        "months": 12
+      },
+      "after": {
+        "cash": 9000,
+        "balance": 1000,
+        "payment": 177.6975773566832,
+        "months": 12
+      }
+    },
+    "newLedgerKinds": [
+      [
+        "其他现金变化（含旧模块未分类项）",
+        -2030
+      ]
+    ]
+  },
+  "opening": {
+    "cash": 10000,
+    "health": 82,
+    "energy": 79,
+    "people": [
+      {
+        "id": "school-0",
+        "name": "Maya",
+        "age": 20,
+        "job": "同学",
+        "status": "同学",
+        "origin": "school",
+        "city": "orlando",
+        "relation": 50,
+        "life": "一起读书的同学",
+        "wealth": 5000,
+        "careerLevel": 1,
+        "joinedDream": false,
+        "partnerRole": null,
+        "businessPartner": false
+      },
+      {
+        "id": "school-1",
+        "name": "Daniel",
+        "age": 20,
+        "job": "同学",
+        "status": "同学",
+        "origin": "school",
+        "city": "orlando",
+        "relation": 50,
+        "life": "一起读书的同学",
+        "wealth": 5000,
+        "careerLevel": 1,
+        "joinedDream": false,
+        "partnerRole": null,
+        "businessPartner": false
+      },
+      {
+        "id": "school-2",
+        "name": "Nora",
+        "age": 40,
+        "job": "老师",
+        "status": "老师",
+        "origin": "school",
+        "city": "orlando",
+        "relation": 50,
+        "life": "曾教过你的老师",
+        "wealth": 5000,
+        "careerLevel": 1,
+        "joinedDream": false,
+        "partnerRole": null,
+        "businessPartner": false
+      }
+    ]
+  },
+  "catalog": {
+    "barista": [
+      {
+        "id": "staff",
+        "name": "同事临时请假",
+        "options": 2
+      },
+      {
+        "id": "busy",
+        "name": "周末爆单",
+        "options": 2
+      },
+      {
+        "id": "cut",
+        "name": "经理削减排班",
+        "options": 2
+      },
+      {
+        "id": "tip",
+        "name": "常客的大额小费",
+        "options": 1
+      },
+      {
+        "id": "departure",
+        "name": "同事突然离职",
+        "options": 2
+      }
+    ],
+    "shift": [
+      {
+        "id": "training",
+        "name": "新人培训",
+        "options": 2,
+        "followChoices": []
+      },
+      {
+        "id": "schedule",
+        "name": "排班冲突",
+        "options": 4,
+        "followChoices": [
+          "schedule"
+        ]
+      },
+      {
+        "id": "complaint",
+        "name": "顾客严重投诉",
+        "options": 3,
+        "followChoices": [
+          "complaint"
+        ]
+      },
+      {
+        "id": "acting",
+        "name": "临时代理经理",
+        "options": 2,
+        "followChoices": [
+          "acting"
+        ]
+      },
+      {
+        "id": "praise",
+        "name": "团队表现优秀 / 门店受到表扬",
+        "options": 0,
+        "followChoices": []
+      }
+    ],
+    "opportunities": [
+      {
+        "id": "freelance",
+        "name": "周末资料整理",
+        "cost": 60
+      },
+      {
+        "id": "photo",
+        "name": "摄影接单设备",
+        "cost": 900
+      },
+      {
+        "id": "editing",
+        "name": "线上剪辑服务",
+        "cost": 1400
+      },
+      {
+        "id": "stall",
+        "name": "周末社区摊位",
+        "cost": 150
+      },
+      {
+        "id": "rental",
+        "name": "二手器材出租",
+        "cost": 800
+      },
+      {
+        "id": "volunteer",
+        "name": "社区公益活动",
+        "cost": 25
+      },
+      {
+        "id": "tutor",
+        "name": "周末辅导项目",
+        "cost": 80
+      },
+      {
+        "id": "repair",
+        "name": "社区维修摊位",
+        "cost": 200
+      },
+      {
+        "id": "craft",
+        "name": "手工小店",
+        "cost": 450
+      },
+      {
+        "id": "market-research",
+        "name": "付费用户访谈",
+        "cost": 20
+      },
+      {
+        "id": "garden",
+        "name": "社区园艺服务",
+        "cost": 180
+      },
+      {
+        "id": "resale",
+        "name": "二手商品整理",
+        "cost": 300
+      },
+      {
+        "id": "design",
+        "name": "小店海报接单",
+        "cost": 75
+      },
+      {
+        "id": "sound",
+        "name": "活动音响出租",
+        "cost": 1600
+      },
+      {
+        "id": "microcompany",
+        "name": "收购小型订阅公司",
+        "cost": 2000
+      },
+      {
+        "id": "laundryshare",
+        "name": "洗衣店少数股权",
+        "cost": 6500
+      },
+      {
+        "id": "parking",
+        "name": "停车位出租权",
+        "cost": 3200
+      },
+      {
+        "id": "website",
+        "name": "小型网站收购",
+        "cost": 4200
+      }
+    ],
+    "lifestyle": [
+      "运动 / 户外",
+      "宅家休息",
+      "朋友聚餐",
+      "兴趣爱好",
+      "周末短途旅行",
+      "演唱会 / 主题乐园",
+      "升级手机",
+      "品质餐厅",
+      "本月简单生活"
+    ],
+    "careers": [
+      "行政助理",
+      "餐厅主管",
+      "汽车技师",
+      "平面设计师",
+      "影视剪辑助理",
+      "影视剪辑师",
+      "小学教师",
+      "注册护士 RN",
+      "机械工程师",
+      "软件开发者",
+      "高级软件开发者",
+      "项目经理",
+      "仓库理货员",
+      "零售店员",
+      "酒店前台",
+      "客户服务专员",
+      "餐厅服务员",
+      "厨房助理",
+      "主厨",
+      "助理剪辑师",
+      "资深影视剪辑师",
+      "高级教师",
+      "护理主管",
+      "数据分析师",
+      "高级机械工程师",
+      "咖啡师 Barista",
+      "值班主管 Shift Lead"
+    ],
+    "education": {
+      "highschool": {
+        "name": "高中 / High School",
+        "next": "associate",
+        "months": 24,
+        "cost": 7000,
+        "mult": 1
+      },
+      "associate": {
+        "name": "副学士 / Associate",
+        "next": "bachelor",
+        "months": 24,
+        "cost": 12000,
+        "mult": 1.175
+      },
+      "bachelor": {
+        "name": "学士 / Bachelor",
+        "next": "master",
+        "months": 24,
+        "cost": 24000,
+        "mult": 1.633
+      },
+      "master": {
+        "name": "硕士 / Master",
+        "next": null,
+        "months": 0,
+        "cost": 0,
+        "mult": 1.942
+      },
+      "professional": {
+        "name": "专业学位 / Professional",
+        "next": null,
+        "months": 0,
+        "cost": 0,
+        "mult": 2.374
+      }
+    },
+    "petSpecies": [
+      "dog",
+      "cat",
+      "crocodile",
+      "gecko",
+      "spider",
+      "tortoise",
+      "chameleon"
+    ]
+  },
+  "pageErrors": []
+}

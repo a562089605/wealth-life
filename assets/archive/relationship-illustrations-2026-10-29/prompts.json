@@ -1,0 +1,37 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "assets/career/social-scenes.webp",
+  "status": "Generated backgrounds; not integrated or UI verified",
+  "prompts": [
+    {
+      "id": "coworker-first-meeting",
+      "prompt": "Use case: illustration-story. Create one portrait 2:3 game illustration background, matching reference's warm hand-painted gouache picture-book style, honey wood, forest green, cream paper, leafy plants, daisies, golden sunlight. Reference is style only. Upper 42% depicts the requested scene. Lower central area x12–88%, y45–80% is a large blank cream paper panel physically integrated with scene for dynamic game text. Bottom y84–94% has two blank rounded golden wooden plaques for real buttons. No text, letters, numbers, logos, or watermark. No UI printed in image. Avoid assigning a fixed recognizable face/gender/age to random NPCs: show adult figures from behind, side silhouettes or hands, faces not detailed. Scene: FIRST MEETING A COWORKER during a shift in a cozy cafe. Two adult coworkers in forest-green aprons, one welcoming the other at a wooden service counter, espresso machine, cups, work schedule on wall with no writing. No executive office, no cash reward.",
+      "sourcePath": "/Users/yumifang/.codex/generated_images/01a1889b-491f-7b23-b18d-732214917151/exec-d35c5536-e130-4fe5-b4be-d4d72d219af4.png"
+    },
+    {
+      "id": "manager-welcome",
+      "prompt": "Use case: illustration-story. Create one portrait 2:3 game illustration background, matching reference's warm hand-painted gouache picture-book style, honey wood, forest green, cream paper, leafy plants, daisies, golden sunlight. Reference is style only. Upper 42% depicts the requested scene. Lower central area x12–88%, y45–80% is a large blank cream paper panel physically integrated with scene for dynamic game text. Bottom y84–94% has two blank rounded golden wooden plaques for real buttons. No text, letters, numbers, logos, or watermark. No UI printed in image. Avoid assigning a fixed recognizable face/gender/age to random NPCs: show adult figures from behind, side silhouettes or hands, faces not detailed. Scene: MANAGER WELCOMES NEW EMPLOYEE at a cozy cafe workplace. An adult manager with a clipboard at a staff doorway giving a friendly welcoming gesture to a new apron-wearing worker, warm cafe interior. No handshake closeup, no fixed face portraits, no formal corporate suits.",
+      "sourcePath": "/Users/yumifang/.codex/generated_images/01a1889b-491f-7b23-b18d-732214917151/exec-ee47030f-39d5-4319-8334-f3cf539f715a.png"
+    },
+    {
+      "id": "friends-home-visit",
+      "prompt": "Use case: illustration-story. Create one portrait 2:3 game illustration background, matching reference's warm hand-painted gouache picture-book style, honey wood, forest green, cream paper, leafy plants, daisies, golden sunlight. Reference is style only. Upper 42% depicts the requested scene. Lower central area x12–88%, y45–80% is a large blank cream paper panel physically integrated with scene for dynamic game text. Bottom y84–94% has two blank rounded golden wooden plaques for real buttons. No text, letters, numbers, logos, or watermark. No UI printed in image. Avoid assigning a fixed recognizable face/gender/age to random NPCs: show adult figures from behind, side silhouettes or hands, faces not detailed. Scene: HOSTING FRIENDS AT HOME. Cozy green sofa, wooden coffee table with tea, cake, fruit, small plates, warm apartment window and plants. Several adult friends seated from behind, relaxed conversation; show a gathering without implying all invitations require this fixed number. No restaurant, no luxury mansion.",
+      "sourcePath": "/Users/yumifang/.codex/generated_images/01a1889b-491f-7b23-b18d-732214917151/exec-91b7dbf4-5b57-4a7b-9aae-bb9b9102508a.png"
+    },
+    {
+      "id": "friend-life-help",
+      "prompt": "Use case: illustration-story. Create one portrait 2:3 game illustration background, matching reference's warm hand-painted gouache picture-book style, honey wood, forest green, cream paper, leafy plants, daisies, golden sunlight. Reference is style only. Upper 42% depicts the requested scene. Lower central area x12–88%, y45–80% is a large blank cream paper panel physically integrated with scene for dynamic game text. Bottom y84–94% has two blank rounded golden wooden plaques for real buttons. No text, letters, numbers, logos, or watermark. No UI printed in image. Avoid assigning a fixed recognizable face/gender/age to random NPCs: show adult figures from behind, side silhouettes or hands, faces not detailed. Scene: FRIEND HELPS WITH DAILY CHORES in cozy apartment. Two adult friends tidying and carrying grocery bags beside wooden shelves and green sofa, a small clock and folded clean cloths, supportive calm mood. No money, gifts of cash, coins or romance.",
+      "sourcePath": "/Users/yumifang/.codex/generated_images/01a1889b-491f-7b23-b18d-732214917151/exec-50fbb197-e5cb-4ea3-8a67-a8f67b4071a3.png"
+    },
+    {
+      "id": "friend-shared-interest-help",
+      "prompt": "Use case: illustration-story. Create one portrait 2:3 game illustration background, matching reference's warm hand-painted gouache picture-book style, honey wood, forest green, cream paper, leafy plants, daisies, golden sunlight. Reference is style only. Upper 42% depicts the requested scene. Lower central area x12–88%, y45–80% is a large blank cream paper panel physically integrated with scene for dynamic game text. Bottom y84–94% has two blank rounded golden wooden plaques for real buttons. No text, letters, numbers, logos, or watermark. No UI printed in image. Avoid assigning a fixed recognizable face/gender/age to random NPCs: show adult figures from behind, side silhouettes or hands, faces not detailed. Scene: FRIEND SUPPORTS A SHARED HOBBY. Two adults seen from back/side at a sunlit wooden creative worktable, sketchbook, paints, small plant, one gently guiding the other. Creative practice and learning together, no graduation or new skill certificate.",
+      "sourcePath": "/Users/yumifang/.codex/generated_images/01a1889b-491f-7b23-b18d-732214917151/exec-01dae9dc-8ff2-4980-9efd-2b74b5d9b8c1.png"
+    },
+    {
+      "id": "classmate-study-help",
+      "prompt": "Use case: illustration-story. Create one portrait 2:3 game illustration background, matching reference's warm hand-painted gouache picture-book style, honey wood, forest green, cream paper, leafy plants, daisies, golden sunlight. Reference is style only. Upper 42% depicts the requested scene. Lower central area x12–88%, y45–80% is a large blank cream paper panel physically integrated with scene for dynamic game text. Bottom y84–94% has two blank rounded golden wooden plaques for real buttons. No text, letters, numbers, logos, or watermark. No UI printed in image. Avoid assigning a fixed recognizable face/gender/age to random NPCs: show adult figures from behind, side silhouettes or hands, faces not detailed. Scene: CLASSMATE STUDY HELP. Two adult classmates from side/back studying together in a warm library corner, open textbooks with indistinct blank pages, notebook, pencil, calendar with NO numbers. Helpful classmate points to a study page, desk lamp, plants. No diploma, no money, no children.",
+      "sourcePath": "/Users/yumifang/.codex/generated_images/01a1889b-491f-7b23-b18d-732214917151/exec-9484c024-4f55-4ad5-a5ca-d30744ea6fb9.png"
+    }
+  ]
+}

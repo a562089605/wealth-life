@@ -1,0 +1,40 @@
+#game>.event.event-active.life-hub-painted{max-width:460px;padding:17px!important;background:radial-gradient(ellipse at top left,#e5dfb96b,transparent 60%),#faf0d8!important;border:1px solid #c4ac7d!important;border-radius:23px 19px 25px 18px!important;box-shadow:0 16px 55px #342e2055!important}
+.life-hub-painted:before{content:'';position:absolute;inset:6px;border:1px solid #d8c69980;border-radius:18px 15px 20px 14px;pointer-events:none}
+.life-hub-painted>.row,.life-hub-painted #eventDesc{display:none}
+.life-hub-painted #eventTitle{margin:0 0 9px;padding:0!important;font-family:'Songti SC','STSong',serif;font-size:28px;letter-spacing:.08em;text-align:center;color:#3e5936}
+.life-hub-toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11px;color:#89754d;margin-bottom:10px}.life-hub-toolbar strong{font-size:12px;font-family:Georgia,'Songti SC',serif;color:#607047;font-weight:600}
+/* The original five buttons are positioned on the painted labels. */
+.life-hub-scene{position:relative;margin:0;overflow:hidden;border-radius:16px 20px 12px 17px;isolation:isolate}
+.life-hub-scene>img{display:block;width:100%;height:auto;aspect-ratio:2/3}
+.life-hub-options{position:absolute;inset:0;pointer-events:none}
+#game button.life-hub-option{position:absolute;display:flex;align-items:center;justify-content:center;gap:3px;min-width:0;min-height:44px!important;height:10%;width:37%;margin:0!important;padding:2px 3px!important;background:transparent!important;border:0!important;border-radius:6px;box-shadow:none!important;color:#455d36;text-align:center;white-space:normal;pointer-events:auto}
+#game button.life-hub-option[data-life-spot="0"]{left:8%;top:27%}
+#game button.life-hub-option[data-life-spot="1"]{left:55%;top:27%}
+#game button.life-hub-option[data-life-spot="2"]{left:8%;top:52%}
+#game button.life-hub-option[data-life-spot="3"]{left:55%;top:52%}
+#game button.life-hub-option[data-life-spot="4"]{left:15%;top:73%;width:70%}
+.life-hub-copy{min-width:0}.life-hub-copy strong{display:block;font-family:'Songti SC','STSong',serif;font-size:clamp(13px,3.9vw,18px);color:#455d36;line-height:1.5;font-weight:700}.life-hub-copy small{display:block;font-size:clamp(8px,2.2vw,10px);line-height:1.6;color:#87734e;margin-top:1px}
+.life-hub-arrow{font-size:18px;color:#947d47;flex:none}
+#game button.life-hub-option:focus-visible{outline:3px solid #526e3c;outline-offset:-2px}
+#game button.life-hub-option:hover{background:#fff3ce33!important}
+.life-hub-month{position:absolute;left:11%;top:86%;width:78%;height:10%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0;background:transparent;border:0;box-shadow:none;pointer-events:none}
+.life-hub-month strong{display:block;font-family:'Songti SC',serif;color:#52643b;font-size:clamp(12px,3.6vw,17px);line-height:1.6}.life-hub-month small{display:block;font-size:clamp(8px,2.1vw,10px);color:#87734e;line-height:1.7}
+.life-hub-hint{text-align:center;font-size:10px;color:#9a8660;line-height:1.6;margin:11px 0 0}
+.life-hub-painted #actions{gap:5px;background:transparent!important;max-height:none!important;padding-top:10px!important}
+.event.event-active.life-hub-painted #actions [data-life-hub-action="review"]{min-height:43px!important;background:linear-gradient(110deg,#e8bf61,#f3d98e)!important;border:1px solid #b49758;border-radius:14px 18px 13px 16px;color:#4b6139!important;font-family:'Songti SC',serif;font-size:15px}
+.event.event-active.life-hub-painted #actions [data-life-hub-action="back"]{min-height:28px!important;padding:3px;background:transparent!important;color:#8d7c56!important;border:0;box-shadow:none;font-size:11px}
+@media(max-width:350px){.life-hub-copy small{font-size:8px}.life-hub-arrow{display:none}}
+#game button.life-hub-option[data-life-spot="0"]{left:7%;top:28.5%;width:40%;height:7%}
+#game button.life-hub-option[data-life-spot="1"]{left:58%;top:26.5%;width:34%;height:7%}
+#game button.life-hub-option[data-life-spot="2"]{left:8%;top:50%;width:37%;height:8%}
+#game button.life-hub-option[data-life-spot="3"]{left:53%;top:51%;width:40%;height:8%}
+.life-hub-month{top:83%;height:8%}
+@media(min-width:600px){.life-hub-scene{max-width:min(100%,calc((100dvh - 250px)*2/3));margin-inline:auto}.life-hub-copy strong{font-size:14px}.life-hub-copy small{font-size:8px}.life-hub-month strong{font-size:13px}.life-hub-month small{font-size:8px}}
+/* Keep labels quiet and readable; descriptions remain available to assistive technology. */
+.life-hub-option small{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#game button.life-hub-option[data-life-spot="0"]{top:26%;height:10%}
+#game button.life-hub-option[data-life-spot="1"]{top:24%;height:10%}
+#game button.life-hub-option[data-life-spot="2"]{top:49%;height:10%}
+#game button.life-hub-option[data-life-spot="3"]{top:49%;height:10%}
+#game button.life-hub-option[data-life-spot="4"]{top:70.5%;height:10%}
+.life-hub-option[data-life-spot="3"] small{position:static;width:auto;height:auto;clip-path:none;white-space:normal}

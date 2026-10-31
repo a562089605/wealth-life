@@ -1,0 +1,146 @@
+{
+  "cases": [
+    {
+      "species": "dog",
+      "paid": 400,
+      "count": 1,
+      "layouts": [
+        [
+          320,
+          568
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          1280,
+          900
+        ]
+      ],
+      "persisted": true
+    },
+    {
+      "species": "cat",
+      "paid": 430,
+      "count": 2,
+      "layouts": [
+        [
+          320,
+          568
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          1280,
+          900
+        ]
+      ],
+      "persisted": true
+    },
+    {
+      "species": "crocodile",
+      "paid": 2380,
+      "count": 3,
+      "layouts": [
+        [
+          320,
+          568
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          1280,
+          900
+        ]
+      ],
+      "persisted": true
+    },
+    {
+      "species": "gecko",
+      "paid": 300,
+      "count": 4,
+      "layouts": [
+        [
+          320,
+          568
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          1280,
+          900
+        ]
+      ],
+      "persisted": true
+    },
+    {
+      "species": "spider",
+      "paid": 175,
+      "count": 5,
+      "layouts": [
+        [
+          320,
+          568
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          1280,
+          900
+        ]
+      ],
+      "persisted": true
+    },
+    {
+      "species": "tortoise",
+      "paid": 465,
+      "count": 6,
+      "layouts": [
+        [
+          320,
+          568
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          1280,
+          900
+        ]
+      ],
+      "persisted": true
+    },
+    {
+      "species": "chameleon",
+      "paid": 590,
+      "count": 7,
+      "layouts": [
+        [
+          320,
+          568
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          1280,
+          900
+        ]
+      ],
+      "persisted": true
+    }
+  ],
+  "pageErrors": [],
+  "realDevice": false
+}

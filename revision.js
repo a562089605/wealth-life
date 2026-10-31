@@ -1,4 +1,7 @@
 // V27.8 candidate: saved choices, conditional events and explicit financial contracts.
+// Legacy titles remain recognizable for saved career progression, not new recruitment.
+const LEGACY_CAREERS={'助理剪辑师':{name:'助理剪辑师',edu:'associate',minExp:0,salary:40000,domain:'film',skill:'电影创作'}};
+function careerDefinition(name){return CAREERS.find(c=>c.name===name)||LEGACY_CAREERS[name]}
 const ROLE_TRAITS={education:{name:'善于沟通',socialBonus:2,opportunity:.08,jobBonus:.06},film:{name:'视觉创作',skill:'电影创作',opportunity:.07,jobBonus:.04},design:{name:'设计思维',skill:'摄影',opportunity:.06,jobBonus:.04},nursing:{name:'细心照护',socialBonus:1,opportunity:.04,jobBonus:.04},engineering:{name:'分析能力',skill:'园艺',opportunity:.05,jobBonus:.04},computing:{name:'逻辑思维',skill:'电影创作',opportunity:.05,jobBonus:.04},automotive:{name:'动手能力',skill:'园艺',opportunity:.06,jobBonus:.04},hospitality:{name:'服务意识',socialBonus:1,skill:'烹饪',opportunity:.06,jobBonus:.04},general:{name:'适应能力',opportunity:.03,jobBonus:.03}};
 function roleTrait(){return ROLE_TRAITS[state.characterDomain||state.major]||ROLE_TRAITS.general}
 function ensureCharacter(){state.characterDomain??=state.major||'general';state.characterTrait??=roleTrait().name;state.progressionVersion??=277;}
@@ -14,14 +17,15 @@ CAREERS.push(
  {name:'餐厅服务员',edu:'highschool',minExp:0,salary:33000,domain:'hospitality'},
  {name:'厨房助理',edu:'highschool',minExp:0,salary:30000,domain:'hospitality'},
  {name:'主厨',edu:'highschool',minExp:3,salary:56000,domain:'hospitality',skill:'烹饪'},
- {name:'助理剪辑师',edu:'associate',minExp:0,salary:40000,domain:'film',skill:'电影创作'},
  {name:'资深影视剪辑师',edu:'bachelor',minExp:5,salary:78000,domain:'film',skill:'电影创作'},
  {name:'高级教师',edu:'bachelor',minExp:5,salary:59000,domain:'education'},
  {name:'护理主管',edu:'bachelor',minExp:5,salary:92000,domain:'nursing'},
  {name:'数据分析师',edu:'bachelor',minExp:0,salary:64000,domain:'computing'},
- {name:'高级机械工程师',edu:'bachelor',minExp:5,salary:98000,domain:'engineering'}
+ {name:'高级机械工程师',edu:'bachelor',minExp:5,salary:98000,domain:'engineering'},
+ {name:'研究员',edu:'doctorate',minExp:0,salary:90000,domain:'research',skill:'语言学习'},
+ {name:'高级研究员',edu:'doctorate',minExp:5,salary:120000,domain:'research',skill:'语言学习'}
 );
-function applyCareerProgression(){if(!state.job||state.retired||state.unemployedMonths>0)return;const months=state.domainExperience[inferDomain(state.job)]||0,c=CAREERS.find(c=>c.name===state.job),skill=c?careerSkill(c):null;const next=months>=60&&hobbyLevel(skill)>=4?2:months>=24&&hobbyLevel(skill)>=2?1:0;state.careerRanks??={};const rank=state.careerRanks[state.job]||0;if(next<=rank||state.month-(state.lastPromotionMonth??-12)<12)return;state.careerRanks[state.job]=next;state.salary=roundCash(state.salary*1.05);state.annualSalary=roundCash(state.salary*12);state.lastPromotionMonth=state.month;state.pendingCareerNotice={job:state.job,rank:next,salary:state.salary};state.timeline.push(state.job+' 晋升等级 '+next+'，经验与技能加薪5%');}
+function applyCareerProgression(){if(!state.job||state.retired||state.unemployedMonths>0)return;const months=state.domainExperience[inferDomain(state.job)]||0,c=careerDefinition(state.job),skill=c?careerSkill(c):null;const next=months>=60&&hobbyLevel(skill)>=4?2:months>=24&&hobbyLevel(skill)>=2?1:0;state.careerRanks??={};const rank=state.careerRanks[state.job]||0;if(next<=rank||state.month-(state.lastPromotionMonth??-12)<12)return;state.careerRanks[state.job]=next;state.salary=roundCash(state.salary*1.05);state.annualSalary=roundCash(state.salary*12);state.lastPromotionMonth=state.month;state.pendingCareerNotice={job:state.job,rank:next,salary:state.salary};state.timeline.push(state.job+' 晋升等级 '+next+'，经验与技能加薪5%');}
 function currentBankAPR(){const ec=ECONOMIES[state.economy||0],shock=state.worldShock?.monthsLeft>0?WORLD_SHOCKS[state.worldShock.index]:null;return Math.min(.22,Math.max(.035,ec.rate+.015+Math.max(-.01,((state.annualInflation??.025)-.025)*.5)+(shock?.rate||0)))}
 function latePaymentCharge(row,loan){return loan.latePolicy==='fee5cap35'?roundCash(Math.min(row.due*.05,loan.lateFeeCap??35)):roundCash(row.due*.03/12)}
 function bondYield(months){const base=ECONOMIES[state.economy||0].rate,years=Math.min(5,Math.max(1,months/12)),premium=(years-1)*(state.economy===3?-.001:.002);return Math.max(.005,base+premium)}
@@ -59,9 +63,26 @@ const SOCIAL_SCENES=[
  {title:'一起筹划周末',desc:'你们讨论下一次见面的安排。',gain:6,happiness:4},
  {title:'老照片与回忆',desc:'一张旧照片让你们聊起以前的经历。',gain:10,happiness:4}
 ];
-function socialRecord(){return state.socialMonth?.month===state.month?state.socialMonth:null}
-openSocialPerson=function(i){const p=state.people[i];if(!p)return;const done=socialRecord();showEvent('关系互动',p.name+' · '+relationStage(p),'选择相处方式。',[['身份',p.status||p.job],['亲密度',Math.round(p.relation)+'/100']],[['确认一起吃饭 · $45',()=>doSocial(p,45,8,'socialMeal'),true,!!done||state.cash<45],['确认聊天 · $15',()=>doSocial(p,15,5,'socialCoffee'),false,!!done||state.cash<15],['确认散步交流 · $0',()=>doSocial(p,0,4,'socialWalk'),false,!!done],['返回',finish,false]])};
-doSocial=function(p,cost,points,kind){if(socialRecord()||!spendConfirmed(kind,cost,{person:p.id||p.name}))return;state.socialSequence=(state.socialSequence||0)+1;const personIndex=Math.max(0,state.people.indexOf(p)),scene=SOCIAL_SCENES[(state.month+personIndex*2+state.socialSequence)%SOCIAL_SCENES.length],success=Math.random()<Math.max(.2,Math.min(.98,.8+attributeModifier()+(roleTrait().socialBonus||0)*.025));const gain=success?scene.gain+(roleTrait().socialBonus||0):2;p.relation=Math.min(100,p.relation+gain);state.social=Math.min(100,state.social+3);state.happiness=Math.max(0,Math.min(100,state.happiness+(success?scene.happiness:-2)));state.energy=Math.max(0,state.energy-2);state.socialMonth={month:state.month,person:p.id||p.name,scene:scene.title,success,cost,gain};save();showEvent('关系结果',scene.title,scene.desc+(success?' 这次交流让彼此更了解。':' 你有些疲惫，对话很快结束。'),[['关系变化','+'+gain],['亲密度',Math.round(p.relation)+'/100']],[['继续',finish,true]])};
+function socialRecord(p){return SocialRecords.find(state,p)}
+openSocialPerson=function(i){const p=state.people[i];if(!p)return;const done=socialRecord(p);showEvent('关系互动',p.name+' · '+relationStage(p),'选择相处方式。',[['身份',p.status||p.job],['亲密度',Math.round(p.relation)+'/100']],[['确认一起吃饭 · $45',()=>doSocial(p,45,8,'socialMeal'),true,!!done||state.cash<45],['确认聊天 · $0',()=>doSocial(p,0,5,'socialCoffee'),false,!!done],['确认散步交流 · $0',()=>doSocial(p,0,4,'socialWalk'),false,!!done],['返回',finish,false]])};
+doSocial=function(p,cost,points,kind){
+ if(!state?.people?.includes(p)||socialRecord(p))return false;
+ const confirmedCosts={socialMeal:45,socialCoffee:0,socialWalk:0};
+ if(!Object.prototype.hasOwnProperty.call(confirmedCosts,kind))return false;
+ cost=confirmedCosts[kind];
+ if(!spendConfirmed(kind,cost,{person:p.id??p.name}))return false;
+ const prior={relation:p.relation,energy:state.energy,social:state.social,happiness:state.happiness};
+ state.socialSequence=(state.socialSequence||0)+1;
+ const personIndex=state.people.indexOf(p),scene=SOCIAL_SCENES[(state.month+personIndex*2+state.socialSequence)%SOCIAL_SCENES.length],success=Math.random()<Math.max(.2,Math.min(.98,.8+attributeModifier()+(roleTrait().socialBonus||0)*.025));
+ const gain=success?scene.gain+(roleTrait().socialBonus||0):2;
+ p.relation=Math.min(100,p.relation+gain);state.social=Math.min(100,state.social+3);state.happiness=Math.max(0,Math.min(100,state.happiness+(success?scene.happiness:-2)));state.energy=Math.max(0,state.energy-2);
+ const receipt={month:state.month,person:p.id??p.name,kind,scene:scene.title,success,cost,gain,appliedGain:Math.round((p.relation-prior.relation)*100)/100,effects:{energy:state.energy-prior.energy,social:state.social-prior.social,happiness:state.happiness-prior.happiness}};
+ // Persist the time debit together with the outcome, not in a later save.
+ if(typeof socialInteractionHours==='function')receipt.hours=socialInteractionHours(kind);
+ SocialRecords.add(state,p,receipt);save();
+ showEvent('关系结果',scene.title,scene.desc+(success?' 这次交流让彼此更了解。':' 你有些疲惫，对话很快结束。'),[['关系变化','+'+receipt.appliedGain],['亲密度',Math.round(p.relation)+'/100']],[['继续',finish,true]]);
+ return true;
+};
 // Buyer offers settle the chosen asset exactly once, paying off its secured loan first.
 function createBuyerOffer(){state.buyerOffers??={};const saved=state.buyerOffers[state.month];if(saved)return saved;const eligible=state.assets.filter(a=>a.kind==='rental'||V26_INSTRUMENTS.some(i=>i.id===a.instrument&&i.kind==='股票'));if(!eligible.length)return null;const a=eligible[Math.floor(Math.random()*eligible.length)],premium=.04+Math.random()*.08;return state.buyerOffers[state.month]={assetId:a.id,gross:roundCash(a.value*(1+premium)),premium,status:'open',name:a.name}}
 function openBuyerOffer(){const o=createBuyerOffer();if(!o||o.status!=='open')return false;const a=state.assets.find(a=>a.id===o.assetId);if(!a){o.status='expired';return false}save();showEvent('市场买家',o.name+' · 收购报价','一位买家提出高于当前估价的收购价。确认后出售全部这笔资产；放弃则继续持有。',[['当前估价',priceText(a.value)],['买家报价',priceText(o.gross)],['清偿贷款',priceText(a.mortgage||0)],['预计净到账',priceText(o.gross-(a.mortgage||0))]],[['确认出售给买家',()=>{if(o.status!=='open'||state.cash+o.gross-(a.mortgage||0)<0)return;const i=state.assets.findIndex(a=>a.id===o.assetId);if(i<0)return;const net=roundCash(o.gross-(state.assets[i].mortgage||0));state.cash=roundCash(state.cash+net);state.assets.splice(i,1);o.status='sold';state.financeLedger??=[];state.financeLedger.push({kind:'assetSale',month:state.month,amount:net,assetId:o.assetId});save();finish()},true,state.cash+o.gross-(a.mortgage||0)<0],['继续持有',()=>{o.status='declined';save();finish()},false]]);return true}
@@ -77,8 +98,8 @@ const finishBefore277=finish;finish=function(){if(state?.requiredIncident?.statu
 const eventMonthBefore277=monthlyEvent;monthlyEvent=function(){if(state.gameOver)return showGameOver();if(state.requiredIncident)return openRequiredIncident();if(state.resolvedWorldEventMonth===state.month){finish();return}state.resolvedWorldEventMonth=state.month;save();if(state.pendingCareerNotice){const n=state.pendingCareerNotice;state.pendingCareerNotice=null;save();showEvent('职业成长','经验与技能带来晋升',n.job+' 晋升到成长等级 '+n.rank+'。',[['税前月薪',priceText(n.salary)]],[['继续',finish,true]]);return}if(Math.random()<.18&&openBuyerOffer())return;if(Math.random()<.06){requireIncident(state.carOwned?'车辆必要维修':'家用电器损坏',state.carOwned?420:180);return}eventMonthBefore277()};
 function gameOverReason(){if(state.happiness<50)return'幸福低于50';for(const k of ['health','energy','social'])if(state[k]<=0)return V26_STATS[k]+'耗尽';return null}
 function showGameOver(){if(!state.gameOver)return;eventBefore277('人生结束','本局结束',state.gameOver.reason+'。可返回存档列表开始新人生；本局记录保留。',[['已度过',state.month+'个月'],['净资产',priceText(calcMetrics().nw)]],[['保存并返回存档',()=>{save();home()},true]]);$('eventClose').hidden=true}
-const renderBefore277=render;render=function(){if(!state)return;renderBefore277();const c=CAREERS.find(c=>c.name===state.job);$('jobName').textContent=(state.job||'未就业')+' · '+priceText(state.salary||0)+'/月';$('age').textContent=state.age+'岁 · 工作经验 '+((state.workMonths||0)/12).toFixed(1)+'年 · '+roleTrait().name+(c?' · 成长等级 '+(state.careerRanks?.[c.name]||0):'');const reason=gameOverReason();if(reason&&!state.gameOver){state.gameOver={month:state.month,reason};save()}if(state.gameOver)showGameOver()};
-const choicesBefore277=window.v26Choices;window.v26Choices=function(key,api){let html=choicesBefore277(key,api);if(key==='relations'){if(socialRecord())return '<div class="wl-panel"><h3>本月互动已完成</h3><p>'+batchEscape(socialRecord().scene)+'</p><button class="primary" data-r277="socialContinue">继续下一阶段 →</button></div>'+api.option('本月不花钱','保留现金。',()=>completeMonthlyStep(4));}return html};
+const renderBefore277=render;render=function(){if(!state)return;renderBefore277();const c=careerDefinition(state.job);$('jobName').textContent=(state.job||'未就业')+' · '+priceText(state.salary||0)+'/月';$('age').textContent=state.age+'岁 · 工作经验 '+((state.workMonths||0)/12).toFixed(1)+'年 · '+roleTrait().name+(c?' · 成长等级 '+(state.careerRanks?.[c.name]||0):'');const reason=gameOverReason();if(reason&&!state.gameOver){state.gameOver={month:state.month,reason};save()}if(state.gameOver)showGameOver()};
+const choicesBefore277=window.v26Choices;window.v26Choices=function(key,api){let html=choicesBefore277(key,api);if(key==='relations'){if(state.people.length&&state.people.every(p=>socialRecord(p)))return '<div class="wl-panel"><h3>本月联系人互动均已完成</h3><p>'+batchEscape(socialRecord().scene)+'</p><button class="primary" data-r277="socialContinue">继续下一阶段 →</button></div>'+api.option('本月不花钱','保留现金。',()=>completeMonthlyStep(4));}return html};
 document.addEventListener('click',e=>{if(e.target.closest('[data-r277=socialContinue]'))completeMonthlyStep(4)});
 // Upgrade only the number of unresolved offers; keep the three existing choices and outcomes.
 const offersBefore277=monthlyOffers;monthlyOffers=function(){const o=offersBefore277();if(!o.resolved&&o.ids.length<4){const extra=V26_OFFERS.filter(x=>!o.ids.includes(x.id));if(extra.length){o.ids.push(extra[((state.offerSeed||0)+state.month)%extra.length].id);save()}}return o};
@@ -87,9 +108,9 @@ const openBefore277=openGame;openGame=function(){openBefore277();if(state?.requi
 
 // Career reference is a read-only view of the same salary and qualification state.
 function learningCareerCard(){
- const c=CAREERS.find(c=>c.name===state.job),domain=c?.domain||inferDomain(state.job),skill=c?careerSkill(c):null;
+ const c=careerDefinition(state.job),domain=c?.domain||inferDomain(state.job),skill=c?careerSkill(c):null;
  const working=!!state.job&&!state.retired&&!(state.unemployedMonths>0),salary=working?state.salary||0:0;
- const higher=c?CAREERS.filter(x=>x.name!==c.name&&(x.domain||inferDomain(x.name))===domain&&x.salary>c.salary).sort((a,b)=>a.salary-b.salary).slice(0,2):[];
+ const higher=c?CAREERS.filter(x=>careerRecruitmentOpen(x)&&x.name!==c.name&&(x.domain||inferDomain(x.name))===domain&&x.salary>c.salary).sort((a,b)=>a.salary-b.salary).slice(0,2):[];
  const recommended=skill?batchEscape(skill)+' · 当前 Lv.'+hobbyLevel(skill)+'':c?'优先提升岗位所需的专业知识、学历与执照。':'先在工作阶段选择职业，再按岗位要求安排学习。';
  const direction=higher.length?higher.map(x=>batchEscape(x.name)+'：'+batchEscape(careerMissing(x).length?'尚缺 '+careerMissing(x).join('、'):'当前资格符合，可到工作市场申请')).join('<br>'):c?'积累相关经验与技能，争取当前岗位成长；换岗需另行申请。':'选择起点 → 积累经验与相关技能 → 查看符合资格的岗位。';
  return '<section class="wl-panel" id="learningCareerCard" aria-label="职业参考"><h3>我的职业</h3><p><b>'+batchEscape(state.retired?'已退休':state.job||'未就业')+'</b>'+(state.unemployedMonths>0?' · 暂时失业':'')+'<br>当前税前月薪 <b>'+priceText(salary)+'</b> · 折合年薪 '+priceText(salary*12)+'</p><p><b>推荐技能</b><br>'+recommended+'</p><p><b>职业发展方向</b><br>'+direction+'</p><small>完成更高学历后按规定比例提高当前薪资，下月起结算；换岗需要另行申请。</small></section>';
@@ -98,5 +119,9 @@ const careerLearningChoices=window.v26Choices;
 window.v26Choices=function(key,api){const content=careerLearningChoices(key,api);return key==='learning'?learningCareerCard()+content:content};
 
 const educationPreviewBeforeRaise=openEducation;
-openEducation=function(){educationPreviewBeforeRaise();const target=state.study?.target||EDU[state.education]?.next;if(!target)return;const rate=educationRaiseRate(target),note=document.createElement('p');note.className='wl-note';note.textContent='完成'+EDU[target].name+'后，当前税前薪资提高 '+Math.round(rate*100)+'%，从毕业后的下个月起结算。报名或贷款不会立刻加薪；未就业时没有工资可增加。';$('eventData').append(note);$('eventData').style.display='block'};
-
+openEducation=function(){
+ educationPreviewBeforeRaise();const target=state.study?.target||EDU[state.education]?.next;if(!target)return;
+ const note=document.createElement('p');note.className='wl-note';
+ note.textContent='完成'+EDU[target].name+'，继续积累知识与成长。毕业后，在职薪资将随学历提升。';
+ $('eventData').append(note);$('eventData').style.display='block';
+};

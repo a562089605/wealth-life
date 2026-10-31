@@ -1,0 +1,27 @@
+.pet-scene-window{position:relative;overflow:hidden;border-radius:12px;mix-blend-mode:multiply;min-width:0;width:100%}
+.pet-scene-window img{position:absolute;max-width:none!important;height:auto}
+#petAdoptionHero .pet-scene-window{flex:0 0 112px;width:112px;max-height:130px}
+.pet-owned-portrait>.pet-scene-window{width:100%}
+.pet-care-pet>.pet-scene-window{flex:0 0 43%;width:43%}
+.pet-care-square>.pet-scene-window{flex:0 0 38%;width:38%;align-self:center}
+#game>.event.event-active.pet-policy-painted,#game>.event.event-active.pet-payment-painted{max-width:440px;padding:18px!important;background:#faf0d8!important;border:1px solid #c6ad80!important;border-radius:19px 24px 17px 21px!important;color:#50613f}
+.pet-policy-painted #eventTitle,.pet-payment-painted #eventTitle{font-family:'Songti SC',serif;font-size:24px;color:#3e5938;text-align:center}
+.pet-policy-painted #eventDesc,.pet-payment-painted #eventDesc{font-size:12px;color:#7f7657;line-height:1.7}
+.pet-policy-hero{display:flex;gap:14px;align-items:center;margin:0 0 13px;padding:10px;border:1px solid #cabb94;border-radius:14px 18px 13px 16px;background:#fff8e5}
+.pet-policy-hero>.pet-scene-window{width:48%;flex:0 0 48%}.pet-policy-hero>div:last-child{min-width:0;line-height:1.7}
+.pet-policy-hero strong{font-family:'Songti SC',serif;font-size:17px;display:block;overflow-wrap:anywhere}.pet-policy-hero span{font-size:12px;color:#7a8056}
+.pet-policy-scope{padding:12px;background:#e8e9ce;border:1px solid #c6cba9;border-radius:14px 11px 16px 12px;font-size:12px;line-height:1.8;margin-top:12px}
+.pet-policy-scope h3{margin:0 0 6px;font-family:'Songti SC',serif;font-size:17px;text-align:center}.pet-policy-scope p{margin:5px 0}
+.pet-policy-painted .kv,.pet-payment-painted .kv{background:#fff7e3;border-color:#d4bd91;color:#66704c}
+.pet-policy-painted #actions button,.pet-payment-painted #actions button{background:#e9e4c9!important;border-color:#c8b388;color:#5b6844!important;font-size:12px;min-height:35px!important}
+.pet-policy-painted #actions button.primary,.pet-payment-painted #actions button.primary{background:#f0cf78!important;color:#415937!important}
+.pet-payment-portrait{max-width:140px;margin:0 auto 12px}
+.pet-time-painted .pet-funds-art{aspect-ratio:550/280}
+.pet-time-painted .pet-funds-art img{width:171.0909%;left:-42.7273%;top:-121.4286%}
+@media(max-width:350px){#petAdoptionHero .pet-scene-window{width:96px;flex-basis:96px}}
+
+#petAdoptionHero.pet-adoption-wide{flex-direction:column;align-items:stretch;gap:5px}
+#petAdoptionHero.pet-adoption-wide .pet-scene-window{width:100%;flex:auto;max-height:none}
+#petAdoptionHero.pet-adoption-wide figcaption{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#petAdoptionHero.pet-adoption-wide figcaption strong{display:none}
+#petAdoptionHero.pet-adoption-wide figcaption span,#petAdoptionHero.pet-adoption-wide figcaption small{margin:0}

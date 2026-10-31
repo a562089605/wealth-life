@@ -1,0 +1,18 @@
+{
+  "baseline": "195aab858e1c6495d8034582fdbcc44b26c4f830",
+  "implementationHead": "fd392962a573d40cdece346d875cd565b5e20dfb",
+  "priorImageFiles": 557,
+  "priorImagesByteIdentical": true,
+  "deletedImages": [],
+  "modifiedPriorImages": [],
+  "productionImages": 98,
+  "generatedOriginals": 41,
+  "originalPngBytes": 116437893,
+  "candidateFiles": 459,
+  "emptyCandidates": 12,
+  "trackedJavaScriptSyntaxChecked": 65,
+  "cache": "wealth-life-v28.3-life-time-confirmed1",
+  "precacheUrls": 192,
+  "browserEvidence": "qa/browser-evidence/life-time-confirmed.json",
+  "userDeviceSaveAccessed": false
+}

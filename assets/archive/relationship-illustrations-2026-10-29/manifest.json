@@ -1,0 +1,80 @@
+[
+  {
+    "id": "coworker-first-meeting",
+    "label": "同事首次相识",
+    "png": "assets/archive/relationship-illustrations-2026-10-29/coworker-first-meeting.png",
+    "webp": "assets/archive/relationship-illustrations-2026-10-29/coworker-first-meeting.webp",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "2fb4a9d7c9bc3bff0c92db7dd80414f7c35698bb04a52544fe6b15ba986fe766",
+    "bytes": 2720893,
+    "status": "generated-not-integrated"
+  },
+  {
+    "id": "manager-welcome",
+    "label": "入职认识经理",
+    "png": "assets/archive/relationship-illustrations-2026-10-29/manager-welcome.png",
+    "webp": "assets/archive/relationship-illustrations-2026-10-29/manager-welcome.webp",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "2404083aee6af0b401e2c00c4aafdac51290291dd70c80f0f83c7a61e4820c55",
+    "bytes": 2717838,
+    "status": "generated-not-integrated"
+  },
+  {
+    "id": "friends-home-visit",
+    "label": "邀请朋友做客",
+    "png": "assets/archive/relationship-illustrations-2026-10-29/friends-home-visit.png",
+    "webp": "assets/archive/relationship-illustrations-2026-10-29/friends-home-visit.webp",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "5540d6b27bb7e39fa4ae6d75e83f07997838829b9cce5cfc23c5916a29c2e9b5",
+    "bytes": 2705937,
+    "status": "generated-not-integrated"
+  },
+  {
+    "id": "friend-life-help",
+    "label": "朋友生活帮助",
+    "png": "assets/archive/relationship-illustrations-2026-10-29/friend-life-help.png",
+    "webp": "assets/archive/relationship-illustrations-2026-10-29/friend-life-help.webp",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "dfcd4a5e335d423760a9010f5bcc5cacf4d578dc7c131f8ff03179cc034fb489",
+    "bytes": 3059058,
+    "status": "generated-not-integrated"
+  },
+  {
+    "id": "friend-shared-interest-help",
+    "label": "共同兴趣帮助",
+    "png": "assets/archive/relationship-illustrations-2026-10-29/friend-shared-interest-help.png",
+    "webp": "assets/archive/relationship-illustrations-2026-10-29/friend-shared-interest-help.webp",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "05fb86dd2796e1f148b2a367b72d7bd7461f4c12d3e398203634ebd987a16029",
+    "bytes": 2856977,
+    "status": "generated-not-integrated"
+  },
+  {
+    "id": "classmate-study-help",
+    "label": "同学学习帮助",
+    "png": "assets/archive/relationship-illustrations-2026-10-29/classmate-study-help.png",
+    "webp": "assets/archive/relationship-illustrations-2026-10-29/classmate-study-help.webp",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "6abbfce1d9403fa3dacc950011a61c7edb135b48a26b2391f36ea9e0f612115c",
+    "bytes": 2793014,
+    "status": "generated-not-integrated"
+  }
+]

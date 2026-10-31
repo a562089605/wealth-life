@@ -1,0 +1,467 @@
+{
+  "scope": "All generated PNG originals and old drafts retained; excluded from runtime and deployment.",
+  "count": 46,
+  "totalBytes": 129170353,
+  "files": [
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-0a818442-0a10-4cd8-be6a-481887ea8c11.png",
+      "bytes": 3361253,
+      "sha256": "dddc7231d158bea4c602191837f7bc66a2bb7686d7bfe8263d2dac1d73ec6497",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-0ab93068-62e6-42de-a294-823aeb0ae5aa.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-0ab93068-62e6-42de-a294-823aeb0ae5aa.png",
+      "bytes": 3044214,
+      "sha256": "6a452d6b5e8c6bd153921a83c3f421829536a03437519af5d71cf34e4d81914e",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-14766d82-a59d-47b5-8959-7373dfc61847.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-14766d82-a59d-47b5-8959-7373dfc61847.png",
+      "bytes": 3132266,
+      "sha256": "f7f947a0e9f2d4fe2dfa580bc7a35175fea6d71dee7371c372bc51e7f6935248",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-1b46e9a4-925b-4271-a321-a68d82268993.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-1b46e9a4-925b-4271-a321-a68d82268993.png",
+      "bytes": 2737472,
+      "sha256": "8ea030fcaf1a879f64305f4ac1a72ec1887e2dfa0ca3d0e15b01f405ce6e15df",
+      "dimensions": [
+        853,
+        1844
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-27212456-4566-41b6-8963-4cae9332272c.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-27212456-4566-41b6-8963-4cae9332272c.png",
+      "bytes": 3152768,
+      "sha256": "a43ee06928831566ed5285a05aeb36aeaed1de8f1e47254ae58a194a2d1d0c63",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-2acaee71-f7e1-4721-8c8c-6c80a06dd7d8.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-2acaee71-f7e1-4721-8c8c-6c80a06dd7d8.png",
+      "bytes": 3117664,
+      "sha256": "659d794aab0e4b72ad81bc088fcd2ab51ee37c1cc05a8e15222ac7953507da48",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-5538ec71-a5d0-47e0-b081-d7389b502df9.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-5538ec71-a5d0-47e0-b081-d7389b502df9.png",
+      "bytes": 2659025,
+      "sha256": "d9b37beb3356367efaac0f35a3a0386f82e2983513caa0cea5ef8ddff835aa7d",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-57f72215-a439-46d8-b951-fdd3444ec728.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-57f72215-a439-46d8-b951-fdd3444ec728.png",
+      "bytes": 3271220,
+      "sha256": "623708bd2fc4d81bfab3ae1de25d20a132537cd98eb6fb3a73d782f138e02ef3",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-657ad293-f04d-4e67-bfcd-e3f9fb26070e.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-657ad293-f04d-4e67-bfcd-e3f9fb26070e.png",
+      "bytes": 2492917,
+      "sha256": "cf427452b1fa3e256624c67b4003eab79bf9e0af3eab136b35995f7c488b1d5d",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-6d8b25d8-37c3-4c7b-b5c0-d6d62788b648.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-6d8b25d8-37c3-4c7b-b5c0-d6d62788b648.png",
+      "bytes": 3163683,
+      "sha256": "ba692c860345d6e6753599edcdc73ebccabfab95907c289d4a42eb353ed9fd2b",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-743504de-5549-4fc5-a0e5-9a0a7495f263.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-743504de-5549-4fc5-a0e5-9a0a7495f263.png",
+      "bytes": 2864774,
+      "sha256": "d8e518ecfe0c88112a222b5f2a1752b13260656c5137b9832d2ba08f176b506e",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-78bd1805-10bb-45cb-afbf-1fd4dafa4d6a.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-78bd1805-10bb-45cb-afbf-1fd4dafa4d6a.png",
+      "bytes": 3645405,
+      "sha256": "20d840c43c75d36cc3c87f7a3cb0650a19e1b9d64cf635c330fdb0b1140be2fe",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-9754ba91-16a9-4587-8e44-925446967926.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-9754ba91-16a9-4587-8e44-925446967926.png",
+      "bytes": 3040119,
+      "sha256": "0e8093d8bf0c183ae142cc0facc2c3983b7460a14fad3ed5072f9e1f0b8378fc",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-b35bf656-cdb7-40cb-b3f6-60eda6e9df66.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-b35bf656-cdb7-40cb-b3f6-60eda6e9df66.png",
+      "bytes": 2226613,
+      "sha256": "65f170ba05b0d9ed301bf1bb6d2b05fe161171358377956b8901ea476f514c79",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-bdd9e140-f5f2-4c3d-893a-6bd176fd5040.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-bdd9e140-f5f2-4c3d-893a-6bd176fd5040.png",
+      "bytes": 3462757,
+      "sha256": "e5ef016a1437eeb8475f1d27e585c82a805c9300666872248222c7cdcd639344",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-c0f7e4d9-ee8e-45a4-8e6b-f3ea7f45a763.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-c0f7e4d9-ee8e-45a4-8e6b-f3ea7f45a763.png",
+      "bytes": 3212838,
+      "sha256": "2eb3c86d0451a935980de836aec23e5891770777f9a04e86fa0a272927aa7983",
+      "dimensions": [
+        1402,
+        1122
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-cc234542-b7e7-44ab-9c53-38a640b37b6d.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-cc234542-b7e7-44ab-9c53-38a640b37b6d.png",
+      "bytes": 3526932,
+      "sha256": "8ac2b7fabf180e0d3fdac06a2fcfbf0a64ea5067dd1773a7b70513976e4723f4",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-db8183c5-7276-4b6c-8d3f-4358a2862c06.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-db8183c5-7276-4b6c-8d3f-4358a2862c06.png",
+      "bytes": 3018505,
+      "sha256": "1923c039f46dca06d176b5ed4a773eed2cf635a89b74e10ebc48cc17b488ac03",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "originalWorkspacePath": "/workspace/generated_images/exec-ec63bc5f-e508-49a0-bcd6-8fea40d7bb0f.png",
+      "repositoryPath": "assets/archive/generated-originals/exec-ec63bc5f-e508-49a0-bcd6-8fea40d7bb0f.png",
+      "bytes": 3026887,
+      "sha256": "b6e47bb3bb217fcba7f1ec3591cce138692a2c81cf5936ee8639c8aee47f0581",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-7c41a2f7-2191-4a16-857d-5483b316cc55.png",
+      "repositoryPath": "assets/archive/generated-originals/life-arrangements-embedded.png",
+      "bytes": 2947489,
+      "sha256": "e0a31931ccf3dad4da7e3c1857658159a5dc34c47b33fbf9d7ef1521af08770f",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-404714b1-4cbc-424f-b2e2-59f238c790cc.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-hub-embedded.png",
+      "bytes": 2941590,
+      "sha256": "58652c78cd9cb8719584b35cf59b56f88f08fa1ef5a158d1ca8d6a1f0cf4b965",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-0d0d8091-9c8b-44b3-b5f2-efe62d8274f9.png",
+      "repositoryPath": "assets/archive/generated-originals/medical-plans-embedded.png",
+      "bytes": 2680861,
+      "sha256": "310a43ac1d2a35340477b6e310365518e43a16d469c1fe16c7f0fcabfdf98771",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-5da7afd9-c352-4935-905a-fb53e2d7e242.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-income-document.png",
+      "bytes": 2559331,
+      "sha256": "326695df2d71e20f8dc5027a764ad8275a15fc3fce9c2448f932cc468e1febd7",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-f4a994c9-8ccd-46dd-9ddb-aafcd51cdb38.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-auto-document.png",
+      "bytes": 2604535,
+      "sha256": "265befed58f909f5c723c4ef2a2c1e958eb33ab761aecfcc4383f673f25aaaf5",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-7bc25f1d-b3dd-4ebd-93db-1472700d9a63.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-pets-document.png",
+      "bytes": 2653880,
+      "sha256": "a04be3ca571db8042f0de60e53245ef0c9e39b4025603342fd6b62bc88444c4f",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-113d894b-e5a3-470d-aa75-20c9abb7a8d5.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-premiums-document.png",
+      "bytes": 2655461,
+      "sha256": "4d594c57209ce259c28eaf802f5cb9d2a35054f2355c990227709d9146a0025c",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-e8f0385c-9697-4e37-b036-e2345e28b058.png",
+      "repositoryPath": "assets/archive/generated-originals/necessary-arrangements-embedded.png",
+      "bytes": 2666884,
+      "sha256": "498cc9ee32d17e3decb6f31486c0738b37263e32e991fdf411915d8d7d957ddd",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-bfdf4cbc-7d2f-42b9-87b6-34cbcd252344.png",
+      "repositoryPath": "assets/archive/generated-originals/outdoor-preview-embedded.png",
+      "bytes": 2754667,
+      "sha256": "9ebb4ba3f56d6cda0966fb1ba247e65f793766a61c6a98134a102cab101c8c49",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-c1c0e60b-6451-41c9-91bb-6ae93b196fb6.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-home-rest-embedded.png",
+      "bytes": 2585641,
+      "sha256": "7565801b61ecf80496248fa95ab2b79c519548b5cc840b4e4a6f2396dba8093c",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-e2e43b29-fcf3-406c-b29a-20bff3856a1e.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-friends-meal-embedded.png",
+      "bytes": 2548383,
+      "sha256": "52ac2f287490b03c696a490f21b9ee6ff210119390a22ae9138c50578df496df",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-2c452ff6-799b-4ae4-9b94-42556cc51d02.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-hobby-embedded.png",
+      "bytes": 2579704,
+      "sha256": "a6663d3001abf2e347f597ec212dafe248ddbb67ecae64c8ebcf627659be6fa1",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-1b8a65f5-c198-4fb0-b414-93ff0177fb11.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-weekend-trip-embedded.png",
+      "bytes": 2695877,
+      "sha256": "fc190dc79248b628b608e5970522774361b6d0aca1b01c2052f3d510e2722685",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-2c26536f-db96-417f-a2b8-a505f46fa5df.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-concert-embedded.png",
+      "bytes": 2623576,
+      "sha256": "cb154e91b4bca7185b074a832e756dd09fb738ed0b6669a4571423e9f8422548",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-1001e422-4a66-4730-bd61-93bd6ad94e4a.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-phone-embedded.png",
+      "bytes": 2605750,
+      "sha256": "ff325fb2d198a56b60650f3a2862abee70bcfb746edf4f88367f2b78ef6c6e0e",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-61bab11d-004f-4691-8f5b-c25264ecd5ec.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-fine-dining-embedded.png",
+      "bytes": 2581803,
+      "sha256": "c253be8e490d8930ca7d3f0fd1357dc9d85edfba9e5725afbf69f4cc761853c2",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-5032d10c-a72d-4c99-81c3-2f2f0a81c41c.png",
+      "repositoryPath": "assets/archive/generated-originals/activity-simple-life-embedded.png",
+      "bytes": 2630629,
+      "sha256": "8d7dc12e243496c6f50dd0997301f0648163494e365e329ecd77ca5d869a99b1",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-ac7cfc2d-9777-401b-aaba-6731fba74b8e.png",
+      "repositoryPath": "assets/archive/generated-originals/housing-family-embedded.png",
+      "bytes": 2531978,
+      "sha256": "517100d64335e1d725a01567f25e7db08ab8a194c13a5b6cc2357f3bc5ca2e8b",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-e0d86eaf-2422-49db-8c44-072f016f1a01.png",
+      "repositoryPath": "assets/archive/generated-originals/housing-shared-embedded.png",
+      "bytes": 2607648,
+      "sha256": "da3251e089d33b1561daf3db4b5ff0c3870d4edb504c90fa71cd2aa96849e811",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-740a55a3-e8c7-405b-ae20-5fc02a5bc262.png",
+      "repositoryPath": "assets/archive/generated-originals/housing-studio-embedded.png",
+      "bytes": 2716932,
+      "sha256": "fd4548e3e62e2fec38e65fc2fd27f8e895be1942022acc18ca45c3dfe15e6d5a",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-3b327df4-81c3-40e0-968d-f9d9c1da7746.png",
+      "repositoryPath": "assets/archive/generated-originals/housing-one-bedroom-embedded.png",
+      "bytes": 2563691,
+      "sha256": "52c2df49781684cb0eaa6c16a8778ed8875b2ab829ce0eafb8fb6ee8adecf05b",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-a3b9c84b-e72a-4f77-9edc-cda876be6f8e.png",
+      "repositoryPath": "assets/archive/generated-originals/housing-handover-embedded.png",
+      "bytes": 2544271,
+      "sha256": "94fce7837727395abcb924af940a4edc070cdc6136355b0ea0432c9d014690ff",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-839572b0-8bf2-4d0a-834b-eac050090a8c.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-renters-document.png",
+      "bytes": 2533724,
+      "sha256": "e622f26ec82f4cd9a7e32d965f5ca2ef6546209a1d79958542aad701bb8c2fa3",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-a59412ed-979b-4a68-9740-48ad68c3b465.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-renters-receipt-document.png",
+      "bytes": 2529497,
+      "sha256": "f4353a98e88e6c432195fca7dd6d05b98984ad7fef6b8128ce37b624e5cd8b1e",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-d5d8d297-7f51-4891-ab42-abbd41c05e02.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-life-document.png",
+      "bytes": 2480781,
+      "sha256": "e46b82af55299c930cdb063145c6ff5773a95e8c24c46de14bd460a1d6a58f6c",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a17af3-60bb-7201-bace-092007924d23/exec-6ea6b9e1-5062-48c3-9481-553776249d5e.png",
+      "repositoryPath": "assets/archive/generated-originals/insurance-life-ending-document.png",
+      "bytes": 2573416,
+      "sha256": "6daee9a23585e0b179c490d1d996226faa809fad707d3c8917088ca93819016f",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "originalWorkspacePath": "/Users/yumifang/.codex/generated_images/01a1889b-491f-7b23-b18d-732214917151/exec-e0f1f2bf-3e0d-4de9-9249-5074a812c2c5.png",
+      "repositoryPath": "assets/archive/generated-originals/social-address-book-2026-10-29.png",
+      "bytes": 2615042,
+      "sha256": "b9cdceb61740436bd5df534292232fb756f221fa014f0ae8d3b94a39759ddb53",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    }
+  ]
+}

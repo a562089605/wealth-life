@@ -1,0 +1,11 @@
+const fs=require('fs'),vm=require('vm'),a=require('node:assert/strict');
+const c={PETS:{狗:{monthly:105},猫:{monthly:80},蜘蛛:{monthly:18},蜥蜴:{monthly:35},乌龟:{monthly:28},变色龙:{monthly:45}},state:{month:0,cpiIndex:100,pets:[],insurance:{}},roundCash:n=>Math.round(n*100)/100,petCareSpecies:p=>p.species,syncFinance(){},$:()=>({})};
+vm.createContext(c);vm.runInContext(fs.readFileSync('pet-adoption.js','utf8'),c);
+a.equal(c.petAdoptionQuote('dog',false).total,400);a.equal(c.petAdoptionQuote('dog',true).total,430);
+a.equal(c.petAdoptionQuote('cat',true).total,430);a.equal(c.petAdoptionQuote('crocodile',true).total,2380);
+for(const [species,total]of [['gecko',300],['spider',175],['tortoise',465],['chameleon',590]])a.equal(c.petAdoptionQuote(species,true).total,total);
+c.state.pets=[{type:'狗'},{type:'猫'},{type:'鳄鱼',species:'crocodile',petRulesVersion:1,adoptMonth:0},{type:'狗',species:'dog',petRulesVersion:1,adoptMonth:0}];
+a.equal(c.petMonthly(),585);c.state.month=1;a.equal(c.petMonthly(),605,'dog deworming starts after included adoption month; legacy prices preserved');
+const pet={id:'pet-1',insuranceKey:'pet:pet-1',name:'测试',policyChange:{active:false,effectiveMonth:2}};c.state.pets=[pet];c.state.insurance[pet.insuranceKey]={active:true,monthly:80,coverage:.8};c.syncFinance();a.equal(c.state.insurance[pet.insuranceKey].active,true);c.state.month=2;c.syncFinance();a.equal(c.state.insurance[pet.insuranceKey].active,false);a.equal(pet.policyChange,undefined);
+pet.policyChange={active:true,monthly:80,effectiveMonth:3};c.state.month=3;c.syncFinance();a.equal(c.state.insurance[pet.insuranceKey].coverage,.8);a.equal(c.state.insurance[pet.insuranceKey].startMonth,3);const before=JSON.stringify(c.state);c.syncFinance();a.equal(JSON.stringify(c.state),before);
+console.log('PASS: confirmed seven-species quotes, included first-month care, legacy budgets, per-pet next-month policy cancellation/replacement and idempotency.');

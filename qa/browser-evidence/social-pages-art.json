@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "interactions": [
+    {
+      "cost": 45,
+      "record": "共同爱好",
+      "once": true
+    },
+    {
+      "cost": 0,
+      "record": "共同爱好",
+      "once": true
+    },
+    {
+      "cost": 0,
+      "record": "共同爱好",
+      "once": true
+    }
+  ],
+  "checks": [
+    "saved contacts and new acquaintances; no invented people",
+    "browsing no costs, effects, time or checks",
+    "three original payments, per-contact monthly quota, multiple contacts accumulated hours, old receipt migration, same-name distinct IDs, reload and next month",
+    "confirmed1/1/2 hours, time changed after preview, exact zero, next month and old receipt compatibility",
+    "original failure description and loss retained",
+    "free chat and walk at zero cash; chat uses one hour and contact monthly quota",
+    "stale detached/month/save callbacks blocked",
+    "recovery redirect and empty contacts",
+    "explicit room acknowledgement without interaction",
+    "320/390/desktop centered without horizontal overflow",
+    "real service worker and offline art"
+  ],
+  "pageErrors": [],
+  "limits": [
+    "isolated Chromium, not real phone",
+    "only confirmed room interaction hours added; other activity proposals unchanged"
+  ]
+}

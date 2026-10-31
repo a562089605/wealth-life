@@ -1,0 +1,16 @@
+{
+  "baseline": "5b7c4821f5a7cafe2b2c8d072ecd1b28b6aa73b6",
+  "priorRepoImages": 755,
+  "priorAssetImages": 605,
+  "priorImagesByteIdentical": true,
+  "modifiedOrDeletedPriorImages": [],
+  "runtimeImages": 102,
+  "generatedOriginals": 45,
+  "generatedOriginalBytes": 126555311,
+  "candidateFiles": 459,
+  "originalEmptyCandidates": 12,
+  "javascriptSyntaxChecked": 69,
+  "cache": "wealth-life-v28.3-life-insurance1",
+  "newBackupSuffix": "_before_life_insurance_v1",
+  "userDeviceSaveAccessed": false
+}

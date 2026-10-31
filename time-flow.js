@@ -6,7 +6,7 @@ currentCareerTime=function(){const t=timeBudgetBefore();if(!state)return t;
  if(state.health<30&&!recovery)return {...t,free:0,recoveryPending:true};
  if(!state.eventTimeLedger&&!recovery)return t;
  const a=allocateEventTimeDebt(state,{month:state.month,baseHours:t.baseFree,recovery:!!recovery});
- return {...t,free:a.blocked||recovery?0:Math.max(0,t.baseFree-t.workHoursDelta-(t.courseHours||0)-a.applied),timeDebtApplied:a.applied||0,timeDebtBlocked:!!a.blocked};};
+ return {...t,free:a.blocked||recovery?0:Math.max(0,t.baseFree-t.workHoursDelta-(t.courseHours||0)-(t.educationHours||0)-a.applied),timeDebtApplied:a.applied||0,timeDebtBlocked:!!a.blocked};};
 
 function explorationReturnReasons(){const reasons=[];
  if(state.energy<20)reasons.push('能量低于20');
@@ -33,7 +33,7 @@ function openForcedTimeReturn(){if(!timeReturnPending())return false;
  clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth();
  },true]]);$('eventClose').hidden=true;return true;}
 const timeFinishBefore=finish;finish=function(){markExplorationReturn();if(timeReturnPending()){clearModals();pending=false;openForcedTimeReturn();return;}return timeFinishBefore();};
-const timeRollBefore=rollTown;rollTown=function(){if(document.querySelector('.event-active'))return;if(markExplorationReturn()||timeReturnPending())return openForcedTimeReturn();const reasons=explorationReturnReasons();if(reasons.length){showEvent('暂时不能出门','先在房屋调整状态',reasons.join('；')+'。本次没有推进月份。',[],[['返回房屋',townHome,true]]);return;}const before=state.town?.rolls||0;const result=timeRollBefore();if((state.town?.rolls||0)>before){state.town.explorationMonth=state.month;save();}return result;};
+const timeRollBefore=rollTown;rollTown=function(){if(document.querySelector('.event-active'))return;if(markExplorationReturn()||timeReturnPending())return openForcedTimeReturn();if(currentCareerTime().free<=0&&typeof openHomeMonthEnd==='function')return openHomeMonthEnd();const reasons=explorationReturnReasons();if(reasons.length){showEvent('暂时不能出门','先在房屋调整状态',reasons.join('；')+'。本次没有推进月份。',[],[['返回房屋',townHome,true]]);return;}const before=state.town?.rolls||0;const result=timeRollBefore();if((state.town?.rolls||0)>before){state.town.explorationMonth=state.month;save();}return result;};
 const timeResumeBefore=resumeTownMove;resumeTownMove=function(){if(timeReturnPending())return openForcedTimeReturn();return timeResumeBefore();};
 const timeOpenBefore=openGame;openGame=function(){const result=timeOpenBefore();if(timeReturnPending())openForcedTimeReturn();return result;};
 

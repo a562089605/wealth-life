@@ -1,0 +1,14 @@
+.event.event-active.pet-selection-painted{padding:0!important;border:0!important;border-radius:20px!important;max-width:440px;background:#fbf1d9!important;top:calc(50dvh + (env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))/2)!important;transform:translateY(-50%);max-height:calc(100dvh - 40px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))!important;overflow-y:auto!important;scroll-padding-top:12px}
+.pet-selection-painted>.row,.pet-selection-painted>#eventTitle,.pet-selection-painted>#eventDesc,.pet-selection-painted>#actions,.pet-selection-painted #eventClose{display:none!important}
+.pet-selection-painted #eventData{display:block!important;margin:0;padding:0;max-height:none!important;overflow:visible!important}
+.pet-adoption-sheet{position:relative;width:100%;container-type:inline-size}
+.pet-adoption-sheet>img{display:block;width:100%;height:auto}
+.pet-adoption-sheet button{position:absolute;min-height:0!important;padding:0;background:transparent!important;border:0;box-shadow:none;border-radius:10px;cursor:pointer}
+.pet-adoption-sheet button:focus-visible{outline:3px solid #305935;outline-offset:-3px;background:#fff0bb33!important}
+.pet-adoption-sheet .pet-sheet-option[aria-pressed="true"]{outline:2px solid #416542;outline-offset:-2px}
+.pet-sheet-cash,.pet-sheet-price{position:absolute;display:flex;align-items:center;justify-content:center;background:#f8f0d7;color:#183b21;font-family:Georgia,'Songti SC',serif;font-weight:700;line-height:1;pointer-events:none;white-space:nowrap}
+.pet-sheet-cash{font-size:4cqw;border-radius:5px}
+.pet-sheet-price{font-size:4cqw;border-radius:4px}
+.pet-sheet-choice{position:absolute;display:flex;align-items:center;justify-content:center;border:2px solid #ac8d59;border-radius:50%;background:#f6edd3;color:white;pointer-events:none;font-size:4.2cqw;font-weight:700}
+.pet-sheet-choice.selected{background:#356431;border-color:#2b5427}
+.pet-sheet-confirm-label{position:absolute;display:flex;align-items:center;justify-content:center;background:#f8f0d7;color:#24462d;font-size:2.9cqw;font-weight:650;pointer-events:none;white-space:nowrap;border-radius:5px}

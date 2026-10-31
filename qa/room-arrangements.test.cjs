@@ -1,0 +1,16 @@
+const fs=require('fs'),vm=require('vm'),a=require('node:assert/strict');
+let modal,required=[],care=[],blocked=0,mapped=0;
+const fresh=()=>({month:4,cash:9000,townMode:true,town:{screen:'home'},assets:[{id:'old',cost:123}],legacyQuarterly:{owed:900}});
+const c={state:fresh(),document:{querySelector:()=>null},showEvent:(...x)=>modal=x,townHome(){c.state.town.screen='home'},showTown(){mapped++},rollTown(){mapped++},townEnabled:()=>true,townPending:()=>false,explorationStarted:()=>false,townState:()=>c.state.town,save(){},renderRoom(){},necessaryBills:()=>required,petCareTasks:()=>care,openNecessaryBills(){blocked++},openPetCare(){blocked++},openWorkAdjustment(){c.showEvent('职业','工作安排','',[],[])},openLearning(){c.showEvent('学习','学习安排','',[],[])},openExtraRest(){c.showEvent('休息','休息安排','',[],[])},openPetHub(){c.showEvent('宠物','我的宠物','',[],[])},openHousing(){},openTownLiving(){},openInsurance(){},openLoanPayments(){},openBankLoan(){},priceText:String,$:()=>({click(){}})};
+c.queueMicrotask=()=>{};
+c.openPetAdoptions=()=>c.showEvent('宠物领养','选择新伙伴','',[],[]);
+vm.createContext(c);vm.runInContext(fs.readFileSync('room-arrangements.js','utf8'),c);
+const before=JSON.stringify(c.state);c.roomOpenArrangement('learn');a.equal(JSON.stringify(c.state),before,'viewing has no save effects');
+const confirm=modal[4].at(-1)[1];confirm();confirm();a.equal(c.roomChecks().learn.confirmed,true);a.equal(c.state.cash,9000);
+c.roomOpenArrangement('work');const stale=modal[4].at(-1)[1];c.state=JSON.parse(before);stale();a.equal(c.roomChecks().work,undefined,'old callbacks cannot affect another loaded save');
+c.roomOpenArrangement('life');required=[{}];modal[4].at(-1)[1]();a.equal(blocked,1);a.equal(c.roomChecks().life,undefined);
+required=[];c.roomOpenArrangement('pets');care=[{}];modal[4].at(-1)[1]();a.equal(blocked,2);a.equal(c.roomChecks().pets,undefined);
+c.showTown();c.rollTown();a.equal(mapped,0);
+c.state.roomArrangements={4:Object.fromEntries(['work','learn','rest','life','social','finance','pets'].map(k=>[k,{confirmed:true}]))};a.equal(c.roomArrangementsReady(),true);c.showTown();a.equal(mapped,1);
+c.state=JSON.parse(JSON.stringify(c.state));a.equal(c.roomArrangementsReady(),true);c.state.month=5;a.equal(c.roomArrangementsReady(),false);a.equal(c.state.roomArrangements[4].work.confirmed,true);a.equal(c.state.assets[0].cost,123);a.equal(c.state.legacyQuarterly.owed,900);
+console.log('PASS: explicit confirmation, stale-save/month safety, required bills/care, alternate navigation gate, reload, monthly reset and legacy fields.');

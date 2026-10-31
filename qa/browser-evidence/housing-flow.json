@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": [
+    "first rent and refundable deposit confirmed together; no living/insurance charge",
+    "preview/cancel no payment; confirmed repeated same-month rent not charged again",
+    "next month unpaid rent, no automatic payment and no new deposit",
+    "change reservation free/cancellable; next-month original deposit refund/new deposit/new rent net handover once",
+    "insufficient cash no partial charges",
+    "stale save/month/detached preview cannot execute"
+  ],
+  "pageErrors": [],
+  "limits": [
+    "isolated Chromium, not real phone",
+    "month transitions use fixtures; existing Node settlement tests verify accounting"
+  ]
+}

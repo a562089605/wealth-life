@@ -1,0 +1,323 @@
+Browser tab: 6, Title: "可选活动嵌画隔离QA", URL: "http://127.0.0.1:8765/qa/life-audit-fixture.html".
+1 AXWebArea 可选活动嵌画隔离QA, URL: 127.0.0.1:8765/qa/life-audit-fixture.html
+	2 container
+		3 button 执行生活全路径审查
+		4 text 隔离QA，非用户存档
+		5 text 先在右侧新建试玩档。
+		6 container cases
+			7 button 预览：运动 / 户外
+			8 button 预览：宅家休息
+			9 button 预览：朋友聚餐
+			10 button 预览：兴趣爱好
+			11 button 预览：周末短途旅行
+			12 button 预览：演唱会 / 主题乐园
+			13 button 预览：升级手机
+			14 button 预览：品质餐厅
+			15 button 预览：本月简单生活
+			16 button 住房：menu
+			17 button 住房：family
+			18 button 住房：shared
+			19 button 住房：studio
+			20 button 住房：rent1
+			21 button 执行住房嵌画交易回归
+			22 button 住房：预约画面
+			23 button 住房：交接画面
+			24 button 休息结果原数值回归
+		25 button 执行九项真实控件回归
+		26 button 视口320
+		27 button 视口390
+		28 button 视口800
+		34 text {
+  "passed": false,
+  "cases": [
+    {
+      "name": "五个入口只查看不消费且图可加载",
+      "passed": true
+    },
+    {
+      "name": "住房与生活费分别确认，必要门禁及生活打勾",
+      "passed": true
+    },
+    {
+      "name": "医疗新投保200/80%，切换与停保次月，保持撤销",
+      "passed": true
+    },
+    {
+      "name": "收入65、车险165、保费共享与跨月只付一次",
+      "passed": true
+    },
+    {
+      "name": "无车/无宠物不新增保单",
+      "passed": true
+    },
+    {
+      "name": "逐宠保险30、80%、停保次月、共享回执",
+      "passed": true
+    },
+    {
+      "name": "旧合同220/150/45/35保留，不重新定价",
+      "passed": true
+    },
+    {
+      "name": "医疗与收入缺款按钮禁用，银行取消不借款",
+      "passed": true
+    },
+    {
+      "name": "已关闭收入投保回调不能扣款",
+      "passed": false,
+      "error": "Error: 离页旧回调仍投保"
+    },
+    {
+      "name": "已关闭保费确认不能扣款",
+      "passed": false,
+      "error": "Error: 离页旧回调仍付保费"
+    },
+    {
+      "name": "逐宠旧存档回调不能给新档扣款",
+      "passed": false,
+      "error": "Error: 逐宠旧档回调越权"
+    },
+    {
+      "name": "住房关闭弹窗后旧确认不执行",
+      "passed": false,
+      "error": "Error: 隐藏住房按钮仍扣款"
+    },
+    {
+      "name": "医疗关闭弹窗后旧确认不执行",
+      "passed": false,
+      "error": "Error: 隐藏医疗按钮仍扣款"
+    },
+    {
+      "name": "活动关闭弹窗后旧确认不执行",
+      "passed": false,
+      "error": "Error: 隐藏活动按钮仍扣款"
+    },
+    {
+      "name": "完整月结实际按钮不重复收已付账单",
+      "passed": true
+    },
+    {
+      "name": "既有住房全回归",
+      "passed": true,
+      "details": {
+        "passed": true,
+        "housing": [
+          "family 首次租金/押金/防重",
+          "shared 首次租金/押金/防重",
+          "studio 首次租金/押金/防重",
+          "rent1 首次租金/押金/防重",
+          "免费预约/取消/次月净额交接防重",
+          "交接缺款原禁用",
+          "旧档确认防护"
+        ],
+        "limits": [
+          "显式独立fixture，非真机/长线/离线"
+        ]
+      }
+    },
+    {
+      "name": "既有九项原数值与回执全回归",
+      "passed": true,
+      "details": {
+        "passed": true,
+        "cases": [
+          {
+            "name": "运动 / 户外",
+            "cost": 25,
+            "effects": {
+              "health": 4,
+              "energy": -3,
+              "happiness": 2,
+              "stress": -6
+            },
+            "passed": true
+          },
+          {
+            "name": "宅家休息",
+            "cost": 45,
+            "effects": {
+              "energy": 8,
+              "happiness": 4,
+              "stress": -6
+            },
+            "passed": true
+          },
+          {
+            "name": "朋友聚餐",
+            "cost": 85,
+            "effects": {
+              "energy": -2,
+              "happiness": 7,
+              "social": 6
+            },
+            "passed": true
+          },
+          {
+            "name": "兴趣爱好",
+            "cost": 120,
+            "effects": {
+              "energy": 3,
+              "happiness": 8,
+              "stress": -5
+            },
+            "passed": true
+          },
+          {
+            "name": "周末短途旅行",
+            "cost": 380,
+            "effects": {
+              "energy": 6,
+              "happiness": 14,
+              "stress": -8
+            },
+            "passed": true
+          },
+          {
+            "name": "演唱会 / 主题乐园",
+            "cost": 210,
+            "effects": {
+              "energy": -6,
+              "happiness": 11,
+              "stress": -4
+            },
+            "passed": true
+          },
+          {
+            "name": "升级手机",
+            "cost": 950,
+            "effects": {
+              "happiness": 7
+            },
+            "passed": true
+          },
+          {
+            "name": "品质餐厅",
+            "cost": 150,
+            "effects": {
+              "energy": -2,
+              "happiness": 8,
+              "social": 6
+            },
+            "passed": true
+          },
+          {
+            "name": "本月简单生活",
+            "cost": 0,
+            "effects": {
+              "energy": -1,
+              "happiness": -3
+            },
+            "passed": true
+          }
+        ],
+        "checks": [
+          "九项预览无状态改变",
+          "原费用/效果/时间/月限",
+          "原确认防重与重开回执",
+          "现金不足禁用",
+          "0现金免费活动",
+          "朋友原随机后续保留",
+          "旧存档/报价变化/康复限制保留"
+        ],
+        "limits": [
+          "明确独立fixture",
+          "非真机/长线/离线"
+        ]
+      }
+    }
+  ],
+  "images": [
+    {
+      "page": "住房",
+      "src": "assets/career/housing-family-embedded.webp"
+    },
+    {
+      "page": "住房",
+      "src": "assets/career/housing-shared-embedded.webp"
+    },
+    {
+      "page": "住房",
+      "src": "assets/career/housing-studio-embedded.webp"
+    },
+    {
+      "page": "住房",
+      "src": "assets/career/housing-one-bedroom-embedded.webp"
+    },
+    {
+      "page": "基本生活费",
+      "src": "assets/career/living-bill-scene.webp"
+    },
+    {
+      "page": "保险",
+      "src": "assets/career/insurance-hub-embedded.webp"
+    },
+    {
+      "page": "本月必要安排",
+      "src": "assets/career/necessary-arrangements-embedded.webp"
+    },
+    {
+      "page": "医疗",
+      "src": "assets/career/medical-plans-embedded.webp"
+    },
+    {
+      "page": "保费",
+      "src": "assets/career/insurance-premiums-document.webp"
+    },
+    {
+      "page": "收入",
+      "src": "assets/career/insurance-income-document.webp"
+    },
+    {
+      "page": "车险",
+      "src": "assets/career/insurance-auto-document.webp"
+    },
+    {
+      "page": "空宠物保险",
+      "src": "assets/career/insurance-pets-document.webp"
+    },
+    {
+      "page": "逐宠",
+      "src": "assets/career/insurance-pets-document.webp"
+    },
+    {
+      "page": "逐宠",
+      "src": "assets/career/pet-owned-sheet.webp"
+    },
+    {
+      "page": "旧寿险",
+      "src": "assets/career/insurance-income-document.webp"
+    },
+    {
+      "page": "旧宠物险",
+      "src": "assets/career/insurance-pets-document.webp"
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "独立测试新档及显式状态fixture，未触碰用户存档",
+    "非真机、非多年自然事件验收",
+    "本次浏览器读取为当前运行构建"
+  ]
+}
+		29 AXWebArea 财富人生 Wealth Life · V28.3 内部试玩2, URL: 127.0.0.1:8765/index.html
+			30 container game
+				31 container
+					32 button Description: 关闭, ID: eventClose
+					33 heading 朋友介绍小订单, Value: 2, ID: eventTitle
+						35 text 朋友介绍小订单
+					36 container
+						37 image 朋友聚餐结果回执绘本场景，纸板显示实际内容，木牌保留原操作
+						38 container 朋友聚餐安排费用与效果，可上下滚动
+							39 text Maya介绍了一份摄影小订单。需要投入时间，完成质量存在不确定性。
+							40 text 成本
+							41 text $0
+							42 text 可能收入
+							43 text $160（成功时）
+							44 text 成功率
+							45 text 65%
+						46 button 确认参加
+					47 container actions
+						48 button 这次不参加
+						49 button 确认本月生活安排，返回房屋
+
+The focused UI element is 3 button 执行生活全路径审查

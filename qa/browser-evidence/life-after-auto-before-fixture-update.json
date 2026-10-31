@@ -1,0 +1,517 @@
+{
+  "passed": false,
+  "cases": [
+    {
+      "name": "五个入口只查看不消费且图可加载",
+      "passed": true
+    },
+    {
+      "name": "住房与生活费分别确认，必要门禁及生活打勾",
+      "passed": true
+    },
+    {
+      "name": "医疗新投保200/80%，切换与停保次月，保持撤销",
+      "passed": true
+    },
+    {
+      "name": "收入65、车险165、保费共享与跨月只付一次",
+      "passed": false,
+      "error": "TypeError: Cannot read properties of undefined (reading 'click')"
+    },
+    {
+      "name": "无车/无宠物不新增保单",
+      "passed": true
+    },
+    {
+      "name": "逐宠保险30、80%、停保次月、共享回执",
+      "passed": true
+    },
+    {
+      "name": "旧合同220/150/45/35保留，不重新定价",
+      "passed": true
+    },
+    {
+      "name": "医疗与收入缺款按钮禁用，银行取消不借款",
+      "passed": true
+    },
+    {
+      "name": "已关闭收入投保回调不能扣款",
+      "passed": true
+    },
+    {
+      "name": "已关闭保费确认不能扣款",
+      "passed": true
+    },
+    {
+      "name": "逐宠旧存档回调不能给新档扣款",
+      "passed": true
+    },
+    {
+      "name": "住房关闭弹窗后旧确认不执行",
+      "passed": true
+    },
+    {
+      "name": "医疗关闭弹窗后旧确认不执行",
+      "passed": true
+    },
+    {
+      "name": "活动关闭弹窗后旧确认不执行",
+      "passed": true
+    },
+    {
+      "name": "完整月结实际按钮不重复收已付账单",
+      "passed": true
+    },
+    {
+      "name": "九项预览与结果插画逐页加载和320/390/800卡片宽度",
+      "passed": true
+    },
+    {
+      "name": "收入/车险停保次月应用，有车无险门禁与投保恢复",
+      "passed": false,
+      "error": "TypeError: Cannot read properties of undefined (reading 'click')"
+    },
+    {
+      "name": "逐宠取消撤销、探索后投保次月生效且当月不扣款",
+      "passed": true
+    },
+    {
+      "name": "住房交接关闭后旧确认不执行",
+      "passed": true
+    },
+    {
+      "name": "额外休息关闭后旧确认不执行",
+      "passed": true
+    },
+    {
+      "name": "既有住房全回归",
+      "passed": true,
+      "details": {
+        "passed": true,
+        "housing": [
+          "family 首次租金/押金/防重",
+          "shared 首次租金/押金/防重",
+          "studio 首次租金/押金/防重",
+          "rent1 首次租金/押金/防重",
+          "免费预约/取消/次月净额交接防重",
+          "交接缺款原禁用",
+          "旧档确认防护"
+        ],
+        "limits": [
+          "显式独立fixture，非真机/长线/离线"
+        ]
+      }
+    },
+    {
+      "name": "既有九项原数值与回执全回归",
+      "passed": true,
+      "details": {
+        "passed": true,
+        "cases": [
+          {
+            "name": "运动 / 户外",
+            "cost": 25,
+            "effects": {
+              "health": 4,
+              "energy": -3,
+              "happiness": 2,
+              "stress": -6
+            },
+            "passed": true
+          },
+          {
+            "name": "宅家休息",
+            "cost": 45,
+            "effects": {
+              "energy": 8,
+              "happiness": 4,
+              "stress": -6
+            },
+            "passed": true
+          },
+          {
+            "name": "朋友聚餐",
+            "cost": 85,
+            "effects": {
+              "energy": -2,
+              "happiness": 7,
+              "social": 6
+            },
+            "passed": true
+          },
+          {
+            "name": "兴趣爱好",
+            "cost": 120,
+            "effects": {
+              "energy": 3,
+              "happiness": 8,
+              "stress": -5
+            },
+            "passed": true
+          },
+          {
+            "name": "周末短途旅行",
+            "cost": 380,
+            "effects": {
+              "energy": 6,
+              "happiness": 14,
+              "stress": -8
+            },
+            "passed": true
+          },
+          {
+            "name": "演唱会 / 主题乐园",
+            "cost": 210,
+            "effects": {
+              "energy": -6,
+              "happiness": 11,
+              "stress": -4
+            },
+            "passed": true
+          },
+          {
+            "name": "升级手机",
+            "cost": 950,
+            "effects": {
+              "happiness": 7
+            },
+            "passed": true
+          },
+          {
+            "name": "品质餐厅",
+            "cost": 150,
+            "effects": {
+              "energy": -2,
+              "happiness": 8,
+              "social": 6
+            },
+            "passed": true
+          },
+          {
+            "name": "本月简单生活",
+            "cost": 0,
+            "effects": {
+              "energy": -1,
+              "happiness": -3
+            },
+            "passed": true
+          }
+        ],
+        "checks": [
+          "九项预览无状态改变",
+          "原费用/效果/时间/月限",
+          "原确认防重与重开回执",
+          "现金不足禁用",
+          "0现金免费活动",
+          "朋友原随机后续保留",
+          "旧存档/报价变化/康复限制保留"
+        ],
+        "limits": [
+          "明确独立fixture",
+          "非真机/长线/离线"
+        ]
+      }
+    },
+    {
+      "name": "朋友随机后续旧存档/关闭回调不越权，原成功结果仍执行",
+      "passed": true
+    },
+    {
+      "name": "简单生活明确0h，0现金0时间仍可执行原效果且占用月限",
+      "passed": true
+    },
+    {
+      "name": "预缓存条目数",
+      "passed": true,
+      "count": 204
+    },
+    {
+      "name": "当前PWA预缓存逐项完整（非真实断网测试）",
+      "passed": true
+    }
+  ],
+  "images": [
+    {
+      "page": "住房",
+      "src": "assets/career/housing-family-embedded.webp"
+    },
+    {
+      "page": "住房",
+      "src": "assets/career/housing-shared-embedded.webp"
+    },
+    {
+      "page": "住房",
+      "src": "assets/career/housing-studio-embedded.webp"
+    },
+    {
+      "page": "住房",
+      "src": "assets/career/housing-one-bedroom-embedded.webp"
+    },
+    {
+      "page": "基本生活费",
+      "src": "assets/career/living-bill-scene.webp"
+    },
+    {
+      "page": "保险",
+      "src": "assets/career/insurance-hub-embedded.webp"
+    },
+    {
+      "page": "保险",
+      "src": "assets/career/insurance-renters-document.webp"
+    },
+    {
+      "page": "保险",
+      "src": "assets/career/insurance-life-document.webp"
+    },
+    {
+      "page": "本月必要安排",
+      "src": "assets/career/necessary-arrangements-embedded.webp"
+    },
+    {
+      "page": "医疗",
+      "src": "assets/career/medical-plans-embedded.webp"
+    },
+    {
+      "page": "空宠物保险",
+      "src": "assets/career/insurance-pets-document.webp"
+    },
+    {
+      "page": "逐宠",
+      "src": "assets/career/insurance-pets-document.webp"
+    },
+    {
+      "page": "逐宠",
+      "src": "assets/career/pet-owned-sheet.webp"
+    },
+    {
+      "page": "旧寿险",
+      "src": "assets/career/insurance-life-document.webp"
+    },
+    {
+      "page": "旧宠物险",
+      "src": "assets/career/insurance-pets-document.webp"
+    },
+    {
+      "page": "320 运动 / 户外预览",
+      "src": "assets/career/outdoor-preview-embedded.webp"
+    },
+    {
+      "page": "320 运动 / 户外回执",
+      "src": "assets/career/outdoor-preview-embedded.webp"
+    },
+    {
+      "page": "320 宅家休息预览",
+      "src": "assets/career/activity-home-rest-embedded.webp"
+    },
+    {
+      "page": "320 宅家休息回执",
+      "src": "assets/career/activity-home-rest-embedded.webp"
+    },
+    {
+      "page": "320 朋友聚餐预览",
+      "src": "assets/career/activity-friends-meal-embedded.webp"
+    },
+    {
+      "page": "320 朋友聚餐回执",
+      "src": "assets/career/activity-friends-meal-embedded.webp"
+    },
+    {
+      "page": "320 兴趣爱好预览",
+      "src": "assets/career/activity-hobby-embedded.webp"
+    },
+    {
+      "page": "320 兴趣爱好回执",
+      "src": "assets/career/activity-hobby-embedded.webp"
+    },
+    {
+      "page": "320 周末短途旅行预览",
+      "src": "assets/career/activity-weekend-trip-embedded.webp"
+    },
+    {
+      "page": "320 周末短途旅行回执",
+      "src": "assets/career/activity-weekend-trip-embedded.webp"
+    },
+    {
+      "page": "320 演唱会 / 主题乐园预览",
+      "src": "assets/career/activity-concert-embedded.webp"
+    },
+    {
+      "page": "320 演唱会 / 主题乐园回执",
+      "src": "assets/career/activity-concert-embedded.webp"
+    },
+    {
+      "page": "320 升级手机预览",
+      "src": "assets/career/activity-phone-embedded.webp"
+    },
+    {
+      "page": "320 升级手机回执",
+      "src": "assets/career/activity-phone-embedded.webp"
+    },
+    {
+      "page": "320 品质餐厅预览",
+      "src": "assets/career/activity-fine-dining-embedded.webp"
+    },
+    {
+      "page": "320 品质餐厅回执",
+      "src": "assets/career/activity-fine-dining-embedded.webp"
+    },
+    {
+      "page": "320 本月简单生活预览",
+      "src": "assets/career/activity-simple-life-embedded.webp"
+    },
+    {
+      "page": "320 本月简单生活回执",
+      "src": "assets/career/activity-simple-life-embedded.webp"
+    },
+    {
+      "page": "390 运动 / 户外预览",
+      "src": "assets/career/outdoor-preview-embedded.webp"
+    },
+    {
+      "page": "390 运动 / 户外回执",
+      "src": "assets/career/outdoor-preview-embedded.webp"
+    },
+    {
+      "page": "390 宅家休息预览",
+      "src": "assets/career/activity-home-rest-embedded.webp"
+    },
+    {
+      "page": "390 宅家休息回执",
+      "src": "assets/career/activity-home-rest-embedded.webp"
+    },
+    {
+      "page": "390 朋友聚餐预览",
+      "src": "assets/career/activity-friends-meal-embedded.webp"
+    },
+    {
+      "page": "390 朋友聚餐回执",
+      "src": "assets/career/activity-friends-meal-embedded.webp"
+    },
+    {
+      "page": "390 兴趣爱好预览",
+      "src": "assets/career/activity-hobby-embedded.webp"
+    },
+    {
+      "page": "390 兴趣爱好回执",
+      "src": "assets/career/activity-hobby-embedded.webp"
+    },
+    {
+      "page": "390 周末短途旅行预览",
+      "src": "assets/career/activity-weekend-trip-embedded.webp"
+    },
+    {
+      "page": "390 周末短途旅行回执",
+      "src": "assets/career/activity-weekend-trip-embedded.webp"
+    },
+    {
+      "page": "390 演唱会 / 主题乐园预览",
+      "src": "assets/career/activity-concert-embedded.webp"
+    },
+    {
+      "page": "390 演唱会 / 主题乐园回执",
+      "src": "assets/career/activity-concert-embedded.webp"
+    },
+    {
+      "page": "390 升级手机预览",
+      "src": "assets/career/activity-phone-embedded.webp"
+    },
+    {
+      "page": "390 升级手机回执",
+      "src": "assets/career/activity-phone-embedded.webp"
+    },
+    {
+      "page": "390 品质餐厅预览",
+      "src": "assets/career/activity-fine-dining-embedded.webp"
+    },
+    {
+      "page": "390 品质餐厅回执",
+      "src": "assets/career/activity-fine-dining-embedded.webp"
+    },
+    {
+      "page": "390 本月简单生活预览",
+      "src": "assets/career/activity-simple-life-embedded.webp"
+    },
+    {
+      "page": "390 本月简单生活回执",
+      "src": "assets/career/activity-simple-life-embedded.webp"
+    },
+    {
+      "page": "800 运动 / 户外预览",
+      "src": "assets/career/outdoor-preview-embedded.webp"
+    },
+    {
+      "page": "800 运动 / 户外回执",
+      "src": "assets/career/outdoor-preview-embedded.webp"
+    },
+    {
+      "page": "800 宅家休息预览",
+      "src": "assets/career/activity-home-rest-embedded.webp"
+    },
+    {
+      "page": "800 宅家休息回执",
+      "src": "assets/career/activity-home-rest-embedded.webp"
+    },
+    {
+      "page": "800 朋友聚餐预览",
+      "src": "assets/career/activity-friends-meal-embedded.webp"
+    },
+    {
+      "page": "800 朋友聚餐回执",
+      "src": "assets/career/activity-friends-meal-embedded.webp"
+    },
+    {
+      "page": "800 兴趣爱好预览",
+      "src": "assets/career/activity-hobby-embedded.webp"
+    },
+    {
+      "page": "800 兴趣爱好回执",
+      "src": "assets/career/activity-hobby-embedded.webp"
+    },
+    {
+      "page": "800 周末短途旅行预览",
+      "src": "assets/career/activity-weekend-trip-embedded.webp"
+    },
+    {
+      "page": "800 周末短途旅行回执",
+      "src": "assets/career/activity-weekend-trip-embedded.webp"
+    },
+    {
+      "page": "800 演唱会 / 主题乐园预览",
+      "src": "assets/career/activity-concert-embedded.webp"
+    },
+    {
+      "page": "800 演唱会 / 主题乐园回执",
+      "src": "assets/career/activity-concert-embedded.webp"
+    },
+    {
+      "page": "800 升级手机预览",
+      "src": "assets/career/activity-phone-embedded.webp"
+    },
+    {
+      "page": "800 升级手机回执",
+      "src": "assets/career/activity-phone-embedded.webp"
+    },
+    {
+      "page": "800 品质餐厅预览",
+      "src": "assets/career/activity-fine-dining-embedded.webp"
+    },
+    {
+      "page": "800 品质餐厅回执",
+      "src": "assets/career/activity-fine-dining-embedded.webp"
+    },
+    {
+      "page": "800 本月简单生活预览",
+      "src": "assets/career/activity-simple-life-embedded.webp"
+    },
+    {
+      "page": "800 本月简单生活回执",
+      "src": "assets/career/activity-simple-life-embedded.webp"
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "独立测试新档及显式状态fixture，未触碰用户存档",
+    "非真机、非多年自然事件验收",
+    "本次浏览器读取为当前运行构建"
+  ]
+}

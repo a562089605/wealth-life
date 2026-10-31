@@ -1,0 +1,77 @@
+Browser tab: 6, Title: "生活全路径规则与插画审查", URL: "http://127.0.0.1:8765/qa/life-audit-fixture.html".
+0 AXWebArea 生活全路径规则与插画审查, URL: 127.0.0.1:8765/qa/life-audit-fixture.html
+	1 container
+		2 button 执行户外2小时专项回归
+		3 button 执行生活全路径审查
+		4 text 隔离QA，非用户存档
+		5 text 先在右侧新建试玩档。
+		6 container cases
+			7 button 预览：运动 / 户外
+			8 button 预览：宅家休息
+			9 button 预览：朋友聚餐
+			10 button 预览：兴趣爱好
+			11 button 预览：周末短途旅行
+			12 button 预览：演唱会 / 主题乐园
+			13 button 预览：升级手机
+			14 button 预览：品质餐厅
+			15 button 预览：本月简单生活
+			16 button 住房：menu
+			17 button 住房：family
+			18 button 住房：shared
+			19 button 住房：studio
+			20 button 住房：rent1
+			21 button 执行住房嵌画交易回归
+			22 button 住房：预约画面
+			23 button 住房：交接画面
+			24 button 休息结果原数值回归
+			25 button 查看探索后宠物保单说明
+		26 button 执行九项真实控件回归
+		27 button 视口320
+		28 button 视口390
+		29 button 视口800
+		31 text {
+  "passed": true,
+  "outdoorHours": 2,
+  "checks": [
+    "1h禁用不扣款",
+    "恰好2h执行25与原效果",
+    "原回调/读档不重扣",
+    "次月重置",
+    "旧已完成记录不追扣"
+  ],
+  "others": "其余八项耗时待逐项确认"
+}
+		30 AXWebArea 财富人生 Wealth Life · V28.3 内部试玩2, URL: 127.0.0.1:8765/index.html
+			32 container game
+				33 container
+					34 button Description: 关闭, ID: eventClose
+					35 heading 本月生活安排, Value: 2, ID: eventTitle
+						36 text 本月生活安排
+					37 container eventData
+						38 text 第1年 · 第1月
+						39 text 现金 $10,000.00
+						40 container
+							41 image 暖阳下的生活小桌：房屋钥匙、食材、保障文件与安排手账
+							42 text 已列出待付 $800.00
+							43 text 另有待确认事项，金额以各项确认页为准
+							44 button 住房
+								45 text 住房
+								46 text 住处、房租与换房
+							47 button 基本生活费
+								48 text 基本生活费
+								49 text 饮食与日常养护
+							50 button 保险
+								51 text 保险
+								52 text 查看与管理有效保障
+							53 button 本月必要安排
+								54 text 本月必要安排
+								55 text 2项待处理
+							56 button 可选生活活动
+								57 text 可选生活活动
+								58 text 运动、休闲与日常选择
+						59 text 先查看，再安排；打开页面不会扣款。
+					60 container actions
+						61 button 返回房屋
+						62 button 确认本月生活安排，返回房屋
+
+The focused UI element is 2 button 执行户外2小时专项回归

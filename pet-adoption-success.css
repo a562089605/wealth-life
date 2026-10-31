@@ -1,0 +1,47 @@
+/* Existing original artwork supplies the paper, foliage, seal and painted action plaque. */
+#game>.event.event-active.pet-success-painted{max-width:470px;padding:0!important;background:#fbf0d5!important;border:0!important;border-radius:18px!important;color:#344e2f;overflow-y:auto!important;display:block!important}
+.pet-success-painted>.row,.pet-success-painted #eventDesc{display:none!important}
+.pet-success-painted>#eventTitle{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);margin:0!important;padding:0!important}
+.pet-success-painted #eventData{padding:0!important;margin:0!important;max-height:none!important;overflow:visible!important}
+.pet-success-board{position:relative;isolation:isolate;container-type:inline-size;width:100%;font-family:'Songti SC','STSong',serif;overflow:hidden;border-radius:18px}
+.pet-success-background{display:block;width:100%;height:auto;aspect-ratio:941/1672}
+.pet-success-board .pet-success-title,.pet-success-board .pet-success-welcome,.pet-success-board>h3{position:absolute;box-sizing:border-box;display:flex;align-items:center;justify-content:center;text-align:center;margin:0;padding:0 3%;background:#fbf0d5;color:#244226;overflow-wrap:anywhere;line-height:1.25}
+.pet-success-board .pet-success-title{left:27%;top:7.1%;width:46%;height:6.1%;font-size:8cqw;font-weight:800;letter-spacing:.08em}
+.pet-success-board .pet-success-welcome{left:22%;top:13.7%;width:57%;height:3.4%;font-size:3.5cqw}
+.pet-success-art{position:absolute;left:0;top:17.1%;width:100%;height:20.9%;overflow:hidden;background:#fbf0d5}
+.pet-success-art>.pet-scene-window{position:absolute;width:100%;height:100%;margin:0;overflow:hidden;mix-blend-mode:multiply}
+.pet-success-art img{position:absolute;max-width:none!important;height:auto}
+.pet-success-board:not([data-species="crocodile"]) .pet-success-art>.pet-scene-window{width:37%;height:auto;left:31.5%;top:0;border-radius:20%}
+.pet-success-board[data-species="gecko"] .pet-success-art>.pet-scene-window,.pet-success-board[data-species="spider"] .pet-success-art>.pet-scene-window,.pet-success-board[data-species="tortoise"] .pet-success-art>.pet-scene-window,.pet-success-board[data-species="chameleon"] .pet-success-art>.pet-scene-window{width:56%;left:22%;top:10%}
+.pet-success-board>h3{left:29%;top:38.1%;width:43%;height:3.6%;font-size:4.7cqw;background:#e5e5b9}
+.pet-success-board .pet-success-complete{position:absolute;box-sizing:border-box;left:16%;top:44.8%;width:68%;height:20%;margin:0;padding:0 2%;background:#fbf0d5;border:0;border-radius:0;display:flex;flex-direction:column;justify-content:space-evenly}
+.pet-success-board h4{font-family:inherit;text-align:center;margin:0;font-size:4.6cqw;line-height:1.3;color:#2b472d}
+.pet-success-board .pet-success-complete p{font-size:3.7cqw;line-height:1.5;margin:0;color:#344f30;border-bottom:1px dashed #b7a67870;padding:2% 0}
+.pet-success-board small{display:block;font-size:2.55cqw;line-height:1.4;text-align:center;color:#7a6c49}
+.pet-success-board .pet-success-receipt{position:absolute;box-sizing:border-box;left:22%;top:67.2%;width:61%;height:18.5%;margin:0;padding:0;background:#fbf0d5;border:0;border-radius:0;display:flex;flex-direction:column;justify-content:space-evenly}
+.pet-success-receipt dl{margin:0}
+.pet-success-receipt dl>div{display:flex;align-items:center;justify-content:space-between;gap:2%;padding:3% 1%;font-size:3.8cqw;background:#f6d985}
+.pet-success-receipt dl>div+div{background:#e3e6ba}
+.pet-success-receipt dd{margin:0;font-family:Georgia,serif;font-size:5.5cqw;font-weight:bold;color:#30492d;white-space:nowrap}
+.pet-success-receipt p{font-size:2.7cqw;text-align:center;line-height:1.5;margin:0;color:#4d603a}
+#game .pet-success-board #actions{position:absolute;left:5%;top:87.7%;width:90%;height:11.8%;box-sizing:border-box;display:flex!important;flex-direction:column;gap:0!important;margin:0!important;padding:0!important;background:transparent!important;max-height:none!important;overflow:visible!important;border:0!important}
+#game .pet-success-board #actions button{flex:none!important;width:100%;min-height:44px!important;margin:0!important;padding:0 5%!important;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:14px;font-family:inherit;color:#27472c!important;line-height:1.3;white-space:normal}
+#game .pet-success-board #actions [data-success-action="pets"]{height:52%;font-size:5.6cqw;font-weight:bold}
+#game .pet-success-board #actions [data-success-action="back"]{height:35%;min-height:32px!important;font-size:3.8cqw;background:#fbf0d5!important;width:53%;align-self:center;border-radius:0}
+#game .pet-success-board #actions [data-success-action="review"],#game .pet-success-board #actions button:not([data-success-action]){position:absolute;top:91%;min-height:22px!important;height:auto;font-size:2.6cqw;background:#fbf0d5!important;color:#716746!important;padding:1% 3%!important}
+#game .pet-success-board #actions button:focus-visible{outline:3px solid #43663d!important;outline-offset:-3px}
+#game .pet-success-painted #eventClose{background:#fbf0d5d9!important;border-color:#bda77c!important;right:7px!important;top:7px!important}
+/* Cover all printed sample amounts; only the saved transaction is readable. */
+.pet-success-board .pet-success-receipt{left:8%;top:66.7%;width:84%;height:19.5%;padding:0 4%;background:#fbf0d5}
+.pet-success-board .pet-success-receipt h4{background:#e5e5b9;padding:1%}
+.pet-success-board .pet-success-receipt p{background:#fbf0d5}
+#game>.event.event-active.pet-success-painted{padding-bottom:30px!important}
+.pet-success-board{overflow:visible}
+#game .pet-success-board #actions [data-success-action="review"],#game .pet-success-board #actions button:not([data-success-action]){top:102%;min-height:26px!important}
+#game .pet-success-board #actions [data-success-action="pets"]{position:relative;isolation:isolate}
+#game .pet-success-board #actions [data-success-action="pets"]:before{content:'';position:absolute;inset:10% 25%;background:#f3d174;z-index:-1}
+#game .pet-success-board #actions{flex-direction:column!important;flex-wrap:nowrap!important;align-items:center!important}
+#game .pet-success-board #actions [data-success-action="pets"]{position:absolute!important;left:0;top:0}
+#game .pet-success-board #actions [data-success-action="back"]{position:absolute!important;left:23.5%;top:max(44px,57%)}
+#game .pet-success-board #actions [data-success-action="review"],#game .pet-success-board #actions button:not([data-success-action]){left:0;top:max(80px,102%)}
+#game>.event.event-active.pet-success-painted{padding-bottom:54px!important}

@@ -1,0 +1,21 @@
+.relationship-stage{position:relative;aspect-ratio:2/3;background-size:100% 100%;background-repeat:no-repeat;width:100%}
+.relationship-sheet{position:absolute;inset:45% 12% 23%;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;font-size:12px;color:#4f6343;line-height:1.65}
+.relationship-sheet p{margin:3px 0 7px}.relationship-sheet strong{color:#44613d}
+.relationship-controls{position:absolute;left:5%;right:5%;bottom:8.5%;display:flex;gap:4%;height:9%}
+#game .relationship-controls button{flex:1;width:0;min-height:44px!important;background:transparent!important;border:0!important;box-shadow:none!important;padding:3px!important;white-space:normal;font-size:12px;color:#355331}
+.relationship-guests{display:grid;gap:4px}.relationship-guests label{display:flex;gap:8px;align-items:center;min-height:44px;border-top:1px solid #d5c7a5}.relationship-guests input{width:20px;height:20px}
+#game .social-address-sheet .social-contact{display:block}.social-address-sheet .social-contact strong,.social-address-sheet .social-contact small{display:block}
+/* Keep the illustrated plaques reachable without scrolling the entire picture. */
+.relationship-stage,.social-address-desk{max-width:360px;margin-inline:auto}
+#game>.event.event-active.social-pages-painted #eventData{max-height:min(68dvh,640px)}
+
+.relationship-controls:has(>button:only-child){justify-content:flex-end}#game .relationship-controls>button:only-child{flex:none;width:48%}
+
+/* Interest data sits on the full, uncropped picture; controls remain real buttons. */
+.relationship-interest-gallery{display:grid;gap:14px;margin-block:16px;min-width:0}
+.relationship-interest-gallery h3{margin:0;text-align:center;color:#44613d}
+.relationship-interest-card{margin:0 auto;overflow:visible}
+.relationship-interest-picture{display:block;width:100%;height:auto;aspect-ratio:2/3}
+.relationship-interest-card .relationship-sheet{inset:45% 12% 23%;overflow:auto;overflow-wrap:anywhere}
+.relationship-interest-card .relationship-sheet>strong{font-size:16px;display:block;margin-bottom:10px}
+.relationship-interest-card .relationship-controls{height:10%;bottom:8%;align-items:stretch}

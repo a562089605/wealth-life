@@ -1,0 +1,46 @@
+/* Shared rule for event cards: centered in the usable viewport, never pinned to the top. */
+#game>.event.event-active{top:calc(50dvh + (env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))/2)!important;transform:translateY(-50%)!important;bottom:auto!important;max-height:calc(100dvh - 40px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))!important;margin:0 auto!important;min-height:0!important}
+#game>.event.event-active.pet-care-painted{padding:20px!important;background:radial-gradient(ellipse at 0 0,#e6d9ae55,transparent 65%),#fbf0d8!important;border:1px solid #cbb48b!important;border-radius:24px 19px 27px 21px!important;max-width:460px}
+.pet-care-painted #eventTitle{font-family:'Songti SC','STSong',serif;font-size:25px;color:#3d573c;margin:12px 0 8px;letter-spacing:.04em}
+.pet-care-painted #eventDesc{font-size:12px;color:#8a785a;margin:0 0 15px;line-height:1.7}
+.pet-care-painted:before{content:'';position:absolute;inset:7px;border:1px solid #d6c29e80;border-radius:18px 15px 21px 17px;pointer-events:none}
+.pet-care-painted #eventDesc{display:none}
+.pet-care-pet{display:flex;align-items:center;gap:12px;padding:8px;margin:0 0 11px;background:#fcf4de;border:1px solid #d3bd94;border-radius:16px 20px 13px 18px}
+.pet-clean-art{position:relative;flex:0 0 38%;max-width:130px;aspect-ratio:1.25;overflow:hidden;border-radius:12px}
+.pet-clean-art.hero{flex-basis:46%;max-width:148px}
+.pet-clean-art img{position:absolute;width:160%;max-width:none!important;height:auto;left:-30%;top:0;mix-blend-mode:multiply}
+.pet-clean-art.self img{top:-100%}.pet-clean-art.pro img{top:-200%}
+.pet-care-name{font-family:'Songti SC','STSong',serif;color:#365736;font-size:20px;line-height:1.5}
+.pet-care-pet p{font-size:11px;line-height:1.7;color:#8b7758;margin:7px 0 0}
+.pet-care-pet .pet-clean-due{color:#a36a36;background:#f5dfad;padding:5px 7px;border-radius:8px}
+.pet-care-paw{font-size:40px;color:#a6af83;padding:5px 12px}
+.pet-care-simple>select{width:100%;margin-bottom:12px;background:#fff7e4;border-color:#d1bd94}
+.pet-care-choices{display:flex;flex-direction:column;gap:10px}
+#game .pet-care-square{position:relative;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:10px;min-width:0;min-height:138px;padding:10px 12px 10px 8px;background:#fff7e3!important;border:1.5px solid #cbb182;border-radius:17px 13px 20px 15px;box-shadow:inset 0 1px 0 #fffbed,0 2px 0 #b89b6810;color:#4b6140;white-space:normal;text-align:left}
+#game .pet-care-square.pro{background:#fbf3df!important;border-color:#cbb182;border-radius:14px 19px 15px 18px}
+#game .pet-care-square[aria-pressed="true"]{border:2px solid #6f8354;background:#f2f1d9!important;box-shadow:inset 0 0 0 2px #ccd6ac55}
+.pet-care-method-mark{position:absolute;z-index:2;left:8px;top:8px;display:grid;place-items:center;width:21px;height:21px;margin:0!important;border:1.5px solid #a58d61;border-radius:50%;background:#fff7e1;color:white;font-size:14px!important}
+.pet-care-square[aria-pressed="true"] .pet-care-method-mark{background:#5c7547;border-color:#4e6b3b}
+.pet-care-option-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;padding:2px 0}
+.pet-care-option-copy strong{font-family:'Songti SC','STSong',serif;font-size:20px;letter-spacing:.03em;color:#3e5837}
+.pet-care-option-copy span{font-size:11px;color:#7e7358;line-height:1.4}
+.pet-care-option-copy .pet-care-option-description{font-size:10px;color:#948366}
+.pet-care-option-copy .pet-care-time{color:#566447;font-weight:650}
+.pet-care-option-copy small{font-size:10px;color:#8e7c5b;line-height:1.4}
+.pet-care-option-copy .pet-clean-next{padding-top:3px;border-top:1px dashed #d5c39d}
+.pet-clean-icon{flex:0 0 32%;text-align:center}
+.pet-clean-icon svg{width:76px;max-width:100%;height:60px;fill:none;stroke:#7c8d60;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.pet-care-square:focus-visible{outline:3px solid #486442;outline-offset:3px}
+.pet-clean-note{margin:9px 0;font-size:10px;line-height:1.6;color:#978260;text-align:center}
+.pet-care-selection-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:9px 0;background:#f3e6c67a;border:1px solid #decaa4;border-radius:12px 9px 14px 10px}
+.pet-care-selection-summary>div{text-align:center;padding:0 4px;min-width:0}
+.pet-care-selection-summary>div+div{border-left:1px solid #cfbb96}
+.pet-care-selection-summary span{display:block;font-size:10px;color:#978668;margin-bottom:5px}
+.pet-care-selection-summary strong{display:block;font-family:'Songti SC','STSong',Georgia,serif;font-size:14px;color:#3c5837;line-height:1.3;white-space:nowrap}
+.pet-care-recovery{font-size:12px;color:#8d7956}
+.pet-care-painted #actions{gap:6px;background:transparent!important;padding-top:12px!important;margin-top:0!important}
+.pet-care-painted #actions button{min-height:36px!important;padding:8px;font-size:12px;color:#857251;box-shadow:none}
+.event.event-active.pet-care-painted #actions [data-care-action="choose"]{min-height:44px!important;background:linear-gradient(110deg,#e6bd5d,#f3d98d)!important;border:1px solid #b38f4a;border-radius:14px 11px 16px 12px;color:#3e5837!important;font-family:"Songti SC",serif;font-size:18px;font-weight:700}
+.event.event-active.pet-care-painted #actions [data-care-action="review"]{background:transparent!important;color:#8b7957!important;min-height:28px!important;font-size:11px;border-color:transparent}
+.event.event-active.pet-care-painted #actions [data-care-action="back"]{background:transparent!important;box-shadow:none;border-color:transparent;font-size:11px}
+@media(max-width:350px){#game .pet-care-square{min-height:136px;padding-right:8px;gap:7px}.pet-care-option-copy strong{font-size:17px}.pet-care-option-copy span{font-size:10px}.pet-care-option-copy small{font-size:9px}.pet-care-selection-summary strong{font-size:12px}}

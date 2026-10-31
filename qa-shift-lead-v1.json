@@ -25,7 +25,7 @@
     "monthly settlement blocks pending main/followup and resumes once resolved",
     "Barista routing unchanged; never samples Shift Lead event",
     "all followup branches hidden on main card",
-    "actual core calcMetrics + settleMonthUnsafe: 13 monthly payrolls, tax/401k, cash, history, season rollover"
+    "actual core calcMetrics + settleMonthUnsafe: 13 monthly payrolls, confirmed zero tax/401k, cash, history, season rollover"
   ],
   "caseCount": 25,
   "scope": "Node VM integration/state tests; no real browser/mobile layout validation",

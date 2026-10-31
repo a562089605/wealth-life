@@ -1,0 +1,34 @@
+#game>.event.event-active.pet-owned-painted{max-width:470px;padding:18px!important;border:1px solid #cfb990!important;border-radius:22px 18px 24px 19px!important;background:radial-gradient(ellipse at 0 0,#e7ddbb55,transparent 60%),#faf0d8!important;box-shadow:0 15px 55px #3b321d60!important}
+.pet-owned-painted:before{content:'';position:absolute;inset:6px;border:1px solid #d7c59e80;border-radius:18px 14px 20px 15px;pointer-events:none}
+.pet-owned-painted>.row{display:none}
+.pet-owned-painted #eventTitle{font-family:'Songti SC','STSong',serif;font-size:28px;text-align:center;letter-spacing:.1em;margin:0 0 9px;color:#355136;padding-right:0!important}
+#game .pet-owned-home{position:absolute;top:14px;left:16px;width:30px;min-height:30px!important;border-radius:50%;border:1px solid #ccb087;background:#eddbb6;color:#6b744b;font-size:25px;line-height:1;padding:0;box-shadow:none}
+.pet-owned-painted #eventDesc{display:none}
+.pet-owned-cash{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#80704d;font-size:11px;margin-bottom:10px}.pet-owned-cash strong{font-family:Georgia,'Songti SC',serif;color:#5e7046;font-size:12px;font-weight:600}
+.pet-owned-card{display:grid;grid-template-columns:42% minmax(0,1fr);gap:5px 10px;background:#fff8e5;border:1px solid #bda77e;border-radius:17px 21px 15px 19px;padding:10px;margin-bottom:10px;box-shadow:inset 0 0 14px #e3d1a93a}
+.pet-owned-portrait{position:relative;align-self:center;width:100%;overflow:hidden;border-radius:11px;mix-blend-mode:multiply}
+.pet-owned-portrait img{position:absolute;max-width:none!important;height:auto}
+.pet-owned-name{display:flex;align-items:center;gap:4px;margin-bottom:7px}
+.pet-owned-name strong{font-family:'Songti SC','STSong',serif;font-size:17px;line-height:1.4;color:#355535;overflow-wrap:anywhere}
+#game .pet-owned-rename{min-height:24px!important;flex:none;border:0;padding:0 2px;background:none;color:#a88b52;font-size:19px;box-shadow:none}
+.pet-owned-details dl{margin:0}.pet-owned-details dl>div{display:flex;justify-content:space-between;gap:5px;font-size:11px;line-height:1.6;color:#827456}
+.pet-owned-details dd{margin:0;font-family:Georgia,serif;color:#40593b;white-space:nowrap}
+#game .pet-owned-policy button{min-height:24px!important;padding:3px 0;margin:5px 0 4px;border:0;border-top:1px dashed #d5c49d;background:none;box-shadow:none;border-radius:0;font-size:10px;color:#718058;line-height:1.4;width:100%;text-align:left}
+#game .pet-owned-care-link{min-height:22px!important;padding:0;background:none;border:0;box-shadow:none;font-family:'Songti SC',serif;font-size:13px;color:#607343}
+.pet-owned-methods{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+#game .pet-owned-methods button{min-height:48px;padding:4px 2px;border:1px solid #bba67b;border-radius:8px 6px 9px 7px;background:#fcf7e6;color:#566346;box-shadow:none}
+#game .pet-owned-methods button[aria-pressed="true"]{border:2px solid #6e8551;background:#edf0d6}
+.pet-owned-methods span{display:block;font-size:11px;line-height:1.4}.pet-owned-methods small{display:block;font-size:9px;line-height:1.4;color:#8e7a55}
+.pet-owned-due{margin:5px 0 0;font-size:9px;line-height:1.5;color:#8e7d5b}.pet-owned-due.due{color:#ac7139}
+.pet-owned-annual{grid-column:1/-1;padding-top:6px;border-top:1px solid #dfcfaa;text-align:center;font-size:10px;color:#8d7b58;line-height:1.5}
+#game .pet-owned-annual button{min-height:28px;padding:3px 8px;background:#e9e5ce;border-color:#c1c59f;color:#6f794b;font-size:10px}
+#game .pet-owned-adopt{width:100%;min-height:42px;padding:8px;margin:1px 0 10px;background:#fff7e5;border:1px dashed #b79d69;border-radius:12px;font-family:'Songti SC',serif;font-weight:650;font-size:18px;color:#6e734c;box-shadow:none}
+.pet-owned-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:10px 0;background:#f4e8cb;border:1px solid #d9c59d;border-radius:14px 10px 16px 12px}
+.pet-owned-summary>div{min-width:0;text-align:center;padding:0 3px}.pet-owned-summary>div+div{border-left:1px solid #cfbb93}
+.pet-owned-summary span{display:block;font-size:9px;color:#8d7b59;margin-bottom:5px}.pet-owned-summary strong{display:block;font-family:Georgia,'Songti SC',serif;font-size:15px;color:#3c5837;white-space:nowrap}
+.pet-owned-summary p{grid-column:1/-1;text-align:center;font-size:11px;color:#6f7650;margin:10px 0 0;padding-top:8px;border-top:1px solid #ddcba5}
+.pet-owned-summary small{display:block;font-size:9px;color:#a08b66;margin-top:4px}
+.pet-owned-painted #actions{gap:5px;background:transparent!important;padding-top:10px!important;max-height:none!important}
+.event.event-active.pet-owned-painted #actions [data-owned-action="pay"]{min-height:43px!important;background:linear-gradient(110deg,#e8c265,#f3d98e)!important;color:#3f5737!important;border:1px solid #b49456;border-radius:13px 16px 12px 15px;font-family:'Songti SC',serif;font-size:17px}
+.event.event-active.pet-owned-painted #actions [data-owned-action="review"],.event.event-active.pet-owned-painted #actions [data-owned-action="back"]{min-height:28px!important;background:transparent!important;color:#8d7b58!important;border-color:transparent;box-shadow:none;font-size:11px}
+@media(max-width:350px){.pet-owned-card{padding:8px;gap:4px 7px;grid-template-columns:39% minmax(0,1fr)}.pet-owned-name strong{font-size:15px}.pet-owned-details dl>div{font-size:10px}.pet-owned-methods span{font-size:9px}.pet-owned-methods small{font-size:7px}.pet-owned-summary strong{font-size:13px}}

@@ -1,0 +1,13 @@
+/* Real controls stay within the new painted paper and wooden action plank. */
+.renters-hub-entry{position:relative;width:min(100%,300px);margin:15px auto 0;border-radius:16px;overflow:hidden}
+.renters-hub-entry>img{display:block;width:100%;aspect-ratio:2/3}
+.renters-entry-label{position:absolute;left:14%;top:34%;width:72%;height:30%;display:flex;align-items:center;justify-content:center;white-space:pre-line;text-align:center;font:600 15px/1.9 'Songti SC',serif;color:#45603b}
+#game button.renters-entry-action{position:absolute;left:10%;top:75%;width:80%;height:10%;padding:3px!important;min-height:44px!important;border:0!important;background:transparent!important;box-shadow:none!important;color:#45603b;font-weight:bold;font-size:14px}
+[data-document-kind^="renters"]>.insurance-document-sheet{left:11%;width:78%;top:29%;height:41%;padding:3px 7px;box-sizing:border-box}
+#game [data-document-kind^="renters"] .insurance-document-sheet button{white-space:normal;min-height:44px!important;font-size:11px;background:#efe3bf!important;color:#425a35;border:1px solid #c5b68e;border-radius:7px;margin:5px 0;width:100%;box-sizing:border-box}
+#game [data-document-kind^="renters"] .insurance-document-sheet button:disabled{opacity:.5}
+#game [data-document-kind^="renters"]>.insurance-document-action{top:75%;height:10%}
+#game [data-document-kind^="renters"]>.insurance-document-action:focus-visible,#game .renters-entry-action:focus-visible{outline:3px solid #405a35;outline-offset:-4px}
+[data-document-kind="renters"] .insurance-note:has(>.insurance-option){display:inline-block;vertical-align:top;width:50%;padding:0 5px 7px;box-sizing:border-box}
+[data-document-kind="renters"] .insurance-note:has(>.insurance-option) h3{min-height:30px}
+[data-document-kind="renters"] .insurance-note:has(>.insurance-option) p{min-height:32px}

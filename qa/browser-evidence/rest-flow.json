@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checks": [
+    "preview/back no effects; explicit acknowledgement without resting",
+    "4h free payment and actual capped energy/stress/health effects",
+    "repeat rest, duplicate callback, reload and next month",
+    "insufficient/exact time, resource changes after preview",
+    "actual pet professional-cleaning time reservation",
+    "stale save/month/detached confirmations blocked",
+    "low health and recovery route to treatment",
+    "320/390/desktop centered no overflow",
+    "real service worker offline rest confirmation"
+  ],
+  "pageErrors": [],
+  "limits": [
+    "isolated Chromium, not real phone",
+    "not full multi-year randomized gameplay"
+  ]
+}

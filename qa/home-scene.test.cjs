@@ -1,0 +1,13 @@
+const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
+const nodes={};const node=id=>nodes[id]??={hidden:false,innerHTML:'',classList:{contains:()=>false,remove(){},toggle(){}},append(){},addEventListener(){}};
+const c={state:{month:3,cash:4321,townMode:true,town:{movement:null}},document:{createElement:()=>node('roomView'),body:{classList:{toggle(){}}},addEventListener(){}},$:node,townEnabled:()=>c.state.townMode,townPending:()=>!!c.state.town.movement&&!c.state.town.movement.resolved,townState:()=>c.state.town,townCalendar:()=>'',clearModals(){},save(){},render(){},showTown(){c.mapCalls++},openGame(){},finish(){},explorationStarted:()=>false,continueLife(){},mapCalls:0};
+c.resumeTownMove=()=>{};c.document.querySelector=()=>null;
+vm.createContext(c);vm.runInContext(fs.readFileSync('home-scene.js','utf8'),c);
+c.townStart();assert.equal(c.state.town.screen,'home');assert.equal(c.state.cash,4321);assert.equal(c.state.month,3);assert.equal(c.mapCalls,0);assert.equal(node('roomView').hidden,false);
+assert.ok(!node('roomView').innerHTML.includes('data-room="enter"'));
+for(const action of ['work','learn','rest','life','social','finance','pets','leave'])assert.ok(node('roomView').innerHTML.includes('data-room="'+action+'"'));
+assert.ok(node('roomView').innerHTML.includes('assets/career/home-mobile.webp'));
+c.showTown();c.render();assert.equal(c.state.town.screen,'map');assert.equal(node('roomView').hidden,true);
+c.state.town.movement={resolved:false,id:7};c.openGame();assert.equal(c.state.town.screen,'map');assert.equal(c.state.town.movement.id,7);
+c.state.town.movement.resolved=true;c.openGame();assert.equal(c.state.town.screen,'home');assert.equal(c.state.cash,4321);assert.equal(c.state.month,3);
+console.log('PASS: home entry, seven hotspots, unchanged cash/month, map navigation, pending-event resume and save reopen.');

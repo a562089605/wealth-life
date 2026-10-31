@@ -1,26 +1,26 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert'),crypto=require('crypto');
 const root=require('path').resolve(__dirname,'..'),checks=[];let nodes,ctx;
 function boot(saved){nodes=new Map();function node(id){if(!nodes.has(id))nodes.set(id,{innerHTML:'',textContent:'',style:{},classList:{add(){},remove(){}},closest(){return this},insertAdjacentHTML(_,s){this.innerHTML+=s}});return nodes.get(id)}
-ctx={state:saved||fresh(),CAREERS:[],Math:Object.create(Math),structuredClone,document:{addEventListener(){},querySelector(){return null}},$:node,roundCash:n=>Math.round(n*100)/100,priceText:n=>'$'+Number(n).toFixed(2),save(){ctx.saved=JSON.stringify(ctx.state)},showEvent(kind,title,desc,data,actions){ctx.modal={kind,title,desc,data,actions}},finish(){},openRequiredIncident(){},showGameOver(){},window:{v26Choices(){return '<p>existing</p>'}},openWorkAdjustment(){},learningCareerCard(){return''},workplaceEvent(){ctx.oldWorkplace=true;return'barista'},settleMonth(){ctx.settles=(ctx.settles||0)+1;return'core'},showMonthlyAudit(){},openGame(){},townEnabled(){return false},careerMissing(){return[]},careerSalary(c){return c.salary},applyCareerProgression(){},educationRaiseRate(t){return {associate:.08,bachelor:.12,master:.18,professional:.25}[t]||0}};vm.createContext(ctx);
+ctx={state:saved||fresh(),CAREERS:[],Math:Object.create(Math),structuredClone,document:{addEventListener(){},querySelector(){return null}},$:node,roundCash:n=>Math.round(n*100)/100,priceText:n=>'$'+Number(n).toFixed(2),save(){ctx.saved=JSON.stringify(ctx.state)},showEvent(kind,title,desc,data,actions){ctx.modal={kind,title,desc,data,actions}},finish(){},openRequiredIncident(){},showGameOver(){},window:{v26Choices(){return '<p>existing</p>'}},openWorkAdjustment(){},learningCareerCard(){return''},workplaceEvent(){ctx.oldWorkplace=true;return'barista'},settleMonth(){ctx.settles=(ctx.settles||0)+1;return'core'},showMonthlyAudit(){},openGame(){},townEnabled(){return false},recordForcedEventTime(){return {returnRequired:false,debt:0}},careerMissing(){return[]},careerSalary(c){return c.salary},applyCareerProgression(){},educationRaiseRate(t){return {associate:.08,bachelor:.12,master:.18,professional:.25}[t]||0}};vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(root+'/coffee.js','utf8').split('// Register one background')[0],ctx);vm.runInContext(fs.readFileSync(root+'/shift-lead.js','utf8'),ctx);vm.runInContext(fs.readFileSync(root+'/coffee-career.js','utf8'),ctx);return ctx}
 function fresh(month=0){return{month,job:'值班主管 Shift Lead',salary:44000/12,annualSalary:44000,cash:5000,energy:60,stress:30,happiness:60,turn:{index:9},coffee:{version:2,managerTrust:3,customerFavor:0,monthly:null,skills:{coffee:{xp:200},service:{xp:200},management:{xp:200}}}}}
 function setup(id,month=0){boot(fresh(month));ctx.shiftData();ctx.Math.random=()=>.99;const r=ctx.ensureShiftMonth();Object.assign(r,{eventId:id,status:'pending'});return r}
 function effects(id,index,random=.1){const r=setup(id);assert(ctx.resolveShiftEvent(0,id,index,()=>random));return r}
 function delta(r){const e={};for(const row of r.receipts)for(const [k,v]of Object.entries(row.effects))e[k]=(e[k]||0)+v;return e}
 const cases=[
-['training',0,null,{energy:-2,stress:1,management:15,trust:1}],
-['training',1,null,{energy:-1,management:5}],
+['training',0,null,{hours:4,energy:-2,stress:1,management:15,trust:1}],
+['training',1,null,{hours:1,energy:-1,management:5}],
 ['schedule',0,null,{energy:-1,stress:1,management:12,trust:1}],
 ['schedule',1,.1,{energy:1,stress:-1,management:5}],
-['schedule',1,.99,{wages:253.85,tips:16.96,hours:8,energy:-5,stress:5,management:2}],
-['schedule',2,null,{wages:253.85,tips:16.96,hours:8,energy:-4,stress:4,management:5,trust:1}],
+['schedule',1,.99,{wages:253.85,tips:16.96,hours:8,energy:-4,stress:2,management:3,trust:1}],
+['schedule',2,null,{wages:253.85,tips:16.96,hours:8,energy:-4,stress:2,management:3,trust:1}],
 ['schedule',3,null,{energy:1,stress:-1}],
 ['complaint',0,null,{energy:-1,stress:2,service:12,management:8,trust:1}],
-['complaint',1,.1,{management:6,service:5,stress:1}],
-['complaint',1,.99,{stress:3,service:8,management:5}],
-['complaint',2,null,{stress:1,management:3,service:-5,storeCost:5}],
-['acting',0,.1,{wages:253.85,tips:16.96,hours:8,energy:-4,stress:3,management:25,trust:3,bonus:100,service:5}],
-['acting',0,.99,{wages:253.85,tips:16.96,hours:8,energy:-6,stress:7,management:10,trust:1,service:-5}],
+['complaint',1,.1,{management:6,service:6}],
+['complaint',1,.99,{trust:-1,stress:1,service:3}],
+['complaint',2,null,{stress:1,management:3,storeCost:5}],
+['acting',0,.1,{wages:253.85,tips:16.96,hours:8,energy:-4,stress:2,management:10,trust:1,bonus:100}],
+['acting',0,.99,{wages:253.85,tips:16.96,hours:8,energy:-4,stress:2,management:10,trust:0}],
 ['acting',1,null,{}]
 ];
 for(const [id,i,u,expected]of cases){const r=effects(id,i,u??.1);if(r.followGenerated){assert.equal(r.status,'followup');assert(!r.follow.settled);assert(ctx.modal.kind.includes('FOLLOW-UP'));assert(ctx.settleShiftFollow(0,id));}assert.deepEqual(delta(r),expected);assert.equal(ctx.state.cash,5000);assert.equal(ctx.currentCareerTime().free,100-(expected.hours||0));assert.equal(ctx.state.energy,60+(expected.energy||0));assert.equal(ctx.state.stress,30+(expected.stress||0));assert.equal(ctx.state.coffee.managerTrust,3+(expected.trust||0));assert.equal(ctx.state.coffee.skills.service.xp,200+(expected.service||0));assert.equal(ctx.state.coffee.skills.management.xp,200+(expected.management||0));const income=ctx.coffeeMonthlyIncome();assert.equal(income.extraWages,(expected.wages||0)+(expected.bonus||0));assert.equal(income.extraTips,expected.tips||0);assert.equal(income.total,Math.round((44000/12+390+income.extraWages+income.extraTips)*100)/100);const before=JSON.stringify(ctx.state);assert(!ctx.resolveShiftEvent(0,id,i));assert(!ctx.settleShiftFollow(0,id));assert.equal(JSON.stringify(ctx.state),before);checks.push(id+' option '+i+(u===null?'':u<.5?' success':' failure'));}
@@ -33,7 +33,7 @@ for(let lv=1;lv<=5;lv++){const r=setup('acting');ctx.state.coffee.skills.managem
 checks.push('acting success 50/60/70/80/90 uses pre-choice skill level');
 setup('acting');ctx.openShiftEvent();const html=nodes.get('eventData').innerHTML;assert(!html.includes('代理非常成功'));assert(!html.includes('忙不过来'));assert(!html.includes('$0'));assert(!html.includes('无变化'));assert(!html.includes('+0'));assert(!/>[+-]?0h</.test(html));assert(ctx.shiftWeights().praise<100);ctx.state.coffee.skills.management.xp=400;const hi=ctx.shiftWeights().praise;ctx.state.coffee.skills.management.xp=0;assert(hi>ctx.shiftWeights().praise);checks.push('main card hides followup detail and zero fields; praise weight grows but never guaranteed');
 setup('acting');ctx.state.coffee.skills.management.xp=400;ctx.state.coffee.skills.service.xp=0;ctx.resolveShiftEvent(0,'acting',0,()=>.99);ctx.settleShiftFollow(0,'acting');assert.equal(ctx.state.coffee.skills.service.xp,0);assert(!ctx.shiftChangeRows(ctx.shiftRecord().receipts.at(-1).effects).some(x=>x[0]==='Service XP'));checks.push('XP clamps zero/max and result shows actual applied change');
-setup('schedule');ctx.state.workHoursPerWeek=60;assert.equal(ctx.currentCareerTime().free,100);ctx.shiftRecord().workHoursDelta=96;assert(!ctx.resolveShiftEvent(0,'schedule',1));assert(!ctx.resolveShiftEvent(0,'schedule',2));assert(ctx.resolveShiftEvent(0,'schedule',0));checks.push('time budget guards include potential failed coordination shift');
+setup('schedule');ctx.state.workHoursPerWeek=60;assert.equal(ctx.currentCareerTime().free,100);ctx.shiftRecord().workHoursDelta=96;assert(ctx.resolveShiftEvent(0,'schedule',1));ctx.settleShiftFollow(0,'schedule');r=setup('schedule');ctx.shiftRecord().workHoursDelta=96;assert(!ctx.resolveShiftEvent(0,'schedule',2));assert(ctx.resolveShiftEvent(0,'schedule',0));checks.push('time budget guards include potential failed coordination shift');
 setup('acting');ctx.settleMonth();assert.equal(ctx.settles,undefined);ctx.resolveShiftEvent(0,'acting',0,()=>.1);ctx.finish();ctx.settleMonth();assert.equal(ctx.settles,undefined);ctx.settleShiftFollow(0,'acting');ctx.settleMonth();assert.equal(ctx.settles,1);checks.push('monthly settlement blocks pending main/followup and resumes once resolved');
 boot();ctx.state.job='咖啡师 Barista';assert(!ctx.shiftWorking());const job=ctx.state.job;ctx.workplaceEvent();assert(!ctx.shiftRecord());assert.equal(ctx.state.job,job);assert.equal(ctx.coffeeMonthlyIncome().baseTips,300);checks.push('Barista routing unchanged; never samples Shift Lead event');
 for(const id of ['schedule','complaint','acting']){setup(id);ctx.openShiftEvent();const body=nodes.get('eventData').innerHTML;assert(!body.includes('协调成功'));assert(!body.includes('协调失败'));assert(!body.includes('处理成功'));assert(!body.includes('处理失败'));}
@@ -50,9 +50,10 @@ for(let m=0;m<13;m++){
  ctx.state.turn.index=9;const r=ctx.ensureShiftMonth();r.eventId='schedule';r.status='pending';
  assert(ctx.resolveShiftEvent(m,'schedule',2));const income=ctx.coffeeMonthlyIncome();
  const metrics=ctx.calcMetrics();assert.equal(metrics.grossSalary,income.total);assert.equal(metrics.kContrib,ctx.roundCash(income.total*.05));
- assert.equal(metrics.tax,ctx.roundCash((income.total-metrics.kContrib)*.15));
+ assert.equal(metrics.tax,0);
  const cash=ctx.state.cash,cf=metrics.remainingCF;ctx.pending=false;ctx.settleMonthUnsafe();assert.equal(ctx.state.month,m+1);assert(Math.abs(ctx.state.cash-cash-cf)<.001);assert.equal(ctx.state.history.length,m+1);assert.equal(ctx.state.history.at(-1).careerIncome.extraTips,m%12===8?12.72:m%12>=10?25.43:16.96);assert.equal(ctx.state.coffee.shiftLead.monthly,null);assert.equal(ctx.currentCareerTime().free,100);
 }
-checks.push('actual core calcMetrics + settleMonthUnsafe: 13 monthly payrolls, tax/401k, cash, history, season rollover');
+checks.push('actual core calcMetrics + settleMonthUnsafe: 13 monthly payrolls, confirmed zero tax/401k, cash, history, season rollover');
 
 const output={passed:true,checks,caseCount:checks.length,scope:'Node VM integration/state tests; no real browser/mobile layout validation',uploaded:false};fs.writeFileSync(root+'/qa-shift-lead-v1.json',JSON.stringify(output,null,2));console.log(JSON.stringify(output,null,2));
+

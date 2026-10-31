@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "checks": [
+    "hobby menu blocked without resource changes",
+    "life menu blocked without resource changes",
+    "old hobby confirmation blocked without resource changes",
+    "old course confirmation blocked without resource changes",
+    "direct life choice blocked without resource changes",
+    "social action blocked without resource changes",
+    "skill course blocked without resource changes",
+    "annual preparation pauses before spending or applying elective effects",
+    "necessary living payment remains available",
+    "delegated pet care keeps original60 cost/0 personal hours and due date",
+    "normal skill course still costs80/8h",
+    "normal photography still costs90 and gives35XP; time remains pending design"
+  ],
+  "pageErrors": [],
+  "limits": [
+    "isolated Chromium",
+    "recovery/month/pet due dates are explicit fixtures",
+    "does not claim complete long-play or old-save coverage"
+  ]
+}

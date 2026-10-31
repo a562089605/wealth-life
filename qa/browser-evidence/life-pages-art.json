@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "activities": [
+    "运动 / 户外",
+    "宅家休息",
+    "朋友聚餐",
+    "兴趣爱好",
+    "周末短途旅行",
+    "演唱会 / 主题乐园",
+    "升级手机",
+    "品质餐厅",
+    "本月简单生活"
+  ],
+  "checks": [
+    "required bill originals/payments and completion",
+    "all nine previews without spend; original costs, bounded effects, monthly limit, saved receipt; no new hours",
+    "duplicate, stale owner, changed quote and reload protection",
+    "original random social follow-up preserved",
+    "funding quote, no auto payment, return to explicit confirmation",
+    "medical/recovery redirects",
+    "320/390/desktop centering and no horizontal overflow",
+    "real service worker installation, offline reload and both new illustrations available"
+  ],
+  "pageErrors": [],
+  "limitations": [
+    "isolated Chromium, not a real phone",
+    "fixture reload tested; no full multi-year validation"
+  ]
+}

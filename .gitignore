@@ -1,0 +1,5 @@
+qa/browser-evidence/*.png
+docs/reference/
+.preview/
+.openai/
+__pycache__/

@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "file": "qa/relationship-ui-followup.test.cjs",
+      "passed": true,
+      "output": "✔ actual contact page displays both fixed skills, including zero XP; viewing does not mark contact (4.416997ms)\n✔ actual chat callback rejects depleted energy then saves negative signed result and contact marker (2.850197ms)\n✔ actual map help UI permits a new event at80 while same event cannot repeat (1.811447ms)\n✔ all six interest images use their exact real profile values and do not mark contact (8.098863ms)\n✔ two interests render together; scroll navigation has no gameplay effects; missing profiles show no fake art (1.247925ms)\nℹ tests 5\nℹ suites 0\nℹ pass 5\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 25.327058\n"
+    },
+    {
+      "file": "qa/relationship-save.test.cjs",
+      "passed": true,
+      "output": "PASS: original raw relationship backup once, previous generations retained, denied backup never overwrites source slot.\n"
+    },
+    {
+      "file": "qa/service-worker.test.cjs",
+      "passed": true,
+      "output": "PASS: synchronous cache lifetime, quota isolation, offline resource and navigation fallback, missing-shell Response.error.\n"
+    },
+    {
+      "syntax": "relationship-ui.js",
+      "passed": true
+    },
+    {
+      "syntax": "sw.js",
+      "passed": true
+    }
+  ],
+  "resourceCheck": "Six runtime WebP paths exist and are cached; exact JS/CSS URLs match HTML and SW",
+  "limits": "VM UI tests and Node checks, no full browser. Chromium launch failed in current sandbox; phone layout and actual offline walkthrough not accepted."
+}

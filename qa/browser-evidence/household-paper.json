@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": [
+    "four housing scenes and original preview buttons, browsing no mutation",
+    "payment/reservation scene styling; 320/390/desktop centered no overflow",
+    "original living button embedded in illustration, actual800 payment, paid reopen no duplicate, scaled320/390/desktop button clicks",
+    "insufficient cash keeps disabled pay and original funding route",
+    "approved rest scene, original4h transaction and result",
+    "insurance and critical recovery screens not restyled by household module",
+    "real SW offline atlas and living payment"
+  ],
+  "pageErrors": [],
+  "limits": [
+    "isolated Chromium, not real phone",
+    "housing/rest original branch regressions run separately"
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "scope": "Isolated Chromium. Real activity buttons except explicit month/role/recovery/time-use fixtures. No production save or balance changes. Not a natural long playthrough.",
+  "cases": [
+    {
+      "case": "rest_4h",
+      "before": {
+        "month": 0,
+        "free": 100,
+        "energy": 79,
+        "stress": 28,
+        "health": 82,
+        "happiness": 68,
+        "cash": 10000,
+        "study": null,
+        "rest": 0
+      },
+      "after": {
+        "month": 0,
+        "free": 96,
+        "energy": 85,
+        "stress": 26,
+        "health": 83,
+        "happiness": 68,
+        "cash": 10000,
+        "study": null,
+        "rest": 1
+      }
+    },
+    {
+      "case": "skill_course_8h_after_rest",
+      "before": {
+        "month": 0,
+        "free": 96,
+        "energy": 85,
+        "stress": 26,
+        "health": 83,
+        "happiness": 68,
+        "cash": 10000,
+        "study": null,
+        "rest": 1
+      },
+      "after": {
+        "month": 0,
+        "free": 88,
+        "energy": 83,
+        "stress": 26,
+        "health": 83,
+        "happiness": 68,
+        "cash": 9920,
+        "study": null,
+        "rest": 1
+      }
+    },
+    {
+      "case": "map_event_3h_after_rest_course",
+      "before": {
+        "month": 0,
+        "free": 88,
+        "energy": 83,
+        "stress": 26,
+        "health": 83,
+        "happiness": 68,
+        "cash": 9920,
+        "study": null,
+        "rest": 1
+      },
+      "after": {
+        "month": 0,
+        "free": 85,
+        "energy": 83,
+        "stress": 26,
+        "health": 83,
+        "happiness": 68,
+        "cash": 9920,
+        "study": null,
+        "rest": 1
+      }
+    },
+    {
+      "case": "home_lifestyle_rest_no_time",
+      "before": {
+        "month": 0,
+        "free": 100,
+        "energy": 79,
+        "stress": 28,
+        "health": 82,
+        "happiness": 68,
+        "cash": 10000,
+        "study": null,
+        "rest": 0
+      },
+      "after": {
+        "month": 0,
+        "free": 100,
+        "energy": 87,
+        "stress": 22,
+        "health": 82,
+        "happiness": 72,
+        "cash": 9955,
+        "study": null,
+        "rest": 0
+      }
+    },
+    {
+      "case": "hobby_practice_no_time",
+      "before": {
+        "month": 0,
+        "free": 100,
+        "energy": 79,
+        "stress": 28,
+        "health": 82,
+        "happiness": 68,
+        "cash": 10000,
+        "study": null,
+        "rest": 0
+      },
+      "after": {
+        "month": 0,
+        "free": 100,
+        "energy": 81,
+        "stress": 24,
+        "health": 82,
+        "happiness": 72,
+        "cash": 9910,
+        "study": null,
+        "rest": 0
+      }
+    },
+    {
+      "case": "chat_with_friend_no_time",
+      "before": {
+        "month": 0,
+        "free": 100,
+        "energy": 79,
+        "stress": 28,
+        "health": 82,
+        "happiness": 68,
+        "cash": 10000,
+        "study": null,
+        "rest": 0
+      },
+      "after": {
+        "month": 0,
+        "free": 100,
+        "energy": 77,
+        "stress": 28,
+        "health": 82,
+        "happiness": 72,
+        "cash": 9985,
+        "study": null,
+        "rest": 0
+      }
+    },
+    {
+      "case": "degree_enrollment_no_hours",
+      "before": {
+        "month": 0,
+        "free": 100,
+        "energy": 79,
+        "stress": 28,
+        "health": 82,
+        "happiness": 68,
+        "cash": 100000,
+        "study": null,
+        "rest": 0
+      },
+      "after": {
+        "month": 0,
+        "free": 100,
+        "energy": 79,
+        "stress": 28,
+        "health": 82,
+        "happiness": 68,
+        "cash": 93000,
+        "study": {
+          "target": "associate",
+          "progress": 0,
+          "total": 24,
+          "receipt": {
+            "id": "tuition-1",
+            "tuition": 7000,
+            "paidMonth": 0
+          }
+        },
+        "rest": 0
+      }
+    },
+    {
+      "case": "hobby_during_full_recovery",
+      "before": {
+        "month": 0,
+        "free": 0,
+        "energy": 79,
+        "stress": 28,
+        "health": 20,
+        "happiness": 68,
+        "cash": 9500,
+        "study": null,
+        "rest": 0
+      },
+      "after": {
+        "month": 0,
+        "free": 0,
+        "energy": 81,
+        "stress": 24,
+        "health": 20,
+        "happiness": 72,
+        "cash": 9410,
+        "study": null,
+        "rest": 0
+      }
+    },
+    {
+      "case": "unemployed_time",
+      "actual": {
+        "weeklyHours": 40,
+        "baseMonthlyWork": 160,
+        "monthlyWork": 160,
+        "baseFree": 100,
+        "free": 100,
+        "workHoursDelta": 0,
+        "courseHours": 0,
+        "reservedHours": 0,
+        "petCareHours": 0,
+        "restHours": 0,
+        "mapEventHours": 0
+      }
+    },
+    {
+      "case": "manager_work_review_without_contract",
+      "before": {
+        "month": 0,
+        "free": 80,
+        "energy": 79,
+        "stress": 28,
+        "health": 82,
+        "happiness": 68,
+        "cash": 10000,
+        "study": null,
+        "rest": 0
+      },
+      "after": {
+        "month": 0,
+        "free": 80,
+        "energy": 79,
+        "stress": 28,
+        "health": 82,
+        "happiness": 68,
+        "cash": 10000,
+        "study": null,
+        "rest": 0
+      },
+      "workMarked": true,
+      "normalWorkRecorded": false
+    }
+  ],
+  "pageErrors": []
+}

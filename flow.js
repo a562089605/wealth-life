@@ -6,6 +6,8 @@ function premiumsTotal(){return roundCash(Object.values(state.insurance||{}).red
 function remainingExpenses(){if(!state)return 0;const r=paymentReceipt(),living=livingTotal(),premiums=premiumsTotal(),other=state.expenses-(state.housingCost||0)-living-premiums;return roundCash(Math.max(0,(state.housingCost||0)-(r.housing||0))+Math.max(0,living-(r.living||0))+Math.max(0,premiums-(r.premiums||0))+Math.max(0,other-(typeof paidLoanTotal==='function'?paidLoanTotal():0)))}
 function spendConfirmed(kind,amount,meta={}){amount=roundCash(amount);if(amount<0||!Number.isFinite(amount)||amount>0&&state.cash<amount)return false;if(amount===0)return true;state.cash=roundCash(state.cash-amount);state.financeLedger??=[];state.financeLedger.push({kind,month:state.month,amount,...meta});return true}
 function payMonthly(category,amount){if(!spendConfirmed(category+'Payment',amount))return false;if(state.monthlyPayments?.month!==state.month)state.monthlyPayments={month:state.month,housing:0,living:0,premiums:0};state.monthlyPayments[category]=roundCash((state.monthlyPayments[category]||0)+amount);return true}
+// A retained callback is valid only while its original confirmation is on the active page.
+function eventActionCurrent(node,title){return !!(node?.isConnected&&node.closest('.event-active')&&$('eventTitle').textContent===title)}
 function completeMonthlyStep(index){if(state.turn?.index===index&&document.getElementById('game').classList.contains('v24-running'))state.turn.index=index+1;save();finish();if(document.getElementById('game').classList.contains('v24-running'))window.scrollTo({top:0,behavior:'instant'})}
 function monthSelection(name){return state.monthChoices?.month===state.month?state.monthChoices[name]:null}
 function setMonthSelection(name,value){if(state.monthChoices?.month!==state.month)state.monthChoices={month:state.month};state.monthChoices[name]=value}
@@ -41,8 +43,8 @@ function openInsurance(type){showEvent('保险','保险与保障','先选方案�
 buyInsurance=openInsurance;$('healthBtn').onclick=()=>openInsurance('health');$('incomeBtn').onclick=()=>openInsurance('income');
 
 // Initial acquaintances are school contacts. Work contacts are introduced by an event after work.
-makePeople=function(){return ['Maya','Daniel','Nora'].map((name,i)=>({id:'school-'+i,name,age:i===2?(state?.age||22)+20:(state?.age||22),job:i===2?'老师':'同学',status:i===2?'老师':'同学',origin:'school',city:state?.city||'orlando',relation:50,life:i===2?'曾教过你的老师':'一起读书的同学',wealth:5000,careerLevel:1,joinedDream:false,partnerRole:null,businessPartner:false}))};
-function workplaceEvent(){if(!state.job||state.retired||state.unemployedMonths>0||state.month<1)return false;const job=state.job;state.workContacts??={};const count=state.workContacts[job]||0;if(count>=2)return false;const role=count===0?'同事':'上司',name=(count===0?['Alex','Morgan',...NPC_NAMES]:['Morgan','Alex',...NPC_NAMES]).find(n=>!state.people.some(p=>p.name===n))||('工作联系人'+state.people.length);showEvent('工作关系','认识新的'+role,'你已在「'+job+'」工作。一次工作交流让你有机会认识'+name+'。',[['身份',role],['花费','$0']],[['打个招呼',()=>{if((state.workContacts[job]||0)!==count)return;state.people.push({id:'work-'+state.month+'-'+count,name,age:state.age+(count?8:2),job,sourceJob:job,status:role,origin:'work',city:state.city,relation:35,life:'在工作中认识的'+role,wealth:10000,careerLevel:1});state.workContacts[job]=count+1;finish()},true],['这次先不认识',finish,false]]);return true}
+makePeople=function(){return []};
+function workplaceEvent(){return false} // Relationship introductions now use explicit map cards; career wrappers remain.
 // Market records are game quotes, never live prices or invented historical returns.
 const V26_INSTRUMENTS=[
  {id:'us500',name:'国内标普500 ETF',kind:'ETF',desc:'本国大型上市公司指数，约500家企业；不是《财富》500强排名。',beta:1,region:'us',risk:'股票市场风险'},

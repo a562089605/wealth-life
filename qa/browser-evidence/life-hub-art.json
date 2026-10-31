@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": [
+    "new illustrated life board loads, real cash/pending costs; browsing no spend/state/time/check changes",
+    "all five original controls navigate and remove life-only styling",
+    "320/390/desktop centered and no horizontal overflow",
+    "unpaid required items prevent monthly life acknowledgement",
+    "actual original family450/living800 payment, updated summary and explicit monthly check; no duplicate debit"
+  ],
+  "pageErrors": [],
+  "limitations": [
+    "isolated Chromium, not real device",
+    "new save, not full legacy/multi-month coverage"
+  ]
+}
