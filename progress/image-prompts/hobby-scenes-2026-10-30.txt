@@ -1,0 +1,2 @@
+Reference: assets/career/learning-embedded.webp
+Six equal portrait panels: photography camera with flowers, filmmaking tripod video camera, cooking soup, music acoustic guitar, gardening potted flowers, language headphones/read aloud. Consistent adult girl brown bun/black top/cream trousers in warm ochre-green textured gouache. Blank parchment and two empty wooden action planks. No baked-in labels. Source retained; runtime WebP quality88. Final source2172x724, each panel362x724; parchment actual y40%-73%, live layout follows actual geometry.

@@ -1,0 +1,17 @@
+{
+  "base": "fc9dee8b8531d6b7af829630e93a9e3346b9f1bb",
+  "nodeScriptsPassed": 61,
+  "runtimeSyntaxPassed": 80,
+  "versionedReferencesPassed": 106,
+  "browserGroupsPassed": 42,
+  "priorLayoutsPassed": 12,
+  "newHobbyViewportsPassed": 18,
+  "pageErrors": 0,
+  "notPassedOrNotRun": [
+    "Full historical image inventory locally unavailable: art-inventory, generated-originals, coffee-rules",
+    "Real Safari",
+    "Complete offline",
+    "Actual deployment pending remote check"
+  ],
+  "secondRemoteIntegration": "Preserved contact-interest pages and six runtime images; relationship UI and contact-interest tests passed"
+}

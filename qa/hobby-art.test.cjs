@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
 let paid=0,last;const nodes={};const make=()=>({style:{},children:[],append(x){this.children.push(x)},setAttribute(k,v){this[k]=v}});
-const c={document:{createElement:make},$:id=>nodes[id]??={...make(),click(){}},showEvent(...args){last=args},monthSelection:()=>null,currentCareerTime:()=>({free:24}),openLearning(){},finish(){}};
+const c={state:{month:0},hobbyPracticeMissing:()=>[],eventActionCurrent:b=>!!b?.current,openLearningSkills(){},document:{createElement:make},$:id=>nodes[id]??={...make(),click(){}},showEvent(...args){if(nodes.actions?.firstElementChild)nodes.actions.firstElementChild.current=false;last=args;c.$('actions').firstElementChild={current:true}},monthSelection:()=>null,currentCareerTime:()=>({free:24}),openLearning(){},finish(){}};
 vm.createContext(c);vm.runInContext(fs.readFileSync('hobby-art.js','utf8'),c);
 const names=['摄影','电影创作','烹饪','音乐','园艺','语言学习'];
 c.showEvent('HOBBY','发展兴趣','',names.map(n=>[n,'Lv.0 · $90']),names.slice().reverse().map(n=>['练习 '+n,()=>{paid++},false,n==='烹饪']));

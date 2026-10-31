@@ -6,7 +6,7 @@ currentCareerTime=function(){const t=timeBudgetBefore();if(!state)return t;
  if(state.health<30&&!recovery)return {...t,free:0,recoveryPending:true};
  if(!state.eventTimeLedger&&!recovery)return t;
  const a=allocateEventTimeDebt(state,{month:state.month,baseHours:t.baseFree,recovery:!!recovery});
- return {...t,free:a.blocked||recovery?0:Math.max(0,t.baseFree-t.workHoursDelta-(t.courseHours||0)-a.applied),timeDebtApplied:a.applied||0,timeDebtBlocked:!!a.blocked};};
+ return {...t,free:a.blocked||recovery?0:Math.max(0,t.baseFree-t.workHoursDelta-(t.courseHours||0)-(t.educationHours||0)-a.applied),timeDebtApplied:a.applied||0,timeDebtBlocked:!!a.blocked};};
 
 function explorationReturnReasons(){const reasons=[];
  if(state.energy<20)reasons.push('能量低于20');

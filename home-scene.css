@@ -63,3 +63,15 @@ body.room-screen:before{display:none}
 .candidate-barista-portrait[hidden]{display:none}
 
 .candidate-bank-scene{width:160px;max-width:45%;margin:0 auto 12px}
+
+/* Real labels and direction cards sit on the existing hand-painted paper. */
+.hobby-art-menu button.art-menu-label{background:#f7f0dd;color:#173e30;font-size:clamp(11px,3.7vw,22px);font-weight:800;line-height:1.2;padding:2px 4px;border-radius:18px}
+.learning-choice-board{position:absolute;left:23%;top:33%;width:54%;height:40%;display:flex;flex-direction:column;gap:8px;padding:6px 2px;background:#f7f0dd;border-radius:18px}
+.hobby-art-menu .learning-choice-board button{position:static;flex:1;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:8px 4px;background:#fff8e7;color:#173e30;border:1.5px solid #b39862;border-radius:16px;box-shadow:0 2px 0 #c4ae7960}
+.learning-choice-board strong{font-size:clamp(15px,4.3vw,26px);line-height:1.3}
+.learning-choice-board span{font-size:clamp(10px,2.6vw,14px);line-height:1.4}
+.learning-branches{padding:8px 0}.learning-branches h3{color:#234a38;margin:16px 0 10px}
+.learning-branch-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.learning-branch{display:flex;flex-direction:column;gap:7px;align-items:flex-start;text-align:left;padding:15px 12px;background:#f7f0dd;color:#173e30;border:1px solid #d4c29b;border-radius:15px;min-width:0;white-space:normal}
+.learning-branch strong{font-size:16px;line-height:1.4}.learning-branch span{font-size:12px;line-height:1.5;color:#6a715f}
+@media(max-width:360px){.learning-branch-grid{gap:8px}.learning-branch{padding:12px 8px}.learning-branch strong{font-size:14px}}

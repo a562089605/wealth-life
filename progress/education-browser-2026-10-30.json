@@ -1,0 +1,112 @@
+{
+  "results": [
+    "two visible learning directions and all nine interest/skill branches",
+    "real menu, previews, enrollment, repeated callback and remaining-time display",
+    "loan preview and cancellation neither enroll nor consume hours",
+    "stale enrollment callback rejected: close",
+    "stale enrollment callback rejected: month",
+    "stale enrollment callback rejected: save",
+    "insufficient hours and newly changed resources block payment",
+    "study, skill course and extra rest add their hours without duplication",
+    "legacy enrollment reload preserves progress, fees, loan and repeatable time view",
+    "real monthly settlement advances once and reserves 20h for next month",
+    "actual health treatment pauses study and resumes after recovery without tuition",
+    "graduation final month keeps its 20h audit and next month releases obligation",
+    "forced-event debt and education time coexist",
+    "simple associate study has no major selector and keeps experience requirements",
+    "editing assistant recruitment is closed; legacy titles and actual salaries preserved",
+    "bachelor compounds 12 percent on current coffee wage and survives later payroll",
+    "bachelor gives a generic worker 3000 to 3360 without changing job",
+    "all twelve bachelor roles remain closed and retain original eligibility gates",
+    "closed careers stay hidden and reject direct calls with full qualifications",
+    "master preview and enrollment keep 24 months 24000 tuition and 20 hours",
+    "master adds 18 percent to current coffee pay, old month uses prior wage",
+    "master follows recovery pause without losing saved plan",
+    "doctorate player copy, 60-hour commitment, fee and saved plan are clear",
+    "doctorate resource checks and repeated confirmation are protected",
+    "doctorate student loan cancellation and disbursement do not auto-enroll",
+    "doctorate pauses in real recovery and resumes with no repeated tuition",
+    "doctorate goes through all 48 real settlements and grants 25 percent once",
+    "doctorate and professional saves retain degree while research hiring remains closed",
+    "four distinct academic scenes and dedicated graduation scene load",
+    "real confirmed promotion and bachelor graduation in same month retain both rewards",
+    "graduation during temporary unemployment changes only return-to-work pay",
+    "jobless graduation keeps degree and timeline, without inventing a salary increase",
+    "retired graduation records degree without changing retirement income or wages",
+    "doctorate time remains reserved across coffee roles and optional overtime cannot exceed free time",
+    "hobby preview is free; confirmed practice costs 8 hours and cannot repeat this month",
+    "all six hobby branches preserve fees and gain XP only on confirmation",
+    "hobby confirmations reject stale close, month and save callbacks",
+    "hobbies respect time, cash, pet reservation, and recovery changes after preview",
+    "degree, hobby, coffee skill and rest time add once; old practices are not backcharged",
+    "annual hobby preflight stops before fees when combined activity hours do not fit",
+    "coffee course previews reject stale close, month and save confirmations",
+    "six illustrated hobby pages keep paper and actions within 320, 390 and 800 pixel views"
+  ],
+  "layouts": [
+    {
+      "width": 320,
+      "overflow": false,
+      "img": true
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "img": true
+    },
+    {
+      "width": 800,
+      "overflow": false,
+      "img": true
+    }
+  ],
+  "directionLayouts": [
+    {
+      "mode": "root",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "mode": "skills",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "mode": "degrees",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "mode": "root",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "mode": "skills",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "mode": "degrees",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "mode": "root",
+      "width": 800,
+      "overflow": false
+    },
+    {
+      "mode": "skills",
+      "width": 800,
+      "overflow": false
+    },
+    {
+      "mode": "degrees",
+      "width": 800,
+      "overflow": false
+    }
+  ],
+  "pageErrors": [],
+  "limitations": "Local Chromium with isolated fixtures; service workers blocked. Not real Safari, complete offline or all historical saves."
+}

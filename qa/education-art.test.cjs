@@ -1,11 +1,14 @@
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
 let originalCalls=0,last;const nodes={},make=()=>({style:{},children:[],append(x){this.children.push(x)},prepend(x){this.children.unshift(x)},setAttribute(k,v){this[k]=v}});
-const c={state:{education:'highschool',cash:9850},EDU:{highschool:{name:'高中',next:'associate'},associate:{name:'Associate',next:'bachelor'},bachelor:{name:'Bachelor',next:'master'},master:{name:'Master'},professional:{name:'Professional'}},document:{createElement:make},$:id=>nodes[id]??=make(),openEducation(){originalCalls++},showEvent(...a){last=a;nodes.eventData=make()},openLearning(){},finish(){}};
+const c={state:{education:'highschool',cash:9850},EDU:{highschool:{name:'高中',next:'associate'},associate:{name:'Associate',next:'bachelor'},bachelor:{name:'Bachelor',next:'master'},master:{name:'Master',next:'doctorate'},doctorate:{name:'博士 / Doctorate'},professional:{name:'Professional'}},document:{createElement:make},$:id=>nodes[id]??=make(),openEducation(){originalCalls++},showEvent(...a){last=a;nodes.eventData=make()},openLearning(){},finish(){}};
 vm.createContext(c);vm.runInContext(fs.readFileSync('education-art.js','utf8'),c);
 c.openEducation();assert.equal(originalCalls,0);const panel=nodes.eventData.children[0];assert.equal(panel.children.filter(x=>x['aria-label']?.startsWith('查看')).length,4);
 c.educationArtChoice('bachelor');assert.equal(originalCalls,0);assert.ok(last[3][1][1].includes('Associate'));assert.equal(c.state.cash,9850);
+c.educationArtChoice('doctorate');assert.equal(last[1],'博士 / Doctorate');assert.ok(last[3][1][1].includes('Master'));assert.equal(originalCalls,0);assert.equal(c.state.cash,9850);assert.ok(panel.children.some(x=>x['aria-label']==='查看博士学位'));assert.equal(panel.children.some(x=>x['aria-label']==='查看专业学位'),false);
 c.educationArtChoice('professional');assert.ok(last[3][1][1].includes('尚未开放'));assert.equal(originalCalls,0);
 c.educationArtChoice('associate');assert.equal(originalCalls,1);
 c.state.study={target:'associate'};c.openEducation();assert.equal(originalCalls,2);
 const action=()=>{};c.showEvent('EDUCATION','Associate · 课程预览','',[['学费',7000]],[['确认',action]]);assert.equal(last[4][0][1],action);assert.ok(nodes.eventData.children[0].children[0].src.includes('associate-preview'));
 console.log('PASS: preview-only degree menu, progression eligibility, unavailable route, existing study and original payment action.');
+
+c.state.study=null;c.state.education='master';c.educationArtChoice('doctorate');assert.equal(originalCalls,3);c.state.education='doctorate';c.educationArtChoice('doctorate');assert.equal(originalCalls,3);assert.ok(last[2].includes('已完成'));

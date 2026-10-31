@@ -1,0 +1,37 @@
+/* All live copy sits on the artwork's paper; live actions sit on its wooden planks. */
+#game .event.learning-painted-event{padding:0!important;border:0;background:transparent!important;box-shadow:0 12px 45px #2c241c55;border-radius:20px;width:min(96vw,440px,calc((100dvh - 24px)/2));max-width:none;max-height:calc(100dvh - 16px);overflow:hidden}
+.learning-painted-event>.row,.learning-painted-event>#eventTitle,.learning-painted-event>#eventDesc,.learning-painted-event>#actions{display:none!important}
+.learning-painted-event>#eventData{display:block!important;margin:0!important;padding:0!important}
+.learning-painted-event #eventClose{top:8px!important;right:8px!important;z-index:8!important;background:#fff4dce8!important;border:1px solid #bc9c62!important;color:#234b36!important}
+.learning-painted-scene{position:relative;aspect-ratio:1/2;width:100%;container-type:inline-size;color:#35543a}
+.learning-painted-art{position:absolute;inset:0;background-image:url('assets/career/learning-embedded.webp');background-size:300% 100%;background-position:var(--learning-panel) 0;background-repeat:no-repeat}
+.learning-painted-sheet{position:absolute;left:11%;top:31%;width:78%;height:39%;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#a99d72 transparent;padding:3px 5px;box-sizing:border-box;font-size:3.5cqw;line-height:1.6}
+.learning-painted-sheet>h2{font:800 6.1cqw/1.3 'Songti SC',serif;color:#1d4632;text-align:center;margin:0 0 8px}
+.learning-painted-note{font-size:3.15cqw;line-height:1.7;margin:0 0 9px;color:#69704e}
+.learning-painted-time{font-size:3.5cqw;text-align:center;border-bottom:1px solid #bca77a80;padding:3px 0 9px;margin:0 0 9px;color:#7d6737}
+.learning-painted-choices{display:grid;gap:12px;margin:10px 0}
+#game .learning-painted-choices button{position:static!important;width:100%;min-height:64px!important;padding:12px 6px!important;color:#234b35!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;white-space:normal;background:transparent!important;border:0;border-top:1px solid #b69a6490;border-bottom:1px solid #b69a6490;border-radius:5px 14px 6px 12px;box-shadow:none;font:800 5.3cqw/1.4 'Songti SC',serif}
+.learning-painted-choices button strong{font-size:5.3cqw}.learning-painted-choices button span{font-size:3.2cqw;font-weight:400;color:#7e7450}
+#game .learning-degree-choices button{min-height:40px!important;padding:7px 4px!important;font-size:4.5cqw}
+.learning-painted-footer{position:absolute;left:10%;top:72.3%;width:80%;height:16.7%;display:grid;grid-template-rows:1fr 1fr;gap:7px;align-items:stretch}
+#game .learning-painted-footer button{position:static!important;width:100%!important;height:auto!important;margin:0!important;min-height:0!important;padding:5px 8px!important;background:transparent!important;border:0!important;border-radius:12px;box-shadow:none;color:#29492f!important;font:800 4.2cqw/1.4 'Songti SC',serif;white-space:normal}
+.learning-painted-footer[data-count="3"],.learning-painted-footer[data-count="4"]{grid-template-columns:1fr 1fr;column-gap:8px}
+#game .learning-painted-footer[data-count="3"] button,#game .learning-painted-footer[data-count="4"] button{font-size:clamp(11px,3.25cqw,14px);padding:4px!important}
+#game .learning-painted-footer button:disabled{opacity:.4}
+.learning-painted-scene button:focus-visible,.learning-painted-sheet:focus-visible{outline:3px solid #47633a!important;outline-offset:-3px}
+.learning-painted-sheet .learning-branches{padding:0}.learning-painted-sheet .learning-branches h3{font:800 4.1cqw/1.4 'Songti SC',serif;margin:12px 0 7px}
+.learning-painted-sheet .learning-branch-grid{display:block}
+#game .learning-painted-sheet button.learning-branch{width:100%;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:8px;padding:9px 0!important;min-height:44px!important;border:0;border-bottom:1px solid #bca77a70;border-radius:0;background:transparent!important;box-shadow:none;color:#35543a!important}
+.learning-painted-sheet .learning-branch strong{font-size:3.9cqw}.learning-painted-sheet .learning-branch span{font-size:2.8cqw;text-align:right}
+.learning-painted-sheet .stat{display:block;padding:7px 0;margin:0;background:transparent!important;border:0;border-bottom:1px solid #bca77a70;border-radius:0}
+.learning-painted-sheet .stat .label{font-size:3cqw;color:#80754f}.learning-painted-sheet .stat .value{font-size:3.8cqw;line-height:1.6;color:#315139;white-space:normal;overflow-wrap:anywhere}
+.learning-painted-sheet .wl-note{font-size:3cqw;line-height:1.65}
+
+.learning-painted-scene[data-education-scene] .learning-painted-art{background-image:url('assets/career/education-stages.webp');background-size:500% 100%;background-position:var(--education-panel) 0}
+
+.learning-painted-scene[data-education-scene] .learning-painted-sheet{top:36.5%;height:34%;}
+
+.learning-painted-scene[data-hobby-scene] .learning-painted-art{background-image:url('assets/career/hobby-scenes.webp');background-size:600% 100%;background-position:var(--hobby-panel) 0}
+
+.learning-painted-scene[data-hobby-scene] .learning-painted-sheet{top:40.5%;height:31%;}
+.learning-painted-scene[data-hobby-scene] .learning-painted-footer{top:74%;height:16%;}
