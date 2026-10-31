@@ -1,0 +1,84 @@
+{
+  "status": "Illustrations complete; not connected to runtime or production cache",
+  "scope": "Six contact interest profile themes, not work orders",
+  "images": [
+    {
+      "id": "photography",
+      "skill": "摄影",
+      "png": "interest-photography.png",
+      "webp": "interest-photography.webp",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "a2127c067b4673e868218178cbecc32e5c59b54b3ef1a90177016ca68e85e674",
+      "webpSha256": "232652552b3915435c215e8475f358510e184377c54a680db3d615bf70ad57b4",
+      "prompt": "Create a NEW portrait 1024x1536 illustration for a warm picture-book life game, using the supplied image ONLY as a style and layout reference. Hand-painted gouache with visible brush texture, honey wood, forest-green accents, cream paper, leafy plants, little white daisies and warm golden daylight. Absolutely an ILLUSTRATION, never a photograph. Keep the reference's portrait 2:3 composition: upper 40% is a distinct still-life hobby scene, lower y44–79% a large EMPTY cream paper panel naturally sitting in the scene for live skill/level/XP data, bottom y84–94% two EMPTY rounded wooden plaques. NO text, letters, digits, skill names, XP, logos, watermarks or progress bars baked into the art. NO people or hands; communicate skill through objects so no character age/gender is invented. This is an interest profile, not teaching, payment or a completed task. Do not copy reference manager/persons. Scene: A cozy window-side photography corner. A recognizable modern camera with lens, neatly looped strap, camera bag, a small blank photographic print showing only landscape colors, tripod leaning nearby. Warm wood desk, cream curtains, green plant. Keep equipment entirely in the upper scene."
+    },
+    {
+      "id": "filmmaking",
+      "skill": "电影创作",
+      "png": "interest-filmmaking.png",
+      "webp": "interest-filmmaking.webp",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "100465b2f6db8cb4d3ae61c1255f586ccc112fbe903a7ecd3c9d34ff7eaf62ec",
+      "webpSha256": "d828895ce9c5cd28cac82aef2f8aa2fb3ea46a078238715dc5398528a2c86c5c",
+      "prompt": "Create a NEW portrait 1024x1536 illustration for a warm picture-book life game, using the supplied image ONLY as a style and layout reference. Hand-painted gouache with visible brush texture, honey wood, forest-green accents, cream paper, leafy plants, little white daisies and warm golden daylight. Absolutely an ILLUSTRATION, never a photograph. Keep the reference's portrait 2:3 composition: upper 40% is a distinct still-life hobby scene, lower y44–79% a large EMPTY cream paper panel naturally sitting in the scene for live skill/level/XP data, bottom y84–94% two EMPTY rounded wooden plaques. NO text, letters, digits, skill names, XP, logos, watermarks or progress bars baked into the art. NO people or hands; communicate skill through objects so no character age/gender is invented. This is an interest profile, not teaching, payment or a completed task. Do not copy reference manager/persons. Scene: A cozy editing and filmmaking worktable. A small video camera, folded compact tripod, closed-back headphones, external drive, notebook and a laptop with a non-readable abstract film-editing timeline made of colored rectangles. No clapperboard lettering or numbers. Distinct from still photography."
+    },
+    {
+      "id": "cooking",
+      "skill": "烹饪",
+      "png": "interest-cooking.png",
+      "webp": "interest-cooking.webp",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e53ca55b29814df3877fc10e7baaf4fe76ef7283fe2fc548614454df1d1fcf2c",
+      "webpSha256": "c49b5287c57e12ed6eb346a24285fd811c17ebed7a72bc6ab2b1658cb9dfc434",
+      "prompt": "Create a NEW portrait 1024x1536 illustration for a warm picture-book life game, using the supplied image ONLY as a style and layout reference. Hand-painted gouache with visible brush texture, honey wood, forest-green accents, cream paper, leafy plants, little white daisies and warm golden daylight. Absolutely an ILLUSTRATION, never a photograph. Keep the reference's portrait 2:3 composition: upper 40% is a distinct still-life hobby scene, lower y44–79% a large EMPTY cream paper panel naturally sitting in the scene for live skill/level/XP data, bottom y84–94% two EMPTY rounded wooden plaques. NO text, letters, digits, skill names, XP, logos, watermarks or progress bars baked into the art. NO people or hands; communicate skill through objects so no character age/gender is invented. This is an interest profile, not teaching, payment or a completed task. Do not copy reference manager/persons. Scene: A cozy home kitchen still life. Wooden cutting board, fresh carrots and tomatoes, herbs, mixing bowl, wooden spoon, small pot with gentle steam, folded cream towel. Forest-green cupboards, sunny window. Welcoming ordinary home cooking, not restaurant employment."
+    },
+    {
+      "id": "music",
+      "skill": "音乐",
+      "png": "interest-music.png",
+      "webp": "interest-music.webp",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "dbbfd041c26b4ef8dd4ba507fd5a7771103fd2a467c6799a6d6acdb90e58932d",
+      "webpSha256": "32cae16ac2c9e2dfc386f2694c09d1ccef778f413f75078cc2b393c1e3ca3637",
+      "prompt": "Create a NEW portrait 1024x1536 illustration for a warm picture-book life game, using the supplied image ONLY as a style and layout reference. Hand-painted gouache with visible brush texture, honey wood, forest-green accents, cream paper, leafy plants, little white daisies and warm golden daylight. Absolutely an ILLUSTRATION, never a photograph. Keep the reference's portrait 2:3 composition: upper 40% is a distinct still-life hobby scene, lower y44–79% a large EMPTY cream paper panel naturally sitting in the scene for live skill/level/XP data, bottom y84–94% two EMPTY rounded wooden plaques. NO text, letters, digits, skill names, XP, logos, watermarks or progress bars baked into the art. NO people or hands; communicate skill through objects so no character age/gender is invented. This is an interest profile, not teaching, payment or a completed task. Do not copy reference manager/persons. Scene: A cozy music corner with an acoustic guitar resting in a stand, a small keyboard showing just its keys, headphones and a closed blank music notebook. Forest-green cushion, wooden shelves and golden window light. No printed notation or letters. Distinct musical still life, not a stage or performance reward."
+    },
+    {
+      "id": "gardening",
+      "skill": "园艺",
+      "png": "interest-gardening.png",
+      "webp": "interest-gardening.webp",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "287956c8a74e0535ccf589617896d641c13d0e2a213417b3fdbbdb99b05daa9b",
+      "webpSha256": "a4668ddbb512ffa47929096e77e7d9a793d69236fa2b8ad17345fa3672353c79",
+      "prompt": "Create a NEW portrait 1024x1536 illustration for a warm picture-book life game, using the supplied image ONLY as a style and layout reference. Hand-painted gouache with visible brush texture, honey wood, forest-green accents, cream paper, leafy plants, little white daisies and warm golden daylight. Absolutely an ILLUSTRATION, never a photograph. Keep the reference's portrait 2:3 composition: upper 40% is a distinct still-life hobby scene, lower y44–79% a large EMPTY cream paper panel naturally sitting in the scene for live skill/level/XP data, bottom y84–94% two EMPTY rounded wooden plaques. NO text, letters, digits, skill names, XP, logos, watermarks or progress bars baked into the art. NO people or hands; communicate skill through objects so no character age/gender is invented. This is an interest profile, not teaching, payment or a completed task. Do not copy reference manager/persons. Scene: A sunny indoor potting bench with terracotta pots, a leafy seedling, a small hand trowel, watering can and gardening gloves, a little spilled soil and fresh green leaves. Warm greenhouse window, honey wood. No seed packet lettering. Clearly small-scale gardening, not property ownership."
+    },
+    {
+      "id": "language-learning",
+      "skill": "语言学习",
+      "png": "interest-language-learning.png",
+      "webp": "interest-language-learning.webp",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "82b9366322bf419508a3e9a473861f7398b276fc6f74fc8b1af13bf71d8dc3ca",
+      "webpSha256": "c7f22bc5a1cfbc9f172181c9993ebb42c6a36c72abc35b09b6d22fbcbdcb1c26",
+      "prompt": "Create a NEW portrait 1024x1536 illustration for a warm picture-book life game, using the supplied image ONLY as a style and layout reference. Hand-painted gouache with visible brush texture, honey wood, forest-green accents, cream paper, leafy plants, little white daisies and warm golden daylight. Absolutely an ILLUSTRATION, never a photograph. Keep the reference's portrait 2:3 composition: upper 40% is a distinct still-life hobby scene, lower y44–79% a large EMPTY cream paper panel naturally sitting in the scene for live skill/level/XP data, bottom y84–94% two EMPTY rounded wooden plaques. NO text, letters, digits, skill names, XP, logos, watermarks or progress bars baked into the art. NO people or hands; communicate skill through objects so no character age/gender is invented. This is an interest profile, not teaching, payment or a completed task. Do not copy reference manager/persons. Scene: A cozy language-study nook. Several blank-cover books stacked beside an open cream notebook, pencil and over-ear headphones, a small simple globe and a ceramic tea mug. Abstract tiny non-linguistic brush marks on distant pages only; absolutely no letters, symbols or words. Warm wooden desk by a sunlit leafy window. Language learning, not graduation or a diploma."
+    }
+  ]
+}
