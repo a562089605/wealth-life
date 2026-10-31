@@ -24,10 +24,10 @@ function petAdoptionQuote(species,insured){
 function openPetAdoptions(){showEvent('宠物领养','选择新伙伴','先查看品种，再取名字和核对费用。可以领养多只；每只分别记录照护与保单。',[],[
  ...Object.entries(PET_ADOPTION).map(([id,cfg])=>['查看'+cfg.name,()=>previewPetAdoption(id),false]),['返回我的宠物',openPetHub,false]]);}
 function previewPetAdoption(species){
- const cfg=PET_ADOPTION[species];if(!cfg)return;const cycle=state.month,owner=state;let settled=false,input,checkbox,quoted;
+ const cfg=PET_ADOPTION[species];if(!cfg)return;const cycle=state.month,owner=state,ownerSlot=slot;let settled=false,input,checkbox,quoted,confirmButton;
  function quote(){return petAdoptionQuote(species,checkbox?.checked||false)}
  function confirm(){
-  if(settled||state!==owner||state.month!==cycle||$('petAdoptionName')!==input)return false;
+  if(settled||state!==owner||slot!==ownerSlot||state.month!==cycle||$('petAdoptionName')!==input||!eventActionCurrent(confirmButton,'领养'+cfg.name))return false;
   const q=quote();if(q.insured&&typeof LegacyPetRules!=='undefined'&&LegacyPetRules.combinedActive(state))return false;if(JSON.stringify(q)!==JSON.stringify(quoted)){update();return false;}
   const name=input.value.trim();if(!name||name.length>40||state.cash<q.total)return false;
   // All payments are validated together before any mutation. Adoption is not a monthly bill.
@@ -40,12 +40,16 @@ function previewPetAdoption(species){
   (state.pets??=[]).push(p);
   if(q.insured)state.insurance[policyKey]={name:name+' · 宠物保险',active:true,monthly:q.premium,coverage:.8,petId:id,startMonth:cycle};
   settled=true;syncFinance();save();render();
+  let successButtons;
+  const successLive=()=>state===owner&&slot===ownerSlot&&state.month===cycle&&state.pets.includes(p)&&successButtons?.some(b=>eventActionCurrent(b,'领养成功'));
   showEvent('宠物领养','领养成功','首次体检与清洁已包含；猫狗本月驱虫已包含。后续按每只宠物的到期日期处理，不重复收费。',[
    ['新伙伴',batchEscape(name)+' · '+cfg.name],['本次支付',priceText(q.total)],['当前现金',priceText(state.cash)],['保险',q.insured?'本只宠物保障已生效':'未购买，可自行决定']],
-   [['查看我的宠物',openPetHub,true],['返回房屋',townHome,false]]);
+   [['查看我的宠物',()=>{if(successLive())openPetHub()},true],['返回房屋',()=>{if(successLive())townHome()},false]]);
+  successButtons=[...$('actions').querySelectorAll('button')];
   if(typeof paintPetAdoptionSuccess==='function')paintPetAdoptionSuccess(p,q);return true;
  }
  showEvent('宠物领养','领养'+cfg.name,'查看不扣款、不占用照护时间。取名字、选择是否投保，确认才支付。',[],[['确认领养',confirm,true],['返回品种选择',openPetAdoptions,false]]);
+ confirmButton=$('actions').firstElementChild;
  const form=document.createElement('div');form.className='wl-loan-form';
  form.innerHTML='<label for="petAdoptionName">给新伙伴取名字</label><input id="petAdoptionName" maxlength="40" placeholder="请输入名字"><label><input id="petAdoptionInsurance" type="checkbox"> 为本只宠物投保（疾病与意外80%，不含例行服务）</label><div id="petAdoptionQuote"></div>';
  $('eventData').append(form);$('eventData').style.display='block';input=$('petAdoptionName');checkbox=$('petAdoptionInsurance');

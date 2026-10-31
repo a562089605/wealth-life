@@ -29,3 +29,5 @@
 #home.career-preview #newGame>.btns{display:flex;gap:10px}
 #home.career-preview #start,#home.career-preview #cancel{flex:1;width:auto;min-height:48px!important;font-size:18px}
 #home.career-preview #cancel{background:#f2e9d3;color:#30473c}
+
+.career-entry-card #careerPreview{margin-top:10px;background:#f2e9d3;color:#30473c}

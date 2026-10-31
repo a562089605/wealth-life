@@ -2,7 +2,7 @@
 (function(){
  let mode='selection',requestedSlot=null,starting=false;
  const root=$('home'),form=$('newGame'),panel=document.createElement('section');panel.id='careerSelection';
- panel.innerHTML='<h2>选择职业</h2><article class="career-entry-card"><img src="assets/career/barista-portrait.webp" alt="咖啡师：棕色发髻，墨绿围裙，手捧咖啡"><h3>咖啡师 <span>Barista</span></h3><button id="careerPreview" type="button" class="primary">查看职业预览</button></article><button id="careerLoadSaves" type="button" class="secondary">读取已有存档</button>';
+ panel.innerHTML='<h2>选择职业</h2><article class="career-entry-card"><img src="assets/career/barista-portrait.webp" alt="咖啡师：棕色发髻，墨绿围裙，手捧咖啡"><h3>咖啡师 <span>Barista</span></h3><button id="careerChoose" type="button" class="primary">选择该职业进入游戏</button><button id="careerPreview" type="button" class="secondary">查看职业预览</button></article><button id="careerLoadSaves" type="button" class="secondary">读取已有存档</button>';
  root.prepend(panel);
  function setMode(next){mode=next;root.classList.toggle('career-select',next==='selection');root.classList.toggle('career-preview',next==='preview');panel.hidden=next!=='selection';form.classList.toggle('hidden',next!=='preview');queueMicrotask(()=>{const title=document.querySelector('.wl-home-brand h1');if(title)title.textContent=next==='preview'?'职业预览':next==='selection'?'财富人生':'读取存档'});}
  function selection(){starting=false;setMode('selection');}
@@ -16,12 +16,18 @@
  const originalBuild=buildHome;
  buildHome=function(){originalBuild();$('slots').querySelectorAll('.saveRow').forEach((row,i)=>{if(load(i+1))return;row.querySelector('button').onclick=()=>{requestedSlot=i+1;selection()}})};
  const originalStart=$('start').onclick;
- $('start').onclick=()=>{
-  if(mode!=='preview'||starting)return;starting=true;
+ function startSelectedCareer(){
+  if(!['selection','preview'].includes(mode)||starting)return;starting=true;
   let target=requestedSlot&&!load(requestedSlot)?requestedSlot:null;
   if(!target){for(let i=1;i<=slotCount();i++)if(!load(i)){target=i;break}}
   if(!target){target=slotCount()+1;setSlotCount(target)}
   slot=target;requestedSlot=null;mode='playing';originalStart();townStart();globalThis.scrollTo?.({top:0,left:0,behavior:'instant'});
+ }
+ $('start').onclick=()=>{if(mode==='preview')startSelectedCareer()};
+ $('careerChoose').onclick=()=>{
+  if(mode!=='selection'||starting)return;
+  $('job').value='barista';$('job').dispatchEvent(new Event('change',{bubbles:true}));
+  startSelectedCareer();
  };
  $('cancel').onclick=selection;
  const originalHome=home;home=function(){originalHome();requestedSlot=null;selection()};
