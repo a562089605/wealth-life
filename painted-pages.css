@@ -20,3 +20,12 @@
 @media(orientation:landscape) and (max-height:500px){.painted-screen{overflow:auto}.painted-screen #paintedView:not([hidden]){position:relative;min-height:900px}.painted-canvas{width:416px}}
 
 .painted-canvas [data-painted="cancel-move"]{font-size:clamp(10px,2.7vw,20px);color:#31543c;background:#faf2db}
+.life-bill{position:absolute;left:9%;top:73.6%;width:82%;height:14.5%;z-index:2;background:#faf2dc;color:#163e2b;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box;padding:1.2% 0;font-size:clamp(10px,3.4vw,27px)}
+.life-bill header,.life-bill>div,.life-bill footer{display:flex;align-items:center;justify-content:space-between;gap:6px;line-height:1.25}
+.life-bill header{font-size:1.14em}.life-bill header span{font-size:.75em;border-radius:20px;padding:4px 10px;background:#f5d5b8}
+.life-bill footer{border-top:1px solid #b4b19c;padding-top:4px;font-size:1.18em}.life-bill b{white-space:nowrap}.life-bill>div{font-size:.9em}
+.housing-rent{background:#fae9ae;font-size:clamp(22px,7vw,58px)}.housing-small{font-size:clamp(12px,3.6vw,28px);background:#faf0cf}
+.housing-current{font-size:clamp(8px,2.4vw,19px);background:#dce5bb;color:#244b32}
+.painted-canvas [data-painted="cancel-move"]{min-height:0!important}
+.life-bill{left:6.5%;width:87%;padding-left:2%;padding-right:2%;border-radius:12px}
+.life-current{font-size:clamp(13px,4vw,32px);font-weight:700}

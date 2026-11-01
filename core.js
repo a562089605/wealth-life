@@ -65,7 +65,7 @@ const finishBase=finish;finish=function(){finishBase();if(window.refreshV24Turn)
 const finishSafe=finish;finish=function(){clearModals();$('actions').innerHTML='';finishSafe()};
 $('eventClose').onclick=$('eventBackdrop').onclick=()=>finish();
 const showBase=showEvent;showEvent=function(...args){showBase(...args);const buttons=[...$('actions').children];buttons.forEach(b=>{const fn=b.onclick;b.onclick=e=>{if(b.disabled)return;b.disabled=true;fn(e)}})};
-function housingOptions(){const city=CITIES[state.city||'orlando'],infl=(state.cpiIndex||100)/100;return[['与家人同住',Math.round(450*infl),0,'family'],['2B2B 合租',Math.round((city.rent2||1695*city.housing)*.52*infl),Math.round((city.rent2||1695*city.housing)*.52*infl+350),'shared'],['Studio',Math.round((city.rentStudio||1432*city.housing)*infl),Math.round((city.rentStudio||1432*city.housing)*infl*2),'studio'],['1B1B Apartment',Math.round((city.rent1||1450*city.housing)*infl),Math.round((city.rent1||1450*city.housing)*infl*2),'rent1']]}
+function housingOptions(){const city=CITIES[state.city||'orlando'],infl=(state.cpiIndex||100)/100;return[['与家人同住',500,0,'family'],['2B2B 合租',Math.round((city.rent2||1695*city.housing)*(900/1695)*infl),Math.round((city.rent2||1695*city.housing)*(900/1695)*infl+350),'shared'],['Studio',Math.round((city.rentStudio||1400*city.housing)*infl),Math.round((city.rentStudio||1400*city.housing)*infl*2),'studio'],['1B1B Apartment',Math.round((city.rent1||1600*city.housing)*infl),Math.round((city.rent1||1600*city.housing)*infl*2),'rent1']]}
 $('housingBtn').onclick=()=>{
  syncFinance();const opts=housingOptions(),hasHome=!!state.housing&&state.housing!=='unselected';
  const cheapest=Math.min(...opts.map(o=>o[2]));
@@ -166,4 +166,5 @@ function openEducation(){
 }
 
 function debtDisplayName(name){const l=state.loans.find(l=>loanDebtName(l)===name);return l?(l.type||'银行贷款')+' · 剩余'+l.monthsLeft+'期':name}
+
 
