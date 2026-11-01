@@ -65,3 +65,15 @@ button:disabled{opacity:.55}
 .wl-note{color:#627064}
 button.primary{background:#efd16d;color:#30473c;border-color:#cfb97c}
 .coffee-painted-event #eventData .coffee-painted-choice:disabled{opacity:.55}
+
+
+/* Confirmed 2026-11-01 career board: preserve approved illustration and layout. */
+#coffeeIntro .coffee-intro-board{display:block}
+#wlJob #coffeeIntro .coffee-paper-scene{position:relative;padding:0;max-width:900px;margin:auto;top:auto}
+#wlJob #coffeeIntro .coffee-paper-scene img{width:100%;max-width:none;height:auto}
+#wlJob #coffeeIntro .coffee-paper-scene .coffee-intro-choose,
+#wlJob #coffeeIntro .coffee-paper-scene .coffee-intro-other{position:absolute;bottom:1.1%;height:7%;min-height:44px;margin:0;padding:0;border:0;border-radius:24px;background:transparent;color:transparent;box-shadow:none;font-size:0}
+#wlJob #coffeeIntro .coffee-paper-scene .coffee-intro-choose{left:11.5%;width:40.5%}
+#wlJob #coffeeIntro .coffee-paper-scene .coffee-intro-other{left:55%;width:35.5%}
+#wlJob #coffeeIntro .coffee-paper-scene button:focus-visible{outline:3px solid #30473c;outline-offset:2px}
+#coffeeIntro .coffee-intro-text{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
