@@ -1,0 +1,26 @@
+body:has(#careerSelection) .wl-home-brand{display:none!important}
+body:has(#careerSelection) main{max-width:460px!important;padding:12px!important}
+#home:has(#careerSelection){padding:0!important;background:#fcf5e5!important;border:1px solid #ddcbae;border-radius:24px}
+#home:has(#careerSelection)>p,#home:has(#careerSelection)>h2{display:none!important}
+#newGame:has(#careerSelection)>:not(#wlJob){display:none!important}
+#wlJob:has(#careerSelection){margin:0!important}
+#careerSelection{box-sizing:border-box;padding:22px 20px 18px;text-align:center;color:#264b35;background:#fcf5e5;border-radius:24px;min-height:700px}
+#careerSelection .career-brand{font-size:11px;letter-spacing:2px;color:#758069;margin:0 0 14px}
+#careerSelection h2{font-size:25px;line-height:1.4;margin:0 0 7px;color:#264b35}
+#careerSelection header>p:last-child{font-size:13px;color:#81735e;margin:0 0 12px}
+.career-character{position:relative;margin:8px auto;max-width:320px}
+#wlJob #careerSelection .career-character img{display:block;width:100%;height:auto;mix-blend-mode:multiply}
+#wlJob #careerSelection .career-character button{position:absolute;top:42%;width:44px;height:44px;min-height:44px;border-radius:50%;border:1px solid #c8b58c;background:#fff9eade;font-size:30px;color:#3d6345;z-index:1}
+.career-character button:first-child{left:-10px}.career-character button:last-child{right:-10px}
+#wlJob #careerSelection h3{font-size:25px;margin:8px 0 10px;color:#264b35}
+#careerSelection h3 small{font-size:15px;font-weight:400;margin-left:5px;color:#7b795f}
+#wlJob #careerSelection .career-start-data{font-size:13px;line-height:1.8;margin:0;color:#706c58}
+#wlJob #careerSelection .career-income{font-size:13px;font-weight:600;color:#365c40;margin:12px 0 20px}
+.career-selection-actions{display:grid;gap:12px}
+#wlJob #careerSelection .career-selection-actions button{width:100%;min-height:52px;border:1px solid #899a71;border-radius:16px;font-size:16px;font-weight:600;color:#34563a;background:#f9f3df;padding:12px 6px}
+#wlJob #careerSelection .career-selection-actions button:last-child{background:#efc75f;border-color:#c79b44;color:#294a31}
+#wlJob #careerSelection .career-selection-back{border:0;background:transparent;font-size:13px;color:#6a745d;width:auto;padding:12px 16px;min-height:44px;margin:12px 0 0}
+#careerSelection button:focus-visible{outline:3px solid #34563a;outline-offset:3px}
+@media(max-width:370px){#careerSelection{padding:18px 16px}.career-character{max-width:270px}#careerSelection h2{font-size:23px}}
+
+#newGame:has(#coffeeIntro)>:not(#wlJob){display:none!important}

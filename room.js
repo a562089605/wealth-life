@@ -23,6 +23,7 @@
   document.body.classList.remove('town-map');
   render();syncRoom();
  };
+ window.hideRoom=function(){visible=false;syncRoom();};
  function leaveRoom(){
   if(state.gameOver?.final)return showGameOver();
   if(state.requiredIncident)return openRequiredIncident();
@@ -41,6 +42,7 @@
   ]);
  }
  function living(){
+  if(window.openLifeOverview)return window.openLifeOverview();
   showEvent('生活','本月生活安排','住房、必要账单、保险与照护沿用现有规则。查看本身不扣款。',[],[
    ['住房',openHousing,true],['基本生活费',openTownLiving,false],
    ['保险与保障',()=>openInsurance(),false],['宠物生活',()=>el('petBtn').click(),false],['到期宠物照护',openPetCare,false],
@@ -51,7 +53,7 @@
   showEvent('财务','资产、投资与贷款','查看现有账户，确认交易后才按原账本执行。',[],[
    ['ETF投资',()=>buyInvestment('ETF'),true],['股票投资',()=>buyInvestment('股票'),false],
    ['基金投资',()=>buyInvestment('基金'),false],['定期存款',()=>openCD(),false],
-   ['银行贷款',()=>openBankLoan(),false],['本月贷款还款',openLoanPayments,false],
+   ['保险与保障',()=>openInsurance(),false],['银行贷款',()=>openBankLoan(),false],['本月贷款还款',openLoanPayments,false],
    ['资产总览',()=>{state.roomLocation='overview';save();visible=false;syncRoom();clearModals();el('qAssets').click();},false],
    ['返回房屋',openRoom,false]
   ]);

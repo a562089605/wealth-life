@@ -1,0 +1,22 @@
+.painted-screen{margin:0;padding:0!important;background:#fbf2dd;overflow:hidden}
+.painted-screen main{max-width:none!important;margin:0!important;padding:0!important}
+.painted-screen #wlHeader,.painted-screen .wl-home-brand{display:none!important}
+.painted-screen #game>:not(#paintedView):not(.event):not(#eventBackdrop){display:none!important}
+.painted-screen #game>.event:not(.event-active){display:none!important}
+#paintedView[hidden]{display:none!important}
+.painted-screen #paintedView:not([hidden]){position:fixed;inset:0;display:flex!important;align-items:center;justify-content:center;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);box-sizing:border-box;background:#fbf2dd}
+.painted-canvas{position:relative;width:min(100vw,calc((100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))*853/1844));aspect-ratio:853/1844;flex:none}
+.painted-image{display:block;width:100%;height:auto}
+.painted-canvas .painted-hotspot{position:absolute;z-index:3;min-height:44px;margin:0;padding:0;border:0;border-radius:18px;background:transparent;color:transparent;box-shadow:none;font-size:0;cursor:pointer}
+.painted-hotspot:disabled{cursor:default;background:#f5eddd66!important}
+.painted-hotspot:focus-visible{outline:3px solid #315f45;outline-offset:2px;background:#fff1a033!important}
+.painted-value,.painted-preview-cover{position:absolute;z-index:2;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#faf2db;color:#123d29;font-size:clamp(16px,6vw,44px);font-weight:750;line-height:1;white-space:nowrap}
+.painted-caption,.painted-date{font-size:clamp(10px,3vw,24px);font-weight:600}
+.painted-button-caption{background:#f5ce64;font-size:clamp(14px,4vw,30px)}
+.rest-stat{background:#faefd4;font-size:clamp(14px,4vw,32px)}
+.housing-rule-cover{left:22%;top:88.8%;width:60%;height:3.5%;background:#fbf2dd}
+.painted-alert{position:absolute;z-index:4;left:8%;bottom:9%;width:84%;padding:8px;border-radius:10px;background:#fff8e9;color:#804a2b;border:1px solid #caa576;font-size:13px;text-align:center;box-sizing:border-box}
+@supports not(height:100dvh){.painted-canvas{width:min(100vw,calc((100vh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))*853/1844))}}
+@media(orientation:landscape) and (max-height:500px){.painted-screen{overflow:auto}.painted-screen #paintedView:not([hidden]){position:relative;min-height:900px}.painted-canvas{width:416px}}
+
+.painted-canvas [data-painted="cancel-move"]{font-size:clamp(10px,2.7vw,20px);color:#31543c;background:#faf2db}
