@@ -1,0 +1,25 @@
+/* True portrait room with an undistorted image and phone-safe touch targets. */
+.room-screen{margin:0;padding:0!important;background:#f5ead3;overflow:hidden}
+.room-screen main{width:100%;max-width:none!important;margin:0!important;padding:0!important}
+.room-screen #wlHeader,.room-screen .wl-home-brand{display:none!important}
+.room-screen #game>:not(#roomView):not(.event):not(#eventBackdrop){display:none!important}
+.room-screen #game>.event:not(.event-active){display:none!important}
+.room-screen #roomView:not([hidden]){position:fixed;inset:0;display:flex!important;align-items:center;justify-content:center;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);box-sizing:border-box;background:#f5ead3}
+#roomView[hidden]{display:none!important}
+.room-canvas{position:relative;aspect-ratio:853/1844;width:min(100vw,calc((100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))*853/1844));max-height:100%;flex:none}
+.room-canvas>img{display:block;width:100%;height:auto}
+.room-date{position:absolute;top:3.5%;left:31%;width:38%;height:6%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#faf0d8;border-radius:8px;color:#183e2c;line-height:1.5;white-space:nowrap}
+.room-date strong{font-size:clamp(13px,3.6vw,25px)}
+.room-date span{font-size:clamp(10px,2.6vw,18px);color:#65794a}
+.room-menu{position:absolute;top:3%;right:3%;min-width:44px;min-height:44px;border:1px solid #c6af80;border-radius:50%;background:#fcf2dcee;color:#254b35;font-size:22px}
+.room-canvas .room-hotspot{position:absolute;margin:0;padding:0;min-height:44px;border:0;background:transparent;color:transparent;font-size:0;box-shadow:none;border-radius:24px;cursor:pointer}
+.room-hotspot:focus-visible{outline:3px solid #285d41;outline-offset:2px;background:#fff5c84d!important}
+.room-work{left:4%;top:35%;width:20%;height:4.3%}
+.room-study{left:26%;top:28%;width:21%;height:4.3%}
+.room-rest{left:59%;top:29%;width:19%;height:4.3%}
+.room-life{left:78%;top:26%;width:20%;height:4.3%}
+.room-relations{left:71%;top:57%;width:22%;height:4.3%}
+.room-finance{left:12%;top:73.3%;width:21%;height:4.3%}
+.room-leave{left:15%;top:92%;width:70%;height:5.3%}
+@supports not (height:100dvh){.room-canvas{width:min(100vw,calc((100vh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))*853/1844))}}
+@media(orientation:landscape) and (max-height:500px){.room-screen{overflow:auto}.room-screen #roomView:not([hidden]){position:relative;min-height:900px}.room-canvas{width:416px;max-height:none}}
