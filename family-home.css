@@ -1,0 +1,35 @@
+/* Phone-first full-screen animation; storyboard cells are never used as game assets. */
+.family-event-open{overflow:hidden!important}
+.family-home-event{position:fixed;inset:0;z-index:100000;background:#eee0c2;isolation:isolate;color:#173f2c;overflow-y:auto;overscroll-behavior:contain;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);box-sizing:border-box;font-family:inherit}
+.family-backdrop{position:fixed;inset:0;background:linear-gradient(#fff1ce14,#4c351c20),url('assets/family/background-20261102.webp') center/cover;z-index:-1}
+.family-stage{position:relative;min-height:100%;height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));max-width:560px;margin:auto;perspective:1100px;overflow:hidden}
+.family-welcome{position:absolute;top:5%;left:5%;width:90%;text-align:center;transition:opacity .35s;background:radial-gradient(ellipse,#fff8e9e8,transparent 72%);padding:12px 0}
+.family-welcome h1{font-size:clamp(32px,10vw,58px);margin:0;color:#123c29;font-weight:900;text-shadow:1px 2px #fff4d1;letter-spacing:.05em}
+.family-welcome p{font-size:clamp(14px,4vw,20px);display:inline-block;background:#dce9b9e8;border-radius:30px;margin:12px 0 0;padding:6px 15px;font-weight:700}
+.family-orbit{position:absolute;inset:0;transition:opacity .5s}
+.family-satellite{position:absolute;width:24%;border-radius:9px;top:57%;left:38%;box-shadow:0 0 14px #ffe890;transform:scale(.1);opacity:0}
+.orbiting .family-satellite{animation:family-orbit 1.6s linear both;opacity:1}
+.satellite-0{--a:0deg}.satellite-1{--a:90deg}.satellite-2{--a:180deg}.satellite-3{--a:270deg}
+@keyframes family-orbit{0%{transform:translate(0,40%) scale(.2);opacity:0}18%{opacity:1}100%{transform:rotate(calc(var(--a) + 300deg)) translateX(clamp(105px,32vw,180px)) rotate(calc(-1 * var(--a) - 300deg)) rotate(12deg) scale(.9);opacity:1}}
+.family-flipper{position:absolute;width:43%;aspect-ratio:2/3;left:28.5%;top:35%;transform-style:preserve-3d;transform:translateY(38%) scale(.12);opacity:0;transition:transform .5s ease,opacity .3s;filter:drop-shadow(0 0 10px #ffdc69)}
+.orbiting .family-flipper{opacity:1;transform:translateY(0) scale(.85)}
+.chosen .family-flipper{transform:translateY(0) scale(1.22)}
+.chosen .family-orbit,.chosen .family-welcome{opacity:0;pointer-events:none}
+.family-back,.family-front{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;border-radius:14px;background:#fff6e2;box-shadow:0 0 0 2px #dfbd68}
+.family-back img,.family-front img{width:100%;height:100%;object-fit:contain;display:block}
+.family-front{transform:rotateY(180deg)}
+.flipping .family-flipper{transition:transform .65s ease-in-out;transform:translateY(0) scale(1.22) rotateY(180deg)}
+.family-skip{position:absolute;bottom:3%;left:50%;transform:translateX(-50%);min-width:140px;min-height:46px;background:#fff9e8ed;color:#18432c;border:2px solid #31583e;border-radius:32px;font-size:18px;font-weight:bold;padding:8px 20px}
+.family-revealed{width:100%;min-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));align-content:center;animation:family-expand .3s ease-out}
+.family-revealed[hidden],.family-stage[hidden]{display:none!important}
+.family-face{position:relative;width:100%;max-width:480px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 0 15px #ffe493}
+.family-face>img{display:block;width:100%;height:auto}
+.family-choice{position:absolute;left:10%;width:80%;top:79%;height:9%;min-height:44px;opacity:1;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:transparent!important;color:transparent!important;cursor:pointer;border-radius:40px}
+.family-choice-1{top:89%;height:8%}
+.family-choice:focus-visible{outline:3px solid #285539!important;outline-offset:-3px;background:#fdf2ba25!important}
+.family-choice[aria-disabled=true]{cursor:help}
+.family-face[data-card=blessing] .family-choice{top:85%;height:10%}
+.family-accessible,.family-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.family-status{position:fixed;left:5%;right:5%;bottom:calc(12px + env(safe-area-inset-bottom,0px));background:#fff7e7;color:#734026;border:2px solid #ba975c;border-radius:12px;z-index:3;padding:14px;text-align:center;font-size:16px;box-shadow:0 3px 20px #442d2740}
+@keyframes family-expand{from{opacity:.65;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.family-home-event *{animation:none!important;transition:none!important}}
