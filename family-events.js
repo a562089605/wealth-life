@@ -33,5 +33,24 @@
   return true;
  }
  function used(s){return Object.values(s.familyEvents?.records||{}).filter(r=>r.month===s.month&&r.status==='resolved').reduce((n,r)=>n+(r.hours||0),0);}
- const api={cards,data,eligible,draw,missing,resolve,used};root.FamilyEvents=api;if(typeof module!=='undefined')module.exports=api;
+ // Only the compulsory care card can exchange missing free hours for unpaid leave.
+ // Rates come from the existing career quote, not new family-card pay rules.
+ function carePlan(s,r,index,free,reserve=0,rates={}){
+  const o=cards.find(c=>c.id===r?.cardId)?.choices[index];
+  if(r?.cardId!=='care'||r.status!=='pending'||r.month!==s.month||!o)return null;
+  if(!Number.isFinite(free)||free<0||!Number.isFinite(reserve)||reserve<0)return null;
+  const hours=Math.max(0,o.hours+reserve-free);
+  if(hours&&(!rates.working||hours>(rates.availableWorkHours||0)))return null;
+  const round=n=>Math.round(n*100)/100;
+  return {hours,wages:round(hours*(rates.wageRate||0)),tips:round(hours*(rates.tipRate||0)),cost:Math.max(0,-(o.cash||0))};
+ }
+ function resolveCare(s,month,index,free,reserve,rates){
+  const r=s.familyEvents?.records[month],p=carePlan(s,r,index,free,reserve,rates);
+  if(!p||!resolve(s,month,'care',index,free+p.hours,reserve))return false;
+  if(p.hours)r.leave={hours:p.hours,wages:p.wages,tips:p.tips,job:s.job};
+  return true;
+ }
+ function leave(s){return Object.values(s.familyEvents?.records||{}).filter(r=>r.month===s.month&&r.status==='resolved'&&r.leave).reduce((a,r)=>({hours:a.hours+r.leave.hours,wages:a.wages+r.leave.wages,tips:a.tips+r.leave.tips}),{hours:0,wages:0,tips:0});}
+ const api={cards,data,eligible,draw,missing,resolve,used,carePlan,resolveCare,leave};root.FamilyEvents=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
+
