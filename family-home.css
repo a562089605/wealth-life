@@ -24,8 +24,8 @@
 .family-revealed[hidden],.family-stage[hidden]{display:none!important}
 .family-face{position:relative;width:100%;max-width:480px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 0 15px #ffe493}
 .family-face>img{display:block;width:100%;height:auto}
-.family-face[data-pool=shared]{width:100%;max-width:min(480px,calc((100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px)) * .46258))}
-.family-face[data-pool=shared] .family-choice{left:14%;width:72%}
+.family-face:is([data-pool=shared],[data-pool=studio]){width:100%;max-width:min(480px,calc((100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px)) * .46258))}
+.family-face:is([data-pool=shared],[data-pool=studio]) .family-choice{left:14%;width:72%}
 .family-choice{position:absolute;left:10%;width:80%;top:79%;height:9%;min-height:44px;opacity:1;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:transparent!important;color:transparent!important;cursor:pointer;border-radius:40px}
 .family-choice-1{top:89%;height:8%}
 .family-choice:focus-visible{outline:3px solid #285539!important;outline-offset:-3px;background:#fdf2ba25!important}
@@ -41,3 +41,5 @@
 @keyframes family-expand{from{opacity:.65;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
 @media(prefers-reduced-motion:reduce){.family-home-event *{animation:none!important;transition:none!important}}
 
+
+.family-face[data-pool=studio]{max-width:min(480px,calc((100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px)) * .55556))}

@@ -1,0 +1,20 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const {c,doc,storage,setSaveFailure}=require('./housing-dom-fixture.cjs')();
+let sequence=0;const timers=new Map();c.setTimeout=(fn,ms)=>{const id=++sequence;timers.set(id,{fn,ms});return id;};c.clearTimeout=id=>timers.delete(id);
+function setup(pool='studio',reduced=false){c.home();timers.clear();c.slot='a';c.baseFree=100;c.matchMedia=()=>({matches:reduced});c.state={month:1,housing:pool,cash:1000,health:80,energy:70,stress:30,happiness:60,homeArrival:{targetMonth:1,status:'ready',eventPool:pool},[pool+'Events']:{seen:{cinema:1},records:{1:{pool,month:1,cardId:'cinema',status:'pending',presented:false}}}};c.save();c.openRoom();}
+function backs(expected){const orbit=doc.body.querySelector('.family-orbit'),center=doc.body.querySelector('.family-back');assert.equal(orbit.children.length,4);assert(orbit.children.every(n=>n.attrs.src===expected));assert.equal(center.querySelector('img').attrs.src,expected);}
+function runAt(ms){const found=[...timers].find(([,t])=>t.ms===ms);assert(found,'missing animation phase '+ms);timers.delete(found[0]);found[1].fn();}
+for(const pool of ['studio']){
+ setup(pool);backs('assets/studio/back-20261103.webp');const overlay=doc.body.querySelector('#familyHomeEvent');assert(overlay);assert.equal(JSON.parse(storage.get('slota'))[pool+'Events'].records[1].presented,true,'exact draw saved before animation');assert(doc.body.querySelector('.family-revealed').hidden);
+ assert.deepEqual([...timers.values()].map(t=>t.ms),[100,1700,2200,2950]);runAt(100);assert(overlay.classList.contains('orbiting'));runAt(1700);assert(overlay.classList.contains('chosen'));runAt(2200);assert(overlay.classList.contains('flipping'));runAt(2950);assert(overlay.classList.contains('revealed'));assert.equal(doc.body.querySelector('.family-stage').hidden,true);assert.equal(doc.body.querySelector('.family-revealed').hidden,false);assert.equal(timers.size,0);
+ const pending=storage.get('slota');assert.equal(c.state.cash,1000);assert.equal(c.state.month,1);assert.equal(c.state[pool+'Events'].records[1].status,'pending');c.state=JSON.parse(pending);c.openGame();backs('assets/studio/back-20261103.webp');assert.equal(timers.size,0,'reload resumes same saved card without animation or draw');assert.equal(storage.get('slota'),pending);
+ setup(pool);const skip=doc.body.querySelector('.family-skip');skip.onclick();assert.equal(timers.size,0);assert.equal(doc.body.querySelector('.family-revealed').hidden,false);assert.equal(c.state[pool+'Events'].records[1].cardId,'cinema');assert.equal(c.state[pool+'Events'].records[1].status,'pending');
+ setup(pool,true);assert.equal(timers.size,0);assert.equal(doc.body.querySelector('.family-revealed').hidden,false);
+}
+// The saved Studio pool continues to select its own card back after a housing change.
+setup('studio');c.home();c.state.housing='family';c.state.studioEvents.records[1].presented=false;c.openGame();backs('assets/studio/back-20261103.webp');doc.body.querySelector('.family-skip').onclick();
+// Nothing is shown when persisting the presentation fails; retry keeps the card.
+setup('studio');c.home();c.state.studioEvents.records[1].presented=false;setSaveFailure(true);c.openRoom();setSaveFailure(false);assert.equal(doc.body.querySelector('#familyHomeEvent'),null);assert.equal(timers.size,0);assert.equal(c.state.studioEvents.records[1].presented,false);c.openRoom();backs('assets/studio/back-20261103.webp');assert.equal(c.state.studioEvents.records[1].cardId,'cinema');
+// Real stylesheet contains orbit, selection/exit, flip and expansion stages.
+const css=fs.readFileSync(path.join(__dirname,'../family-home.css'),'utf8');for(const token of ['@keyframes family-orbit','.chosen .family-orbit','rotateY(180deg)','family-expand','safe-area-inset-top','safe-area-inset-bottom'])assert(css.includes(token),token);
+c.home();assert.equal(timers.size,0);console.log('PASS: Studio five backs, same timed orbit/selection/flip/reveal, saved pool, skip/reload/reduced-motion, save-failure/retry and lifecycle cleanup. DOM/VM only; no browser/device visual claim.');
