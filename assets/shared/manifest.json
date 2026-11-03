@@ -63,13 +63,23 @@
     },
     {
       "id": "meal",
-      "path": "assets/shared/meal-20261102.webp",
-      "source": "exec-75e6a048-fed3-4f7e-87dd-aceead76ddcb.png",
+      "path": "assets/shared/meal-love-20261102.webp",
+      "source": "exec-9c332698-afd8-406f-bddd-1f3fbcf765ca.png",
       "width": 853,
       "height": 1844,
-      "sourceSha256": "4e803101cc10d658bf5832f64d1acf46616cef621df56eaa389605220fd30842",
-      "sha256": "1e2a5d95d6db7d35541850d118e21c888851c1f581770b91f5c694e5246899ec",
-      "bytes": 361734
+      "sourceSha256": "8cda5d7e35d0fe8b0dd20c350569127be51288d7237982acaf5e7c811670db53",
+      "sha256": "1be49b8862a053555dcd66e58e6c10773325e2a0a39588574c8a4dd27d590c68",
+      "bytes": 362206,
+      "previousConfirmed": {
+        "id": "meal",
+        "path": "assets/shared/meal-20261102.webp",
+        "source": "exec-75e6a048-fed3-4f7e-87dd-aceead76ddcb.png",
+        "width": 853,
+        "height": 1844,
+        "sourceSha256": "4e803101cc10d658bf5832f64d1acf46616cef621df56eaa389605220fd30842",
+        "sha256": "1e2a5d95d6db7d35541850d118e21c888851c1f581770b91f5c694e5246899ec",
+        "bytes": 361734
+      }
     },
     {
       "id": "toolbox",

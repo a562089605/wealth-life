@@ -7,7 +7,7 @@
   {id:'ride',art:'assets/shared/ride-b4-20261102.webp',title:'顺路捎一程',desc:'你正准备出门，舍友拿起车钥匙：“我也往那边走，要不要一起？正好顺路。”',choices:[choice('那就搭个顺风车，谢谢啦',1,{happiness:3}),choice('今天想自己走走',2,{happiness:4})]},
   {id:'quilt',title:'阳台晒被子',desc:'难得碰上好天气，舍友抱着被子走向阳台：“要不要把你的也拿来晒晒？我们一起搭把手，晚上睡着舒服。”',choices:[choice('一起晒，今晚睡个舒服觉',2,{happiness:4,energy:-1}),choice('我只想瘫着')]},
   {id:'games',title:'客厅游戏局',desc:'舍友把桌游铺在茶几上，朝你晃了晃手里的卡牌：“就差你了！来一局？输赢不重要，开心最重要。”',choices:[choice('来了，今晚一起玩',2,{happiness:5,stress:-3}),choice('你们玩，我先歇会儿')]},
-  {id:'meal',title:'多做了一份',desc:'你忙了一天回到家，舍友指了指餐桌上的饭盒：“今天多做了一份，给你留着呢，热一下就能吃。”',choices:[choice('太贴心了，这顿我来洗碗',0,{cash:20,happiness:5,stress:-3}),choice('谢谢你，我已经吃过了')]},
+  {id:'meal',art:'assets/shared/meal-love-20261102.webp',title:'爱心晚餐',desc:'你忙了一天回到家，舍友指了指餐桌上的饭盒：“今天多做了一份，给你留着呢，热一下就能吃。”',choices:[choice('太贴心了，这顿我来洗碗',1,{cash:20,happiness:5,stress:-3}),choice('谢谢你，我已经吃过了')]},
   {id:'toolbox',title:'工具箱事件',desc:'你正准备下单买工具，舍友看了一眼：“这个我有呀！偶尔用一次，不用专门买，拿去用吧。”',choices:[choice('太好了，用完好好收拾再还你',0,{happiness:3,energy:-1}),choice('谢谢，我还是想买一套自己的',0,{cash:-30,happiness:2,energy:-1})]},
   {id:'chat',title:'深夜聊聊',desc:'你倒水时，发现舍友还坐在客厅。她拍了拍旁边的靠垫：“还不困？坐会儿吧，我想和你聊聊。”',choices:[choice('坐一会儿，聊聊最近的事',2,{happiness:5,stress:-5,energy:-1}),choice('今天困了，先去睡啦')]},
   {id:'clean',title:'公共区域大扫除',desc:'你和舍友早已约好，今天一起打扫公共区域。清洁工具都准备好了，大家正等着分工。',choices:[choice('一起动手，把家收拾清爽',3,{happiness:2,energy:-3}),choice('临时有事，请人替我打扫',1,{cash:-100,happiness:2,energy:-1})]},

@@ -7,7 +7,7 @@
  function housingLeave(){const a=F.leave(state),b=S?.leave(state)||{hours:0,wages:0,tips:0};return {hours:a.hours+b.hours,wages:roundCash(a.wages+b.wages),tips:roundCash(a.tips+b.tips)};}
  const asset=id=>'assets/family/'+id+'-20261102.webp';
  let overlay=null,activeKey=null,settling=false,internalRoom=false,deferSave=false,loanHost=null;
- const saveBefore=save;save=function(){if(!state)return;if(deferSave)return true;try{const k=key(slot),raw=localStorage.getItem(k);for(const suffix of ['_before_family_20261102','_before_family_care_20261102','_before_shared_20261102','_before_housing_deferred_20261102','_before_ride_b4_20261102']){const backup=k+suffix;if(raw&&!localStorage.getItem(backup))localStorage.setItem(backup,raw);}return saveBefore();}catch(e){console.error('Save failed; family transaction will be restored',e);return false;}};
+ const saveBefore=save;save=function(){if(!state)return;if(deferSave)return true;try{const k=key(slot),raw=localStorage.getItem(k);for(const suffix of ['_before_family_20261102','_before_family_care_20261102','_before_shared_20261102','_before_housing_deferred_20261102','_before_ride_b4_20261102','_before_love_dinner_20261102']){const backup=k+suffix;if(raw&&!localStorage.getItem(backup))localStorage.setItem(backup,raw);}return saveBefore();}catch(e){console.error('Save failed; family transaction will be restored',e);return false;}};
  const timers=new Set();
  function later(fn,ms){const t=setTimeout(()=>{timers.delete(t);fn();},ms);timers.add(t);return t;}
  function restoreLoan(){if(!loanHost)return;const {node,parent,next}=loanHost;parent.insertBefore(node,next?.parentNode===parent?next:null);loanHost=null;}

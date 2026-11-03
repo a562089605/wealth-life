@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),S=require('../shared-events.js'),F=require('../family-events.js');
 const fresh=()=>({month:1,housing:'shared',cash:1000,happiness:50,energy:50,stress:30,health:80});
 // Independent approved numeric matrix: cash, hours, happiness, energy, stress.
-const expected={cook:[[-10,2,6,0,-4],[-25,1,3,0,-2]],movie:[[0,3,6,0,-5],[0,0,0,0,0]],ride:[[0,1,3,0,0],[0,2,4,0,0]],quilt:[[0,2,4,-1,0],[0,0,0,0,0]],games:[[0,2,5,0,-3],[0,0,0,0,0]],meal:[[20,0,5,0,-3],[0,0,0,0,0]],toolbox:[[0,0,3,-1,0],[-30,0,2,-1,0]],chat:[[0,2,5,-1,-5],[0,0,0,0,0]],clean:[[0,3,2,-3,0],[-100,1,2,-1,0]],noise:[[0,1,2,0,0],[0,0,0,0,1]],leak:[[-10,4,2,-4,0],[-60,1,2,-1,0]],guest:[[0,2,-2,-1,1],[0,0,-5,-1,4]]};
+const expected={cook:[[-10,2,6,0,-4],[-25,1,3,0,-2]],movie:[[0,3,6,0,-5],[0,0,0,0,0]],ride:[[0,1,3,0,0],[0,2,4,0,0]],quilt:[[0,2,4,-1,0],[0,0,0,0,0]],games:[[0,2,5,0,-3],[0,0,0,0,0]],meal:[[20,1,5,0,-3],[0,0,0,0,0]],toolbox:[[0,0,3,-1,0],[-30,0,2,-1,0]],chat:[[0,2,5,-1,-5],[0,0,0,0,0]],clean:[[0,3,2,-3,0],[-100,1,2,-1,0]],noise:[[0,1,2,0,0],[0,0,0,0,1]],leak:[[-10,4,2,-4,0],[-60,1,2,-1,0]],guest:[[0,2,-2,-1,1],[0,0,-5,-1,4]]};
 assert.equal(S.cards.length,12);assert.equal(S.cards.reduce((n,c)=>n+c.choices.length,0),24);
 for(const card of S.cards)for(let i=0;i<2;i++){
  const o=card.choices[i],[cash,hours,happiness,energy,stress]=expected[card.id][i];assert.deepEqual([o.cash||0,o.hours,o.happiness||0,o.energy||0,o.stress||0],[cash,hours,happiness,energy,stress]);
