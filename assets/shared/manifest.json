@@ -93,13 +93,23 @@
     },
     {
       "id": "chat",
-      "path": "assets/shared/chat-20261102.webp",
-      "source": "exec-2cc220f0-8736-42b6-abc3-241f1c704488.png",
+      "path": "assets/shared/chat-night-20261102.webp",
+      "source": "exec-9efe13b0-59a2-427c-8474-5df846612a83.png",
       "width": 853,
       "height": 1844,
-      "sourceSha256": "d7782c51e15112fd58bfb4034c5d537c0bff4c82ea1dbf46664ce85cce21409f",
-      "sha256": "64054b329c07ff4330213081f4172cdb70c5609841ac90aff436d680073e32fd",
-      "bytes": 329058
+      "sourceSha256": "8e612fd72b5e46f042395776df8f2052d31e767300ebb268f38f4163321d4cde",
+      "sha256": "3031f3b092e248568a3b87b60f333967dc7b07fd8bb58b9856b957ca91b8c7c1",
+      "bytes": 318276,
+      "previousConfirmed": {
+        "id": "chat",
+        "path": "assets/shared/chat-20261102.webp",
+        "source": "exec-2cc220f0-8736-42b6-abc3-241f1c704488.png",
+        "width": 853,
+        "height": 1844,
+        "sourceSha256": "d7782c51e15112fd58bfb4034c5d537c0bff4c82ea1dbf46664ce85cce21409f",
+        "sha256": "64054b329c07ff4330213081f4172cdb70c5609841ac90aff436d680073e32fd",
+        "bytes": 329058
+      }
     },
     {
       "id": "clean",

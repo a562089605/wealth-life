@@ -9,7 +9,7 @@
   {id:'games',title:'客厅游戏局',desc:'舍友把桌游铺在茶几上，朝你晃了晃手里的卡牌：“就差你了！来一局？输赢不重要，开心最重要。”',choices:[choice('来了，今晚一起玩',2,{happiness:5,stress:-3}),choice('你们玩，我先歇会儿')]},
   {id:'meal',art:'assets/shared/meal-love-20261102.webp',title:'爱心晚餐',desc:'你忙了一天回到家，舍友指了指餐桌上的饭盒：“今天多做了一份，给你留着呢，热一下就能吃。”',choices:[choice('太贴心了，这顿我来洗碗',1,{cash:20,happiness:5,stress:-3}),choice('谢谢你，我已经吃过了')]},
   {id:'toolbox',title:'工具箱事件',desc:'你正准备下单买工具，舍友看了一眼：“这个我有呀！偶尔用一次，不用专门买，拿去用吧。”',choices:[choice('太好了，用完好好收拾再还你',0,{happiness:3,energy:-1}),choice('谢谢，我还是想买一套自己的',0,{cash:-30,happiness:2,energy:-1})]},
-  {id:'chat',title:'深夜聊聊',desc:'你倒水时，发现舍友还坐在客厅。她拍了拍旁边的靠垫：“还不困？坐会儿吧，我想和你聊聊。”',choices:[choice('坐一会儿，聊聊最近的事',2,{happiness:5,stress:-5,energy:-1}),choice('今天困了，先去睡啦')]},
+  {id:'chat',art:'assets/shared/chat-night-20261102.webp',title:'夜谈',desc:'你倒水时，发现舍友还坐在客厅。她拍了拍旁边的靠垫：“还不困？坐会儿吧，我想和你聊聊。”',choices:[choice('坐一会儿，聊聊最近的事',2,{happiness:5,stress:-5,energy:-1}),choice('今天困了，先去睡啦')]},
   {id:'clean',title:'公共区域大扫除',desc:'你和舍友早已约好，今天一起打扫公共区域。清洁工具都准备好了，大家正等着分工。',choices:[choice('一起动手，把家收拾清爽',3,{happiness:2,energy:-3}),choice('临时有事，请人替我打扫',1,{cash:-100,happiness:2,energy:-1})]},
   {id:'noise',title:'扰人清梦',desc:'已经很晚了，客厅里的游戏声和说笑声还没停。你明天需要早起，想了想，还是走出了房门。',choices:[choice('好好商量，约定晚上的安静时间',1,{happiness:2}),choice('今晚先戴耳塞，明天再聊',0,{stress:1})]},
   {id:'leak',title:'漏水的小插曲',desc:'厨房水槽下突然积了一摊水。你和舍友关好阀门，检查后发现接头老化，需要更换：“一起修一下，还是请师傅来？”',choices:[choice('一起动手，买配件慢慢修',4,{cash:-10,happiness:2,energy:-4}),choice('请师傅来，分摊维修费',1,{cash:-60,happiness:2,energy:-1})]},
