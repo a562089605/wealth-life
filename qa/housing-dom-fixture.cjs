@@ -1,5 +1,5 @@
 // Shared fixture for production housing-event DOM/VM integration.
-module.exports=function createFixture(){
+module.exports=function createFixture(options={}){
 // DOM/VM integration, not a browser or device layout test.
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 class Node{
@@ -30,6 +30,7 @@ c.coffeeCareerData=()=>{};c.coffeeRecord=()=>null;c.coffeeIncomeMarkup=()=>'';
 c.syncFinance=()=>{};c.remainingExpenses=()=>0;c.paidThisMonth=()=>0;
 const coffee=source('coffee.js');vm.runInContext(coffee.slice(coffee.indexOf('function coffeeMonthlyIncome(){'),coffee.indexOf('function finalizeCoffeeMonth(')),c);
 vm.runInContext(core.slice(core.indexOf('calcMetrics=function(){'),core.indexOf('const savedRender=render;')),c);
+if(options.withDebt)c.HousingTimeDebt=require('../housing-time-debt.js');
 vm.runInContext(source('family-home.js'),c);
 
 return {c,doc,storage,modal,game,$,setSaveFailure(value){fail=value;}};

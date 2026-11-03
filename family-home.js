@@ -1,12 +1,13 @@
 // Return-home lifecycle and portrait card animation. Existing settlement remains authoritative.
 (function(){
  const F=FamilyEvents,S=typeof SharedEvents==='undefined'?null:SharedEvents,el=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const D=typeof HousingTimeDebt==='undefined'?null:HousingTimeDebt;
  const poolOf=r=>r?.pool==='shared'&&S?S:F;
  const record=(pool,month)=>state?.[pool===S?'sharedEvents':'familyEvents']?.records[month];
  function housingLeave(){const a=F.leave(state),b=S?.leave(state)||{hours:0,wages:0,tips:0};return {hours:a.hours+b.hours,wages:roundCash(a.wages+b.wages),tips:roundCash(a.tips+b.tips)};}
  const asset=id=>'assets/family/'+id+'-20261102.webp';
  let overlay=null,activeKey=null,settling=false,internalRoom=false,deferSave=false,loanHost=null;
- const saveBefore=save;save=function(){if(!state)return;if(deferSave)return true;try{const k=key(slot),raw=localStorage.getItem(k);for(const suffix of ['_before_family_20261102','_before_family_care_20261102','_before_shared_20261102']){const backup=k+suffix;if(raw&&!localStorage.getItem(backup))localStorage.setItem(backup,raw);}return saveBefore();}catch(e){console.error('Save failed; family transaction will be restored',e);return false;}};
+ const saveBefore=save;save=function(){if(!state)return;if(deferSave)return true;try{const k=key(slot),raw=localStorage.getItem(k);for(const suffix of ['_before_family_20261102','_before_family_care_20261102','_before_shared_20261102','_before_housing_deferred_20261102']){const backup=k+suffix;if(raw&&!localStorage.getItem(backup))localStorage.setItem(backup,raw);}return saveBefore();}catch(e){console.error('Save failed; family transaction will be restored',e);return false;}};
  const timers=new Set();
  function later(fn,ms){const t=setTimeout(()=>{timers.delete(t);fn();},ms);timers.add(t);return t;}
  function restoreLoan(){if(!loanHost)return;const {node,parent,next}=loanHost;parent.insertBefore(node,next?.parentNode===parent?next:null);loanHost=null;}
@@ -49,7 +50,7 @@
  }
  openRoom=window.openRoom=function(){if(internalRoom)return roomBefore();if(activeKey)return;if(due())return arrive();if(townEnabled()&&(townVisible||state?.roomLocation==='town'))return returnFromMap();return baseRoom();};
  townHome=openRoom;
- const timeBefore=currentCareerTime;currentCareerTime=function(){const t=timeBefore(),family=state?F.used(state):0,shared=state&&S?S.used(state):0,leave=state?F.leave(state).hours+(S?.leave(state).hours||0):0;return {...t,free:Math.max(0,t.free+leave-family-shared),familyHours:family,sharedHours:shared,familyLeaveHours:leave,workHoursDelta:(t.workHoursDelta||0)-leave,monthlyWork:t.monthlyWork==null?t.monthlyWork:Math.max(0,t.monthlyWork-leave)};};
+ const timeBefore=currentCareerTime;currentCareerTime=function(){const t=timeBefore(),family=state?F.used(state):0,shared=state&&S?S.used(state):0,leave=state?F.leave(state).hours+(S?.leave(state).hours||0):0,credit=state&&D?D.credited(state):0,available=Math.max(0,t.free+leave+credit-family-shared),reserve=state?.housingTimeDebt&&typeof necessaryPetCareHours==='function'?necessaryPetCareHours():0,debt=state&&D?D.allocate(state,{month:state.month,available:Number.isFinite(reserve)?Math.max(0,available-reserve):0,recovery:typeof isRecoveryMonth==='function'&&isRecoveryMonth(state)}):0;return {...t,free:Math.max(0,available-debt),familyHours:family,sharedHours:shared,familyLeaveHours:leave,housingTimeDeferred:credit,housingTimeDebtApplied:debt,workHoursDelta:(t.workHoursDelta||0)-leave,monthlyWork:t.monthlyWork==null?t.monthlyWork:Math.max(0,t.monthlyWork-leave)};};
  // Leave reduces this month's unpaid earnings; never charge cash for wages already paid last month.
  if(typeof coffeeMonthlyIncome==='function'){
   const incomeBefore=coffeeMonthlyIncome;coffeeMonthlyIncome=function(){const x=incomeBefore();if(!x||!state)return x;const l=housingLeave();if(!l.hours)return x;return {...x,extraWages:roundCash(x.extraWages-l.wages),extraTips:roundCash(x.extraTips-l.tips),eventWages:x.eventWages==null?x.eventWages:roundCash(x.eventWages-l.wages),total:roundCash(Math.max(0,x.total-l.wages-l.tips)),familyLeave:l,sharedLeave:!!S?.leave(state).hours};};
@@ -81,6 +82,7 @@
  function effectText(o,hideEmpty=false){const a=[];if(o.cash)a.push('现金 '+(o.cash>0?'+':'−')+'$'+Math.abs(o.cash));if(o.hours)a.push('自由时间 −'+o.hours+'小时');for(const [k,label]of [['energy','能量'],['happiness','幸福度'],['stress','压力']])if(o[k])a.push(label+' '+(o[k]>0?'+':'−')+Math.abs(o[k]));return a.join(' · ')||(hideEmpty?'':'不消耗时间 · 属性不变');}
  function selected(r,index){
   if(!activeKey)return;
+  if(deferredPlan(poolOf(r),r,index))return previewDeferred(poolOf(r),r,index);
   if(r?.cardId==='care'&&r.status==='pending'&&r.month===state.month){const plan=carePlan(r,index);if(plan&&(plan.hours||state.cash<plan.cost))return previewCare(r,index);}
   const pool=poolOf(r),reasons=pool.missing(state,r,index,currentCareerTime().free,necessaryPetCareHours());
   if(pool===S&&reasons.length)return previewShared(r,index);
@@ -98,6 +100,28 @@
   return {working,availableWorkHours:t.monthlyWork??t.weeklyHours*4,wageRate,tipRate};
  }
  function carePlan(r,index){return F.carePlan(state,r,index,currentCareerTime().free,necessaryPetCareHours(),payRates());}
+ function deferredPlan(pool,r,index){return D?.plan(state,pool,pool===S?'sharedEvents':'familyEvents',r,index,currentCareerTime().free,necessaryPetCareHours(),payRates());}
+ function previewDeferred(pool,r,index){
+  const p=deferredPlan(pool,r,index);if(!p)return status('当前条件已变化，请返回本卡重新选择。');
+  const o=pool.cards.find(c=>c.id===r.cardId).choices[index],month=r.month,id=r.cardId,chosenSlot=slot,token=activeKey;
+  let panel=overlay.querySelector('.family-care-panel');if(!panel){panel=document.createElement('section');panel.className='family-care-panel';overlay.append(panel);}
+  overlay.querySelector('.family-revealed').hidden=true;const short=Math.max(0,p.cost-state.cash);
+  panel.innerHTML='<h2>安排所需时间</h2><p>'+esc(o.label)+'</p><p>'+esc(effectText(o))+'</p><p>当前没有可请假的在职工时，缺少的 '+p.hours+' 小时将从下一个有可用自由时间的月份开始扣除。本次不扣工资或小费，也不会推进月份。</p>'+(short?'<p>现金还差 '+priceText(short)+'，请先办理贷款，到账后再确认支付。</p>':'')+'<button type="button" data-deferred-confirm>'+(short?'先申请贷款':'确认本次安排及时间顺延')+'</button><button type="button" data-deferred-back>返回本卡选项</button>';
+  const valid=()=>slot===chosenSlot&&activeKey===token&&state.month===month&&record(pool,month)?.cardId===id&&record(pool,month).status==='pending'?record(pool,month):null;
+  panel.querySelector('[data-deferred-back]').onclick=()=>{if(!valid())return;panel.remove();overlay.querySelector('.family-revealed').hidden=false;overlay.querySelector('.family-choice')?.focus();};
+  const b=panel.querySelector('[data-deferred-confirm]');b.onclick=()=>{const now=valid();if(!now)return;const fresh=deferredPlan(pool,now,index);if(!fresh)return;if(state.cash<fresh.cost)return deferredLoan(pool,now,index,fresh.cost-state.cash);
+   const ok=commit(()=>{if(!D.resolve(state,pool,pool===S?'sharedEvents':'familyEvents',month,id,index,currentCareerTime().free,necessaryPetCareHours(),payRates()))return false;if(state.homeArrival)state.homeArrival.status='completed';return true;});
+   if(ok!==true){showCard(record(pool,month),false);status('暂未保存，事件和顺延时间均未结算，请重试。');return;}dispose();baseRoom();
+  };b.focus();
+ }
+ function deferredLoan(pool,r,index,short){
+  const month=r.month,id=r.cardId,chosenSlot=slot,token=activeKey;let returned=false;
+  const valid=()=>slot===chosenSlot&&activeKey===token&&state.month===month&&record(pool,month)?.cardId===id&&record(pool,month).status==='pending'?record(pool,month):null;
+  const back=()=>{restoreLoan();clearModals();const now=valid();if(!now)return;showCard(now,false);if(deferredPlan(pool,now,index))previewDeferred(pool,now,index);};
+  openBankLoan(short,{after:()=>{if(deferSave){returned=true;return;}back();}});
+  const node=el('eventTitle').closest('.card');loanHost={node,parent:node.parentNode,next:node.nextSibling};overlay.querySelector('.family-care-panel').hidden=true;overlay.append(node);node.inert=false;node.setAttribute('aria-hidden','false');
+  const b=el('actions').firstElementChild,handler=b.onclick;b.onclick=e=>{if(!loanHost||!valid())return;const count=state.loans.length;returned=false;const ok=commit(()=>{handler(e);return returned&&state.loans.length===count+1;});back();if(ok!==true)status('贷款未保存，未新增借款，也未结算事件或顺延时间，请重试。');};el('wlLoanAmount').focus();
+ }
  function sharedPlan(r,index){const free=currentCareerTime().free,reserve=necessaryPetCareHours(),p=S.plan(state,r,index,free,reserve,payRates());if(p?.hours&&!S.cards.find(c=>c.id===r.cardId).choices.every((_,i)=>S.missing(state,r,i,free,reserve).length))return null;return p;}
  function previewShared(r,index){
   const p=sharedPlan(r,index);if(!p)return status('此选项的自由时间不足，请返回选择可完成的另一项；暂未扣款。');
@@ -163,7 +187,7 @@
   final.innerHTML='<div class="family-face"><img src="'+face+'" alt="'+esc(c.title+'。'+c.desc)+'">'+c.choices.map((o,i)=>{const text=effectText(o,pool===S),label=o.label+(text?'；'+text:'');return '<button type="button" class="family-choice family-choice-'+i+'" data-family-choice="'+i+'" aria-label="'+esc(label)+'"><span class="family-sr">'+esc(label)+'</span></button>';}).join('')+'</div><div class="family-accessible"><h2>'+esc(c.title)+'</h2><p>'+esc(c.desc)+'</p></div>';
   final.querySelector('.family-face').dataset.card=c.id;
   const chosenSlot=slot,token=activeKey;final.querySelector('.family-face').dataset.pool=pool===S?'shared':'family';
-  final.querySelectorAll('[data-family-choice]').forEach(b=>{const i=Number(b.dataset.familyChoice),miss=pool.missing(state,r,i,currentCareerTime().free,necessaryPetCareHours());b.setAttribute('aria-disabled',String(!!miss.length&&!(pool===S?sharedPlan(r,i):r.cardId==='care'&&carePlan(r,i))));if(pool===S&&c.hotspots){const box=c.hotspots[i];b.style.top=box[0]+'%';b.style.height=box[1]+'%';}b.onclick=()=>{if(slot!==chosenSlot||activeKey!==token||state.month!==r.month)return;const fresh=record(pool,r.month);if(fresh?.cardId!==r.cardId||fresh.status!=='pending')return;selected(fresh,i);};});
+  final.querySelectorAll('[data-family-choice]').forEach(b=>{const i=Number(b.dataset.familyChoice),miss=pool.missing(state,r,i,currentCareerTime().free,necessaryPetCareHours());b.setAttribute('aria-disabled',String(!!miss.length&&!deferredPlan(pool,r,i)&&!(pool===S?sharedPlan(r,i):r.cardId==='care'&&carePlan(r,i))));if(pool===S&&c.hotspots){const box=c.hotspots[i];b.style.top=box[0]+'%';b.style.height=box[1]+'%';}b.onclick=()=>{if(slot!==chosenSlot||activeKey!==token||state.month!==r.month)return;const fresh=record(pool,r.month);if(fresh?.cardId!==r.cardId||fresh.status!=='pending')return;selected(fresh,i);};});
   const reveal=()=>{if(!overlay)return;for(const t of timers)clearTimeout(t);timers.clear();overlay.classList.add('revealed');overlay.querySelector('.family-stage').hidden=true;final.hidden=false;final.querySelector('button')?.focus({preventScroll:true});};
   overlay.querySelector('.family-skip').onclick=reveal;
   if(!animate||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches){reveal();return;}
