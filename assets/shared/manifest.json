@@ -173,5 +173,15 @@
       "sha256": "073c9643299a0be274cbb5284a7364ad964360e45bbe471c3d8b37ead01fe67d",
       "bytes": 349448
     }
-  ]
+  ],
+  "back": {
+    "path": "assets/shared/back-20261102.webp",
+    "source": "exec-38473479-309a-4dc9-9f4a-9d913f0928c1.png",
+    "width": 853,
+    "height": 1844,
+    "sourceSha256": "4fa783ff55b37d428d8af0a8b20830291ec0a923be2ec5a5cb6248a2a7366321",
+    "sha256": "a44a9bce909decae976daa8cd43d61de065722df1b4d21ec146fbd9261d71026",
+    "bytes": 439466,
+    "previousPath": "assets/family/back-20261102.webp"
+  }
 }
