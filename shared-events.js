@@ -4,7 +4,7 @@
  const cards=[
   {id:'cook',title:'今晚一起做饭',desc:'你刚回到家，就闻到厨房里飘来的香味。舍友正在洗菜，探出头问：“今晚一起吃吗？搭把手，很快就能开饭。”',choices:[choice('一起下厨，边做边聊',2,{cash:-10,happiness:6,stress:-4}),choice('我叫了外卖，今晚自己吃',1,{cash:-25,happiness:3,stress:-2})]},
   {id:'movie',title:'舍友电影夜',desc:'舍友把客厅灯调暗，抱来一桶爆米花：“今晚看部电影？零食一起分，沙发给你留了位置。”',choices:[choice('一起看，今晚就放松一下',3,{happiness:6,stress:-5}),choice('今晚想自己放松一下')]},
-  {id:'ride',title:'顺路捎一程',desc:'你正准备出门，舍友拿起车钥匙：“我也往那边走，要不要一起？正好顺路。”',choices:[choice('那就搭个顺风车，谢谢啦',1,{happiness:3}),choice('今天想自己走走',2,{happiness:2})]},
+  {id:'ride',art:'assets/shared/ride-b4-20261102.webp',title:'顺路捎一程',desc:'你正准备出门，舍友拿起车钥匙：“我也往那边走，要不要一起？正好顺路。”',choices:[choice('那就搭个顺风车，谢谢啦',1,{happiness:3}),choice('今天想自己走走',2,{happiness:4})]},
   {id:'quilt',title:'阳台晒被子',desc:'难得碰上好天气，舍友抱着被子走向阳台：“要不要把你的也拿来晒晒？我们一起搭把手，晚上睡着舒服。”',choices:[choice('一起晒，今晚睡个舒服觉',2,{happiness:4,energy:-1}),choice('我只想瘫着')]},
   {id:'games',title:'客厅游戏局',desc:'舍友把桌游铺在茶几上，朝你晃了晃手里的卡牌：“就差你了！来一局？输赢不重要，开心最重要。”',choices:[choice('来了，今晚一起玩',2,{happiness:5,stress:-3}),choice('你们玩，我先歇会儿')]},
   {id:'meal',title:'多做了一份',desc:'你忙了一天回到家，舍友指了指餐桌上的饭盒：“今天多做了一份，给你留着呢，热一下就能吃。”',choices:[choice('太贴心了，这顿我来洗碗',0,{cash:20,happiness:5,stress:-3}),choice('谢谢你，我已经吃过了')]},

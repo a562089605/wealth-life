@@ -23,13 +23,23 @@
     },
     {
       "id": "ride",
-      "path": "assets/shared/ride-20261102.webp",
-      "source": "exec-d2efcde5-0a00-4364-92b8-a7410e999f13.png",
+      "path": "assets/shared/ride-b4-20261102.webp",
+      "source": "exec-e14cadbc-4d60-4a84-95bc-4ff8695a910a.png",
       "width": 853,
       "height": 1844,
-      "sourceSha256": "83b66b03fabd771935e778676c349832e557be8517eade051cd7b7203cf4b3e5",
-      "sha256": "8ccf6d404bb95011a9484efe8a2d0430bcfb9246702226b441e798ea7e725cc0",
-      "bytes": 409826
+      "sourceSha256": "e2a8589526bfe9639ec474355249eb78f5f99124a0589d24f1be0c7e0d9a8bb8",
+      "sha256": "7f94693d5150106b0abc85551f357243b2870e0b7cf911a3e0dda208912acdbe",
+      "bytes": 397746,
+      "previousConfirmed": {
+        "id": "ride",
+        "path": "assets/shared/ride-20261102.webp",
+        "source": "exec-d2efcde5-0a00-4364-92b8-a7410e999f13.png",
+        "width": 853,
+        "height": 1844,
+        "sourceSha256": "83b66b03fabd771935e778676c349832e557be8517eade051cd7b7203cf4b3e5",
+        "sha256": "8ccf6d404bb95011a9484efe8a2d0430bcfb9246702226b441e798ea7e725cc0",
+        "bytes": 409826
+      }
     },
     {
       "id": "quilt",
