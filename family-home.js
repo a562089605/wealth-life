@@ -7,7 +7,7 @@
  function housingLeave(){const a=F.leave(state),b=S?.leave(state)||{hours:0,wages:0,tips:0};return {hours:a.hours+b.hours,wages:roundCash(a.wages+b.wages),tips:roundCash(a.tips+b.tips)};}
  const asset=id=>'assets/family/'+id+'-20261102.webp';
  let overlay=null,activeKey=null,settling=false,internalRoom=false,deferSave=false,loanHost=null;
- const saveBefore=save;save=function(){if(!state)return;if(deferSave)return true;try{const k=key(slot),raw=localStorage.getItem(k);for(const suffix of ['_before_family_20261102','_before_family_care_20261102','_before_shared_20261102','_before_housing_deferred_20261102','_before_ride_b4_20261102','_before_love_dinner_20261102']){const backup=k+suffix;if(raw&&!localStorage.getItem(backup))localStorage.setItem(backup,raw);}return saveBefore();}catch(e){console.error('Save failed; family transaction will be restored',e);return false;}};
+ const saveBefore=save;save=function(){if(!state)return;if(deferSave)return true;try{const k=key(slot),raw=localStorage.getItem(k);for(const suffix of ['_before_family_20261102','_before_family_care_20261102','_before_shared_20261102','_before_housing_deferred_20261102','_before_ride_b4_20261102','_before_love_dinner_20261102','_before_toolbox_followup_20261102']){const backup=k+suffix;if(raw&&!localStorage.getItem(backup))localStorage.setItem(backup,raw);}return saveBefore();}catch(e){console.error('Save failed; family transaction will be restored',e);return false;}};
  const timers=new Set();
  function later(fn,ms){const t=setTimeout(()=>{timers.delete(t);fn();},ms);timers.add(t);return t;}
  function restoreLoan(){if(!loanHost)return;const {node,parent,next}=loanHost;parent.insertBefore(node,next?.parentNode===parent?next:null);loanHost=null;}
@@ -33,7 +33,7 @@
   const pool=state.homeArrival.eventPool==='shared'&&S?S:state.homeArrival.eventPool==='family'?F:S&&record(S,state.month)?S:record(F,state.month)?F:state.housing==='shared'&&S?S:F;
   let r=record(pool,state.month);
   if(!r){if(commit(()=>{state.homeArrival.eventPool=pool===S?'shared':'family';return pool.draw(state);})===false)return true;r=record(pool,state.month);}
-  if(r.status!=='pending'){completeArrival();return true;}
+  if(r.status!=='pending'&&!S?.toolboxPending?.(r)){completeArrival();return true;}
   showCard(r,!r.presented);return true;
  }
  function returnFromMap(){
@@ -87,8 +87,9 @@
   const pool=poolOf(r),reasons=pool.missing(state,r,index,currentCareerTime().free,necessaryPetCareHours());
   if(pool===S&&reasons.length)return previewShared(r,index);
   if(reasons.length){status(reasons.join('；')+'，尚未结算。');return;}
-  const ok=commit(()=>{if(!pool.resolve(state,r.month,r.cardId,index,currentCareerTime().free,necessaryPetCareHours()))return false;if(state.homeArrival)state.homeArrival.status='completed';return true;});
+  const ok=commit(()=>{if(!pool.resolve(state,r.month,r.cardId,index,currentCareerTime().free,necessaryPetCareHours()))return false;if(state.homeArrival)state.homeArrival.status=S?.toolboxPending?.(r)?'ready':'completed';return true;});
   if(ok!==true){status('暂未保存，未结算，请重试。');return;}
+  if(S?.toolboxPending?.(record(pool,r.month)))return showCard(record(pool,r.month),false);
   dispose();baseRoom();
  }
  function payRates(){
@@ -133,8 +134,8 @@
   const valid=()=>slot===chosenSlot&&activeKey===token&&record(S,month)?.cardId===id&&record(S,month).status==='pending'&&state.month===month?record(S,month):null;
   panel.querySelector('[data-shared-back]').onclick=()=>{const now=valid();if(!now)return;panel.remove();overlay.querySelector('.family-revealed').hidden=false;overlay.querySelector('.family-choice')?.focus();};
   const b=panel.querySelector('[data-shared-confirm]');b.onclick=()=>{const now=valid();if(!now)return;const fresh=sharedPlan(now,index);if(!fresh)return;if(state.cash<fresh.cost)return sharedLoan(now,index,fresh.cost-state.cash);
-   const ok=commit(()=>{if(!S.resolveWithLeave(state,month,index,currentCareerTime().free,necessaryPetCareHours(),payRates()))return false;if(state.homeArrival)state.homeArrival.status='completed';return true;});
-   if(ok!==true){showCard(record(S,month),false);status('暂未保存，事件、请假和付款均未结算，请重试。');return;}dispose();baseRoom();
+   const ok=commit(()=>{if(!S.resolveWithLeave(state,month,index,currentCareerTime().free,necessaryPetCareHours(),payRates()))return false;if(state.homeArrival)state.homeArrival.status=S.toolboxPending(record(S,month))?'ready':'completed';return true;});
+   if(ok!==true){showCard(record(S,month),false);status('暂未保存，事件、请假和付款均未结算，请重试。');return;}if(S.toolboxPending(record(S,month)))return showCard(record(S,month),false);dispose();baseRoom();
   };b.focus();
  }
  function sharedLoan(r,index,short){
@@ -176,7 +177,7 @@
  }
  function status(message){let p=overlay?.querySelector('.family-status');if(p){p.textContent=message;p.hidden=false;p.focus();}}
  function showCard(r,animate){
-  dispose();const pool=poolOf(r),c=pool.cards.find(c=>c.id===r.cardId);if(!c)return;activeKey=r.month+':'+(pool===S?'shared:':'')+r.cardId;
+  dispose();const pool=poolOf(r),followup=pool===S&&S.toolboxPending(r),c=followup?S.toolboxCard(r):pool.cards.find(c=>c.id===r.cardId);if(!c)return;activeKey=r.month+':'+(pool===S?'shared:':'')+r.cardId+(followup?':followup':'');
   const face=pool===S?(c.art||'assets/shared/'+c.id+'-20261102.webp'):asset(c.id);
   // Before any animation or skip control is shown, persist the exact selected card.
   if(!r.presented&&commit(()=>{r.presented=true;})===false){activeKey=null;return;}
@@ -187,7 +188,7 @@
   final.innerHTML='<div class="family-face"><img src="'+face+'" alt="'+esc(c.title+'。'+c.desc)+'">'+c.choices.map((o,i)=>{const text=effectText(o,pool===S),label=o.label+(text?'；'+text:'');return '<button type="button" class="family-choice family-choice-'+i+'" data-family-choice="'+i+'" aria-label="'+esc(label)+'"><span class="family-sr">'+esc(label)+'</span></button>';}).join('')+'</div><div class="family-accessible"><h2>'+esc(c.title)+'</h2><p>'+esc(c.desc)+'</p></div>';
   final.querySelector('.family-face').dataset.card=c.id;
   const chosenSlot=slot,token=activeKey;final.querySelector('.family-face').dataset.pool=pool===S?'shared':'family';
-  final.querySelectorAll('[data-family-choice]').forEach(b=>{const i=Number(b.dataset.familyChoice),miss=pool.missing(state,r,i,currentCareerTime().free,necessaryPetCareHours());b.setAttribute('aria-disabled',String(!!miss.length&&!deferredPlan(pool,r,i)&&!(pool===S?sharedPlan(r,i):r.cardId==='care'&&carePlan(r,i))));if(pool===S&&c.hotspots){const box=c.hotspots[i];b.style.top=box[0]+'%';b.style.height=box[1]+'%';}b.onclick=()=>{if(slot!==chosenSlot||activeKey!==token||state.month!==r.month)return;const fresh=record(pool,r.month);if(fresh?.cardId!==r.cardId||fresh.status!=='pending')return;selected(fresh,i);};});
+  final.querySelectorAll('[data-family-choice]').forEach(b=>{const i=Number(b.dataset.familyChoice),miss=followup?[]:pool.missing(state,r,i,currentCareerTime().free,necessaryPetCareHours());b.setAttribute('aria-disabled',String(!!miss.length&&!deferredPlan(pool,r,i)&&!(pool===S?sharedPlan(r,i):r.cardId==='care'&&carePlan(r,i))));if(pool===S&&c.hotspots){const box=c.hotspots[i];b.style.top=box[0]+'%';b.style.height=box[1]+'%';}b.onclick=()=>{if(slot!==chosenSlot||activeKey!==token||state.month!==r.month)return;const fresh=record(pool,r.month);if(fresh?.cardId!==r.cardId)return;if(followup){if(!S.toolboxPending(fresh))return;const ok=commit(()=>{if(!S.claimToolbox(state,r.month))return false;if(state.homeArrival)state.homeArrival.status='completed';return true;});if(ok!==true){status('暂未保存，奖励未领取，请重试。');return;}dispose();baseRoom();return;}if(fresh.status!=='pending')return;selected(fresh,i);};});
   const reveal=()=>{if(!overlay)return;for(const t of timers)clearTimeout(t);timers.clear();overlay.classList.add('revealed');overlay.querySelector('.family-stage').hidden=true;final.hidden=false;final.querySelector('button')?.focus({preventScroll:true});};
   overlay.querySelector('.family-skip').onclick=reveal;
   if(!animate||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches){reveal();return;}

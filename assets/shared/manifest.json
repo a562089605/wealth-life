@@ -151,5 +151,27 @@
       "sha256": "2912aa39c13e153f7d50d1d5ab931846e5f0d4f072715cfa812ba43d226e8e78",
       "bytes": 381590
     }
+  ],
+  "followups": [
+    {
+      "id": "toolbox-shop",
+      "path": "assets/shared/toolbox-shop-20261102.webp",
+      "source": "exec-6d8f7fcb-b352-4f51-a6b2-b70e4be61590.png",
+      "width": 853,
+      "height": 1844,
+      "sourceSha256": "67e384a2d7bbd5024374ef60876efe29e2495532f698e1ebb141794c333bb96e",
+      "sha256": "3fb4d64e2d9ef9f3956d78e48b4edee23a4d494cb38842595d0bcf1ea23dbade",
+      "bytes": 377048
+    },
+    {
+      "id": "toolbox-neighbor",
+      "path": "assets/shared/toolbox-neighbor-20261102.webp",
+      "source": "exec-440c1772-905e-4c5c-a845-b9df8624116b.png",
+      "width": 853,
+      "height": 1844,
+      "sourceSha256": "79f024f427a103fc5baab0615ec6e3b12da1331016652eeb1561b9fd17552956",
+      "sha256": "073c9643299a0be274cbb5284a7364ad964360e45bbe471c3d8b37ead01fe67d",
+      "bytes": 349448
+    }
   ]
 }
