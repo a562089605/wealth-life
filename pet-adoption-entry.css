@@ -1,0 +1,16 @@
+.pet-entry-open{overflow:hidden}
+.pet-entry-overlay{position:fixed;inset:0;z-index:120000;background:#473d2c99;display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:calc(10px + env(safe-area-inset-top,0px)) 10px calc(10px + env(safe-area-inset-bottom,0px));overflow:auto}
+.pet-entry-sheet{position:relative;container-type:inline-size;flex:none;aspect-ratio:941/1672;width:min(calc(100vw - 20px),calc((100dvh - 20px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))*941/1672))}
+.pet-entry-sheet>img{display:block;width:100%;height:auto;border-radius:14px}
+.pet-entry-sheet .pet-entry-hit{position:absolute;margin:0;padding:0;border:0;background:transparent;color:transparent;box-shadow:none;cursor:pointer;min-height:0;border-radius:12px}
+.pet-entry-hit:focus-visible{outline:3px solid #286139;outline-offset:-3px}
+.pet-entry-cover{position:absolute;display:flex;align-items:center;justify-content:center;box-sizing:border-box;background:#faf3d9;color:#123b22;font-weight:bold;font-size:3.7cqw;line-height:1.1;white-space:nowrap;pointer-events:none}
+.pet-entry-cash{border-radius:8px;background:#f5f4d9;font-size:4cqw}
+.pet-entry-price{background:#f6f3d9;font-size:3.6cqw}
+.pet-entry-mark{border:1px solid #b39968;border-radius:50%;background:#f5efda;font-size:4.5cqw}
+.pet-entry-mark.selected{background:#244d23;color:#fff;border-color:#244d23}
+.pet-entry-next{background:#efcf70;font-size:4.4cqw}
+.pet-entry-return{background:#f8f1dd;font-size:3.4cqw;text-decoration:underline}
+.pet-entry-quote{box-sizing:border-box;width:min(100%,460px);padding:24px;border:2px solid #bca475;border-radius:22px;background:#fff7e5;color:#21442f;line-height:1.6;max-height:100%;overflow:auto}
+.pet-entry-quote h2{margin-top:0}.pet-entry-quote dl{display:grid;grid-template-columns:1fr auto;gap:10px}.pet-entry-quote dd{margin:0;font-weight:bold}.pet-entry-quote button{display:block;width:100%;min-height:48px;margin-top:12px;font:inherit;border:1px solid #b49b62;border-radius:22px;background:#eed47b;color:#21442f}.pet-entry-quote button:disabled{opacity:.55}.pet-entry-status{color:#8b3f2d}
+@supports not (height:100dvh){.pet-entry-sheet{width:min(calc(100vw - 20px),calc((100vh - 20px)*941/1672))}}

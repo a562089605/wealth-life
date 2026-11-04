@@ -1,0 +1,11 @@
+{
+  "asset": "assets/home/pet-selection-seven-20261104.webp",
+  "sourceRepository": "a562089605/wealth-life",
+  "sourceCommit": "fc9dee8b8531d6b7af829630e93a9e3346b9f1bb",
+  "sourcePath": "assets/career/pet-selection.webp",
+  "sha256": "831a8f99d425d6d0b5895be5b901383b0d6827b3719beb02001a6f51e62f8dff",
+  "width": 941,
+  "height": 1672,
+  "bytes": 383940,
+  "note": "历史原七宠图逐字节保留；旧价格、现金、勾选及导航以当前原生UI覆盖。"
+}
