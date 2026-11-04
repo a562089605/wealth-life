@@ -53,7 +53,7 @@ calcMetrics=function(){
 const savedRender=render;
 render=function(){if(!state)return;syncFinance();savedRender();const m=calcMetrics();$('net').textContent=money(m.monthlyCF);$('net').className='value '+(m.monthlyCF>=0?'good':'bad');$('salary').textContent=money(m.grossSalary)+'/月（税前）';$('annualSalary').textContent='年薪 '+money(state.annualSalary||0)+' · 游戏税款 '+money(m.tax)+'/月';if(window.refreshV24Turn)window.refreshV24Turn();};
 let saveTimer;
-save=function(){if(!state)return;syncFinance();try{localStorage.setItem(key(slot),JSON.stringify(state));$('saveState').textContent='已自动存档';clearTimeout(saveTimer);saveTimer=setTimeout(()=>$('saveState').textContent='自动存档',900)}catch(e){$('saveState').textContent='保存失败，请保留此页面';console.error('Save failed',e)}};
+save=function(){if(!state)return;syncFinance();try{localStorage.setItem(key(slot),JSON.stringify(state));$('saveState').textContent='已自动存档';clearTimeout(saveTimer);saveTimer=setTimeout(()=>$('saveState').textContent='自动存档',900);return true;}catch(e){$('saveState').textContent='保存失败，请保留此页面';console.error('Save failed',e);return false;}};
 function clearModals(){document.querySelectorAll('.event-active').forEach(e=>e.classList.remove('event-active'));$('eventBackdrop').classList.remove('active');$('v242RE').classList.remove('open');$('v245Housing').classList.remove('open');document.body.classList.remove('event-open');pending=false;$('next').disabled=false;}
 const openBase=openGame;openGame=function(){clearModals();syncFinance();openBase();window.startV24Turn?.(false)};
 const homeBase=home;home=function(){clearModals();homeBase();state=null;};

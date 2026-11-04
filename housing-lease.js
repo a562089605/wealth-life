@@ -1,25 +1,48 @@
+// Housing mutations are saved once before any success navigation. Keep all old slot keys.
+let housingTransactionActive=false;
+function housingTransaction(change){
+ if(!state||housingTransactionActive)return false;
+ const before=JSON.parse(JSON.stringify(state));housingTransactionActive=true;
+ try{if(change()===false){state=before;return false;}if(save()===false)throw Error('housing save failed');return true;}
+ catch(error){state=before;console.error('Housing transaction restored',error);showEvent('保存失败','本次住房操作未完成','现金、住房合同、押金和账单记录均未结算，请释放存储空间或稍后重试。',[],[['返回重试',()=>{clearModals();render();},true]]);return false;}
+ finally{housingTransactionActive=false;}
+}
 function heldHousingDeposit(){return state.housingLease?.depositHeld||0}
 function housingHandoverDue(){return !!state.pendingHousingMove&&state.pendingHousingMove.effectiveMonth<=state.month}
 function housingQuote(h){const current=state.housing===h[3]&&state.housing!=='unselected',first=!state.housing||state.housing==='unselected',paid=paymentReceipt().housing||0;
  const monthly=current?state.housingCost:h[1],rent=Math.max(0,monthly-paid),deposit=h[3]==='family'||h[3]==='own'?0:monthly;
  return {current,first,monthly,rent,deposit:current?0:deposit,total:current?roundCash(rent):first?roundCash(rent+deposit):0,scheduled:!first&&!current};}
-function confirmHousing(key){syncFinance();if(housingHandoverDue())return openHousingHandover();const h=housingChoices().find(h=>h[3]===key);if(!h)return false;const q=housingQuote(h);
- if(q.scheduled){state.pendingHousingMove={key,name:h[0],monthly:q.monthly,deposit:q.deposit,effectiveMonth:state.month+1,requestedMonth:state.month};save();openHousing();return true;}
- if(state.cash<q.total)return false;
- if(q.first){if(!spendConfirmed('housingDeposit',q.deposit,{housing:key}))return false;}
- if(!payMonthly('housing',q.rent))return false;
- state.housing=key;state.housingCost=q.monthly;
- if(q.first)state.housingLease={key,monthly:q.monthly,depositHeld:q.deposit,startMonth:state.month,renewalMonth:state.month+12};
- state._computedExpenses=null;state.paymentUpgradeNotice=false;syncFinance();save();completeMonthlyStep(0);return true;}
+function confirmHousing(key){
+ if(housingHandoverDue())return openHousingHandover();
+ let scheduled=false;
+ const ok=housingTransaction(()=>{
+  syncFinance();const h=housingChoices().find(h=>h[3]===key);if(!h)return false;const q=housingQuote(h);
+  if(q.scheduled){state.pendingHousingMove={key,name:h[0],monthly:q.monthly,deposit:q.deposit,effectiveMonth:state.month+1,requestedMonth:state.month};scheduled=true;return true;}
+  if(state.cash<q.total)return false;
+  if(q.first&&!spendConfirmed('housingDeposit',q.deposit,{housing:key}))return false;
+  if(!payMonthly('housing',q.rent))return false;
+  state.housing=key;state.housingCost=q.monthly;
+  if(q.first)state.housingLease={key,monthly:q.monthly,depositHeld:q.deposit,startMonth:state.month,renewalMonth:state.month+12};
+  state._computedExpenses=null;state.paymentUpgradeNotice=false;syncFinance();
+  if(state.turn?.index===0&&document.getElementById?.('game')?.classList.contains('v24-running'))state.turn.index=1;
+  return true;
+ });
+ if(!ok)return false;if(scheduled)openHousing();else completeMonthlyStep(0,true);return true;
+}
 function housingHandoverQuote(){const m=state.pendingHousingMove;if(!m||!housingHandoverDue())return null;
  const refund=heldHousingDeposit(),total=roundCash(m.deposit+m.monthly);return {...m,name:m.key==='rent1'?'小公寓':m.name,refund,total,net:roundCash(total-refund),shortfall:roundCash(Math.max(0,total-state.cash-refund))};}
-function confirmHousingHandover(){const q=housingHandoverQuote();if(!q||q.shortfall>0)return false;
- const id=state.month+':'+q.key+':'+q.requestedMonth;state.housingHandoverReceipts??={};if(state.housingHandoverReceipts[id])return false;
- state.cash=roundCash(state.cash+q.refund-q.deposit-q.monthly);
- const log=state.financeLedger??=[];if(q.refund)log.push({kind:'housingDepositRefund',month:state.month,amount:q.refund,id});if(q.deposit)log.push({kind:'housingDeposit',month:state.month,amount:q.deposit,id});log.push({kind:'housingPayment',month:state.month,amount:q.monthly,id});
- if(state.monthlyPayments?.month!==state.month)state.monthlyPayments={month:state.month,housing:0,living:0,premiums:0};state.monthlyPayments.housing=q.monthly;
- state.housing=q.key;state.housingCost=q.monthly;state.housingLease={key:q.key,monthly:q.monthly,depositHeld:q.deposit,startMonth:state.month,renewalMonth:state.month+12};state.housingHandoverReceipts[id]=true;delete state.pendingHousingMove;state._computedExpenses=null;syncFinance();save();openHousing();return true;}
-function cancelHousingMove(){if(!state.pendingHousingMove||housingHandoverDue())return false;delete state.pendingHousingMove;save();openHousing();return true;}
+function confirmHousingHandover(){
+ const ok=housingTransaction(()=>{
+  const q=housingHandoverQuote();if(!q||q.shortfall>0)return false;
+  const id=state.month+':'+q.key+':'+q.requestedMonth;state.housingHandoverReceipts??={};if(state.housingHandoverReceipts[id])return false;
+  state.cash=roundCash(state.cash+q.refund-q.deposit-q.monthly);
+  const log=state.financeLedger??=[];if(q.refund)log.push({kind:'housingDepositRefund',month:state.month,amount:q.refund,id});if(q.deposit)log.push({kind:'housingDeposit',month:state.month,amount:q.deposit,id});log.push({kind:'housingPayment',month:state.month,amount:q.monthly,id});
+  if(state.monthlyPayments?.month!==state.month)state.monthlyPayments={month:state.month,housing:0,living:0,premiums:0};state.monthlyPayments.housing=q.monthly;
+  state.housing=q.key;state.housingCost=q.monthly;state.housingLease={key:q.key,monthly:q.monthly,depositHeld:q.deposit,startMonth:state.month,renewalMonth:state.month+12};state.housingHandoverReceipts[id]=true;delete state.pendingHousingMove;state._computedExpenses=null;syncFinance();return true;
+ });
+ if(!ok)return false;openHousing();return true;
+}
+function cancelHousingMove(){const ok=housingTransaction(()=>{if(!state.pendingHousingMove||housingHandoverDue())return false;delete state.pendingHousingMove;return true;});if(!ok)return false;openHousing();return true;}
 function openHousingHandover(){const q=housingHandoverQuote();if(!q)return openHousing();showEvent('住房交接','退旧押金，入住新住处','确认时结算旧押金、新押金与本月新房租。费用不足不部分扣款，也不重复收旧房本月租金。',[
  ['新住处',q.name],['退回旧押金',priceText(q.refund)],['新押金',priceText(q.deposit)],['本月房租',priceText(q.monthly)],['交接后现金',priceText(state.cash-q.net)],['尚缺',priceText(q.shortfall)]],[['确认交接',confirmHousingHandover,true,q.shortfall>0],['筹措资金',()=>openBankLoan(Math.max(1,Math.ceil(q.shortfall)),{after:openHousingHandover}),false]]);}
 function housingMarkup(){if(housingHandoverDue())return '<button data-lease-handover class="primary">办理本月住房交接</button>';

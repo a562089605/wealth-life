@@ -6,13 +6,15 @@ function livingBillQuote(){
  q.token=[q.month,state.housing,state.housingCost,livingTotal(),paid.housing||0,paid.living||0,state.pendingHousingMove?.requestedMonth??'',q.blocked].join('|');return q;
 }
 function confirmLivingBill(month,token){
- syncFinance();const q=livingBillQuote();
- if(q.month!==month||q.token!==token||!q.selected||q.blocked||q.total<=0||state.cash<q.total)return false;
- // Both amounts are preflighted before either synchronous payment; no partial charge on shortage.
- if(!payMonthly('housing',q.housing))return false;
- if(!payMonthly('living',q.living))throw Error('Living bill preflight invariant failed');
- setMonthSelection('lifeArrangement',true);save();render();return true;
+ const ok=housingTransaction(()=>{
+  syncFinance();const q=livingBillQuote();
+  if(q.month!==month||q.token!==token||!q.selected||q.blocked||q.total<=0||state.cash<q.total)return false;
+  if(!payMonthly('housing',q.housing)||!payMonthly('living',q.living))return false;
+  setMonthSelection('lifeArrangement',true);return true;
+ });
+ if(!ok)return false;render();return true;
 }
+
 (function(){
  const oldBills=necessaryBills;
  necessaryBills=function(){const rows=oldBills();if(!state.housing||state.housing==='unselected')return rows;
