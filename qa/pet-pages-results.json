@@ -1,0 +1,84 @@
+{
+  "browser": "Chromium isolated test slots 901/902",
+  "realDevice": false,
+  "results": [
+    {
+      "id": "dog",
+      "cash": 99570,
+      "petCount": 1
+    },
+    {
+      "id": "cat",
+      "cash": 99200,
+      "petCount": 2
+    },
+    {
+      "id": "crocodile",
+      "cash": 97200,
+      "petCount": 3
+    },
+    {
+      "id": "gecko",
+      "cash": 96840,
+      "petCount": 4
+    },
+    {
+      "id": "spider",
+      "cash": 96650,
+      "petCount": 5
+    },
+    {
+      "id": "tortoise",
+      "cash": 96380,
+      "petCount": 6
+    },
+    {
+      "id": "chameleon",
+      "cash": 95880,
+      "petCount": 7
+    },
+    {
+      "id": "dog",
+      "careSaved": true,
+      "cash": 9990,
+      "next": 5
+    },
+    {
+      "id": "cat",
+      "careSaved": true,
+      "cash": 9990,
+      "next": 5
+    },
+    {
+      "id": "crocodile",
+      "careSaved": true,
+      "cash": 9970,
+      "next": 5
+    },
+    {
+      "id": "gecko",
+      "careSaved": true,
+      "cash": 9995,
+      "next": 5
+    },
+    {
+      "id": "spider",
+      "careSaved": true,
+      "cash": 9995,
+      "next": 6
+    },
+    {
+      "id": "tortoise",
+      "careSaved": true,
+      "cash": 9990,
+      "next": 5
+    },
+    {
+      "id": "chameleon",
+      "careSaved": true,
+      "cash": 9990,
+      "next": 5
+    }
+  ],
+  "pageErrors": []
+}

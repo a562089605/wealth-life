@@ -1,0 +1,100 @@
+{
+  "scope": "new pet scripts and 17 artwork resources only; not full-game offline validation",
+  "assets": [
+    {
+      "path": "pet-pages.js?v=20261104-petpages1",
+      "ok": true,
+      "bytes": 16612
+    },
+    {
+      "path": "pet-pages.css?v=20261104-petpages1",
+      "ok": true,
+      "bytes": 5796
+    },
+    {
+      "path": "assets/pets/adoption-dog-20261104.webp",
+      "ok": true,
+      "bytes": 320402
+    },
+    {
+      "path": "assets/pets/overview-20261104.webp",
+      "ok": true,
+      "bytes": 286660
+    },
+    {
+      "path": "assets/pets/detail-20261104.webp",
+      "ok": true,
+      "bytes": 301646
+    },
+    {
+      "path": "assets/pets/success-dog-20261104.webp",
+      "ok": true,
+      "bytes": 263174
+    },
+    {
+      "path": "assets/pets/success-cat-20261104.webp",
+      "ok": true,
+      "bytes": 261482
+    },
+    {
+      "path": "assets/pets/success-crocodile-20261104.webp",
+      "ok": true,
+      "bytes": 265626
+    },
+    {
+      "path": "assets/pets/success-gecko-20261104.webp",
+      "ok": true,
+      "bytes": 263148
+    },
+    {
+      "path": "assets/pets/success-spider-20261104.webp",
+      "ok": true,
+      "bytes": 269590
+    },
+    {
+      "path": "assets/pets/success-tortoise-20261104.webp",
+      "ok": true,
+      "bytes": 267010
+    },
+    {
+      "path": "assets/pets/success-chameleon-20261104.webp",
+      "ok": true,
+      "bytes": 271168
+    },
+    {
+      "path": "assets/pets/clean-dog-20261104.webp",
+      "ok": true,
+      "bytes": 330298
+    },
+    {
+      "path": "assets/pets/clean-cat-20261104.webp",
+      "ok": true,
+      "bytes": 304684
+    },
+    {
+      "path": "assets/pets/clean-crocodile-20261104.webp",
+      "ok": true,
+      "bytes": 319420
+    },
+    {
+      "path": "assets/pets/clean-gecko-20261104.webp",
+      "ok": true,
+      "bytes": 327390
+    },
+    {
+      "path": "assets/pets/clean-spider-20261104.webp",
+      "ok": true,
+      "bytes": 328066
+    },
+    {
+      "path": "assets/pets/clean-tortoise-20261104.webp",
+      "ok": true,
+      "bytes": 330448
+    },
+    {
+      "path": "assets/pets/clean-chameleon-20261104.webp",
+      "ok": true,
+      "bytes": 329338
+    }
+  ]
+}

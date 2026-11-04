@@ -1,0 +1,194 @@
+{
+  "version": "20261104",
+  "status": "user-confirmed-art",
+  "note": "原PNG保留；WebP只作编码转换，画稿静态文字由实时DOM覆盖，未改原玩法费用。",
+  "assets": [
+    {
+      "id": "adoption-dog",
+      "path": "assets/pets/adoption-dog-20261104.webp",
+      "width": 1024,
+      "height": 1536,
+      "source": "/workspace/generated_images/exec-588b0bee-0d88-42fc-9715-8bb831b8f8fc.png",
+      "sourceSha256": "9f0cf5b2aa85aa01b07a2125ce29f219e8dd7545f87ad81dbdd2e708230b088f",
+      "sha256": "26718b51bf75fafa0601349cb0f4fa3fba57638c95bf8acb17e4c78ea7414572",
+      "bytes": 320402,
+      "sourceRepositoryPath": "assets/pets/originals/adoption-dog-20261104.png"
+    },
+    {
+      "id": "overview",
+      "path": "assets/pets/overview-20261104.webp",
+      "width": 941,
+      "height": 1672,
+      "source": "/workspace/generated_images/exec-85d539dc-e975-4b55-b7c2-f314dfc87c7b.png",
+      "sourceSha256": "9485c212c653b6c45cd81ed97ac98786d20d4f9dc331910cd1585d0382f20c40",
+      "sha256": "63ff4a6e5c6b2e1dd2ccbaae52cd0048458eeb1e09689fa9cfd3aa7da1514b6a",
+      "bytes": 286660,
+      "sourceRepositoryPath": "assets/pets/originals/overview-20261104.png"
+    },
+    {
+      "id": "detail",
+      "path": "assets/pets/detail-20261104.webp",
+      "width": 941,
+      "height": 1672,
+      "source": "/workspace/generated_images/exec-dce42fcf-9a2d-47d0-a2f8-5b61ec2a3b4a.png",
+      "sourceSha256": "cc9e8e77e40edeea5e4bae0860ee486e41b6908f0060efdbe67d5584ad9b3bb8",
+      "sha256": "ed6d3ec9e35bd82a4b74d3ae11a52263f137ef95f32bcabacbdae99f3890ba36",
+      "bytes": 301646,
+      "sourceRepositoryPath": "assets/pets/originals/detail-20261104.png"
+    },
+    {
+      "id": "success-dog",
+      "path": "assets/pets/success-dog-20261104.webp",
+      "width": 941,
+      "height": 1672,
+      "source": "/workspace/generated_images/exec-d6ab7be1-0894-4ccf-8f39-ed72c9bf8e4e.png",
+      "sourceSha256": "f9c4ac22c0dff4f88da439a2fd86303c69857f630c243636d0893ae0f68c9faf",
+      "sha256": "7113c5874da8a075e2c15dd1981200c692cdf515dce2560aa907ad830857140b",
+      "bytes": 263174,
+      "sourceRepositoryPath": "assets/pets/originals/success-dog-20261104.png"
+    },
+    {
+      "id": "success-cat",
+      "path": "assets/pets/success-cat-20261104.webp",
+      "width": 941,
+      "height": 1672,
+      "source": "/workspace/generated_images/exec-3de3c025-43e8-4669-9150-5bdf6ac3a763.png",
+      "sourceSha256": "8ed59a6e766fd6672c02bf6f86544eee296be8caacd2858938f83d4d2e0edb21",
+      "sha256": "2f6abd12f7a6f816c18e994c5abe02b61943414bb9e7d05a7852823551a9b721",
+      "bytes": 261482,
+      "sourceRepositoryPath": "assets/pets/originals/success-cat-20261104.png"
+    },
+    {
+      "id": "success-crocodile",
+      "path": "assets/pets/success-crocodile-20261104.webp",
+      "width": 941,
+      "height": 1672,
+      "source": "/workspace/generated_images/exec-a5bef494-ea20-4739-a6f0-11ce8ef1cd6c.png",
+      "sourceSha256": "e9b793bb74bcdf802a490e40707275b2cff6f0406d30cf47c0e80c39d6ebb139",
+      "sha256": "0c9e9632e03c8b8ab82fd2bc669c44fed9cf8ec1acf1c8d41e7435b67e451693",
+      "bytes": 265626,
+      "sourceRepositoryPath": "assets/pets/originals/success-crocodile-20261104.png"
+    },
+    {
+      "id": "success-gecko",
+      "path": "assets/pets/success-gecko-20261104.webp",
+      "width": 941,
+      "height": 1672,
+      "source": "/workspace/generated_images/exec-d1b350c7-4ff4-4cb8-9eca-75f9ceda76cc.png",
+      "sourceSha256": "c32ac7013539fcb8f24e0f81fa4f9645a7a57de93cd5dfbe4fe7e8bbfc69193f",
+      "sha256": "57c1b77b6e6e729bda8e19bf80ea355b5496df7f8cde095369dc04506b036ad3",
+      "bytes": 263148,
+      "sourceRepositoryPath": "assets/pets/originals/success-gecko-20261104.png"
+    },
+    {
+      "id": "success-spider",
+      "path": "assets/pets/success-spider-20261104.webp",
+      "width": 941,
+      "height": 1672,
+      "source": "/workspace/generated_images/exec-3fc8b9f7-5dda-4176-b59d-8fe1b1dd6e42.png",
+      "sourceSha256": "bee37e28a4a4b97ecfe69ebf66198a6beaea39d6c127b15a6cb50ccf2db22095",
+      "sha256": "161d654a4f64276ebfef1117d864aaa30a1d91ded4e3c2db39a037cf41e1d3b7",
+      "bytes": 269590,
+      "sourceRepositoryPath": "assets/pets/originals/success-spider-20261104.png"
+    },
+    {
+      "id": "success-tortoise",
+      "path": "assets/pets/success-tortoise-20261104.webp",
+      "width": 941,
+      "height": 1672,
+      "source": "/workspace/generated_images/exec-6e635610-b84a-4b35-9cb0-6c04dbf8c6b8.png",
+      "sourceSha256": "31307ba07e162f20a94fa4ca38b68b18ae6a650d61e0d87e7285801e837fc596",
+      "sha256": "4887e9db5e5e109b0b90f50fa1e7d657e764a5218bb360cd7c71cbb787aee147",
+      "bytes": 267010,
+      "sourceRepositoryPath": "assets/pets/originals/success-tortoise-20261104.png"
+    },
+    {
+      "id": "success-chameleon",
+      "path": "assets/pets/success-chameleon-20261104.webp",
+      "width": 941,
+      "height": 1672,
+      "source": "/workspace/generated_images/exec-536b1826-16f5-4646-b5e8-a777015ae030.png",
+      "sourceSha256": "673e5835f97cf7242f685a404f0d251d32e1f39ba9d05689a6c27682e9c143b8",
+      "sha256": "d9d86a0ddca55141bdbd0a9f1f73375992078194422a45aad561afe97fb78431",
+      "bytes": 271168,
+      "sourceRepositoryPath": "assets/pets/originals/success-chameleon-20261104.png"
+    },
+    {
+      "id": "clean-dog",
+      "path": "assets/pets/clean-dog-20261104.webp",
+      "width": 852,
+      "height": 1846,
+      "source": "/workspace/generated_images/exec-e0c57881-4276-4212-8e70-f8f23e4a4fd1.png",
+      "sourceSha256": "704b3499f72384c177a98cf8a8696bfabc39439bf0395396f22f4b04cebc0f08",
+      "sha256": "dd520baacce8302da00cf3628b574644ba5217e745f91334c0c8acec7df1edc9",
+      "bytes": 330298,
+      "sourceRepositoryPath": "assets/pets/originals/clean-dog-20261104.png"
+    },
+    {
+      "id": "clean-cat",
+      "path": "assets/pets/clean-cat-20261104.webp",
+      "width": 852,
+      "height": 1846,
+      "source": "/workspace/generated_images/exec-36d057ae-ef4c-44eb-8736-455143696917.png",
+      "sourceSha256": "6a4628a1eb9d49b4e4281335cb47a93967607d043cdc597806686428c41887e9",
+      "sha256": "af5c2d4cb8d62da67a011ab328c58d97389a4b23e96b8d83a5480ded6fe05233",
+      "bytes": 304684,
+      "sourceRepositoryPath": "assets/pets/originals/clean-cat-20261104.png"
+    },
+    {
+      "id": "clean-crocodile",
+      "path": "assets/pets/clean-crocodile-20261104.webp",
+      "width": 852,
+      "height": 1846,
+      "source": "/workspace/generated_images/exec-b46cc28a-ce6c-4a8e-af46-f1c5d7106258.png",
+      "sourceSha256": "2723686e581e4d42e1e3852e33b368e04a71e2af3a8ae0b1bbf3eee7f86791b4",
+      "sha256": "80be13e9da56508d06f9ce2caf63971189dc73694835a25f74a3d538b117eb5c",
+      "bytes": 319420,
+      "sourceRepositoryPath": "assets/pets/originals/clean-crocodile-20261104.png"
+    },
+    {
+      "id": "clean-gecko",
+      "path": "assets/pets/clean-gecko-20261104.webp",
+      "width": 852,
+      "height": 1846,
+      "source": "/workspace/generated_images/exec-ac9cfca5-e774-42f0-830f-a50d9f1b6b1e.png",
+      "sourceSha256": "dd82867d947bbd644b6c7153a22c9dc2c902357c6053c2f488e6299d1c9524aa",
+      "sha256": "d912fc389ec227ee5ea0ae79717e4b84e0ac6b3d11803655b037437ffa77fd8b",
+      "bytes": 327390,
+      "sourceRepositoryPath": "assets/pets/originals/clean-gecko-20261104.png"
+    },
+    {
+      "id": "clean-spider",
+      "path": "assets/pets/clean-spider-20261104.webp",
+      "width": 852,
+      "height": 1846,
+      "source": "/workspace/generated_images/exec-f52ede2d-7025-4553-a970-4ca79d2cf64e.png",
+      "sourceSha256": "569a3353b54e88a08198a2d2f271d2210b506830dc1ea2173376c2e99cb19f52",
+      "sha256": "d20eebe09523903c3d5524ebf718f8fe1c4b7219f517d0811b3a423e644184d3",
+      "bytes": 328066,
+      "sourceRepositoryPath": "assets/pets/originals/clean-spider-20261104.png"
+    },
+    {
+      "id": "clean-tortoise",
+      "path": "assets/pets/clean-tortoise-20261104.webp",
+      "width": 852,
+      "height": 1846,
+      "source": "/workspace/generated_images/exec-16e6e05a-900a-4fc3-b41e-411db03a9c7a.png",
+      "sourceSha256": "cf9b6dfd1a924ffbda9bdea963c46aed30204ba0519e2d97cda6ce2164cb6118",
+      "sha256": "a386e2646624d871b4844682936780443f19b8fd78fb54e56330936a332bb837",
+      "bytes": 330448,
+      "sourceRepositoryPath": "assets/pets/originals/clean-tortoise-20261104.png"
+    },
+    {
+      "id": "clean-chameleon",
+      "path": "assets/pets/clean-chameleon-20261104.webp",
+      "width": 852,
+      "height": 1846,
+      "source": "/workspace/generated_images/exec-d7143c65-a38a-4b46-bfc5-74020551cc14.png",
+      "sourceSha256": "e58571fb109240ff87c9149360d14b68b2480de493fb7e4045d879496a0fad39",
+      "sha256": "c389d761a25110b8297c1957b8f4337a6516a9b5cedc916b9c42fd3aa50be99f",
+      "bytes": 329338,
+      "sourceRepositoryPath": "assets/pets/originals/clean-chameleon-20261104.png"
+    }
+  ]
+}

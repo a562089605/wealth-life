@@ -17,12 +17,18 @@ function petCareQuote(s,selections){const recovery=isRecoveryMonth(s),factor=(s.
  if(task.kind==='Annual'&&method!=='annual'||task.kind==='Clean'&&!['self','pro'].includes(method)||recovery&&method==='self')return {blocked:'护理方式不适用'};
  const c=roundCash((task.kind==='Annual'?task.rule.annual:task.rule[method])*factor),h=recovery?0:task.kind==='Annual'?task.rule.annualHours:task.rule[method+'Hours'];cost+=c;hours+=h;rows.push({...task,method,cost:c,hours:h});}
  return {cost:roundCash(cost),hours,rows,recovery};}
-function payPetCare(selections){const quote=petCareQuote(state,selections);if(quote.blocked||!quote.rows.length)return false;
- if(state.cash<quote.cost||currentCareerTime().free<quote.hours)return false;
- if(!spendConfirmed('petCare',quote.cost,{projects:quote.rows.map(r=>r.key)}))return false;
- if(state.petCareTime?.month!==state.month)state.petCareTime={month:state.month,hours:0};state.petCareTime.hours+=quote.hours;
- for(const r of quote.rows){r.pet.care['next'+r.kind]=state.month+(r.kind==='Annual'?12:r.rule[r.method+'Months']);r.pet.care.history.push({month:state.month,key:r.key,kind:r.kind,method:r.method,cost:r.cost,hours:r.hours,delegated:quote.recovery});}
- state.petCareDraft={month:state.month,selections:{}};save();openPetCare();return true;}
+function payPetCare(selections){
+ const owner=state,before=JSON.parse(JSON.stringify(state));
+ function restore(){for(const k of Object.keys(owner))delete owner[k];Object.assign(owner,before);}
+ try{const quote=petCareQuote(state,selections);if(quote.blocked||!quote.rows.length||state.cash<quote.cost||currentCareerTime().free<quote.hours){restore();return false;}
+  if(!spendConfirmed('petCare',quote.cost,{projects:quote.rows.map(r=>r.key)})){restore();return false;}
+  if(state.petCareTime?.month!==state.month)state.petCareTime={month:state.month,hours:0};state.petCareTime.hours+=quote.hours;
+  for(const r of quote.rows){r.pet.care['next'+r.kind]=state.month+(r.kind==='Annual'?12:r.rule[r.method+'Months']);r.pet.care.history.push({month:state.month,key:r.key,kind:r.kind,method:r.method,cost:r.cost,hours:r.hours,delegated:quote.recovery});}
+  state.petCareDraft={month:state.month,selections:{}};
+  if(save()===false)throw Error('pet care save failed');
+ }catch(error){restore();return false;}
+ openPetCare();return true;
+}
 function openPetCare(){if(state.petCareDraft?.month!==state.month)state.petCareDraft={month:state.month,selections:{}};const tasks=petCareTasks(),draft=state.petCareDraft.selections,q=petCareQuote(state,draft),recovery=isRecoveryMonth(state);save();
  const actions=[];for(const t of tasks){if(t.unsupported)continue;const name=t.pet.name||t.pet.type||t.rule.name;
  const options=t.kind==='Annual'?['annual']:recovery?['pro']:['self','pro'];for(const method of options)actions.push([name+' · '+(method==='annual'?'年度体检':method==='self'?'在家清洁':'专业清洁')+(recovery?'（委托）':''),()=>{draft[t.key]=method;save();openPetCare();},false]);}

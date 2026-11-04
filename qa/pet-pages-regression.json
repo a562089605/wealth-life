@@ -1,0 +1,117 @@
+[
+  {
+    "suite": "pet-adoption-entry",
+    "ok": true,
+    "output": "PASS: seven live prices, preview without mutations, exact one-time payment, original happiness, duplicate/insufficient rejection, save-failure rollback and retry.\n"
+  },
+  {
+    "suite": "pet-care",
+    "ok": true,
+    "output": "PASS: recovery delegation same fees/zero time, preview and repeat no charge, cross-year deadlines, normal time cost, multiple pets and atomic insufficient funding.\n"
+  },
+  {
+    "suite": "housing-transactions",
+    "ok": true,
+    "output": "PASS: five housing operations rollback on false/throw, durable retries, no success navigation or repeat fees, nested contract/receipt preservation, partial-payment/sync failure and stale bill.\n"
+  },
+  {
+    "suite": "housing-lease",
+    "ok": true,
+    "output": "PASS: 1000 rent/1000 deposit, deposit asset, duplicate rent, free/cancellable booking, next-month net handover, refund on family move, insufficient funds atomicity, legacy no invented refund and annual renewal.\n"
+  },
+  {
+    "suite": "housing-bills",
+    "ok": true,
+    "output": "PASS: four prices, first occupancy, UI routes, deferred/cancellable move, atomic combined bill, receipts, stale/double payment, deposit refund, old saves and existing care costs.\n"
+  },
+  {
+    "suite": "family-events",
+    "ok": true,
+    "output": "PASS: twelve cards, all 23 choices, 50% boundary, saved none/result, actual housing, unseen priority, six full cooldown months, repeat/stale clicks, costs/time/pet reserves atomic.\n"
+  },
+  {
+    "suite": "family-home",
+    "ok": true,
+    "output": "PASS: home entry vs map return, exactly one settlement, review-before-draw, none-result reload, unresolved map event, medical/handover priority, actual post-move housing and old saves.\n"
+  },
+  {
+    "suite": "family-care",
+    "ok": true,
+    "output": "PASS: exact missing hours, pet reserve, original care effects, wage/tip rates, same-month pay, reload/repeat/next-month guards, loan-before-payment, atomic shortage, other cards unchanged, production time/income/metrics wrappers.\n"
+  },
+  {
+    "suite": "family-care-flow",
+    "ok": true,
+    "output": "PASS: production care UI, exact leave confirmation, loan form/disbursement, loan-before-payment, cancel/reload/same-card, stale confirmation, quota rollback for both care and loan, modal restoration. DOM/VM only.\n"
+  },
+  {
+    "suite": "shared-events",
+    "ok": true,
+    "output": "PASS: all 12/24 approved options, 50% boundary, actual occupancy, saved none/draw, unseen priority, six full cooldown months, refusal cooldown, costs/time atomicity, leave/payroll/reserve, separate family pool and cash audit.\n"
+  },
+  {
+    "suite": "shared-home",
+    "ok": true,
+    "output": "PASS: all 24 production UI choices/assets/hit regions, saved animation/skip/reload, slot/repeat/month locks, mandatory priority, old saves, exact unpaid leave, separate loan/payment/cancel and storage rollback. DOM/VM only.\n"
+  },
+  {
+    "suite": "shared-back-animation",
+    "ok": true,
+    "output": "PASS: five backs in both pools, same timed orbit/selection/flip/reveal, saved pool, skip/reload/reduced-motion, save-failure/retry and lifecycle cleanup. DOM/VM only; no browser/device visual claim.\n"
+  },
+  {
+    "suite": "toolbox-followup",
+    "ok": true,
+    "output": "PASS: immediate toolbox purchase/reward, both saved stories, A exclusion, exact costs and stats, loan-before-payment, reload/repeat/slot locks, purchase/claim rollback, happiness clamp and legacy receipts. DOM/VM only.\n"
+  },
+  {
+    "suite": "studio-events",
+    "ok": true,
+    "output": "PASS: Studio approved 12/25 independent matrix, health/clamps, atomic resources, real occupancy, no reroll, unseen/cooldown, debt partial/repeat and finance audit.\n"
+  },
+  {
+    "suite": "studio-home",
+    "ok": true,
+    "output": "PASS: Studio production 25 UI choices, health/medical, three choices, exact leave/pay, no-job debt, loan then payment, rollback/reload/slot locks, saved pool and old saves. DOM/VM only.\n"
+  },
+  {
+    "suite": "studio-animation",
+    "ok": true,
+    "output": "PASS: Studio five backs, same timed orbit/selection/flip/reveal, saved pool, skip/reload/reduced-motion, save-failure/retry and lifecycle cleanup. DOM/VM only; no browser/device visual claim.\n"
+  },
+  {
+    "suite": "apartment-events",
+    "ok": true,
+    "output": "PASS: apartment independent 12/24 six-attribute matrix, resources, occupancy, draw/cooldown, guaranteed B-only followup, 3h reservation, debt and cash audit.\n"
+  },
+  {
+    "suite": "apartment-home",
+    "ok": true,
+    "output": "PASS: apartment 24 UI choices + single followup, guaranteed immediate B, exact 3h leave/debt, health, loan then payment, rollback/reload/slot/month locks, old saves/contracts and one home settlement. DOM/VM only.\n"
+  },
+  {
+    "suite": "apartment-animation",
+    "ok": true,
+    "output": "PASS: Apartment five backs, same timed orbit/selection/flip/reveal, saved pool, skip/reload/reduced-motion, save-failure/retry and lifecycle cleanup. DOM/VM only; no browser/device visual claim.\n"
+  },
+  {
+    "suite": "housing-time-debt",
+    "ok": true,
+    "output": "PASS: no-employment fallback, both-choice gate, exact deferred hours, pet reserve, no pay/month advance, current/next/recovery/partial repayment, reload/repeat and old-ledger preservation.\n"
+  },
+  {
+    "suite": "housing-time-debt-flow",
+    "ok": true,
+    "output": "PASS: production no-job event completion, same-month/no-pay behavior, future leisure repayment without pay cuts, old care and employed leave, loan/cancel, repeated/reloaded/cross-slot callbacks and rollback. DOM/VM only.\n"
+  },
+  {
+    "suite": "room-restore",
+    "ok": true,
+    "output": "PASS: saved home reload does not request a new month; saved map, pending arrival, incident, medical, recovery and final state retain priority.\n"
+  },
+  {
+    "suite": "month-settlement-guard",
+    "ok": true,
+    "output": "PASS: core modal/unpaid-incident gates, error rollback; town repeat-click/reload/month-advance guard. Underlying ledger and browser not covered.\n"
+  }
+]
