@@ -85,7 +85,10 @@
  el('start').onclick=function(...args){startBefore.apply(this,args);if(activeGame())openRoom();};
  // Preserve a pending map event/recovery dialog on load; new games enter here above.
  const openBefore=openGame;openGame=function(){visible=false;syncRoom();const result=openBefore();
-  if(state?.roomLocation==='home'&&!townPending()&&!state.requiredIncident&&!state.gameOver?.final&&!timeReturnPending()&&!healthTreatmentKind(state.health)&&!unfinishedTreatment()&&!isRecoveryMonth(state))openRoom();
+  if(state?.roomLocation==='home'&&!townPending()&&!state.requiredIncident&&!state.gameOver?.final&&!timeReturnPending()&&!healthTreatmentKind(state.health)&&!unfinishedTreatment()&&!isRecoveryMonth(state)){
+   // Loading a saved room is navigation, not a new return from the map.
+   townVisible=false;openRoom();
+  }
   return result;};
  for(const id of ['qOverview','qCareer','qLife','qAssets'])el(id).addEventListener('click',()=>{visible=false;syncRoom();},true);
  const nextBefore=el('qNext').onclick;

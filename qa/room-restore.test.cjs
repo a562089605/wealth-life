@@ -1,0 +1,10 @@
+// Exercise the shipped room load adapter together with the shipped home-routing wrapper.
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const room=fs.readFileSync(path.join(__dirname,'../room.js'),'utf8'),family=fs.readFileSync(path.join(__dirname,'../family-home.js'),'utf8');
+const adapter=room.slice(room.indexOf('const openBefore=openGame;'),room.indexOf("for(const id of ['qOverview'",room.indexOf('const openBefore=openGame;')));
+const router=family.slice(family.indexOf('openRoom=window.openRoom=function()'),family.indexOf('\n townHome=openRoom;',family.indexOf('openRoom=window.openRoom=function()')));
+function run(overrides={}){let returns=0,rooms=0,loads=0;const c={state:{roomLocation:'home',health:82,...overrides},townVisible:false,visible:true,internalRoom:false,activeKey:null,syncRoom(){},openGame(){loads++;c.townVisible=true;},townEnabled:()=>true,townPending:()=>!!overrides.mapPending,timeReturnPending:()=>!!overrides.timePending,healthTreatmentKind:h=>h<30,unfinishedTreatment:()=>false,isRecoveryMonth:()=>!!overrides.recovery,due:()=>!!overrides.arrivalDue,arrive(){},returnFromMap(){returns++;},baseRoom(){rooms++;},roomBefore(){rooms++;}};c.window=c;vm.createContext(c);vm.runInContext(router,c);vm.runInContext(adapter,c);c.openGame();return{returns,rooms,loads};}
+assert.deepEqual(run(),{returns:0,rooms:1,loads:1},'a saved home must reopen without requesting settlement');
+assert.deepEqual(run({roomLocation:'town'}),{returns:0,rooms:0,loads:1},'a saved map must remain on its original load path');
+for(const condition of [{mapPending:true},{timePending:true},{requiredIncident:{id:'required'}},{health:20},{recovery:true},{gameOver:{final:true}},{arrivalDue:true}])assert.deepEqual(run(condition),{returns:0,rooms:0,loads:1},'pending and priority flows must retain their own recovery path');
+console.log('PASS: saved home reload does not request a new month; saved map, pending arrival, incident, medical, recovery and final state retain priority.');
