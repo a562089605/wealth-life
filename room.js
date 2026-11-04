@@ -13,15 +13,18 @@
    box.innerHTML='<div class="room-canvas"><img src="assets/home/room-phone-20261101.webp" width="853" height="1844" alt="温暖的手绘房间：人物坐在绿沙发阅读，柯基在地毯上休息。桌子、书架、床、厨房、沙发和茶几对应六个功能入口。"><div class="room-date"><strong id="roomCalendar"></strong><span id="roomHousingTitle">房屋 · 本月安排</span></div><button type="button" class="room-menu" data-room="menu" aria-label="打开游戏菜单">☰</button><button type="button" class="room-hotspot room-work" data-room="work" aria-label="工作">工作</button><button type="button" class="room-hotspot room-study" data-room="study" aria-label="学习">学习</button><button type="button" class="room-hotspot room-rest" data-room="rest" aria-label="休息">休息</button><button type="button" class="room-hotspot room-life" data-room="life" aria-label="生活">生活</button><button type="button" class="room-hotspot room-relations" data-room="relations" aria-label="关系">关系</button><button type="button" class="room-hotspot room-finance" data-room="finance" aria-label="财务">财务</button><button type="button" class="room-hotspot room-pets" data-room="pets" aria-label="宠物" hidden>宠物</button><button type="button" class="room-hotspot room-leave" data-room="leave" aria-label="确认完成，现在出门">确认完成，现在出门</button></div>';
    el('game').append(box);
   }
-  const apartment=state.housing==='rent1',studio=state.housing==='studio',shared=state.housing==='shared';
+  const apartment=state.housing==='rent1',studio=state.housing==='studio',shared=state.housing==='shared',family=state.housing==='family';
   box.classList.toggle('room-apartment',apartment);
   box.classList.toggle('room-studio',studio);
   box.classList.toggle('room-shared',shared);
+  box.classList.toggle('room-family',family);
   const img=box.querySelector('.room-canvas>img');
-  const src=shared?'assets/home/shared-corgi-20261104.webp':studio?'assets/home/studio-corgi-20261104.webp':apartment?'assets/home/apartment-corgi-20261104.webp':'assets/home/room-phone-20261101.webp';
+  // Unselected housing keeps the originally approved room; reservations do not choose art.
+  const src=family?'assets/home/family-corgi-20261104.webp':shared?'assets/home/shared-corgi-20261104.webp':studio?'assets/home/studio-corgi-20261104.webp':apartment?'assets/home/apartment-corgi-20261104.webp':'assets/home/room-phone-20261101.webp';
   if(img.getAttribute('src')!==src)img.setAttribute('src',src);
-  box.querySelector('[data-room="pets"]').hidden=!(apartment||studio||shared);
-  el('roomHousingTitle').textContent=(shared?'合租':studio?'Studio':apartment?'小公寓':'房屋')+' · 本月安排';
+  img.width=family?935:853;img.height=family?1683:1844;
+  box.querySelector('[data-room="pets"]').hidden=!(apartment||studio||shared||family);
+  el('roomHousingTitle').textContent=(family?'与家人同住':shared?'合租':studio?'Studio':apartment?'小公寓':'房屋')+' · 本月安排';
   box.hidden=false;el('roomCalendar').textContent=townCalendar();
  }
  window.openRoom=function(){

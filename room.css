@@ -55,3 +55,20 @@
 .room-shared .room-date{left:28%;width:44%;top:3.5%;height:6%}
 .room-shared .room-date strong{font-size:4.8cqw}
 .room-shared .room-date span{font-size:3.2cqw}
+
+/* Approved family home keeps its original 935:1683 image proportions. */
+.room-family .room-canvas{container-type:inline-size;aspect-ratio:935/1683;width:min(100vw,calc((100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))*935/1683))}
+.room-family .room-work{left:4.2%;top:32.3%;width:17%;height:4.4%}
+.room-family .room-study{left:24.3%;top:25.3%;width:17%;height:4.5%}
+.room-family .room-rest{left:62.6%;top:24.8%;width:16%;height:4.5%}
+.room-family .room-life{left:82%;top:22.9%;width:17%;height:4.4%}
+.room-family .room-relations{left:33.3%;top:43.2%;width:18%;height:4.5%}
+.room-family .room-finance{left:11.3%;top:78.7%;width:18%;height:4.5%}
+.room-family .room-pets{left:68.5%;top:85.1%;width:20%;height:4.4%}
+.room-family .room-leave{left:17%;top:92%;width:66%;height:6.1%}
+.room-family .room-menu{top:2.7%;right:4.2%;width:8.4%;height:4.6%;padding:0;border:0;border-radius:24px;background:transparent;color:transparent;font-size:0}
+.room-family .room-date{left:29%;width:42%;top:2.5%;height:6.1%}
+.room-family .room-date strong{font-size:4.8cqw}
+.room-family .room-date span{font-size:3.1cqw}
+@supports not (height:100dvh){.room-family .room-canvas{width:min(100vw,calc((100vh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))*935/1683))}}
+@media(orientation:landscape) and (max-height:500px){.room-family .room-canvas{width:416px;max-height:none}}
