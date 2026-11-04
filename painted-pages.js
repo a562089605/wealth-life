@@ -13,7 +13,7 @@
   if(name==='rest')return [[free+'h',5.7],[Math.round(state.energy),24.3],[Math.round(state.stress),43.4],[Math.round(state.health),62.3],[Math.round(state.happiness),81.1]].map(([v,x])=>patch(v,'left:'+x+'%;top:60%;width:13.6%;height:3.1%','rest-stat')).join('');
   return patch(Math.round(state.health),'left:26%;top:27.2%;width:15%;height:4.5%')+patch(Math.round(state.energy),'left:72%;top:27.2%;width:18%;height:4.5%')+patch(Math.round(state.happiness),'left:26%;top:39.1%;width:15%;height:4.5%')+patch(Math.round(state.stress),'left:72%;top:39.1%;width:18%;height:4.5%')+patch(free+'h','left:35%;top:52.7%;width:40%;height:5.5%');
  }
- function housingName(){return ({family:'与家人同住',shared:'合租',studio:'Studio',rent1:'一居室',own:'自住房'})[state.housing]||'尚未选择';}
+ function housingName(){return ({family:'与家人同住',shared:'合租',studio:'Studio',rent1:'小公寓',own:'自住房'})[state.housing]||'尚未选择';}
  function draw(){
   const active=!!page&&!!state&&!el('game').classList.contains('hidden');
   document.body.classList.toggle('painted-screen',active);
@@ -39,15 +39,17 @@
    html+=button('health','健康：治疗与康复','left:4%;top:23.5%;width:45%;height:11.5%')+button('rest','能量：安排休息','left:51%;top:23.5%;width:45%;height:11.5%')+button('activities','幸福度：生活活动','left:4%;top:35.5%;width:45%;height:12%')+button('rest','压力：放松减压','left:51%;top:35.5%;width:45%;height:12%');
    html+=button('housing','查看住房或更换住房','left:4%;top:64.3%;width:92%;height:7.6%')+button('life-confirm',label,'left:16%;top:89.2%;width:68%;height:5.3%',q.selected&&!q.blocked&&q.total<=0)+button('room','返回房屋','left:35%;top:95%;width:30%;height:3.5%');
   }else if(page==='housing'){
+   html+=patch('小公寓','left:53.5%;top:75.1%;width:25%;height:3.1%;font-size:clamp(16px,5vw,38px)','housing-apartment-name');
    html+=patch('当前住房：'+housingName(),'left:34%;top:21%;width:51%;height:2.7%','painted-caption');
    html+=button('life','返回生活','left:3%;top:2%;width:25%;height:3.6%');
-   for(const [key,y]of [['family',26],['shared',41.6],['studio',57.4],['rent1',73.1]]){if(state.housing===key)html+=patch('✓ 当前住房 · 已入住','left:54%;top:'+(y+12)+'%;width:35%;height:2%','housing-current');html+=button('housing-'+key,'查看'+({family:'与家人同住',shared:'合租',studio:'Studio',rent1:'一居室'})[key]+'详情','left:4%;top:'+y+'%;width:92%;height:14.1%');}
+   for(const [key,y]of [['family',26],['shared',41.6],['studio',57.4],['rent1',73.1]]){if(state.housing===key)html+=patch('✓ 当前住房 · 已入住','left:54%;top:'+(y+12)+'%;width:35%;height:2%','housing-current');html+=button('housing-'+key,'查看'+({family:'与家人同住',shared:'合租',studio:'Studio',rent1:'小公寓'})[key]+'详情','left:4%;top:'+y+'%;width:92%;height:14.1%');}
    html+='<div class="painted-preview-cover housing-rule-cover" aria-hidden="true"></div>';
-   if(state.pendingHousingMove)html+=button('cancel-move','已预约次月入住'+state.pendingHousingMove.name+' · 取消预约','left:19%;top:88.8%;width:62%;height:3.4%');
+   if(state.pendingHousingMove)html+=button('cancel-move','已预约次月入住'+(state.pendingHousingMove.key==='rent1'?'小公寓':state.pendingHousingMove.name)+' · 取消预约','left:19%;top:88.8%;width:62%;height:3.4%');
    html+=button('life','返回生活','left:28%;top:92.2%;width:45%;height:5%');
   }else if(page==='detail'){
    const h=housingChoices().find(x=>x[3]===detailKey),q=housingQuote(h),occupied=q.current;
    const family=detailKey==='family',studio=detailKey==='studio';
+   if(detailKey==='rent1')html+=patch('小公寓','left:27%;top:7.5%;width:45%;height:7%;font-size:clamp(32px,11vw,88px)','housing-apartment-name');
    const booked=state.pendingHousingMove?.key===detailKey;
    const label=occupied?'更换住房':booked?'已预约下月入住':q.scheduled?'预约下月入住':'确认入住';
    const monthlyTop=family?(occupied?76:75.1):studio?(occupied?75.8:74.5):76;

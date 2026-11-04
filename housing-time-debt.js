@@ -7,7 +7,7 @@
   if(!Number.isFinite(free)||free<0||!Number.isFinite(reserve)||reserve<0)return null;
   if(rates.working&&rates.availableWorkHours>0)return null;
   if(!c.choices.every((_,i)=>pool.missing(s,r,i,free,reserve).length))return null;
-  const used=Math.min(o.hours,Math.max(0,free-reserve)),hours=o.hours-used;
+  const need=pool.requiredHours?.(r,index)??o.hours,used=Math.min(need,Math.max(0,free-reserve)),hours=need-used;
   if(!(hours>0))return null;
   return {hours,used,cost:Math.max(0,-(o.cash||0)),id:key+':'+r.month+':'+r.cardId};
  }

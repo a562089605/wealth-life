@@ -1,0 +1,147 @@
+{
+  "version": "20261104",
+  "cards": [
+    {
+      "id": "flowers",
+      "path": "assets/apartment/flowers-20261104.webp",
+      "source": "exec-89c0756a-0c35-48e5-b943-5481d86925ce.png",
+      "width": 935,
+      "height": 1683,
+      "sourceSha256": "674867dbec05dc6caabaca12f8380edb8d51095d2cd823ae03c6c34a94654502",
+      "sha256": "82eb3b7b7c1b1cc2c85daa5793986c9f769e9bfd2d5a335c0806cd0615157aa4",
+      "bytes": 352426
+    },
+    {
+      "id": "pajamas",
+      "path": "assets/apartment/pajamas-20261104.webp",
+      "source": "exec-a6b0b7f8-5c5d-4779-a9dc-8e625c902314.png",
+      "width": 935,
+      "height": 1682,
+      "sourceSha256": "ccfbf8fde5389df5d741edd4270fb4a6e8cfee6b04d278ab85b6a163affc2494",
+      "sha256": "8d69308885e5024945837610c7e79bc5ada61b430d9feca41cf248bd328cbf6a",
+      "bytes": 379372
+    },
+    {
+      "id": "display",
+      "path": "assets/apartment/display-20261104.webp",
+      "source": "exec-a06ac889-a846-4e33-aada-678396c2ca33.png",
+      "width": 935,
+      "height": 1683,
+      "sourceSha256": "35eb8f2e1da94570a9f248634409d747950550ce0188ba40c34e8e46c21da078",
+      "sha256": "d9381886ea5f7e9abb23a5c16a6c91882a15fd2db14fb5bf9d01d33c5c0d1fb1",
+      "bytes": 331108
+    },
+    {
+      "id": "bricks",
+      "path": "assets/apartment/bricks-20261104.webp",
+      "source": "exec-56636f10-eed8-4cfe-80af-8813656140e0.png",
+      "width": 935,
+      "height": 1683,
+      "sourceSha256": "c2032f463856448b20c413d0b411189ac070ac9cb8db79a873db614bf7047c72",
+      "sha256": "4750eb9d72a3b67ae9603d9c34b03ae05db86fef10722dfc783edcc6f6f2078d",
+      "bytes": 348048
+    },
+    {
+      "id": "exercise",
+      "path": "assets/apartment/exercise-20261104.webp",
+      "source": "exec-02776d31-2d6c-409a-9b83-d36bf091584f.png",
+      "width": 935,
+      "height": 1683,
+      "sourceSha256": "2a4d9b8f6dffbe61384bcc36a77607e65e59b8e4ce63fad5792cadd3d65a45a4",
+      "sha256": "ea37ea0f9933079086f18b21e180bc364a3435295da44cc6ed0ac26559243361",
+      "bytes": 345934
+    },
+    {
+      "id": "lastbus",
+      "path": "assets/apartment/lastbus-20261104.webp",
+      "source": "exec-d51333ba-a87e-43dc-9f7a-95b620e22083.png",
+      "width": 935,
+      "height": 1683,
+      "sourceSha256": "cfbefb3092c021933cb70901cd0aecf8f09071b98d54c11a7df31b5fbe1093b5",
+      "sha256": "68bc102d6cab2d61f6da568997ed4d5454918e6fb660903b12c153bb819f04d5",
+      "bytes": 335766
+    },
+    {
+      "id": "lighting",
+      "path": "assets/apartment/lighting-20261104.webp",
+      "source": "exec-877e41c1-9814-4cd0-a4de-ea7033582853.png",
+      "width": 935,
+      "height": 1683,
+      "sourceSha256": "9fe4bc1ac777588cc5c8851314d7a8fffda672e51a89b6250cd6f1226c4b83fc",
+      "sha256": "42aeb98f95e8cd3ac4e60489433f19923a71823bafb5c1d1b51ec0db624741f9",
+      "bytes": 331916
+    },
+    {
+      "id": "company",
+      "path": "assets/apartment/company-20261104.webp",
+      "source": "exec-bc6597ca-6969-4213-a749-fbf9ab3a89d3.png",
+      "width": 935,
+      "height": 1683,
+      "sourceSha256": "1ce227abbd032319a5ed3566a9bf35bb1c7d26b5d2510fc5d71bc787bcb8f0b9",
+      "sha256": "b8f435f13d4dbde7720c26e7d92e46aff0f2d61b4dd585c6476c1613a527bbe5",
+      "bytes": 355752
+    },
+    {
+      "id": "clean",
+      "path": "assets/apartment/clean-20261104.webp",
+      "source": "exec-47b6966c-987e-4541-98c2-591e6e978b4e.png",
+      "width": 935,
+      "height": 1683,
+      "sourceSha256": "9dd838028b1536b8657799b7610f52c2ed6474318ec0eb653ad4b5570d7985ee",
+      "sha256": "3b3e54296fcd716d7c5dcfbfe0202055c39d39e9467fc28a2f8b55ea62a839da",
+      "bytes": 348500
+    },
+    {
+      "id": "spill",
+      "path": "assets/apartment/spill-20261104.webp",
+      "source": "exec-0b369681-e2db-4f22-9236-f52dfea8f317.png",
+      "width": 935,
+      "height": 1683,
+      "sourceSha256": "27d5b1991956ce87da61aaead9a3040aec953cd2581235c19e63f9ac5d0e19c0",
+      "sha256": "c08d382c60c92b93b6acb6edf41273f7c59ce6c4b246aebd98622073a4b3851e",
+      "bytes": 347888
+    },
+    {
+      "id": "sing",
+      "path": "assets/apartment/sing-20261104.webp",
+      "source": "exec-1b259719-4d5c-4a5f-82d0-100c5b5440b9.png",
+      "width": 935,
+      "height": 1683,
+      "sourceSha256": "8ef1b9c0c2167c208723c4e4a27a2324243367d332af3700e28301e09184d677",
+      "sha256": "5e31e7336c3ba826717c3b5651bf65c9c97eb0becadbe4feff548a2affcc5d52",
+      "bytes": 350558
+    },
+    {
+      "id": "party",
+      "path": "assets/apartment/party-20261104.webp",
+      "source": "exec-ceeed84a-f78c-4bc8-bc68-885d3fb13e13.png",
+      "width": 935,
+      "height": 1683,
+      "sourceSha256": "6bcc8cc7c11c0919f1623d20be4a71eaaa255f0df26ecc3713a57e99a18f0258",
+      "sha256": "5363974a1e5ebd7cb67e448c62b4ffece3aed5ddff1d533d776b362a6662c019",
+      "bytes": 415472
+    }
+  ],
+  "followups": [
+    {
+      "id": "knock",
+      "path": "assets/apartment/knock-20261104.webp",
+      "source": "exec-6ada8702-5827-4f9d-a4b0-53059d403c84.png",
+      "width": 935,
+      "height": 1683,
+      "sourceSha256": "42840fa6d47c3968ef8ac066bd306a822db681909775b5741ced8045eb341772",
+      "sha256": "786e028a17ee3379872d6feb42446025cdcb1715635291687c0f8fefc80fa921",
+      "bytes": 331608
+    }
+  ],
+  "back": {
+    "id": "back",
+    "path": "assets/apartment/back-20261104.webp",
+    "source": "exec-f5b46f52-295b-485d-8fdb-00ac4c41dbde.png",
+    "width": 853,
+    "height": 1843,
+    "sourceSha256": "dc7b9848fb3f820dc4f236b92ec75ff13400d7e616fde7991453fb37f4905142",
+    "sha256": "54423e87ae26fa530695c680b45f67ef5dd692892c2a19599c313188b82cfabd",
+    "bytes": 345060
+  }
+}
