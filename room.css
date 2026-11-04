@@ -23,3 +23,7 @@
 .room-leave{left:15%;top:92%;width:70%;height:5.3%}
 @supports not (height:100dvh){.room-canvas{width:min(100vw,calc((100vh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))*853/1844))}}
 @media(orientation:landscape) and (max-height:500px){.room-screen{overflow:auto}.room-screen #roomView:not([hidden]){position:relative;min-height:900px}.room-canvas{width:416px;max-height:none}}
+
+/* Approved small-apartment art: fixed corgi, independent of adopted pets. */
+.room-apartment .room-pets{left:62%;top:83.7%;width:21%;height:4%}
+.room-hotspot[hidden]{display:none!important}

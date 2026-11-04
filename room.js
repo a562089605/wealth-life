@@ -10,9 +10,16 @@
   if(!active){if(box)box.hidden=true;return;}
   if(!box){
    box=document.createElement('section');box.id='roomView';box.setAttribute('aria-label','房屋：本月安排');
-   box.innerHTML='<div class="room-canvas"><img src="assets/home/room-phone-20261101.webp" width="853" height="1844" alt="温暖的手绘房间：人物坐在绿沙发阅读，柯基在地毯上休息。桌子、书架、床、厨房、沙发和茶几对应六个功能入口。"><div class="room-date"><strong id="roomCalendar"></strong><span>房屋 · 本月安排</span></div><button type="button" class="room-menu" data-room="menu" aria-label="打开游戏菜单">☰</button><button type="button" class="room-hotspot room-work" data-room="work" aria-label="工作">工作</button><button type="button" class="room-hotspot room-study" data-room="study" aria-label="学习">学习</button><button type="button" class="room-hotspot room-rest" data-room="rest" aria-label="休息">休息</button><button type="button" class="room-hotspot room-life" data-room="life" aria-label="生活">生活</button><button type="button" class="room-hotspot room-relations" data-room="relations" aria-label="关系">关系</button><button type="button" class="room-hotspot room-finance" data-room="finance" aria-label="财务">财务</button><button type="button" class="room-hotspot room-leave" data-room="leave" aria-label="确认完成，现在出门">确认完成，现在出门</button></div>';
+   box.innerHTML='<div class="room-canvas"><img src="assets/home/room-phone-20261101.webp" width="853" height="1844" alt="温暖的手绘房间：人物坐在绿沙发阅读，柯基在地毯上休息。桌子、书架、床、厨房、沙发和茶几对应六个功能入口。"><div class="room-date"><strong id="roomCalendar"></strong><span id="roomHousingTitle">房屋 · 本月安排</span></div><button type="button" class="room-menu" data-room="menu" aria-label="打开游戏菜单">☰</button><button type="button" class="room-hotspot room-work" data-room="work" aria-label="工作">工作</button><button type="button" class="room-hotspot room-study" data-room="study" aria-label="学习">学习</button><button type="button" class="room-hotspot room-rest" data-room="rest" aria-label="休息">休息</button><button type="button" class="room-hotspot room-life" data-room="life" aria-label="生活">生活</button><button type="button" class="room-hotspot room-relations" data-room="relations" aria-label="关系">关系</button><button type="button" class="room-hotspot room-finance" data-room="finance" aria-label="财务">财务</button><button type="button" class="room-hotspot room-pets" data-room="pets" aria-label="宠物" hidden>宠物</button><button type="button" class="room-hotspot room-leave" data-room="leave" aria-label="确认完成，现在出门">确认完成，现在出门</button></div>';
    el('game').append(box);
   }
+  const apartment=state.housing==='rent1';
+  box.classList.toggle('room-apartment',apartment);
+  const img=box.querySelector('.room-canvas>img');
+  const src=apartment?'assets/home/apartment-corgi-20261104.webp':'assets/home/room-phone-20261101.webp';
+  if(img.getAttribute('src')!==src)img.setAttribute('src',src);
+  box.querySelector('[data-room="pets"]').hidden=!apartment;
+  el('roomHousingTitle').textContent=(apartment?'小公寓':'房屋')+' · 本月安排';
   box.hidden=false;el('roomCalendar').textContent=townCalendar();
  }
  window.openRoom=function(){
@@ -59,7 +66,7 @@
   ]);
  }
  const actions={work:()=>openWorkAdjustment(),study:learning,rest:()=>openExtraRest(),life:living,
-  relations:()=>el('networkBtn').click(),finance:finances,leave:leaveRoom,menu:()=>el('wlMenu').click()};
+  relations:()=>el('networkBtn').click(),finance:finances,pets:()=>el('petBtn').click(),leave:leaveRoom,menu:()=>el('wlMenu').click()};
  document.addEventListener('click',e=>{
   const b=e.target.closest('[data-room]');if(!b||b.disabled||!visible||!activeGame())return;
   if(document.querySelector('.event-active')||!el('wlDrawer').hidden)return;
