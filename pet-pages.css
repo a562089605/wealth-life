@@ -22,3 +22,11 @@
 .pet-cash{font-size:3.3cqw;white-space:nowrap}
 .pet-overview-heading{position:relative}.pet-overview-back{position:absolute;left:2%;top:4%;width:13%;height:38%;min-height:44px;border:0;background:transparent;cursor:pointer}.pet-overview-back:focus-visible{outline:3px solid #305f37;border-radius:50%}
 @media(max-width:340px){.pet-overview,.pet-paper{padding:10px}.pet-overview-heading{margin:0 -10px}.pet-tile-grid{gap:10px}.pet-adoption-form{font-size:3.5cqw}.pet-adoption-form .pet-solid-button{min-height:44px}.pet-illustrated{min-width:0}}
+
+/* Compact fee card: retain 44px controls and allow page scrolling on short screens. */
+.pet-adoption-form{left:14%;top:39.2%;width:73%;height:auto;min-height:58.5%;padding:2.2% 3%;overflow:visible;font-size:3.45cqw;line-height:1.3}
+.pet-adoption-form h2{font-size:4.6cqw;margin:0 0 4px}.pet-adoption-form input{margin:3px 0 5px;min-height:44px;font-size:3.8cqw}.pet-adoption-form dl{margin:6px 0;gap:4px}.pet-adoption-form .pet-basic-note{font-size:2.85cqw;line-height:1.35;margin:2px 0 5px;color:#586144}.pet-payment{padding-top:6px;border-top:1px solid #c9b77d}.pet-payment dt:first-child,.pet-payment dd:first-of-type{font-weight:bold}.pet-payment dt span{display:block;font-size:2.7cqw;font-weight:normal}.pet-adoption-form .pet-solid-button{padding:5px;line-height:1.2;min-height:44px;margin-top:5px}.pet-adoption-form .pet-message{font-size:3cqw;margin:3px 0}
+
+
+
+.pet-adoption-cash{flex-direction:column;gap:.6cqw;background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;overflow:visible;color:#385035;line-height:1.1}.pet-adoption-cash span{font:600 2.7cqw/1.15 Georgia,"Songti SC",serif;letter-spacing:.1cqw}.pet-adoption-cash strong{font:600 3.7cqw/1.1 Georgia,"Songti SC",serif;white-space:nowrap}.pet-adoption-cash.pet-cash-long strong{font-size:2.6cqw}

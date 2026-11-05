@@ -4,37 +4,37 @@
   "results": [
     {
       "id": "dog",
-      "cash": 99570,
+      "cash": 99450,
       "petCount": 1
     },
     {
       "id": "cat",
-      "cash": 99200,
+      "cash": 99000,
       "petCount": 2
     },
     {
       "id": "crocodile",
-      "cash": 97200,
+      "cash": 96700,
       "petCount": 3
     },
     {
       "id": "gecko",
-      "cash": 96840,
+      "cash": 96305,
       "petCount": 4
     },
     {
       "id": "spider",
-      "cash": 96650,
+      "cash": 96097,
       "petCount": 5
     },
     {
       "id": "tortoise",
-      "cash": 96380,
+      "cash": 95662,
       "petCount": 6
     },
     {
       "id": "chameleon",
-      "cash": 95880,
+      "cash": 95117,
       "petCount": 7
     },
     {

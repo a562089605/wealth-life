@@ -1,6 +1,6 @@
-// V28.9: approved illustrated UI on the existing V28.8 adoption/care transactions.
+// V28.10: approved seven-pet adoption cards on the existing save transactions.
 (function(){
- const A=PetAdoptionEntry,asset=id=>'assets/pets/'+id+'-20261104.webp';
+ const A=PetAdoptionEntry,asset=id=>id==='adoption-dog'?'assets/pets/adoption-card-20261105.webp':'assets/pets/'+id+'-20261104.webp';
  const copy=s=>JSON.parse(JSON.stringify(s)),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  let active=null,returnFocus=null,view=null,paying=false;
  function close(){if(active){active.remove();active=null;}document.body.classList.remove('pet-pages-open');view=null;returnFocus?.isConnected&&returnFocus.focus({preventScroll:true});}
@@ -31,7 +31,7 @@
  function openOverview(){if(!state)return;const ctx=panel('我的宠物'),paper=document.createElement('div');paper.className='pet-overview';
   const header=document.createElement('div');header.className='pet-overview-heading';header.innerHTML='<img src="'+asset('overview')+'" alt="我的宠物，每一位伙伴都有自己的小天地">';const back=textNode('button','','pet-overview-back');back.type='button';back.setAttribute('aria-label','返回房屋（顶部）');back.onclick=()=>{if(ctx.valid())room();};header.append(back);paper.append(header);
   const pets=state.pets||[],grid=document.createElement('div');grid.className='pet-tile-grid'+(pets.length>1?' pet-many':'')+(pets.length>4?' pet-many-more':'');
-  for(const [index,p]of pets.entries()){const b=document.createElement('button');b.type='button';b.className='pet-tile';b.setAttribute('aria-label','查看'+petName(p));const id=spec(p);if(A.pets[id])b.append(portrait(asset('success-'+id)));b.append(textNode('strong',petName(p)+' · '+(cfg(p)?.name||p.type||'待核对')),textNode('small','点击查看 ›'));b.onclick=()=>{if(validPet(ctx,p,index))openDetail(index);};grid.append(b);}
+  for(const [index,p]of pets.entries()){const b=document.createElement('button');b.type='button';b.className='pet-tile';b.setAttribute('aria-label','查看'+petName(p));const id=spec(p);if(A.pets[id])b.append(portrait(asset('success-'+id)));b.append(textNode('strong',petName(p)),textNode('small','点击查看 ›'));b.onclick=()=>{if(validPet(ctx,p,index))openDetail(index);};grid.append(b);}
   const add=document.createElement('button');add.type='button';add.className='pet-add-tile';add.setAttribute('aria-label','领养新伙伴');add.innerHTML='<span aria-hidden="true">＋</span><strong>领养新伙伴</strong>';add.onclick=()=>{if(ctx.valid())selection();};grid.append(add);paper.append(grid);action(ctx,paper,'返回房屋',room);ctx.node.append(paper);focusFirst(ctx);
  }
  function openDetail(index){const p=state.pets?.[index];if(!p)return openOverview();const c=cfg(p);if(!c){const ctx=panel('宠物资料'),paper=plain(ctx,'宠物资料待核对');paper.append(textNode('p',petName(p)+'：保留旧记录，不重新领养或收费。'));action(ctx,paper,'查看原照护',()=>{close();legacyOpenCare();});action(ctx,paper,'返回我的宠物',openOverview);return;}
@@ -41,21 +41,22 @@
   box(e,due(p).length?'有到期照护，请查看处理':'目前没有到期照护',20,44,61,4.1,'pet-status');
   hit(ctx,e,'日常照顾',4,48.6,92,9.3,()=>{if(validPet(ctx,p,index))openClean(index);});
   hit(ctx,e,'年度体检',4,59.2,92,9.3,()=>{if(validPet(ctx,p,index))openAnnual(index);});
-  box(e,'每月基础养护 '+priceText(c.monthly),18,75.3,67,5,'pet-fee');
+  box(e,'每月基础费用 '+priceText(c.monthly),18,75.3,67,5,'pet-fee');
   const back=box(e,'返回我的宠物',6,86.8,88,6.4,'pet-gold');hit(ctx,e,'返回我的宠物',6,86.8,88,6.4,openOverview);
   hit(ctx,e,'返回房屋',26,94.3,49,4.4,room);
   hit(ctx,e,'返回我的宠物',2,1,13,7,openOverview);focusFirst(ctx);
  }
  function openAdoption(id){const q=A.quote(state,id);if(!q)return selection();const ctx=panel('取名与费用'),e=canvas(ctx,'adoption-dog','1024/1536');
-  box(e,priceText(state.cash),66.5,6.2,24.5,3.5,'pet-status pet-cash');box(e,calendar(state.month),36,8.8,28,3,'pet-date');
+  const cash=box(e,'',73,4.5,15.5,5.8,'pet-adoption-cash');cash.append(textNode('span','可用现金'),textNode('strong',new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:0,maximumFractionDigits:2}).format(state.cash)));if(cash.lastChild.textContent.length>9)cash.classList.add('pet-cash-long');box(e,calendar(state.month),36,8.8,28,3,'pet-date');
   if(id!=='dog'){const hero=box(e,'',16,12,70,26,'pet-adopt-hero');hero.append(portrait(asset('success-'+id)));}
   // The approved draft contains historical insurance and prices: cover that entire region.
-  const form=document.createElement('div');form.className='pet-adoption-form';form.innerHTML='<h2>'+esc(q.name)+' · 取名与费用</h2><label>给它取个名字<input id="petNameInput" maxlength="24" autocomplete="off" placeholder="输入名字（可留空）"></label><dl><dt>领养及初始设备</dt><dd>'+priceText(q.total)+'</dd><dt>每月基础养护</dt><dd>'+priceText(q.monthly)+'</dd><dt>本次支付</dt><dd>'+priceText(q.total)+'</dd><dt>支付后现金</dt><dd>'+priceText(state.cash-q.total)+'</dd></dl><p>基础养护计入原生活账单；清洁、体检另行确认。</p>';e.append(form);const status=message(form);
-  const confirm=action(ctx,form,'确认领养'+q.name,b=>{const fresh=A.quote(state,id);if(!fresh||fresh.owned||state.cash<fresh.total||fresh.total!==q.total)return;b.disabled=true;const name=form.querySelector('input').value.trim().slice(0,24);
-   const result=A.confirm(state,id,()=>{if(name)state.pets.at(-1).name=name;ensurePetCare(state);backup();const k=key(slot),raw=localStorage.getItem(k),bk=k+'_before_pet_entry_20261104';if(raw&&!localStorage.getItem(bk))localStorage.setItem(bk,raw);return save();});
+  const form=document.createElement('div');form.className='pet-adoption-form';form.innerHTML='<h2>'+esc(q.name)+' · 取名与费用</h2><label for="petNameInput">给它取个名字</label><input id="petNameInput" required maxlength="24" autocomplete="off" placeholder="请输入宠物名字"><dl><dt>领养'+(q.setup||id==='crocodile'?'及初始设备':'费用')+'</dt><dd>'+priceText(q.initialFee)+'</dd><dt>每月基础费用</dt><dd>'+priceText(q.monthly)+'</dd></dl><p class="pet-basic-note">'+(id==='dog'?'包含狗粮/零食/玩具/驱虫药等。':id==='cat'?'包含猫粮/罐头/玩具/猫砂等。':id==='tortoise'?'包含食物/钙粉/垫材/照明与保温耗用等。':id==='chameleon'?'包含活体饲料/钙粉/喷淋与照明耗用等。':id==='gecko'?'包含活体饲料/钙粉/垫材/保温耗用等。':id==='spider'?'包含活体饲料/垫材及基础耗材等。':id==='crocodile'?'包含食物/水质维护/日常耗材等。':'包含日常食物及基础耗材等。')+'</p><dl class="pet-payment"><dt>本次支付<span>含首月基础费用</span></dt><dd>'+priceText(q.total)+'</dd><dt>支付后现金</dt><dd>'+priceText(state.cash-q.total)+'</dd></dl>';e.append(form);const status=message(form);
+  const confirm=action(ctx,form,'确认领养'+q.name,b=>{const input=form.querySelector('input'),name=input.value.trim().slice(0,24);if(!name){status.textContent='请先给它取个名字。';input.setAttribute('aria-invalid','true');input.focus();return;}input.removeAttribute('aria-invalid');status.textContent='';const fresh=A.quote(state,id);if(!fresh||fresh.owned||state.cash<fresh.total||fresh.total!==q.total)return;b.disabled=true;
+   const result=A.confirm(state,id,()=>{ensurePetCare(state);backup();const k=key(slot),raw=localStorage.getItem(k),bk=k+'_before_pet_entry_20261104';if(raw&&!localStorage.getItem(bk))localStorage.setItem(bk,raw);return save();},name);
    if(!result.ok){b.disabled=false;status.textContent='暂未保存，领养和费用均未结算，请重试。';return;}
    openSuccess(state.pets.length-1,result.quote);
   },q.owned||state.cash<q.total);
+  form.querySelector('input').addEventListener('input',()=>{if(form.querySelector('input').value.trim()){status.textContent='';form.querySelector('input').removeAttribute('aria-invalid');}});
   if(q.owned)status.textContent='已拥有该种宠物，同种不可重复领养。';else if(state.cash<q.total)status.textContent='现金不足，尚未扣款。';
   action(ctx,form,'暂不领养，返回选择',()=>selection(id));hit(ctx,e,'返回选择',15,3,9,7,()=>selection(id));focusFirst(ctx);
  }

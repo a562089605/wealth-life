@@ -1,0 +1,227 @@
+[
+  {
+    "file": "qa/apartment-animation.test.cjs",
+    "ok": true,
+    "output": "PASS: Apartment five backs, same timed orbit/selection/flip/reveal, saved pool, skip/reload/reduced-motion, save-failure/retry and lifecycle cleanup. DOM/VM only; no browser/device visual claim."
+  },
+  {
+    "file": "qa/apartment-events.test.cjs",
+    "ok": true,
+    "output": "PASS: apartment independent 12/24 six-attribute matrix, resources, occupancy, draw/cooldown, guaranteed B-only followup, 3h reservation, debt and cash audit."
+  },
+  {
+    "file": "qa/apartment-home.test.cjs",
+    "ok": true,
+    "output": "PASS: apartment 24 UI choices + single followup, guaranteed immediate B, exact 3h leave/debt, health, loan then payment, rollback/reload/slot/month locks, old saves/contracts and one home settlement. DOM/VM only."
+  },
+  {
+    "file": "qa/approved-pages.test.cjs",
+    "ok": true,
+    "output": "Approved pages: rest effects, caps, time/recovery gates, housing billing/idempotency, and release assets passed."
+  },
+  {
+    "file": "qa/barista-confirmed-events.test.cjs",
+    "ok": true,
+    "output": "PASS: departure seasonal quote/32h gate/8 XP/status/idempotency; tip happiness cap and removed legacy bonuses."
+  },
+  {
+    "file": "qa/coffee-rules.test.cjs",
+    "ok": false,
+    "output": "node:assert:152\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: 184.62 == 299.54\n    at Object.<anonymous> (/workspace/wealth-life-git/qa/coffee-rules.test.cjs:11:196)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14)\n    at Object..js (node:internal/modules/cjs/loader:2060:10)\n    at Module.load (node:internal/modules/cjs/loader:1651:32)\n    at Module._load (node:internal/modules/cjs/loader:1443:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 184.62,\n  expected: 299.54,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.22.1"
+  },
+  {
+    "file": "qa/coffee-salary.test.cjs",
+    "ok": true,
+    "output": "PASS: milestone next-month pay, no current income rewrite, permanent earned tiers, highest education, promotion rebase, management applicability, four roles and no repeated compounding."
+  },
+  {
+    "file": "qa/course-limits.test.cjs",
+    "ok": true,
+    "output": "PASS: shared 3-course cap, 20 XP, unchanged fee/time, stale confirmation, legacy count, XP cap, nursing reservation, recovery pause and no immediate wage change."
+  },
+  {
+    "file": "qa/family-care-flow.test.cjs",
+    "ok": true,
+    "output": "PASS: production care UI, exact leave confirmation, loan form/disbursement, loan-before-payment, cancel/reload/same-card, stale confirmation, quota rollback for both care and loan, modal restoration. DOM/VM only."
+  },
+  {
+    "file": "qa/family-care.test.cjs",
+    "ok": true,
+    "output": "PASS: exact missing hours, pet reserve, original care effects, wage/tip rates, same-month pay, reload/repeat/next-month guards, loan-before-payment, atomic shortage, other cards unchanged, production time/income/metrics wrappers."
+  },
+  {
+    "file": "qa/family-events.test.cjs",
+    "ok": true,
+    "output": "PASS: twelve cards, all 23 choices, 50% boundary, saved none/result, actual housing, unseen priority, six full cooldown months, repeat/stale clicks, costs/time/pet reserves atomic."
+  },
+  {
+    "file": "qa/family-home.test.cjs",
+    "ok": true,
+    "output": "PASS: home entry vs map return, exactly one settlement, review-before-draw, none-result reload, unresolved map event, medical/handover priority, actual post-move housing and old saves."
+  },
+  {
+    "file": "qa/financial-crisis.test.cjs",
+    "ok": true,
+    "output": "PASS: no automatic bankruptcy, net-worth boundary, borrow rescue without net-worth growth, stale confirmation, final confirmation, mandatory all-pet placement/reload/no cash and negative-balance shortfall."
+  },
+  {
+    "file": "qa/four-state.test.cjs",
+    "ok": true,
+    "output": "PASS: dual fields keep happiness once, mood-only preserved, legacy feeling migration/zero/idempotency, actual activity effects and no three-month state Game Over."
+  },
+  {
+    "file": "qa/housing-bills.test.cjs",
+    "ok": true,
+    "output": "PASS: four prices, first occupancy, UI routes, deferred/cancellable move, atomic combined bill, receipts, stale/double payment, deposit refund, old saves and existing care costs."
+  },
+  {
+    "file": "qa/housing-lease.test.cjs",
+    "ok": true,
+    "output": "PASS: 1000 rent/1000 deposit, deposit asset, duplicate rent, free/cancellable booking, next-month net handover, refund on family move, insufficient funds atomicity, legacy no invented refund and annual renewal."
+  },
+  {
+    "file": "qa/housing-time-debt-flow.test.cjs",
+    "ok": true,
+    "output": "PASS: production no-job event completion, same-month/no-pay behavior, future leisure repayment without pay cuts, old care and employed leave, loan/cancel, repeated/reloaded/cross-slot callbacks and rollback. DOM/VM only."
+  },
+  {
+    "file": "qa/housing-time-debt.test.cjs",
+    "ok": true,
+    "output": "PASS: no-employment fallback, both-choice gate, exact deferred hours, pet reserve, no pay/month advance, current/next/recovery/partial repayment, reload/repeat and old-ledger preservation."
+  },
+  {
+    "file": "qa/housing-transactions.test.cjs",
+    "ok": true,
+    "output": "PASS: five housing operations rollback on false/throw, durable retries, no success navigation or repeat fees, nested contract/receipt preservation, partial-payment/sync failure and stale bill."
+  },
+  {
+    "file": "qa/living-budget.test.cjs",
+    "ok": true,
+    "output": "PASS: new $800 budget, vehicle replaces $150 transit, consistent inflation and legacy base preserved without silent migration."
+  },
+  {
+    "file": "qa/medical-insurance.test.cjs",
+    "ok": true,
+    "output": "PASS: initial paid coverage, duplicate confirmation, next-month switching/cancellation, serialized pending contract, legacy coverage preservation, insufficient cash and shared receipt accounting."
+  },
+  {
+    "file": "qa/month-settlement-guard.test.cjs",
+    "ok": true,
+    "output": "PASS: core modal/unpaid-incident gates, error rollback; town repeat-click/reload/month-advance guard. Underlying ledger and browser not covered."
+  },
+  {
+    "file": "qa/necessary-bills.test.cjs",
+    "ok": true,
+    "output": "PASS: unpaid housing/living/premiums/loan/care gate departure, completed receipts unblock, recovery also requires bills/care, checks do not charge or advance month, valid car insurance gate."
+  },
+  {
+    "file": "qa/opening-state.test.cjs",
+    "ok": false,
+    "output": "node:internal/assert/utils:77\n    throw err;\n    ^\n\nAssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(read('index.html').includes(file+'?v=28.3-internal1'))\n\n    at Object.<anonymous> (/workspace/wealth-life-git/qa/opening-state.test.cjs:12:73)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14)\n    at Object..js (node:internal/modules/cjs/loader:2060:10)\n    at Module.load (node:internal/modules/cjs/loader:1651:32)\n    at Module._load (node:internal/modules/cjs/loader:1443:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.22.1"
+  },
+  {
+    "file": "qa/pet-adoption-entry.test.cjs",
+    "ok": true,
+    "output": "PASS: seven live prices, preview without mutations, exact one-time payment, original happiness, duplicate/insufficient rejection, save-failure rollback and retry."
+  },
+  {
+    "file": "qa/pet-care.test.cjs",
+    "ok": true,
+    "output": "PASS: recovery delegation same fees/zero time, preview and repeat no charge, cross-year deadlines, normal time cost, multiple pets and atomic insufficient funding."
+  },
+  {
+    "file": "qa/pet-events.test.cjs",
+    "ok": true,
+    "output": "PASS pet map: seven companion effects; 20% life share; draw locks; explicit insurance; free social once/month; species eligibility; atomic save rollback/retry; forced debt; no duplicate or stale rewards."
+  },
+  {
+    "file": "qa/recovery-month-end.test.cjs",
+    "ok": true,
+    "output": "PASS: actual calcMetrics and settleMonthUnsafe execute recovery month with zero labor income/tax/contribution, necessary expenses and passive income, paused study/work tenure, final restoration and next-month wage resumption. Other services stubbed; browser not covered."
+  },
+  {
+    "file": "qa/recovery-rules.test.cjs",
+    "ok": true,
+    "output": "PASS: health priority, six insurance quotes, one payment/recovery month, funding shortfall, final restoration, high energy/low stress preservation, cross-year and time-debt recovery bridge. Domain only; not live month-end."
+  },
+  {
+    "file": "qa/recovery-ui.test.cjs",
+    "ok": true,
+    "output": "PASS: house treatment preview/pay/execute, payment and month confirmation deduplication, map-to-next-month scheduling and quote frozen before policy change. Browser not covered."
+  },
+  {
+    "file": "qa/rest-state.test.cjs",
+    "ok": true,
+    "output": "PASS: free 4h rest actual capped effects, stale confirmation, nursing reservation, no low-health bypass; health penalty threshold combinations add once per month."
+  },
+  {
+    "file": "qa/room-restore.test.cjs",
+    "ok": true,
+    "output": "PASS: saved home reload does not request a new month; saved map, pending arrival, incident, medical, recovery and final state retain priority."
+  },
+  {
+    "file": "qa/shared-back-animation.test.cjs",
+    "ok": true,
+    "output": "PASS: five backs in both pools, same timed orbit/selection/flip/reveal, saved pool, skip/reload/reduced-motion, save-failure/retry and lifecycle cleanup. DOM/VM only; no browser/device visual claim."
+  },
+  {
+    "file": "qa/shared-events.test.cjs",
+    "ok": true,
+    "output": "PASS: all 12/24 approved options, 50% boundary, actual occupancy, saved none/draw, unseen priority, six full cooldown months, refusal cooldown, costs/time atomicity, leave/payroll/reserve, separate family pool and cash audit."
+  },
+  {
+    "file": "qa/shared-home.test.cjs",
+    "ok": true,
+    "output": "PASS: all 24 production UI choices/assets/hit regions, saved animation/skip/reload, slot/repeat/month locks, mandatory priority, old saves, exact unpaid leave, separate loan/payment/cancel and storage rollback. DOM/VM only."
+  },
+  {
+    "file": "qa/shift-confirmed-effects.test.cjs",
+    "ok": true,
+    "output": "PASS: training hours, four schedule choices, dynamic overtime, complaint branches, acting Lv1–5 locked probability and one-time rewards."
+  },
+  {
+    "file": "qa/shift-lead.test.cjs",
+    "ok": false,
+    "output": "node:assert:152\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n{\n  energy: -2,\n  hours: 4,\n  management: 15,\n  stress: 1,\n  trust: 1\n}\n\nshould loosely deep-equal\n\n{\n  energy: -2,\n  management: 15,\n  stress: 1,\n  trust: 1\n}\n    at Object.<anonymous> (/workspace/wealth-life-git/qa/shift-lead.test.cjs:26:237)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14)\n    at Object..js (node:internal/modules/cjs/loader:2060:10)\n    at Module.load (node:internal/modules/cjs/loader:1651:32)\n    at Module._load (node:internal/modules/cjs/loader:1443:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: { hours: 4, energy: -2, stress: 1, management: 15, trust: 1 },\n  expected: { energy: -2, stress: 1, management: 15, trust: 1 },\n  operator: 'deepEqual',\n  diff: 'simple'\n}\n\nNode.js v24.22.1"
+  },
+  {
+    "file": "qa/state-return.test.cjs",
+    "ok": true,
+    "output": "PASS: merged state reasons, exact thresholds, one settlement, low-state home gate, event group completion and reload return recovery. Full health treatment and real browser not covered."
+  },
+  {
+    "file": "qa/studio-animation.test.cjs",
+    "ok": true,
+    "output": "PASS: Studio five backs, same timed orbit/selection/flip/reveal, saved pool, skip/reload/reduced-motion, save-failure/retry and lifecycle cleanup. DOM/VM only; no browser/device visual claim."
+  },
+  {
+    "file": "qa/studio-events.test.cjs",
+    "ok": true,
+    "output": "PASS: Studio approved 12/25 independent matrix, health/clamps, atomic resources, real occupancy, no reroll, unseen/cooldown, debt partial/repeat and finance audit."
+  },
+  {
+    "file": "qa/studio-home.test.cjs",
+    "ok": true,
+    "output": "PASS: Studio production 25 UI choices, health/medical, three choices, exact leave/pay, no-job debt, loan then payment, rollback/reload/slot locks, saved pool and old saves. DOM/VM only."
+  },
+  {
+    "file": "qa/time-flow.test.cjs",
+    "ok": true,
+    "output": "PASS: risky coordination allowed at 3h, voluntary 8h blocked, forced return stops rolling, confirm twice advances once, next month debt=5. Browser and recovery engine not covered."
+  },
+  {
+    "file": "qa/time-ledger.test.cjs",
+    "ok": true,
+    "output": "PASS: forced-time conservation, event deduplication, exact zero, two recovery months, year boundary, reload and one-time normal-month deduction; extreme debt rejected without mutation. Not yet connected to UI."
+  },
+  {
+    "file": "qa/toolbox-followup.test.cjs",
+    "ok": true,
+    "output": "PASS: immediate toolbox purchase/reward, both saved stories, A exclusion, exact costs and stats, loan-before-payment, reload/repeat/slot locks, purchase/claim rollback, happiness clamp and legacy receipts. DOM/VM only."
+  },
+  {
+    "file": "qa/town-route.test.cjs",
+    "ok": true,
+    "output": "PASS: 144 start/die combinations; landing-only payday, year boundary target, pending movement blocks repeat roll."
+  }
+]

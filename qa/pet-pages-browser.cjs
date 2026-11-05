@@ -5,7 +5,7 @@ const {chromium}=require('playwright'),fs=require('fs'),assert=require('node:ass
  const ctx=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block',reducedMotion:'reduce'}),page=await ctx.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(process.env.TEST_URL||'http://127.0.0.1:8878');const html=fs.readFileSync('index.html','utf8'),initial=html.slice(html.indexOf("$('start').onclick=")+19,html.indexOf(";$('cancel').onclick"));
  await page.evaluate(initial=>{document.getElementById('job').value='barista';eval('('+initial+')()');clearModals();slot=901;state.cash=100000;state.onboardDone=true;state.pets=[];townVisible=false;save();window.basePetAudit=JSON.parse(JSON.stringify(state));},initial);
- const expected={dog:[430,105],cat:[370,80],crocodile:[2000,300],gecko:[360,35],spider:[190,18],tortoise:[270,28],chameleon:[500,45]},results=[];
+ const expected={dog:[550,50],cat:[450,80],crocodile:[2300,300],gecko:[395,35],spider:[208,18],tortoise:[435,35],chameleon:[545,45]},results=[];
  for(const [id,[total,monthly]]of Object.entries(expected)){
   const before=await page.evaluate(()=>JSON.stringify(state));await page.evaluate(()=>document.getElementById('petBtn').click());
   if(id!=='dog')await page.getByRole('button',{name:'领养新伙伴',exact:true}).click();

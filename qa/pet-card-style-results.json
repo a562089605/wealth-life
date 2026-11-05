@@ -1,0 +1,590 @@
+[
+  {
+    "housing": "studio",
+    "id": "dog",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/studio-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "柯基 · 取名与费用\n给它取个名字\n领养费用\n$500.00\n每月基础费用\n$50.00\n\n包含狗粮/零食/玩具/驱虫药等。\n\n本次支付\n含首月基础费用\n$550.00\n支付后现金\n$9,450.00\n确认领养柯基\n暂不领养，返回选择"
+  },
+  {
+    "housing": "studio",
+    "id": "cat",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/studio-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "银渐层 · 取名与费用\n给它取个名字\n领养及初始设备\n$370.00\n每月基础费用\n$80.00\n\n包含猫粮/罐头/玩具/猫砂等。\n\n本次支付\n含首月基础费用\n$450.00\n支付后现金\n$9,550.00\n确认领养银渐层\n暂不领养，返回选择"
+  },
+  {
+    "housing": "studio",
+    "id": "crocodile",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/studio-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "鳄鱼 · 取名与费用\n给它取个名字\n领养及初始设备\n$2,000.00\n每月基础费用\n$300.00\n\n包含食物/水质维护/日常耗材等。\n\n本次支付\n含首月基础费用\n$2,300.00\n支付后现金\n$7,700.00\n确认领养鳄鱼\n暂不领养，返回选择"
+  },
+  {
+    "housing": "studio",
+    "id": "gecko",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/studio-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "豹纹守宫 · 取名与费用\n给它取个名字\n领养及初始设备\n$360.00\n每月基础费用\n$35.00\n\n包含活体饲料/钙粉/垫材/保温耗用等。\n\n本次支付\n含首月基础费用\n$395.00\n支付后现金\n$9,605.00\n确认领养豹纹守宫\n暂不领养，返回选择"
+  },
+  {
+    "housing": "studio",
+    "id": "spider",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/studio-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "捕鸟蛛 · 取名与费用\n给它取个名字\n领养及初始设备\n$190.00\n每月基础费用\n$18.00\n\n包含活体饲料/垫材及基础耗材等。\n\n本次支付\n含首月基础费用\n$208.00\n支付后现金\n$9,792.00\n确认领养捕鸟蛛\n暂不领养，返回选择"
+  },
+  {
+    "housing": "studio",
+    "id": "tortoise",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/studio-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "陆龟 · 取名与费用\n给它取个名字\n领养及初始设备\n$400.00\n每月基础费用\n$35.00\n\n包含食物/钙粉/垫材/照明与保温耗用等。\n\n本次支付\n含首月基础费用\n$435.00\n支付后现金\n$9,565.00\n确认领养陆龟\n暂不领养，返回选择"
+  },
+  {
+    "housing": "studio",
+    "id": "chameleon",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/studio-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "变色龙 · 取名与费用\n给它取个名字\n领养及初始设备\n$500.00\n每月基础费用\n$45.00\n\n包含活体饲料/钙粉/喷淋与照明耗用等。\n\n本次支付\n含首月基础费用\n$545.00\n支付后现金\n$9,455.00\n确认领养变色龙\n暂不领养，返回选择"
+  },
+  {
+    "housing": "shared",
+    "id": "dog",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/shared-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "柯基 · 取名与费用\n给它取个名字\n领养费用\n$500.00\n每月基础费用\n$50.00\n\n包含狗粮/零食/玩具/驱虫药等。\n\n本次支付\n含首月基础费用\n$550.00\n支付后现金\n$9,450.00\n确认领养柯基\n暂不领养，返回选择"
+  },
+  {
+    "housing": "shared",
+    "id": "cat",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/shared-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "银渐层 · 取名与费用\n给它取个名字\n领养及初始设备\n$370.00\n每月基础费用\n$80.00\n\n包含猫粮/罐头/玩具/猫砂等。\n\n本次支付\n含首月基础费用\n$450.00\n支付后现金\n$9,550.00\n确认领养银渐层\n暂不领养，返回选择"
+  },
+  {
+    "housing": "shared",
+    "id": "crocodile",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/shared-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "鳄鱼 · 取名与费用\n给它取个名字\n领养及初始设备\n$2,000.00\n每月基础费用\n$300.00\n\n包含食物/水质维护/日常耗材等。\n\n本次支付\n含首月基础费用\n$2,300.00\n支付后现金\n$7,700.00\n确认领养鳄鱼\n暂不领养，返回选择"
+  },
+  {
+    "housing": "shared",
+    "id": "gecko",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/shared-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "豹纹守宫 · 取名与费用\n给它取个名字\n领养及初始设备\n$360.00\n每月基础费用\n$35.00\n\n包含活体饲料/钙粉/垫材/保温耗用等。\n\n本次支付\n含首月基础费用\n$395.00\n支付后现金\n$9,605.00\n确认领养豹纹守宫\n暂不领养，返回选择"
+  },
+  {
+    "housing": "shared",
+    "id": "spider",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/shared-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "捕鸟蛛 · 取名与费用\n给它取个名字\n领养及初始设备\n$190.00\n每月基础费用\n$18.00\n\n包含活体饲料/垫材及基础耗材等。\n\n本次支付\n含首月基础费用\n$208.00\n支付后现金\n$9,792.00\n确认领养捕鸟蛛\n暂不领养，返回选择"
+  },
+  {
+    "housing": "shared",
+    "id": "tortoise",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/shared-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "陆龟 · 取名与费用\n给它取个名字\n领养及初始设备\n$400.00\n每月基础费用\n$35.00\n\n包含食物/钙粉/垫材/照明与保温耗用等。\n\n本次支付\n含首月基础费用\n$435.00\n支付后现金\n$9,565.00\n确认领养陆龟\n暂不领养，返回选择"
+  },
+  {
+    "housing": "shared",
+    "id": "chameleon",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/shared-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "变色龙 · 取名与费用\n给它取个名字\n领养及初始设备\n$500.00\n每月基础费用\n$45.00\n\n包含活体饲料/钙粉/喷淋与照明耗用等。\n\n本次支付\n含首月基础费用\n$545.00\n支付后现金\n$9,455.00\n确认领养变色龙\n暂不领养，返回选择"
+  },
+  {
+    "housing": "rent1",
+    "id": "dog",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/apartment-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "柯基 · 取名与费用\n给它取个名字\n领养费用\n$500.00\n每月基础费用\n$50.00\n\n包含狗粮/零食/玩具/驱虫药等。\n\n本次支付\n含首月基础费用\n$550.00\n支付后现金\n$9,450.00\n确认领养柯基\n暂不领养，返回选择"
+  },
+  {
+    "housing": "rent1",
+    "id": "cat",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/apartment-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "银渐层 · 取名与费用\n给它取个名字\n领养及初始设备\n$370.00\n每月基础费用\n$80.00\n\n包含猫粮/罐头/玩具/猫砂等。\n\n本次支付\n含首月基础费用\n$450.00\n支付后现金\n$9,550.00\n确认领养银渐层\n暂不领养，返回选择"
+  },
+  {
+    "housing": "rent1",
+    "id": "crocodile",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/apartment-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "鳄鱼 · 取名与费用\n给它取个名字\n领养及初始设备\n$2,000.00\n每月基础费用\n$300.00\n\n包含食物/水质维护/日常耗材等。\n\n本次支付\n含首月基础费用\n$2,300.00\n支付后现金\n$7,700.00\n确认领养鳄鱼\n暂不领养，返回选择"
+  },
+  {
+    "housing": "rent1",
+    "id": "gecko",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/apartment-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "豹纹守宫 · 取名与费用\n给它取个名字\n领养及初始设备\n$360.00\n每月基础费用\n$35.00\n\n包含活体饲料/钙粉/垫材/保温耗用等。\n\n本次支付\n含首月基础费用\n$395.00\n支付后现金\n$9,605.00\n确认领养豹纹守宫\n暂不领养，返回选择"
+  },
+  {
+    "housing": "rent1",
+    "id": "spider",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/apartment-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "捕鸟蛛 · 取名与费用\n给它取个名字\n领养及初始设备\n$190.00\n每月基础费用\n$18.00\n\n包含活体饲料/垫材及基础耗材等。\n\n本次支付\n含首月基础费用\n$208.00\n支付后现金\n$9,792.00\n确认领养捕鸟蛛\n暂不领养，返回选择"
+  },
+  {
+    "housing": "rent1",
+    "id": "tortoise",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/apartment-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "陆龟 · 取名与费用\n给它取个名字\n领养及初始设备\n$400.00\n每月基础费用\n$35.00\n\n包含食物/钙粉/垫材/照明与保温耗用等。\n\n本次支付\n含首月基础费用\n$435.00\n支付后现金\n$9,565.00\n确认领养陆龟\n暂不领养，返回选择"
+  },
+  {
+    "housing": "rent1",
+    "id": "chameleon",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/apartment-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "变色龙 · 取名与费用\n给它取个名字\n领养及初始设备\n$500.00\n每月基础费用\n$45.00\n\n包含活体饲料/钙粉/喷淋与照明耗用等。\n\n本次支付\n含首月基础费用\n$545.00\n支付后现金\n$9,455.00\n确认领养变色龙\n暂不领养，返回选择"
+  },
+  {
+    "housing": "family",
+    "id": "dog",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/family-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "柯基 · 取名与费用\n给它取个名字\n领养费用\n$500.00\n每月基础费用\n$50.00\n\n包含狗粮/零食/玩具/驱虫药等。\n\n本次支付\n含首月基础费用\n$550.00\n支付后现金\n$9,450.00\n确认领养柯基\n暂不领养，返回选择"
+  },
+  {
+    "housing": "family",
+    "id": "cat",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/family-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "银渐层 · 取名与费用\n给它取个名字\n领养及初始设备\n$370.00\n每月基础费用\n$80.00\n\n包含猫粮/罐头/玩具/猫砂等。\n\n本次支付\n含首月基础费用\n$450.00\n支付后现金\n$9,550.00\n确认领养银渐层\n暂不领养，返回选择"
+  },
+  {
+    "housing": "family",
+    "id": "crocodile",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/family-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "鳄鱼 · 取名与费用\n给它取个名字\n领养及初始设备\n$2,000.00\n每月基础费用\n$300.00\n\n包含食物/水质维护/日常耗材等。\n\n本次支付\n含首月基础费用\n$2,300.00\n支付后现金\n$7,700.00\n确认领养鳄鱼\n暂不领养，返回选择"
+  },
+  {
+    "housing": "family",
+    "id": "gecko",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/family-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "豹纹守宫 · 取名与费用\n给它取个名字\n领养及初始设备\n$360.00\n每月基础费用\n$35.00\n\n包含活体饲料/钙粉/垫材/保温耗用等。\n\n本次支付\n含首月基础费用\n$395.00\n支付后现金\n$9,605.00\n确认领养豹纹守宫\n暂不领养，返回选择"
+  },
+  {
+    "housing": "family",
+    "id": "spider",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/family-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "捕鸟蛛 · 取名与费用\n给它取个名字\n领养及初始设备\n$190.00\n每月基础费用\n$18.00\n\n包含活体饲料/垫材及基础耗材等。\n\n本次支付\n含首月基础费用\n$208.00\n支付后现金\n$9,792.00\n确认领养捕鸟蛛\n暂不领养，返回选择"
+  },
+  {
+    "housing": "family",
+    "id": "tortoise",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/family-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "陆龟 · 取名与费用\n给它取个名字\n领养及初始设备\n$400.00\n每月基础费用\n$35.00\n\n包含食物/钙粉/垫材/照明与保温耗用等。\n\n本次支付\n含首月基础费用\n$435.00\n支付后现金\n$9,565.00\n确认领养陆龟\n暂不领养，返回选择"
+  },
+  {
+    "housing": "family",
+    "id": "chameleon",
+    "art": "assets/pets/adoption-card-20261105.webp",
+    "room": "assets/home/family-corgi-20261104.webp",
+    "roomVisible": true,
+    "nameRequired": true,
+    "cashBackground": "rgba(0, 0, 0, 0)",
+    "innerScroll": false,
+    "buttons": [
+      {
+        "height": 44,
+        "bottom": 636.453125
+      },
+      {
+        "height": 44,
+        "bottom": 685.453125
+      }
+    ],
+    "text": "变色龙 · 取名与费用\n给它取个名字\n领养及初始设备\n$500.00\n每月基础费用\n$45.00\n\n包含活体饲料/钙粉/喷淋与照明耗用等。\n\n本次支付\n含首月基础费用\n$545.00\n支付后现金\n$9,455.00\n确认领养变色龙\n暂不领养，返回选择"
+  }
+]
