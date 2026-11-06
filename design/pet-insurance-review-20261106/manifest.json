@@ -1,0 +1,82 @@
+{
+  "status": "rules-confirmed-local-integration-not-published",
+  "note": "柯基保险预览已展示，用户继续要求其余六宠。此批仅供视觉审核，未改变运行保险页面。沿现有INSURANCE.pet的45/月保费，不新设逐宠保单、价格、coverage或其他条款；均为未投保单页示例，名字不写存档。",
+  "items": [
+    {
+      "species": "dog",
+      "name": "柯基",
+      "exampleName": "豆豆",
+      "file": "insurance-dog-20261106.png",
+      "source": "/workspace/generated_images/exec-8b1941c5-ad21-49ab-9909-0c5c09011a53.png",
+      "sha256": "f231314cbc3d813fb91cd4cdfc5f818d97a2266705ccd8859689b214fa57b4df",
+      "userApproved": false
+    },
+    {
+      "species": "cat",
+      "name": "银渐层",
+      "exampleName": "团团",
+      "file": "insurance-cat-20261106.png",
+      "source": "/workspace/generated_images/exec-47f3b0d2-7341-4b25-b546-70b9e0490349.png",
+      "sha256": "8c1f41f0cc2fce44f59bff05160b3cee4b0d781d6579db83dff3b2ea6e7c464b",
+      "userApproved": false
+    },
+    {
+      "species": "tortoise",
+      "name": "陆龟",
+      "exampleName": "慢慢",
+      "file": "insurance-tortoise-20261106.png",
+      "source": "/workspace/generated_images/exec-8bec0c0a-2b91-4ee8-a719-f6056b73d3c0.png",
+      "sha256": "733851ac9f62c5f83db702c731afb4cbffeb7275840888c8a4b817fdea836b1c",
+      "userApproved": false
+    },
+    {
+      "species": "chameleon",
+      "name": "变色龙",
+      "exampleName": "小彩",
+      "file": "insurance-chameleon-20261106.png",
+      "source": "/workspace/generated_images/exec-b0916a93-5e7a-4167-af94-13ad06ec2d37.png",
+      "sha256": "19454d82a9c6fe8eae8bf5b87dfdf0d498ee0761ddc0f7cbf992fc531969f581",
+      "userApproved": false
+    },
+    {
+      "species": "gecko",
+      "name": "豹纹守宫",
+      "exampleName": "点点",
+      "file": "insurance-gecko-20261106.png",
+      "source": "/workspace/generated_images/exec-f8670530-0237-48aa-8290-82c30dfa242a.png",
+      "sha256": "1aee069895d6fde366847a4e70921cbd1e7924a93db505166a2e48da09f25757",
+      "userApproved": false
+    },
+    {
+      "species": "spider",
+      "name": "捕鸟蛛",
+      "exampleName": "绒绒",
+      "file": "insurance-spider-20261106.png",
+      "source": "/workspace/generated_images/exec-08a3b56d-0f55-4c72-8739-76a56c9eeecf.png",
+      "sha256": "221ec4010b799e851f54fc1da469e72a03d6c97f36bd36d200f9e06ba8fa140f",
+      "userApproved": false
+    },
+    {
+      "species": "crocodile",
+      "name": "鳄鱼",
+      "exampleName": "小鳄",
+      "file": "insurance-crocodile-20261106.png",
+      "source": "/workspace/generated_images/exec-05b4bc8b-c942-4aa6-bb03-26c660f69ccb.png",
+      "sha256": "1d7b443c9c1db7a123de2b9d7d6fb17da2f16c74e89149ece1069c9b263f0d8c",
+      "userApproved": false
+    }
+  ],
+  "pricingStatus": "User confirmed dog60/cat40/reptiles20/spider5/crocodile60. Raw45 preview text superseded by native amounts.",
+  "runtimeChanged": true,
+  "confirmedMonthlyFees": {
+    "dog": 60,
+    "cat": 40,
+    "tortoise": 20,
+    "chameleon": 20,
+    "gecko": 20,
+    "spider": 5,
+    "crocodile": 60
+  },
+  "confirmedCoverage": "optional; illness/injury medical100%; property damage excluded",
+  "visualApproval": "All previews shown; user subsequently confirmed prices and full-medical-only rules. No separate statement approving every image recorded."
+}

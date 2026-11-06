@@ -1,0 +1,81 @@
+{
+  "checkedDate": "2026-11-06",
+  "status": "historical-research-with-subsequent-confirmed-game-prices",
+  "currentRuntime": {
+    "singleCombinedMonthlyPremium": 45,
+    "coverageNotDefinedInLegacyPolicy": true
+  },
+  "sources": [
+    {
+      "url": "https://www.pawlicy.com/blog/pet-insurance-cost/",
+      "updated": "2026-10-15",
+      "facts": {
+        "corgiMonthlySample": 59.61,
+        "pembrokeWelshCorgiMonthlySample": 54.15,
+        "britishShorthairMonthlySample": 40.52,
+        "note": "Pawlicy marketplace breed samples across configurations; not an Orlando matched-condition quote. Silver shaded color is not its own insured breed; game cat treated as British Shorthair."
+      }
+    },
+    {
+      "url": "https://www.petinsurance.com/faq/",
+      "facts": [
+        "New premium depends on breed, age, chosen coverage and address.",
+        "Exotic popular plans about20 monthly, advertised starting9; not a quote for each species.",
+        "Chameleon, gecko and tortoise named among eligible animals, subject to underwriting and exclusions.",
+        "Nationwide generally requires new pets to be separately enrolled; this is insurer-specific, not a universal ban on family plans."
+      ]
+    },
+    {
+      "url": "https://www.petinsurance.com/exotics/lizards-reptiles-frogs/",
+      "facts": [
+        "Tortoise, Chameleon and Gecko named; prices require telephone quote.",
+        "Advertised starting price under21 monthly is not a representative species-specific premium."
+      ]
+    },
+    {
+      "url": "https://www.petinsurance.com/exotics/",
+      "facts": [
+        "Unlisted species and certain venomous, protected, permit-requiring or illegal species excluded by Nationwide.",
+        "No exotic wellness coverage at this time according to the explicit routine-care FAQ; generic preceding marketing text is inconsistent, so do not promise routine exams reimbursed."
+      ]
+    },
+    {
+      "url": "https://www.metlifepetinsurance.com/faqs/",
+      "facts": [
+        "MetLife does offer certain reptiles, rabbits, ferrets and birds; individual species eligibility requires contact.",
+        "Up to3 dogs/cats can be grouped in family plans with shared annual limits/deductible; not evidence for exotic family cover or45 fixed price."
+      ]
+    }
+  ],
+  "limits": [
+    "No real underwriting quote for Orlando/Florida matching age, deductible, limits and reimbursement level obtained.",
+    "No verified ordinary US pet medical quote for tarantula or crocodile found in this search; absence of evidence is not a claim that no specialist policy can exist.",
+    "No evidence to price tortoise vs chameleon vs gecko differently under comparable terms. Do not manufacture species-specific quotes."
+  ],
+  "proposedGameMonthlyFees": {
+    "dog": 60,
+    "cat": 40,
+    "tortoise": 20,
+    "chameleon": 20,
+    "gecko": 20,
+    "spider": null,
+    "crocodile": null
+  },
+  "proposalNotes": [
+    "All amounts above are unapproved game simplifications, not actual insurer offers.",
+    "20 for reptiles is a category-level game budget based on insurer popular-plan guidance; exact species comparison unavailable.",
+    "For spider/crocodile propose ordinary insurance unavailable instead of inventing a price, subject to user decision; do not display0 monthly as free coverage.",
+    "Keep current monthly basic food/consumables, cleaning and annual fees unchanged.",
+    "Any future per-pet price changes need explicit coverage terms and backward-compatible treatment of existing combined45 policies; no retroactive extra charges."
+  ],
+  "confirmedGameMonthlyFees": {
+    "dog": 60,
+    "cat": 40,
+    "tortoise": 20,
+    "chameleon": 20,
+    "gecko": 20,
+    "spider": 5,
+    "crocodile": 60
+  },
+  "confirmedCoverage": "Voluntary; illness/injury medical100%; property damage self-pay. Explicit user reply20261106."
+}

@@ -5,7 +5,7 @@ const prices={狗:50,猫:80},c={close(){},A:{close(){}},PetBasicFees:B,console,M
 const html=fs.readFileSync('index.html','utf8');vm.runInContext(html.match(/function petMonthly\(\)[^\n]*/)[0],c);
 const flow=fs.readFileSync('flow.js','utf8');vm.runInContext(flow.slice(0,flow.indexOf('const V26_STATS')),c);
 for(const f of ['necessary-bills.js','housing-bills.js'])vm.runInContext(fs.readFileSync(f,'utf8'),c);
-const pages=fs.readFileSync('pet-pages.js','utf8');vm.runInContext(pages.slice(pages.indexOf(' function unpaidBasicFees()'),pages.indexOf(" document.getElementById('petBtn').onclick")),c);
+const pages=fs.readFileSync('pet-pages.js','utf8');vm.runInContext(pages.slice(pages.indexOf(' function unpaidBasicFees()'),pages.indexOf(" const petInsuranceOpenBefore=")),c);
 const room=fs.readFileSync('room.js','utf8');vm.runInContext(room.slice(room.indexOf(' function leaveRoom(){'),room.indexOf(' function learning(){')),c);
 function seed(){maps=reminders=0;paused=medical=returns=false;saved=true;c.state={month:2,cash:1000,baseLiving:800,housing:'studio',housingCost:1400,health:80,insurance:{},pets:[{name:'豆豆',type:'狗',species:'dog'},{name:'猫猫',type:'猫',species:'cat'}],monthlyPayments:{month:2,housing:1400,living:800,premiums:0}};}
 const petRows=()=>c.necessaryBills().filter(r=>r.kind==='petBasicFee');

@@ -1,0 +1,257 @@
+[
+  {
+    "file": "apartment-animation.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "apartment-events.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "apartment-home.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "approved-pages.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "barista-confirmed-events.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "coffee-rules.test.cjs",
+    "status": 1,
+    "output": "node:assert:152\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: 184.62 == 299.54\n    at Object.<anonymous> (/workspace/wealth-life-git/qa/coffee-rules.test.cjs:11:196)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14)\n    at Object..js (node:internal/modules/cjs/loader:2060:10)\n    at Module.load (node:internal/modules/cjs/loader:1651:32)\n    at Module._load (node:internal/modules/cjs/loader:1443:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 184.62,\n  expected: 299.54,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.22.1\n"
+  },
+  {
+    "file": "coffee-salary.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "course-limits.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "family-care-flow.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "family-care.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "family-events.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "family-home.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "financial-crisis.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "four-state.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "housing-bills.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "housing-lease.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "housing-time-debt-flow.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "housing-time-debt.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "housing-transactions.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "living-budget.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "medical-insurance.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "month-settlement-guard.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "necessary-bills.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "opening-state.test.cjs",
+    "status": 1,
+    "output": "node:internal/assert/utils:77\n    throw err;\n    ^\n\nAssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(read('index.html').includes(file+'?v=28.3-internal1'))\n\n    at Object.<anonymous> (/workspace/wealth-life-git/qa/opening-state.test.cjs:12:73)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14)\n    at Object..js (node:internal/modules/cjs/loader:2060:10)\n    at Module.load (node:internal/modules/cjs/loader:1651:32)\n    at Module._load (node:internal/modules/cjs/loader:1443:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.22.1\n"
+  },
+  {
+    "file": "pet-adoption-entry.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "pet-annual-pages.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "pet-basic-fees.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "pet-care.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "pet-events.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "pet-fee-insurance-dom.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "pet-fees-departure.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "pet-insurance-pages.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "pet-insurance.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "recovery-month-end.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "recovery-rules.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "recovery-ui.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "rest-state.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "room-restore.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "shared-back-animation.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "shared-events.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "shared-home.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "shift-confirmed-effects.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "shift-lead.test.cjs",
+    "status": 1,
+    "output": "node:assert:152\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n{\n  energy: -2,\n  hours: 4,\n  management: 15,\n  stress: 1,\n  trust: 1\n}\n\nshould loosely deep-equal\n\n{\n  energy: -2,\n  management: 15,\n  stress: 1,\n  trust: 1\n}\n    at Object.<anonymous> (/workspace/wealth-life-git/qa/shift-lead.test.cjs:26:237)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14)\n    at Object..js (node:internal/modules/cjs/loader:2060:10)\n    at Module.load (node:internal/modules/cjs/loader:1651:32)\n    at Module._load (node:internal/modules/cjs/loader:1443:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: { hours: 4, energy: -2, stress: 1, management: 15, trust: 1 },\n  expected: { energy: -2, stress: 1, management: 15, trust: 1 },\n  operator: 'deepEqual',\n  diff: 'simple'\n}\n\nNode.js v24.22.1\n"
+  },
+  {
+    "file": "state-return.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "studio-animation.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "studio-events.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "studio-home.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "time-flow.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "time-ledger.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "toolbox-followup.test.cjs",
+    "status": 0,
+    "output": ""
+  },
+  {
+    "file": "town-route.test.cjs",
+    "status": 0,
+    "output": ""
+  }
+]

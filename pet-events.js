@@ -1,5 +1,6 @@
 // Confirmed map pet events only; home care and other map categories remain canonical.
 (function(root){'use strict';
+ const Insurance=root.PetInsurance||(typeof require==='function'?require('./pet-insurance.js'):null);
  const companions={
   dog:{title:'一起晒太阳',energy:3,happiness:3,stress:-2,button:'陪它待一会儿'},
   cat:{title:'撸猫日常',energy:3,happiness:3,stress:-2,button:'陪它待一会儿'},
@@ -25,6 +26,7 @@
  function weighted(w,random){const entries=Object.entries(w).filter(([,v])=>v>0);let n=random()*entries.reduce((t,[,v])=>t+v,0);for(const [id,v]of entries){n-=v;if(n<0)return id;}return entries.at(-1)?.[0];}
  function choices(s,id,free){return (s.pets||[]).map((p,index)=>({p,index,sp:species(p)})).filter(x=>x.sp&&(id!=='injury'||['dog','cat'].includes(x.sp))&&(id==='companion'||!seen(s,category(id)))&&(!['companion','social'].includes(id)||free>=(id==='social'?3:1)));}
  function policy(s,p){const individual=p.insuranceKey&&s.insurance?.[p.insuranceKey],combined=s.insurance?.pet;
+  if(Insurance)return Insurance.medicalPolicy(s,p);
   return [individual,combined].find(x=>x?.active&&Number.isFinite(x.coverage)&&x.coverage>=0&&x.coverage<=1&&(!Number.isInteger(x.startMonth)||x.startMonth<=s.month));}
  function quote(s,id,x){const {p,index,sp}=x;
   // Legacy pending quotes stay locked in saved records; these aliases also remain readable.
