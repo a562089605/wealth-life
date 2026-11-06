@@ -1,0 +1,90 @@
+{
+  "status": "approved-local-integration-not-published",
+  "note": "七宠年度体检原画均获用户确认。费用与自由时间沿pet-care.js；不新增机制，示例名不写入存档。",
+  "items": [
+    {
+      "species": "dog",
+      "name": "柯基",
+      "annualFee": 150,
+      "freeHours": 2,
+      "intervalMonths": 12,
+      "exampleName": "豆豆",
+      "source": "/workspace/generated_images/exec-75c444da-278f-4dd2-8856-4918d2c89bf4.png",
+      "file": "annual-dog-20261106.png",
+      "sha256": "8c85b28d3fd4cad09b77125a12d121d6816d309218ab30f8cb779a7d3a18e216",
+      "userApproved": true
+    },
+    {
+      "species": "cat",
+      "name": "银渐层",
+      "annualFee": 150,
+      "freeHours": 2,
+      "intervalMonths": 12,
+      "exampleName": "团团",
+      "source": "/workspace/generated_images/exec-e1178e76-aa68-44b0-94e5-8c381ac2f3aa.png",
+      "file": "annual-cat-20261106.png",
+      "sha256": "4bc5da73f15deb69da6a0d5fd610b4e0689b52e8a237f6cc5547645851a6862b",
+      "userApproved": true
+    },
+    {
+      "species": "tortoise",
+      "name": "陆龟",
+      "annualFee": 100,
+      "freeHours": 2,
+      "intervalMonths": 12,
+      "exampleName": "慢慢",
+      "source": "/workspace/generated_images/exec-7d226c14-882b-40ff-999c-2c9c78deb5f0.png",
+      "file": "annual-tortoise-20261106.png",
+      "sha256": "6bfad499df807a94ba83e08aa6985f5a461e4cd749928f48bea744ceb918ea7a",
+      "userApproved": true
+    },
+    {
+      "species": "chameleon",
+      "name": "变色龙",
+      "annualFee": 120,
+      "freeHours": 2,
+      "intervalMonths": 12,
+      "exampleName": "小彩",
+      "source": "/workspace/generated_images/exec-ee23b52d-cf53-4f2b-bb87-82bbc0f2c331.png",
+      "file": "annual-chameleon-20261106.png",
+      "sha256": "0fec54f25c7bd6392f3408388a04805bee740fd3717a1d6aa3dcbce91dc03320",
+      "userApproved": true
+    },
+    {
+      "species": "gecko",
+      "name": "豹纹守宫",
+      "annualFee": 80,
+      "freeHours": 2,
+      "intervalMonths": 12,
+      "exampleName": "点点",
+      "source": "/workspace/generated_images/exec-130d09b8-10ea-408b-a9f2-7869049990e5.png",
+      "file": "annual-gecko-20261106.png",
+      "sha256": "5b59c97ace1813337a9c853cfbf303acf674a1d2cd826e996faab8a6a5cbdf93",
+      "userApproved": true
+    },
+    {
+      "species": "spider",
+      "name": "捕鸟蛛",
+      "annualFee": 50,
+      "freeHours": 1,
+      "intervalMonths": 12,
+      "exampleName": "绒绒",
+      "source": "/workspace/generated_images/exec-abb2ee69-e84a-4840-84d7-6d05898e2ddc.png",
+      "file": "annual-spider-20261106.png",
+      "sha256": "6a57f8bcc347e21e7ddce6a452f89336f146ab0eba814167770dcf5e1bb0a25e",
+      "userApproved": true
+    },
+    {
+      "species": "crocodile",
+      "name": "鳄鱼",
+      "annualFee": 300,
+      "freeHours": 3,
+      "intervalMonths": 12,
+      "exampleName": "小鳄",
+      "source": "/workspace/generated_images/exec-442ff576-fc6d-4e8d-ad80-23230967871c.png",
+      "file": "annual-crocodile-20261106.png",
+      "sha256": "0a26774a92431a34454314310538b45773552cdaf1350afa53f6fc531c4a9c0d",
+      "userApproved": true
+    }
+  ]
+}

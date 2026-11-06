@@ -39,3 +39,7 @@
 .pet-monthly-due-label{background:#fff0ce;font-size:6.4cqw;font-weight:bold}
 .pet-monthly-pay-label{background:#ffda74;font-size:6cqw;font-weight:bold}
 .pet-monthly-hero{padding:0;border-radius:0}.pet-monthly-hero .pet-crop{height:100%;aspect-ratio:auto}
+.pet-annual-name,.pet-annual-date{background:#e9e3aa;border-radius:40%;font-weight:bold}.pet-annual-name{font-size:6cqw}.pet-annual-date{font-size:4.1cqw}
+.pet-annual-value{background:#fff0cf;font-size:7cqw;font-weight:bold;border-radius:30%}
+.pet-annual-action-label{background:#f1dfb0;font-size:4.8cqw;font-weight:bold}
+.pet-illustrated .pet-annual-ready{background:#ffd66b30;border:1px solid #c69b48;border-radius:40px}

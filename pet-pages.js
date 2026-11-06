@@ -1,6 +1,6 @@
 // V28.10: approved seven-pet adoption cards on the existing save transactions.
 (function(){
- const A=PetAdoptionEntry,asset=id=>id==='adoption-dog'?'assets/pets/adoption-card-20261105.webp':['detail-actions','monthly-fee'].includes(id)?'assets/pets/'+id+'-20261106.webp':'assets/pets/'+id+'-20261104.webp';
+ const A=PetAdoptionEntry,asset=id=>id==='adoption-dog'?'assets/pets/adoption-card-20261105.webp':['detail-actions','monthly-fee'].includes(id)||id.startsWith('annual-')?'assets/pets/'+id+'-20261106.webp':'assets/pets/'+id+'-20261104.webp';
  const copy=s=>JSON.parse(JSON.stringify(s)),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  let active=null,returnFocus=null,view=null,paying=false;
  function close(){if(active){active.remove();active=null;}document.body.classList.remove('pet-pages-open');view=null;returnFocus?.isConnected&&returnFocus.focus({preventScroll:true});}
@@ -118,15 +118,23 @@
    sum.innerHTML='<small>已选方式　／　本次费用　／　自由时间</small><strong>'+label(selected)+'　'+priceText(amount(selected))+'　减少 '+hours(selected)+' 小时</strong>';date.textContent=ready?'清洁完成后，按所选间隔计算下次时间':'尚未到期，仅可预览，不提前收费';b.disabled=!ready;b.setAttribute('aria-label',ready?'确认选择':'尚未到期，不能确认支付');}
   update();focusFirst(ctx);
  }
- function openAnnual(index){const p=state.pets?.[index];if(!p)return openOverview();const ctx=panel('年度体检'),paper=plain(ctx,petName(p)+' · 年度体检'),s=preview(),cp=s.pets[index],rule=PET_CARE_RULES[spec(p)];if(!rule)return openDetail(index);
-  paper.append(textNode('p','下次体检：'+calendar(cp.care?.nextAnnual)),textNode('p','年度体检费用 '+priceText(roundCash(rule.annual*(state.cpiIndex||100)/100))+' · 本人时间 '+(isRecoveryMonth(state)?0:rule.annualHours)+' 小时'));
-  const ready=due(p,'Annual').length>0;action(ctx,paper,ready?'核对体检费用':'尚未到期',()=>{if(validPet(ctx,p,index))openCareConfirm(index,'Annual','annual');},!ready);action(ctx,paper,'返回宠物资料',()=>openDetail(index));focusFirst(ctx);
+ function openAnnual(index){const p=state.pets?.[index],id=p&&spec(p),rule=PET_CARE_RULES[id];if(!p||!rule)return openDetail(index);
+  const ctx=panel('年度体检'),s=preview(),cp=s.pets[index],e=canvas(ctx,'annual-'+id,'981/1602');
+  const cost=roundCash(rule.annual*(state.cpiIndex||100)/100),hours=isRecoveryMonth(state)?0:rule.annualHours,ready=due(p,'Annual').length>0;
+  e.setAttribute('role','group');e.setAttribute('aria-label',petName(p)+'，年度体检，每年一次，下次体检：'+calendar(cp.care?.nextAnnual)+'，体检费用 '+priceText(cost)+'，自由时间 '+hours+' 小时');
+  box(e,petName(p),34,36.5,32,4.8,'pet-annual-name');
+  if(cp.care?.nextAnnual!==12)box(e,'下次体检：'+calendar(cp.care?.nextAnnual),20,55.2,61,4.4,'pet-annual-date');
+  if(cost!==rule.annual)box(e,priceText(cost),24,67.8,23,4.9,'pet-annual-value');
+  if(hours!==rule.annualHours)box(e,hours+'小时',69,67.8,23,4.9,'pet-annual-value');
+  if(ready)box(e,'核对体检费用',25,81.1,50,4.8,'pet-annual-action-label');
+  hit(ctx,e,ready?'核对体检费用':'尚未到期',8,79.5,84,7.8,()=>{if(validPet(ctx,p,index))openCareConfirm(index,'Annual','annual');},ready?'pet-annual-ready':'').disabled=!ready;
+  hit(ctx,e,'返回宠物资料',7,89.2,86,8.2,()=>openDetail(index));hit(ctx,e,'返回宠物资料',2,1,13,7,()=>openDetail(index));focusFirst(ctx);
  }
- function openCareConfirm(index,kind,method){const p=state.pets?.[index];if(!p)return openOverview();const s=preview(),task=petCareTasks(s).find(t=>t.pet===s.pets[index]&&t.kind===kind);if(!task)return openDetail(index);
+ function openCareConfirm(index,kind,method){const p=state.pets?.[index];if(!p)return openOverview();const target=copy(p),s=preview(),task=petCareTasks(s).find(t=>t.pet===s.pets[index]&&t.kind===kind);if(!task)return openDetail(index);
   const selections={[task.key]:method},q=petCareQuote(s,selections),ctx=panel('核对照护费用'),paper=plain(ctx,'核对'+petName(p)+'的照护费用');
   if(q.blocked){paper.append(textNode('p',q.blocked));action(ctx,paper,'返回宠物资料',()=>openDetail(index));return;}
   paper.append(textNode('p',(kind==='Annual'?'年度体检':method==='self'?'自行清洁':'专业清洁')+' · '+priceText(q.cost)+' · '+q.hours+' 小时'),textNode('p','支付后现金：'+priceText(state.cash-q.cost)));const status=message(paper);
-  action(ctx,paper,'确认支付',b=>{if(paying||!validPet(ctx,p,index))return;const fresh=preview(),t=petCareTasks(fresh).find(t=>t.pet===fresh.pets[index]&&t.key===task.key);if(!t)return;const nq=petCareQuote(fresh,selections);if(nq.blocked||nq.cost!==q.cost||nq.hours!==q.hours){status.textContent='条件已变化，请返回重新核对。';return;}
+  action(ctx,paper,'确认支付',b=>{if(paying||!validPet(ctx,target,index))return;const fresh=preview(),t=petCareTasks(fresh).find(t=>t.pet===fresh.pets[index]&&t.key===task.key);if(!t)return;const nq=petCareQuote(fresh,selections);if(nq.blocked||nq.cost!==q.cost||nq.hours!==q.hours){status.textContent='条件已变化，请返回重新核对。';return;}
    paying=true;b.disabled=true;const before=copy(state);let ok=false;try{backup();ok=payPetCare(selections);}catch(e){for(const k of Object.keys(state))delete state[k];Object.assign(state,before);}finally{paying=false;}
    if(!ok){b.disabled=false;status.textContent='暂未完成：未结算费用、时间或照护日期，请检查余额和时间后重试。';return;}openDetail(index);
   },state.cash<q.cost||currentCareerTime().free<q.hours);
