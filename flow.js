@@ -1,6 +1,6 @@
 // V26: confirmed spending, paid-once monthly receipts and compact monthly choices.
 function paymentReceipt(){return state?.monthlyPayments?.month===state.month?state.monthlyPayments:{housing:0,living:0,premiums:0}}
-function paidThisMonth(){const r=paymentReceipt();return roundCash((r.housing||0)+(r.living||0)+(r.premiums||0)+(typeof paidLoanTotal==='function'?paidLoanTotal():0))}
+function paidThisMonth(){const r=paymentReceipt();return roundCash((r.housing||0)+(r.living||0)+(r.premiums||0)+(typeof paidLoanTotal==='function'?paidLoanTotal():0)+(typeof petPrepaidMonthly==='function'?petPrepaidMonthly():0))}
 function livingTotal(){return roundCash(livingBaseAmount(state)+petMonthly()+(state.carRunningCost||0))}
 function premiumsTotal(){return roundCash(Object.values(state.insurance||{}).reduce((n,p)=>n+(p.active?p.monthly:0),0))}
 function remainingExpenses(){if(!state)return 0;const r=paymentReceipt(),living=livingTotal(),premiums=premiumsTotal(),other=state.expenses-(state.housingCost||0)-living-premiums;return roundCash(Math.max(0,(state.housingCost||0)-(r.housing||0))+Math.max(0,living-(r.living||0))+Math.max(0,premiums-(r.premiums||0))+Math.max(0,other-(typeof paidLoanTotal==='function'?paidLoanTotal():0)))}

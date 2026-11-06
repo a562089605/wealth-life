@@ -8,9 +8,9 @@ const PET_CARE_RULES={
  chameleon:{name:'变色龙',annual:120,annualHours:2,self:10,selfHours:2,selfMonths:2,pro:50,proHours:1,proMonths:3}
 };
 const PET_CARE_ALIASES={狗:'dog',柯基:'dog',猫:'cat',银渐层:'cat',鳄鱼:'crocodile',蜥蜴:'gecko',豹纹守宫:'gecko',蜘蛛:'spider',捕鸟蛛:'spider',乌龟:'tortoise',陆龟:'tortoise',变色龙:'chameleon'};
-function petCareSpecies(p){return PET_CARE_RULES[p.species]?p.species:PET_CARE_ALIASES[p.type]}
-function ensurePetCare(s=state){for(const p of s.pets||[]){const rule=PET_CARE_RULES[petCareSpecies(p)];if(!rule)continue;if(!p.careId)p.careId='pet-care-'+(s.nextPetCareId=(s.nextPetCareId||0)+1);
- const adopted=Number.isInteger(p.adoptMonth)?p.adoptMonth:s.month;p.care??={nextAnnual:adopted+12,nextClean:adopted+rule.selfMonths,history:[]};}return s.pets||[];}
+function petCareSpecies(p){return Object.hasOwn(PET_CARE_RULES,p.species)?p.species:Object.hasOwn(PET_CARE_ALIASES,p.type)?PET_CARE_ALIASES[p.type]:undefined}
+function ensurePetCare(s=state){const used=new Set((s.pets||[]).map(p=>p.careId).filter(Boolean));for(const p of s.pets||[]){const rule=PET_CARE_RULES[petCareSpecies(p)];if(!rule)continue;if(!p.careId){let id;do{id='pet-care-'+(s.nextPetCareId=(s.nextPetCareId||0)+1);}while(used.has(id));p.careId=id;used.add(id);}
+ const adopted=Number.isInteger(p.adoptMonth)?p.adoptMonth:s.month;p.care??={};p.care.nextAnnual??=adopted+12;p.care.nextClean??=adopted+rule.selfMonths;p.care.history??=[];}return s.pets||[];}
 function petCareTasks(s=state){return ensurePetCare(s).flatMap(p=>{const rule=PET_CARE_RULES[petCareSpecies(p)];if(!rule)return [{key:p.careId||'unknown',pet:p,unsupported:true}];return ['Annual','Clean'].filter(k=>p.care['next'+k]<=s.month).map(k=>({key:p.careId+':'+k+':'+p.care['next'+k],pet:p,rule,kind:k}));});}
 function petCareQuote(s,selections){const recovery=isRecoveryMonth(s),factor=(s.cpiIndex||100)/100;let cost=0,hours=0;const rows=[];
  for(const task of petCareTasks(s)){if(task.unsupported)return {blocked:'未知旧宠物种类，需迁移核对'};const method=selections[task.key];if(!method)continue;

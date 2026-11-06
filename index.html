@@ -326,13 +326,15 @@ const oldQLife=$('qLife').onclick;$('qLife').onclick=()=>{showV21Section('life')
 function safe50(){if(!state)return;['happiness','health','energy'].forEach(k=>state[k]=Math.max(0,Math.min(100,state[k]??70)));}
 function relationStage(p){const r=p.relation||0;return r<15?'认识':r<30?'同事/熟人':r<50?'普通朋友':r<70?'较好朋友':r<88?'好朋友':'挚友'}
 const PETS={狗:{adopt:500,monthly:50,setup:0},猫:{adopt:250,monthly:80,setup:120},蜘蛛:{adopt:70,monthly:18,setup:120},变色龙:{adopt:180,monthly:45,setup:320},蜥蜴:{adopt:120,monthly:35,setup:240},乌龟:{adopt:90,monthly:35,setup:310}};
-function petMonthly(){return (state.pets||[]).reduce((a,p)=>a+(p.basicFeePaidMonth===state.month?0:(PETS[p.type]?.monthly||0)),0)}
+function petMonthlyFee(p){const aliases={dog:'狗',柯基:'狗',cat:'猫',银渐层:'猫',spider:'蜘蛛',捕鸟蛛:'蜘蛛',chameleon:'变色龙',gecko:'蜥蜴',豹纹守宫:'蜥蜴',tortoise:'乌龟',陆龟:'乌龟',crocodile:'鳄鱼'};return PETS[p.type]?.monthly??PETS[aliases[p.species]||aliases[p.type]]?.monthly??0}
+function petMonthly(){return (state.pets||[]).reduce((a,p)=>a+(p.basicFeePaidMonth===state.month?0:petMonthlyFee(p)),0)}
+function petPrepaidMonthly(){return (state.pets||[]).reduce((a,p)=>a+(p.basicFeePaidMonth===state.month?petMonthlyFee(p):0),0)}
 function hobbyXP(name){state.hobbyXP??={};return state.hobbyXP[name]||0}
 function hobbyLevel(name){return Math.floor(hobbyXP(name)/100)}
 // CD overview + pet overview + state floor note
 function v22Panels(){if(!state)return; const life=$('lifeStatus')?.closest('.card'); if(life&&!$('v22Pets')){const d=document.createElement('div');d.id='v22Pets';d.className='asset';d.style.marginTop='12px';life.appendChild(d)}
  const wealth=$('assets')?.closest('.card'); if(wealth&&!$('v22CDs')){const d=document.createElement('div');d.id='v22CDs';d.className='asset';d.style.marginTop='12px';wealth.insertBefore(d,$('assets'))}
- if($('v22Pets')){const ps=state.pets||[];$('v22Pets').innerHTML='<b>我的宠物</b><br><span class="sub">'+(ps.length?ps.map(p=>p.type+' · '+money(PETS[p.type].monthly)+'/月').join(' · ')+'<br>宠物固定照顾成本 '+money(petMonthly())+'/月':'暂无宠物')+'</span>'}
+ if($('v22Pets')){const ps=state.pets||[];$('v22Pets').innerHTML='<b>我的宠物</b><br><span class="sub">'+(ps.length?ps.map(p=>p.type+' · '+money(petMonthlyFee(p))+'/月').join(' · ')+'<br>宠物固定照顾成本 '+money(petMonthly()+petPrepaidMonthly())+'/月':'暂无宠物')+'</span>'}
  if($('v22CDs')){const cds=(state.assets||[]).filter(a=>a.kind==='cd');$('v22CDs').innerHTML='<b>CD 定期存款</b><br><span class="sub">'+(cds.length?cds.map(a=>money(a.cost)+' · '+(a.rate*100).toFixed(1)+'% · 剩余 '+Math.max(0,(a.maturesAt||0)-state.month)+' 个月').join('<br>'):'暂无 CD。CD 计入净资产，但到期前不能作为可用现金。')+'</span>'}
  document.querySelectorAll('#healthStat,#energyStat,#happinessStat').forEach(e=>{if(e&&!e.parentElement.querySelector('.floor-note')){const n=document.createElement('div');n.className='sub floor-note';n.textContent='常态参考 50，耗尽将结束本局';e.parentElement.appendChild(n)}})
 }
@@ -556,7 +558,7 @@ window.v245OpenHousing=()=>document.getElementById('housingBtn').click();
 </script>
 <script src="core.js?v=20261104-housingsave1"></script>
 <script src="presentation.js?v=20261104-apartment1"></script>
-<script src="flow.js?v=20261106-petinsurance1"></script>
+<script src="flow.js?v=20261106-petaudit1"></script>
 <script src="journey.js?v=28.3-internal1"></script>
 <script src="batch.js?v=20261104-apartment1"></script><script src="revision.js?v=28.3-internal1"></script>
 <script src="annual.js?v=28.3-internal1"></script>
@@ -566,10 +568,10 @@ window.v245OpenHousing=()=>document.getElementById('housingBtn').click();
 <script src="coffee-career.js?v=28.3-internal1"></script>
 <script src="recovery-rules.js?v=28.3-internal1"></script>
 <script src="time-ledger.js?v=28.3-internal1"></script>
-<script src="time-flow.js?v=20261106-petinsurance1"></script>
+<script src="time-flow.js?v=20261106-petaudit1"></script>
 <script src="medical-insurance.js?v=28.3-internal1"></script>
 <script src="recovery-ui.js?v=28.3-internal1"></script>
-<script src="pet-care.js?v=20261105-petcard2"></script>
+<script src="pet-care.js?v=20261106-petaudit1"></script>
 <script src="necessary-bills.js?v=28.3-internal1"></script>
 <script src="housing-lease.js?v=20261104-housingsave1"></script>
 <script src="coffee-salary.js?v=28.3-internal1"></script>
@@ -587,9 +589,9 @@ window.v245OpenHousing=()=>document.getElementById('housingBtn').click();
 <script src="studio-events.js?v=20261103-studio1"></script>
 <script src="housing-time-debt.js?v=20261104-apartment1"></script>
 <script src="family-home.js?v=20261104-housingsave1"></script>
-<script src="pet-adoption-entry.js?v=20261105-petcard2"></script>
-<script src="pet-basic-fees.js?v=20261106-pet35"></script><script src="pet-insurance.js?v=20261106-insurance1"></script><script src="pet-pages.js?v=20261106-insurance1"></script><script src="pet-event-cards.js?v=20261106-pet35"></script><script src="pet-events.js?v=20261106-insurance1"></script>
-<script src="pet-events-ui.js?v=20261106-pet35"></script></body></html>
+<script src="pet-adoption-entry.js?v=20261106-petaudit1"></script>
+<script src="pet-basic-fees.js?v=20261106-petaudit1"></script><script src="pet-insurance.js?v=20261106-petaudit1"></script><script src="pet-pages.js?v=20261106-petaudit1"></script><script src="pet-event-cards.js?v=20261106-pet35"></script><script src="pet-events.js?v=20261106-petaudit1"></script>
+<script src="pet-events-ui.js?v=20261106-petaudit1"></script></body></html>
 
 
 

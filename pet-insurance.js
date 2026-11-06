@@ -3,7 +3,7 @@
  const monthly={dog:60,cat:40,tortoise:20,chameleon:20,gecko:20,spider:5,crocodile:60};
  const aliases={狗:'dog',柯基:'dog',猫:'cat',银渐层:'cat',乌龟:'tortoise',陆龟:'tortoise',变色龙:'chameleon',蜥蜴:'gecko',豹纹守宫:'gecko',蜘蛛:'spider',捕鸟蛛:'spider',鳄鱼:'crocodile'};
  const copy=s=>JSON.parse(JSON.stringify(s)),money=x=>Math.round(x*100)/100;
- const species=p=>Object.hasOwn(monthly,p?.species)?p.species:aliases[p?.type];
+ const species=p=>Object.hasOwn(monthly,p?.species)?p.species:Object.hasOwn(aliases,p?.type)?aliases[p.type]:undefined;
  const identity=p=>[p.id,p.careId,p.species,p.type,p.adoptMonth,p.name,p.insuranceKey];
  function policies(s,p){const k=p?.insuranceKey,individual=k&&!['health','life','auto','income'].includes(k)&&s.insurance?.[k];return [individual,s.insurance?.pet].filter(x=>x?.active);}
  function effective(s,x){return !Number.isInteger(x.startMonth)||x.startMonth<=s.month;}

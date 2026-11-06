@@ -49,7 +49,7 @@
   hit(ctx,e,'返回房屋',26,94.3,49,4.4,room);
   hit(ctx,e,'返回我的宠物',2,1,13,7,openOverview);focusFirst(ctx);
  }
- function basicFeeOptions(){return {prices:Object.fromEntries(Object.entries(PETS).map(([type,c])=>[type,c.monthly])),nonPetLiving:roundCash(livingBaseAmount(state)+(state.carRunningCost||0))};}
+ function basicFeeOptions(){return {prices:Object.fromEntries([...Object.entries(PETS).map(([type,c])=>[type,c.monthly]),...Object.entries(A.pets).flatMap(([id,c])=>[[id,PETS[c.type]?.monthly],[c.name,PETS[c.type]?.monthly]])]),nonPetLiving:roundCash(livingBaseAmount(state)+(state.carRunningCost||0))};}
  function openBasicFees(index){const p=state.pets?.[index],c=p&&cfg(p);if(!c)return openOverview();const ctx=panel('每月费用'),q=PetBasicFees.quote(state,index,basicFeeOptions());
   if(!q){const paper=plain(ctx,petName(p)+' · 每月费用');paper.append(textNode('p','原宠物费用记录待核对，暂不收费。'));action(ctx,paper,'返回宠物资料',()=>openDetail(index));return;}
   const e=canvas(ctx,'monthly-fee');

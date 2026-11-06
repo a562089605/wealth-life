@@ -15,7 +15,7 @@
  const illness={dog:200,cat:200,crocodile:600,gecko:120,spider:80,tortoise:180,chameleon:200};
  const aliases={狗:'dog',柯基:'dog',猫:'cat',银渐层:'cat',鳄鱼:'crocodile',蜥蜴:'gecko',豹纹守宫:'gecko',蜘蛛:'spider',捕鸟蛛:'spider',乌龟:'tortoise',陆龟:'tortoise',变色龙:'chameleon'};
  const clone=x=>JSON.parse(JSON.stringify(x)),money=x=>Math.round(x*100)/100;
- const species=p=>companions[p.species]?p.species:aliases[p.type];
+ const species=p=>Object.hasOwn(companions,p.species)?p.species:Object.hasOwn(aliases,p.type)?aliases[p.type]:undefined;
  function data(s){const d=s.petMapEvents??={version:2,records:{},seen:{},hours:{}};d.records??={};d.seen??={};d.hours??={};return d;}
  const key=(s,move)=>s.month+':'+move.id;
  const category=id=>['injury','mishap'].includes(id)?'accident':id;
@@ -51,8 +51,11 @@
    if(id==='social')r.quote.contact=contact(s,{names,jobs},random);
    if(id!=='companion')d.seen[s.month+':'+id]=true;
   }d.records[k]=r;return r;}
+ function samePet(p,identity){const now=[p.id,p.careId,p.species,p.type,p.adoptMonth,p.name];if(JSON.stringify(now)===identity)return true;
+  // A previously absent careId may be assigned by legacy care initialization, without changing the actual pet.
+  try{const old=JSON.parse(identity);return Array.isArray(old)&&old.length===now.length&&old[1]==null&&now[1]!=null&&old.every((v,i)=>i===1||JSON.stringify(v)===JSON.stringify(now[i]??null));}catch(e){return false;}}
  function execute(s,k,{free,forcedTime}={}){const r=s.petMapEvents?.records[k],q=r?.quote,p=q&&(s.pets||[])[q.petIndex];
-  if(!r||r.status!=='pending'||r.month!==s.month||!q||!p||JSON.stringify([p.id,p.careId,p.species,p.type,p.adoptMonth,p.name])!==q.petIdentity||s.cash<q.cost||!Number.isFinite(free)||free<0||!r.forced&&free<q.hours)return false;
+  if(!r||r.status!=='pending'||r.month!==s.month||!q||!p||!Number.isFinite(q.cost)||q.cost<0||!Number.isFinite(q.hours)||q.hours<0||!samePet(p,q.petIdentity)||s.cash<q.cost||!Number.isFinite(free)||free<0||!r.forced&&free<q.hours)return false;
   const short=q.hours>free;if(short&&!forcedTime)return false;
   const time=short?forcedTime({id:'pet-'+k,month:s.month,hours:q.hours,available:free}):null;
   s.cash=money(s.cash-q.cost);for(const stat of ['energy','happiness','stress'])if(q[stat])s[stat]=Math.max(0,Math.min(100,(s[stat]??0)+q[stat]));

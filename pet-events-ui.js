@@ -55,9 +55,14 @@
   }
   const r=record();if(r?.status==='pending')return show();if(r?.status==='resolved')return;return landingBefore();
  };
+ // Resolve a drawn mandatory medical/property event before a zero-time return or another finish action.
+ const waitingForcedPet=()=>{const r=record(),m=current();return townEnabled()&&!state.gameOver?.final&&!state.financialCrisis?.finalConfirmed&&!isRecoveryMonth(state)&&!(state.crisis&&state.crisis.ackMonth!==state.month)&&m&&!m.resolved&&r?.status==='pending'&&r.forced&&r.month===state.month&&!state.requiredIncident&&!unfinishedTreatment()&&!healthTreatmentKind(state.health);};
+ const markReturnBefore=markExplorationReturn;markExplorationReturn=function(){if(waitingForcedPet())return false;return markReturnBefore.apply(this,arguments);};
+ const forcedReturnBefore=openForcedTimeReturn;openForcedTimeReturn=function(){if(waitingForcedPet())return show();return forcedReturnBefore.apply(this,arguments);};
+ const forcedFinishBefore=finish;finish=function(){if(waitingForcedPet())return show();return forcedFinishBefore.apply(this,arguments);};
  for(const name of ['home','openGame','openRoom']){const before=window[name];window[name]=function(...args){close();return before.apply(this,args);};}
  const rollBefore=rollTown;rollTown=function(){if(active?.isConnected)return;return rollBefore();};
- const showBefore=showEvent;showEvent=function(type,...args){if(type==='读档成功'&&townEnabled()&&record()?.status==='pending'&&!state.requiredIncident&&!unfinishedTreatment()&&!healthTreatmentKind(state.health)&&!timeReturnPending())return show();return showBefore(type,...args);};
+ const showBefore=showEvent;showEvent=function(type,...args){if(type==='读档成功'&&townEnabled()&&record()?.status==='pending'&&!state.gameOver?.final&&!state.financialCrisis?.finalConfirmed&&!state.requiredIncident&&!unfinishedTreatment()&&!healthTreatmentKind(state.health)&&!timeReturnPending())return show();return showBefore(type,...args);};
  document.addEventListener('keydown',e=>{if(!active)return;if(e.key==='Escape'){e.preventDefault();close();render();}if(e.key==='Tab'){const list=[...active.querySelectorAll('button:not(:disabled)')],first=list[0],last=list.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}});
  window.PetMapEventUI={show,close};
 })();
