@@ -1,0 +1,17 @@
+[
+  {
+    "file": "pet-card-style-browser.cjs",
+    "status": 0,
+    "output": "PASS: seven species × four housing backgrounds; shared standalone artwork, transparent cash, required names, no preview charge, no inner scrolling, 44px controls.\n"
+  },
+  {
+    "file": "pet-pages-browser.cjs",
+    "status": 0,
+    "output": "PASS pet pages Chromium: all seven adoption and care flows, rollback/retry, cancel selection, multi-pet layout, 320/390/1280, stale actions, read-only preview, reload and image decode.\n"
+  },
+  {
+    "file": "pet-fees-browser.cjs",
+    "status": 0,
+    "output": "PASS required names, 550 payment, prepaid month persisted, next month 50, legacy unchanged, compact phone layout.\n"
+  }
+]

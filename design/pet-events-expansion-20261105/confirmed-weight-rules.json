@@ -1,0 +1,81 @@
+{
+  "status": "已按用户确认接入本地并验证，准备上传；发布结果待线上核对",
+  "confirmed": true,
+  "triggerContext": "仅地图生活事件落点，不是所有地图步数或所有地图格子",
+  "petEventChanceWithinLife": 0.2,
+  "categoryWeights": {
+    "companion": 20,
+    "unwell": 20,
+    "social": 20,
+    "surprise": 20,
+    "accident": 20
+  },
+  "categoryProbabilityWhenAllFiveEligible": {
+    "companion": 0.2,
+    "unwell": 0.2,
+    "social": 0.2,
+    "surprise": 0.2,
+    "accident": 0.2
+  },
+  "selectionOrder": [
+    "地图生活事件中先判断是否触发宠物事件",
+    "在可抽类别中按同权选类别",
+    "在该类别实际已养且符合条件的宠物中等概率选一只"
+  ],
+  "ownedPetsOnly": true,
+  "drawCountPerTrigger": 1,
+  "morePetsIncreaseTotalTriggerChance": false,
+  "accidentEligibleSpecies": [
+    "dog",
+    "cat",
+    "tortoise",
+    "chameleon",
+    "gecko",
+    "spider",
+    "crocodile"
+  ],
+  "accidentScope": "七宠各有一张确认的小意外，猫咪为受伤医疗，其余六宠为物品损坏；不套旧版injury仅限猫狗的类别限制，不混用医疗及物损费用。",
+  "unavailableCategories": "五类都可抽时各20%；达到月限或其他条件不符的类别排除后，剩余可抽类别按同权归一。",
+  "pending": [],
+  "runtimeApplied": true,
+  "published": false,
+  "monthlyLimits": {
+    "companion": null,
+    "unwell": 1,
+    "social": 1,
+    "surprise": 1,
+    "accident": 1
+  },
+  "monthlyLimitsConfirmed": true,
+  "monthlyLimitScope": "按游戏月份及类别记录，全部已养宠物共用各类别上限，不按单只宠物分别计次。陪伴没有单独次数上限，仍受地图机会及自由时间约束。",
+  "cooldownReset": "下一个游戏月重新开放，无现实时间冷却。",
+  "limitCountedAt": "沿用抽到卡并成功保存时记录次数，稍后处理保留原卡；保存失败回滚，不占次数。",
+  "accidentSharedLimit": "受伤与物品损坏统一为小意外，每个游戏月合计最多一次。",
+  "saveCompatibility": "接入时保留旧存档及备份，旧月内injury或mishap任一已触发则本月accident名额视为已使用；不重置次数、不追扣、不退款，旧待处理记录需兼容。",
+  "ownershipGateConfirmed": true,
+  "ownershipSource": "存档state.pets中实际已领养且可识别物种的宠物；不以住房插图、选择页选中状态或未完成领养作为拥有依据。",
+  "requiresActualAdoptedPet": true,
+  "unownedSpeciesExcluded": true,
+  "decorativeHousingCorgiCountsAsPet": false,
+  "emptyPetPoolBehavior": "没有实际已领养宠物时，宠物事件不进入抽卡池，走原有生活事件，不显示未养宠物卡。",
+  "ownershipExamples": [
+    {
+      "ownedSpecies": [],
+      "basePetCardCount": 0
+    },
+    {
+      "ownedSpecies": [
+        "dog"
+      ],
+      "basePetCardCount": 5
+    },
+    {
+      "ownedSpecies": [
+        "dog",
+        "cat"
+      ],
+      "basePetCardCount": 10
+    }
+  ],
+  "ownershipExamplesScope": "基础入池资格示例；仍按已确认月限与条件筛选，不代表每次抽取时所有卡均可用。"
+}

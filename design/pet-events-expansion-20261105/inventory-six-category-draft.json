@@ -1,0 +1,433 @@
+{
+  "status": "数量待用户确认；现网V28.10不改动",
+  "requestedCategories": {
+    "companion": "陪伴",
+    "unwell": "不舒服",
+    "injury": "受伤",
+    "social": "交友",
+    "surprise": "小惊喜",
+    "mishap": "小意外"
+  },
+  "cards": [
+    {
+      "species": "dog",
+      "pet": "柯基",
+      "kind": "companion",
+      "category": "陪伴",
+      "specificArtApproved": true,
+      "currentArt": "assets/pets/events/companion-dog-20261105.webp",
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "dog",
+      "pet": "柯基",
+      "kind": "unwell",
+      "category": "不舒服",
+      "specificArtApproved": true,
+      "currentArt": "assets/pets/events/unwell-20261105.webp",
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "dog",
+      "pet": "柯基",
+      "kind": "injury",
+      "category": "受伤",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "dog",
+      "pet": "柯基",
+      "kind": "social",
+      "category": "交友",
+      "specificArtApproved": true,
+      "currentArt": "assets/pets/events/social-20261105.webp",
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "dog",
+      "pet": "柯基",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": false
+    },
+    {
+      "species": "dog",
+      "pet": "柯基",
+      "kind": "mishap",
+      "category": "小意外",
+      "specificArtApproved": true,
+      "currentArt": "assets/pets/events/mishap-20261105.webp",
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "cat",
+      "pet": "银渐层",
+      "kind": "companion",
+      "category": "陪伴",
+      "specificArtApproved": true,
+      "currentArt": "assets/pets/events/companion-cat-20261105.webp",
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "cat",
+      "pet": "银渐层",
+      "kind": "unwell",
+      "category": "不舒服",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "cat",
+      "pet": "银渐层",
+      "kind": "injury",
+      "category": "受伤",
+      "specificArtApproved": true,
+      "currentArt": "assets/pets/events/injury-20261105.webp",
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "cat",
+      "pet": "银渐层",
+      "kind": "social",
+      "category": "交友",
+      "specificArtApproved": true,
+      "currentArt": "assets/pets/events/social-20261105.webp",
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "cat",
+      "pet": "银渐层",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": false
+    },
+    {
+      "species": "cat",
+      "pet": "银渐层",
+      "kind": "mishap",
+      "category": "小意外",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "crocodile",
+      "pet": "鳄鱼",
+      "kind": "companion",
+      "category": "陪伴",
+      "specificArtApproved": true,
+      "currentArt": "assets/pets/events/companion-crocodile-20261105.webp",
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "crocodile",
+      "pet": "鳄鱼",
+      "kind": "unwell",
+      "category": "不舒服",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "crocodile",
+      "pet": "鳄鱼",
+      "kind": "injury",
+      "category": "受伤",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": false,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "crocodile",
+      "pet": "鳄鱼",
+      "kind": "social",
+      "category": "交友",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "crocodile",
+      "pet": "鳄鱼",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": false
+    },
+    {
+      "species": "crocodile",
+      "pet": "鳄鱼",
+      "kind": "mishap",
+      "category": "小意外",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "gecko",
+      "pet": "豹纹守宫",
+      "kind": "companion",
+      "category": "陪伴",
+      "specificArtApproved": true,
+      "currentArt": "assets/pets/events/companion-gecko-20261105.webp",
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "gecko",
+      "pet": "豹纹守宫",
+      "kind": "unwell",
+      "category": "不舒服",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "gecko",
+      "pet": "豹纹守宫",
+      "kind": "injury",
+      "category": "受伤",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": false,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "gecko",
+      "pet": "豹纹守宫",
+      "kind": "social",
+      "category": "交友",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "gecko",
+      "pet": "豹纹守宫",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": false
+    },
+    {
+      "species": "gecko",
+      "pet": "豹纹守宫",
+      "kind": "mishap",
+      "category": "小意外",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "spider",
+      "pet": "捕鸟蛛",
+      "kind": "companion",
+      "category": "陪伴",
+      "specificArtApproved": true,
+      "currentArt": "assets/pets/events/companion-spider-20261105.webp",
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "spider",
+      "pet": "捕鸟蛛",
+      "kind": "unwell",
+      "category": "不舒服",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "spider",
+      "pet": "捕鸟蛛",
+      "kind": "injury",
+      "category": "受伤",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": false,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "spider",
+      "pet": "捕鸟蛛",
+      "kind": "social",
+      "category": "交友",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "spider",
+      "pet": "捕鸟蛛",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": false
+    },
+    {
+      "species": "spider",
+      "pet": "捕鸟蛛",
+      "kind": "mishap",
+      "category": "小意外",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "tortoise",
+      "pet": "陆龟",
+      "kind": "companion",
+      "category": "陪伴",
+      "specificArtApproved": true,
+      "currentArt": "assets/pets/events/companion-tortoise-20261105.webp",
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "tortoise",
+      "pet": "陆龟",
+      "kind": "unwell",
+      "category": "不舒服",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "tortoise",
+      "pet": "陆龟",
+      "kind": "injury",
+      "category": "受伤",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": false,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "tortoise",
+      "pet": "陆龟",
+      "kind": "social",
+      "category": "交友",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "tortoise",
+      "pet": "陆龟",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": false
+    },
+    {
+      "species": "tortoise",
+      "pet": "陆龟",
+      "kind": "mishap",
+      "category": "小意外",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "chameleon",
+      "pet": "变色龙",
+      "kind": "companion",
+      "category": "陪伴",
+      "specificArtApproved": true,
+      "currentArt": "assets/pets/events/companion-chameleon-20261105.webp",
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "chameleon",
+      "pet": "变色龙",
+      "kind": "unwell",
+      "category": "不舒服",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "chameleon",
+      "pet": "变色龙",
+      "kind": "injury",
+      "category": "受伤",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": false,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "chameleon",
+      "pet": "变色龙",
+      "kind": "social",
+      "category": "交友",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    },
+    {
+      "species": "chameleon",
+      "pet": "变色龙",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": false
+    },
+    {
+      "species": "chameleon",
+      "pet": "变色龙",
+      "kind": "mishap",
+      "category": "小意外",
+      "specificArtApproved": false,
+      "currentArt": null,
+      "runtimeInjuryFeeConfirmed": true,
+      "newSurpriseRulesConfirmed": null
+    }
+  ]
+}

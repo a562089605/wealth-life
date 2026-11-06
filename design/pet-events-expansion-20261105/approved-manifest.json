@@ -1,0 +1,747 @@
+{
+  "status": "35张确认稿、数值与规则已接入本地并验证，准备上传；线上发布待核对",
+  "runtimeBaseline": "V28.10 / 61e4561af6f58556e39d93eab5be88040a6a3200",
+  "poolRule": "仅实际已领养物种的五张卡共同进入抽卡池，每次抽一张；未养物种不入池。新方案尚未接入。",
+  "previewPricing": "全部按未投保原价展示；接入时仅适用的医疗费用按玩家实际有效保险计算，物品损坏不套医疗保险。",
+  "pendingIntegration": [
+    "上传并核对Cloudflare发布及线上字节"
+  ],
+  "stoppedScenario": "全部小守宫打哈欠版本停用；仅采用小守宫睡得正香确认稿",
+  "quoteUnits": {
+    "cost": "本次现金支出，正值表示扣除；美元，未投保原价",
+    "hours": "自由时间消耗小时数",
+    "energy": "能量增减",
+    "happiness": "幸福度增减",
+    "stress": "压力增减",
+    "relation": "新联系人的初始关系值",
+    "contacts": "新增联系人数"
+  },
+  "cards": [
+    {
+      "id": "dog-companion",
+      "species": "dog",
+      "pet": "柯基",
+      "kind": "companion",
+      "category": "陪伴",
+      "title": "一起晒太阳",
+      "approved": true,
+      "art": "approved/dog-companion.png",
+      "sha256": "1ba00bff8de40d6891633954892dc4d32dcb12776f73b6a16afbae1775613d62",
+      "quote": {
+        "energy": 3,
+        "happiness": 3,
+        "stress": -2,
+        "cost": 0,
+        "hours": 1
+      }
+    },
+    {
+      "id": "dog-unwell",
+      "species": "dog",
+      "pet": "柯基",
+      "kind": "unwell",
+      "category": "不舒服",
+      "title": "毛孩子有点不舒服",
+      "approved": true,
+      "art": "approved/dog-unwell.png",
+      "sha256": "3f30e876fe4775a6672574f9cf7a6e8152f216dd5bb17ce058cd56ccd269f625",
+      "quote": {
+        "cost": 200,
+        "insuranceExample": false,
+        "hours": 3,
+        "energy": -2,
+        "stress": 2
+      }
+    },
+    {
+      "id": "dog-social",
+      "species": "dog",
+      "pet": "柯基",
+      "kind": "social",
+      "category": "交友",
+      "title": "遛弯遇见新朋友",
+      "approved": true,
+      "art": "approved/dog-social.png",
+      "sha256": "2681916671b6afd6cabb0e618c4010b694557645c91758c91d775d416b27c045",
+      "quote": {
+        "cost": 0,
+        "hours": 3,
+        "energy": -2,
+        "happiness": 4,
+        "stress": -2,
+        "relation": 10,
+        "contacts": 1
+      }
+    },
+    {
+      "id": "dog-surprise",
+      "species": "dog",
+      "pet": "柯基",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "title": "它把宝贝送给你",
+      "approved": true,
+      "art": "approved/dog-surprise.png",
+      "sha256": "5ee3a44f6dabab5b788de5acb5c0b5c64080d8c79659e739cffe6f0b6eb20ad1",
+      "quote": {
+        "cost": 0,
+        "hours": 0,
+        "energy": 0,
+        "happiness": 3,
+        "stress": -2
+      }
+    },
+    {
+      "id": "dog-accident",
+      "species": "dog",
+      "pet": "柯基",
+      "kind": "accident",
+      "category": "小意外（含受伤）",
+      "title": "淘气的小意外",
+      "approved": true,
+      "art": "approved/dog-accident.png",
+      "sha256": "e7688b44036c4fe033faef427a12ecf3f886deb8d59c25c5534dd7c087270f92",
+      "quote": {
+        "cost": 50,
+        "hours": 1,
+        "energy": -1,
+        "stress": 1,
+        "medical": false
+      }
+    },
+    {
+      "id": "cat-companion",
+      "species": "cat",
+      "pet": "银渐层",
+      "kind": "companion",
+      "category": "陪伴",
+      "title": "撸猫日常",
+      "approved": true,
+      "art": "approved/cat-companion.png",
+      "sha256": "dc1f4654c2bd9d7b1eb1206893d5acdf6e9991ea385d809c78f9273e599dbcbe",
+      "quote": {
+        "energy": 3,
+        "happiness": 3,
+        "stress": -2,
+        "cost": 0,
+        "hours": 1
+      }
+    },
+    {
+      "id": "cat-unwell",
+      "species": "cat",
+      "pet": "银渐层",
+      "kind": "unwell",
+      "category": "不舒服",
+      "title": "猫咪有点不舒服",
+      "approved": true,
+      "art": "approved/cat-unwell.png",
+      "sha256": "0716b3538695f1ae03d6530e2d8fed9f2e1a1c994c6a947bcb2d8224ccbc7bee",
+      "quote": {
+        "cost": 200,
+        "insuranceExample": false,
+        "hours": 3,
+        "energy": -2,
+        "stress": 2
+      }
+    },
+    {
+      "id": "cat-social",
+      "species": "cat",
+      "pet": "银渐层",
+      "kind": "social",
+      "category": "交友",
+      "title": "一聊猫咪就投缘",
+      "approved": true,
+      "art": "approved/cat-social.png",
+      "sha256": "0538d9aa7c64ed800e363e96b9b938e69997bf98f99255d3bad432c22195b0b9",
+      "quote": {
+        "cost": 0,
+        "hours": 3,
+        "energy": -2,
+        "happiness": 4,
+        "stress": -2,
+        "relation": 10,
+        "contacts": 1
+      }
+    },
+    {
+      "id": "cat-surprise",
+      "species": "cat",
+      "pet": "银渐层",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "title": "它悄悄靠了过来",
+      "approved": true,
+      "art": "approved/cat-surprise.png",
+      "sha256": "c844e39d6688570debccbf4ab1b3c571dc57b33fe4ae3b3e73e2f7f0185fd0b9",
+      "quote": {
+        "cost": 0,
+        "hours": 0,
+        "energy": 0,
+        "happiness": 2,
+        "stress": -3
+      }
+    },
+    {
+      "id": "cat-accident",
+      "species": "cat",
+      "pet": "银渐层",
+      "kind": "accident",
+      "category": "小意外（含受伤）",
+      "title": "玩耍时意外受伤",
+      "approved": true,
+      "art": "approved/cat-accident.png",
+      "sha256": "713a8d859c98f8f9765048d529b34345685b0ae49f9791e0b0e46997c475c86e",
+      "quote": {
+        "cost": 500,
+        "insuranceExample": false,
+        "hours": 4,
+        "energy": -3,
+        "stress": 3
+      }
+    },
+    {
+      "id": "crocodile-companion",
+      "species": "crocodile",
+      "pet": "鳄鱼",
+      "kind": "companion",
+      "category": "陪伴",
+      "title": "安静的观察时光",
+      "approved": true,
+      "art": "approved/crocodile-companion.png",
+      "sha256": "ae5650f272f67271d9995bfe2436d947c44c9cccfc880414dfab5e2d8fac729b",
+      "quote": {
+        "energy": 1,
+        "happiness": 4,
+        "stress": -2,
+        "cost": 0,
+        "hours": 1
+      }
+    },
+    {
+      "id": "crocodile-unwell",
+      "species": "crocodile",
+      "pet": "鳄鱼",
+      "kind": "unwell",
+      "category": "不舒服",
+      "title": "小鳄今天没胃口",
+      "approved": true,
+      "art": "approved/crocodile-unwell.png",
+      "sha256": "6a7ccb765529be65009f24eb8d5766a1171a8ceca9c72a94319de033fe4cdce3",
+      "quote": {
+        "cost": 600,
+        "insuranceExample": false,
+        "hours": 3,
+        "energy": -2,
+        "stress": 2
+      }
+    },
+    {
+      "id": "crocodile-social",
+      "species": "crocodile",
+      "pet": "鳄鱼",
+      "kind": "social",
+      "category": "交友",
+      "title": "养鳄也有同好",
+      "approved": true,
+      "art": "approved/crocodile-social.png",
+      "sha256": "461976c1e0834fe921259458b832d5eb7bc1f0c52c689e70e7ed906754ddf72d",
+      "quote": {
+        "cost": 0,
+        "hours": 3,
+        "energy": -2,
+        "happiness": 4,
+        "stress": -2,
+        "relation": 10,
+        "contacts": 1
+      }
+    },
+    {
+      "id": "crocodile-surprise",
+      "species": "crocodile",
+      "pet": "鳄鱼",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "title": "水面上的小惊喜",
+      "approved": true,
+      "art": "approved/crocodile-surprise.png",
+      "sha256": "7280018050c02b06ba4b4c841d5ab71ca7c5dcd158dd18fd464b6322fbff0bb6",
+      "quote": {
+        "cost": 0,
+        "hours": 0,
+        "energy": 0,
+        "happiness": 4,
+        "stress": -1
+      }
+    },
+    {
+      "id": "crocodile-accident",
+      "species": "crocodile",
+      "pet": "鳄鱼",
+      "kind": "accident",
+      "category": "小意外（含受伤）",
+      "title": "过滤管漏水了",
+      "approved": true,
+      "art": "approved/crocodile-accident.png",
+      "sha256": "f72af548a43ee4038fe702bc8422f9b921032a3589541673643b2bda24e87130",
+      "quote": {
+        "cost": 50,
+        "hours": 1,
+        "energy": -1,
+        "stress": 1,
+        "medical": false
+      }
+    },
+    {
+      "id": "gecko-companion",
+      "species": "gecko",
+      "pet": "豹纹守宫",
+      "kind": "companion",
+      "category": "陪伴",
+      "title": "傍晚的小探险",
+      "approved": true,
+      "art": "approved/gecko-companion.png",
+      "sha256": "2dd07346ab68c5770bba8f6f0d654bc35ed3b92a9afd2341ebc1feb3457a5f3c",
+      "quote": {
+        "energy": 1,
+        "happiness": 3,
+        "stress": -3,
+        "cost": 0,
+        "hours": 1
+      }
+    },
+    {
+      "id": "gecko-unwell",
+      "species": "gecko",
+      "pet": "豹纹守宫",
+      "kind": "unwell",
+      "category": "不舒服",
+      "title": "小守宫提不起劲",
+      "approved": true,
+      "art": "approved/gecko-unwell.png",
+      "sha256": "0bc72621092b94f5d77970d120a3f6cfe248b48d913dfebb35ed08b2f39464b3",
+      "quote": {
+        "cost": 120,
+        "insuranceExample": false,
+        "hours": 3,
+        "energy": -2,
+        "stress": 2
+      }
+    },
+    {
+      "id": "gecko-social",
+      "species": "gecko",
+      "pet": "豹纹守宫",
+      "kind": "social",
+      "category": "交友",
+      "title": "遇见守宫同好",
+      "approved": true,
+      "art": "approved/gecko-social.png",
+      "sha256": "7b0b6308ac19e221fdc080dd69a4bc8410a8f5b4e1f7eb25d719695078fffb6f",
+      "quote": {
+        "cost": 0,
+        "hours": 3,
+        "energy": -2,
+        "happiness": 4,
+        "stress": -2,
+        "relation": 10,
+        "contacts": 1
+      }
+    },
+    {
+      "id": "gecko-surprise",
+      "species": "gecko",
+      "pet": "豹纹守宫",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "title": "小守宫睡得正香",
+      "approved": true,
+      "art": "approved/gecko-surprise.png",
+      "sha256": "a4b7acc6b67c18606e34aeda8f1693c95c0fc8ab40a9d687dd199d2ba4c99f1e",
+      "quote": {
+        "cost": 0,
+        "hours": 0,
+        "energy": 0,
+        "happiness": 2,
+        "stress": -2
+      }
+    },
+    {
+      "id": "gecko-accident",
+      "species": "gecko",
+      "pet": "豹纹守宫",
+      "kind": "accident",
+      "category": "小意外（含受伤）",
+      "title": "躲避屋裂了",
+      "approved": true,
+      "art": "approved/gecko-accident.png",
+      "sha256": "8f9d616bab54cb00622c2083d615de593265e0838718d7e4cd29d1626804c8f5",
+      "quote": {
+        "cost": 50,
+        "hours": 1,
+        "energy": -1,
+        "stress": 1,
+        "medical": false
+      }
+    },
+    {
+      "id": "spider-companion",
+      "species": "spider",
+      "pet": "捕鸟蛛",
+      "kind": "companion",
+      "category": "陪伴",
+      "title": "蛛网小世界",
+      "approved": true,
+      "art": "approved/spider-companion.png",
+      "sha256": "65c7944a43558bcddb4d3823b47fbe4314312c5443b40673100fa00d2a96d641",
+      "quote": {
+        "energy": 1,
+        "happiness": 1,
+        "stress": -5,
+        "cost": 0,
+        "hours": 1
+      }
+    },
+    {
+      "id": "spider-unwell",
+      "species": "spider",
+      "pet": "捕鸟蛛",
+      "kind": "unwell",
+      "category": "不舒服",
+      "title": "小蛛今天不对劲",
+      "approved": true,
+      "art": "approved/spider-unwell.png",
+      "sha256": "f5bb103f88cd4a30a4d334c253735355aff0fd2369af055db69eb42619800452",
+      "quote": {
+        "cost": 80,
+        "insuranceExample": false,
+        "hours": 3,
+        "energy": -2,
+        "stress": 2
+      }
+    },
+    {
+      "id": "spider-social",
+      "species": "spider",
+      "pet": "捕鸟蛛",
+      "kind": "social",
+      "category": "交友",
+      "title": "小众爱好遇知音",
+      "approved": true,
+      "art": "approved/spider-social.png",
+      "sha256": "c61522a5adfb5335e1ae1478020847c10032fe599dffa9e83fe66f2c10d4a7fc",
+      "quote": {
+        "cost": 0,
+        "hours": 3,
+        "energy": -2,
+        "happiness": 4,
+        "stress": -2,
+        "relation": 10,
+        "contacts": 1
+      }
+    },
+    {
+      "id": "spider-surprise",
+      "species": "spider",
+      "pet": "捕鸟蛛",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "title": "一夜织出的小惊喜",
+      "approved": true,
+      "art": "approved/spider-surprise.png",
+      "sha256": "476e75a27a730d6b666cade49386b72dddd314283244b46b26b079d6734f1451",
+      "quote": {
+        "cost": 0,
+        "hours": 0,
+        "energy": 0,
+        "happiness": 1,
+        "stress": -4
+      }
+    },
+    {
+      "id": "spider-accident",
+      "species": "spider",
+      "pet": "捕鸟蛛",
+      "kind": "accident",
+      "category": "小意外（含受伤）",
+      "title": "箱盖合不严了",
+      "approved": true,
+      "art": "approved/spider-accident.png",
+      "sha256": "38f63511d755c1f67c38af8d100b846a040dff45630cd3ebd429a76a2588353b",
+      "quote": {
+        "cost": 50,
+        "hours": 1,
+        "energy": -1,
+        "stress": 1,
+        "medical": false
+      }
+    },
+    {
+      "id": "tortoise-companion",
+      "species": "tortoise",
+      "pet": "陆龟",
+      "kind": "companion",
+      "category": "陪伴",
+      "title": "慢慢陪着你",
+      "approved": true,
+      "art": "approved/tortoise-companion.png",
+      "sha256": "ebae086dba94d00869a599604056253126686c3e61e7ba03952d391f7e3afa82",
+      "quote": {
+        "energy": 3,
+        "happiness": 3,
+        "stress": -2,
+        "cost": 0,
+        "hours": 1
+      }
+    },
+    {
+      "id": "tortoise-unwell",
+      "species": "tortoise",
+      "pet": "陆龟",
+      "kind": "unwell",
+      "category": "不舒服",
+      "title": "小龟今天没精神",
+      "approved": true,
+      "art": "approved/tortoise-unwell.png",
+      "sha256": "dec41a9c0c0c6a9827c1475dabe11ea38f73a6e14005e9814783d6b8e47506da",
+      "quote": {
+        "cost": 180,
+        "insuranceExample": false,
+        "hours": 3,
+        "energy": -2,
+        "stress": 2
+      }
+    },
+    {
+      "id": "tortoise-social",
+      "species": "tortoise",
+      "pet": "陆龟",
+      "kind": "social",
+      "category": "交友",
+      "title": "慢慢聊成了朋友",
+      "approved": true,
+      "art": "approved/tortoise-social.png",
+      "sha256": "db60ac2aee716ddfd68b1c200e61a412420d35cf1e58c404d50fd9dc1660c5dd",
+      "quote": {
+        "cost": 0,
+        "hours": 3,
+        "energy": -2,
+        "happiness": 4,
+        "stress": -2,
+        "relation": 10,
+        "contacts": 1
+      }
+    },
+    {
+      "id": "tortoise-surprise",
+      "species": "tortoise",
+      "pet": "陆龟",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "title": "慢慢走向你",
+      "approved": true,
+      "art": "approved/tortoise-surprise.png",
+      "sha256": "4db56c14ae9901bcb9085a060f5cd21e1b19c67f3c39cd007ea3de6168c6a142",
+      "quote": {
+        "cost": 0,
+        "hours": 0,
+        "energy": 0,
+        "happiness": 1,
+        "stress": -3
+      }
+    },
+    {
+      "id": "tortoise-accident",
+      "species": "tortoise",
+      "pet": "陆龟",
+      "kind": "accident",
+      "category": "小意外（含受伤）",
+      "title": "小龟撞翻了花盆",
+      "approved": true,
+      "art": "approved/tortoise-accident.png",
+      "sha256": "1889183a10c3a2414fa6a07ffceeb721c47185611640ca1c5ef6838927dc0f49",
+      "quote": {
+        "cost": 50,
+        "hours": 1,
+        "energy": -1,
+        "stress": 1,
+        "medical": false
+      }
+    },
+    {
+      "id": "chameleon-companion",
+      "species": "chameleon",
+      "pet": "变色龙",
+      "kind": "companion",
+      "category": "陪伴",
+      "title": "枝头的小伙伴",
+      "approved": true,
+      "art": "approved/chameleon-companion.png",
+      "sha256": "8b2b174bf7f56ec4a70105321e9ba2e75cf18860184238643f057f21730b5b9b",
+      "quote": {
+        "energy": 1,
+        "happiness": 2,
+        "stress": -4,
+        "cost": 0,
+        "hours": 1
+      }
+    },
+    {
+      "id": "chameleon-unwell",
+      "species": "chameleon",
+      "pet": "变色龙",
+      "kind": "unwell",
+      "category": "不舒服",
+      "title": "枝头的小伙伴蔫了",
+      "approved": true,
+      "art": "approved/chameleon-unwell.png",
+      "sha256": "7d7dc4890b5a38b37888fd114c8e17fdc56fde866b99a2618f23d20a87ec085e",
+      "quote": {
+        "cost": 200,
+        "insuranceExample": false,
+        "hours": 3,
+        "energy": -2,
+        "stress": 2
+      }
+    },
+    {
+      "id": "chameleon-social",
+      "species": "chameleon",
+      "pet": "变色龙",
+      "kind": "social",
+      "category": "交友",
+      "title": "枝头结下的缘分",
+      "approved": true,
+      "art": "approved/chameleon-social.png",
+      "sha256": "c4322140c01c7ad3d905b7b23dc3815cfd567d8dd3fd60b7c6ae810b55741f5b",
+      "quote": {
+        "cost": 0,
+        "hours": 3,
+        "energy": -2,
+        "happiness": 4,
+        "stress": -2,
+        "relation": 10,
+        "contacts": 1
+      }
+    },
+    {
+      "id": "chameleon-surprise",
+      "species": "chameleon",
+      "pet": "变色龙",
+      "kind": "surprise",
+      "category": "小惊喜",
+      "title": "叶间的一抹新色",
+      "approved": true,
+      "art": "approved/chameleon-surprise.png",
+      "sha256": "8637da41c0084ae530deaf901f8cafc02ad14d4aee6cfb519f4a1549539a655d",
+      "quote": {
+        "cost": 0,
+        "hours": 0,
+        "energy": 0,
+        "happiness": 3,
+        "stress": -1
+      }
+    },
+    {
+      "id": "chameleon-accident",
+      "species": "chameleon",
+      "pet": "变色龙",
+      "kind": "accident",
+      "category": "小意外（含受伤）",
+      "title": "栖枝松动了",
+      "approved": true,
+      "art": "approved/chameleon-accident.png",
+      "sha256": "dd5e28a6270be33caa657256968cc048e77bcd6538da3a2afbe7f97d62af1d68",
+      "quote": {
+        "cost": 50,
+        "hours": 1,
+        "energy": -1,
+        "stress": 1,
+        "medical": false
+      }
+    }
+  ],
+  "confirmedWeightRules": {
+    "status": "已按用户确认接入本地并验证，准备上传；发布结果待线上核对",
+    "confirmed": true,
+    "triggerContext": "仅地图生活事件落点，不是所有地图步数或所有地图格子",
+    "petEventChanceWithinLife": 0.2,
+    "categoryWeights": {
+      "companion": 20,
+      "unwell": 20,
+      "social": 20,
+      "surprise": 20,
+      "accident": 20
+    },
+    "categoryProbabilityWhenAllFiveEligible": {
+      "companion": 0.2,
+      "unwell": 0.2,
+      "social": 0.2,
+      "surprise": 0.2,
+      "accident": 0.2
+    },
+    "selectionOrder": [
+      "地图生活事件中先判断是否触发宠物事件",
+      "在可抽类别中按同权选类别",
+      "在该类别实际已养且符合条件的宠物中等概率选一只"
+    ],
+    "ownedPetsOnly": true,
+    "drawCountPerTrigger": 1,
+    "morePetsIncreaseTotalTriggerChance": false,
+    "accidentEligibleSpecies": [
+      "dog",
+      "cat",
+      "tortoise",
+      "chameleon",
+      "gecko",
+      "spider",
+      "crocodile"
+    ],
+    "accidentScope": "七宠各有一张确认的小意外，猫咪为受伤医疗，其余六宠为物品损坏；不套旧版injury仅限猫狗的类别限制，不混用医疗及物损费用。",
+    "unavailableCategories": "五类都可抽时各20%；达到月限或其他条件不符的类别排除后，剩余可抽类别按同权归一。",
+    "pending": [],
+    "runtimeApplied": true,
+    "published": false,
+    "monthlyLimits": {
+      "companion": null,
+      "unwell": 1,
+      "social": 1,
+      "surprise": 1,
+      "accident": 1
+    },
+    "monthlyLimitsConfirmed": true,
+    "monthlyLimitScope": "按游戏月份及类别记录，全部已养宠物共用各类别上限，不按单只宠物分别计次。陪伴没有单独次数上限，仍受地图机会及自由时间约束。",
+    "cooldownReset": "下一个游戏月重新开放，无现实时间冷却。",
+    "limitCountedAt": "沿用抽到卡并成功保存时记录次数，稍后处理保留原卡；保存失败回滚，不占次数。",
+    "accidentSharedLimit": "受伤与物品损坏统一为小意外，每个游戏月合计最多一次。",
+    "saveCompatibility": "接入时保留旧存档及备份，旧月内injury或mishap任一已触发则本月accident名额视为已使用；不重置次数、不追扣、不退款，旧待处理记录需兼容。",
+    "ownershipGateConfirmed": true,
+    "ownershipSource": "存档state.pets中实际已领养且可识别物种的宠物；不以住房插图、选择页选中状态或未完成领养作为拥有依据。",
+    "requiresActualAdoptedPet": true,
+    "unownedSpeciesExcluded": true,
+    "decorativeHousingCorgiCountsAsPet": false,
+    "emptyPetPoolBehavior": "没有实际已领养宠物时，宠物事件不进入抽卡池，走原有生活事件，不显示未养宠物卡。",
+    "ownershipExamples": [
+      {
+        "ownedSpecies": [],
+        "basePetCardCount": 0
+      },
+      {
+        "ownedSpecies": [
+          "dog"
+        ],
+        "basePetCardCount": 5
+      },
+      {
+        "ownedSpecies": [
+          "dog",
+          "cat"
+        ],
+        "basePetCardCount": 10
+      }
+    ],
+    "ownershipExamplesScope": "基础入池资格示例；仍按已确认月限与条件筛选，不代表每次抽取时所有卡均可用。"
+  },
+  "runtimeStatus": "本地V28.11已接入；发布待核实"
+}

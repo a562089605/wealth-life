@@ -1,0 +1,212 @@
+[
+  {
+    "id": "dog-companion",
+    "sourceSha256": "1ba00bff8de40d6891633954892dc4d32dcb12776f73b6a16afbae1775613d62",
+    "art": "assets/pets/events/companion-dog-20261105.webp",
+    "sha256": "77e617b2ca7a984e33de4c27dff2b365023258f93bfefe660d0ca471b9067d24"
+  },
+  {
+    "id": "dog-unwell",
+    "sourceSha256": "3f30e876fe4775a6672574f9cf7a6e8152f216dd5bb17ce058cd56ccd269f625",
+    "art": "assets/pets/events/dog-unwell-20261106.webp",
+    "sha256": "150da6ddea91d2531bce2faf9ee4104c93d621bf18138ddfc658421ed72ffd15"
+  },
+  {
+    "id": "dog-social",
+    "sourceSha256": "2681916671b6afd6cabb0e618c4010b694557645c91758c91d775d416b27c045",
+    "art": "assets/pets/events/dog-social-20261106.webp",
+    "sha256": "93789e2f014c1e7048e740dff2f36a811c7210a4ca85bca24a2bd06d0f0452b0"
+  },
+  {
+    "id": "dog-surprise",
+    "sourceSha256": "5ee3a44f6dabab5b788de5acb5c0b5c64080d8c79659e739cffe6f0b6eb20ad1",
+    "art": "assets/pets/events/dog-surprise-20261106.webp",
+    "sha256": "797c13c908f52e5724d7dd0f05d6cb765c26a35942bb17dcfdcc4e0c3d86a401"
+  },
+  {
+    "id": "dog-accident",
+    "sourceSha256": "e7688b44036c4fe033faef427a12ecf3f886deb8d59c25c5534dd7c087270f92",
+    "art": "assets/pets/events/dog-accident-20261106.webp",
+    "sha256": "272bd34dc0e0eebcd647a4ee10919f31a7cc526411f62be90bddff5eceee9e1f"
+  },
+  {
+    "id": "cat-companion",
+    "sourceSha256": "dc1f4654c2bd9d7b1eb1206893d5acdf6e9991ea385d809c78f9273e599dbcbe",
+    "art": "assets/pets/events/companion-cat-20261105.webp",
+    "sha256": "e789ea735fe7a29cd9224791a451e9bb7ae05466559f4f8eecad349d333a28aa"
+  },
+  {
+    "id": "cat-unwell",
+    "sourceSha256": "0716b3538695f1ae03d6530e2d8fed9f2e1a1c994c6a947bcb2d8224ccbc7bee",
+    "art": "assets/pets/events/cat-unwell-20261106.webp",
+    "sha256": "0bc4d3d1be30dbd4c0d32f2f19167e7b6c52ffba418b19702d44f96fa06b66c7"
+  },
+  {
+    "id": "cat-social",
+    "sourceSha256": "0538d9aa7c64ed800e363e96b9b938e69997bf98f99255d3bad432c22195b0b9",
+    "art": "assets/pets/events/cat-social-20261106.webp",
+    "sha256": "a7c44b5f6e308082060f32a0f7a1eef933b0455feb19c120a27b5849bb1e2195"
+  },
+  {
+    "id": "cat-surprise",
+    "sourceSha256": "c844e39d6688570debccbf4ab1b3c571dc57b33fe4ae3b3e73e2f7f0185fd0b9",
+    "art": "assets/pets/events/cat-surprise-20261106.webp",
+    "sha256": "a2ef80a7cbd8d0293c6f050a539441f70d299b72b3308bdce686a50d9936d1fb"
+  },
+  {
+    "id": "cat-accident",
+    "sourceSha256": "713a8d859c98f8f9765048d529b34345685b0ae49f9791e0b0e46997c475c86e",
+    "art": "assets/pets/events/cat-accident-20261106.webp",
+    "sha256": "801d32c631a65bb61652be0bad57261ceee845b60690467df8f385fbc8a73062"
+  },
+  {
+    "id": "crocodile-companion",
+    "sourceSha256": "ae5650f272f67271d9995bfe2436d947c44c9cccfc880414dfab5e2d8fac729b",
+    "art": "assets/pets/events/companion-crocodile-20261105.webp",
+    "sha256": "51cb1e9a0e21345a9ce91bb72a05679b42faf291b93ca28e21c91973b59cf3e2"
+  },
+  {
+    "id": "crocodile-unwell",
+    "sourceSha256": "6a7ccb765529be65009f24eb8d5766a1171a8ceca9c72a94319de033fe4cdce3",
+    "art": "assets/pets/events/crocodile-unwell-20261106.webp",
+    "sha256": "5457f5c8ad1301116b505ae2c22a2990fe5edf1c988424d252e9b2905be96fa5"
+  },
+  {
+    "id": "crocodile-social",
+    "sourceSha256": "461976c1e0834fe921259458b832d5eb7bc1f0c52c689e70e7ed906754ddf72d",
+    "art": "assets/pets/events/crocodile-social-20261106.webp",
+    "sha256": "c1b87ae4dfaab43df1c6f04059055dbf9c33994a16197a75f765f033a92ba53e"
+  },
+  {
+    "id": "crocodile-surprise",
+    "sourceSha256": "7280018050c02b06ba4b4c841d5ab71ca7c5dcd158dd18fd464b6322fbff0bb6",
+    "art": "assets/pets/events/crocodile-surprise-20261106.webp",
+    "sha256": "2fdc484816c38fdd012a7a162e68071a60fc2d6c4a8ae3fd1094a86050daede3"
+  },
+  {
+    "id": "crocodile-accident",
+    "sourceSha256": "f72af548a43ee4038fe702bc8422f9b921032a3589541673643b2bda24e87130",
+    "art": "assets/pets/events/crocodile-accident-20261106.webp",
+    "sha256": "587d6459fe069f1ee0fa9d63506b792e0488bbc04cd5bb3f9f8fe2c09969b678"
+  },
+  {
+    "id": "gecko-companion",
+    "sourceSha256": "2dd07346ab68c5770bba8f6f0d654bc35ed3b92a9afd2341ebc1feb3457a5f3c",
+    "art": "assets/pets/events/companion-gecko-20261105.webp",
+    "sha256": "78d7444ec1bd5140df5204ff8f2259aa2e5c1eb0d6bfd05025f9b015a8dbcffc"
+  },
+  {
+    "id": "gecko-unwell",
+    "sourceSha256": "0bc72621092b94f5d77970d120a3f6cfe248b48d913dfebb35ed08b2f39464b3",
+    "art": "assets/pets/events/gecko-unwell-20261106.webp",
+    "sha256": "04d7308697ade05959eb13c62120505eb7afa49df60c9d23f079b5f978452bf3"
+  },
+  {
+    "id": "gecko-social",
+    "sourceSha256": "7b0b6308ac19e221fdc080dd69a4bc8410a8f5b4e1f7eb25d719695078fffb6f",
+    "art": "assets/pets/events/gecko-social-20261106.webp",
+    "sha256": "7b269f6354597ea76fb715ef2f98bfb54c25edc376601d7c931e4ed35701a55a"
+  },
+  {
+    "id": "gecko-surprise",
+    "sourceSha256": "a4b7acc6b67c18606e34aeda8f1693c95c0fc8ab40a9d687dd199d2ba4c99f1e",
+    "art": "assets/pets/events/gecko-surprise-20261106.webp",
+    "sha256": "3164a2f5114316aec43afdae00e88a77ca9eac52b0b60c50c5a4b8f85bc95cdc"
+  },
+  {
+    "id": "gecko-accident",
+    "sourceSha256": "8f9d616bab54cb00622c2083d615de593265e0838718d7e4cd29d1626804c8f5",
+    "art": "assets/pets/events/gecko-accident-20261106.webp",
+    "sha256": "d8fcf9fd40aa5b8b16e9f39e2c3cd21a6718d2637d36775a93525b8e16b740bf"
+  },
+  {
+    "id": "spider-companion",
+    "sourceSha256": "65c7944a43558bcddb4d3823b47fbe4314312c5443b40673100fa00d2a96d641",
+    "art": "assets/pets/events/companion-spider-20261105.webp",
+    "sha256": "bd6c46511b4a0088f0a10ce478a16bcb2cf15d2cf5835c3b378e4b1bf56e882b"
+  },
+  {
+    "id": "spider-unwell",
+    "sourceSha256": "f5bb103f88cd4a30a4d334c253735355aff0fd2369af055db69eb42619800452",
+    "art": "assets/pets/events/spider-unwell-20261106.webp",
+    "sha256": "e0a39723297c02f2c29d0a9628b3301905e6a94ebc10365314fea12db3b9f9b8"
+  },
+  {
+    "id": "spider-social",
+    "sourceSha256": "c61522a5adfb5335e1ae1478020847c10032fe599dffa9e83fe66f2c10d4a7fc",
+    "art": "assets/pets/events/spider-social-20261106.webp",
+    "sha256": "43bc084ce6085df5b5ed57a00958eafae63cc3bfb04a536dbe7e78abec43e99a"
+  },
+  {
+    "id": "spider-surprise",
+    "sourceSha256": "476e75a27a730d6b666cade49386b72dddd314283244b46b26b079d6734f1451",
+    "art": "assets/pets/events/spider-surprise-20261106.webp",
+    "sha256": "9d2c66f9da95a8e29d61f7ae4ab16df09681b04cf901e0ff730b753adafae616"
+  },
+  {
+    "id": "spider-accident",
+    "sourceSha256": "38f63511d755c1f67c38af8d100b846a040dff45630cd3ebd429a76a2588353b",
+    "art": "assets/pets/events/spider-accident-20261106.webp",
+    "sha256": "1a1877f97978adb8f7a05fc5c2e277496570e3e880fb37c8cd5e4856cdf3d562"
+  },
+  {
+    "id": "tortoise-companion",
+    "sourceSha256": "ebae086dba94d00869a599604056253126686c3e61e7ba03952d391f7e3afa82",
+    "art": "assets/pets/events/companion-tortoise-20261105.webp",
+    "sha256": "8b04a669ddfabdaac207af88d34cfde122ff8f4dc0992884d2ba956a61f0e4b2"
+  },
+  {
+    "id": "tortoise-unwell",
+    "sourceSha256": "dec41a9c0c0c6a9827c1475dabe11ea38f73a6e14005e9814783d6b8e47506da",
+    "art": "assets/pets/events/tortoise-unwell-20261106.webp",
+    "sha256": "2814f87190e05c7fe4b07cd45eb370112da6764965e1460dd60dbef316ebd248"
+  },
+  {
+    "id": "tortoise-social",
+    "sourceSha256": "db60ac2aee716ddfd68b1c200e61a412420d35cf1e58c404d50fd9dc1660c5dd",
+    "art": "assets/pets/events/tortoise-social-20261106.webp",
+    "sha256": "8d09c9f17823f905205f7584e6ddef9200556be9f5b37dc0d363c1fe4c2b26d9"
+  },
+  {
+    "id": "tortoise-surprise",
+    "sourceSha256": "4db56c14ae9901bcb9085a060f5cd21e1b19c67f3c39cd007ea3de6168c6a142",
+    "art": "assets/pets/events/tortoise-surprise-20261106.webp",
+    "sha256": "7a6f15daccb8733eac1d4afb39ff39dc64d79301d9657effe04c3ae172cf0485"
+  },
+  {
+    "id": "tortoise-accident",
+    "sourceSha256": "1889183a10c3a2414fa6a07ffceeb721c47185611640ca1c5ef6838927dc0f49",
+    "art": "assets/pets/events/tortoise-accident-20261106.webp",
+    "sha256": "ac244ac5b0255e0ce888591cf1984bed76e539588ba46c1d161a3b4edf265749"
+  },
+  {
+    "id": "chameleon-companion",
+    "sourceSha256": "8b2b174bf7f56ec4a70105321e9ba2e75cf18860184238643f057f21730b5b9b",
+    "art": "assets/pets/events/companion-chameleon-20261105.webp",
+    "sha256": "c9cef44784a1e08591f64bf74a38fe6e2a1db72e7087a2a3302c176b5f5539c6"
+  },
+  {
+    "id": "chameleon-unwell",
+    "sourceSha256": "7d7dc4890b5a38b37888fd114c8e17fdc56fde866b99a2618f23d20a87ec085e",
+    "art": "assets/pets/events/chameleon-unwell-20261106.webp",
+    "sha256": "660254da86f7ee8239db36465956670c4e7826866fc9e82771b40f62052744ba"
+  },
+  {
+    "id": "chameleon-social",
+    "sourceSha256": "c4322140c01c7ad3d905b7b23dc3815cfd567d8dd3fd60b7c6ae810b55741f5b",
+    "art": "assets/pets/events/chameleon-social-20261106.webp",
+    "sha256": "17934fe038aa05c4794fd951c22ebcd6a190d0c1b1f482d8b9984064f65fdd84"
+  },
+  {
+    "id": "chameleon-surprise",
+    "sourceSha256": "8637da41c0084ae530deaf901f8cafc02ad14d4aee6cfb519f4a1549539a655d",
+    "art": "assets/pets/events/chameleon-surprise-20261106.webp",
+    "sha256": "45618a1a74b90bc417e50a0c72b6bc348743c0beb2b537f796f5cf64257a24f5"
+  },
+  {
+    "id": "chameleon-accident",
+    "sourceSha256": "dd5e28a6270be33caa657256968cc048e77bcd6538da3a2afbe7f97d62af1d68",
+    "art": "assets/pets/events/chameleon-accident-20261106.webp",
+    "sha256": "abf09dd483d925253c206520a64c53b98e0529a975afe27c6e8b59c92e0e91ec"
+  }
+]
