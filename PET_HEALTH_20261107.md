@@ -40,4 +40,4 @@
 
 ## 发布
 
-功能先保存本地提交，再实际上传原main并核对Cloudflare回执；成功记录及线上文件核验另存发布证据，不把本说明本身视为发布完成。
+功能提交`81cf6a6ef8d18750a3281b0f95760c2802372b5d`已成功push原main，远端追踪一致。Cloudflare实际check-run为success：[发布记录](https://github.com/a562089605/wealth-life/runs/128278130511)。线上`pet-health.js?v=20261107-pethealth1`已用curl取回，与本地完整字节一致；sha256和范围见`qa/pet-health-production-20261107.json`。不将单文件核验说成线上全部文件/真机/PWA验收。

@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-07T02:52:31.106381+00:00",
+  "functionalCommit": "81cf6a6ef8d18750a3281b0f95760c2802372b5d",
+  "branch": "main",
+  "cloudflareConclusion": "success",
+  "cloudflareRun": "https://github.com/a562089605/wealth-life/runs/128278130511",
+  "url": "https://wealth-life.a562089605.workers.dev",
+  "onlineFile": {
+    "path": "pet-health.js?v=20261107-pethealth1",
+    "bytes": 2241,
+    "sha256": "bbb3ed6e0a6bafcac7c8c0056d0b29d20d3cf988b6590d90584aa07737dffc9b",
+    "matchesLocal": true
+  },
+  "scope": "Health module verified byte-for-byte; not an assertion that every production asset or real iPhone/PWA was tested."
+}
