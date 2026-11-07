@@ -34,4 +34,4 @@
 
 ## 发布
 
-本地实现与验证已完成，待原main上传、Cloudflare成功和实际线上运行资源核对后记录。
+功能提交`2e08ef314c6e2214076df1135b627374d6f23ec9`已push原main，[Cloudflare成功](https://github.com/a562089605/wealth-life/runs/128321414691)。首页、core.js、room.js、pet-adoption-entry.js、pet-health.js、pet-pages.js和sw.js共7份线上改动运行资源，实际curl逐字节匹配本地。SHA与范围保留在qa/pet-deadline-production-20261107.json。不把7文件核验当作全量真机/完整离线验收。

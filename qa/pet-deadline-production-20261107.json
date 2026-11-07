@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-11-07T06:03:17.400540+00:00",
+  "functionalCommit": "2e08ef314c6e2214076df1135b627374d6f23ec9",
+  "files": [
+    {
+      "file": "index.html",
+      "url": "https://wealth-life.a562089605.workers.dev/",
+      "bytes": 128570,
+      "sha256": "d1fc8126bc3b8325a673c053db3bf0024059467db4f720a0134e76d60fffe5aa",
+      "matchesLocal": true
+    },
+    {
+      "file": "core.js",
+      "url": "https://wealth-life.a562089605.workers.dev/core.js?v=20261107-petdeadline1",
+      "bytes": 36808,
+      "sha256": "2ef63a6efa0ac2ada2bc5d312708f86dee60e45b42dee23eb9032da5e3662c8d",
+      "matchesLocal": true
+    },
+    {
+      "file": "room.js",
+      "url": "https://wealth-life.a562089605.workers.dev/room.js?v=20261107-petdeadline1",
+      "bytes": 9112,
+      "sha256": "8afe0bca4cb7f8b769736c55eb1f981b76df30104de930f0ca91a6849999bd8e",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-adoption-entry.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-adoption-entry.js?v=20261107-petdeadline1",
+      "bytes": 8761,
+      "sha256": "50fbffe3df1f0c2d833e1eee5f6715b8032730a55803d71f9c25a50de79a4574",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-health.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-health.js?v=20261107-petdeadline1",
+      "bytes": 7206,
+      "sha256": "7caa7c4c1814cdd4dcd47804d69d47c90f46d26342fbdf77e8ea9b4f5a49febd",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-pages.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-pages.js?v=20261107-petdeadline1",
+      "bytes": 34846,
+      "sha256": "51dfd5333779b2adc2f4ce53b099bfdd047caf2807149ef27e9d24c5b2f9bcde",
+      "matchesLocal": true
+    },
+    {
+      "file": "sw.js",
+      "url": "https://wealth-life.a562089605.workers.dev/sw.js",
+      "bytes": 11288,
+      "sha256": "f9175e68e00ee8ad1027983a40791d569344fec95b32b0e9c540b253c25ad433",
+      "matchesLocal": true
+    }
+  ],
+  "allMatch": true,
+  "cloudflareRun": "https://github.com/a562089605/wealth-life/runs/128321414691",
+  "cloudflareConclusion": "success",
+  "scope": "Seven changed live runtime resources byte-matched; isolated local Chromium lifecycle, bank, save rollback and reload tests separately recorded. No real-iPhone/full-offline claim."
+}
