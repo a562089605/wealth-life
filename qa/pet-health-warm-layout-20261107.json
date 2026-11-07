@@ -1,0 +1,31 @@
+{
+  "layouts": [
+    {
+      "width": 320,
+      "insideArt": true,
+      "belowName": true,
+      "noFeeOverlap": true
+    },
+    {
+      "width": 375,
+      "insideArt": true,
+      "belowName": true,
+      "noFeeOverlap": true
+    },
+    {
+      "width": 390,
+      "insideArt": true,
+      "belowName": true,
+      "noFeeOverlap": true
+    },
+    {
+      "width": 1280,
+      "insideArt": true,
+      "belowName": true,
+      "noFeeOverlap": true
+    }
+  ],
+  "healthClickReadonly": true,
+  "lowRiskVisible": true,
+  "errors": []
+}

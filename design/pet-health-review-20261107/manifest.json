@@ -35,8 +35,18 @@
       "file": "health20-in-card-preview.png",
       "description": "最新：原图内健康20及75%风险提示",
       "sha256": "a1ee199593a6e9e40a94d580c646b3de673aacf936bfa0abd47541ee58e4a391"
+    },
+    {
+      "file": "health80-warm-in-card-preview.png",
+      "description": "最新暖黄色健康条：奶油黄纸带、蜂蜜金填充、棕色文字",
+      "sha256": "0861a458f8c0e0368734bd592cf5f9c81eb0abf8f25bc2617648a8e2dae585df"
+    },
+    {
+      "file": "health20-warm-in-card-preview.png",
+      "description": "最新暖黄色健康条：奶油黄纸带、蜂蜜金填充、棕色文字",
+      "sha256": "e413aecf845a76c1d4429253e96941b1ff43752e782a64e011b3f0e3ca0c983e"
     }
   ],
-  "latestPagePreview": "health80-in-card-preview.png",
-  "layout": "native health strip inside illustration beneath pet name; existing art preserved"
+  "latestPagePreview": "health80-warm-in-card-preview.png",
+  "layout": "warm yellow painted health strip inside illustration beneath pet name"
 }
