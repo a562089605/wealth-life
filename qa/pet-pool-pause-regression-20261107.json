@@ -1,0 +1,16 @@
+{
+  "baseCommit": "17ed041193cb5e96ced3ab4ee3f60eab2a491a3a",
+  "localIsolatedContexts": true,
+  "results": [
+    {
+      "file": "qa/pet-pool-pause-browser.cjs",
+      "status": 0,
+      "output": "PASS actual map UI: five cat cards while dog awaits treatment, latched/full-pool fallback, failed-save pause, paid4h treatment/reload restore and dog drawn again.\n"
+    },
+    {
+      "file": "qa/pet-events-browser.cjs",
+      "status": 0,
+      "output": "PASS Chromium pet35: all approved art and effects, deferred payment, save rollback/retry, pending reload, insurer-adjusted medical prices, property exclusion, zero-hour surprise, no-pet fallback and phone/desktop layouts.\n"
+    }
+  ]
+}

@@ -25,7 +25,8 @@
   return ids.some(k=>flags[s.month+':'+k])||Object.values(s.petMapEvents?.records||{}).some(r=>r.month===s.month&&r.status!=='legacy'&&ids.includes(r.id));
  };
  function weighted(w,random){const entries=Object.entries(w).filter(([,v])=>v>0);let n=random()*entries.reduce((t,[,v])=>t+v,0);for(const [id,v]of entries){n-=v;if(n<0)return id;}return entries.at(-1)?.[0];}
- function choices(s,id,free){return (s.pets||[]).map((p,index)=>({p,index,sp:species(p)})).filter(x=>x.sp&&(id!=='injury'||['dog','cat'].includes(x.sp))&&(id==='companion'||!seen(s,category(id)))&&(!['companion','social'].includes(id)||free>=(id==='social'?3:1)));}
+ const ready=p=>Health?Health.value(p)>0&&!Health.activeVet(p):(Number.isFinite(p.health)?p.health:80)>0&&!(p.vetCases||[]).some(r=>r.status==='pending');
+ function choices(s,id,free){return (s.pets||[]).map((p,index)=>({p,index,sp:species(p)})).filter(x=>x.sp&&ready(x.p)&&(id!=='injury'||['dog','cat'].includes(x.sp))&&(id==='companion'||!seen(s,category(id)))&&(!['companion','social'].includes(id)||free>=(id==='social'?3:1)));}
  function policy(s,p){const individual=p.insuranceKey&&s.insurance?.[p.insuranceKey],combined=s.insurance?.pet;
   if(Insurance)return Insurance.medicalPolicy(s,p);
   return [individual,combined].find(x=>x?.active&&Number.isFinite(x.coverage)&&x.coverage>=0&&x.coverage<=1&&(!Number.isInteger(x.startMonth)||x.startMonth<=s.month));}

@@ -1,0 +1,11 @@
+{
+  "isolatedSlot": 924,
+  "fiveKindsExcludeWaitingPet": true,
+  "latchedCaseExcluded": true,
+  "allWaitingFallback": true,
+  "failedTreatmentStaysPaused": true,
+  "successfulTreatmentRestores": true,
+  "refreshRestoresPool": true,
+  "restoredDogActuallyDrawn": true,
+  "errors": []
+}
