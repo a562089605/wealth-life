@@ -43,18 +43,17 @@
   const ctx=panel(c.name+'的资料'),e=canvas(ctx,'detail-actions');ctx.node.classList.add('pet-detail-overlay');
   if(spec(p)!=='dog'){const hero=box(e,'',0,9,100,25.4,'pet-detail-hero');hero.append(portrait(asset('success-'+spec(p))));}
   box(e,petName(p)+' · '+c.name,22,35.1,56,4.2,'pet-name');
-  box(e,needsVet(p)?'需要就医，请查看健康状况':due(p,'Clean').length?'清洁护理到期':due(p,'Annual').length?'年度体检到期':'目前没有到期照护',20,39.8,61,4.1,'pet-status pet-detail-care-status');
   hit(ctx,e,'每月费用',4,44.5,92,9.5,()=>{if(validPet(ctx,p,index))openBasicFees(index);});
   hit(ctx,e,'日常照顾',4,54.7,92,9.3,()=>{if(validPet(ctx,p,index))openClean(index);});
   hit(ctx,e,'年度体检',4,64.9,92,9.3,()=>{if(validPet(ctx,p,index))openAnnual(index);});
   hit(ctx,e,'保险',4,74.8,92,9.3,()=>{if(validPet(ctx,p,index))openPetInsurance(index);});
   hit(ctx,e,'返回我的宠物',6,86.8,88,6.4,openOverview);
   hit(ctx,e,'返回房屋',26,94.3,49,4.4,room);
-  hit(ctx,e,'返回我的宠物',2,1,13,7,openOverview);healthCard(ctx,p,index);focusFirst(ctx);
+  hit(ctx,e,'返回我的宠物',2,1,13,7,openOverview);healthCard(ctx,p,index,e);focusFirst(ctx);
  }
- function healthCard(ctx,p,index){const b=action(ctx,ctx.node,'',()=>{if(validPet(ctx,p,index))openHealth(index);});b.className='pet-health-card'+(needsVet(p)?' pet-health-critical':healthValue(p)<50?' pet-health-warning':'');b.setAttribute('aria-label','查看'+petName(p)+'的健康状况');
-  const line=textNode('span','','pet-health-card-line');line.append(textNode('span','健康度'),textNode('strong',healthValue(p)+' / 100','pet-health-value pet-health-status'));b.append(line);
-  const meter=textNode('span','','pet-health-meter'),fill=textNode('span','','pet-health-fill');meter.setAttribute('role','progressbar');meter.setAttribute('aria-label','健康度');meter.setAttribute('aria-valuemin','0');meter.setAttribute('aria-valuemax','100');meter.setAttribute('aria-valuenow',String(healthValue(p)));fill.style.width=healthValue(p)+'%';meter.append(fill);b.append(meter,textNode('small',healthLabel(p)+' · '+(needsVet(p)?'查看治疗费用':'查看健康与风险')+' ›'));
+ function healthCard(ctx,p,index,parent){const b=action(ctx,parent,'',()=>{if(validPet(ctx,p,index))openHealth(index);});b.className='pet-health-card'+(needsVet(p)?' pet-health-critical':healthValue(p)<50?' pet-health-warning':'');b.setAttribute('aria-label','查看'+petName(p)+'的健康状况');
+  const line=textNode('span','','pet-health-card-line');line.append(textNode('span','健康度'),textNode('strong',healthValue(p)+' / 100','pet-health-value pet-health-status'),textNode('small',needsVet(p)?'待就医':healthValue(p)<50?healthLabel(p).replace('生病风险档位 ','生病'):due(p,'Clean').length?'护理到期':due(p,'Annual').length?'体检到期':'状态平稳'));const painted=textNode('span','','pet-health-painted');painted.append(line);
+  const meter=textNode('span','','pet-health-meter'),fill=textNode('span','','pet-health-fill');meter.setAttribute('role','progressbar');meter.setAttribute('aria-label','健康度');meter.setAttribute('aria-valuemin','0');meter.setAttribute('aria-valuemax','100');meter.setAttribute('aria-valuenow',String(healthValue(p)));fill.style.width=healthValue(p)+'%';meter.append(fill);painted.append(meter);b.append(painted);
  }
  function openHealth(index){const p=state.pets?.[index];if(!p||typeof PetHealth==='undefined')return openOverview();const ctx=panel('宠物健康状况'),paper=plain(ctx,petName(p)+' · 健康状况'),q=PetHealth.quoteVet(state,index);
   paper.append(textNode('p','健康度 '+healthValue(p)+' / 100','pet-health-heading'),textNode('p',healthLabel(p),'pet-health-current'));

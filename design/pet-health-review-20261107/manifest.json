@@ -25,6 +25,18 @@
       "file": "vet50-preview.png",
       "description": "健康0待就医，治疗1500/保险750/自付750",
       "sha256": "267e883f7d88c278454c750e92223ad426fc7b68f75f6060d2f97c2e588e15db"
+    },
+    {
+      "file": "health80-in-card-preview.png",
+      "description": "最新：健康80条置于原图名字下方的手绘笔刷区域",
+      "sha256": "59976951b305c19400f566870d7b1739a169eaae60491304c4b17294bc4f2b2a"
+    },
+    {
+      "file": "health20-in-card-preview.png",
+      "description": "最新：原图内健康20及75%风险提示",
+      "sha256": "a1ee199593a6e9e40a94d580c646b3de673aacf936bfa0abd47541ee58e4a391"
     }
-  ]
+  ],
+  "latestPagePreview": "health80-in-card-preview.png",
+  "layout": "native health strip inside illustration beneath pet name; existing art preserved"
 }
