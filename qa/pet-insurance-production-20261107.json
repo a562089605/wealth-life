@@ -1,0 +1,77 @@
+{
+  "date": "2026-11-07T02:06:44.578523+00:00",
+  "commit": "c129e377c41c6eb745e0c82e1e79d8404809fde6",
+  "url": "https://wealth-life.a562089605.workers.dev/",
+  "cloudflareRun": "https://github.com/a562089605/wealth-life/runs/128265881650",
+  "initialPythonProbe": [
+    {
+      "path": "index.html",
+      "error": "HTTP Error 403: Forbidden",
+      "matchesLocal": false
+    },
+    {
+      "path": "core.js",
+      "error": "HTTP Error 403: Forbidden",
+      "matchesLocal": false
+    },
+    {
+      "path": "flow.js",
+      "error": "HTTP Error 403: Forbidden",
+      "matchesLocal": false
+    },
+    {
+      "path": "pet-insurance.js",
+      "error": "HTTP Error 403: Forbidden",
+      "matchesLocal": false
+    },
+    {
+      "path": "pet-pages.js",
+      "error": "HTTP Error 403: Forbidden",
+      "matchesLocal": false
+    },
+    {
+      "path": "pet-pages.css",
+      "error": "HTTP Error 403: Forbidden",
+      "matchesLocal": false
+    },
+    {
+      "path": "pet-event-cards.js",
+      "error": "HTTP Error 403: Forbidden",
+      "matchesLocal": false
+    },
+    {
+      "path": "pet-events.js",
+      "error": "HTTP Error 403: Forbidden",
+      "matchesLocal": false
+    },
+    {
+      "path": "pet-events-ui.js",
+      "error": "HTTP Error 403: Forbidden",
+      "matchesLocal": false
+    },
+    {
+      "path": "sw.js",
+      "error": "HTTP Error 403: Forbidden",
+      "matchesLocal": false
+    }
+  ],
+  "published": true,
+  "githubMainReadback": "c129e377c41c6eb745e0c82e1e79d8404809fde6",
+  "cloudflareConclusion": "success",
+  "curlProbe": {
+    "url": "https://wealth-life.a562089605.workers.dev/pet-insurance.js?v=20261107-petinsurance2",
+    "status": 200,
+    "contentLength": 5844,
+    "observedMonthly": {
+      "dog": 10,
+      "cat": 30,
+      "tortoise": 8,
+      "chameleon": 10,
+      "gecko": 5,
+      "spider": 5,
+      "crocodile": 30
+    },
+    "fullByteComparison": false
+  },
+  "note": "Python bulk probes403; later curl normal versioned insurance script HTTP200. Do not claim all files byte-verified."
+}

@@ -1,0 +1,44 @@
+{
+  "states": [
+    {
+      "readonly": true,
+      "status": "未投保"
+    },
+    {
+      "readonly": true,
+      "status": "已投保"
+    },
+    {
+      "readonly": true,
+      "status": "未投保"
+    },
+    {
+      "readonly": true,
+      "status": "待生效"
+    },
+    {
+      "readonly": true,
+      "status": "已投保"
+    }
+  ],
+  "stopped": [
+    "dog",
+    "cat",
+    "tortoise",
+    "chameleon",
+    "gecko",
+    "spider",
+    "crocodile"
+  ],
+  "viewports": [
+    320,
+    375,
+    390,
+    1280
+  ],
+  "premium": 10,
+  "otherPremiumsRetained": 220,
+  "rollbackAndReload": true,
+  "monthlyFeePaidOnce": true,
+  "errors": []
+}

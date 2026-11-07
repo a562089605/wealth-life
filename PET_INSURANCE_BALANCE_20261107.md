@@ -39,9 +39,11 @@
 - `qa/pet-insurance-pages.test.cjs` 与现有DOM专项：七宠原保险插图和动态新费用；投保、取消停保、失败重试、停保下一月显示、换存档后旧按钮失效、共用旧合同提示。未批量重画。
 - 54套Node检查51通过，剩余3项为原V28.10已复现的`coffee-rules`、`opening-state`、`shift-lead`失败；未修改其断言隐藏问题。当前原始结果：`qa/pet-insurance-balance-node-results-20261107.json`。
 - 保留11月6日原审计数据。本轮受限地图模型结果另存`qa/pet-insurance-balance-results-20261107.json`，108,000游戏月，沿用原24格路线、20%宠物门槛、五类同权及共享月限，不是完整人生长期验收。单宠模拟年均医疗赔付约为年保费55%–72%；猫狗同保约63%，七宠同保约69%，用于检查风险保障的吸引力，不承诺玩家每年回本。
-- 当前Chromium实际启动仍因`setsockopt EPERM`/`SIGTRAP`失败，不能把VM/DOM称为真实浏览器验收。云桌面能力声明为enabled、状态unknown，未提供可调用的桌面js/NodeREPL工具；环境ID为`ccarenv_b64_Y2NhcmVudl9hMTE3ZTNiZGNlMjg4MTkxODY3N2NlMGQzNmExMTkzOA`。真实iPhone/PWA、完整离线及完整人生长期平衡仍未验证。
+- 默认沙箱Chromium最初因`setsockopt EPERM`失败。为检查命令补充网络权限、在相同权限下启动隔离本地服务器后，真实Chromium复跑通过：七宠插图解码/新保费/逐宠投保/下月停保，保存失败回滚重试、当前月保障保留、下一月终止、刷新读档、月费去重和320/375/390/1280宽度入口；无页面脚本错误。结果`qa/pet-insurance-browser-results.json`。测试使用本地隔离909槽位，没有读取或改写玩家线上存档。测试夹具修正了保存同步前取快照、刷新后丢失临时基线变量的两处问题，未为此修改游戏规则。真实iPhone/PWA、完整离线及完整人生长期平衡仍未验证。
 - 脚本/样式查询版本和SW缓存已同步更新为20261107-petinsurance2，所有预缓存路径须通过本地完整性检查；原存档不属于SW缓存，不重置。
 
 ## 发布记录
 
-实现先保存本地提交，再实际核对远端main/Cloudflare成功记录；不能仅凭本文宣称上线。此前核实main为61e4561（V28.10），本地V28.11的已确认素材、35卡、月费/保险及本次调整尚待上传。本轮发布结果另据实际工具回执记录。
+功能提交`c129e377c41c6eb745e0c82e1e79d8404809fde6`已通过`git push origin main`成功上传，远端main实际读回一致；包含此前V28.11确认的35卡、月费/年度体检/保险页面及本次平衡调整。Cloudflare实际check-run为success：[发布记录](https://github.com/a562089605/wealth-life/runs/128265881650)。
+
+线上`pet-insurance.js?v=20261107-petinsurance2`经curl实际返回HTTP200，可见本轮新保费10/30/8/10/5/5/30及实现。Python urllib批量探测收到403，不能称为线上全量逐字节核验已通过。记录见`qa/pet-insurance-production-20261107.json`。旧Mac目录仍不可访问。

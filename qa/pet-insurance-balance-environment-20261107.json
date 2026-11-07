@@ -5,10 +5,9 @@
   "desktopObservedState": "unknown",
   "desktopJsToolAvailable": false,
   "chromiumLaunchAttempted": true,
-  "chromiumLaunchSucceeded": false,
-  "chromiumError": "setsockopt: Operation not permitted (1); Chromium process exits SIGTRAP",
+  "chromiumLaunchSucceeded": true,
   "networkPolicyReported": "unrestricted / enforced / connected",
-  "productionFetchSucceeded": false,
+  "productionFetchSucceeded": true,
   "productionCurlError": "Failed to connect to proxy port 8080",
   "baselineMain": "61e4561af6f58556e39d93eab5be88040a6a3200",
   "baselineCloudflareRun": "https://github.com/a562089605/wealth-life/runs/127538459437",
@@ -18,8 +17,14 @@
     "htmlScriptOrStylesNotCached": 0
   },
   "limitations": [
-    "Real current browser/iPhone Safari/PWA not validated",
+    "Real iPhone Safari/PWA not validated",
     "Full offline and full-life long-run balance not validated",
     "Original Mac checkout inaccessible"
-  ]
+  ],
+  "defaultSandboxChromiumError": "setsockopt: Operation not permitted (1); Chromium process exits SIGTRAP",
+  "resolution": "with_additional_permissions network for browser and test HTTP server",
+  "actualBrowserSuitePassed": true,
+  "productionVerifiedScope": "curl HTTP200 insurance script with approved new price table; Python bulk probe403, not a full byte comparison",
+  "publishedFunctionalCommit": "c129e377c41c6eb745e0c82e1e79d8404809fde6",
+  "cloudflareRun": "https://github.com/a562089605/wealth-life/runs/128265881650"
 }
