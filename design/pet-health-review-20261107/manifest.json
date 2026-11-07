@@ -6,8 +6,8 @@
     "height": 844
   },
   "rulesConfirmed": true,
-  "pageReview": "pending-user-view",
-  "productionUnchanged": true,
+  "pageReview": "confirmed-by-user",
+  "productionUnchanged": false,
   "productionBaseline": "f68dc11cd4415a7c0c384ce5375021dbac6e418b",
   "runtimeArtwork": "existing approved seven-pet assets unchanged",
   "files": [
@@ -48,5 +48,8 @@
     }
   ],
   "latestPagePreview": "health80-warm-in-card-preview.png",
-  "layout": "warm yellow painted health strip inside illustration beneath pet name"
+  "layout": "warm yellow painted health strip inside illustration beneath pet name",
+  "publishedFunctionalCommit": "f5e7485b957b8376abe3c29d52e0b0f209fe7872",
+  "cloudflareRun": "https://github.com/a562089605/wealth-life/runs/128301001158",
+  "publicationEvidence": "qa/pet-warm-release-20261107.json"
 }
