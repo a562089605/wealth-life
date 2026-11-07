@@ -24,4 +24,4 @@ pet-pages.js在待就医治疗说明中增加暂停及恢复提示。原治疗�
 
 ## 发布
 
-本地实现与验证已完成，待原main上传、Cloudflare成功与线上改动运行资源核对后记录。
+功能提交`3a0058844742ee83be16b49439daa1ca90c924ed`已上传原main，[Cloudflare成功](https://github.com/a562089605/wealth-life/runs/128324684147)。实际curl首页、pet-events.js、pet-pages.js、sw.js四份改动运行资源，全部与本地字节一致；SHA与范围qa/pet-pool-pause-production-20261107.json。
