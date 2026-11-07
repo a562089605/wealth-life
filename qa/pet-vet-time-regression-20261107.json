@@ -1,0 +1,16 @@
+{
+  "baseCommit": "5dca3614ca83ba118e826d99e32ff22e0c6a0c23",
+  "localIsolatedContexts": true,
+  "results": [
+    {
+      "file": "qa/pet-vet-browser.cjs",
+      "status": 0,
+      "output": "PASS actual health80/20 and treatment UI, phone visibility, tiers, seven prices and 4/3/6-hour budgets, insufficient/stale-time refusal, exact remaining time, shared cleaning budget, capped50, save rollback/retry and reload once.\n"
+    },
+    {
+      "file": "qa/pet-health-browser.cjs",
+      "status": 0,
+      "output": "PASS health UI, skippable cleaning reminder/mandatory fees, care and full monthly save failure rollback/retry, gain/loss/reload, old-slot backup and layouts.\n"
+    }
+  ]
+}

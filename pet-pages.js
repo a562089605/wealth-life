@@ -59,10 +59,11 @@
   paper.append(textNode('p','健康度 '+healthValue(p)+' / 100','pet-health-heading'),textNode('p',healthLabel(p),'pet-health-current'));
   const tiers=document.createElement('dl');tiers.className='pet-health-tiers';for(const [range,meaning]of [['50–100','常规生病风险'],['31–49','生病事件占比50%'],['1–30','生病事件占比75%'],['0','需要就医，治疗后恢复80']])tiers.append(textNode('dt',range),textNode('dd',meaning));paper.append(tiers);
   paper.append(textNode('p','生病占比按该宠物可抽事件计算，仍受每月次数上限限制。清洁护理每次恢复20，上限100。'));
-  if(q){paper.append(textNode('h3','疏忽照护治疗'));const bill=document.createElement('dl');bill.className='pet-health-tiers';for(const [label,v]of [['治疗总费',priceText(q.total)],['保险报销'+Math.round(q.coverage*100)+'%',priceText(q.insurancePaid)],['实际自付',priceText(q.due)],['治疗后健康','80 / 100']])bill.append(textNode('dt',label),textNode('dd',v));paper.append(bill,textNode('p','疏忽照护治疗保险最多赔付50%。需先完成治疗，再安排清洁护理。'));
-   const status=message(paper);action(ctx,paper,'确认治疗 · '+priceText(q.due),b=>{if(paying||!validPet(ctx,p,index))return;paying=true;b.disabled=true;const result=PetHealth.confirmVet(state,index,q.token,()=>{backup();return save();});paying=false;
-    if(!result.ok){b.disabled=false;status.textContent=result.reason==='cash'?'现金不足，尚未治疗。':'暂未完成，费用和健康均未结算，请重试。';return;}render();openDetail(index);
-   },state.cash<q.due);
+  if(q){paper.append(textNode('h3','疏忽照护治疗'));const bill=document.createElement('dl');bill.className='pet-health-tiers';for(const [label,v]of [['治疗总费',priceText(q.total)],['保险报销'+Math.round(q.coverage*100)+'%',priceText(q.insurancePaid)],['实际自付',priceText(q.due)],['本人自由时间',q.hours+' 小时'],['治疗后健康','80 / 100']])bill.append(textNode('dt',label),textNode('dd',v));paper.append(bill,textNode('p','疏忽照护治疗保险最多赔付50%。需先完成治疗，再安排清洁护理。'));
+   const status=message(paper);action(ctx,paper,'确认治疗 · '+priceText(q.due),b=>{if(paying||!validPet(ctx,p,index))return;paying=true;b.disabled=true;const result=PetHealth.confirmVet(state,index,q.token,()=>{backup();return save();},{free:currentCareerTime().free});paying=false;
+    if(!result.ok){b.disabled=false;status.textContent=result.reason==='cash'?'现金不足，尚未治疗。':result.reason==='time'?'自由时间不足，尚未治疗。':'暂未完成，请重试。';return;}render();openDetail(index);
+   },state.cash<q.due||currentCareerTime().free<q.hours);
+   if(currentCareerTime().free<q.hours)status.textContent='需要'+q.hours+'小时自由时间，当前剩余'+currentCareerTime().free+'小时。';
    if(state.cash<q.due){status.textContent='现金不足，可先筹款。';action(ctx,paper,'查看筹款方式',()=>{close();showFundingOptions(q.due,()=>{if(state===ctx.owner&&slot===ctx.chosenSlot&&state.month===ctx.month)openHealth(index);});});}
   }
   action(ctx,paper,'前往日常照顾',()=>openClean(index));action(ctx,paper,'返回宠物资料',()=>openDetail(index));focusFirst(ctx);
