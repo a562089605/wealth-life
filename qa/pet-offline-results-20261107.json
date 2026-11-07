@@ -1,0 +1,1464 @@
+{
+  "baseCommit": "6d20bdf5793df9f12771f4fe0d966f0f27fa4739",
+  "scope": "Desktop Chromium; real service worker and persistent disk cache, source HTTP server stopped, offline browser. Controlled fixture dates and funds, native actions; not iPhone/PWA install or long-term balance.",
+  "steps": [
+    "offline reload and uncached origin failure",
+    "all231 precached URLs readable with server stopped",
+    "all seven adoptions, prepaid month and failed-save retry offline",
+    "all seven insurance pages and shared14 monthly premium offline",
+    "native monthly settlement0to1 and all seven paid-once monthly fee pages",
+    "closed-browser offline restart restores slot1 without duplicate payments",
+    "seven offline cleaning pages, self/pro methods and atomic retry",
+    "seven offline annual exams and save retry",
+    "all35 offline map cards, actual effects, original artwork and pending reload",
+    "offline bank loan and50% zero-health treatment restores pool",
+    "offline deadline expiry, saved death notice and memorial history",
+    "final offline browser restart restores original main slot and seven paid receipts"
+  ],
+  "pageErrors": [],
+  "failedAssets": [],
+  "coldRestarts": 2,
+  "cache": {
+    "name": "wealth-life-v28.11-spider120-20261107",
+    "active": "activated",
+    "count": 231,
+    "urls": [
+      "http://127.0.0.1:38193/pet-insurance.js?v=20261107-petvet1",
+      "http://127.0.0.1:38193/assets/pets/insurance-dog-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/insurance-cat-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/insurance-tortoise-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/insurance-chameleon-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/insurance-gecko-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/insurance-spider-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/insurance-crocodile-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/annual-dog-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/annual-cat-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/annual-tortoise-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/annual-chameleon-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/annual-gecko-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/annual-spider-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/annual-crocodile-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/monthly-fee-20261106.webp",
+      "http://127.0.0.1:38193/pet-basic-fees.js?v=20261106-petaudit1",
+      "http://127.0.0.1:38193/assets/pets/detail-actions-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/insurance-entry-20261106.webp",
+      "http://127.0.0.1:38193/pet-event-cards.js?v=20261107-spider120",
+      "http://127.0.0.1:38193/assets/pets/events/companion-dog-20261105.webp",
+      "http://127.0.0.1:38193/assets/pets/events/dog-unwell-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/dog-social-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/dog-surprise-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/dog-accident-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/companion-cat-20261105.webp",
+      "http://127.0.0.1:38193/assets/pets/events/cat-unwell-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/cat-social-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/cat-surprise-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/cat-accident-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/companion-crocodile-20261105.webp",
+      "http://127.0.0.1:38193/assets/pets/events/crocodile-unwell-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/crocodile-social-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/crocodile-surprise-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/crocodile-accident-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/companion-gecko-20261105.webp",
+      "http://127.0.0.1:38193/assets/pets/events/gecko-unwell-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/gecko-social-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/gecko-surprise-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/gecko-accident-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/companion-spider-20261105.webp",
+      "http://127.0.0.1:38193/assets/pets/events/spider-unwell-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/spider-social-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/spider-surprise-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/spider-accident-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/companion-tortoise-20261105.webp",
+      "http://127.0.0.1:38193/assets/pets/events/tortoise-unwell-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/tortoise-social-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/tortoise-surprise-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/tortoise-accident-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/companion-chameleon-20261105.webp",
+      "http://127.0.0.1:38193/assets/pets/events/chameleon-unwell-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/chameleon-social-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/chameleon-surprise-20261106.webp",
+      "http://127.0.0.1:38193/assets/pets/events/chameleon-accident-20261106.webp",
+      "http://127.0.0.1:38193/pet-events.js?v=20261107-spider120",
+      "http://127.0.0.1:38193/pet-events-ui.js?v=20261107-spider120",
+      "http://127.0.0.1:38193/pet-events.css?v=20261106-pet35",
+      "http://127.0.0.1:38193/assets/pets/events/mishap-20261105.webp",
+      "http://127.0.0.1:38193/assets/pets/events/unwell-20261105.webp",
+      "http://127.0.0.1:38193/assets/pets/events/social-20261105.webp",
+      "http://127.0.0.1:38193/assets/pets/events/injury-20261105.webp",
+      "http://127.0.0.1:38193/assets/pets/adoption-card-20261105.webp",
+      "http://127.0.0.1:38193/assets/pets/adoption-paper-20261105.webp",
+      "http://127.0.0.1:38193/assets/home/pet-selection-no-prices-20261105.webp",
+      "http://127.0.0.1:38193/pet-pages.js?v=20261107-petpoolpause1",
+      "http://127.0.0.1:38193/pet-pages.css?v=20261107-pethealthwarm1",
+      "http://127.0.0.1:38193/assets/pets/adoption-dog-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/clean-cat-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/clean-chameleon-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/clean-crocodile-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/clean-dog-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/clean-gecko-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/clean-spider-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/clean-tortoise-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/detail-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/overview-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/success-cat-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/success-chameleon-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/success-crocodile-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/success-dog-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/success-gecko-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/success-spider-20261104.webp",
+      "http://127.0.0.1:38193/assets/pets/success-tortoise-20261104.webp",
+      "http://127.0.0.1:38193/pet-adoption-entry.js?v=20261107-petdeadline1",
+      "http://127.0.0.1:38193/pet-adoption-entry.css?v=20261105-petcard2",
+      "http://127.0.0.1:38193/assets/home/pet-selection-seven-20261104.webp",
+      "http://127.0.0.1:38193/assets/home/family-corgi-20261104.webp",
+      "http://127.0.0.1:38193/assets/home/shared-corgi-20261104.webp",
+      "http://127.0.0.1:38193/assets/home/studio-corgi-20261104.webp",
+      "http://127.0.0.1:38193/assets/home/apartment-corgi-20261104.webp",
+      "http://127.0.0.1:38193/apartment-events.js?v=20261104-apartment1",
+      "http://127.0.0.1:38193/assets/apartment/back-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/bricks-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/clean-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/company-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/display-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/exercise-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/flowers-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/knock-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/lastbus-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/lighting-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/pajamas-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/party-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/sing-20261104.webp",
+      "http://127.0.0.1:38193/assets/apartment/spill-20261104.webp",
+      "http://127.0.0.1:38193/studio-events.js?v=20261103-studio1",
+      "http://127.0.0.1:38193/assets/studio/back-20261103.webp",
+      "http://127.0.0.1:38193/assets/studio/call-20261103.webp",
+      "http://127.0.0.1:38193/assets/studio/cinema-20261103.webp",
+      "http://127.0.0.1:38193/assets/studio/cook-20261103.webp",
+      "http://127.0.0.1:38193/assets/studio/corner-20261103.webp",
+      "http://127.0.0.1:38193/assets/studio/fridge-20261103.webp",
+      "http://127.0.0.1:38193/assets/studio/gaming-20261103.webp",
+      "http://127.0.0.1:38193/assets/studio/keepsake-20261103.webp",
+      "http://127.0.0.1:38193/assets/studio/keys-20261103.webp",
+      "http://127.0.0.1:38193/assets/studio/morning-20261103.webp",
+      "http://127.0.0.1:38193/assets/studio/noise-20261103.webp",
+      "http://127.0.0.1:38193/assets/studio/rain-20261103.webp",
+      "http://127.0.0.1:38193/assets/studio/tea-20261103.webp",
+      "http://127.0.0.1:38193/assets/shared/back-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/toolbox-shop-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/toolbox-neighbor-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/chat-night-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/meal-love-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/ride-b4-20261102.webp",
+      "http://127.0.0.1:38193/housing-time-debt.js?v=20261104-apartment1",
+      "http://127.0.0.1:38193/shared-events.js?v=20261102-toolbox1",
+      "http://127.0.0.1:38193/assets/shared/chat-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/clean-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/cook-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/games-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/guest-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/leak-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/meal-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/movie-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/noise-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/quilt-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/ride-20261102.webp",
+      "http://127.0.0.1:38193/assets/shared/toolbox-20261102.webp",
+      "http://127.0.0.1:38193/family-events.js?v=20261102-family2",
+      "http://127.0.0.1:38193/family-home.js?v=20261104-housingsave1",
+      "http://127.0.0.1:38193/family-home.css?v=20261104-apartment1",
+      "http://127.0.0.1:38193/assets/family/back-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/background-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/blessing-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/care-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/dinner-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/disagreement-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/flowers-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/fridge-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/lamplight-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/love-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/memories-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/movie-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/portrait-20261102.webp",
+      "http://127.0.0.1:38193/assets/family/teacher-20261102.webp",
+      "http://127.0.0.1:38193/housing-bills.js?v=20261104-housingsave1",
+      "http://127.0.0.1:38193/assets/pages/studio-reservation-1400-20261101.webp",
+      "http://127.0.0.1:38193/assets/pages/studio-occupied-1400-20261101.webp",
+      "http://127.0.0.1:38193/assets/pages/shared-reservation-900-20261101.webp",
+      "http://127.0.0.1:38193/assets/pages/shared-occupied-900-20261101.webp",
+      "http://127.0.0.1:38193/assets/pages/one-bedroom-reservation-1600-20261101.webp",
+      "http://127.0.0.1:38193/assets/pages/one-bedroom-occupied-1600-20261101.webp",
+      "http://127.0.0.1:38193/assets/pages/family-occupied-500-20261101.webp",
+      "http://127.0.0.1:38193/assets/pages/life-monthly-bill-20261101.webp",
+      "http://127.0.0.1:38193/career-selection.js?v=20261101",
+      "http://127.0.0.1:38193/career-selection.css?v=20261101",
+      "http://127.0.0.1:38193/painted-pages.js?v=20261104-apartment1",
+      "http://127.0.0.1:38193/painted-pages.css?v=28.3-housing-20261101",
+      "http://127.0.0.1:38193/assets/career/barista-character-20261101.webp",
+      "http://127.0.0.1:38193/assets/pages/rest-20261101.webp",
+      "http://127.0.0.1:38193/assets/pages/life-20261101.webp",
+      "http://127.0.0.1:38193/assets/pages/housing-20261101.webp",
+      "http://127.0.0.1:38193/assets/pages/family-20261101.webp",
+      "http://127.0.0.1:38193/room.js?v=20261107-petdeadline1",
+      "http://127.0.0.1:38193/room.css?v=20261104-familyroom1",
+      "http://127.0.0.1:38193/assets/home/room-phone-20261101.webp",
+      "http://127.0.0.1:38193/release-info.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/financial-crisis.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/four-state.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/rest-state.js?v=28.3-five-pages-20261101",
+      "http://127.0.0.1:38193/coffee-salary.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/housing-lease.js?v=20261104-housingsave1",
+      "http://127.0.0.1:38193/pet-health.js?v=20261107-petdeadline1",
+      "http://127.0.0.1:38193/pet-care.js?v=20261107-petvet1",
+      "http://127.0.0.1:38193/necessary-bills.js?v=20261107-petvet1",
+      "http://127.0.0.1:38193/recovery-ui.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/medical-insurance.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/recovery-rules.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/time-ledger.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/time-flow.js?v=20261107-petinsurance2",
+      "http://127.0.0.1:38193/assets/career/town.webp",
+      "http://127.0.0.1:38193/coffee-career.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/assets/career/barista-staff.webp",
+      "http://127.0.0.1:38193/assets/career/barista-busy.webp",
+      "http://127.0.0.1:38193/assets/career/barista-cut.webp",
+      "http://127.0.0.1:38193/assets/career/barista-tip.webp",
+      "http://127.0.0.1:38193/assets/career/barista-departure.webp",
+      "http://127.0.0.1:38193/assets/career/shift-training.webp",
+      "http://127.0.0.1:38193/assets/career/shift-schedule.webp",
+      "http://127.0.0.1:38193/assets/career/shift-schedule-success.webp",
+      "http://127.0.0.1:38193/assets/career/shift-schedule-failure.webp",
+      "http://127.0.0.1:38193/assets/career/shift-complaint.webp",
+      "http://127.0.0.1:38193/assets/career/shift-complaint-success.webp",
+      "http://127.0.0.1:38193/assets/career/shift-complaint-failure.webp",
+      "http://127.0.0.1:38193/assets/career/shift-acting.webp",
+      "http://127.0.0.1:38193/assets/career/shift-acting-success.webp",
+      "http://127.0.0.1:38193/assets/career/shift-acting-failure.webp",
+      "http://127.0.0.1:38193/assets/career/shift-praise.webp",
+      "http://127.0.0.1:38193/assets/career/intro-confirmed-20261101.webp",
+      "http://127.0.0.1:38193/shift-lead.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/shift-lead.css?v=28.3-internal1",
+      "http://127.0.0.1:38193/paper.css?v=28.3-intro-20261101",
+      "http://127.0.0.1:38193/coffee.js?v=28.3-intro-20261101",
+      "http://127.0.0.1:38193/town.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/",
+      "http://127.0.0.1:38193/index.html",
+      "http://127.0.0.1:38193/core.js",
+      "http://127.0.0.1:38193/flow.js?v=20261107-petinsurance2",
+      "http://127.0.0.1:38193/journey.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/batch.js?v=20261104-apartment1",
+      "http://127.0.0.1:38193/revision.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/annual.js?v=28.3-internal1",
+      "http://127.0.0.1:38193/core.js?v=20261107-petdeadline1",
+      "http://127.0.0.1:38193/presentation.js?v=20261104-apartment1",
+      "http://127.0.0.1:38193/presentation.css?v=28.3-internal1",
+      "http://127.0.0.1:38193/city.svg",
+      "http://127.0.0.1:38193/manifest.webmanifest",
+      "http://127.0.0.1:38193/icons/icon-192.png",
+      "http://127.0.0.1:38193/icons/icon-512.png"
+    ]
+  },
+  "originShutdown": {
+    "originReachable": false,
+    "serverStopped": true,
+    "origin": "http://127.0.0.1:38193",
+    "profile": "/tmp/wealth-life-offline-KFQgXH"
+  },
+  "assets": [
+    {
+      "url": "http://127.0.0.1:38193/pet-insurance.js?v=20261107-petvet1",
+      "status": 200,
+      "bytes": 5887
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/insurance-dog-20261106.webp",
+      "status": 200,
+      "bytes": 289622
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/insurance-cat-20261106.webp",
+      "status": 200,
+      "bytes": 273136
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/insurance-tortoise-20261106.webp",
+      "status": 200,
+      "bytes": 288784
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/insurance-chameleon-20261106.webp",
+      "status": 200,
+      "bytes": 277184
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/insurance-gecko-20261106.webp",
+      "status": 200,
+      "bytes": 284214
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/insurance-spider-20261106.webp",
+      "status": 200,
+      "bytes": 282994
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/insurance-crocodile-20261106.webp",
+      "status": 200,
+      "bytes": 296678
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/annual-dog-20261106.webp",
+      "status": 200,
+      "bytes": 285054
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/annual-cat-20261106.webp",
+      "status": 200,
+      "bytes": 253732
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/annual-tortoise-20261106.webp",
+      "status": 200,
+      "bytes": 279658
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/annual-chameleon-20261106.webp",
+      "status": 200,
+      "bytes": 283524
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/annual-gecko-20261106.webp",
+      "status": 200,
+      "bytes": 267620
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/annual-spider-20261106.webp",
+      "status": 200,
+      "bytes": 277626
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/annual-crocodile-20261106.webp",
+      "status": 200,
+      "bytes": 277830
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/monthly-fee-20261106.webp",
+      "status": 200,
+      "bytes": 265260
+    },
+    {
+      "url": "http://127.0.0.1:38193/pet-basic-fees.js?v=20261106-petaudit1",
+      "status": 200,
+      "bytes": 2018
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/detail-actions-20261106.webp",
+      "status": 200,
+      "bytes": 387040
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/insurance-entry-20261106.webp",
+      "status": 200,
+      "bytes": 287004
+    },
+    {
+      "url": "http://127.0.0.1:38193/pet-event-cards.js?v=20261107-spider120",
+      "status": 200,
+      "bytes": 14997
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/companion-dog-20261105.webp",
+      "status": 200,
+      "bytes": 385398
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/dog-unwell-20261106.webp",
+      "status": 200,
+      "bytes": 310366
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/dog-social-20261106.webp",
+      "status": 200,
+      "bytes": 444002
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/dog-surprise-20261106.webp",
+      "status": 200,
+      "bytes": 427310
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/dog-accident-20261106.webp",
+      "status": 200,
+      "bytes": 415884
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/companion-cat-20261105.webp",
+      "status": 200,
+      "bytes": 359064
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/cat-unwell-20261106.webp",
+      "status": 200,
+      "bytes": 352556
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/cat-social-20261106.webp",
+      "status": 200,
+      "bytes": 447674
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/cat-surprise-20261106.webp",
+      "status": 200,
+      "bytes": 394360
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/cat-accident-20261106.webp",
+      "status": 200,
+      "bytes": 318512
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/companion-crocodile-20261105.webp",
+      "status": 200,
+      "bytes": 389468
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/crocodile-unwell-20261106.webp",
+      "status": 200,
+      "bytes": 317346
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/crocodile-social-20261106.webp",
+      "status": 200,
+      "bytes": 446854
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/crocodile-surprise-20261106.webp",
+      "status": 200,
+      "bytes": 389906
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/crocodile-accident-20261106.webp",
+      "status": 200,
+      "bytes": 394888
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/companion-gecko-20261105.webp",
+      "status": 200,
+      "bytes": 407830
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/gecko-unwell-20261106.webp",
+      "status": 200,
+      "bytes": 308918
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/gecko-social-20261106.webp",
+      "status": 200,
+      "bytes": 440934
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/gecko-surprise-20261106.webp",
+      "status": 200,
+      "bytes": 446396
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/gecko-accident-20261106.webp",
+      "status": 200,
+      "bytes": 411760
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/companion-spider-20261105.webp",
+      "status": 200,
+      "bytes": 407868
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/spider-unwell-20261106.webp",
+      "status": 200,
+      "bytes": 300340
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/spider-social-20261106.webp",
+      "status": 200,
+      "bytes": 435130
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/spider-surprise-20261106.webp",
+      "status": 200,
+      "bytes": 422534
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/spider-accident-20261106.webp",
+      "status": 200,
+      "bytes": 404448
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/companion-tortoise-20261105.webp",
+      "status": 200,
+      "bytes": 419718
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/tortoise-unwell-20261106.webp",
+      "status": 200,
+      "bytes": 300228
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/tortoise-social-20261106.webp",
+      "status": 200,
+      "bytes": 443160
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/tortoise-surprise-20261106.webp",
+      "status": 200,
+      "bytes": 434982
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/tortoise-accident-20261106.webp",
+      "status": 200,
+      "bytes": 407162
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/companion-chameleon-20261105.webp",
+      "status": 200,
+      "bytes": 416392
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/chameleon-unwell-20261106.webp",
+      "status": 200,
+      "bytes": 315492
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/chameleon-social-20261106.webp",
+      "status": 200,
+      "bytes": 455132
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/chameleon-surprise-20261106.webp",
+      "status": 200,
+      "bytes": 436750
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/chameleon-accident-20261106.webp",
+      "status": 200,
+      "bytes": 428694
+    },
+    {
+      "url": "http://127.0.0.1:38193/pet-events.js?v=20261107-spider120",
+      "status": 200,
+      "bytes": 8501
+    },
+    {
+      "url": "http://127.0.0.1:38193/pet-events-ui.js?v=20261107-spider120",
+      "status": 200,
+      "bytes": 8447
+    },
+    {
+      "url": "http://127.0.0.1:38193/pet-events.css?v=20261106-pet35",
+      "status": 200,
+      "bytes": 2754
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/mishap-20261105.webp",
+      "status": 200,
+      "bytes": 383034
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/unwell-20261105.webp",
+      "status": 200,
+      "bytes": 296016
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/social-20261105.webp",
+      "status": 200,
+      "bytes": 365716
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/events/injury-20261105.webp",
+      "status": 200,
+      "bytes": 310954
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/adoption-card-20261105.webp",
+      "status": 200,
+      "bytes": 290384
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/adoption-paper-20261105.webp",
+      "status": 200,
+      "bytes": 376718
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/home/pet-selection-no-prices-20261105.webp",
+      "status": 200,
+      "bytes": 361574
+    },
+    {
+      "url": "http://127.0.0.1:38193/pet-pages.js?v=20261107-petpoolpause1",
+      "status": 200,
+      "bytes": 34924
+    },
+    {
+      "url": "http://127.0.0.1:38193/pet-pages.css?v=20261107-pethealthwarm1",
+      "status": 200,
+      "bytes": 11908
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/adoption-dog-20261104.webp",
+      "status": 200,
+      "bytes": 320402
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/clean-cat-20261104.webp",
+      "status": 200,
+      "bytes": 304684
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/clean-chameleon-20261104.webp",
+      "status": 200,
+      "bytes": 329338
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/clean-crocodile-20261104.webp",
+      "status": 200,
+      "bytes": 319420
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/clean-dog-20261104.webp",
+      "status": 200,
+      "bytes": 330298
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/clean-gecko-20261104.webp",
+      "status": 200,
+      "bytes": 327390
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/clean-spider-20261104.webp",
+      "status": 200,
+      "bytes": 328066
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/clean-tortoise-20261104.webp",
+      "status": 200,
+      "bytes": 330448
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/detail-20261104.webp",
+      "status": 200,
+      "bytes": 301646
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/overview-20261104.webp",
+      "status": 200,
+      "bytes": 286660
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/success-cat-20261104.webp",
+      "status": 200,
+      "bytes": 261482
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/success-chameleon-20261104.webp",
+      "status": 200,
+      "bytes": 271168
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/success-crocodile-20261104.webp",
+      "status": 200,
+      "bytes": 265626
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/success-dog-20261104.webp",
+      "status": 200,
+      "bytes": 263174
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/success-gecko-20261104.webp",
+      "status": 200,
+      "bytes": 263148
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/success-spider-20261104.webp",
+      "status": 200,
+      "bytes": 269590
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pets/success-tortoise-20261104.webp",
+      "status": 200,
+      "bytes": 267010
+    },
+    {
+      "url": "http://127.0.0.1:38193/pet-adoption-entry.js?v=20261107-petdeadline1",
+      "status": 200,
+      "bytes": 8761
+    },
+    {
+      "url": "http://127.0.0.1:38193/pet-adoption-entry.css?v=20261105-petcard2",
+      "status": 200,
+      "bytes": 2866
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/home/pet-selection-seven-20261104.webp",
+      "status": 200,
+      "bytes": 383940
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/home/family-corgi-20261104.webp",
+      "status": 200,
+      "bytes": 474832
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/home/shared-corgi-20261104.webp",
+      "status": 200,
+      "bytes": 383066
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/home/studio-corgi-20261104.webp",
+      "status": 200,
+      "bytes": 388726
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/home/apartment-corgi-20261104.webp",
+      "status": 200,
+      "bytes": 394652
+    },
+    {
+      "url": "http://127.0.0.1:38193/apartment-events.js?v=20261104-apartment1",
+      "status": 200,
+      "bytes": 13086
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/back-20261104.webp",
+      "status": 200,
+      "bytes": 345060
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/bricks-20261104.webp",
+      "status": 200,
+      "bytes": 348048
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/clean-20261104.webp",
+      "status": 200,
+      "bytes": 348500
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/company-20261104.webp",
+      "status": 200,
+      "bytes": 355752
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/display-20261104.webp",
+      "status": 200,
+      "bytes": 331108
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/exercise-20261104.webp",
+      "status": 200,
+      "bytes": 345934
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/flowers-20261104.webp",
+      "status": 200,
+      "bytes": 352426
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/knock-20261104.webp",
+      "status": 200,
+      "bytes": 331608
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/lastbus-20261104.webp",
+      "status": 200,
+      "bytes": 335766
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/lighting-20261104.webp",
+      "status": 200,
+      "bytes": 331916
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/pajamas-20261104.webp",
+      "status": 200,
+      "bytes": 379372
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/party-20261104.webp",
+      "status": 200,
+      "bytes": 415472
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/sing-20261104.webp",
+      "status": 200,
+      "bytes": 350558
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/apartment/spill-20261104.webp",
+      "status": 200,
+      "bytes": 347888
+    },
+    {
+      "url": "http://127.0.0.1:38193/studio-events.js?v=20261103-studio1",
+      "status": 200,
+      "bytes": 11835
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/back-20261103.webp",
+      "status": 200,
+      "bytes": 376758
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/call-20261103.webp",
+      "status": 200,
+      "bytes": 357944
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/cinema-20261103.webp",
+      "status": 200,
+      "bytes": 356852
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/cook-20261103.webp",
+      "status": 200,
+      "bytes": 365970
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/corner-20261103.webp",
+      "status": 200,
+      "bytes": 364130
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/fridge-20261103.webp",
+      "status": 200,
+      "bytes": 363382
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/gaming-20261103.webp",
+      "status": 200,
+      "bytes": 364766
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/keepsake-20261103.webp",
+      "status": 200,
+      "bytes": 351210
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/keys-20261103.webp",
+      "status": 200,
+      "bytes": 325482
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/morning-20261103.webp",
+      "status": 200,
+      "bytes": 361278
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/noise-20261103.webp",
+      "status": 200,
+      "bytes": 359396
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/rain-20261103.webp",
+      "status": 200,
+      "bytes": 359882
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/studio/tea-20261103.webp",
+      "status": 200,
+      "bytes": 369934
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/back-20261102.webp",
+      "status": 200,
+      "bytes": 439466
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/toolbox-shop-20261102.webp",
+      "status": 200,
+      "bytes": 377048
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/toolbox-neighbor-20261102.webp",
+      "status": 200,
+      "bytes": 349448
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/chat-night-20261102.webp",
+      "status": 200,
+      "bytes": 318276
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/meal-love-20261102.webp",
+      "status": 200,
+      "bytes": 362206
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/ride-b4-20261102.webp",
+      "status": 200,
+      "bytes": 397746
+    },
+    {
+      "url": "http://127.0.0.1:38193/housing-time-debt.js?v=20261104-apartment1",
+      "status": 200,
+      "bytes": 2698
+    },
+    {
+      "url": "http://127.0.0.1:38193/shared-events.js?v=20261102-toolbox1",
+      "status": 200,
+      "bytes": 9648
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/chat-20261102.webp",
+      "status": 200,
+      "bytes": 329058
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/clean-20261102.webp",
+      "status": 200,
+      "bytes": 358062
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/cook-20261102.webp",
+      "status": 200,
+      "bytes": 393592
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/games-20261102.webp",
+      "status": 200,
+      "bytes": 399106
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/guest-20261102.webp",
+      "status": 200,
+      "bytes": 381590
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/leak-20261102.webp",
+      "status": 200,
+      "bytes": 354146
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/meal-20261102.webp",
+      "status": 200,
+      "bytes": 361734
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/movie-20261102.webp",
+      "status": 200,
+      "bytes": 348344
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/noise-20261102.webp",
+      "status": 200,
+      "bytes": 337202
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/quilt-20261102.webp",
+      "status": 200,
+      "bytes": 398698
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/ride-20261102.webp",
+      "status": 200,
+      "bytes": 409826
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/shared/toolbox-20261102.webp",
+      "status": 200,
+      "bytes": 376750
+    },
+    {
+      "url": "http://127.0.0.1:38193/family-events.js?v=20261102-family2",
+      "status": 200,
+      "bytes": 7475
+    },
+    {
+      "url": "http://127.0.0.1:38193/family-home.js?v=20261104-housingsave1",
+      "status": 200,
+      "bytes": 28290
+    },
+    {
+      "url": "http://127.0.0.1:38193/family-home.css?v=20261104-apartment1",
+      "status": 200,
+      "bytes": 5702
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/back-20261102.webp",
+      "status": 200,
+      "bytes": 339494
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/background-20261102.webp",
+      "status": 200,
+      "bytes": 187422
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/blessing-20261102.webp",
+      "status": 200,
+      "bytes": 307594
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/care-20261102.webp",
+      "status": 200,
+      "bytes": 222378
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/dinner-20261102.webp",
+      "status": 200,
+      "bytes": 232570
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/disagreement-20261102.webp",
+      "status": 200,
+      "bytes": 225556
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/flowers-20261102.webp",
+      "status": 200,
+      "bytes": 253156
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/fridge-20261102.webp",
+      "status": 200,
+      "bytes": 211220
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/lamplight-20261102.webp",
+      "status": 200,
+      "bytes": 216622
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/love-20261102.webp",
+      "status": 200,
+      "bytes": 228370
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/memories-20261102.webp",
+      "status": 200,
+      "bytes": 230594
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/movie-20261102.webp",
+      "status": 200,
+      "bytes": 228570
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/portrait-20261102.webp",
+      "status": 200,
+      "bytes": 195418
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/family/teacher-20261102.webp",
+      "status": 200,
+      "bytes": 235006
+    },
+    {
+      "url": "http://127.0.0.1:38193/housing-bills.js?v=20261104-housingsave1",
+      "status": 200,
+      "bytes": 1629
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pages/studio-reservation-1400-20261101.webp",
+      "status": 200,
+      "bytes": 328944
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pages/studio-occupied-1400-20261101.webp",
+      "status": 200,
+      "bytes": 328166
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pages/shared-reservation-900-20261101.webp",
+      "status": 200,
+      "bytes": 308382
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pages/shared-occupied-900-20261101.webp",
+      "status": 200,
+      "bytes": 305120
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pages/one-bedroom-reservation-1600-20261101.webp",
+      "status": 200,
+      "bytes": 319358
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pages/one-bedroom-occupied-1600-20261101.webp",
+      "status": 200,
+      "bytes": 316870
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pages/family-occupied-500-20261101.webp",
+      "status": 200,
+      "bytes": 318888
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pages/life-monthly-bill-20261101.webp",
+      "status": 200,
+      "bytes": 267714
+    },
+    {
+      "url": "http://127.0.0.1:38193/career-selection.js?v=20261101",
+      "status": 200,
+      "bytes": 2330
+    },
+    {
+      "url": "http://127.0.0.1:38193/career-selection.css?v=20261101",
+      "status": 200,
+      "bytes": 2570
+    },
+    {
+      "url": "http://127.0.0.1:38193/painted-pages.js?v=20261104-apartment1",
+      "status": 200,
+      "bytes": 12341
+    },
+    {
+      "url": "http://127.0.0.1:38193/painted-pages.css?v=28.3-housing-20261101",
+      "status": 200,
+      "bytes": 3635
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/barista-character-20261101.webp",
+      "status": 200,
+      "bytes": 299716
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pages/rest-20261101.webp",
+      "status": 200,
+      "bytes": 287280
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pages/life-20261101.webp",
+      "status": 200,
+      "bytes": 270064
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pages/housing-20261101.webp",
+      "status": 200,
+      "bytes": 318362
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/pages/family-20261101.webp",
+      "status": 200,
+      "bytes": 318028
+    },
+    {
+      "url": "http://127.0.0.1:38193/room.js?v=20261107-petdeadline1",
+      "status": 200,
+      "bytes": 9112
+    },
+    {
+      "url": "http://127.0.0.1:38193/room.css?v=20261104-familyroom1",
+      "status": 200,
+      "bytes": 5944
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/home/room-phone-20261101.webp",
+      "status": 200,
+      "bytes": 465400
+    },
+    {
+      "url": "http://127.0.0.1:38193/release-info.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 1010
+    },
+    {
+      "url": "http://127.0.0.1:38193/financial-crisis.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 6135
+    },
+    {
+      "url": "http://127.0.0.1:38193/four-state.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 1849
+    },
+    {
+      "url": "http://127.0.0.1:38193/rest-state.js?v=28.3-five-pages-20261101",
+      "status": 200,
+      "bytes": 2678
+    },
+    {
+      "url": "http://127.0.0.1:38193/coffee-salary.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 2877
+    },
+    {
+      "url": "http://127.0.0.1:38193/housing-lease.js?v=20261104-housingsave1",
+      "status": 200,
+      "bytes": 6965
+    },
+    {
+      "url": "http://127.0.0.1:38193/pet-health.js?v=20261107-petdeadline1",
+      "status": 200,
+      "bytes": 7206
+    },
+    {
+      "url": "http://127.0.0.1:38193/pet-care.js?v=20261107-petvet1",
+      "status": 200,
+      "bytes": 6376
+    },
+    {
+      "url": "http://127.0.0.1:38193/necessary-bills.js?v=20261107-petvet1",
+      "status": 200,
+      "bytes": 2027
+    },
+    {
+      "url": "http://127.0.0.1:38193/recovery-ui.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 4427
+    },
+    {
+      "url": "http://127.0.0.1:38193/medical-insurance.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 3135
+    },
+    {
+      "url": "http://127.0.0.1:38193/recovery-rules.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 2597
+    },
+    {
+      "url": "http://127.0.0.1:38193/time-ledger.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 1754
+    },
+    {
+      "url": "http://127.0.0.1:38193/time-flow.js?v=20261107-petinsurance2",
+      "status": 200,
+      "bytes": 4187
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/town.webp",
+      "status": 200,
+      "bytes": 400114
+    },
+    {
+      "url": "http://127.0.0.1:38193/coffee-career.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 13984
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/barista-staff.webp",
+      "status": 200,
+      "bytes": 256262
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/barista-busy.webp",
+      "status": 200,
+      "bytes": 217306
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/barista-cut.webp",
+      "status": 200,
+      "bytes": 247314
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/barista-tip.webp",
+      "status": 200,
+      "bytes": 239926
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/barista-departure.webp",
+      "status": 200,
+      "bytes": 322584
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/shift-training.webp",
+      "status": 200,
+      "bytes": 209954
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/shift-schedule.webp",
+      "status": 200,
+      "bytes": 271352
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/shift-schedule-success.webp",
+      "status": 200,
+      "bytes": 198866
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/shift-schedule-failure.webp",
+      "status": 200,
+      "bytes": 204856
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/shift-complaint.webp",
+      "status": 200,
+      "bytes": 272732
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/shift-complaint-success.webp",
+      "status": 200,
+      "bytes": 266482
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/shift-complaint-failure.webp",
+      "status": 200,
+      "bytes": 270734
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/shift-acting.webp",
+      "status": 200,
+      "bytes": 266416
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/shift-acting-success.webp",
+      "status": 200,
+      "bytes": 266016
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/shift-acting-failure.webp",
+      "status": 200,
+      "bytes": 247566
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/shift-praise.webp",
+      "status": 200,
+      "bytes": 264860
+    },
+    {
+      "url": "http://127.0.0.1:38193/assets/career/intro-confirmed-20261101.webp",
+      "status": 200,
+      "bytes": 425664
+    },
+    {
+      "url": "http://127.0.0.1:38193/shift-lead.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 16419
+    },
+    {
+      "url": "http://127.0.0.1:38193/shift-lead.css?v=28.3-internal1",
+      "status": 200,
+      "bytes": 2116
+    },
+    {
+      "url": "http://127.0.0.1:38193/paper.css?v=28.3-intro-20261101",
+      "status": 200,
+      "bytes": 7441
+    },
+    {
+      "url": "http://127.0.0.1:38193/coffee.js?v=28.3-intro-20261101",
+      "status": 200,
+      "bytes": 18915
+    },
+    {
+      "url": "http://127.0.0.1:38193/town.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 16343
+    },
+    {
+      "url": "http://127.0.0.1:38193/",
+      "status": 200,
+      "bytes": 128577
+    },
+    {
+      "url": "http://127.0.0.1:38193/index.html",
+      "status": 200,
+      "bytes": 128577
+    },
+    {
+      "url": "http://127.0.0.1:38193/core.js",
+      "status": 200,
+      "bytes": 36808
+    },
+    {
+      "url": "http://127.0.0.1:38193/flow.js?v=20261107-petinsurance2",
+      "status": 200,
+      "bytes": 39274
+    },
+    {
+      "url": "http://127.0.0.1:38193/journey.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 13927
+    },
+    {
+      "url": "http://127.0.0.1:38193/batch.js?v=20261104-apartment1",
+      "status": 200,
+      "bytes": 31008
+    },
+    {
+      "url": "http://127.0.0.1:38193/revision.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 22942
+    },
+    {
+      "url": "http://127.0.0.1:38193/annual.js?v=28.3-internal1",
+      "status": 200,
+      "bytes": 25548
+    },
+    {
+      "url": "http://127.0.0.1:38193/core.js?v=20261107-petdeadline1",
+      "status": 200,
+      "bytes": 36808
+    },
+    {
+      "url": "http://127.0.0.1:38193/presentation.js?v=20261104-apartment1",
+      "status": 200,
+      "bytes": 20639
+    },
+    {
+      "url": "http://127.0.0.1:38193/presentation.css?v=28.3-internal1",
+      "status": 200,
+      "bytes": 32388
+    },
+    {
+      "url": "http://127.0.0.1:38193/city.svg",
+      "status": 200,
+      "bytes": 1900
+    },
+    {
+      "url": "http://127.0.0.1:38193/manifest.webmanifest",
+      "status": 200,
+      "bytes": 418
+    },
+    {
+      "url": "http://127.0.0.1:38193/icons/icon-192.png",
+      "status": 200,
+      "bytes": 54536
+    },
+    {
+      "url": "http://127.0.0.1:38193/icons/icon-512.png",
+      "status": 200,
+      "bytes": 316466
+    }
+  ],
+  "cleaning": {
+    "cost": 195,
+    "hours": 12
+  },
+  "mapCards": [
+    "dog-companion",
+    "dog-unwell",
+    "dog-social",
+    "dog-surprise",
+    "dog-accident",
+    "cat-companion",
+    "cat-unwell",
+    "cat-social",
+    "cat-surprise",
+    "cat-accident",
+    "crocodile-companion",
+    "crocodile-unwell",
+    "crocodile-social",
+    "crocodile-surprise",
+    "crocodile-accident",
+    "gecko-companion",
+    "gecko-unwell",
+    "gecko-social",
+    "gecko-surprise",
+    "gecko-accident",
+    "spider-companion",
+    "spider-unwell",
+    "spider-social",
+    "spider-surprise",
+    "spider-accident",
+    "tortoise-companion",
+    "tortoise-unwell",
+    "tortoise-social",
+    "tortoise-surprise",
+    "tortoise-accident",
+    "chameleon-companion",
+    "chameleon-unwell",
+    "chameleon-social",
+    "chameleon-surprise",
+    "chameleon-accident"
+  ],
+  "passed": true
+}
