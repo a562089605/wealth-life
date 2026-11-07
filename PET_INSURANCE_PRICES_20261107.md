@@ -31,4 +31,4 @@
 
 ## 发布
 
-待本轮提交上传后核对Cloudflare及线上运行资源。
+功能提交`87e72ec97d541b728b43e0883627533aaca09723`已成功上传原main，远端实际读回一致；Cloudflare结论success：[发布记录](https://github.com/a562089605/wealth-life/runs/128444059255)。首页、保险脚本、页面脚本和SW四份线上运行资源实际取回，与本地完整字节一致，SHA和时间见`qa/pet-insurance-prices55-production-20261107.json`。不将四文件核对扩大成真实iPhone/PWA更新验收。
