@@ -23,7 +23,7 @@ function payPetCare(selections){
  try{const quote=petCareQuote(state,selections);if(quote.blocked||!quote.rows.length||state.cash<quote.cost||currentCareerTime().free<quote.hours){restore();return false;}
   if(!spendConfirmed('petCare',quote.cost,{projects:quote.rows.map(r=>r.key)})){restore();return false;}
   if(state.petCareTime?.month!==state.month)state.petCareTime={month:state.month,hours:0};state.petCareTime.hours+=quote.hours;
-  for(const r of quote.rows){r.pet.care['next'+r.kind]=state.month+(r.kind==='Annual'?12:r.rule[r.method+'Months']);r.pet.care.history.push({month:state.month,key:r.key,kind:r.kind,method:r.method,cost:r.cost,hours:r.hours,delegated:quote.recovery});}
+  for(const r of quote.rows){if(r.kind==='Clean'&&typeof PetHealth!=='undefined')PetHealth.clean(state,r.pet,r.method);r.pet.care['next'+r.kind]=state.month+(r.kind==='Annual'?12:r.rule[r.method+'Months']);r.pet.care.history.push({month:state.month,key:r.key,kind:r.kind,method:r.method,cost:r.cost,hours:r.hours,delegated:quote.recovery});}
   state.petCareDraft={month:state.month,selections:{}};
   if(save()===false)throw Error('pet care save failed');
  }catch(error){restore();return false;}
@@ -38,4 +38,4 @@ function openPetCare(){if(state.petCareDraft?.month!==state.month)state.petCareD
 const careTimeBefore=currentCareerTime;currentCareerTime=function(){const t=careTimeBefore(),used=state.petCareTime?.month===state.month?state.petCareTime.hours:0;return {...t,free:Math.max(0,t.free-used),petCareHours:used};};
 const petsBeforeCare=$('petBtn').onclick;$('petBtn').onclick=()=>{if((state.pets||[]).length)return openPetCare();return petsBeforeCare();};
 
-function necessaryPetCareHours(){if(isRecoveryMonth(state))return 0;const selected=state.petCareDraft?.month===state.month?state.petCareDraft.selections:{},choices={};for(const t of petCareTasks()){if(t.unsupported)return Infinity;choices[t.key]=selected[t.key]||(t.kind==='Annual'?'annual':'pro');}return petCareQuote(state,choices).hours||0;}
+function necessaryPetCareHours(){if(isRecoveryMonth(state))return 0;const selected=state.petCareDraft?.month===state.month?state.petCareDraft.selections:{},choices={};for(const t of petCareTasks()){if(t.unsupported)return Infinity;if(t.kind==='Clean')continue;choices[t.key]=selected[t.key]||(t.kind==='Annual'?'annual':'pro');}return petCareQuote(state,choices).hours||0;}

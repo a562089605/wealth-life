@@ -1,5 +1,6 @@
 // Confirmed map pet events only; home care and other map categories remain canonical.
 (function(root){'use strict';
+ const Health=root.PetHealth||(typeof require==='function'?require('./pet-health.js'):null);
  const Insurance=root.PetInsurance||(typeof require==='function'?require('./pet-insurance.js'):null);
  const companions={
   dog:{title:'一起晒太阳',energy:3,happiness:3,stress:-2,button:'陪它待一会儿'},
@@ -44,10 +45,10 @@
   return {id,name:pick(unused.length?unused:names),gender:random()<.5?'female':'male',age:Math.max(18,(s.age||22)+pick([-2,-1,0,2])),job:pick(jobs),status:'养宠物的朋友',origin:'pet-social',city:s.city,relation:10,lastInteractionMonth:s.month};}
  function draw(s,move,{free,random=Math.random,names=[],jobs=[]}={}){const d=data(s),k=key(s,move);if(d.records[k])return d.records[k];
   const pools=Object.fromEntries(Object.keys(weights).map(id=>[id,choices(s,id,free)]));if(!names.length||!jobs.length)pools.social=[];
-  const eligible=Object.fromEntries(Object.entries(weights).filter(([id])=>pools[id].length));
+  const eligible=Object.fromEntries(Object.entries(weights).filter(([id])=>pools[id].length).map(([id,w])=>[id,id==='unwell'&&Health?w*pools[id].reduce((n,x)=>n+Health.illnessFactor(x.p),0)/pools[id].length:w]));
   let r={key:k,month:s.month,moveId:move.id,status:'legacy'};
   // Historical life subtype share: pets 20/100; unavailable share returns to daily life.
-  if(Object.keys(eligible).length&&random()<.2){const id=weighted(eligible,random),pool=pools[id],x=pool[Math.min(pool.length-1,Math.floor(random()*pool.length))];r={...r,id,status:'pending',forced:!['companion','social','surprise'].includes(id),quote:quote(s,id,x)};
+  if(Object.keys(eligible).length&&random()<.2){const id=weighted(eligible,random),pool=pools[id],x=id==='unwell'&&Health?pool[weighted(Object.fromEntries(pool.map((x,i)=>[i,Health.illnessFactor(x.p)])),random)]:pool[Math.min(pool.length-1,Math.floor(random()*pool.length))];r={...r,id,status:'pending',forced:!['companion','social','surprise'].includes(id),quote:quote(s,id,x)};
    if(id==='social')r.quote.contact=contact(s,{names,jobs},random);
    if(id!=='companion')d.seen[s.month+':'+id]=true;
   }d.records[k]=r;return r;}

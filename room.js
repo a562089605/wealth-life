@@ -36,7 +36,7 @@
   render();syncRoom();
  };
  window.hideRoom=function(){visible=false;syncRoom();};
- function leaveRoom(){
+ function leaveRoom(allowOverdueClean=false){
   if(state.gameOver?.final)return showGameOver();
   if(state.requiredIncident)return openRequiredIncident();
   if(healthTreatmentKind(state.health)||unfinishedTreatment()||isRecoveryMonth(state))return openHealthTreatment();
@@ -45,6 +45,8 @@
   if(necessaryBills().length)return openNecessaryBills();
   const reasons=explorationReturnReasons();
   if(reasons.length)return showEvent('暂时不能出门','先在房屋调整状态',reasons.join('；'),[],[['返回房屋',openRoom,true]]);
+  const cleanDue=typeof petCareTasks==='function'?petCareTasks().filter(t=>t.kind==='Clean'):[];
+  if(allowOverdueClean!==true&&cleanDue.length)return showEvent('宠物护理','清洁护理到期','可以稍后护理并继续出门。月底仍未完成，每只到期宠物健康减少10；完成清洁护理恢复20。',cleanDue.map(t=>[t.pet.name||t.pet.type,'健康 '+PetHealth.value(t.pet)+'/100']),[['前往清洁护理',()=>openPetCare(),true],['暂不护理，继续出门',()=>leaveRoom(true),false],['返回房屋',openRoom,false]]);
   state.townMode=true;state.roomLocation='town';townState();save();visible=false;syncRoom();showTown();
  }
  function learning(){

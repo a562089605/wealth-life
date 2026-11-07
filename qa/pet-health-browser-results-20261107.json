@@ -1,0 +1,21 @@
+{
+  "browser": "Chromium local isolated slots911/913",
+  "viewports": [
+    320,
+    390,
+    1280
+  ],
+  "healthVisible": true,
+  "cleanReminderSkippable": true,
+  "basicFeesStillRequired": true,
+  "cleanPaymentRollbackRetry": true,
+  "healthGain20": true,
+  "uninsuredOtherPetUnaffected": true,
+  "monthlyHealthLoss10": true,
+  "monthlySaveRollback": true,
+  "refreshNoDuplicateLoss": true,
+  "legacyInitial80NoBackcharge": true,
+  "originalSlotBackup": true,
+  "annualRulesUnchanged": true,
+  "errors": []
+}

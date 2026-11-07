@@ -6,7 +6,7 @@ const html=fs.readFileSync('index.html','utf8');vm.runInContext(html.split('\n')
 const flow=fs.readFileSync('flow.js','utf8');vm.runInContext(flow.slice(0,flow.indexOf('const V26_STATS')),c);
 for(const f of ['necessary-bills.js','housing-bills.js'])vm.runInContext(fs.readFileSync(f,'utf8'),c);
 const pages=fs.readFileSync('pet-pages.js','utf8');vm.runInContext(pages.slice(pages.indexOf(' function unpaidBasicFees()'),pages.indexOf(" const petInsuranceOpenBefore=")),c);
-const room=fs.readFileSync('room.js','utf8');vm.runInContext(room.slice(room.indexOf(' function leaveRoom(){'),room.indexOf(' function learning(){')),c);
+const room=fs.readFileSync('room.js','utf8');vm.runInContext(room.slice(room.indexOf(' function leaveRoom('),room.indexOf(' function learning(){')),c);
 function seed(){maps=reminders=0;paused=medical=returns=false;saved=true;c.state={month:2,cash:1000,baseLiving:800,housing:'studio',housingCost:1400,health:80,insurance:{},pets:[{name:'豆豆',type:'狗',species:'dog'},{name:'猫猫',type:'猫',species:'cat'}],monthlyPayments:{month:2,housing:1400,living:800,premiums:0}};}
 const petRows=()=>c.necessaryBills().filter(r=>r.kind==='petBasicFee');
 function pay(i,works=true){const q=B.quote(c.state,i,c.basicFeeOptions());return B.confirm(c.state,i,q.token,c.basicFeeOptions(),()=>works);}
@@ -24,3 +24,9 @@ seed();c.state.cash=20;a.equal(pay(0).reason,'cash');c.showTown();a.equal(maps,0
 // Existing drawn events and priority treatment/return paths keep their original routing.
 for(const priority of ['paused','medical','returns']){seed();if(priority==='paused')paused=true;if(priority==='medical')medical=true;if(priority==='returns')returns=true;c.showTown();a.equal(maps,1);a.equal(c.state.cash,1000);}
 console.log('PASS actual room departure and alternate map guard: all pets paid before entry, unpaid/failed save/shortage block, prepaid/legacy receipts/no pets pass, next month and saved-state reload, shared bills counted once, pending event/medical/forced-return priorities retained.');
+// Cleaning is a skippable reminder; monthly fees and annual exams retain their gates.
+let careModal;c.PetHealth=require('../pet-health');c.openRoom=()=>{};c.showEvent=(...args)=>{reminders++;careModal=args;};
+seed();c.state.monthlyPayments.living=930;c.petCareTasks=()=>[{kind:'Clean',pet:c.state.pets[0]}];c.leaveRoom();a.equal(maps,0);a.equal(careModal[1],'清洁护理到期');a.equal(c.state.cash,1000);careModal[4].find(x=>x[0]==='暂不护理，继续出门')[1]();a.equal(maps,1);a.equal(c.state.cash,1000);
+seed();c.state.monthlyPayments.living=800;c.leaveRoom();a.equal(maps,0);a.equal(careModal[1],'出门前完成本月必要事项','unpaid pet basic fees remain compulsory');
+seed();c.state.monthlyPayments.living=930;c.petCareTasks=()=>[{kind:'Annual',pet:c.state.pets[0]}];c.leaveRoom();a.equal(maps,0);a.ok(c.necessaryBills().some(x=>x.kind==='petCare'),'annual exam gate unchanged');
+console.log('PASS overdue cleaning reminder can continue to map; unpaid basic fees and annual exams still block.');
