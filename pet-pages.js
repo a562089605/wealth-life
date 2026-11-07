@@ -37,8 +37,13 @@
   const header=document.createElement('div');header.className='pet-overview-heading';header.innerHTML='<img src="'+asset('overview')+'" alt="我的宠物，每一位伙伴都有自己的小天地">';const back=textNode('button','','pet-overview-back');back.type='button';back.setAttribute('aria-label','返回房屋（顶部）');back.onclick=()=>{if(ctx.valid())room();};header.append(back);paper.append(header);
   const pets=state.pets||[],grid=document.createElement('div');grid.className='pet-tile-grid'+(pets.length>1?' pet-many':'')+(pets.length>4?' pet-many-more':'');
   for(const [index,p]of pets.entries()){const b=document.createElement('button');b.type='button';b.className='pet-tile';b.setAttribute('aria-label','查看'+petName(p));const id=spec(p);if(A.pets[id])b.append(portrait(asset('success-'+id)));b.append(textNode('strong',petName(p)),textNode('small','健康 '+healthValue(p)+'/100'+(needsVet(p)?' · 待就医':due(p,'Clean').length?' · 护理到期':''),'pet-tile-health'),textNode('small','点击查看 ›'));b.onclick=()=>{if(validPet(ctx,p,index))openDetail(index);};grid.append(b);}
-  const add=document.createElement('button');add.type='button';add.className='pet-add-tile';add.setAttribute('aria-label','领养新伙伴');add.innerHTML='<span aria-hidden="true">＋</span><strong>领养新伙伴</strong>';add.onclick=()=>{if(ctx.valid())selection();};grid.append(add);paper.append(grid);action(ctx,paper,'返回房屋',room);ctx.node.append(paper);focusFirst(ctx);
+  const add=document.createElement('button');add.type='button';add.className='pet-add-tile';add.setAttribute('aria-label','领养新伙伴');add.innerHTML='<span aria-hidden="true">＋</span><strong>领养新伙伴</strong>';add.onclick=()=>{if(ctx.valid())selection();};grid.append(add);paper.append(grid);if(state.petMemorials?.length)action(ctx,paper,'离世记录（'+state.petMemorials.length+'）',openMemorials);action(ctx,paper,'返回房屋',room);ctx.node.append(paper);focusFirst(ctx);
  }
+ function openMemorials(){const ctx=panel('宠物离世记录'),paper=plain(ctx,'宠物离世记录');for(const p of state.petMemorials||[])paper.append(textNode('h3',petName(p)),textNode('p',calendar(p.diedMonth)+'末 · 已离世'),textNode('p','因健康归零后三个月内未接受治疗而离世。'));action(ctx,paper,'返回我的宠物',openOverview);focusFirst(ctx);}
+ function showDeathNotice(after){if(!state||typeof PetHealth==='undefined'||!state.petMemorials?.length||state.gameOver?.final||state.financialCrisis?.finalConfirmed)return false;const rows=PetHealth.pendingNotices(state);if(!rows.length)return false;close();A.close();const owner=state,month=state.month,chosenSlot=slot,ids=rows.map(p=>p.deathCaseId);
+  showEvent('宠物健康','宠物离世',rows.map(p=>petName(p)+'因三个月内未接受治疗，已离世。').join('\n'),rows.map(p=>[esc(petName(p)),calendar(p.diedMonth)+'末']),[['知道了',()=>{if(state!==owner||state.month!==month||slot!==chosenSlot)return;if(!PetHealth.acknowledgeDeaths(state,ids,save)){document.getElementById('eventDesc').textContent='记录暂未保存，请重试。';document.getElementById('actions').firstElementChild.disabled=false;return;}clearModals();after?.();},true]]);return true;
+ }
+ window.showPetDeathNotice=showDeathNotice;
  function openDetail(index){const p=state.pets?.[index];if(!p)return openOverview();const c=cfg(p);if(!c){const ctx=panel('宠物资料'),paper=plain(ctx,'宠物资料待核对');paper.append(textNode('p',petName(p)+'：保留旧记录，不重新领养或收费。'));action(ctx,paper,'查看原照护',()=>{close();legacyOpenCare();});action(ctx,paper,'返回我的宠物',openOverview);return;}
   const ctx=panel(c.name+'的资料'),e=canvas(ctx,'detail-actions');ctx.node.classList.add('pet-detail-overlay');
   if(spec(p)!=='dog'){const hero=box(e,'',0,9,100,25.4,'pet-detail-hero');hero.append(portrait(asset('success-'+spec(p))));}
@@ -59,12 +64,12 @@
   paper.append(textNode('p','健康度 '+healthValue(p)+' / 100','pet-health-heading'),textNode('p',healthLabel(p),'pet-health-current'));
   const tiers=document.createElement('dl');tiers.className='pet-health-tiers';for(const [range,meaning]of [['50–100','常规生病风险'],['31–49','生病事件占比50%'],['1–30','生病事件占比75%'],['0','需要就医，治疗后恢复80']])tiers.append(textNode('dt',range),textNode('dd',meaning));paper.append(tiers);
   paper.append(textNode('p','生病占比按该宠物可抽事件计算，仍受每月次数上限限制。清洁护理每次恢复20，上限100。'));
-  if(q){paper.append(textNode('h3','疏忽照护治疗'));const bill=document.createElement('dl');bill.className='pet-health-tiers';for(const [label,v]of [['治疗总费',priceText(q.total)],['保险报销'+Math.round(q.coverage*100)+'%',priceText(q.insurancePaid)],['实际自付',priceText(q.due)],['本人自由时间',q.hours+' 小时'],['治疗后健康','80 / 100']])bill.append(textNode('dt',label),textNode('dd',v));paper.append(bill,textNode('p','疏忽照护治疗保险最多赔付50%。需先完成治疗，再安排清洁护理。'));
+  if(q){paper.append(textNode('h3','疏忽照护治疗'));const bill=document.createElement('dl');bill.className='pet-health-tiers';for(const [label,v]of [['治疗总费',priceText(q.total)],['保险报销'+Math.round(q.coverage*100)+'%',priceText(q.insurancePaid)],['实际自付',priceText(q.due)],['本人自由时间',q.hours+' 小时'],['治疗截止',calendar(q.deadlineMonth)+'末'],['治疗后健康','80 / 100']])bill.append(textNode('dt',label),textNode('dd',v));paper.append(bill,textNode('p','三个月内未完成治疗，宠物将离世。疏忽照护治疗保险最多赔付50%。需先完成治疗，再安排清洁护理。'));
    const status=message(paper);action(ctx,paper,'确认治疗 · '+priceText(q.due),b=>{if(paying||!validPet(ctx,p,index))return;paying=true;b.disabled=true;const result=PetHealth.confirmVet(state,index,q.token,()=>{backup();return save();},{free:currentCareerTime().free});paying=false;
     if(!result.ok){b.disabled=false;status.textContent=result.reason==='cash'?'现金不足，尚未治疗。':result.reason==='time'?'自由时间不足，尚未治疗。':'暂未完成，请重试。';return;}render();openDetail(index);
    },state.cash<q.due||currentCareerTime().free<q.hours);
    if(currentCareerTime().free<q.hours)status.textContent='需要'+q.hours+'小时自由时间，当前剩余'+currentCareerTime().free+'小时。';
-   if(state.cash<q.due){status.textContent='现金不足，可先筹款。';action(ctx,paper,'查看筹款方式',()=>{close();showFundingOptions(q.due,()=>{if(state===ctx.owner&&slot===ctx.chosenSlot&&state.month===ctx.month)openHealth(index);});});}
+   if(state.cash<q.due){status.textContent='现金不足，可向银行申请贷款。';action(ctx,paper,'前往银行贷款',()=>{close();openBankLoan(Math.max(1,Math.ceil(q.due-state.cash)),{after:()=>{if(state===ctx.owner&&slot===ctx.chosenSlot&&state.month===ctx.month)openHealth(index);}});});action(ctx,paper,'查看筹款方式',()=>{close();showFundingOptions(q.due,()=>{if(state===ctx.owner&&slot===ctx.chosenSlot&&state.month===ctx.month)openHealth(index);});});}
   }
   action(ctx,paper,'前往日常照顾',()=>openClean(index));action(ctx,paper,'返回宠物资料',()=>openDetail(index));focusFirst(ctx);
  }
@@ -201,8 +206,8 @@
  const petInsuranceOpenBefore=openInsurance;openInsurance=function(type){if(type==='pet')return openInsuranceSelection();return petInsuranceOpenBefore.apply(this,arguments);};
  const petInsuranceBuyBefore=buyInsurance;buyInsurance=function(type){if(type==='pet')return openInsuranceSelection();return petInsuranceBuyBefore.apply(this,arguments);};
  document.addEventListener('click',e=>{const b=e.target.closest('[data-pet-insurance]');if(b&&!b.disabled)openInsuranceSelection();});
- document.getElementById('petBtn').onclick=()=>{if(!state)return;if((state.pets||[]).length)openOverview();else selection();};
+ document.getElementById('petBtn').onclick=()=>{if(!state)return;if((state.pets||[]).length||state.petMemorials?.length)openOverview();else selection();};
  // Navigation cannot leave an actionable pet overlay attached to another slot/page.
- for(const name of ['home','openGame','openRoom']){const before=window[name];window[name]=function(...args){close();A.close();return before.apply(this,args);};}
+ for(const name of ['home','openGame','openRoom']){const before=window[name];window[name]=function(...args){close();A.close();const result=before.apply(this,args);if(name==='openGame'&&state)showDeathNotice(()=>before.apply(this,args));return result;};}
  document.addEventListener('keydown',e=>{if(!active)return;if(e.key==='Escape'){e.preventDefault();openOverview();return;}if(e.key!=='Tab')return;const list=[...active.querySelectorAll('button,input')].filter(b=>!b.disabled&&b.getClientRects().length),first=list[0],last=list.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}});
 })();

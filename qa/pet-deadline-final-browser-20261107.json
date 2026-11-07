@@ -1,0 +1,11 @@
+{
+  "baseCommit": "1f70507fbfa7dcb473d0755abe5af8224e0713e3",
+  "localIsolatedContexts": true,
+  "results": [
+    {
+      "file": "qa/pet-deadline-browser.cjs",
+      "status": 0,
+      "output": "PASS real bank loan/treatment, deadline display/reminder, final-month rescue, fatal monthly save rollback/retry, survivor fees/pool, notice reload/ack retry, memorial history and adoption return.\n"
+    }
+  ]
+}

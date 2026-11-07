@@ -1,0 +1,21 @@
+{
+  "baseCommit": "1f70507fbfa7dcb473d0755abe5af8224e0713e3",
+  "localIsolatedContexts": true,
+  "results": [
+    {
+      "file": "qa/pet-deadline-browser.cjs",
+      "status": 0,
+      "output": "PASS real bank loan/treatment, deadline display/reminder, final-month rescue, fatal monthly save rollback/retry, survivor fees/pool, notice reload/ack retry, memorial history and adoption return.\n"
+    },
+    {
+      "file": "qa/pet-vet-browser.cjs",
+      "status": 0,
+      "output": "PASS actual health80/20 and treatment UI, phone visibility, tiers, seven prices and 4/3/6-hour budgets, insufficient/stale-time refusal, exact remaining time, shared cleaning budget, capped50, save rollback/retry and reload once.\n"
+    },
+    {
+      "file": "qa/pet-health-browser.cjs",
+      "status": 0,
+      "output": "PASS health UI, skippable cleaning reminder/mandatory fees, care and full monthly save failure rollback/retry, gain/loss/reload, old-slot backup and layouts.\n"
+    }
+  ]
+}
