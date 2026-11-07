@@ -45,10 +45,11 @@
   return {id,name:pick(unused.length?unused:names),gender:random()<.5?'female':'male',age:Math.max(18,(s.age||22)+pick([-2,-1,0,2])),job:pick(jobs),status:'养宠物的朋友',origin:'pet-social',city:s.city,relation:10,lastInteractionMonth:s.month};}
  function draw(s,move,{free,random=Math.random,names=[],jobs=[]}={}){const d=data(s),k=key(s,move);if(d.records[k])return d.records[k];
   const pools=Object.fromEntries(Object.keys(weights).map(id=>[id,choices(s,id,free)]));if(!names.length||!jobs.length)pools.social=[];
-  const eligible=Object.fromEntries(Object.entries(weights).filter(([id])=>pools[id].length).map(([id,w])=>[id,id==='unwell'&&Health?w*pools[id].reduce((n,x)=>n+Health.illnessFactor(x.p),0)/pools[id].length:w]));
+  const base=Object.entries(weights).filter(([id])=>pools[id].length),otherWeight=base.reduce((n,[id,w])=>n+(id==='unwell'?0:w),0),factor=p=>Health?Health.illnessFactor(p,otherWeight):1;
+  const eligible=Object.fromEntries(base.map(([id,w])=>[id,id==='unwell'?w*pools[id].reduce((n,x)=>n+factor(x.p),0)/pools[id].length:w]));
   let r={key:k,month:s.month,moveId:move.id,status:'legacy'};
   // Historical life subtype share: pets 20/100; unavailable share returns to daily life.
-  if(Object.keys(eligible).length&&random()<.2){const id=weighted(eligible,random),pool=pools[id],x=id==='unwell'&&Health?pool[weighted(Object.fromEntries(pool.map((x,i)=>[i,Health.illnessFactor(x.p)])),random)]:pool[Math.min(pool.length-1,Math.floor(random()*pool.length))];r={...r,id,status:'pending',forced:!['companion','social','surprise'].includes(id),quote:quote(s,id,x)};
+  if(Object.keys(eligible).length&&random()<.2){const id=weighted(eligible,random),pool=pools[id],x=id==='unwell'&&Health?pool[weighted(Object.fromEntries(pool.map((x,i)=>[i,factor(x.p)])),random)]:pool[Math.min(pool.length-1,Math.floor(random()*pool.length))];r={...r,id,status:'pending',forced:!['companion','social','surprise'].includes(id),quote:quote(s,id,x)};
    if(id==='social')r.quote.contact=contact(s,{names,jobs},random);
    if(id!=='companion')d.seen[s.month+':'+id]=true;
   }d.records[k]=r;return r;}

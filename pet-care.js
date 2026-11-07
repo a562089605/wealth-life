@@ -14,6 +14,7 @@ function ensurePetCare(s=state){const used=new Set((s.pets||[]).map(p=>p.careId)
 function petCareTasks(s=state){return ensurePetCare(s).flatMap(p=>{const rule=PET_CARE_RULES[petCareSpecies(p)];if(!rule)return [{key:p.careId||'unknown',pet:p,unsupported:true}];return ['Annual','Clean'].filter(k=>p.care['next'+k]<=s.month).map(k=>({key:p.careId+':'+k+':'+p.care['next'+k],pet:p,rule,kind:k}));});}
 function petCareQuote(s,selections){const recovery=isRecoveryMonth(s),factor=(s.cpiIndex||100)/100;let cost=0,hours=0;const rows=[];
  for(const task of petCareTasks(s)){if(task.unsupported)return {blocked:'未知旧宠物种类，需迁移核对'};const method=selections[task.key];if(!method)continue;
+ if(task.kind==='Clean'&&typeof PetHealth!=='undefined'&&(PetHealth.activeVet(task.pet)||PetHealth.value(task.pet)===0))return {blocked:'需要先就医，治疗后再安排清洁护理'};
  if(task.kind==='Annual'&&method!=='annual'||task.kind==='Clean'&&!['self','pro'].includes(method)||recovery&&method==='self')return {blocked:'护理方式不适用'};
  const c=roundCash((task.kind==='Annual'?task.rule.annual:task.rule[method])*factor),h=recovery?0:task.kind==='Annual'?task.rule.annualHours:task.rule[method+'Hours'];cost+=c;hours+=h;rows.push({...task,method,cost:c,hours:h});}
  return {cost:roundCash(cost),hours,rows,recovery};}

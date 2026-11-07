@@ -1,0 +1,17 @@
+{
+  "localIsolatedSlot": 914,
+  "viewports": [
+    320,
+    375,
+    390,
+    1280
+  ],
+  "normal80Preview": true,
+  "tiers50and75Visible": true,
+  "healthCardNoScrollOnPhoneSizes": true,
+  "sevenTreatmentQuotesAndPayments": true,
+  "insuranceCap50": true,
+  "saveFailureRollbackRetry": true,
+  "reloadAndPaidOnce": true,
+  "errors": []
+}

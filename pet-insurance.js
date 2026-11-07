@@ -39,7 +39,7 @@
  }
  function atomic(s,save,change){const before=copy(s);try{sync(s);const result=change();if(save()===false)throw Error('save failed');return result;}catch(e){for(const k of Object.keys(s))delete s[k];Object.assign(s,before);return {ok:false,reason:'save'};}}
  function confirm(s,index,token,save){const q=quote(s,index);if(!q||q.held||q.token!==token)return {ok:false,reason:'stale'};if(s.cash<q.due)return {ok:false,reason:'cash'};
-  return atomic(s,save,()=>{const p=s.pets[index];s.insurance??={};let n=s.nextPetInsuranceId||0,k;do{k='pet-policy-'+(++n);}while(Object.hasOwn(s.insurance,k));s.nextPetInsuranceId=n;
+  return atomic(s,save,()=>{if(root.PetHealth)root.PetHealth.ensure(s);const p=s.pets[index];s.insurance??={};let n=s.nextPetInsuranceId||0,k;do{k='pet-policy-'+(++n);}while(Object.hasOwn(s.insurance,k));s.nextPetInsuranceId=n;
    if(q.due){s.cash=money(s.cash-q.due);if(s.monthlyPayments?.month!==s.month)s.monthlyPayments={month:s.month,housing:0,living:0,premiums:0};s.monthlyPayments.premiums=money((s.monthlyPayments.premiums||0)+q.due);(s.financeLedger??=[]).push({kind:'premiumsPayment',source:'petInsurance',month:s.month,amount:q.due,petIndex:index,species:q.species,petName:p.name,policyKey:k});}
    s.insurance[k]={name:(p.name||p.type||'宠物')+' · 宠物医疗保险',active:true,monthly:q.monthly,coverage:1,startMonth:s.month,species:q.species,petIndex:index,pricingVersion:2,baseMonthly:q.baseMonthly,ownedCount:q.ownedCount,pricedMonth:s.month};p.insuranceKey=k;
    return {ok:true,key:k,quote:q};

@@ -50,3 +50,9 @@
 .pet-insurance-overlay{flex-direction:column;align-items:center}.pet-insurance-overlay>.pet-message{position:static;flex:none;width:min(100%,480px);max-width:480px;box-sizing:border-box;margin:8px auto 0;padding:10px 14px;border:1px solid #bd994e;border-radius:14px;background:#fff2d4;color:#385035;font:14px/1.5 Georgia,'Songti SC',serif}
 
 .pet-health-status{font-size:3.4cqw}.pet-tile-health{color:#52603b;font-size:13px}
+
+/* Health is native, readable UI below the approved illustration. */
+.pet-detail-overlay{flex-direction:column;align-items:center}.pet-detail-overlay>.pet-illustrated{margin:auto auto 0}
+.pet-health-card{display:flex;flex:none;flex-direction:column;gap:6px;width:min(100%,480px);box-sizing:border-box;margin:8px auto auto;padding:10px 16px;border:2px solid #b69c5f;border-radius:18px;background:#fff1cc;color:#294a32;font:16px/1.25 Georgia,'Songti SC',serif;text-align:left;box-shadow:0 2px 0 #ac8b4c;cursor:pointer;min-height:84px}
+.pet-health-card-line{display:flex;align-items:center;justify-content:space-between}.pet-health-card .pet-health-value{font-size:22px;background:transparent;border-radius:0;color:#325638}.pet-health-card small{font-size:13px;color:#56623d}.pet-health-meter{display:block;width:100%;height:7px;overflow:hidden;border:1px solid #b8ac78;border-radius:8px;background:#e8dfb8}.pet-health-fill{display:block;height:100%;border-radius:8px;background:#78964c}.pet-health-warning .pet-health-fill{background:#c29135}.pet-health-critical .pet-health-fill{background:#b86a4b}.pet-health-critical small{color:#964e32}.pet-health-card:focus-visible{outline:3px solid #496d3a;outline-offset:2px}
+.pet-health-heading{font-size:24px;font-weight:bold;margin:8px 0}.pet-health-current{color:#795c30}.pet-health-tiers{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;padding:12px;background:#f5e7bd;border-radius:14px}.pet-health-tiers dt{font-weight:bold}.pet-health-tiers dd{margin:0}

@@ -17,6 +17,8 @@
  function spec(p){return petCareSpecies(p);}
  function cfg(p){return A.pets[spec(p)];}
  function healthValue(p){return typeof PetHealth!=='undefined'?PetHealth.value(p):80;}
+ function needsVet(p){return typeof PetHealth!=='undefined'&&(!!PetHealth.activeVet(p)||healthValue(p)===0);}
+ function healthLabel(p){return needsVet(p)?'待就医':healthValue(p)<=30?'生病风险档位 75%':healthValue(p)<50?'生病风险档位 50%':'状态平稳';}
  function petName(p){return p.name||cfg(p)?.name||p.type||'待核对宠物';}
  function petInsurancePolicy(p){return PetInsurance.held(state,p);}
  function petInsuranceStatus(p){const policy=petInsurancePolicy(p);return !policy?'未投保':Number.isInteger(policy.stopMonth)?'下月停保':Number.isInteger(policy.startMonth)&&policy.startMonth>state.month?'待生效':'已投保';}
@@ -34,21 +36,37 @@
  function openOverview(){if(!state)return;const ctx=panel('我的宠物'),paper=document.createElement('div');paper.className='pet-overview';
   const header=document.createElement('div');header.className='pet-overview-heading';header.innerHTML='<img src="'+asset('overview')+'" alt="我的宠物，每一位伙伴都有自己的小天地">';const back=textNode('button','','pet-overview-back');back.type='button';back.setAttribute('aria-label','返回房屋（顶部）');back.onclick=()=>{if(ctx.valid())room();};header.append(back);paper.append(header);
   const pets=state.pets||[],grid=document.createElement('div');grid.className='pet-tile-grid'+(pets.length>1?' pet-many':'')+(pets.length>4?' pet-many-more':'');
-  for(const [index,p]of pets.entries()){const b=document.createElement('button');b.type='button';b.className='pet-tile';b.setAttribute('aria-label','查看'+petName(p));const id=spec(p);if(A.pets[id])b.append(portrait(asset('success-'+id)));b.append(textNode('strong',petName(p)),textNode('small','健康 '+healthValue(p)+'/100'+(due(p,'Clean').length?' · 护理到期':''),'pet-tile-health'),textNode('small','点击查看 ›'));b.onclick=()=>{if(validPet(ctx,p,index))openDetail(index);};grid.append(b);}
+  for(const [index,p]of pets.entries()){const b=document.createElement('button');b.type='button';b.className='pet-tile';b.setAttribute('aria-label','查看'+petName(p));const id=spec(p);if(A.pets[id])b.append(portrait(asset('success-'+id)));b.append(textNode('strong',petName(p)),textNode('small','健康 '+healthValue(p)+'/100'+(needsVet(p)?' · 待就医':due(p,'Clean').length?' · 护理到期':''),'pet-tile-health'),textNode('small','点击查看 ›'));b.onclick=()=>{if(validPet(ctx,p,index))openDetail(index);};grid.append(b);}
   const add=document.createElement('button');add.type='button';add.className='pet-add-tile';add.setAttribute('aria-label','领养新伙伴');add.innerHTML='<span aria-hidden="true">＋</span><strong>领养新伙伴</strong>';add.onclick=()=>{if(ctx.valid())selection();};grid.append(add);paper.append(grid);action(ctx,paper,'返回房屋',room);ctx.node.append(paper);focusFirst(ctx);
  }
  function openDetail(index){const p=state.pets?.[index];if(!p)return openOverview();const c=cfg(p);if(!c){const ctx=panel('宠物资料'),paper=plain(ctx,'宠物资料待核对');paper.append(textNode('p',petName(p)+'：保留旧记录，不重新领养或收费。'));action(ctx,paper,'查看原照护',()=>{close();legacyOpenCare();});action(ctx,paper,'返回我的宠物',openOverview);return;}
-  const ctx=panel(c.name+'的资料'),e=canvas(ctx,'detail-actions');
+  const ctx=panel(c.name+'的资料'),e=canvas(ctx,'detail-actions');ctx.node.classList.add('pet-detail-overlay');
   if(spec(p)!=='dog'){const hero=box(e,'',0,9,100,25.4,'pet-detail-hero');hero.append(portrait(asset('success-'+spec(p))));}
   box(e,petName(p)+' · '+c.name,22,35.1,56,4.2,'pet-name');
-  box(e,'健康 '+healthValue(p)+'/100 · '+(due(p,'Clean').length?'清洁护理到期':due(p,'Annual').length?'年度体检到期':healthValue(p)<30?'健康偏低':'状态良好'),20,39.8,61,4.1,'pet-status pet-health-status');
+  box(e,needsVet(p)?'需要就医，请查看健康状况':due(p,'Clean').length?'清洁护理到期':due(p,'Annual').length?'年度体检到期':'目前没有到期照护',20,39.8,61,4.1,'pet-status pet-detail-care-status');
   hit(ctx,e,'每月费用',4,44.5,92,9.5,()=>{if(validPet(ctx,p,index))openBasicFees(index);});
   hit(ctx,e,'日常照顾',4,54.7,92,9.3,()=>{if(validPet(ctx,p,index))openClean(index);});
   hit(ctx,e,'年度体检',4,64.9,92,9.3,()=>{if(validPet(ctx,p,index))openAnnual(index);});
   hit(ctx,e,'保险',4,74.8,92,9.3,()=>{if(validPet(ctx,p,index))openPetInsurance(index);});
   hit(ctx,e,'返回我的宠物',6,86.8,88,6.4,openOverview);
   hit(ctx,e,'返回房屋',26,94.3,49,4.4,room);
-  hit(ctx,e,'返回我的宠物',2,1,13,7,openOverview);focusFirst(ctx);
+  hit(ctx,e,'返回我的宠物',2,1,13,7,openOverview);healthCard(ctx,p,index);focusFirst(ctx);
+ }
+ function healthCard(ctx,p,index){const b=action(ctx,ctx.node,'',()=>{if(validPet(ctx,p,index))openHealth(index);});b.className='pet-health-card'+(needsVet(p)?' pet-health-critical':healthValue(p)<50?' pet-health-warning':'');b.setAttribute('aria-label','查看'+petName(p)+'的健康状况');
+  const line=textNode('span','','pet-health-card-line');line.append(textNode('span','健康度'),textNode('strong',healthValue(p)+' / 100','pet-health-value pet-health-status'));b.append(line);
+  const meter=textNode('span','','pet-health-meter'),fill=textNode('span','','pet-health-fill');meter.setAttribute('role','progressbar');meter.setAttribute('aria-label','健康度');meter.setAttribute('aria-valuemin','0');meter.setAttribute('aria-valuemax','100');meter.setAttribute('aria-valuenow',String(healthValue(p)));fill.style.width=healthValue(p)+'%';meter.append(fill);b.append(meter,textNode('small',healthLabel(p)+' · '+(needsVet(p)?'查看治疗费用':'查看健康与风险')+' ›'));
+ }
+ function openHealth(index){const p=state.pets?.[index];if(!p||typeof PetHealth==='undefined')return openOverview();const ctx=panel('宠物健康状况'),paper=plain(ctx,petName(p)+' · 健康状况'),q=PetHealth.quoteVet(state,index);
+  paper.append(textNode('p','健康度 '+healthValue(p)+' / 100','pet-health-heading'),textNode('p',healthLabel(p),'pet-health-current'));
+  const tiers=document.createElement('dl');tiers.className='pet-health-tiers';for(const [range,meaning]of [['50–100','常规生病风险'],['31–49','生病事件占比50%'],['1–30','生病事件占比75%'],['0','需要就医，治疗后恢复80']])tiers.append(textNode('dt',range),textNode('dd',meaning));paper.append(tiers);
+  paper.append(textNode('p','生病占比按该宠物可抽事件计算，仍受每月次数上限限制。清洁护理每次恢复20，上限100。'));
+  if(q){paper.append(textNode('h3','疏忽照护治疗'));const bill=document.createElement('dl');bill.className='pet-health-tiers';for(const [label,v]of [['治疗总费',priceText(q.total)],['保险报销'+Math.round(q.coverage*100)+'%',priceText(q.insurancePaid)],['实际自付',priceText(q.due)],['治疗后健康','80 / 100']])bill.append(textNode('dt',label),textNode('dd',v));paper.append(bill,textNode('p','疏忽照护治疗保险最多赔付50%。需先完成治疗，再安排清洁护理。'));
+   const status=message(paper);action(ctx,paper,'确认治疗 · '+priceText(q.due),b=>{if(paying||!validPet(ctx,p,index))return;paying=true;b.disabled=true;const result=PetHealth.confirmVet(state,index,q.token,()=>{backup();return save();});paying=false;
+    if(!result.ok){b.disabled=false;status.textContent=result.reason==='cash'?'现金不足，尚未治疗。':'暂未完成，费用和健康均未结算，请重试。';return;}render();openDetail(index);
+   },state.cash<q.due);
+   if(state.cash<q.due){status.textContent='现金不足，可先筹款。';action(ctx,paper,'查看筹款方式',()=>{close();showFundingOptions(q.due,()=>{if(state===ctx.owner&&slot===ctx.chosenSlot&&state.month===ctx.month)openHealth(index);});});}
+  }
+  action(ctx,paper,'前往日常照顾',()=>openClean(index));action(ctx,paper,'返回宠物资料',()=>openDetail(index));focusFirst(ctx);
  }
  function basicFeeOptions(){return {prices:Object.fromEntries([...Object.entries(PETS).map(([type,c])=>[type,c.monthly]),...Object.entries(A.pets).flatMap(([id,c])=>[[id,PETS[c.type]?.monthly],[c.name,PETS[c.type]?.monthly]])]),nonPetLiving:roundCash(livingBaseAmount(state)+(state.carRunningCost||0))};}
  function openBasicFees(index){const p=state.pets?.[index],c=p&&cfg(p);if(!c)return openOverview();const ctx=panel('每月费用'),q=PetBasicFees.quote(state,index,basicFeeOptions());
@@ -68,7 +86,7 @@
   }).disabled=!q.due||state.cash<q.due;
   if(q.due>state.cash)status.textContent='现金不足，尚未扣款。';hit(ctx,e,'返回宠物资料',22,91.5,56,6,()=>openDetail(index));hit(ctx,e,'返回宠物资料',2,1,13,7,()=>openDetail(index));focusFirst(ctx);
  }
- function openInsuranceSelection(){const pets=state.pets||[];if(pets.length===1)return openPetInsurance(0);const ctx=panel('选择宠物保险'),paper=plain(ctx,'宠物保险');paper.append(textNode('p','自愿选择投保的伙伴。生病、受伤的医疗费全额赔付，物损自付。总月保费按已投保基准费之和，除以实际已养宠物数量；本月已付保单保留，次月重新分摊。'));
+ function openInsuranceSelection(){const pets=state.pets||[];if(pets.length===1)return openPetInsurance(0);const ctx=panel('选择宠物保险'),paper=plain(ctx,'宠物保险');paper.append(textNode('p','自愿选择投保的伙伴。普通生病、受伤医疗费全额赔付；疏忽照护治疗最多赔付50%，物损自付。总月保费按已投保基准费之和，除以实际已养宠物数量；本月已付保单保留，次月重新分摊。'));
   if(!pets.length)paper.append(textNode('p','领养伙伴后可选择投保。'));
   for(const [index,p]of pets.entries()){const q=PetInsurance.quote(state,index);if(q)action(ctx,paper,petName(p)+' · '+petInsuranceStatus(p)+' · '+priceText(q.monthly)+'/月',()=>{if(validPet(ctx,p,index))openPetInsurance(index);});}
   action(ctx,paper,'返回我的宠物',openOverview);focusFirst(ctx);
@@ -79,8 +97,8 @@
   box(e,priceText(q.monthly),69,57.8,22,5.2,'pet-insurance-value');
   box(e,held?'医疗赔付':'本次支付',35,69.3,27,4.8,'pet-insurance-total-label');
   box(e,held?(q.coverage===null?'待核对':Math.round(q.coverage*100)+'%'):priceText(q.due),69,69,22,5.4,'pet-insurance-value');
-  box(e,'自愿投保 · 生病、受伤医疗费全赔，物损自付',10,78,80,2.5,'pet-insurance-note');
-  if(held&&q.coverage!==1)box(e,'现有保单按原保障比例执行，物损自付',10,78,80,2.5,'pet-insurance-note');
+  box(e,'普通医疗全赔 · 疏忽治疗赔50% · 物损自付',10,78,80,2.5,'pet-insurance-note');
+  if(held&&q.coverage!==1)box(e,'普通医疗按原比例 · 疏忽治疗最多赔50%',10,78,80,2.5,'pet-insurance-note');
   const label=held?(held.stopMonth!==undefined?'已安排下月停保':'下月停保'):'确认投保';
   if(held)box(e,label,25,82.8,50,4.4,'pet-insurance-pay-label');
   const status=message(ctx.node);const button=hit(ctx,e,label,5,80.5,90,8.8,b=>{if(paying||!validPet(ctx,p,index))return;
@@ -135,7 +153,7 @@
   box(e,'返回我的宠物',22,88,57,2.4,'pet-helper');hit(ctx,e,'返回我的宠物',18,87.3,65,4.6,openOverview);
   function update(){const ready=due(p,'Clean').length>0;marks.forEach((mark,i)=>{mark.textContent=selected===(i?'pro':'self')?'✓':'';mark.classList.toggle('selected',selected===(i?'pro':'self'));choices[i].setAttribute('aria-pressed',String(selected===(i?'pro':'self')));});
    choices[0].disabled=recovery;for(const [i,m]of ['self','pro'].entries()){rows[i].innerHTML='<strong>'+label(m)+'</strong><span>'+(m==='self'?'自己动手，细心照顾。':'交给专业人员清洁照顾。')+'</span><span>费用：'+priceText(amount(m))+'</span><b>'+(m==='self'&&recovery?'康复月不可自行清洁':'自由时间减少 '+hours(m)+' 小时')+'</b><span>清洁后，隔 '+rules[m+'Months']+' 个月再清洁</span>';}
-   sum.innerHTML='<small>已选方式　／　本次费用　／　自由时间</small><strong>'+label(selected)+'　'+priceText(amount(selected))+'　减少 '+hours(selected)+' 小时</strong>';date.textContent=ready?'完成清洁：健康+20（上限100），重新计算下次护理':'尚未到期，仅可预览，不提前收费';b.disabled=!ready;b.setAttribute('aria-label',ready?'确认选择':'尚未到期，不能确认支付');}
+   sum.innerHTML='<small>已选方式　／　本次费用　／　自由时间</small><strong>'+label(selected)+'　'+priceText(amount(selected))+'　减少 '+hours(selected)+' 小时</strong>';date.textContent=needsVet(p)?'需要先就医，治疗后可按周期护理':ready?'完成清洁：健康+20（上限100），重新计算下次护理':'尚未到期，仅可预览，不提前收费';b.disabled=!ready||needsVet(p);b.setAttribute('aria-label',ready?'确认选择':'尚未到期，不能确认支付');}
   update();focusFirst(ctx);
  }
  function openAnnual(index){const p=state.pets?.[index],id=p&&spec(p),rule=PET_CARE_RULES[id];if(!p||!rule)return openDetail(index);
@@ -167,7 +185,7 @@
   if(tasks.some(t=>t.kind==='Clean'))paper.append(textNode('p','清洁护理可以稍后完成。月底仍逾期，每只健康−10；完成清洁护理恢复20，上限100。年度体检沿用原规则。'));
   action(ctx,paper,'返回我的宠物',openOverview);focusFirst(ctx);
  }
- window.PetPages={openOverview,openDetail,openBasicFees,openPetInsurance,openInsuranceSelection,openAdoption,openClean,openAnnual,openDueCare,close};
+ window.PetPages={openOverview,openDetail,openHealth,openBasicFees,openPetInsurance,openInsuranceSelection,openAdoption,openClean,openAnnual,openDueCare,close};
  // The same living receipt covers both the combined bill and individual pet payments.
  function unpaidBasicFees(){return (state?.pets||[]).flatMap((p,index)=>{const q=PetBasicFees.quote(state,index,basicFeeOptions());return q?.due>.005?[{kind:'petBasicFee',name:petName(p)+' · 每月费用',due:q.due,action:()=>openBasicFees(index)}]:[];});}
  const basicFeeBillsBefore=necessaryBills;necessaryBills=function(){const rows=basicFeeBillsBefore(),pets=unpaidBasicFees();if(!pets.length)return rows;

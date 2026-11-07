@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-07",
+  "kind": "actual-local-Chromium-screenshots",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "rulesConfirmed": true,
+  "pageReview": "pending-user-view",
+  "productionUnchanged": true,
+  "productionBaseline": "f68dc11cd4415a7c0c384ce5375021dbac6e418b",
+  "runtimeArtwork": "existing approved seven-pet assets unchanged",
+  "files": [
+    {
+      "file": "health80-preview.png",
+      "description": "柯基健康80/100资料页，健康卡与进度条",
+      "sha256": "6454fd8b955558c7ab32ca0b111763632fafb8a63035936381db20f00c073d95"
+    },
+    {
+      "file": "health20-preview.png",
+      "description": "柯基健康20/100资料页，75%风险档位",
+      "sha256": "c6d120c02548f0ec1b6c3558780688f3000c721f4c4ee9b4aafc9801bd6fdc66"
+    },
+    {
+      "file": "vet50-preview.png",
+      "description": "健康0待就医，治疗1500/保险750/自付750",
+      "sha256": "267e883f7d88c278454c750e92223ad426fc7b68f75f6060d2f97c2e588e15db"
+    }
+  ]
+}
