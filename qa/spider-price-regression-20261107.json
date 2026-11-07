@@ -1,0 +1,16 @@
+{
+  "baseCommit": "a666bcb414869fccf4212b22db9ed0f76c5e4ca1",
+  "localIsolatedContexts": true,
+  "results": [
+    {
+      "file": "qa/spider-price-browser.cjs",
+      "status": 0,
+      "output": "PASS rendered spider120/0/24 and saved80/0/16 match billing, rollback/retry, old pending reload, 320/375/390/1280 price layout and original3h/-2/+2/health.\n"
+    },
+    {
+      "file": "qa/pet-events-browser.cjs",
+      "status": 0,
+      "output": "PASS Chromium pet35: all approved art and effects, deferred payment, save rollback/retry, pending reload, insurer-adjusted medical prices, property exclusion, zero-hour surprise, no-pet fallback and phone/desktop layouts.\n"
+    }
+  ]
+}

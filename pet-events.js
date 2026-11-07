@@ -13,7 +13,7 @@
  };
  const cards=root.PetEventCards||(typeof module!=='undefined'?require('./pet-event-cards.js'):{});
  const weights={companion:20,unwell:20,social:20,surprise:20,accident:20};
- const illness={dog:200,cat:200,crocodile:600,gecko:120,spider:80,tortoise:180,chameleon:200};
+ const illness={dog:200,cat:200,crocodile:600,gecko:120,spider:120,tortoise:180,chameleon:200};
  const aliases={狗:'dog',柯基:'dog',猫:'cat',银渐层:'cat',鳄鱼:'crocodile',蜥蜴:'gecko',豹纹守宫:'gecko',蜘蛛:'spider',捕鸟蛛:'spider',乌龟:'tortoise',陆龟:'tortoise',变色龙:'chameleon'};
  const clone=x=>JSON.parse(JSON.stringify(x)),money=x=>Math.round(x*100)/100;
  const species=p=>Object.hasOwn(companions,p.species)?p.species:Object.hasOwn(aliases,p.type)?aliases[p.type]:undefined;

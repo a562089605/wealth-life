@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-11-07T06:33:29.180221+00:00",
+  "baseCommit": "a666bcb414869fccf4212b22db9ed0f76c5e4ca1",
+  "cloudflareRun": "https://github.com/a562089605/wealth-life/runs/128325946673",
+  "files": [
+    {
+      "ref": "pet-event-cards.js?v=20261106-pet35",
+      "sha256": "0d72eba778239774779783d767e9fcb01f6fb4a07538f4ac27d2eb46b1c7b990",
+      "matchesBase": true
+    },
+    {
+      "ref": "pet-events.js?v=20261107-petpoolpause1",
+      "sha256": "bae343e5f3c68cd8aba60e0790cfdf813138ba2bda6dc53f9ec086dd7e3f0136",
+      "matchesBase": true
+    }
+  ],
+  "allMatch": true
+}

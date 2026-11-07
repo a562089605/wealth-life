@@ -1,0 +1,41 @@
+{
+  "isolatedSlot": 925,
+  "cases": [
+    {
+      "old": false,
+      "coverage": null,
+      "due": 120
+    },
+    {
+      "old": false,
+      "coverage": 1,
+      "due": 0
+    },
+    {
+      "old": false,
+      "coverage": 0.8,
+      "due": 24
+    },
+    {
+      "old": true,
+      "coverage": null,
+      "due": 80
+    },
+    {
+      "old": true,
+      "coverage": 1,
+      "due": 0
+    },
+    {
+      "old": true,
+      "coverage": 0.8,
+      "due": 16
+    }
+  ],
+  "displayAndPaymentMatch": true,
+  "oldPendingReload80": true,
+  "saveFailureRollbackRetry": true,
+  "phoneAndDesktopPriceFits": true,
+  "originalArtworkRetained": true,
+  "errors": []
+}

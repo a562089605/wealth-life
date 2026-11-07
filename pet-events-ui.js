@@ -30,7 +30,7 @@
    const summary=[['自由时间',q.hours+'小时'],['能量',q.energy||0],['幸福度',q.happiness||0],['压力',q.stress||0]];
    if(q.gross)summary.unshift([medical?'预计自付':'本次费用',priceText(q.cost)]);
    card.append(el('p',summary.map(([k,v])=>k+' '+v).join('；'),'pet-map-accessible'));
-   if(medical&&q.cost!==q.gross){const amount=el('span',priceText(q.cost),'pet-map-medical-price');const box=art.priceBox;['left','top','width','height'].forEach((k,i)=>amount.style[k]=box[i]+'%');if(r.id==='injury'||r.id==='accident')amount.classList.add('pet-map-injury-price');card.append(amount);}
+   if(medical&&q.cost!==(art.printedCost??art.cost)){const display=art.printedCost===undefined?priceText(q.cost):priceText(q.cost).replace(/\.00$/,'');const amount=el('span',display,'pet-map-medical-price');const box=art.priceBox;['left','top','width','height'].forEach((k,i)=>amount.style[k]=box[i]+'%');if(r.id==='injury'||r.id==='accident')amount.classList.add('pet-map-injury-price');card.append(amount);}
   }
   const pay=el('button',q.button,art?'pet-hit pet-map-confirm':'pet-solid-button');pay.type='button';controls.append(pay);
   if(art)['left','top','width','height'].forEach((k,i)=>pay.style[k]=art.buttonBox[i]+'%');

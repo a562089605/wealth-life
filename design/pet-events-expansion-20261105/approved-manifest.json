@@ -414,11 +414,26 @@
       "art": "approved/spider-unwell.png",
       "sha256": "f5bb103f88cd4a30a4d334c253735355aff0fd2369af055db69eb42619800452",
       "quote": {
+        "cost": 120,
+        "insuranceExample": false,
+        "hours": 3,
+        "energy": -2,
+        "stress": 2
+      },
+      "originalQuote": {
         "cost": 80,
         "insuranceExample": false,
         "hours": 3,
         "energy": -2,
         "stress": 2
+      },
+      "priceRevision": {
+        "date": "2026-11-07",
+        "confirmed": true,
+        "previousCost": 80,
+        "newCost": 120,
+        "printedCost": 80,
+        "rendering": "Original approved artwork retained; native price field displays actual saved quote. Old saved quotes retain their amount."
       }
     },
     {
