@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-11-07T15:14:19.082205+00:00",
+  "functionalCommit": "0e2f12bac4b4172250b7d9cb09e53d6fd4cf550c",
+  "deploymentRun": "https://github.com/a562089605/wealth-life/runs/128441244267",
+  "remoteMain": "0e2f12bac4b4172250b7d9cb09e53d6fd4cf550c",
+  "files": [
+    {
+      "file": "index.html",
+      "url": "https://wealth-life.a562089605.workers.dev/",
+      "bytes": 128585,
+      "sha256": "2d4c8ef6c62bf90e852d31cc965b1deb875842bd45489cc4b90df7d2823540a7",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-insurance.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-insurance.js?v=20261107-petindividual1",
+      "bytes": 5487,
+      "sha256": "3406a3df3663840620c358ded8a6f952f5b8fe87ed95e2b4cfb9c3ea494319b2",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-pages.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-pages.js?v=20261107-petindividual1",
+      "bytes": 34847,
+      "sha256": "f4783882aa72f64c90f23779bed7600ed4a906e562ae91636cc950f3c67601a4",
+      "matchesLocal": true
+    },
+    {
+      "file": "sw.js",
+      "url": "https://wealth-life.a562089605.workers.dev/sw.js",
+      "bytes": 11314,
+      "sha256": "d9ca38f88d74f1027b7d2ae3928e871b1f3e09ee52f5714795604174a03fae79",
+      "matchesLocal": true
+    }
+  ],
+  "allMatch": true
+}

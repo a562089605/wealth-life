@@ -33,4 +33,4 @@
 
 ## 发布
 
-待本轮提交上传及Cloudflare实际成功记录核对；以发布后证据为准。
+功能提交`0e2f12bac4b4172250b7d9cb09e53d6fd4cf550c`已成功上传原main，远端提交实际读回一致；Cloudflare检查结论success：[发布记录](https://github.com/a562089605/wealth-life/runs/128441244267)。首页、保险脚本、页面脚本及SW四份线上运行资源实际返回并与本地完整字节一致，SHA及时间见`qa/pet-insurance-individual-production-20261107.json`。这四份核对不替代真实iPhone/PWA升级验证。
