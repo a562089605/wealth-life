@@ -1,0 +1,93 @@
+{
+  "sourceBase": "239bb266e08f921f0937dae6be35a0219b91cf1e",
+  "scope": "Targeted insurance and connected monthly/health/medical/state/cache regressions; no full-repo rerun",
+  "suiteCount": 10,
+  "passed": true,
+  "combinationCount": 4118,
+  "results": [
+    {
+      "file": "qa/pet-insurance.test.cjs",
+      "chunk_id": "c2704b",
+      "wall_time_seconds": 0.070000825,
+      "exit_code": 0,
+      "original_token_count": 59,
+      "output": "PASS optional seven-species prices, atomic payment/rollback/retry, per-pet medical100/property excluded, uninsured pet self-pay, old45 and explicit historic rates, no retroactive repricing, aggregate receipts and stale/shortage guards.\n"
+    },
+    {
+      "file": "qa/pet-insurance-balance.test.cjs",
+      "chunk_id": "7e4429",
+      "wall_time_seconds": 0.760392444,
+      "exit_code": 0,
+      "original_token_count": 54,
+      "output": "PASS 4118 owned/insured/order combinations, individual totals, ownership stale guard, prepaid month lock, old-contract renewal, next-month stop rollback/reload/repurchase, locked event and actual finance metrics.\n"
+    },
+    {
+      "file": "qa/pet-insurance-pages.test.cjs",
+      "chunk_id": "68d179",
+      "wall_time_seconds": 0.116680023,
+      "exit_code": 0,
+      "original_token_count": 53,
+      "output": "PASS seven illustrated insurance pages, actual opt-out, own price/atomic buy/retry/one-time payment, distinct pets, no new45 entry, combined premiums retain health, next-month totals and no compulsory purchase.\n"
+    },
+    {
+      "file": "qa/pet-fee-insurance-dom.test.cjs",
+      "chunk_id": "7757d4",
+      "wall_time_seconds": 0.194315678,
+      "exit_code": 0,
+      "original_token_count": 56,
+      "output": "PASS actual pet page DOM handlers: four ordered entrances, read-only preview, adopted prepaid and old bill recognition, payment rollback/retry/paid-once, pet-specific insurance55/full coverage with other premiums retained.\n"
+    },
+    {
+      "file": "qa/pet-health.test.cjs",
+      "chunk_id": "6296ca",
+      "wall_time_seconds": 0.389350877,
+      "exit_code": 0,
+      "original_token_count": 53,
+      "output": "PASS health defaults and legacy no-backcharge, monthly loss once/reload/floor, self/pro gain/ceiling/payment rollback, annual isolation, exact single/multi lottery weights, gate/caps and pending cards preserved.\n"
+    },
+    {
+      "file": "qa/pet-health-settlement.test.cjs",
+      "chunk_id": "7b2b76",
+      "wall_time_seconds": 0.206804716,
+      "exit_code": 0,
+      "original_token_count": 82,
+      "output": "PASS actual core month settlement and rollback: overdue health applied once with cash/month/history, failed save restores all, repeat/reload do not double-charge health; player health untouched.\nPASS real monthly transaction: failed death save restores live pet/policy/cash/month, retry archives once and stops future premiums.\n"
+    },
+    {
+      "file": "qa/pet-vet.test.cjs",
+      "chunk_id": "8deacc",
+      "wall_time_seconds": 0.263545242,
+      "exit_code": 0,
+      "original_token_count": 84,
+      "output": "PASS seven confirmed treatment fees and 4/3/6-hour charges, insufficient-time non-mutation, legacy completed treatment preservation, full/legacy/no insurance capped50, atomic save rollback/retry/reload, late-policy exclusion, case latch after cleaning, treatment80, exact50/75 thresholds, stale/short cash and individual case identity.\n"
+    },
+    {
+      "file": "qa/pet-deadline.test.cjs",
+      "chunk_id": "446d6b",
+      "wall_time_seconds": 0.000044191,
+      "exit_code": 0,
+      "original_token_count": 50,
+      "output": "PASS seven species, three complete months/final-month treatment, legacy grace without repricing, death archive/once-only notice, no new fee, selective policy expiry, surviving-pet pool and repricing.\n",
+      "initialFailure": {
+        "exitCode": 1,
+        "reason": "Old survivor cat renewal expectation30 updated to user-approved40."
+      }
+    },
+    {
+      "file": "qa/pet-pool-pause.test.cjs",
+      "chunk_id": "6a2f36",
+      "wall_time_seconds": 0.142351373,
+      "exit_code": 0,
+      "original_token_count": 57,
+      "output": "PASS seven species/five categories paused at zero or pending, pure eligibility, failed treatment stays paused, successful treatment/reload restores, real pet indices and20% gate, all-paused fallback and old-card preservation.\n"
+    },
+    {
+      "file": "qa/pet-sw-precache.test.cjs",
+      "chunk_id": "356ad7",
+      "wall_time_seconds": 0.117910235,
+      "exit_code": 0,
+      "original_token_count": 26,
+      "output": "PASS actual install callback: canonical request URLs deduplicated without dropping required resources.\n"
+    }
+  ]
+}

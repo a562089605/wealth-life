@@ -1,5 +1,5 @@
 const a=require('node:assert/strict'),I=require('../pet-insurance.js'),E=require('../pet-events.js'),A=require('../pet-adoption-entry.js');
-const fees={dog:10,cat:30,tortoise:8,chameleon:10,gecko:5,spider:5,crocodile:30};
+const fees={dog:55,cat:40,tortoise:10,chameleon:15,gecko:10,spider:10,crocodile:50};
 const seed=id=>({month:2,cash:5000,energy:50,happiness:50,stress:50,pets:[{species:id,type:A.pets[id].type,name:'伙伴',adoptMonth:0}],insurance:{health:{active:true,monthly:220,coverage:1}},monthlyPayments:{month:2,premiums:0},town:{movement:{id:1,to:2,resolved:false},history:[]}});
 function eventQuote(s,index,id){return E.quote(s,id,{p:s.pets[index],index,sp:s.pets[index].species});}
 a.deepEqual(I.monthly,fees);
@@ -12,7 +12,7 @@ for(const [id,fee]of Object.entries(fees)){
  const reload=JSON.parse(JSON.stringify(s));a.equal(eventQuote(reload,0,'unwell').cost,0);a.equal(eventQuote(reload,1,'unwell').cost,200);s.month++;a.equal(I.premiums(s),220+fee);a.equal(I.quote(s,0).due,0,'held policy is renewed through existing premium bill');
 }
 // All seven policies coexist, each paid once and bound only to its selected pet.
-{const s=seed('dog');s.pets=Object.keys(fees).map(id=>({species:id,type:A.pets[id].type,name:id,adoptMonth:0}));let spent=0;for(let i=0;i<s.pets.length;i++){const q=I.quote(s,i);a.ok(q.monthly===fees[s.pets[i].species]);a.equal(I.confirm(s,i,q.token,()=>true).ok,true);spent+=q.monthly;}a.ok(spent===98);a.equal(s.cash,4902);a.equal(s.monthlyPayments.premiums,98);a.equal(I.premiums(s),318);a.equal(new Set(s.pets.map(p=>p.insuranceKey)).size,7);}
+{const s=seed('dog');s.pets=Object.keys(fees).map(id=>({species:id,type:A.pets[id].type,name:id,adoptMonth:0}));let spent=0;for(let i=0;i<s.pets.length;i++){const q=I.quote(s,i);a.ok(q.monthly===fees[s.pets[i].species]);a.equal(I.confirm(s,i,q.token,()=>true).ok,true);spent+=q.monthly;}a.ok(spent===190);a.equal(s.cash,4810);a.equal(s.monthlyPayments.premiums,190);a.equal(I.premiums(s),410);a.equal(new Set(s.pets.map(p=>p.insuranceKey)).size,7);}
 // Existing combined 45 contract is preserved; explicit historic percentages also stay intact.
 for(const coverage of [undefined,.8,0,1]){const s=seed('cat');s.insurance.pet={name:'旧宠物保险',active:true,monthly:45,...coverage===undefined?{}:{coverage}};const before=JSON.stringify(s),q=I.quote(s,0);a.equal(q.monthly,45);a.ok(q.held);a.equal(eventQuote(s,0,'unwell').cost,Math.round(200*(1-(coverage??1))));a.equal(JSON.stringify(s),before);a.equal(I.confirm(s,0,q.token,()=>true).reason,'stale');}
 // Future, inactive and malformed policies do not confer current medical cover; health is separate.

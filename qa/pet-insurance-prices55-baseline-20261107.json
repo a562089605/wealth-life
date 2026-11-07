@@ -1,0 +1,26 @@
+{
+  "baseCommit": "239bb266e08f921f0937dae6be35a0219b91cf1e",
+  "remoteMain": "239bb266e08f921f0937dae6be35a0219b91cf1e",
+  "files": [
+    {
+      "file": "index.html",
+      "matchesBase": true,
+      "sha256": "2d4c8ef6c62bf90e852d31cc965b1deb875842bd45489cc4b90df7d2823540a7"
+    },
+    {
+      "file": "pet-insurance.js",
+      "matchesBase": true,
+      "sha256": "3406a3df3663840620c358ded8a6f952f5b8fe87ed95e2b4cfb9c3ea494319b2"
+    },
+    {
+      "file": "pet-pages.js",
+      "matchesBase": true,
+      "sha256": "f4783882aa72f64c90f23779bed7600ed4a906e562ae91636cc950f3c67601a4"
+    },
+    {
+      "file": "sw.js",
+      "matchesBase": true,
+      "sha256": "d9ca38f88d74f1027b7d2ae3928e871b1f3e09ee52f5714795604174a03fae79"
+    }
+  ]
+}

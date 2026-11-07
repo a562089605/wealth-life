@@ -1,6 +1,6 @@
 // Optional per-pet medical insurance. Individually priced, approved 2026-11-07.
 (function(root){'use strict';
- const monthly={dog:10,cat:30,tortoise:8,chameleon:10,gecko:5,spider:5,crocodile:30};
+ const monthly={dog:55,cat:40,tortoise:10,chameleon:15,gecko:10,spider:10,crocodile:50};
  const aliases={狗:'dog',柯基:'dog',猫:'cat',银渐层:'cat',乌龟:'tortoise',陆龟:'tortoise',变色龙:'chameleon',蜥蜴:'gecko',豹纹守宫:'gecko',蜘蛛:'spider',捕鸟蛛:'spider',鳄鱼:'crocodile'};
  const copy=s=>JSON.parse(JSON.stringify(s)),money=x=>Math.round(x*100)/100;
  const species=p=>Object.hasOwn(monthly,p?.species)?p.species:Object.hasOwn(aliases,p?.type)?aliases[p.type]:undefined;

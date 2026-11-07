@@ -112,7 +112,7 @@
    const result=PetInsurance.confirm(state,index,q.token,insuranceSave);paying=false;
    if(!result.ok){b.disabled=false;status.textContent=result.reason==='cash'?'现金不足，尚未投保。':'暂未完成，请返回核对或重试。';return;}render();openPetInsurance(index);
   });button.disabled=held?held.stopMonth!==undefined:state.cash<q.due;
-  status.textContent=q.policyKey==='pet'?'旧版共用保单，按原合同续保。':held&&held.pricingVersion!==3?'本月原保费保留；下月起按 '+priceText(q.baseMonthly)+'/月单独续保。':'每月保费 '+priceText(q.baseMonthly)+'，仅保障这位伙伴；其他宠物可单独投保。';
+  status.textContent=q.policyKey==='pet'?'旧版共用保单，按原合同续保。':held&&(held.pricingVersion!==3||q.monthly!==q.baseMonthly)?'本月原保费保留；下月起按 '+priceText(q.baseMonthly)+'/月单独续保。':'每月保费 '+priceText(q.baseMonthly)+'，仅保障这位伙伴；其他宠物可单独投保。';
   if(held?.stopMonth!==undefined)status.textContent='本月保障保留，'+calendar(held.stopMonth)+'起停止续保和保障。';
   if(!held&&state.cash<q.due)status.textContent='现金不足，尚未投保。';
   if(held&&Number.isInteger(held.startMonth)&&held.startMonth>state.month)status.textContent='生效时间：'+calendar(held.startMonth);
