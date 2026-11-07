@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-11-07T05:12:09.400Z",
+  "elapsedMs": 5013,
+  "state": {
+    "registrations": [],
+    "caches": [
+      {
+        "name": "wealth-life-v28.11-pet-healthwarm-20261107",
+        "entries": 0
+      }
+    ]
+  },
+  "errors": [
+    {
+      "errorMessage": {
+        "errorMessage": "Failed to register a ServiceWorker for scope ('http://127.0.0.1:8897/') with script ('http://127.0.0.1:8897/sw.js'): ServiceWorker failed to install: ServiceWorker failed to handle event (event.waitUntil Promise rejected)",
+        "registrationId": "0",
+        "versionId": "0",
+        "sourceURL": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    },
+    {
+      "errorMessage": {
+        "errorMessage": "Uncaught (in promise) InvalidStateError: Failed to execute 'addAll' on 'Cache': Cache.addAll(): duplicate requests (http://127.0.0.1:8897/assets/pets/events/companion-cat-20261105.webp, http://127.0.0.1:8897/assets/pets/events/companion-chameleon-20261105.webp, http://127.0.0.1:8897/assets/pets/events/companion-crocodile-20261105.webp, http://127.0.0.1:8897/assets/pets/events/companion-dog-20261105.webp, http://127.0.0.1:8897/assets/pets/events/companion-gecko-20261105.webp, http://127.0.0.1:8897/assets/pets/events/companion-spider-20261105.webp, http://127.0.0.1:8897/assets/pets/events/companion-tortoise-20261105.webp)",
+        "registrationId": "0",
+        "versionId": "0",
+        "sourceURL": "http://127.0.0.1:8897/sw.js",
+        "lineNumber": 0,
+        "columnNumber": -1
+      }
+    }
+  ],
+  "failed": [],
+  "versions": [
+    {
+      "status": "new",
+      "runningStatus": "stopped"
+    },
+    {
+      "status": "new",
+      "runningStatus": "stopped"
+    },
+    {
+      "status": "new",
+      "runningStatus": "starting"
+    },
+    {
+      "status": "new",
+      "runningStatus": "starting"
+    },
+    {
+      "status": "installing",
+      "runningStatus": "starting"
+    },
+    {
+      "status": "installing",
+      "runningStatus": "running"
+    },
+    {
+      "status": "redundant",
+      "runningStatus": "running"
+    }
+  ]
+}

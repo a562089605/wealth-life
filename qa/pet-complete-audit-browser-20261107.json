@@ -1,0 +1,36 @@
+{
+  "sourceCommit": "406a0f9d00e78ac877dfe1ea89208d8de5faaa5f",
+  "localIsolatedContexts": true,
+  "results": [
+    {
+      "file": "qa/pet-pages-browser.cjs",
+      "status": 0,
+      "output": "PASS pet pages Chromium: all seven adoption and care flows, rollback/retry, cancel selection, multi-pet layout, 320/390/1280, stale actions, read-only preview, reload and image decode.\n"
+    },
+    {
+      "file": "qa/pet-events-browser.cjs",
+      "status": 0,
+      "output": "PASS Chromium pet35: all approved art and effects, deferred payment, save rollback/retry, pending reload, insurer-adjusted medical prices, property exclusion, zero-hour surprise, no-pet fallback and phone/desktop layouts.\n"
+    },
+    {
+      "file": "qa/pet-vet-browser.cjs",
+      "status": 0,
+      "output": "PASS actual health80/20 and treatment UI, phone visibility, tiers, seven prices, capped50, save rollback/retry and reload once.\n"
+    },
+    {
+      "file": "qa/pet-health-browser.cjs",
+      "status": 0,
+      "output": "PASS health UI, skippable cleaning reminder/mandatory fees, care and full monthly save failure rollback/retry, gain/loss/reload, old-slot backup and layouts.\n"
+    },
+    {
+      "file": "qa/pet-owned-review.cjs",
+      "status": 0,
+      "output": "PASS illustrated pet insurance entry, pet-only page, pet-specific 10 premium, unrelated insurance excluded, saved rollback/retry, paid-once receipt and reload, phone/desktop layouts.\n"
+    },
+    {
+      "file": "qa/pet-fees-browser.cjs",
+      "status": 0,
+      "output": "PASS required names, 550 payment, prepaid month persisted, next month 50, legacy unchanged, compact phone layout.\n"
+    }
+  ]
+}

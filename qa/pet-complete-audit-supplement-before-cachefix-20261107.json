@@ -1,0 +1,68 @@
+{
+  "sourceCommit": "406a0f9d00e78ac877dfe1ea89208d8de5faaa5f",
+  "zeroReminder": "清洁护理到期",
+  "zeroCanDepart": true,
+  "treatment": {
+    "success": true,
+    "cost": 1500,
+    "health": 80,
+    "playerHoursUsed": 0,
+    "energyDelta": 0,
+    "stressDelta": 0,
+    "lockedUninsuredCaseUnaffected": true
+  },
+  "annualExams": [
+    {
+      "species": "dog",
+      "cost": 150,
+      "time": 2,
+      "healthChange": 0
+    },
+    {
+      "species": "cat",
+      "cost": 150,
+      "time": 2,
+      "healthChange": 0
+    },
+    {
+      "species": "tortoise",
+      "cost": 100,
+      "time": 2,
+      "healthChange": 0
+    },
+    {
+      "species": "chameleon",
+      "cost": 120,
+      "time": 2,
+      "healthChange": 0
+    },
+    {
+      "species": "gecko",
+      "cost": 80,
+      "time": 2,
+      "healthChange": 0
+    },
+    {
+      "species": "spider",
+      "cost": 50,
+      "time": 1,
+      "healthChange": 0
+    },
+    {
+      "species": "crocodile",
+      "cost": 300,
+      "time": 3,
+      "healthChange": 0
+    }
+  ],
+  "annualTotals": {
+    "cost": 950,
+    "hours": 14
+  },
+  "cpi120DogAnnualCost": 180,
+  "offline": {
+    "cachedLocalPetPagesPass": false,
+    "error": "page.evaluate: Error: SW ready timeout\n    at eval (eval at evaluate (:311:30), <anonymous>:1:157)"
+  },
+  "errors": []
+}

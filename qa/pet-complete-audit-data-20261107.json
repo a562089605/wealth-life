@@ -1,0 +1,3027 @@
+{
+  "date": "2026-11-07",
+  "sourceCommit": "406a0f9d00e78ac877dfe1ea89208d8de5faaa5f",
+  "scope": "Read-only canonical data and 315 card/coverage/health executions, not full-game balance acceptance. Prices are base USD; care/exams apply game CPI.",
+  "counts": {
+    "cards": 35,
+    "medical": 8,
+    "property": 6,
+    "free": 21,
+    "variants": 315
+  },
+  "pets": [
+    {
+      "id": "dog",
+      "name": "柯基",
+      "initial": 500,
+      "firstPayment": 550,
+      "basicMonthly": 50,
+      "insuranceSingleMonthly": 10,
+      "self": {
+        "cost": 10,
+        "hours": 2,
+        "intervalMonths": 2,
+        "annualCost": 60,
+        "annualHours": 12
+      },
+      "professional": {
+        "cost": 60,
+        "hours": 1,
+        "intervalMonths": 3,
+        "annualCost": 240,
+        "annualHours": 4
+      },
+      "annualExam": {
+        "cost": 150,
+        "hours": 2
+      },
+      "unwellCost": 200,
+      "zeroTreatment": {
+        "cost": 1500,
+        "fullPolicyOwnCost": 750,
+        "playerHours": 0,
+        "restoresHealth": 80
+      },
+      "steadyAnnualSelf": 930,
+      "steadyAnnualProfessional": 1110,
+      "extraProfessionalDollarsPerSavedHour": 22.5
+    },
+    {
+      "id": "cat",
+      "name": "银渐层",
+      "initial": 370,
+      "firstPayment": 450,
+      "basicMonthly": 80,
+      "insuranceSingleMonthly": 30,
+      "self": {
+        "cost": 10,
+        "hours": 2,
+        "intervalMonths": 2,
+        "annualCost": 60,
+        "annualHours": 12
+      },
+      "professional": {
+        "cost": 60,
+        "hours": 1,
+        "intervalMonths": 3,
+        "annualCost": 240,
+        "annualHours": 4
+      },
+      "annualExam": {
+        "cost": 150,
+        "hours": 2
+      },
+      "unwellCost": 200,
+      "zeroTreatment": {
+        "cost": 1500,
+        "fullPolicyOwnCost": 750,
+        "playerHours": 0,
+        "restoresHealth": 80
+      },
+      "steadyAnnualSelf": 1530,
+      "steadyAnnualProfessional": 1710,
+      "extraProfessionalDollarsPerSavedHour": 22.5
+    },
+    {
+      "id": "tortoise",
+      "name": "陆龟",
+      "initial": 400,
+      "firstPayment": 435,
+      "basicMonthly": 35,
+      "insuranceSingleMonthly": 8,
+      "self": {
+        "cost": 10,
+        "hours": 2,
+        "intervalMonths": 2,
+        "annualCost": 60,
+        "annualHours": 12
+      },
+      "professional": {
+        "cost": 50,
+        "hours": 1,
+        "intervalMonths": 3,
+        "annualCost": 200,
+        "annualHours": 4
+      },
+      "annualExam": {
+        "cost": 100,
+        "hours": 2
+      },
+      "unwellCost": 180,
+      "zeroTreatment": {
+        "cost": 1000,
+        "fullPolicyOwnCost": 500,
+        "playerHours": 0,
+        "restoresHealth": 80
+      },
+      "steadyAnnualSelf": 676,
+      "steadyAnnualProfessional": 816,
+      "extraProfessionalDollarsPerSavedHour": 17.5
+    },
+    {
+      "id": "chameleon",
+      "name": "变色龙",
+      "initial": 500,
+      "firstPayment": 545,
+      "basicMonthly": 45,
+      "insuranceSingleMonthly": 10,
+      "self": {
+        "cost": 10,
+        "hours": 2,
+        "intervalMonths": 2,
+        "annualCost": 60,
+        "annualHours": 12
+      },
+      "professional": {
+        "cost": 50,
+        "hours": 1,
+        "intervalMonths": 3,
+        "annualCost": 200,
+        "annualHours": 4
+      },
+      "annualExam": {
+        "cost": 120,
+        "hours": 2
+      },
+      "unwellCost": 200,
+      "zeroTreatment": {
+        "cost": 1200,
+        "fullPolicyOwnCost": 600,
+        "playerHours": 0,
+        "restoresHealth": 80
+      },
+      "steadyAnnualSelf": 840,
+      "steadyAnnualProfessional": 980,
+      "extraProfessionalDollarsPerSavedHour": 17.5
+    },
+    {
+      "id": "gecko",
+      "name": "豹纹守宫",
+      "initial": 360,
+      "firstPayment": 395,
+      "basicMonthly": 35,
+      "insuranceSingleMonthly": 5,
+      "self": {
+        "cost": 5,
+        "hours": 1,
+        "intervalMonths": 2,
+        "annualCost": 30,
+        "annualHours": 6
+      },
+      "professional": {
+        "cost": 30,
+        "hours": 1,
+        "intervalMonths": 3,
+        "annualCost": 120,
+        "annualHours": 4
+      },
+      "annualExam": {
+        "cost": 80,
+        "hours": 2
+      },
+      "unwellCost": 120,
+      "zeroTreatment": {
+        "cost": 800,
+        "fullPolicyOwnCost": 400,
+        "playerHours": 0,
+        "restoresHealth": 80
+      },
+      "steadyAnnualSelf": 590,
+      "steadyAnnualProfessional": 680,
+      "extraProfessionalDollarsPerSavedHour": 45
+    },
+    {
+      "id": "spider",
+      "name": "捕鸟蛛",
+      "initial": 190,
+      "firstPayment": 208,
+      "basicMonthly": 18,
+      "insuranceSingleMonthly": 5,
+      "self": {
+        "cost": 5,
+        "hours": 1,
+        "intervalMonths": 3,
+        "annualCost": 20,
+        "annualHours": 4
+      },
+      "professional": {
+        "cost": 25,
+        "hours": 1,
+        "intervalMonths": 4,
+        "annualCost": 75,
+        "annualHours": 3
+      },
+      "annualExam": {
+        "cost": 50,
+        "hours": 1
+      },
+      "unwellCost": 80,
+      "zeroTreatment": {
+        "cost": 500,
+        "fullPolicyOwnCost": 250,
+        "playerHours": 0,
+        "restoresHealth": 80
+      },
+      "steadyAnnualSelf": 346,
+      "steadyAnnualProfessional": 401,
+      "extraProfessionalDollarsPerSavedHour": 55
+    },
+    {
+      "id": "crocodile",
+      "name": "鳄鱼",
+      "initial": 2000,
+      "firstPayment": 2300,
+      "basicMonthly": 300,
+      "insuranceSingleMonthly": 30,
+      "self": {
+        "cost": 30,
+        "hours": 4,
+        "intervalMonths": 2,
+        "annualCost": 180,
+        "annualHours": 24
+      },
+      "professional": {
+        "cost": 150,
+        "hours": 1,
+        "intervalMonths": 3,
+        "annualCost": 600,
+        "annualHours": 4
+      },
+      "annualExam": {
+        "cost": 300,
+        "hours": 3
+      },
+      "unwellCost": 600,
+      "zeroTreatment": {
+        "cost": 5000,
+        "fullPolicyOwnCost": 2500,
+        "playerHours": 0,
+        "restoresHealth": 80
+      },
+      "steadyAnnualSelf": 4440,
+      "steadyAnnualProfessional": 4860,
+      "extraProfessionalDollarsPerSavedHour": 21
+    }
+  ],
+  "cards": [
+    {
+      "id": "dog-companion",
+      "species": "dog",
+      "kind": "companion",
+      "title": "一起晒太阳",
+      "energy": 3,
+      "happiness": 3,
+      "stress": -2,
+      "cost": 0,
+      "hours": 1,
+      "medical": false,
+      "button": "陪它待一会儿",
+      "art": "assets/pets/events/companion-dog-20261105.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "dog-unwell",
+      "species": "dog",
+      "kind": "unwell",
+      "title": "毛孩子有点不舒服",
+      "cost": 200,
+      "hours": 3,
+      "energy": -2,
+      "stress": 2,
+      "medical": true,
+      "button": "带它去看医生",
+      "art": "assets/pets/events/dog-unwell-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "priceBox": [
+        28,
+        69.3,
+        20,
+        5.7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 200,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 200,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 200,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 40,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 40,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 40,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "dog-social",
+      "species": "dog",
+      "kind": "social",
+      "title": "遛弯遇见新朋友",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "button": "一起聊聊",
+      "art": "assets/pets/events/dog-social-20261106.webp",
+      "buttonBox": [
+        14,
+        91.4,
+        72,
+        7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "dog-surprise",
+      "species": "dog",
+      "kind": "surprise",
+      "title": "它把宝贝送给你",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 3,
+      "stress": -2,
+      "medical": false,
+      "button": "收下这份心意",
+      "art": "assets/pets/events/dog-surprise-20261106.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "dog-accident",
+      "species": "dog",
+      "kind": "accident",
+      "title": "淘气的小意外",
+      "cost": 50,
+      "hours": 1,
+      "energy": -1,
+      "stress": 1,
+      "medical": false,
+      "button": "收拾一下，换个新的",
+      "art": "assets/pets/events/dog-accident-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "cat-companion",
+      "species": "cat",
+      "kind": "companion",
+      "title": "撸猫日常",
+      "energy": 3,
+      "happiness": 3,
+      "stress": -2,
+      "cost": 0,
+      "hours": 1,
+      "medical": false,
+      "button": "陪它待一会儿",
+      "art": "assets/pets/events/companion-cat-20261105.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "cat-unwell",
+      "species": "cat",
+      "kind": "unwell",
+      "title": "猫咪有点不舒服",
+      "cost": 200,
+      "hours": 3,
+      "energy": -2,
+      "stress": 2,
+      "medical": true,
+      "button": "带它去看医生",
+      "art": "assets/pets/events/cat-unwell-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "priceBox": [
+        28,
+        69.3,
+        20,
+        5.7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 200,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 200,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 200,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 40,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 40,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 40,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "cat-social",
+      "species": "cat",
+      "kind": "social",
+      "title": "一聊猫咪就投缘",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "button": "一起聊聊",
+      "art": "assets/pets/events/cat-social-20261106.webp",
+      "buttonBox": [
+        14,
+        91.4,
+        72,
+        7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "cat-surprise",
+      "species": "cat",
+      "kind": "surprise",
+      "title": "它悄悄靠了过来",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 2,
+      "stress": -3,
+      "medical": false,
+      "button": "心里一下柔软了",
+      "art": "assets/pets/events/cat-surprise-20261106.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "cat-accident",
+      "species": "cat",
+      "kind": "accident",
+      "title": "玩耍时意外受伤",
+      "cost": 500,
+      "hours": 4,
+      "energy": -3,
+      "stress": 3,
+      "medical": true,
+      "button": "带它去处理伤口",
+      "art": "assets/pets/events/cat-accident-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "priceBox": [
+        25.5,
+        68.4,
+        20.7,
+        5.5
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 500,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 500,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 500,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 100,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 100,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 100,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "crocodile-companion",
+      "species": "crocodile",
+      "kind": "companion",
+      "title": "安静的观察时光",
+      "energy": 1,
+      "happiness": 4,
+      "stress": -2,
+      "cost": 0,
+      "hours": 1,
+      "medical": false,
+      "button": "静静观察一会儿",
+      "art": "assets/pets/events/companion-crocodile-20261105.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "crocodile-unwell",
+      "species": "crocodile",
+      "kind": "unwell",
+      "title": "小鳄今天没胃口",
+      "cost": 600,
+      "hours": 3,
+      "energy": -2,
+      "stress": 2,
+      "medical": true,
+      "button": "带它去看医生",
+      "art": "assets/pets/events/crocodile-unwell-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "priceBox": [
+        28,
+        69.3,
+        20,
+        5.7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 600,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 600,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 600,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 120,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 120,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 120,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "crocodile-social",
+      "species": "crocodile",
+      "kind": "social",
+      "title": "养鳄也有同好",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "button": "一起聊聊",
+      "art": "assets/pets/events/crocodile-social-20261106.webp",
+      "buttonBox": [
+        14,
+        91.4,
+        72,
+        7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "crocodile-surprise",
+      "species": "crocodile",
+      "kind": "surprise",
+      "title": "水面上的小惊喜",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 4,
+      "stress": -1,
+      "medical": false,
+      "button": "记住这个小瞬间",
+      "art": "assets/pets/events/crocodile-surprise-20261106.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "crocodile-accident",
+      "species": "crocodile",
+      "kind": "accident",
+      "title": "过滤管漏水了",
+      "cost": 50,
+      "hours": 1,
+      "energy": -1,
+      "stress": 1,
+      "medical": false,
+      "button": "换好接头，擦干地面",
+      "art": "assets/pets/events/crocodile-accident-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "gecko-companion",
+      "species": "gecko",
+      "kind": "companion",
+      "title": "傍晚的小探险",
+      "energy": 1,
+      "happiness": 3,
+      "stress": -3,
+      "cost": 0,
+      "hours": 1,
+      "medical": false,
+      "button": "看看它的小探险",
+      "art": "assets/pets/events/companion-gecko-20261105.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "gecko-unwell",
+      "species": "gecko",
+      "kind": "unwell",
+      "title": "小守宫提不起劲",
+      "cost": 120,
+      "hours": 3,
+      "energy": -2,
+      "stress": 2,
+      "medical": true,
+      "button": "带它去看医生",
+      "art": "assets/pets/events/gecko-unwell-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "priceBox": [
+        28,
+        69.3,
+        20,
+        5.7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 120,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 120,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 120,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 24,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 24,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 24,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "gecko-social",
+      "species": "gecko",
+      "kind": "social",
+      "title": "遇见守宫同好",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "button": "一起聊聊",
+      "art": "assets/pets/events/gecko-social-20261106.webp",
+      "buttonBox": [
+        14,
+        91.4,
+        72,
+        7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "gecko-surprise",
+      "species": "gecko",
+      "kind": "surprise",
+      "title": "小守宫睡得正香",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 2,
+      "stress": -2,
+      "medical": false,
+      "button": "被这小睡脸暖到了",
+      "art": "assets/pets/events/gecko-surprise-20261106.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "gecko-accident",
+      "species": "gecko",
+      "kind": "accident",
+      "title": "躲避屋裂了",
+      "cost": 50,
+      "hours": 1,
+      "energy": -1,
+      "stress": 1,
+      "medical": false,
+      "button": "换个新的躲避屋",
+      "art": "assets/pets/events/gecko-accident-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "spider-companion",
+      "species": "spider",
+      "kind": "companion",
+      "title": "蛛网小世界",
+      "energy": 1,
+      "happiness": 1,
+      "stress": -5,
+      "cost": 0,
+      "hours": 1,
+      "medical": false,
+      "button": "静静观察一会儿",
+      "art": "assets/pets/events/companion-spider-20261105.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "spider-unwell",
+      "species": "spider",
+      "kind": "unwell",
+      "title": "小蛛今天不对劲",
+      "cost": 80,
+      "hours": 3,
+      "energy": -2,
+      "stress": 2,
+      "medical": true,
+      "button": "带它去看医生",
+      "art": "assets/pets/events/spider-unwell-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "priceBox": [
+        28,
+        69.3,
+        20,
+        5.7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 80,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 80,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 80,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 16,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 16,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 16,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "spider-social",
+      "species": "spider",
+      "kind": "social",
+      "title": "小众爱好遇知音",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "button": "一起聊聊",
+      "art": "assets/pets/events/spider-social-20261106.webp",
+      "buttonBox": [
+        14,
+        91.4,
+        72,
+        7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "spider-surprise",
+      "species": "spider",
+      "kind": "surprise",
+      "title": "一夜织出的小惊喜",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 1,
+      "stress": -4,
+      "medical": false,
+      "button": "发现了它的小杰作",
+      "art": "assets/pets/events/spider-surprise-20261106.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "spider-accident",
+      "species": "spider",
+      "kind": "accident",
+      "title": "箱盖合不严了",
+      "cost": 50,
+      "hours": 1,
+      "energy": -1,
+      "stress": 1,
+      "medical": false,
+      "button": "换好箱子，扣紧盖子",
+      "art": "assets/pets/events/spider-accident-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "tortoise-companion",
+      "species": "tortoise",
+      "kind": "companion",
+      "title": "慢慢陪着你",
+      "energy": 3,
+      "happiness": 3,
+      "stress": -2,
+      "cost": 0,
+      "hours": 1,
+      "medical": false,
+      "button": "陪它待一会儿",
+      "art": "assets/pets/events/companion-tortoise-20261105.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "tortoise-unwell",
+      "species": "tortoise",
+      "kind": "unwell",
+      "title": "小龟今天没精神",
+      "cost": 180,
+      "hours": 3,
+      "energy": -2,
+      "stress": 2,
+      "medical": true,
+      "button": "带它去看医生",
+      "art": "assets/pets/events/tortoise-unwell-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "priceBox": [
+        28,
+        69.3,
+        20,
+        5.7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 180,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 180,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 180,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 36,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 36,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 36,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "tortoise-social",
+      "species": "tortoise",
+      "kind": "social",
+      "title": "慢慢聊成了朋友",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "button": "一起聊聊",
+      "art": "assets/pets/events/tortoise-social-20261106.webp",
+      "buttonBox": [
+        14,
+        91.4,
+        72,
+        7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "tortoise-surprise",
+      "species": "tortoise",
+      "kind": "surprise",
+      "title": "慢慢走向你",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 1,
+      "stress": -3,
+      "medical": false,
+      "button": "被这份回应暖到了",
+      "art": "assets/pets/events/tortoise-surprise-20261106.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "tortoise-accident",
+      "species": "tortoise",
+      "kind": "accident",
+      "title": "小龟撞翻了花盆",
+      "cost": 50,
+      "hours": 1,
+      "energy": -1,
+      "stress": 1,
+      "medical": false,
+      "button": "收拾一下，换个花盆",
+      "art": "assets/pets/events/tortoise-accident-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "chameleon-companion",
+      "species": "chameleon",
+      "kind": "companion",
+      "title": "枝头的小伙伴",
+      "energy": 1,
+      "happiness": 2,
+      "stress": -4,
+      "cost": 0,
+      "hours": 1,
+      "medical": false,
+      "button": "静静陪它一会儿",
+      "art": "assets/pets/events/companion-chameleon-20261105.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "chameleon-unwell",
+      "species": "chameleon",
+      "kind": "unwell",
+      "title": "枝头的小伙伴蔫了",
+      "cost": 200,
+      "hours": 3,
+      "energy": -2,
+      "stress": 2,
+      "medical": true,
+      "button": "带它去看医生",
+      "art": "assets/pets/events/chameleon-unwell-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "priceBox": [
+        28,
+        69.3,
+        20,
+        5.7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 200,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 200,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 200,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 40,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 40,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 40,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "chameleon-social",
+      "species": "chameleon",
+      "kind": "social",
+      "title": "枝头结下的缘分",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "button": "一起聊聊",
+      "art": "assets/pets/events/chameleon-social-20261106.webp",
+      "buttonBox": [
+        14,
+        91.4,
+        72,
+        7
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "chameleon-surprise",
+      "species": "chameleon",
+      "kind": "surprise",
+      "title": "叶间的一抹新色",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 3,
+      "stress": -1,
+      "medical": false,
+      "button": "记住这抹小惊喜",
+      "art": "assets/pets/events/chameleon-surprise-20261106.webp",
+      "buttonBox": [
+        15,
+        90,
+        70,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 0,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 0,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 0,
+          "petHealthAfter": 20
+        }
+      ]
+    },
+    {
+      "id": "chameleon-accident",
+      "species": "chameleon",
+      "kind": "accident",
+      "title": "栖枝松动了",
+      "cost": 50,
+      "hours": 1,
+      "energy": -1,
+      "stress": 1,
+      "medical": false,
+      "button": "换好栖枝，重新固定",
+      "art": "assets/pets/events/chameleon-accident-20261106.webp",
+      "buttonBox": [
+        5,
+        89,
+        90,
+        8
+      ],
+      "petHealthChange": 0,
+      "variants": [
+        {
+          "coverage": null,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": null,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": null,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 1,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 1,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 1,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        },
+        {
+          "coverage": 0.8,
+          "health": 80,
+          "due": 50,
+          "petHealthAfter": 80
+        },
+        {
+          "coverage": 0.8,
+          "health": 40,
+          "due": 50,
+          "petHealthAfter": 40
+        },
+        {
+          "coverage": 0.8,
+          "health": 20,
+          "due": 50,
+          "petHealthAfter": 20
+        }
+      ]
+    }
+  ],
+  "budgets": {
+    "all7InsuranceMonthly": 14,
+    "dogCatInsuranceMonthly": 20,
+    "all7AnnualBasic": 6756,
+    "all7AnnualInsurance": 168,
+    "all7AnnualSelf": 8344,
+    "all7AnnualProfessional": 9549
+  },
+  "confirmedRules": {
+    "initialHealth": 80,
+    "healthRange": [
+      0,
+      100
+    ],
+    "overdueMonthly": -10,
+    "cleanGain": 20,
+    "health31to49UnwellShare": 0.5,
+    "health1to30UnwellShare": 0.75,
+    "lifePetGate": 0.2,
+    "neglectCoverageCap": 0.5,
+    "ordinaryCardPetHealthChange": 0,
+    "zeroTreatmentHours": 0
+  },
+  "needsReview": [
+    "Zero-health treatment has no approved free-time charge.",
+    "Pending vet treatment can be postponed indefinitely; no additional deadline or departure gate.",
+    "Ordinary medical events do not change pet health.",
+    "At zero there is a cleaning reminder, while cleaning is blocked until treatment.",
+    "Insurance prices for tarantula/crocodile and their professional care are game abstractions, not verified US quotes."
+  ]
+}
