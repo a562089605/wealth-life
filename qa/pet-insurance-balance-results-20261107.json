@@ -1,0 +1,791 @@
+{
+  "date": "2026-11-07",
+  "scope": "Local V28.11 canonical data. Map model uses actual 24-cell route, die,20% pet gate, equal category weights, and shared monthly limits. All care/bills assumed handled; ample time/cash; state thresholds, voluntary early returns and the rest of the life game are excluded. This is not full-game long-run acceptance.",
+  "pets": [
+    {
+      "id": "dog",
+      "name": "柯基",
+      "adoption": 500,
+      "setup": 0,
+      "initialFee": 500,
+      "firstPayment": 550,
+      "basicMonthly": 50,
+      "insuranceMonthly": 10,
+      "annualExam": 150,
+      "annualHours": 2,
+      "self": {
+        "fee": 10,
+        "hours": 2,
+        "months": 2
+      },
+      "professional": {
+        "fee": 60,
+        "hours": 1,
+        "months": 3
+      },
+      "unwell": 200,
+      "steadyAnnualWithInsuranceSelf": 930,
+      "steadyAnnualWithInsuranceProfessional": 1110
+    },
+    {
+      "id": "cat",
+      "name": "银渐层",
+      "adoption": 250,
+      "setup": 120,
+      "initialFee": 370,
+      "firstPayment": 450,
+      "basicMonthly": 80,
+      "insuranceMonthly": 30,
+      "annualExam": 150,
+      "annualHours": 2,
+      "self": {
+        "fee": 10,
+        "hours": 2,
+        "months": 2
+      },
+      "professional": {
+        "fee": 60,
+        "hours": 1,
+        "months": 3
+      },
+      "unwell": 200,
+      "steadyAnnualWithInsuranceSelf": 1530,
+      "steadyAnnualWithInsuranceProfessional": 1710
+    },
+    {
+      "id": "tortoise",
+      "name": "陆龟",
+      "adoption": 90,
+      "setup": 310,
+      "initialFee": 400,
+      "firstPayment": 435,
+      "basicMonthly": 35,
+      "insuranceMonthly": 8,
+      "annualExam": 100,
+      "annualHours": 2,
+      "self": {
+        "fee": 10,
+        "hours": 2,
+        "months": 2
+      },
+      "professional": {
+        "fee": 50,
+        "hours": 1,
+        "months": 3
+      },
+      "unwell": 180,
+      "steadyAnnualWithInsuranceSelf": 676,
+      "steadyAnnualWithInsuranceProfessional": 816
+    },
+    {
+      "id": "chameleon",
+      "name": "变色龙",
+      "adoption": 180,
+      "setup": 320,
+      "initialFee": 500,
+      "firstPayment": 545,
+      "basicMonthly": 45,
+      "insuranceMonthly": 10,
+      "annualExam": 120,
+      "annualHours": 2,
+      "self": {
+        "fee": 10,
+        "hours": 2,
+        "months": 2
+      },
+      "professional": {
+        "fee": 50,
+        "hours": 1,
+        "months": 3
+      },
+      "unwell": 200,
+      "steadyAnnualWithInsuranceSelf": 840,
+      "steadyAnnualWithInsuranceProfessional": 980
+    },
+    {
+      "id": "gecko",
+      "name": "豹纹守宫",
+      "adoption": 120,
+      "setup": 240,
+      "initialFee": 360,
+      "firstPayment": 395,
+      "basicMonthly": 35,
+      "insuranceMonthly": 5,
+      "annualExam": 80,
+      "annualHours": 2,
+      "self": {
+        "fee": 5,
+        "hours": 1,
+        "months": 2
+      },
+      "professional": {
+        "fee": 30,
+        "hours": 1,
+        "months": 3
+      },
+      "unwell": 120,
+      "steadyAnnualWithInsuranceSelf": 590,
+      "steadyAnnualWithInsuranceProfessional": 680
+    },
+    {
+      "id": "spider",
+      "name": "捕鸟蛛",
+      "adoption": 70,
+      "setup": 120,
+      "initialFee": 190,
+      "firstPayment": 208,
+      "basicMonthly": 18,
+      "insuranceMonthly": 5,
+      "annualExam": 50,
+      "annualHours": 1,
+      "self": {
+        "fee": 5,
+        "hours": 1,
+        "months": 3
+      },
+      "professional": {
+        "fee": 25,
+        "hours": 1,
+        "months": 4
+      },
+      "unwell": 80,
+      "steadyAnnualWithInsuranceSelf": 346,
+      "steadyAnnualWithInsuranceProfessional": 401
+    },
+    {
+      "id": "crocodile",
+      "name": "鳄鱼",
+      "adoption": 2000,
+      "setup": 0,
+      "initialFee": 2000,
+      "firstPayment": 2300,
+      "basicMonthly": 300,
+      "insuranceMonthly": 30,
+      "annualExam": 300,
+      "annualHours": 3,
+      "self": {
+        "fee": 30,
+        "hours": 4,
+        "months": 2
+      },
+      "professional": {
+        "fee": 150,
+        "hours": 1,
+        "months": 3
+      },
+      "unwell": 600,
+      "steadyAnnualWithInsuranceSelf": 4440,
+      "steadyAnnualWithInsuranceProfessional": 4860
+    }
+  ],
+  "approvedCards": 35,
+  "cards": [
+    {
+      "id": "dog-companion",
+      "title": "一起晒太阳",
+      "cost": 0,
+      "hours": 1,
+      "energy": 3,
+      "happiness": 3,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/companion-dog-20261105.webp"
+    },
+    {
+      "id": "dog-unwell",
+      "title": "毛孩子有点不舒服",
+      "cost": 200,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 0,
+      "stress": 2,
+      "medical": true,
+      "art": "assets/pets/events/dog-unwell-20261106.webp"
+    },
+    {
+      "id": "dog-social",
+      "title": "遛弯遇见新朋友",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/dog-social-20261106.webp"
+    },
+    {
+      "id": "dog-surprise",
+      "title": "它把宝贝送给你",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 3,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/dog-surprise-20261106.webp"
+    },
+    {
+      "id": "dog-accident",
+      "title": "淘气的小意外",
+      "cost": 50,
+      "hours": 1,
+      "energy": -1,
+      "happiness": 0,
+      "stress": 1,
+      "medical": false,
+      "art": "assets/pets/events/dog-accident-20261106.webp"
+    },
+    {
+      "id": "cat-companion",
+      "title": "撸猫日常",
+      "cost": 0,
+      "hours": 1,
+      "energy": 3,
+      "happiness": 3,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/companion-cat-20261105.webp"
+    },
+    {
+      "id": "cat-unwell",
+      "title": "猫咪有点不舒服",
+      "cost": 200,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 0,
+      "stress": 2,
+      "medical": true,
+      "art": "assets/pets/events/cat-unwell-20261106.webp"
+    },
+    {
+      "id": "cat-social",
+      "title": "一聊猫咪就投缘",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/cat-social-20261106.webp"
+    },
+    {
+      "id": "cat-surprise",
+      "title": "它悄悄靠了过来",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 2,
+      "stress": -3,
+      "medical": false,
+      "art": "assets/pets/events/cat-surprise-20261106.webp"
+    },
+    {
+      "id": "cat-accident",
+      "title": "玩耍时意外受伤",
+      "cost": 500,
+      "hours": 4,
+      "energy": -3,
+      "happiness": 0,
+      "stress": 3,
+      "medical": true,
+      "art": "assets/pets/events/cat-accident-20261106.webp"
+    },
+    {
+      "id": "crocodile-companion",
+      "title": "安静的观察时光",
+      "cost": 0,
+      "hours": 1,
+      "energy": 1,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/companion-crocodile-20261105.webp"
+    },
+    {
+      "id": "crocodile-unwell",
+      "title": "小鳄今天没胃口",
+      "cost": 600,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 0,
+      "stress": 2,
+      "medical": true,
+      "art": "assets/pets/events/crocodile-unwell-20261106.webp"
+    },
+    {
+      "id": "crocodile-social",
+      "title": "养鳄也有同好",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/crocodile-social-20261106.webp"
+    },
+    {
+      "id": "crocodile-surprise",
+      "title": "水面上的小惊喜",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 4,
+      "stress": -1,
+      "medical": false,
+      "art": "assets/pets/events/crocodile-surprise-20261106.webp"
+    },
+    {
+      "id": "crocodile-accident",
+      "title": "过滤管漏水了",
+      "cost": 50,
+      "hours": 1,
+      "energy": -1,
+      "happiness": 0,
+      "stress": 1,
+      "medical": false,
+      "art": "assets/pets/events/crocodile-accident-20261106.webp"
+    },
+    {
+      "id": "gecko-companion",
+      "title": "傍晚的小探险",
+      "cost": 0,
+      "hours": 1,
+      "energy": 1,
+      "happiness": 3,
+      "stress": -3,
+      "medical": false,
+      "art": "assets/pets/events/companion-gecko-20261105.webp"
+    },
+    {
+      "id": "gecko-unwell",
+      "title": "小守宫提不起劲",
+      "cost": 120,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 0,
+      "stress": 2,
+      "medical": true,
+      "art": "assets/pets/events/gecko-unwell-20261106.webp"
+    },
+    {
+      "id": "gecko-social",
+      "title": "遇见守宫同好",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/gecko-social-20261106.webp"
+    },
+    {
+      "id": "gecko-surprise",
+      "title": "小守宫睡得正香",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 2,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/gecko-surprise-20261106.webp"
+    },
+    {
+      "id": "gecko-accident",
+      "title": "躲避屋裂了",
+      "cost": 50,
+      "hours": 1,
+      "energy": -1,
+      "happiness": 0,
+      "stress": 1,
+      "medical": false,
+      "art": "assets/pets/events/gecko-accident-20261106.webp"
+    },
+    {
+      "id": "spider-companion",
+      "title": "蛛网小世界",
+      "cost": 0,
+      "hours": 1,
+      "energy": 1,
+      "happiness": 1,
+      "stress": -5,
+      "medical": false,
+      "art": "assets/pets/events/companion-spider-20261105.webp"
+    },
+    {
+      "id": "spider-unwell",
+      "title": "小蛛今天不对劲",
+      "cost": 80,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 0,
+      "stress": 2,
+      "medical": true,
+      "art": "assets/pets/events/spider-unwell-20261106.webp"
+    },
+    {
+      "id": "spider-social",
+      "title": "小众爱好遇知音",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/spider-social-20261106.webp"
+    },
+    {
+      "id": "spider-surprise",
+      "title": "一夜织出的小惊喜",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 1,
+      "stress": -4,
+      "medical": false,
+      "art": "assets/pets/events/spider-surprise-20261106.webp"
+    },
+    {
+      "id": "spider-accident",
+      "title": "箱盖合不严了",
+      "cost": 50,
+      "hours": 1,
+      "energy": -1,
+      "happiness": 0,
+      "stress": 1,
+      "medical": false,
+      "art": "assets/pets/events/spider-accident-20261106.webp"
+    },
+    {
+      "id": "tortoise-companion",
+      "title": "慢慢陪着你",
+      "cost": 0,
+      "hours": 1,
+      "energy": 3,
+      "happiness": 3,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/companion-tortoise-20261105.webp"
+    },
+    {
+      "id": "tortoise-unwell",
+      "title": "小龟今天没精神",
+      "cost": 180,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 0,
+      "stress": 2,
+      "medical": true,
+      "art": "assets/pets/events/tortoise-unwell-20261106.webp"
+    },
+    {
+      "id": "tortoise-social",
+      "title": "慢慢聊成了朋友",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/tortoise-social-20261106.webp"
+    },
+    {
+      "id": "tortoise-surprise",
+      "title": "慢慢走向你",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 1,
+      "stress": -3,
+      "medical": false,
+      "art": "assets/pets/events/tortoise-surprise-20261106.webp"
+    },
+    {
+      "id": "tortoise-accident",
+      "title": "小龟撞翻了花盆",
+      "cost": 50,
+      "hours": 1,
+      "energy": -1,
+      "happiness": 0,
+      "stress": 1,
+      "medical": false,
+      "art": "assets/pets/events/tortoise-accident-20261106.webp"
+    },
+    {
+      "id": "chameleon-companion",
+      "title": "枝头的小伙伴",
+      "cost": 0,
+      "hours": 1,
+      "energy": 1,
+      "happiness": 2,
+      "stress": -4,
+      "medical": false,
+      "art": "assets/pets/events/companion-chameleon-20261105.webp"
+    },
+    {
+      "id": "chameleon-unwell",
+      "title": "枝头的小伙伴蔫了",
+      "cost": 200,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 0,
+      "stress": 2,
+      "medical": true,
+      "art": "assets/pets/events/chameleon-unwell-20261106.webp"
+    },
+    {
+      "id": "chameleon-social",
+      "title": "枝头结下的缘分",
+      "cost": 0,
+      "hours": 3,
+      "energy": -2,
+      "happiness": 4,
+      "stress": -2,
+      "medical": false,
+      "art": "assets/pets/events/chameleon-social-20261106.webp"
+    },
+    {
+      "id": "chameleon-surprise",
+      "title": "叶间的一抹新色",
+      "cost": 0,
+      "hours": 0,
+      "energy": 0,
+      "happiness": 3,
+      "stress": -1,
+      "medical": false,
+      "art": "assets/pets/events/chameleon-surprise-20261106.webp"
+    },
+    {
+      "id": "chameleon-accident",
+      "title": "栖枝松动了",
+      "cost": 50,
+      "hours": 1,
+      "energy": -1,
+      "happiness": 0,
+      "stress": 1,
+      "medical": false,
+      "art": "assets/pets/events/chameleon-accident-20261106.webp"
+    }
+  ],
+  "weights": {
+    "companion": 20,
+    "unwell": 20,
+    "social": 20,
+    "surprise": 20,
+    "accident": 20
+  },
+  "route": [
+    "payday",
+    "opportunity",
+    "life",
+    "community",
+    "market",
+    "career",
+    "payday",
+    "growth",
+    "opportunity",
+    "life",
+    "career",
+    "opportunity",
+    "payday",
+    "community",
+    "market",
+    "growth",
+    "opportunity",
+    "life",
+    "payday",
+    "career",
+    "community",
+    "opportunity",
+    "market",
+    "growth"
+  ],
+  "simulation": [
+    {
+      "species": [
+        "dog"
+      ],
+      "modeledMonths": 12000,
+      "annualPremium": 120,
+      "meanAnnualMedicalReimbursement": 74.2,
+      "meanAnnualPetEvents": 1.783,
+      "meanAnnualMedicalEvents": 0.371,
+      "meanRollsPerMonth": 5.987,
+      "meanLifeLandingsPerMonth": 0.742,
+      "petShareAtLife": 0.2004,
+      "categories": {
+        "companion": 398,
+        "unwell": 371,
+        "social": 335,
+        "surprise": 340,
+        "accident": 339
+      }
+    },
+    {
+      "species": [
+        "cat"
+      ],
+      "modeledMonths": 12000,
+      "annualPremium": 360,
+      "meanAnnualMedicalReimbursement": 259.2,
+      "meanAnnualPetEvents": 1.816,
+      "meanAnnualMedicalEvents": 0.738,
+      "meanRollsPerMonth": 6.021,
+      "meanLifeLandingsPerMonth": 0.756,
+      "petShareAtLife": 0.2001,
+      "categories": {
+        "companion": 402,
+        "unwell": 366,
+        "social": 324,
+        "surprise": 352,
+        "accident": 372
+      }
+    },
+    {
+      "species": [
+        "tortoise"
+      ],
+      "modeledMonths": 12000,
+      "annualPremium": 96,
+      "meanAnnualMedicalReimbursement": 59.04,
+      "meanAnnualPetEvents": 1.778,
+      "meanAnnualMedicalEvents": 0.328,
+      "meanRollsPerMonth": 5.927,
+      "meanLifeLandingsPerMonth": 0.745,
+      "petShareAtLife": 0.1989,
+      "categories": {
+        "companion": 388,
+        "unwell": 328,
+        "social": 349,
+        "surprise": 349,
+        "accident": 364
+      }
+    },
+    {
+      "species": [
+        "chameleon"
+      ],
+      "modeledMonths": 12000,
+      "annualPremium": 120,
+      "meanAnnualMedicalReimbursement": 75.6,
+      "meanAnnualPetEvents": 1.838,
+      "meanAnnualMedicalEvents": 0.378,
+      "meanRollsPerMonth": 5.967,
+      "meanLifeLandingsPerMonth": 0.75,
+      "petShareAtLife": 0.2041,
+      "categories": {
+        "companion": 370,
+        "unwell": 378,
+        "social": 355,
+        "surprise": 358,
+        "accident": 377
+      }
+    },
+    {
+      "species": [
+        "gecko"
+      ],
+      "modeledMonths": 12000,
+      "annualPremium": 60,
+      "meanAnnualMedicalReimbursement": 40.92,
+      "meanAnnualPetEvents": 1.751,
+      "meanAnnualMedicalEvents": 0.341,
+      "meanRollsPerMonth": 5.905,
+      "meanLifeLandingsPerMonth": 0.734,
+      "petShareAtLife": 0.1989,
+      "categories": {
+        "companion": 338,
+        "unwell": 341,
+        "social": 375,
+        "surprise": 363,
+        "accident": 334
+      }
+    },
+    {
+      "species": [
+        "spider"
+      ],
+      "modeledMonths": 12000,
+      "annualPremium": 60,
+      "meanAnnualMedicalReimbursement": 33.04,
+      "meanAnnualPetEvents": 1.842,
+      "meanAnnualMedicalEvents": 0.413,
+      "meanRollsPerMonth": 5.989,
+      "meanLifeLandingsPerMonth": 0.756,
+      "petShareAtLife": 0.2029,
+      "categories": {
+        "companion": 365,
+        "unwell": 413,
+        "social": 344,
+        "surprise": 341,
+        "accident": 379
+      }
+    },
+    {
+      "species": [
+        "crocodile"
+      ],
+      "modeledMonths": 12000,
+      "annualPremium": 360,
+      "meanAnnualMedicalReimbursement": 234,
+      "meanAnnualPetEvents": 1.838,
+      "meanAnnualMedicalEvents": 0.39,
+      "meanRollsPerMonth": 6.087,
+      "meanLifeLandingsPerMonth": 0.766,
+      "petShareAtLife": 0.1998,
+      "categories": {
+        "companion": 350,
+        "unwell": 390,
+        "social": 360,
+        "surprise": 358,
+        "accident": 380
+      }
+    },
+    {
+      "species": [
+        "dog",
+        "cat"
+      ],
+      "modeledMonths": 12000,
+      "annualPremium": 240,
+      "meanAnnualMedicalReimbursement": 151.4,
+      "meanAnnualPetEvents": 1.759,
+      "meanAnnualMedicalEvents": 0.514,
+      "meanRollsPerMonth": 5.975,
+      "meanLifeLandingsPerMonth": 0.741,
+      "petShareAtLife": 0.1979,
+      "categories": {
+        "companion": 369,
+        "unwell": 352,
+        "social": 349,
+        "surprise": 355,
+        "accident": 334
+      }
+    },
+    {
+      "species": [
+        "dog",
+        "cat",
+        "tortoise",
+        "chameleon",
+        "gecko",
+        "spider",
+        "crocodile"
+      ],
+      "modeledMonths": 12000,
+      "annualPremium": 168,
+      "meanAnnualMedicalReimbursement": 116.1,
+      "meanAnnualPetEvents": 1.843,
+      "meanAnnualMedicalEvents": 0.427,
+      "meanRollsPerMonth": 5.973,
+      "meanLifeLandingsPerMonth": 0.754,
+      "petShareAtLife": 0.2036,
+      "categories": {
+        "companion": 374,
+        "unwell": 363,
+        "social": 363,
+        "surprise": 354,
+        "accident": 389
+      }
+    }
+  ]
+}

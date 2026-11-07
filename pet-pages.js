@@ -18,7 +18,7 @@
  function cfg(p){return A.pets[spec(p)];}
  function petName(p){return p.name||cfg(p)?.name||p.type||'待核对宠物';}
  function petInsurancePolicy(p){return PetInsurance.held(state,p);}
- function petInsuranceStatus(p){const policy=petInsurancePolicy(p);return !policy?'未投保':Number.isInteger(policy.startMonth)&&policy.startMonth>state.month?'待生效':'已投保';}
+ function petInsuranceStatus(p){const policy=petInsurancePolicy(p);return !policy?'未投保':Number.isInteger(policy.stopMonth)?'下月停保':Number.isInteger(policy.startMonth)&&policy.startMonth>state.month?'待生效':'已投保';}
  function calendar(month){return Number.isInteger(month)?'第'+(Math.floor(month/12)+1)+'年 · 第'+(month%12+1)+'月':'日期未记录';}
  function preview(){const s=copy(state);ensurePetCare(s);return s;}
  function due(p,kind){const s=preview(),i=state.pets.indexOf(p);return petCareTasks(s).filter(t=>t.pet===s.pets[i]&&(!kind||t.kind===kind));}
@@ -67,27 +67,40 @@
   }).disabled=!q.due||state.cash<q.due;
   if(q.due>state.cash)status.textContent='现金不足，尚未扣款。';hit(ctx,e,'返回宠物资料',22,91.5,56,6,()=>openDetail(index));hit(ctx,e,'返回宠物资料',2,1,13,7,()=>openDetail(index));focusFirst(ctx);
  }
- function openInsuranceSelection(){const pets=state.pets||[];if(pets.length===1)return openPetInsurance(0);const ctx=panel('选择宠物保险'),paper=plain(ctx,'宠物保险');paper.append(textNode('p','自愿选择投保的伙伴。生病、受伤的医疗费全额赔付，物损自付。'));
+ function openInsuranceSelection(){const pets=state.pets||[];if(pets.length===1)return openPetInsurance(0);const ctx=panel('选择宠物保险'),paper=plain(ctx,'宠物保险');paper.append(textNode('p','自愿选择投保的伙伴。生病、受伤的医疗费全额赔付，物损自付。总月保费按已投保基准费之和，除以实际已养宠物数量；本月已付保单保留，次月重新分摊。'));
   if(!pets.length)paper.append(textNode('p','领养伙伴后可选择投保。'));
   for(const [index,p]of pets.entries()){const q=PetInsurance.quote(state,index);if(q)action(ctx,paper,petName(p)+' · '+petInsuranceStatus(p)+' · '+priceText(q.monthly)+'/月',()=>{if(validPet(ctx,p,index))openPetInsurance(index);});}
   action(ctx,paper,'返回我的宠物',openOverview);focusFirst(ctx);
  }
  function openPetInsurance(index){const p=state.pets?.[index],q=PetInsurance.quote(state,index);if(!p||!q)return openOverview();const ctx=panel('宠物保险'),held=q.held,e=canvas(ctx,'insurance-'+q.species,'981/1602');e.setAttribute('role','group');e.setAttribute('aria-label',petName(p)+'，'+petInsuranceStatus(p)+'，每月保费 '+priceText(q.monthly)+(held?'':'，本次支付 '+priceText(q.due))+'，自愿投保，医疗费赔付 '+Math.round(q.coverage*100)+'%，物损自付');
-  box(e,petName(p),34,36.8,32,4.8,'pet-insurance-name');
+  ctx.node.classList.add('pet-insurance-overlay');box(e,petName(p),34,36.8,32,4.8,'pet-insurance-name');
   box(e,petInsuranceStatus(p),66,47.6,26,5.4,'pet-insurance-state');
   box(e,priceText(q.monthly),69,57.8,22,5.2,'pet-insurance-value');
   box(e,held?'医疗赔付':'本次支付',35,69.3,27,4.8,'pet-insurance-total-label');
   box(e,held?(q.coverage===null?'待核对':Math.round(q.coverage*100)+'%'):priceText(q.due),69,69,22,5.4,'pet-insurance-value');
   box(e,'自愿投保 · 生病、受伤医疗费全赔，物损自付',10,78,80,2.5,'pet-insurance-note');
   if(held&&q.coverage!==1)box(e,'现有保单按原保障比例执行，物损自付',10,78,80,2.5,'pet-insurance-note');
-  if(held)box(e,petInsuranceStatus(p),25,82.8,50,4.4,'pet-insurance-pay-label');
-  const status=message(ctx.node);const button=hit(ctx,e,held?petInsuranceStatus(p):'确认投保',5,80.5,90,8.8,b=>{if(paying||!validPet(ctx,p,index))return;paying=true;b.disabled=true;
-   const result=PetInsurance.confirm(state,index,q.token,()=>{backup();const k=key(slot),raw=localStorage.getItem(k),bk=k+'_before_pet_insurance_20261106';if(raw&&!localStorage.getItem(bk))localStorage.setItem(bk,raw);return save();});paying=false;
+  const label=held?(held.stopMonth!==undefined?'已安排下月停保':'下月停保'):'确认投保';
+  if(held)box(e,label,25,82.8,50,4.4,'pet-insurance-pay-label');
+  const status=message(ctx.node);const button=hit(ctx,e,label,5,80.5,90,8.8,b=>{if(paying||!validPet(ctx,p,index))return;
+   if(held){if(PetInsurance.quote(state,index)?.token!==q.token){status.textContent='保单已变化，请返回重新查看。';return;}return openStopInsurance(index,q);}
+   paying=true;b.disabled=true;
+   const result=PetInsurance.confirm(state,index,q.token,insuranceSave);paying=false;
    if(!result.ok){b.disabled=false;status.textContent=result.reason==='cash'?'现金不足，尚未投保。':'暂未完成，请返回核对或重试。';return;}render();openPetInsurance(index);
-  });button.disabled=!!held||state.cash<q.due;
+  });button.disabled=held?held.stopMonth!==undefined:state.cash<q.due;
+  status.textContent=q.policyKey==='pet'?'旧版共用保单，按原合同续保。':held&&held.pricingVersion!==2?'本月保费保留；下月起按新基准费和实际已养数量分摊。':'基准保费 '+priceText(q.baseMonthly)+'/月 ÷ 已养 '+q.ownedCount+' 只；下月按实际数量重新分摊。';
+  if(held?.stopMonth!==undefined)status.textContent='本月保障保留，'+calendar(held.stopMonth)+'起停止续保和保障。';
   if(!held&&state.cash<q.due)status.textContent='现金不足，尚未投保。';
   if(held&&Number.isInteger(held.startMonth)&&held.startMonth>state.month)status.textContent='生效时间：'+calendar(held.startMonth);
   hit(ctx,e,'返回宠物资料',5,90.7,90,7.2,()=>openDetail(index));hit(ctx,e,'返回宠物资料',2,1,13,7,()=>openDetail(index));focusFirst(ctx);
+ }
+ function insuranceSave(){backup();const k=key(slot),raw=localStorage.getItem(k),bk=k+'_before_pet_insurance_20261106';if(raw&&!localStorage.getItem(bk))localStorage.setItem(bk,raw);return save();}
+ function openStopInsurance(index,q){const p=state.pets[index],ctx=panel('下月停保'),paper=plain(ctx,petName(p)+' · 下月停保');
+  paper.append(textNode('p',q.policyKey==='pet'?'这是旧版共用保单，停保会同时影响该保单保障的所有宠物。':'仅停止这位伙伴的保险。'));
+  paper.append(textNode('p','本月保障保留，不退本月保费。'+calendar(state.month+1)+'起停止续保和保障。'));
+  const status=message(paper);action(ctx,paper,'确认下月停保',b=>{if(paying||!validPet(ctx,p,index))return;paying=true;b.disabled=true;const result=PetInsurance.stop(state,index,q.token,insuranceSave);paying=false;
+   if(!result.ok){b.disabled=false;status.textContent='暂未完成，请返回核对或重试。';return;}render();openPetInsurance(index);
+  });action(ctx,paper,'保留保险',()=>openPetInsurance(index));focusFirst(ctx);
  }
  function openAdoption(id){const q=A.quote(state,id);if(!q)return selection();const ctx=panel('取名与费用'),e=canvas(ctx,'adoption-dog','1024/1536');
   const cash=box(e,'',73,4.5,15.5,5.8,'pet-adoption-cash');cash.append(textNode('span','可用现金'),textNode('strong',new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:0,maximumFractionDigits:2}).format(state.cash)));if(cash.lastChild.textContent.length>9)cash.classList.add('pet-cash-long');box(e,calendar(state.month),36,8.8,28,3,'pet-date');

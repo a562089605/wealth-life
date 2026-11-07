@@ -28,6 +28,7 @@ function syncFinance(){
  }
  // Changes made by retained life modules adjust only the non-financial living budget.
  if(s._computedExpenses!=null&&Math.abs(s.expenses-s._computedExpenses)>.01)s.baseLiving=Math.max(0,s.baseLiving+s.expenses-s._computedExpenses);
+ if(typeof PetInsurance!=='undefined')PetInsurance.sync(s);
  s.healthInsurance=!!s.insurance.health?.active;s.incomeProtection=!!s.insurance.income?.active;
  const securedNames=['投资房贷款','自住房贷款'];for(const k of Object.keys(s.debt))if(securedNames.includes(k)||k.startsWith('投资房 · ')||k.startsWith('银行贷款 · ')||k.startsWith('学生贷款 · '))delete s.debt[k];
  if(s.homeMortgage>0)s.debt['自住房贷款']=s.homeMortgage;

@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-07",
+  "environmentId": "ccarenv_b64_Y2NhcmVudl9hMTE3ZTNiZGNlMjg4MTkxODY3N2NlMGQzNmExMTkzOA",
+  "desktopDeclaredEnabled": true,
+  "desktopObservedState": "unknown",
+  "desktopJsToolAvailable": false,
+  "chromiumLaunchAttempted": true,
+  "chromiumLaunchSucceeded": false,
+  "chromiumError": "setsockopt: Operation not permitted (1); Chromium process exits SIGTRAP",
+  "networkPolicyReported": "unrestricted / enforced / connected",
+  "productionFetchSucceeded": false,
+  "productionCurlError": "Failed to connect to proxy port 8080",
+  "baselineMain": "61e4561af6f58556e39d93eab5be88040a6a3200",
+  "baselineCloudflareRun": "https://github.com/a562089605/wealth-life/runs/127538459437",
+  "cacheIntegrity": {
+    "paths": 237,
+    "missing": 0,
+    "htmlScriptOrStylesNotCached": 0
+  },
+  "limitations": [
+    "Real current browser/iPhone Safari/PWA not validated",
+    "Full offline and full-life long-run balance not validated",
+    "Original Mac checkout inaccessible"
+  ]
+}
