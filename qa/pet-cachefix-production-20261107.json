@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-11-07T05:38:53.866Z",
+  "functionalCommit": "3f5b8f3573aafe72377552282a032075a29edf6e",
+  "cloudflareRun": "https://github.com/a562089605/wealth-life/runs/128313813461",
+  "environmentNote": "Managed execution proxy CA bypass in this isolated browser; HTTPS bytes independently curl-matched.",
+  "scope": "Fresh isolated desktop Chromium; live SW installation and cached homepage reload only. Local pet pages tested separately; not full-game offline or real iPhone/PWA.",
+  "install": {
+    "active": "activated",
+    "cacheName": "wealth-life-v28.11-pet-cachefix-20261107",
+    "cachedRequests": 231,
+    "hasPetHealth": true,
+    "hasSevenCompanionArt": 7
+  },
+  "offlineHome": true,
+  "liveSw": {
+    "url": "https://wealth-life.a562089605.workers.dev/sw.js",
+    "bytes": 11271,
+    "sha256": "2c343213fa1fd07dbc35d863e1bacd243db7a0012405eb82228f739d2fea2824",
+    "matchesLocal": true
+  }
+}
