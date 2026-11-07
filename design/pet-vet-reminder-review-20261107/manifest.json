@@ -1,6 +1,6 @@
 {
   "date": "2026-11-07",
-  "status": "user-confirmed-integrated-validated-pending-release",
+  "status": "all-seven-user-confirmed-integrated-released",
   "screen": "zero-health departure reminder",
   "species": "dog",
   "nameExample": "豆豆",
@@ -17,7 +17,7 @@
     "return home"
   ],
   "exampleDeadline": "第1年5月末",
-  "dogStatus": "user-confirmed-integrated-validated",
+  "dogStatus": "user-confirmed-integrated-released",
   "previews": [
     {
       "species": "cat",
@@ -26,7 +26,7 @@
       "originalGeneratedFile": "/workspace/generated_images/exec-be3b4c0c-502f-4e82-b66c-c4f6cca8f503.png",
       "file": "cat-warm-preview.png",
       "sha256": "c38054ebbb2bbe50fea771d7202e4335cba2a444da81863b99e055321591c477",
-      "status": "user-confirmed-integrated-validated-pending-release",
+      "status": "user-confirmed-integrated-released",
       "runtimeFile": "assets/pets/vet-reminder-cat-20261107.webp",
       "runtimeSha256": "f060ee599cc18a0edcabbd081837fed5f95448af956816bcbb9678aa9e218693"
     },
@@ -37,7 +37,7 @@
       "originalGeneratedFile": "/workspace/generated_images/exec-94c98afa-2bbb-4f0a-803d-938df5ccb72d.png",
       "file": "tortoise-warm-preview.png",
       "sha256": "1a009f74af2e63a9b3b0394424f2a539eb1cafbae2ec3b21a1ac134f747fd332",
-      "status": "user-confirmed-integrated-validated-pending-release",
+      "status": "user-confirmed-integrated-released",
       "runtimeFile": "assets/pets/vet-reminder-tortoise-20261107.webp",
       "runtimeSha256": "d5c14621e537ff39b302cb8e73d1f9e3aaca6c9a7377ac6bb1217d38938706d2"
     },
@@ -48,7 +48,7 @@
       "originalGeneratedFile": "/workspace/generated_images/exec-769e0ed4-2250-4886-9411-4426bb2db33e.png",
       "file": "chameleon-warm-preview.png",
       "sha256": "cd05f27c7620def9bb3a897e972a29b0f9398ca0e4d1689a044cb02d6889bb18",
-      "status": "user-confirmed-integrated-validated-pending-release",
+      "status": "user-confirmed-integrated-released",
       "runtimeFile": "assets/pets/vet-reminder-chameleon-20261107.webp",
       "runtimeSha256": "0db5240b424281d88d34e376431a124f63b8da7a9244e2e960ad819b9a5aa956"
     },
@@ -59,7 +59,7 @@
       "originalGeneratedFile": "/workspace/generated_images/exec-4897462e-56a8-4068-9b24-7f0940268bd7.png",
       "file": "gecko-warm-preview.png",
       "sha256": "e4041061c93798bd5caf0dd42a87cba282d178d3bcf4d066845f5d6fdc546f97",
-      "status": "user-confirmed-integrated-validated-pending-release",
+      "status": "user-confirmed-integrated-released",
       "runtimeFile": "assets/pets/vet-reminder-gecko-20261107.webp",
       "runtimeSha256": "959e0747c461d1911f16c8d8cdc2cd4961bb10ba1cee9e8365adfd16408c2f8f"
     },
@@ -70,7 +70,7 @@
       "originalGeneratedFile": "/workspace/generated_images/exec-aeeec4e8-ae8e-41dd-b22f-aadc3eb584c6.png",
       "file": "spider-warm-preview.png",
       "sha256": "a7fd9ff7388a463bafb70c1d9eab488f6bac762764322e534a1397dae91326eb",
-      "status": "user-confirmed-integrated-validated-pending-release",
+      "status": "user-confirmed-integrated-released",
       "runtimeFile": "assets/pets/vet-reminder-spider-20261107.webp",
       "runtimeSha256": "77dfa777ef9fce450ccadc091cdc66702d1f2612ffbf31448d0b4deeaa7458e2"
     },
@@ -81,7 +81,7 @@
       "originalGeneratedFile": "/workspace/generated_images/exec-74240cc8-6dfd-475d-954f-b0f8d66c376b.png",
       "file": "crocodile-warm-preview.png",
       "sha256": "e27040d7285734212e89a598501dd9bfc24e6d39e1804cf8759f75bf953b3efd",
-      "status": "user-confirmed-integrated-validated-pending-release",
+      "status": "user-confirmed-integrated-released",
       "runtimeFile": "assets/pets/vet-reminder-crocodile-20261107.webp",
       "runtimeSha256": "b95cc3e53565d0abdf5367a8f39c9ae5f8b649c00e2c40d78bf74194d40aa241"
     }
@@ -89,5 +89,11 @@
   "confirmationNote": "用户已确认七宠画稿，并要求保存更新上传接入游戏。保留完整PNG原稿，只转换WebP发布格式；名字、健康与截止月份由原生UI读取真实存档。",
   "runtimeFile": "assets/pets/vet-reminder-dog-20261107.webp",
   "runtimeSha256": "0b7e625ad4c9ca843e77ea0a9979518d5b839738ae4cdbb5809208b9373b657f",
-  "visualConfirmation": "Seven species user-confirmed; latest dog insurance screenshot also confirmed for save/upload."
+  "visualConfirmation": "Seven species user-confirmed; latest dog insurance screenshot also confirmed for save/upload.",
+  "release": {
+    "functionalCommit": "450fa742cfe5ebbe8c71fa62b5d2cfc378a489cc",
+    "cloudflareSuccess": "https://github.com/a562089605/wealth-life/runs/128529361482",
+    "productionProof": "qa/pet-vet-reminder-production-20261107.json",
+    "productionFilesMatched": 13
+  }
 }

@@ -1,0 +1,100 @@
+{
+  "checkedAt": "2026-11-07T21:11:35.702562+00:00",
+  "functionalCommit": "450fa742cfe5ebbe8c71fa62b5d2cfc378a489cc",
+  "deploymentRun": "https://github.com/a562089605/wealth-life/runs/128529361482",
+  "remoteMain": "450fa742cfe5ebbe8c71fa62b5d2cfc378a489cc",
+  "files": [
+    {
+      "file": "index.html",
+      "url": "https://wealth-life.a562089605.workers.dev/",
+      "bytes": 128573,
+      "sha256": "97ec0d7c38c02ee4507b5ef4289fb9b045ac71c2c9f2ab09d560105f2e048456",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-insurance.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-insurance.js?v=20261107-petpremium55",
+      "bytes": 5490,
+      "sha256": "ce7034c898132470ed69dc16195a368b69fb29be76dea886e7bd360e5d4eb424",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-pages.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-pages.js?v=20261107-petvetart1",
+      "bytes": 37696,
+      "sha256": "c120647bfcc9133dd58f2d336a18a953a6d57c01d056cdcc67bcf60fbd6a8a7b",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-pages.css",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-pages.css?v=20261107-petvetart1",
+      "bytes": 13401,
+      "sha256": "27d1d37354ad40c5ab2734e48bb8f66100f56d476758dc5262647b5c30dec2d4",
+      "matchesLocal": true
+    },
+    {
+      "file": "room.js",
+      "url": "https://wealth-life.a562089605.workers.dev/room.js?v=20261107-petvetart1",
+      "bytes": 9466,
+      "sha256": "930711aa9155d55599b80000493c9f2f56b76969fb5a7efcb3d6bd1d986bc1e4",
+      "matchesLocal": true
+    },
+    {
+      "file": "sw.js",
+      "url": "https://wealth-life.a562089605.workers.dev/sw.js",
+      "bytes": 11646,
+      "sha256": "25ddc5757655e7b1d69a82cbe74cff8798e16b719a1221e0b3c1ffe874433bad",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-dog-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-dog-20261107.webp",
+      "bytes": 283382,
+      "sha256": "0b7e625ad4c9ca843e77ea0a9979518d5b839738ae4cdbb5809208b9373b657f",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-cat-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-cat-20261107.webp",
+      "bytes": 275690,
+      "sha256": "f060ee599cc18a0edcabbd081837fed5f95448af956816bcbb9678aa9e218693",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-tortoise-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-tortoise-20261107.webp",
+      "bytes": 281872,
+      "sha256": "d5c14621e537ff39b302cb8e73d1f9e3aaca6c9a7377ac6bb1217d38938706d2",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-chameleon-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-chameleon-20261107.webp",
+      "bytes": 279858,
+      "sha256": "0db5240b424281d88d34e376431a124f63b8da7a9244e2e960ad819b9a5aa956",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-gecko-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-gecko-20261107.webp",
+      "bytes": 281140,
+      "sha256": "959e0747c461d1911f16c8d8cdc2cd4961bb10ba1cee9e8365adfd16408c2f8f",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-spider-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-spider-20261107.webp",
+      "bytes": 296358,
+      "sha256": "77dfa777ef9fce450ccadc091cdc66702d1f2612ffbf31448d0b4deeaa7458e2",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-crocodile-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-crocodile-20261107.webp",
+      "bytes": 298770,
+      "sha256": "b95cc3e53565d0abdf5367a8f39c9ae5f8b649c00e2c40d78bf74194d40aa241",
+      "matchesLocal": true
+    }
+  ],
+  "allMatch": true
+}

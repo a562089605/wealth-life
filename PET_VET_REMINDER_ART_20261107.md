@@ -21,4 +21,4 @@
 
 ## 发布
 
-待本轮提交上传、Cloudflare及线上资源核对后记录。
+功能提交`450fa742cfe5ebbe8c71fa62b5d2cfc378a489cc`已成功上传原main，远端实际读回一致；Cloudflare结论success：[发布记录](https://github.com/a562089605/wealth-life/runs/128529361482)。实际线上首页、保险/宠物页面/房屋脚本、样式、SW及七张新WebP共13份资源完整字节均与本地一致，SHA和时间见`qa/pet-vet-reminder-production-20261107.json`。这些核对不替代真实iPhone/PWA更新验收。
