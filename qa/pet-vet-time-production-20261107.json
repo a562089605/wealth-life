@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-11-07T05:48:33.047875+00:00",
+  "functionalCommit": "8fa256124ad536bbbcf93b2385c0405accda2e86",
+  "files": [
+    {
+      "file": "index.html",
+      "url": "https://wealth-life.a562089605.workers.dev/",
+      "bytes": 128553,
+      "sha256": "77c31f9a2d7c425e7a4739da0a784a9bcebdd3b1d76535f69e6a0856b2f36517",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-health.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-health.js?v=20261107-petvettime1",
+      "bytes": 5354,
+      "sha256": "b5034435a76bb28bab14aeb83f85f8fff682a54cbcac565bc30b5dfa27f3afd3",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-pages.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-pages.js?v=20261107-petvettime1",
+      "bytes": 32991,
+      "sha256": "76037c8f7f959cdd78fceceeea5c431d5c04d13b4e362919f1a26334cba98012",
+      "matchesLocal": true
+    },
+    {
+      "file": "sw.js",
+      "url": "https://wealth-life.a562089605.workers.dev/sw.js",
+      "bytes": 11270,
+      "sha256": "3ddd1ec0db7e5f0cf4aa4a5aec3d4a5031b9a352e03b01bf9f2b15cda68e1733",
+      "matchesLocal": true
+    }
+  ],
+  "allMatch": true,
+  "cloudflareRun": "https://github.com/a562089605/wealth-life/runs/128318431871",
+  "cloudflareConclusion": "success",
+  "scope": "Four changed live runtime resources byte-matched; local Chromium functional tests separately recorded. No real-iPhone or full-offline claim."
+}

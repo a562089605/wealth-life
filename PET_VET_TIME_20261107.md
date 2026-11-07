@@ -27,4 +27,4 @@
 
 ## 发布状态
 
-本地接入和上述验证完成，待原main上传、Cloudflare成功及线上改动文件逐字节核对后记录回执。
+功能提交`8fa256124ad536bbbcf93b2385c0405accda2e86`已上传原main，[Cloudflare发布成功](https://github.com/a562089605/wealth-life/runs/128318431871)。实际curl取回首页、pet-health.js、pet-pages.js和sw.js四份改动运行资源，与本地全部逐字节一致。SHA与范围见qa/pet-vet-time-production-20261107.json。原图和旧存档保持原规则；不将四文件核验当作线上全量/真机验收。
