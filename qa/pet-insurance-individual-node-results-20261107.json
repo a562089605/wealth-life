@@ -1,0 +1,53 @@
+{
+  "scope": "Targeted insurance and connected medical/monthly/state/cache regressions; no full-repo rerun",
+  "sourceBase": "8a87631bcf2a2bd2067d37b1b31b3294c746c616",
+  "passed": true,
+  "suiteCount": 10,
+  "insuranceCombinationCount": 4118,
+  "suites": [
+    {
+      "command": "node qa/pet-insurance.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node qa/pet-insurance-balance.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node qa/pet-insurance-pages.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node qa/pet-fee-insurance-dom.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node qa/pet-health.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node qa/pet-health-settlement.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node qa/pet-vet.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node qa/pet-deadline.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node qa/pet-pool-pause.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node qa/pet-sw-precache.test.cjs",
+      "exitCode": 0
+    }
+  ],
+  "notes": [
+    "Two initially attempted vet test filenames did not exist; discovered and ran actual pet-vet.test.cjs successfully.",
+    "Original three unrelated baseline failures not rerun or claimed fixed."
+  ]
+}

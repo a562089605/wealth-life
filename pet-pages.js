@@ -91,7 +91,7 @@
   }).disabled=!q.due||state.cash<q.due;
   if(q.due>state.cash)status.textContent='现金不足，尚未扣款。';hit(ctx,e,'返回宠物资料',22,91.5,56,6,()=>openDetail(index));hit(ctx,e,'返回宠物资料',2,1,13,7,()=>openDetail(index));focusFirst(ctx);
  }
- function openInsuranceSelection(){const pets=state.pets||[];if(pets.length===1)return openPetInsurance(0);const ctx=panel('选择宠物保险'),paper=plain(ctx,'宠物保险');paper.append(textNode('p','自愿选择投保的伙伴。普通生病、受伤医疗费全额赔付；疏忽照护治疗最多赔付50%，物损自付。总月保费按已投保基准费之和，除以实际已养宠物数量；本月已付保单保留，次月重新分摊。'));
+ function openInsuranceSelection(){const pets=state.pets||[];if(pets.length===1)return openPetInsurance(0);const ctx=panel('选择宠物保险'),paper=plain(ctx,'宠物保险');paper.append(textNode('p','自愿选择投保的伙伴，每只宠物单独计费，已投保的保费相加。普通生病、受伤医疗费全额赔付；疏忽照护治疗最多赔付50%，物损自付。'));
   if(!pets.length)paper.append(textNode('p','领养伙伴后可选择投保。'));
   for(const [index,p]of pets.entries()){const q=PetInsurance.quote(state,index);if(q)action(ctx,paper,petName(p)+' · '+petInsuranceStatus(p)+' · '+priceText(q.monthly)+'/月',()=>{if(validPet(ctx,p,index))openPetInsurance(index);});}
   action(ctx,paper,'返回我的宠物',openOverview);focusFirst(ctx);
@@ -112,7 +112,7 @@
    const result=PetInsurance.confirm(state,index,q.token,insuranceSave);paying=false;
    if(!result.ok){b.disabled=false;status.textContent=result.reason==='cash'?'现金不足，尚未投保。':'暂未完成，请返回核对或重试。';return;}render();openPetInsurance(index);
   });button.disabled=held?held.stopMonth!==undefined:state.cash<q.due;
-  status.textContent=q.policyKey==='pet'?'旧版共用保单，按原合同续保。':held&&held.pricingVersion!==2?'本月保费保留；下月起按新基准费和实际已养数量分摊。':'基准保费 '+priceText(q.baseMonthly)+'/月 ÷ 已养 '+q.ownedCount+' 只；下月按实际数量重新分摊。';
+  status.textContent=q.policyKey==='pet'?'旧版共用保单，按原合同续保。':held&&held.pricingVersion!==3?'本月原保费保留；下月起按 '+priceText(q.baseMonthly)+'/月单独续保。':'每月保费 '+priceText(q.baseMonthly)+'，仅保障这位伙伴；其他宠物可单独投保。';
   if(held?.stopMonth!==undefined)status.textContent='本月保障保留，'+calendar(held.stopMonth)+'起停止续保和保障。';
   if(!held&&state.cash<q.due)status.textContent='现金不足，尚未投保。';
   if(held&&Number.isInteger(held.startMonth)&&held.startMonth>state.month)status.textContent='生效时间：'+calendar(held.startMonth);

@@ -1,0 +1,23 @@
+{
+  "scope": "Desktop Chromium isolated example; not real iPhone/PWA",
+  "steps": [
+    "cat30 and dog10 shown independently; preview/cancel do not charge",
+    "failed purchase fully rolls back; dog retry10 and cat30 total40 once",
+    "refresh preserves separate policies, receipts and medical-only coverage",
+    "renewal charges40 through existing monthly ledger without duplicate pet charge",
+    "stop failure/retry preserves current cover; only selected pet stops next month",
+    "seven species pages charge98; unselected species receive no discount or cover",
+    "legacy version2 paid20 stays this month; next month renews40 with original coverage",
+    "seven insurance pages fit320/390/1280 widths with new single-pet wording",
+    "new service worker installs and insurance works after offline reload"
+  ],
+  "pageErrors": [],
+  "screenshots": [
+    "/workspace/pet-insurance-individual-dog-current-20261107.png"
+  ],
+  "cache": {
+    "name": "wealth-life-v28.11-petinsurance-individual-20261107",
+    "count": 231
+  },
+  "passed": true
+}
