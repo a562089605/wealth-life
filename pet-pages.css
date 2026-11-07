@@ -59,3 +59,19 @@
 .pet-health-meter{display:block;width:100%;height:1.55cqw;box-sizing:border-box;overflow:hidden;border:1px solid #b58b48;border-radius:9px 7px 10px 6px;background:#fff3d2;box-shadow:0 1px 0 #fff8e3;transform:rotate(-.25deg)}
 .pet-health-fill{display:block;height:100%;border-radius:8px 4px 6px 3px;background:repeating-linear-gradient(112deg,#d0a044 0 2px,#ddb459 2px 4px,#d6aa4b 4px 6px);box-shadow:inset 0 1px 1px #f4d795}.pet-health-warning .pet-health-fill{background:repeating-linear-gradient(112deg,#b98e38 0 2px,#cba34a 2px 5px)}.pet-health-critical .pet-health-fill{background:#b86a4b}.pet-health-critical small{color:#964e32}.pet-health-card:focus-visible{outline:none}.pet-health-card:focus-visible .pet-health-painted{outline:2px solid #94692f;outline-offset:2px}
 .pet-health-heading{font-size:24px;font-weight:bold;margin:8px 0}.pet-health-current{color:#795c30}.pet-health-tiers{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;padding:12px;background:#f5e7bd;border-radius:14px}.pet-health-tiers dt{font-weight:bold}.pet-health-tiers dd{margin:0}
+
+/* Approved seven-species reminder; live name/health/deadline use original state. */
+.pet-vet-reminder-overlay{flex-direction:column;align-items:center;gap:12px}
+.pet-vet-card{overflow:hidden;border-radius:27px;box-shadow:0 5px 28px #33251444}
+.pet-vet-card>.pet-page-art{position:absolute;width:107.5269%;max-width:none;left:-3.7634%;top:-11.9255%;border-radius:0}
+.pet-vet-card>.pet-hit{min-width:44px}
+.pet-vet-live{border-radius:10% 12% 9% 13%;background:#fff2d0;color:#143d20;font-family:'Kaiti SC','STKaiti','KaiTi',Georgia,'Songti SC',serif}
+.pet-vet-name{background:radial-gradient(ellipse at center,#e5e9a1 65%,#e9e9ad);font-size:5.7cqw;font-weight:bold;line-height:1.15;padding:0 1cqw}
+.pet-vet-long-name{font-size:3.5cqw;overflow-wrap:anywhere}
+.pet-vet-health{background:#fbefba;font-size:4.5cqw;font-weight:bold}
+.pet-vet-copy{background:radial-gradient(ellipse at 45% 30%,#fff3d4,#fff0cc);font-size:5cqw;font-weight:bold;line-height:1.45;text-align:left;justify-content:flex-start;border-radius:0}
+.pet-vet-deadline{background:radial-gradient(ellipse,#ffefc4,#ffebbc);font-size:4cqw;font-weight:bold;line-height:1.15;overflow-wrap:anywhere}
+.pet-vet-bank-label{background:#f5df94;font-size:5cqw;font-weight:bold}
+.pet-vet-card .pet-vet-bank-ready{background:#ffd35a55;border:1px solid #b49243;border-radius:35px}
+.pet-vet-description{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.pet-vet-other-pets{margin:0 auto}

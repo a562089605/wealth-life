@@ -1,6 +1,6 @@
 // V28.10: approved seven-pet adoption cards on the existing save transactions.
 (function(){
- const A=PetAdoptionEntry,asset=id=>id==='adoption-dog'?'assets/pets/adoption-card-20261105.webp':['detail-actions','monthly-fee'].includes(id)||(id.startsWith('annual-')||id.startsWith('insurance-'))?'assets/pets/'+id+'-20261106.webp':'assets/pets/'+id+'-20261104.webp';
+ const A=PetAdoptionEntry,asset=id=>id.startsWith('vet-reminder-')?'assets/pets/'+id+'-20261107.webp':id==='adoption-dog'?'assets/pets/adoption-card-20261105.webp':['detail-actions','monthly-fee'].includes(id)||(id.startsWith('annual-')||id.startsWith('insurance-'))?'assets/pets/'+id+'-20261106.webp':'assets/pets/'+id+'-20261104.webp';
  const copy=s=>JSON.parse(JSON.stringify(s)),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  let active=null,returnFocus=null,view=null,paying=false;
  function close(){if(active){active.remove();active=null;}document.body.classList.remove('pet-pages-open');view=null;returnFocus?.isConnected&&returnFocus.focus({preventScroll:true});}
@@ -44,6 +44,31 @@
   showEvent('宠物健康','宠物离世',rows.map(p=>petName(p)+'因三个月内未接受治疗，已离世。').join('\n'),rows.map(p=>[esc(petName(p)),calendar(p.diedMonth)+'末']),[['知道了',()=>{if(state!==owner||state.month!==month||slot!==chosenSlot)return;if(!PetHealth.acknowledgeDeaths(state,ids,save)){document.getElementById('eventDesc').textContent='记录暂未保存，请重试。';document.getElementById('actions').firstElementChild.disabled=false;return;}clearModals();after?.();},true]]);return true;
  }
  window.showPetDeathNotice=showDeathNotice;
+ function openVetReminder(rows,actions,selected=rows[0]?.index){
+  const waiting=rows.map(x=>({index:x.index,p:state.pets?.[x.index],q:PetHealth.quoteVet(state,x.index)})).filter(x=>x.p&&x.q);
+  if(!waiting.length||waiting.some(x=>!cfg(x.p)))return false;
+  const {index,p,q}=waiting.find(x=>x.index===selected)||waiting[0],id=spec(p),ctx=panel('宠物需要就医'),e=canvas(ctx,'vet-reminder-'+id,'792.36/1486.03');
+  ctx.node.classList.add('pet-vet-reminder-overlay');e.classList.add('pet-vet-card');e.setAttribute('data-species',id);
+  // Display only the approved paper card; the existing actual home remains behind it.
+  const coords=(x,y,w,h)=>[(x-3.5)/.93,(y-9.6)/.805,w/.93,h/.805];
+  const live=(txt,x,y,w,h,cls)=>box(e,txt,...coords(x,y,w,h),'pet-vet-live '+cls);
+  const control=(label,x,y,w,h,run,cls='')=>hit(ctx,e,label,...coords(x,y,w,h),()=>{if(!validPet(ctx,p,index)||!PetHealth.quoteVet(state,index))return;close();run();},cls);
+  const offset=id==='spider'?1.2:0,name=petName(p),nameBox=live(name+' · 待就医',27.6,37.5+offset,46,3.8,'pet-vet-name');
+  if(Array.from(name).length>8){nameBox.classList.add('pet-vet-long-name');const [x,y,w,h]=coords(23.5,37.5+offset,53,4.1);nameBox.style.cssText='left:'+x+'%;top:'+y+'%;width:'+w+'%;height:'+h+'%';}
+  live('健康度 '+healthValue(p)+'/100',34,42.2+offset,32,2.3,'pet-vet-health');
+  live('它看起来很不舒服，\n带它去看看医生吧。',9.2,46.3+(id==='spider'?1.1:0),54,6.1,'pet-vet-copy');
+  const deadline='第'+(Math.floor(q.deadlineMonth/12)+1)+'年'+(q.deadlineMonth%12+1)+'月末';
+  live(deadline,65,53.2+(id==='spider'?.6:0),26.5,4.4,'pet-vet-deadline');
+  const description=textNode('p',name+'，健康度'+healthValue(p)+'/100，待就医。治疗截止：'+deadline+'。请在截止月份结束前完成治疗；三个月内未治疗，宠物将离世。现金不足可申请银行贷款。','pet-vet-description');e.append(description);
+  control('返回房屋（关闭提醒）',82,10.6,13,4.8,actions.back);
+  control('前往治疗',9,62.5,82,5.8,()=>actions.treat(index));
+  const shortage=state.cash<waiting.reduce((n,x)=>n+x.q.due,0),bank=control('前往银行贷款',9,69.1,82,5.8,actions.bank,shortage?'pet-vet-bank-ready':'');bank.disabled=!shortage;
+  if(shortage)live('前往银行贷款',38,70.5,39,3.2,'pet-vet-bank-label');
+  control('稍后治疗，继续出门',9,75.5,82,5.8,actions.later);
+  control('返回房屋',9,81.8,82,5.8,actions.back);
+  if(waiting.length>1){const paper=plain(ctx,'待就医伙伴');paper.classList.add('pet-vet-other-pets');for(const x of waiting)action(ctx,paper,petName(x.p)+' · '+calendar(x.q.deadlineMonth)+'末',()=>openVetReminder(rows,actions,x.index));}
+  focusFirst(ctx);return true;
+ }
  function openDetail(index){const p=state.pets?.[index];if(!p)return openOverview();const c=cfg(p);if(!c){const ctx=panel('宠物资料'),paper=plain(ctx,'宠物资料待核对');paper.append(textNode('p',petName(p)+'：保留旧记录，不重新领养或收费。'));action(ctx,paper,'查看原照护',()=>{close();legacyOpenCare();});action(ctx,paper,'返回我的宠物',openOverview);return;}
   const ctx=panel(c.name+'的资料'),e=canvas(ctx,'detail-actions');ctx.node.classList.add('pet-detail-overlay');
   if(spec(p)!=='dog'){const hero=box(e,'',0,9,100,25.4,'pet-detail-hero');hero.append(portrait(asset('success-'+spec(p))));}
@@ -190,7 +215,7 @@
   if(tasks.some(t=>t.kind==='Clean'))paper.append(textNode('p','清洁护理可以稍后完成。月底仍逾期，每只健康−10；完成清洁护理恢复20，上限100。年度体检沿用原规则。'));
   action(ctx,paper,'返回我的宠物',openOverview);focusFirst(ctx);
  }
- window.PetPages={openOverview,openDetail,openHealth,openBasicFees,openPetInsurance,openInsuranceSelection,openAdoption,openClean,openAnnual,openDueCare,close};
+ window.PetPages={openOverview,openDetail,openHealth,openVetReminder,openBasicFees,openPetInsurance,openInsuranceSelection,openAdoption,openClean,openAnnual,openDueCare,close};
  // The same living receipt covers both the combined bill and individual pet payments.
  function unpaidBasicFees(){return (state?.pets||[]).flatMap((p,index)=>{const q=PetBasicFees.quote(state,index,basicFeeOptions());return q?.due>.005?[{kind:'petBasicFee',name:petName(p)+' · 每月费用',due:q.due,action:()=>openBasicFees(index)}]:[];});}
  const basicFeeBillsBefore=necessaryBills;necessaryBills=function(){const rows=basicFeeBillsBefore(),pets=unpaidBasicFees();if(!pets.length)return rows;

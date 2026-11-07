@@ -1,0 +1,36 @@
+{
+  "baseCommit": "841278024c634c4b153e1853a47413a6bed6a33b",
+  "remoteMain": "841278024c634c4b153e1853a47413a6bed6a33b",
+  "files": [
+    {
+      "file": "index.html",
+      "matchesBase": true,
+      "sha256": "0e2c7bdbdf3fcbc4fa59746979dd0793d7e3a2f5b2bc5a0912c8be516ad0f6b6"
+    },
+    {
+      "file": "pet-insurance.js",
+      "matchesBase": true,
+      "sha256": "ce7034c898132470ed69dc16195a368b69fb29be76dea886e7bd360e5d4eb424"
+    },
+    {
+      "file": "pet-pages.js",
+      "matchesBase": true,
+      "sha256": "41b4346ce143f9beacd37ecdcfdb25e98b63b1cad20fba1818f32fd9e94a7c22"
+    },
+    {
+      "file": "pet-pages.css",
+      "matchesBase": true,
+      "sha256": "ca61c3291f948dac5596c252f3f7292584ff759c4dc7fad343c5c7d5b1cfb753"
+    },
+    {
+      "file": "room.js",
+      "matchesBase": true,
+      "sha256": "8afe0bca4cb7f8b769736c55eb1f981b76df30104de930f0ca91a6849999bd8e"
+    },
+    {
+      "file": "sw.js",
+      "matchesBase": true,
+      "sha256": "05eb4de3ac3c369974d0a3a377b5af9b188b7213cbe2a5d9cd735ace452113c5"
+    }
+  ]
+}
