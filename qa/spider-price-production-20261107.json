@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-11-07T06:35:02.143698+00:00",
+  "functionalCommit": "4f4462c52840db22eab64fdf5f1246729c7d0780",
+  "files": [
+    {
+      "file": "index.html",
+      "url": "https://wealth-life.a562089605.workers.dev/",
+      "bytes": 128577,
+      "sha256": "7e698e085012e009bc7c56e690c0da5ca7180d4772198fa4fffe0b8db6897857",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-event-cards.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-event-cards.js?v=20261107-spider120",
+      "bytes": 14997,
+      "sha256": "c5208694d01bba149c5a2fb61fa7d99c04ffc476c266fe24d34a471f25a6f0e8",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-events.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-events.js?v=20261107-spider120",
+      "bytes": 8501,
+      "sha256": "36e0c62e4aa6ef0c4d422e66139653ab6fa70760dfad165334e4292c00437abf",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-events-ui.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-events-ui.js?v=20261107-spider120",
+      "bytes": 8447,
+      "sha256": "ab81fbf573655076b0461a2fb83e33ca3655dadbbc0d627323ace983031fd2ea",
+      "matchesLocal": true
+    },
+    {
+      "file": "sw.js",
+      "url": "https://wealth-life.a562089605.workers.dev/sw.js",
+      "bytes": 11292,
+      "sha256": "d355ced057439ef1a081ae72b36df0cb0adb8ee3465409adf450bc837944f84a",
+      "matchesLocal": true
+    }
+  ],
+  "allMatch": true,
+  "cloudflareRun": "https://github.com/a562089605/wealth-life/runs/128328790165",
+  "cloudflareConclusion": "success",
+  "scope": "Five changed live runtime resources byte-matched; local isolated Chromium price/insurance/rollback/reload/layout and35-card regression recorded separately. No real-iPhone/full-offline claim."
+}

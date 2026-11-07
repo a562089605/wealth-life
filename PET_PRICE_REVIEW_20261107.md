@@ -1,6 +1,6 @@
 # 猫专业护理与蜘蛛普通病费用复查（用户已确认，2026-11-07）
 
-继续原财富人生。基线main a666bcb414869fccf4212b22db9ed0f76c5e4ca1；本轮实际GitHub Cloudflare成功check https://github.com/a562089605/wealth-life/runs/128325946673 。工作区此前无已跟踪差异；游戏现价已读实际代码：猫专业护理60/次（1h、3个月周期）；捕鸟蛛不舒服卡80未投保原价（3h、玩家能量−2、压力+2）。以上是审查时基线；随后用户明确同意猫60保留、蜘蛛普通病改120。现已本地接入，待发布核对。
+继续原财富人生。基线main a666bcb414869fccf4212b22db9ed0f76c5e4ca1；本轮实际GitHub Cloudflare成功check https://github.com/a562089605/wealth-life/runs/128325946673 。工作区此前无已跟踪差异；游戏现价已读实际代码：猫专业护理60/次（1h、3个月周期）；捕鸟蛛不舒服卡80未投保原价（3h、玩家能量−2、压力+2）。以上是审查时基线；随后用户明确同意猫60保留、蜘蛛普通病改120。现已接入并发布。
 
 ## 猫：修正此前“60偏低”的判断，建议保留60
 
@@ -37,6 +37,6 @@ https://parkavenuevets.com/services/exotic-vet
 
 真实Chromium隔离925槽逐一核对新120/0/24与旧80/0/16的卡面和实际扣款、旧待处理卡刷新80、保存失败重试，320/375/390/1280价格不溢出。原35卡全套浏览器回归通过；qa/spider-price-browser-results-20261107.json、qa/spider-price-regression-20261107.json。原画不改，截图/workspace/spider-price-120-390.png等仅为隔离测试预览。SW实际去重回归与231唯一存在引用通过。
 
-基线远端/Cloudflare已核，两个实际线上脚本与基线字节一致，qa/spider-price-baseline-20261107.json。本轮实现与验证已本地完成，待原main上传、Cloudflare成功及改动线上文件逐字节核对。
+基线远端/Cloudflare已核，两个实际线上脚本与基线字节一致，qa/spider-price-baseline-20261107.json。功能提交`4f4462c52840db22eab64fdf5f1246729c7d0780`已上传原main，[Cloudflare成功](https://github.com/a562089605/wealth-life/runs/128328790165)。实际curl首页、pet-event-cards.js、pet-events.js、pet-events-ui.js和sw.js五份改动运行资源，全部逐字节匹配本地。SHA与范围保留在qa/spider-price-production-20261107.json。
 
 真实iPhone/PWA、完整离线和长期平衡仍未验收；Mac原目录仍不可访问。本次没有上调猫价，也没有修改其他宠物费用或存档。
