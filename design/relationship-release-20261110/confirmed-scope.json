@@ -1,0 +1,104 @@
+{
+  "roles": [
+    "同学",
+    "同事",
+    "经理",
+    "房东",
+    "宠友"
+  ],
+  "perRole": {
+    "dailyPositive": 1,
+    "dailyTradeoff": 3,
+    "helpAtIntimacy80": 1
+  },
+  "totalPlanned": 25,
+  "interestPolicy": {
+    "countPerPerson": 1,
+    "status": "deferred-until-interest-pool-confirmed",
+    "preserveExisting": true
+  },
+  "managerCards": [
+    {
+      "id": "manager-care",
+      "latestRules": {
+        "minIntimacy": 15,
+        "monthlyCardLimit": 1,
+        "A": {
+          "hours": 1,
+          "intimacy": 3,
+          "stress": -3
+        },
+        "B": {
+          "label": "谢谢关心，我先休息一下",
+          "hours": 1,
+          "energy": 3
+        }
+      },
+      "art": "latest-v4-missing-source",
+      "mapStatus": "not-selected-not-integrated"
+    },
+    {
+      "id": "manager-experience",
+      "latestRules": {
+        "minIntimacy": 30,
+        "monthlyCardLimit": 1,
+        "A": {
+          "label": "和同事一起听",
+          "hours": 1,
+          "intimacy": 4,
+          "happiness": 2
+        },
+        "B": {
+          "label": "肚子饿了，先去吃饭",
+          "hours": 0,
+          "cash": 0,
+          "energy": 2
+        }
+      },
+      "art": "approved-manager-experience-lunch.png",
+      "mapStatus": "saved-card-renderer-and-settlement-ready-no-selector"
+    },
+    {
+      "id": "manager-misunderstanding",
+      "rules": "old-confirmed; pending-A/B-rebalance-review",
+      "art": "source-missing"
+    },
+    {
+      "id": "manager-recognition",
+      "rules": "single-positive; old-confirmed; queued-review",
+      "art": "source-missing"
+    },
+    {
+      "id": "manager-planning-help",
+      "rules": {
+        "minIntimacy": 80,
+        "monthlyCardLimit": 1,
+        "freeHoursGain": 2,
+        "stress": -3,
+        "timeScope": "current-month-only-no-carry-no-work-or-wage-change"
+      },
+      "art": "source-missing"
+    }
+  ],
+  "coworkerCards": [
+    {
+      "id": "coworker-break-chat",
+      "rules": "confirmed; hours1/intimacy+3/stress-3; B no change; monthly1/intimacy15",
+      "art": "source-missing"
+    },
+    {
+      "id": "coworker-snack",
+      "rules": "single-positive; energy+2/happiness+3/intimacy+2; monthly1/intimacy15",
+      "art": "source-missing"
+    },
+    {
+      "id": "coworker-different-opinions",
+      "rules": "A/B disputed; rebalancing not finally confirmed",
+      "art": "not-created"
+    }
+  ],
+  "reserve": [
+    "manager-favor"
+  ],
+  "probability": "not-confirmed-not-invented"
+}

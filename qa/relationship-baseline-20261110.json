@@ -1,0 +1,72 @@
+{
+  "checkedAt": "2026-11-10T19:51:12.040202+00:00",
+  "baselineCommit": "a61a687ac6f16dc0b04c68001e8d1f688092f68e",
+  "files": [
+    {
+      "file": "index.html",
+      "ok": true,
+      "sha256": "97ec0d7c38c02ee4507b5ef4289fb9b045ac71c2c9f2ab09d560105f2e048456"
+    },
+    {
+      "file": "pet-insurance.js",
+      "ok": true,
+      "sha256": "ce7034c898132470ed69dc16195a368b69fb29be76dea886e7bd360e5d4eb424"
+    },
+    {
+      "file": "pet-pages.js",
+      "ok": true,
+      "sha256": "c120647bfcc9133dd58f2d336a18a953a6d57c01d056cdcc67bcf60fbd6a8a7b"
+    },
+    {
+      "file": "pet-pages.css",
+      "ok": true,
+      "sha256": "27d1d37354ad40c5ab2734e48bb8f66100f56d476758dc5262647b5c30dec2d4"
+    },
+    {
+      "file": "room.js",
+      "ok": true,
+      "sha256": "930711aa9155d55599b80000493c9f2f56b76969fb5a7efcb3d6bd1d986bc1e4"
+    },
+    {
+      "file": "sw.js",
+      "ok": true,
+      "sha256": "25ddc5757655e7b1d69a82cbe74cff8798e16b719a1221e0b3c1ffe874433bad"
+    },
+    {
+      "file": "assets/pets/vet-reminder-dog-20261107.webp",
+      "ok": true,
+      "sha256": "0b7e625ad4c9ca843e77ea0a9979518d5b839738ae4cdbb5809208b9373b657f"
+    },
+    {
+      "file": "assets/pets/vet-reminder-cat-20261107.webp",
+      "ok": true,
+      "sha256": "f060ee599cc18a0edcabbd081837fed5f95448af956816bcbb9678aa9e218693"
+    },
+    {
+      "file": "assets/pets/vet-reminder-tortoise-20261107.webp",
+      "ok": true,
+      "sha256": "d5c14621e537ff39b302cb8e73d1f9e3aaca6c9a7377ac6bb1217d38938706d2"
+    },
+    {
+      "file": "assets/pets/vet-reminder-chameleon-20261107.webp",
+      "ok": true,
+      "sha256": "0db5240b424281d88d34e376431a124f63b8da7a9244e2e960ad819b9a5aa956"
+    },
+    {
+      "file": "assets/pets/vet-reminder-gecko-20261107.webp",
+      "ok": true,
+      "sha256": "959e0747c461d1911f16c8d8cdc2cd4961bb10ba1cee9e8365adfd16408c2f8f"
+    },
+    {
+      "file": "assets/pets/vet-reminder-spider-20261107.webp",
+      "ok": true,
+      "sha256": "77dfa777ef9fce450ccadc091cdc66702d1f2612ffbf31448d0b4deeaa7458e2"
+    },
+    {
+      "file": "assets/pets/vet-reminder-crocodile-20261107.webp",
+      "ok": true,
+      "sha256": "b95cc3e53565d0abdf5367a8f39c9ae5f8b649c00e2c40d78bf74194d40aa241"
+    }
+  ],
+  "allMatch": true
+}

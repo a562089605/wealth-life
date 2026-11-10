@@ -1,0 +1,91 @@
+{
+  "scope": "17 targeted relationship/pet/housing suites; not whole repository",
+  "passed": true,
+  "results": [
+    {
+      "file": "qa/pet-insurance.test.cjs",
+      "exitCode": 0,
+      "output": "PASS optional seven-species prices, atomic payment/rollback/retry, per-pet medical100/property excluded, uninsured pet self-pay, old45 and explicit historic rates, no retroactive repricing, aggregate receipts and stale/shortage guards.\n"
+    },
+    {
+      "file": "qa/pet-insurance-balance.test.cjs",
+      "exitCode": 0,
+      "output": "PASS 4118 owned/insured/order combinations, individual totals, ownership stale guard, prepaid month lock, old-contract renewal, next-month stop rollback/reload/repurchase, locked event and actual finance metrics.\n"
+    },
+    {
+      "file": "qa/pet-insurance-pages.test.cjs",
+      "exitCode": 0,
+      "output": "PASS seven illustrated insurance pages, actual opt-out, own price/atomic buy/retry/one-time payment, distinct pets, no new45 entry, combined premiums retain health, next-month totals and no compulsory purchase.\n"
+    },
+    {
+      "file": "qa/pet-fee-insurance-dom.test.cjs",
+      "exitCode": 0,
+      "output": "PASS actual pet page DOM handlers: four ordered entrances, read-only preview, adopted prepaid and old bill recognition, payment rollback/retry/paid-once, pet-specific insurance55/full coverage with other premiums retained.\n"
+    },
+    {
+      "file": "qa/pet-health.test.cjs",
+      "exitCode": 0,
+      "output": "PASS health defaults and legacy no-backcharge, monthly loss once/reload/floor, self/pro gain/ceiling/payment rollback, annual isolation, exact single/multi lottery weights, gate/caps and pending cards preserved.\n"
+    },
+    {
+      "file": "qa/pet-health-settlement.test.cjs",
+      "exitCode": 0,
+      "output": "PASS actual core month settlement and rollback: overdue health applied once with cash/month/history, failed save restores all, repeat/reload do not double-charge health; player health untouched.\nPASS real monthly transaction: failed death save restores live pet/policy/cash/month, retry archives once and stops future premiums.\n"
+    },
+    {
+      "file": "qa/pet-vet.test.cjs",
+      "exitCode": 0,
+      "output": "PASS seven confirmed treatment fees and 4/3/6-hour charges, insufficient-time non-mutation, legacy completed treatment preservation, full/legacy/no insurance capped50, atomic save rollback/retry/reload, late-policy exclusion, case latch after cleaning, treatment80, exact50/75 thresholds, stale/short cash and individual case identity.\n"
+    },
+    {
+      "file": "qa/pet-deadline.test.cjs",
+      "exitCode": 0,
+      "output": "PASS seven species, three complete months/final-month treatment, legacy grace without repricing, death archive/once-only notice, no new fee, selective policy expiry, surviving-pet pool and repricing.\n"
+    },
+    {
+      "file": "qa/pet-pool-pause.test.cjs",
+      "exitCode": 0,
+      "output": "PASS seven species/five categories paused at zero or pending, pure eligibility, failed treatment stays paused, successful treatment/reload restores, real pet indices and20% gate, all-paused fallback and old-card preservation.\n"
+    },
+    {
+      "file": "qa/pet-sw-precache.test.cjs",
+      "exitCode": 0,
+      "output": "PASS actual install callback: canonical request URLs deduplicated without dropping required resources.\n"
+    },
+    {
+      "file": "qa/room-restore.test.cjs",
+      "exitCode": 0,
+      "output": "PASS: saved home reload does not request a new month; saved map, pending arrival, incident, medical, recovery and final state retain priority.\n"
+    },
+    {
+      "file": "qa/housing-transactions.test.cjs",
+      "exitCode": 0,
+      "output": "PASS: five housing operations rollback on false/throw, durable retries, no success navigation or repeat fees, nested contract/receipt preservation, partial-payment/sync failure and stale bill.\n"
+    },
+    {
+      "file": "qa/family-home.test.cjs",
+      "exitCode": 0,
+      "output": "PASS: home entry vs map return, exactly one settlement, review-before-draw, none-result reload, unresolved map event, medical/handover priority, actual post-move housing and old saves.\n"
+    },
+    {
+      "file": "qa/studio-home.test.cjs",
+      "exitCode": 0,
+      "output": "PASS: Studio production 25 UI choices, health/medical, three choices, exact leave/pay, no-job debt, loan then payment, rollback/reload/slot locks, saved pool and old saves. DOM/VM only.\n"
+    },
+    {
+      "file": "qa/shared-home.test.cjs",
+      "exitCode": 0,
+      "output": "PASS: all 24 production UI choices/assets/hit regions, saved animation/skip/reload, slot/repeat/month locks, mandatory priority, old saves, exact unpaid leave, separate loan/payment/cancel and storage rollback. DOM/VM only.\n"
+    },
+    {
+      "file": "qa/apartment-home.test.cjs",
+      "exitCode": 0,
+      "output": "PASS: apartment 24 UI choices + single followup, guaranteed immediate B, exact 3h leave/debt, health, loan then payment, rollback/reload/slot/month locks, old saves/contracts and one home settlement. DOM/VM only.\n"
+    },
+    {
+      "file": "qa/relationship-release.test.cjs",
+      "exitCode": 0,
+      "output": "PASS relationship lifecycle, preserved contacts/education/hobbies, thresholds, resources, all-save rollback/retry, repeated interactions, per-person visits, decay, fixed manager card quotes, lunch no time/cash charge, monthly once and forced-time adapter.\n"
+    }
+  ]
+}

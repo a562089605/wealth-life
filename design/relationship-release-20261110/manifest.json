@@ -1,0 +1,65 @@
+{
+  "baseline": "a61a687ac6f16dc0b04c68001e8d1f688092f68e",
+  "availableOriginals": [
+    {
+      "file": "approved-contact-list.png",
+      "sha256": "4d272574de957802280796cbcd8db798ac49a77aacaf3ced50c39e4d13b8a0c7",
+      "status": "user-confirmed"
+    },
+    {
+      "file": "approved-contact-detail.png",
+      "sha256": "31fdacb73a5c85233b13770e651b836e94dde77711bc34ea7a08f0ff4ea2824e",
+      "status": "user-confirmed"
+    },
+    {
+      "file": "approved-manager-experience-lunch.png",
+      "sha256": "8f11d294b2deaa21cbe59320f59f8f4af3ea0f58fec1e9493c03d0a183147abf",
+      "status": "user-confirmed"
+    },
+    {
+      "file": "archive-manager-experience-threshold.png",
+      "sha256": "293101ce0a22a16b803858cb9e805f8a6a84bec12575836a6d02915273bba10f",
+      "status": "superseded-archive"
+    }
+  ],
+  "missingOriginals": [
+    {
+      "id": "manager-care-v4",
+      "status": "confirmed-in-conversation-source-file-unavailable-no-repaint"
+    },
+    {
+      "id": "manager-misunderstanding",
+      "status": "confirmed-in-conversation-source-file-unavailable-no-repaint"
+    },
+    {
+      "id": "manager-recognition",
+      "status": "confirmed-in-conversation-source-file-unavailable-no-repaint"
+    },
+    {
+      "id": "manager-planning-help",
+      "status": "confirmed-in-conversation-source-file-unavailable-no-repaint"
+    },
+    {
+      "id": "coworker-break-chat",
+      "status": "confirmed-in-conversation-source-file-unavailable-no-repaint"
+    },
+    {
+      "id": "coworker-snack",
+      "status": "confirmed-in-conversation-source-file-unavailable-no-repaint"
+    },
+    {
+      "id": "manager-favor-reserve",
+      "status": "confirmed-in-conversation-source-file-unavailable-no-repaint"
+    },
+    {
+      "id": "old-empty-contact-page",
+      "status": "confirmed-in-conversation-source-file-unavailable-no-repaint"
+    }
+  ],
+  "runtime": {
+    "contact-list": "house contacts entry",
+    "contact-detail": "house contact detail and interaction entry",
+    "manager-experience": "selected/saved map card renderer and fixed settlement; no new automatic selector or probability"
+  },
+  "artPolicy": "Only format conversion and CSS source rectangles; no regenerated replacement for missing approved originals."
+}
