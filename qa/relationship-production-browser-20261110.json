@@ -1,0 +1,17 @@
+{
+  "scope": "Fresh desktop Chromium context at production; isolated slot936, no player storage",
+  "pageErrors": [],
+  "screenshots": [
+    "/workspace/wealth-life-git/design/relationship-release-20261110/production-first-month-list.png",
+    "/workspace/wealth-life-git/design/relationship-release-20261110/production-contact-detail.png"
+  ],
+  "contacts": [
+    {
+      "name": "Alex",
+      "status": "经理",
+      "relation": 10
+    }
+  ],
+  "profile": "性别\n女\n与你的关系\n经理（你是员工）\n职业\n咖啡店经理\n学历\n高中 / High School\n兴趣爱好\n待补充",
+  "passed": true
+}

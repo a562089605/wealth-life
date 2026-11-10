@@ -39,3 +39,7 @@ relationship-life-cards.js接入了对应已保存卡片的原图、真实按钮
 ## 发布
 
 本轮发布状态以新增生产核验记录为准。不能引用旧七宠13份文件报告证明关系版已发布。
+
+功能提交aefd1fde1f36ad3769991d7d30d9a9f8a5e15b3b已上传原main，Cloudflare发布检查success：[发布记录](https://github.com/a562089605/wealth-life/runs/130092667040)。生产首页、脚本/样式、字体、三张关系图及原相关宠物资源共23份与本地完整字节一致，qa/relationship-production-20261110.json。原项目.assetsignore排除design/，四份PNG原稿按原约定仅GitHub归档；GitHub读回的4个blob SHA与本地git hash-object完全一致，qa/relationship-production-archive-20261110.json，不把原稿未在Worker提供误判为运行资源丢失。
+
+全新桌面Chromium上下文直连生产网址验证原房屋关系按钮、经理10和资料/学历/兴趣占位，0脚本错误；隔离936槽、不读取玩家已有存储。结果qa/relationship-production-browser-20261110.json，生产实际截图production-first-month-list.png及production-contact-detail.png。当前可读取的三份确认图已上传；仍不能称全部旧确认原稿已找回或新生活卡已自然入池。

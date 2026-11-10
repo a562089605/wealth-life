@@ -1,3 +1,7 @@
+# 关系确认图本轮已上传发布
+
+功能aefd1fde1f36ad3769991d7d30d9a9f8a5e15b3b已push原main，Cloudflare success：https://github.com/a562089605/wealth-life/runs/130092667040 。23份运行资源生产字节一致，原稿GitHub4份blob一致，生产新上下文桌面Chromium房屋关系及资料入口通过。证据qa/relationship-production*.json，实际线上截图design/relationship-release-20261110/production-*.png。仅当前可读取的名单/资料/午休经理卡三份确认图；其他早期原稿仍缺失，不得重画替代或称全部卡已上线。午休卡只接已保存记录渲染/结算，未自动入池；地图概率和后续各卡仍待确认。
+
 # 最新增量：当前可读取的关系确认图接入
 
 用户要求上传接入。基于原main a61a687，本轮环境已丢失此前本地关系代码及多数旧图，重新检出原仓库后增量接入可核验的关系名单/资料原图，午休经理卡原图及已保存卡片渲染结算。房屋入口动态数据、经理/房东、资料/学历、互动/做客/衰减和保存失败回滚已验证；普通地图保留旧入口，没有补造关系卡概率。17套Node和13组隔离桌面Chromium通过，新SW246引用及断网三图解码通过；非真机/完整离线验收。旧图缺失情况及最新已确认规则摘要见design/relationship-release-20261110/manifest.json、confirmed-scope.json，不能说全部旧确认稿已经接入。

@@ -1,0 +1,30 @@
+{
+  "functionalCommit": "aefd1fde1f36ad3769991d7d30d9a9f8a5e15b3b",
+  "originals": [
+    {
+      "name": "approved-contact-detail.png",
+      "sha": "2b94fdd55984c003131aea4e4e06245810a2b876",
+      "size": 2552391,
+      "html_url": "https://github.com/a562089605/wealth-life/blob/aefd1fde1f36ad3769991d7d30d9a9f8a5e15b3b/design/relationship-release-20261110/approved-contact-detail.png"
+    },
+    {
+      "name": "approved-contact-list.png",
+      "sha": "be42abebed2f4bddb343451d952aee6f6436b586",
+      "size": 2502653,
+      "html_url": "https://github.com/a562089605/wealth-life/blob/aefd1fde1f36ad3769991d7d30d9a9f8a5e15b3b/design/relationship-release-20261110/approved-contact-list.png"
+    },
+    {
+      "name": "approved-manager-experience-lunch.png",
+      "sha": "8e8ca74b08262bb8d084f80ef1e716760d6d5af9",
+      "size": 2172035,
+      "html_url": "https://github.com/a562089605/wealth-life/blob/aefd1fde1f36ad3769991d7d30d9a9f8a5e15b3b/design/relationship-release-20261110/approved-manager-experience-lunch.png"
+    },
+    {
+      "name": "archive-manager-experience-threshold.png",
+      "sha": "56ec2cb0bd8862015fabf52c52402f5c48002ded",
+      "size": 2211658,
+      "html_url": "https://github.com/a562089605/wealth-life/blob/aefd1fde1f36ad3769991d7d30d9a9f8a5e15b3b/design/relationship-release-20261110/archive-manager-experience-threshold.png"
+    }
+  ],
+  "archivePolicy": "Existing .assetsignore excludes design/. Original PNGs archived in GitHub, production uses WebP."
+}
