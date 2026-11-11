@@ -1,0 +1,125 @@
+{
+  "scope": "Conversation-confirmed final art, not automatically deployed gameplay",
+  "selected": [
+    {
+      "id": "manager-01-care",
+      "path": "design/relationship-confirmed-20261111/manager-01-care.png",
+      "sha256": "4fcf972923dd909b76f5ea6d81631228ebbea8a9247fa6c5f1fd8485eb2fa33a",
+      "bytes": 2123397,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "manager-03-tasting",
+      "path": "design/relationship-confirmed-20261111/manager-03-tasting.png",
+      "sha256": "82b16d55e92d1394c75192ecb43a0b393ca9a1de6f70134a5533f01f5cc763eb",
+      "bytes": 2376391,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "manager-04-bonus",
+      "path": "design/relationship-confirmed-20261111/manager-04-bonus.png",
+      "sha256": "5e87cf7b2ad4ef87d84a05e53db0de74a2cffa09a14f1caede44e5af591c02f6",
+      "bytes": 2205712,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "manager-05-ride",
+      "path": "design/relationship-confirmed-20261111/manager-05-ride.png",
+      "sha256": "3c61e6e43f6104777a5048a5ba2d6d110d48b8a54195e4113152803afbd77ec3",
+      "bytes": 2490584,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "coworker-01-after-work",
+      "path": "design/relationship-confirmed-20261111/coworker-01-after-work.png",
+      "sha256": "5ebd33e1fae63823765714a6c87ceb9a6b9767c8a1626486ef15b99c6d045100",
+      "bytes": 2235372,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "coworker-02-snack",
+      "path": "design/relationship-confirmed-20261111/coworker-02-snack.png",
+      "sha256": "d665a6231c3675df25e16f1f6e92a5f8949bbe1607261e551ccf7617589dfb5b",
+      "bytes": 2315674,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "coworker-03-bookshelf",
+      "path": "design/relationship-confirmed-20261111/coworker-03-bookshelf.png",
+      "sha256": "7af7b7bd5ce32e0de5fe7274fed27ffa0caa00003e65da878530ed58b5a73ebd",
+      "bytes": 2304997,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "coworker-04-order",
+      "path": "design/relationship-confirmed-20261111/coworker-04-order.png",
+      "sha256": "ef394c81c98d9c02b524ba27700a77b4f9f2fe03293d989b6caae823c69a0eae",
+      "bytes": 2280974,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "coworker-05-side-job",
+      "path": "design/relationship-confirmed-20261111/coworker-05-side-job.png",
+      "sha256": "d4c722a8c339d92e810eeccf564c0b2e6ba995548572b448bb5ef8ac4c37cfbd",
+      "bytes": 2370742,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "landlord-01-chat",
+      "path": "design/relationship-confirmed-20261111/landlord-01-chat.png",
+      "sha256": "bc4cdc31d1c5c4540153df547d450b34c271b605bb1bba4b56d588bf55db2b2e",
+      "bytes": 2573738,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "landlord-02-beef",
+      "path": "design/relationship-confirmed-20261111/landlord-02-beef.png",
+      "sha256": "658f9b944a944d58f075145f5c2eaf981a4195a838c9a06324068a3ded43302d",
+      "bytes": 2593132,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "landlord-03-plants",
+      "path": "design/relationship-confirmed-20261111/landlord-03-plants.png",
+      "sha256": "69f3525ef9aafdcf36e5bf79b6155e441a21dcab0f1c2f4b0e4943a0aae0b5c4",
+      "bytes": 2483023,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "landlord-04-aircon-main",
+      "path": "design/relationship-confirmed-20261111/landlord-04-aircon-main.png",
+      "sha256": "c9b73f525fd913a79154fafc908202180ca996ca50da60b79dd21b05383fd4d0",
+      "bytes": 2260585,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "id": "landlord-04-aircon-outcomes-review",
+      "path": "design/relationship-confirmed-20261111/landlord-04-aircon-outcomes-review.png",
+      "sha256": "8123cd7d1af8f052da2457fb1f664eee28627eb9e0a6d71a05691f4331f03cfa",
+      "bytes": 2852778,
+      "status": "confirmed",
+      "note": "成功失败共用一张审阅图，实际游戏只显示一个结果；独立结果资源尚待制作"
+    },
+    {
+      "id": "manager-02-experience",
+      "path": "design/relationship-confirmed-20261111/manager-02-experience.png",
+      "sha256": "8f11d294b2deaa21cbe59320f59f8f4af3ea0f58fec1e9493c03d0a183147abf",
+      "bytes": 2172035,
+      "status": "confirmed"
+    }
+  ],
+  "historical_revisions": "archive/; these are not selected final versions"
+}

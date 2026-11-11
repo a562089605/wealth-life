@@ -1,3 +1,5 @@
+> 最新关系确认见 [RELATIONSHIP_CONFIRMED_20261111.md](RELATIONSHIP_CONFIRMED_20261111.md)。经理/同事各5张、房东4张及空调后续已确认归档；房东第5张待职业板块。旧规则/旧画稿被覆盖处以新文件为准。新批次尚未自然抽取接入；地图权重继续搁置。
+
 # 财富人生 Wealth Life — V28.11
 
 关系页功能aefd1fd已上传原main并[Cloudflare发布成功](https://github.com/a562089605/wealth-life/runs/130092667040)，23份生产运行资源完整字节匹配，生产房屋关系/资料入口已用全新桌面Chromium核验。三份当前可访问确认图及一份旧图原稿已GitHub归档；早期其他原稿缺失未重画。新生活卡尚未接入自动概率，详见[本轮发布范围](RELATIONSHIP_ART_RELEASE_20261110.md)。

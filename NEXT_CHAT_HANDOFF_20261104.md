@@ -1,3 +1,5 @@
+> 最新关系确认见 [RELATIONSHIP_CONFIRMED_20261111.md](RELATIONSHIP_CONFIRMED_20261111.md)。经理/同事各5张、房东4张及空调后续已确认归档；房东第5张待职业板块。旧规则/旧画稿被覆盖处以新文件为准。新批次尚未自然抽取接入；地图权重继续搁置。
+
 # 关系确认图本轮已上传发布
 
 功能aefd1fde1f36ad3769991d7d30d9a9f8a5e15b3b已push原main，Cloudflare success：https://github.com/a562089605/wealth-life/runs/130092667040 。23份运行资源生产字节一致，原稿GitHub4份blob一致，生产新上下文桌面Chromium房屋关系及资料入口通过。证据qa/relationship-production*.json，实际线上截图design/relationship-release-20261110/production-*.png。仅当前可读取的名单/资料/午休经理卡三份确认图；其他早期原稿仍缺失，不得重画替代或称全部卡已上线。午休卡只接已保存记录渲染/结算，未自动入池；地图概率和后续各卡仍待确认。
