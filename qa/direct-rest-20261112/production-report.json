@@ -1,0 +1,13 @@
+{
+  "scope": "isolated Chromium slot939: consecutive rest clicks, reload idempotency, save failure rollback, time gate; not iPhone Safari",
+  "baseURL": "https://wealth-life.a562089605.workers.dev",
+  "phase": "production",
+  "steps": [
+    "Two actual clicks apply exactly two 4h rests, original effects and cash unchanged; stay on illustration with no results modal",
+    "Refresh and reload preserve exact results, no repeated settlement",
+    "Failed save rolls back state and permits retry",
+    "Insufficient free time disables rest without result popup"
+  ],
+  "errors": [],
+  "passed": true
+}

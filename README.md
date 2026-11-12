@@ -113,3 +113,5 @@ Cloudflare Workers现有Git集成可用根目录 `npx wrangler deploy`，wrangle
 
 
 2026-11-12 休息交互修正：取消休息完成结果弹窗，点击原确认休息按钮即安排一次4h休息，留在原插画页刷新数值，可连续点击。原能量+4、压力−2、健康+1、幸福度+1、封顶及宠物照护/医疗/时间限制不变。保存失败整体回滚；刷新不自动追加休息。qa/direct-rest-browser.cjs 已验证连续两次、刷新、保存失败和时间不足；qa/rest-state.test.cjs、approved-pages、pet-sw-precache 通过。
+
+休息修复功能提交 7fa5bae5a0688b5fc90fb9a94965f021b795aa3f 已发布成功：https://github.com/a562089605/wealth-life/runs/131551780967 。发布完成后线上隔离浏览器4组验证通过，脚本错误0，记录 qa/direct-rest-20261112/production-report.json（首次构建中测试遇旧版，成功发布后重新验证通过）。
