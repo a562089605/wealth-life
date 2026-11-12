@@ -1,5 +1,7 @@
 > 2026-11-12 封面视觉确认：用户已确认沿实际小镇原图assets/career/town.webp的柔和蜡笔画风封面，替换先前不符合画风的版本。最终原稿及SHA见design/entry-cover-20261112/manifest.json，旧稿移入archive保留。只换封面及对应按钮热区，进入游戏→原读档流程、存档和游戏规则不变。本次生产核验见qa/entry-town-style-20261112/entry-screen-production-20261112.json。
 
+小镇画风确认稿4e04981已上传原main并[Cloudflare发布成功](https://github.com/a562089605/wealth-life/runs/131525569008)。7组入口专项通过；5份线上入口资源逐字节一致，全新隔离生产Chromium核对确认稿首屏、进入原读档页、刷新回封面、存储零改写及0脚本错误。证据qa/entry-town-style-20261112/entry-screen-production-20261112.json，实际线上截图同目录entry-screen-production-mobile-20261112.png。
+
 > 2026-11-12 入口修正：仓库及可读取历史未找到独立游戏封面，按用户授权新增暖黄色手绘封面。打开网址先显示封面，点击“进入游戏”才显示原存档列表；仅切换显示，不读取角色、不写存档、不新建角色。7组入口Chromium验收及原关系21组回归通过，生产结果见qa/entry-screen-production-20261112.json。新封面原稿及SHA见design/entry-cover-20261112/manifest.json，原职业图未替换。
 
 入口修正5a0111a已上传原main，[Cloudflare发布成功](https://github.com/a562089605/wealth-life/runs/131512974842)。5份入口运行资源与线上字节一致；全新隔离生产Chromium核实封面首屏、点击后原读档页、刷新回封面，点击前后存储完全一致，0脚本错误。证据qa/entry-screen-production-20261112.json，实际线上截图qa/entry-screen-production-mobile-20261112.png。

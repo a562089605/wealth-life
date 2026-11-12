@@ -1,0 +1,44 @@
+{
+  "commit": "4e049816c1255571f4f69a889c530b2bfc47a934",
+  "scope": "fresh isolated desktop Chromium production; no player storage read or changed",
+  "steps": [
+    "all5 production entry resources match local bytes",
+    "first open displays actual illustrated cover",
+    "enter reaches original save list with no storage or player-state writes",
+    "refresh returns to cover without changing saves"
+  ],
+  "files": [
+    {
+      "file": "index.html",
+      "url": "https://wealth-life.a562089605.workers.dev/",
+      "sha256": "f026a533eaeb628a32aec8bc83f172c7f2e20a2e84b99d521575abea18fe9ce8",
+      "matchesLocal": true
+    },
+    {
+      "file": "sw.js",
+      "url": "https://wealth-life.a562089605.workers.dev/sw.js",
+      "sha256": "ce7826bbcf4e5a81b803246aa34492ef7c4565c47140b6de610b769cfdd24202",
+      "matchesLocal": true
+    },
+    {
+      "file": "entry-screen.js",
+      "url": "https://wealth-life.a562089605.workers.dev/entry-screen.js",
+      "sha256": "142cfd9f9ea74d31c1021af54344a535e37ae9e6a23c07a4f9a4d274ddb14edb",
+      "matchesLocal": true
+    },
+    {
+      "file": "entry-screen.css",
+      "url": "https://wealth-life.a562089605.workers.dev/entry-screen.css",
+      "sha256": "95bdb6e922e83f72692b19c8f0e0b1d49458c868e65a4bd83856191d069f3016",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/home/wealth-life-cover-town-style-20261112.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/home/wealth-life-cover-town-style-20261112.webp",
+      "sha256": "ad5941b55e925e00d3d48b07ad076180b5f0df06d4ebba9f665b8901a8c81b7f",
+      "matchesLocal": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

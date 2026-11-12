@@ -359,3 +359,5 @@ A沿已确认六效果：当前学历学习剩余时间−1个月、自由时间
 用户喜欢小镇全景布局，要求以游戏实际小镇assets/career/town.webp画风为准；已确认柔和蜡笔、奶油纸、简化建筑、青绿树木与红瓦的新封面。关系卡粗黑描边人物版及浓重金黄详细小镇版未被采用，不将这些视为最终稿。最终原稿及SHA见design/entry-cover-20261112/manifest.json，旧原稿/预览在archive保留。
 
 本次只替换封面WebP、更新按钮热区及缓存版本；进入游戏仅到原存档列表，无存储/游戏状态写入。其他画稿、卡片数值、地图和存档不变。新验证单独保存qa/entry-town-style-20261112，不覆盖上一轮截图证据。
+
+小镇画风确认稿4e04981已上传原main并[Cloudflare发布成功](https://github.com/a562089605/wealth-life/runs/131525569008)。7组入口专项通过；5份线上入口资源逐字节一致，全新隔离生产Chromium核对确认稿首屏、进入原读档页、刷新回封面、存储零改写及0脚本错误。证据qa/entry-town-style-20261112/entry-screen-production-20261112.json，实际线上截图同目录entry-screen-production-mobile-20261112.png。
