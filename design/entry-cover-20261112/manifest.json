@@ -1,0 +1,9 @@
+{
+  "status": "new cover per user authorization after repository/history search found no standalone opening cover",
+  "original": "design/entry-cover-20261112/wealth-life-cover.png",
+  "sha256": "b2c1ea31ce127155fc4831802d8a05eb5555edfae6030e86cc4936b0a2b143b1",
+  "runtime": "assets/home/wealth-life-cover-20261112.webp",
+  "runtimeSHA256": "0509c9640c51e4f525d71a6ce5b8a030c551df6b35dc240bbc5009ce37956dd8",
+  "flow": "cover -> Enter Game -> original save slots",
+  "scope": "presentation only, no game/save writes"
+}

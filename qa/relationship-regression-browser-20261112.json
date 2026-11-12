@@ -17,16 +17,16 @@
   ],
   "pageErrors": [],
   "screenshots": [
-    "/workspace/wealth-life-git/qa/relationship-regression-20261112/actual-first-month-list.png",
-    "/workspace/wealth-life-git/qa/relationship-regression-20261112/actual-second-month-list.png",
-    "/workspace/wealth-life-git/qa/relationship-regression-20261112/actual-manager-detail.png",
-    "/workspace/wealth-life-git/qa/relationship-regression-20261112/actual-manager-detail-full.png",
-    "/workspace/wealth-life-git/qa/relationship-regression-20261112/actual-visit.png",
-    "/workspace/wealth-life-git/qa/relationship-regression-20261112/actual-manager-card-saved-fixture.png"
+    "/workspace/wealth-life-git/qa/entry-cover-regression-20261112/actual-first-month-list.png",
+    "/workspace/wealth-life-git/qa/entry-cover-regression-20261112/actual-second-month-list.png",
+    "/workspace/wealth-life-git/qa/entry-cover-regression-20261112/actual-manager-detail.png",
+    "/workspace/wealth-life-git/qa/entry-cover-regression-20261112/actual-manager-detail-full.png",
+    "/workspace/wealth-life-git/qa/entry-cover-regression-20261112/actual-visit.png",
+    "/workspace/wealth-life-git/qa/entry-cover-regression-20261112/actual-manager-card-saved-fixture.png"
   ],
   "cache": {
-    "name": "wealth-life-v28.11-relationship-confirmed-20261112",
-    "count": 277
+    "name": "wealth-life-v28.11-entry-cover-20261112",
+    "count": 280
   },
   "passed": true
 }

@@ -1,0 +1,14 @@
+{
+  "scope": "isolated Chromium, local saves only; entry flow, mobile/desktop, offline; not iPhone/PWA",
+  "steps": [
+    "first open shows full cover and one enter button, slots hidden, clicking writes no saves",
+    "original empty slot -> original career selection -> original new game remains intact",
+    "refresh returns to cover, Enter preserves exact existing save and original load restores player",
+    "320/390/1280 and short landscape show single full artwork, button44px and no horizontal clipping",
+    "keyboard Enter reaches save list and does not create a game",
+    "cached offline reload decodes cover then reaches original saved slots",
+    "missing cover image still exposes a usable Enter button and preserves save list"
+  ],
+  "errors": [],
+  "passed": true
+}
