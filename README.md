@@ -110,3 +110,6 @@ Cloudflare Workers现有Git集成可用根目录 `npx wrangler deploy`，wrangle
 
 验证：`node qa/coffee-rules.test.cjs`、`node qa/shift-lead.test.cjs`。手机真实Safari/PWA尚未验证。
 
+
+
+2026-11-12 休息交互修正：取消休息完成结果弹窗，点击原确认休息按钮即安排一次4h休息，留在原插画页刷新数值，可连续点击。原能量+4、压力−2、健康+1、幸福度+1、封顶及宠物照护/医疗/时间限制不变。保存失败整体回滚；刷新不自动追加休息。qa/direct-rest-browser.cjs 已验证连续两次、刷新、保存失败和时间不足；qa/rest-state.test.cjs、approved-pages、pet-sw-precache 通过。

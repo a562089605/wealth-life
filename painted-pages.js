@@ -92,7 +92,7 @@
  const handoverBefore=confirmHousingHandover;confirmHousingHandover=function(){const r=handoverBefore();if(r===true)openLifeOverview();return r;};
  const actions={room:()=>openRoom(),life:()=>openLifeOverview(),rest:()=>openExtraRest(),housing:()=>openHousing(),living:()=>openTownLiving(),health:()=>openHealthTreatment(),activities:()=>el('lifestyleBtn').click(),
   'cancel-move':()=>{cancelHousingMove();draw();},'life-confirm':confirmLife,'detail-confirm':()=>{const key=detailKey;if(confirmHousing(key)!==false){if(state.housing===key)openDetail(key);else openHousingSelection();}else draw();},
-  'rest-confirm':()=>{const quote=restQuote;return confirmExtraRest(quote.cycle,quote.count);},
+  'rest-confirm':()=>{const quote=restQuote;const result=confirmExtraRest(quote.cycle,quote.count);draw();return result;},
   funding:()=>{const h=housingChoices().find(x=>x[3]===detailKey);showFundingOptions(housingQuote(h).total,()=>openDetail(detailKey));}
  };
  document.addEventListener('click',e=>{const b=e.target.closest('[data-painted]');if(!b||b.disabled||!page||document.querySelector('.event-active')||!el('wlDrawer').hidden)return;
