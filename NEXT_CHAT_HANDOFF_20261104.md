@@ -1,3 +1,6 @@
+> 最新2026-11-12：2026-11-12 已上传并发布：功能提交fb7c219fd9d8ed9b931568a71aff07d9053d1079，[Cloudflare成功](https://github.com/a562089605/wealth-life/runs/131375637935)。52份线上资源与本地字节一致，28份选稿远端Git blob一致；全新隔离生产Chromium验证24张运行卡、报名新增同学10、27张图解码及刷新保留通过，0脚本错误。证据qa/relationship-confirmed-production*.json，实际生产截图qa/relationship-confirmed-production-enrollment-20261112.png。自然抽卡仍未启用，不把显式已保存卡接入说成全部卡已自然上线。
+> 最新逐卡规则、次数、入学/直接毕业和选稿见RELATIONSHIP_CONFIRMED_20261111.md文末、design/relationship-confirmed-20261111/manifest.json（28份最终选择资源）。不要用下方历史阶段覆盖最新确认。
+
 > 最新关系确认见 [RELATIONSHIP_CONFIRMED_20261111.md](RELATIONSHIP_CONFIRMED_20261111.md)。经理/同事各5张、房东4张及空调后续已确认归档；房东第5张待职业板块。旧规则/旧画稿被覆盖处以新文件为准。新批次尚未自然抽取接入；地图权重继续搁置。
 
 # 关系确认图本轮已上传发布

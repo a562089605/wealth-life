@@ -1,0 +1,11 @@
+{
+  "scope": "fresh isolated desktop Chromium production context, slot938; no player storage accessed; not natural draws or iPhone/PWA",
+  "steps": [
+    "new24-card runtime loaded",
+    "actual production enrollment creates one saved classmate10",
+    "all27 production card images decode",
+    "refresh retains same single classmate"
+  ],
+  "errors": [],
+  "passed": true
+}

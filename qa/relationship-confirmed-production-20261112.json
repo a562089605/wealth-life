@@ -1,0 +1,423 @@
+{
+  "checkedAt": "2026-11-12T17:49:39.419653+00:00",
+  "functionalCommit": "fb7c219fd9d8ed9b931568a71aff07d9053d1079",
+  "files": [
+    {
+      "file": "assets/fonts/MaShanZheng-Regular.ttf",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/fonts/MaShanZheng-Regular.ttf",
+      "exit": 0,
+      "bytes": 5857936,
+      "sha256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-cat-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-cat-20261107.webp",
+      "exit": 0,
+      "bytes": 275690,
+      "sha256": "f060ee599cc18a0edcabbd081837fed5f95448af956816bcbb9678aa9e218693",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-chameleon-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-chameleon-20261107.webp",
+      "exit": 0,
+      "bytes": 279858,
+      "sha256": "0db5240b424281d88d34e376431a124f63b8da7a9244e2e960ad819b9a5aa956",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-crocodile-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-crocodile-20261107.webp",
+      "exit": 0,
+      "bytes": 298770,
+      "sha256": "b95cc3e53565d0abdf5367a8f39c9ae5f8b649c00e2c40d78bf74194d40aa241",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-dog-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-dog-20261107.webp",
+      "exit": 0,
+      "bytes": 283382,
+      "sha256": "0b7e625ad4c9ca843e77ea0a9979518d5b839738ae4cdbb5809208b9373b657f",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-gecko-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-gecko-20261107.webp",
+      "exit": 0,
+      "bytes": 281140,
+      "sha256": "959e0747c461d1911f16c8d8cdc2cd4961bb10ba1cee9e8365adfd16408c2f8f",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-spider-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-spider-20261107.webp",
+      "exit": 0,
+      "bytes": 296358,
+      "sha256": "77dfa777ef9fce450ccadc091cdc66702d1f2612ffbf31448d0b4deeaa7458e2",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/pets/vet-reminder-tortoise-20261107.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/pets/vet-reminder-tortoise-20261107.webp",
+      "exit": 0,
+      "bytes": 281872,
+      "sha256": "d5c14621e537ff39b302cb8e73d1f9e3aaca6c9a7377ac6bb1217d38938706d2",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/classmate-01-library-new-contact.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/classmate-01-library-new-contact.webp",
+      "exit": 0,
+      "bytes": 339652,
+      "sha256": "2289864bf8f1ecf65a2c4f52bc7a49bbdbb72da4fdeccc010be7ae3525bbd9ad",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/classmate-01-library.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/classmate-01-library.webp",
+      "exit": 0,
+      "bytes": 364830,
+      "sha256": "222e2a91b91d0c3bacfc3ea9784df3284ff11751769fa46069b94d77b75876be",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/classmate-02-borrow-notes.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/classmate-02-borrow-notes.webp",
+      "exit": 0,
+      "bytes": 316614,
+      "sha256": "03ce5efeb94b3430df59af3ab5d9c772eb99f4e9ef5f9120a439839f3970a073",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/classmate-03-presentation.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/classmate-03-presentation.webp",
+      "exit": 0,
+      "bytes": 335196,
+      "sha256": "7a1b28f519abcbc9469f9ef98654894e8fd43d5579f38abf51d1b6461f52a49a",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/classmate-04-after-class-snack.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/classmate-04-after-class-snack.webp",
+      "exit": 0,
+      "bytes": 372346,
+      "sha256": "a419da150b5f25522c2861673d9bc82ad4b196a0eff753c1f25fd09df1bef049",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/classmate-05-study-plan-choice-layout.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/classmate-05-study-plan-choice-layout.webp",
+      "exit": 0,
+      "bytes": 287238,
+      "sha256": "97f7796e949729c5559e208a4526881f2c8931acbdba9f2a48cdc1c9bc91706b",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/coworker-01-after-work.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/coworker-01-after-work.webp",
+      "exit": 0,
+      "bytes": 339570,
+      "sha256": "e72ee922aee28ed8f0ba525660a3c94046c0cd89f37bf2f94e297d16079f7779",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/coworker-02-snack.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/coworker-02-snack.webp",
+      "exit": 0,
+      "bytes": 344210,
+      "sha256": "f427e59f0a8f26753182f4bbd8373be4b60820c9e489c78aac60135f3d29d6d6",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/coworker-03-bookshelf.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/coworker-03-bookshelf.webp",
+      "exit": 0,
+      "bytes": 344250,
+      "sha256": "7d84c5fa5da0df6615e7aeb05e5124e8dee65f780f6e3e4805c52df64942a87c",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/coworker-04-order.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/coworker-04-order.webp",
+      "exit": 0,
+      "bytes": 356048,
+      "sha256": "76fe2841120c1308b8f323119081891828e3088b003f3bec1bf4db0bc4670531",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/coworker-05-side-job.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/coworker-05-side-job.webp",
+      "exit": 0,
+      "bytes": 368190,
+      "sha256": "c1f1c4a4a1818dfc45887fca4f5acd369ef19c55719dd7474b88a990bc10bf78",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/landlord-01-chat.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/landlord-01-chat.webp",
+      "exit": 0,
+      "bytes": 419274,
+      "sha256": "792113a91679c2cd814648104302dcd12e6f5ea641150e19e4b3870e3f13cffe",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/landlord-02-beef.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/landlord-02-beef.webp",
+      "exit": 0,
+      "bytes": 425112,
+      "sha256": "9c25297a351e76cc671d3a0117adc5bb826b7de34f4342be94f2d3964f4375a5",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/landlord-03-plants.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/landlord-03-plants.webp",
+      "exit": 0,
+      "bytes": 405490,
+      "sha256": "1ded553bf67f3c6da6637b052a03925878f2555392b7c01f00f0c8d730c09be7",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/landlord-04-aircon-failure.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/landlord-04-aircon-failure.webp",
+      "exit": 0,
+      "bytes": 403704,
+      "sha256": "6c0eb61ad7f3f7b848c08468945fcc28e2e6ada2e1cbcdee883ebc19078ce4fd",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/landlord-04-aircon-main.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/landlord-04-aircon-main.webp",
+      "exit": 0,
+      "bytes": 344088,
+      "sha256": "fff2a15db77032f57e5dc20c675f63d2f4e5de076d22197080471ec851f6d4bb",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/landlord-04-aircon-success.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/landlord-04-aircon-success.webp",
+      "exit": 0,
+      "bytes": 452966,
+      "sha256": "61b77743ac48b55fac186bf87f4e2d9657b6596909a027cf1463a5e4872bc0dd",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/manager-01-care.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/manager-01-care.webp",
+      "exit": 0,
+      "bytes": 322236,
+      "sha256": "7b7e81c1e5cb1e7ce13aa96bbc5a2194d423e7dfd54c97041e30ab3806e453c9",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/manager-02-experience.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/manager-02-experience.webp",
+      "exit": 0,
+      "bytes": 320558,
+      "sha256": "82d8a77cdbd19d977bb319360452d9d5aec62b9ce1649dc8bbd9d81c0ac7a8f5",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/manager-03-tasting.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/manager-03-tasting.webp",
+      "exit": 0,
+      "bytes": 365852,
+      "sha256": "f7fc3131e7ffa1bb7f254716f366a2dc92107f74d3b72ec63de8dd919201a037",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/manager-04-bonus.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/manager-04-bonus.webp",
+      "exit": 0,
+      "bytes": 335442,
+      "sha256": "f774f6972e5d3c9b51e89d3523628cbdce9ef01fa43d985c13a15f7f954a8c73",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/manager-05-ride.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/manager-05-ride.webp",
+      "exit": 0,
+      "bytes": 405970,
+      "sha256": "041b8651584669b2f52a5765206e14939bb0cb8b1e517e7d2a990d7365cb2dec",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-01-chat.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/petfriend-01-chat.webp",
+      "exit": 0,
+      "bytes": 356894,
+      "sha256": "e3c3103700771e3db3bde99299da0ad3e1aee789bb97dc27237f12c42df9800c",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-02-organizer.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/petfriend-02-organizer.webp",
+      "exit": 0,
+      "bytes": 367282,
+      "sha256": "fcafc26f79f5fd177a11d918047b0156eeac42863c8b283f46c7ab6957a13806",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-03-shop.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/petfriend-03-shop.webp",
+      "exit": 0,
+      "bytes": 383494,
+      "sha256": "26d50227defabb0d9c6ccfc0a978eb9125e2387c96258e1a498f873073f38db1",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-04-late-arrival.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/petfriend-04-late-arrival.webp",
+      "exit": 0,
+      "bytes": 350146,
+      "sha256": "bf157e4e59b2b155d98bece10b445e45b5bcf6ba39a75205d765aaf42fd451a7",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-05-cafe-day-job.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/cards/petfriend-05-cafe-day-job.webp",
+      "exit": 0,
+      "bytes": 397338,
+      "sha256": "e94ada9908a3773135a3a633490fbd56b2c1d07daf457d43aa78dc5ee44caf33",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/contact-detail-20261110.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/contact-detail-20261110.webp",
+      "exit": 0,
+      "bytes": 387594,
+      "sha256": "0c2695fb753a112f65a736ee5db6121d9ff0a226831f22c306188ab7da5fb164",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/contact-list-20261110.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/contact-list-20261110.webp",
+      "exit": 0,
+      "bytes": 356354,
+      "sha256": "e4b9e16f5680134354f8a8198cffd8e2d001ada9effe26aaf80355a4a29c5c66",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/relationships/manager-experience-20261110.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/relationships/manager-experience-20261110.webp",
+      "exit": 0,
+      "bytes": 324442,
+      "sha256": "d17288929ab9b02fcdf80872df4597023fad67fae25e5d1947992e6813d99537",
+      "matchesLocal": true
+    },
+    {
+      "file": "core.js",
+      "url": "https://wealth-life.a562089605.workers.dev/core.js?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 38177,
+      "sha256": "1aefea11c1ac27eec526d2705773867b9720a036df3e5516670ad4c16f8d174e",
+      "matchesLocal": true
+    },
+    {
+      "file": "flow.js",
+      "url": "https://wealth-life.a562089605.workers.dev/flow.js?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 38962,
+      "sha256": "a2dd8d6967aa41ae1cabbe8e06ee9c2df5ef98534c3fa832508cbba4cbc9684a",
+      "matchesLocal": true
+    },
+    {
+      "file": "index.html",
+      "url": "https://wealth-life.a562089605.workers.dev/",
+      "exit": 0,
+      "bytes": 129022,
+      "sha256": "dc814d85253bd69dafe97e958f3846b25844d3398bbe1b106811eaf7972f5855",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-insurance.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-insurance.js?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 5490,
+      "sha256": "ce7034c898132470ed69dc16195a368b69fb29be76dea886e7bd360e5d4eb424",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-pages.css",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-pages.css?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 13401,
+      "sha256": "27d1d37354ad40c5ab2734e48bb8f66100f56d476758dc5262647b5c30dec2d4",
+      "matchesLocal": true
+    },
+    {
+      "file": "pet-pages.js",
+      "url": "https://wealth-life.a562089605.workers.dev/pet-pages.js?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 37696,
+      "sha256": "c120647bfcc9133dd58f2d336a18a953a6d57c01d056cdcc67bcf60fbd6a8a7b",
+      "matchesLocal": true
+    },
+    {
+      "file": "relationship-card-data.js",
+      "url": "https://wealth-life.a562089605.workers.dev/relationship-card-data.js?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 19855,
+      "sha256": "af9ec82c987ffff396b1912eda943f2ac98f6a5f4c776c5bb34abc8acca5a768",
+      "matchesLocal": true
+    },
+    {
+      "file": "relationship-life-cards.js",
+      "url": "https://wealth-life.a562089605.workers.dev/relationship-life-cards.js?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 8690,
+      "sha256": "7cc02e84dc296cb6e08c9ec4a6011683403430df667afc1f2fb50889eaa209f6",
+      "matchesLocal": true
+    },
+    {
+      "file": "relationship-life-ui.js",
+      "url": "https://wealth-life.a562089605.workers.dev/relationship-life-ui.js?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 5065,
+      "sha256": "fad83ca2a0bc0d0192228fe7e4bdfcb624d920b9b71d111d7814a29db246551a",
+      "matchesLocal": true
+    },
+    {
+      "file": "relationship-pages.css",
+      "url": "https://wealth-life.a562089605.workers.dev/relationship-pages.css?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 8810,
+      "sha256": "8fb80cabec610568d58bf5b7329529af4a6f8de75bc2eb01e0328322982c59a2",
+      "matchesLocal": true
+    },
+    {
+      "file": "relationship-rules.js",
+      "url": "https://wealth-life.a562089605.workers.dev/relationship-rules.js?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 7087,
+      "sha256": "8bb20cdb141f6323776d95307bb43cc8b8bd0649bf97d91077b19344c11768d9",
+      "matchesLocal": true
+    },
+    {
+      "file": "relationship-ui.js",
+      "url": "https://wealth-life.a562089605.workers.dev/relationship-ui.js?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 11337,
+      "sha256": "db701faf5db1cd586ec163fac3bece236b55239d6d4bc3c5a5432293e3a3d465",
+      "matchesLocal": true
+    },
+    {
+      "file": "room.js",
+      "url": "https://wealth-life.a562089605.workers.dev/room.js?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 9466,
+      "sha256": "930711aa9155d55599b80000493c9f2f56b76969fb5a7efcb3d6bd1d986bc1e4",
+      "matchesLocal": true
+    },
+    {
+      "file": "sw.js",
+      "url": "https://wealth-life.a562089605.workers.dev/sw.js?v=20261112-confirmed1",
+      "exit": 0,
+      "bytes": 13743,
+      "sha256": "a5b244ca2bdd1d99fd56d0c543f987c3b844ecfe4ae4646565704db65181e471",
+      "matchesLocal": true
+    }
+  ],
+  "allMatch": true
+}
