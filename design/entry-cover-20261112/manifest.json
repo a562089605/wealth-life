@@ -1,9 +1,12 @@
 {
-  "status": "new cover per user authorization after repository/history search found no standalone opening cover",
-  "original": "design/entry-cover-20261112/wealth-life-cover.png",
-  "sha256": "b2c1ea31ce127155fc4831802d8a05eb5555edfae6030e86cc4936b0a2b143b1",
-  "runtime": "assets/home/wealth-life-cover-20261112.webp",
-  "runtimeSHA256": "0509c9640c51e4f525d71a6ce5b8a030c551df6b35dc240bbc5009ce37956dd8",
+  "status": "confirmed",
+  "original": "design/entry-cover-20261112/wealth-life-cover-town-style.png",
+  "sha256": "e388d03c1f01a4d26a9d6122ae8be90433327dd074622234624d212ece728b86",
+  "runtime": "assets/home/wealth-life-cover-town-style-20261112.webp",
+  "runtimeSHA256": "ad5941b55e925e00d3d48b07ad076180b5f0df06d4ebba9f665b8901a8c81b7f",
+  "styleReference": "assets/career/town.webp",
   "flow": "cover -> Enter Game -> original save slots",
-  "scope": "presentation only, no game/save writes"
+  "scope": "approved town-style cover only; no game/save writes",
+  "historicalRevisions": "archive/; rejected covers are not selected",
+  "previousRuntime": "assets/home/wealth-life-cover-20261112.webp"
 }

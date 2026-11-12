@@ -1,3 +1,5 @@
+最新封面确认：用户已确认柔和蜡笔小镇全景版，画风参考assets/career/town.webp，不能再套关系卡粗描边人物风格。最终原稿与SHA在design/entry-cover-20261112/manifest.json，旧拒绝稿在archive；生产核验qa/entry-town-style-20261112/entry-screen-production-20261112.json。入口流程仍封面→进入游戏→原读档，无存档改写。
+
 封面发布核验：5a0111a已成功发布，5份入口资源字节一致，生产首屏→读档及刷新/零存储写入通过。qa/entry-screen-production-20261112.json。
 
 入口补充：用户授权找不到旧封面则新作；已补独立财富人生封面，打开网址先封面→进入游戏→原读档页，入口不写存档。原稿design/entry-cover-20261112，验证qa/entry-screen-*。发布状态以README最新证据为准。
