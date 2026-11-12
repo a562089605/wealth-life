@@ -3,7 +3,7 @@
  const copy=x=>JSON.parse(JSON.stringify(x)),clamp=n=>Math.max(0,Math.min(100,n));
  const plans={chat:{cost:0,hours:1,min:0},walk:{cost:0,hours:1,min:0},meal:{cost:45,hours:2,min:21},visit:{cost:30,hours:3,min:51}};
  const stage=p=>{const n=Number.isFinite(p.relation)?p.relation:0;return n<15?'认识':n<30?'熟人':n<50?'普通朋友':n<70?'较好朋友':n<88?'好朋友':'挚友';};
- const role=p=>p.relationshipRole==='manager'||p.houseRole==='manager'||['经理','上司'].includes(p.status)?'经理':p.relationshipRole==='landlord'||p.houseRole==='landlord'||p.status==='房东'?'房东':p.origin==='pet-social'||p.status==='养宠物的朋友'||p.status==='宠友'?'宠友':p.status||'认识的人';
+ const role=p=>p.relationshipRole==='manager'||p.houseRole==='manager'||['经理','上司'].includes(p.status)?'经理':p.relationshipRole==='landlord'||p.houseRole==='landlord'||p.status==='房东'?'房东':p.relationshipRole==='classmate'?'同学':p.relationshipRole==='coworker'?'同事':p.origin==='pet-social'||p.status==='养宠物的朋友'||p.status==='宠友'?'宠友':p.status||'认识的人';
  const identity=p=>JSON.stringify([p.id,p.name,p.origin,p.relationshipRole||p.houseRole]);
  function data(s){return s.relationshipHome??={version:1,startedMonth:s.month,sequence:0,actions:[],settlements:{},managers:{}};}
  function workKey(job){return /咖啡师|值班主管|Barista|Shift Lead/i.test(job||'')?'coffee':job;}

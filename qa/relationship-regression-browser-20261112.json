@@ -1,0 +1,32 @@
+{
+  "scope": "Desktop Chromium isolated localhost/slot936; not actual iPhone Safari/PWA or complete offline",
+  "steps": [
+    "actual start keeps original job and adds only already-known manager10",
+    "rented next month adds one landlord10; family adds none; refresh retains identities",
+    "actual contact detail is read-only, shows saved profile and reserved interests; locked actions remain locked",
+    "chat actual primary-slot save failure rolls back everything; retry saves once; repeated contact allowed",
+    "old contacts, existing education and hobbies survive; missing education fills once only",
+    "two-person visit costs60/hour3/energy4, records separate outcomes and prevents double confirmation",
+    "phone/desktop layouts, long names, 44px buttons and scroll to return",
+    "stale house button cannot mutate another slot",
+    "real monthly save failure rolls back people/decay/month; retry settles once",
+    "normal map community keeps old entry; no new card is drawn or probability installed",
+    "explicit saved manager card uses approved art and lunch changes only energy, no time or cash charge",
+    "saved card failure rolls back, refresh restores record, A time debt follows original ledger; stale card blocked",
+    "new service worker caches all references and approved relation images decode after offline refresh"
+  ],
+  "pageErrors": [],
+  "screenshots": [
+    "/workspace/wealth-life-git/qa/relationship-regression-20261112/actual-first-month-list.png",
+    "/workspace/wealth-life-git/qa/relationship-regression-20261112/actual-second-month-list.png",
+    "/workspace/wealth-life-git/qa/relationship-regression-20261112/actual-manager-detail.png",
+    "/workspace/wealth-life-git/qa/relationship-regression-20261112/actual-manager-detail-full.png",
+    "/workspace/wealth-life-git/qa/relationship-regression-20261112/actual-visit.png",
+    "/workspace/wealth-life-git/qa/relationship-regression-20261112/actual-manager-card-saved-fixture.png"
+  ],
+  "cache": {
+    "name": "wealth-life-v28.11-relationship-confirmed-20261112",
+    "count": 277
+  },
+  "passed": true
+}

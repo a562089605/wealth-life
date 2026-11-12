@@ -1,31 +1,56 @@
-// Available approved art + fixed quotes. No automatic draw/pool/weight is installed.
+// Confirmed relationship cards: explicit saved map records only. No natural draw/weight.
 (function(root){'use strict';
- const clone=x=>JSON.parse(JSON.stringify(x)),clamp=n=>Math.max(0,Math.min(100,n));
- const spec={id:'manager-experience',title:'经理分享工作经验',art:'assets/relationships/manager-experience-20261110.webp',minIntimacy:30,monthlyLimit:1,options:[{label:'和同事一起听',hours:1,energy:0,intimacy:4,happiness:2,stress:0,cash:0},{label:'肚子饿了，先去吃饭',hours:0,energy:2,intimacy:0,happiness:0,stress:0,cash:0}]};
- function create(s,personId,moveId){const p=s.people?.find(p=>p.id===personId);if(!p||p.id!==s.relationshipHome?.currentManagerId||!s.job||s.retired||s.unemployedMonths||p.relation<30||(s.relationshipLife?.receipts||[]).some(r=>r.month===s.month&&r.kind===spec.id))return null;return {id:s.month+':'+moveId+':'+spec.id,version:1,kind:spec.id,month:s.month,moveId,personId,personName:p.name,status:'pending',quotes:clone(spec.options),art:spec.art};}
- function confirm(s,recordId,index,{free,forcedTime,save}){const m=s.town?.movement,r=m?.relationshipLifeCard,p=s.people?.find(p=>p.id===r?.personId),q=r?.quotes?.[index];
-  if(!m||m.resolved||!r||r.id!==recordId||r.version!==1||r.status!=='pending'||r.month!==s.month||r.moveId!==m.id||!p||![0,1].includes(index)||!q||!Number.isFinite(free)||free<0||!Number.isFinite(q.hours)||q.hours<0||![q.energy,q.intimacy,q.happiness,q.stress,q.cash].every(Number.isFinite)||q.cash!==0)return {ok:false,reason:'stale'};
-  const before=clone(s);try{let time=null;if(q.hours>free){if(!forcedTime)throw Error('missing forced time');time=forcedTime({id:'relationship-'+r.id,month:s.month,hours:q.hours,available:free});}
-   const used=time?time.used:q.hours,prior=p.relation;stateLessApply();function stateLessApply(){s.energy=clamp(s.energy+q.energy);s.happiness=clamp(s.happiness+q.happiness);s.stress=clamp(s.stress+q.stress);p.relation=clamp(p.relation+q.intimacy);p.lastContactMonth=s.month;}
-   const d=s.relationshipLife??={version:1,hours:{},receipts:[]};d.hours[s.month]=(d.hours[s.month]||0)+used;r.status='resolved';r.choice=index;r.receipt={...q,used,time,appliedIntimacy:p.relation-prior};d.receipts.push({id:r.id,kind:r.kind,personId:p.id,month:s.month,choice:index,...r.receipt});m.resolved=true;m.completedMonth=s.month;(s.town.history??=[]).push({id:m.id,to:m.to,month:s.month,type:'community',relationshipCard:r.kind});
-   if(q.hours>0&&(q.hours>=free))s.forcedTimeReturn={month:s.month,id:'relationship-'+r.id,debt:time?.debt||0};if(save()===false)throw Error('save failed');return {ok:true,receipt:r.receipt};
-  }catch(e){for(const k of Object.keys(s))delete s[k];Object.assign(s,before);return {ok:false,reason:'save'};}
+ const D=root.RelationshipCardData||(typeof require==='function'?require('./relationship-card-data'):null);
+ const copy=x=>JSON.parse(JSON.stringify(x)),clamp=n=>Math.max(0,Math.min(100,n));
+ const cards=Object.fromEntries(D.cards.map(c=>[c.id,c]));
+ const spec={...cards['manager-experience'],art:'assets/relationships/manager-experience-20261110.webp',monthlyLimit:1}; // v1 frozen-record compatibility
+ const role=p=>root.RelationshipHomeRules?root.RelationshipHomeRules.role(p):p.relationshipRole==='manager'?'经理':p.relationshipRole==='landlord'?'房东':p.origin==='pet-social'?'宠友':p.status;
+ function data(s){const d=s.relationshipLife??={version:2,hours:{},receipts:[],used:[],courses:{}};d.hours??={};d.receipts??=[];d.used??=[];d.courses??={};return d;}
+ const project=s=>s.study&&(s.study.id||s.study.receipt?.id);
+ function used(s,pid,kind){return (s.relationshipLife?.used||[]).some(r=>r.personId===pid&&r.kind===kind)||(s.relationshipLife?.receipts||[]).some(r=>r.personId===pid&&r.kind===kind);}
+ function eligible(s,p,c,opts={}){
+  if(!p||!c||role(p)!==c.role||!Number.isFinite(p.relation)||p.relation<c.minIntimacy||used(s,p.id,c.id))return false;
+  if(c.role==='同学'&&(!s.study||!project(s)))return false;
+  if(c.role==='经理'&&(!s.job||s.retired||s.unemployedMonths||p.id!==s.relationshipHome?.currentManagerId))return false;
+  if(c.coffeeOnly&&!/咖啡|Barista|Shift Lead/i.test(s.job||''))return false;
+  if(c.currentLandlord&&(!['shared','studio','rent1'].includes(s.housing)||p.id!==s.relationshipHome?.landlordId))return false;
+  // Housing equipment and aircon odds are not confirmed. Caller must supply actual equipment and an already-locked outcome.
+  if(c.aircon&&(opts.hasAirConditioner!==true||!['success','failure'].includes(opts.airconOutcome)))return false;
+  return true;
  }
- const api={spec,create,confirm};root.RelationshipLifeCards=api;if(typeof module!=='undefined')module.exports=api;
+ function atomic(s,fn,save){const before=copy(s);try{const result=fn();if(result===false||save()===false)throw Error('save');return result;}catch(e){for(const k of Object.keys(s))delete s[k];Object.assign(s,before);return false;}}
+ function makeStudent(s,id,courseId){const gender=Math.random()<.5?'female':'male',names=gender==='female'?['林悦','陈曦','许宁','苏晴','江月']:['林泽','陈远','许言','周明','江川'];let name=names.find(n=>!s.people?.some(p=>p.name===n))||'同学'+((s.people?.length||0)+1);return {id,name,gender,origin:'school',relationshipRole:'classmate',status:'同学',job:'学生',education:s.education,studyProjectId:courseId,relation:10,metMonth:s.month,lastContactMonth:s.month,city:s.city};}
+ function reserveLegacy(s){const r=s.town?.movement?.relationshipLifeCard;if(r?.version===1&&['pending','followup'].includes(r.status)&&!used(s,r.personId,r.kind))data(s).used.push({id:r.id,personId:r.personId,kind:r.kind,month:r.month});}
+ function enroll(s,study){const id=study.id||study.receipt?.id;if(!id)throw Error('missing study identity');const d=data(s);if(d.courses[id])return;s.people??=[];const pid='relationship-classmate-'+id;const p=s.people.find(p=>p.id===pid)||makeStudent(s,pid,id);if(!s.people.includes(p))s.people.push(p);d.courses[id]=p.id;}
+ // Legacy call remains a pure v1 quote builder for existing integrations; new code must use saveCard.
+ function create(s,pid,moveId){const c=cards['manager-experience'],p=s.people?.find(p=>p.id===pid);if(!eligible(s,p,c))return null;return {id:s.month+':'+moveId+':'+c.id,version:1,kind:c.id,month:s.month,moveId,personId:pid,personName:p.name,status:'pending',quotes:copy(c.options),art:spec.art};}
+ function saveCard(s,kind,pid,moveId,opts){const m=s.town?.movement,c=cards[kind],p=s.people?.find(p=>p.id===pid);if(!m||m.id!==moveId||m.resolved||m.relationshipLifeCard||m.month!==s.month||m.opened||s.petMapEvents?.records?.[s.month+':'+moveId]||!eligible(s,p,c,opts)||typeof opts?.save!=='function')return null;
+  return atomic(s,()=>{const r={id:s.month+':'+moveId+':'+kind,version:2,kind,month:s.month,moveId,personId:pid,personName:p.name,status:'pending',quotes:copy(c.options),art:c.art,title:c.title,boxes:copy(c.boxes),role:c.role,studyProjectId:c.role==='同学'?project(s):null,leaseKey:c.currentLandlord?s.relationshipHome?.leaseKey:null};
+   if(c.aircon)r.airconOutcome=opts.airconOutcome;
+   if(c.id==='classmate-library')r.newClassmate=makeStudent(s,'relationship-library-'+r.id,r.studyProjectId);
+   data(s).used.push({id:r.id,personId:pid,kind,month:s.month});m.relationshipLifeCard=r;m.opened=true;return r;},opts.save)||null;
+ }
+ function apply(s,p,q){s.cash=Math.round((s.cash+(q.cash||0))*100)/100;for(const k of ['energy','happiness','stress'])s[k]=clamp(s[k]+(q[k]||0));p.relation=clamp(p.relation+(q.intimacy||0));p.lastContactMonth=s.month;}
+ function finishMove(s,m,r){r.status='resolved';m.resolved=true;m.completedMonth=s.month;(s.town.history??=[]).push({id:m.id,to:m.to,month:s.month,type:'community',relationshipCard:r.kind});}
+ function confirm(s,id,index,opts){const m=s.town?.movement,r=m?.relationshipLifeCard,p=s.people?.find(p=>p.id===r?.personId),q=r?.quotes?.[index];
+  if(!r||!m||m.resolved||r.id!==id||!['pending','followup'].includes(r.status)||r.month!==s.month||r.moveId!==m.id||!p||!Number.isInteger(index)||!q||!Number.isFinite(opts.free)||opts.free<0||typeof opts.save!=='function')return {ok:false,reason:'stale'};
+  if(r.status==='followup')return {ok:false,reason:'followup'};
+  if(![q.hours,q.energy,q.intimacy,q.happiness,q.stress,q.cash].every(Number.isFinite)||q.hours<0)return {ok:false,reason:'quote'};
+  if(s.cash+q.cash<0)return {ok:false,reason:'funds'};
+  if(r.version===2){if(r.studyProjectId&&project(s)!==r.studyProjectId)return {ok:false,reason:'study'};if(r.leaseKey&&s.relationshipHome?.leaseKey!==r.leaseKey)return {ok:false,reason:'lease'};}
+  const result=atomic(s,()=>{const d=data(s);if(!d.used.some(x=>x.id===r.id))d.used.push({id:r.id,personId:r.personId,kind:r.kind,month:s.month});let time=null;if(q.hours>opts.free){if(!opts.forcedTime)throw Error('missing time adapter');time=opts.forcedTime({id:'relationship-'+r.id,month:s.month,hours:q.hours,available:opts.free});if(!time||!Number.isFinite(time.used))throw Error('invalid time adapter');}
+   const usedHours=time?time.used:q.hours,prior=p.relation;apply(s,p,q);d.hours[s.month]=(d.hours[s.month]||0)+usedHours;
+   if(q.studyMonths){if(!s.study||!Number.isFinite(s.study.total)||!Number.isFinite(s.study.progress)||s.study.total<=s.study.progress)throw Error('study');s.study.total=Math.max(s.study.progress,s.study.total-q.studyMonths);if(s.study.progress>=s.study.total){if(!opts.graduate)throw Error('missing graduation adapter');opts.graduate(s);}}
+   if(q.cash)(s.financeLedger??=[]).push({id:r.id,kind:q.cash>0?'relationshipReward':'relationshipExpense',eventId:r.id,month:s.month,amount:Math.abs(q.cash),personId:p.id});
+   r.choice=index;r.receipt={...copy(q),used:usedHours,time,appliedIntimacy:p.relation-prior};d.receipts.push({id:r.id,kind:r.kind,personId:p.id,month:s.month,choice:index,...r.receipt});
+   if(q.hours>0&&q.hours>=opts.free)s.forcedTimeReturn={month:s.month,id:'relationship-'+r.id,debt:time?.debt||0};
+   if(q.followup){const k=q.followup==='aircon'?r.airconOutcome:'classmate';if(!D.followups[k]||k==='classmate'&&!r.newClassmate)throw Error('missing locked outcome');r.status='followup';r.followup={...copy(D.followups[k]),key:k};}else finishMove(s,m,r);return {ok:true,receipt:r.receipt,followup:r.status==='followup'};
+  },opts.save);return result||{ok:false,reason:'save'};
+ }
+ function confirmFollowup(s,id,opts){const m=s.town?.movement,r=m?.relationshipLifeCard,p=s.people?.find(p=>p.id===r?.personId);if(!r||m.resolved||r.id!==id||r.status!=='followup'||r.month!==s.month||r.moveId!==m.id||!p||!r.followup||typeof opts.save!=='function')return {ok:false,reason:'stale'};
+  if(r.studyProjectId&&project(s)!==r.studyProjectId)return {ok:false,reason:'study'};
+  if(r.leaseKey&&s.relationshipHome?.leaseKey!==r.leaseKey)return {ok:false,reason:'lease'};
+  return atomic(s,()=>{if(r.followup.key==='classmate'){if(!r.newClassmate||s.people.some(p=>p.id===r.newClassmate.id))throw Error('contact');s.people.push(copy(r.newClassmate));}else apply(s,p,r.followup.options[0]);r.followupReceipt={key:r.followup.key,month:s.month,newPersonId:r.newClassmate?.id};finishMove(s,m,r);return {ok:true};},opts.save)||{ok:false,reason:'save'};
+ }
+ const api={cards,spec,data,eligible,used,create,saveCard,confirm,confirmFollowup,enroll,makeStudent,reserveLegacy};root.RelationshipLifeCards=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window==='undefined'?globalThis:window);
-if(typeof document!=='undefined'){
- (function(){const C=RelationshipLifeCards;let active=null;const current=()=>state?.town?.movement?.relationshipLifeCard;
-  function close(){active?.remove();active=null;document.body.classList.remove('relationship-card-open');}
-  function open(){const r=current(),move=state?.town?.movement;if(!r||r.version!==1||r.kind!==C.spec.id||r.status!=='pending'||move.resolved||r.month!==state.month||r.moveId!==move.id)return false;if(state.requiredIncident||state.gameOver?.final||unfinishedTreatment()||healthTreatmentKind(state.health)||isRecoveryMonth(state))return false;
-   close();clearModals();window.RelationshipPages?.close();const owner=state,chosenSlot=slot,id=r.id,node=document.createElement('section');node.className='relationship-life-overlay';node.setAttribute('role','dialog');node.setAttribute('aria-modal','true');node.setAttribute('aria-label',C.spec.title);active=node;document.body.append(node);document.body.classList.add('relationship-card-open');
-   const valid=()=>active===node&&node.isConnected&&state===owner&&slot===chosenSlot&&current()?.id===id&&current()?.status==='pending'&&state.month===r.month;
-   const wrap=document.createElement('div');wrap.className='relationship-life-wrap';const name=document.createElement('p');name.textContent='经理：'+r.personName;name.className='relationship-life-person';wrap.append(name);const canvas=document.createElement('div');canvas.className='relationship-life-canvas';const img=document.createElement('img');img.src=C.spec.art;img.alt=C.spec.title+'。A：自由时间−1小时，经理亲密度+4、幸福度+2。B：能量+2，不额外扣时间或餐费。';canvas.append(img);wrap.append(canvas);
-   const message=document.createElement('p');message.setAttribute('role','status');message.className='relationship-life-message';
-   r.quotes.forEach((q,index)=>{const b=document.createElement('button');b.className='relationship-life-hit choice-'+index;b.type='button';b.setAttribute('aria-label',q.label);b.innerHTML='<span class="relationship-sr"></span>';b.firstElementChild.textContent=q.label;b.onclick=()=>{if(!valid())return;b.disabled=true;const result=C.confirm(state,id,index,{free:currentCareerTime().free,forcedTime:x=>recordForcedEventTime(state,x),save});if(!result.ok){message.textContent='本次未保存，所有效果已恢复，请重试。';b.disabled=false;return;}close();render();finish();};canvas.append(b);});wrap.append(message);node.append(wrap);canvas.querySelector('button').focus({preventScroll:true});return true;
-  }
-  const previousTime=currentCareerTime;currentCareerTime=function(){const t=previousTime();return !state?t:{...t,free:Math.max(0,t.free-(state.relationshipLife?.hours?.[state.month]||0))};};
-  const previousClear=clearModals;clearModals=function(){close();return previousClear.apply(this,arguments)};
-  const previousResume=resumeTownMove;resumeTownMove=function(){if(current()?.status==='pending'&&open())return;return previousResume.apply(this,arguments)};
-  window.RelationshipLifePages={open,close};
- })();
-}

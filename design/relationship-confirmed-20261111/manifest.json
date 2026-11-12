@@ -111,7 +111,7 @@
       "sha256": "8123cd7d1af8f052da2457fb1f664eee28627eb9e0a6d71a05691f4331f03cfa",
       "bytes": 2852778,
       "status": "confirmed",
-      "note": "成功失败共用一张审阅图，实际游戏只显示一个结果；独立结果资源尚待制作"
+      "note": "原成功失败双结果审阅图保留，不作玩家结果页；独立成功与失败最终稿现已分别确认，见landlord-04-aircon-success/failure。"
     },
     {
       "id": "manager-02-experience",
@@ -119,6 +119,110 @@
       "sha256": "8f11d294b2deaa21cbe59320f59f8f4af3ea0f58fec1e9493c03d0a183147abf",
       "bytes": 2172035,
       "status": "confirmed"
+    },
+    {
+      "id": "classmate-01-library",
+      "path": "design/relationship-confirmed-20261111/classmate-01-library.png",
+      "sha256": "37a00f01a04d2868e86de0aafcdff6ce912923a587397d6aefd25b9a134dd104",
+      "bytes": 2390479,
+      "status": "confirmed",
+      "note": "图书馆主卡；A自由时间−1h/原同学亲密度+3/压力−3，B无变化；隐藏后续。用户确认，仅本地归档，未接入。"
+    },
+    {
+      "id": "classmate-02-borrow-notes",
+      "path": "design/relationship-confirmed-20261111/classmate-02-borrow-notes.png",
+      "sha256": "335ee5956a3a79ac91c26b112a1860020f82e46ba41afa09edab8bf559508cf3",
+      "bytes": 2151554,
+      "status": "confirmed",
+      "note": "向同学借笔记最终稿；替换分享笔记旧提案。仅设计归档，未接入运行时。"
+    },
+    {
+      "id": "classmate-03-presentation",
+      "path": "design/relationship-confirmed-20261111/classmate-03-presentation.png",
+      "sha256": "357e741b2110fe576e068e7fb40a9f10de43998a9064480e237ef5b82fc6fe63",
+      "bytes": 2237727,
+      "status": "confirmed",
+      "note": "一起准备课堂展示；内容、数值及画稿确认，仅本地归档，未接入运行时。"
+    },
+    {
+      "id": "classmate-04-after-class-snack",
+      "path": "design/relationship-confirmed-20261111/classmate-04-after-class-snack.png",
+      "sha256": "657c5da263d8bc3f214b4403c7a2e37cf9bb406f93941738783a13df004e139b",
+      "bytes": 2383493,
+      "status": "confirmed",
+      "note": "下课后一起吃点东西；内容、数值及画稿确认，仅本地归档，未接入运行时。"
+    },
+    {
+      "id": "classmate-05-study-plan",
+      "path": "design/relationship-confirmed-20261111/classmate-05-study-plan-choice-layout.png",
+      "sha256": "463a9522e16cd0be9c31dc95cbc436a4389b95be08a30beab5f4b09c07ab1b84",
+      "bytes": 2090932,
+      "status": "confirmed",
+      "note": "同学帮你梳理学习计划A/B与宽松正文排版最终稿；A六效果不变，B暂时不用谢谢你无变化。剩1个月接受可直接毕业。仅本地归档，未接入。"
+    },
+    {
+      "id": "petfriend-01-chat",
+      "path": "design/relationship-confirmed-20261111/petfriend-01-chat.png",
+      "sha256": "40f0da025a8348457944af56d26a83c00136759bf13446df967fd4a3ab02ad33",
+      "bytes": 2312909,
+      "status": "confirmed",
+      "note": "聊聊养宠日常；内容、数值及画稿确认，仅本地归档，未接入运行时。"
+    },
+    {
+      "id": "petfriend-02-organizer",
+      "path": "design/relationship-confirmed-20261111/petfriend-02-organizer.png",
+      "sha256": "a0da9d734b19e3546603116cd9f896b5a11212a55702058481eeb676574e7a21",
+      "bytes": 2393359,
+      "status": "confirmed",
+      "note": "宠友送你收纳袋；幸福+3、亲密度+2；内容、数值及画稿确认，仅本地归档，未接入。"
+    },
+    {
+      "id": "petfriend-03-shop",
+      "path": "design/relationship-confirmed-20261111/petfriend-03-shop.png",
+      "sha256": "ab09f41b29cf43b235f139a577c9b308aa9e6d37b15b56dbf4ec7d9d98000e5b",
+      "bytes": 2423357,
+      "status": "confirmed",
+      "note": "宠友约你逛用品店；自由时间−1小时、幸福+2、亲密度+3，B无变化；内容、数值及画稿确认，仅本地归档。"
+    },
+    {
+      "id": "petfriend-04-late-arrival",
+      "path": "design/relationship-confirmed-20261111/petfriend-04-late-arrival.png",
+      "sha256": "c57c8b6f8f6ec491237662b14e877deae53785f5aeabaaf123d0c937c3174c33",
+      "bytes": 2291639,
+      "status": "confirmed",
+      "note": "宠友赴约迟到了最终稿；替换宠物上床争论场景，旧稿移入archive保留。A自由时间−1h/压力−1/亲密度+3，B压力+1/亲密度+3、不耗时。仅本地归档。"
+    },
+    {
+      "id": "petfriend-05-cafe-day-job",
+      "path": "design/relationship-confirmed-20261111/petfriend-05-cafe-day-job.png",
+      "sha256": "fa4feb6bf7fe8270b88eef5b643421f15065e3ef27088ccaef62ff859db7ebaf",
+      "bytes": 2401232,
+      "status": "confirmed",
+      "note": "宠友介绍咖啡店兼职；≥80帮助卡，A自由时间−8h/能量−8/金钱+300，B无变化。内容、数值及画稿确认，仅本地归档。"
+    },
+    {
+      "id": "landlord-04-aircon-success",
+      "path": "design/relationship-confirmed-20261111/landlord-04-aircon-success.png",
+      "sha256": "76abee603c7d72d4e04e05d087527786b3d79169d4b942fd13d75f61ac00e85a",
+      "bytes": 2674782,
+      "status": "confirmed",
+      "note": "独立成功玩家结果稿；能量+1、压力−2、幸福+2，仅后续效果。用户确认，仅本地归档，未接入。"
+    },
+    {
+      "id": "landlord-04-aircon-failure",
+      "path": "design/relationship-confirmed-20261111/landlord-04-aircon-failure.png",
+      "sha256": "39c154f0dc531f44e228d15f884929f5c6d4ff0fd726d5c2227490ea392eda3d",
+      "bytes": 2595422,
+      "status": "confirmed",
+      "note": "独立失败玩家结果稿；能量−2、压力+1、幸福−2，仅后续效果。用户确认，仅本地归档，未接入。"
+    },
+    {
+      "id": "classmate-01-library-new-contact",
+      "path": "design/relationship-confirmed-20261111/classmate-01-library-new-contact.png",
+      "sha256": "6b64639f7fa4a4718c934b3dc57bfb146e90df3953012fefedf10ebeb6f966be",
+      "bytes": 2254123,
+      "status": "confirmed",
+      "note": "图书馆A后续认识新同学1位，初始亲密度10；不重复时间或主卡效果。用户确认，仅本地归档，未接入。"
     }
   ],
   "historical_revisions": "archive/; these are not selected final versions"

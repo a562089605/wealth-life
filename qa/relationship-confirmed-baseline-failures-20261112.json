@@ -1,0 +1,14 @@
+[
+  {
+    "test": "coffee-rules",
+    "baseline": "0f6162831aeccd3cd724ef46da803ad4ac4ae834",
+    "exit": 1,
+    "output": "node:assert:152\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: 184.62 == 299.54\n    at Object.<anonymous> (/tmp/wealth-life-baseline-0f61628/qa/coffee-rules.test.cjs:11:196)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14)\n    at Object..js (node:internal/modules/cjs/loader:2060:10)\n    at Module.load (node:internal/modules/cjs/loader:1651:32)\n    at Module._load (node:internal/modules/cjs/loader:1443:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 184.62,\n  expected: 299.54,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.22.1\n"
+  },
+  {
+    "test": "shift-lead",
+    "baseline": "0f6162831aeccd3cd724ef46da803ad4ac4ae834",
+    "exit": 1,
+    "output": "node:assert:152\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n{\n  energy: -2,\n  hours: 4,\n  management: 15,\n  stress: 1,\n  trust: 1\n}\n\nshould loosely deep-equal\n\n{\n  energy: -2,\n  management: 15,\n  stress: 1,\n  trust: 1\n}\n    at Object.<anonymous> (/tmp/wealth-life-baseline-0f61628/qa/shift-lead.test.cjs:26:237)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14)\n    at Object..js (node:internal/modules/cjs/loader:2060:10)\n    at Module.load (node:internal/modules/cjs/loader:1651:32)\n    at Module._load (node:internal/modules/cjs/loader:1443:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: { hours: 4, energy: -2, stress: 1, management: 15, trust: 1 },\n  expected: { energy: -2, stress: 1, management: 15, trust: 1 },\n  operator: 'deepEqual',\n  diff: 'simple'\n}\n\nNode.js v24.22.1\n"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "test": "relationship-release",
+    "exit": 0,
+    "output": "PASS relationship lifecycle, preserved contacts/education/hobbies, thresholds, resources, all-save rollback/retry, repeated interactions, per-person visits, decay, fixed manager card quotes, lunch no time/cash charge, monthly once and forced-time adapter.\n"
+  },
+  {
+    "test": "relationship-confirmed",
+    "exit": 0,
+    "output": "PASS 533 assertions: all24 cards/options, draw reservation rollback, settlement rollback, per-person lifetime/B, followups/refresh, funds, forced time, direct graduation, course identity and classmates\n"
+  },
+  {
+    "test": "housing-transactions",
+    "exit": 0,
+    "output": "PASS: five housing operations rollback on false/throw, durable retries, no success navigation or repeat fees, nested contract/receipt preservation, partial-payment/sync failure and stale bill.\n"
+  },
+  {
+    "test": "housing-lease",
+    "exit": 0,
+    "output": "PASS: 1000 rent/1000 deposit, deposit asset, duplicate rent, free/cancellable booking, next-month net handover, refund on family move, insufficient funds atomicity, legacy no invented refund and annual renewal.\n"
+  },
+  {
+    "test": "housing-bills",
+    "exit": 0,
+    "output": "PASS: four prices, first occupancy, UI routes, deferred/cancellable move, atomic combined bill, receipts, stale/double payment, deposit refund, old saves and existing care costs.\n"
+  },
+  {
+    "test": "time-ledger",
+    "exit": 0,
+    "output": "PASS: forced-time conservation, event deduplication, exact zero, two recovery months, year boundary, reload and one-time normal-month deduction; extreme debt rejected without mutation. Not yet connected to UI.\n"
+  },
+  {
+    "test": "time-flow",
+    "exit": 0,
+    "output": "PASS: risky coordination allowed at 3h, voluntary 8h blocked, forced return stops rolling, confirm twice advances once, next month debt=5. Browser and recovery engine not covered.\n"
+  },
+  {
+    "test": "pet-events",
+    "exit": 0,
+    "output": "PASS pet35: 35 approved effects, gate, equal category/species odds, monthly limits/reset, legacy pending/limits, insurance scope, atomic save retry, zero-hour surprise, stale/duplicate protection.\n"
+  },
+  {
+    "test": "pet-insurance",
+    "exit": 0,
+    "output": "PASS optional seven-species prices, atomic payment/rollback/retry, per-pet medical100/property excluded, uninsured pet self-pay, old45 and explicit historic rates, no retroactive repricing, aggregate receipts and stale/shortage guards.\n"
+  },
+  {
+    "test": "pet-health",
+    "exit": 0,
+    "output": "PASS health defaults and legacy no-backcharge, monthly loss once/reload/floor, self/pro gain/ceiling/payment rollback, annual isolation, exact single/multi lottery weights, gate/caps and pending cards preserved.\n"
+  },
+  {
+    "test": "pet-health-settlement",
+    "exit": 0,
+    "output": "PASS actual core month settlement and rollback: overdue health applied once with cash/month/history, failed save restores all, repeat/reload do not double-charge health; player health untouched.\nPASS real monthly transaction: failed death save restores live pet/policy/cash/month, retry archives once and stops future premiums.\n"
+  },
+  {
+    "test": "pet-vet",
+    "exit": 0,
+    "output": "PASS seven confirmed treatment fees and 4/3/6-hour charges, insufficient-time non-mutation, legacy completed treatment preservation, full/legacy/no insurance capped50, atomic save rollback/retry/reload, late-policy exclusion, case latch after cleaning, treatment80, exact50/75 thresholds, stale/short cash and individual case identity.\n"
+  },
+  {
+    "test": "pet-deadline",
+    "exit": 0,
+    "output": "PASS seven species, three complete months/final-month treatment, legacy grace without repricing, death archive/once-only notice, no new fee, selective policy expiry, surviving-pet pool and repricing.\n"
+  },
+  {
+    "test": "pet-pool-pause",
+    "exit": 0,
+    "output": "PASS seven species/five categories paused at zero or pending, pure eligibility, failed treatment stays paused, successful treatment/reload restores, real pet indices and20% gate, all-paused fallback and old-card preservation.\n"
+  },
+  {
+    "test": "pet-basic-fees",
+    "exit": 0,
+    "output": "PASS monthly pet fee: split payments and old living receipts reconcile in either pet order, first-month prepaid, next month, atomic failure/retry, paid-once, insufficient cash and stale quote.\n"
+  },
+  {
+    "test": "pet-sw-precache",
+    "exit": 0,
+    "output": "PASS actual install callback: canonical request URLs deduplicated without dropping required resources.\n"
+  },
+  {
+    "test": "recovery-month-end",
+    "exit": 0,
+    "output": "PASS: actual calcMetrics and settleMonthUnsafe execute recovery month with zero labor income/tax/contribution, necessary expenses and passive income, paused study/work tenure, final restoration and next-month wage resumption. Other services stubbed; browser not covered.\n"
+  },
+  {
+    "test": "pet-audit-regressions",
+    "exit": 0,
+    "output": "PASS actual finance metrics before/after pet payments and adoption, all payment orders/credits/months, alias pricing and duplicate protection, unique legacy care IDs, and saved event identity compatibility.\n"
+  }
+]

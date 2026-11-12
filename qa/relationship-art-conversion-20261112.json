@@ -1,0 +1,164 @@
+[
+  {
+    "source": "design/relationship-confirmed-20261111/manager-01-care.png",
+    "sourceSHA256": "4fcf972923dd909b76f5ea6d81631228ebbea8a9247fa6c5f1fd8485eb2fa33a",
+    "file": "assets/relationships/cards/manager-01-care.webp",
+    "sha256": "7b7e81c1e5cb1e7ce13aa96bbc5a2194d423e7dfd54c97041e30ab3806e453c9"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/manager-02-experience.png",
+    "sourceSHA256": "8f11d294b2deaa21cbe59320f59f8f4af3ea0f58fec1e9493c03d0a183147abf",
+    "file": "assets/relationships/cards/manager-02-experience.webp",
+    "sha256": "82d8a77cdbd19d977bb319360452d9d5aec62b9ce1649dc8bbd9d81c0ac7a8f5"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/manager-03-tasting.png",
+    "sourceSHA256": "82b16d55e92d1394c75192ecb43a0b393ca9a1de6f70134a5533f01f5cc763eb",
+    "file": "assets/relationships/cards/manager-03-tasting.webp",
+    "sha256": "f7fc3131e7ffa1bb7f254716f366a2dc92107f74d3b72ec63de8dd919201a037"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/manager-04-bonus.png",
+    "sourceSHA256": "5e87cf7b2ad4ef87d84a05e53db0de74a2cffa09a14f1caede44e5af591c02f6",
+    "file": "assets/relationships/cards/manager-04-bonus.webp",
+    "sha256": "f774f6972e5d3c9b51e89d3523628cbdce9ef01fa43d985c13a15f7f954a8c73"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/manager-05-ride.png",
+    "sourceSHA256": "3c61e6e43f6104777a5048a5ba2d6d110d48b8a54195e4113152803afbd77ec3",
+    "file": "assets/relationships/cards/manager-05-ride.webp",
+    "sha256": "041b8651584669b2f52a5765206e14939bb0cb8b1e517e7d2a990d7365cb2dec"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/coworker-01-after-work.png",
+    "sourceSHA256": "5ebd33e1fae63823765714a6c87ceb9a6b9767c8a1626486ef15b99c6d045100",
+    "file": "assets/relationships/cards/coworker-01-after-work.webp",
+    "sha256": "e72ee922aee28ed8f0ba525660a3c94046c0cd89f37bf2f94e297d16079f7779"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/coworker-02-snack.png",
+    "sourceSHA256": "d665a6231c3675df25e16f1f6e92a5f8949bbe1607261e551ccf7617589dfb5b",
+    "file": "assets/relationships/cards/coworker-02-snack.webp",
+    "sha256": "f427e59f0a8f26753182f4bbd8373be4b60820c9e489c78aac60135f3d29d6d6"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/coworker-03-bookshelf.png",
+    "sourceSHA256": "7af7b7bd5ce32e0de5fe7274fed27ffa0caa00003e65da878530ed58b5a73ebd",
+    "file": "assets/relationships/cards/coworker-03-bookshelf.webp",
+    "sha256": "7d84c5fa5da0df6615e7aeb05e5124e8dee65f780f6e3e4805c52df64942a87c"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/coworker-04-order.png",
+    "sourceSHA256": "ef394c81c98d9c02b524ba27700a77b4f9f2fe03293d989b6caae823c69a0eae",
+    "file": "assets/relationships/cards/coworker-04-order.webp",
+    "sha256": "76fe2841120c1308b8f323119081891828e3088b003f3bec1bf4db0bc4670531"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/coworker-05-side-job.png",
+    "sourceSHA256": "d4c722a8c339d92e810eeccf564c0b2e6ba995548572b448bb5ef8ac4c37cfbd",
+    "file": "assets/relationships/cards/coworker-05-side-job.webp",
+    "sha256": "c1f1c4a4a1818dfc45887fca4f5acd369ef19c55719dd7474b88a990bc10bf78"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/landlord-01-chat.png",
+    "sourceSHA256": "bc4cdc31d1c5c4540153df547d450b34c271b605bb1bba4b56d588bf55db2b2e",
+    "file": "assets/relationships/cards/landlord-01-chat.webp",
+    "sha256": "792113a91679c2cd814648104302dcd12e6f5ea641150e19e4b3870e3f13cffe"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/landlord-02-beef.png",
+    "sourceSHA256": "658f9b944a944d58f075145f5c2eaf981a4195a838c9a06324068a3ded43302d",
+    "file": "assets/relationships/cards/landlord-02-beef.webp",
+    "sha256": "9c25297a351e76cc671d3a0117adc5bb826b7de34f4342be94f2d3964f4375a5"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/landlord-03-plants.png",
+    "sourceSHA256": "69f3525ef9aafdcf36e5bf79b6155e441a21dcab0f1c2f4b0e4943a0aae0b5c4",
+    "file": "assets/relationships/cards/landlord-03-plants.webp",
+    "sha256": "1ded553bf67f3c6da6637b052a03925878f2555392b7c01f00f0c8d730c09be7"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/landlord-04-aircon-main.png",
+    "sourceSHA256": "c9b73f525fd913a79154fafc908202180ca996ca50da60b79dd21b05383fd4d0",
+    "file": "assets/relationships/cards/landlord-04-aircon-main.webp",
+    "sha256": "fff2a15db77032f57e5dc20c675f63d2f4e5de076d22197080471ec851f6d4bb"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/classmate-01-library.png",
+    "sourceSHA256": "37a00f01a04d2868e86de0aafcdff6ce912923a587397d6aefd25b9a134dd104",
+    "file": "assets/relationships/cards/classmate-01-library.webp",
+    "sha256": "222e2a91b91d0c3bacfc3ea9784df3284ff11751769fa46069b94d77b75876be"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/classmate-02-borrow-notes.png",
+    "sourceSHA256": "335ee5956a3a79ac91c26b112a1860020f82e46ba41afa09edab8bf559508cf3",
+    "file": "assets/relationships/cards/classmate-02-borrow-notes.webp",
+    "sha256": "03ce5efeb94b3430df59af3ab5d9c772eb99f4e9ef5f9120a439839f3970a073"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/classmate-03-presentation.png",
+    "sourceSHA256": "357e741b2110fe576e068e7fb40a9f10de43998a9064480e237ef5b82fc6fe63",
+    "file": "assets/relationships/cards/classmate-03-presentation.webp",
+    "sha256": "7a1b28f519abcbc9469f9ef98654894e8fd43d5579f38abf51d1b6461f52a49a"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/classmate-04-after-class-snack.png",
+    "sourceSHA256": "657c5da263d8bc3f214b4403c7a2e37cf9bb406f93941738783a13df004e139b",
+    "file": "assets/relationships/cards/classmate-04-after-class-snack.webp",
+    "sha256": "a419da150b5f25522c2861673d9bc82ad4b196a0eff753c1f25fd09df1bef049"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/classmate-05-study-plan-choice-layout.png",
+    "sourceSHA256": "463a9522e16cd0be9c31dc95cbc436a4389b95be08a30beab5f4b09c07ab1b84",
+    "file": "assets/relationships/cards/classmate-05-study-plan-choice-layout.webp",
+    "sha256": "97f7796e949729c5559e208a4526881f2c8931acbdba9f2a48cdc1c9bc91706b"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/petfriend-01-chat.png",
+    "sourceSHA256": "40f0da025a8348457944af56d26a83c00136759bf13446df967fd4a3ab02ad33",
+    "file": "assets/relationships/cards/petfriend-01-chat.webp",
+    "sha256": "e3c3103700771e3db3bde99299da0ad3e1aee789bb97dc27237f12c42df9800c"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/petfriend-02-organizer.png",
+    "sourceSHA256": "a0da9d734b19e3546603116cd9f896b5a11212a55702058481eeb676574e7a21",
+    "file": "assets/relationships/cards/petfriend-02-organizer.webp",
+    "sha256": "fcafc26f79f5fd177a11d918047b0156eeac42863c8b283f46c7ab6957a13806"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/petfriend-03-shop.png",
+    "sourceSHA256": "ab09f41b29cf43b235f139a577c9b308aa9e6d37b15b56dbf4ec7d9d98000e5b",
+    "file": "assets/relationships/cards/petfriend-03-shop.webp",
+    "sha256": "26d50227defabb0d9c6ccfc0a978eb9125e2387c96258e1a498f873073f38db1"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/petfriend-04-late-arrival.png",
+    "sourceSHA256": "c57c8b6f8f6ec491237662b14e877deae53785f5aeabaaf123d0c937c3174c33",
+    "file": "assets/relationships/cards/petfriend-04-late-arrival.webp",
+    "sha256": "bf157e4e59b2b155d98bece10b445e45b5bcf6ba39a75205d765aaf42fd451a7"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/petfriend-05-cafe-day-job.png",
+    "sourceSHA256": "fa4feb6bf7fe8270b88eef5b643421f15065e3ef27088ccaef62ff859db7ebaf",
+    "file": "assets/relationships/cards/petfriend-05-cafe-day-job.webp",
+    "sha256": "e94ada9908a3773135a3a633490fbd56b2c1d07daf457d43aa78dc5ee44caf33"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/classmate-01-library-new-contact.png",
+    "sourceSHA256": "6b64639f7fa4a4718c934b3dc57bfb146e90df3953012fefedf10ebeb6f966be",
+    "file": "assets/relationships/cards/classmate-01-library-new-contact.webp",
+    "sha256": "2289864bf8f1ecf65a2c4f52bc7a49bbdbb72da4fdeccc010be7ae3525bbd9ad"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/landlord-04-aircon-success.png",
+    "sourceSHA256": "76abee603c7d72d4e04e05d087527786b3d79169d4b942fd13d75f61ac00e85a",
+    "file": "assets/relationships/cards/landlord-04-aircon-success.webp",
+    "sha256": "61b77743ac48b55fac186bf87f4e2d9657b6596909a027cf1463a5e4872bc0dd"
+  },
+  {
+    "source": "design/relationship-confirmed-20261111/landlord-04-aircon-failure.png",
+    "sourceSHA256": "39c154f0dc531f44e228d15f884929f5c6d4ff0fd726d5c2227490ea392eda3d",
+    "file": "assets/relationships/cards/landlord-04-aircon-failure.webp",
+    "sha256": "6c0eb61ad7f3f7b848c08468945fcc28e2e6ada2e1cbcdee883ebc19078ce4fd"
+  }
+]
