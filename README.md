@@ -1,5 +1,7 @@
 > 2026-11-12 住房页重叠标签修正：已入住原图本身已有“更换住房”，此前代码再次叠加错位黄色文字块。本次只对已入住详情去掉冗余DOM文字，原透明按钮、原图及所有费用/合同/存档不变；未入住的确认/预约动态提示保留。4套Node住房检查通过；隔离Chromium在320/390/430/1280宽度核对四住房单标签/单按钮、切换与返回、财务零变化通过。证据qa/housing-label-20261112，含修复前复现与修复后实际截图；不是实际iPhone Safari验收。
 
+住房重复标签修复f153c24已上传原main并[Cloudflare发布成功](https://github.com/a562089605/wealth-life/runs/131543094016)。7份线上资源字节一致，四张住房原图保留；全新隔离生产Chromium在320/390/430/1280宽度核对四种已入住详情、换房/返回、未入住预约提示与财务零变化通过，0脚本错误。证据qa/housing-label-20261112/production-report.json及production-resources.json，实际生产截图同目录production-family-390.png等。
+
 > 2026-11-12 封面视觉确认：用户已确认沿实际小镇原图assets/career/town.webp的柔和蜡笔画风封面，替换先前不符合画风的版本。最终原稿及SHA见design/entry-cover-20261112/manifest.json，旧稿移入archive保留。只换封面及对应按钮热区，进入游戏→原读档流程、存档和游戏规则不变。本次生产核验见qa/entry-town-style-20261112/entry-screen-production-20261112.json。
 
 小镇画风确认稿4e04981已上传原main并[Cloudflare发布成功](https://github.com/a562089605/wealth-life/runs/131525569008)。7组入口专项通过；5份线上入口资源逐字节一致，全新隔离生产Chromium核对确认稿首屏、进入原读档页、刷新回封面、存储零改写及0脚本错误。证据qa/entry-town-style-20261112/entry-screen-production-20261112.json，实际线上截图同目录entry-screen-production-mobile-20261112.png。

@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-11-12T22:37:53.176038+00:00",
+  "functionalCommit": "f153c24",
+  "files": [
+    {
+      "file": "index.html",
+      "matchesLocal": true,
+      "sha256": "7749b699988def0f0b7420181b889df867c7c125b0a27045c708a3ab273d5c6e",
+      "exit": 0
+    },
+    {
+      "file": "painted-pages.js",
+      "matchesLocal": true,
+      "sha256": "3fa75d821b7c99eab516ee3cdf7279c74fe7c7013043d76729e4e256e3081905",
+      "exit": 0
+    },
+    {
+      "file": "sw.js",
+      "matchesLocal": true,
+      "sha256": "5a5d547768f283235af1b1b6597aaa74fd8117e9a089502b88467eb44c62c84b",
+      "exit": 0
+    },
+    {
+      "file": "assets/pages/family-occupied-500-20261101.webp",
+      "matchesLocal": true,
+      "sha256": "6687e3b74e765962c01cd6211ad55423e40f0db3803796be817725381d13f599",
+      "exit": 0
+    },
+    {
+      "file": "assets/pages/shared-occupied-900-20261101.webp",
+      "matchesLocal": true,
+      "sha256": "d4a3896f6d3f7756d2f34651c06d1bdddd30c9a66e1b1d57f60b1f28ea57ef7f",
+      "exit": 0
+    },
+    {
+      "file": "assets/pages/studio-occupied-1400-20261101.webp",
+      "matchesLocal": true,
+      "sha256": "a17ad846724123f84beda842a859a60ba0c139c574c4e4c8b2326942efaeb779",
+      "exit": 0
+    },
+    {
+      "file": "assets/pages/one-bedroom-occupied-1600-20261101.webp",
+      "matchesLocal": true,
+      "sha256": "1adcb9e7dbe57861066ff913421d55777e18b73c47293f2b8eee6dbbe8286234",
+      "exit": 0
+    }
+  ],
+  "allMatch": true
+}
