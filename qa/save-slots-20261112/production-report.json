@@ -1,0 +1,17 @@
+{
+  "scope": "isolated desktop Chromium save-selection UI, original handlers and storage; not iPhone Safari",
+  "url": "https://wealth-life.a562089605.workers.dev/",
+  "phase": "production",
+  "steps": [
+    "cover remains first; Enter shows decorated three empty slots without storage writes",
+    "empty slot still reaches original character selection; return restores styled save list",
+    "existing saved progress/cash/job displayed accurately; styling/rebuilding is read-only and XSS-safe",
+    "320/390/430/1280 layout, long labels,44px delete/buttons and full keyboard controls",
+    "original deletion confirmation cancel preserves all save bytes",
+    "original new-slot adds exactly one slot; existing saves unchanged",
+    "original delete removes only selected save, and actual load restores original player",
+    "refresh returns to cover; offline Enter still shows saved cards"
+  ],
+  "errors": [],
+  "passed": true
+}

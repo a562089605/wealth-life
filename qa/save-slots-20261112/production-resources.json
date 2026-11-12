@@ -1,0 +1,49 @@
+{
+  "functionalCommit": "11c44ff",
+  "checkedAt": "2026-11-12T22:47:24.555753+00:00",
+  "files": [
+    {
+      "file": "index.html",
+      "exit": 0,
+      "sha256": "2eddd358822a3f2f001286a629286bd9e8bf721cdd8128325e56f56ba7aba067",
+      "matchesLocal": true
+    },
+    {
+      "file": "sw.js",
+      "exit": 0,
+      "sha256": "f241b70052ca99ced96de266dd53834da3f7777d459b51d1e48f1d6e6f98e794",
+      "matchesLocal": true
+    },
+    {
+      "file": "save-slots.js",
+      "exit": 0,
+      "sha256": "08d6db6dc307f7b1b8957948d9473cbf7f797a4f005e8817054333a4aeba910d",
+      "matchesLocal": true
+    },
+    {
+      "file": "save-slots.css",
+      "exit": 0,
+      "sha256": "90acad43281ab5b2dacfd46a8d65f685b1b4978a15f9bbf833e0083886d3f686",
+      "matchesLocal": true
+    },
+    {
+      "file": "flow.js",
+      "exit": 0,
+      "sha256": "a2dd8d6967aa41ae1cabbe8e06ee9c2df5ef98534c3fa832508cbba4cbc9684a",
+      "matchesLocal": true
+    },
+    {
+      "file": "time-flow.js",
+      "exit": 0,
+      "sha256": "d5430be19d97541e44b515a8430b901285e4d16e71249d32457873cd19d3d3dc",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/career/town.webp",
+      "exit": 0,
+      "sha256": "cdef7f5891d3dbade1f346a810a8633dc3ad8432424e7c9fa381332feaf2e454",
+      "matchesLocal": true
+    }
+  ],
+  "allMatch": true
+}
