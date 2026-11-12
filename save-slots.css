@@ -1,0 +1,42 @@
+/* Cream paper, soft crayon colors and the existing town illustration. Scoped to save selection. */
+.save-page-header,.save-page-summary{display:none}
+body.save-list-open{padding-bottom:28px;background:#f6f0df}
+body.save-list-open main{max-width:760px;padding:calc(20px + env(safe-area-inset-top)) 18px calc(24px + env(safe-area-inset-bottom))}
+body.save-list-open .wl-home-brand{display:none!important}
+body.save-list-open #home.card{padding:0;border:0;background:transparent;box-shadow:none;margin:0}
+body.save-list-open #home>h2,body.save-list-open #home>.sub{display:none!important}
+body.save-list-open .save-page-header{position:relative;isolation:isolate;display:flex;align-items:center;min-height:178px;overflow:hidden;border:1px solid #d7d6bb;border-radius:28px 24px 30px 22px;background:#fbf8ea}
+.save-page-art{position:absolute;right:0;top:0;width:55%;height:100%;object-fit:cover;object-position:50% 55%;z-index:-2;opacity:.85}
+.save-page-header:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#fbf8ea 27%,#fbf8eacc 50%,#fbf8ea05 85%)}
+.save-page-heading{padding:27px 25px;color:#294d39}
+.save-page-eyebrow{font-size:10px;letter-spacing:.13em;margin:0 0 12px;color:#657b62;font-weight:650}
+.save-page-heading h2{font:40px/1.2 WealthHand,KaiTi,serif;margin:0 0 13px;letter-spacing:.03em}
+.save-page-intro{font-size:13px;margin:0;color:#67775e;line-height:1.6}
+body.save-list-open .save-page-summary{display:block;margin:21px 4px 13px;font-size:12px;color:#72816b;letter-spacing:.035em}
+body.save-list-open #slots{gap:13px!important}
+body.save-list-open .saveRow.save-slot{position:relative;display:block;padding:0;isolation:isolate}
+body.save-list-open .saveRow .save-slot-main{width:100%;display:flex;align-items:flex-start;gap:16px;min-height:145px;padding:22px 23px;text-align:left;white-space:normal;border:1px solid #d1d4b9;border-radius:23px 27px 22px 26px;background:#fffcf0!important;color:#2c4c38!important;box-shadow:0 3px 0 #c9cfac29}
+body.save-list-open .saveRow.save-slot-empty .save-slot-main{background:#f8f6e8!important;border:1px dashed #c4cbb4;box-shadow:none;min-height:131px}
+.save-slot-number{display:grid;place-items:center;flex:none;width:43px;height:48px;margin-top:2px;border-radius:16px 13px 17px 12px;background:#e4ebd5;color:#72896a;font:27px/1 WealthHand,KaiTi,serif;transform:rotate(-3deg)}
+.save-slot-filled .save-slot-number{background:#dce6c8;color:#3d6343}
+.save-slot-body{display:flex;flex-direction:column;gap:9px;flex:1;min-width:0}
+.save-slot-top{display:flex;align-items:center;gap:10px;font-size:10px;color:#7a856d;letter-spacing:.04em}
+.save-slot-status{padding:3px 8px;background:#eef0dd;border-radius:12px;color:#7d876c;white-space:nowrap}
+.save-slot-filled .save-slot-status{background:#e5ecd6;color:#52714b}
+.save-slot-title{font:27px/1.3 WealthHand,KaiTi,serif;color:#2c4e38;overflow-wrap:anywhere}
+.save-slot-empty .save-slot-title{color:#718169}
+.save-slot-date{font-size:12px;color:#7b856f;line-height:1.6}
+.save-slot-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:4px;padding-right:50px}
+.save-slot-cash{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;font-variant-numeric:tabular-nums}
+.save-slot-cash small{font-size:10px;color:#7b876c}.save-slot-cash b{font-size:19px;font-weight:650;color:#45623e;overflow-wrap:anywhere}
+.save-slot-action{font-size:12px;color:#55754c;line-height:1.5}.save-slot-empty .save-slot-action{margin-top:3px;color:#8a9679}
+body.save-list-open .saveRow .miniSave{position:absolute;right:12px;bottom:12px;min-width:44px;min-height:44px;padding:8px;font-size:11px;color:#9b7e67;background:transparent;border:0;box-shadow:none;border-radius:12px}
+body.save-list-open #slots>.addSave{min-height:58px!important;margin-top:3px;padding:14px;border:1px dashed #aaba91!important;border-radius:21px 24px 19px 23px;background:#eaf0d8!important;color:#47613f!important;font:23px/1.3 WealthHand,KaiTi,serif;box-shadow:none}
+body.save-list-open .save-slot-main:focus-visible,body.save-list-open #slots>.addSave:focus-visible{outline:3px solid #6f9156;outline-offset:3px}
+body.save-list-open .saveRow .miniSave:hover{background:#f3e8dc;color:#805d47}
+body.save-list-open .save-slot-main:hover{border-color:#9eb58b}
+@media(max-width:350px){body.save-list-open main{padding-left:12px;padding-right:12px}.save-page-heading{padding:24px 18px}.save-page-heading h2{font-size:34px}body.save-list-open .saveRow .save-slot-main{padding:18px 15px;gap:11px}.save-slot-number{width:35px;height:42px;font-size:23px}.save-slot-bottom{display:block;padding-right:42px}.save-slot-cash{margin-bottom:4px}.save-slot-title{font-size:24px}}
+@media(min-width:700px){body.save-list-open main{padding-top:40px}.save-page-heading{padding:32px}.save-page-header{min-height:200px}.save-page-heading h2{font-size:47px}.save-slot-main{min-height:150px}.save-slot-title{font-size:30px}}
+/* The original career selector remains in the DOM while hidden; do not let its :has rule style the save list. */
+body.save-list-open #home:has(#careerSelection){background:transparent!important;border:0!important;box-shadow:none;padding:0!important}
+body.save-list-open #home:has(#careerSelection)>.save-page-summary{display:block!important}
