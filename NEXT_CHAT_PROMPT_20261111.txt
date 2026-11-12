@@ -1,3 +1,5 @@
+封面发布核验：5a0111a已成功发布，5份入口资源字节一致，生产首屏→读档及刷新/零存储写入通过。qa/entry-screen-production-20261112.json。
+
 入口补充：用户授权找不到旧封面则新作；已补独立财富人生封面，打开网址先封面→进入游戏→原读档页，入口不写存档。原稿design/entry-cover-20261112，验证qa/entry-screen-*。发布状态以README最新证据为准。
 
 发布补充：fb7c219功能已上传原main并Cloudflare成功（run131375637935）；52份线上资源字节一致、28份远端选稿blob匹配、全新隔离生产Chromium报名/图像/刷新通过。见README与qa/relationship-confirmed-production*.json。自然地图抽取仍未启用；不重置存档，不补造地图权重或空调概率。

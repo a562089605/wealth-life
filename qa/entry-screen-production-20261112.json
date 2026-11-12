@@ -1,0 +1,44 @@
+{
+  "commit": "5a0111a",
+  "scope": "fresh isolated desktop Chromium production; no player storage read or changed",
+  "steps": [
+    "all5 production entry resources match local bytes",
+    "first open displays actual illustrated cover",
+    "enter reaches original save list with no storage or player-state writes",
+    "refresh returns to cover without changing saves"
+  ],
+  "files": [
+    {
+      "file": "index.html",
+      "url": "https://wealth-life.a562089605.workers.dev/",
+      "sha256": "5a192fc94f2839aba7f63574c308fbfc8826e40029f4189493b5aab298503191",
+      "matchesLocal": true
+    },
+    {
+      "file": "sw.js",
+      "url": "https://wealth-life.a562089605.workers.dev/sw.js",
+      "sha256": "c150dae9637ef56c95a5c58a781980dd7842a530fac784260479d18b359a8c51",
+      "matchesLocal": true
+    },
+    {
+      "file": "entry-screen.js",
+      "url": "https://wealth-life.a562089605.workers.dev/entry-screen.js",
+      "sha256": "142cfd9f9ea74d31c1021af54344a535e37ae9e6a23c07a4f9a4d274ddb14edb",
+      "matchesLocal": true
+    },
+    {
+      "file": "entry-screen.css",
+      "url": "https://wealth-life.a562089605.workers.dev/entry-screen.css",
+      "sha256": "d53922d410bbb1f9f58b3025ec62e26c9760694ed671cc285025147ec19e7c87",
+      "matchesLocal": true
+    },
+    {
+      "file": "assets/home/wealth-life-cover-20261112.webp",
+      "url": "https://wealth-life.a562089605.workers.dev/assets/home/wealth-life-cover-20261112.webp",
+      "sha256": "0509c9640c51e4f525d71a6ce5b8a030c551df6b35dc240bbc5009ce37956dd8",
+      "matchesLocal": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}
