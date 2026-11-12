@@ -1,0 +1,13 @@
+{
+  "scope": "isolated desktop Chromium slot939, responsive housing display/click targets and original financial records; not iPhone Safari",
+  "phase": "after",
+  "steps": [
+    "320px: four occupied pages one printed label/one transparent button, change/back routes, no finance mutations",
+    "390px: four occupied pages one printed label/one transparent button, change/back routes, no finance mutations",
+    "430px: four occupied pages one printed label/one transparent button, change/back routes, no finance mutations",
+    "1280px: four occupied pages one printed label/one transparent button, change/back routes, no finance mutations",
+    "unoccupied reservation dynamic caption remains"
+  ],
+  "errors": [],
+  "passed": true
+}

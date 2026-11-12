@@ -60,7 +60,8 @@
    }else if(occupied)html+=patch((paymentReceipt().housing||0)>=q.monthly?'✓ 本月住房费已支付':'本月住房费待支付','left:30%;top:82.3%;width:40%;height:2.5%','painted-caption');
    const primaryTop=family&&!occupied?84.2:studio?88.5:occupied?88.5:90.2;
    const secondaryTop=family&&!occupied?91:studio?94:occupied?94:95;
-   html+=patch(label,'left:23%;top:'+(primaryTop+.5)+'%;width:54%;height:3.7%','painted-button-caption');
+   // Occupied artwork already prints 更换住房; only changing booking/confirmation labels need a caption.
+   if(!occupied)html+=patch(label,'left:23%;top:'+(primaryTop+.5)+'%;width:54%;height:3.7%','painted-button-caption');
    html+=button(occupied?'housing':'detail-confirm',label,'left:18%;top:'+primaryTop+'%;width:64%;height:5.3%',!occupied&&(booked||state.cash<q.total));
    html+=button(occupied?'life':'housing',occupied?'返回生活':'返回住房选择','left:18%;top:'+secondaryTop+'%;width:64%;height:4.5%');
    html+=button(occupied?'life':'housing',occupied?'返回生活':'返回住房选择','left:3%;top:2%;width:31%;height:3.8%');

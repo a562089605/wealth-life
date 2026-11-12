@@ -1,3 +1,5 @@
+住房显示修正：去掉四种已入住详情“更换住房”的冗余错位DOM文字，保留原图及透明真按钮；未入住动态确认/预约提示仍在。费用/合同/存档不变。qa/housing-label-20261112保存前后及生产证据。
+
 小镇画风确认稿4e04981已发布成功，5份入口资源线上字节一致，生产首屏/进入读档/刷新/存储零写入通过。以qa/entry-town-style-20261112最新证据为准，旧封面已停用。
 
 最新封面确认：用户已确认柔和蜡笔小镇全景版，画风参考assets/career/town.webp，不能再套关系卡粗描边人物风格。最终原稿与SHA在design/entry-cover-20261112/manifest.json，旧拒绝稿在archive；生产核验qa/entry-town-style-20261112/entry-screen-production-20261112.json。入口流程仍封面→进入游戏→原读档，无存档改写。
