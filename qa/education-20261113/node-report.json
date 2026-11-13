@@ -1,0 +1,122 @@
+[
+  {
+    "test": "education-plans",
+    "passed": true,
+    "output": "886 education assertions passed\nLegacy automatic refund retains original $7,000 cost basis\n"
+  },
+  {
+    "test": "relationship-confirmed",
+    "passed": true,
+    "output": "PASS 533 assertions: all24 cards/options, draw reservation rollback, settlement rollback, per-person lifetime/B, followups/refresh, funds, forced time, direct graduation, course identity and classmates\n"
+  },
+  {
+    "test": "relationship-release",
+    "passed": true,
+    "output": "PASS relationship lifecycle, preserved contacts/education/hobbies, thresholds, resources, all-save rollback/retry, repeated interactions, per-person visits, decay, fixed manager card quotes, lunch no time/cash charge, monthly once and forced-time adapter.\n"
+  },
+  {
+    "test": "approved-pages",
+    "passed": true,
+    "output": "Approved pages: rest effects, caps, time/recovery gates, housing billing/idempotency, and release assets passed.\n"
+  },
+  {
+    "test": "pet-sw-precache",
+    "passed": true,
+    "output": "PASS actual install callback: canonical request URLs deduplicated without dropping required resources.\n"
+  },
+  {
+    "test": "rest-state",
+    "passed": true,
+    "output": "PASS: free 4h rest actual capped effects, stale confirmation, nursing reservation, no low-health bypass; health penalty threshold combinations add once per month.\nDirect rest, guards and save rollback passed\n"
+  },
+  {
+    "test": "coffee-salary",
+    "passed": true,
+    "output": "PASS: milestone next-month pay, no current income rewrite, permanent earned tiers, highest education, promotion rebase, management applicability, four roles and no repeated compounding.\n"
+  },
+  {
+    "test": "course-limits",
+    "passed": true,
+    "output": "PASS: shared 3-course cap, 20 XP, unchanged fee/time, stale confirmation, legacy count, XP cap, nursing reservation, recovery pause and no immediate wage change.\n"
+  },
+  {
+    "test": "month-settlement-guard",
+    "passed": true,
+    "output": "PASS: core modal/unpaid-incident gates, error rollback; town repeat-click/reload/month-advance guard. Underlying ledger and browser not covered.\n"
+  },
+  {
+    "test": "recovery-month-end",
+    "passed": true,
+    "output": "PASS: actual calcMetrics and settleMonthUnsafe execute recovery month with zero labor income/tax/contribution, necessary expenses and passive income, paused study/work tenure, final restoration and next-month wage resumption. Other services stubbed; browser not covered.\n"
+  },
+  {
+    "test": "recovery-rules",
+    "passed": true,
+    "output": "PASS: health priority, six insurance quotes, one payment/recovery month, funding shortfall, final restoration, high energy/low stress preservation, cross-year and time-debt recovery bridge. Domain only; not live month-end.\n"
+  },
+  {
+    "test": "recovery-ui",
+    "passed": true,
+    "output": "PASS: house treatment preview/pay/execute, payment and month confirmation deduplication, map-to-next-month scheduling and quote frozen before policy change. Browser not covered.\n"
+  },
+  {
+    "test": "time-flow",
+    "passed": true,
+    "output": "PASS: risky coordination allowed at 3h, voluntary 8h blocked, forced return stops rolling, confirm twice advances once, next month debt=5. Browser and recovery engine not covered.\n"
+  },
+  {
+    "test": "time-ledger",
+    "passed": true,
+    "output": "PASS: forced-time conservation, event deduplication, exact zero, two recovery months, year boundary, reload and one-time normal-month deduction; extreme debt rejected without mutation. Not yet connected to UI.\n"
+  },
+  {
+    "test": "housing-bills",
+    "passed": true,
+    "output": "PASS: four prices, first occupancy, UI routes, deferred/cancellable move, atomic combined bill, receipts, stale/double payment, deposit refund, old saves and existing care costs.\n"
+  },
+  {
+    "test": "housing-lease",
+    "passed": true,
+    "output": "PASS: 1000 rent/1000 deposit, deposit asset, duplicate rent, free/cancellable booking, next-month net handover, refund on family move, insufficient funds atomicity, legacy no invented refund and annual renewal.\n"
+  },
+  {
+    "test": "housing-time-debt-flow",
+    "passed": true,
+    "output": "PASS: production no-job event completion, same-month/no-pay behavior, future leisure repayment without pay cuts, old care and employed leave, loan/cancel, repeated/reloaded/cross-slot callbacks and rollback. DOM/VM only.\n"
+  },
+  {
+    "test": "housing-transactions",
+    "passed": true,
+    "output": "PASS: five housing operations rollback on false/throw, durable retries, no success navigation or repeat fees, nested contract/receipt preservation, partial-payment/sync failure and stale bill.\n"
+  },
+  {
+    "test": "pet-health-settlement",
+    "passed": true,
+    "output": "PASS actual core month settlement and rollback: overdue health applied once with cash/month/history, failed save restores all, repeat/reload do not double-charge health; player health untouched.\nPASS real monthly transaction: failed death save restores live pet/policy/cash/month, retry archives once and stops future premiums.\n"
+  },
+  {
+    "test": "pet-events",
+    "passed": true,
+    "output": "PASS pet35: 35 approved effects, gate, equal category/species odds, monthly limits/reset, legacy pending/limits, insurance scope, atomic save retry, zero-hour surprise, stale/duplicate protection.\n"
+  },
+  {
+    "test": "pet-map-resume",
+    "passed": true,
+    "output": "PASS shipped pet map UI: zero-time pending medical card and saved threshold resume first, payment failure rollback/retry, medical debt preserved, settle once after resolution, unrelated finish cannot bypass payment.\n"
+  },
+  {
+    "test": "opening-state",
+    "passed": false,
+    "output": "node:internal/assert/utils:77\n    throw err;\n    ^\n\nAssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(read('index.html').includes(file+'?v=28.3-internal1'))\n\n    at Object.<anonymous> (/workspace/wealth-life-git/qa/opening-state.test.cjs:12:73)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14)\n    at Object..js (node:internal/modules/cjs/loader:2060:10)\n    at Module.load (node:internal/modules/cjs/loader:1651:32)\n    at Module._load (node:internal/modules/cjs/loader:1443:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.22.1\n"
+  },
+  {
+    "test": "room-restore",
+    "passed": true,
+    "output": "PASS: saved home reload does not request a new month; saved map, pending arrival, incident, medical, recovery and final state retain priority.\n"
+  },
+  {
+    "test": "town-route",
+    "passed": true,
+    "output": "PASS: 144 start/die combinations; landing-only payday, year boundary target, pending movement blocks repeat roll.\n"
+  }
+]

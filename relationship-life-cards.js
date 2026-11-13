@@ -10,7 +10,7 @@
  function used(s,pid,kind){return (s.relationshipLife?.used||[]).some(r=>r.personId===pid&&r.kind===kind)||(s.relationshipLife?.receipts||[]).some(r=>r.personId===pid&&r.kind===kind);}
  function eligible(s,p,c,opts={}){
   if(!p||!c||role(p)!==c.role||!Number.isFinite(p.relation)||p.relation<c.minIntimacy||used(s,p.id,c.id))return false;
-  if(c.role==='同学'&&(!s.study||!project(s)))return false;
+  if(c.role==='同学'&&(!s.study||s.study.paused||!project(s)))return false;
   if(c.role==='经理'&&(!s.job||s.retired||s.unemployedMonths||p.id!==s.relationshipHome?.currentManagerId))return false;
   if(c.coffeeOnly&&!/咖啡|Barista|Shift Lead/i.test(s.job||''))return false;
   if(c.currentLandlord&&(!['shared','studio','rent1'].includes(s.housing)||p.id!==s.relationshipHome?.landlordId))return false;
@@ -40,7 +40,7 @@
   if(r.version===2){if(r.studyProjectId&&project(s)!==r.studyProjectId)return {ok:false,reason:'study'};if(r.leaseKey&&s.relationshipHome?.leaseKey!==r.leaseKey)return {ok:false,reason:'lease'};}
   const result=atomic(s,()=>{const d=data(s);if(!d.used.some(x=>x.id===r.id))d.used.push({id:r.id,personId:r.personId,kind:r.kind,month:s.month});let time=null;if(q.hours>opts.free){if(!opts.forcedTime)throw Error('missing time adapter');time=opts.forcedTime({id:'relationship-'+r.id,month:s.month,hours:q.hours,available:opts.free});if(!time||!Number.isFinite(time.used))throw Error('invalid time adapter');}
    const usedHours=time?time.used:q.hours,prior=p.relation;apply(s,p,q);d.hours[s.month]=(d.hours[s.month]||0)+usedHours;
-   if(q.studyMonths){if(!s.study||!Number.isFinite(s.study.total)||!Number.isFinite(s.study.progress)||s.study.total<=s.study.progress)throw Error('study');s.study.total=Math.max(s.study.progress,s.study.total-q.studyMonths);if(s.study.progress>=s.study.total){if(!opts.graduate)throw Error('missing graduation adapter');opts.graduate(s);}}
+   if(q.studyMonths){if(!s.study||!Number.isFinite(s.study.total)||!Number.isFinite(s.study.progress)||s.study.total<=s.study.progress)throw Error('study');if(s.study.version===3){if(!root.EducationPlans?.help(s,q.studyMonths))throw Error('study');}else s.study.total=Math.max(s.study.progress,s.study.total-q.studyMonths);if(s.study.progress>=s.study.total){if(!opts.graduate)throw Error('missing graduation adapter');opts.graduate(s);}}
    if(q.cash)(s.financeLedger??=[]).push({id:r.id,kind:q.cash>0?'relationshipReward':'relationshipExpense',eventId:r.id,month:s.month,amount:Math.abs(q.cash),personId:p.id});
    r.choice=index;r.receipt={...copy(q),used:usedHours,time,appliedIntimacy:p.relation-prior};d.receipts.push({id:r.id,kind:r.kind,personId:p.id,month:s.month,choice:index,...r.receipt});
    if(q.hours>0&&q.hours>=opts.free)s.forcedTimeReturn={month:s.month,id:'relationship-'+r.id,debt:time?.debt||0};

@@ -1,9 +1,9 @@
 // Shared graduation: immediate card graduation does not backdate the current month's wage.
-function applyEducationRaise(s,previous,target,month,settlement={}){const ranks={highschool:0,associate:1,bachelor:2,master:3,professional:4};s.educationRaises??={};if(s.job&&!s.retired&&(ranks[target]??0)>(ranks[previous]??0)&&!s.educationRaises[target]){const rate=educationRaiseRate(target),before=s.salary;s.salary=roundCash(before*(1+rate)/((typeof isCoffeeRole==='function'&&(isCoffeeRole()||typeof shiftWorking==='function'&&shiftWorking()))?1+educationRaiseRate(previous):1));s.annualSalary=roundCash(s.salary*12);s.educationRaises[target]={month,rate,before,after:s.salary};settlement.educationRaise={target,rate,before,after:s.salary};}}
-function completeEducation(s,month,settlement={},deferRaise=false){if(!s.study||s.study.progress<s.study.total)return false;const previous=s.education,target=s.study.target;s.education=target;s.study=null;if(deferRaise)(s.pendingEducationRaises??=[]).push({previous,target,completedMonth:month});else applyEducationRaise(s,previous,target,month,settlement);s.timeline.push('完成'+EDU[target].name+'，下月起按原学历工资规则结算');return true;}
+function applyEducationRaise(s,previous,target,month,settlement={}){if(target==='doctorate')return;const ranks={highschool:0,associate:1,bachelor:2,master:3,professional:4,doctorate:5};s.educationRaises??={};if(s.job&&!s.retired&&(ranks[target]??0)>(ranks[previous]??0)&&!s.educationRaises[target]){const rate=educationRaiseRate(target),before=s.salary;s.salary=roundCash(before*(1+rate)/((typeof isCoffeeRole==='function'&&(isCoffeeRole()||typeof shiftWorking==='function'&&shiftWorking()))?1+educationRaiseRate(previous):1));s.annualSalary=roundCash(s.salary*12);s.educationRaises[target]={month,rate,before,after:s.salary};settlement.educationRaise={target,rate,before,after:s.salary};}}
+function completeEducation(s,month,settlement={},deferRaise=false){if(!s.study||s.study.progress<s.study.total)return false;const previous=s.education,target=s.study.target;if(typeof EducationPlans!=='undefined')EducationPlans.graduated(s,s.study,month);s.education=target;s.study=null;if(deferRaise)(s.pendingEducationRaises??=[]).push({previous,target,completedMonth:month});else applyEducationRaise(s,previous,target,month,settlement);s.timeline.push('完成'+EDU[target].name+(target==='doctorate'?'':'，下月起按原学历工资规则结算'));return true;}
 function applyPendingEducationRaises(s,month,settlement){const pending=s.pendingEducationRaises||[];for(const r of pending)if(month>r.completedMonth)applyEducationRaise(s,r.previous,r.target,month,settlement);if(s.pendingEducationRaises)s.pendingEducationRaises=pending.filter(r=>month<=r.completedMonth);}
 
-function educationRaiseRate(target){return {associate:.08,bachelor:.12,master:.18,professional:.25}[target]||0}
+function educationRaiseRate(target){return {associate:.08,bachelor:.12,master:.18,doctorate:.18,professional:.25}[target]||0}
 // V24.7 QA: canonical state adapters and a single monthly settlement.
 const roundCash=n=>Math.round((Number(n)||0)*100)/100;
 function assetId(){state.nextAssetId=(state.nextAssetId||0)+1;return 'asset-'+state.nextAssetId}
@@ -124,7 +124,7 @@ function settleMonthUnsafe(){
  if(typeof PetHealth!=='undefined'){ensurePetCare(s);settlement.petHealth=PetHealth.settle(s,s.month);}
  s.month=month;
  applyPendingEducationRaises(s,month,settlement);
- if(s.study&&!recovery){s.study.progress++;completeEducation(s,month,settlement);}
+ if(s.study&&typeof EducationPlans!=='undefined'&&EducationPlans.modern(s.study)){EducationPlans.advance(s,month-1,recovery);completeEducation(s,month,settlement);}else if(s.study&&!recovery){s.study.progress++;completeEducation(s,month,settlement);}
  if(!recovery){s.happiness=Math.max(0,s.happiness-1);s.energy=Math.max(0,s.energy-2);s.stress=Math.min(100,s.stress+2);s.social=Math.max(0,s.social-1);s.friendship=Math.max(0,s.friendship-.5);if(s.relationship==='married')s.partnerQuality=Math.max(0,s.partnerQuality-.4);if(typeof RelationshipHomeRules==='undefined')(s.people||[]).forEach(p=>p.relation=Math.max(0,p.relation-.22));}
  s.annualInflation=Math.max(-.005,Math.min(.10,(s.economy===4?.055:s.economy===3?.015:s.economy===1?.03:.025)+(shock?.inflation||0)));if(s.worldShock?.monthsLeft>0){s.worldShock.monthsLeft--;if(!s.worldShock.monthsLeft)s.worldShock=null}const infl=Math.pow(1+s.annualInflation,1/12);s.marketIndex=(s.marketIndex||100)*(1+marketChange);s.homeIndex=(s.homeIndex||100)*(1+ec.home);s.cpiIndex=(s.cpiIndex||100)*infl;s.baseLiving=roundCash(s.baseLiving*infl);if(!s.housingLease&&s.housing!=='own')s.housingCost=roundCash(s.housingCost*(1+(infl-1)*.45));
  s._computedExpenses=null;syncFinance();if(typeof completeCashAudit==='function')completeCashAudit(settlement);settlement.endCash=s.cash;s.lastSettlement=settlement;s.history.push(settlement);if(typeof finalizeCoffeeMonth==='function')finalizeCoffeeMonth(settlement);
@@ -160,9 +160,9 @@ function eventEligible(name){return !(name==='汽车维修'&&!state.carOwned || 
 function educationUndoQuote(){
  const st=state.study;if(!st)return null;
  if(st.receipt&&st.progress===0&&st.receipt.paidMonth===state.month)return{cash:st.receipt.tuition,autoDebt:0,legacy:false};
- const ed=EDU[state.education],debt=state.debt['学生贷款']||0;
+ const ed=EDU[state.education],legacyCost=({highschool:7000,associate:12000,bachelor:24000})[state.education]??ed.cost,debt=state.debt['学生贷款']||0;
  // V25's initial-month auto-enrolment is identifiable: no earlier course can have completed at month zero.
- if(!st.receipt&&state.month===0&&st.progress===0&&ed?.next===st.target&&debt>=ed.cost*.65&&debt<=ed.cost)return{cash:roundCash(ed.cost-debt),autoDebt:debt,legacy:true};
+ if(!st.receipt&&state.month===0&&st.progress===0&&ed?.next===st.target&&debt>=legacyCost*.65&&debt<=legacyCost)return{cash:roundCash(legacyCost-debt),autoDebt:debt,legacy:true};
  return null;
 }
 function openEducation(){

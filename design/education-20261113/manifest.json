@@ -1,0 +1,141 @@
+{
+  "status": "confirmed",
+  "runtimeIntegrated": true,
+  "file": "design/education-20261113/associate-enrollment-preview.png",
+  "sha256": "da393e5f81ded13d3931f715071ad89356103a0ca740355970010ee437ad58e5",
+  "scope": "Associate enrollment page; all degree tuition and non-full-time planning confirmed in repository handoff; preview free time uses illustrative100h/month.",
+  "confirmedAt": "2026-11-13",
+  "progressPreview": {
+    "file": "design/education-20261113/associate-progress-preview.png",
+    "sha256": "c0e7d89ed0c087f6383a9e99859332f7cacda701d4faf8db0960df0a4ee85723",
+    "status": "superseded",
+    "runtimeIntegrated": false,
+    "pendingTextChange": null,
+    "supersededBy": "design/education-20261113/associate-progress-arrangement-label-preview.png"
+  },
+  "changeArrangementPreview": {
+    "file": "design/education-20261113/change-study-arrangement-preview.png",
+    "sha256": "50140fd31ec66f5de3ca124b90fc4548e8e8f21c8674c5e4e52aba7c9c2bda15",
+    "status": "confirmed",
+    "runtimeIntegrated": true,
+    "confirmedAt": "2026-11-13",
+    "runtimeFile": "assets/education/change-study-arrangement-preview.webp",
+    "runtimeSHA256": "d2248ea9ab64812d5bff9b1cc67120dfb7d8b364840ac3a750574ed7af7042de",
+    "releaseAuthorizedAt": "2026-11-13",
+    "releaseAuthorization": "用户要求更新、上传、接入游戏；保留此前逐图审阅状态。"
+  },
+  "pausePreview": {
+    "file": "design/education-20261113/pause-study-confirmation-preview.png",
+    "sha256": "64ab1b6ca8b957d8ffbad5923414146fb514db08652438c254bcf73e9c25d7fa",
+    "status": "awaiting-art-confirmation",
+    "runtimeIntegrated": true,
+    "reviewNote": "User asked to continue after viewing; explicit artwork confirmation not separately recorded.",
+    "runtimeFile": "assets/education/pause-study-confirmation-preview.webp",
+    "runtimeSHA256": "c5322c9772c360e682b72f18071422abd249e14f38024255948865035a81167f",
+    "releaseAuthorizedAt": "2026-11-13",
+    "releaseAuthorization": "用户要求更新、上传、接入游戏；保留此前逐图审阅状态。"
+  },
+  "pausedProgressPreview": {
+    "file": "design/education-20261113/paused-study-progress-preview.png",
+    "sha256": "cca85f6a0b76e865299bede4728749660a6017e7d2e639d9c34e8db6b0accc42",
+    "status": "confirmed",
+    "runtimeIntegrated": true,
+    "confirmedAt": "2026-11-13",
+    "runtimeFile": "assets/education/paused-study-progress-preview.webp",
+    "runtimeSHA256": "b0e9d4c2f70f257f879a29c5b82593472fb76422a34a7d38e86724b4a61675af",
+    "releaseAuthorizedAt": "2026-11-13",
+    "releaseAuthorization": "用户要求更新、上传、接入游戏；保留此前逐图审阅状态。"
+  },
+  "bachelorEnrollmentPreview": {
+    "file": "design/education-20261113/bachelor-enrollment-preview.png",
+    "sha256": "4671dfc93fbba308f0cf2b030de44a115a3a3abd116289d176e1b479a832c457",
+    "status": "awaiting-art-confirmation",
+    "runtimeIntegrated": true,
+    "reviewNote": "User requested continue; no separate explicit artwork confirmation.",
+    "runtimeFile": "assets/education/bachelor-enrollment-preview.webp",
+    "runtimeSHA256": "5336ae0c8b3b040d25ef9e609831587a2cfe52bcbcca84dc4aa136fea2c7d310",
+    "releaseAuthorizedAt": "2026-11-13",
+    "releaseAuthorization": "用户要求更新、上传、接入游戏；保留此前逐图审阅状态。"
+  },
+  "masterEnrollmentPreview": {
+    "file": "design/education-20261113/master-enrollment-preview.png",
+    "sha256": "2a0340b255da070113fec897493e3828584647a209367b10aad53e2a4b9a8ba0",
+    "status": "confirmed",
+    "runtimeIntegrated": true,
+    "confirmedAt": "2026-11-13",
+    "runtimeFile": "assets/education/master-enrollment-preview.webp",
+    "runtimeSHA256": "f19356f9e8d328852473258f387495a5b1db5cd6fc01c442f419582b5f2d5ade",
+    "releaseAuthorizedAt": "2026-11-13",
+    "releaseAuthorization": "用户要求更新、上传、接入游戏；保留此前逐图审阅状态。"
+  },
+  "doctorateEnrollmentPreview": {
+    "file": "design/education-20261113/doctorate-enrollment-preview.png",
+    "sha256": "e0f7d27bc9f129418a564b2244136b74e178c9f4e88ee08dd6333d4a30a0da82",
+    "status": "awaiting-art-confirmation",
+    "runtimeIntegrated": true,
+    "reviewNote": "User requested continue; no separate explicit artwork confirmation.",
+    "runtimeFile": "assets/education/doctorate-enrollment-preview.webp",
+    "runtimeSHA256": "50a7f2d53685996f4aa84b03d6cd8310c166ed76c0e6273d5e07f37a629e2e0d",
+    "releaseAuthorizedAt": "2026-11-13",
+    "releaseAuthorization": "用户要求更新、上传、接入游戏；保留此前逐图审阅状态。"
+  },
+  "associateGraduationPreview": {
+    "file": "design/education-20261113/associate-graduation-preview.png",
+    "sha256": "040156011024dbbcf74877c81d43916359e4cdf0447b30634eae6fd22e47dfab",
+    "status": "confirmed",
+    "runtimeIntegrated": true,
+    "confirmedAt": "2026-11-13",
+    "runtimeFile": "assets/education/associate-graduation-preview.webp",
+    "runtimeSHA256": "791135b8a887fbeafe062a2d5aefaad1138527ba6cf6b26b98da752de608d6c0",
+    "releaseAuthorizedAt": "2026-11-13",
+    "releaseAuthorization": "用户要求更新、上传、接入游戏；保留此前逐图审阅状态。"
+  },
+  "withdrawPreview": {
+    "file": "design/education-20261113/withdraw-study-confirmation-preview.png",
+    "sha256": "b70c089e9eb81e90d5a32e1f4c806665d7c1b9f071ea152dcb3878fa6e9a2ba3",
+    "status": "confirmed",
+    "runtimeIntegrated": true,
+    "confirmedAt": "2026-11-13",
+    "runtimeFile": "assets/education/withdraw-study-confirmation-preview.webp",
+    "runtimeSHA256": "b73620ea02ce0fa1e46d2abf0440ef2b40e5f9557eaad1e02e6aefea3023b4ae",
+    "releaseAuthorizedAt": "2026-11-13",
+    "releaseAuthorization": "用户要求更新、上传、接入游戏；保留此前逐图审阅状态。"
+  },
+  "cancelEnrollmentPreview": {
+    "file": "design/education-20261113/cancel-enrollment-refund-preview.png",
+    "sha256": "2ce633d1c475856e92099fcd4563d58345f857ef6fa4629642d4cef5405ff60c",
+    "status": "confirmed",
+    "runtimeIntegrated": true,
+    "confirmedAt": "2026-11-13",
+    "runtimeFile": "assets/education/cancel-enrollment-refund-preview.webp",
+    "runtimeSHA256": "c3a13d9d5d5185d30dd97971571260d4b82c89e0e6d591e4ae613601a5832d75",
+    "releaseAuthorizedAt": "2026-11-13",
+    "releaseAuthorization": "用户要求更新、上传、接入游戏；保留此前逐图审阅状态。"
+  },
+  "resumePreview": {
+    "file": "design/education-20261113/resume-study-confirmation-preview.png",
+    "sha256": "6fd71a94190bf5213e1439fb106fa2a5348a8f2037b507a0f3372761e8f68fc6",
+    "status": "confirmed",
+    "runtimeIntegrated": true,
+    "confirmedAt": "2026-11-13",
+    "runtimeFile": "assets/education/resume-study-confirmation-preview.webp",
+    "runtimeSHA256": "5f93acc8a7fb64bca48f3ed4790f651c29ff4c69412751879ef34cba95b211dc",
+    "releaseAuthorizedAt": "2026-11-13",
+    "releaseAuthorization": "用户要求更新、上传、接入游戏；保留此前逐图审阅状态。"
+  },
+  "progressArrangementLabelPreview": {
+    "file": "design/education-20261113/associate-progress-arrangement-label-preview.png",
+    "sha256": "3c6341bb166a47449815880e5f5ce2f12bf5b589008985e74dcf9ba8f439b5ec",
+    "status": "confirmed",
+    "runtimeIntegrated": true,
+    "confirmedAt": "2026-11-13",
+    "runtimeFile": "assets/education/associate-progress-arrangement-label-preview.webp",
+    "runtimeSHA256": "50d2ba9778093298d8cd8740cd19cf79ba473209f18e562cff131842d72c6330",
+    "releaseAuthorizedAt": "2026-11-13",
+    "releaseAuthorization": "用户要求更新、上传、接入游戏；保留此前逐图审阅状态。"
+  },
+  "runtimeFile": "assets/education/associate-enrollment-preview.webp",
+  "runtimeSHA256": "7dec182518b47dd58c4a868688beb2327f0834e6c9f87a059ddb6c663ffb16f4",
+  "releaseAuthorizedAt": "2026-11-13",
+  "releaseAuthorization": "用户要求更新、上传、接入游戏；保留此前逐图审阅状态。"
+}

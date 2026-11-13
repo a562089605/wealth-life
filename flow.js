@@ -85,7 +85,7 @@ monthlyEvent=function(){pending=true;if(maybeInsuredJobLoss())return;if(workplac
 window.v26Choices=function(key,api){
  if(key==='learning'){
  const enrolled=!!state.study, practiced=monthSelection('hobby');
- return api.option(enrolled?'查看当前学习计划':'学历学习',enrolled?EDU[state.study.target].name+' · '+state.study.progress+'/'+state.study.total+'个月，可同时发展兴趣。':'先预览学费，再确认投资自己。',()=>openEducation(),true)
+ return api.option(enrolled?'查看当前学习计划':'学历学习',enrolled?EDU[state.study.target].name+' · '+(typeof EducationPlans!=='undefined'&&EducationPlans.modern(state.study)?(state.study.paused?'已暂停':'预计还需 '+EducationPlans.projection(state.study,state.study.pace)+'个月'):state.study.progress+'/'+state.study.total+'个月')+'，可同时发展兴趣。':'先预览学费，再确认投资自己。',()=>openEducation(),true)
  +api.option('练习兴趣技能',practiced?'本月已练习 '+practiced+'，仍可查看。':'与学历学习独立；按当前现金选择。',()=>$('hobbyBtn').click())
  +'<div class="wl-panel"><h3>'+((enrolled||practiced)?'完成本月自我投资':'本月暂不投资自己')+'</h3><p>'+ (enrolled?'学习计划已保留，学费不会重复扣除。':'未报名学历课程。')+(practiced?' 已完成兴趣练习：'+practiced+'。':' 可先练习兴趣，也可直接继续。')+'</p><button data-v26="learningContinue" class="primary">'+((enrolled||practiced)?'完成本月自我投资 →':'暂时跳过，继续 →')+'</button></div>';
  }
