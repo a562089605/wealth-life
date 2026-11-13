@@ -1,10 +1,11 @@
 const {chromium}=require('playwright'),fs=require('fs'),http=require('http'),path=require('path'),a=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),out=path.join(root,'qa/relationship-avatars-20261113');fs.mkdirSync(out,{recursive:true});
-const report={scope:'Local isolated Chromium slot941; not iPhone hardware or production',steps:[],errors:[]};
+const phase=process.env.TEST_URL?'production':'local';
+const report={scope:phase+' isolated Chromium slot941; not iPhone hardware or user saves',baseURL:process.env.TEST_URL||'localhost',steps:[],errors:[]};
 const server=http.createServer((req,res)=>{const f=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname.replace(/^\/$/,'/index.html'));if(!f.startsWith(root+'/')){res.statusCode=403;return res.end()}fs.readFile(f,(e,b)=>{res.statusCode=e?404:200;res.setHeader('Content-Type',({'.html':'text/html','.js':'application/javascript','.css':'text/css','.webp':'image/webp','.ttf':'font/ttf'})[path.extname(f)]||'application/octet-stream');res.end(e?'missing':b)})});
 let browser;
 (async()=>{try{
- await new Promise(r=>server.listen(0,'127.0.0.1',r));const url='http://127.0.0.1:'+server.address().port;
+ await new Promise(r=>server.listen(0,'127.0.0.1',r));const url=process.env.TEST_URL||'http://127.0.0.1:'+server.address().port;
  browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
  const c=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce',serviceWorkers:'allow'}),p=await c.newPage();p.on('pageerror',e=>report.errors.push(e.message));
  await p.goto(url,{waitUntil:'networkidle'});await p.locator('#enterGame').click();
@@ -19,9 +20,9 @@ let browser;
  a.deepEqual(await p.evaluate(()=>[state.people[0].name,state.people[0].relation,state.people[0].education,state.people[0].interests]),['旧女性经理',44,'bachelor',['旧兴趣']]);
  report.steps.push('Real storage failure restores entire state and original slot; retry binds once, preserving legacy fields and original backup');
  await p.evaluate(()=>RelationshipPages.open());await p.locator('.relationship-contact .bound-avatar img').first().waitFor();
- await p.screenshot({path:path.join(out,'local-list-390.png'),fullPage:true});
+ await p.screenshot({path:path.join(out,phase+'-list-390.png'),fullPage:true});
  for(const width of [320,390,430,1280]){await p.setViewportSize({width,height:844});a.equal(await p.evaluate(()=>document.querySelector('.relationship-paper').scrollWidth<=document.querySelector('.relationship-paper').clientWidth),true);}
- await p.setViewportSize({width:390,height:844});await p.locator('.relationship-contact').first().click();a.equal(await p.locator('.relationship-detail .bound-avatar img').count(),1);await p.screenshot({path:path.join(out,'local-detail-390.png'),fullPage:true});
+ await p.setViewportSize({width:390,height:844});await p.locator('.relationship-contact').first().click();a.equal(await p.locator('.relationship-detail .bound-avatar img').count(),1);await p.screenshot({path:path.join(out,phase+'-detail-390.png'),fullPage:true});
  a.deepEqual(await p.evaluate(()=>state.people.map(p=>p.relationshipAvatarId)),ids);report.steps.push('Actual list/detail use saved images; 320/390/430/1280 layouts fit and viewing does not change identity');
  await p.reload({waitUntil:'networkidle'});await p.locator('#enterGame').click();await p.evaluate(()=>{slot=941;state=load(slot);openGame();clearModals();RelationshipPages.open()});a.deepEqual(await p.evaluate(()=>state.people.map(p=>p.relationshipAvatarId)),ids);report.steps.push('Reload restores saved identities without reroll');
  const decoded=await p.evaluate(async()=>{for(const art of RelationshipAvatars.catalog){const img=new Image();img.src=art.file;await img.decode();if(img.naturalWidth!==550||img.naturalHeight!==550)throw Error('size '+art.id)}return RelationshipAvatars.catalog.length});a.equal(decoded,60);report.steps.push('All 60 independent approved avatar resources decode at 550×550');
@@ -35,4 +36,4 @@ let browser;
  await c.setOffline(true);await p.reload({waitUntil:'networkidle'});await p.locator('#enterGame').click();await p.evaluate(()=>{slot=941;state=load(slot);openGame();clearModals();RelationshipPages.open()});
  a.equal(await p.evaluate(async()=>{for(const art of RelationshipAvatars.catalog){const img=new Image();img.src=art.file;await img.decode()}return true}),true);a.equal(await p.evaluate(()=>state.people.find(p=>p.status==='同学').relationshipAvatarId),student[0].avatar);report.steps.push('Installed SW supports offline reload and all 60 portraits without changing saved identity');
  a.deepEqual(report.errors,[]);report.passed=true;
-}catch(e){report.passed=false;report.failure=e.stack;process.exitCode=1;}finally{fs.writeFileSync(path.join(out,'local-report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));await browser?.close();server.close();}})();
+}catch(e){report.passed=false;report.failure=e.stack;process.exitCode=1;}finally{fs.writeFileSync(path.join(out,phase+'-report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));await browser?.close();server.close();}})();

@@ -1,7 +1,7 @@
 {
   "scope": "逐张确认的联系人手绘头像原稿；不指定人物分配规则。",
   "runtimeIntegrated": true,
-  "published": false,
+  "published": true,
   "artworks": [
     {
       "id": "manager-female-01",
@@ -337,8 +337,8 @@
     "singlePortraitSources": 10,
     "fivePortraitSheetSources": 10,
     "runtimeIntegrated": true,
-    "published": false,
-    "note": "五类各女性6张、男性6张，60个独立资源已由确认原稿提取并本地接入固定绑定；原20份原稿及60份裁切PNG均保留。尚未上传或发布。"
+    "published": true,
+    "note": "五类各女性6张、男性6张，60个独立资源已由确认原稿提取并发布固定绑定；原20份原稿及60份裁切PNG均保留。"
   },
   "runtimeResources": [
     {
@@ -1387,5 +1387,15 @@
     "browserScope": "本地隔离Chromium slot941，7组通过，0脚本错误；非生产、非iPhone真机验收。",
     "sourceCount": 20,
     "resourceCount": 60
+  },
+  "release": {
+    "functionalCommit": "9d30acf98816aafadbad894f120d0d2109dc8d9e",
+    "deploymentURL": "https://github.com/a562089605/wealth-life/runs/131711275216",
+    "productionResources": "qa/relationship-avatars-20261113/production-resources.json",
+    "productionBrowserReport": "qa/relationship-avatars-20261113/production-report.json",
+    "all136ResourcesMatch": true,
+    "isolatedChromiumGroups": 7,
+    "scriptErrors": 0,
+    "realIPhoneTested": false
   }
 }

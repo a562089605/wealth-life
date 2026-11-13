@@ -1,0 +1,823 @@
+{
+  "functionalCommit": "9d30acf",
+  "checkedAt": "2026-11-13T05:31:14.147495+00:00",
+  "files": [
+    {
+      "file": "assets/education/associate-enrollment-preview.webp",
+      "sha256": "7dec182518b47dd58c4a868688beb2327f0834e6c9f87a059ddb6c663ffb16f4",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/associate-graduation-preview.webp",
+      "sha256": "791135b8a887fbeafe062a2d5aefaad1138527ba6cf6b26b98da752de608d6c0",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/associate-progress-arrangement-label-preview.webp",
+      "sha256": "50d2ba9778093298d8cd8740cd19cf79ba473209f18e562cff131842d72c6330",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/bachelor-enrollment-preview.webp",
+      "sha256": "5336ae0c8b3b040d25ef9e609831587a2cfe52bcbcca84dc4aa136fea2c7d310",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/cancel-enrollment-refund-preview.webp",
+      "sha256": "c3a13d9d5d5185d30dd97971571260d4b82c89e0e6d591e4ae613601a5832d75",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/change-study-arrangement-preview.webp",
+      "sha256": "d2248ea9ab64812d5bff9b1cc67120dfb7d8b364840ac3a750574ed7af7042de",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/doctorate-enrollment-preview.webp",
+      "sha256": "50a7f2d53685996f4aa84b03d6cd8310c166ed76c0e6273d5e07f37a629e2e0d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/master-enrollment-preview.webp",
+      "sha256": "f19356f9e8d328852473258f387495a5b1db5cd6fc01c442f419582b5f2d5ade",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/pause-study-confirmation-preview.webp",
+      "sha256": "c5322c9772c360e682b72f18071422abd249e14f38024255948865035a81167f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/paused-study-progress-preview.webp",
+      "sha256": "b0e9d4c2f70f257f879a29c5b82593472fb76422a34a7d38e86724b4a61675af",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/resume-study-confirmation-preview.webp",
+      "sha256": "5f93acc8a7fb64bca48f3ed4790f651c29ff4c69412751879ef34cba95b211dc",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/withdraw-study-confirmation-preview.webp",
+      "sha256": "b73620ea02ce0fa1e46d2abf0440ef2b40e5f9557eaad1e02e6aefea3023b4ae",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/fonts/MaShanZheng-Regular.ttf",
+      "sha256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/home/wealth-life-cover-town-style-20261112.webp",
+      "sha256": "ad5941b55e925e00d3d48b07ad076180b5f0df06d4ebba9f665b8901a8c81b7f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-cat-20261107.webp",
+      "sha256": "f060ee599cc18a0edcabbd081837fed5f95448af956816bcbb9678aa9e218693",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-chameleon-20261107.webp",
+      "sha256": "0db5240b424281d88d34e376431a124f63b8da7a9244e2e960ad819b9a5aa956",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-crocodile-20261107.webp",
+      "sha256": "b95cc3e53565d0abdf5367a8f39c9ae5f8b649c00e2c40d78bf74194d40aa241",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-dog-20261107.webp",
+      "sha256": "0b7e625ad4c9ca843e77ea0a9979518d5b839738ae4cdbb5809208b9373b657f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-gecko-20261107.webp",
+      "sha256": "959e0747c461d1911f16c8d8cdc2cd4961bb10ba1cee9e8365adfd16408c2f8f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-spider-20261107.webp",
+      "sha256": "77dfa777ef9fce450ccadc091cdc66702d1f2612ffbf31448d0b4deeaa7458e2",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-tortoise-20261107.webp",
+      "sha256": "d5c14621e537ff39b302cb8e73d1f9e3aaca6c9a7377ac6bb1217d38938706d2",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-female-01.webp",
+      "sha256": "f9494e6ce0fe3d190b1b674a7bc3bdfb8e1234b962f2e289f090cb6bbfe6165c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-female-02.webp",
+      "sha256": "275e42eb5a419db7419f479004bfd91ef2be75c49a2e51fe151e52fa35ca1ba2",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-female-03.webp",
+      "sha256": "340a0e87ea31fdb1b9e6618a6c8be0b6b91320e333b3eabc002da4fb776e6e91",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-female-04.webp",
+      "sha256": "831beebaa566db28df123c63616621558d8bdc077c0444757e60a59f9249cc29",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-female-05.webp",
+      "sha256": "0bf01dc0fab7bac5bf34c5ed33e80f05629eee28d1afc4db457438e47f37bbab",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-female-06.webp",
+      "sha256": "eed096329447abfb6040af60ff4d0362edff9b244fbc1a8c5770795eae328626",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-male-01.webp",
+      "sha256": "0061ed730e9abc2a3e888bda07f1438093a5498f3992a1e0b5d3d47b0ae6a827",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-male-02.webp",
+      "sha256": "e4b143a252c17698c37cd24431c4d41b2d24ab714647d11637356b6b0eeeb3a8",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-male-03.webp",
+      "sha256": "5bdb24dd457024fca41926c3e26ab1d7ab717aabdd75d7d6e63708ae45f03260",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-male-04.webp",
+      "sha256": "e108d676d769f15b114965d5b2f2b1ec1832738b35c47640740434bb13d1bf72",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-male-05.webp",
+      "sha256": "40ede1bffee898dcdc8fe1f22523607d73bf362ca27c2e058bc32c08044f6c52",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-male-06.webp",
+      "sha256": "349b7cb8fd3032aa854f15e30f864c85faca7873e2b8f806e88f878687b0ff96",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-female-01.webp",
+      "sha256": "3e0094ad327b851fa0ffed28f99cf1c9b0858ef43affcf8bae6782a5cf27c759",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-female-02.webp",
+      "sha256": "34223236961af057c227cc0c2eace6d08503eb47f62d02ed2e7b4be5e20ee25c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-female-03.webp",
+      "sha256": "96b65a790739c6067674dd4de6aeef0a5133a3201293c5bb88eb9c7e3b71e269",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-female-04.webp",
+      "sha256": "53a84aced7b83907ff59f9bc8a74e97b033a82ae9f53e139a5d496558a966343",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-female-05.webp",
+      "sha256": "f7d818204743cf5e2e4f674548827d46c5df5fe0a54a20e754932ecb3a769052",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-female-06.webp",
+      "sha256": "d508cac1ce28ed03cd1d16eb99edbd2ac4057277bbf3cf84d983744e66f97149",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-male-01.webp",
+      "sha256": "5de1249d613bef6446cabb333c064775bd1984134fedb9aa199befeb7fe31936",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-male-02.webp",
+      "sha256": "38c5fd4cea701e745daa217ab9bdf243a651d3caac4cf5e5249275d1b97af72d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-male-03.webp",
+      "sha256": "2196aa1e548263b410a4e307695f3ee116d3a6ac5ebc55d32ce84a66f5f95ba4",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-male-04.webp",
+      "sha256": "5f70ab1dddb734276ee4ad78662c46afd00e6c214a1de3fa2dc58106cba238d1",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-male-05.webp",
+      "sha256": "218c9cc69a4f54d2836aad7679873b0ae3533fba4a54e6298a28515598289dae",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-male-06.webp",
+      "sha256": "aab6ee1fadd96c28b75631892b8d4edc78e7fae657d970d6961b3ba20adc421a",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-female-01.webp",
+      "sha256": "98d91326b3697b65f3dfb7158e45d1aef362cb2ab61788faf82a3e08f5d02cd1",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-female-02.webp",
+      "sha256": "c1cbe2555d4a1f8ca46940afceee752d1e39eb35068c6658d37642b87effd515",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-female-03.webp",
+      "sha256": "b115bf49512002f4fb2e7a368b5fbda03ab4818e17ca3a5a4ae7960c8b7a8e52",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-female-04.webp",
+      "sha256": "930f116ffe4f1bdcb4b983436866005a737a6dd2baa591d6cff490c9f1407bf6",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-female-05.webp",
+      "sha256": "e54e2ea140e8d897bdad6cbb25ecc759acc01831600e41252a68e77897cab9fc",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-female-06.webp",
+      "sha256": "bca5a61e8249d7464e3c04ea63d3650199ad6019d56feb8182789ebf3e6fcfc2",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-male-01.webp",
+      "sha256": "a431390d44c3bb808cfbb3b805f87c83ed1adfed83a79d64a30f75f2608a4fd8",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-male-02.webp",
+      "sha256": "0457b2f0d2185582768e396d8e0d9928039333ec6bf63348987248f1de386755",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-male-03.webp",
+      "sha256": "3e44b429b68534ba3e76c13d8bdf78b4b4a98da96252ecc246603823dd40dd48",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-male-04.webp",
+      "sha256": "596a1d2e9379a4025e68c3d3bf1a8f5718f4d7ada3b928bfd6de99b1bcb9c1f7",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-male-05.webp",
+      "sha256": "b35ad13128ea1a45b481e23d250f34d54e1aebe36933327e423e3cc56b0354e0",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-male-06.webp",
+      "sha256": "96473bb1f9ca543723297c1469b1ddd14e26e2a16a643f75383a180228afa5f5",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-female-01.webp",
+      "sha256": "d0637cc5faa128e38de59f57d2a4daa74ec6c0429cf2f2fb2decbd9863710d8b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-female-02.webp",
+      "sha256": "03437b2edd048d64ca4f6afa365d896a86264c101691524520e492b226411887",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-female-03.webp",
+      "sha256": "1330b50cb013cdda350c5eda59f3c05854beafa449f49084ef26ac6ba9aeda24",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-female-04.webp",
+      "sha256": "89633a7a6d31269da407253384b30371407eb80d0f5ea26c990eddf7b1ce6c16",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-female-05.webp",
+      "sha256": "1fadd269f9aebafd7978ce9552e87345bb851c99183b02664779367a4acf0972",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-female-06.webp",
+      "sha256": "f45d93b5987da6d3131f4205116f7f94d9774861a97b1fb569000f339b4c406b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-male-01.webp",
+      "sha256": "b2a395a1e1491f2fd8b493f885252ff4f46224a9144fad54d9d07f0b58697a40",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-male-02.webp",
+      "sha256": "70756f38f1e872cdaca16c6b50fbc6b0a10da73b53e132edada5fd5f3d5c0cc3",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-male-03.webp",
+      "sha256": "34d4d9c1c12ae93ff27848cd6ed7b020f2786d4f21a0f1e8a3f9d0d0c325ac2a",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-male-04.webp",
+      "sha256": "a6ff820851f384190d886a05a313c08c719bbd316feb7995450f2beb7f106dbb",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-male-05.webp",
+      "sha256": "ddb508d901d7e3422f19578283139c5f9118808d4e6ba436e4bc616aea88f3bd",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-male-06.webp",
+      "sha256": "5fa461c47d4535f0018a48c773ed7796104e8ea97b8f1438b548a13ce3b476fc",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-female-01.webp",
+      "sha256": "2c8c29c9ab3d9b07ab7a1b92ac46e4304a1e12797774587ce55a7ee2eca01ee9",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-female-02.webp",
+      "sha256": "f8807f0b56311a96c7fc30937094005158efa988dd97358b7335021e13d61bbd",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-female-03.webp",
+      "sha256": "328a65bf94669eaaaf41a5cc5fc498e0feb30337b464fa2b0392a395f34edd49",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-female-04.webp",
+      "sha256": "03455ec4f0a014aa348b88aacb1c9a0753de7c6e76d98c012cbf954be09fcc8f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-female-05.webp",
+      "sha256": "03a085debd70d3a67d4e76b9703f5ebb18f9bab60b75340409ce6209d20b767e",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-female-06.webp",
+      "sha256": "7415faa4a6a68b189f17b368b4a92f722ffadecfb5c86fb12f8a746f78819c71",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-male-01.webp",
+      "sha256": "75632260fbd3addb088b2cc5134e3875ea4ad068c7665c5325f1038062089ec4",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-male-02.webp",
+      "sha256": "e8203b6e374c95030608e23cfaa193a0f7eff0b71efa91095f999be50dab4487",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-male-03.webp",
+      "sha256": "aeba52d97f51ca4d136f58d9628601bdbf92e2f823d982a2f5ed3c4de3d28fda",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-male-04.webp",
+      "sha256": "638d3d0d8619756b1e0bc1bae42c5b597b96b39b18c39923d75d8c3b9ce1604c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-male-05.webp",
+      "sha256": "d86b02294db34fd92e486ee6c35cec4cfcd79149fa534d4ee8cf4eb1d7b4ed87",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-male-06.webp",
+      "sha256": "9c7f0da54ca1ad6a101892ee02e0bdae3ee367205ab47bb36e6cdb373a5fe0ec",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-01-library-new-contact.webp",
+      "sha256": "2289864bf8f1ecf65a2c4f52bc7a49bbdbb72da4fdeccc010be7ae3525bbd9ad",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-01-library.webp",
+      "sha256": "222e2a91b91d0c3bacfc3ea9784df3284ff11751769fa46069b94d77b75876be",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-02-borrow-notes.webp",
+      "sha256": "03ce5efeb94b3430df59af3ab5d9c772eb99f4e9ef5f9120a439839f3970a073",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-03-presentation.webp",
+      "sha256": "7a1b28f519abcbc9469f9ef98654894e8fd43d5579f38abf51d1b6461f52a49a",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-04-after-class-snack.webp",
+      "sha256": "a419da150b5f25522c2861673d9bc82ad4b196a0eff753c1f25fd09df1bef049",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-05-study-plan-choice-layout.webp",
+      "sha256": "97f7796e949729c5559e208a4526881f2c8931acbdba9f2a48cdc1c9bc91706b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-01-after-work.webp",
+      "sha256": "e72ee922aee28ed8f0ba525660a3c94046c0cd89f37bf2f94e297d16079f7779",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-02-snack.webp",
+      "sha256": "f427e59f0a8f26753182f4bbd8373be4b60820c9e489c78aac60135f3d29d6d6",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-03-bookshelf.webp",
+      "sha256": "7d84c5fa5da0df6615e7aeb05e5124e8dee65f780f6e3e4805c52df64942a87c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-04-order.webp",
+      "sha256": "76fe2841120c1308b8f323119081891828e3088b003f3bec1bf4db0bc4670531",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-05-side-job.webp",
+      "sha256": "c1f1c4a4a1818dfc45887fca4f5acd369ef19c55719dd7474b88a990bc10bf78",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-01-chat.webp",
+      "sha256": "792113a91679c2cd814648104302dcd12e6f5ea641150e19e4b3870e3f13cffe",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-02-beef.webp",
+      "sha256": "9c25297a351e76cc671d3a0117adc5bb826b7de34f4342be94f2d3964f4375a5",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-03-plants.webp",
+      "sha256": "1ded553bf67f3c6da6637b052a03925878f2555392b7c01f00f0c8d730c09be7",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-04-aircon-failure.webp",
+      "sha256": "6c0eb61ad7f3f7b848c08468945fcc28e2e6ada2e1cbcdee883ebc19078ce4fd",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-04-aircon-main.webp",
+      "sha256": "fff2a15db77032f57e5dc20c675f63d2f4e5de076d22197080471ec851f6d4bb",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-04-aircon-success.webp",
+      "sha256": "61b77743ac48b55fac186bf87f4e2d9657b6596909a027cf1463a5e4872bc0dd",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-01-care.webp",
+      "sha256": "7b7e81c1e5cb1e7ce13aa96bbc5a2194d423e7dfd54c97041e30ab3806e453c9",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-02-experience.webp",
+      "sha256": "82d8a77cdbd19d977bb319360452d9d5aec62b9ce1649dc8bbd9d81c0ac7a8f5",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-03-tasting.webp",
+      "sha256": "f7fc3131e7ffa1bb7f254716f366a2dc92107f74d3b72ec63de8dd919201a037",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-04-bonus.webp",
+      "sha256": "f774f6972e5d3c9b51e89d3523628cbdce9ef01fa43d985c13a15f7f954a8c73",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-05-ride.webp",
+      "sha256": "041b8651584669b2f52a5765206e14939bb0cb8b1e517e7d2a990d7365cb2dec",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-01-chat.webp",
+      "sha256": "e3c3103700771e3db3bde99299da0ad3e1aee789bb97dc27237f12c42df9800c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-02-organizer.webp",
+      "sha256": "fcafc26f79f5fd177a11d918047b0156eeac42863c8b283f46c7ab6957a13806",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-03-shop.webp",
+      "sha256": "26d50227defabb0d9c6ccfc0a978eb9125e2387c96258e1a498f873073f38db1",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-04-late-arrival.webp",
+      "sha256": "bf157e4e59b2b155d98bece10b445e45b5bcf6ba39a75205d765aaf42fd451a7",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-05-cafe-day-job.webp",
+      "sha256": "e94ada9908a3773135a3a633490fbd56b2c1d07daf457d43aa78dc5ee44caf33",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/contact-detail-20261110.webp",
+      "sha256": "0c2695fb753a112f65a736ee5db6121d9ff0a226831f22c306188ab7da5fb164",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/contact-list-20261110.webp",
+      "sha256": "e4b9e16f5680134354f8a8198cffd8e2d001ada9effe26aaf80355a4a29c5c66",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/manager-experience-20261110.webp",
+      "sha256": "d17288929ab9b02fcdf80872df4597023fad67fae25e5d1947992e6813d99537",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "core.js",
+      "sha256": "e7426a4332636cd70bee110fd906bff32dcc45e716f9977f861519245c02176d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "education-pages.css",
+      "sha256": "1121700d3a46e71d6ee31ebb60bd33d9160cdfdf8286e9cfe63c6a55dfda23a3",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "education-pages.js",
+      "sha256": "d4411b1b3eaad221196ad25210589de272baed545ed2ad3e3b4b3d97c0ed0f62",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "education-plans.js",
+      "sha256": "92a2cdb57c6cc7291add09e7e433accd739c369c57aa16074bd277796e777562",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "entry-screen.css",
+      "sha256": "95bdb6e922e83f72692b19c8f0e0b1d49458c868e65a4bd83856191d069f3016",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "entry-screen.js",
+      "sha256": "142cfd9f9ea74d31c1021af54344a535e37ae9e6a23c07a4f9a4d274ddb14edb",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "flow.js",
+      "sha256": "9583e781df1c8a66fbab09b8728afe0af7a6b3bf6b2664b4d8d488325fe388a6",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "index.html",
+      "sha256": "1151e75e7d27675ce5a2d4e07f698fc50030630930bcbb947e0dc7cab6d8b00e",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "painted-pages.js",
+      "sha256": "dfdd69fd0ea0bec39af2c9bb089e90751942fd1ea44b3285709b621465885b46",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-insurance.js",
+      "sha256": "ce7034c898132470ed69dc16195a368b69fb29be76dea886e7bd360e5d4eb424",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-pages.css",
+      "sha256": "27d1d37354ad40c5ab2734e48bb8f66100f56d476758dc5262647b5c30dec2d4",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-pages.js",
+      "sha256": "c120647bfcc9133dd58f2d336a18a953a6d57c01d056cdcc67bcf60fbd6a8a7b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-avatars.js",
+      "sha256": "6ce50714b4eca7264cbd2868e28aa78d121bb63dfe9b31655564d573e2344c39",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-card-data.js",
+      "sha256": "af9ec82c987ffff396b1912eda943f2ac98f6a5f4c776c5bb34abc8acca5a768",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-life-cards.js",
+      "sha256": "c176ccf75d62a1d1a606ed1a77805c2aa2aec9c8435d6d4e9c5394170e581ecd",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-life-ui.js",
+      "sha256": "fad83ca2a0bc0d0192228fe7e4bdfcb624d920b9b71d111d7814a29db246551a",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-pages.css",
+      "sha256": "b1697c5b9edda91b20c422f60301595b3cb3f26ff702636ccfcebc96f5fefd14",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-rules.js",
+      "sha256": "8bb20cdb141f6323776d95307bb43cc8b8bd0649bf97d91077b19344c11768d9",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-ui.js",
+      "sha256": "7c60ced796255549fe5cf5cd49dcfdbf6b5dcfeccf172f24ebf3599fb54e40d0",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "rest-state.js",
+      "sha256": "b42437efb583013553fa561b51eab39237afc5acaee26d7a468c0448bc62b7d9",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "room.js",
+      "sha256": "930711aa9155d55599b80000493c9f2f56b76969fb5a7efcb3d6bd1d986bc1e4",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "save-slots.css",
+      "sha256": "90acad43281ab5b2dacfd46a8d65f685b1b4978a15f9bbf833e0083886d3f686",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "save-slots.js",
+      "sha256": "08d6db6dc307f7b1b8957948d9473cbf7f797a4f005e8817054333a4aeba910d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "sw.js",
+      "sha256": "fb3b5fa9355d7865b805b6a511dcb94a8824c3aa41260ddb2bd9549f5504122c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "time-flow.js",
+      "sha256": "d5430be19d97541e44b515a8430b901285e4d16e71249d32457873cd19d3d3dc",
+      "matchesLocal": true,
+      "error": ""
+    }
+  ],
+  "allMatch": true
+}
