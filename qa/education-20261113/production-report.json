@@ -1,0 +1,25 @@
+{
+  "scope": "isolated Chromium slot939: actual room education enrollment/controls/monthly settlement, not real iPhone/PWA",
+  "baseURL": "https://wealth-life.a562089605.workers.dev",
+  "phase": "production",
+  "steps": [
+    "associate: actual room -> enrollment -> progress; exact tuition/time and one classmate; original backup retained",
+    "bachelor: actual room -> enrollment -> progress; exact tuition/time and one classmate; original backup retained",
+    "master: actual room -> enrollment -> progress; exact tuition/time and one classmate; original backup retained",
+    "doctorate: actual room -> enrollment -> progress; exact tuition/time and one classmate; original backup retained",
+    "320/390/430/1280 responsive real controls >=44px, no horizontal overflow",
+    "Pace change persists refresh; monthly settlement advances old pace once then applies fast pace",
+    "Pause/resume start next month, suspended months do not advance, no repeated fees or contacts",
+    "Actual storage failure rolls back refund, retry refunds once and releases reservation",
+    "Started-course withdrawal keeps paid fees and original debts",
+    "Actual last-month doctoral graduation saves highest degree without invented doctorate wage bonus",
+    "Legacy current-course duration/tuition preserved with original UI",
+    "Saved classmate help card: accepts actual UI, one remaining month graduates immediately; no month jump, no current-month wage bump, 3h used, reservation retained",
+    "All 12 preserved education artwork resources decode",
+    "Offline refresh loads education scripts/art and saved progress without new charges",
+    "Actual enrollment storage failure: tuition, course and new classmate roll back together, retry creates exactly one",
+    "Actual monthly save failure rolls back learning progress and cash; one retry advances exactly once"
+  ],
+  "errors": [],
+  "passed": true
+}
