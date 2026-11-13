@@ -1,0 +1,394 @@
+{
+  "status": "confirmed",
+  "confirmedAt": "2026-11-13",
+  "confirmation": "用户确认每次+10XP及收紧排版新版画稿",
+  "runtimeIntegrated": true,
+  "published": false,
+  "file": "design/hobbies-20261113/coffee-tasting-10xp-confirmed.png",
+  "sourceFile": "/workspace/generated_images/exec-6bc08adf-52ba-47d8-ad16-44041a7d1206.png",
+  "sha256": "e8699300cb77307e26e01351f34bbe4fbf19ca284e5e337d46a247b1b0ffa09d",
+  "rules": {
+    "activity": "咖啡品鉴",
+    "cost": 30,
+    "hours": 2,
+    "energy": -1,
+    "xp": 10,
+    "happiness": 4,
+    "stress": -4,
+    "repeatable": true,
+    "monthlySharedLimit": null,
+    "levelCap": 5,
+    "levelThresholds": {
+      "0": 0,
+      "1": 50,
+      "2": 150,
+      "3": 300,
+      "4": 500,
+      "5": 800
+    },
+    "levelThresholdStatus": "用户在讨论逻辑后回复“好”确认；未入门Lv.0，正式Lv.1—5累计门槛50/150/300/500/800。",
+    "hiddenCopy": [
+      "每100 XP升一级",
+      "资源足够即可再次参加"
+    ],
+    "guards": "原现金/可用时间/能量检查及医疗康复、宠物照护预留保留；压力按原范围结算，不新增门槛"
+  },
+  "interestPool": [
+    "咖啡品鉴",
+    "烘焙",
+    "摄影",
+    "绘画"
+  ],
+  "skillsSeparateFromInterests": [
+    "拉花",
+    "手冲咖啡"
+  ],
+  "contactInterestCount": {
+    "one": 0.5,
+    "two": 0.5,
+    "duplicateAllowed": false
+  },
+  "preservation": "旧兴趣与XP保留，未自动迁移或重置；原稿和历史稿保留。",
+  "archive": [
+    {
+      "file": "design/hobbies-20261113/archive/coffee-tasting-original-35xp.png",
+      "sourceFile": "/workspace/generated_images/exec-e974989f-ab56-49df-8bee-0ab3ebfac6d1.png",
+      "sha256": "e65e337d0725609c5f62a8a651ace5587a97e9b45f7dd0df590d5d4051cba8a8",
+      "status": "superseded"
+    },
+    {
+      "file": "design/hobbies-20261113/archive/coffee-tasting-hide-level-rule.png",
+      "sourceFile": "/workspace/generated_images/exec-9bc70b13-95dc-4de2-91c3-2cf34b446516.png",
+      "sha256": "e40387bf09154a0c55ee53e66efe533ef68d3fdc5ddf512b79721799df36550e",
+      "status": "superseded"
+    },
+    {
+      "file": "design/hobbies-20261113/archive/coffee-tasting-hide-repeat-note.png",
+      "sourceFile": "/workspace/generated_images/exec-e5ac1620-f098-4371-a2f4-a7c4f160f384.png",
+      "sha256": "e46606e4d6edc987b3b0cc6a1ea0cee03da3108df75f359d873a59bc4fd35b8d",
+      "status": "superseded"
+    }
+  ],
+  "careerLinkStatus": "兴趣满级不自动晋升；品鉴对职业的具体作用及拉花/手冲等职业规则另行确认。",
+  "pendingRules": [
+    "专项提升对职业晋升与加薪的具体作用留职业板块统一确认；原职业经验、课程和工资规则保留。",
+    "联系人兴趣熟练度对应后续工作介绍/地图权重仍留相关板块，不擅自恢复旧权重或奖励。"
+  ],
+  "baking": {
+    "status": "confirmed",
+    "confirmedAt": "2026-11-13",
+    "cost": 45,
+    "hours": 3,
+    "energy": -2,
+    "xp": 10,
+    "happiness": 4,
+    "stress": -4,
+    "repeatable": true,
+    "levelThresholds": {
+      "0": 0,
+      "1": 50,
+      "2": 150,
+      "3": 300,
+      "4": 500,
+      "5": 800
+    },
+    "budgetNote": "用户确认的游戏预算，非现实统一收费",
+    "runtimeIntegrated": true,
+    "artConfirmedAt": "2026-11-13",
+    "artConfirmation": "用户看过烘焙活动页画稿后回复“确认”",
+    "file": "design/hobbies-20261113/baking-confirmed.png",
+    "sourceFile": "/workspace/generated_images/exec-48df1d5c-bcc0-4bc7-9d51-292c91d8e95a.png",
+    "sha256": "24a4468de2dfb954aff7fbc5af3a9dff9ca28b63e12a77b000ef13f13638b8b0",
+    "published": false
+  },
+  "photography": {
+    "status": "confirmed",
+    "confirmedAt": "2026-11-13",
+    "confirmation": "用户回复“确认”",
+    "cost": 20,
+    "hours": 2,
+    "energy": -1,
+    "xp": 10,
+    "happiness": 4,
+    "stress": -4,
+    "repeatable": true,
+    "levelThresholds": {
+      "0": 0,
+      "1": 50,
+      "2": 150,
+      "3": 300,
+      "4": 500,
+      "5": 800
+    },
+    "budgetNote": "活动参与游戏预算，不新增购买相机门槛",
+    "runtimeIntegrated": true,
+    "published": false,
+    "artConfirmedAt": "2026-11-13",
+    "artConfirmation": "用户看过摄影活动页画稿后回复“确认”",
+    "file": "design/hobbies-20261113/photography-confirmed.png",
+    "sourceFile": "/workspace/generated_images/exec-a762054d-562f-4925-83aa-a61a58d6b3fa.png",
+    "sha256": "056d2dc872185c0661f6b6150518afacd8124f2d0104b6d52a77d7c791cf959b"
+  },
+  "drawing": {
+    "status": "confirmed",
+    "confirmedAt": "2026-11-13",
+    "confirmation": "用户回复“好”",
+    "cost": 25,
+    "hours": 2,
+    "energy": -1,
+    "xp": 10,
+    "happiness": 4,
+    "stress": -4,
+    "repeatable": true,
+    "levelThresholds": {
+      "0": 0,
+      "1": 50,
+      "2": 150,
+      "3": 300,
+      "4": 500,
+      "5": 800
+    },
+    "budgetNote": "材料与活动参与的游戏预算，不另加购买画具门槛",
+    "runtimeIntegrated": true,
+    "published": false,
+    "artConfirmedAt": "2026-11-13",
+    "artConfirmation": "用户看过绘画活动页画稿后回复“确认”",
+    "file": "design/hobbies-20261113/drawing-confirmed.png",
+    "sourceFile": "/workspace/generated_images/exec-36b45e9a-10b2-439f-af23-f5bb04662f66.png",
+    "sha256": "53652fd142327d3c31b4968de99697e45d42bdf9d10da5c407c5a1b4378a4388"
+  },
+  "activitySummary": {
+    "confirmedActivities": [
+      "咖啡品鉴",
+      "烘焙",
+      "摄影",
+      "绘画"
+    ],
+    "allFourArtworksConfirmed": true,
+    "levelThresholds": {
+      "0": 0,
+      "1": 50,
+      "2": 150,
+      "3": 300,
+      "4": 500,
+      "5": 800
+    },
+    "repeatable": true,
+    "runtimeIntegrated": true,
+    "published": false
+  },
+  "maxLevelRule": {
+    "status": "confirmed",
+    "confirmedAt": "2026-11-13",
+    "confirmation": "用户明确满级不再继续，随后回复“确认”",
+    "level": 5,
+    "xp": 800,
+    "canPractice": false,
+    "buttonDisabled": true,
+    "display": "Lv.5 · 已满级",
+    "noFurtherChargesOrEffects": true,
+    "otherUnmaxedActivitiesRemainAvailable": true
+  },
+  "contactInterestGeneration": {
+    "status": "confirmed",
+    "confirmedAt": "2026-11-13",
+    "confirmation": "用户对先随机等级、再随机级内经验的建议回复“好”",
+    "pool": [
+      "咖啡品鉴",
+      "烘焙",
+      "摄影",
+      "绘画"
+    ],
+    "skillSelection": "四项等概率；第二项从剩余三项等概率抽取",
+    "countProbabilities": {
+      "1": 0.5,
+      "2": 0.5
+    },
+    "duplicatesAllowed": false,
+    "levelProbabilities": {
+      "0": 0.1,
+      "1": 0.25,
+      "2": 0.3,
+      "3": 0.2,
+      "4": 0.1,
+      "5": 0.05
+    },
+    "xpRanges": {
+      "0": [
+        0,
+        49
+      ],
+      "1": [
+        50,
+        149
+      ],
+      "2": [
+        150,
+        299
+      ],
+      "3": [
+        300,
+        499
+      ],
+      "4": [
+        500,
+        799
+      ],
+      "5": [
+        800,
+        800
+      ]
+    },
+    "xpSelection": "先抽等级，再在对应闭区间内等概率抽取整数经验；满级固定800XP",
+    "fixedAfterGeneration": true,
+    "contactLearningGrowth": false,
+    "legacyPolicy": "旧联系人已有兴趣和经验保留；不追溯改写或自动换算。旧联系人缺记录的补充方案未获本轮授权，不补造。",
+    "runtimeIntegrated": true,
+    "published": false
+  },
+  "coffeeSpecialistSkills": {
+    "status": "implemented-career-effects-deferred",
+    "confirmedAt": "2026-11-13",
+    "confirmation": "用户对拉花、手冲作为饮品制作下专项技能的建议回复“好”",
+    "parent": "饮品制作",
+    "skills": [
+      "拉花",
+      "手冲咖啡"
+    ],
+    "preservation": "原饮品制作/顾客服务/门店管理经验及晋升加薪规则保留；专项经验与原经验的关联及职业作用须逐项确认，不自动换算或奖励。",
+    "runtimeIntegrated": true,
+    "published": false
+  },
+  "latteArt": {
+    "status": "confirmed",
+    "confirmedAt": "2026-11-13",
+    "confirmation": "用户回复“好”",
+    "parentSkill": "饮品制作",
+    "cost": 40,
+    "hours": 2,
+    "energy": -2,
+    "xp": 10,
+    "happiness": 0,
+    "stress": 0,
+    "repeatableUntilMax": true,
+    "levelThresholds": {
+      "0": 0,
+      "1": 50,
+      "2": 150,
+      "3": 300,
+      "4": 500,
+      "5": 800
+    },
+    "maxXP": 800,
+    "stopAtMax": true,
+    "budgetNote": "材料与教学的游戏预算，不新增设备购买门槛",
+    "careerLink": "与原饮品制作经验及晋升加薪的关联另行确认，不自动增加原技能XP或工资",
+    "runtimeIntegrated": true,
+    "published": false,
+    "artConfirmedAt": "2026-11-13",
+    "artConfirmation": "用户看过拉花技能页画稿后回复“确认”",
+    "file": "design/hobbies-20261113/latte-art-confirmed.png",
+    "sourceFile": "/workspace/generated_images/exec-89e775b4-1e04-4009-b539-9419875e1c3b.png",
+    "sha256": "89ebcf4c52e23bc07a64f0cbbc114bd328a707c4b224674f7bdbc3eaa1217ff8"
+  },
+  "pourOver": {
+    "status": "confirmed",
+    "confirmedAt": "2026-11-13",
+    "confirmation": "用户回复“确认”",
+    "parentSkill": "饮品制作",
+    "cost": 35,
+    "hours": 2,
+    "energy": -2,
+    "xp": 10,
+    "happiness": 0,
+    "stress": 0,
+    "repeatableUntilMax": true,
+    "levelThresholds": {
+      "0": 0,
+      "1": 50,
+      "2": 150,
+      "3": 300,
+      "4": 500,
+      "5": 800
+    },
+    "maxXP": 800,
+    "stopAtMax": true,
+    "budgetNote": "材料与教学的游戏预算，不新增设备购买门槛",
+    "careerLink": "与原饮品制作经验及晋升加薪的关联另行确认，不自动增加原技能XP或工资",
+    "runtimeIntegrated": true,
+    "published": false,
+    "artConfirmedAt": "2026-11-13",
+    "artConfirmation": "用户看过手冲咖啡技能页画稿后回复“确认”",
+    "file": "design/hobbies-20261113/pour-over-confirmed.png",
+    "sourceFile": "/workspace/generated_images/exec-b1b68890-5776-4291-9726-d3dbc419fb3c.png",
+    "sha256": "16d68b81f78261e5f9f6a4833d8983aede63f84d8679cda4c24521a29c39140f"
+  },
+  "confirmedArtSummary": {
+    "hobbies": [
+      "咖啡品鉴",
+      "烘焙",
+      "摄影",
+      "绘画"
+    ],
+    "specialistSkills": [
+      "拉花",
+      "手冲咖啡"
+    ],
+    "confirmedPages": 6,
+    "runtimeIntegrated": true,
+    "published": false
+  },
+  "runtimeResources": [
+    {
+      "file": "assets/hobbies/coffee-tasting-10xp-confirmed.webp",
+      "sha256": "383af0e47d4f05f3abd35ace51cb06aa08c3ac0d14ded3a27e311c1ab78f5ed6",
+      "sourceFile": "design/hobbies-20261113/coffee-tasting-10xp-confirmed.png",
+      "sourceSHA256": "e8699300cb77307e26e01351f34bbe4fbf19ca284e5e337d46a247b1b0ffa09d"
+    },
+    {
+      "file": "assets/hobbies/baking-confirmed.webp",
+      "sha256": "287bf15fd19223df8f4510c2ab1b99a45bf46af3afed2687e6c1d40da3ac5543",
+      "sourceFile": "design/hobbies-20261113/baking-confirmed.png",
+      "sourceSHA256": "24a4468de2dfb954aff7fbc5af3a9dff9ca28b63e12a77b000ef13f13638b8b0"
+    },
+    {
+      "file": "assets/hobbies/photography-confirmed.webp",
+      "sha256": "83202e37f0e18ead3365d07a8485402bc27fa21e9704eb24a904b46931394428",
+      "sourceFile": "design/hobbies-20261113/photography-confirmed.png",
+      "sourceSHA256": "056d2dc872185c0661f6b6150518afacd8124f2d0104b6d52a77d7c791cf959b"
+    },
+    {
+      "file": "assets/hobbies/drawing-confirmed.webp",
+      "sha256": "4795182f3777ab008ee343c08d170109ab71a3f28f946dda00f31912240af457",
+      "sourceFile": "design/hobbies-20261113/drawing-confirmed.png",
+      "sourceSHA256": "53652fd142327d3c31b4968de99697e45d42bdf9d10da5c407c5a1b4378a4388"
+    },
+    {
+      "file": "assets/hobbies/latte-art-confirmed.webp",
+      "sha256": "55a23f0ac4bffe48e1d108c20b398e1058515acbabeb89be0298f85c0207c03e",
+      "sourceFile": "design/hobbies-20261113/latte-art-confirmed.png",
+      "sourceSHA256": "89ebcf4c52e23bc07a64f0cbbc114bd328a707c4b224674f7bdbc3eaa1217ff8"
+    },
+    {
+      "file": "assets/hobbies/pour-over-confirmed.webp",
+      "sha256": "ff6efc7eae613bf5deb841d7b17c487c5c7f8af984eab1625aeda236e56c6b62",
+      "sourceFile": "design/hobbies-20261113/pour-over-confirmed.png",
+      "sourceSHA256": "16d68b81f78261e5f9f6a4833d8983aede63f84d8679cda4c24521a29c39140f"
+    }
+  ],
+  "runtimeNotes": {
+    "playerXP": "新版兴趣/专项经验单独保存于hobbyLearning。已有同名摄影累计XP作为起点读取，原hobbyXP/hobbies字段不改写；其他旧兴趣记录保留。专项不自动增长原coffee.skills或触发新工资。",
+    "contacts": "仅新联系人/新锁定图书馆候选在原保存事务生成interestProfile.version2；旧人及旧候选不补造、不换算。报名学费/同学/头像/兴趣同笔保存。",
+    "annual": "新确认的年度兴趣选择使用新版费用、经验、资源检查与时间记录，每月一次自动安排，不限制手动重复；旧年度计划保留旧授权规则，不静默改写。新年度准备保存失败整笔回滚。",
+    "backup": "_before_hobbies_20261113 首次备份保留原槽原文，不覆盖既有备份。",
+    "art": "六张PNG确认原稿及历史稿保留。WebP仅格式转换；运行页复用页首插画，实际等级/经验/费用/按钮为DOM，非设计预览截图。"
+  },
+  "verification": {
+    "nodeReport": "qa/hobbies-20261113/node-report.json",
+    "browserReport": "qa/hobbies-20261113/local-report.json",
+    "nodeSuitesPassed": 10,
+    "browserGroupsPassed": 16,
+    "scriptErrors": 0,
+    "realIPhoneTested": false
+  }
+}

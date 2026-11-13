@@ -1,0 +1,49 @@
+{
+  "scope": "10 related Node checks actually executed for hobbies integration, not full repository suite",
+  "passed": true,
+  "tests": [
+    {
+      "test": "hobby-learning",
+      "passed": true
+    },
+    {
+      "test": "education-plans",
+      "passed": true
+    },
+    {
+      "test": "relationship-confirmed",
+      "passed": true
+    },
+    {
+      "test": "relationship-release",
+      "passed": true
+    },
+    {
+      "test": "relationship-avatars",
+      "passed": true
+    },
+    {
+      "test": "coffee-salary",
+      "passed": true
+    },
+    {
+      "test": "course-limits",
+      "passed": true
+    },
+    {
+      "test": "pet-sw-precache",
+      "passed": true
+    },
+    {
+      "test": "rest-state",
+      "passed": true
+    },
+    {
+      "test": "month-settlement-guard",
+      "passed": true
+    }
+  ],
+  "hobbyAssertions": 206,
+  "sampledContacts": 30000,
+  "baselineNote": "opening-state old URL hardcoding failure documented in education handoff was not modified or claimed passing."
+}

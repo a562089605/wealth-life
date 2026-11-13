@@ -55,7 +55,7 @@
  function learning(){
   showEvent('学习','学习与技能','先查看费用、时间与收益，再确认学习。',[],[
    ['学历学习',openEducation,true],['职业技能课程',openCoffeeCourses,false],
-   ['兴趣与技能',()=>el('hobbyBtn').click(),false],['返回房屋',openRoom,false]
+   ['兴趣爱好',()=>el('hobbyBtn').click(),false],['饮品制作专项',()=>window.HobbyPages?.open('specialist'),false],['返回房屋',openRoom,false]
   ]);
  }
  function living(){
