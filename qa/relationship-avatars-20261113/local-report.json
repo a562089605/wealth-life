@@ -1,0 +1,14 @@
+{
+  "scope": "Local isolated Chromium slot941; not iPhone hardware or production",
+  "steps": [
+    "Real storage failure restores entire state and original slot; retry binds once, preserving legacy fields and original backup",
+    "Actual list/detail use saved images; 320/390/430/1280 layouts fit and viewing does not change identity",
+    "Reload restores saved identities without reroll",
+    "All 60 independent approved avatar resources decode at 550×550",
+    "Six unique portraits per group; exhausted seventh and missing-gender legacy contact keep original placeholder without identity inference",
+    "Actual enrollment storage failure rolls back tuition/contact/portrait; retry saves exactly one classmate with fixed portrait",
+    "Installed SW supports offline reload and all 60 portraits without changing saved identity"
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -1,0 +1,1391 @@
+{
+  "scope": "逐张确认的联系人手绘头像原稿；不指定人物分配规则。",
+  "runtimeIntegrated": true,
+  "published": false,
+  "artworks": [
+    {
+      "id": "manager-female-01",
+      "file": "design/relationship-avatars-20261113/manager-female-01-confirmed.png",
+      "sha256": "cf8893f7b41d3c576d5681d0ce352db535621a72e88b0328353a92ab789648fa",
+      "bytes": 2680916,
+      "sourceFile": "/workspace/generated_images/exec-3d8ceeb8-8a35-49e9-bbaf-493ddbb37b5e.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户回复“确认”",
+      "appearance": "成年女性咖啡店经理，短棕发、深绿围裙、温和微笑；暖黄纸底成年Q版手绘。",
+      "assignedContactId": null,
+      "runtimeIntegrated": true
+    },
+    {
+      "id": "manager-male-01",
+      "file": "design/relationship-avatars-20261113/manager-male-01-confirmed.png",
+      "sha256": "adfff4ba73e3d51a7aae350b79818101163fc158bc3f1bdc847e185c7b0de974",
+      "bytes": 2512926,
+      "sourceFile": "/workspace/generated_images/exec-31fe49fe-55b3-44a3-a47a-67c85310390d.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户回复“确认”",
+      "appearance": "成年男性咖啡店经理，深棕短发、奶油色衬衫、深绿围裙、温和微笑；沿用已确认女性经理头像手绘画风。",
+      "assignedContactId": null,
+      "runtimeIntegrated": true
+    },
+    {
+      "id": "coworker-female-01",
+      "file": "design/relationship-avatars-20261113/coworker-female-01-confirmed.png",
+      "sha256": "efa378149e8961c4921679b2e8aa26ca6501bc9b511a3e2b918af5ebe85dad85",
+      "bytes": 2551100,
+      "sourceFile": "/workspace/generated_images/exec-461325a0-7c20-4e50-8847-03bbcb3cf619.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户回复“确认”",
+      "appearance": "成年女性咖啡店同事，黑色高马尾、浅黄上衣、深绿围裙、开朗微笑；沿用已确认经理头像手绘画风。",
+      "assignedContactId": null,
+      "runtimeIntegrated": true
+    },
+    {
+      "id": "coworker-male-01",
+      "file": "design/relationship-avatars-20261113/coworker-male-01-confirmed.png",
+      "sha256": "f9916ce816a4d0e5ab204d8e8e491b663f5a0477436d6a462cca1590467ed1fa",
+      "bytes": 2571991,
+      "sourceFile": "/workspace/generated_images/exec-9314f7e8-b541-47d5-aae1-daa9381a98b3.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户回复“确认”",
+      "appearance": "成年男性咖啡店同事，黑色微卷短发、浅蓝上衣、深绿围裙、开朗微笑；沿用已确认头像手绘画风。",
+      "assignedContactId": null,
+      "runtimeIntegrated": true
+    },
+    {
+      "id": "classmate-female-01",
+      "file": "design/relationship-avatars-20261113/classmate-female-01-confirmed.png",
+      "sha256": "88b640d3f4ea0b30fd1f6810dbb59d02570fdb57b64ad3d0e7bee2f7c54d1bec",
+      "bytes": 2575556,
+      "sourceFile": "/workspace/generated_images/exec-c1264085-ffb7-43ff-8588-e7344fe1fd3f.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户看过画稿后回复“可以”",
+      "appearance": "成年女性同学，栗色齐肩直发、圆框眼镜、奶油色针织衫、文静微笑；沿用已确认头像手绘画风。",
+      "assignedContactId": null,
+      "runtimeIntegrated": true
+    },
+    {
+      "id": "classmate-male-01",
+      "file": "design/relationship-avatars-20261113/classmate-male-01-confirmed.png",
+      "sha256": "78c907b170e81c9a3cabb37cd436a62e2707cab00fa1370006acf29021dcf53e",
+      "bytes": 2603163,
+      "sourceFile": "/workspace/generated_images/exec-559717e1-871b-4786-b05c-e3c2223f5e76.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户回复“确认”",
+      "appearance": "成年男性同学，深棕平直短发、细方框眼镜、雾蓝色针织衫、沉稳微笑；沿用已确认头像手绘画风。",
+      "assignedContactId": null,
+      "runtimeIntegrated": true
+    },
+    {
+      "id": "petfriend-female-01",
+      "file": "design/relationship-avatars-20261113/petfriend-female-01-confirmed.png",
+      "sha256": "b6e0f4567c45d70a84124a1abcff083402b7e945380afb6cf6a9f53b175820b1",
+      "bytes": 2510562,
+      "sourceFile": "/workspace/generated_images/exec-3297b5db-e471-419d-a683-2be028321d9b.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户回复“确认”",
+      "appearance": "成年女性宠友，深棕低丸子头、珊瑚橙休闲上衣、亲切微笑；沿用已确认头像手绘画风。",
+      "assignedContactId": null,
+      "runtimeIntegrated": true
+    },
+    {
+      "id": "petfriend-male-01",
+      "file": "design/relationship-avatars-20261113/petfriend-male-01-confirmed.png",
+      "sha256": "5ed72cfbe1c58247c04812134828f8518509f850a071ab3a36ccf062ecf57e4a",
+      "bytes": 2524607,
+      "sourceFile": "/workspace/generated_images/exec-b6b5402c-2bab-4376-aa82-39a66b4a7ce9.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户回复“确认”",
+      "appearance": "成年男性宠友，黑色利落短发、苔绿色休闲连帽衫、亲切微笑；沿用已确认头像手绘画风。",
+      "assignedContactId": null,
+      "runtimeIntegrated": true
+    },
+    {
+      "id": "landlord-female-01",
+      "file": "design/relationship-avatars-20261113/landlord-female-01-confirmed.png",
+      "sha256": "7fd674774ac90be564e2d385aed8b4bce49ffed51b5ab075791e6e46e21f5764",
+      "bytes": 2641408,
+      "sourceFile": "/workspace/generated_images/exec-bbb3a075-71e1-4f0f-af02-a0d77e0d48eb.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户回复“确认”",
+      "appearance": "中年女性房东，深棕夹少许灰发的短卷发、淡紫色开衫、米色内搭、温和微笑；沿用已确认头像手绘画风。",
+      "assignedContactId": null,
+      "runtimeIntegrated": true
+    },
+    {
+      "id": "landlord-male-01",
+      "file": "design/relationship-avatars-20261113/landlord-male-01-confirmed.png",
+      "sha256": "697831ef8628cc2c4c5a4f823f1e1766740c1a6bab6b1ab8c1d915f1bad5a372",
+      "bytes": 2637860,
+      "sourceFile": "/workspace/generated_images/exec-38d73f6b-f837-4e1d-9efa-edea534584a6.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户回复“确认”",
+      "appearance": "中年男性房东，深灰短发、鬓角略白、棕色针织背心配米色衬衫、温和微笑；沿用已确认头像手绘画风。",
+      "assignedContactId": null,
+      "runtimeIntegrated": true
+    },
+    {
+      "id": "manager-female-batch-05",
+      "file": "design/relationship-avatars-20261113/manager-female-batch-05-confirmed.png",
+      "sha256": "ce02adeb779490ef0110852c5bf108838f540ee7c6919dde949b4ddfa99ebbe0",
+      "bytes": 2765930,
+      "sourceFile": "/workspace/generated_images/exec-8c821fbb-d602-4704-8981-9aa520901a6e.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户看过女性5张和男性5张两组预览后回复“确认”",
+      "portraitCount": 5,
+      "layout": "上排3张，下排2张；按从左到右、从上到下识别",
+      "appearance": "女性经理5张，青年至年长；上排从左至右及下排从左至右：黑色不对称短直发、赤褐高丸子头、棕色卷发眼镜、灰棕短发、银发低髻。",
+      "artifactType": "五人头像合页确认原稿；对应5个独立WebP已提取，未重画。",
+      "runtimeIntegrated": true,
+      "assignedContactId": null
+    },
+    {
+      "id": "manager-male-batch-05",
+      "file": "design/relationship-avatars-20261113/manager-male-batch-05-confirmed.png",
+      "sha256": "796faea3e688bc7add3a576837d1e20be66fb8da828b21c20fa17e46783c11d4",
+      "bytes": 2784763,
+      "sourceFile": "/workspace/generated_images/exec-23936c05-43e3-4710-98c7-a68e32f7cfd4.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户看过女性5张和男性5张两组预览后回复“确认”",
+      "portraitCount": 5,
+      "layout": "上排3张，下排2张；按从左到右、从上到下识别",
+      "appearance": "男性经理5张，青年至年长；上排从左至右及下排从左至右：黑色短发、赤褐卷发雀斑、眼镜小胡须、灰黑短发圆脸、银发短胡须。",
+      "artifactType": "五人头像合页确认原稿；对应5个独立WebP已提取，未重画。",
+      "runtimeIntegrated": true,
+      "assignedContactId": null
+    },
+    {
+      "id": "coworker-female-batch-05",
+      "file": "design/relationship-avatars-20261113/coworker-female-batch-05-confirmed.png",
+      "sha256": "e585cf705646d0a3132bacf73d5dc41a4f9c07f0e734aae129f36b81782b8fcd",
+      "bytes": 2704190,
+      "sourceFile": "/workspace/generated_images/exec-e2a69dbf-8f68-463b-8af2-40f4c9763886.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户看过女性5张和男性5张同事两组预览后回复“确认”",
+      "portraitCount": 5,
+      "layout": "上排3张，下排2张；按从左到右、从上到下识别",
+      "appearance": "女性同事5张，青年至年长；上排左至右、下排左至右：黑色双低辫、蜜棕齐肩直发齐刘海、黑色低马尾方框眼镜、铜红短卷发雀斑、灰黑发配米色发带。",
+      "artifactType": "五人头像合页确认原稿；对应5个独立WebP已提取，未重画。",
+      "runtimeIntegrated": true,
+      "assignedContactId": null
+    },
+    {
+      "id": "coworker-male-batch-05",
+      "file": "design/relationship-avatars-20261113/coworker-male-batch-05-confirmed.png",
+      "sha256": "69ddebec8ff1f5208d326a2ab134c5026525883fb6668a1eaa3727889467ce73",
+      "bytes": 2636109,
+      "sourceFile": "/workspace/generated_images/exec-04bf04ce-fd4d-4a25-a7f3-9730d8541abd.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户看过女性5张和男性5张同事两组预览后回复“确认”",
+      "portraitCount": 5,
+      "layout": "上排3张，下排2张；按从左到右、从上到下识别",
+      "appearance": "男性同事5张，青年至年长；上排左至右、下排左至右：浅金短发、黑色寸头、棕色微卷发圆眼镜山羊胡、鬓角灰白棕发、银灰短发小胡须。",
+      "artifactType": "五人头像合页确认原稿；对应5个独立WebP已提取，未重画。",
+      "runtimeIntegrated": true,
+      "assignedContactId": null
+    },
+    {
+      "id": "classmate-female-batch-05",
+      "file": "design/relationship-avatars-20261113/classmate-female-batch-05-confirmed.png",
+      "sha256": "87e230b76ff387e30f4aa6c022ce8b90aeb4dd5c308c6f8314cc7b0335782c9e",
+      "bytes": 2792851,
+      "sourceFile": "/workspace/generated_images/exec-52413434-1b1b-4582-9b54-dbf2903bbd13.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户看过女性5张和男性5张同学两组预览后回复“确认”",
+      "portraitCount": 5,
+      "layout": "上排3张，下排2张；按从左到右、从上到下识别",
+      "appearance": "女性同学5张，成年在职学习者；上排左至右、下排左至右：黑色齐刘海短直发、栗色侧辫雀斑、低发髻六角眼镜、赤棕层次短发、银灰齐肩直发。",
+      "artifactType": "五人头像合页确认原稿；对应5个独立WebP已提取，未重画。",
+      "runtimeIntegrated": true,
+      "assignedContactId": null
+    },
+    {
+      "id": "classmate-male-batch-05",
+      "file": "design/relationship-avatars-20261113/classmate-male-batch-05-confirmed.png",
+      "sha256": "1a3c4f521b3b4ea436f59891eb3ed35dcacf7eeb7f6b201bb9bc7ac46af7b87b",
+      "bytes": 2699626,
+      "sourceFile": "/workspace/generated_images/exec-0c77cbfb-9e86-44d3-bc84-c34541edd8b2.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户看过女性5张和男性5张同学两组预览后回复“确认”",
+      "portraitCount": 5,
+      "layout": "上排3张，下排2张；按从左到右、从上到下识别",
+      "appearance": "男性同学5张，成年在职学习者；上排左至右、下排左至右：黑色中分短发、深金短发方框眼镜雀斑、棕色低发髻短胡须、灰黑短发圆脸、银发椭圆眼镜小胡须。",
+      "artifactType": "五人头像合页确认原稿；对应5个独立WebP已提取，未重画。",
+      "runtimeIntegrated": true,
+      "assignedContactId": null
+    },
+    {
+      "id": "petfriend-female-batch-05",
+      "file": "design/relationship-avatars-20261113/petfriend-female-batch-05-confirmed.png",
+      "sha256": "2fb550fcf8172a190246ccc8cd27f7c75f5242591d88f9e0b0ce7464fc444654",
+      "bytes": 2733353,
+      "sourceFile": "/workspace/generated_images/exec-5241e8eb-2e0b-4f6b-ba32-d3d2e3f2d418.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户看过女性5张和男性5张宠友两组预览后回复“确认”",
+      "portraitCount": 5,
+      "layout": "上排3张，下排2张；按从左到右、从上到下识别",
+      "appearance": "女性宠友5张，青年至年长；上排左至右、下排左至右：黑色侧马尾青绿连帽衫、铜红短直发雀斑黄色上衣、棕色波浪发眼镜粉色开衫、灰黑短卷发紫色上衣、银发双低辫绿色开衫。",
+      "artifactType": "五人头像合页确认原稿；对应5个独立WebP已提取，未重画。",
+      "runtimeIntegrated": true,
+      "assignedContactId": null
+    },
+    {
+      "id": "petfriend-male-batch-05",
+      "file": "design/relationship-avatars-20261113/petfriend-male-batch-05-confirmed.png",
+      "sha256": "55b8f29fc95f70a3dd1603d18ba93de0256e76fe011e5c5347082abdbb1d69c5",
+      "bytes": 2724738,
+      "sourceFile": "/workspace/generated_images/exec-0901774f-7713-4cf5-87e6-1326163d5806.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户看过女性5张和男性5张宠友两组预览后回复“确认”",
+      "portraitCount": 5,
+      "layout": "上排3张，下排2张；按从左到右、从上到下识别",
+      "appearance": "男性宠友5张，青年至年长；上排左至右、下排左至右：棕色蓬松短发珊瑚连帽衫、黑色齐肩发圆眼镜、赤褐短发胡须蓝色外衫、鬓角银白短发赭色毛衣、银灰波浪短发小胡须青绿连帽衫。",
+      "artifactType": "五人头像合页确认原稿；对应5个独立WebP已提取，未重画。",
+      "runtimeIntegrated": true,
+      "assignedContactId": null
+    },
+    {
+      "id": "landlord-female-batch-05",
+      "file": "design/relationship-avatars-20261113/landlord-female-batch-05-confirmed.png",
+      "sha256": "d65f2a7506077c15cde2518d8f2e7682487432bc518872ea5ecbb34274be2d53",
+      "bytes": 2700334,
+      "sourceFile": "/workspace/generated_images/exec-abee309d-1115-4b44-9331-628ba80e29da.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户看过女性5张和男性5张房东两组预览后回复“确认”",
+      "portraitCount": 5,
+      "layout": "上排3张，下排2张；按从左到右、从上到下识别",
+      "appearance": "女性房东5张，不同成年年龄；上排左至右、下排左至右：棕色半扎长发配发夹、黑色短发方框眼镜、栗色夹银高发髻、银灰侧分短发、白色短卷发椭圆眼镜。",
+      "artifactType": "五人头像合页确认原稿；对应5个独立WebP已提取，未重画。",
+      "runtimeIntegrated": true,
+      "assignedContactId": null
+    },
+    {
+      "id": "landlord-male-batch-05",
+      "file": "design/relationship-avatars-20261113/landlord-male-batch-05-confirmed.png",
+      "sha256": "5a867a4209e6829c005ea35d98dd7d80cb0777a70d72b09095f3909ab5200549",
+      "bytes": 2724323,
+      "sourceFile": "/workspace/generated_images/exec-1493a9d2-3c17-4f10-adac-7a2ea91333a3.png",
+      "status": "confirmed",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户看过女性5张和男性5张房东两组预览后回复“确认”",
+      "portraitCount": 5,
+      "layout": "上排3张，下排2张；按从左到右、从上到下识别",
+      "appearance": "男性房东5张，不同成年年龄；上排左至右、下排左至右：黑色侧分短发、栗色短卷发方框眼镜、灰黑短发短胡须、银灰短发高发际线、白色波浪短发圆眼镜白胡须。",
+      "artifactType": "五人头像合页确认原稿；对应5个独立WebP已提取，未重画。",
+      "runtimeIntegrated": true,
+      "assignedContactId": null
+    }
+  ],
+  "pending": [
+    "继续逐张确认头像外观",
+    "逐人不同且固定的头像分配实现待处理；不擅造复用或分配规则",
+    "兴趣池仍待确认"
+  ],
+  "managerBatchScope": "用户授权按助手外观设计制作新的女性经理5张及男性经理5张，年龄不同；此前男女经理各1张确认稿保留。经理共12个人物外观，当前新10张保存在两张五人合页内。",
+  "coworkerBatchScope": "新增女性同事5张和男性同事5张已确认；此前男女同事各1张确认稿保留。同事共12个人物外观，新10张仍保存于两张五人合页。",
+  "classmateBatchScope": "新增女性同学5张和男性同学5张已确认，覆盖不同年龄成年在职学习者；此前男女同学各1张确认稿保留。同学共12个人物外观，新10张仍保存于两张五人合页。",
+  "petfriendBatchScope": "新增女性宠友5张和男性宠友5张已确认，覆盖不同年龄与外观；此前男女宠友各1张确认稿保留。宠友共12个人物外观，新10张仍保存于两张五人合页。",
+  "landlordBatchScope": "新增女性房东5张和男性房东5张已确认；此前男女房东各1张确认稿保留。房东共12个人物外观，新10张仍保存于两张五人合页。",
+  "collectionSummary": {
+    "confirmedPortraits": 60,
+    "confirmedSourceFiles": 20,
+    "roles": {
+      "manager": {
+        "female": 6,
+        "male": 6,
+        "total": 12
+      },
+      "coworker": {
+        "female": 6,
+        "male": 6,
+        "total": 12
+      },
+      "classmate": {
+        "female": 6,
+        "male": 6,
+        "total": 12
+      },
+      "petfriend": {
+        "female": 6,
+        "male": 6,
+        "total": 12
+      },
+      "landlord": {
+        "female": 6,
+        "male": 6,
+        "total": 12
+      }
+    },
+    "singlePortraitSources": 10,
+    "fivePortraitSheetSources": 10,
+    "runtimeIntegrated": true,
+    "published": false,
+    "note": "五类各女性6张、男性6张，60个独立资源已由确认原稿提取并本地接入固定绑定；原20份原稿及60份裁切PNG均保留。尚未上传或发布。"
+  },
+  "runtimeResources": [
+    {
+      "id": "manager-female-01",
+      "role": "manager",
+      "gender": "female",
+      "file": "assets/relationships/avatars/manager-female-01.webp",
+      "sha256": "d0637cc5faa128e38de59f57d2a4daa74ec6c0429cf2f2fb2decbd9863710d8b",
+      "sourceFile": "design/relationship-avatars-20261113/manager-female-01-confirmed.png",
+      "sourceSHA256": "cf8893f7b41d3c576d5681d0ce352db535621a72e88b0328353a92ab789648fa",
+      "sourcePosition": null,
+      "crop": null,
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/manager-female-01.png",
+      "extractedSHA256": "3114a848c48c38c04e468dea34bf83860a32eb2bb113ff614ef40429c30ab26f"
+    },
+    {
+      "id": "manager-male-01",
+      "role": "manager",
+      "gender": "male",
+      "file": "assets/relationships/avatars/manager-male-01.webp",
+      "sha256": "b2a395a1e1491f2fd8b493f885252ff4f46224a9144fad54d9d07f0b58697a40",
+      "sourceFile": "design/relationship-avatars-20261113/manager-male-01-confirmed.png",
+      "sourceSHA256": "adfff4ba73e3d51a7aae350b79818101163fc158bc3f1bdc847e185c7b0de974",
+      "sourcePosition": null,
+      "crop": null,
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/manager-male-01.png",
+      "extractedSHA256": "83d09ec16c5f1d907a7b86d470a9d1dc1cd851992c8dbab45943ddf321f94d5d"
+    },
+    {
+      "id": "coworker-female-01",
+      "role": "coworker",
+      "gender": "female",
+      "file": "assets/relationships/avatars/coworker-female-01.webp",
+      "sha256": "3e0094ad327b851fa0ffed28f99cf1c9b0858ef43affcf8bae6782a5cf27c759",
+      "sourceFile": "design/relationship-avatars-20261113/coworker-female-01-confirmed.png",
+      "sourceSHA256": "efa378149e8961c4921679b2e8aa26ca6501bc9b511a3e2b918af5ebe85dad85",
+      "sourcePosition": null,
+      "crop": null,
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/coworker-female-01.png",
+      "extractedSHA256": "fdce781dda032d7f246ec836465ba1c555402bcf26e3eb6b99794efaea4addaa"
+    },
+    {
+      "id": "coworker-male-01",
+      "role": "coworker",
+      "gender": "male",
+      "file": "assets/relationships/avatars/coworker-male-01.webp",
+      "sha256": "5de1249d613bef6446cabb333c064775bd1984134fedb9aa199befeb7fe31936",
+      "sourceFile": "design/relationship-avatars-20261113/coworker-male-01-confirmed.png",
+      "sourceSHA256": "f9916ce816a4d0e5ab204d8e8e491b663f5a0477436d6a462cca1590467ed1fa",
+      "sourcePosition": null,
+      "crop": null,
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/coworker-male-01.png",
+      "extractedSHA256": "31d69b5b93e53e83f0a28508ef61893a3008c9239f493516e3957b2727144c89"
+    },
+    {
+      "id": "classmate-female-01",
+      "role": "classmate",
+      "gender": "female",
+      "file": "assets/relationships/avatars/classmate-female-01.webp",
+      "sha256": "f9494e6ce0fe3d190b1b674a7bc3bdfb8e1234b962f2e289f090cb6bbfe6165c",
+      "sourceFile": "design/relationship-avatars-20261113/classmate-female-01-confirmed.png",
+      "sourceSHA256": "88b640d3f4ea0b30fd1f6810dbb59d02570fdb57b64ad3d0e7bee2f7c54d1bec",
+      "sourcePosition": null,
+      "crop": null,
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/classmate-female-01.png",
+      "extractedSHA256": "c4667786912e79ed9e609bb7f965e02585c679bb6fa2806635afa3411b92579a"
+    },
+    {
+      "id": "classmate-male-01",
+      "role": "classmate",
+      "gender": "male",
+      "file": "assets/relationships/avatars/classmate-male-01.webp",
+      "sha256": "0061ed730e9abc2a3e888bda07f1438093a5498f3992a1e0b5d3d47b0ae6a827",
+      "sourceFile": "design/relationship-avatars-20261113/classmate-male-01-confirmed.png",
+      "sourceSHA256": "78c907b170e81c9a3cabb37cd436a62e2707cab00fa1370006acf29021dcf53e",
+      "sourcePosition": null,
+      "crop": null,
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/classmate-male-01.png",
+      "extractedSHA256": "7eaa3d345ee28ced5ec1a3ab146a1fc7c0b0c518d34efbfd29b717b1748c18bb"
+    },
+    {
+      "id": "petfriend-female-01",
+      "role": "petfriend",
+      "gender": "female",
+      "file": "assets/relationships/avatars/petfriend-female-01.webp",
+      "sha256": "2c8c29c9ab3d9b07ab7a1b92ac46e4304a1e12797774587ce55a7ee2eca01ee9",
+      "sourceFile": "design/relationship-avatars-20261113/petfriend-female-01-confirmed.png",
+      "sourceSHA256": "b6e0f4567c45d70a84124a1abcff083402b7e945380afb6cf6a9f53b175820b1",
+      "sourcePosition": null,
+      "crop": null,
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/petfriend-female-01.png",
+      "extractedSHA256": "a1b39b0957591c0d1c8306ed7fd294effc06b7d22bce71cb08f3663a5ff81a5d"
+    },
+    {
+      "id": "petfriend-male-01",
+      "role": "petfriend",
+      "gender": "male",
+      "file": "assets/relationships/avatars/petfriend-male-01.webp",
+      "sha256": "75632260fbd3addb088b2cc5134e3875ea4ad068c7665c5325f1038062089ec4",
+      "sourceFile": "design/relationship-avatars-20261113/petfriend-male-01-confirmed.png",
+      "sourceSHA256": "5ed72cfbe1c58247c04812134828f8518509f850a071ab3a36ccf062ecf57e4a",
+      "sourcePosition": null,
+      "crop": null,
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/petfriend-male-01.png",
+      "extractedSHA256": "5c1ef39ed1bd207a6e249b4962bfb771f0ef393981a2f84ce68efdc744223a1e"
+    },
+    {
+      "id": "landlord-female-01",
+      "role": "landlord",
+      "gender": "female",
+      "file": "assets/relationships/avatars/landlord-female-01.webp",
+      "sha256": "98d91326b3697b65f3dfb7158e45d1aef362cb2ab61788faf82a3e08f5d02cd1",
+      "sourceFile": "design/relationship-avatars-20261113/landlord-female-01-confirmed.png",
+      "sourceSHA256": "7fd674774ac90be564e2d385aed8b4bce49ffed51b5ab075791e6e46e21f5764",
+      "sourcePosition": null,
+      "crop": null,
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/landlord-female-01.png",
+      "extractedSHA256": "d541b03aaf82c01745ab735f92020a0c71ee1dcdcca83534fa979b265d2b1024"
+    },
+    {
+      "id": "landlord-male-01",
+      "role": "landlord",
+      "gender": "male",
+      "file": "assets/relationships/avatars/landlord-male-01.webp",
+      "sha256": "a431390d44c3bb808cfbb3b805f87c83ed1adfed83a79d64a30f75f2608a4fd8",
+      "sourceFile": "design/relationship-avatars-20261113/landlord-male-01-confirmed.png",
+      "sourceSHA256": "697831ef8628cc2c4c5a4f823f1e1766740c1a6bab6b1ab8c1d915f1bad5a372",
+      "sourcePosition": null,
+      "crop": null,
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/landlord-male-01.png",
+      "extractedSHA256": "ba0783efe5c8504ef4470f9a1b9d035ce7dc6a121d73de43eeca45d3525ab436"
+    },
+    {
+      "id": "manager-female-02",
+      "role": "manager",
+      "gender": "female",
+      "file": "assets/relationships/avatars/manager-female-02.webp",
+      "sha256": "03437b2edd048d64ca4f6afa365d896a86264c101691524520e492b226411887",
+      "sourceFile": "design/relationship-avatars-20261113/manager-female-batch-05-confirmed.png",
+      "sourceSHA256": "ce02adeb779490ef0110852c5bf108838f540ee7c6919dde949b4ddfa99ebbe0",
+      "sourcePosition": 1,
+      "crop": [
+        0,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/manager-female-02.png",
+      "extractedSHA256": "b76a1b43b96f95360269092510432e29dbb0c25eb69f1432c513011d24a58f8c"
+    },
+    {
+      "id": "manager-female-03",
+      "role": "manager",
+      "gender": "female",
+      "file": "assets/relationships/avatars/manager-female-03.webp",
+      "sha256": "1330b50cb013cdda350c5eda59f3c05854beafa449f49084ef26ac6ba9aeda24",
+      "sourceFile": "design/relationship-avatars-20261113/manager-female-batch-05-confirmed.png",
+      "sourceSHA256": "ce02adeb779490ef0110852c5bf108838f540ee7c6919dde949b4ddfa99ebbe0",
+      "sourcePosition": 2,
+      "crop": [
+        418,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/manager-female-03.png",
+      "extractedSHA256": "d732a2bda1ba26c97e7edd5578f057610dbe7e982c6add61a5624ba6eefad1cd"
+    },
+    {
+      "id": "manager-female-04",
+      "role": "manager",
+      "gender": "female",
+      "file": "assets/relationships/avatars/manager-female-04.webp",
+      "sha256": "89633a7a6d31269da407253384b30371407eb80d0f5ea26c990eddf7b1ce6c16",
+      "sourceFile": "design/relationship-avatars-20261113/manager-female-batch-05-confirmed.png",
+      "sourceSHA256": "ce02adeb779490ef0110852c5bf108838f540ee7c6919dde949b4ddfa99ebbe0",
+      "sourcePosition": 3,
+      "crop": [
+        836,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/manager-female-04.png",
+      "extractedSHA256": "a296a5f6e3ea10a1c300f9e460b1b41013c71c64c17cd8433cbc5e1d5125f84f"
+    },
+    {
+      "id": "manager-female-05",
+      "role": "manager",
+      "gender": "female",
+      "file": "assets/relationships/avatars/manager-female-05.webp",
+      "sha256": "1fadd269f9aebafd7978ce9552e87345bb851c99183b02664779367a4acf0972",
+      "sourceFile": "design/relationship-avatars-20261113/manager-female-batch-05-confirmed.png",
+      "sourceSHA256": "ce02adeb779490ef0110852c5bf108838f540ee7c6919dde949b4ddfa99ebbe0",
+      "sourcePosition": 4,
+      "crop": [
+        125,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/manager-female-05.png",
+      "extractedSHA256": "51c2c3439fb5be0b8f1134848401ce319e3b4d30d56532c25e9602e3bf37c132"
+    },
+    {
+      "id": "manager-female-06",
+      "role": "manager",
+      "gender": "female",
+      "file": "assets/relationships/avatars/manager-female-06.webp",
+      "sha256": "f45d93b5987da6d3131f4205116f7f94d9774861a97b1fb569000f339b4c406b",
+      "sourceFile": "design/relationship-avatars-20261113/manager-female-batch-05-confirmed.png",
+      "sourceSHA256": "ce02adeb779490ef0110852c5bf108838f540ee7c6919dde949b4ddfa99ebbe0",
+      "sourcePosition": 5,
+      "crop": [
+        625,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/manager-female-06.png",
+      "extractedSHA256": "e2377a2e96ba2c0e69fa3b10f9d3e11b45ba810ef15e7e71d21a8b735642b9d0"
+    },
+    {
+      "id": "manager-male-02",
+      "role": "manager",
+      "gender": "male",
+      "file": "assets/relationships/avatars/manager-male-02.webp",
+      "sha256": "70756f38f1e872cdaca16c6b50fbc6b0a10da73b53e132edada5fd5f3d5c0cc3",
+      "sourceFile": "design/relationship-avatars-20261113/manager-male-batch-05-confirmed.png",
+      "sourceSHA256": "796faea3e688bc7add3a576837d1e20be66fb8da828b21c20fa17e46783c11d4",
+      "sourcePosition": 1,
+      "crop": [
+        0,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/manager-male-02.png",
+      "extractedSHA256": "7b868e134ff4e8947b5c3724bbf150f0dba83b62d5db2c0a73477998ae4e3efc"
+    },
+    {
+      "id": "manager-male-03",
+      "role": "manager",
+      "gender": "male",
+      "file": "assets/relationships/avatars/manager-male-03.webp",
+      "sha256": "34d4d9c1c12ae93ff27848cd6ed7b020f2786d4f21a0f1e8a3f9d0d0c325ac2a",
+      "sourceFile": "design/relationship-avatars-20261113/manager-male-batch-05-confirmed.png",
+      "sourceSHA256": "796faea3e688bc7add3a576837d1e20be66fb8da828b21c20fa17e46783c11d4",
+      "sourcePosition": 2,
+      "crop": [
+        418,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/manager-male-03.png",
+      "extractedSHA256": "2d76873bf5d474909167b57e619b3588cae6f3a7d7b9e02b918813a614ec062c"
+    },
+    {
+      "id": "manager-male-04",
+      "role": "manager",
+      "gender": "male",
+      "file": "assets/relationships/avatars/manager-male-04.webp",
+      "sha256": "a6ff820851f384190d886a05a313c08c719bbd316feb7995450f2beb7f106dbb",
+      "sourceFile": "design/relationship-avatars-20261113/manager-male-batch-05-confirmed.png",
+      "sourceSHA256": "796faea3e688bc7add3a576837d1e20be66fb8da828b21c20fa17e46783c11d4",
+      "sourcePosition": 3,
+      "crop": [
+        836,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/manager-male-04.png",
+      "extractedSHA256": "d6ac80e4f555e9054aa918f4b71fc65b8bfe827db3d7c19bff6a13b6b271be23"
+    },
+    {
+      "id": "manager-male-05",
+      "role": "manager",
+      "gender": "male",
+      "file": "assets/relationships/avatars/manager-male-05.webp",
+      "sha256": "ddb508d901d7e3422f19578283139c5f9118808d4e6ba436e4bc616aea88f3bd",
+      "sourceFile": "design/relationship-avatars-20261113/manager-male-batch-05-confirmed.png",
+      "sourceSHA256": "796faea3e688bc7add3a576837d1e20be66fb8da828b21c20fa17e46783c11d4",
+      "sourcePosition": 4,
+      "crop": [
+        125,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/manager-male-05.png",
+      "extractedSHA256": "ef29d3f072ddbf910badeacd21d2d7faa79ea00485de713e4c3c46cabdda8462"
+    },
+    {
+      "id": "manager-male-06",
+      "role": "manager",
+      "gender": "male",
+      "file": "assets/relationships/avatars/manager-male-06.webp",
+      "sha256": "5fa461c47d4535f0018a48c773ed7796104e8ea97b8f1438b548a13ce3b476fc",
+      "sourceFile": "design/relationship-avatars-20261113/manager-male-batch-05-confirmed.png",
+      "sourceSHA256": "796faea3e688bc7add3a576837d1e20be66fb8da828b21c20fa17e46783c11d4",
+      "sourcePosition": 5,
+      "crop": [
+        625,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/manager-male-06.png",
+      "extractedSHA256": "46b593d923bfc014c736bed313d7a0eb73327cbedb54c2887e4d9e75ebe54244"
+    },
+    {
+      "id": "coworker-female-02",
+      "role": "coworker",
+      "gender": "female",
+      "file": "assets/relationships/avatars/coworker-female-02.webp",
+      "sha256": "34223236961af057c227cc0c2eace6d08503eb47f62d02ed2e7b4be5e20ee25c",
+      "sourceFile": "design/relationship-avatars-20261113/coworker-female-batch-05-confirmed.png",
+      "sourceSHA256": "e585cf705646d0a3132bacf73d5dc41a4f9c07f0e734aae129f36b81782b8fcd",
+      "sourcePosition": 1,
+      "crop": [
+        0,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/coworker-female-02.png",
+      "extractedSHA256": "6aba36d484c3d0dae0bd2b85c0ff572a3a4e6a4af0514158b3972ea3591471ec"
+    },
+    {
+      "id": "coworker-female-03",
+      "role": "coworker",
+      "gender": "female",
+      "file": "assets/relationships/avatars/coworker-female-03.webp",
+      "sha256": "96b65a790739c6067674dd4de6aeef0a5133a3201293c5bb88eb9c7e3b71e269",
+      "sourceFile": "design/relationship-avatars-20261113/coworker-female-batch-05-confirmed.png",
+      "sourceSHA256": "e585cf705646d0a3132bacf73d5dc41a4f9c07f0e734aae129f36b81782b8fcd",
+      "sourcePosition": 2,
+      "crop": [
+        418,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/coworker-female-03.png",
+      "extractedSHA256": "9f33407bada989e617fb2f964761a7c3589854d8eb734396f019befff51b81df"
+    },
+    {
+      "id": "coworker-female-04",
+      "role": "coworker",
+      "gender": "female",
+      "file": "assets/relationships/avatars/coworker-female-04.webp",
+      "sha256": "53a84aced7b83907ff59f9bc8a74e97b033a82ae9f53e139a5d496558a966343",
+      "sourceFile": "design/relationship-avatars-20261113/coworker-female-batch-05-confirmed.png",
+      "sourceSHA256": "e585cf705646d0a3132bacf73d5dc41a4f9c07f0e734aae129f36b81782b8fcd",
+      "sourcePosition": 3,
+      "crop": [
+        836,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/coworker-female-04.png",
+      "extractedSHA256": "73f49ffd33007c2523e1afdf1d90cee3a346588fb3f53dba7916a3c960a3411d"
+    },
+    {
+      "id": "coworker-female-05",
+      "role": "coworker",
+      "gender": "female",
+      "file": "assets/relationships/avatars/coworker-female-05.webp",
+      "sha256": "f7d818204743cf5e2e4f674548827d46c5df5fe0a54a20e754932ecb3a769052",
+      "sourceFile": "design/relationship-avatars-20261113/coworker-female-batch-05-confirmed.png",
+      "sourceSHA256": "e585cf705646d0a3132bacf73d5dc41a4f9c07f0e734aae129f36b81782b8fcd",
+      "sourcePosition": 4,
+      "crop": [
+        125,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/coworker-female-05.png",
+      "extractedSHA256": "c1908003dcaed1b9f5dcfdc8844460fcba8b8e81cd9207ab9b35aee7d47cf1b8"
+    },
+    {
+      "id": "coworker-female-06",
+      "role": "coworker",
+      "gender": "female",
+      "file": "assets/relationships/avatars/coworker-female-06.webp",
+      "sha256": "d508cac1ce28ed03cd1d16eb99edbd2ac4057277bbf3cf84d983744e66f97149",
+      "sourceFile": "design/relationship-avatars-20261113/coworker-female-batch-05-confirmed.png",
+      "sourceSHA256": "e585cf705646d0a3132bacf73d5dc41a4f9c07f0e734aae129f36b81782b8fcd",
+      "sourcePosition": 5,
+      "crop": [
+        625,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/coworker-female-06.png",
+      "extractedSHA256": "c03d2bbeb29329427c1bda6bbf6298848401db882c5c8e7f918a00132256f86e"
+    },
+    {
+      "id": "coworker-male-02",
+      "role": "coworker",
+      "gender": "male",
+      "file": "assets/relationships/avatars/coworker-male-02.webp",
+      "sha256": "38c5fd4cea701e745daa217ab9bdf243a651d3caac4cf5e5249275d1b97af72d",
+      "sourceFile": "design/relationship-avatars-20261113/coworker-male-batch-05-confirmed.png",
+      "sourceSHA256": "69ddebec8ff1f5208d326a2ab134c5026525883fb6668a1eaa3727889467ce73",
+      "sourcePosition": 1,
+      "crop": [
+        0,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/coworker-male-02.png",
+      "extractedSHA256": "f63a0663ebbd148a5c7f9d044adca0dc246cd99381b92b20dd69c767ea312b10"
+    },
+    {
+      "id": "coworker-male-03",
+      "role": "coworker",
+      "gender": "male",
+      "file": "assets/relationships/avatars/coworker-male-03.webp",
+      "sha256": "2196aa1e548263b410a4e307695f3ee116d3a6ac5ebc55d32ce84a66f5f95ba4",
+      "sourceFile": "design/relationship-avatars-20261113/coworker-male-batch-05-confirmed.png",
+      "sourceSHA256": "69ddebec8ff1f5208d326a2ab134c5026525883fb6668a1eaa3727889467ce73",
+      "sourcePosition": 2,
+      "crop": [
+        418,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/coworker-male-03.png",
+      "extractedSHA256": "cd8ff3a63f067e36cd930c3ea7a0b668d9b1d632241a5315cb4f37c81aa7ef5a"
+    },
+    {
+      "id": "coworker-male-04",
+      "role": "coworker",
+      "gender": "male",
+      "file": "assets/relationships/avatars/coworker-male-04.webp",
+      "sha256": "5f70ab1dddb734276ee4ad78662c46afd00e6c214a1de3fa2dc58106cba238d1",
+      "sourceFile": "design/relationship-avatars-20261113/coworker-male-batch-05-confirmed.png",
+      "sourceSHA256": "69ddebec8ff1f5208d326a2ab134c5026525883fb6668a1eaa3727889467ce73",
+      "sourcePosition": 3,
+      "crop": [
+        836,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/coworker-male-04.png",
+      "extractedSHA256": "ccd0980824810ce4ed4eef7ac6e6afd5d9957819e35c606e2d26c917f5c0fb90"
+    },
+    {
+      "id": "coworker-male-05",
+      "role": "coworker",
+      "gender": "male",
+      "file": "assets/relationships/avatars/coworker-male-05.webp",
+      "sha256": "218c9cc69a4f54d2836aad7679873b0ae3533fba4a54e6298a28515598289dae",
+      "sourceFile": "design/relationship-avatars-20261113/coworker-male-batch-05-confirmed.png",
+      "sourceSHA256": "69ddebec8ff1f5208d326a2ab134c5026525883fb6668a1eaa3727889467ce73",
+      "sourcePosition": 4,
+      "crop": [
+        125,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/coworker-male-05.png",
+      "extractedSHA256": "3144ec68f6d74a49d50c62b10a04aaabcc68013a53bdcf779a68f45149927153"
+    },
+    {
+      "id": "coworker-male-06",
+      "role": "coworker",
+      "gender": "male",
+      "file": "assets/relationships/avatars/coworker-male-06.webp",
+      "sha256": "aab6ee1fadd96c28b75631892b8d4edc78e7fae657d970d6961b3ba20adc421a",
+      "sourceFile": "design/relationship-avatars-20261113/coworker-male-batch-05-confirmed.png",
+      "sourceSHA256": "69ddebec8ff1f5208d326a2ab134c5026525883fb6668a1eaa3727889467ce73",
+      "sourcePosition": 5,
+      "crop": [
+        625,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/coworker-male-06.png",
+      "extractedSHA256": "a418a41ab313588567274526f529bc824749620117a2502422cc7edb0d63d4a4"
+    },
+    {
+      "id": "classmate-female-02",
+      "role": "classmate",
+      "gender": "female",
+      "file": "assets/relationships/avatars/classmate-female-02.webp",
+      "sha256": "275e42eb5a419db7419f479004bfd91ef2be75c49a2e51fe151e52fa35ca1ba2",
+      "sourceFile": "design/relationship-avatars-20261113/classmate-female-batch-05-confirmed.png",
+      "sourceSHA256": "87e230b76ff387e30f4aa6c022ce8b90aeb4dd5c308c6f8314cc7b0335782c9e",
+      "sourcePosition": 1,
+      "crop": [
+        0,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/classmate-female-02.png",
+      "extractedSHA256": "8a8b6dbafe579d3a10c166210317d1caaeb39feb3a3389ef3a8f8ec6c85c6147"
+    },
+    {
+      "id": "classmate-female-03",
+      "role": "classmate",
+      "gender": "female",
+      "file": "assets/relationships/avatars/classmate-female-03.webp",
+      "sha256": "340a0e87ea31fdb1b9e6618a6c8be0b6b91320e333b3eabc002da4fb776e6e91",
+      "sourceFile": "design/relationship-avatars-20261113/classmate-female-batch-05-confirmed.png",
+      "sourceSHA256": "87e230b76ff387e30f4aa6c022ce8b90aeb4dd5c308c6f8314cc7b0335782c9e",
+      "sourcePosition": 2,
+      "crop": [
+        418,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/classmate-female-03.png",
+      "extractedSHA256": "da52d57f5da014cc99c383e8e238049f52280327713034b5c25ca05e90f6563d"
+    },
+    {
+      "id": "classmate-female-04",
+      "role": "classmate",
+      "gender": "female",
+      "file": "assets/relationships/avatars/classmate-female-04.webp",
+      "sha256": "831beebaa566db28df123c63616621558d8bdc077c0444757e60a59f9249cc29",
+      "sourceFile": "design/relationship-avatars-20261113/classmate-female-batch-05-confirmed.png",
+      "sourceSHA256": "87e230b76ff387e30f4aa6c022ce8b90aeb4dd5c308c6f8314cc7b0335782c9e",
+      "sourcePosition": 3,
+      "crop": [
+        836,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/classmate-female-04.png",
+      "extractedSHA256": "f4048ce52b199c1e3411d58b640f9f9a75becb35237063f855ad30f4b12f5072"
+    },
+    {
+      "id": "classmate-female-05",
+      "role": "classmate",
+      "gender": "female",
+      "file": "assets/relationships/avatars/classmate-female-05.webp",
+      "sha256": "0bf01dc0fab7bac5bf34c5ed33e80f05629eee28d1afc4db457438e47f37bbab",
+      "sourceFile": "design/relationship-avatars-20261113/classmate-female-batch-05-confirmed.png",
+      "sourceSHA256": "87e230b76ff387e30f4aa6c022ce8b90aeb4dd5c308c6f8314cc7b0335782c9e",
+      "sourcePosition": 4,
+      "crop": [
+        125,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/classmate-female-05.png",
+      "extractedSHA256": "fb956715bcc9b4e1487cbe4d8ffe8af65225e5c45f50fc47d120195f715d2cf7"
+    },
+    {
+      "id": "classmate-female-06",
+      "role": "classmate",
+      "gender": "female",
+      "file": "assets/relationships/avatars/classmate-female-06.webp",
+      "sha256": "eed096329447abfb6040af60ff4d0362edff9b244fbc1a8c5770795eae328626",
+      "sourceFile": "design/relationship-avatars-20261113/classmate-female-batch-05-confirmed.png",
+      "sourceSHA256": "87e230b76ff387e30f4aa6c022ce8b90aeb4dd5c308c6f8314cc7b0335782c9e",
+      "sourcePosition": 5,
+      "crop": [
+        625,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/classmate-female-06.png",
+      "extractedSHA256": "bbafdafc4675c042aab779d06120754bd9a56a436e2216127eaf9e01f3f58d38"
+    },
+    {
+      "id": "classmate-male-02",
+      "role": "classmate",
+      "gender": "male",
+      "file": "assets/relationships/avatars/classmate-male-02.webp",
+      "sha256": "e4b143a252c17698c37cd24431c4d41b2d24ab714647d11637356b6b0eeeb3a8",
+      "sourceFile": "design/relationship-avatars-20261113/classmate-male-batch-05-confirmed.png",
+      "sourceSHA256": "1a3c4f521b3b4ea436f59891eb3ed35dcacf7eeb7f6b201bb9bc7ac46af7b87b",
+      "sourcePosition": 1,
+      "crop": [
+        0,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/classmate-male-02.png",
+      "extractedSHA256": "ac880e89f7171db0fb1904ac02dd66bf1d5dca2b8213c4a47552f82bb73c6929"
+    },
+    {
+      "id": "classmate-male-03",
+      "role": "classmate",
+      "gender": "male",
+      "file": "assets/relationships/avatars/classmate-male-03.webp",
+      "sha256": "5bdb24dd457024fca41926c3e26ab1d7ab717aabdd75d7d6e63708ae45f03260",
+      "sourceFile": "design/relationship-avatars-20261113/classmate-male-batch-05-confirmed.png",
+      "sourceSHA256": "1a3c4f521b3b4ea436f59891eb3ed35dcacf7eeb7f6b201bb9bc7ac46af7b87b",
+      "sourcePosition": 2,
+      "crop": [
+        418,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/classmate-male-03.png",
+      "extractedSHA256": "748a29dd3017d8dc969703c4cf124e74580f0ca8c05359797e7b11a73af912cb"
+    },
+    {
+      "id": "classmate-male-04",
+      "role": "classmate",
+      "gender": "male",
+      "file": "assets/relationships/avatars/classmate-male-04.webp",
+      "sha256": "e108d676d769f15b114965d5b2f2b1ec1832738b35c47640740434bb13d1bf72",
+      "sourceFile": "design/relationship-avatars-20261113/classmate-male-batch-05-confirmed.png",
+      "sourceSHA256": "1a3c4f521b3b4ea436f59891eb3ed35dcacf7eeb7f6b201bb9bc7ac46af7b87b",
+      "sourcePosition": 3,
+      "crop": [
+        836,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/classmate-male-04.png",
+      "extractedSHA256": "ea4e04e96a206d4967b52997feb74efcf70dd83359ea7fc90ddd98c15a1cbb6b"
+    },
+    {
+      "id": "classmate-male-05",
+      "role": "classmate",
+      "gender": "male",
+      "file": "assets/relationships/avatars/classmate-male-05.webp",
+      "sha256": "40ede1bffee898dcdc8fe1f22523607d73bf362ca27c2e058bc32c08044f6c52",
+      "sourceFile": "design/relationship-avatars-20261113/classmate-male-batch-05-confirmed.png",
+      "sourceSHA256": "1a3c4f521b3b4ea436f59891eb3ed35dcacf7eeb7f6b201bb9bc7ac46af7b87b",
+      "sourcePosition": 4,
+      "crop": [
+        125,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/classmate-male-05.png",
+      "extractedSHA256": "8aea56457b21f71e3d5122b3541d3a44f9a887a5e25d5d94d2b3ace73dcc6b72"
+    },
+    {
+      "id": "classmate-male-06",
+      "role": "classmate",
+      "gender": "male",
+      "file": "assets/relationships/avatars/classmate-male-06.webp",
+      "sha256": "349b7cb8fd3032aa854f15e30f864c85faca7873e2b8f806e88f878687b0ff96",
+      "sourceFile": "design/relationship-avatars-20261113/classmate-male-batch-05-confirmed.png",
+      "sourceSHA256": "1a3c4f521b3b4ea436f59891eb3ed35dcacf7eeb7f6b201bb9bc7ac46af7b87b",
+      "sourcePosition": 5,
+      "crop": [
+        625,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/classmate-male-06.png",
+      "extractedSHA256": "3bc183f143084ecf18517884530332a6099bf248a65cd5e39fe89c8cde8b4902"
+    },
+    {
+      "id": "petfriend-female-02",
+      "role": "petfriend",
+      "gender": "female",
+      "file": "assets/relationships/avatars/petfriend-female-02.webp",
+      "sha256": "f8807f0b56311a96c7fc30937094005158efa988dd97358b7335021e13d61bbd",
+      "sourceFile": "design/relationship-avatars-20261113/petfriend-female-batch-05-confirmed.png",
+      "sourceSHA256": "2fb550fcf8172a190246ccc8cd27f7c75f5242591d88f9e0b0ce7464fc444654",
+      "sourcePosition": 1,
+      "crop": [
+        0,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/petfriend-female-02.png",
+      "extractedSHA256": "c7bb4408a1f8f050f392c3bc8c9e39be2376718d6cc787c52e1f49ea113e4af0"
+    },
+    {
+      "id": "petfriend-female-03",
+      "role": "petfriend",
+      "gender": "female",
+      "file": "assets/relationships/avatars/petfriend-female-03.webp",
+      "sha256": "328a65bf94669eaaaf41a5cc5fc498e0feb30337b464fa2b0392a395f34edd49",
+      "sourceFile": "design/relationship-avatars-20261113/petfriend-female-batch-05-confirmed.png",
+      "sourceSHA256": "2fb550fcf8172a190246ccc8cd27f7c75f5242591d88f9e0b0ce7464fc444654",
+      "sourcePosition": 2,
+      "crop": [
+        418,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/petfriend-female-03.png",
+      "extractedSHA256": "eba5811c85a1101262176dfe880530afdfed527621d9663c26565250a1e3dfee"
+    },
+    {
+      "id": "petfriend-female-04",
+      "role": "petfriend",
+      "gender": "female",
+      "file": "assets/relationships/avatars/petfriend-female-04.webp",
+      "sha256": "03455ec4f0a014aa348b88aacb1c9a0753de7c6e76d98c012cbf954be09fcc8f",
+      "sourceFile": "design/relationship-avatars-20261113/petfriend-female-batch-05-confirmed.png",
+      "sourceSHA256": "2fb550fcf8172a190246ccc8cd27f7c75f5242591d88f9e0b0ce7464fc444654",
+      "sourcePosition": 3,
+      "crop": [
+        836,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/petfriend-female-04.png",
+      "extractedSHA256": "2810413810e58e679fe2c0d01f6a046ce8d919bdec0a324941c71897ced5fb51"
+    },
+    {
+      "id": "petfriend-female-05",
+      "role": "petfriend",
+      "gender": "female",
+      "file": "assets/relationships/avatars/petfriend-female-05.webp",
+      "sha256": "03a085debd70d3a67d4e76b9703f5ebb18f9bab60b75340409ce6209d20b767e",
+      "sourceFile": "design/relationship-avatars-20261113/petfriend-female-batch-05-confirmed.png",
+      "sourceSHA256": "2fb550fcf8172a190246ccc8cd27f7c75f5242591d88f9e0b0ce7464fc444654",
+      "sourcePosition": 4,
+      "crop": [
+        125,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/petfriend-female-05.png",
+      "extractedSHA256": "fe6d12732387c1f964bd52b89e155cc313a58459837eaa1ca0abf104f763c474"
+    },
+    {
+      "id": "petfriend-female-06",
+      "role": "petfriend",
+      "gender": "female",
+      "file": "assets/relationships/avatars/petfriend-female-06.webp",
+      "sha256": "7415faa4a6a68b189f17b368b4a92f722ffadecfb5c86fb12f8a746f78819c71",
+      "sourceFile": "design/relationship-avatars-20261113/petfriend-female-batch-05-confirmed.png",
+      "sourceSHA256": "2fb550fcf8172a190246ccc8cd27f7c75f5242591d88f9e0b0ce7464fc444654",
+      "sourcePosition": 5,
+      "crop": [
+        625,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/petfriend-female-06.png",
+      "extractedSHA256": "64b71b6da8a7c791bc20990472708ecaa76c7e5cf8733b1f54ee043a6694cc0b"
+    },
+    {
+      "id": "petfriend-male-02",
+      "role": "petfriend",
+      "gender": "male",
+      "file": "assets/relationships/avatars/petfriend-male-02.webp",
+      "sha256": "e8203b6e374c95030608e23cfaa193a0f7eff0b71efa91095f999be50dab4487",
+      "sourceFile": "design/relationship-avatars-20261113/petfriend-male-batch-05-confirmed.png",
+      "sourceSHA256": "55b8f29fc95f70a3dd1603d18ba93de0256e76fe011e5c5347082abdbb1d69c5",
+      "sourcePosition": 1,
+      "crop": [
+        0,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/petfriend-male-02.png",
+      "extractedSHA256": "5d08bc64fdc44111f85dd960cc9d9dfc578c9a68731d8f11f717afc27774ebbc"
+    },
+    {
+      "id": "petfriend-male-03",
+      "role": "petfriend",
+      "gender": "male",
+      "file": "assets/relationships/avatars/petfriend-male-03.webp",
+      "sha256": "aeba52d97f51ca4d136f58d9628601bdbf92e2f823d982a2f5ed3c4de3d28fda",
+      "sourceFile": "design/relationship-avatars-20261113/petfriend-male-batch-05-confirmed.png",
+      "sourceSHA256": "55b8f29fc95f70a3dd1603d18ba93de0256e76fe011e5c5347082abdbb1d69c5",
+      "sourcePosition": 2,
+      "crop": [
+        418,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/petfriend-male-03.png",
+      "extractedSHA256": "c88c981fe9329db1d7fcacad6ad8e64a1bd04e2acb703ccc3cd66a904ab8298c"
+    },
+    {
+      "id": "petfriend-male-04",
+      "role": "petfriend",
+      "gender": "male",
+      "file": "assets/relationships/avatars/petfriend-male-04.webp",
+      "sha256": "638d3d0d8619756b1e0bc1bae42c5b597b96b39b18c39923d75d8c3b9ce1604c",
+      "sourceFile": "design/relationship-avatars-20261113/petfriend-male-batch-05-confirmed.png",
+      "sourceSHA256": "55b8f29fc95f70a3dd1603d18ba93de0256e76fe011e5c5347082abdbb1d69c5",
+      "sourcePosition": 3,
+      "crop": [
+        836,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/petfriend-male-04.png",
+      "extractedSHA256": "6a962e9e7f62ceaa5050b1d592b187f7540df22c8c52cddd08a4d08a12c9f49c"
+    },
+    {
+      "id": "petfriend-male-05",
+      "role": "petfriend",
+      "gender": "male",
+      "file": "assets/relationships/avatars/petfriend-male-05.webp",
+      "sha256": "d86b02294db34fd92e486ee6c35cec4cfcd79149fa534d4ee8cf4eb1d7b4ed87",
+      "sourceFile": "design/relationship-avatars-20261113/petfriend-male-batch-05-confirmed.png",
+      "sourceSHA256": "55b8f29fc95f70a3dd1603d18ba93de0256e76fe011e5c5347082abdbb1d69c5",
+      "sourcePosition": 4,
+      "crop": [
+        125,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/petfriend-male-05.png",
+      "extractedSHA256": "503da30146fe6c39fe90193ea5406d2f48fa5126024c45eeaf23720188eed6b8"
+    },
+    {
+      "id": "petfriend-male-06",
+      "role": "petfriend",
+      "gender": "male",
+      "file": "assets/relationships/avatars/petfriend-male-06.webp",
+      "sha256": "9c7f0da54ca1ad6a101892ee02e0bdae3ee367205ab47bb36e6cdb373a5fe0ec",
+      "sourceFile": "design/relationship-avatars-20261113/petfriend-male-batch-05-confirmed.png",
+      "sourceSHA256": "55b8f29fc95f70a3dd1603d18ba93de0256e76fe011e5c5347082abdbb1d69c5",
+      "sourcePosition": 5,
+      "crop": [
+        625,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/petfriend-male-06.png",
+      "extractedSHA256": "5dec27190d59a1516254858b1c1a2547272106faf82d9ac3fb484e973a07800a"
+    },
+    {
+      "id": "landlord-female-02",
+      "role": "landlord",
+      "gender": "female",
+      "file": "assets/relationships/avatars/landlord-female-02.webp",
+      "sha256": "c1cbe2555d4a1f8ca46940afceee752d1e39eb35068c6658d37642b87effd515",
+      "sourceFile": "design/relationship-avatars-20261113/landlord-female-batch-05-confirmed.png",
+      "sourceSHA256": "d65f2a7506077c15cde2518d8f2e7682487432bc518872ea5ecbb34274be2d53",
+      "sourcePosition": 1,
+      "crop": [
+        0,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/landlord-female-02.png",
+      "extractedSHA256": "17a838399f0fa36fd14c655b5196508013b67723d36d5e52e58083852884aaec"
+    },
+    {
+      "id": "landlord-female-03",
+      "role": "landlord",
+      "gender": "female",
+      "file": "assets/relationships/avatars/landlord-female-03.webp",
+      "sha256": "b115bf49512002f4fb2e7a368b5fbda03ab4818e17ca3a5a4ae7960c8b7a8e52",
+      "sourceFile": "design/relationship-avatars-20261113/landlord-female-batch-05-confirmed.png",
+      "sourceSHA256": "d65f2a7506077c15cde2518d8f2e7682487432bc518872ea5ecbb34274be2d53",
+      "sourcePosition": 2,
+      "crop": [
+        418,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/landlord-female-03.png",
+      "extractedSHA256": "0262e69326b827ff24ac3e15d55ab5317b1a56dad35349e48b4eb85cab08dd86"
+    },
+    {
+      "id": "landlord-female-04",
+      "role": "landlord",
+      "gender": "female",
+      "file": "assets/relationships/avatars/landlord-female-04.webp",
+      "sha256": "930f116ffe4f1bdcb4b983436866005a737a6dd2baa591d6cff490c9f1407bf6",
+      "sourceFile": "design/relationship-avatars-20261113/landlord-female-batch-05-confirmed.png",
+      "sourceSHA256": "d65f2a7506077c15cde2518d8f2e7682487432bc518872ea5ecbb34274be2d53",
+      "sourcePosition": 3,
+      "crop": [
+        836,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/landlord-female-04.png",
+      "extractedSHA256": "74df762e7c9421d02b45eb4c7a77f1caca2953c7d18d686dd929518118ae1469"
+    },
+    {
+      "id": "landlord-female-05",
+      "role": "landlord",
+      "gender": "female",
+      "file": "assets/relationships/avatars/landlord-female-05.webp",
+      "sha256": "e54e2ea140e8d897bdad6cbb25ecc759acc01831600e41252a68e77897cab9fc",
+      "sourceFile": "design/relationship-avatars-20261113/landlord-female-batch-05-confirmed.png",
+      "sourceSHA256": "d65f2a7506077c15cde2518d8f2e7682487432bc518872ea5ecbb34274be2d53",
+      "sourcePosition": 4,
+      "crop": [
+        125,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/landlord-female-05.png",
+      "extractedSHA256": "21dfb5d5988e6f1b3446ba31fd5d41cf05a9cc9463131ea905e006f8659f05ef"
+    },
+    {
+      "id": "landlord-female-06",
+      "role": "landlord",
+      "gender": "female",
+      "file": "assets/relationships/avatars/landlord-female-06.webp",
+      "sha256": "bca5a61e8249d7464e3c04ea63d3650199ad6019d56feb8182789ebf3e6fcfc2",
+      "sourceFile": "design/relationship-avatars-20261113/landlord-female-batch-05-confirmed.png",
+      "sourceSHA256": "d65f2a7506077c15cde2518d8f2e7682487432bc518872ea5ecbb34274be2d53",
+      "sourcePosition": 5,
+      "crop": [
+        625,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/landlord-female-06.png",
+      "extractedSHA256": "838231a95568ff810637ecca8500339b52f1db1ee8921a8516eb30123f98436e"
+    },
+    {
+      "id": "landlord-male-02",
+      "role": "landlord",
+      "gender": "male",
+      "file": "assets/relationships/avatars/landlord-male-02.webp",
+      "sha256": "0457b2f0d2185582768e396d8e0d9928039333ec6bf63348987248f1de386755",
+      "sourceFile": "design/relationship-avatars-20261113/landlord-male-batch-05-confirmed.png",
+      "sourceSHA256": "5a867a4209e6829c005ea35d98dd7d80cb0777a70d72b09095f3909ab5200549",
+      "sourcePosition": 1,
+      "crop": [
+        0,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/landlord-male-02.png",
+      "extractedSHA256": "97b4fd303dd9c406aab925ea93b5d29df03ff958ecc64ff90ce0df0e6d7a71ef"
+    },
+    {
+      "id": "landlord-male-03",
+      "role": "landlord",
+      "gender": "male",
+      "file": "assets/relationships/avatars/landlord-male-03.webp",
+      "sha256": "3e44b429b68534ba3e76c13d8bdf78b4b4a98da96252ecc246603823dd40dd48",
+      "sourceFile": "design/relationship-avatars-20261113/landlord-male-batch-05-confirmed.png",
+      "sourceSHA256": "5a867a4209e6829c005ea35d98dd7d80cb0777a70d72b09095f3909ab5200549",
+      "sourcePosition": 2,
+      "crop": [
+        418,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/landlord-male-03.png",
+      "extractedSHA256": "2fa6462bf90d95a2b26413ae5de739bb64a4bcd8754a1f8e9f0675f51c3ae12f"
+    },
+    {
+      "id": "landlord-male-04",
+      "role": "landlord",
+      "gender": "male",
+      "file": "assets/relationships/avatars/landlord-male-04.webp",
+      "sha256": "596a1d2e9379a4025e68c3d3bf1a8f5718f4d7ada3b928bfd6de99b1bcb9c1f7",
+      "sourceFile": "design/relationship-avatars-20261113/landlord-male-batch-05-confirmed.png",
+      "sourceSHA256": "5a867a4209e6829c005ea35d98dd7d80cb0777a70d72b09095f3909ab5200549",
+      "sourcePosition": 3,
+      "crop": [
+        836,
+        70,
+        418,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/landlord-male-04.png",
+      "extractedSHA256": "9874603f6fa43d171b5e8cce49ea29e733735ad08619965365bb173be79da314"
+    },
+    {
+      "id": "landlord-male-05",
+      "role": "landlord",
+      "gender": "male",
+      "file": "assets/relationships/avatars/landlord-male-05.webp",
+      "sha256": "b35ad13128ea1a45b481e23d250f34d54e1aebe36933327e423e3cc56b0354e0",
+      "sourceFile": "design/relationship-avatars-20261113/landlord-male-batch-05-confirmed.png",
+      "sourceSHA256": "5a867a4209e6829c005ea35d98dd7d80cb0777a70d72b09095f3909ab5200549",
+      "sourcePosition": 4,
+      "crop": [
+        125,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/landlord-male-05.png",
+      "extractedSHA256": "bbcd82867a79deb615c4f36ca01f956e67a86a8a6168dc02bb9e1d5247468486"
+    },
+    {
+      "id": "landlord-male-06",
+      "role": "landlord",
+      "gender": "male",
+      "file": "assets/relationships/avatars/landlord-male-06.webp",
+      "sha256": "96473bb1f9ca543723297c1469b1ddd14e26e2a16a643f75383a180228afa5f5",
+      "sourceFile": "design/relationship-avatars-20261113/landlord-male-batch-05-confirmed.png",
+      "sourceSHA256": "5a867a4209e6829c005ea35d98dd7d80cb0777a70d72b09095f3909ab5200549",
+      "sourcePosition": 5,
+      "crop": [
+        625,
+        620,
+        500,
+        550
+      ],
+      "extractedPNG": "design/relationship-avatars-20261113/individuals/landlord-male-06.png",
+      "extractedSHA256": "6d88f929543fb13b808dac9a303051d6243e24ced8e40a20011b1a2366d0c38c"
+    }
+  ],
+  "resourcePreparation": "60个独立WebP由已确认原稿裁切、纸色补边、格式转换，未重新生成；合页位置顺序保持。运行接入和验证状态另见最新交接。",
+  "bindingRuleConfirmed": "按联系人类别及性别从未使用头像随机分配一次并保存；旧人资料保留；该组6张用尽时保留原占位，后续补画独立头像，不复用。",
+  "verification": {
+    "nodeTests": [
+      "relationship-avatars",
+      "relationship-confirmed",
+      "relationship-release",
+      "education-plans",
+      "pet-sw-precache"
+    ],
+    "browserReport": "qa/relationship-avatars-20261113/local-report.json",
+    "browserPassed": true,
+    "browserScope": "本地隔离Chromium slot941，7组通过，0脚本错误；非生产、非iPhone真机验收。",
+    "sourceCount": 20,
+    "resourceCount": 60
+  }
+}
