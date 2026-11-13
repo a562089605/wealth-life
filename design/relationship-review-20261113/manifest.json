@@ -1,0 +1,167 @@
+{
+  "date": "2026-11-13",
+  "selected": [
+    {
+      "id": "manager-experience",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-34b89502-f346-41cc-af53-ecbaae86011f.png",
+      "path": "design/relationship-review-20261113/manager-experience.png",
+      "sha256": "3a1e4e055cbb1bc02909e73de4ac70736e2abb438644b8fb9c432daa2de7bff0",
+      "runtime": "assets/relationships/cards/manager-experience-20261113.webp"
+    },
+    {
+      "id": "manager-tasting",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-0a894b02-9165-478d-8735-3357cb52b190.png",
+      "path": "design/relationship-review-20261113/manager-tasting.png",
+      "sha256": "ab6d27ea2e36f1d63a2cf43e1c4a303a3eb07e9a2f4afad373934c672f86e1fd",
+      "runtime": "assets/relationships/cards/manager-tasting-20261113.webp"
+    },
+    {
+      "id": "manager-bonus",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-0df23c67-401d-4e79-90c9-6ccaf907f681.png",
+      "path": "design/relationship-review-20261113/manager-bonus.png",
+      "sha256": "ffbaa64c707142f82f2160242be6d009802c98e09ef10bb22faaf37145fbb3d1",
+      "runtime": "assets/relationships/cards/manager-bonus-20261113.webp"
+    },
+    {
+      "id": "manager-pickup",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-52b1815d-cd12-48ba-8bb7-7de1b5f92980.png",
+      "path": "design/relationship-review-20261113/manager-pickup.png",
+      "sha256": "133114bb660b0253dbc3525e7f229414f84c928f8f08075dda43f48f7ff58784",
+      "runtime": "assets/relationships/cards/manager-pickup-20261113.webp"
+    },
+    {
+      "id": "manager-extra-shifts",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-7adddde9-33ac-4457-8c40-3a56225c3d2b.png",
+      "path": "design/relationship-review-20261113/manager-extra-shifts.png",
+      "sha256": "8e29bbfd97b831ed2ad0ccdd964b933001691d4f983057dcac12b5bdab503ca1",
+      "runtime": "assets/relationships/cards/manager-extra-shifts-20261113.webp"
+    },
+    {
+      "id": "coworker-chat",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-7c047a4f-5f6c-4d8c-a5a6-2362bf6fe5a0.png",
+      "path": "design/relationship-review-20261113/coworker-chat.png",
+      "sha256": "76c560d34765fcd9dae6799b585932c223b500bfa6fdc8c4d57b03f9bbabe1e4",
+      "runtime": "assets/relationships/cards/coworker-chat-20261113.webp"
+    },
+    {
+      "id": "coworker-snack",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-8d0d85ec-98f3-459e-a557-9c9ea4b4693b.png",
+      "path": "design/relationship-review-20261113/coworker-snack.png",
+      "sha256": "2d9413573756477fd660d35b5d4dcdf94b617af8772d08f335c7cd927428a1c9",
+      "runtime": "assets/relationships/cards/coworker-snack-20261113.webp"
+    },
+    {
+      "id": "coworker-bookshelf",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-35b35689-9f49-4de8-b8af-d0aec6474c31.png",
+      "path": "design/relationship-review-20261113/coworker-bookshelf.png",
+      "sha256": "9bff74e7b3566ba1bdc75889a5afc7fa9ca129ef89eeecff5fb4019441ebed4c",
+      "runtime": "assets/relationships/cards/coworker-bookshelf-20261113.webp"
+    },
+    {
+      "id": "coworker-job",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-150301f3-c88f-4f32-9627-d639411853ae.png",
+      "path": "design/relationship-review-20261113/coworker-job.png",
+      "sha256": "c39532fd198f7beb644f8eea9348c7ee342caf6fb934b937e1491e0e22df72a7",
+      "runtime": "assets/relationships/cards/coworker-job-20261113.webp"
+    },
+    {
+      "id": "moving-meal",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-9da53e3b-96ad-4f9d-bc44-b2feb64b2e51.png",
+      "path": "design/relationship-review-20261113/moving-meal.png",
+      "sha256": "efbdaf642ed23da8413c323165ced9370860175e6cdb10e125e1946baec5c5a6",
+      "runtime": "assets/relationships/cards/moving-meal-20261113.webp"
+    },
+    {
+      "id": "landlord-chat",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-fd1e362b-b8c4-4288-9f60-c7493a1ab581.png",
+      "path": "design/relationship-review-20261113/landlord-chat.png",
+      "sha256": "1d3e6a2257cc133ce8ca5257499934cfd02d755ca250cd8c4a7539baf33cbfbd",
+      "runtime": "assets/relationships/cards/landlord-chat-20261113.webp"
+    },
+    {
+      "id": "landlord-plants",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-033c1fb4-d7a9-4eed-849c-f2481af897ab.png",
+      "path": "design/relationship-review-20261113/landlord-plants.png",
+      "sha256": "c8cff1f4bb148b234b7d3bde19a82e5d872c9a1892739bfe224f1b7ba05bcf9f",
+      "runtime": "assets/relationships/cards/landlord-plants-20261113.webp"
+    },
+    {
+      "id": "landlord-aircon",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-7349dc08-b86c-49bc-a393-3be361df9872.png",
+      "path": "design/relationship-review-20261113/landlord-aircon.png",
+      "sha256": "d5bd99b23a09ca71aa53bffd099c172c93d6848fad442cb7ee776ada7016e2bd",
+      "runtime": "assets/relationships/cards/landlord-aircon-20261113.webp"
+    },
+    {
+      "id": "success",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-e5399789-019e-4b93-8e54-3361224b2601.png",
+      "path": "design/relationship-review-20261113/success.png",
+      "sha256": "3af0b65b4ea00fc81b4bf007a1c26d995bd8404778b732d37e342a7a7ee70b03",
+      "runtime": "assets/relationships/cards/success-20261113.webp"
+    },
+    {
+      "id": "failure",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-a2f80403-cca5-4bb8-a128-024d8004007b.png",
+      "path": "design/relationship-review-20261113/failure.png",
+      "sha256": "39dd9f8db8fdcd61b6d9cc97da1fa241c17ca56838a0be44f230595449f0809f",
+      "runtime": "assets/relationships/cards/failure-20261113.webp"
+    },
+    {
+      "id": "classmate-library",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-5095a8af-aa13-4ac3-a985-a799eef3a4f9.png",
+      "path": "design/relationship-review-20261113/classmate-library.png",
+      "sha256": "2859a9aa0594798fa0d20ee4d6f8c348be5bf67f85ca0849aa2babad9f9ae1cb",
+      "runtime": "assets/relationships/cards/classmate-library-20261113.webp"
+    },
+    {
+      "id": "classmate-presentation",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-32490311-4926-4ab7-b42c-c169e5b0cd33.png",
+      "path": "design/relationship-review-20261113/classmate-presentation.png",
+      "sha256": "00897a1c018dca52c75efd84bca2df69ff87c7b4c343c71a4e221ffeeaa94a02",
+      "runtime": "assets/relationships/cards/classmate-presentation-20261113.webp"
+    },
+    {
+      "id": "classmate-snack",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-efcd7152-6280-47a5-8fa1-d8dae7b8d8c6.png",
+      "path": "design/relationship-review-20261113/classmate-snack.png",
+      "sha256": "3c2023b0ac66440dd7d78fd59784de96ef10ea0fd2d76c6727054f18268107e4",
+      "runtime": "assets/relationships/cards/classmate-snack-20261113.webp"
+    },
+    {
+      "id": "classmate-plan",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-ef6759ef-2282-4801-8656-18edcf4f438c.png",
+      "path": "design/relationship-review-20261113/classmate-plan.png",
+      "sha256": "16790f2e23dd938f2c4cf981a567a65ad5f9ccb989894eacb4228fa565f9bdaa",
+      "runtime": "assets/relationships/cards/classmate-plan-20261113.webp"
+    },
+    {
+      "id": "petfriend-chat",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-56070fe5-7da6-4ce9-9d86-8cdce9b12b00.png",
+      "path": "design/relationship-review-20261113/petfriend-chat.png",
+      "sha256": "fa99a862747c4796867f8fc172f38300395256de4d1eaa74212ac5323dd4f985",
+      "runtime": "assets/relationships/cards/petfriend-chat-20261113.webp"
+    },
+    {
+      "id": "petfriend-organizer",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-4509e969-7dc1-4da6-9eaa-bf1a83081f19.png",
+      "path": "design/relationship-review-20261113/petfriend-organizer.png",
+      "sha256": "87d7814c06cad26536daa50d1a96ba18c98bf341300d89de3cb81724cc96b060",
+      "runtime": "assets/relationships/cards/petfriend-organizer-20261113.webp"
+    },
+    {
+      "id": "petfriend-late",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-a4ae921d-2abc-4021-871e-59bfebd7fabd.png",
+      "path": "design/relationship-review-20261113/petfriend-late.png",
+      "sha256": "199f77bbf02f74a4fe65e3c8c2592cb1fc07cf121f7d0ad34e49ebe4e920c4c3",
+      "runtime": "assets/relationships/cards/petfriend-late-20261113.webp"
+    },
+    {
+      "id": "care-page-preview",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d337-6847-7252-aa7c-fd0e0caf241b/exec-fa42fe24-d775-49d4-ad6e-d432edf84ccd.png",
+      "path": "design/relationship-review-20261113/care-page-preview.png",
+      "sha256": "619049d685cb8ab9519a81287d0ccd2a933da31e14f6899319f59255c9fe2dd9",
+      "runtime": "assets/pets/care-coupon-preview-20261113.webp"
+    }
+  ],
+  "note": "Care page is approved design preview; runtime uses original page illustrations and dynamic controls. Earlier artwork is retained in original directories."
+}

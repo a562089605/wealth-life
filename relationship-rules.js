@@ -6,7 +6,7 @@
  const role=p=>p.relationshipRole==='manager'||p.houseRole==='manager'||['经理','上司'].includes(p.status)?'经理':p.relationshipRole==='landlord'||p.houseRole==='landlord'||p.status==='房东'?'房东':p.relationshipRole==='classmate'?'同学':p.relationshipRole==='coworker'?'同事':p.origin==='pet-social'||p.status==='养宠物的朋友'||p.status==='宠友'?'宠友':p.status||'认识的人';
  const identity=p=>JSON.stringify([p.id,p.name,p.origin,p.relationshipRole||p.houseRole]);
  function data(s){return s.relationshipHome??={version:1,startedMonth:s.month,sequence:0,actions:[],settlements:{},managers:{}};}
- function workKey(job){return /咖啡师|值班主管|Barista|Shift Lead/i.test(job||'')?'coffee':job;}
+ function workKey(job){return /咖啡师|值班主管|Barista|Shift Lead|店长|Store Manager|合伙人|Partner/i.test(job||'')?'coffee':job;}
  function education(p,careers){const job=p.job||p.sourceJob||'',exact=careers.find(c=>c.name===job);if(exact?.edu)return exact.edu;if(/医生|医师|兽医|律师|牙医|药剂师/.test(job))return 'professional';if(/教授|研究员/.test(job))return 'master';if(/教师|老师|护士|工程师|开发|会计|项目经理/.test(job))return 'bachelor';if(/技师|技术员|设计|剪辑/.test(job))return 'associate';return 'highschool';}
  function sync(s,{makePerson,careers=[]}={}){
   const d=data(s);s.people??=[];d.managers??={};
@@ -15,6 +15,7 @@
   if(s.job&&!s.retired&&!s.unemployedMonths){const k=workKey(s.job);let manager=s.people.find(p=>p.id===d.managers[k]);
    if(!manager)manager=s.people.find(p=>role(p)==='经理'&&workKey(p.sourceJob||p.job)===k);
    if(!manager&&makePerson){manager=makePerson('manager');s.people.push(manager);}
+   if(manager&&k==='coffee'){manager.supervisorTitle=/店长|Store Manager|合伙人|Partner/i.test(s.job)?'老板':'经理';}
    if(manager){d.managers[k]=manager.id;d.currentManagerId=manager.id;d.currentWorkKey=k;}
   }else{delete d.currentManagerId;delete d.currentWorkKey;}
   const rented=['shared','studio','rent1'].includes(s.housing),lease=s.housingLease;

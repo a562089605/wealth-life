@@ -1,4 +1,4 @@
-// Confirmed card data. No natural draw, probability or replacement map category.
+// Confirmed relationship review 2026-11-13; natural selector remains disabled.
 (function(root){const data={
   "cards": [
     {
@@ -47,14 +47,14 @@
       "title": "经理分享工作经验",
       "role": "经理",
       "minIntimacy": 30,
-      "art": "assets/relationships/cards/manager-02-experience.webp",
+      "art": "assets/relationships/cards/manager-experience-20261113.webp",
       "options": [
         {
           "label": "和同事一起听",
           "hours": 1,
           "energy": 0,
           "intimacy": 4,
-          "happiness": 2,
+          "happiness": 0,
           "stress": 0,
           "cash": 0
         },
@@ -64,22 +64,22 @@
           "energy": 2,
           "intimacy": 0,
           "happiness": 0,
-          "stress": 0,
+          "stress": -1,
           "cash": 0
         }
       ],
       "boxes": [
         [
           3,
-          59,
+          52,
           94,
-          26
+          20
         ],
         [
           3,
-          86,
+          73,
           94,
-          12
+          24
         ]
       ]
     },
@@ -88,14 +88,14 @@
       "title": "经理邀你试新品",
       "role": "经理",
       "minIntimacy": 0,
-      "art": "assets/relationships/cards/manager-03-tasting.webp",
+      "art": "assets/relationships/cards/manager-tasting-20261113.webp",
       "options": [
         {
           "label": "留下来试喝，聊聊建议",
           "hours": 1,
-          "energy": 0,
+          "energy": -1,
           "intimacy": 3,
-          "happiness": 2,
+          "happiness": 0,
           "stress": 0,
           "cash": 0
         },
@@ -104,7 +104,7 @@
           "hours": 0,
           "energy": 0,
           "intimacy": 0,
-          "happiness": 0,
+          "happiness": 2,
           "stress": 0,
           "cash": 0
         }
@@ -115,13 +115,13 @@
           3,
           59,
           94,
-          26
+          23
         ],
         [
           3,
-          86,
+          83,
           94,
-          12
+          16
         ]
       ]
     },
@@ -130,71 +130,48 @@
       "title": "认可你的努力",
       "role": "经理",
       "minIntimacy": 30,
-      "art": "assets/relationships/cards/manager-04-bonus.webp",
+      "art": "assets/relationships/cards/manager-bonus-20261113.webp",
       "options": [
         {
           "label": "谢谢认可，继续加油",
           "hours": 0,
-          "energy": 0,
+          "energy": 2,
           "intimacy": 2,
           "happiness": 4,
-          "stress": 0,
+          "stress": -2,
           "cash": 50
         }
       ],
       "boxes": [
         [
           3,
-          64,
+          89,
           94,
-          32
+          10
         ]
-      ]
-    },
-    {
-      "id": "manager-ride",
-      "title": "经理顺路送你一程",
-      "role": "经理",
-      "minIntimacy": 80,
-      "art": "assets/relationships/cards/manager-05-ride.webp",
-      "options": [
-        {
-          "label": "太好了，谢谢你！",
-          "hours": 0,
-          "energy": 3,
-          "intimacy": 0,
-          "happiness": 0,
-          "stress": -3,
-          "cash": 0
-        }
       ],
-      "boxes": [
-        [
-          3,
-          64,
-          94,
-          32
-        ]
-      ]
+      "incomeKind": "bonus"
     },
     {
-      "id": "coworker-chat",
-      "title": "下班后聊聊",
-      "role": "同事",
-      "minIntimacy": 15,
-      "art": "assets/relationships/cards/coworker-01-after-work.webp",
+      "id": "manager-pickup",
+      "title": "帮店里取货",
+      "role": "经理",
+      "minIntimacy": 0,
+      "coffeeOnly": true,
+      "strictResources": true,
+      "payMode": "pickup",
       "options": [
         {
-          "label": "留下来聊一会儿",
-          "hours": 1,
-          "energy": 0,
-          "intimacy": 3,
+          "label": "好，我去取回来。",
+          "hours": 2,
+          "energy": -4,
+          "intimacy": 4,
           "happiness": 0,
-          "stress": -3,
-          "cash": 0
+          "stress": 0,
+          "cash": 46
         },
         {
-          "label": "今天先走啦，下次聊",
+          "label": "今天不方便，抱歉。",
           "hours": 0,
           "energy": 0,
           "intimacy": 0,
@@ -206,9 +183,95 @@
       "boxes": [
         [
           3,
-          59,
+          53,
           94,
-          26
+          32
+        ],
+        [
+          3,
+          87,
+          94,
+          9
+        ]
+      ],
+      "art": "assets/relationships/cards/manager-pickup-20261113.webp"
+    },
+    {
+      "id": "manager-extra-shifts",
+      "title": "经理请你多排几天班",
+      "role": "经理",
+      "minIntimacy": 80,
+      "coffeeOnly": true,
+      "strictResources": true,
+      "payMode": "shifts",
+      "options": [
+        {
+          "label": "好，我来帮忙。",
+          "hours": 40,
+          "energy": -15,
+          "intimacy": 5,
+          "happiness": 0,
+          "stress": 8,
+          "cash": 1007.86
+        },
+        {
+          "label": "这个月排不开，抱歉。",
+          "hours": 0,
+          "energy": 0,
+          "intimacy": 0,
+          "happiness": 0,
+          "stress": 0,
+          "cash": 0
+        }
+      ],
+      "boxes": [
+        [
+          3,
+          51,
+          94,
+          38
+        ],
+        [
+          3,
+          90,
+          94,
+          8
+        ]
+      ],
+      "art": "assets/relationships/cards/manager-extra-shifts-20261113.webp"
+    },
+    {
+      "id": "coworker-chat",
+      "title": "下班一起尝尝新餐厅",
+      "role": "同事",
+      "minIntimacy": 0,
+      "art": "assets/relationships/cards/coworker-chat-20261113.webp",
+      "options": [
+        {
+          "label": "去！",
+          "hours": 1,
+          "energy": 3,
+          "intimacy": 3,
+          "happiness": 0,
+          "stress": -3,
+          "cash": -25
+        },
+        {
+          "label": "不去啦，下次吧。",
+          "hours": 0,
+          "energy": 0,
+          "intimacy": 0,
+          "happiness": 0,
+          "stress": 0,
+          "cash": 0
+        }
+      ],
+      "boxes": [
+        [
+          3,
+          53,
+          94,
+          32
         ],
         [
           3,
@@ -222,8 +285,8 @@
       "id": "coworker-snack",
       "title": "分享小点心",
       "role": "同事",
-      "minIntimacy": 15,
-      "art": "assets/relationships/cards/coworker-02-snack.webp",
+      "minIntimacy": 0,
+      "art": "assets/relationships/cards/coworker-snack-20261113.webp",
       "options": [
         {
           "label": "谢谢，一起尝尝",
@@ -231,37 +294,38 @@
           "energy": 2,
           "intimacy": 2,
           "happiness": 3,
-          "stress": 0,
+          "stress": -1,
           "cash": 0
         }
       ],
       "boxes": [
         [
           3,
-          64,
+          85,
           94,
-          32
+          13
         ]
       ]
     },
     {
       "id": "coworker-bookshelf",
-      "title": "同事请你帮忙搬东西",
+      "title": "帮同事搬家",
       "role": "同事",
       "minIntimacy": 0,
-      "art": "assets/relationships/cards/coworker-03-bookshelf.webp",
+      "art": "assets/relationships/cards/coworker-bookshelf-20261113.webp",
       "options": [
         {
-          "label": "留下来帮忙",
-          "hours": 1,
-          "energy": -2,
-          "intimacy": 5,
+          "label": "没问题，我来帮忙。",
+          "hours": 4,
+          "energy": -8,
+          "intimacy": 6,
           "happiness": 0,
           "stress": 0,
-          "cash": 0
+          "cash": 0,
+          "followup": "moving-meal"
         },
         {
-          "label": "今天不方便，下次吧",
+          "label": "那天不方便，抱歉啦。",
           "hours": 0,
           "energy": 0,
           "intimacy": 0,
@@ -275,13 +339,13 @@
           3,
           59,
           94,
-          26
+          25
         ],
         [
           3,
-          86,
+          85,
           94,
-          12
+          13
         ]
       ]
     },
@@ -328,19 +392,19 @@
     },
     {
       "id": "coworker-job",
-      "title": "同事介绍小兼职",
+      "title": "帮忙布置画展",
       "role": "同事",
       "minIntimacy": 80,
-      "art": "assets/relationships/cards/coworker-05-side-job.webp",
+      "art": "assets/relationships/cards/coworker-job-20261113.webp",
       "options": [
         {
-          "label": "接下来，认真完成",
-          "hours": 2,
-          "energy": -3,
+          "label": "有空，我去帮忙。",
+          "hours": 3,
+          "energy": -6,
           "intimacy": 0,
           "happiness": 0,
           "stress": 0,
-          "cash": 100
+          "cash": 200
         },
         {
           "label": "最近没空，谢谢你想着我",
@@ -357,13 +421,13 @@
           3,
           59,
           94,
-          26
+          28
         ],
         [
           3,
-          86,
+          89,
           94,
-          12
+          10
         ]
       ]
     },
@@ -372,7 +436,7 @@
       "title": "和房东聊聊近况",
       "role": "房东",
       "minIntimacy": 0,
-      "art": "assets/relationships/cards/landlord-01-chat.webp",
+      "art": "assets/relationships/cards/landlord-chat-20261113.webp",
       "options": [
         {
           "label": "停下来聊一会儿",
@@ -387,7 +451,7 @@
           "label": "住得挺好，谢谢关心",
           "hours": 0,
           "energy": 0,
-          "intimacy": 0,
+          "intimacy": 1,
           "happiness": 1,
           "stress": 0,
           "cash": 0
@@ -399,13 +463,13 @@
           3,
           59,
           94,
-          26
+          22
         ],
         [
           3,
-          86,
+          82,
           94,
-          12
+          16
         ]
       ]
     },
@@ -440,7 +504,7 @@
       "title": "帮房东照看绿植",
       "role": "房东",
       "minIntimacy": 0,
-      "art": "assets/relationships/cards/landlord-03-plants.webp",
+      "art": "assets/relationships/cards/landlord-plants-20261113.webp",
       "options": [
         {
           "label": "没问题，我来照看",
@@ -452,7 +516,7 @@
           "cash": 0
         },
         {
-          "label": "最近不太方便，抱歉啦",
+          "label": "最近太忙啦，不好意思。",
           "hours": 0,
           "energy": 0,
           "intimacy": 0,
@@ -473,7 +537,7 @@
           3,
           86,
           94,
-          12
+          11
         ]
       ]
     },
@@ -482,7 +546,7 @@
       "title": "深夜空调坏了",
       "role": "房东",
       "minIntimacy": 0,
-      "art": "assets/relationships/cards/landlord-04-aircon-main.webp",
+      "art": "assets/relationships/cards/landlord-aircon-20261113.webp",
       "options": [
         {
           "label": "联系房东",
@@ -490,7 +554,7 @@
           "energy": 0,
           "intimacy": 0,
           "happiness": 0,
-          "stress": 1,
+          "stress": 2,
           "cash": 0,
           "followup": "aircon"
         },
@@ -509,15 +573,15 @@
       "boxes": [
         [
           3,
-          59,
+          54,
           94,
-          26
+          20
         ],
         [
           3,
-          86,
+          75,
           94,
-          12
+          21
         ]
       ]
     },
@@ -526,15 +590,15 @@
       "title": "同学约你去图书馆",
       "role": "同学",
       "minIntimacy": 0,
-      "art": "assets/relationships/cards/classmate-01-library.webp",
+      "art": "assets/relationships/cards/classmate-library-20261113.webp",
       "options": [
         {
           "label": "好呀，一起去",
-          "hours": 1,
-          "energy": 0,
+          "hours": 3,
+          "energy": -3,
           "intimacy": 3,
           "happiness": 0,
-          "stress": -3,
+          "stress": 0,
           "cash": 0,
           "followup": "classmate"
         },
@@ -551,9 +615,9 @@
       "boxes": [
         [
           3,
-          59,
+          60,
           94,
-          26
+          25
         ],
         [
           3,
@@ -591,13 +655,13 @@
     },
     {
       "id": "classmate-presentation",
-      "title": "一起准备课堂展示",
+      "title": "同学向你请教问题",
       "role": "同学",
       "minIntimacy": 0,
-      "art": "assets/relationships/cards/classmate-03-presentation.webp",
+      "art": "assets/relationships/cards/classmate-presentation-20261113.webp",
       "options": [
         {
-          "label": "好呀，我帮你看看",
+          "label": "好呀，我们一起看看。",
           "hours": 1,
           "energy": -1,
           "intimacy": 4,
@@ -606,7 +670,7 @@
           "cash": 0
         },
         {
-          "label": "这次可能帮不上忙",
+          "label": "这题我也不太会，不好意思。",
           "hours": 0,
           "energy": 0,
           "intimacy": 0,
@@ -620,7 +684,7 @@
           3,
           59,
           94,
-          26
+          25
         ],
         [
           3,
@@ -635,11 +699,11 @@
       "title": "下课后一起吃点东西",
       "role": "同学",
       "minIntimacy": 0,
-      "art": "assets/relationships/cards/classmate-04-after-class-snack.webp",
+      "art": "assets/relationships/cards/classmate-snack-20261113.webp",
       "options": [
         {
           "label": "好呀，一起去",
-          "hours": 0,
+          "hours": 1,
           "energy": 2,
           "intimacy": 2,
           "happiness": 2,
@@ -661,13 +725,13 @@
           3,
           59,
           94,
-          26
+          29
         ],
         [
           3,
-          86,
+          89,
           94,
-          12
+          10
         ]
       ]
     },
@@ -676,15 +740,15 @@
       "title": "同学帮你梳理学习计划",
       "role": "同学",
       "minIntimacy": 80,
-      "art": "assets/relationships/cards/classmate-05-study-plan-choice-layout.webp",
+      "art": "assets/relationships/cards/classmate-plan-20261113.webp",
       "options": [
         {
           "label": "谢谢，这下有方向了！",
           "hours": 3,
-          "energy": 2,
+          "energy": 0,
           "intimacy": 3,
           "happiness": 2,
-          "stress": -3,
+          "stress": -5,
           "cash": 0,
           "studyMonths": 1
         },
@@ -701,9 +765,9 @@
       "boxes": [
         [
           3,
-          54,
+          55,
           94,
-          31
+          30
         ],
         [
           3,
@@ -718,7 +782,7 @@
       "title": "聊聊养宠日常",
       "role": "宠友",
       "minIntimacy": 0,
-      "art": "assets/relationships/cards/petfriend-01-chat.webp",
+      "art": "assets/relationships/cards/petfriend-chat-20261113.webp",
       "options": [
         {
           "label": "一起聊聊养宠趣事",
@@ -733,7 +797,7 @@
           "label": "简单聊上几句",
           "hours": 0,
           "energy": 0,
-          "intimacy": 0,
+          "intimacy": 1,
           "happiness": 0,
           "stress": 0,
           "cash": 0
@@ -744,39 +808,40 @@
           3,
           59,
           94,
-          26
+          25
         ],
         [
           3,
-          86,
+          85,
           94,
-          12
+          14
         ]
       ]
     },
     {
       "id": "petfriend-organizer",
-      "title": "宠友送你收纳袋",
+      "title": "宠友送你护理券",
       "role": "宠友",
       "minIntimacy": 0,
-      "art": "assets/relationships/cards/petfriend-02-organizer.webp",
+      "art": "assets/relationships/cards/petfriend-organizer-20261113.webp",
       "options": [
         {
-          "label": "正好用得上，谢谢！",
+          "label": "太贴心了，谢谢你！",
           "hours": 0,
           "energy": 0,
           "intimacy": 2,
           "happiness": 3,
           "stress": 0,
-          "cash": 0
+          "cash": 0,
+          "careCoupons": 3
         }
       ],
       "boxes": [
         [
-          3,
-          64,
-          94,
-          32
+          12,
+          90,
+          76,
+          9
         ]
       ]
     },
@@ -823,36 +888,36 @@
     },
     {
       "id": "petfriend-late",
-      "title": "宠友赴约迟到了",
+      "title": "两只宠物起了冲突",
       "role": "宠友",
       "minIntimacy": 0,
-      "art": "assets/relationships/cards/petfriend-04-late-arrival.webp",
+      "art": "assets/relationships/cards/petfriend-late-20261113.webp",
       "options": [
         {
-          "label": "把自己的感受说清楚",
+          "label": "安抚宠物，和宠友聊聊刚才的事。",
           "hours": 1,
-          "energy": 0,
+          "energy": -2,
           "intimacy": 3,
           "happiness": 0,
-          "stress": -1,
+          "stress": 0,
           "cash": 0
         },
         {
-          "label": "算啦，先不提了",
+          "label": "今天先回家，让彼此缓一缓。",
           "hours": 0,
           "energy": 0,
-          "intimacy": 3,
+          "intimacy": 0,
           "happiness": 0,
-          "stress": 1,
+          "stress": -2,
           "cash": 0
         }
       ],
       "boxes": [
         [
           3,
-          58,
+          56,
           94,
-          21
+          23
         ],
         [
           3,
@@ -860,7 +925,8 @@
           94,
           18
         ]
-      ]
+      ],
+      "contactPets": true
     },
     {
       "id": "petfriend-job",
@@ -901,7 +967,8 @@
           94,
           12
         ]
-      ]
+      ],
+      "incomeKind": "fixedIncludingTips"
     }
   ],
   "followups": {
@@ -930,7 +997,7 @@
     },
     "success": {
       "title": "房东送来备用风扇",
-      "art": "assets/relationships/cards/landlord-04-aircon-success.webp",
+      "art": "assets/relationships/cards/success-20261113.webp",
       "options": [
         {
           "label": "太好了，谢谢！",
@@ -938,7 +1005,7 @@
           "energy": 1,
           "intimacy": 0,
           "happiness": 2,
-          "stress": -2,
+          "stress": 0,
           "cash": 0
         }
       ],
@@ -953,7 +1020,7 @@
     },
     "failure": {
       "title": "没能联系上房东",
-      "art": "assets/relationships/cards/landlord-04-aircon-failure.webp",
+      "art": "assets/relationships/cards/failure-20261113.webp",
       "options": [
         {
           "label": "先熬过今晚吧",
@@ -961,7 +1028,7 @@
           "energy": -2,
           "intimacy": 0,
           "happiness": -2,
-          "stress": 1,
+          "stress": 0,
           "cash": 0
         }
       ],
@@ -973,6 +1040,29 @@
           11
         ]
       ]
+    },
+    "moving-meal": {
+      "title": "搬完家，一起吃顿饭",
+      "options": [
+        {
+          "label": "那我就不客气啦！",
+          "hours": 0,
+          "energy": 4,
+          "intimacy": 2,
+          "happiness": 3,
+          "stress": -2,
+          "cash": 0
+        }
+      ],
+      "boxes": [
+        [
+          12,
+          87,
+          76,
+          10
+        ]
+      ],
+      "art": "assets/relationships/cards/moving-meal-20261113.webp"
     }
   }
 };root.RelationshipCardData=data;if(typeof module!=="undefined")module.exports=data;})(typeof window==="undefined"?globalThis:window);

@@ -1,0 +1,4 @@
+{
+  "result": "PASS 5组\n25张主卡图片解码、按钮数量、390px无横溢出\n真实localStorage失败回滚、重试即时到账、重复点击不重复领工资\n护理券真实保存失败回滚、扣一次券、健康+20、费用0、护理日期防重复\n4张独立后续图解码\n护理页3种方式与动态剩余次数显示",
+  "scope": "Isolated local iframe slot947. Deliberate quota errors are expected; initial host observer error is not counted as an app pass."
+}

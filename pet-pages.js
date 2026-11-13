@@ -166,26 +166,19 @@
   action(ctx,form,'暂不领养，返回选择',()=>selection(id));hit(ctx,e,'返回选择',15,3,9,7,()=>selection(id));focusFirst(ctx);
  }
  function openSuccess(index,q){const p=state.pets[index],id=spec(p),ctx=panel('领养成功'),e=canvas(ctx,'success-'+id);box(e,petName(p)+' · '+q.name,26,38.7,49,3.3,'pet-name');box(e,priceText(q.total),65,69.7,27,5.5,'pet-gold');box(e,priceText(state.cash),55,75,37,4.5,'pet-status');box(e,priceText(q.monthly),73,80.2,18,4.5,'pet-status');hit(ctx,e,'查看我的宠物',5,87.2,90,6.5,openOverview);hit(ctx,e,'返回房屋',32,94.7,35,4.5,room);focusFirst(ctx);}
- function openClean(index){const p=state.pets?.[index],c=p&&cfg(p);if(!c)return openDetail(index);const ctx=panel(c.name+'清洁护理'),id=spec(p),e=canvas(ctx,'clean-'+id,'852/1846');let selected=isRecoveryMonth(state)?'pro':'self';const status=message(ctx.node);
-  box(e,calendar(state.month),53,7.3,33,2.8,'pet-date');
-  box(e,petName(p)+' · '+c.name,46,19.2,47,4.1,'pet-name');
-  const petPreview=preview().pets[index];box(e,'下次清洁：'+calendar(petPreview.care?.nextClean),46,24.1,47,5.1,'pet-due');
-  const marks=[box(e,'✓',7.4,34.4,7,3.3,'pet-check'),box(e,'',7.4,50.2,7,3.3,'pet-check')];
-  const rows=[box(e,'',43.8,34.5,49.5,13.4,'pet-care-row pet-care-self'),box(e,'',43.8,50.5,49.5,13.4,'pet-care-row')];
-  const sum=box(e,'',6,69,88,5.8,'pet-summary');
-  const date=box(e,'',5,64.7,90,3,'pet-helper');
-  const rules=PET_CARE_RULES[id],factor=(state.cpiIndex||100)/100,recovery=isRecoveryMonth(state);
-  const amount=m=>roundCash(rules[m]*factor),hours=m=>recovery?0:rules[m+'Hours'];
-  const label=m=>(id==='dog'||id==='cat')?(m==='self'?'自己洗澡':'外出洗澡'):(m==='self'?'自行清洁':'专业清洁');
-  const choices=['self','pro'].map((m,i)=>hit(ctx,e,label(m),5,i?49.4:33.4,90,15.3,()=>{if(validPet(ctx,p,index)){selected=m;update();}}));
-  const b=hit(ctx,e,'确认选择',7,76.7,86,5.6,()=>{if(!validPet(ctx,p,index))return;openCareConfirm(index,'Clean',selected);});
-  box(e,'返回'+petName(p)+'的资料',17,83.3,67,3.7,'pet-status');hit(ctx,e,'返回宠物资料',14,83.1,72,4.5,()=>openDetail(index));
-  box(e,'返回我的宠物',22,88,57,2.4,'pet-helper');hit(ctx,e,'返回我的宠物',18,87.3,65,4.6,openOverview);
-  function update(){const ready=due(p,'Clean').length>0;marks.forEach((mark,i)=>{mark.textContent=selected===(i?'pro':'self')?'✓':'';mark.classList.toggle('selected',selected===(i?'pro':'self'));choices[i].setAttribute('aria-pressed',String(selected===(i?'pro':'self')));});
-   choices[0].disabled=recovery;for(const [i,m]of ['self','pro'].entries()){rows[i].innerHTML='<strong>'+label(m)+'</strong><span>'+(m==='self'?'自己动手，细心照顾。':'交给专业人员清洁照顾。')+'</span><span>费用：'+priceText(amount(m))+'</span><b>'+(m==='self'&&recovery?'康复月不可自行清洁':'自由时间减少 '+hours(m)+' 小时')+'</b><span>清洁后，隔 '+rules[m+'Months']+' 个月再清洁</span>';}
-   sum.innerHTML='<small>已选方式　／　本次费用　／　自由时间</small><strong>'+label(selected)+'　'+priceText(amount(selected))+'　减少 '+hours(selected)+' 小时</strong>';date.textContent=needsVet(p)?'需要先就医，治疗后可按周期护理':ready?'完成清洁：健康+20（上限100），重新计算下次护理':'尚未到期，仅可预览，不提前收费';b.disabled=!ready||needsVet(p);b.setAttribute('aria-label',ready?'确认选择':'尚未到期，不能确认支付');}
-  update();focusFirst(ctx);
+ function openClean(index){const p=state.pets?.[index],c=p&&cfg(p);if(!c)return openDetail(index);const ctx=panel(c.name+'清洁护理'),paper=plain(ctx,'清洁护理'),id=spec(p),rules=PET_CARE_RULES[id],recovery=isRecoveryMonth(state),count=state.petCareCoupons||0,ready=due(p,'Clean').length>0;
+  paper.classList.add('pet-coupon-paper');paper.append(textNode('p',calendar(state.month),'pet-coupon-date'));
+  const identity=textNode('div',null,'pet-coupon-identity'),photo=textNode('span',null,'pet-coupon-thumb');photo.style.backgroundImage='url("'+asset('clean-'+id)+'")';identity.append(photo,textNode('strong',petName(p)+' · '+c.name),textNode('p',ready?'护理已到期':'下次清洁：'+calendar(preview().pets[index].care?.nextClean)));paper.append(identity);
+  let selected=recovery?'pro':'self';const buttons=[],factor=(state.cpiIndex||100)/100;
+  const amount=m=>m==='coupon'?0:roundCash(rules[m]*factor),hours=m=>recovery?0:rules[(m==='coupon'?'pro':m)+'Hours'];
+  const label=m=>m==='coupon'?'使用护理券':['dog','cat'].includes(id)?m==='self'?'自己洗澡':'外出洗澡':m==='self'?'自行清洁':'专业清洁';
+  for(const m of ['self','pro','coupon']){const b=textNode('button',null,'pet-coupon-option'),mark=textNode('span','○','pet-coupon-radio'),art=textNode('span',m==='coupon'?'护理券':'','pet-coupon-thumb'+(m==='coupon'?' ticket':''));if(m!=='coupon')art.style.backgroundImage='url("'+asset('clean-'+id)+'")';const body=textNode('span',null,'pet-coupon-body');body.append(textNode('strong',label(m)),textNode('span',m==='coupon'?'剩余'+count+'次':m==='self'?'自己动手，细心照顾。':'交给专业人员清洁照顾。'),textNode('span','费用：'+priceText(amount(m))),textNode('b','自由时间−'+hours(m)+'小时'),textNode('span',m==='coupon'?'使用后剩余'+Math.max(0,count-1)+'次 · 隔'+rules.proMonths+'个月再护理':'护理后，隔'+rules[(m==='self'?'self':'pro')+'Months']+'个月再护理'));b.append(mark,art,body);b.type='button';b.disabled=m==='self'&&recovery||m==='coupon'&&count<1;b.onclick=()=>{if(validPet(ctx,p,index)){selected=m;update();}};buttons.push({m,b,mark});paper.append(b);}
+  const helper=textNode('p',needsVet(p)?'需要先就医，治疗后再安排护理':ready?'完成护理：健康+20（上限100）':'尚未到期，仅可预览，不提前使用护理券','pet-coupon-helper'),summary=textNode('p',null,'pet-coupon-summary');paper.append(helper,summary);
+  const confirm=action(ctx,paper,'确认选择',()=>{if(validPet(ctx,p,index))openCareConfirm(index,'Clean',selected);},!ready||needsVet(p));
+  action(ctx,paper,'返回宠物资料',()=>openDetail(index));action(ctx,paper,'返回我的宠物',openOverview);
+  function update(){for(const {m,b,mark}of buttons){b.classList.toggle('selected',m===selected);b.setAttribute('aria-pressed',String(m===selected));mark.textContent=m===selected?'✓':'○';}summary.textContent=label(selected)+' · '+priceText(amount(selected))+' · 自由时间−'+hours(selected)+'小时';confirm.textContent=selected==='coupon'?'确认使用护理券':'确认选择';}update();focusFirst(ctx);
  }
+
  function openAnnual(index){const p=state.pets?.[index],id=p&&spec(p),rule=PET_CARE_RULES[id];if(!p||!rule)return openDetail(index);
   const ctx=panel('年度体检'),s=preview(),cp=s.pets[index],e=canvas(ctx,'annual-'+id,'981/1602');
   const cost=roundCash(rule.annual*(state.cpiIndex||100)/100),hours=isRecoveryMonth(state)?0:rule.annualHours,ready=due(p,'Annual').length>0;
@@ -201,8 +194,8 @@
  function openCareConfirm(index,kind,method){const p=state.pets?.[index];if(!p)return openOverview();const target=copy(p),s=preview(),task=petCareTasks(s).find(t=>t.pet===s.pets[index]&&t.kind===kind);if(!task)return openDetail(index);
   const selections={[task.key]:method},q=petCareQuote(s,selections),ctx=panel('核对照护费用'),paper=plain(ctx,'核对'+petName(p)+'的照护费用');
   if(q.blocked){paper.append(textNode('p',q.blocked));action(ctx,paper,'返回宠物资料',()=>openDetail(index));return;}
-  paper.append(textNode('p',(kind==='Annual'?'年度体检':method==='self'?'自行清洁':'专业清洁')+' · '+priceText(q.cost)+' · '+q.hours+' 小时'),textNode('p','支付后现金：'+priceText(state.cash-q.cost)));if(kind==='Clean')paper.append(textNode('p','护理后健康：'+healthValue(p)+' → '+Math.min(100,healthValue(p)+20)+'/100'));const status=message(paper);
-  action(ctx,paper,'确认支付',b=>{if(paying||!validPet(ctx,target,index))return;const fresh=preview(),t=petCareTasks(fresh).find(t=>t.pet===fresh.pets[index]&&t.key===task.key);if(!t)return;const nq=petCareQuote(fresh,selections);if(nq.blocked||nq.cost!==q.cost||nq.hours!==q.hours){status.textContent='条件已变化，请返回重新核对。';return;}
+  paper.append(textNode('p',(kind==='Annual'?'年度体检':method==='self'?'自行清洁':method==='coupon'?'使用护理券':'专业清洁')+' · '+priceText(q.cost)+' · '+q.hours+' 小时'),textNode('p','支付后现金：'+priceText(state.cash-q.cost)));if(kind==='Clean')paper.append(textNode('p','护理后健康：'+healthValue(p)+' → '+Math.min(100,healthValue(p)+20)+'/100'));if(method==='coupon')paper.append(textNode('p','使用护理券1次，剩余'+Math.max(0,(state.petCareCoupons||0)-1)+'次'));const status=message(paper);
+  action(ctx,paper,method==='coupon'?'确认使用护理券':'确认支付',b=>{if(paying||!validPet(ctx,target,index))return;const fresh=preview(),t=petCareTasks(fresh).find(t=>t.pet===fresh.pets[index]&&t.key===task.key);if(!t)return;const nq=petCareQuote(fresh,selections);if(nq.blocked||nq.cost!==q.cost||nq.hours!==q.hours){status.textContent='条件已变化，请返回重新核对。';return;}
    paying=true;b.disabled=true;const before=copy(state);let ok=false;try{backup();ok=payPetCare(selections);}catch(e){for(const k of Object.keys(state))delete state[k];Object.assign(state,before);}finally{paying=false;}
    if(!ok){b.disabled=false;status.textContent='暂未完成：未结算费用、时间或照护日期，请检查余额和时间后重试。';return;}openDetail(index);
   },state.cash<q.cost||currentCareerTime().free<q.hours);
