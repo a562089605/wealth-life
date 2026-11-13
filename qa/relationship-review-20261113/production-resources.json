@@ -1,0 +1,566 @@
+[
+  {
+    "path": "annual.js?v=20261113-hobbies1",
+    "equal": true,
+    "sha256": "ab939f48cf80b7ed434001efde08d7b1ebcb47c4fff96910a94516e2547ea4ea",
+    "bytes": 27326
+  },
+  {
+    "path": "apartment-events.js?v=20261104-apartment1",
+    "equal": true,
+    "sha256": "5c740d5a4db6bb6cfb65f1ee099361c597339fb4e22878a9b2ca62a4ea43647d",
+    "bytes": 13086
+  },
+  {
+    "path": "assets/pets/care-coupon-preview-20261113.webp",
+    "equal": true,
+    "sha256": "3f55e7240faaf3c44274bb5773ed57c8f3676aca400942b6a20f50d64796d26f",
+    "bytes": 364402
+  },
+  {
+    "path": "assets/relationships/cards/classmate-library-20261113.webp",
+    "equal": true,
+    "sha256": "bf79577d8dc1768dfcc536773f35a8deb5516ac60b555daeb7c354e6dfaa8cff",
+    "bytes": 367144
+  },
+  {
+    "path": "assets/relationships/cards/classmate-plan-20261113.webp",
+    "equal": true,
+    "sha256": "df8cfd6513dcd3ce914dd1f0e0eaf183849598794395a514e2503be0ff37fecb",
+    "bytes": 260834
+  },
+  {
+    "path": "assets/relationships/cards/classmate-presentation-20261113.webp",
+    "equal": true,
+    "sha256": "61bf9aaee5da6f1613a53ea97c250da1f1f2314cedc2fac9fb9206e78ad04e6f",
+    "bytes": 405196
+  },
+  {
+    "path": "assets/relationships/cards/classmate-snack-20261113.webp",
+    "equal": true,
+    "sha256": "5856493dcc131345b59d430f061a28c0fa4983a6bf073111ff60fe4cfd14a741",
+    "bytes": 367048
+  },
+  {
+    "path": "assets/relationships/cards/coworker-bookshelf-20261113.webp",
+    "equal": true,
+    "sha256": "c1f3301d904b104964bf91c58e69bb2894508d2cdde56ea5592abe62fedd4268",
+    "bytes": 345106
+  },
+  {
+    "path": "assets/relationships/cards/coworker-chat-20261113.webp",
+    "equal": true,
+    "sha256": "fd704be57f6f9ac0652b616308286efc7f88f4cd04372837af52a99f6789d112",
+    "bytes": 384814
+  },
+  {
+    "path": "assets/relationships/cards/coworker-job-20261113.webp",
+    "equal": true,
+    "sha256": "85f3a9ea5cf039957d5ac32114d0e28b7c125cde9fbcb9e5ee33f42815a59d69",
+    "bytes": 372324
+  },
+  {
+    "path": "assets/relationships/cards/coworker-snack-20261113.webp",
+    "equal": true,
+    "sha256": "ad4aa7500ded14ec1ab58063701a074b3103f432c14e7295a7a4e37e1b62b557",
+    "bytes": 310662
+  },
+  {
+    "path": "assets/relationships/cards/failure-20261113.webp",
+    "equal": true,
+    "sha256": "0aef4f6a50e71bf6a744db35cc937d0dd5f893495c62936cf4ce013eb4faa7ea",
+    "bytes": 315182
+  },
+  {
+    "path": "assets/relationships/cards/landlord-aircon-20261113.webp",
+    "equal": true,
+    "sha256": "4fe617c8de8fa5e447d27bb9be34ccf78b941ae4ee005845cb0fb545d9db4fdf",
+    "bytes": 266256
+  },
+  {
+    "path": "assets/relationships/cards/landlord-chat-20261113.webp",
+    "equal": true,
+    "sha256": "dde7830f4ce84878f2100ca163fc29ce2ea28084188046e82e4e7d89259d874d",
+    "bytes": 376648
+  },
+  {
+    "path": "assets/relationships/cards/landlord-plants-20261113.webp",
+    "equal": true,
+    "sha256": "b25c4639f7e202b84467bb50a19bbbc89e496274c4525322dd89a2604da8c1d6",
+    "bytes": 356018
+  },
+  {
+    "path": "assets/relationships/cards/manager-bonus-20261113.webp",
+    "equal": true,
+    "sha256": "8de3ea3aa2bb16deeb68b6f1a626bf33677c144a16a46dbc4e43a95e83a9d149",
+    "bytes": 343468
+  },
+  {
+    "path": "assets/relationships/cards/manager-experience-20261113.webp",
+    "equal": true,
+    "sha256": "03441e7918a7a62bf9be09f39c668165ebbad90f31541a933cb6fdf361814fdd",
+    "bytes": 310376
+  },
+  {
+    "path": "assets/relationships/cards/manager-extra-shifts-20261113.webp",
+    "equal": true,
+    "sha256": "9f25a1eac03756631b5da3d459c4c80e3d78fb0c76a563df108d1a3f7f25b35e",
+    "bytes": 332454
+  },
+  {
+    "path": "assets/relationships/cards/manager-pickup-20261113.webp",
+    "equal": true,
+    "sha256": "638eb5a7bbdd494c6cd14eddbe77c5795e18a46ea962bed2a4038d3fb85bfb02",
+    "bytes": 311140
+  },
+  {
+    "path": "assets/relationships/cards/manager-tasting-20261113.webp",
+    "equal": true,
+    "sha256": "808882674a5e31727ceebafa8a6a799431ffef112846bd37262dec255886ea1b",
+    "bytes": 371186
+  },
+  {
+    "path": "assets/relationships/cards/moving-meal-20261113.webp",
+    "equal": true,
+    "sha256": "5f94406aa82c3c3e6deab5cd8ec2e2173e27f017abd76a4d05204a88066cd27c",
+    "bytes": 389910
+  },
+  {
+    "path": "assets/relationships/cards/petfriend-chat-20261113.webp",
+    "equal": true,
+    "sha256": "67ab32137f3883971bf1a33c7479d67e1f00653b56a6c69eb395131130829e77",
+    "bytes": 344898
+  },
+  {
+    "path": "assets/relationships/cards/petfriend-late-20261113.webp",
+    "equal": true,
+    "sha256": "6afbb04980ae829d9ae9791114e24dfcd1a9f8696a03efe6148414235f936fad",
+    "bytes": 337228
+  },
+  {
+    "path": "assets/relationships/cards/petfriend-organizer-20261113.webp",
+    "equal": true,
+    "sha256": "bbd4c75b8fdef12fa8f724915bf1ffa5022fc3ff82f2168c071ea25a922afcbf",
+    "bytes": 402710
+  },
+  {
+    "path": "assets/relationships/cards/success-20261113.webp",
+    "equal": true,
+    "sha256": "f6110608e154c88b8208f9ad6d79ceb2a4067f137fa7abb6c89fc6ab6584bce8",
+    "bytes": 367754
+  },
+  {
+    "path": "batch.js?v=20261113-hobbies1",
+    "equal": true,
+    "sha256": "25122faac3ea86ccdbdda9892bd3b39889635dee8aed237542e0033fbf11bc38",
+    "bytes": 31082
+  },
+  {
+    "path": "career-selection.css?v=20261101",
+    "equal": true,
+    "sha256": "3834b40487afeca7f11ae60457c56fa08d87fd43b62561cea541c5261911cd6e",
+    "bytes": 2570
+  },
+  {
+    "path": "career-selection.js?v=20261101",
+    "equal": true,
+    "sha256": "a83004439ced02aeca47024d82384ad68461e4fe4a2da422bd971778da05c059",
+    "bytes": 2330
+  },
+  {
+    "path": "coffee-career.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "eab990ecdffa32d7b923d29e63556950bfcc5f79bcf7a9af19c9d1d538f797ea",
+    "bytes": 13984
+  },
+  {
+    "path": "coffee-salary.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "b35fa595344a92d45c4c96e5d7ff5bde59048a39f38458df98a117002dd98010",
+    "bytes": 2877
+  },
+  {
+    "path": "coffee.js?v=28.3-intro-20261101",
+    "equal": true,
+    "sha256": "9dfbfa1d1e1b6df23b14925832c7c84ec49b87dae4d9591ab113c81c9c56bf6d",
+    "bytes": 18915
+  },
+  {
+    "path": "core.js?v=20261113-education1",
+    "equal": true,
+    "sha256": "e7426a4332636cd70bee110fd906bff32dcc45e716f9977f861519245c02176d",
+    "bytes": 38606
+  },
+  {
+    "path": "education-pages.css?v=20261113-education1",
+    "equal": true,
+    "sha256": "1121700d3a46e71d6ee31ebb60bd33d9160cdfdf8286e9cfe63c6a55dfda23a3",
+    "bytes": 3233
+  },
+  {
+    "path": "education-pages.js?v=20261113-education1",
+    "equal": true,
+    "sha256": "d4411b1b3eaad221196ad25210589de272baed545ed2ad3e3b4b3d97c0ed0f62",
+    "bytes": 13725
+  },
+  {
+    "path": "education-plans.js?v=20261113-education1",
+    "equal": true,
+    "sha256": "92a2cdb57c6cc7291add09e7e433accd739c369c57aa16074bd277796e777562",
+    "bytes": 5357
+  },
+  {
+    "path": "entry-screen.css?v=20261112-entry2",
+    "equal": true,
+    "sha256": "95bdb6e922e83f72692b19c8f0e0b1d49458c868e65a4bd83856191d069f3016",
+    "bytes": 2050
+  },
+  {
+    "path": "entry-screen.js?v=20261112-entry1",
+    "equal": true,
+    "sha256": "142cfd9f9ea74d31c1021af54344a535e37ae9e6a23c07a4f9a4d274ddb14edb",
+    "bytes": 675
+  },
+  {
+    "path": "family-events.js?v=20261102-family2",
+    "equal": true,
+    "sha256": "4cbe96269743d10506534fb6d5747f2a64b715ed78f48c6aba3240e506fead6f",
+    "bytes": 7475
+  },
+  {
+    "path": "family-home.css?v=20261104-apartment1",
+    "equal": true,
+    "sha256": "20f83fe62d3c4ac160c0ab8d37a36d901f1fe6d598f759f80cb4388b79ff7158",
+    "bytes": 5702
+  },
+  {
+    "path": "family-home.js?v=20261104-housingsave1",
+    "equal": true,
+    "sha256": "42f9342ac4568f5019d779d2b99142c8138a5cb1803e143b5089183c1b73ec5f",
+    "bytes": 28290
+  },
+  {
+    "path": "financial-crisis.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "d8c7e290e7065f8b76efc1f93521b0235c1137b1f0fa7c37c321e0906844e4c9",
+    "bytes": 6135
+  },
+  {
+    "path": "flow.js?v=20261113-hobbies1",
+    "equal": true,
+    "sha256": "9a0064ad0112d3f352e49278873770cdcd6a71b52cdb200eebbe40f7c479ecce",
+    "bytes": 39312
+  },
+  {
+    "path": "four-state.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "31ad796f947fc7f2900f39e1dd3105e1c093bb980589045bb1d243746b56a4f2",
+    "bytes": 1849
+  },
+  {
+    "path": "hobby-learning.js?v=20261113-hobbies1",
+    "equal": true,
+    "sha256": "4c846d9ca70829ee3b464b1b28e056d452ed4d76ee7a0cbaaef3507cc3a950eb",
+    "bytes": 5898
+  },
+  {
+    "path": "hobby-pages.css?v=20261113-hobbies1",
+    "equal": true,
+    "sha256": "d342de8c9cb5e93eb93762c62887346bbd8544b89d6b8cc06af803946e83ea09",
+    "bytes": 2718
+  },
+  {
+    "path": "hobby-pages.js?v=20261113-hobbies1",
+    "equal": true,
+    "sha256": "9ad0f255034bdca019d5fdf2a7b5e46bd36c44a7941624168685af85f3b8cfe1",
+    "bytes": 7034
+  },
+  {
+    "path": "housing-bills.js?v=20261104-housingsave1",
+    "equal": true,
+    "sha256": "dc572b4d84f4262ba33a8dc4d2772e2a095ec3b20cfb6e37a27927241aa1bc8d",
+    "bytes": 1629
+  },
+  {
+    "path": "housing-lease.js?v=20261104-housingsave1",
+    "equal": true,
+    "sha256": "66e66fdb1c64df347cb41c94287fe35d892bee30f091e0b6fe9848ea123d3e15",
+    "bytes": 6965
+  },
+  {
+    "path": "housing-time-debt.js?v=20261104-apartment1",
+    "equal": true,
+    "sha256": "d142f70cebbbe2efc6fbccbb4d4591e4289595bdc89a112a723097b9e88bca32",
+    "bytes": 2698
+  },
+  {
+    "path": "index.html",
+    "equal": true,
+    "sha256": "d86c1332d9c57427325e0b1d54741a2c5f7080fd405de47e28dc0f0c816d7c1f",
+    "bytes": 130228
+  },
+  {
+    "path": "journey.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "a68ec8bc1f2bc982a0946e1835d4911232f30044c33d0997583b19c7729a79f5",
+    "bytes": 13927
+  },
+  {
+    "path": "medical-insurance.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "dbd754d2811a74e7ce69730c0a04801f4352fcdfb4dd5e07410984e1773cf2b2",
+    "bytes": 3135
+  },
+  {
+    "path": "necessary-bills.js?v=20261107-petvet1",
+    "equal": true,
+    "sha256": "e225ec8fd944d024126a1e3d7e43ee1734873b2ac47956b9198fc3b8da18656d",
+    "bytes": 2027
+  },
+  {
+    "path": "painted-pages.css?v=28.3-housing-20261101",
+    "equal": true,
+    "sha256": "55bf27d7cdda59837f29188f77536435dcdc5d7f6d52e83d2da69a7600950c43",
+    "bytes": 3635
+  },
+  {
+    "path": "painted-pages.js?v=20261112-direct-rest1",
+    "equal": true,
+    "sha256": "dfdd69fd0ea0bec39af2c9bb089e90751942fd1ea44b3285709b621465885b46",
+    "bytes": 12491
+  },
+  {
+    "path": "paper.css?v=28.3-intro-20261101",
+    "equal": true,
+    "sha256": "6d364c35b4d09eab60df8f61a409b24eadcceb8dc301668fea5c2e849e2b7141",
+    "bytes": 7441
+  },
+  {
+    "path": "pet-adoption-entry.css?v=20261105-petcard2",
+    "equal": true,
+    "sha256": "57a54e49d74b623dca53dc639bfc67af9e13e84b97b51a4dee42b4031276f8d6",
+    "bytes": 2866
+  },
+  {
+    "path": "pet-adoption-entry.js?v=20261107-petdeadline1",
+    "equal": true,
+    "sha256": "50fbffe3df1f0c2d833e1eee5f6715b8032730a55803d71f9c25a50de79a4574",
+    "bytes": 8761
+  },
+  {
+    "path": "pet-basic-fees.js?v=20261106-petaudit1",
+    "equal": true,
+    "sha256": "4a3661ce6dac8dda1e129213e0b5f5e05c47b287e535dcbe58c281648f380dcf",
+    "bytes": 2018
+  },
+  {
+    "path": "pet-care.js?v=20261113-review1",
+    "equal": true,
+    "sha256": "4e0723d58ce871886947faa597c12d2538fff9f3e618460cb853010c4ffe6762",
+    "bytes": 6787
+  },
+  {
+    "path": "pet-event-cards.js?v=20261107-spider120",
+    "equal": true,
+    "sha256": "c5208694d01bba149c5a2fb61fa7d99c04ffc476c266fe24d34a471f25a6f0e8",
+    "bytes": 14997
+  },
+  {
+    "path": "pet-events-ui.js?v=20261107-spider120",
+    "equal": true,
+    "sha256": "ab81fbf573655076b0461a2fb83e33ca3655dadbbc0d627323ace983031fd2ea",
+    "bytes": 8447
+  },
+  {
+    "path": "pet-events.css?v=20261106-pet35",
+    "equal": true,
+    "sha256": "36e7754eee0b076ecbb5065b0fffca1bfddb595129544562f7275c987a952df8",
+    "bytes": 2754
+  },
+  {
+    "path": "pet-events.js?v=20261107-spider120",
+    "equal": true,
+    "sha256": "36e0c62e4aa6ef0c4d422e66139653ab6fa70760dfad165334e4292c00437abf",
+    "bytes": 8501
+  },
+  {
+    "path": "pet-health.js?v=20261107-petdeadline1",
+    "equal": true,
+    "sha256": "7caa7c4c1814cdd4dcd47804d69d47c90f46d26342fbdf77e8ea9b4f5a49febd",
+    "bytes": 7206
+  },
+  {
+    "path": "pet-insurance.js?v=20261107-petpremium55",
+    "equal": true,
+    "sha256": "ce7034c898132470ed69dc16195a368b69fb29be76dea886e7bd360e5d4eb424",
+    "bytes": 5490
+  },
+  {
+    "path": "pet-pages.css?v=20261113-review1",
+    "equal": true,
+    "sha256": "ffe87e4fcfc2cd5220d04a8357c563f418d14d4da7ab84a0b41dd98ebcd9a282",
+    "bytes": 15868
+  },
+  {
+    "path": "pet-pages.js?v=20261113-review1",
+    "equal": true,
+    "sha256": "a94331bddb918b78ef6edb4fca9bfc3af3f158d81bed988512a3a0084eccac19",
+    "bytes": 38104
+  },
+  {
+    "path": "presentation.css?v=28.3-internal1",
+    "equal": true,
+    "sha256": "1022728e8116ffd7aeace181a9c595aae97211dd6067fddb5b599b82302fad45",
+    "bytes": 32388
+  },
+  {
+    "path": "presentation.js?v=20261104-apartment1",
+    "equal": true,
+    "sha256": "8272f399557c5de4fb14915c8fa0186ad4a11c764167c9d76a5e736d6288bb23",
+    "bytes": 20639
+  },
+  {
+    "path": "recovery-rules.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "1b61bfd62efd1328468fc46c8192083e45deca76e2652dddff50fd1fa9b71e42",
+    "bytes": 2597
+  },
+  {
+    "path": "recovery-ui.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "dccd68ba17ce9da0677b25d55063e2c1d24f3680b6cf7cb8d7c8fb3d8ea81636",
+    "bytes": 4427
+  },
+  {
+    "path": "relationship-avatars.js?v=20261113-avatars1",
+    "equal": true,
+    "sha256": "6ce50714b4eca7264cbd2868e28aa78d121bb63dfe9b31655564d573e2344c39",
+    "bytes": 2164
+  },
+  {
+    "path": "relationship-card-data.js?v=20261113-review1",
+    "equal": true,
+    "sha256": "a1c224ac3c1ae2ac77eef54cd933aa82b88946944e94a58bef65539da3f6cf82",
+    "bytes": 21882
+  },
+  {
+    "path": "relationship-life-cards.js?v=20261113-review1",
+    "equal": true,
+    "sha256": "da903fdab7a3c9c3f76e9925148549b814699d5e03f418b28e33bae9174729c7",
+    "bytes": 10935
+  },
+  {
+    "path": "relationship-life-ui.js?v=20261113-review1",
+    "equal": true,
+    "sha256": "5b3eedd025cabfa4dacdb3e61d24bfc9106838dd8e2606ab6a03ec73d0acd7b2",
+    "bytes": 5599
+  },
+  {
+    "path": "relationship-pages.css?v=20261113-review1",
+    "equal": true,
+    "sha256": "8513a52a2a8fc2f14f91ca82df793dc112e57f14532c6bf88e47d6e9a66f1d02",
+    "bytes": 9637
+  },
+  {
+    "path": "relationship-rules.js?v=20261113-review1",
+    "equal": true,
+    "sha256": "039d59c3cedb9e930f3e1e2ccda48fb478772f1c26c161db2126dd60fb580e44",
+    "bytes": 7253
+  },
+  {
+    "path": "relationship-ui.js?v=20261113-review1",
+    "equal": true,
+    "sha256": "d586ca1287bd4cf09aad1004b42d0526bdfface4033cd353a7e458181804c42e",
+    "bytes": 12419
+  },
+  {
+    "path": "release-info.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "71b8adea820c0254aa86034b086dbe8743aee7a9411482c18c8c93d3ed90e53c",
+    "bytes": 1010
+  },
+  {
+    "path": "rest-state.js?v=20261112-direct-rest1",
+    "equal": true,
+    "sha256": "b42437efb583013553fa561b51eab39237afc5acaee26d7a468c0448bc62b7d9",
+    "bytes": 2570
+  },
+  {
+    "path": "revision.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "f2f5879b5488d19d4a0ecc70edd4eb709f74c5e71c3c0dc9f14fafd1d5e65f28",
+    "bytes": 22942
+  },
+  {
+    "path": "room.css?v=20261104-familyroom1",
+    "equal": true,
+    "sha256": "4bb7af169e9801926c98b4e72e0f182695c5be9db2f2fec5d87b5aa2f8ba2010",
+    "bytes": 5944
+  },
+  {
+    "path": "room.js?v=20261113-hobbies1",
+    "equal": true,
+    "sha256": "acbda4a02a396a0ec750ac852e8802465ea1299de55500b9bcc0b412a44c74dd",
+    "bytes": 9534
+  },
+  {
+    "path": "save-slots.css?v=20261112-slots1",
+    "equal": true,
+    "sha256": "90acad43281ab5b2dacfd46a8d65f685b1b4978a15f9bbf833e0083886d3f686",
+    "bytes": 5266
+  },
+  {
+    "path": "save-slots.js?v=20261112-slots1",
+    "equal": true,
+    "sha256": "08d6db6dc307f7b1b8957948d9473cbf7f797a4f005e8817054333a4aeba910d",
+    "bytes": 3486
+  },
+  {
+    "path": "shared-events.js?v=20261102-toolbox1",
+    "equal": true,
+    "sha256": "187e4031b24f0b2c1dd8c1d4c78b581488fd7756fbc84953645e2726809e5b9b",
+    "bytes": 9648
+  },
+  {
+    "path": "shift-lead.css?v=28.3-internal1",
+    "equal": true,
+    "sha256": "0c40bb3706e0d5aa42109fbe618f50cf797428fca97da7518d04cbc2abb75da3",
+    "bytes": 2116
+  },
+  {
+    "path": "shift-lead.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "2ba968c21ba24223695de7159d9938a3923c66e1ca0e4cb5c9824cdc822cd455",
+    "bytes": 16419
+  },
+  {
+    "path": "studio-events.js?v=20261103-studio1",
+    "equal": true,
+    "sha256": "23ac8f4ee8d47a5b5317888ee966879f569bc7766c29bd25e998fced9356b7cb",
+    "bytes": 11835
+  },
+  {
+    "path": "sw.js",
+    "equal": true,
+    "sha256": "88ed374f66ef6ffa94045a4db446b05f6e04d6c1014bca872558ab4e59acb744",
+    "bytes": 20152
+  },
+  {
+    "path": "time-flow.js?v=20261110-relationships1",
+    "equal": true,
+    "sha256": "d5430be19d97541e44b515a8430b901285e4d16e71249d32457873cd19d3d3dc",
+    "bytes": 4187
+  },
+  {
+    "path": "time-ledger.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "99880f2cd5225126dbdc218e2f4ec46f18fa7c24bc9e1472849ef1734a832dce",
+    "bytes": 1754
+  },
+  {
+    "path": "town.js?v=28.3-internal1",
+    "equal": true,
+    "sha256": "0c3fbf75c7f96102c4f6516088c33c397b7ca19b5b6f5fd5114be6dc3f7c12f6",
+    "bytes": 16343
+  }
+]
