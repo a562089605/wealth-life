@@ -3,7 +3,7 @@
   "confirmedAt": "2026-11-13",
   "confirmation": "用户确认每次+10XP及收紧排版新版画稿",
   "runtimeIntegrated": true,
-  "published": false,
+  "published": true,
   "file": "design/hobbies-20261113/coffee-tasting-10xp-confirmed.png",
   "sourceFile": "/workspace/generated_images/exec-6bc08adf-52ba-47d8-ad16-44041a7d1206.png",
   "sha256": "e8699300cb77307e26e01351f34bbe4fbf19ca284e5e337d46a247b1b0ffa09d",
@@ -99,7 +99,7 @@
     "file": "design/hobbies-20261113/baking-confirmed.png",
     "sourceFile": "/workspace/generated_images/exec-48df1d5c-bcc0-4bc7-9d51-292c91d8e95a.png",
     "sha256": "24a4468de2dfb954aff7fbc5af3a9dff9ca28b63e12a77b000ef13f13638b8b0",
-    "published": false
+    "published": true
   },
   "photography": {
     "status": "confirmed",
@@ -122,7 +122,7 @@
     },
     "budgetNote": "活动参与游戏预算，不新增购买相机门槛",
     "runtimeIntegrated": true,
-    "published": false,
+    "published": true,
     "artConfirmedAt": "2026-11-13",
     "artConfirmation": "用户看过摄影活动页画稿后回复“确认”",
     "file": "design/hobbies-20261113/photography-confirmed.png",
@@ -150,7 +150,7 @@
     },
     "budgetNote": "材料与活动参与的游戏预算，不另加购买画具门槛",
     "runtimeIntegrated": true,
-    "published": false,
+    "published": true,
     "artConfirmedAt": "2026-11-13",
     "artConfirmation": "用户看过绘画活动页画稿后回复“确认”",
     "file": "design/hobbies-20261113/drawing-confirmed.png",
@@ -175,7 +175,7 @@
     },
     "repeatable": true,
     "runtimeIntegrated": true,
-    "published": false
+    "published": true
   },
   "maxLevelRule": {
     "status": "confirmed",
@@ -244,7 +244,7 @@
     "contactLearningGrowth": false,
     "legacyPolicy": "旧联系人已有兴趣和经验保留；不追溯改写或自动换算。旧联系人缺记录的补充方案未获本轮授权，不补造。",
     "runtimeIntegrated": true,
-    "published": false
+    "published": true
   },
   "coffeeSpecialistSkills": {
     "status": "implemented-career-effects-deferred",
@@ -257,7 +257,7 @@
     ],
     "preservation": "原饮品制作/顾客服务/门店管理经验及晋升加薪规则保留；专项经验与原经验的关联及职业作用须逐项确认，不自动换算或奖励。",
     "runtimeIntegrated": true,
-    "published": false
+    "published": true
   },
   "latteArt": {
     "status": "confirmed",
@@ -284,7 +284,7 @@
     "budgetNote": "材料与教学的游戏预算，不新增设备购买门槛",
     "careerLink": "与原饮品制作经验及晋升加薪的关联另行确认，不自动增加原技能XP或工资",
     "runtimeIntegrated": true,
-    "published": false,
+    "published": true,
     "artConfirmedAt": "2026-11-13",
     "artConfirmation": "用户看过拉花技能页画稿后回复“确认”",
     "file": "design/hobbies-20261113/latte-art-confirmed.png",
@@ -316,7 +316,7 @@
     "budgetNote": "材料与教学的游戏预算，不新增设备购买门槛",
     "careerLink": "与原饮品制作经验及晋升加薪的关联另行确认，不自动增加原技能XP或工资",
     "runtimeIntegrated": true,
-    "published": false,
+    "published": true,
     "artConfirmedAt": "2026-11-13",
     "artConfirmation": "用户看过手冲咖啡技能页画稿后回复“确认”",
     "file": "design/hobbies-20261113/pour-over-confirmed.png",
@@ -336,7 +336,7 @@
     ],
     "confirmedPages": 6,
     "runtimeIntegrated": true,
-    "published": false
+    "published": true
   },
   "runtimeResources": [
     {
@@ -388,6 +388,16 @@
     "browserReport": "qa/hobbies-20261113/local-report.json",
     "nodeSuitesPassed": 10,
     "browserGroupsPassed": 16,
+    "scriptErrors": 0,
+    "realIPhoneTested": false
+  },
+  "release": {
+    "functionalCommit": "4f3ab2de04f350ecc75d588154aff58c58811b94",
+    "deploymentURL": "https://github.com/a562089605/wealth-life/runs/131744671909",
+    "productionResources": "qa/hobbies-20261113/production-resources.json",
+    "productionBrowserReport": "qa/hobbies-20261113/production-report.json",
+    "all147ResourcesMatch": true,
+    "isolatedChromiumGroups": 16,
     "scriptErrors": 0,
     "realIPhoneTested": false
   }
