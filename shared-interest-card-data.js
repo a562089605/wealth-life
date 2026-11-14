@@ -1,4 +1,4 @@
-// Confirmed artwork and effects only. Not loaded by the game; natural draw remains disabled.
+// Confirmed shared-interest data. Natural map draw is disabled.
 (function(root){
  const data={
   "version": 1,
@@ -29,7 +29,8 @@
           "label": "这次先不去了",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/tasting-invite.webp"
     },
     {
       "id": "tasting-notes",
@@ -53,7 +54,8 @@
           "label": "我这会儿有点事，下次聊呀。",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/tasting-notes.webp"
     },
     {
       "id": "tasting-news",
@@ -70,7 +72,8 @@
             "intimacy": 2
           }
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/tasting-news.webp"
     },
     {
       "id": "tasting-queue",
@@ -117,7 +120,10 @@
               "intimacy": 3
             },
             "file": "design/hobbies-20261113/shared-tasting-explore-queue-followup-confirmed.png",
-            "sha256": "5a6b6ff78396c1d6d9d4ee97ec65321cc196a162eac3f543757bd62002213fb1"
+            "sha256": "5a6b6ff78396c1d6d9d4ee97ec65321cc196a162eac3f543757bd62002213fb1",
+            "art": "assets/hobbies/events/tasting-queue-queue.webp",
+            "scene": "你们又找了一家店，没想到也要排队。边等边聊，终于喝上了咖啡。",
+            "label": "总算喝上啦！"
           },
           {
             "id": "no-queue",
@@ -130,7 +136,10 @@
               "intimacy": 3
             },
             "file": "design/hobbies-20261113/shared-tasting-explore-no-queue-followup-confirmed.png",
-            "sha256": "73f652e6c51e0c684bb3a3817ddf57e149cdb2849d26e25cb8e09214e3cf315f"
+            "sha256": "73f652e6c51e0c684bb3a3817ddf57e149cdb2849d26e25cb8e09214e3cf315f",
+            "art": "assets/hobbies/events/tasting-queue-no-queue.webp",
+            "scene": "又走了一段路，终于找到一家不用排队的咖啡店。你们坐下来，喝着咖啡聊起了各自喜欢的风味。",
+            "label": "这家选得不错！"
           },
           {
             "id": "no-suitable-cafe",
@@ -142,10 +151,14 @@
               "intimacy": 1
             },
             "file": "design/hobbies-20261113/shared-tasting-explore-no-suitable-followup-confirmed.png",
-            "sha256": "bdb86050e50f8e81b0d2a618118341c3c7076f308ece5a8d61165029f214d2c7"
+            "sha256": "bdb86050e50f8e81b0d2a618118341c3c7076f308ece5a8d61165029f214d2c7",
+            "art": "assets/hobbies/events/tasting-queue-no-suitable-cafe.webp",
+            "scene": "走了几家，都没找到合适的咖啡店。你们有点累了，便约好下次再来，一起往回走。",
+            "label": "下次再一起喝吧。"
           }
         ]
-      }
+      },
+      "art": "assets/hobbies/events/tasting-queue.webp"
     },
     {
       "id": "tasting-compare",
@@ -171,7 +184,8 @@
           "label": "这次先不去了。",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/tasting-compare.webp"
     },
     {
       "id": "baking-invite",
@@ -197,7 +211,8 @@
           "label": "这次先不去了。",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/baking-invite.webp"
     },
     {
       "id": "baking-decoration",
@@ -223,7 +238,8 @@
           "label": "这次先不去了。",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/baking-decoration.webp"
     },
     {
       "id": "baking-treat",
@@ -241,7 +257,8 @@
             "energy": 2
           }
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/baking-treat.webp"
     },
     {
       "id": "baking-burnt",
@@ -271,7 +288,8 @@
             "intimacy": 1
           }
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/baking-burnt.webp"
     },
     {
       "id": "baking-cake",
@@ -297,7 +315,8 @@
           "label": "这次先不去了。",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/baking-cake.webp"
     },
     {
       "id": "photography-invite",
@@ -323,7 +342,8 @@
           "label": "这次先不去了。",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/photography-invite.webp"
     },
     {
       "id": "photography-composition",
@@ -347,7 +367,8 @@
           "label": "我这会儿有点事，下次聊呀。",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/photography-composition.webp"
     },
     {
       "id": "photography-share",
@@ -364,7 +385,8 @@
             "intimacy": 2
           }
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/photography-share.webp"
     },
     {
       "id": "photography-rain",
@@ -389,7 +411,8 @@
           "label": "今天先不去了，下次吧。",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/photography-rain.webp"
     },
     {
       "id": "photography-dusk",
@@ -415,7 +438,8 @@
           "label": "这次先不去了。",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/photography-dusk.webp"
     },
     {
       "id": "drawing-invite",
@@ -440,7 +464,8 @@
           "label": "这次先不去了。",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/drawing-invite.webp"
     },
     {
       "id": "drawing-sketch",
@@ -469,7 +494,8 @@
             "intimacy": 1
           }
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/drawing-sketch.webp"
     },
     {
       "id": "drawing-card",
@@ -486,7 +512,8 @@
             "intimacy": 2
           }
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/drawing-card.webp"
     },
     {
       "id": "drawing-colors",
@@ -510,7 +537,8 @@
           "label": "那天我实在是没空，谢谢。",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/drawing-colors.webp"
     },
     {
       "id": "drawing-town",
@@ -536,7 +564,8 @@
           "label": "这次先不去了。",
           "effects": {}
         }
-      ]
+      ],
+      "art": "assets/hobbies/events/drawing-town.webp"
     }
   ]
 };

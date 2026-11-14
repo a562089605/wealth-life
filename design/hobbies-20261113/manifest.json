@@ -402,7 +402,7 @@
     "realIPhoneTested": false
   },
   "sharedInterestMapCards": {
-    "status": "all-art-confirmed-remaining-gates-pending",
+    "status": "integrated-saved-events-natural-draw-disabled",
     "confirmation": "用户指定已经有相同兴趣爱好的联系人邀请玩家，并回复“好”继续首张讨论",
     "themes": [
       "咖啡品鉴",
@@ -415,7 +415,7 @@
       "地图卡触发概率留待后续统一调整",
       "与原地图事件抽取顺序待确认"
     ],
-    "runtimeIntegrated": false,
+    "runtimeIntegrated": true,
     "published": false,
     "tastingInvitation": {
       "status": "confirmed-art-eligibility-pending",
@@ -441,7 +441,7 @@
       "pending": [
         "一次外出的兴趣卡触发概率及与原地图事件的抽取顺序"
       ],
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "published": false,
       "artConfirmedAt": "2026-11-13",
       "artConfirmation": "用户确认隐藏无变化及B文字整体居中的修订稿",
@@ -479,7 +479,7 @@
       "sha256": "dc3eea78750dcd8870e3c65e4132ee22832c8115fb350f8af2bbdd5e2f6ff7cf",
       "artConfirmed": true,
       "followupArtConfirmed": true,
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "tastingExploreQueueFollowupConfirmed": {
       "file": "design/hobbies-20261113/shared-tasting-explore-queue-followup-confirmed.png",
@@ -487,7 +487,7 @@
       "sha256": "5a6b6ff78396c1d6d9d4ee97ec65321cc196a162eac3f543757bd62002213fb1",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "tastingExploreNoQueueFollowupConfirmed": {
       "file": "design/hobbies-20261113/shared-tasting-explore-no-queue-followup-confirmed.png",
@@ -495,7 +495,7 @@
       "sha256": "73f652e6c51e0c684bb3a3817ddf57e149cdb2849d26e25cb8e09214e3cf315f",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "tastingExploreNoSuitableFollowupConfirmed": {
       "file": "design/hobbies-20261113/shared-tasting-explore-no-suitable-followup-confirmed.png",
@@ -503,7 +503,7 @@
       "sha256": "bdb86050e50f8e81b0d2a618118341c3c7076f308ece5a8d61165029f214d2c7",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "tastingCompareConfirmed": {
       "file": "design/hobbies-20261113/shared-tasting-compare-confirmed.png",
@@ -511,7 +511,7 @@
       "sha256": "3bb48a4989162f96cafb7447de486c7b3ed74e7e80fe89a4336043bb795aaaf9",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "bakingInviteConfirmed": {
       "file": "design/hobbies-20261113/shared-baking-invite-confirmed.png",
@@ -519,7 +519,7 @@
       "sha256": "7cdb8a24456ee3036cf3f0f3fe6d7e93cca828bc9eeb782c3289070201960d97",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "bakingDecorationConfirmed": {
       "file": "design/hobbies-20261113/shared-baking-decoration-confirmed.png",
@@ -527,7 +527,7 @@
       "sha256": "c774007b56eb89e42529b26a776630c42e6656e09cf707c55c20a9125cb84226",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "bakingTreatConfirmed": {
       "file": "design/hobbies-20261113/shared-baking-treat-confirmed.png",
@@ -535,7 +535,7 @@
       "sha256": "d8c7dbd38f2c8f1eb7784d1f67c3370add97e3f1b5709635af8cbb360a50d54f",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "bakingEarringConfirmed": {
       "file": "design/hobbies-20261113/shared-baking-earring-confirmed.png",
@@ -543,7 +543,7 @@
       "sha256": "2a14abb224ba65055f4764138e164edb0ae0cad861cffef8b6a32240564ca69d",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "bakingCakeConfirmed": {
       "file": "design/hobbies-20261113/shared-baking-cake-confirmed.png",
@@ -551,7 +551,7 @@
       "sha256": "fbcaaec722306ceb7f2effa2e0f5c823eb955ba097ec9f2bada5500097d2103a",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "photographyInviteConfirmed": {
       "file": "design/hobbies-20261113/shared-photography-invite-confirmed.png",
@@ -559,7 +559,7 @@
       "sha256": "d754f50906bc17a66ffe4b1a50b98fa5e97e1c514c25de1f5c1bad5448de92fc",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "photographyCompositionConfirmed": {
       "file": "design/hobbies-20261113/shared-photography-composition-confirmed.png",
@@ -567,7 +567,7 @@
       "sha256": "5c9b7009f34bda18da8f4c1dd14e731c7ba8676ecf20b9b843b852f62b5a8848",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "photographyShareConfirmed": {
       "file": "design/hobbies-20261113/shared-photography-share-confirmed.png",
@@ -575,7 +575,7 @@
       "sha256": "0a48c8dc2c8f28012dfc929b626dbb29608b990bf297fcfb5f64bc177db49b19",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "photographyOutingConfirmed": {
       "file": "design/hobbies-20261113/shared-photography-outing-confirmed.png",
@@ -583,7 +583,7 @@
       "sha256": "83abb8262f25115f0c34f3a4663f606d6ab5a3aeafd2e89f8d6e6e7e18808a6c",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "photographySunriseConfirmed": {
       "file": "design/hobbies-20261113/shared-photography-sunrise-confirmed.png",
@@ -591,7 +591,7 @@
       "sha256": "439655b0484333c9608750eb71ab0ba2595ef839454cb105e356bf5409c4cff0",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "drawingSpringConfirmed": {
       "file": "design/hobbies-20261113/shared-drawing-spring-confirmed.png",
@@ -599,7 +599,7 @@
       "sha256": "4f7e8bac1f927d6661d6473420ee04f7d74b71c9a3db2233bbdb5ae258c7646e",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "drawingFeedbackConfirmed": {
       "file": "design/hobbies-20261113/shared-drawing-feedback-confirmed.png",
@@ -607,7 +607,7 @@
       "sha256": "611f542f512f8d2656fa3dc5049bf7c1796924798f6f2824932ba73b4070fec1",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "drawingCardConfirmed": {
       "file": "design/hobbies-20261113/shared-drawing-card-confirmed.png",
@@ -615,7 +615,7 @@
       "sha256": "0a8b1c707f7f0d4ac4f91ae52bcb35708545242407de404fa479019d23551fe5",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-13",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "drawingMuralConfirmed": {
       "file": "design/hobbies-20261113/shared-drawing-mural-confirmed.png",
@@ -623,7 +623,7 @@
       "sha256": "6afa632a12679d4f6abc8bf259c65204873342094b48b0b4975e5e828cfdff7b",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-14",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "drawingExhibitionConfirmed": {
       "file": "design/hobbies-20261113/shared-drawing-exhibition-confirmed.png",
@@ -631,7 +631,7 @@
       "sha256": "988d52ab1dcf8dee19a25a7d37af312d601b2bb90ede35ee3da5920b44b9b819",
       "artConfirmed": true,
       "artConfirmedAt": "2026-11-14",
-      "runtimeIntegrated": false
+      "runtimeIntegrated": true
     },
     "confirmedMainArtCount": 20,
     "confirmedFollowupArtCount": 3,
@@ -690,10 +690,128 @@
     "preparedModules": {
       "data": "shared-interest-card-data.js",
       "selection": "shared-interest-selection.js",
-      "test": "qa/shared-interest-selection.test.cjs",
-      "loadedByGame": false,
-      "settlementIntegrated": false,
+      "transactions": "shared-interest-cards.js",
+      "pages": "shared-interest-pages.js/css",
+      "loadedByGame": true,
+      "settlementIntegrated": true,
       "naturalDrawEnabled": false
-    }
+    },
+    "runtimeResources": [
+      {
+        "file": "assets/hobbies/events/tasting-invite.webp",
+        "source": "design/hobbies-20261113/shared-tasting-invitation-confirmed.png",
+        "sha256": "6a2bbf17d7675d43a8825f5c141b989719e2bdf39d1104b645da6a8403d65add"
+      },
+      {
+        "file": "assets/hobbies/events/tasting-notes.webp",
+        "source": "design/hobbies-20261113/shared-tasting-conversation-confirmed.png",
+        "sha256": "e652b3a02d96071a9499b145b4a2cc4aeba41a136f6d10e139794d534970c1d2"
+      },
+      {
+        "file": "assets/hobbies/events/tasting-news.webp",
+        "source": "design/hobbies-20261113/shared-tasting-discovery-confirmed.png",
+        "sha256": "fb27aac7bbc79ab6488fd664e93621a035e8ab8c77b361e8bc2146c7c273d7b6"
+      },
+      {
+        "file": "assets/hobbies/events/tasting-queue.webp",
+        "source": "design/hobbies-20261113/shared-tasting-explore-confirmed.png",
+        "sha256": "f7107b8eaced54765f2ef9e740f2855af45e608bf8eda36b6462adff46f542f0"
+      },
+      {
+        "file": "assets/hobbies/events/tasting-queue-queue.webp",
+        "source": "design/hobbies-20261113/shared-tasting-explore-queue-followup-confirmed.png",
+        "sha256": "d19f44f321ca4986f0d7b57c5a60ff2bb133c16b375051b37e9159fdd8fe7bd1"
+      },
+      {
+        "file": "assets/hobbies/events/tasting-queue-no-queue.webp",
+        "source": "design/hobbies-20261113/shared-tasting-explore-no-queue-followup-confirmed.png",
+        "sha256": "d45d1555179512bee15cadd87656a1eacceaa8e7066d320c66beaae89db57e02"
+      },
+      {
+        "file": "assets/hobbies/events/tasting-queue-no-suitable-cafe.webp",
+        "source": "design/hobbies-20261113/shared-tasting-explore-no-suitable-followup-confirmed.png",
+        "sha256": "a634fd5dd05e61c66e60fcb6ba4c49a7fd4f3e6a064ef6e277a5dcfeba880208"
+      },
+      {
+        "file": "assets/hobbies/events/tasting-compare.webp",
+        "source": "design/hobbies-20261113/shared-tasting-compare-confirmed.png",
+        "sha256": "0ecd0425cd6d9fbaebc99fdcdd0928bca4177c5e16be5589f7df5dce1d07ef9a"
+      },
+      {
+        "file": "assets/hobbies/events/baking-invite.webp",
+        "source": "design/hobbies-20261113/shared-baking-invite-confirmed.png",
+        "sha256": "d2cc05424cab217fde29428c72f1f311d2997c8f4200fa1eaf6bafe664bf0a9b"
+      },
+      {
+        "file": "assets/hobbies/events/baking-decoration.webp",
+        "source": "design/hobbies-20261113/shared-baking-decoration-confirmed.png",
+        "sha256": "ceca8e75bf7d9518dc71e822b69ce309bf30a86a3ccf37e24f8547bd8685432d"
+      },
+      {
+        "file": "assets/hobbies/events/baking-treat.webp",
+        "source": "design/hobbies-20261113/shared-baking-treat-confirmed.png",
+        "sha256": "d55cfddf8648dfc65008f84001ef7a90c6cff27f7285651ab0449e319307adac"
+      },
+      {
+        "file": "assets/hobbies/events/baking-burnt.webp",
+        "source": "design/hobbies-20261113/shared-baking-earring-confirmed.png",
+        "sha256": "e5949851b8e445f21f405fd703412e5d9b34dbcff8664e2efebde4da07b5d913"
+      },
+      {
+        "file": "assets/hobbies/events/baking-cake.webp",
+        "source": "design/hobbies-20261113/shared-baking-cake-confirmed.png",
+        "sha256": "172e9558877a30b21aed24daac0bffe84f07e754dbe063c48c7a1f996f1c524d"
+      },
+      {
+        "file": "assets/hobbies/events/photography-invite.webp",
+        "source": "design/hobbies-20261113/shared-photography-invite-confirmed.png",
+        "sha256": "f8cee7c23d3c6bb54c5ba0326655017f7eb70a7f47a2f8da6504c518e1e2c22f"
+      },
+      {
+        "file": "assets/hobbies/events/photography-composition.webp",
+        "source": "design/hobbies-20261113/shared-photography-composition-confirmed.png",
+        "sha256": "e481802edddda00b94583edd80bf4fa41b5b181d9fc5e2f2d44d5b1905d597fe"
+      },
+      {
+        "file": "assets/hobbies/events/photography-share.webp",
+        "source": "design/hobbies-20261113/shared-photography-share-confirmed.png",
+        "sha256": "04797c8fec38d00a2846b30e8917c53e26e17df21eb8a39e634e85f3d32ec954"
+      },
+      {
+        "file": "assets/hobbies/events/photography-rain.webp",
+        "source": "design/hobbies-20261113/shared-photography-outing-confirmed.png",
+        "sha256": "c0c0a2057166b5c645a7c8391958fdc184dee0ddcc7617fb57bbfbea03ddfec5"
+      },
+      {
+        "file": "assets/hobbies/events/photography-dusk.webp",
+        "source": "design/hobbies-20261113/shared-photography-sunrise-confirmed.png",
+        "sha256": "dd798c23a47096fbb0cc8f6a7bf3c7eab5351c247894f8f0470b755c218040e5"
+      },
+      {
+        "file": "assets/hobbies/events/drawing-invite.webp",
+        "source": "design/hobbies-20261113/shared-drawing-spring-confirmed.png",
+        "sha256": "d2a0c39f0d2d5fea9a40013ce84cfafcfc4fb489a0ee050db81eb5c25fb73969"
+      },
+      {
+        "file": "assets/hobbies/events/drawing-sketch.webp",
+        "source": "design/hobbies-20261113/shared-drawing-feedback-confirmed.png",
+        "sha256": "975cb9cc7313c487e43907c49c9ae4e84caa6c9b251c7398d380c80ddaf7da64"
+      },
+      {
+        "file": "assets/hobbies/events/drawing-card.webp",
+        "source": "design/hobbies-20261113/shared-drawing-card-confirmed.png",
+        "sha256": "83cbc2a1f0f694275449c447a130118244397343b2e1a9199987eb02934dec61"
+      },
+      {
+        "file": "assets/hobbies/events/drawing-colors.webp",
+        "source": "design/hobbies-20261113/shared-drawing-mural-confirmed.png",
+        "sha256": "c0f3d9bcc279939f1a3970f2caa826c0787e46ba3648a2bec0dc1e8919906d08"
+      },
+      {
+        "file": "assets/hobbies/events/drawing-town.webp",
+        "source": "design/hobbies-20261113/shared-drawing-exhibition-confirmed.png",
+        "sha256": "a6aad7ea1fec71b833b135dfee6168f52318a7c5fdfa655658fc4638c9b66d44"
+      }
+    ]
   }
 }

@@ -1,5 +1,5 @@
 {
-  "status": "all-art-confirmed-remaining-gates-pending",
+  "status": "integrated-saved-events-natural-draw-disabled",
   "scope": "20张共同兴趣地图主卡及探店3张独立随机后续均已逐张确认画稿；尚未接入运行游戏。",
   "eligibility": "玩家已学习同一兴趣，联系人已固定拥有该兴趣；满级仍可出现且不增加经验。",
   "cards": [
@@ -8,7 +8,7 @@
       "id": "tasting-invite",
       "title": "一起品鉴咖啡",
       "scene": "联系人发来消息：“发现一家店有咖啡品鉴活动，你也喜欢这个，要不要一起去？”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "cash": -30,
@@ -24,7 +24,7 @@
       "costScope": "仅玩家自己的参与/材料费用",
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-tasting-invitation-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-dc9f3c5d-732f-4789-a423-186974a86b29.png",
@@ -37,7 +37,7 @@
       "id": "tasting-notes",
       "title": "聊聊最近喝到的咖啡",
       "scene": "对方说：“我最近去了一家咖啡店，咖啡特别好喝！”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "hours": 1,
@@ -51,7 +51,7 @@
       "costScope": null,
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "acceptLabel": "好啊好啊，快跟我说说！",
       "declineLabel": "我这会儿有点事，下次聊呀。",
@@ -74,7 +74,7 @@
       "id": "tasting-news",
       "title": "分享咖啡新发现",
       "scene": "对方发来一家有趣咖啡店的照片，与你分享新发现。",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "single-positive",
       "acceptEffects": {
         "happiness": 2,
@@ -85,7 +85,7 @@
       "costScope": null,
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "artConfirmedAt": "2026-11-13",
       "artConfirmation": "用户回复“确认”",
@@ -100,7 +100,7 @@
       "id": "tasting-queue",
       "title": "一起去探店",
       "scene": "对方发现了一家新开的咖啡店，问你：“就在这家喝，还是换一家看看？”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "cash": -30,
@@ -116,7 +116,7 @@
       "costScope": "仅玩家自己的咖啡费用",
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "revisionConfirmation": "用户确认主卡；B后续三种随机结果等概率，各1/3；后续A补$30及5XP，C亲密度+1。",
       "pendingTiming": false,
@@ -170,7 +170,7 @@
             "sourceFile": "/workspace/generated_images/exec-57beb78b-27d8-4e66-a577-9a5198e9f60e.png",
             "sha256": "5a6b6ff78396c1d6d9d4ee97ec65321cc196a162eac3f543757bd62002213fb1",
             "artConfirmedAt": "2026-11-13",
-            "runtimeIntegrated": false
+            "runtimeIntegrated": true
           },
           {
             "id": "no-queue",
@@ -187,7 +187,7 @@
             "sourceFile": "/workspace/generated_images/exec-d5d0c435-dd64-4104-9eaa-8d4fc76674ec.png",
             "sha256": "73f652e6c51e0c684bb3a3817ddf57e149cdb2849d26e25cb8e09214e3cf315f",
             "artConfirmedAt": "2026-11-13",
-            "runtimeIntegrated": false
+            "runtimeIntegrated": true
           },
           {
             "id": "no-suitable-cafe",
@@ -203,7 +203,7 @@
             "sourceFile": "/workspace/generated_images/exec-2164b822-ed86-44ad-95a7-790f49473231.png",
             "sha256": "bdb86050e50f8e81b0d2a618118341c3c7076f308ece5a8d61165029f214d2c7",
             "artConfirmedAt": "2026-11-13",
-            "runtimeIntegrated": false
+            "runtimeIntegrated": true
           }
         ],
         "allArtConfirmed": true
@@ -214,7 +214,7 @@
       "id": "tasting-compare",
       "title": "一起做风味对比",
       "scene": "对方约你比较几种不同烘焙程度的咖啡，记录各自感受。",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "cash": -40,
@@ -230,7 +230,7 @@
       "costScope": "仅玩家自己的参与/材料费用",
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-tasting-compare-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-c72f3911-ca2e-461b-bda8-4af2ce7afe45.png",
@@ -244,7 +244,7 @@
       "id": "baking-invite",
       "title": "一起去学做点心",
       "scene": "对方发来消息：“有家店可以学做饼干，你不是也喜欢烘焙吗？要不要一起去试试？”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "cash": -45,
@@ -260,7 +260,7 @@
       "costScope": "仅玩家自己的参与/材料费用",
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-baking-invite-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-3f6603e5-f40e-45f4-8c45-79b0801517f5.png",
@@ -274,7 +274,7 @@
       "id": "baking-decoration",
       "title": "一起装饰饼干",
       "scene": "对方发来消息：“我看到几款特别可爱的糖霜饼干，有点想自己做。你要不要一起？”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "cash": -25,
@@ -290,7 +290,7 @@
       "costScope": "仅玩家自己的参与/材料费用",
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-baking-decoration-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-034bdf1e-43ea-48b5-9eaa-67ca4b5c5157.png",
@@ -304,7 +304,7 @@
       "id": "baking-treat",
       "title": "分享亲手做的点心",
       "scene": "对方带来一盒自己烤的小点心：“这次做得还不错，带了点给你，尝尝？”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "single-positive",
       "acceptEffects": {
         "happiness": 2,
@@ -316,7 +316,7 @@
       "costScope": null,
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-baking-treat-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-625dbc31-4041-4f99-8312-a68f4aa96029.png",
@@ -329,7 +329,7 @@
       "id": "baking-burnt",
       "title": "耳环掉进面糊了",
       "scene": "你们正一起做杯子蛋糕，对方的耳环不小心掉进了面糊。两人赶紧停下来，这下得先找耳环了。",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "cash": -40,
@@ -349,7 +349,7 @@
       "costScope": "仅玩家自己的参与/材料费用",
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-baking-earring-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-f3d0ce1f-fc9f-4413-9338-0303be086feb.png",
@@ -364,7 +364,7 @@
       "id": "baking-cake",
       "title": "合作做一个小蛋糕",
       "scene": "对方发来消息：“我想试着做个水果蛋糕，一个人忙不过来。你有空吗？咱们一起做，做好一起吃！”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "cash": -55,
@@ -380,7 +380,7 @@
       "costScope": "仅玩家自己的参与/材料费用",
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-baking-cake-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-22c43f23-f427-460b-9a73-8ec4ee502010.png",
@@ -394,7 +394,7 @@
       "id": "photography-invite",
       "title": "咖啡店的网红小角落",
       "scene": "对方发来消息：“发现一家咖啡店，窗边的光特别好看。要不要一起去坐坐，顺便拍点照片？”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "cash": -20,
@@ -410,7 +410,7 @@
       "costScope": "仅玩家自己的参与/材料费用",
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-photography-invite-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-2c841eb3-3620-493a-9c5f-b95045b83974.png",
@@ -424,7 +424,7 @@
       "id": "photography-composition",
       "title": "交流构图心得",
       "scene": "对方翻出最近拍的照片：“这几张总觉得差点意思，你帮我看看？我也想看看你最近拍了什么。”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "hours": 1,
@@ -438,7 +438,7 @@
       "costScope": null,
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-photography-composition-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-6dfab340-28dc-4035-a89e-45f5aa9fd782.png",
@@ -452,7 +452,7 @@
       "id": "photography-share",
       "title": "收到一组好看的照片",
       "scene": "对方发来几张最近拍的街景：“今天碰到的光特别好看，忍不住拍了几张，发给你看看！”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "single-positive",
       "acceptEffects": {
         "happiness": 2,
@@ -463,7 +463,7 @@
       "costScope": null,
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-photography-share-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-14a6a7dd-cb37-4fc9-8934-52529cdf1da9.png",
@@ -476,7 +476,7 @@
       "id": "photography-rain",
       "title": "出门采风",
       "scene": "对方发来消息：“本来想约你拍阳光，结果下雨了。不过这会儿雨停了，街上的倒影挺好看，要不要一起去拍？”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "hours": 1,
@@ -491,7 +491,7 @@
       "costScope": null,
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-photography-outing-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-55e19797-02b5-48db-811a-5a450d87c226.png",
@@ -505,7 +505,7 @@
       "id": "photography-dusk",
       "title": "登山拍日出",
       "scene": "对方发来消息：“听说山顶的日出特别漂亮，要不要一起早点出发，爬上去拍日出？”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "cash": -15,
@@ -521,7 +521,7 @@
       "costScope": "仅玩家自己的参与/材料费用",
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-photography-sunrise-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-2fbde170-eee2-49c6-b9b4-96ff97a980c2.png",
@@ -535,7 +535,7 @@
       "id": "drawing-invite",
       "title": "把春天画下来",
       "scene": "对方发来消息：“公园里的花开得正好，我想带画本去坐坐。你要不要一起？挑个喜欢的地方画一画。”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "hours": 2,
@@ -550,7 +550,7 @@
       "costScope": null,
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-drawing-spring-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-ca3725d0-e29e-40b3-b898-2d57725ed123.png",
@@ -564,7 +564,7 @@
       "id": "drawing-sketch",
       "title": "这里我看着不太对…",
       "scene": "你们正一起画画，对方把画本递过来：“这里总觉得有点别扭，你觉得怎么改比较好？”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "hours": 2,
@@ -583,7 +583,7 @@
       "costScope": null,
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-drawing-feedback-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-f5c6da29-6a13-49c8-a2f1-8d30b2ef2915.png",
@@ -597,7 +597,7 @@
       "id": "drawing-card",
       "title": "收到一张手绘小卡",
       "scene": "对方递给你一张小卡：“上次聊到的那个街角，我试着画了下来。送给你，留个纪念！”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "single-positive",
       "acceptEffects": {
         "happiness": 3,
@@ -608,7 +608,7 @@
       "costScope": null,
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-drawing-card-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-71c99146-4ef4-484b-8120-a176a4576a89.png",
@@ -621,7 +621,7 @@
       "id": "drawing-colors",
       "title": "一起去画墙绘",
       "scene": "朋友发来消息：“我接了个画墙绘的活，设计和材料都备好了。你来帮我描线、上色，做完分你100美元，怎么样？”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "cash": 100,
@@ -635,7 +635,7 @@
       "costScope": "朋友负责设计和材料，玩家完成协作分得$100，无额外材料费",
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-drawing-mural-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-b38d22e9-68c3-44c8-a49e-236ec7a95026.png",
@@ -650,7 +650,7 @@
       "id": "drawing-town",
       "title": "一起去看画展",
       "scene": "朋友发来消息：“镇上有个画展，听说有几幅画挺有意思。你要不要一起去看看？咱们边看边聊。”",
-      "status": "confirmed-art-remaining-gates-pending",
+      "status": "integrated-saved-events-natural-draw-disabled",
       "type": "choice",
       "acceptEffects": {
         "cash": -20,
@@ -666,7 +666,7 @@
       "costScope": "仅玩家自己的门票$20",
       "maxLevelXP": 0,
       "artConfirmed": true,
-      "runtimeIntegrated": false,
+      "runtimeIntegrated": true,
       "contentConfirmedAt": "2026-11-13",
       "file": "design/hobbies-20261113/shared-drawing-exhibition-confirmed.png",
       "sourceFile": "/workspace/generated_images/exec-d7512b9e-6660-429c-aa4d-4c63f21e9a71.png",
@@ -738,5 +738,6 @@
     "proposed10PercentAdopted": false,
     "instruction": "触发地图卡的概率后续再调，不设置默认概率、不启用自然抽卡",
     "runtimeIntegrated": false
-  }
+  },
+  "runtimeIntegrated": true
 }

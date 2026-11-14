@@ -36,6 +36,7 @@ const sample={hobbyLearning:{xp:{tasting:50,photography:50}},people:Array.from({
 let photos=0;for(let i=0;i<12000;i++)if(S.choose(sample,random).hobby==='photography')photos++;
 a.ok(photos>5700&&photos<6300);
 // The prepared modules must not activate the production map or alter resource loading.
-a.ok(!fs.readFileSync(path.join(root,'index.html'),'utf8').includes('shared-interest-selection.js'));
+a.ok(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('shared-interest-selection.js'));
+a.equal(D.naturalDrawEnabled,false);
 a.equal(H.activities.drawing.cost,25);
 console.log(JSON.stringify({ok:true,mainCards:20,followups:3,artworkHashes:artwork,sampleDraws:12000,photographyDraws:photos,naturalDrawEnabled:false}));

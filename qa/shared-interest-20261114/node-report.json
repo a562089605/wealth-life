@@ -1,0 +1,150 @@
+{
+  "scope": "16 targeted Node suites; not all repository tests",
+  "tests": [
+    {
+      "command": [
+        "node",
+        "qa/shared-interest-selection.test.cjs"
+      ],
+      "ok": true,
+      "output": "{\"ok\":true,\"mainCards\":20,\"followups\":3,\"artworkHashes\":23,\"sampleDraws\":12000,\"photographyDraws\":5975,\"naturalDrawEnabled\":false}",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/shared-interest-cards.test.cjs"
+      ],
+      "ok": true,
+      "output": "{\"ok\":true,\"assertions\":891,\"cards\":20,\"scope\":\"all choices, rollback/retry, no duplicate, lifetime, frozen 3 outcomes, resource gates, cap, legacy preservation\"}",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/hobby-learning.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS 206 assertions plus 30,000-contact sampling: exact six quotes, repeat/time/energy gates, cap, rollback, stale tokens, old fields/career preserved, frozen new contacts, distribution and six approved art hashes.",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/relationship-review.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS 569 relationship review assertions",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/relationship-confirmed.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS 575 assertions: all24 cards/options, draw reservation rollback, settlement rollback, per-person lifetime/B, followups/refresh, funds, forced time, direct graduation, course identity and classmates",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/relationship-release.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS relationship lifecycle, preserved contacts/education/hobbies, thresholds, resources, all-save rollback/retry, repeated interactions, per-person visits, decay, fixed manager card quotes, lunch no time/cash charge, monthly once and forced-time adapter.",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/relationship-avatars.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS: 60 unique matching portraits; six per gender/role; exhausted and unknown contacts unchanged; serialized identity stable; removed contacts never free a used portrait; approved source/resource hashes match.",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/education-plans.test.cjs"
+      ],
+      "ok": true,
+      "output": "886 education assertions passed\nLegacy automatic refund retains original $7,000 cost basis",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/time-flow.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS: risky coordination allowed at 3h, voluntary 8h blocked, forced return stops rolling, confirm twice advances once, next month debt=5. Browser and recovery engine not covered.",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/pet-map-resume.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS shipped pet map UI: zero-time pending medical card and saved threshold resume first, payment failure rollback/retry, medical debt preserved, settle once after resolution, unrelated finish cannot bypass payment.",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/pet-care.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS: recovery delegation same fees/zero time, preview and repeat no charge, cross-year deadlines, normal time cost, multiple pets and atomic insufficient funding.",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/pet-audit-regressions.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS actual finance metrics before/after pet payments and adoption, all payment orders/credits/months, alias pricing and duplicate protection, unique legacy care IDs, and saved event identity compatibility.",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/pet-annual-pages.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS dog: approved art, name/date, not-due/read-only, canonical fee/hours, atomic rollback/retry, 12-month cycle, duplicate/stale guards, CPI/recovery and cash shortage.\nPASS cat: approved art, name/date, not-due/read-only, canonical fee/hours, atomic rollback/retry, 12-month cycle, duplicate/stale guards, CPI/recovery and cash shortage.\nPASS tortoise: approved art, name/date, not-due/read-only, canonical fee/hours, atomic rollback/retry, 12-month cycle, duplicate/stale guards, CPI/recovery and cash shortage.\nPASS chameleon: approved art, name/date, not-due/read-only, canonical fee/hours, atomic rollback/retry, 12-month cycle, duplicate/stale guards, CPI/recovery and cash shortage.\nPASS gecko: approved art, name/date, not-due/read-only, canonical fee/hours, atomic rollback/retry, 12-month cycle, duplicate/stale guards, CPI/recovery and cash shortage.\nPASS spider: approved art, name/date, not-due/read-only, canonical fee/hours, atomic rollback/retry, 12-month cycle, duplicate/stale guards, CPI/recovery and cash shortage.\nPASS crocodile: approved art, name/date, not-due/read-only, canonical fee/hours, atomic rollback/retry, 12-month cycle, duplicate/stale guards, CPI/recovery and cash shortage.\nPASS legacy dog/spider cleaning save-failure retry through shared care confirmation.",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/housing-transactions.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS: five housing operations rollback on false/throw, durable retries, no success navigation or repeat fees, nested contract/receipt preservation, partial-payment/sync failure and stale bill.",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/housing-time-debt-flow.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS: production no-job event completion, same-month/no-pay behavior, future leisure repayment without pay cuts, old care and employed leave, loan/cancel, repeated/reloaded/cross-slot callbacks and rollback. DOM/VM only.",
+      "error": ""
+    },
+    {
+      "command": [
+        "node",
+        "qa/family-care-flow.test.cjs"
+      ],
+      "ok": true,
+      "output": "PASS: production care UI, exact leave confirmation, loan form/disbursement, loan-before-payment, cancel/reload/same-card, stale confirmation, quota rollback for both care and loan, modal restoration. DOM/VM only.",
+      "error": ""
+    }
+  ],
+  "allPass": true
+}
