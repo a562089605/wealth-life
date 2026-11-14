@@ -739,5 +739,7 @@
     "instruction": "触发地图卡的概率后续再调，不设置默认概率、不启用自然抽卡",
     "runtimeIntegrated": false
   },
-  "runtimeIntegrated": true
+  "runtimeIntegrated": true,
+  "published": true,
+  "functionalCommit": "d4e568237173b13951f7d7476bb1ca93caa079d7"
 }

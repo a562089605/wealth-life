@@ -329,3 +329,7 @@
 
 ### 2026-11-14 共同兴趣卡功能接入，待发布核验
 已接入20主卡及3后续的已保存事件显示与结算，详见SHARED_INTEREST_RELEASE_20261114.md。新数据/选择器/事务/页面模块及23WebP、SW已完成；原存档首次备份、失败整体回滚、探店结果预先固定、满级经验封顶/隐藏、原月末收支分类已接入。16套相关Node及本地隔离Chromium13组通过、零脚本错误。没有启用自然地图抽卡：概率按用户要求延期，naturalDrawEnabled=false/triggerProbability=null，与原地图事件抽取顺序也仍待确认；未添加替代玩家入口。原关系修订与照护券远端提交c5048d6/59da92d已合并保留。用户已授权上传发布，待线上部署及资源/浏览器核验，不先声称已上线。
+
+
+### 2026-11-14 共同兴趣卡接入正式发布（覆盖待发布记录）
+用户授权“更新上传，接入游戏”。功能提交d4e568237173b13951f7d7476bb1ca93caa079d7已推送原main，Cloudflare成功 https://github.com/a562089605/wealth-life/runs/132268835783 。239份线上资源与本地逐字节一致，含新23图/5模块样式及既有关系修订、照护券、头像、学历、住房、宠物等；见qa/shared-interest-20261114/production-resources.json。生产隔离Chromium slot943共13组通过、零脚本错误；报告production-report.json，production-drawing-390.png及production-followup-390.png为实际隔离浏览器页面，不是设计预览或iPhone真机验收。16套相关Node通过，兴趣卡891断言；本地原兴趣功能额外16组浏览器回归通过，证据hobby-regression/local-report.json。20主卡及3后续的已保存事件显示、刷新续接和事务结算已发布，原存档/备份保留。自然地图抽卡仍未启用（naturalDrawEnabled=false、triggerProbability=null），概率按用户要求后调，不采用10%/旧20%提案，不新增替代玩家入口；地图事件间抽取顺序仍待确认。

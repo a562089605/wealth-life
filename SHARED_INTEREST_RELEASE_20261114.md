@@ -24,3 +24,7 @@
 `qa/shared-interest-20261114/node-report.json`：16套相关Node检查通过，含兴趣卡891断言，原兴趣学习206断言及30000联系人抽样，类别选择12000次抽样，23张原图SHA校验，以及关系、学历、宠物、住房、时间回归。不是全部仓库测试通过的声明；原opening-state旧资源硬编码基线失败记录保留。
 
 `qa/shared-interest-20261114/local-report.json`：隔离Chromium slot943，13组通过，零脚本错误；全部20主卡A、真实Storage失败回滚重试、探店3结果与两阶段刷新、满级、B修改数值、跨槽/跨月旧按钮、四宽度、23图解码及SW离线续接。截图是隔离测试档实际浏览器页面，不是iPhone真机验收。线上证据待发布完成后补充。
+
+## 线上发布核验
+
+功能提交 `d4e568237173b13951f7d7476bb1ca93caa079d7` 已发布成功，[Cloudflare发布检查](https://github.com/a562089605/wealth-life/runs/132268835783)。239份生产资源逐字节一致，生产隔离Chromium13组通过、零脚本错误。证据见同目录production-resources.json / production-report.json / production-deployment.json（位于qa/shared-interest-20261114）。额外本地原兴趣浏览器16组通过，见hobby-regression/local-report.json。自然抽卡保持关闭，当前正常外出不会自动抽到新卡；这是用户明确延期触发概率的范围限制。
