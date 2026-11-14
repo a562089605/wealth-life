@@ -267,7 +267,7 @@
     "interaction": "上下滑动长页面，实际文字/金额/按钮为动态页面元素；插画原比例，不整图缩至一屏"
   },
   "runtimeIntegration": {
-    "status": "integrated-locally-awaiting-production",
+    "status": "published",
     "resources": [
       {
         "source": "design/education-progress-20261113-monthly/bachelor-progress-scroll-preview.png",
@@ -318,6 +318,8 @@
         "sha256": "d6c280505a74b360d912c28742cf5b3dbf927ae0e40907b668849d5cf8af6572"
       }
     ],
-    "layout": "正常字号及按钮、插画页首、动态DOM数值、纵向滚动；职业型数值仍未开放"
+    "layout": "正常字号及按钮、插画页首、动态DOM数值、纵向滚动；职业型数值仍未开放",
+    "functionalCommit": "b0c08f4df77668ca2f049cf27433205dc1aae0dc",
+    "productionReport": "qa/education-monthly-20261113/production-report.json"
   }
 }

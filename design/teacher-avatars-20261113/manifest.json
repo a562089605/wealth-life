@@ -198,5 +198,7 @@
       "id": "teacher-male-05",
       "sourceFile": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png"
     }
-  ]
+  ],
+  "published": true,
+  "functionalCommit": "b0c08f4df77668ca2f049cf27433205dc1aae0dc"
 }

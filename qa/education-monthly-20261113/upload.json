@@ -1,0 +1,10 @@
+{
+  "method": "Existing GitHub connection; blob hashes verified then exact tree and non-forced expected-main ref update",
+  "localVerifiedCommit": "78f4318",
+  "verifiedTree": "62bc386c7903743e756ff9f7b8f723dac513c68a",
+  "functionalCommit": "b0c08f4df77668ca2f049cf27433205dc1aae0dc",
+  "baseMain": "7ce53ca8f07df97749ee17cb6fe7a3ecc087c2a9",
+  "changedFiles": 90,
+  "allBlobHashesMatched": true,
+  "localOriginalHistoryPreservedAs": "archive/education-monthly-local-78f4318"
+}

@@ -29,7 +29,9 @@
       "runtimeIntegrated": true,
       "confirmedAt": "2026-11-13",
       "frequencyConfirmedAt": "2026-11-13",
-      "runtimeFile": "assets/relationships/cards/teacher-01-after-class-question-20261113.webp"
+      "runtimeFile": "assets/relationships/cards/teacher-01-after-class-question-20261113.webp",
+      "published": true,
+      "functionalCommit": "b0c08f4df77668ca2f049cf27433205dc1aae0dc"
     },
     {
       "id": "teacher-02-assignment-encouragement",
@@ -55,7 +57,9 @@
       "confirmedAt": "2026-11-13",
       "frequency": "每位教师每张主卡终身一次，选B也计次；抽出成功保存占用，抽卡保存失败不占用；结算失败原卡重试，不重抽不重复结算",
       "frequencyConfirmedAt": "2026-11-13",
-      "runtimeFile": "assets/relationships/cards/teacher-02-assignment-encouragement-20261113.webp"
+      "runtimeFile": "assets/relationships/cards/teacher-02-assignment-encouragement-20261113.webp",
+      "published": true,
+      "functionalCommit": "b0c08f4df77668ca2f049cf27433205dc1aae0dc"
     },
     {
       "id": "teacher-03-revise-assignment",
@@ -129,7 +133,9 @@
       "frequency": "每位教师每张主卡终身一次，选B也计次；抽出成功保存占用，抽卡保存失败不占用；结算失败原卡重试，不重抽不重复结算",
       "eligibility": "仅在玩家正在学习该教师对应课程期间适用",
       "frequencyConfirmedAt": "2026-11-13",
-      "runtimeFile": "assets/relationships/cards/teacher-03-revise-assignment-20261113.webp"
+      "runtimeFile": "assets/relationships/cards/teacher-03-revise-assignment-20261113.webp",
+      "published": true,
+      "functionalCommit": "b0c08f4df77668ca2f049cf27433205dc1aae0dc"
     },
     {
       "id": "teacher-04-campus-lecture",
@@ -160,7 +166,9 @@
       "confirmedAt": "2026-11-13",
       "frequency": "每位教师每张主卡终身一次，选B也计次；抽出成功保存占用，抽卡保存失败不占用；结算失败原卡重试，不重抽不重复结算",
       "frequencyConfirmedAt": "2026-11-13",
-      "runtimeFile": "assets/relationships/cards/teacher-04-campus-lecture-20261113.webp"
+      "runtimeFile": "assets/relationships/cards/teacher-04-campus-lecture-20261113.webp",
+      "published": true,
+      "functionalCommit": "b0c08f4df77668ca2f049cf27433205dc1aae0dc"
     },
     {
       "id": "teacher-05-manager-introduction",
@@ -214,6 +222,8 @@
     "energy": -2,
     "intimacy": 2,
     "perTeacherPerMonth": 1,
-    "runtimeIntegrated": true
+    "runtimeIntegrated": true,
+    "published": true,
+    "functionalCommit": "b0c08f4df77668ca2f049cf27433205dc1aae0dc"
   }
 }

@@ -1,0 +1,1827 @@
+{
+  "commit": "b0c08f4df77668ca2f049cf27433205dc1aae0dc",
+  "checkedAt": "2026-11-14T05:15:16.019032+00:00",
+  "files": [
+    {
+      "file": "annual.js",
+      "sha256": "ab939f48cf80b7ed434001efde08d7b1ebcb47c4fff96910a94516e2547ea4ea",
+      "expectedSHA256": "ab939f48cf80b7ed434001efde08d7b1ebcb47c4fff96910a94516e2547ea4ea",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "apartment-events.js",
+      "sha256": "5c740d5a4db6bb6cfb65f1ee099361c597339fb4e22878a9b2ca62a4ea43647d",
+      "expectedSHA256": "5c740d5a4db6bb6cfb65f1ee099361c597339fb4e22878a9b2ca62a4ea43647d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/associate-enrollment-preview.webp",
+      "sha256": "7dec182518b47dd58c4a868688beb2327f0834e6c9f87a059ddb6c663ffb16f4",
+      "expectedSHA256": "7dec182518b47dd58c4a868688beb2327f0834e6c9f87a059ddb6c663ffb16f4",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/associate-graduation-preview.webp",
+      "sha256": "791135b8a887fbeafe062a2d5aefaad1138527ba6cf6b26b98da752de608d6c0",
+      "expectedSHA256": "791135b8a887fbeafe062a2d5aefaad1138527ba6cf6b26b98da752de608d6c0",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/associate-progress-arrangement-label-preview.webp",
+      "sha256": "50d2ba9778093298d8cd8740cd19cf79ba473209f18e562cff131842d72c6330",
+      "expectedSHA256": "50d2ba9778093298d8cd8740cd19cf79ba473209f18e562cff131842d72c6330",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/bachelor-enrollment-preview.webp",
+      "sha256": "5336ae0c8b3b040d25ef9e609831587a2cfe52bcbcca84dc4aa136fea2c7d310",
+      "expectedSHA256": "5336ae0c8b3b040d25ef9e609831587a2cfe52bcbcca84dc4aa136fea2c7d310",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/bachelor-monthly-header.webp",
+      "sha256": "0263753957d8c67018cf46e877953cda2b3e3b72464bdaa77fdf55efb5833307",
+      "expectedSHA256": "0263753957d8c67018cf46e877953cda2b3e3b72464bdaa77fdf55efb5833307",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/cancel-enrollment-refund-preview.webp",
+      "sha256": "c3a13d9d5d5185d30dd97971571260d4b82c89e0e6d591e4ae613601a5832d75",
+      "expectedSHA256": "c3a13d9d5d5185d30dd97971571260d4b82c89e0e6d591e4ae613601a5832d75",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/change-study-arrangement-preview.webp",
+      "sha256": "d2248ea9ab64812d5bff9b1cc67120dfb7d8b364840ac3a750574ed7af7042de",
+      "expectedSHA256": "d2248ea9ab64812d5bff9b1cc67120dfb7d8b364840ac3a750574ed7af7042de",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/doctorate-enrollment-preview.webp",
+      "sha256": "50a7f2d53685996f4aa84b03d6cd8310c166ed76c0e6273d5e07f37a629e2e0d",
+      "expectedSHA256": "50a7f2d53685996f4aa84b03d6cd8310c166ed76c0e6273d5e07f37a629e2e0d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/doctorate-monthly-header.webp",
+      "sha256": "600c3e8e2adf6fbefce906635fca6786141609d49fccda7a1c6c40314a9f10be",
+      "expectedSHA256": "600c3e8e2adf6fbefce906635fca6786141609d49fccda7a1c6c40314a9f10be",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/master-enrollment-preview.webp",
+      "sha256": "f19356f9e8d328852473258f387495a5b1db5cd6fc01c442f419582b5f2d5ade",
+      "expectedSHA256": "f19356f9e8d328852473258f387495a5b1db5cd6fc01c442f419582b5f2d5ade",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/master-monthly-header.webp",
+      "sha256": "a7d63ff6aa9afafbec92ead5b37f4bdf54cb80fd4db1a1d79901bb871aab5319",
+      "expectedSHA256": "a7d63ff6aa9afafbec92ead5b37f4bdf54cb80fd4db1a1d79901bb871aab5319",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/pause-study-confirmation-preview.webp",
+      "sha256": "c5322c9772c360e682b72f18071422abd249e14f38024255948865035a81167f",
+      "expectedSHA256": "c5322c9772c360e682b72f18071422abd249e14f38024255948865035a81167f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/paused-study-progress-preview.webp",
+      "sha256": "b0e9d4c2f70f257f879a29c5b82593472fb76422a34a7d38e86724b4a61675af",
+      "expectedSHA256": "b0e9d4c2f70f257f879a29c5b82593472fb76422a34a7d38e86724b4a61675af",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/resume-study-confirmation-preview.webp",
+      "sha256": "5f93acc8a7fb64bca48f3ed4790f651c29ff4c69412751879ef34cba95b211dc",
+      "expectedSHA256": "5f93acc8a7fb64bca48f3ed4790f651c29ff4c69412751879ef34cba95b211dc",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/transfer-aa-monthly-header.webp",
+      "sha256": "d6c280505a74b360d912c28742cf5b3dbf927ae0e40907b668849d5cf8af6572",
+      "expectedSHA256": "d6c280505a74b360d912c28742cf5b3dbf927ae0e40907b668849d5cf8af6572",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/education/withdraw-study-confirmation-preview.webp",
+      "sha256": "b73620ea02ce0fa1e46d2abf0440ef2b40e5f9557eaad1e02e6aefea3023b4ae",
+      "expectedSHA256": "b73620ea02ce0fa1e46d2abf0440ef2b40e5f9557eaad1e02e6aefea3023b4ae",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/fonts/MaShanZheng-Regular.ttf",
+      "sha256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb",
+      "expectedSHA256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/baking-confirmed.webp",
+      "sha256": "287bf15fd19223df8f4510c2ab1b99a45bf46af3afed2687e6c1d40da3ac5543",
+      "expectedSHA256": "287bf15fd19223df8f4510c2ab1b99a45bf46af3afed2687e6c1d40da3ac5543",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/coffee-tasting-10xp-confirmed.webp",
+      "sha256": "383af0e47d4f05f3abd35ace51cb06aa08c3ac0d14ded3a27e311c1ab78f5ed6",
+      "expectedSHA256": "383af0e47d4f05f3abd35ace51cb06aa08c3ac0d14ded3a27e311c1ab78f5ed6",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/drawing-confirmed.webp",
+      "sha256": "4795182f3777ab008ee343c08d170109ab71a3f28f946dda00f31912240af457",
+      "expectedSHA256": "4795182f3777ab008ee343c08d170109ab71a3f28f946dda00f31912240af457",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/baking-burnt.webp",
+      "sha256": "e5949851b8e445f21f405fd703412e5d9b34dbcff8664e2efebde4da07b5d913",
+      "expectedSHA256": "e5949851b8e445f21f405fd703412e5d9b34dbcff8664e2efebde4da07b5d913",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/baking-cake.webp",
+      "sha256": "172e9558877a30b21aed24daac0bffe84f07e754dbe063c48c7a1f996f1c524d",
+      "expectedSHA256": "172e9558877a30b21aed24daac0bffe84f07e754dbe063c48c7a1f996f1c524d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/baking-decoration.webp",
+      "sha256": "ceca8e75bf7d9518dc71e822b69ce309bf30a86a3ccf37e24f8547bd8685432d",
+      "expectedSHA256": "ceca8e75bf7d9518dc71e822b69ce309bf30a86a3ccf37e24f8547bd8685432d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/baking-invite.webp",
+      "sha256": "d2cc05424cab217fde29428c72f1f311d2997c8f4200fa1eaf6bafe664bf0a9b",
+      "expectedSHA256": "d2cc05424cab217fde29428c72f1f311d2997c8f4200fa1eaf6bafe664bf0a9b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/baking-treat.webp",
+      "sha256": "d55cfddf8648dfc65008f84001ef7a90c6cff27f7285651ab0449e319307adac",
+      "expectedSHA256": "d55cfddf8648dfc65008f84001ef7a90c6cff27f7285651ab0449e319307adac",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/drawing-card.webp",
+      "sha256": "83cbc2a1f0f694275449c447a130118244397343b2e1a9199987eb02934dec61",
+      "expectedSHA256": "83cbc2a1f0f694275449c447a130118244397343b2e1a9199987eb02934dec61",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/drawing-colors.webp",
+      "sha256": "c0f3d9bcc279939f1a3970f2caa826c0787e46ba3648a2bec0dc1e8919906d08",
+      "expectedSHA256": "c0f3d9bcc279939f1a3970f2caa826c0787e46ba3648a2bec0dc1e8919906d08",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/drawing-invite.webp",
+      "sha256": "d2a0c39f0d2d5fea9a40013ce84cfafcfc4fb489a0ee050db81eb5c25fb73969",
+      "expectedSHA256": "d2a0c39f0d2d5fea9a40013ce84cfafcfc4fb489a0ee050db81eb5c25fb73969",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/drawing-sketch.webp",
+      "sha256": "975cb9cc7313c487e43907c49c9ae4e84caa6c9b251c7398d380c80ddaf7da64",
+      "expectedSHA256": "975cb9cc7313c487e43907c49c9ae4e84caa6c9b251c7398d380c80ddaf7da64",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/drawing-town.webp",
+      "sha256": "a6aad7ea1fec71b833b135dfee6168f52318a7c5fdfa655658fc4638c9b66d44",
+      "expectedSHA256": "a6aad7ea1fec71b833b135dfee6168f52318a7c5fdfa655658fc4638c9b66d44",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/photography-composition.webp",
+      "sha256": "e481802edddda00b94583edd80bf4fa41b5b181d9fc5e2f2d44d5b1905d597fe",
+      "expectedSHA256": "e481802edddda00b94583edd80bf4fa41b5b181d9fc5e2f2d44d5b1905d597fe",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/photography-dusk.webp",
+      "sha256": "dd798c23a47096fbb0cc8f6a7bf3c7eab5351c247894f8f0470b755c218040e5",
+      "expectedSHA256": "dd798c23a47096fbb0cc8f6a7bf3c7eab5351c247894f8f0470b755c218040e5",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/photography-invite.webp",
+      "sha256": "f8cee7c23d3c6bb54c5ba0326655017f7eb70a7f47a2f8da6504c518e1e2c22f",
+      "expectedSHA256": "f8cee7c23d3c6bb54c5ba0326655017f7eb70a7f47a2f8da6504c518e1e2c22f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/photography-rain.webp",
+      "sha256": "c0c0a2057166b5c645a7c8391958fdc184dee0ddcc7617fb57bbfbea03ddfec5",
+      "expectedSHA256": "c0c0a2057166b5c645a7c8391958fdc184dee0ddcc7617fb57bbfbea03ddfec5",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/photography-share.webp",
+      "sha256": "04797c8fec38d00a2846b30e8917c53e26e17df21eb8a39e634e85f3d32ec954",
+      "expectedSHA256": "04797c8fec38d00a2846b30e8917c53e26e17df21eb8a39e634e85f3d32ec954",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/tasting-compare.webp",
+      "sha256": "0ecd0425cd6d9fbaebc99fdcdd0928bca4177c5e16be5589f7df5dce1d07ef9a",
+      "expectedSHA256": "0ecd0425cd6d9fbaebc99fdcdd0928bca4177c5e16be5589f7df5dce1d07ef9a",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/tasting-invite.webp",
+      "sha256": "6a2bbf17d7675d43a8825f5c141b989719e2bdf39d1104b645da6a8403d65add",
+      "expectedSHA256": "6a2bbf17d7675d43a8825f5c141b989719e2bdf39d1104b645da6a8403d65add",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/tasting-news.webp",
+      "sha256": "fb27aac7bbc79ab6488fd664e93621a035e8ab8c77b361e8bc2146c7c273d7b6",
+      "expectedSHA256": "fb27aac7bbc79ab6488fd664e93621a035e8ab8c77b361e8bc2146c7c273d7b6",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/tasting-notes.webp",
+      "sha256": "e652b3a02d96071a9499b145b4a2cc4aeba41a136f6d10e139794d534970c1d2",
+      "expectedSHA256": "e652b3a02d96071a9499b145b4a2cc4aeba41a136f6d10e139794d534970c1d2",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/tasting-queue-no-queue.webp",
+      "sha256": "d45d1555179512bee15cadd87656a1eacceaa8e7066d320c66beaae89db57e02",
+      "expectedSHA256": "d45d1555179512bee15cadd87656a1eacceaa8e7066d320c66beaae89db57e02",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/tasting-queue-no-suitable-cafe.webp",
+      "sha256": "a634fd5dd05e61c66e60fcb6ba4c49a7fd4f3e6a064ef6e277a5dcfeba880208",
+      "expectedSHA256": "a634fd5dd05e61c66e60fcb6ba4c49a7fd4f3e6a064ef6e277a5dcfeba880208",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/tasting-queue-queue.webp",
+      "sha256": "d19f44f321ca4986f0d7b57c5a60ff2bb133c16b375051b37e9159fdd8fe7bd1",
+      "expectedSHA256": "d19f44f321ca4986f0d7b57c5a60ff2bb133c16b375051b37e9159fdd8fe7bd1",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/events/tasting-queue.webp",
+      "sha256": "f7107b8eaced54765f2ef9e740f2855af45e608bf8eda36b6462adff46f542f0",
+      "expectedSHA256": "f7107b8eaced54765f2ef9e740f2855af45e608bf8eda36b6462adff46f542f0",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/latte-art-confirmed.webp",
+      "sha256": "55a23f0ac4bffe48e1d108c20b398e1058515acbabeb89be0298f85c0207c03e",
+      "expectedSHA256": "55a23f0ac4bffe48e1d108c20b398e1058515acbabeb89be0298f85c0207c03e",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/photography-confirmed.webp",
+      "sha256": "83202e37f0e18ead3365d07a8485402bc27fa21e9704eb24a904b46931394428",
+      "expectedSHA256": "83202e37f0e18ead3365d07a8485402bc27fa21e9704eb24a904b46931394428",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/hobbies/pour-over-confirmed.webp",
+      "sha256": "ff6efc7eae613bf5deb841d7b17c487c5c7f8af984eab1625aeda236e56c6b62",
+      "expectedSHA256": "ff6efc7eae613bf5deb841d7b17c487c5c7f8af984eab1625aeda236e56c6b62",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/home/wealth-life-cover-town-style-20261112.webp",
+      "sha256": "ad5941b55e925e00d3d48b07ad076180b5f0df06d4ebba9f665b8901a8c81b7f",
+      "expectedSHA256": "ad5941b55e925e00d3d48b07ad076180b5f0df06d4ebba9f665b8901a8c81b7f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/care-coupon-preview-20261113.webp",
+      "sha256": "3f55e7240faaf3c44274bb5773ed57c8f3676aca400942b6a20f50d64796d26f",
+      "expectedSHA256": "3f55e7240faaf3c44274bb5773ed57c8f3676aca400942b6a20f50d64796d26f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-cat-20261107.webp",
+      "sha256": "f060ee599cc18a0edcabbd081837fed5f95448af956816bcbb9678aa9e218693",
+      "expectedSHA256": "f060ee599cc18a0edcabbd081837fed5f95448af956816bcbb9678aa9e218693",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-chameleon-20261107.webp",
+      "sha256": "0db5240b424281d88d34e376431a124f63b8da7a9244e2e960ad819b9a5aa956",
+      "expectedSHA256": "0db5240b424281d88d34e376431a124f63b8da7a9244e2e960ad819b9a5aa956",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-crocodile-20261107.webp",
+      "sha256": "b95cc3e53565d0abdf5367a8f39c9ae5f8b649c00e2c40d78bf74194d40aa241",
+      "expectedSHA256": "b95cc3e53565d0abdf5367a8f39c9ae5f8b649c00e2c40d78bf74194d40aa241",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-dog-20261107.webp",
+      "sha256": "0b7e625ad4c9ca843e77ea0a9979518d5b839738ae4cdbb5809208b9373b657f",
+      "expectedSHA256": "0b7e625ad4c9ca843e77ea0a9979518d5b839738ae4cdbb5809208b9373b657f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-gecko-20261107.webp",
+      "sha256": "959e0747c461d1911f16c8d8cdc2cd4961bb10ba1cee9e8365adfd16408c2f8f",
+      "expectedSHA256": "959e0747c461d1911f16c8d8cdc2cd4961bb10ba1cee9e8365adfd16408c2f8f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-spider-20261107.webp",
+      "sha256": "77dfa777ef9fce450ccadc091cdc66702d1f2612ffbf31448d0b4deeaa7458e2",
+      "expectedSHA256": "77dfa777ef9fce450ccadc091cdc66702d1f2612ffbf31448d0b4deeaa7458e2",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/pets/vet-reminder-tortoise-20261107.webp",
+      "sha256": "d5c14621e537ff39b302cb8e73d1f9e3aaca6c9a7377ac6bb1217d38938706d2",
+      "expectedSHA256": "d5c14621e537ff39b302cb8e73d1f9e3aaca6c9a7377ac6bb1217d38938706d2",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-female-01.webp",
+      "sha256": "f9494e6ce0fe3d190b1b674a7bc3bdfb8e1234b962f2e289f090cb6bbfe6165c",
+      "expectedSHA256": "f9494e6ce0fe3d190b1b674a7bc3bdfb8e1234b962f2e289f090cb6bbfe6165c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-female-02.webp",
+      "sha256": "275e42eb5a419db7419f479004bfd91ef2be75c49a2e51fe151e52fa35ca1ba2",
+      "expectedSHA256": "275e42eb5a419db7419f479004bfd91ef2be75c49a2e51fe151e52fa35ca1ba2",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-female-03.webp",
+      "sha256": "340a0e87ea31fdb1b9e6618a6c8be0b6b91320e333b3eabc002da4fb776e6e91",
+      "expectedSHA256": "340a0e87ea31fdb1b9e6618a6c8be0b6b91320e333b3eabc002da4fb776e6e91",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-female-04.webp",
+      "sha256": "831beebaa566db28df123c63616621558d8bdc077c0444757e60a59f9249cc29",
+      "expectedSHA256": "831beebaa566db28df123c63616621558d8bdc077c0444757e60a59f9249cc29",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-female-05.webp",
+      "sha256": "0bf01dc0fab7bac5bf34c5ed33e80f05629eee28d1afc4db457438e47f37bbab",
+      "expectedSHA256": "0bf01dc0fab7bac5bf34c5ed33e80f05629eee28d1afc4db457438e47f37bbab",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-female-06.webp",
+      "sha256": "eed096329447abfb6040af60ff4d0362edff9b244fbc1a8c5770795eae328626",
+      "expectedSHA256": "eed096329447abfb6040af60ff4d0362edff9b244fbc1a8c5770795eae328626",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-male-01.webp",
+      "sha256": "0061ed730e9abc2a3e888bda07f1438093a5498f3992a1e0b5d3d47b0ae6a827",
+      "expectedSHA256": "0061ed730e9abc2a3e888bda07f1438093a5498f3992a1e0b5d3d47b0ae6a827",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-male-02.webp",
+      "sha256": "e4b143a252c17698c37cd24431c4d41b2d24ab714647d11637356b6b0eeeb3a8",
+      "expectedSHA256": "e4b143a252c17698c37cd24431c4d41b2d24ab714647d11637356b6b0eeeb3a8",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-male-03.webp",
+      "sha256": "5bdb24dd457024fca41926c3e26ab1d7ab717aabdd75d7d6e63708ae45f03260",
+      "expectedSHA256": "5bdb24dd457024fca41926c3e26ab1d7ab717aabdd75d7d6e63708ae45f03260",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-male-04.webp",
+      "sha256": "e108d676d769f15b114965d5b2f2b1ec1832738b35c47640740434bb13d1bf72",
+      "expectedSHA256": "e108d676d769f15b114965d5b2f2b1ec1832738b35c47640740434bb13d1bf72",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-male-05.webp",
+      "sha256": "40ede1bffee898dcdc8fe1f22523607d73bf362ca27c2e058bc32c08044f6c52",
+      "expectedSHA256": "40ede1bffee898dcdc8fe1f22523607d73bf362ca27c2e058bc32c08044f6c52",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/classmate-male-06.webp",
+      "sha256": "349b7cb8fd3032aa854f15e30f864c85faca7873e2b8f806e88f878687b0ff96",
+      "expectedSHA256": "349b7cb8fd3032aa854f15e30f864c85faca7873e2b8f806e88f878687b0ff96",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-female-01.webp",
+      "sha256": "3e0094ad327b851fa0ffed28f99cf1c9b0858ef43affcf8bae6782a5cf27c759",
+      "expectedSHA256": "3e0094ad327b851fa0ffed28f99cf1c9b0858ef43affcf8bae6782a5cf27c759",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-female-02.webp",
+      "sha256": "34223236961af057c227cc0c2eace6d08503eb47f62d02ed2e7b4be5e20ee25c",
+      "expectedSHA256": "34223236961af057c227cc0c2eace6d08503eb47f62d02ed2e7b4be5e20ee25c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-female-03.webp",
+      "sha256": "96b65a790739c6067674dd4de6aeef0a5133a3201293c5bb88eb9c7e3b71e269",
+      "expectedSHA256": "96b65a790739c6067674dd4de6aeef0a5133a3201293c5bb88eb9c7e3b71e269",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-female-04.webp",
+      "sha256": "53a84aced7b83907ff59f9bc8a74e97b033a82ae9f53e139a5d496558a966343",
+      "expectedSHA256": "53a84aced7b83907ff59f9bc8a74e97b033a82ae9f53e139a5d496558a966343",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-female-05.webp",
+      "sha256": "f7d818204743cf5e2e4f674548827d46c5df5fe0a54a20e754932ecb3a769052",
+      "expectedSHA256": "f7d818204743cf5e2e4f674548827d46c5df5fe0a54a20e754932ecb3a769052",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-female-06.webp",
+      "sha256": "d508cac1ce28ed03cd1d16eb99edbd2ac4057277bbf3cf84d983744e66f97149",
+      "expectedSHA256": "d508cac1ce28ed03cd1d16eb99edbd2ac4057277bbf3cf84d983744e66f97149",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-male-01.webp",
+      "sha256": "5de1249d613bef6446cabb333c064775bd1984134fedb9aa199befeb7fe31936",
+      "expectedSHA256": "5de1249d613bef6446cabb333c064775bd1984134fedb9aa199befeb7fe31936",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-male-02.webp",
+      "sha256": "38c5fd4cea701e745daa217ab9bdf243a651d3caac4cf5e5249275d1b97af72d",
+      "expectedSHA256": "38c5fd4cea701e745daa217ab9bdf243a651d3caac4cf5e5249275d1b97af72d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-male-03.webp",
+      "sha256": "2196aa1e548263b410a4e307695f3ee116d3a6ac5ebc55d32ce84a66f5f95ba4",
+      "expectedSHA256": "2196aa1e548263b410a4e307695f3ee116d3a6ac5ebc55d32ce84a66f5f95ba4",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-male-04.webp",
+      "sha256": "5f70ab1dddb734276ee4ad78662c46afd00e6c214a1de3fa2dc58106cba238d1",
+      "expectedSHA256": "5f70ab1dddb734276ee4ad78662c46afd00e6c214a1de3fa2dc58106cba238d1",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-male-05.webp",
+      "sha256": "218c9cc69a4f54d2836aad7679873b0ae3533fba4a54e6298a28515598289dae",
+      "expectedSHA256": "218c9cc69a4f54d2836aad7679873b0ae3533fba4a54e6298a28515598289dae",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/coworker-male-06.webp",
+      "sha256": "aab6ee1fadd96c28b75631892b8d4edc78e7fae657d970d6961b3ba20adc421a",
+      "expectedSHA256": "aab6ee1fadd96c28b75631892b8d4edc78e7fae657d970d6961b3ba20adc421a",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-female-01.webp",
+      "sha256": "98d91326b3697b65f3dfb7158e45d1aef362cb2ab61788faf82a3e08f5d02cd1",
+      "expectedSHA256": "98d91326b3697b65f3dfb7158e45d1aef362cb2ab61788faf82a3e08f5d02cd1",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-female-02.webp",
+      "sha256": "c1cbe2555d4a1f8ca46940afceee752d1e39eb35068c6658d37642b87effd515",
+      "expectedSHA256": "c1cbe2555d4a1f8ca46940afceee752d1e39eb35068c6658d37642b87effd515",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-female-03.webp",
+      "sha256": "b115bf49512002f4fb2e7a368b5fbda03ab4818e17ca3a5a4ae7960c8b7a8e52",
+      "expectedSHA256": "b115bf49512002f4fb2e7a368b5fbda03ab4818e17ca3a5a4ae7960c8b7a8e52",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-female-04.webp",
+      "sha256": "930f116ffe4f1bdcb4b983436866005a737a6dd2baa591d6cff490c9f1407bf6",
+      "expectedSHA256": "930f116ffe4f1bdcb4b983436866005a737a6dd2baa591d6cff490c9f1407bf6",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-female-05.webp",
+      "sha256": "e54e2ea140e8d897bdad6cbb25ecc759acc01831600e41252a68e77897cab9fc",
+      "expectedSHA256": "e54e2ea140e8d897bdad6cbb25ecc759acc01831600e41252a68e77897cab9fc",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-female-06.webp",
+      "sha256": "bca5a61e8249d7464e3c04ea63d3650199ad6019d56feb8182789ebf3e6fcfc2",
+      "expectedSHA256": "bca5a61e8249d7464e3c04ea63d3650199ad6019d56feb8182789ebf3e6fcfc2",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-male-01.webp",
+      "sha256": "a431390d44c3bb808cfbb3b805f87c83ed1adfed83a79d64a30f75f2608a4fd8",
+      "expectedSHA256": "a431390d44c3bb808cfbb3b805f87c83ed1adfed83a79d64a30f75f2608a4fd8",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-male-02.webp",
+      "sha256": "0457b2f0d2185582768e396d8e0d9928039333ec6bf63348987248f1de386755",
+      "expectedSHA256": "0457b2f0d2185582768e396d8e0d9928039333ec6bf63348987248f1de386755",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-male-03.webp",
+      "sha256": "3e44b429b68534ba3e76c13d8bdf78b4b4a98da96252ecc246603823dd40dd48",
+      "expectedSHA256": "3e44b429b68534ba3e76c13d8bdf78b4b4a98da96252ecc246603823dd40dd48",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-male-04.webp",
+      "sha256": "596a1d2e9379a4025e68c3d3bf1a8f5718f4d7ada3b928bfd6de99b1bcb9c1f7",
+      "expectedSHA256": "596a1d2e9379a4025e68c3d3bf1a8f5718f4d7ada3b928bfd6de99b1bcb9c1f7",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-male-05.webp",
+      "sha256": "b35ad13128ea1a45b481e23d250f34d54e1aebe36933327e423e3cc56b0354e0",
+      "expectedSHA256": "b35ad13128ea1a45b481e23d250f34d54e1aebe36933327e423e3cc56b0354e0",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/landlord-male-06.webp",
+      "sha256": "96473bb1f9ca543723297c1469b1ddd14e26e2a16a643f75383a180228afa5f5",
+      "expectedSHA256": "96473bb1f9ca543723297c1469b1ddd14e26e2a16a643f75383a180228afa5f5",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-female-01.webp",
+      "sha256": "d0637cc5faa128e38de59f57d2a4daa74ec6c0429cf2f2fb2decbd9863710d8b",
+      "expectedSHA256": "d0637cc5faa128e38de59f57d2a4daa74ec6c0429cf2f2fb2decbd9863710d8b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-female-02.webp",
+      "sha256": "03437b2edd048d64ca4f6afa365d896a86264c101691524520e492b226411887",
+      "expectedSHA256": "03437b2edd048d64ca4f6afa365d896a86264c101691524520e492b226411887",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-female-03.webp",
+      "sha256": "1330b50cb013cdda350c5eda59f3c05854beafa449f49084ef26ac6ba9aeda24",
+      "expectedSHA256": "1330b50cb013cdda350c5eda59f3c05854beafa449f49084ef26ac6ba9aeda24",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-female-04.webp",
+      "sha256": "89633a7a6d31269da407253384b30371407eb80d0f5ea26c990eddf7b1ce6c16",
+      "expectedSHA256": "89633a7a6d31269da407253384b30371407eb80d0f5ea26c990eddf7b1ce6c16",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-female-05.webp",
+      "sha256": "1fadd269f9aebafd7978ce9552e87345bb851c99183b02664779367a4acf0972",
+      "expectedSHA256": "1fadd269f9aebafd7978ce9552e87345bb851c99183b02664779367a4acf0972",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-female-06.webp",
+      "sha256": "f45d93b5987da6d3131f4205116f7f94d9774861a97b1fb569000f339b4c406b",
+      "expectedSHA256": "f45d93b5987da6d3131f4205116f7f94d9774861a97b1fb569000f339b4c406b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-male-01.webp",
+      "sha256": "b2a395a1e1491f2fd8b493f885252ff4f46224a9144fad54d9d07f0b58697a40",
+      "expectedSHA256": "b2a395a1e1491f2fd8b493f885252ff4f46224a9144fad54d9d07f0b58697a40",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-male-02.webp",
+      "sha256": "70756f38f1e872cdaca16c6b50fbc6b0a10da73b53e132edada5fd5f3d5c0cc3",
+      "expectedSHA256": "70756f38f1e872cdaca16c6b50fbc6b0a10da73b53e132edada5fd5f3d5c0cc3",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-male-03.webp",
+      "sha256": "34d4d9c1c12ae93ff27848cd6ed7b020f2786d4f21a0f1e8a3f9d0d0c325ac2a",
+      "expectedSHA256": "34d4d9c1c12ae93ff27848cd6ed7b020f2786d4f21a0f1e8a3f9d0d0c325ac2a",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-male-04.webp",
+      "sha256": "a6ff820851f384190d886a05a313c08c719bbd316feb7995450f2beb7f106dbb",
+      "expectedSHA256": "a6ff820851f384190d886a05a313c08c719bbd316feb7995450f2beb7f106dbb",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-male-05.webp",
+      "sha256": "ddb508d901d7e3422f19578283139c5f9118808d4e6ba436e4bc616aea88f3bd",
+      "expectedSHA256": "ddb508d901d7e3422f19578283139c5f9118808d4e6ba436e4bc616aea88f3bd",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/manager-male-06.webp",
+      "sha256": "5fa461c47d4535f0018a48c773ed7796104e8ea97b8f1438b548a13ce3b476fc",
+      "expectedSHA256": "5fa461c47d4535f0018a48c773ed7796104e8ea97b8f1438b548a13ce3b476fc",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-female-01.webp",
+      "sha256": "2c8c29c9ab3d9b07ab7a1b92ac46e4304a1e12797774587ce55a7ee2eca01ee9",
+      "expectedSHA256": "2c8c29c9ab3d9b07ab7a1b92ac46e4304a1e12797774587ce55a7ee2eca01ee9",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-female-02.webp",
+      "sha256": "f8807f0b56311a96c7fc30937094005158efa988dd97358b7335021e13d61bbd",
+      "expectedSHA256": "f8807f0b56311a96c7fc30937094005158efa988dd97358b7335021e13d61bbd",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-female-03.webp",
+      "sha256": "328a65bf94669eaaaf41a5cc5fc498e0feb30337b464fa2b0392a395f34edd49",
+      "expectedSHA256": "328a65bf94669eaaaf41a5cc5fc498e0feb30337b464fa2b0392a395f34edd49",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-female-04.webp",
+      "sha256": "03455ec4f0a014aa348b88aacb1c9a0753de7c6e76d98c012cbf954be09fcc8f",
+      "expectedSHA256": "03455ec4f0a014aa348b88aacb1c9a0753de7c6e76d98c012cbf954be09fcc8f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-female-05.webp",
+      "sha256": "03a085debd70d3a67d4e76b9703f5ebb18f9bab60b75340409ce6209d20b767e",
+      "expectedSHA256": "03a085debd70d3a67d4e76b9703f5ebb18f9bab60b75340409ce6209d20b767e",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-female-06.webp",
+      "sha256": "7415faa4a6a68b189f17b368b4a92f722ffadecfb5c86fb12f8a746f78819c71",
+      "expectedSHA256": "7415faa4a6a68b189f17b368b4a92f722ffadecfb5c86fb12f8a746f78819c71",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-male-01.webp",
+      "sha256": "75632260fbd3addb088b2cc5134e3875ea4ad068c7665c5325f1038062089ec4",
+      "expectedSHA256": "75632260fbd3addb088b2cc5134e3875ea4ad068c7665c5325f1038062089ec4",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-male-02.webp",
+      "sha256": "e8203b6e374c95030608e23cfaa193a0f7eff0b71efa91095f999be50dab4487",
+      "expectedSHA256": "e8203b6e374c95030608e23cfaa193a0f7eff0b71efa91095f999be50dab4487",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-male-03.webp",
+      "sha256": "aeba52d97f51ca4d136f58d9628601bdbf92e2f823d982a2f5ed3c4de3d28fda",
+      "expectedSHA256": "aeba52d97f51ca4d136f58d9628601bdbf92e2f823d982a2f5ed3c4de3d28fda",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-male-04.webp",
+      "sha256": "638d3d0d8619756b1e0bc1bae42c5b597b96b39b18c39923d75d8c3b9ce1604c",
+      "expectedSHA256": "638d3d0d8619756b1e0bc1bae42c5b597b96b39b18c39923d75d8c3b9ce1604c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-male-05.webp",
+      "sha256": "d86b02294db34fd92e486ee6c35cec4cfcd79149fa534d4ee8cf4eb1d7b4ed87",
+      "expectedSHA256": "d86b02294db34fd92e486ee6c35cec4cfcd79149fa534d4ee8cf4eb1d7b4ed87",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/petfriend-male-06.webp",
+      "sha256": "9c7f0da54ca1ad6a101892ee02e0bdae3ee367205ab47bb36e6cdb373a5fe0ec",
+      "expectedSHA256": "9c7f0da54ca1ad6a101892ee02e0bdae3ee367205ab47bb36e6cdb373a5fe0ec",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/teacher-female-01.webp",
+      "sha256": "49f61329791a0e99949268e4582db368d6f53b8bdd62e42a445ccc9a5c80fde4",
+      "expectedSHA256": "49f61329791a0e99949268e4582db368d6f53b8bdd62e42a445ccc9a5c80fde4",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/teacher-female-02.webp",
+      "sha256": "85eb27ae1e69d1a5c7fb16efd390b96374841c12fbfa2dac2ae0872c9d019e40",
+      "expectedSHA256": "85eb27ae1e69d1a5c7fb16efd390b96374841c12fbfa2dac2ae0872c9d019e40",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/teacher-female-03.webp",
+      "sha256": "bebbc1dc29e877ca54e3f63b94f26d5afc54b591f3a8d5a2c272e89e71a80ea4",
+      "expectedSHA256": "bebbc1dc29e877ca54e3f63b94f26d5afc54b591f3a8d5a2c272e89e71a80ea4",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/teacher-female-04.webp",
+      "sha256": "d2b3053807cc2feae7718e19ecc9d7f3a9358e6b2f5b608237193c3ca2f57bc6",
+      "expectedSHA256": "d2b3053807cc2feae7718e19ecc9d7f3a9358e6b2f5b608237193c3ca2f57bc6",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/teacher-female-05.webp",
+      "sha256": "246cc1dcb6729d13947ccf7ec96367eb1023b0535c6179bb17a6210d6afeb75f",
+      "expectedSHA256": "246cc1dcb6729d13947ccf7ec96367eb1023b0535c6179bb17a6210d6afeb75f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/teacher-male-01.webp",
+      "sha256": "bcd0fd7adf30acb025a7f38af4d777dc61b65e525492a84287adcb5355e0789f",
+      "expectedSHA256": "bcd0fd7adf30acb025a7f38af4d777dc61b65e525492a84287adcb5355e0789f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/teacher-male-02.webp",
+      "sha256": "422e8a334f8bb676ce852098d5ebb784377b7d2b02b3c26fd8877359a99eac1b",
+      "expectedSHA256": "422e8a334f8bb676ce852098d5ebb784377b7d2b02b3c26fd8877359a99eac1b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/teacher-male-03.webp",
+      "sha256": "76ae1fb1cf8267228f4a1b6d23bb61d486d743f9fb64b1c4e925cc073fc0c331",
+      "expectedSHA256": "76ae1fb1cf8267228f4a1b6d23bb61d486d743f9fb64b1c4e925cc073fc0c331",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/teacher-male-04.webp",
+      "sha256": "3dc0f0f8bc826c1aab9d5fa910194d2ffaf5576b31aa243c9b680130ef822fd5",
+      "expectedSHA256": "3dc0f0f8bc826c1aab9d5fa910194d2ffaf5576b31aa243c9b680130ef822fd5",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/avatars/teacher-male-05.webp",
+      "sha256": "8c22547876408e572ff1476f7b2862b0c35e3b43eb1c19bb185dcbda8862505c",
+      "expectedSHA256": "8c22547876408e572ff1476f7b2862b0c35e3b43eb1c19bb185dcbda8862505c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-01-library-new-contact.webp",
+      "sha256": "2289864bf8f1ecf65a2c4f52bc7a49bbdbb72da4fdeccc010be7ae3525bbd9ad",
+      "expectedSHA256": "2289864bf8f1ecf65a2c4f52bc7a49bbdbb72da4fdeccc010be7ae3525bbd9ad",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-01-library.webp",
+      "sha256": "222e2a91b91d0c3bacfc3ea9784df3284ff11751769fa46069b94d77b75876be",
+      "expectedSHA256": "222e2a91b91d0c3bacfc3ea9784df3284ff11751769fa46069b94d77b75876be",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-02-borrow-notes.webp",
+      "sha256": "03ce5efeb94b3430df59af3ab5d9c772eb99f4e9ef5f9120a439839f3970a073",
+      "expectedSHA256": "03ce5efeb94b3430df59af3ab5d9c772eb99f4e9ef5f9120a439839f3970a073",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-03-presentation.webp",
+      "sha256": "7a1b28f519abcbc9469f9ef98654894e8fd43d5579f38abf51d1b6461f52a49a",
+      "expectedSHA256": "7a1b28f519abcbc9469f9ef98654894e8fd43d5579f38abf51d1b6461f52a49a",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-04-after-class-snack.webp",
+      "sha256": "a419da150b5f25522c2861673d9bc82ad4b196a0eff753c1f25fd09df1bef049",
+      "expectedSHA256": "a419da150b5f25522c2861673d9bc82ad4b196a0eff753c1f25fd09df1bef049",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-05-study-plan-choice-layout.webp",
+      "sha256": "97f7796e949729c5559e208a4526881f2c8931acbdba9f2a48cdc1c9bc91706b",
+      "expectedSHA256": "97f7796e949729c5559e208a4526881f2c8931acbdba9f2a48cdc1c9bc91706b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-library-20261113.webp",
+      "sha256": "bf79577d8dc1768dfcc536773f35a8deb5516ac60b555daeb7c354e6dfaa8cff",
+      "expectedSHA256": "bf79577d8dc1768dfcc536773f35a8deb5516ac60b555daeb7c354e6dfaa8cff",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-plan-20261113.webp",
+      "sha256": "df8cfd6513dcd3ce914dd1f0e0eaf183849598794395a514e2503be0ff37fecb",
+      "expectedSHA256": "df8cfd6513dcd3ce914dd1f0e0eaf183849598794395a514e2503be0ff37fecb",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-presentation-20261113.webp",
+      "sha256": "61bf9aaee5da6f1613a53ea97c250da1f1f2314cedc2fac9fb9206e78ad04e6f",
+      "expectedSHA256": "61bf9aaee5da6f1613a53ea97c250da1f1f2314cedc2fac9fb9206e78ad04e6f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/classmate-snack-20261113.webp",
+      "sha256": "5856493dcc131345b59d430f061a28c0fa4983a6bf073111ff60fe4cfd14a741",
+      "expectedSHA256": "5856493dcc131345b59d430f061a28c0fa4983a6bf073111ff60fe4cfd14a741",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-01-after-work.webp",
+      "sha256": "e72ee922aee28ed8f0ba525660a3c94046c0cd89f37bf2f94e297d16079f7779",
+      "expectedSHA256": "e72ee922aee28ed8f0ba525660a3c94046c0cd89f37bf2f94e297d16079f7779",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-02-snack.webp",
+      "sha256": "f427e59f0a8f26753182f4bbd8373be4b60820c9e489c78aac60135f3d29d6d6",
+      "expectedSHA256": "f427e59f0a8f26753182f4bbd8373be4b60820c9e489c78aac60135f3d29d6d6",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-03-bookshelf.webp",
+      "sha256": "7d84c5fa5da0df6615e7aeb05e5124e8dee65f780f6e3e4805c52df64942a87c",
+      "expectedSHA256": "7d84c5fa5da0df6615e7aeb05e5124e8dee65f780f6e3e4805c52df64942a87c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-04-order.webp",
+      "sha256": "76fe2841120c1308b8f323119081891828e3088b003f3bec1bf4db0bc4670531",
+      "expectedSHA256": "76fe2841120c1308b8f323119081891828e3088b003f3bec1bf4db0bc4670531",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-05-side-job.webp",
+      "sha256": "c1f1c4a4a1818dfc45887fca4f5acd369ef19c55719dd7474b88a990bc10bf78",
+      "expectedSHA256": "c1f1c4a4a1818dfc45887fca4f5acd369ef19c55719dd7474b88a990bc10bf78",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-bookshelf-20261113.webp",
+      "sha256": "c1f3301d904b104964bf91c58e69bb2894508d2cdde56ea5592abe62fedd4268",
+      "expectedSHA256": "c1f3301d904b104964bf91c58e69bb2894508d2cdde56ea5592abe62fedd4268",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-chat-20261113.webp",
+      "sha256": "fd704be57f6f9ac0652b616308286efc7f88f4cd04372837af52a99f6789d112",
+      "expectedSHA256": "fd704be57f6f9ac0652b616308286efc7f88f4cd04372837af52a99f6789d112",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-job-20261113.webp",
+      "sha256": "85f3a9ea5cf039957d5ac32114d0e28b7c125cde9fbcb9e5ee33f42815a59d69",
+      "expectedSHA256": "85f3a9ea5cf039957d5ac32114d0e28b7c125cde9fbcb9e5ee33f42815a59d69",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/coworker-snack-20261113.webp",
+      "sha256": "ad4aa7500ded14ec1ab58063701a074b3103f432c14e7295a7a4e37e1b62b557",
+      "expectedSHA256": "ad4aa7500ded14ec1ab58063701a074b3103f432c14e7295a7a4e37e1b62b557",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/failure-20261113.webp",
+      "sha256": "0aef4f6a50e71bf6a744db35cc937d0dd5f893495c62936cf4ce013eb4faa7ea",
+      "expectedSHA256": "0aef4f6a50e71bf6a744db35cc937d0dd5f893495c62936cf4ce013eb4faa7ea",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-01-chat.webp",
+      "sha256": "792113a91679c2cd814648104302dcd12e6f5ea641150e19e4b3870e3f13cffe",
+      "expectedSHA256": "792113a91679c2cd814648104302dcd12e6f5ea641150e19e4b3870e3f13cffe",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-02-beef.webp",
+      "sha256": "9c25297a351e76cc671d3a0117adc5bb826b7de34f4342be94f2d3964f4375a5",
+      "expectedSHA256": "9c25297a351e76cc671d3a0117adc5bb826b7de34f4342be94f2d3964f4375a5",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-03-plants.webp",
+      "sha256": "1ded553bf67f3c6da6637b052a03925878f2555392b7c01f00f0c8d730c09be7",
+      "expectedSHA256": "1ded553bf67f3c6da6637b052a03925878f2555392b7c01f00f0c8d730c09be7",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-04-aircon-failure.webp",
+      "sha256": "6c0eb61ad7f3f7b848c08468945fcc28e2e6ada2e1cbcdee883ebc19078ce4fd",
+      "expectedSHA256": "6c0eb61ad7f3f7b848c08468945fcc28e2e6ada2e1cbcdee883ebc19078ce4fd",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-04-aircon-main.webp",
+      "sha256": "fff2a15db77032f57e5dc20c675f63d2f4e5de076d22197080471ec851f6d4bb",
+      "expectedSHA256": "fff2a15db77032f57e5dc20c675f63d2f4e5de076d22197080471ec851f6d4bb",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-04-aircon-success.webp",
+      "sha256": "61b77743ac48b55fac186bf87f4e2d9657b6596909a027cf1463a5e4872bc0dd",
+      "expectedSHA256": "61b77743ac48b55fac186bf87f4e2d9657b6596909a027cf1463a5e4872bc0dd",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-aircon-20261113.webp",
+      "sha256": "4fe617c8de8fa5e447d27bb9be34ccf78b941ae4ee005845cb0fb545d9db4fdf",
+      "expectedSHA256": "4fe617c8de8fa5e447d27bb9be34ccf78b941ae4ee005845cb0fb545d9db4fdf",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-chat-20261113.webp",
+      "sha256": "dde7830f4ce84878f2100ca163fc29ce2ea28084188046e82e4e7d89259d874d",
+      "expectedSHA256": "dde7830f4ce84878f2100ca163fc29ce2ea28084188046e82e4e7d89259d874d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/landlord-plants-20261113.webp",
+      "sha256": "b25c4639f7e202b84467bb50a19bbbc89e496274c4525322dd89a2604da8c1d6",
+      "expectedSHA256": "b25c4639f7e202b84467bb50a19bbbc89e496274c4525322dd89a2604da8c1d6",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-01-care.webp",
+      "sha256": "7b7e81c1e5cb1e7ce13aa96bbc5a2194d423e7dfd54c97041e30ab3806e453c9",
+      "expectedSHA256": "7b7e81c1e5cb1e7ce13aa96bbc5a2194d423e7dfd54c97041e30ab3806e453c9",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-02-experience.webp",
+      "sha256": "82d8a77cdbd19d977bb319360452d9d5aec62b9ce1649dc8bbd9d81c0ac7a8f5",
+      "expectedSHA256": "82d8a77cdbd19d977bb319360452d9d5aec62b9ce1649dc8bbd9d81c0ac7a8f5",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-03-tasting.webp",
+      "sha256": "f7fc3131e7ffa1bb7f254716f366a2dc92107f74d3b72ec63de8dd919201a037",
+      "expectedSHA256": "f7fc3131e7ffa1bb7f254716f366a2dc92107f74d3b72ec63de8dd919201a037",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-04-bonus.webp",
+      "sha256": "f774f6972e5d3c9b51e89d3523628cbdce9ef01fa43d985c13a15f7f954a8c73",
+      "expectedSHA256": "f774f6972e5d3c9b51e89d3523628cbdce9ef01fa43d985c13a15f7f954a8c73",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-05-ride.webp",
+      "sha256": "041b8651584669b2f52a5765206e14939bb0cb8b1e517e7d2a990d7365cb2dec",
+      "expectedSHA256": "041b8651584669b2f52a5765206e14939bb0cb8b1e517e7d2a990d7365cb2dec",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-bonus-20261113.webp",
+      "sha256": "8de3ea3aa2bb16deeb68b6f1a626bf33677c144a16a46dbc4e43a95e83a9d149",
+      "expectedSHA256": "8de3ea3aa2bb16deeb68b6f1a626bf33677c144a16a46dbc4e43a95e83a9d149",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-experience-20261113.webp",
+      "sha256": "03441e7918a7a62bf9be09f39c668165ebbad90f31541a933cb6fdf361814fdd",
+      "expectedSHA256": "03441e7918a7a62bf9be09f39c668165ebbad90f31541a933cb6fdf361814fdd",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-extra-shifts-20261113.webp",
+      "sha256": "9f25a1eac03756631b5da3d459c4c80e3d78fb0c76a563df108d1a3f7f25b35e",
+      "expectedSHA256": "9f25a1eac03756631b5da3d459c4c80e3d78fb0c76a563df108d1a3f7f25b35e",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-pickup-20261113.webp",
+      "sha256": "638eb5a7bbdd494c6cd14eddbe77c5795e18a46ea962bed2a4038d3fb85bfb02",
+      "expectedSHA256": "638eb5a7bbdd494c6cd14eddbe77c5795e18a46ea962bed2a4038d3fb85bfb02",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/manager-tasting-20261113.webp",
+      "sha256": "808882674a5e31727ceebafa8a6a799431ffef112846bd37262dec255886ea1b",
+      "expectedSHA256": "808882674a5e31727ceebafa8a6a799431ffef112846bd37262dec255886ea1b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/moving-meal-20261113.webp",
+      "sha256": "5f94406aa82c3c3e6deab5cd8ec2e2173e27f017abd76a4d05204a88066cd27c",
+      "expectedSHA256": "5f94406aa82c3c3e6deab5cd8ec2e2173e27f017abd76a4d05204a88066cd27c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-01-chat.webp",
+      "sha256": "e3c3103700771e3db3bde99299da0ad3e1aee789bb97dc27237f12c42df9800c",
+      "expectedSHA256": "e3c3103700771e3db3bde99299da0ad3e1aee789bb97dc27237f12c42df9800c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-02-organizer.webp",
+      "sha256": "fcafc26f79f5fd177a11d918047b0156eeac42863c8b283f46c7ab6957a13806",
+      "expectedSHA256": "fcafc26f79f5fd177a11d918047b0156eeac42863c8b283f46c7ab6957a13806",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-03-shop.webp",
+      "sha256": "26d50227defabb0d9c6ccfc0a978eb9125e2387c96258e1a498f873073f38db1",
+      "expectedSHA256": "26d50227defabb0d9c6ccfc0a978eb9125e2387c96258e1a498f873073f38db1",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-04-late-arrival.webp",
+      "sha256": "bf157e4e59b2b155d98bece10b445e45b5bcf6ba39a75205d765aaf42fd451a7",
+      "expectedSHA256": "bf157e4e59b2b155d98bece10b445e45b5bcf6ba39a75205d765aaf42fd451a7",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-05-cafe-day-job.webp",
+      "sha256": "e94ada9908a3773135a3a633490fbd56b2c1d07daf457d43aa78dc5ee44caf33",
+      "expectedSHA256": "e94ada9908a3773135a3a633490fbd56b2c1d07daf457d43aa78dc5ee44caf33",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-chat-20261113.webp",
+      "sha256": "67ab32137f3883971bf1a33c7479d67e1f00653b56a6c69eb395131130829e77",
+      "expectedSHA256": "67ab32137f3883971bf1a33c7479d67e1f00653b56a6c69eb395131130829e77",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-late-20261113.webp",
+      "sha256": "6afbb04980ae829d9ae9791114e24dfcd1a9f8696a03efe6148414235f936fad",
+      "expectedSHA256": "6afbb04980ae829d9ae9791114e24dfcd1a9f8696a03efe6148414235f936fad",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/petfriend-organizer-20261113.webp",
+      "sha256": "bbd4c75b8fdef12fa8f724915bf1ffa5022fc3ff82f2168c071ea25a922afcbf",
+      "expectedSHA256": "bbd4c75b8fdef12fa8f724915bf1ffa5022fc3ff82f2168c071ea25a922afcbf",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/success-20261113.webp",
+      "sha256": "f6110608e154c88b8208f9ad6d79ceb2a4067f137fa7abb6c89fc6ab6584bce8",
+      "expectedSHA256": "f6110608e154c88b8208f9ad6d79ceb2a4067f137fa7abb6c89fc6ab6584bce8",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/teacher-01-after-class-question-20261113.webp",
+      "sha256": "635a553cc6371aff503150d61e852b14106afc391d498afbb3cd1080a36b538e",
+      "expectedSHA256": "635a553cc6371aff503150d61e852b14106afc391d498afbb3cd1080a36b538e",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/teacher-02-assignment-encouragement-20261113.webp",
+      "sha256": "23024cdde8705efa3cd86eca4a823ae538aa4734d75f697b655a653313d98b9d",
+      "expectedSHA256": "23024cdde8705efa3cd86eca4a823ae538aa4734d75f697b655a653313d98b9d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/teacher-03-revise-assignment-20261113.webp",
+      "sha256": "ca0891d2e25453b5449518ff1eea80c708656bb1732148dc8ddd56356727a4ac",
+      "expectedSHA256": "ca0891d2e25453b5449518ff1eea80c708656bb1732148dc8ddd56356727a4ac",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/cards/teacher-04-campus-lecture-20261113.webp",
+      "sha256": "97605685910a2052aeae44ecb581462450f2632fff23f633986f2aa0f5f1e213",
+      "expectedSHA256": "97605685910a2052aeae44ecb581462450f2632fff23f633986f2aa0f5f1e213",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/contact-detail-20261110.webp",
+      "sha256": "0c2695fb753a112f65a736ee5db6121d9ff0a226831f22c306188ab7da5fb164",
+      "expectedSHA256": "0c2695fb753a112f65a736ee5db6121d9ff0a226831f22c306188ab7da5fb164",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/contact-list-20261110.webp",
+      "sha256": "e4b9e16f5680134354f8a8198cffd8e2d001ada9effe26aaf80355a4a29c5c66",
+      "expectedSHA256": "e4b9e16f5680134354f8a8198cffd8e2d001ada9effe26aaf80355a4a29c5c66",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "assets/relationships/manager-experience-20261110.webp",
+      "sha256": "d17288929ab9b02fcdf80872df4597023fad67fae25e5d1947992e6813d99537",
+      "expectedSHA256": "d17288929ab9b02fcdf80872df4597023fad67fae25e5d1947992e6813d99537",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "batch.js",
+      "sha256": "b16959cd8a1478be64c0f854804a9d1f7743e773e5f20f57eec8c1ef576206f1",
+      "expectedSHA256": "b16959cd8a1478be64c0f854804a9d1f7743e773e5f20f57eec8c1ef576206f1",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "career-selection.css",
+      "sha256": "3834b40487afeca7f11ae60457c56fa08d87fd43b62561cea541c5261911cd6e",
+      "expectedSHA256": "3834b40487afeca7f11ae60457c56fa08d87fd43b62561cea541c5261911cd6e",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "career-selection.js",
+      "sha256": "a83004439ced02aeca47024d82384ad68461e4fe4a2da422bd971778da05c059",
+      "expectedSHA256": "a83004439ced02aeca47024d82384ad68461e4fe4a2da422bd971778da05c059",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "coffee-career.js",
+      "sha256": "eab990ecdffa32d7b923d29e63556950bfcc5f79bcf7a9af19c9d1d538f797ea",
+      "expectedSHA256": "eab990ecdffa32d7b923d29e63556950bfcc5f79bcf7a9af19c9d1d538f797ea",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "coffee-salary.js",
+      "sha256": "b35fa595344a92d45c4c96e5d7ff5bde59048a39f38458df98a117002dd98010",
+      "expectedSHA256": "b35fa595344a92d45c4c96e5d7ff5bde59048a39f38458df98a117002dd98010",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "coffee.js",
+      "sha256": "9dfbfa1d1e1b6df23b14925832c7c84ec49b87dae4d9591ab113c81c9c56bf6d",
+      "expectedSHA256": "9dfbfa1d1e1b6df23b14925832c7c84ec49b87dae4d9591ab113c81c9c56bf6d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "core.js",
+      "sha256": "6e5489530184eb999fec22317f482367b1fe75da5162ed36d109bd1f97d1fe21",
+      "expectedSHA256": "6e5489530184eb999fec22317f482367b1fe75da5162ed36d109bd1f97d1fe21",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "education-monthly.js",
+      "sha256": "16ab9714b11ab6533a0d5c6e430bc3aa6d24e60e44a666be5a9f171365979d0b",
+      "expectedSHA256": "16ab9714b11ab6533a0d5c6e430bc3aa6d24e60e44a666be5a9f171365979d0b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "education-pages.css",
+      "sha256": "886de68286605d0ab777cfb4c98a80a7061be1a5e8dc00e96c9d618c6700e735",
+      "expectedSHA256": "886de68286605d0ab777cfb4c98a80a7061be1a5e8dc00e96c9d618c6700e735",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "education-pages.js",
+      "sha256": "fbe6c54cbdc134e207cbe274ddd3f4d401347bd856a876cd8d1753e9d0a5f35e",
+      "expectedSHA256": "fbe6c54cbdc134e207cbe274ddd3f4d401347bd856a876cd8d1753e9d0a5f35e",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "education-plans.js",
+      "sha256": "92a2cdb57c6cc7291add09e7e433accd739c369c57aa16074bd277796e777562",
+      "expectedSHA256": "92a2cdb57c6cc7291add09e7e433accd739c369c57aa16074bd277796e777562",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "entry-screen.css",
+      "sha256": "95bdb6e922e83f72692b19c8f0e0b1d49458c868e65a4bd83856191d069f3016",
+      "expectedSHA256": "95bdb6e922e83f72692b19c8f0e0b1d49458c868e65a4bd83856191d069f3016",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "entry-screen.js",
+      "sha256": "142cfd9f9ea74d31c1021af54344a535e37ae9e6a23c07a4f9a4d274ddb14edb",
+      "expectedSHA256": "142cfd9f9ea74d31c1021af54344a535e37ae9e6a23c07a4f9a4d274ddb14edb",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "family-events.js",
+      "sha256": "4cbe96269743d10506534fb6d5747f2a64b715ed78f48c6aba3240e506fead6f",
+      "expectedSHA256": "4cbe96269743d10506534fb6d5747f2a64b715ed78f48c6aba3240e506fead6f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "family-home.css",
+      "sha256": "20f83fe62d3c4ac160c0ab8d37a36d901f1fe6d598f759f80cb4388b79ff7158",
+      "expectedSHA256": "20f83fe62d3c4ac160c0ab8d37a36d901f1fe6d598f759f80cb4388b79ff7158",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "family-home.js",
+      "sha256": "42f9342ac4568f5019d779d2b99142c8138a5cb1803e143b5089183c1b73ec5f",
+      "expectedSHA256": "42f9342ac4568f5019d779d2b99142c8138a5cb1803e143b5089183c1b73ec5f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "financial-crisis.js",
+      "sha256": "d8c7e290e7065f8b76efc1f93521b0235c1137b1f0fa7c37c321e0906844e4c9",
+      "expectedSHA256": "d8c7e290e7065f8b76efc1f93521b0235c1137b1f0fa7c37c321e0906844e4c9",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "flow.js",
+      "sha256": "9a0064ad0112d3f352e49278873770cdcd6a71b52cdb200eebbe40f7c479ecce",
+      "expectedSHA256": "9a0064ad0112d3f352e49278873770cdcd6a71b52cdb200eebbe40f7c479ecce",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "four-state.js",
+      "sha256": "31ad796f947fc7f2900f39e1dd3105e1c093bb980589045bb1d243746b56a4f2",
+      "expectedSHA256": "31ad796f947fc7f2900f39e1dd3105e1c093bb980589045bb1d243746b56a4f2",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "hobby-learning.js",
+      "sha256": "4c846d9ca70829ee3b464b1b28e056d452ed4d76ee7a0cbaaef3507cc3a950eb",
+      "expectedSHA256": "4c846d9ca70829ee3b464b1b28e056d452ed4d76ee7a0cbaaef3507cc3a950eb",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "hobby-pages.css",
+      "sha256": "d342de8c9cb5e93eb93762c62887346bbd8544b89d6b8cc06af803946e83ea09",
+      "expectedSHA256": "d342de8c9cb5e93eb93762c62887346bbd8544b89d6b8cc06af803946e83ea09",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "hobby-pages.js",
+      "sha256": "9ad0f255034bdca019d5fdf2a7b5e46bd36c44a7941624168685af85f3b8cfe1",
+      "expectedSHA256": "9ad0f255034bdca019d5fdf2a7b5e46bd36c44a7941624168685af85f3b8cfe1",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "housing-bills.js",
+      "sha256": "dc572b4d84f4262ba33a8dc4d2772e2a095ec3b20cfb6e37a27927241aa1bc8d",
+      "expectedSHA256": "dc572b4d84f4262ba33a8dc4d2772e2a095ec3b20cfb6e37a27927241aa1bc8d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "housing-lease.js",
+      "sha256": "66e66fdb1c64df347cb41c94287fe35d892bee30f091e0b6fe9848ea123d3e15",
+      "expectedSHA256": "66e66fdb1c64df347cb41c94287fe35d892bee30f091e0b6fe9848ea123d3e15",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "housing-time-debt.js",
+      "sha256": "d142f70cebbbe2efc6fbccbb4d4591e4289595bdc89a112a723097b9e88bca32",
+      "expectedSHA256": "d142f70cebbbe2efc6fbccbb4d4591e4289595bdc89a112a723097b9e88bca32",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "index.html",
+      "sha256": "1c9914df60f30c4f3329ffe9aa47482718b21c54b04119b9540f483878697804",
+      "expectedSHA256": "1c9914df60f30c4f3329ffe9aa47482718b21c54b04119b9540f483878697804",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "journey.js",
+      "sha256": "a68ec8bc1f2bc982a0946e1835d4911232f30044c33d0997583b19c7729a79f5",
+      "expectedSHA256": "a68ec8bc1f2bc982a0946e1835d4911232f30044c33d0997583b19c7729a79f5",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "medical-insurance.js",
+      "sha256": "dbd754d2811a74e7ce69730c0a04801f4352fcdfb4dd5e07410984e1773cf2b2",
+      "expectedSHA256": "dbd754d2811a74e7ce69730c0a04801f4352fcdfb4dd5e07410984e1773cf2b2",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "necessary-bills.js",
+      "sha256": "e225ec8fd944d024126a1e3d7e43ee1734873b2ac47956b9198fc3b8da18656d",
+      "expectedSHA256": "e225ec8fd944d024126a1e3d7e43ee1734873b2ac47956b9198fc3b8da18656d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "painted-pages.css",
+      "sha256": "55bf27d7cdda59837f29188f77536435dcdc5d7f6d52e83d2da69a7600950c43",
+      "expectedSHA256": "55bf27d7cdda59837f29188f77536435dcdc5d7f6d52e83d2da69a7600950c43",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "painted-pages.js",
+      "sha256": "dfdd69fd0ea0bec39af2c9bb089e90751942fd1ea44b3285709b621465885b46",
+      "expectedSHA256": "dfdd69fd0ea0bec39af2c9bb089e90751942fd1ea44b3285709b621465885b46",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "paper.css",
+      "sha256": "6d364c35b4d09eab60df8f61a409b24eadcceb8dc301668fea5c2e849e2b7141",
+      "expectedSHA256": "6d364c35b4d09eab60df8f61a409b24eadcceb8dc301668fea5c2e849e2b7141",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-adoption-entry.css",
+      "sha256": "57a54e49d74b623dca53dc639bfc67af9e13e84b97b51a4dee42b4031276f8d6",
+      "expectedSHA256": "57a54e49d74b623dca53dc639bfc67af9e13e84b97b51a4dee42b4031276f8d6",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-adoption-entry.js",
+      "sha256": "50fbffe3df1f0c2d833e1eee5f6715b8032730a55803d71f9c25a50de79a4574",
+      "expectedSHA256": "50fbffe3df1f0c2d833e1eee5f6715b8032730a55803d71f9c25a50de79a4574",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-basic-fees.js",
+      "sha256": "4a3661ce6dac8dda1e129213e0b5f5e05c47b287e535dcbe58c281648f380dcf",
+      "expectedSHA256": "4a3661ce6dac8dda1e129213e0b5f5e05c47b287e535dcbe58c281648f380dcf",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-care.js",
+      "sha256": "4e0723d58ce871886947faa597c12d2538fff9f3e618460cb853010c4ffe6762",
+      "expectedSHA256": "4e0723d58ce871886947faa597c12d2538fff9f3e618460cb853010c4ffe6762",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-event-cards.js",
+      "sha256": "c5208694d01bba149c5a2fb61fa7d99c04ffc476c266fe24d34a471f25a6f0e8",
+      "expectedSHA256": "c5208694d01bba149c5a2fb61fa7d99c04ffc476c266fe24d34a471f25a6f0e8",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-events-ui.js",
+      "sha256": "ab81fbf573655076b0461a2fb83e33ca3655dadbbc0d627323ace983031fd2ea",
+      "expectedSHA256": "ab81fbf573655076b0461a2fb83e33ca3655dadbbc0d627323ace983031fd2ea",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-events.css",
+      "sha256": "36e7754eee0b076ecbb5065b0fffca1bfddb595129544562f7275c987a952df8",
+      "expectedSHA256": "36e7754eee0b076ecbb5065b0fffca1bfddb595129544562f7275c987a952df8",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-events.js",
+      "sha256": "36e0c62e4aa6ef0c4d422e66139653ab6fa70760dfad165334e4292c00437abf",
+      "expectedSHA256": "36e0c62e4aa6ef0c4d422e66139653ab6fa70760dfad165334e4292c00437abf",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-health.js",
+      "sha256": "7caa7c4c1814cdd4dcd47804d69d47c90f46d26342fbdf77e8ea9b4f5a49febd",
+      "expectedSHA256": "7caa7c4c1814cdd4dcd47804d69d47c90f46d26342fbdf77e8ea9b4f5a49febd",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-insurance.js",
+      "sha256": "ce7034c898132470ed69dc16195a368b69fb29be76dea886e7bd360e5d4eb424",
+      "expectedSHA256": "ce7034c898132470ed69dc16195a368b69fb29be76dea886e7bd360e5d4eb424",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-pages.css",
+      "sha256": "ffe87e4fcfc2cd5220d04a8357c563f418d14d4da7ab84a0b41dd98ebcd9a282",
+      "expectedSHA256": "ffe87e4fcfc2cd5220d04a8357c563f418d14d4da7ab84a0b41dd98ebcd9a282",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "pet-pages.js",
+      "sha256": "a94331bddb918b78ef6edb4fca9bfc3af3f158d81bed988512a3a0084eccac19",
+      "expectedSHA256": "a94331bddb918b78ef6edb4fca9bfc3af3f158d81bed988512a3a0084eccac19",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "presentation.css",
+      "sha256": "1022728e8116ffd7aeace181a9c595aae97211dd6067fddb5b599b82302fad45",
+      "expectedSHA256": "1022728e8116ffd7aeace181a9c595aae97211dd6067fddb5b599b82302fad45",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "presentation.js",
+      "sha256": "8272f399557c5de4fb14915c8fa0186ad4a11c764167c9d76a5e736d6288bb23",
+      "expectedSHA256": "8272f399557c5de4fb14915c8fa0186ad4a11c764167c9d76a5e736d6288bb23",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "recovery-rules.js",
+      "sha256": "1b61bfd62efd1328468fc46c8192083e45deca76e2652dddff50fd1fa9b71e42",
+      "expectedSHA256": "1b61bfd62efd1328468fc46c8192083e45deca76e2652dddff50fd1fa9b71e42",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "recovery-ui.js",
+      "sha256": "dccd68ba17ce9da0677b25d55063e2c1d24f3680b6cf7cb8d7c8fb3d8ea81636",
+      "expectedSHA256": "dccd68ba17ce9da0677b25d55063e2c1d24f3680b6cf7cb8d7c8fb3d8ea81636",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-avatars.js",
+      "sha256": "4c6c7c42732ab3d5f9dda161852434520bb7ca91fb9cf559ee4849e8c53509b9",
+      "expectedSHA256": "4c6c7c42732ab3d5f9dda161852434520bb7ca91fb9cf559ee4849e8c53509b9",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-card-data.js",
+      "sha256": "a1c224ac3c1ae2ac77eef54cd933aa82b88946944e94a58bef65539da3f6cf82",
+      "expectedSHA256": "a1c224ac3c1ae2ac77eef54cd933aa82b88946944e94a58bef65539da3f6cf82",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-life-cards.js",
+      "sha256": "010452e7d1a1bf0490168b810debd5b5eb978f230ae8ce24457123e92b6c57de",
+      "expectedSHA256": "010452e7d1a1bf0490168b810debd5b5eb978f230ae8ce24457123e92b6c57de",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-life-ui.js",
+      "sha256": "2e2b1ced36ac61fe556ea65f0ab1c1b4ba2a994f9b5ff29b4a994902f064d755",
+      "expectedSHA256": "2e2b1ced36ac61fe556ea65f0ab1c1b4ba2a994f9b5ff29b4a994902f064d755",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-pages.css",
+      "sha256": "8513a52a2a8fc2f14f91ca82df793dc112e57f14532c6bf88e47d6e9a66f1d02",
+      "expectedSHA256": "8513a52a2a8fc2f14f91ca82df793dc112e57f14532c6bf88e47d6e9a66f1d02",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-rules.js",
+      "sha256": "acf08010118c22c810c3318b08c36c12b82e9b139eb96b49d1538348d9a42fef",
+      "expectedSHA256": "acf08010118c22c810c3318b08c36c12b82e9b139eb96b49d1538348d9a42fef",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "relationship-ui.js",
+      "sha256": "73e7210a6e1b96e7d7f57a8e05dfc274c0823bb86f4f581de5ae70668e29029c",
+      "expectedSHA256": "73e7210a6e1b96e7d7f57a8e05dfc274c0823bb86f4f581de5ae70668e29029c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "release-info.js",
+      "sha256": "71b8adea820c0254aa86034b086dbe8743aee7a9411482c18c8c93d3ed90e53c",
+      "expectedSHA256": "71b8adea820c0254aa86034b086dbe8743aee7a9411482c18c8c93d3ed90e53c",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "rest-state.js",
+      "sha256": "b42437efb583013553fa561b51eab39237afc5acaee26d7a468c0448bc62b7d9",
+      "expectedSHA256": "b42437efb583013553fa561b51eab39237afc5acaee26d7a468c0448bc62b7d9",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "revision.js",
+      "sha256": "f2f5879b5488d19d4a0ecc70edd4eb709f74c5e71c3c0dc9f14fafd1d5e65f28",
+      "expectedSHA256": "f2f5879b5488d19d4a0ecc70edd4eb709f74c5e71c3c0dc9f14fafd1d5e65f28",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "room.css",
+      "sha256": "4bb7af169e9801926c98b4e72e0f182695c5be9db2f2fec5d87b5aa2f8ba2010",
+      "expectedSHA256": "4bb7af169e9801926c98b4e72e0f182695c5be9db2f2fec5d87b5aa2f8ba2010",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "room.js",
+      "sha256": "60b26252211a28876c1f6468cad0d3db1396cd2484c007c202eb9de9de03ecb7",
+      "expectedSHA256": "60b26252211a28876c1f6468cad0d3db1396cd2484c007c202eb9de9de03ecb7",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "save-slots.css",
+      "sha256": "90acad43281ab5b2dacfd46a8d65f685b1b4978a15f9bbf833e0083886d3f686",
+      "expectedSHA256": "90acad43281ab5b2dacfd46a8d65f685b1b4978a15f9bbf833e0083886d3f686",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "save-slots.js",
+      "sha256": "08d6db6dc307f7b1b8957948d9473cbf7f797a4f005e8817054333a4aeba910d",
+      "expectedSHA256": "08d6db6dc307f7b1b8957948d9473cbf7f797a4f005e8817054333a4aeba910d",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "shared-events.js",
+      "sha256": "187e4031b24f0b2c1dd8c1d4c78b581488fd7756fbc84953645e2726809e5b9b",
+      "expectedSHA256": "187e4031b24f0b2c1dd8c1d4c78b581488fd7756fbc84953645e2726809e5b9b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "shared-interest-card-data.js",
+      "sha256": "964069b692540324971e6d20b102ac9f0835c42086f758de54613c211dc2dc68",
+      "expectedSHA256": "964069b692540324971e6d20b102ac9f0835c42086f758de54613c211dc2dc68",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "shared-interest-cards.js",
+      "sha256": "1345f4e55294b223ac00fc1eb634d06e68dcab5f41bbe316272d6051e1ea1a5f",
+      "expectedSHA256": "1345f4e55294b223ac00fc1eb634d06e68dcab5f41bbe316272d6051e1ea1a5f",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "shared-interest-pages.css",
+      "sha256": "7bb384065cce939fe9f7baa317d295a062cc19f9fc7ffe1588062684172377c2",
+      "expectedSHA256": "7bb384065cce939fe9f7baa317d295a062cc19f9fc7ffe1588062684172377c2",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "shared-interest-pages.js",
+      "sha256": "8c69d16fc808a1b96f86f098367499057f2d9301d9a95355a697f9ec96ad7891",
+      "expectedSHA256": "8c69d16fc808a1b96f86f098367499057f2d9301d9a95355a697f9ec96ad7891",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "shared-interest-selection.js",
+      "sha256": "57208c74ce0fc4d7ab83e1b742dee477c16da5436d9f9a160aed0b352c4f7382",
+      "expectedSHA256": "57208c74ce0fc4d7ab83e1b742dee477c16da5436d9f9a160aed0b352c4f7382",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "shift-lead.css",
+      "sha256": "0c40bb3706e0d5aa42109fbe618f50cf797428fca97da7518d04cbc2abb75da3",
+      "expectedSHA256": "0c40bb3706e0d5aa42109fbe618f50cf797428fca97da7518d04cbc2abb75da3",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "shift-lead.js",
+      "sha256": "2ba968c21ba24223695de7159d9938a3923c66e1ca0e4cb5c9824cdc822cd455",
+      "expectedSHA256": "2ba968c21ba24223695de7159d9938a3923c66e1ca0e4cb5c9824cdc822cd455",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "studio-events.js",
+      "sha256": "23ac8f4ee8d47a5b5317888ee966879f569bc7766c29bd25e998fced9356b7cb",
+      "expectedSHA256": "23ac8f4ee8d47a5b5317888ee966879f569bc7766c29bd25e998fced9356b7cb",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "sw.js",
+      "sha256": "0484e5062980a439b3036b3d0a9e27acb2aba60b3bdc29a58746b1b84b4d2040",
+      "expectedSHA256": "0484e5062980a439b3036b3d0a9e27acb2aba60b3bdc29a58746b1b84b4d2040",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "teacher-card-data.js",
+      "sha256": "4cc65fe560a19369e63ce58b71cdf594c06102d0d0fe0fc8933b6ebba8642c6b",
+      "expectedSHA256": "4cc65fe560a19369e63ce58b71cdf594c06102d0d0fe0fc8933b6ebba8642c6b",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "teacher-relationships.js",
+      "sha256": "2292ebefb30dcfb9de6d8f0fe5805d63b043e98547312ab33909e387e0667f76",
+      "expectedSHA256": "2292ebefb30dcfb9de6d8f0fe5805d63b043e98547312ab33909e387e0667f76",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "time-flow.js",
+      "sha256": "d5430be19d97541e44b515a8430b901285e4d16e71249d32457873cd19d3d3dc",
+      "expectedSHA256": "d5430be19d97541e44b515a8430b901285e4d16e71249d32457873cd19d3d3dc",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "time-ledger.js",
+      "sha256": "99880f2cd5225126dbdc218e2f4ec46f18fa7c24bc9e1472849ef1734a832dce",
+      "expectedSHA256": "99880f2cd5225126dbdc218e2f4ec46f18fa7c24bc9e1472849ef1734a832dce",
+      "matchesLocal": true,
+      "error": ""
+    },
+    {
+      "file": "town.js",
+      "sha256": "0c3fbf75c7f96102c4f6516088c33c397b7ca19b5b6f5fd5114be6dc3f7c12f6",
+      "expectedSHA256": "0c3fbf75c7f96102c4f6516088c33c397b7ca19b5b6f5fd5114be6dc3f7c12f6",
+      "matchesLocal": true,
+      "error": ""
+    }
+  ],
+  "allMatch": true
+}
