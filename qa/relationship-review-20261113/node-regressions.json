@@ -1,0 +1,77 @@
+[
+  {
+    "file": "qa/relationship-review.test.cjs",
+    "exit": 0,
+    "output": "PASS 569 relationship review assertions\n"
+  },
+  {
+    "file": "qa/relationship-confirmed.test.cjs",
+    "exit": 0,
+    "output": "PASS 575 assertions: all24 cards/options, draw reservation rollback, settlement rollback, per-person lifetime/B, followups/refresh, funds, forced time, direct graduation, course identity and classmates\n"
+  },
+  {
+    "file": "qa/relationship-release.test.cjs",
+    "exit": 0,
+    "output": "PASS relationship lifecycle, preserved contacts/education/hobbies, thresholds, resources, all-save rollback/retry, repeated interactions, per-person visits, decay, fixed manager card quotes, lunch no time/cash charge, monthly once and forced-time adapter.\n"
+  },
+  {
+    "file": "qa/relationship-avatars.test.cjs",
+    "exit": 0,
+    "output": "PASS: 60 unique matching portraits; six per gender/role; exhausted and unknown contacts unchanged; serialized identity stable; removed contacts never free a used portrait; approved source/resource hashes match.\n"
+  },
+  {
+    "file": "qa/education-plans.test.cjs",
+    "exit": 0,
+    "output": "886 education assertions passed\nLegacy automatic refund retains original $7,000 cost basis\n"
+  },
+  {
+    "file": "qa/pet-care.test.cjs",
+    "exit": 0,
+    "output": "PASS: recovery delegation same fees/zero time, preview and repeat no charge, cross-year deadlines, normal time cost, multiple pets and atomic insufficient funding.\n"
+  },
+  {
+    "file": "qa/pet-health.test.cjs",
+    "exit": 0,
+    "output": "PASS health defaults and legacy no-backcharge, monthly loss once/reload/floor, self/pro gain/ceiling/payment rollback, annual isolation, exact single/multi lottery weights, gate/caps and pending cards preserved.\n"
+  },
+  {
+    "file": "qa/pet-insurance-pages.test.cjs",
+    "exit": 0,
+    "output": "PASS seven illustrated insurance pages, actual opt-out, own price/atomic buy/retry/one-time payment, distinct pets, no new45 entry, combined premiums retain health, next-month totals and no compulsory purchase.\n"
+  },
+  {
+    "file": "qa/pet-audit-regressions.test.cjs",
+    "exit": 0,
+    "output": "PASS actual finance metrics before/after pet payments and adoption, all payment orders/credits/months, alias pricing and duplicate protection, unique legacy care IDs, and saved event identity compatibility.\n"
+  },
+  {
+    "file": "qa/pet-health-settlement.test.cjs",
+    "exit": 0,
+    "output": "PASS actual core month settlement and rollback: overdue health applied once with cash/month/history, failed save restores all, repeat/reload do not double-charge health; player health untouched.\nPASS real monthly transaction: failed death save restores live pet/policy/cash/month, retry archives once and stops future premiums.\n"
+  },
+  {
+    "file": "qa/pet-sw-precache.test.cjs",
+    "exit": 0,
+    "output": "PASS actual install callback: canonical request URLs deduplicated without dropping required resources.\n"
+  },
+  {
+    "file": "qa/hobby-learning.test.cjs",
+    "exit": 0,
+    "output": "PASS 206 assertions plus 30,000-contact sampling: exact six quotes, repeat/time/energy gates, cap, rollback, stale tokens, old fields/career preserved, frozen new contacts, distribution and six approved art hashes.\n"
+  },
+  {
+    "file": "qa/coffee-salary.test.cjs",
+    "exit": 0,
+    "output": "PASS: milestone next-month pay, no current income rewrite, permanent earned tiers, highest education, promotion rebase, management applicability, four roles and no repeated compounding.\n"
+  },
+  {
+    "file": "qa/time-ledger.test.cjs",
+    "exit": 0,
+    "output": "PASS: forced-time conservation, event deduplication, exact zero, two recovery months, year boundary, reload and one-time normal-month deduction; extreme debt rejected without mutation. Not yet connected to UI.\n"
+  },
+  {
+    "file": "qa/month-settlement-guard.test.cjs",
+    "exit": 0,
+    "output": "PASS: core modal/unpaid-incident gates, error rollback; town repeat-click/reload/month-advance guard. Underlying ledger and browser not covered.\n"
+  }
+]

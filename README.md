@@ -1,3 +1,7 @@
+2026-11-13 已上传并发布：功能提交 c5048d6f6c347191aa3573ef5fb36cae4414cf94，Cloudflare检查成功 https://github.com/a562089605/wealth-life/runs/131763879715 。94份生产资源与本地逐字节一致，见 qa/relationship-review-20261113/production-resources.json 和 production-deployment.json。15套相关Node测试、8份脚本语法检查通过；本机隔离slot947页面5组验收通过（25主卡解码/按钮、真实存储失败回滚、即时收入/重复点击、护理券健康日期事务、4后续图），护理页320/390/430无横向溢出。截图 local-care.jpg/local-shifts.jpg是本机隔离实际运行页面，非线上用户存档、非iPhone真机。生产验收为资源字节及部署状态核验，未扩大称线上完整交互/完整离线验收。原测试存档未清空。自然关系抽卡继续未启用；房东第5张仍留职业板块。
+
+> 2026-11-13 本轮确认关系卡已增量接入：25主卡/4后续、当前工资即时额外收入、护理券3次、空调50/50。自然关系抽卡仍未启用；发布结果以最新核验记录为准。最新规则见 RELATIONSHIP_REVIEW_20261113.md，原图/SHA见 design/relationship-review-20261113/manifest.json。
+
 > 2026-11-12 存档页美化：沿现有小镇蜡笔/奶油纸张风格增加“我的人生存档”页眉，复用assets/career/town.webp原图；存档卡显示实际职业/年龄/游戏年月/现金，空位与新建入口区分，删除保留原确认。仅装饰原存档按钮与原事件处理器，不自动读档或改写已有存档；新建存档位/删除仍仅在玩家主动确认操作时沿原函数执行。8组隔离Chromium检查通过（含320/390/430/1280、长文字、读档/新建/删除确认、离线及零脚本错误），2套页面资源/预缓存Node检查通过。校准SW中的flow.js和time-flow.js预缓存版本，使其与原页面引用一致，代码/规则未变。生产证据见qa/save-slots-20261112/production-*。
 
 存档页美化11c44ff已上传原main并[Cloudflare发布成功](https://github.com/a562089605/wealth-life/runs/131548272476)。7份线上资源字节一致；全新隔离生产Chromium完成存档页8组验证，0脚本错误，包括原读档/新建/删除确认、手机桌面布局、首次离线与浏览零改写。证据qa/save-slots-20261112/production-report.json及production-resources.json，实际运行截图同目录production-390.png（隔离测试存档）。
