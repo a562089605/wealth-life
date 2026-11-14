@@ -1,0 +1,47 @@
+[
+  {
+    "test": "education-monthly",
+    "passed": true,
+    "output": "1319 monthly education / teacher assertions passed\n"
+  },
+  {
+    "test": "education-plans",
+    "passed": true,
+    "output": "886 education assertions passed\nLegacy automatic refund retains original $7,000 cost basis\n"
+  },
+  {
+    "test": "coffee-salary",
+    "passed": true,
+    "output": "PASS: milestone next-month pay, no current income rewrite, permanent earned tiers, highest education, promotion rebase, management applicability, four roles and no repeated compounding.\n"
+  },
+  {
+    "test": "relationship-review",
+    "passed": true,
+    "output": "PASS 569 relationship review assertions\n"
+  },
+  {
+    "test": "relationship-confirmed",
+    "passed": true,
+    "output": "PASS 575 assertions: all24 cards/options, draw reservation rollback, settlement rollback, per-person lifetime/B, followups/refresh, funds, forced time, direct graduation, course identity and classmates\n"
+  },
+  {
+    "test": "relationship-avatars",
+    "passed": true,
+    "output": "PASS: 60 unique matching portraits; six per gender/role; exhausted and unknown contacts unchanged; serialized identity stable; removed contacts never free a used portrait; approved source/resource hashes match.\n"
+  },
+  {
+    "test": "shared-interest-cards",
+    "passed": true,
+    "output": "{\"ok\":true,\"assertions\":891,\"cards\":20,\"scope\":\"all choices, rollback/retry, no duplicate, lifetime, frozen 3 outcomes, resource gates, cap, legacy preservation\"}\n"
+  },
+  {
+    "test": "shared-interest-selection",
+    "passed": true,
+    "output": "{\"ok\":true,\"mainCards\":20,\"followups\":3,\"artworkHashes\":23,\"sampleDraws\":12000,\"photographyDraws\":5975,\"naturalDrawEnabled\":false}\n"
+  },
+  {
+    "test": "hobby-learning",
+    "passed": true,
+    "output": "PASS 206 assertions plus 30,000-contact sampling: exact six quotes, repeat/time/energy gates, cap, rollback, stale tokens, old fields/career preserved, frozen new contacts, distribution and six approved art hashes.\n"
+  }
+]

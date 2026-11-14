@@ -40,6 +40,7 @@
   if(state.gameOver?.final)return showGameOver();
   if(state.requiredIncident)return openRequiredIncident();
   if(healthTreatmentKind(state.health)||unfinishedTreatment()||isRecoveryMonth(state))return openHealthTreatment();
+  if(window.EducationPlans?.current(state.study)&&EducationPlans.due(state.study)>0)return openEducation();
   // A paused map event retains its identity and resumes instead of being re-rolled.
   if(townPending()){state.roomLocation='town';save();visible=false;syncRoom();return showTown();}
   if(necessaryBills().length)return openNecessaryBills();

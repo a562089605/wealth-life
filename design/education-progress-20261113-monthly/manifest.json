@@ -1,0 +1,323 @@
+{
+  "status": "design-preview-only",
+  "runtimeIntegrated": false,
+  "tool": "built-in image_gen",
+  "reference": "design/education-20261113/associate-progress-arrangement-label-preview.png",
+  "items": [
+    {
+      "key": "vocational-aa",
+      "title": "职业型副学士",
+      "detail": "专业待确认",
+      "months": null,
+      "total": null,
+      "fee": null,
+      "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-83a3e559-bff0-4f7e-80a4-ee50d1142dfe.png",
+      "prompt": "Use case: ui-mockup. Create ONE portrait Chinese mobile game study-progress screen for existing 财富人生 Wealth Life. Input image is STYLE AND LAYOUT reference, not a screen whose old numbers/rules should survive. Keep its warm hand-painted storybook cream paper, dark forest-green Chinese type, gold rounded main button, leafy accents, cozy study desk illustration upper 25%. Do not redesign visual language. Readable polished compact layout, no large empty bottom. New variant title \"职业型副学士\". Top back \"返回房屋\", header \"学习进度\". Main panel exact text \"正在就读 · 职业型副学士\", subtitle \"专业待确认\", badge \"轻松学习\". No invented profession, tuition or duration. Progress panel text \"专业与学制待确认\", no numeric progress denominator. Section \"本月学习安排\": \"学习预留 40 小时\" and \"剩余自由时间 60 小时\". Section \"学费缴纳\": \"课程费用待确认\", \"本月学费待确认\", disabled gray button \"学费待确认\". Small text \"含学杂费及必需书籍费\". Notice \"本月学费付清后，才可进入城镇\". Outline button \"更改学习安排\", helper \"40 / 60 小时可切换，下月生效\". Notice \"开始学习后不可暂停或退出\". Gold primary bottom \"返回房屋\". Tiny footer \"设计预览 · 示例数据\". Absolutely REMOVE \"暂停学习\", \"退出学习\" buttons, old paid-up6200 status, old48-month duration and old schedule subtitles. No new rewards, jobs, tuition interest or auto loan. This is a design preview, not app screenshot. Do not include phone device chrome. Single image not collage.",
+      "file": "design/education-progress-20261113-monthly/vocational-aa-progress-dollar-preview.png",
+      "sha256": "b6011cc551b5a22e69ddfb94b139c2ceedb6327a301a6465ccfba2c489ec6a62",
+      "status": "awaiting-user-review",
+      "previousPreview": "design/education-progress-20261113-monthly/vocational-aa-progress-preview.png",
+      "correctionPrompt": "Change only gold coin currency glyph from yen to US dollar; preserve remainder."
+    },
+    {
+      "key": "bachelor",
+      "title": "本科",
+      "detail": "高中直读本科",
+      "months": 72,
+      "total": "30,300",
+      "fee": "420.83",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-8aa0365d-bbd9-42df-84e9-5b8f0353ab63.png",
+      "prompt": "Use case: ui-mockup. Create ONE portrait Chinese mobile game study-progress screen for existing 财富人生 Wealth Life. Input image is STYLE AND LAYOUT reference, not a screen whose old numbers/rules should survive. Keep its warm hand-painted storybook cream paper, dark forest-green Chinese type, gold rounded main button, leafy accents, cozy study desk illustration upper 25%. Do not redesign visual language. Readable polished compact layout, no large empty bottom. New variant title \"本科\". Top back \"返回房屋\", header \"学习进度\". Main panel exact text \"正在就读 · 本科\", subtitle \"高中直读本科\", badge \"轻松学习\". Progress \"0 / 72 个月\", empty progress bar, \"预计还需 72 个月\". Section \"本月学习安排\": \"学习预留 40 小时\" and \"剩余自由时间 60 小时\". Section \"学费缴纳\": \"课程总费用 $30,300\", \"已缴学费 $0\", \"剩余学费 $30,300\", prominent \"本月应缴 $420.83 · 待缴\", button \"缴纳本月学费 $420.83\". Small text \"含学杂费及必需书籍费\". Notice \"本月学费付清后，才可进入城镇\". Outline button \"更改学习安排\", helper \"40 / 60 小时可切换，下月生效\". Notice \"开始学习后不可暂停或退出\". Gold primary bottom \"返回房屋\". Tiny footer \"设计预览 · 示例数据\". Absolutely REMOVE \"暂停学习\", \"退出学习\" buttons, old paid-up6200 status, old48-month duration and old schedule subtitles. No new rewards, jobs, tuition interest or auto loan. This is a design preview, not app screenshot. Do not include phone device chrome. Single image not collage.",
+      "file": "design/education-progress-20261113-monthly/bachelor-progress-preview.png",
+      "sha256": "13bf90ce8d8b47823e8c6faa17c5a88aab0266c16fca7a65293468d64a204140",
+      "status": "awaiting-user-review"
+    },
+    {
+      "key": "master",
+      "title": "硕士",
+      "detail": "本科升硕士",
+      "months": 36,
+      "total": "15,800",
+      "fee": "438.89",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-ff31acbc-2c35-45a9-83f1-5280aed54756.png",
+      "prompt": "Use case: ui-mockup. Create ONE portrait Chinese mobile game study-progress screen for existing 财富人生 Wealth Life. Input image is STYLE AND LAYOUT reference, not a screen whose old numbers/rules should survive. Keep its warm hand-painted storybook cream paper, dark forest-green Chinese type, gold rounded main button, leafy accents, cozy study desk illustration upper 25%. Do not redesign visual language. Readable polished compact layout, no large empty bottom. New variant title \"硕士\". Top back \"返回房屋\", header \"学习进度\". Main panel exact text \"正在就读 · 硕士\", subtitle \"本科升硕士\", badge \"轻松学习\". Progress \"0 / 36 个月\", empty progress bar, \"预计还需 36 个月\". Section \"本月学习安排\": \"学习预留 40 小时\" and \"剩余自由时间 60 小时\". Section \"学费缴纳\": \"课程总费用 $15,800\", \"已缴学费 $0\", \"剩余学费 $15,800\", prominent \"本月应缴 $438.89 · 待缴\", button \"缴纳本月学费 $438.89\". Small text \"含学杂费及必需书籍费\". Notice \"本月学费付清后，才可进入城镇\". Outline button \"更改学习安排\", helper \"40 / 60 小时可切换，下月生效\". Notice \"开始学习后不可暂停或退出\". Gold primary bottom \"返回房屋\". Tiny footer \"设计预览 · 示例数据\". Absolutely REMOVE \"暂停学习\", \"退出学习\" buttons, old paid-up6200 status, old48-month duration and old schedule subtitles. No new rewards, jobs, tuition interest or auto loan. This is a design preview, not app screenshot. Do not include phone device chrome. Single image not collage.",
+      "file": "design/education-progress-20261113-monthly/master-progress-preview.png",
+      "sha256": "dd92a0a6d16e591ed6dd19651ef5e7766472aa9a8769ca9b68f8d391679231a1",
+      "status": "awaiting-user-review"
+    },
+    {
+      "key": "doctorate",
+      "title": "专业博士",
+      "detail": "硕士升专业博士",
+      "months": 54,
+      "total": "78,600",
+      "fee": "1,455.56",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-0b2c901b-1a8d-474f-b2fe-65175bae5370.png",
+      "prompt": "Use case: ui-mockup. Create ONE portrait Chinese mobile game study-progress screen for existing 财富人生 Wealth Life. Input image is STYLE AND LAYOUT reference, not a screen whose old numbers/rules should survive. Keep its warm hand-painted storybook cream paper, dark forest-green Chinese type, gold rounded main button, leafy accents, cozy study desk illustration upper 25%. Do not redesign visual language. Readable polished compact layout, no large empty bottom. New variant title \"专业博士\". Top back \"返回房屋\", header \"学习进度\". Main panel exact text \"正在就读 · 专业博士\", subtitle \"硕士升专业博士\", badge \"轻松学习\". Progress \"0 / 54 个月\", empty progress bar, \"预计还需 54 个月\". Section \"本月学习安排\": \"学习预留 40 小时\" and \"剩余自由时间 60 小时\". Section \"学费缴纳\": \"课程总费用 $78,600\", \"已缴学费 $0\", \"剩余学费 $78,600\", prominent \"本月应缴 $1,455.56 · 待缴\", button \"缴纳本月学费 $1,455.56\". Small text \"含学杂费及必需书籍费\". Notice \"本月学费付清后，才可进入城镇\". Outline button \"更改学习安排\", helper \"40 / 60 小时可切换，下月生效\". Notice \"开始学习后不可暂停或退出\". Gold primary bottom \"返回房屋\". Tiny footer \"设计预览 · 示例数据\". Absolutely REMOVE \"暂停学习\", \"退出学习\" buttons, old paid-up6200 status, old48-month duration and old schedule subtitles. No new rewards, jobs, tuition interest or auto loan. This is a design preview, not app screenshot. Do not include phone device chrome. Single image not collage.",
+      "file": "design/education-progress-20261113-monthly/doctorate-progress-preview.png",
+      "sha256": "c0c1c1bd69f7fe60cd50015c514d3bbb8e7b3fb7197f6350d7dea068b61c7ea6",
+      "status": "awaiting-user-review"
+    },
+    {
+      "key": "transfer-aa",
+      "title": "转学型副学士 AA",
+      "detail": "毕业后可衔接本科",
+      "months": 36,
+      "total": "8,600",
+      "fee": "238.89",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-cc8475ff-9f55-4983-9a82-74605b2306de.png",
+      "prompt": "Use case: ui-mockup. Create ONE portrait Chinese mobile game study-progress screen for existing 财富人生 Wealth Life. Input image is STYLE AND LAYOUT reference, not a screen whose old numbers/rules should survive. Keep its warm hand-painted storybook cream paper, dark forest-green Chinese type, gold rounded main button, leafy accents, cozy study desk illustration upper 25%. Do not redesign visual language. Readable polished compact layout, no large empty bottom. New variant title \"转学型副学士 AA\". Top back \"返回房屋\", header \"学习进度\". Main panel exact text \"正在就读 · 转学型副学士 AA\", subtitle \"毕业后可衔接本科\", badge \"轻松学习\". Progress \"0 / 36 个月\", empty progress bar, \"预计还需 36 个月\". Section \"本月学习安排\": \"学习预留 40 小时\" and \"剩余自由时间 60 小时\". Section \"学费缴纳\": \"课程总费用 $8,600\", \"已缴学费 $0\", \"剩余学费 $8,600\", prominent \"本月应缴 $238.89 · 待缴\", button \"缴纳本月学费 $238.89\". Small text \"含学杂费及必需书籍费\". Notice \"本月学费付清后，才可进入城镇\". Outline button \"更改学习安排\", helper \"40 / 60 小时可切换，下月生效\". Notice \"开始学习后不可暂停或退出\". Gold primary bottom \"返回房屋\". Tiny footer \"设计预览 · 示例数据\". Absolutely REMOVE \"暂停学习\", \"退出学习\" buttons, old paid-up6200 status, old48-month duration and old schedule subtitles. No new rewards, jobs, tuition interest or auto loan. This is a design preview, not app screenshot. Do not include phone device chrome. Single image not collage.",
+      "file": "design/education-progress-20261113-monthly/transfer-aa-progress-preview.png",
+      "sha256": "bbc2081267fd65ffc81d59af59dda3cf8c0b10118f3745ecccdffd1d7d89b00e",
+      "status": "awaiting-user-review"
+    }
+  ],
+  "compactRevision": {
+    "status": "confirmed",
+    "runtimeIntegrated": false,
+    "items": [
+      {
+        "key": "vocational-aa",
+        "previous": "vocational-aa-progress-dollar-preview.png",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-8510b5da-80e0-41fb-b6d4-614bf8c2d6a4.png",
+        "prompt": "Use case: ui-mockup editing. Edit this exact existing Wealth Life Chinese study-progress design preview, do not create new style or illustration. User requests a noticeably more compact page, especially the blank vertical space below study progress. Keep top cozy desk illustration, cream paper, green typography and gold buttons. Preserve ALL existing correct Chinese labels, fees, numbers, progress and rules. Compress layout: reduce progress card vertical padding, trim whitespace between progress bar and remaining months to 8–12 px, make estimated remaining-month line directly below the bar; reduce bottom padding to 12–16px. Reduce section heading margins, tighten space between the study-progress card and 本月学习安排. Make the books/graduation-cap decorative icon smaller so it does not force an oversized progress card. Keep text comfortable and legible, buttons touch friendly. Make entire design visibly shorter in height with no stretched panels, no blank bottom area; portrait aspect may be shorter. Compact tuition table and adjacent sections. Preserve header illustration by cropping unused decorative sky/header margins if needed, do NOT redraw it. No pause/withdraw buttons. Do not invent any new numbers or rule.\nSpecial correction only on vocational associate: remove subtitle 专业待确认 entirely. Replace 专业与学制待确认 with 学制待确认, leaving a compact single line rather than a huge empty progress placeholder. Do not invent tuition or study duration. Keep 课程费用待确认 and 本月学费待确认 because numeric fees are not yet approved. Professional name will only be added when corresponding careers are designed later; do not put any specialty name or 专业待确认 text anywhere. Preserve dollar sign $ on coin.\nKeep footer 设计预览·示例数据. Single page, not collage. Original saved image remains untouched, this is a new compact sibling revision.",
+        "file": "design/education-progress-20261113-monthly/vocational-aa-progress-compact-preview.png",
+        "sha256": "79d767c846a56c18fd327ca5a0f4733723217e44010f727f4ce0c3ca056220d8",
+        "status": "confirmed",
+        "confirmedAt": "2026-11-13"
+      },
+      {
+        "key": "bachelor",
+        "previous": "bachelor-progress-preview.png",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-6240224a-4a6d-4bf7-b160-998bb415d64d.png",
+        "prompt": "Use case: ui-mockup editing. Edit this exact existing Wealth Life Chinese study-progress design preview, do not create new style or illustration. User requests a noticeably more compact page, especially the blank vertical space below study progress. Keep top cozy desk illustration, cream paper, green typography and gold buttons. Preserve ALL existing correct Chinese labels, fees, numbers, progress and rules. Compress layout: reduce progress card vertical padding, trim whitespace between progress bar and remaining months to 8–12 px, make estimated remaining-month line directly below the bar; reduce bottom padding to 12–16px. Reduce section heading margins, tighten space between the study-progress card and 本月学习安排. Make the books/graduation-cap decorative icon smaller so it does not force an oversized progress card. Keep text comfortable and legible, buttons touch friendly. Make entire design visibly shorter in height with no stretched panels, no blank bottom area; portrait aspect may be shorter. Compact tuition table and adjacent sections. Preserve header illustration by cropping unused decorative sky/header margins if needed, do NOT redraw it. No pause/withdraw buttons. Do not invent any new numbers or rule.\n\nKeep footer 设计预览·示例数据. Single page, not collage. Original saved image remains untouched, this is a new compact sibling revision.",
+        "file": "design/education-progress-20261113-monthly/bachelor-progress-compact-preview.png",
+        "sha256": "58d51640f8688128f4bcb9a4b8983c97afddbda29a230a36e50fbd63ea19f819",
+        "status": "confirmed",
+        "confirmedAt": "2026-11-13"
+      },
+      {
+        "key": "master",
+        "previous": "master-progress-preview.png",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-62268620-823e-4268-8219-6eb6df0811eb.png",
+        "prompt": "Use case: ui-mockup editing. Edit this exact existing Wealth Life Chinese study-progress design preview, do not create new style or illustration. User requests a noticeably more compact page, especially the blank vertical space below study progress. Keep top cozy desk illustration, cream paper, green typography and gold buttons. Preserve ALL existing correct Chinese labels, fees, numbers, progress and rules. Compress layout: reduce progress card vertical padding, trim whitespace between progress bar and remaining months to 8–12 px, make estimated remaining-month line directly below the bar; reduce bottom padding to 12–16px. Reduce section heading margins, tighten space between the study-progress card and 本月学习安排. Make the books/graduation-cap decorative icon smaller so it does not force an oversized progress card. Keep text comfortable and legible, buttons touch friendly. Make entire design visibly shorter in height with no stretched panels, no blank bottom area; portrait aspect may be shorter. Compact tuition table and adjacent sections. Preserve header illustration by cropping unused decorative sky/header margins if needed, do NOT redraw it. No pause/withdraw buttons. Do not invent any new numbers or rule.\n\nKeep footer 设计预览·示例数据. Single page, not collage. Original saved image remains untouched, this is a new compact sibling revision.",
+        "file": "design/education-progress-20261113-monthly/master-progress-compact-preview.png",
+        "sha256": "3838e93b7bfb42bb4abe40dcb4506b6254926580c09f74825356e29c061b7ac2",
+        "status": "confirmed",
+        "confirmedAt": "2026-11-13"
+      },
+      {
+        "key": "doctorate",
+        "previous": "doctorate-progress-preview.png",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-43e8b330-2ecf-467d-b42f-91b59f0b3dc4.png",
+        "prompt": "Use case: ui-mockup editing. Edit this exact existing Wealth Life Chinese study-progress design preview, do not create new style or illustration. User requests a noticeably more compact page, especially the blank vertical space below study progress. Keep top cozy desk illustration, cream paper, green typography and gold buttons. Preserve ALL existing correct Chinese labels, fees, numbers, progress and rules. Compress layout: reduce progress card vertical padding, trim whitespace between progress bar and remaining months to 8–12 px, make estimated remaining-month line directly below the bar; reduce bottom padding to 12–16px. Reduce section heading margins, tighten space between the study-progress card and 本月学习安排. Make the books/graduation-cap decorative icon smaller so it does not force an oversized progress card. Keep text comfortable and legible, buttons touch friendly. Make entire design visibly shorter in height with no stretched panels, no blank bottom area; portrait aspect may be shorter. Compact tuition table and adjacent sections. Preserve header illustration by cropping unused decorative sky/header margins if needed, do NOT redraw it. No pause/withdraw buttons. Do not invent any new numbers or rule.\n\nKeep footer 设计预览·示例数据. Single page, not collage. Original saved image remains untouched, this is a new compact sibling revision.",
+        "file": "design/education-progress-20261113-monthly/doctorate-progress-compact-preview.png",
+        "sha256": "351c503c01d2364e74dff0c092bedb431007be0f144ad44845067a451c79b483",
+        "status": "confirmed",
+        "confirmedAt": "2026-11-13"
+      },
+      {
+        "key": "transfer-aa",
+        "previous": "transfer-aa-progress-preview.png",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-2c1c19a3-8368-494c-abb4-2b31260f34a8.png",
+        "prompt": "Use case: ui-mockup editing. Edit this exact existing Wealth Life Chinese study-progress design preview, do not create new style or illustration. User requests a noticeably more compact page, especially the blank vertical space below study progress. Keep top cozy desk illustration, cream paper, green typography and gold buttons. Preserve ALL existing correct Chinese labels, fees, numbers, progress and rules. Compress layout: reduce progress card vertical padding, trim whitespace between progress bar and remaining months to 8–12 px, make estimated remaining-month line directly below the bar; reduce bottom padding to 12–16px. Reduce section heading margins, tighten space between the study-progress card and 本月学习安排. Make the books/graduation-cap decorative icon smaller so it does not force an oversized progress card. Keep text comfortable and legible, buttons touch friendly. Make entire design visibly shorter in height with no stretched panels, no blank bottom area; portrait aspect may be shorter. Compact tuition table and adjacent sections. Preserve header illustration by cropping unused decorative sky/header margins if needed, do NOT redraw it. No pause/withdraw buttons. Do not invent any new numbers or rule.\n\nKeep footer 设计预览·示例数据. Single page, not collage. Original saved image remains untouched, this is a new compact sibling revision.",
+        "file": "design/education-progress-20261113-monthly/transfer-aa-progress-compact-preview.png",
+        "sha256": "56993c6e9bf98b2f49ec7c10fceaec38c4b50fd458aeffea0e36fecb4edd478a",
+        "status": "confirmed",
+        "confirmedAt": "2026-11-13"
+      }
+    ],
+    "confirmedAt": "2026-11-13"
+  },
+  "selectedRevision": "scrollRevision",
+  "firstPaidRevision": {
+    "status": "awaiting-user-confirmation",
+    "runtimeIntegrated": false,
+    "state": "报名成功首期已缴，学习进度0，本月已缴清按钮禁用",
+    "items": [
+      {
+        "key": "bachelor",
+        "paid": "420.83",
+        "remaining": "29,879.17",
+        "total": "30,300",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-b5bba050-9980-4a19-b9c7-6045c2b52323.png",
+        "prompt": "Edit this exact existing compact Wealth Life study-progress design preview. Change ONLY tuition payment state and its dependent amounts. Keep original warm illustration, layout, compact spacing, fonts, title, degree name, degree progress0/month denominator, remaining study months, study40h/free60h and all other rules. In 学费缴纳 section retain total $30,300. Change 已缴学费 from $0 to \"$420.83\". Change 剩余学费 from total to \"$29,879.17\". Replace 本月应缴 $...·待缴 status line with exactly \"本月学费 $420.83 · 已缴清\". Replace gold pay button text \"缴纳本月学费 $...\" with exactly \"本月学费已缴清\"; make that button a clearly disabled pale sage/gray-green button, no gold clickable affordance; original bottom 返回房屋 remains gold and usable. Replace old generic notice 本月学费付清后，才可进入城镇 with current-state notice exactly \"本月学费已缴清，可以进入城镇\". Keep 更改学习安排 button and 40 / 60 小时可切换，下月生效 unchanged; keep 开始学习后不可暂停或退出 and 含学杂费及必需书籍费. Keep footer 设计预览·示例数据. Do not advance study progress: this is successful enrollment with first installment paid before first month of learning completes. Do not invent extra fee, next due date, balance, option or number. No other redesign.",
+        "file": "design/education-progress-20261113-monthly/bachelor-progress-first-paid-preview.png",
+        "sha256": "42b719d3df578a7f97d1d4dcfb61bd9075b019418c72970f92b5a0ca271a221f",
+        "status": "awaiting-user-confirmation"
+      },
+      {
+        "key": "master",
+        "paid": "438.89",
+        "remaining": "15,361.11",
+        "total": "15,800",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-80e8d8ca-761b-4a7a-8cca-3c5276999ce4.png",
+        "prompt": "Edit this exact existing compact Wealth Life study-progress design preview. Change ONLY tuition payment state and its dependent amounts. Keep original warm illustration, layout, compact spacing, fonts, title, degree name, degree progress0/month denominator, remaining study months, study40h/free60h and all other rules. In 学费缴纳 section retain total $15,800. Change 已缴学费 from $0 to \"$438.89\". Change 剩余学费 from total to \"$15,361.11\". Replace 本月应缴 $...·待缴 status line with exactly \"本月学费 $438.89 · 已缴清\". Replace gold pay button text \"缴纳本月学费 $...\" with exactly \"本月学费已缴清\"; make that button a clearly disabled pale sage/gray-green button, no gold clickable affordance; original bottom 返回房屋 remains gold and usable. Replace old generic notice 本月学费付清后，才可进入城镇 with current-state notice exactly \"本月学费已缴清，可以进入城镇\". Keep 更改学习安排 button and 40 / 60 小时可切换，下月生效 unchanged; keep 开始学习后不可暂停或退出 and 含学杂费及必需书籍费. Keep footer 设计预览·示例数据. Do not advance study progress: this is successful enrollment with first installment paid before first month of learning completes. Do not invent extra fee, next due date, balance, option or number. No other redesign.",
+        "file": "design/education-progress-20261113-monthly/master-progress-first-paid-preview.png",
+        "sha256": "b31f81e3a492dce7d591772fbd950ac982d2f47fca7d483564ace867739caff8",
+        "status": "awaiting-user-confirmation"
+      },
+      {
+        "key": "doctorate",
+        "paid": "1,455.56",
+        "remaining": "77,144.44",
+        "total": "78,600",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-27b64e43-43b3-4292-9a5e-baffd00eb990.png",
+        "prompt": "Edit this exact existing compact Wealth Life study-progress design preview. Change ONLY tuition payment state and its dependent amounts. Keep original warm illustration, layout, compact spacing, fonts, title, degree name, degree progress0/month denominator, remaining study months, study40h/free60h and all other rules. In 学费缴纳 section retain total $78,600. Change 已缴学费 from $0 to \"$1,455.56\". Change 剩余学费 from total to \"$77,144.44\". Replace 本月应缴 $...·待缴 status line with exactly \"本月学费 $1,455.56 · 已缴清\". Replace gold pay button text \"缴纳本月学费 $...\" with exactly \"本月学费已缴清\"; make that button a clearly disabled pale sage/gray-green button, no gold clickable affordance; original bottom 返回房屋 remains gold and usable. Replace old generic notice 本月学费付清后，才可进入城镇 with current-state notice exactly \"本月学费已缴清，可以进入城镇\". Keep 更改学习安排 button and 40 / 60 小时可切换，下月生效 unchanged; keep 开始学习后不可暂停或退出 and 含学杂费及必需书籍费. Keep footer 设计预览·示例数据. Do not advance study progress: this is successful enrollment with first installment paid before first month of learning completes. Do not invent extra fee, next due date, balance, option or number. No other redesign.",
+        "file": "design/education-progress-20261113-monthly/doctorate-progress-first-paid-preview.png",
+        "sha256": "438d09cf86405f2f40f77c8859fdd5cb1fa6f2528548ee44b2364e80755dfdb1",
+        "status": "awaiting-user-confirmation"
+      },
+      {
+        "key": "transfer-aa",
+        "paid": "238.89",
+        "remaining": "8,361.11",
+        "total": "8,600",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-98e06d70-72aa-4ce5-a75b-466a4ca6297d.png",
+        "prompt": "Edit this exact existing compact Wealth Life study-progress design preview. Change ONLY tuition payment state and its dependent amounts. Keep original warm illustration, layout, compact spacing, fonts, title, degree name, degree progress0/month denominator, remaining study months, study40h/free60h and all other rules. In 学费缴纳 section retain total $8,600. Change 已缴学费 from $0 to \"$238.89\". Change 剩余学费 from total to \"$8,361.11\". Replace 本月应缴 $...·待缴 status line with exactly \"本月学费 $238.89 · 已缴清\". Replace gold pay button text \"缴纳本月学费 $...\" with exactly \"本月学费已缴清\"; make that button a clearly disabled pale sage/gray-green button, no gold clickable affordance; original bottom 返回房屋 remains gold and usable. Replace old generic notice 本月学费付清后，才可进入城镇 with current-state notice exactly \"本月学费已缴清，可以进入城镇\". Keep 更改学习安排 button and 40 / 60 小时可切换，下月生效 unchanged; keep 开始学习后不可暂停或退出 and 含学杂费及必需书籍费. Keep footer 设计预览·示例数据. Do not advance study progress: this is successful enrollment with first installment paid before first month of learning completes. Do not invent extra fee, next due date, balance, option or number. No other redesign.",
+        "file": "design/education-progress-20261113-monthly/transfer-aa-progress-first-paid-preview.png",
+        "sha256": "f149e7dfbcd0f48d5878f61faecd2364abbdd05ce40eb046ab70e0a087c8d7b3",
+        "status": "awaiting-user-confirmation"
+      }
+    ]
+  },
+  "scrollRevision": {
+    "status": "confirmed",
+    "runtimeIntegrated": false,
+    "layout": "长页可滚动，恢复自然字号/按钮比例，学费逐行排列",
+    "items": [
+      {
+        "key": "bachelor",
+        "title": "本科",
+        "sub": "高中直读本科",
+        "months": 72,
+        "total": "30,300",
+        "paid": "420.83",
+        "remaining": "29,879.17",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-2c860f79-2bf8-4714-bc36-ea80487f068c.png",
+        "prompt": "Use case: ui-mockup editing. Reformat this existing Wealth Life Chinese study-progress screen into an elegant LONG VERTICALLY SCROLLING mobile page preview, NOT a whole tall page squeezed into a single short viewport. Target portrait aspect approximately 1:2.7 to1:3 (e.g.1024x2816). User explicitly allows scrolling down. Keep original cozy warm crayon/colored-pencil cream-paper/forest-green/gold game design. Preserve top classroom/home-study illustration and its natural undistorted proportions; no stretched faces or flattened objects. Increase breathing room and normal readable typography/button heights instead of cramming everything into reference's current short height. Header illustration around top20–25%, not an enormous empty hero. Consistent full-width paper sections, margins about40px at1024 width, text normal proportions. Within progress card, keep chart compact and remaining months directly beneath bar, no big empty gap. Between major sections allow36–48px, between lines16–24px. Buttons around90–105px high, never vertically compressed. Do not insert giant blank bottom. No phone frame, no browser chrome, one continuous page intended to scroll.\nExact content and state MUST remain:\ntop back 返回房屋, header 学习进度;\n正在就读 · 本科, 高中直读本科, 轻松学习;\nprogress 0 / 72 个月, 预计还需 72 个月;\nsection 本月学习安排: 学习预留 40 小时, 剩余自由时间 60 小时;\nsection 学费缴纳: 课程总费用 $30,300, 已缴学费 $420.83, 剩余学费 $29,879.17. Arrange these3 rows vertically to avoid cramped columns, with left labels and right amounts.\nstatus 本月学费 $420.83 · 已缴清;\ndisabled pale sage gray-green button 本月学费已缴清;\nhelper 含学杂费及必需书籍费;\nnotice 本月学费已缴清，可以进入城镇;\noutline button 更改学习安排;\nhelper 40 / 60 小时可切换，下月生效;\nnotice 开始学习后不可暂停或退出;\ngold bottom button 返回房屋;\nsmall footer 设计预览 · 示例数据.\nNo changed money values or months, no new effects/fee/dates/interest, no pause/withdraw buttons, no new prose. Use reference only for visual identity and correct content; improve composition by lengthening the page, not shrinking text or illustration. Keep numeric glyphs clean and readable. Each portrait must feel like a natural long app page rather than a compacted poster.",
+        "file": "design/education-progress-20261113-monthly/bachelor-progress-scroll-preview.png",
+        "sha256": "cd1361aec0c4781884a84233616bb2f9562e1e6d3d981654edf15d10abb4f11b",
+        "status": "confirmed",
+        "dimensions": [
+          756,
+          2079
+        ],
+        "confirmedAt": "2026-11-13"
+      },
+      {
+        "key": "master",
+        "title": "硕士",
+        "sub": "本科升硕士",
+        "months": 36,
+        "total": "15,800",
+        "paid": "438.89",
+        "remaining": "15,361.11",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-e2cdcb70-f380-4f02-a63e-c5cf65cf331f.png",
+        "prompt": "Use case: ui-mockup editing. Reformat this existing Wealth Life Chinese study-progress screen into an elegant LONG VERTICALLY SCROLLING mobile page preview, NOT a whole tall page squeezed into a single short viewport. Target portrait aspect approximately 1:2.7 to1:3 (e.g.1024x2816). User explicitly allows scrolling down. Keep original cozy warm crayon/colored-pencil cream-paper/forest-green/gold game design. Preserve top classroom/home-study illustration and its natural undistorted proportions; no stretched faces or flattened objects. Increase breathing room and normal readable typography/button heights instead of cramming everything into reference's current short height. Header illustration around top20–25%, not an enormous empty hero. Consistent full-width paper sections, margins about40px at1024 width, text normal proportions. Within progress card, keep chart compact and remaining months directly beneath bar, no big empty gap. Between major sections allow36–48px, between lines16–24px. Buttons around90–105px high, never vertically compressed. Do not insert giant blank bottom. No phone frame, no browser chrome, one continuous page intended to scroll.\nExact content and state MUST remain:\ntop back 返回房屋, header 学习进度;\n正在就读 · 硕士, 本科升硕士, 轻松学习;\nprogress 0 / 36 个月, 预计还需 36 个月;\nsection 本月学习安排: 学习预留 40 小时, 剩余自由时间 60 小时;\nsection 学费缴纳: 课程总费用 $15,800, 已缴学费 $438.89, 剩余学费 $15,361.11. Arrange these3 rows vertically to avoid cramped columns, with left labels and right amounts.\nstatus 本月学费 $438.89 · 已缴清;\ndisabled pale sage gray-green button 本月学费已缴清;\nhelper 含学杂费及必需书籍费;\nnotice 本月学费已缴清，可以进入城镇;\noutline button 更改学习安排;\nhelper 40 / 60 小时可切换，下月生效;\nnotice 开始学习后不可暂停或退出;\ngold bottom button 返回房屋;\nsmall footer 设计预览 · 示例数据.\nNo changed money values or months, no new effects/fee/dates/interest, no pause/withdraw buttons, no new prose. Use reference only for visual identity and correct content; improve composition by lengthening the page, not shrinking text or illustration. Keep numeric glyphs clean and readable. Each portrait must feel like a natural long app page rather than a compacted poster.",
+        "file": "design/education-progress-20261113-monthly/master-progress-scroll-preview.png",
+        "sha256": "d28231f6977faab891ad22fce41115510b2523b063097951d20d547aa04a18b0",
+        "status": "confirmed",
+        "dimensions": [
+          756,
+          2079
+        ],
+        "confirmedAt": "2026-11-13"
+      },
+      {
+        "key": "doctorate",
+        "title": "专业博士",
+        "sub": "硕士升专业博士",
+        "months": 54,
+        "total": "78,600",
+        "paid": "1,455.56",
+        "remaining": "77,144.44",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-ad7e30d0-3802-4161-a3be-1858ad9ffd3b.png",
+        "prompt": "Use case: ui-mockup editing. Reformat this existing Wealth Life Chinese study-progress screen into an elegant LONG VERTICALLY SCROLLING mobile page preview, NOT a whole tall page squeezed into a single short viewport. Target portrait aspect approximately 1:2.7 to1:3 (e.g.1024x2816). User explicitly allows scrolling down. Keep original cozy warm crayon/colored-pencil cream-paper/forest-green/gold game design. Preserve top classroom/home-study illustration and its natural undistorted proportions; no stretched faces or flattened objects. Increase breathing room and normal readable typography/button heights instead of cramming everything into reference's current short height. Header illustration around top20–25%, not an enormous empty hero. Consistent full-width paper sections, margins about40px at1024 width, text normal proportions. Within progress card, keep chart compact and remaining months directly beneath bar, no big empty gap. Between major sections allow36–48px, between lines16–24px. Buttons around90–105px high, never vertically compressed. Do not insert giant blank bottom. No phone frame, no browser chrome, one continuous page intended to scroll.\nExact content and state MUST remain:\ntop back 返回房屋, header 学习进度;\n正在就读 · 专业博士, 硕士升专业博士, 轻松学习;\nprogress 0 / 54 个月, 预计还需 54 个月;\nsection 本月学习安排: 学习预留 40 小时, 剩余自由时间 60 小时;\nsection 学费缴纳: 课程总费用 $78,600, 已缴学费 $1,455.56, 剩余学费 $77,144.44. Arrange these3 rows vertically to avoid cramped columns, with left labels and right amounts.\nstatus 本月学费 $1,455.56 · 已缴清;\ndisabled pale sage gray-green button 本月学费已缴清;\nhelper 含学杂费及必需书籍费;\nnotice 本月学费已缴清，可以进入城镇;\noutline button 更改学习安排;\nhelper 40 / 60 小时可切换，下月生效;\nnotice 开始学习后不可暂停或退出;\ngold bottom button 返回房屋;\nsmall footer 设计预览 · 示例数据.\nNo changed money values or months, no new effects/fee/dates/interest, no pause/withdraw buttons, no new prose. Use reference only for visual identity and correct content; improve composition by lengthening the page, not shrinking text or illustration. Keep numeric glyphs clean and readable. Each portrait must feel like a natural long app page rather than a compacted poster.",
+        "file": "design/education-progress-20261113-monthly/doctorate-progress-scroll-preview.png",
+        "sha256": "a823769667c2bb673e962c0220ff0058c158229ef5b29c23ec7a51539f95e13d",
+        "status": "confirmed",
+        "dimensions": [
+          756,
+          2079
+        ],
+        "confirmedAt": "2026-11-13"
+      },
+      {
+        "key": "transfer-aa",
+        "title": "转学型副学士 AA",
+        "sub": "毕业后可衔接本科",
+        "months": 36,
+        "total": "8,600",
+        "paid": "238.89",
+        "remaining": "8,361.11",
+        "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-a65d0b5f-3876-4f00-8353-2b7cc7695cdf.png",
+        "prompt": "Use case: ui-mockup editing. Reformat this existing Wealth Life Chinese study-progress screen into an elegant LONG VERTICALLY SCROLLING mobile page preview, NOT a whole tall page squeezed into a single short viewport. Target portrait aspect approximately 1:2.7 to1:3 (e.g.1024x2816). User explicitly allows scrolling down. Keep original cozy warm crayon/colored-pencil cream-paper/forest-green/gold game design. Preserve top classroom/home-study illustration and its natural undistorted proportions; no stretched faces or flattened objects. Increase breathing room and normal readable typography/button heights instead of cramming everything into reference's current short height. Header illustration around top20–25%, not an enormous empty hero. Consistent full-width paper sections, margins about40px at1024 width, text normal proportions. Within progress card, keep chart compact and remaining months directly beneath bar, no big empty gap. Between major sections allow36–48px, between lines16–24px. Buttons around90–105px high, never vertically compressed. Do not insert giant blank bottom. No phone frame, no browser chrome, one continuous page intended to scroll.\nExact content and state MUST remain:\ntop back 返回房屋, header 学习进度;\n正在就读 · 转学型副学士 AA, 毕业后可衔接本科, 轻松学习;\nprogress 0 / 36 个月, 预计还需 36 个月;\nsection 本月学习安排: 学习预留 40 小时, 剩余自由时间 60 小时;\nsection 学费缴纳: 课程总费用 $8,600, 已缴学费 $238.89, 剩余学费 $8,361.11. Arrange these3 rows vertically to avoid cramped columns, with left labels and right amounts.\nstatus 本月学费 $238.89 · 已缴清;\ndisabled pale sage gray-green button 本月学费已缴清;\nhelper 含学杂费及必需书籍费;\nnotice 本月学费已缴清，可以进入城镇;\noutline button 更改学习安排;\nhelper 40 / 60 小时可切换，下月生效;\nnotice 开始学习后不可暂停或退出;\ngold bottom button 返回房屋;\nsmall footer 设计预览 · 示例数据.\nNo changed money values or months, no new effects/fee/dates/interest, no pause/withdraw buttons, no new prose. Use reference only for visual identity and correct content; improve composition by lengthening the page, not shrinking text or illustration. Keep numeric glyphs clean and readable. Each portrait must feel like a natural long app page rather than a compacted poster.",
+        "file": "design/education-progress-20261113-monthly/transfer-aa-progress-scroll-preview.png",
+        "sha256": "8089958cee48030a2d3330ecc4b0f3ef5ace9e43c445fada8792051103fe9c4a",
+        "status": "confirmed",
+        "dimensions": [
+          756,
+          2079
+        ],
+        "confirmedAt": "2026-11-13"
+      }
+    ],
+    "confirmedAt": "2026-11-13",
+    "interaction": "上下滑动长页面，实际文字/金额/按钮为动态页面元素；插画原比例，不整图缩至一屏"
+  },
+  "runtimeIntegration": {
+    "status": "integrated-locally-awaiting-production",
+    "resources": [
+      {
+        "source": "design/education-progress-20261113-monthly/bachelor-progress-scroll-preview.png",
+        "sourceSHA256": "cd1361aec0c4781884a84233616bb2f9562e1e6d3d981654edf15d10abb4f11b",
+        "rect": [
+          0,
+          0,
+          756,
+          390
+        ],
+        "file": "assets/education/bachelor-monthly-header.webp",
+        "sha256": "0263753957d8c67018cf46e877953cda2b3e3b72464bdaa77fdf55efb5833307"
+      },
+      {
+        "source": "design/education-progress-20261113-monthly/master-progress-scroll-preview.png",
+        "sourceSHA256": "d28231f6977faab891ad22fce41115510b2523b063097951d20d547aa04a18b0",
+        "rect": [
+          0,
+          0,
+          756,
+          390
+        ],
+        "file": "assets/education/master-monthly-header.webp",
+        "sha256": "a7d63ff6aa9afafbec92ead5b37f4bdf54cb80fd4db1a1d79901bb871aab5319"
+      },
+      {
+        "source": "design/education-progress-20261113-monthly/doctorate-progress-scroll-preview.png",
+        "sourceSHA256": "a823769667c2bb673e962c0220ff0058c158229ef5b29c23ec7a51539f95e13d",
+        "rect": [
+          0,
+          0,
+          756,
+          390
+        ],
+        "file": "assets/education/doctorate-monthly-header.webp",
+        "sha256": "600c3e8e2adf6fbefce906635fca6786141609d49fccda7a1c6c40314a9f10be"
+      },
+      {
+        "source": "design/education-progress-20261113-monthly/transfer-aa-progress-scroll-preview.png",
+        "sourceSHA256": "8089958cee48030a2d3330ecc4b0f3ef5ace9e43c445fada8792051103fe9c4a",
+        "rect": [
+          0,
+          0,
+          756,
+          390
+        ],
+        "file": "assets/education/transfer-aa-monthly-header.webp",
+        "sha256": "d6c280505a74b360d912c28742cf5b3dbf927ae0e40907b668849d5cf8af6572"
+      }
+    ],
+    "layout": "正常字号及按钮、插画页首、动态DOM数值、纵向滚动；职业型数值仍未开放"
+  }
+}

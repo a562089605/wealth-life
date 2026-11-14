@@ -1,0 +1,219 @@
+{
+  "tool": "built-in image_gen",
+  "items": [
+    {
+      "id": "teacher-01-after-class-question",
+      "title": "课后请教",
+      "ruleStatus": "confirmed",
+      "artStatus": "confirmed",
+      "file": "design/teacher-cards-20261113/teacher-01-after-class-question-preview.png",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-7af42970-6da6-4f62-b965-3aec61c3d7e4.png",
+      "sha256": "7e9f93df96097084b4f1742314edef1ad03f13ac1aac67cd9c2343a7dfd63267",
+      "prompt": "Use case: ui-mockup. Create a NEW portrait relationship-life event card for Wealth Life matching reference image1's warm cream paper, colored-pencil crayon illustration, dark handdrawn Chinese lettering, colorful A/B choice rounded panels. Reference image1 is VISUAL STYLE AND STRUCTURE ONLY, not its old text or effects. Reference image2 is faculty character style reference: use the middle top auburn short-haired adult female teacher in terracotta blazer, not a coffee apron. Scene upper third: after class in a warm classroom, adult female player with brown bun and cream cardigan stands holding a notebook near teacher's desk; teacher is tidying lecture handouts and warmly attends to player who is about to ask a question. Teacher clearly mature adult40s, casual academic outfit. No speech bubbles that invent dialogue, no other students, no children, no diploma, no money. Lower two thirds tightly typeset, preserve comfortable readable type, moderate A/B gap, no large blank bottom. Exact Chinese text: small header \"关系生活卡\" and category badge \"教师\". Title \"课后请教\". Body EXACT \"下课后，你对刚才讲的一处内容还有些疑惑。老师正在整理讲义，还没有离开。\" Use 3 short readable centered lines if needed. A panel label EXACT \"A 上前请教，弄清楚疑惑\". Beneath show exactly three equal icon cells \"自由时间−1小时\", \"压力−3\", \"亲密度＋3\". Pressure icon a little gently relaxing cloud/face, not battery; no energy effects. B panel label EXACT \"B 先记下来，回去自己看看\". B has no effect cells and no \"不变\" or \"无数值变化\". Do not add happiness, energy, XP, money, academic progress or teacher-gate hints. No explanatory limits or extra footer; no watermark or screenshot claims. Compact A panel, B close below it, minimal bottom padding. This is one new card preview, not editing or replacing old classmate art.",
+      "body": "下课后，你对刚才讲的一处内容还有些疑惑。老师正在整理讲义，还没有离开。",
+      "choices": [
+        {
+          "label": "上前请教，弄清楚疑惑",
+          "hours": 1,
+          "stress": -3,
+          "intimacy": 3
+        },
+        {
+          "label": "先记下来，回去自己看看",
+          "effects": {}
+        }
+      ],
+      "eligibility": "仅在玩家正在学习该教师对应课程期间适用",
+      "frequency": "每位教师每张主卡终身一次，选B也计次；抽出成功保存占用，抽卡保存失败不占用；结算失败原卡重试，不重抽不重复结算",
+      "graduateTerm": "硕士/专业博士显示导师",
+      "runtimeIntegrated": true,
+      "confirmedAt": "2026-11-13",
+      "frequencyConfirmedAt": "2026-11-13",
+      "runtimeFile": "assets/relationships/cards/teacher-01-after-class-question-20261113.webp"
+    },
+    {
+      "id": "teacher-02-assignment-encouragement",
+      "title": "作业上的鼓励",
+      "ruleStatus": "confirmed",
+      "artStatus": "confirmed",
+      "file": "design/teacher-cards-20261113/teacher-02-assignment-encouragement-preview.png",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-7e958e89-cc6c-4cb5-a643-3b18fca1189f.png",
+      "sha256": "852c711575785727840cfac5920d57055611f57be59ce38f73d5d082a0d2d7f1",
+      "prompt": "Use case: ui-mockup. Create ONE new portrait Chinese relationship life-event card for existing Wealth Life. Reference is confirmed teacher card01, use its exact warm handdrawn colored-pencil/crayon storybook visual language, cream textured paper, dark ink Chinese handwriting, watercolor highlight title and mint rounded button. New card is a positive teacher event; no A/B choice, just one choice. Upper illustration roughly top third: same adult player woman with brown bun and cream cardigan at classroom desk looking pleased at returned assignment with encouraging teacher handwriting; the same mature short auburn-haired female teacher in terracotta blazer can be nearby quietly handing paper, warm academic classroom and plants. Do not put readable grading numbers or academic score on the paper. No dialogue speech balloons. Exact text: category header \"关系生活卡\" / \"教师\". Title \"作业上的鼓励\". Body EXACT: \"你拿回批改后的作业，看到老师在旁边写了一句：“这次的思路比之前清楚了，继续保持。”\" Arrange body in compact legible3 lines. One warm pale-yellow rounded effects panel with exactly3 equal icon cells labelled \"幸福＋3\" with sun/heart icon, \"压力−2\" with relaxed cloud icon, \"亲密度＋2\" with two-person relationship icon. One large mint-green rounded button label \"受到鼓励，继续努力\". No A or B letters, no extra buttons. Do not show any zero effects, no time or money icons, no energy, XP, tuition, progress or salary effects. Do not show relationship gates or frequency limits. Tighten whitespace: body close beneath title, effects close beneath body, button below effects with moderate gap, minimal bottom blank space, don't stretch page to fill reference height. Preserve clear readable Chinese, mature adult teacher, bright warm classroom. No footer or watermark, no code or phone frame. This is a new design preview and must not alter the original card.",
+      "body": "你拿回批改后的作业，看到老师在旁边写了一句：“这次的思路比之前清楚了，继续保持。”",
+      "choices": [
+        {
+          "label": "受到鼓励，继续努力",
+          "happiness": 3,
+          "stress": -2,
+          "intimacy": 2
+        }
+      ],
+      "eligibility": "仅在玩家正在学习该教师对应课程期间适用",
+      "graduateTerm": "硕士/专业博士显示导师",
+      "runtimeIntegrated": true,
+      "confirmedAt": "2026-11-13",
+      "frequency": "每位教师每张主卡终身一次，选B也计次；抽出成功保存占用，抽卡保存失败不占用；结算失败原卡重试，不重抽不重复结算",
+      "frequencyConfirmedAt": "2026-11-13",
+      "runtimeFile": "assets/relationships/cards/teacher-02-assignment-encouragement-20261113.webp"
+    },
+    {
+      "id": "teacher-03-revise-assignment",
+      "title": "修改作业",
+      "ruleStatus": "confirmed",
+      "artStatus": "confirmed",
+      "file": "design/teacher-cards-20261113/teacher-03-revise-assignment-b-cost-preview.png",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-85343053-6656-4042-8c7b-3a334f67ed07.png",
+      "sha256": "71cbc77a8968457c29f596abd28c97604f52f13a45abb1cb63a98d0a61f5d880",
+      "prompt": "Edit this exact existing Wealth Life card 修改作业. Change ONLY B panel effects. Preserve label \"B 简单改\". B must now show THREE effects clearly and compactly: \"自由时间−1小时\", \"能量−1\", \"压力＋1\". Add hourglass and battery icons consistent with A; retain pressure icon. Expand B panel vertically only as necessary for readable three-column effects row below the B heading. Keep bottom padding small. Preserve entire illustration, title, body, colors, textures and A panel unchanged: A 立刻认真改 with 自由时间−2小时、能量−2、压力−2、亲密度＋3. No extra effects, no B intimacy, no zero-change labels. No watermark. This is targeted option-B revision, not redesign.",
+      "body": "作业发回来了，老师圈出了几处问题，还留了句话：“这部分再想想，改好后可以再交给我看看。”",
+      "choices": [
+        {
+          "label": "立刻认真改",
+          "hours": 2,
+          "energy": -2,
+          "stress": -2,
+          "intimacy": 3
+        },
+        {
+          "label": "简单改",
+          "stress": 1,
+          "hours": 1,
+          "energy": -1
+        }
+      ],
+      "runtimeIntegrated": true,
+      "history": [
+        {
+          "file": "design/teacher-cards-20261113/teacher-03-revise-assignment-preview.png",
+          "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-05af315a-6a5e-480c-95f1-d5a4fa47bde1.png",
+          "sha256": "f4736c846eecff73925ff889cdcd6cc1ab370e5763f839d59964b0c593baec28",
+          "prompt": "Use case: ui-mockup. Generate ONE portrait relationship-life card for existing Wealth Life game, matching reference teacher card01 handdrawn colored-pencil/crayon illustration, cream paper grain, dark bold handwritten Chinese typography, yellow title highlight, warm yellow A panel, mint B panel. Do not reuse reference text or effects. New title exactly \"修改作业\". Upper third illustration: adult female player with brown bun and cream cardigan sitting at classroom desk looking thoughtfully at returned assignment; same mature short auburn-haired woman teacher in terracotta blazer points gently to a few circled marks on paper. Warm classroom chalkboard, windows and plants. No grades/numeric scores, no upset angry teacher, no speech bubbles. Below illustration small header \"关系生活卡\", category badge \"教师\". Main body EXACT Chinese: \"作业发回来了，老师圈出了几处问题，还留了句话：“这部分再想想，改好后可以再交给我看看。”\" Render as compact readable3 lines. Title \"修改作业\". A panel heading EXACT \"A 花点时间，认真改一改\". Under heading display four clear icon/effect cells, can use2x2 compact grid for legibility: \"自由时间−2小时\", \"能量−2\", \"压力−2\", \"亲密度＋3\". Use hourglass, battery, relaxing cloud, two-person relationship icons respectively. B panel heading EXACT \"B 先放一放，下次注意\", with a small pressure icon and label \"压力＋1\". No other effects, no happiness, no XP, no money, no academic progress changes. No gate/frequency/technical notes. No zero-effect labels, no 不变. A and B close with moderate gap, minimal bottom blank space, overall compact without oversized title/body margins. Preserve comfortable legible text size. No footer, no watermark, no phone chrome. Draw only this new card, original confirmed cards remain untouched.",
+          "choices": [
+            {
+              "label": "花点时间，认真改一改",
+              "hours": 2,
+              "energy": -2,
+              "stress": -2,
+              "intimacy": 3
+            },
+            {
+              "label": "先放一放，下次注意",
+              "stress": 1
+            }
+          ],
+          "artStatus": "awaiting-user-confirmation"
+        },
+        {
+          "file": "design/teacher-cards-20261113/teacher-03-revise-assignment-short-options-preview.png",
+          "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-8cd6cba0-763a-4ac5-a343-c4b96c1bda85.png",
+          "sha256": "79668e81f22e59f961136749f2b4610bc59c1c472df271732d74022b7fc1bf29",
+          "prompt": "Edit the provided existing Chinese Wealth Life teacher event card. Change ONLY the two option labels. A currently \"花点时间，认真改一改\" becomes exactly \"立刻认真改\". B currently \"先放一放，下次注意\" becomes exactly \"简单改\". Keep A/B circular badges. Keep title 修改作业, ALL body text, illustration, paper texture, colors, panel geometry, typography style and ALL numeric effects unchanged: A 自由时间−2小时、能量−2、压力−2、亲密度＋3; B 压力＋1. Center the shortened labels naturally within their existing heading areas without enlarging gaps or introducing new content. No extra labels or explanation, no watermark. Preserve everything else exactly.",
+          "choices": [
+            {
+              "label": "立刻认真改",
+              "hours": 2,
+              "energy": -2,
+              "stress": -2,
+              "intimacy": 3
+            },
+            {
+              "label": "简单改",
+              "stress": 1
+            }
+          ],
+          "artStatus": "awaiting-user-confirmation"
+        }
+      ],
+      "confirmedAt": "2026-11-13",
+      "frequency": "每位教师每张主卡终身一次，选B也计次；抽出成功保存占用，抽卡保存失败不占用；结算失败原卡重试，不重抽不重复结算",
+      "eligibility": "仅在玩家正在学习该教师对应课程期间适用",
+      "frequencyConfirmedAt": "2026-11-13",
+      "runtimeFile": "assets/relationships/cards/teacher-03-revise-assignment-20261113.webp"
+    },
+    {
+      "id": "teacher-04-campus-lecture",
+      "title": "一起听场讲座",
+      "ruleStatus": "confirmed",
+      "artStatus": "confirmed",
+      "file": "design/teacher-cards-20261113/teacher-04-campus-lecture-preview.png",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-203950e4-7795-4cbd-8cb7-fa46639ab47e.png",
+      "sha256": "c0d135d8f5cd1fed305c5a87f10dd0eb59807112466b15daadc6e449196a23f9",
+      "prompt": "Use case: ui-mockup. Create ONE NEW Chinese relationship-life event card for Wealth Life in exactly the reference teacher card's warm handdrawn colored-pencil/crayon storybook style, cream paper grain, dark Chinese handwriting, yellow title swash and rounded yellow A/mint B panels. This is fourth teacher card, title EXACT \"一起听场讲座\". Top third illustration: adult female player brown bun cream cardigan and mature short auburn-haired female teacher terracotta blazer sitting beside one another among adult audience in a warm campus lecture hall, looking toward a distant speaker and chalkboard/projection with abstract shapes but NO readable text. Friendly relaxed expressions, no classroom tutoring desk scene, no children. At the top of text area small header \"关系生活卡\", category badge \"教师\". Body EXACT: \"老师转发了一场校园公开讲座，主题让你有些兴趣。老师也会到场，你看看时间，正好可以安排。\" Set compact readable3 lines. A option EXACT \"A 去听讲座，结束后和老师聊聊\". Under it show FOUR effects clearly with appropriate icons in compact2x2 grid: \"自由时间−2小时\", \"能量−2\", \"幸福＋2\", \"亲密度＋4\". B option EXACT \"B 这次先不去了\", NO effect icons/labels underneath. Do not add pressure, money, academic XP/progress, tuition, salary or other effects. Do not show frequency/eligibility rules. Keep text legible and large, A/B gap moderate, no large blank area under body or at bottom. Original title/body/effects of reference must NOT be copied. No footer, no watermark, no device chrome. Preserve new card as separate preview.",
+      "body": "老师转发了一场校园公开讲座，主题让你有些兴趣。老师也会到场，你看看时间，正好可以安排。",
+      "choices": [
+        {
+          "label": "去听讲座，结束后和老师聊聊",
+          "hours": 2,
+          "energy": -2,
+          "happiness": 2,
+          "intimacy": 4
+        },
+        {
+          "label": "这次先不去了",
+          "effects": {}
+        }
+      ],
+      "eligibility": "仅在玩家正在学习该教师对应课程期间适用",
+      "timeScope": "课程外可选讲座，2h包含讲座及交流，不重复扣正常课程时间",
+      "runtimeIntegrated": true,
+      "confirmedAt": "2026-11-13",
+      "frequency": "每位教师每张主卡终身一次，选B也计次；抽出成功保存占用，抽卡保存失败不占用；结算失败原卡重试，不重抽不重复结算",
+      "frequencyConfirmedAt": "2026-11-13",
+      "runtimeFile": "assets/relationships/cards/teacher-04-campus-lecture-20261113.webp"
+    },
+    {
+      "id": "teacher-05-manager-introduction",
+      "title": "老师牵线当店长",
+      "ruleStatus": "direction-and-salary-formula-confirmed-other-details-pending",
+      "artStatus": "confirmed-preview",
+      "file": "design/teacher-cards-20261113/teacher-05-manager-introduction-senior-brother-preview.png",
+      "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-177178f3-f83a-46b7-8925-4c3bbef4381b.png",
+      "sha256": "0ceb948967c2b314188b0f23052a932c4553658c9ea5a2cf7a8945c047c83a33",
+      "prompt": "Edit the supplied existing Wealth Life Chinese teacher relationship card. Make ONLY these two corrections, preserve all other text, figures, style, layout and scenery. 1. Body currently begins 老师联系你：“你的一位师兄或师姐开了家咖啡店... Replace the entire body with exact text: 老师联系你：“你的一位师兄开了家咖啡店，正在找店长。你有兴趣的话，我帮你介绍，你们先聊聊。” Keep its readable compact centered layout. 2. The cafe owner on the RIGHT of upper illustration must now be an ADULT MAN, the 师兄: early-to-mid40s, short dark brown slightly wavy hair, no ponytail, friendly mature masculine face, pale-blue collared shirt, same dark coffee apron, hands resting on table in same conversational pose. Do not change female player on LEFT (brown bun cream cardigan) or mature female teacher CENTER (short auburn hair terracotta blazer). Keep all cafe background, espresso machine, tables, three cups, lighting and cream crayon paper art. Keep title 老师牵线当店长, category 教师, A了解店长岗位, B暂时不考虑，谢谢老师, salary formula 现有店长岗位基础工资×1.3, helper 小费、奖金不参与本次加成 and footer 设计预览·入职条件待确认 unchanged. No new money amounts, effects or conditions. Do not redesign, only targeted body and right owner correction.",
+      "bodyProposal": "老师联系你：“你的一位师兄或师姐开了家咖啡店，正在找店长。你有兴趣的话，我帮你介绍，你们先聊聊。”",
+      "choiceProposals": [
+        "了解店长岗位",
+        "暂时不考虑，谢谢老师"
+      ],
+      "confirmedSalaryFormula": "现有店长岗位按原规则计算的基础工资×1.3，最高学历计一次，小费奖金不参与本次加成",
+      "unconfirmed": [
+        "触发条件",
+        "入职条件",
+        "岗位基准具体金额",
+        "其他数值",
+        "换店结算与生效时点",
+        "选项最终确认"
+      ],
+      "runtimeIntegrated": false,
+      "confirmedBody": "老师联系你：“你的一位师兄开了家咖啡店，正在找店长。你有兴趣的话，我帮你介绍，你们先聊聊。”",
+      "bodyStatus": "confirmed",
+      "bodyConfirmedAt": "2026-11-13",
+      "pendingArtTextChange": null,
+      "history": [
+        {
+          "file": "design/teacher-cards-20261113/teacher-05-manager-introduction-preview.png",
+          "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-35d176c1-49db-49b0-8245-c4acb8d650e3.png",
+          "sha256": "67761f500bb1a239417c658c24f0fa92c214ac5fc5cd6df5002633f4e3d0b56e",
+          "prompt": "Use case: ui-mockup. Create ONE portrait Chinese Wealth Life relationship-life card DESIGN PREVIEW, matching reference image's warm colored-pencil/crayon storybook art, cream textured paper, dark handdrawn Chinese letters, yellow title swash, yellow A rounded panel and mint B rounded panel. Top third illustration new scene: mature short auburn-haired female teacher in terracotta blazer introduces adult female player with brown bun cream cardigan to an adult friendly cafe owner (teacher's former student, now shop owner) inside a warm newly opened cafe. Owner wears pale blue shirt, three people converse pleasantly around a small table, menu board has abstract illegible marks, plants and espresso counter behind. No handshake/employment contract implying already hired, no money handover, no academic gown. Text category \"关系生活卡\" badge \"教师\". Title EXACT \"老师牵线当店长\". Body EXACT \"老师联系你：“你的一位师兄或师姐开了家咖啡店，正在找店长。你有兴趣的话，我帮你介绍，你们先聊聊。”\" Compact readable3–4 lines. A heading EXACT \"A 了解店长岗位\". Under A show one clear salary information box labelled \"新店长基础工资\" and formula exactly \"现有店长岗位基础工资 × 1.3\". Small helper exactly \"小费、奖金不参与本次加成\". B heading EXACT \"B 暂时不考虑，谢谢老师\". No invented fees, salary dollar sample, required intimacy number, time cost, energy, pressure, happiness, intimacy reward, or immediate employment. Formula uses existing store-manager job baseline, NOT player's current salary. Footer small unobtrusive \"设计预览 · 入职条件待确认\". Whole image compact, moderate A/B gap, no big blank bottom, highly legible Chinese text. This is preview-only, text/choices beyond salary formula await user review. Do not alter existing confirmed cards. No screenshot device frame or watermark.",
+          "artStatus": "awaiting-user-confirmation"
+        }
+      ],
+      "artRevision": "师兄正文及成年男性店主同步",
+      "artConfirmedAt": "2026-11-13",
+      "artConfirmationScope": "师兄称谓及成年男性店主修订预览确认，入职条件等未定规则不因此确认"
+    }
+  ],
+  "teacherDailyContact": {
+    "status": "confirmed",
+    "confirmedAt": "2026-11-13",
+    "label": "与老师聊聊",
+    "graduateLabel": "与导师聊聊",
+    "eligibility": "在读和毕业后均可，保留原联系人",
+    "hours": 1,
+    "energy": -2,
+    "intimacy": 2,
+    "perTeacherPerMonth": 1,
+    "runtimeIntegrated": true
+  }
+}

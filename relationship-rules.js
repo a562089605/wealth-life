@@ -3,7 +3,7 @@
  const copy=x=>JSON.parse(JSON.stringify(x)),clamp=n=>Math.max(0,Math.min(100,n));
  const plans={chat:{cost:0,hours:1,min:0},walk:{cost:0,hours:1,min:0},meal:{cost:45,hours:2,min:21},visit:{cost:30,hours:3,min:51}};
  const stage=p=>{const n=Number.isFinite(p.relation)?p.relation:0;return n<15?'认识':n<30?'熟人':n<50?'普通朋友':n<70?'较好朋友':n<88?'好朋友':'挚友';};
- const role=p=>p.relationshipRole==='manager'||p.houseRole==='manager'||['经理','上司'].includes(p.status)?'经理':p.relationshipRole==='landlord'||p.houseRole==='landlord'||p.status==='房东'?'房东':p.relationshipRole==='classmate'?'同学':p.relationshipRole==='coworker'?'同事':p.origin==='pet-social'||p.status==='养宠物的朋友'||p.status==='宠友'?'宠友':p.status||'认识的人';
+ const role=p=>p.relationshipRole==='teacher'?'教师':p.relationshipRole==='manager'||p.houseRole==='manager'||['经理','上司'].includes(p.status)?'经理':p.relationshipRole==='landlord'||p.houseRole==='landlord'||p.status==='房东'?'房东':p.relationshipRole==='classmate'?'同学':p.relationshipRole==='coworker'?'同事':p.origin==='pet-social'||p.status==='养宠物的朋友'||p.status==='宠友'?'宠友':p.status||'认识的人';
  const identity=p=>JSON.stringify([p.id,p.name,p.origin,p.relationshipRole||p.houseRole]);
  function data(s){return s.relationshipHome??={version:1,startedMonth:s.month,sequence:0,actions:[],settlements:{},managers:{}};}
  function workKey(job){return /咖啡师|值班主管|Barista|Shift Lead|店长|Store Manager|合伙人|Partner/i.test(job||'')?'coffee':job;}
@@ -30,9 +30,11 @@
  function hours(s){return (s.relationshipHome?.actions||[]).filter(r=>r.month===s.month).reduce((n,r)=>n+r.hours,0);}
  function contacted(s,p,month){return [p.lastContactMonth,p.lastInteractionMonth,p.metMonth].includes(month)||(s.relationshipHome?.actions||[]).some(r=>r.month===month&&r.people.includes(identity(p)))||(s.socialMonth?.month===month&&[p.id,p.name].includes(s.socialMonth.person));}
  function quote(s,kind,ids,{free,recovery=false}={}){
-  const plan=plans[kind],people=ids.map(id=>(s.people||[]).find(p=>identity(p)===id)),n=people.length;
+  const plan=kind==='teacherChat'?{cost:0,hours:1,min:0}:plans[kind],people=ids.map(id=>(s.people||[]).find(p=>identity(p)===id)),n=people.length;
   const q={kind,people:[...ids],hours:plan?.hours||0,cost:plan?plan.cost*(kind==='visit'?n:1):0,energy:2*n};const fail=reason=>({...q,ok:false,reason});
   if(!plan||!n||n>(kind==='visit'?5:1)||new Set(ids).size!==n||people.some(p=>!p))return fail('请选择有效联系人');
+  if(kind==='teacherChat'&&(people.some(p=>p.relationshipRole!=='teacher')||(s.relationshipHome?.actions||[]).some(r=>r.month===s.month&&r.kind===kind&&r.people.some(id=>ids.includes(id)))))return fail('本月已与这位教师聊过');
+  if(kind!=='teacherChat'&&people.some(p=>p?.relationshipRole==='teacher'))return fail('请使用教师聊天');
   if(people.some(p=>!Number.isFinite(p.relation)||p.relation<plan.min))return fail('亲密度暂不足');
   if(recovery)return fail('康复月暂不能安排');if(!Number.isFinite(s.health)||s.health<30)return fail('健康需达到30');
   if(kind==='visit'&&(!s.housing||s.housing==='unselected'))return fail('请先确认入住住房');
@@ -42,7 +44,7 @@
  const token=(s,kind,ids)=>JSON.stringify([s.month,kind,ids,s.relationshipHome?.sequence||0]);
  function confirm(s,kind,ids,expected,{free,recovery=false,outcome,save}){
   if(token(s,kind,ids)!==expected)return {ok:false,reason:'页面已过期，请重新打开'};const q=quote(s,kind,ids,{free,recovery});if(!q.ok)return q;
-  const before=copy(s);try{const outcomes=ids.map(id=>{const p=s.people.find(p=>identity(p)===id);return {...outcome(p),person:id,name:p.name};});if(outcomes.some(o=>!Number.isFinite(o.gain)||!Number.isFinite(o.happiness)))throw Error('invalid outcome');
+  const before=copy(s);try{const outcomes=ids.map(id=>{const p=s.people.find(p=>identity(p)===id);return {...(kind==='teacherChat'?{scene:p.teacherLabel==='导师'?'与导师聊聊':'与老师聊聊',success:true,gain:2,happiness:0}:outcome(p)),person:id,name:p.name};});if(outcomes.some(o=>!Number.isFinite(o.gain)||!Number.isFinite(o.happiness)))throw Error('invalid outcome');
    const d=data(s),id='relationship-home-'+(++d.sequence),happy=s.happiness;s.cash=Math.round((s.cash-q.cost)*100)/100;s.energy=clamp(s.energy-q.energy);s.happiness=clamp(s.happiness+outcomes.reduce((n,o)=>n+o.happiness,0));
    for(const o of outcomes){const p=s.people.find(p=>identity(p)===o.person),prior=p.relation;p.relation=clamp(prior+o.gain);o.appliedGain=Math.round((p.relation-prior)*100)/100;p.lastContactMonth=s.month;}
    const receipt={id,month:s.month,...q,outcomes,happinessChange:s.happiness-happy};d.actions.push(receipt);if(q.cost)(s.financeLedger??=[]).push({kind:kind==='visit'?'socialVisit':'socialMeal',source:'relationshipHome',month:s.month,amount:q.cost,eventId:id});

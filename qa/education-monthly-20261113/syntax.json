@@ -1,0 +1,67 @@
+[
+  {
+    "file": "core.js",
+    "ok": true,
+    "error": ""
+  },
+  {
+    "file": "education-plans.js",
+    "ok": true,
+    "error": ""
+  },
+  {
+    "file": "education-monthly.js",
+    "ok": true,
+    "error": ""
+  },
+  {
+    "file": "education-pages.js",
+    "ok": true,
+    "error": ""
+  },
+  {
+    "file": "teacher-relationships.js",
+    "ok": true,
+    "error": ""
+  },
+  {
+    "file": "teacher-card-data.js",
+    "ok": true,
+    "error": ""
+  },
+  {
+    "file": "relationship-rules.js",
+    "ok": true,
+    "error": ""
+  },
+  {
+    "file": "relationship-avatars.js",
+    "ok": true,
+    "error": ""
+  },
+  {
+    "file": "relationship-ui.js",
+    "ok": true,
+    "error": ""
+  },
+  {
+    "file": "relationship-life-cards.js",
+    "ok": true,
+    "error": ""
+  },
+  {
+    "file": "relationship-life-ui.js",
+    "ok": true,
+    "error": ""
+  },
+  {
+    "file": "room.js",
+    "ok": true,
+    "error": ""
+  },
+  {
+    "file": "sw.js",
+    "ok": true,
+    "error": ""
+  }
+]

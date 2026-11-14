@@ -1,0 +1,21 @@
+{
+  "scope": "local isolated Chromium slot948; not user saves or real iPhone",
+  "steps": [
+    "Five confirmed routes: exact monthly first installment including cents, 40h reserve, one teacher, no pause/quit controls",
+    "320/390/430 naturally scrolling page without horizontal overflow",
+    "Pace schedule real save failure rollback, then old pace advances once and new pace applies next month",
+    "House exit gate opens actual payment page; localStorage failure rolls back bill and cash, retry pays once",
+    "First payment, course, classmate, teacher and avatar all roll back on actual save failure; retry creates one",
+    "Actual teacher profile uses confirmed once-monthly chat action",
+    "Four teacher cards render final resources and settle through original saved-card transaction, without natural draw",
+    "10 teacher portraits and four final card resources decode",
+    "Reload retains paid bill, one teacher and fixed saved portrait",
+    "Whole-month actual storage failure rolls back tuition, progress and month; retry advances once",
+    "Actual medical recovery preserves paid credit, skips progress and permits scheduled next-month pace",
+    "Actual last-month unpaid tail blocks graduation; settling tail allows graduation and highest-degree next-month wage",
+    "Professional doctorate graduation applies 25% highest-degree salary factor through actual coffee settlement",
+    "Isolated offline refresh retains monthly course and teacher resources; not full offline or device acceptance"
+  ],
+  "errors": [],
+  "passed": true
+}

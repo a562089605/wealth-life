@@ -1,0 +1,51 @@
+{
+  "scope": "Static code and confirmed rule review; no runtime changes or browser acceptance",
+  "confirmedRates": {
+    "associate": 0.08,
+    "bachelor": 0.12,
+    "master": 0.18,
+    "doctorate": 0.25
+  },
+  "basis": "actual base wage at each graduation; exclude tips and bonuses",
+  "exampleMonthly": [
+    "3000.00",
+    "3240.00",
+    "3628.80",
+    "4281.98",
+    "5352.48"
+  ],
+  "directBachelorThroughDoctorate": "4956.00",
+  "findings": [
+    {
+      "severity": "implementation-conflict",
+      "file": "coffee-salary.js",
+      "line": 4,
+      "detail": "monthly fixed role base / highest education rate recalculation will not preserve sequential current-wage raises"
+    },
+    {
+      "severity": "implementation-conflict",
+      "file": "core.js",
+      "line": 2,
+      "detail": "doctorate explicitly skipped and coffee old education factor divided out"
+    },
+    {
+      "severity": "implementation-conflict",
+      "file": "core.js",
+      "line": 6,
+      "detail": "doctorate still18% rather than confirmed25%"
+    },
+    {
+      "severity": "design-tradeoff",
+      "detail": "AA-first route gets an extra8% relative to direct bachelor under otherwise identical career trajectory, also costs less at approved prices; not a bug to silently fix"
+    },
+    {
+      "severity": "pending-rule",
+      "detail": "how accumulated actual-pay raises carry through switching jobs/promotions, and interaction with teacher manager offer x1.3, need career confirmation"
+    },
+    {
+      "severity": "pending-rule",
+      "detail": "graduation without employment and repeated same-level/new vocational degrees not explicitly covered by this rule change; do not fabricate benefit claims"
+    }
+  ],
+  "supersededBy": "2026-11-13 final user decision: highest-degree replacement, retain associate8/bachelor12/master18/doctorate25; sequential-current-wage review is historical"
+}

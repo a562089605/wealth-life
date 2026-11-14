@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-13",
+  "scope": "Official tuition and duration review; approved game rules unchanged",
+  "runtimeChanged": false,
+  "sources": {
+    "valenciaRates": "https://valenciacollege.edu/students/business-office/tuition-fees.php",
+    "valenciaBooks": "https://valenciacollege.edu/finaid/attendance-cost.php",
+    "ucfUndergrad": "https://studentaccounts.ucf.edu/tf-tuitionratescurrent/",
+    "ucfGraduateRates": "https://regulations.ucf.edu/wp-content/uploads/sites/22/9.001-Tuition-FINAL-July2026.pdf",
+    "ucfBooks": "https://www.ucf.edu/financial-aid/cost/",
+    "aaDuration": "https://valenciacollege.edu/academics/programs/aa-degree/index.php",
+    "masterExample": "https://communication.ucf.edu/digital-media-ma/",
+    "professionalDoctorate": "https://business.fiu.edu/academics/graduate/doctor-of-business-administration/tuition/",
+    "creditWorkload": "https://registrar.ucf.edu/enrollment-verification/"
+  },
+  "calculations": {
+    "aaTuition": 6183.6,
+    "bachelorTuition": 25473.6,
+    "transferBachelorTuition": 12736.8,
+    "masterTuition": 13307.4
+  },
+  "findings": [
+    "Game fees are rounded Florida public resident tuition plus modeled books, not US national averages or exact complete school bills.",
+    "AA application fee35 and various annual/course-specific university fees are not itemized; game budgets are approximate.",
+    "UCF undergraduate books budget1200 annually supports chosen estimate, but Valencia books/supplies budget2103 or2130 annually is higher; AA2400 total is a simplified lower books budget, not Valencia official full materials budget.",
+    "Graduate and doctorate books budgets are modeled; doctorate3600 not a FIU specific published book quote.",
+    "FIU three-year75-credit DBA tuition75013.40 fall/75023.40 spring; retain professional doctorate label, not generic all PhD.",
+    "AA2 years, bachelor4 and transfer2 conditional on transferable prerequisites; master2 is selected36-credit program example.",
+    "40/60 game hours with60 mapped to standard years is an explicit game abstraction, not real full-time workload.",
+    "Monthly fee amortization, no voluntary withdrawal, and town exit gate are gameplay rules, not US school policy.",
+    "Vocational associate commonly AS/AAS; current professional name/fees/duration remain pending; artwork confirmation does not authorize numeric values."
+  ],
+  "userConfirmed": true,
+  "confirmedAt": "2026-11-13",
+  "decision": "Retain approved game fees, durations and compact artwork as US-inspired simplified gameplay; do not treat as exact institutional quotations or real full-time workload."
+}

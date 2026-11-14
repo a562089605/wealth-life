@@ -1,0 +1,516 @@
+{
+  "assets": [
+    {
+      "file": "design/teacher-cards-20261113/teacher-01-after-class-question-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/teacher-cards-20261113/teacher-02-assignment-encouragement-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/teacher-cards-20261113/teacher-03-revise-assignment-b-cost-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/teacher-cards-20261113/teacher-03-revise-assignment-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/teacher-cards-20261113/teacher-03-revise-assignment-short-options-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/teacher-cards-20261113/teacher-04-campus-lecture-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/teacher-cards-20261113/teacher-05-manager-introduction-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/education-progress-20261113-monthly/vocational-aa-progress-dollar-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        973,
+        1616
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/education-progress-20261113-monthly/bachelor-progress-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        973,
+        1616
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/education-progress-20261113-monthly/master-progress-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        973,
+        1616
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/education-progress-20261113-monthly/doctorate-progress-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        973,
+        1616
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/education-progress-20261113-monthly/transfer-aa-progress-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        973,
+        1616
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/education-progress-20261113-monthly/vocational-aa-progress-compact-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/education-progress-20261113-monthly/bachelor-progress-compact-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/education-progress-20261113-monthly/master-progress-compact-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1052,
+        1495
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/education-progress-20261113-monthly/doctorate-progress-compact-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1034,
+        1521
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/education-progress-20261113-monthly/transfer-aa-progress-compact-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1036,
+        1518
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/manager-experience.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/manager-tasting.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/manager-bonus.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/manager-pickup.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/manager-extra-shifts.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/coworker-chat.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/coworker-snack.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/coworker-bookshelf.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/coworker-job.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/moving-meal.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/landlord-chat.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/landlord-plants.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/landlord-aircon.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/success.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/failure.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/classmate-library.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/classmate-presentation.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/classmate-snack.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/classmate-plan.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/petfriend-chat.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1535
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/petfriend-organizer.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/petfriend-late.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "decodes": true
+    },
+    {
+      "file": "design/relationship-review-20261113/care-page-preview.png",
+      "exists": true,
+      "shaMatches": true,
+      "dimensions": [
+        948,
+        1659
+      ],
+      "decodes": true
+    }
+  ],
+  "monthly": [
+    {
+      "route": "AA",
+      "pace": "40h",
+      "months": 36,
+      "total": 8600,
+      "usual": "238.89",
+      "last": "238.85",
+      "sumCorrect": true
+    },
+    {
+      "route": "AA",
+      "pace": "60h",
+      "months": 24,
+      "total": 8600,
+      "usual": "358.33",
+      "last": "358.41",
+      "sumCorrect": true
+    },
+    {
+      "route": "直接本科",
+      "pace": "40h",
+      "months": 72,
+      "total": 30300,
+      "usual": "420.83",
+      "last": "421.07",
+      "sumCorrect": true
+    },
+    {
+      "route": "直接本科",
+      "pace": "60h",
+      "months": 48,
+      "total": 30300,
+      "usual": "631.25",
+      "last": "631.25",
+      "sumCorrect": true
+    },
+    {
+      "route": "AA衔接本科",
+      "pace": "40h",
+      "months": 36,
+      "total": 15200,
+      "usual": "422.22",
+      "last": "422.30",
+      "sumCorrect": true
+    },
+    {
+      "route": "AA衔接本科",
+      "pace": "60h",
+      "months": 24,
+      "total": 15200,
+      "usual": "633.33",
+      "last": "633.41",
+      "sumCorrect": true
+    },
+    {
+      "route": "硕士",
+      "pace": "40h",
+      "months": 36,
+      "total": 15800,
+      "usual": "438.89",
+      "last": "438.85",
+      "sumCorrect": true
+    },
+    {
+      "route": "硕士",
+      "pace": "60h",
+      "months": 24,
+      "total": 15800,
+      "usual": "658.33",
+      "last": "658.41",
+      "sumCorrect": true
+    },
+    {
+      "route": "专业博士",
+      "pace": "40h",
+      "months": 54,
+      "total": 78600,
+      "usual": "1455.56",
+      "last": "1455.32",
+      "sumCorrect": true
+    },
+    {
+      "route": "专业博士",
+      "pace": "60h",
+      "months": 36,
+      "total": 78600,
+      "usual": "2183.33",
+      "last": "2183.45",
+      "sumCorrect": true
+    }
+  ]
+}

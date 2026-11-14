@@ -1,0 +1,234 @@
+[
+  {
+    "source": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png",
+    "sourceSHA256": "fcc00d514acf7d2d4a7854b3b27ce6df442babd68fe523257678edf842ffbdb5",
+    "rect": [
+      8,
+      125,
+      415,
+      620
+    ],
+    "file": "assets/relationships/avatars/teacher-female-01.webp",
+    "sha256": "49f61329791a0e99949268e4582db368d6f53b8bdd62e42a445ccc9a5c80fde4",
+    "cropFile": "design/teacher-avatars-20261113/teacher-female-01-crop.png",
+    "cropSHA256": "d5bdfcf6d1f6a18b58bdfd4032c2ddaf90c50ff1c06dbdff94e72865955992ba",
+    "id": "teacher-female-01",
+    "sourceFile": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png"
+  },
+  {
+    "source": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png",
+    "sourceSHA256": "fcc00d514acf7d2d4a7854b3b27ce6df442babd68fe523257678edf842ffbdb5",
+    "rect": [
+      416,
+      125,
+      832,
+      620
+    ],
+    "file": "assets/relationships/avatars/teacher-female-02.webp",
+    "sha256": "85eb27ae1e69d1a5c7fb16efd390b96374841c12fbfa2dac2ae0872c9d019e40",
+    "cropFile": "design/teacher-avatars-20261113/teacher-female-02-crop.png",
+    "cropSHA256": "1c7989a375304b9a08d68237f3e6668f731dd6d0b070df9db31cd1d1901d9a2e",
+    "id": "teacher-female-02",
+    "sourceFile": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png"
+  },
+  {
+    "source": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png",
+    "sourceSHA256": "fcc00d514acf7d2d4a7854b3b27ce6df442babd68fe523257678edf842ffbdb5",
+    "rect": [
+      830,
+      125,
+      1248,
+      620
+    ],
+    "file": "assets/relationships/avatars/teacher-female-03.webp",
+    "sha256": "bebbc1dc29e877ca54e3f63b94f26d5afc54b591f3a8d5a2c272e89e71a80ea4",
+    "cropFile": "design/teacher-avatars-20261113/teacher-female-03-crop.png",
+    "cropSHA256": "fdf18b9cda283549a3fc9dbcc10d803f75e96f2736d2a0638ab0afba448abf62",
+    "id": "teacher-female-03",
+    "sourceFile": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png"
+  },
+  {
+    "source": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png",
+    "sourceSHA256": "fcc00d514acf7d2d4a7854b3b27ce6df442babd68fe523257678edf842ffbdb5",
+    "rect": [
+      130,
+      640,
+      596,
+      1160
+    ],
+    "file": "assets/relationships/avatars/teacher-female-04.webp",
+    "sha256": "d2b3053807cc2feae7718e19ecc9d7f3a9358e6b2f5b608237193c3ca2f57bc6",
+    "cropFile": "design/teacher-avatars-20261113/teacher-female-04-crop.png",
+    "cropSHA256": "ee55c56625a20145b11a74a73eaa193b00b36d9c4f537066e32292e9dd31fff9",
+    "id": "teacher-female-04",
+    "sourceFile": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png"
+  },
+  {
+    "source": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png",
+    "sourceSHA256": "fcc00d514acf7d2d4a7854b3b27ce6df442babd68fe523257678edf842ffbdb5",
+    "rect": [
+      624,
+      640,
+      1100,
+      1160
+    ],
+    "file": "assets/relationships/avatars/teacher-female-05.webp",
+    "sha256": "246cc1dcb6729d13947ccf7ec96367eb1023b0535c6179bb17a6210d6afeb75f",
+    "cropFile": "design/teacher-avatars-20261113/teacher-female-05-crop.png",
+    "cropSHA256": "26d691de76950cf9a9ad51970f73b119edc1ccf659944089a30b8523aa7cb524",
+    "id": "teacher-female-05",
+    "sourceFile": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png"
+  },
+  {
+    "source": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png",
+    "sourceSHA256": "7e9846d260b3cfe6efb7a5ead4cc4005a3575ca0106689245ad26003dbf36955",
+    "rect": [
+      8,
+      125,
+      415,
+      620
+    ],
+    "file": "assets/relationships/avatars/teacher-male-01.webp",
+    "sha256": "bcd0fd7adf30acb025a7f38af4d777dc61b65e525492a84287adcb5355e0789f",
+    "cropFile": "design/teacher-avatars-20261113/teacher-male-01-crop.png",
+    "cropSHA256": "861b7871ac913a54e6aa8d506e2ec896abbecf0ca1b438b7f7bf09be9cce487f",
+    "id": "teacher-male-01",
+    "sourceFile": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png"
+  },
+  {
+    "source": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png",
+    "sourceSHA256": "7e9846d260b3cfe6efb7a5ead4cc4005a3575ca0106689245ad26003dbf36955",
+    "rect": [
+      416,
+      125,
+      832,
+      620
+    ],
+    "file": "assets/relationships/avatars/teacher-male-02.webp",
+    "sha256": "422e8a334f8bb676ce852098d5ebb784377b7d2b02b3c26fd8877359a99eac1b",
+    "cropFile": "design/teacher-avatars-20261113/teacher-male-02-crop.png",
+    "cropSHA256": "3409285c35cf68f521212dfe592ff5685740e23156d5df3f37033db05090d6e8",
+    "id": "teacher-male-02",
+    "sourceFile": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png"
+  },
+  {
+    "source": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png",
+    "sourceSHA256": "7e9846d260b3cfe6efb7a5ead4cc4005a3575ca0106689245ad26003dbf36955",
+    "rect": [
+      830,
+      125,
+      1248,
+      620
+    ],
+    "file": "assets/relationships/avatars/teacher-male-03.webp",
+    "sha256": "76ae1fb1cf8267228f4a1b6d23bb61d486d743f9fb64b1c4e925cc073fc0c331",
+    "cropFile": "design/teacher-avatars-20261113/teacher-male-03-crop.png",
+    "cropSHA256": "9504c5b0d96f1e25fbaa3ce2e305ddfb21de58817815cfa06ae18bb8303f407b",
+    "id": "teacher-male-03",
+    "sourceFile": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png"
+  },
+  {
+    "source": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png",
+    "sourceSHA256": "7e9846d260b3cfe6efb7a5ead4cc4005a3575ca0106689245ad26003dbf36955",
+    "rect": [
+      130,
+      640,
+      596,
+      1160
+    ],
+    "file": "assets/relationships/avatars/teacher-male-04.webp",
+    "sha256": "3dc0f0f8bc826c1aab9d5fa910194d2ffaf5576b31aa243c9b680130ef822fd5",
+    "cropFile": "design/teacher-avatars-20261113/teacher-male-04-crop.png",
+    "cropSHA256": "138a97fa74054a9a679ea0e3231810febf223c0948f64d6d65b2869b1c7119d7",
+    "id": "teacher-male-04",
+    "sourceFile": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png"
+  },
+  {
+    "source": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png",
+    "sourceSHA256": "7e9846d260b3cfe6efb7a5ead4cc4005a3575ca0106689245ad26003dbf36955",
+    "rect": [
+      624,
+      640,
+      1100,
+      1160
+    ],
+    "file": "assets/relationships/avatars/teacher-male-05.webp",
+    "sha256": "8c22547876408e572ff1476f7b2862b0c35e3b43eb1c19bb185dcbda8862505c",
+    "cropFile": "design/teacher-avatars-20261113/teacher-male-05-crop.png",
+    "cropSHA256": "832709795a741a7f90215cc092f93e5b96db6a907dd2aa089556417b25c90608",
+    "id": "teacher-male-05",
+    "sourceFile": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png"
+  },
+  {
+    "source": "design/teacher-cards-20261113/teacher-01-after-class-question-preview.png",
+    "sourceSHA256": "7e9f93df96097084b4f1742314edef1ad03f13ac1aac67cd9c2343a7dfd63267",
+    "file": "assets/relationships/cards/teacher-01-after-class-question-20261113.webp",
+    "sha256": "635a553cc6371aff503150d61e852b14106afc391d498afbb3cd1080a36b538e"
+  },
+  {
+    "source": "design/teacher-cards-20261113/teacher-02-assignment-encouragement-preview.png",
+    "sourceSHA256": "852c711575785727840cfac5920d57055611f57be59ce38f73d5d082a0d2d7f1",
+    "file": "assets/relationships/cards/teacher-02-assignment-encouragement-20261113.webp",
+    "sha256": "23024cdde8705efa3cd86eca4a823ae538aa4734d75f697b655a653313d98b9d"
+  },
+  {
+    "source": "design/teacher-cards-20261113/teacher-03-revise-assignment-b-cost-preview.png",
+    "sourceSHA256": "71cbc77a8968457c29f596abd28c97604f52f13a45abb1cb63a98d0a61f5d880",
+    "file": "assets/relationships/cards/teacher-03-revise-assignment-20261113.webp",
+    "sha256": "ca0891d2e25453b5449518ff1eea80c708656bb1732148dc8ddd56356727a4ac"
+  },
+  {
+    "source": "design/teacher-cards-20261113/teacher-04-campus-lecture-preview.png",
+    "sourceSHA256": "c0d135d8f5cd1fed305c5a87f10dd0eb59807112466b15daadc6e449196a23f9",
+    "file": "assets/relationships/cards/teacher-04-campus-lecture-20261113.webp",
+    "sha256": "97605685910a2052aeae44ecb581462450f2632fff23f633986f2aa0f5f1e213"
+  },
+  {
+    "source": "design/education-progress-20261113-monthly/bachelor-progress-scroll-preview.png",
+    "sourceSHA256": "cd1361aec0c4781884a84233616bb2f9562e1e6d3d981654edf15d10abb4f11b",
+    "rect": [
+      0,
+      0,
+      756,
+      390
+    ],
+    "file": "assets/education/bachelor-monthly-header.webp",
+    "sha256": "0263753957d8c67018cf46e877953cda2b3e3b72464bdaa77fdf55efb5833307"
+  },
+  {
+    "source": "design/education-progress-20261113-monthly/master-progress-scroll-preview.png",
+    "sourceSHA256": "d28231f6977faab891ad22fce41115510b2523b063097951d20d547aa04a18b0",
+    "rect": [
+      0,
+      0,
+      756,
+      390
+    ],
+    "file": "assets/education/master-monthly-header.webp",
+    "sha256": "a7d63ff6aa9afafbec92ead5b37f4bdf54cb80fd4db1a1d79901bb871aab5319"
+  },
+  {
+    "source": "design/education-progress-20261113-monthly/doctorate-progress-scroll-preview.png",
+    "sourceSHA256": "a823769667c2bb673e962c0220ff0058c158229ef5b29c23ec7a51539f95e13d",
+    "rect": [
+      0,
+      0,
+      756,
+      390
+    ],
+    "file": "assets/education/doctorate-monthly-header.webp",
+    "sha256": "600c3e8e2adf6fbefce906635fca6786141609d49fccda7a1c6c40314a9f10be"
+  },
+  {
+    "source": "design/education-progress-20261113-monthly/transfer-aa-progress-scroll-preview.png",
+    "sourceSHA256": "8089958cee48030a2d3330ecc4b0f3ef5ace9e43c445fada8792051103fe9c4a",
+    "rect": [
+      0,
+      0,
+      756,
+      390
+    ],
+    "file": "assets/education/transfer-aa-monthly-header.webp",
+    "sha256": "d6c280505a74b360d912c28742cf5b3dbf927ae0e40907b668849d5cf8af6572"
+  }
+]

@@ -1,0 +1,202 @@
+{
+  "category": "教师",
+  "status": "confirmed",
+  "runtimeIntegrated": true,
+  "tool": "built-in image_gen",
+  "items": [
+    {
+      "gender": "female",
+      "count": 5,
+      "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-f74af020-14f3-4d35-88cb-2a3ad65d0885.png",
+      "prompt": "Use case: illustration-story. Asset type: one square portrait contact sheet for the existing Chinese life-simulation game Wealth Life, NEW teacher/professor relationship category. Generate exactly FIVE DISTINCT adult female university/community-college teachers in ONE sheet, arranged three at top and two centered at bottom, matching the reference sheets' layout with five separate evenly spaced circular light olive-green crayon backdrops on a warm cream paper ground. Each character head-and-shoulders, clear complete head/hair and shoulders inside own circle, similar head sizes and friendly gentle expressions, facing viewer or slight3/4. No overlaps, no text or numbers. Match reference handdrawn colored-pencil/crayon texture, warm storybook outlined faces, dot/oval dark expressive eyes, subtle cheek blush, paper grain. Reference image1 and2 are STYLE/LAYOUT references ONLY: draw NEW recognizable faces and outfits; do not reuse their faces or copy manager aprons. These are adult faculty, no children or student uniforms; professional casual academic clothes, no graduation cap/gown, no foodservice aprons, no coffeeshop uniform, no props covering face. Age range30s to70s clearly distinguishable yet consistent gentle game style. Distinct identities: 1. early30s woman with warm medium skin, straight black shoulder-length hair tucked behind ear, thin oval glasses, sage cardigan over ivory blouse; 2. early40s woman with tan skin, short auburn pixie cut, no glasses, muted terracotta blazer over cream top; 3. early50s woman with light skin, softly wavy dark-brown hair tied low with a few gray strands, square glasses, dusty-blue knit jacket; 4. early60s woman with deep brown skin, salt-and-pepper short natural curls, no glasses, plum cardigan and pale-yellow blouse; 5. early70s woman with light-medium skin, silver short bob, round glasses, warm ochre vest over cream shirt. Calm approachable teacher personalities across all five. Keep circles large and readable, center aligned composition with tidy margins, each circle isolated so artwork can later be cropped without touching another portrait. Five portraits total, no extra people, no labels, no watermark.",
+      "file": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png",
+      "sha256": "fcc00d514acf7d2d4a7854b3b27ce6df442babd68fe523257678edf842ffbdb5",
+      "status": "confirmed",
+      "layout": "3 top / 2 bottom, five portraits on one sheet",
+      "confirmedAt": "2026-11-13"
+    },
+    {
+      "gender": "male",
+      "count": 5,
+      "source": "/Users/yumifang/.codex/generated_images/01a1d5e5-e708-7ed2-bdea-df8dcbf3b7d2/exec-4962ba9e-07c6-41e5-bbcd-7cebe6151afd.png",
+      "prompt": "Use case: illustration-story. Asset type: one square portrait contact sheet for the existing Chinese life-simulation game Wealth Life, NEW teacher/professor relationship category. Generate exactly FIVE DISTINCT adult male university/community-college teachers in ONE sheet, arranged three at top and two centered at bottom, matching the reference sheets' layout with five separate evenly spaced circular light olive-green crayon backdrops on a warm cream paper ground. Each character head-and-shoulders, clear complete head/hair and shoulders inside own circle, similar head sizes and friendly gentle expressions, facing viewer or slight3/4. No overlaps, no text or numbers. Match reference handdrawn colored-pencil/crayon texture, warm storybook outlined faces, dot/oval dark expressive eyes, subtle cheek blush, paper grain. Reference image1 and2 are STYLE/LAYOUT references ONLY: draw NEW recognizable faces and outfits; do not reuse their faces or copy manager aprons. These are adult faculty, no children or student uniforms; professional casual academic clothes, no graduation cap/gown, no foodservice aprons, no coffeeshop uniform, no props covering face. Age range30s to70s clearly distinguishable yet consistent gentle game style. Distinct identities: 1. early30s man with light-medium skin, short slightly curly dark hair, clean shaven, no glasses, muted teal button-up; 2. early40s man with deep brown skin, closely cropped black hair, neat short beard, thin rectangular glasses, camel blazer over ivory shirt; 3. early50s man with tan skin, black hair with gray temples, clean shaven, no glasses, olive knit vest over pale-blue shirt; 4. early60s man with light skin, receding silver hair, softly trimmed gray beard, round glasses, dusty-blue cardigan over cream shirt; 5. early70s man with medium skin, swept-back white hair, small white moustache, no glasses, warm brown tweed jacket over a pale sage shirt. Calm approachable teacher personalities across all five. Keep circles large and readable, center aligned composition with tidy margins, each circle isolated so artwork can later be cropped without touching another portrait. Five portraits total, no extra people, no labels, no watermark.",
+      "file": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png",
+      "sha256": "7e9846d260b3cfe6efb7a5ead4cc4005a3575ca0106689245ad26003dbf36955",
+      "status": "confirmed",
+      "layout": "3 top / 2 bottom, five portraits on one sheet",
+      "confirmedAt": "2026-11-13"
+    }
+  ],
+  "confirmedAt": "2026-11-13",
+  "allocation": {
+    "status": "confirmed",
+    "confirmedAt": "2026-11-13",
+    "perGender": 5,
+    "selection": "按性别从未使用头像随机分配，成功保存后固定",
+    "exhausted": "保留原占位，等待补画，不重复使用",
+    "graduated": "保留原头像，不释放给新教师",
+    "runtimeIntegrated": false
+  },
+  "runtimeResources": [
+    {
+      "source": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png",
+      "sourceSHA256": "fcc00d514acf7d2d4a7854b3b27ce6df442babd68fe523257678edf842ffbdb5",
+      "rect": [
+        8,
+        125,
+        415,
+        620
+      ],
+      "file": "assets/relationships/avatars/teacher-female-01.webp",
+      "sha256": "49f61329791a0e99949268e4582db368d6f53b8bdd62e42a445ccc9a5c80fde4",
+      "cropFile": "design/teacher-avatars-20261113/teacher-female-01-crop.png",
+      "cropSHA256": "d5bdfcf6d1f6a18b58bdfd4032c2ddaf90c50ff1c06dbdff94e72865955992ba",
+      "id": "teacher-female-01",
+      "sourceFile": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png"
+    },
+    {
+      "source": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png",
+      "sourceSHA256": "fcc00d514acf7d2d4a7854b3b27ce6df442babd68fe523257678edf842ffbdb5",
+      "rect": [
+        416,
+        125,
+        832,
+        620
+      ],
+      "file": "assets/relationships/avatars/teacher-female-02.webp",
+      "sha256": "85eb27ae1e69d1a5c7fb16efd390b96374841c12fbfa2dac2ae0872c9d019e40",
+      "cropFile": "design/teacher-avatars-20261113/teacher-female-02-crop.png",
+      "cropSHA256": "1c7989a375304b9a08d68237f3e6668f731dd6d0b070df9db31cd1d1901d9a2e",
+      "id": "teacher-female-02",
+      "sourceFile": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png"
+    },
+    {
+      "source": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png",
+      "sourceSHA256": "fcc00d514acf7d2d4a7854b3b27ce6df442babd68fe523257678edf842ffbdb5",
+      "rect": [
+        830,
+        125,
+        1248,
+        620
+      ],
+      "file": "assets/relationships/avatars/teacher-female-03.webp",
+      "sha256": "bebbc1dc29e877ca54e3f63b94f26d5afc54b591f3a8d5a2c272e89e71a80ea4",
+      "cropFile": "design/teacher-avatars-20261113/teacher-female-03-crop.png",
+      "cropSHA256": "fdf18b9cda283549a3fc9dbcc10d803f75e96f2736d2a0638ab0afba448abf62",
+      "id": "teacher-female-03",
+      "sourceFile": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png"
+    },
+    {
+      "source": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png",
+      "sourceSHA256": "fcc00d514acf7d2d4a7854b3b27ce6df442babd68fe523257678edf842ffbdb5",
+      "rect": [
+        130,
+        640,
+        596,
+        1160
+      ],
+      "file": "assets/relationships/avatars/teacher-female-04.webp",
+      "sha256": "d2b3053807cc2feae7718e19ecc9d7f3a9358e6b2f5b608237193c3ca2f57bc6",
+      "cropFile": "design/teacher-avatars-20261113/teacher-female-04-crop.png",
+      "cropSHA256": "ee55c56625a20145b11a74a73eaa193b00b36d9c4f537066e32292e9dd31fff9",
+      "id": "teacher-female-04",
+      "sourceFile": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png"
+    },
+    {
+      "source": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png",
+      "sourceSHA256": "fcc00d514acf7d2d4a7854b3b27ce6df442babd68fe523257678edf842ffbdb5",
+      "rect": [
+        624,
+        640,
+        1100,
+        1160
+      ],
+      "file": "assets/relationships/avatars/teacher-female-05.webp",
+      "sha256": "246cc1dcb6729d13947ccf7ec96367eb1023b0535c6179bb17a6210d6afeb75f",
+      "cropFile": "design/teacher-avatars-20261113/teacher-female-05-crop.png",
+      "cropSHA256": "26d691de76950cf9a9ad51970f73b119edc1ccf659944089a30b8523aa7cb524",
+      "id": "teacher-female-05",
+      "sourceFile": "design/teacher-avatars-20261113/teacher-female-batch-05-preview.png"
+    },
+    {
+      "source": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png",
+      "sourceSHA256": "7e9846d260b3cfe6efb7a5ead4cc4005a3575ca0106689245ad26003dbf36955",
+      "rect": [
+        8,
+        125,
+        415,
+        620
+      ],
+      "file": "assets/relationships/avatars/teacher-male-01.webp",
+      "sha256": "bcd0fd7adf30acb025a7f38af4d777dc61b65e525492a84287adcb5355e0789f",
+      "cropFile": "design/teacher-avatars-20261113/teacher-male-01-crop.png",
+      "cropSHA256": "861b7871ac913a54e6aa8d506e2ec896abbecf0ca1b438b7f7bf09be9cce487f",
+      "id": "teacher-male-01",
+      "sourceFile": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png"
+    },
+    {
+      "source": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png",
+      "sourceSHA256": "7e9846d260b3cfe6efb7a5ead4cc4005a3575ca0106689245ad26003dbf36955",
+      "rect": [
+        416,
+        125,
+        832,
+        620
+      ],
+      "file": "assets/relationships/avatars/teacher-male-02.webp",
+      "sha256": "422e8a334f8bb676ce852098d5ebb784377b7d2b02b3c26fd8877359a99eac1b",
+      "cropFile": "design/teacher-avatars-20261113/teacher-male-02-crop.png",
+      "cropSHA256": "3409285c35cf68f521212dfe592ff5685740e23156d5df3f37033db05090d6e8",
+      "id": "teacher-male-02",
+      "sourceFile": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png"
+    },
+    {
+      "source": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png",
+      "sourceSHA256": "7e9846d260b3cfe6efb7a5ead4cc4005a3575ca0106689245ad26003dbf36955",
+      "rect": [
+        830,
+        125,
+        1248,
+        620
+      ],
+      "file": "assets/relationships/avatars/teacher-male-03.webp",
+      "sha256": "76ae1fb1cf8267228f4a1b6d23bb61d486d743f9fb64b1c4e925cc073fc0c331",
+      "cropFile": "design/teacher-avatars-20261113/teacher-male-03-crop.png",
+      "cropSHA256": "9504c5b0d96f1e25fbaa3ce2e305ddfb21de58817815cfa06ae18bb8303f407b",
+      "id": "teacher-male-03",
+      "sourceFile": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png"
+    },
+    {
+      "source": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png",
+      "sourceSHA256": "7e9846d260b3cfe6efb7a5ead4cc4005a3575ca0106689245ad26003dbf36955",
+      "rect": [
+        130,
+        640,
+        596,
+        1160
+      ],
+      "file": "assets/relationships/avatars/teacher-male-04.webp",
+      "sha256": "3dc0f0f8bc826c1aab9d5fa910194d2ffaf5576b31aa243c9b680130ef822fd5",
+      "cropFile": "design/teacher-avatars-20261113/teacher-male-04-crop.png",
+      "cropSHA256": "138a97fa74054a9a679ea0e3231810febf223c0948f64d6d65b2869b1c7119d7",
+      "id": "teacher-male-04",
+      "sourceFile": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png"
+    },
+    {
+      "source": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png",
+      "sourceSHA256": "7e9846d260b3cfe6efb7a5ead4cc4005a3575ca0106689245ad26003dbf36955",
+      "rect": [
+        624,
+        640,
+        1100,
+        1160
+      ],
+      "file": "assets/relationships/avatars/teacher-male-05.webp",
+      "sha256": "8c22547876408e572ff1476f7b2862b0c35e3b43eb1c19bb185dcbda8862505c",
+      "cropFile": "design/teacher-avatars-20261113/teacher-male-05-crop.png",
+      "cropSHA256": "832709795a741a7f90215cc092f93e5b96db6a907dd2aa089556417b25c90608",
+      "id": "teacher-male-05",
+      "sourceFile": "design/teacher-avatars-20261113/teacher-male-batch-05-preview.png"
+    }
+  ]
+}

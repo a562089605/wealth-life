@@ -1,0 +1,210 @@
+{
+  "date": "2026-11-13",
+  "scope": "本轮学历、五在读页、教师10外观/五卡、同学帮助月付衔接及相关旧基线；不是全游戏分支验收",
+  "runtimeChanged": false,
+  "productionRechecked": false,
+  "findings": [
+    {
+      "priority": 1,
+      "topic": "学历运行尚未接入新规则",
+      "detail": "education-plans.js仍旧价/旧学制/一次付清，education-pages.js仍可暂停退出退款，缺少高中直本、月付和出门门槛。"
+    },
+    {
+      "priority": 1,
+      "topic": "学历工资",
+      "detail": "最终采用最高学历8/12/18/25%，非咖啡旧叠加及博士18%/跳过调薪仍需适配；不能沿历史累计提案实现。",
+      "files": [
+        "core.js:2",
+        "core.js:6",
+        "coffee-salary.js:4"
+      ]
+    },
+    {
+      "priority": 1,
+      "topic": "同学帮助卡月付衔接",
+      "detail": "现有relationship-life-cards.js:56直接减月份，尚未加入结清当前课程全部剩余学费的检查和原子付款；新月付接入必须一并补。"
+    },
+    {
+      "priority": 1,
+      "topic": "仍需确定的付款边界",
+      "detail": "切档后的剩余款/剩余月份重算方案未最终确认；康复、欠费期间学费与进度、正常毕业尾款尚需完整明确。筹款入口必须在房屋内可达。"
+    },
+    {
+      "priority": 1,
+      "topic": "教师运行尚未接入",
+      "detail": "教师类别/每段报名新增1人初始10/与首期缴费同笔保存未接入；10头像仍两合页，未拆分绑定。"
+    },
+    {
+      "priority": 2,
+      "topic": "第5张图文不一致",
+      "detail": "旧预览仍师兄或师姐、女性店主，需与后续确认统一师兄对齐。公式方向正确，触发/入职条件、其他数值和选项尚待最终确认。"
+    },
+    {
+      "priority": 2,
+      "topic": "在读页示例状态",
+      "detail": "四张已定数值页0进度/已缴0/首期待缴，与报名缴首期成功后开始课程不一致；运行用真实账本，不能烘焙示例数据。"
+    },
+    {
+      "priority": 2,
+      "topic": "切档进度显示",
+      "detail": "完成量需独立保存，不能用已过月数直接除新档位总月份；自由时间60只是基础示例，实际还扣其他活动/必要照护。"
+    },
+    {
+      "priority": 2,
+      "topic": "职业型副学士",
+      "detail": "省略专业是普通学历规则，职业型后续补专业。其费用/学制未确认，不能因画稿确认套AA8600/36或24月份。"
+    },
+    {
+      "priority": 2,
+      "topic": "教师次数与日常联系",
+      "detail": "前2张有逐人逐卡一次记录，第3/4张清单未完整记录次数；教师日常互动、毕业后联系方式及第5门槛待定。前4张全A合计仅亲密+12，不能默认已能达80。"
+    },
+    {
+      "priority": 2,
+      "topic": "动态身份称谓",
+      "detail": "卡画均写老师，研究生需动态显示导师；示意人物不得覆盖实际联系人的固定性别/头像或课程绑定。"
+    },
+    {
+      "priority": 3,
+      "topic": "历史元数据错位",
+      "detail": "第3卡第一历史稿choices误带新版短标签，第二历史稿B误带后加时间能量；历史PNG及最终稿正确，后续应按各原图校准归档元数据。"
+    },
+    {
+      "priority": 3,
+      "topic": "此前店长基准结论需纠正",
+      "detail": "coffee-salary.js已有manager年薪基准58000。无学历技能例×1.3为75400/年，约6283.33/月；实际仍须结合最高学历/技能，不能将例值当所有玩家固定金额。"
+    }
+  ],
+  "teacherCardReview": [
+    {
+      "title": "课后请教",
+      "A": "1h，压力-3，亲密+3",
+      "B": "无变化",
+      "result": "最终图与确认一致"
+    },
+    {
+      "title": "作业上的鼓励",
+      "single": "幸福+3，压力-2，亲密+2",
+      "result": "最终图与确认一致"
+    },
+    {
+      "title": "修改作业",
+      "A": "2h，能量-2，压力-2，亲密+3",
+      "B": "1h，能量-1，压力+1",
+      "result": "最终修订图与确认一致；额外修改而非正常课堂重复耗时"
+    },
+    {
+      "title": "一起听场讲座",
+      "A": "2h，能量-2，幸福+2，亲密+4",
+      "B": "无变化",
+      "result": "最终图与确认一致；课程外活动"
+    },
+    {
+      "title": "老师牵线当店长",
+      "confirmed": "现有店长岗位按原规则的基础工资×1.3；师兄正文",
+      "result": "图仍需同步师兄，条件待定"
+    }
+  ],
+  "teacherAllA": {
+    "hours": 5,
+    "energy": -4,
+    "stress": -7,
+    "happiness": 5,
+    "intimacy": 12
+  },
+  "assetsChecked": 42,
+  "assetIssues": [],
+  "baselineSuitesPassed": 6,
+  "monthly": [
+    {
+      "route": "AA",
+      "pace": "40h",
+      "months": 36,
+      "total": 8600,
+      "usual": "238.89",
+      "last": "238.85",
+      "sumCorrect": true
+    },
+    {
+      "route": "AA",
+      "pace": "60h",
+      "months": 24,
+      "total": 8600,
+      "usual": "358.33",
+      "last": "358.41",
+      "sumCorrect": true
+    },
+    {
+      "route": "直接本科",
+      "pace": "40h",
+      "months": 72,
+      "total": 30300,
+      "usual": "420.83",
+      "last": "421.07",
+      "sumCorrect": true
+    },
+    {
+      "route": "直接本科",
+      "pace": "60h",
+      "months": 48,
+      "total": 30300,
+      "usual": "631.25",
+      "last": "631.25",
+      "sumCorrect": true
+    },
+    {
+      "route": "AA衔接本科",
+      "pace": "40h",
+      "months": 36,
+      "total": 15200,
+      "usual": "422.22",
+      "last": "422.30",
+      "sumCorrect": true
+    },
+    {
+      "route": "AA衔接本科",
+      "pace": "60h",
+      "months": 24,
+      "total": 15200,
+      "usual": "633.33",
+      "last": "633.41",
+      "sumCorrect": true
+    },
+    {
+      "route": "硕士",
+      "pace": "40h",
+      "months": 36,
+      "total": 15800,
+      "usual": "438.89",
+      "last": "438.85",
+      "sumCorrect": true
+    },
+    {
+      "route": "硕士",
+      "pace": "60h",
+      "months": 24,
+      "total": 15800,
+      "usual": "658.33",
+      "last": "658.41",
+      "sumCorrect": true
+    },
+    {
+      "route": "专业博士",
+      "pace": "40h",
+      "months": 54,
+      "total": 78600,
+      "usual": "1455.56",
+      "last": "1455.32",
+      "sumCorrect": true
+    },
+    {
+      "route": "专业博士",
+      "pace": "60h",
+      "months": 36,
+      "total": 78600,
+      "usual": "2183.33",
+      "last": "2183.45",
+      "sumCorrect": true
+    }
+  ]
+}

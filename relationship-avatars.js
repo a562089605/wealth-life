@@ -1,7 +1,7 @@
 // Approved portrait resources. Bind only within the existing whole-save transaction.
 (function(root){'use strict';
- const roles=['manager','coworker','classmate','petfriend','landlord'];
- const catalog=roles.flatMap(role=>['female','male'].flatMap(gender=>Array.from({length:6},(_,i)=>{
+ const roles=['manager','coworker','classmate','petfriend','landlord','teacher'];
+ const catalog=roles.flatMap(role=>['female','male'].flatMap(gender=>Array.from({length:role==='teacher'?5:6},(_,i)=>{
   const id=role+'-'+gender+'-'+String(i+1).padStart(2,'0');
   return {id,role,gender,file:'assets/relationships/avatars/'+id+'.webp'};
  })));
