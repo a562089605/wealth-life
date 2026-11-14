@@ -400,5 +400,300 @@
     "isolatedChromiumGroups": 16,
     "scriptErrors": 0,
     "realIPhoneTested": false
+  },
+  "sharedInterestMapCards": {
+    "status": "all-art-confirmed-remaining-gates-pending",
+    "confirmation": "用户指定已经有相同兴趣爱好的联系人邀请玩家，并回复“好”继续首张讨论",
+    "themes": [
+      "咖啡品鉴",
+      "烘焙",
+      "摄影",
+      "绘画"
+    ],
+    "eligibility": "联系人已固定拥有该兴趣，玩家也已学习相同兴趣；不临时补造共同兴趣，不做未入门体验邀请。",
+    "pending": [
+      "地图卡触发概率留待后续统一调整",
+      "与原地图事件抽取顺序待确认"
+    ],
+    "runtimeIntegrated": false,
+    "published": false,
+    "tastingInvitation": {
+      "status": "confirmed-art-eligibility-pending",
+      "confirmedAt": "2026-11-13",
+      "confirmation": "用户回复“确认”",
+      "title": "一起品鉴咖啡",
+      "description": "联系人发来消息：“发现一家店有咖啡品鉴活动，你也喜欢这个，要不要一起去？”",
+      "A": {
+        "label": "好呀，一起去",
+        "cash": -30,
+        "hours": 2,
+        "energy": -1,
+        "xp": 10,
+        "happiness": 4,
+        "stress": -4,
+        "intimacy": 3
+      },
+      "B": {
+        "label": "这次先不去了",
+        "effects": {}
+      },
+      "costScope": "30美元为玩家自己的参与费用，不替联系人付款",
+      "pending": [
+        "一次外出的兴趣卡触发概率及与原地图事件的抽取顺序"
+      ],
+      "runtimeIntegrated": false,
+      "published": false,
+      "artConfirmedAt": "2026-11-13",
+      "artConfirmation": "用户确认隐藏无变化及B文字整体居中的修订稿",
+      "file": "design/hobbies-20261113/shared-tasting-invitation-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-dc9f3c5d-732f-4789-a423-186974a86b29.png",
+      "sha256": "b8525d111654b960bc2d5d6531a387b5eda9c3d2962accc54e1c9df6b05a0a7f",
+      "hiddenCopy": [
+        "无变化"
+      ],
+      "layout": "B标记与文字整体居中，移除右侧说明和分隔线；A七项效果保留",
+      "archive": [
+        {
+          "file": "design/hobbies-20261113/archive/shared-tasting-original-preview.png",
+          "sha256": "107d6c55aa2ee2610726bac8b56cad1187a4af03a95faa35117e8670d66737b3",
+          "status": "superseded"
+        }
+      ]
+    },
+    "maxLevelRule": {
+      "status": "confirmed",
+      "confirmation": "用户回复“可以”，同意满级仍可收到地图共同兴趣邀请",
+      "eligibleAtMax": true,
+      "xpCap": 800,
+      "gainXPAtMax": 0,
+      "hideXPGainAtMax": true,
+      "otherEffectsUnchanged": true,
+      "personalPracticeStillStopsAtMax": true
+    },
+    "requestedCardCountPerInterest": 5,
+    "draftCatalog": "design/hobbies-20261113/shared-interest-map-cards-draft.json",
+    "confirmedAt": "2026-11-13",
+    "tastingExploreConfirmed": {
+      "file": "design/hobbies-20261113/shared-tasting-explore-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-c301899a-d68d-4ab7-b99e-dcc9e308cf37.png",
+      "sha256": "dc3eea78750dcd8870e3c65e4132ee22832c8115fb350f8af2bbdd5e2f6ff7cf",
+      "artConfirmed": true,
+      "followupArtConfirmed": true,
+      "runtimeIntegrated": false
+    },
+    "tastingExploreQueueFollowupConfirmed": {
+      "file": "design/hobbies-20261113/shared-tasting-explore-queue-followup-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-57beb78b-27d8-4e66-a577-9a5198e9f60e.png",
+      "sha256": "5a6b6ff78396c1d6d9d4ee97ec65321cc196a162eac3f543757bd62002213fb1",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "tastingExploreNoQueueFollowupConfirmed": {
+      "file": "design/hobbies-20261113/shared-tasting-explore-no-queue-followup-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-d5d0c435-dd64-4104-9eaa-8d4fc76674ec.png",
+      "sha256": "73f652e6c51e0c684bb3a3817ddf57e149cdb2849d26e25cb8e09214e3cf315f",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "tastingExploreNoSuitableFollowupConfirmed": {
+      "file": "design/hobbies-20261113/shared-tasting-explore-no-suitable-followup-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-2164b822-ed86-44ad-95a7-790f49473231.png",
+      "sha256": "bdb86050e50f8e81b0d2a618118341c3c7076f308ece5a8d61165029f214d2c7",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "tastingCompareConfirmed": {
+      "file": "design/hobbies-20261113/shared-tasting-compare-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-c72f3911-ca2e-461b-bda8-4af2ce7afe45.png",
+      "sha256": "3bb48a4989162f96cafb7447de486c7b3ed74e7e80fe89a4336043bb795aaaf9",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "bakingInviteConfirmed": {
+      "file": "design/hobbies-20261113/shared-baking-invite-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-3f6603e5-f40e-45f4-8c45-79b0801517f5.png",
+      "sha256": "7cdb8a24456ee3036cf3f0f3fe6d7e93cca828bc9eeb782c3289070201960d97",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "bakingDecorationConfirmed": {
+      "file": "design/hobbies-20261113/shared-baking-decoration-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-034bdf1e-43ea-48b5-9eaa-67ca4b5c5157.png",
+      "sha256": "c774007b56eb89e42529b26a776630c42e6656e09cf707c55c20a9125cb84226",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "bakingTreatConfirmed": {
+      "file": "design/hobbies-20261113/shared-baking-treat-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-625dbc31-4041-4f99-8312-a68f4aa96029.png",
+      "sha256": "d8c7dbd38f2c8f1eb7784d1f67c3370add97e3f1b5709635af8cbb360a50d54f",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "bakingEarringConfirmed": {
+      "file": "design/hobbies-20261113/shared-baking-earring-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-f3d0ce1f-fc9f-4413-9338-0303be086feb.png",
+      "sha256": "2a14abb224ba65055f4764138e164edb0ae0cad861cffef8b6a32240564ca69d",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "bakingCakeConfirmed": {
+      "file": "design/hobbies-20261113/shared-baking-cake-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-22c43f23-f427-460b-9a73-8ec4ee502010.png",
+      "sha256": "fbcaaec722306ceb7f2effa2e0f5c823eb955ba097ec9f2bada5500097d2103a",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "photographyInviteConfirmed": {
+      "file": "design/hobbies-20261113/shared-photography-invite-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-2c841eb3-3620-493a-9c5f-b95045b83974.png",
+      "sha256": "d754f50906bc17a66ffe4b1a50b98fa5e97e1c514c25de1f5c1bad5448de92fc",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "photographyCompositionConfirmed": {
+      "file": "design/hobbies-20261113/shared-photography-composition-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-6dfab340-28dc-4035-a89e-45f5aa9fd782.png",
+      "sha256": "5c9b7009f34bda18da8f4c1dd14e731c7ba8676ecf20b9b843b852f62b5a8848",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "photographyShareConfirmed": {
+      "file": "design/hobbies-20261113/shared-photography-share-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-14a6a7dd-cb37-4fc9-8934-52529cdf1da9.png",
+      "sha256": "0a48c8dc2c8f28012dfc929b626dbb29608b990bf297fcfb5f64bc177db49b19",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "photographyOutingConfirmed": {
+      "file": "design/hobbies-20261113/shared-photography-outing-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-55e19797-02b5-48db-811a-5a450d87c226.png",
+      "sha256": "83abb8262f25115f0c34f3a4663f606d6ab5a3aeafd2e89f8d6e6e7e18808a6c",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "photographySunriseConfirmed": {
+      "file": "design/hobbies-20261113/shared-photography-sunrise-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-2fbde170-eee2-49c6-b9b4-96ff97a980c2.png",
+      "sha256": "439655b0484333c9608750eb71ab0ba2595ef839454cb105e356bf5409c4cff0",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "drawingSpringConfirmed": {
+      "file": "design/hobbies-20261113/shared-drawing-spring-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-ca3725d0-e29e-40b3-b898-2d57725ed123.png",
+      "sha256": "4f7e8bac1f927d6661d6473420ee04f7d74b71c9a3db2233bbdb5ae258c7646e",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "drawingFeedbackConfirmed": {
+      "file": "design/hobbies-20261113/shared-drawing-feedback-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-f5c6da29-6a13-49c8-a2f1-8d30b2ef2915.png",
+      "sha256": "611f542f512f8d2656fa3dc5049bf7c1796924798f6f2824932ba73b4070fec1",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "drawingCardConfirmed": {
+      "file": "design/hobbies-20261113/shared-drawing-card-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-71c99146-4ef4-484b-8120-a176a4576a89.png",
+      "sha256": "0a8b1c707f7f0d4ac4f91ae52bcb35708545242407de404fa479019d23551fe5",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-13",
+      "runtimeIntegrated": false
+    },
+    "drawingMuralConfirmed": {
+      "file": "design/hobbies-20261113/shared-drawing-mural-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-b38d22e9-68c3-44c8-a49e-236ec7a95026.png",
+      "sha256": "6afa632a12679d4f6abc8bf259c65204873342094b48b0b4975e5e828cfdff7b",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-14",
+      "runtimeIntegrated": false
+    },
+    "drawingExhibitionConfirmed": {
+      "file": "design/hobbies-20261113/shared-drawing-exhibition-confirmed.png",
+      "sourceFile": "/workspace/generated_images/exec-d7512b9e-6660-429c-aa4d-4c63f21e9a71.png",
+      "sha256": "988d52ab1dcf8dee19a25a7d37af312d601b2bb90ede35ee3da5920b44b9b819",
+      "artConfirmed": true,
+      "artConfirmedAt": "2026-11-14",
+      "runtimeIntegrated": false
+    },
+    "confirmedMainArtCount": 20,
+    "confirmedFollowupArtCount": 3,
+    "intimacyAndOccurrenceRules": {
+      "status": "confirmed",
+      "confirmedAt": "2026-11-14",
+      "extraIntimacyThreshold": null,
+      "scope": "每位联系人、每张共同兴趣主卡",
+      "lifetimeLimit": 1,
+      "choiceBCounts": true,
+      "followupsShareParentOccurrence": true,
+      "reservation": "抽到并成功保存才占用；待处理卡结算失败保留原卡重试，刷新不得重抽或重复结算",
+      "runtimeIntegrated": false
+    },
+    "mapEntryRule": {
+      "status": "confirmed",
+      "confirmedAt": "2026-11-14",
+      "entry": "原地图外出",
+      "themes": [
+        "咖啡品鉴",
+        "烘焙",
+        "摄影",
+        "绘画"
+      ],
+      "initiator": "符合共同兴趣条件的已有联系人",
+      "addMapLocations": false,
+      "runtimeIntegrated": false
+    },
+    "themeWeightRule": {
+      "status": "confirmed",
+      "confirmedAt": "2026-11-14",
+      "selection": "合资格兴趣类别间等概率",
+      "eligibleTheme": "有符合共同兴趣条件的已有联系人，且该联系人仍有未使用主卡",
+      "excludeExhaustedThemes": true,
+      "contactCountDoesNotIncreaseThemeWeight": true,
+      "runtimeIntegrated": false
+    },
+    "withinThemeSelectionRule": {
+      "status": "confirmed",
+      "confirmedAt": "2026-11-14",
+      "order": [
+        "已选兴趣内合资格联系人等概率",
+        "所选联系人该兴趣未使用主卡等概率"
+      ],
+      "eligibleContact": "固定拥有已选共同兴趣，且该兴趣仍有未使用主卡的已有联系人",
+      "runtimeIntegrated": false
+    },
+    "mapTriggerProbability": {
+      "status": "deferred-by-user",
+      "confirmedAt": "2026-11-14",
+      "probability": null,
+      "proposed10PercentAdopted": false,
+      "instruction": "触发地图卡的概率后续再调，不设置默认概率、不启用自然抽卡",
+      "runtimeIntegrated": false
+    },
+    "preparedModules": {
+      "data": "shared-interest-card-data.js",
+      "selection": "shared-interest-selection.js",
+      "test": "qa/shared-interest-selection.test.cjs",
+      "loadedByGame": false,
+      "settlementIntegrated": false,
+      "naturalDrawEnabled": false
+    }
   }
 }
