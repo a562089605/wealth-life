@@ -1,0 +1,45 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "status": "art-and-rules-confirmed-local-staging-not-implemented-not-published",
+  "page": "晋升店长",
+  "artifacts": [
+    {
+      "file": "store-manager-promotion-confirmed.png",
+      "source": "/workspace/generated_images/exec-d9794df1-098f-495a-b3ab-7cf267828155.png",
+      "status": "confirmed",
+      "sha256": "3cedc120b33dbcda88b68b9da777ea2fa431024107c36431cbe7916b806c3536"
+    },
+    {
+      "file": "archive/store-manager-conditions-only-superseded.png",
+      "source": "/workspace/generated_images/exec-69ac4beb-4b31-4ac3-bbfc-7a5cd840307c.png",
+      "status": "superseded",
+      "sha256": "acfd8394c1658b605b88516ded573dc63bf9b2c263f2fc65db30293b36ac3730"
+    }
+  ],
+  "requirements": [
+    "当前在职值班主管",
+    "值班主管任职满12个月",
+    "拉花Lv.3",
+    "手冲咖啡Lv.3",
+    "顾客服务Lv.5",
+    "管理技能Lv.3",
+    "原职业经理好感达到8，与关系亲密度分开"
+  ],
+  "compensation": {
+    "baseAnnualSalary": 58000,
+    "monthlyFixedBonus": 500,
+    "bonusCondition": "当月有缺席则无固定奖金，加班不能补回",
+    "monthlyBaseTips": {
+      "normal": 450,
+      "low": 337.5,
+      "peak": 675
+    },
+    "weeklyHours": 45,
+    "baseMonthlyFreeHours": 80,
+    "salaryFormula": "岗位基础年薪×（1＋最高学历加成）；技能不再自动调薪"
+  },
+  "effective": "全部条件满足后玩家明确确认，下个月生效",
+  "presentation": "图中日期和进度是示例；实际接入以原存档数据及真实DOM呈现，不把整张设计稿当游戏截图。",
+  "preservation": "旧画稿与规则记录保留；本次未修改原项目代码、SW、存档或发布。"
+}

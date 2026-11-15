@@ -1,0 +1,37 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "status": "art-confirmed-local-staging-not-implemented-not-published",
+  "artifacts": [
+    {
+      "page": "学历学习",
+      "file": "education-routes-confirmed.png",
+      "source": "/workspace/generated_images/exec-99ca19ff-ea77-411c-ae35-1ce2fc21a657.png",
+      "sha256": "3a5290be47eb5faded863139877320870c51a9f26f425acd538f3cd99fb3f050",
+      "artConfirmed": true
+    },
+    {
+      "page": "职业技能",
+      "file": "skills-management-course-confirmed.png",
+      "source": "/workspace/generated_images/exec-9f2cae80-e6ec-49ec-9cf9-3ad60d4344e2.png",
+      "sha256": "32abad3956caa467318b54ffb09a5b6fa429f913520823080ce66099dbe0b57e",
+      "artConfirmed": true
+    },
+    {
+      "page": "兴趣爱好",
+      "file": "hobbies-grid-confirmed.png",
+      "source": "/workspace/generated_images/exec-ef09d063-b7a3-43af-8ddb-d5e994852a05.png",
+      "sha256": "0c18c4cfea7c401d333eae744688f5aa6e3ec5cf9a3f56331f84c06fffd1d24c",
+      "artConfirmed": true
+    }
+  ],
+  "confirmedDesign": {
+    "education": "紧凑插画路线选择页；图中高中未报名为示例，转学型AA和直接本科为已存在路线，详细费用和学习安排进入详情页展示，不修改学历规则；在读页面及其他学历依实际状态处理。",
+    "skills": "拉花、手冲咖啡、管理课程三个入口；门店管理卡显示名称改为管理课程，插画改为通用管理学习书本、计划表，不把本次命名修订视为新增跨职业课程数值或职业收益授权。",
+    "hobbies": "两列两行四张插画入口；咖啡品鉴、烘焙、摄影、绘画；费用和练习结算移入既有详情页，原数值和限制不变。",
+    "navigation": "学习→学历学习/职业技能/兴趣爱好；子页返回学习；职业技能供职业入口共用，不复制经验或课程记录。",
+    "data": "图中日期、学历、等级和进度为示例，接入须真实DOM和实际存档数据。"
+  },
+  "preservation": "原确认稿及历史稿保留，不覆盖或删除；未重置存档，未改变地图触发概率。",
+  "scope": "仅本地待回填原仓库的画稿与记录，不是替代项目；未修改运行代码、SW或玩家存档，未提交或发布。"
+}

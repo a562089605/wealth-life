@@ -1,0 +1,28 @@
+{
+  "project": "a562089605/wealth-life",
+  "recoveredDate": "2026-11-15",
+  "source": {
+    "branch": "backup/wealth-life-2026-10-24-checkpoint",
+    "commit": "cf65502c1f2e82d3d291c4b8848dc6f8beb43e63",
+    "file": "progress/2026-10-24/wealth-life-coffee-chat-recovery-2026-10-24.md",
+    "sections": [
+      "4.1",
+      "4.2",
+      "10",
+      "10.1",
+      "10.2"
+    ]
+  },
+  "status": "recovered-historical-design-not-proof-of-current-runtime-integration",
+  "identities": {
+    "店长": "劳动岗位，无持股不分红",
+    "店长兼股东": "保留店长劳动收入，另按持股分红；不自动变为管理合伙人",
+    "在店管理合伙人": "原标准年薪60000、45h/周、80h/月基础自由时间；另按持股分红，无固定奖金和小费",
+    "不在店股东": "无该店工资，不承担日常管理，无固定上班消耗；持股分红，可另有工作"
+  },
+  "separation": "股份与劳动岗位分开；学历技能不放大分红；个人与门店账隔离，不自动担保或追加出资",
+  "handover": "旧记录最多1完整游戏月，次月退出管理；交接期按原合同工资工时，股权保留",
+  "historicalInvitation": "旧店长12个月、Service4/Management4、认可12是历史邀请条件；须结合本轮最新技能修订后续审，不恢复为当前最终晋升规则",
+  "currentScope": "先做咖啡师→值班主管→店长；合伙流程暂缓。当前四技能满级讨论仅针对在店管理合伙人，不扩展为不在店股东购股条件。",
+  "preservation": "仅找回与归档旧规则，不执行发布、恢复旧代码或修改存档。"
+}

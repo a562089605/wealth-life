@@ -1,0 +1,32 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "status": "confirmed-design-local-staging-not-implemented-not-published",
+  "navigation": {
+    "houseLearning": {
+      "hobbies": [
+        "咖啡品鉴",
+        "烘焙",
+        "摄影",
+        "绘画"
+      ],
+      "skills": [
+        "拉花",
+        "手冲咖啡",
+        "门店管理"
+      ]
+    },
+    "careerLearning": "职业→职业学习与学习→职业技能打开同一页，技能经验与课程记录共用",
+    "management": "门店管理入口进入课程及学习安排详情",
+    "service": "职业页显示顾客服务等级和进度，标明通过工作积累，不提供付费课程"
+  },
+  "managementGrowth": {
+    "direction": "岗位实践为主，课程补充；地图职业实践卡可增加与实际工作对应的管理经验",
+    "normalWork": "沿原在岗经验积累，不让成长完全依赖随机抽卡",
+    "cards": "每张情节、资格、经验及资源效果须逐项确认；库存、带新人、排班、忙时分工仅为示例，尚未确定为卡片",
+    "triggerProbability": "继续搁置，不启用新的自然抽卡或添加替代入口",
+    "promotion": "课程不直接保证晋升，后续岗位条件逐项确认"
+  },
+  "existingArt": "已确认三入口职业学习画稿保留，不批量重画；本轮确认入口共享与命名方向，不擅自认定新Skills标题画稿已确认。",
+  "scope": "仅本地交接记录，不是替代项目；未改运行代码、SW、存档或发布。"
+}

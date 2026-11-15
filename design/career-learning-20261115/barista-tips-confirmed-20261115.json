@@ -1,0 +1,37 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "status": "confirmed-existing-seasonal-tips-retained-no-runtime-change",
+  "confirmed": {
+    "role": "咖啡师",
+    "baseMonthlyTips": {
+      "normal": 300,
+      "low": 225,
+      "peak": 450
+    },
+    "calendarRetained": {
+      "normal": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "low": [
+        9
+      ],
+      "peak": [
+        11,
+        12
+      ]
+    },
+    "presentation": "小费随门店客流和季节变化",
+    "meaning": "虚构游戏门店的季节设定，不代表奥兰多所有门店或现实保证收入"
+  },
+  "scope": "保留现行基础小费及原季节，不更改职业事件额外小费、发薪时点、工资或存档；本轮没有新增随机小费算法。",
+  "archiveScope": "仅本地确认记录，未提交或发布新代码。"
+}

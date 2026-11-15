@@ -1,0 +1,97 @@
+[
+  {
+    "suite": "career-learning",
+    "exit": 0,
+    "output": "PASS career learning: one-specialty eligibility, six manager requirements, position/education pay, legacy floor, atomic promotion/course retry, stale controls, course cap and max XP.\n"
+  },
+  {
+    "suite": "hobby-learning",
+    "exit": 0,
+    "output": "PASS 206 assertions plus 30,000-contact sampling: exact six quotes, repeat/time/energy gates, cap, rollback, stale tokens, old fields/career preserved, frozen new contacts, distribution and six approved art hashes.\n"
+  },
+  {
+    "suite": "shared-interest-cards",
+    "exit": 0,
+    "output": "{\"ok\":true,\"assertions\":891,\"cards\":20,\"scope\":\"all choices, rollback/retry, no duplicate, lifetime, frozen 3 outcomes, resource gates, cap, legacy preservation\"}\n"
+  },
+  {
+    "suite": "shared-interest-selection",
+    "exit": 0,
+    "output": "{\"ok\":true,\"mainCards\":20,\"followups\":3,\"artworkHashes\":23,\"sampleDraws\":12000,\"photographyDraws\":5975,\"naturalDrawEnabled\":false}\n"
+  },
+  {
+    "suite": "relationship-review",
+    "exit": 0,
+    "output": "PASS 579 relationship review assertions\n"
+  },
+  {
+    "suite": "relationship-confirmed",
+    "exit": 0,
+    "output": "PASS 587 assertions: all24 cards/options, draw reservation rollback, settlement rollback, per-person lifetime/B, followups/refresh, funds, forced time, direct graduation, course identity and classmates\n"
+  },
+  {
+    "suite": "relationship-avatars",
+    "exit": 0,
+    "output": "PASS: 60 unique matching portraits; six per gender/role; exhausted and unknown contacts unchanged; serialized identity stable; removed contacts never free a used portrait; approved source/resource hashes match.\n"
+  },
+  {
+    "suite": "education-monthly",
+    "exit": 0,
+    "output": "1319 monthly education / teacher assertions passed\n"
+  },
+  {
+    "suite": "education-plans",
+    "exit": 0,
+    "output": "886 education assertions passed\nLegacy automatic refund retains original $7,000 cost basis\n"
+  },
+  {
+    "suite": "housing-transactions",
+    "exit": 0,
+    "output": "PASS: five housing operations rollback on false/throw, durable retries, no success navigation or repeat fees, nested contract/receipt preservation, partial-payment/sync failure and stale bill.\n"
+  },
+  {
+    "suite": "housing-lease",
+    "exit": 0,
+    "output": "PASS: 1000 rent/1000 deposit, deposit asset, duplicate rent, free/cancellable booking, next-month net handover, refund on family move, insufficient funds atomicity, legacy no invented refund and annual renewal.\n"
+  },
+  {
+    "suite": "family-care",
+    "exit": 0,
+    "output": "PASS: exact missing hours, pet reserve, original care effects, wage/tip rates, same-month pay, reload/repeat/next-month guards, loan-before-payment, atomic shortage, other cards unchanged, production time/income/metrics wrappers.\n"
+  },
+  {
+    "suite": "housing-time-debt",
+    "exit": 0,
+    "output": "PASS: no-employment fallback, both-choice gate, exact deferred hours, pet reserve, no pay/month advance, current/next/recovery/partial repayment, reload/repeat and old-ledger preservation.\n"
+  },
+  {
+    "suite": "pet-health",
+    "exit": 0,
+    "output": "PASS health defaults and legacy no-backcharge, monthly loss once/reload/floor, self/pro gain/ceiling/payment rollback, annual isolation, exact single/multi lottery weights, gate/caps and pending cards preserved.\n"
+  },
+  {
+    "suite": "pet-care",
+    "exit": 0,
+    "output": "PASS: recovery delegation same fees/zero time, preview and repeat no charge, cross-year deadlines, normal time cost, multiple pets and atomic insufficient funding.\n"
+  },
+  {
+    "suite": "pet-pool-pause",
+    "exit": 0,
+    "output": "PASS seven species/five categories paused at zero or pending, pure eligibility, failed treatment stays paused, successful treatment/reload restores, real pet indices and20% gate, all-paused fallback and old-card preservation.\n"
+  },
+  {
+    "suite": "pet-sw-precache",
+    "exit": 0,
+    "output": "PASS actual install callback: canonical request URLs deduplicated without dropping required resources.\n"
+  },
+  {
+    "suite": "month-settlement-guard",
+    "exit": 0,
+    "output": "PASS: core modal/unpaid-incident gates, error rollback; town repeat-click/reload/month-advance guard. Underlying ledger and browser not covered.\n"
+  },
+  {
+    "suite": "rest-state",
+    "exit": 0,
+    "output": "PASS: free 4h rest actual capped effects, stale confirmation, nursing reservation, no low-health bypass; health penalty threshold combinations add once per month.\nDirect rest, guards and save rollback passed\n"
+  }
+]

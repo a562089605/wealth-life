@@ -1,0 +1,36 @@
+{
+  "project": "a562089605/wealth-life",
+  "page": "晋升值班主管",
+  "confirmedDate": "2026-11-14",
+  "status": "art-confirmed-local-staging-not-implemented-not-published",
+  "artifacts": [
+    {
+      "file": "shift-lead-promotion-confirmed.png",
+      "source": "/workspace/generated_images/exec-84dbd8d1-4f76-477a-a1ca-213b19bca1c9.png",
+      "status": "confirmed",
+      "sha256": "101d12f11936f9528576e36728fcf719cc16f38666f5588e938e2b608757c65b"
+    },
+    {
+      "file": "archive/shift-lead-promotion-tip-multiplier-superseded.png",
+      "source": "/workspace/generated_images/exec-38568698-861e-44f7-8f06-a840b7976f0a.png",
+      "status": "superseded",
+      "sha256": "d84d9dbd70edcb909e1474401df4e13dd6f4ac525f768d9499dc86817b13137e"
+    }
+  ],
+  "confirmedConditions": [
+    "咖啡师任职满6个月",
+    "拉花Lv.3",
+    "手冲咖啡Lv.3",
+    "顾客服务Lv.3",
+    "原职业经理好感4（不是关系亲密度）"
+  ],
+  "confirmedPresentation": {
+    "salary": "岗位基础年薪$44,000，实际工资按学历及已确认技能调薪规则计算",
+    "tips": "约$390/月；普通月，随淡旺季浮动；用金额取代卡面×1.3，仅展示调整，不改原小费算法",
+    "weeklyHours": 40,
+    "effective": "确认晋升后下个月生效",
+    "progress": "图中为未满足状态的示例，实际接入使用动态数据与DOM",
+    "style": "延续确认职业首页画风"
+  },
+  "scope": "原项目未改；本地待回填归档不是替代项目，旧稿保留。"
+}

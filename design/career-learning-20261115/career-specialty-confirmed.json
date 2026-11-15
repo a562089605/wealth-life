@@ -1,0 +1,44 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-14",
+  "status": "confirmed-rules-local-staging-only-not-implemented-not-published",
+  "rules": {
+    "removedSkill": "独立饮品制作职业技能（coffee）",
+    "specialtiesRetained": [
+      "拉花",
+      "手冲咖啡"
+    ],
+    "otherSkillsRetained": [
+      "顾客服务",
+      "门店管理"
+    ],
+    "promotion": {
+      "from": "咖啡师",
+      "to": "值班主管",
+      "replacement": "原饮品制作Lv.3条件改为拉花与手冲均Lv.3",
+      "otherConditions": "保留原任职时间、顾客服务等级、经理好感等条件"
+    },
+    "salary": {
+      "eachSpecialtyRates": {
+        "Lv.3": 0.01,
+        "Lv.4": 0.02,
+        "Lv.5": 0.03
+      },
+      "combinedMaximum": 0.06,
+      "effective": "下月生效",
+      "stacking": "每专项只取最高档，不按等级重复累加；两专项相加替代原coffee技能调薪",
+      "retained": "学历、顾客服务、门店管理调薪保留"
+    },
+    "legacy": {
+      "salary": "保留已获得工资，不降薪、不追扣",
+      "experience": "旧饮品制作经验保留归档，不删除、不自动换算专项经验",
+      "duplicateRaises": "后续专项提升不重复叠加已由旧技能获得的涨幅"
+    },
+    "practice": "沿原拉花与手冲每次+10XP、50/150/300/500/800累计门槛；其余已确认资源、满级和保存限制保留"
+  },
+  "implementationNotes": [
+    "原仓库目录当前不存在；此文件仅为本地待回填记录，不是替代项目。",
+    "实际工资兼容实现需核对旧工资与coffeePay.skillRates等字段，按已确认不降薪及防重原则实现。",
+    "不改地图触发概率，不重置存档，不改已确认原图。"
+  ]
+}

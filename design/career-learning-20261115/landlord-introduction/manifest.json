@@ -1,0 +1,41 @@
+{
+  "project": "a562089605/wealth-life",
+  "status": "art-confirmed-not-runtime-integrated-not-published",
+  "archiveScope": "local staging only; original repository directory absent; not a replacement project",
+  "title": "牵线介绍业内人士",
+  "confirmedDate": "2026-11-14",
+  "finalFile": "landlord-introduction-single-option-confirmed.png",
+  "artifacts": [
+    {
+      "file": "landlord-introduction-single-option-confirmed.png",
+      "source": "/workspace/generated_images/exec-8f01df27-7bc1-4a53-a955-20078334acff.png",
+      "sha256": "2f109e1322b6be53ba1d27d832e91152e27a0f4353b89b51da30b47bbf2a34aa"
+    },
+    {
+      "file": "archive/landlord-introduction-with-b-superseded.png",
+      "source": "/workspace/generated_images/exec-036980b8-a928-4034-a58e-9cc611c782ac.png",
+      "sha256": "297bd6d7409773622f6afaa58eebc968ff95890bc523acc4b62e5980d4724a37"
+    }
+  ],
+  "rules": {
+    "relationship": "房东",
+    "introducedPerson": "另一家咖啡店的合伙人",
+    "text": "房东说：“我认识另一家咖啡店的合伙人，你要是有兴趣，我可以找个时间介绍你们认识。”",
+    "options": [
+      {
+        "label": "好呀，谢谢你帮忙介绍！",
+        "effects": {
+          "hours": 1,
+          "landlordIntimacy": 3,
+          "newPersonInitialIntimacy": 10
+        },
+        "result": "认识该咖啡店合伙人"
+      }
+    ],
+    "bRemoved": true,
+    "otherEffects": "金钱、能量、幸福、压力不变",
+    "careerBenefits": "不直接获得工作、加薪或收入；未来求职或合作用途待职业规则确认",
+    "unconfirmed": "新联系人的关系类别、头像分配与其他职业对应尚未确认，不补造。"
+  },
+  "savePolicy": "沿原保存事务；原存档和备份保留；地图概率不变"
+}

@@ -193,3 +193,6 @@ Cloudflare Workers现有Git集成可用根目录 `npx wrangler deploy`，wrangle
 
 
 2026-11-14 月付学历与教师正式发布（覆盖此前本地/待发布状态）：功能提交b0c08f4df77668ca2f049cf27433205dc1aae0dc已通过现有GitHub连接上传原main，远端文件树62bc386c7903743e756ff9f7b8f723dac513c68a与本地验证提交78f4318完全一致；保留原共同兴趣最新发布。Cloudflare发布成功 https://github.com/a562089605/wealth-life/runs/132342608242 。260份生产资源与本地逐字节一致，包含本轮18新图/3模块及原关系、照护券、共同兴趣、住房与宠物等资源。生产隔离Chromium slot948共14组通过、0脚本错误，真实存储失败回滚、月付/切档/康复/尾款/博士25%、教师聊天及4卡均通过；证据qa/education-monthly-20261113/production-resources.json、production-report.json、production-deployment.json，production-progress-390.png为实际线上隔离页面截图。9套Node全部通过，新增1319断言，13脚本语法通过；不扩大为iPhone真机、完整离线或全游戏全部分支验收。房屋→学习→学历学习可使用新报名方案；旧课按原合同，原测试存档与备份保留。自然关系抽卡仍关闭；教师前4卡接入已保存事件显示/结算，不声称自然上线；教师第5店长入职、职业型副学士未定专业/学费/学制，以及房东第5牵线仍待职业板块，届时须主动提醒。
+
+
+2026-11-15 职业与学习增量接入：最新规则见 CAREER_LEARNING_RELEASE_20261115.md。原main bbb5dd3基础保留月付学历/教师与全部旧功能；学习三入口、三项Skills、两个次月晋升、岗位学历工资、管理课程、住房及后续完成后自动展示已结算收入、房东第5单A已接入。合伙人后续暂缓；自然共同兴趣及关系抽卡仍关闭。19套相关Node与本地隔离Chromium slot944共11组通过、零脚本错误；不代表全部仓库或iPhone验收。原图历史及SHA在design/career-learning-20261115/，证据qa/career-learning-20261115/。生产状态以后续发布证据为准。

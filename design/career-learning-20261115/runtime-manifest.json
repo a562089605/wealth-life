@@ -1,0 +1,91 @@
+{
+  "artifacts": [
+    {
+      "id": "learning",
+      "source": "design/career-learning-20261115/learning-home/learning-home-confirmed.png",
+      "sourceSha256": "074f9d932618c6d92a594e197ef3660a738684ab1690169887e6716392b99e9c",
+      "runtime": "assets/career-learning-20261115/learning.webp",
+      "runtimeSha256": "aff68a4bc1dd678906b004a66b97d0247a3370835c1facd8bff5086732adba61"
+    },
+    {
+      "id": "education",
+      "source": "design/career-learning-20261115/learning-subpages-20261115/education-routes-confirmed.png",
+      "sourceSha256": "3a5290be47eb5faded863139877320870c51a9f26f425acd538f3cd99fb3f050",
+      "runtime": "assets/career-learning-20261115/education.webp",
+      "runtimeSha256": "5a06b9bd19c0f06509e4c3d4cdcb4846ce29a64b01a37ef7be68242ac163372a"
+    },
+    {
+      "id": "skills",
+      "source": "design/career-learning-20261115/learning-subpages-20261115/skills-management-course-confirmed.png",
+      "sourceSha256": "32abad3956caa467318b54ffb09a5b6fa429f913520823080ce66099dbe0b57e",
+      "runtime": "assets/career-learning-20261115/skills.webp",
+      "runtimeSha256": "ced691d603401a7fe41b836512c47591989662065b471034efb8203bc99c674a"
+    },
+    {
+      "id": "hobbies",
+      "source": "design/career-learning-20261115/learning-subpages-20261115/hobbies-grid-confirmed.png",
+      "sourceSha256": "0c18c4cfea7c401d333eae744688f5aa6e3ec5cf9a3f56331f84c06fffd1d24c",
+      "runtime": "assets/career-learning-20261115/hobbies.webp",
+      "runtimeSha256": "a2bf0366fc68f5aec9c2efeb2fcb2c376157c730ebf63ddd92a9de3bdefd0d1a"
+    },
+    {
+      "id": "career",
+      "source": "design/career-learning-20261115/career-home/career-home-confirmed.png",
+      "sourceSha256": "7a8b22bd77df802a5972a75ced4ea4d1ca71a023f23216bc99e1645338cb9ac1",
+      "runtime": "assets/career-learning-20261115/career.webp",
+      "runtimeSha256": "190b8663b9d38269e88b5efb01286266319429de965b4bd58a3308f545809d1a"
+    },
+    {
+      "id": "adjustment",
+      "source": "design/career-learning-20261115/career-adjustment/career-adjustment-confirmed.png",
+      "sourceSha256": "e873b875bc086b628327603fe2f65043f5cd422842e8dd3b6b7ee3c68654e088",
+      "runtime": "assets/career-learning-20261115/adjustment.webp",
+      "runtimeSha256": "198a197a154e4a197d32560b44b29b784fdb310d5fb554a8be5efe038ce001c0"
+    },
+    {
+      "id": "resignation",
+      "source": "design/career-learning-20261115/career-resignation/career-resignation-confirmed.png",
+      "sourceSha256": "35e612d2d6a2c005ecee046b36b69463dff1c864a01ea16eceee818350c55880",
+      "runtime": "assets/career-learning-20261115/resignation.webp",
+      "runtimeSha256": "0d515d3d49e489ec2db53a256e800fe592918304a992bc3ba96d81eee023762b"
+    },
+    {
+      "id": "income",
+      "source": "design/career-learning-20261115/career-income/career-income-settled-confirmed.png",
+      "sourceSha256": "f6de2aa3aa7ab5e3ae26e0f19909f29c3ebec204af173b2df580fe70529466ac",
+      "runtime": "assets/career-learning-20261115/income.webp",
+      "runtimeSha256": "454731e4a4216750308b98d74d575d208ddadf202057399594d51424105122c6"
+    },
+    {
+      "id": "shift-promotion",
+      "source": "design/career-learning-20261115/shift-lead-promotion-education-only-20261115/shift-lead-promotion-confirmed.png",
+      "sourceSha256": "220c29692841cf22cbcfda0275f1c914354f6ee081cc4a14fc0ed5bab27cd963",
+      "runtime": "assets/career-learning-20261115/shift-promotion.webp",
+      "runtimeSha256": "ff79ddccdfbfe8b755f7891bdd771da476859271759ad5eccd9ad0c8211c0a19"
+    },
+    {
+      "id": "manager-promotion",
+      "source": "design/career-learning-20261115/store-manager-promotion-20261115/store-manager-promotion-confirmed.png",
+      "sourceSha256": "3cedc120b33dbcda88b68b9da777ea2fa431024107c36431cbe7916b806c3536",
+      "runtime": "assets/career-learning-20261115/manager-promotion.webp",
+      "runtimeSha256": "a5766b83179b644a454780b85dd43f0705d4d4ab10f3cafc121665dcf11d861b"
+    },
+    {
+      "id": "management",
+      "source": "design/career-learning-20261115/management-course-20261115/management-foundation-confirmed.png",
+      "sourceSha256": "809a8b335c602de3c54987967ea5096f619a6d1a3458b220d79238a56de84562",
+      "runtime": "assets/career-learning-20261115/management.webp",
+      "runtimeSha256": "5554e7137d5a91059ae1954af62a8bb438038305bdcbd8645013cfb583aa0bf7"
+    },
+    {
+      "id": "landlord-introduction",
+      "source": "design/career-learning-20261115/landlord-introduction/landlord-introduction-single-option-confirmed.png",
+      "sourceSha256": "2f109e1322b6be53ba1d27d832e91152e27a0f4353b89b51da30b47bbf2a34aa",
+      "runtime": "assets/career-learning-20261115/landlord-introduction.webp",
+      "runtimeSha256": "b1f22aac30472e3c8a86a118cdb54556cedbe97bf81a4937962142a64f8b749f"
+    }
+  ],
+  "latestRules": "CAREER_LEARNING_RELEASE_20261115.md",
+  "status": "integrated-and-locally-verified",
+  "note": "历史JSON保留原确认时点，冲突以本轮最后确认与发布说明为准；不把归档状态视为线上状态。"
+}

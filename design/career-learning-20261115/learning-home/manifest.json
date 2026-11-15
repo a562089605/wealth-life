@@ -1,0 +1,24 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "status": "art-confirmed-local-staging-not-implemented-not-published",
+  "artifacts": [
+    {
+      "file": "learning-home-confirmed.png",
+      "source": "/workspace/generated_images/exec-cfe81e76-6ffd-4c74-bec6-146a802889de.png",
+      "sha256": "074f9d932618c6d92a594e197ef3660a738684ab1690169887e6716392b99e9c"
+    }
+  ],
+  "entries": [
+    "学历学习",
+    "职业技能",
+    "兴趣爱好"
+  ],
+  "skills": [
+    "拉花",
+    "手冲咖啡",
+    "门店管理"
+  ],
+  "removedSeparateEntry": "饮品制作专项归入职业技能",
+  "scope": "仅本地归档，未改运行代码或存档。"
+}

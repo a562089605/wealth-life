@@ -1,0 +1,28 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "status": "confirmed-rules-local-staging-not-implemented-not-published",
+  "role": "值班主管 Shift Lead",
+  "confirmed": {
+    "baseAnnualSalary": 44000,
+    "baseMonthlySalaryDisplay": 3666.67,
+    "weeklyHours": 40,
+    "baseMonthlyFreeHours": 100,
+    "monthlyBaseTips": {
+      "normal": 390,
+      "low": 292.5,
+      "peak": 585
+    },
+    "seasonCalendar": "沿原普通月1至8月及10月、淡季9月、旺季11至12月",
+    "salaryFormula": "岗位基础年薪×（1＋最高学历加成），取消技能自动调薪",
+    "otherIncome": "职业事件额外工资、小费及奖金沿原已确认规则另算",
+    "roleDescription": "仍参与一线服务的带班岗位，与店长区分"
+  },
+  "examples": {
+    "highschoolNormalMonthWithoutExtraEvents": 4056.67,
+    "annualBasePlusSeasonalTipsBeforeEducationAndEvents": 48972.5
+  },
+  "marketEvidence": "作为游戏门店薪资基准；未核实奥兰多招聘行情，不标为当地市场平均薪资或现实小费法律认定。",
+  "legacy": "旧存档已得工资不降薪、不追扣，原记录与备份保留。",
+  "scope": "仅本地确认记录，工资政策修订尚未接入代码；未改SW、存档或发布。"
+}

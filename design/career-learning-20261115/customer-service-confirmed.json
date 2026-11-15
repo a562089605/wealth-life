@@ -1,0 +1,15 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "status": "confirmed-rules-local-staging-not-implemented-not-published",
+  "rules": {
+    "skill": "顾客服务保留",
+    "learning": "取消顾客服务付费课程，通过正常工作及已有职业事件积累；不新增经验奖励",
+    "careerHome": "保留顾客服务等级和进度，注明通过日常工作积累",
+    "careerLearning": "移除顾客服务课程入口，保留拉花、手冲咖啡、门店管理入口",
+    "promotionAndPay": "顾客服务原晋升条件和技能调薪保留",
+    "oldSaves": "不删除或重置原技能经验、已支付收据及历史记录，不追溯结算"
+  },
+  "supersededProposal": "$60/6h/+20XP顾客服务课程不再提供；能量-3仅为未采用提案，不写入规则",
+  "scope": "仅确认记录与画稿修订，未改原项目代码、SW、存档或发布。"
+}

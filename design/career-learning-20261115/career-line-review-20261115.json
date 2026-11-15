@@ -1,0 +1,92 @@
+{
+  "project": "a562089605/wealth-life",
+  "reviewDate": "2026-11-15",
+  "scope": "最新确认规则与两张晋升画稿的静态复核；不代表运行接入、浏览器验收或发布",
+  "salaryAuthority": "position-based-salary-confirmed-20261115.json及各岗位最新工资确认文件；取消技能自动调薪，保留学历调薪",
+  "artifactHashes": [
+    {
+      "file": "/workspace/shared/wealth-life-art-20261114/career-promotion-final-20261115/shift-lead-promotion-live-levels-confirmed.png",
+      "matchesSha256": true
+    },
+    {
+      "file": "/workspace/shared/wealth-life-art-20261114/career-promotion-final-20261115/archive/shift-lead-promotion-single-bar-superseded.png",
+      "matchesSha256": true
+    },
+    {
+      "file": "/workspace/shared/wealth-life-art-20261114/career-promotion-final-20261115/archive/shift-lead-promotion-dual-level2-superseded.png",
+      "matchesSha256": true
+    },
+    {
+      "file": "/workspace/shared/wealth-life-art-20261114/store-manager-promotion-20261115/store-manager-promotion-confirmed.png",
+      "matchesSha256": true
+    },
+    {
+      "file": "/workspace/shared/wealth-life-art-20261114/store-manager-promotion-20261115/archive/store-manager-conditions-only-superseded.png",
+      "matchesSha256": true
+    }
+  ],
+  "incomeCalculations": [
+    {
+      "role": "咖啡师",
+      "annualBase": 32000,
+      "annualTips": 3825.0,
+      "annualFixedBonus": 0,
+      "annualTotal": 35825.0,
+      "weeklyHours": 40,
+      "averageHourly": "17.22"
+    },
+    {
+      "role": "值班主管",
+      "annualBase": 44000,
+      "annualTips": 4972.5,
+      "annualFixedBonus": 0,
+      "annualTotal": 48972.5,
+      "weeklyHours": 40,
+      "averageHourly": "23.54"
+    },
+    {
+      "role": "店长",
+      "annualBase": 58000,
+      "annualTips": 5737.5,
+      "annualFixedBonus": 6000,
+      "annualTotal": 69737.5,
+      "weeklyHours": 45,
+      "averageHourly": "29.80"
+    }
+  ],
+  "findings": [
+    {
+      "severity": "需校准",
+      "item": "值班主管晋升画稿旧说明仍写学历及已确认技能调薪规则，须改为工资按最高学历加成计算；其他插画与已确认条件保留，不批量重画。"
+    },
+    {
+      "severity": "文档已澄清",
+      "item": "早期记录中的店长待遇待审、顾客服务技能调薪保留等描述均已被后续确认覆盖，历史记录不删除；最新确认工资政策优先。"
+    },
+    {
+      "severity": "平衡提示非错误",
+      "item": "原服务经验门槛Lv.3=200XP、Lv.5=400XP；咖啡师正常月20XP，主管15XP。以服务200XP升主管且无事件计算，12个正常主管月为380XP，需14个月到410XP才能达服务满级；12个月为最低任职，不保证届时达成全部条件。管理原Lv.3=200XP，主管12月常规成长180XP；工作事件或已确认课程可补足。"
+    },
+    {
+      "severity": "接入待办",
+      "item": "现有工资代码仍含技能调薪及旧coffee晋升条件，不能把确认画稿称作已实装。薪资守旧档不降薪不追扣；专项共用原HobbyLearning经验，不复制或重置。"
+    },
+    {
+      "severity": "边界提示",
+      "item": "奖金500资格：当月有缺席为0，加班不恢复；普通职责不自动另付加班。小费、奖金不乘学历加成，职业事件收入按原类别防重。"
+    }
+  ],
+  "unchanged": [
+    "咖啡师→主管任职6月、拉花或手冲任一Lv.3、服务Lv.3、职业经理好感4",
+    "主管→店长任职12月、拉花与手冲均Lv.3、服务Lv.5、管理Lv.3、职业经理好感8",
+    "玩家确认后下月生效；任职阶段分别计数、技能保留",
+    "旧存档和备份保留、工资不降薪不追扣；地图概率搁置"
+  ],
+  "noRuntimeMutation": true,
+  "followUp": {
+    "date": "2026-11-15",
+    "salaryNoteCorrection": "已按用户确认校准主管晋升画稿，说明为工资按最高学历加成计算；新画稿与SHA归档，旧图保留",
+    "finalArt": "/workspace/shared/wealth-life-art-20261114/shift-lead-promotion-education-only-20261115/shift-lead-promotion-confirmed.png",
+    "runtime": "尚未接入或发布"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "status": "confirmed-existing-base-retained-no-runtime-change",
+  "confirmed": {
+    "role": "咖啡师 Barista",
+    "baseAnnualSalary": 32000,
+    "excludes": "小费、职业事件额外收入与学历技能加成",
+    "baseMonthlySalaryDisplay": 2666.67
+  },
+  "scope": "仅确认保留既有基础工资，不更改小费、工时、调薪、其他岗位工资或发薪规则，不改存档，不补发工资。",
+  "marketEvidence": "仅作为入门岗位游戏基准的合理性讨论；未核实奥兰多招聘数据，不标为当地市场平均工资。",
+  "archiveScope": "本地待回填交接记录，未提交或发布新代码。"
+}

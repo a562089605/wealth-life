@@ -17,7 +17,7 @@
   if(c.role==='教师'&&(!s.study||s.study.paused||p.studyProjectId!==project(s)))return false;
   if(c.role==='同学'&&(!s.study||s.study.paused||!project(s)))return false;
   if(c.role==='经理'&&(!s.job||s.retired||s.unemployedMonths||p.id!==s.relationshipHome?.currentManagerId))return false;
-  if(c.coffeeOnly&&!coffeeRole(s))return false;
+  if((c.coffeeOnly||c.introduction)&&!coffeeRole(s))return false;
   if(c.contactPets&&!contactPet(s))return false;
   if(c.currentLandlord&&(!['shared','studio','rent1'].includes(s.housing)||p.id!==s.relationshipHome?.landlordId))return false;
   // Equipment must be verified by the caller; the 50/50 outcome is locked in the saved record.
@@ -37,6 +37,7 @@
    if(c.coffeeOnly){r.sourceJob=s.job;r.role=bossLabel(s);}
    if(c.contactPets){const pet=contactPet(s);r.petIdentity=JSON.stringify([pet.careId,pet.id,pet.species,pet.type,pet.adoptMonth]);}
    if(c.aircon){const random=opts.random||Math.random;r.airconOutcome=['success','failure'].includes(opts.airconOutcome)?opts.airconOutcome:random()<.5?'success':'failure';}
+   if(c.introduction){const candidate=makeStudent(s,'relationship-industry-'+r.id,null);delete candidate.relationshipRole;delete candidate.studyProjectId;candidate.origin='landlord-introduction';candidate.status='认识的人';candidate.job='另一家咖啡店的合伙人';delete candidate.education;root.HobbyLearning?.generate(candidate);r.newIndustryContact=candidate;}
    if(c.id==='classmate-library')r.newClassmate=makeStudent(s,'relationship-library-'+r.id,r.studyProjectId);
    data(s).used.push({id:r.id,personId:pid,kind,month:s.month});m.relationshipLifeCard=r;m.opened=true;return r;},opts.save)||null;
  }
@@ -55,7 +56,7 @@
   if(def?.contactPets&&!(s.pets||[]).some(p=>JSON.stringify([p.careId,p.id,p.species,p.type,p.adoptMonth])===r.petIdentity))return {ok:false,reason:'pet'};
   if(r.version===2){if(r.studyProjectId&&project(s)!==r.studyProjectId)return {ok:false,reason:'study'};if(r.leaseKey&&s.relationshipHome?.leaseKey!==r.leaseKey)return {ok:false,reason:'lease'};}
   const result=atomic(s,()=>{const d=data(s);if(!d.used.some(x=>x.id===r.id))d.used.push({id:r.id,personId:r.personId,kind:r.kind,month:s.month});let time=null;if(q.hours>opts.free){if(!opts.forcedTime)throw Error('missing time adapter');time=opts.forcedTime({id:'relationship-'+r.id,month:s.month,hours:q.hours,available:opts.free});if(!time||!Number.isFinite(time.used))throw Error('invalid time adapter');}
-   const usedHours=time?time.used:q.hours,prior=p.relation;apply(s,p,q);d.hours[s.month]=(d.hours[s.month]||0)+usedHours;
+   const usedHours=time?time.used:q.hours,prior=p.relation;if(def?.introduction){if(!r.newIndustryContact||s.people.some(p=>p.id===r.newIndustryContact.id))throw Error('contact');s.people.push(copy(r.newIndustryContact));}apply(s,p,q);d.hours[s.month]=(d.hours[s.month]||0)+usedHours;
    if(q.studyMonths){if(root.EducationPlans?.current(s.study)&&!root.EducationPlans.settleHelp(s))throw Error('funds');if(!s.study||!Number.isFinite(s.study.total)||!Number.isFinite(s.study.progress)||s.study.total<=s.study.progress)throw Error('study');if(root.EducationPlans?.modern(s.study)){if(!root.EducationPlans?.help(s,q.studyMonths))throw Error('study');}else s.study.total=Math.max(s.study.progress,s.study.total-q.studyMonths);if(s.study.progress>=s.study.total){if(!opts.graduate)throw Error('missing graduation adapter');opts.graduate(s);}}
    if(q.cash)(s.financeLedger??=[]).push({id:r.id,kind:q.cash>0?'relationshipReward':'relationshipExpense',source:'relationshipLife',incomeKind:def?.payMode||def?.incomeKind||'relationship',wages:q.wages||0,tips:q.tips||0,instant:true,eventId:r.id,month:s.month,amount:Math.abs(q.cash),personId:p.id});
    r.choice=index;r.receipt={...copy(q),used:usedHours,time,appliedIntimacy:p.relation-prior};d.receipts.push({id:r.id,kind:r.kind,personId:p.id,month:s.month,choice:index,...r.receipt});

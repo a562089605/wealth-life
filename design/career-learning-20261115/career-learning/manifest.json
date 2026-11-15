@@ -1,0 +1,44 @@
+{
+  "project": "a562089605/wealth-life",
+  "page": "职业学习",
+  "confirmedDate": "2026-11-15",
+  "status": "art-confirmed-local-staging-not-implemented-not-published",
+  "artifacts": [
+    {
+      "file": "career-learning-confirmed.png",
+      "source": "/workspace/generated_images/exec-7f58d220-ba02-486b-89cc-a028a306d776.png",
+      "sha256": "13ba2be561871304e4d7a3cfba3549d9f8d06ebc8ad15b7f224577992f03d044"
+    }
+  ],
+  "confirmedPresentation": {
+    "entries": [
+      {
+        "name": "拉花",
+        "button": "查看拉花练习"
+      },
+      {
+        "name": "手冲咖啡",
+        "button": "查看手冲练习"
+      },
+      {
+        "name": "顾客服务",
+        "button": "查看服务课程"
+      },
+      {
+        "name": "门店管理",
+        "button": "查看管理课程"
+      }
+    ],
+    "navigation": "返回我的职业",
+    "intro": "选择一项，查看学习安排。",
+    "note": "查看不扣费，确认学习后才结算。",
+    "levels": "等级与进度为画稿示例，接入使用实际数据",
+    "removed": "不再展示独立饮品制作职业技能"
+  },
+  "implementationNotes": [
+    "拉花及手冲已有已发布确认详情页，应复用，不重新作图或改变其费用经验规则。",
+    "顾客服务、门店管理课程保留原规则，后续仅逐页讨论视觉。",
+    "本页为入口，不直接扣费或学习。"
+  ],
+  "scope": "仅本地待回填原仓库的画稿和确认记录，不是替代项目；未改运行代码、SW或玩家存档。"
+}

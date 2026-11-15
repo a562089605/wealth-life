@@ -1,0 +1,34 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "page": "管理基础课程",
+  "status": "art-and-course-values-confirmed-local-staging-not-implemented-not-published",
+  "artifacts": [
+    {
+      "file": "management-foundation-confirmed.png",
+      "source": "/workspace/generated_images/exec-33318574-a290-4a63-8809-9bd5426d268d.png",
+      "sha256": "809a8b335c602de3c54987967ea5096f619a6d1a3458b220d79238a56de84562"
+    }
+  ],
+  "confirmedCourse": {
+    "cost": 120,
+    "hours": 10,
+    "energy": -3,
+    "managementXP": 20,
+    "monthlyLimit": "职业课程合计最多3次，未满级可重复；不将拉花手冲专项或兴趣个人练习计入该课程限额",
+    "name": "管理基础课程",
+    "content": "沟通协调、任务安排与团队管理；通过案例讨论和练习积累知识，重复学习理解为不同案例和练习",
+    "use": "通用管理课程，不限定咖啡门店；不自动增加薪资，不保证晋升"
+  },
+  "presentation": {
+    "progress": "管理技能Lv.0与0/3为示例，实际接入读取原经验和当月次数",
+    "buttons": [
+      "确认学习",
+      "返回职业技能"
+    ],
+    "note": "查看不扣费，确认后才结算。",
+    "hoursCaption": "学习时间可分次安排为课程内容的叙述，不因此新增分期付费、跨月预约、分次结算或部分XP机制；一次确认仍按原完整课程事务结算。"
+  },
+  "preservation": "原经验、历史课程费用与凭证保留，不追溯改价或重置。",
+  "scope": "仅本地待回填确认记录和原图；未改运行代码、SW或玩家存档，未提交或发布。"
+}

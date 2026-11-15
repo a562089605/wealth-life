@@ -1,0 +1,46 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "status": "art-and-rules-confirmed-local-staging-not-implemented-not-published",
+  "artifacts": [
+    {
+      "file": "shift-lead-promotion-live-levels-confirmed.png",
+      "source": "/workspace/generated_images/exec-e52daf67-b63c-4863-8fd9-8103e81b4f75.png",
+      "sha256": "a6252daa8a14cf762b4f0ece38f972bf87ce8d0f2f3739516c6fe2326e13d825",
+      "status": "confirmed"
+    },
+    {
+      "file": "archive/shift-lead-promotion-single-bar-superseded.png",
+      "source": "/workspace/generated_images/exec-0c194679-7854-45e4-8d84-b5e70b187bf7.png",
+      "sha256": "d897e8c787bd1f5578a262e4545d46c7269e1c27343f91167148be1451a154f1",
+      "status": "superseded"
+    },
+    {
+      "file": "archive/shift-lead-promotion-dual-level2-superseded.png",
+      "source": "/workspace/generated_images/exec-5ec93184-552f-41d8-a402-d888414d75dc.png",
+      "sha256": "23db7ae36ebd076606813dac4892acec22c1dbb8eeaf51ebb8cb1e84b94a3a05",
+      "status": "superseded"
+    }
+  ],
+  "supersedes": "此前两项均Lv.3，以及两项均Lv.2且至少一项Lv.3的晋升条件；旧图和记录保留",
+  "promotion": {
+    "from": "在职咖啡师",
+    "to": "值班主管",
+    "requirements": [
+      "咖啡师任职满6个月",
+      "拉花或手冲咖啡任意一项达到Lv.3，另一项无等级要求",
+      "顾客服务Lv.3",
+      "原职业经理好感至少4，与关系亲密度分开"
+    ],
+    "confirmation": "全部满足后玩家确认，下个月生效，不增加随机录取"
+  },
+  "display": {
+    "source": "读取与现有拉花、手冲练习页同一份专项经验和等级，不另建或复制经验",
+    "specialtyRow": "显示要求、两项实际等级、是否满足，不用单根合并进度条",
+    "example": "图中拉花Lv.3、手冲Lv.1，仅咖啡专项达标；其他条件未满足，整体晋升按钮仍禁用",
+    "transaction": "练习成功保存才更新；保存失败不改变等级或资格；确认晋升时重新检查实际条件",
+    "salary": "岗位基础年薪44000，小费普通月约390/月，随原季节变化；学历及已确认技能调薪规则保留"
+  },
+  "growth": "普通工作不自动增加拉花或手冲经验；原专项练习规则保留；职业卡专项奖励须逐张确认",
+  "scope": "仅本地待回填原仓库的画稿及确认记录；未改运行代码、SW、存档或发布。"
+}

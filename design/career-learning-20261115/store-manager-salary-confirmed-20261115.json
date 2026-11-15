@@ -1,0 +1,34 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "status": "confirmed-rules-local-staging-not-implemented-not-published",
+  "userInstruction": "按照原计划保留店长小费与固定奖金",
+  "role": "店长 Store Manager",
+  "confirmed": {
+    "baseAnnualSalary": 58000,
+    "baseMonthlySalaryDisplay": 4833.33,
+    "weeklyHours": 45,
+    "baseMonthlyFreeHours": 80,
+    "monthlyFixedBonus": 500,
+    "fixedBonusEligibility": "原规则：当月有缺席则为0，加班不恢复资格；不叫全勤奖金",
+    "monthlyBaseTips": {
+      "normal": 450,
+      "low": 337.5,
+      "peak": 675
+    },
+    "seasonCalendar": "沿原普通月1至8月及10月、淡季9月、旺季11至12月",
+    "education": "保留最高学历加成",
+    "skillPay": "按本轮新决定取消技能自动调薪，技能用于晋升",
+    "extraEvents": "沿各卡已确认规则另算，普通管理职责不自动另付加班费"
+  },
+  "examples": {
+    "normalMonthWithoutEducationOrExtraEventsWithBonus": 5783.33,
+    "annualWithAllBonusesAndSeasonalTips": 69737.5,
+    "effectiveHourlyAt45Hours52Weeks": 29.8
+  },
+  "notAdopted": [
+    "取消店长小费、只留固定奖金的提案",
+    "无薪请假按比例折算固定奖金的提案"
+  ],
+  "scope": "保留原待遇方向；本地确认记录，未改运行代码、SW或玩家存档，未提交或发布。"
+}

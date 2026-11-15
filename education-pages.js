@@ -53,5 +53,5 @@
  const beforeRoom=openRoom;openRoom=function(){close();return beforeRoom.apply(this,arguments);};
  const beforeHome=home;home=function(){close();return beforeHome.apply(this,arguments);};
  const beforeRender=render;render=function(){const result=beforeRender();if(E.modern(state?.study)){$('studyInfo').textContent=names[state.study.target]+' · '+(state.study.paused?'已暂停':'预计还需 '+E.projection(state.study,state.study.pace)+' 个月');$('studyBtn').textContent='查看学习进度';}return result;};
- window.EducationPages={open:()=>openEducation(),close};
+ window.EducationPages={open:()=>openEducation(),route:target=>show('enroll',null,target),close};
 })();

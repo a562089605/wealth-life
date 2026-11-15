@@ -26,8 +26,8 @@
   return false;
  }
  const roomBefore=openRoom;
- function baseRoom(){internalRoom=true;try{return roomBefore();}finally{internalRoom=false;}}
- function completeArrival(){commit(()=>{if(state.homeArrival)state.homeArrival.status='completed';});}
+ function baseRoom(){internalRoom=true;try{const result=roomBefore();window.CareerPages?.afterArrival();return result;}finally{internalRoom=false;}}
+ function completeArrival(){const result=commit(()=>{if(state.homeArrival)state.homeArrival.status='completed';});if(result!==false)window.CareerPages?.afterArrival();}
  function arrive(){
   if(!due())return false;
   dispose();clearModals();pending=false;townVisible=false;
@@ -98,10 +98,10 @@
  }
  function payRates(){
   const t=currentCareerTime(),working=!!state.job&&!state.retired&&!state.unemployedMonths&&!isRecoveryMonth(state);
-  const coffee=typeof coffeeWorking==='function'&&coffeeWorking(),shift=typeof shiftWorking==='function'&&shiftWorking();
+  const coffee=typeof coffeeWorking==='function'&&coffeeWorking(),shift=typeof shiftWorking==='function'&&shiftWorking(),manager=window.CareerLearningRules?.role(state.job)==='manager';
   const q=typeof coffeeQuoteContext==='function'?coffeeQuoteContext():{annualSalary:state.annualSalary||state.salary*12,weeklyHours:t.weeklyHours};
   const wageRate=working&&q.weeklyHours>0?q.annualSalary/(52*q.weeklyHours):0;
-  const tipRate=working&&(coffee||shift)?coffeeSeason(coffeeCalendar().month).tips/23/8*(shift?1.3:1):0;
+  const tipRate=working&&(coffee||shift||manager)?coffeeSeason(coffeeCalendar().month).tips/23/8*(manager?1.5:shift?1.3:1):0;
   return {working,availableWorkHours:t.monthlyWork??t.weeklyHours*4,wageRate,tipRate};
  }
  function carePlan(r,index){return F.carePlan(state,r,index,currentCareerTime().free,necessaryPetCareHours(),payRates());}

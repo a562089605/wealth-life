@@ -1,0 +1,21 @@
+{
+  "project": "a562089605/wealth-life",
+  "page": "工作调整",
+  "confirmedDate": "2026-11-14",
+  "status": "art-confirmed-local-staging-not-implemented-not-published",
+  "artifacts": [
+    {
+      "file": "career-adjustment-confirmed.png",
+      "source": "/workspace/generated_images/exec-9613fdb8-0179-4130-9419-3f4c44721b62.png",
+      "sha256": "e873b875bc086b628327603fe2f65043f5cd422842e8dd3b6b7ee3c68654e088"
+    }
+  ],
+  "confirmedPresentation": {
+    "currentJob": "实际岗位、当前税前年薪、每周工时；图中数据为示例",
+    "otherJobs": "查看其他工作机会，不影响现职",
+    "resign": "低强调申请辞职入口，进入原二次确认流程，不直接辞职",
+    "back": "返回我的职业",
+    "rules": "不新增费用、失业期限或其他惩罚；沿原辞职逻辑和保存事务"
+  },
+  "scope": "仅本地选稿与规则归档，不是替代项目，未改原项目代码、SW、存档。"
+}

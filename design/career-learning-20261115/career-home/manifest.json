@@ -1,0 +1,30 @@
+{
+  "project": "a562089605/wealth-life",
+  "page": "我的职业（咖啡师）",
+  "confirmedDate": "2026-11-14",
+  "status": "art-confirmed-local-staging-not-runtime-integrated-not-published",
+  "artifacts": [
+    {
+      "file": "career-home-confirmed.png",
+      "source": "/workspace/generated_images/exec-71ca3fe9-bb03-461a-bc1f-22be3b2326dc.png",
+      "sha256": "7a8b22bd77df802a5972a75ced4ea4d1ca71a023f23216bc99e1645338cb9ac1",
+      "status": "confirmed"
+    },
+    {
+      "file": "archive/career-home-duplicate-income-superseded.png",
+      "source": "/workspace/generated_images/exec-b59dccb2-6910-4b23-ac8c-8a9ac15a5428.png",
+      "sha256": "42fcd06e3b4ee2ff07289b9eea5b47e0b3e1e1dfba7d9a1d6e5eb5389d376a5c",
+      "status": "superseded"
+    }
+  ],
+  "confirmedDesign": {
+    "header": "咖啡师及每周工时；不重复展示工资小费",
+    "monthlyWork": "本月职业安排入口、基础工资、小费、额外收入与收入明细入口",
+    "growth": "拉花、手冲咖啡、顾客服务、门店管理及等级进度；晋升条件、职业学习入口",
+    "otherChoices": "其他工作机会、工作调整；辞职不放首页",
+    "navigation": "返回房屋",
+    "data": "画稿工资、等级、日期为示例，运行页面应使用实际数据与真实DOM按钮",
+    "style": "暖黄纸张、深绿手写、柔和蜡笔，保留确认原图"
+  },
+  "scope": "原仓库目录缺失，本目录仅本地选稿归档，不是替代项目；未修改游戏、SW或存档。"
+}

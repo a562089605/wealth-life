@@ -1065,4 +1065,4 @@
       "art": "assets/relationships/cards/moving-meal-20261113.webp"
     }
   }
-};root.RelationshipCardData=data;if(typeof module!=="undefined")module.exports=data;})(typeof window==="undefined"?globalThis:window);
+};data.cards.push({id:'landlord-introduction',title:'牵线介绍业内人士',role:'房东',minIntimacy:80,currentLandlord:true,introduction:true,strictResources:true,art:'assets/career-learning-20261115/landlord-introduction.webp',boxes:[[5,63,90,28]],options:[{label:'好呀，谢谢你帮忙介绍！',hours:1,energy:0,intimacy:3,happiness:0,stress:0,cash:0}]});root.RelationshipCardData=data;if(typeof module!=="undefined")module.exports=data;})(typeof window==="undefined"?globalThis:window);

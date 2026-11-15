@@ -1,0 +1,49 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "status": "confirmed-rules-local-staging-not-implemented-not-published",
+  "stages": [
+    {
+      "from": "在职咖啡师",
+      "to": "值班主管",
+      "roleMonths": 6,
+      "specialties": "拉花或手冲咖啡任意一项Lv.3",
+      "customerServiceLevel": 3,
+      "managementLevel": null,
+      "careerManagerTrust": 4
+    },
+    {
+      "from": "在职值班主管",
+      "to": "店长",
+      "roleMonths": 12,
+      "specialties": "拉花和手冲咖啡均达到Lv.3",
+      "customerServiceLevel": 5,
+      "customerServiceMaxRequired": true,
+      "managementLevel": 3,
+      "careerManagerTrust": 8
+    }
+  ],
+  "common": {
+    "roleMonths": "各阶段分别累计，技能经验保留",
+    "education": "无额外学历门槛，原学历调薪保留",
+    "promotion": "全部条件满足后玩家明确确认，下个月生效；不强制抽中特定职业卡，不额外随机录取",
+    "trust": "原职业经理好感指标，与关系亲密度分开",
+    "specialtyGrowth": "普通工作不自动增加拉花或手冲专项经验，沿已确认专门练习规则；职业卡经验逐张确认",
+    "serviceGrowth": "通过正常工作及既有职业事件积累，不提供付费课程",
+    "managementGrowth": "岗位实践及管理课程，具体课程仍需审查"
+  },
+  "managerCompensation": "店长薪资、工时和职责尚待单独审查，本次不确认新的数值或待遇",
+  "partner": {
+    "status": "仅确认未来技能门槛，完整合伙流程暂缓",
+    "skillRequirements": {
+      "拉花": 5,
+      "手冲咖啡": 5,
+      "顾客服务": 5,
+      "管理技能": 5
+    },
+    "otherConditions": "合伙资格、任职年限、出资、持股、职责、收益及退出规则尚待后续确认，不沿用未确认提案。"
+  },
+  "supersedes": "此前店长服务Lv.4、咖啡专项任一项Lv.3的提案；保留历史记录",
+  "scope": "仅本地规则交接；未改运行代码、SW、玩家存档，未提交或发布。",
+  "managerSkillRationale": "店长维持两专项Lv.3、服务Lv.5、管理Lv.3，保留上任后的技能成长空间；不改为全技能满级。"
+}

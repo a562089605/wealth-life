@@ -1,0 +1,26 @@
+{
+  "project": "a562089605/wealth-life",
+  "page": "辞职确认",
+  "confirmedDate": "2026-11-15",
+  "status": "art-confirmed-local-staging-not-implemented-not-published",
+  "artifacts": [
+    {
+      "file": "career-resignation-confirmed.png",
+      "source": "/workspace/generated_images/exec-5bac9f9c-7761-429b-9f59-e0cd3f5f250e.png",
+      "sha256": "35e612d2d6a2c005ecee046b36b69463dff1c864a01ea16eceee818350c55880"
+    }
+  ],
+  "confirmedContent": {
+    "question": "确定离开当前工作吗？",
+    "body": "确认后将不再获得这份工作的工资。",
+    "buttons": [
+      "确认辞职",
+      "继续当前工作"
+    ],
+    "back": "工作调整",
+    "currentJob": "显示实际当前岗位；画稿咖啡师为示例",
+    "style": "沿确认职业系列暖黄色纸张、深绿手写、柔和蜡笔画风",
+    "scope": "为工作调整页的辞职入口增加明确二次确认；不新增费用、失业期限或其他惩罚，执行沿原辞职逻辑及保存事务"
+  },
+  "archiveScope": "仅本地待回填原仓库的画稿和确认记录，不是替代项目；未修改运行代码、SW或玩家存档。"
+}

@@ -1,0 +1,40 @@
+{
+  "project": "a562089605/wealth-life",
+  "page": "本月职业收入（月末结算）",
+  "confirmedDate": "2026-11-14",
+  "status": "art-and-flow-confirmed-local-staging-not-implemented-not-published",
+  "artifacts": [
+    {
+      "file": "career-income-settled-confirmed.png",
+      "source": "/workspace/generated_images/exec-1cfee40e-8eee-43e1-8a32-2e96c309fed7.png",
+      "sha256": "f6de2aa3aa7ab5e3ae26e0f19909f29c3ebec204af173b2df580fe70529466ac",
+      "status": "confirmed"
+    },
+    {
+      "file": "archive/career-income-estimate-superseded.png",
+      "source": "/workspace/generated_images/exec-af305f33-088d-4a95-9df9-da32fbe9ab7d.png",
+      "sha256": "2053da7ec644a23d8ae00f31d0fcafbf4d312dc40a1695896198224fb40c45a1",
+      "status": "superseded"
+    }
+  ],
+  "confirmedFlow": {
+    "trigger": "完成一个自然月、从地图回到房屋时自动展示刚结束月份的职业收入明细",
+    "order": [
+      "如有原租房回家触发卡，先展示并处理租房卡",
+      "租房卡流程完成后展示本月职业收入结算卡",
+      "关闭结算卡后进入房屋"
+    ],
+    "noRentalCard": "直接展示职业收入结算卡",
+    "scope": "不改变租房卡触发资格、概率、效果或原保存事务；只确认展示顺序",
+    "data": "读取刚结束月份的实际结算记录，显示实际税前收入与已结算；图中日期金额为示例",
+    "noSideEffects": "展示不额外发薪、不推进月份；刷新读档不重复触发；途中临时回屋不作为月末触发",
+    "navigation": "返回房屋",
+    "incomeRows": [
+      "基础工资",
+      "基础小费",
+      "职业事件额外工资",
+      "职业事件额外小费"
+    ]
+  },
+  "archiveScope": "仅本地待回填原仓库的原图与确认记录；原项目代码、SW和存档未修改，旧图保留。"
+}

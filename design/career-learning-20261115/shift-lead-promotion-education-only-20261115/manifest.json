@@ -1,0 +1,26 @@
+{
+  "project": "a562089605/wealth-life",
+  "confirmedDate": "2026-11-15",
+  "status": "art-confirmed-local-staging-not-implemented-not-published",
+  "page": "晋升值班主管",
+  "artifacts": [
+    {
+      "file": "shift-lead-promotion-confirmed.png",
+      "source": "/workspace/generated_images/exec-5c4d3247-813a-48e2-9feb-31eec2f47e11.png",
+      "sha256": "220c29692841cf22cbcfda0275f1c914354f6ee081cc4a14fc0ed5bab27cd963"
+    }
+  ],
+  "supersedes": "career-promotion-final-20261115/shift-lead-promotion-live-levels-confirmed.png中的旧技能调薪说明；旧图保留",
+  "salaryNote": "工资按最高学历加成计算。",
+  "salaryPolicy": "技能只用于满足晋升要求，不按技能等级自动调薪；岗位基础年薪44000，小费按已确认季节档独立计算",
+  "requirements": [
+    "当前在职咖啡师",
+    "咖啡师任职满6个月",
+    "拉花或手冲咖啡任意一项Lv.3",
+    "顾客服务Lv.3",
+    "原职业经理好感至少4，与关系亲密度分开"
+  ],
+  "display": "咖啡专项显示两项实际等级及达标状态，读取与练习页相同经验；图中进度和日期为示例",
+  "effective": "全部满足后玩家确认，下月生效",
+  "scope": "仅归档确认画稿，未改运行代码、SW、存档或发布。"
+}

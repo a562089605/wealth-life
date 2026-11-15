@@ -16,7 +16,7 @@
   return {content,valid,button};
  }
  function room(){close();openRoom();}
- function menu(kind='hobby'){if(!state)return;const skills=kind==='specialist',ctx=panel(skills?'饮品制作专项':'兴趣爱好',skills?'latte-art-confirmed':'coffee-tasting-10xp-confirmed',room);
+ function menu(kind='hobby'){if(!state)return;if(window.CareerPages)return kind==='specialist'?CareerPages.skills():CareerPages.hobbies();const skills=kind==='specialist',ctx=panel(skills?'饮品制作专项':'兴趣爱好',skills?'latte-art-confirmed':'coffee-tasting-10xp-confirmed',room);
   const list=node('div',null,'hobby-list');ctx.content.append(list);
   for(const [id,a]of Object.entries(H.activities)){if(a.kind!==kind)continue;const n=H.xp(state,id),b=ctx.button('',()=>detail(id),false,false,list);b.className='hobby-choice';b.append(node('strong',a.name),node('span','Lv.'+H.level(n)+(n>=800?' · 已满级':' · '+n+' XP')),node('small',money(a.cost)+' · '+a.hours+'小时 · 能量−'+a.energy));}
   if(!skills){const old=[...new Set([...Object.keys(state.hobbies||{}),...Object.keys(state.hobbyXP||{})])];if(old.length){const history=node('details',null,'hobby-legacy');history.append(node('summary','原有兴趣记录'));for(const name of old)history.append(node('p',name+(Number.isFinite(state.hobbies?.[name])?' · Lv.'+state.hobbies[name]:'')+(Number.isFinite(state.hobbyXP?.[name])?' · '+state.hobbyXP[name]+' XP':' · 经验未记录')));ctx.content.append(history);}}
