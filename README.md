@@ -196,3 +196,6 @@ Cloudflare Workers现有Git集成可用根目录 `npx wrangler deploy`，wrangle
 
 
 2026-11-15 职业与学习增量接入：最新规则见 CAREER_LEARNING_RELEASE_20261115.md。原main bbb5dd3基础保留月付学历/教师与全部旧功能；学习三入口、三项Skills、两个次月晋升、岗位学历工资、管理课程、住房及后续完成后自动展示已结算收入、房东第5单A已接入。合伙人后续暂缓；自然共同兴趣及关系抽卡仍关闭。19套相关Node与本地隔离Chromium slot944共11组通过、零脚本错误；不代表全部仓库或iPhone验收。原图历史及SHA在design/career-learning-20261115/，证据qa/career-learning-20261115/。生产状态以后续发布证据为准。
+
+
+2026-11-15 正式发布完成：功能提交 99baf13b74e5343f00be68661fb7bd8e5f1daa6a 已上传原main，Cloudflare成功 https://github.com/a562089605/wealth-life/runs/132728102560 。276份线上资源与本地逐字节一致（含既有学历/教师、共同兴趣、关系卡、头像、住房、宠物等及新12图/4模块样式）。生产隔离Chromium slot944共11组通过、零脚本错误；本地原共同兴趣额外13组回归通过，19套相关Node通过。证据qa/career-learning-20261115/production-deployment.json、production-resources.json、production-report.json及shared-interest-regression.json。production-learning-390.png、production-career-390.png、production-promotion-390.png为实际线上隔离页面视口截图，非用户存档/设计预览/iPhone真机。新功能已接入上线；合伙人暂缓，未确认规则未补造，地图共同兴趣及关系自然抽取保持关闭，原存档及旧备份保留。首次访问可刷新一次获取新版本；不清除浏览器数据。

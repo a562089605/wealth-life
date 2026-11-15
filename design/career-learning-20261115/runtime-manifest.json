@@ -86,6 +86,8 @@
     }
   ],
   "latestRules": "CAREER_LEARNING_RELEASE_20261115.md",
-  "status": "integrated-and-locally-verified",
-  "note": "历史JSON保留原确认时点，冲突以本轮最后确认与发布说明为准；不把归档状态视为线上状态。"
+  "status": "production-released-and-verified",
+  "note": "历史JSON保留原确认时点，冲突以本轮最后确认与发布说明为准；不把归档状态视为线上状态。",
+  "functionalCommit": "99baf13b74e5343f00be68661fb7bd8e5f1daa6a",
+  "productionEvidence": "qa/career-learning-20261115/production-report.json"
 }
