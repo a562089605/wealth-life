@@ -1,0 +1,18 @@
+{
+  "sourceCommit": "56e8a535a7b744ecd2a155c75b9a97e1443013d4",
+  "sourceBranch": "origin/fix/illustrated-home-scene",
+  "status": "historical-reference-only-not-current-rules",
+  "cards": [
+    "员工突然离职",
+    "设备故障",
+    "经营业绩下滑",
+    "研发新品",
+    "门店经营表现优秀"
+  ],
+  "artStatus": "搜索所有本地Git引用的历史资源路径，未找到这五张对应画稿；经理关系卡不作为职业卡替代",
+  "notes": [
+    "旧检查点明确不是已合并发布声明",
+    "后续确认优先，尤其技能不自动加薪、拉花手冲分开、合伙人暂缓、晋升要求已修订",
+    "仅保存历史参考副本，不恢复旧运行模块、抽取概率、工资或存档逻辑"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "shift-acting-success",
+  "parent": "shift-acting",
+  "title": "代理非常成功",
+  "status": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "sourceOriginal": "assets/career/shift-acting-success.webp",
+  "artwork": "design/career-events-20261115/shift-acting-success/shift-acting-success-confirmed.png",
+  "sha256": "1e8d96eed7d5584bfa449e05c5ba906db03de8ae4549be9712dac51857bb3b24",
+  "effects": {
+    "bonus": 100,
+    "stress": -1,
+    "managerTrust": 1
+  },
+  "notes": [
+    "用户最终确认奖金+$100/压力−1/上司认可度+1，覆盖此前仅奖金提案",
+    "不重复增加主卡已给的管理经验；主卡+后续认可度合计+2，压力净+1",
+    "确认结果按钮下方留白已收紧",
+    "原图与此前版本保留；仅归档，未替换运行资源或发布"
+  ]
+}

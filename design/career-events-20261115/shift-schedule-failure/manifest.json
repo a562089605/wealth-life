@@ -1,0 +1,25 @@
+{
+  "id": "shift-schedule-failure",
+  "parent": "shift-schedule",
+  "title": "协调失败",
+  "status": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "sourceOriginal": "assets/career/shift-schedule-failure.webp",
+  "artwork": "design/career-events-20261115/shift-schedule-failure/shift-schedule-failure-confirmed.png",
+  "sha256": "5c68009721d7a1e33d7b91c63b35c3b8ba95107dbfce7a79dbb9b00f3d60c969",
+  "story": "两位同事最终没能找到替班人，这个8小时的班最后还是由你补上。",
+  "effects": {
+    "workHours": 8,
+    "freeHours": -8,
+    "energy": -4,
+    "stress": 2,
+    "managementXP": 3,
+    "managerTrust": 1,
+    "wages": "按当前规则另计",
+    "tips": "按当前规则另计"
+  },
+  "notes": [
+    "用户确认最终稿；与主卡C自己加班补上效果一致",
+    "上司认可度与联系人亲密度独立；不增加拉花手冲经验",
+    "原图保留；仅归档，未替换运行资源或发布"
+  ]
+}

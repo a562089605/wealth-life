@@ -1,0 +1,46 @@
+{
+  "id": "manager-departure",
+  "title": "员工突然离职",
+  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "historicalSourceCommit": "56e8a535a7b744ecd2a155c75b9a97e1443013d4",
+  "artwork": "design/career-events-20261115/manager-departure/manager-departure-confirmed.png",
+  "sha256": "ba24457d8ae13eeb7c45e15e394651958cdb32abc86ec1fd5833af9391532536",
+  "story": "一名员工突然离职。新人到岗前，招聘和工作交接都需要尽快安排。你准备怎么处理？",
+  "options": [
+    {
+      "id": "A",
+      "label": "亲自招聘、交接",
+      "description": "额外加班完成招聘与交接。",
+      "workHours": 4,
+      "freeHours": -4,
+      "energy": -2,
+      "stress": 2,
+      "managementXP": 15,
+      "managerTrust": 1,
+      "wages": "按当前加班规则另计",
+      "extraTips": 0
+    },
+    {
+      "id": "B",
+      "label": "安排主管协助",
+      "description": "正常班内安排主管协助招聘与交接。",
+      "stress": 1,
+      "managementXP": 8,
+      "extraWorkHours": 0,
+      "extraIncome": 0
+    },
+    {
+      "id": "C",
+      "label": "请求上级支援",
+      "stress": -2,
+      "managerTrust": -1,
+      "extraWorkHours": 0,
+      "extraIncome": 0
+    }
+  ],
+  "notes": [
+    "用户重新确认历史规则与新画稿",
+    "不增加技能调薪或专项经验，不恢复旧分支运行模块",
+    "仅归档，未接入运行或发布"
+  ]
+}

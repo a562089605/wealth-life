@@ -1,0 +1,28 @@
+{
+  "id": "manager-decline-b-success",
+  "parent": "manager-decline",
+  "choice": "B",
+  "title": "大家的办法奏效了",
+  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "artwork": "design/career-events-20261115/manager-decline-b-success/manager-decline-b-success-confirmed.png",
+  "sha256": "808e13899523132fe5f551128c1163cf4618be0fd270521685c075851e117e90",
+  "story": "大家一起提出的改进办法逐渐见效，服务更顺畅，店里的生意也有了改善。",
+  "effects": {
+    "managementXP": 5,
+    "happiness": 1,
+    "stress": -2,
+    "storeSalesRate": 0.03
+  },
+  "storeEffect": {
+    "effectiveFrom": "成功所在当前月",
+    "duration": "之后每月应用该项3%增益，不逐月累加或复利",
+    "sharedImprovement": "A/B属于同一项改进，不重复领取两份增益",
+    "otherCards": "其他卡效果及叠加关系另行确认",
+    "playerIncomeDelta": 0
+  },
+  "notes": [
+    "用户确认最终画稿及营业额持续规则，覆盖历史仅当月+3%次月恢复",
+    "卡面不显示持续生效/一次/互斥等内部规则；不重复主卡结算",
+    "仅归档，未接入运行或发布"
+  ]
+}

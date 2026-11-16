@@ -1,0 +1,35 @@
+{
+  "id": "barista-staff",
+  "title": "同事临时请假",
+  "status": "artwork-confirmed-not-runtime-replaced",
+  "confirmedBy": "用户本轮确认",
+  "sourceOriginal": "assets/career/barista-staff.webp",
+  "artwork": "design/career-events-20261115/barista-staff/barista-staff-confirmed.png",
+  "sha256": "ead9e0aaa0a7289780218476dc009e6c30b5d75987c195b37dc0e6a1edf2445d",
+  "options": [
+    {
+      "id": "A",
+      "label": "去顶班",
+      "workHours": 8,
+      "freeHours": -8,
+      "energy": -4,
+      "stress": 2,
+      "managerTrust": 1,
+      "serviceExperience": "增加，沿原事件计算，不补造新数值",
+      "wages": "按当前加班规则另计",
+      "tips": "按当前规则另计"
+    },
+    {
+      "id": "B",
+      "label": "婉拒",
+      "effects": {}
+    }
+  ],
+  "notes": [
+    "原插画和版式为基础的修订稿；原图保留",
+    "不增加拉花或手冲经验；不增加技能调薪",
+    "仅归档确认画稿，未覆盖运行资源、修改存档或发布；事件代码逐卡审查后统一接入",
+    "用户已确认上司认可度+1标签修订；此前店长信任版本移入archive。"
+  ],
+  "careerRecognitionLabel": "上司认可度"
+}

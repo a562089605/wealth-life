@@ -1,0 +1,8 @@
+{
+  "scope": "local isolated Chromium slot945; not user saves or real iPhone",
+  "steps": [
+    "Real monthly save failure restores company expenses, modifiers, payroll, specialty XP and month; retry pays event bonus150 and books store once"
+  ],
+  "errors": [],
+  "ok": true
+}

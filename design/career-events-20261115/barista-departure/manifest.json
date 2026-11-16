@@ -1,0 +1,36 @@
+{
+  "id": "barista-departure",
+  "title": "同事突然离职",
+  "status": "artwork-confirmed-not-runtime-replaced",
+  "sourceOriginal": "assets/career/barista-departure.webp",
+  "artwork": "design/career-events-20261115/barista-departure/barista-departure-confirmed.png",
+  "sha256": "a752d1bdb867a3f0ecb6effe9102367b1aa24d39c1e8c3469bc31c306a7bd972",
+  "layout": "与平时卡一致的竖版，A/B上下排列",
+  "story": "一名同事突然离职。新人到岗前，经理问你愿不愿意多帮忙上四个班，分散安排在本月：两个平常日、两个周末，每班8小时。",
+  "careerRecognitionLabel": "上司认可度",
+  "options": [
+    {
+      "id": "A",
+      "label": "接受临时加班",
+      "workHours": 32,
+      "freeHours": -32,
+      "energy": -12,
+      "stress": 6,
+      "managerTrust": 2,
+      "serviceExperience": "增加，沿原事件计算，不补造新数值",
+      "wages": "按当前加班规则另计",
+      "tips": "按当前规则另计"
+    },
+    {
+      "id": "B",
+      "label": "不接受加班",
+      "effects": {}
+    }
+  ],
+  "notes": [
+    "用户已确认竖版及上司认可度+2标签最终稿",
+    "原横版及此前标签版本保留于archive",
+    "不增加拉花或手冲经验、技能调薪；不更改存档字段",
+    "仅归档，未替换运行资源或发布"
+  ]
+}

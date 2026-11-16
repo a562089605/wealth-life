@@ -1,0 +1,36 @@
+{
+  "id": "shift-acting",
+  "title": "临时代理经理",
+  "status": "main-and-both-followups-confirmed-not-runtime-replaced",
+  "sourceOriginal": "assets/career/shift-acting.webp",
+  "artwork": "design/career-events-20261115/shift-acting/shift-acting-confirmed.png",
+  "sha256": "54d07b6c6d48247a9622552bab3d827e03b5ae576f9252e24b893844ba8b9273",
+  "story": "经理临时有事需要离店，希望你额外多上一个完整8小时班，并负责这一班的门店运营。",
+  "scene": "经理离店前自然面对玩家，交接钥匙和工作清单；员工正常工作，无投诉顾客姿态。",
+  "options": [
+    {
+      "id": "A",
+      "label": "接受代理",
+      "workHours": 8,
+      "freeHours": -8,
+      "energy": -4,
+      "stress": 2,
+      "managementXP": 10,
+      "managerTrust": 1,
+      "wages": "按当前规则另计",
+      "tips": "按当前规则另计",
+      "followup": "acting",
+      "followupReview": "both-confirmed"
+    },
+    {
+      "id": "B",
+      "label": "婉拒",
+      "effects": {}
+    }
+  ],
+  "notes": [
+    "用户确认主卡及经理头颈姿态修正最终稿",
+    "统一管理经验、上司认可度；不直接晋升或改变固定工资",
+    "原图及前一版保留；仅归档，未替换运行资源或发布"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "manager-research-b-failure",
+  "parent": "manager-research",
+  "choice": "B",
+  "title": "还没找到合适的配方",
+  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "artwork": "design/career-events-20261115/manager-research-b-failure/manager-research-b-failure-confirmed.png",
+  "sha256": "0687877196f67664190128d9afac149a149218148113720e8b431a67802e2eb9",
+  "story": "大家试做了几种方案，但口味和制作流程还不够稳定，新饮品暂时没能推出。",
+  "effects": {
+    "managementXP": 3,
+    "stress": 1
+  },
+  "notes": [
+    "用户确认最终画稿",
+    "无拉花/手冲经验、奖金或营业额增益；不重复主卡结算",
+    "仅归档，未接入运行或发布"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "manager-decline-a-success",
+  "parent": "manager-decline",
+  "choice": "A",
+  "title": "调整见效",
+  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "artwork": "design/career-events-20261115/manager-decline-a-success/manager-decline-a-success-confirmed.png",
+  "sha256": "36cfbecd1b2d494d9560f37d3d051b6fb1275f29f62a825906180ec54d05a144",
+  "story": "调整逐渐见效，顾客反馈有所改善，店里的生意也有了起色。",
+  "effects": {
+    "managementXP": 10,
+    "happiness": 2,
+    "stress": -4,
+    "storeSalesRate": 0.05
+  },
+  "storeEffect": {
+    "effectiveFrom": "成功所在当前月",
+    "duration": "之后每个月应用该项5%增益，不逐月累加或复利",
+    "repeat": "同店该项改进仅生效一次",
+    "otherCards": "其他卡效果及叠加关系另行确认",
+    "playerIncomeDelta": 0
+  },
+  "display": "只显示门店营业额+5%；隐藏持续生效/同店一次/不叠加等内部规则说明",
+  "notes": [
+    "用户确认最新无规则提示最终稿，覆盖历史仅当月+5%且次月恢复",
+    "不重复结算主卡效果、不直接增加工资或奖金",
+    "原稿历史保留；仅归档，未接入运行或发布"
+  ]
+}

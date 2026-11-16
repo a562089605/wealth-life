@@ -1,0 +1,155 @@
+{
+  "status": "29-artworks-confirmed-local-archive-not-runtime-integrated-not-published",
+  "scope": "咖啡师5主卡；值班主管5主卡6后续；店长5主卡8后续",
+  "latestRecognitionRule": "CAREER_RECOGNITION_CONFIRMED.md",
+  "integrationRules": "INTEGRATION_RULES_CONFIRMED.md",
+  "storeSalesRules": "store-sales-modifiers-confirmed.json",
+  "displayPolicy": "卡面保留剧情、选择和直观数值，隐藏内部规则；不批量重画已确认画稿",
+  "cards": [
+    {
+      "id": "barista-busy",
+      "manifest": "design/career-events-20261115/barista-busy/manifest.json",
+      "sha256": "37d09d7780d91ca37731c07bc3ea605e1b7120342506bf46dd7de74b38d007c0"
+    },
+    {
+      "id": "barista-cut",
+      "manifest": "design/career-events-20261115/barista-cut/manifest.json",
+      "sha256": "7bf3d71f423032e100d4df0048513853171fd0f2a7d3b35ee563193ccbadb995"
+    },
+    {
+      "id": "barista-departure",
+      "manifest": "design/career-events-20261115/barista-departure/manifest.json",
+      "sha256": "a752d1bdb867a3f0ecb6effe9102367b1aa24d39c1e8c3469bc31c306a7bd972"
+    },
+    {
+      "id": "barista-staff",
+      "manifest": "design/career-events-20261115/barista-staff/manifest.json",
+      "sha256": "ead9e0aaa0a7289780218476dc009e6c30b5d75987c195b37dc0e6a1edf2445d"
+    },
+    {
+      "id": "barista-tip",
+      "manifest": "design/career-events-20261115/barista-tip/manifest.json",
+      "sha256": "3d37a9b43779ccd1870b9955f9a4cb3e6144aee6a1bdbb055f32e1ead6b3d155"
+    },
+    {
+      "id": "manager-decline",
+      "manifest": "design/career-events-20261115/manager-decline/manifest.json",
+      "sha256": "f79758960ff1f3329b9ec5d4f2d34f21be5fdf0d7b7d7c37eba083dd74b1f754"
+    },
+    {
+      "id": "manager-decline-a-failure",
+      "manifest": "design/career-events-20261115/manager-decline-a-failure/manifest.json",
+      "sha256": "c529a514e6842ed3b731e9dd8e8cd4a60a037f99155ae608f7aab57b4bb4b724"
+    },
+    {
+      "id": "manager-decline-a-success",
+      "manifest": "design/career-events-20261115/manager-decline-a-success/manifest.json",
+      "sha256": "36cfbecd1b2d494d9560f37d3d051b6fb1275f29f62a825906180ec54d05a144"
+    },
+    {
+      "id": "manager-decline-b-failure",
+      "manifest": "design/career-events-20261115/manager-decline-b-failure/manifest.json",
+      "sha256": "17bf9546793fb366d0509c060c8b9a6bee3b4ad647f59add99497b1d4a5c388b"
+    },
+    {
+      "id": "manager-decline-b-success",
+      "manifest": "design/career-events-20261115/manager-decline-b-success/manifest.json",
+      "sha256": "808e13899523132fe5f551128c1163cf4618be0fd270521685c075851e117e90"
+    },
+    {
+      "id": "manager-departure",
+      "manifest": "design/career-events-20261115/manager-departure/manifest.json",
+      "sha256": "ba24457d8ae13eeb7c45e15e394651958cdb32abc86ec1fd5833af9391532536"
+    },
+    {
+      "id": "manager-equipment",
+      "manifest": "design/career-events-20261115/manager-equipment/manifest.json",
+      "sha256": "da3ba88b6b98fcf26cd181f3350b1346ba7dc037bbe91d7996a979fd8b125332"
+    },
+    {
+      "id": "manager-excellent",
+      "manifest": "design/career-events-20261115/manager-excellent/manifest.json",
+      "sha256": "1ce4b53bdccf66899ea4ca53d7a0c1481b940dfb363a1e1dab608e21754eb34d"
+    },
+    {
+      "id": "manager-research",
+      "manifest": "design/career-events-20261115/manager-research/manifest.json",
+      "sha256": "c60088f7473831ee9a0d929919654e3298b79ecd7ce4099ded73a0a1b93f9e48"
+    },
+    {
+      "id": "manager-research-a-failure",
+      "manifest": "design/career-events-20261115/manager-research-a-failure/manifest.json",
+      "sha256": "c5128a3ba71c5db4837997a0854ae4483a90167e0775d0c3363474a17ca0c211"
+    },
+    {
+      "id": "manager-research-a-success",
+      "manifest": "design/career-events-20261115/manager-research-a-success/manifest.json",
+      "sha256": "05b33ac253717b56653851f049e7e1e3f6c85cced376c326c52bb22261b74d86"
+    },
+    {
+      "id": "manager-research-b-failure",
+      "manifest": "design/career-events-20261115/manager-research-b-failure/manifest.json",
+      "sha256": "0687877196f67664190128d9afac149a149218148113720e8b431a67802e2eb9"
+    },
+    {
+      "id": "manager-research-b-success",
+      "manifest": "design/career-events-20261115/manager-research-b-success/manifest.json",
+      "sha256": "9c9c135af91cbc0afb899ceb1cdf1540e1a1700fef1dfb69f21b4196aa83b64b"
+    },
+    {
+      "id": "shift-acting",
+      "manifest": "design/career-events-20261115/shift-acting/manifest.json",
+      "sha256": "54d07b6c6d48247a9622552bab3d827e03b5ae576f9252e24b893844ba8b9273"
+    },
+    {
+      "id": "shift-acting-failure",
+      "manifest": "design/career-events-20261115/shift-acting-failure/manifest.json",
+      "sha256": "aa6078e7a80c927af820f3e48f0650cd669750fb95c0797e1829676e9d0aa9a9"
+    },
+    {
+      "id": "shift-acting-success",
+      "manifest": "design/career-events-20261115/shift-acting-success/manifest.json",
+      "sha256": "1e8d96eed7d5584bfa449e05c5ba906db03de8ae4549be9712dac51857bb3b24"
+    },
+    {
+      "id": "shift-complaint",
+      "manifest": "design/career-events-20261115/shift-complaint/manifest.json",
+      "sha256": "391cf690066a56ea5c04f4bee6e2478c11172692c046abbbd3d947b2a0f7ff13"
+    },
+    {
+      "id": "shift-complaint-failure",
+      "manifest": "design/career-events-20261115/shift-complaint-failure/manifest.json",
+      "sha256": "87e65d38494935e42c1dae509757704e283cfcae6b91ed63a50191cb98aacb8b"
+    },
+    {
+      "id": "shift-complaint-success",
+      "manifest": "design/career-events-20261115/shift-complaint-success/manifest.json",
+      "sha256": "b7e8c121a30784cd41733d7b3e53cb0cb4238775eddbba032bb5ed36d7afe2be"
+    },
+    {
+      "id": "shift-praise",
+      "manifest": "design/career-events-20261115/shift-praise/manifest.json",
+      "sha256": "00b7a620c7f26047604d0b9f807c8062e6dbd522e1d766d5e828797067edb634"
+    },
+    {
+      "id": "shift-schedule",
+      "manifest": "design/career-events-20261115/shift-schedule/manifest.json",
+      "sha256": "5367d6798a0eb5c0b82d7f4de458afe4a3d48daf6157264dbee3010e14cf724c"
+    },
+    {
+      "id": "shift-schedule-failure",
+      "manifest": "design/career-events-20261115/shift-schedule-failure/manifest.json",
+      "sha256": "5c68009721d7a1e33d7b91c63b35c3b8ba95107dbfce7a79dbb9b00f3d60c969"
+    },
+    {
+      "id": "shift-schedule-success",
+      "manifest": "design/career-events-20261115/shift-schedule-success/manifest.json",
+      "sha256": "06bac3bcf6c715bf9f55dad5301613dd76b3d67ba4b881cca46c54f726e0e301"
+    },
+    {
+      "id": "shift-training",
+      "manifest": "design/career-events-20261115/shift-training/manifest.json",
+      "sha256": "479eaf1016f390abed2ca6b305b18a7218da04b392c82f472b28096ce1194184"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "shift-complaint-failure",
+  "parent": "shift-complaint",
+  "title": "处理失败",
+  "status": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "sourceOriginal": "assets/career/shift-complaint-failure.webp",
+  "artwork": "design/career-events-20261115/shift-complaint-failure/shift-complaint-failure-confirmed.png",
+  "sha256": "87e65d38494935e42c1dae509757704e283cfcae6b91ed63a50191cb98aacb8b",
+  "effects": {
+    "stress": 1,
+    "serviceXP": 3,
+    "managerTrust": -1
+  },
+  "notes": [
+    "用户确认最终稿；沿现行代码，不增加管理经验或额外扣时间",
+    "上司认可度与联系人亲密度独立",
+    "原图保留；仅归档，未替换运行资源或发布"
+  ]
+}

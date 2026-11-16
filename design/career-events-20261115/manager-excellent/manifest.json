@@ -1,0 +1,25 @@
+{
+  "id": "manager-excellent",
+  "title": "门店经营表现优秀",
+  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "artwork": "design/career-events-20261115/manager-excellent/manager-excellent-confirmed.png",
+  "sha256": "1ce4b53bdccf66899ea4ca53d7a0c1481b940dfb363a1e1dab608e21754eb34d",
+  "story": "这个月，门店运营顺畅，顾客反馈良好。上级肯定了你的管理表现，并发给你一笔奖金。",
+  "options": [
+    {
+      "id": "A",
+      "label": "开心接受",
+      "bonus": 200,
+      "managementXP": 15,
+      "managerTrust": 1,
+      "happiness": 3,
+      "stress": -3
+    }
+  ],
+  "scope": "受雇店长，合伙人差异暂缓",
+  "notes": [
+    "用户本轮确认完整规则及最终画稿，覆盖旧历史奖励未封板状态",
+    "一次性职业事件奖金，与固定月奖金500分别计算，不增加营业额或固定工资",
+    "仅归档，未接入运行或发布"
+  ]
+}

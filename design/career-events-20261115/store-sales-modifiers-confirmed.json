@@ -1,0 +1,12 @@
+{
+  "status": "用户已确认",
+  "method": "各已确认项目的百分比相加，以该门店对应月份未应用这些增益前的营业额为基准",
+  "examples": {
+    "declineAPlusResearch": 0.1,
+    "declineBPlusResearch": 0.08
+  },
+  "monthBehavior": "各项从其成功所在当前月开始，之后每月继续应用；不随月份递增，不互相复利",
+  "exclusive": "经营改进A/B同一项不重复领取；新品A/B同一款不重复领取",
+  "otherCards": "以后新增卡片另行确认，不推定加入本规则",
+  "display": "不在卡面增加内部规则提示"
+}

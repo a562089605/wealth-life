@@ -1,0 +1,83 @@
+{
+  "id": "manager-research",
+  "title": "研发新品",
+  "status": "main-success-conditions-and-four-followups-confirmed-not-runtime-integrated",
+  "artwork": "design/career-events-20261115/manager-research/manager-research-confirmed.png",
+  "sha256": "c60088f7473831ee9a0d929919654e3298b79ecd7ce4099ded73a0a1b93f9e48",
+  "story": "店里准备推出一款新饮品。你打算怎样推进研发？",
+  "options": [
+    {
+      "id": "A",
+      "label": "亲自试做，调整配方",
+      "energy": -2,
+      "stress": 2,
+      "managementXP": 15,
+      "followupReview": "both-confirmed",
+      "successSkill": "咖啡品鉴等级"
+    },
+    {
+      "id": "B",
+      "label": "组织团队试做，汇总意见",
+      "energy": -1,
+      "stress": 1,
+      "managementXP": 10,
+      "followupReview": "both-confirmed",
+      "successSkill": "管理技能等级"
+    }
+  ],
+  "extraWorkHours": 0,
+  "playerCashDelta": 0,
+  "storeResearchCost": {
+    "payer": "门店",
+    "amount": 100,
+    "status": "用户已确认",
+    "appliesTo": [
+      "A",
+      "B"
+    ],
+    "charged": "每次研发，无论成功失败只计一次；主卡与后续不重复收取",
+    "playerCashDelta": 0,
+    "display": "不显示于卡面",
+    "basis": "游戏数值，非市场报价"
+  },
+  "notes": [
+    "用户确认主卡文案、效果与画稿，三项旧Coffee经验不转换为拉花手冲经验",
+    "两项正常班内完成，不额外扣自由时间、工资或小费",
+    "成功条件与后续奖励待逐项确认，旧Coffee判定不能直接恢复",
+    "仅归档，未接入运行或发布"
+  ],
+  "successRules": {
+    "status": "用户已确认",
+    "A": {
+      "skill": "咖啡品鉴",
+      "ratesByLevel": {
+        "0": 0.4,
+        "1": 0.5,
+        "2": 0.6,
+        "3": 0.7,
+        "4": 0.8,
+        "5": 0.9
+      }
+    },
+    "B": {
+      "skill": "管理技能",
+      "ratesByLevel": {
+        "1": 0.5,
+        "2": 0.6,
+        "3": 0.7,
+        "4": 0.8,
+        "5": 0.9
+      }
+    },
+    "display": "卡面不显示判定公式",
+    "notes": "只是成功判定，不自动增加品鉴或专项经验，不恢复旧Coffee技能。"
+  },
+  "repeatRules": {
+    "status": "用户已确认",
+    "identity": "按对应门店稳定ID记录，不重置旧存档",
+    "success": "对应主卡同店退池，A/B共用完成标记",
+    "failure": "当月不再出现，下个月可再遇",
+    "display": "不显示于卡面",
+    "scope": "仅资格/完成与冷却，不确定或修改地图触发概率"
+  }
+}

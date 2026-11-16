@@ -1,0 +1,30 @@
+{
+  "id": "manager-research-a-success",
+  "parent": "manager-research",
+  "choice": "A",
+  "title": "新口味受到欢迎",
+  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "artwork": "design/career-events-20261115/manager-research-a-success/manager-research-a-success-confirmed.png",
+  "sha256": "05b33ac253717b56653851f049e7e1e3f6c85cced376c326c52bb22261b74d86",
+  "story": "反复调整后，新饮品终于定下配方。推出后，顾客的反馈不错，也带动了店里的生意。",
+  "effects": {
+    "bonus": 150,
+    "managerTrust": 1,
+    "happiness": 2,
+    "stress": -3,
+    "storeSalesRate": 0.05,
+    "latteXP": 5,
+    "pourOverXP": 5
+  },
+  "storeEffect": {
+    "effectiveFrom": "成功所在当前月",
+    "duration": "之后每月应用这项5%增益，不逐月累加",
+    "otherCards": "其他卡增益及合并方式另行确认"
+  },
+  "notes": [
+    "用户确认最终画稿及拉花/手冲各+5XP例外，仅限本次A成功后续，不扩展日常工作自动专项XP",
+    "满级项不增加经验，不恢复独立Coffee技能或自动增加品鉴经验",
+    "不重复主卡结算；卡面隐藏内部规则说明",
+    "仅归档，未接入运行或发布"
+  ]
+}

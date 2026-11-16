@@ -1,0 +1,35 @@
+{
+  "id": "shift-training",
+  "title": "新人培训",
+  "status": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "sourceOriginal": "assets/career/shift-training.webp",
+  "artwork": "design/career-events-20261115/shift-training/shift-training-confirmed.png",
+  "sha256": "479eaf1016f390abed2ca6b305b18a7218da04b392c82f472b28096ce1194184",
+  "story": "门店来了新同事，经理安排你在正常排班内负责带教。这位新人对咖啡很有热情，但还不太熟悉流程。",
+  "options": [
+    {
+      "id": "A",
+      "label": "认真带教",
+      "energy": -2,
+      "stress": 1,
+      "managementXP": 15,
+      "managerTrust": 1,
+      "extraWorkHours": 0,
+      "freeHoursDelta": 0
+    },
+    {
+      "id": "B",
+      "label": "只做基础交接",
+      "energy": -1,
+      "managementXP": 5,
+      "extraWorkHours": 0,
+      "freeHoursDelta": 0
+    }
+  ],
+  "notes": [
+    "用户已确认规则及最终画稿",
+    "正常排班内完成，取消原代码A额外4h/B额外1h，不新增工资小费",
+    "管理经验及上司认可度统一命名，联系人亲密度独立",
+    "原图保留；仅归档，事件规则尚未修改或发布"
+  ]
+}

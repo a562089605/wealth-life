@@ -1,0 +1,49 @@
+{
+  "id": "shift-schedule",
+  "title": "排班冲突",
+  "status": "main-and-both-followups-confirmed-not-runtime-replaced",
+  "sourceOriginal": "assets/career/shift-schedule.webp",
+  "artwork": "design/career-events-20261115/shift-schedule/shift-schedule-confirmed.png",
+  "sha256": "5367d6798a0eb5c0b82d7f4de458afe4a3d48daf6157264dbee3010e14cf724c",
+  "options": [
+    {
+      "id": "A",
+      "label": "重新协调排班",
+      "energy": -1,
+      "stress": 1,
+      "managementXP": 12,
+      "managerTrust": 1
+    },
+    {
+      "id": "B",
+      "label": "让两位同事自行协调",
+      "followup": "schedule",
+      "existingSuccessProbability": 0.5,
+      "followupReview": "both-confirmed"
+    },
+    {
+      "id": "C",
+      "label": "自己加班补上",
+      "workHours": 8,
+      "freeHours": -8,
+      "energy": -4,
+      "stress": 2,
+      "managementXP": 3,
+      "managerTrust": 1,
+      "wages": "按当前规则另计",
+      "tips": "按当前规则另计"
+    },
+    {
+      "id": "D",
+      "label": "请经理决定",
+      "stress": -1,
+      "energy": 0
+    }
+  ],
+  "notes": [
+    "用户确认主卡及D能量不变的修订",
+    "管理经验、上司认可度统一命名；不改变存档字段",
+    "原图保留；仅归档，事件规则尚未修改或发布",
+    "B两个后续逐张复审，不将未确认建议写成最终规则"
+  ]
+}

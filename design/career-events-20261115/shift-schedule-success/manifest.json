@@ -1,0 +1,18 @@
+{
+  "id": "shift-schedule-success",
+  "parent": "shift-schedule",
+  "title": "协调成功",
+  "status": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "sourceOriginal": "assets/career/shift-schedule-success.webp",
+  "artwork": "design/career-events-20261115/shift-schedule-success/shift-schedule-success-confirmed.png",
+  "sha256": "06bac3bcf6c715bf9f55dad5301613dd76b3d67ba4b881cca46c54f726e0e301",
+  "effects": {
+    "stress": -1,
+    "managementXP": 5,
+    "energy": 0
+  },
+  "notes": [
+    "用户确认取消原能量+1，保留压力−1和管理经验+5",
+    "原图保留；仅归档，未替换运行资源或发布"
+  ]
+}

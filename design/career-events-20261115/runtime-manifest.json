@@ -1,0 +1,208 @@
+{
+  "status": "integrated-and-locally-verified",
+  "artifacts": [
+    {
+      "id": "barista-busy",
+      "source": "design/career-events-20261115/barista-busy/barista-busy-confirmed.png",
+      "sourceSha256": "37d09d7780d91ca37731c07bc3ea605e1b7120342506bf46dd7de74b38d007c0",
+      "runtime": "assets/career-events-20261116/barista-busy.webp",
+      "runtimeSha256": "1320ea2c74b357db8b680dbf93225df4989b49e7270606b1984e5934133abef5"
+    },
+    {
+      "id": "barista-cut",
+      "source": "design/career-events-20261115/barista-cut/barista-cut-confirmed.png",
+      "sourceSha256": "7bf3d71f423032e100d4df0048513853171fd0f2a7d3b35ee563193ccbadb995",
+      "runtime": "assets/career-events-20261116/barista-cut.webp",
+      "runtimeSha256": "423f0785d4f1e8e5c037f0536cede7f86f4c70fab3d3f6445dbd083b61bfe858"
+    },
+    {
+      "id": "barista-departure",
+      "source": "design/career-events-20261115/barista-departure/barista-departure-confirmed.png",
+      "sourceSha256": "a752d1bdb867a3f0ecb6effe9102367b1aa24d39c1e8c3469bc31c306a7bd972",
+      "runtime": "assets/career-events-20261116/barista-departure.webp",
+      "runtimeSha256": "03551f35cf2ea800ea2ac64ce8bd436e7aa2a429dfb1177c4dbfd6df9be3ab19"
+    },
+    {
+      "id": "barista-staff",
+      "source": "design/career-events-20261115/barista-staff/barista-staff-confirmed.png",
+      "sourceSha256": "ead9e0aaa0a7289780218476dc009e6c30b5d75987c195b37dc0e6a1edf2445d",
+      "runtime": "assets/career-events-20261116/barista-staff.webp",
+      "runtimeSha256": "1cbda136fe702dd95c90953c7ce7c44ae71115273e31d60b0e7ff3572c24c826"
+    },
+    {
+      "id": "barista-tip",
+      "source": "design/career-events-20261115/barista-tip/barista-tip-confirmed.png",
+      "sourceSha256": "3d37a9b43779ccd1870b9955f9a4cb3e6144aee6a1bdbb055f32e1ead6b3d155",
+      "runtime": "assets/career-events-20261116/barista-tip.webp",
+      "runtimeSha256": "ec1054c5a9a772aa4092c0acd3be00ad90720f8680df48af90eddfae2143c7ea"
+    },
+    {
+      "id": "manager-decline",
+      "source": "design/career-events-20261115/manager-decline/manager-decline-confirmed.png",
+      "sourceSha256": "f79758960ff1f3329b9ec5d4f2d34f21be5fdf0d7b7d7c37eba083dd74b1f754",
+      "runtime": "assets/career-events-20261116/manager-decline.webp",
+      "runtimeSha256": "748bc87136c477c9f270bcd6e3b3c962c56e45340a2ffb68fe364cbd8c2180c9"
+    },
+    {
+      "id": "manager-decline-a-failure",
+      "source": "design/career-events-20261115/manager-decline-a-failure/manager-decline-a-failure-confirmed.png",
+      "sourceSha256": "c529a514e6842ed3b731e9dd8e8cd4a60a037f99155ae608f7aab57b4bb4b724",
+      "runtime": "assets/career-events-20261116/manager-decline-a-failure.webp",
+      "runtimeSha256": "f1956e9874b9fbbff93cf9c3f9d7feb4fc7effb1110d75712dbe8516fe268d9d"
+    },
+    {
+      "id": "manager-decline-a-success",
+      "source": "design/career-events-20261115/manager-decline-a-success/manager-decline-a-success-confirmed.png",
+      "sourceSha256": "36cfbecd1b2d494d9560f37d3d051b6fb1275f29f62a825906180ec54d05a144",
+      "runtime": "assets/career-events-20261116/manager-decline-a-success.webp",
+      "runtimeSha256": "61bcfd2a8d1294a50c7772fb662f236f257ad656743a872e0dc8e1ed529af4bf"
+    },
+    {
+      "id": "manager-decline-b-failure",
+      "source": "design/career-events-20261115/manager-decline-b-failure/manager-decline-b-failure-confirmed.png",
+      "sourceSha256": "17bf9546793fb366d0509c060c8b9a6bee3b4ad647f59add99497b1d4a5c388b",
+      "runtime": "assets/career-events-20261116/manager-decline-b-failure.webp",
+      "runtimeSha256": "2d77843990c68b587e4cabf6e8f4c5572ca2470ae3d93f1a8104117340ac6001"
+    },
+    {
+      "id": "manager-decline-b-success",
+      "source": "design/career-events-20261115/manager-decline-b-success/manager-decline-b-success-confirmed.png",
+      "sourceSha256": "808e13899523132fe5f551128c1163cf4618be0fd270521685c075851e117e90",
+      "runtime": "assets/career-events-20261116/manager-decline-b-success.webp",
+      "runtimeSha256": "56f65031cae9385347695b9820e5a529bc26ded16ae60d83c22e91b4ab0f5f0f"
+    },
+    {
+      "id": "manager-departure",
+      "source": "design/career-events-20261115/manager-departure/manager-departure-confirmed.png",
+      "sourceSha256": "ba24457d8ae13eeb7c45e15e394651958cdb32abc86ec1fd5833af9391532536",
+      "runtime": "assets/career-events-20261116/manager-departure.webp",
+      "runtimeSha256": "8c58764a337dd693715757b5e919c8981835bd2f9ce0a7ff4abb616c7a7140e2"
+    },
+    {
+      "id": "manager-equipment",
+      "source": "design/career-events-20261115/manager-equipment/manager-equipment-confirmed.png",
+      "sourceSha256": "da3ba88b6b98fcf26cd181f3350b1346ba7dc037bbe91d7996a979fd8b125332",
+      "runtime": "assets/career-events-20261116/manager-equipment.webp",
+      "runtimeSha256": "71004b4df0c6abdb5bf68e3ac1a7f1e886893a31d5baf3f50bd0ef71ba235a19"
+    },
+    {
+      "id": "manager-excellent",
+      "source": "design/career-events-20261115/manager-excellent/manager-excellent-confirmed.png",
+      "sourceSha256": "1ce4b53bdccf66899ea4ca53d7a0c1481b940dfb363a1e1dab608e21754eb34d",
+      "runtime": "assets/career-events-20261116/manager-excellent.webp",
+      "runtimeSha256": "e8b8366e53beaac926e151e9b53ce54a64ae051c69293a418e0ac4fbbdd4f38d"
+    },
+    {
+      "id": "manager-research",
+      "source": "design/career-events-20261115/manager-research/manager-research-confirmed.png",
+      "sourceSha256": "c60088f7473831ee9a0d929919654e3298b79ecd7ce4099ded73a0a1b93f9e48",
+      "runtime": "assets/career-events-20261116/manager-research.webp",
+      "runtimeSha256": "637cacfcd9141ff0200237824dbf06c92e7ec3b059ef26dbb74715d00d576188"
+    },
+    {
+      "id": "manager-research-a-failure",
+      "source": "design/career-events-20261115/manager-research-a-failure/manager-research-a-failure-confirmed.png",
+      "sourceSha256": "c5128a3ba71c5db4837997a0854ae4483a90167e0775d0c3363474a17ca0c211",
+      "runtime": "assets/career-events-20261116/manager-research-a-failure.webp",
+      "runtimeSha256": "3a5b4da6c4f951a5bb8dd4df7d3a265f8c11807b57ff45a61308cac884ae4e1e"
+    },
+    {
+      "id": "manager-research-a-success",
+      "source": "design/career-events-20261115/manager-research-a-success/manager-research-a-success-confirmed.png",
+      "sourceSha256": "05b33ac253717b56653851f049e7e1e3f6c85cced376c326c52bb22261b74d86",
+      "runtime": "assets/career-events-20261116/manager-research-a-success.webp",
+      "runtimeSha256": "46bd1d7b187aaef12aec276f033fa2d5a2d5dd4be4471d4294010c2ef33310b9"
+    },
+    {
+      "id": "manager-research-b-failure",
+      "source": "design/career-events-20261115/manager-research-b-failure/manager-research-b-failure-confirmed.png",
+      "sourceSha256": "0687877196f67664190128d9afac149a149218148113720e8b431a67802e2eb9",
+      "runtime": "assets/career-events-20261116/manager-research-b-failure.webp",
+      "runtimeSha256": "2a4721fb996318a82d903375847e0c5e428297404393cb5c57462ee946e18e5c"
+    },
+    {
+      "id": "manager-research-b-success",
+      "source": "design/career-events-20261115/manager-research-b-success/manager-research-b-success-confirmed.png",
+      "sourceSha256": "9c9c135af91cbc0afb899ceb1cdf1540e1a1700fef1dfb69f21b4196aa83b64b",
+      "runtime": "assets/career-events-20261116/manager-research-b-success.webp",
+      "runtimeSha256": "407924fd088059fb08c37fee0ca1387366fdc4b4acb5f69a4fc705e6a0a2d628"
+    },
+    {
+      "id": "shift-acting",
+      "source": "design/career-events-20261115/shift-acting/shift-acting-confirmed.png",
+      "sourceSha256": "54d07b6c6d48247a9622552bab3d827e03b5ae576f9252e24b893844ba8b9273",
+      "runtime": "assets/career-events-20261116/shift-acting.webp",
+      "runtimeSha256": "b2fd296590fac4cc13f18ef33130644ba5f5681f598ee7d078ae336b8e851749"
+    },
+    {
+      "id": "shift-acting-failure",
+      "source": "design/career-events-20261115/shift-acting-failure/shift-acting-failure-confirmed.png",
+      "sourceSha256": "aa6078e7a80c927af820f3e48f0650cd669750fb95c0797e1829676e9d0aa9a9",
+      "runtime": "assets/career-events-20261116/shift-acting-failure.webp",
+      "runtimeSha256": "a6b95a528eb2335e801613b87bfb2fb81f0e1bbc3264a5f841c3f79392a45b01"
+    },
+    {
+      "id": "shift-acting-success",
+      "source": "design/career-events-20261115/shift-acting-success/shift-acting-success-confirmed.png",
+      "sourceSha256": "1e8d96eed7d5584bfa449e05c5ba906db03de8ae4549be9712dac51857bb3b24",
+      "runtime": "assets/career-events-20261116/shift-acting-success.webp",
+      "runtimeSha256": "198271a2727a7bee9b67d11dcf778347049990878046b334ba73901469d55f9e"
+    },
+    {
+      "id": "shift-complaint",
+      "source": "design/career-events-20261115/shift-complaint/shift-complaint-confirmed.png",
+      "sourceSha256": "391cf690066a56ea5c04f4bee6e2478c11172692c046abbbd3d947b2a0f7ff13",
+      "runtime": "assets/career-events-20261116/shift-complaint.webp",
+      "runtimeSha256": "1d46e760ce797a479daa155b48efbbc237f7fde7defa19333864184c0835c072"
+    },
+    {
+      "id": "shift-complaint-failure",
+      "source": "design/career-events-20261115/shift-complaint-failure/shift-complaint-failure-confirmed.png",
+      "sourceSha256": "87e65d38494935e42c1dae509757704e283cfcae6b91ed63a50191cb98aacb8b",
+      "runtime": "assets/career-events-20261116/shift-complaint-failure.webp",
+      "runtimeSha256": "c103af63b94a3ab263640a606e7384e74b97b25f0cddf79ec908d9d053dfa1ed"
+    },
+    {
+      "id": "shift-complaint-success",
+      "source": "design/career-events-20261115/shift-complaint-success/shift-complaint-success-confirmed.png",
+      "sourceSha256": "b7e8c121a30784cd41733d7b3e53cb0cb4238775eddbba032bb5ed36d7afe2be",
+      "runtime": "assets/career-events-20261116/shift-complaint-success.webp",
+      "runtimeSha256": "36086ec2d7a61a108c4b62ed6013fd54e9cf302b511c8a4ec0d8c45ef56ea680"
+    },
+    {
+      "id": "shift-praise",
+      "source": "design/career-events-20261115/shift-praise/shift-praise-confirmed.png",
+      "sourceSha256": "00b7a620c7f26047604d0b9f807c8062e6dbd522e1d766d5e828797067edb634",
+      "runtime": "assets/career-events-20261116/shift-praise.webp",
+      "runtimeSha256": "7c36e2a018dfd7d05f9182581b65364b7387b343c9973d98d5eb2948669cb1ae"
+    },
+    {
+      "id": "shift-schedule",
+      "source": "design/career-events-20261115/shift-schedule/shift-schedule-confirmed.png",
+      "sourceSha256": "5367d6798a0eb5c0b82d7f4de458afe4a3d48daf6157264dbee3010e14cf724c",
+      "runtime": "assets/career-events-20261116/shift-schedule.webp",
+      "runtimeSha256": "e09cbd7cb87dd10922399c242e99212c3a40c13507d39a39b6f9ad097b88a834"
+    },
+    {
+      "id": "shift-schedule-failure",
+      "source": "design/career-events-20261115/shift-schedule-failure/shift-schedule-failure-confirmed.png",
+      "sourceSha256": "5c68009721d7a1e33d7b91c63b35c3b8ba95107dbfce7a79dbb9b00f3d60c969",
+      "runtime": "assets/career-events-20261116/shift-schedule-failure.webp",
+      "runtimeSha256": "cda60e7dcaa049c9150b01e493497955319dfa7f82ce887936b7f6aa8911b7bf"
+    },
+    {
+      "id": "shift-schedule-success",
+      "source": "design/career-events-20261115/shift-schedule-success/shift-schedule-success-confirmed.png",
+      "sourceSha256": "06bac3bcf6c715bf9f55dad5301613dd76b3d67ba4b881cca46c54f726e0e301",
+      "runtime": "assets/career-events-20261116/shift-schedule-success.webp",
+      "runtimeSha256": "be24f654f57347a8b293b9255593a7b66b09c6c2aa7b60183c968552efd7ba3b"
+    },
+    {
+      "id": "shift-training",
+      "source": "design/career-events-20261115/shift-training/shift-training-confirmed.png",
+      "sourceSha256": "479eaf1016f390abed2ca6b305b18a7218da04b392c82f472b28096ce1194184",
+      "runtime": "assets/career-events-20261116/shift-training.webp",
+      "runtimeSha256": "66cc39c89b8f22ed2fa5fcce22f1e2226dcd9d9adf31ccff4d551ccb12177060"
+    }
+  ]
+}

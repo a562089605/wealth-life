@@ -1,0 +1,39 @@
+{
+  "id": "barista-cut",
+  "title": "经理削减排班",
+  "status": "artwork-confirmed-not-runtime-replaced",
+  "sourceOriginal": "assets/career/barista-cut.webp",
+  "artwork": "design/career-events-20261115/barista-cut/barista-cut-confirmed.png",
+  "sha256": "7bf3d71f423032e100d4df0048513853171fd0f2a7d3b35ee563193ccbadb995",
+  "story": "门店客流减少，经理提出削减一个平常日的8小时班。",
+  "options": [
+    {
+      "id": "A",
+      "label": "接受调整",
+      "workHours": -8,
+      "freeHours": 8,
+      "energy": 3,
+      "stress": 0,
+      "wages": "按减少工时扣减，运行页面显示当月准确金额",
+      "tips": "按减少工时扣减，运行页面显示当月准确金额"
+    },
+    {
+      "id": "B",
+      "label": "与经理沟通",
+      "description": "沟通后，经理同意只削减半个班。",
+      "workHours": -4,
+      "freeHours": 4,
+      "energy": -1,
+      "stress": 1,
+      "wages": "按减少工时扣减，运行页面显示当月准确金额",
+      "tips": "按减少工时扣减，运行页面显示当月准确金额"
+    }
+  ],
+  "notes": [
+    "用户确认最终画稿；原图保留",
+    "不增加服务/拉花/手冲经验或店长信任，不增加技能调薪",
+    "仅归档，未替换运行资源或发布",
+    "最新统一命名：managerTrust 对外显示上司认可度，与联系人亲密度独立；旧画稿文字待逐张同步，数值及存档字段不变。"
+  ],
+  "careerRecognitionLabel": "上司认可度"
+}

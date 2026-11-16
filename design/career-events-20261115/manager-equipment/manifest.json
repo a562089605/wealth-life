@@ -1,0 +1,42 @@
+{
+  "id": "manager-equipment",
+  "title": "设备故障",
+  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "historicalSourceCommit": "56e8a535a7b744ecd2a155c75b9a97e1443013d4",
+  "artwork": "design/career-events-20261115/manager-equipment/manager-equipment-confirmed.png",
+  "sha256": "da3ba88b6b98fcf26cd181f3350b1346ba7dc037bbe91d7996a979fd8b125332",
+  "story": "店里的咖啡机突然出了故障，部分饮品暂时无法制作。你准备怎么安排？",
+  "options": [
+    {
+      "id": "A",
+      "label": "亲自协调抢修与现场安排",
+      "energy": -2,
+      "stress": 2,
+      "managementXP": 15,
+      "managerTrust": 1
+    },
+    {
+      "id": "B",
+      "label": "交由主管执行，你负责审核",
+      "stress": 1,
+      "managementXP": 8
+    },
+    {
+      "id": "C",
+      "label": "暂停受影响的出品，等待维修",
+      "stress": -1,
+      "managementXP": 3,
+      "serviceXPDelta": 0
+    }
+  ],
+  "storeRepairCost": 500,
+  "playerCashDelta": 0,
+  "extraWorkHours": 0,
+  "extraIncome": 0,
+  "followup": null,
+  "notes": [
+    "用户确认取消历史C服务经验−3，其余效果保留",
+    "三项正常班内完成，不额外扣自由时间；维修费由门店承担一次，不扣个人钱；不在玩家效果区显示维修费用",
+    "仅归档，未恢复旧运行模块、修改存档或发布"
+  ]
+}

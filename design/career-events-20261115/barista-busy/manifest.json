@@ -1,0 +1,35 @@
+{
+  "id": "barista-busy",
+  "title": "周末爆单",
+  "status": "artwork-confirmed-not-runtime-replaced",
+  "sourceOriginal": "assets/career/barista-busy.webp",
+  "artwork": "design/career-events-20261115/barista-busy/barista-busy-confirmed.png",
+  "sha256": "37d09d7780d91ca37731c07bc3ea605e1b7120342506bf46dd7de74b38d007c0",
+  "story": "这个周末，店里订单接连不断，吧台忙得停不下来。经理问你愿不愿意加班帮忙。",
+  "options": [
+    {
+      "id": "A",
+      "label": "加班帮忙",
+      "workHours": 8,
+      "freeHours": -8,
+      "energy": -5,
+      "stress": 3,
+      "serviceExperience": "增加，沿原事件计算，不补造新数值",
+      "wages": "按当前加班规则另计",
+      "tips": "按当前规则另计"
+    },
+    {
+      "id": "B",
+      "label": "不加班",
+      "effects": {}
+    }
+  ],
+  "confirmedRationale": "同样8小时，爆单持续忙碌；相较正常顶班能量−4/压力+2，本卡保留能量−5/压力+3。",
+  "notes": [
+    "用户确认最终画稿，原图及前一版保留",
+    "不增加店长信任、拉花或手冲经验，不增加技能调薪",
+    "仅归档，未替换运行资源或发布",
+    "最新统一命名：managerTrust 对外显示上司认可度，与联系人亲密度独立；旧画稿文字待逐张同步，数值及存档字段不变。"
+  ],
+  "careerRecognitionLabel": "上司认可度"
+}

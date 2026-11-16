@@ -1,0 +1,20 @@
+{
+  "id": "manager-research-a-failure",
+  "parent": "manager-research",
+  "choice": "A",
+  "title": "配方还得再调整",
+  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "artwork": "design/career-events-20261115/manager-research-a-failure/manager-research-a-failure-confirmed.png",
+  "sha256": "c5128a3ba71c5db4837997a0854ae4483a90167e0775d0c3363474a17ca0c211",
+  "story": "试做了几轮，新饮品的口味还是不够稳定，暂时没能达到推出的标准。",
+  "effects": {
+    "pourOverXP": 3,
+    "managementXP": 5,
+    "stress": 1
+  },
+  "notes": [
+    "用户确认最终画稿及手冲+3例外；仅限A失败后续，不扩展日常自动经验",
+    "不增加拉花经验，无奖金或营业额增益，不恢复独立Coffee技能；满级专项不增加XP",
+    "不重复主卡结算；仅归档，未接入运行或发布"
+  ]
+}

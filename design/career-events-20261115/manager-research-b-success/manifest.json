@@ -1,0 +1,28 @@
+{
+  "id": "manager-research-b-success",
+  "parent": "manager-research",
+  "choice": "B",
+  "title": "一起做出了新口味",
+  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "artwork": "design/career-events-20261115/manager-research-b-success/manager-research-b-success-confirmed.png",
+  "sha256": "9c9c135af91cbc0afb899ceb1cdf1540e1a1700fef1dfb69f21b4196aa83b64b",
+  "story": "大家分工试做，反复交流意见，终于确定了新饮品的配方。推出后，顾客的反馈不错。",
+  "effects": {
+    "bonus": 75,
+    "managementXP": 5,
+    "happiness": 1,
+    "stress": -2,
+    "storeSalesRate": 0.05
+  },
+  "storeEffect": {
+    "effectiveFrom": "成功所在当前月",
+    "duration": "之后每月应用该项5%增益，不逐月累加",
+    "sharedImprovement": "同一款新品A/B不重复领取两份增益",
+    "otherCards": "其他卡增益及合并方式另行确认"
+  },
+  "notes": [
+    "用户确认最终稿；B不额外增加拉花或手冲经验",
+    "卡面隐藏内部规则说明，不重复主卡结算",
+    "仅归档，未接入运行或发布"
+  ]
+}

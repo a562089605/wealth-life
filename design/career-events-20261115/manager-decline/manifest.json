@@ -1,0 +1,97 @@
+{
+  "id": "manager-decline",
+  "title": "经营业绩下滑",
+  "status": "main-and-four-followups-confirmed-not-runtime-integrated",
+  "historicalSourceCommit": "56e8a535a7b744ecd2a155c75b9a97e1443013d4",
+  "artwork": "design/career-events-20261115/manager-decline/manager-decline-confirmed.png",
+  "sha256": "f79758960ff1f3329b9ec5d4f2d34f21be5fdf0d7b7d7c37eba083dd74b1f754",
+  "story": "最近店里的营业额有所下滑。你查看了经营报表，准备怎么应对？",
+  "options": [
+    {
+      "id": "A",
+      "label": "亲自分析问题，调整服务与经营安排",
+      "energy": -2,
+      "stress": 3,
+      "managementXP": 15,
+      "serviceXP": 5,
+      "followup": "decline-A",
+      "followupReview": "both-confirmed",
+      "successRuleConfirmed": {
+        "managementXP": 10,
+        "happiness": 2,
+        "stress": -4,
+        "storeSalesRate": 0.05,
+        "effectiveFrom": "成功所在当前月",
+        "duration": "之后每月继续应用该项5%增益，不逐月累加或复利",
+        "repeat": "同店该项改进仅生效一次",
+        "otherCards": "其他卡的效果另行确认，不擅自确定叠加顺序",
+        "playerIncomeDelta": 0,
+        "artStatus": "confirmed"
+      }
+    },
+    {
+      "id": "B",
+      "label": "召集团队讨论，一起改进",
+      "energy": -1,
+      "stress": 1,
+      "managementXP": 10,
+      "followup": "decline-B",
+      "followupReview": "both-confirmed",
+      "successRuleConfirmed": {
+        "storeSalesRate": 0.03,
+        "effectiveFrom": "当前月",
+        "duration": "每月应用，不逐月累加",
+        "sharedImprovement": "A/B不重复领取两份增益"
+      }
+    },
+    {
+      "id": "C",
+      "label": "暂时维持现状，继续观察",
+      "managerTrust": -1,
+      "followup": null
+    }
+  ],
+  "extraWorkHours": 0,
+  "playerIncomeDelta": 0,
+  "notes": [
+    "用户本轮明确确认A/B主卡文案、效果及正常班内完成，覆盖旧记录未定稿状态",
+    "不额外扣自由时间，不直接改变玩家收入；后续营业额不当个人奖金",
+    "仅归档，未恢复旧运行模块或发布；后续逐张审查"
+  ],
+  "cardDisplayPolicy": "卡面保留剧情、选择和直观效果数值，隐藏持续生效、同店一次、不叠加等内部规则说明；不批量重画已确认卡片。",
+  "successRules": {
+    "status": "用户已确认",
+    "A": {
+      "skill": "管理技能",
+      "ratesByLevel": {
+        "1": 0.5,
+        "2": 0.6,
+        "3": 0.7,
+        "4": 0.8,
+        "5": 0.9
+      }
+    },
+    "B": {
+      "skill": "管理技能",
+      "ratesByLevel": {
+        "1": 0.5,
+        "2": 0.6,
+        "3": 0.7,
+        "4": 0.8,
+        "5": 0.9
+      }
+    },
+    "snapshot": "以选择时等级判定，结果成功保存后固定；刷新和保存失败重试不能重抽",
+    "display": "不显示判定公式",
+    "scope": "仅本事件内部成功率，不改地图触发概率"
+  },
+  "repeatRules": {
+    "status": "用户已确认",
+    "identity": "按对应门店稳定ID记录，不重置旧存档",
+    "success": "对应主卡同店退池，A/B共用完成标记",
+    "failure": "当月不再出现，下个月可再遇",
+    "display": "不显示于卡面",
+    "scope": "仅资格/完成与冷却，不确定或修改地图触发概率",
+    "choiceC": "当月不再出现，下个月仍可遇到"
+  }
+}

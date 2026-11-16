@@ -519,3 +519,6 @@
 
 
 2026-11-15 正式发布完成：功能提交 99baf13b74e5343f00be68661fb7bd8e5f1daa6a 已上传原main，Cloudflare成功 https://github.com/a562089605/wealth-life/runs/132728102560 。276份线上资源与本地逐字节一致（含既有学历/教师、共同兴趣、关系卡、头像、住房、宠物等及新12图/4模块样式）。生产隔离Chromium slot944共11组通过、零脚本错误；本地原共同兴趣额外13组回归通过，19套相关Node通过。证据qa/career-learning-20261115/production-deployment.json、production-resources.json、production-report.json及shared-interest-regression.json。production-learning-390.png、production-career-390.png、production-promotion-390.png为实际线上隔离页面视口截图，非用户存档/设计预览/iPhone真机。新功能已接入上线；合伙人暂缓，未确认规则未补造，地图共同兴趣及关系自然抽取保持关闭，原存档及旧备份保留。首次访问可刷新一次获取新版本；不清除浏览器数据。
+
+
+2026-11-16 职业事件本地增量接入：用户授权更新上传接入游戏。最新29张职业卡及规则见CAREER_EVENTS_RELEASE_20261116.md、design/career-events-20261115/manifest.json，新增运行career-event-*模块及29份WebP。上司认可度统一，不同于联系人亲密度；专项仅研发A明确确认后续加XP；门店营业额当月起固定增益、相加非复利，费用不扣个人钱；不重置原存档。咖啡师/主管抽取沿原流程；店长自然卡池未确认，false/null，仅已保存店长事件续接/结算，不恢复旧分支权重；共同兴趣自然抽取亦保持关闭。生产状态以后续追加为准。
