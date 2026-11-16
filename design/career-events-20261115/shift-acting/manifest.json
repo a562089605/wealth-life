@@ -1,7 +1,7 @@
 {
   "id": "shift-acting",
   "title": "临时代理经理",
-  "status": "main-and-both-followups-confirmed-not-runtime-replaced",
+  "status": "production-integrated-and-verified",
   "sourceOriginal": "assets/career/shift-acting.webp",
   "artwork": "design/career-events-20261115/shift-acting/shift-acting-confirmed.png",
   "sha256": "54d07b6c6d48247a9622552bab3d827e03b5ae576f9252e24b893844ba8b9273",
@@ -32,5 +32,8 @@
     "用户确认主卡及经理头颈姿态修正最终稿",
     "统一管理经验、上司认可度；不直接晋升或改变固定工资",
     "原图及前一版保留；仅归档，未替换运行资源或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "main-and-both-followups-confirmed-not-runtime-replaced",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

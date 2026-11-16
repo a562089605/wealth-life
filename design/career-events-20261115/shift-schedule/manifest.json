@@ -1,7 +1,7 @@
 {
   "id": "shift-schedule",
   "title": "排班冲突",
-  "status": "main-and-both-followups-confirmed-not-runtime-replaced",
+  "status": "production-integrated-and-verified",
   "sourceOriginal": "assets/career/shift-schedule.webp",
   "artwork": "design/career-events-20261115/shift-schedule/shift-schedule-confirmed.png",
   "sha256": "5367d6798a0eb5c0b82d7f4de458afe4a3d48daf6157264dbee3010e14cf724c",
@@ -45,5 +45,8 @@
     "管理经验、上司认可度统一命名；不改变存档字段",
     "原图保留；仅归档，事件规则尚未修改或发布",
     "B两个后续逐张复审，不将未确认建议写成最终规则"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "main-and-both-followups-confirmed-not-runtime-replaced",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

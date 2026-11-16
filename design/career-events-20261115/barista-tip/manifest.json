@@ -1,7 +1,7 @@
 {
   "id": "barista-tip",
   "title": "常客的大额小费",
-  "status": "artwork-confirmed-not-runtime-replaced",
+  "status": "production-integrated-and-verified",
   "sourceOriginal": "assets/career/barista-tip.webp",
   "artwork": "design/career-events-20261115/barista-tip/barista-tip-confirmed.png",
   "sha256": "3d37a9b43779ccd1870b9955f9a4cb3e6144aee6a1bdbb055f32e1ead6b3d155",
@@ -21,5 +21,8 @@
     "仅归档，未替换运行资源或发布",
     "最新统一命名：managerTrust 对外显示上司认可度，与联系人亲密度独立；旧画稿文字待逐张同步，数值及存档字段不变。"
   ],
-  "careerRecognitionLabel": "上司认可度"
+  "careerRecognitionLabel": "上司认可度",
+  "archiveStatusBeforeIntegration": "artwork-confirmed-not-runtime-replaced",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

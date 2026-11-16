@@ -1,7 +1,7 @@
 {
   "id": "shift-complaint",
   "title": "顾客严重投诉",
-  "status": "main-and-both-followups-confirmed-not-runtime-replaced",
+  "status": "production-integrated-and-verified",
   "sourceOriginal": "assets/career/shift-complaint.webp",
   "artwork": "design/career-events-20261115/shift-complaint/shift-complaint-confirmed.png",
   "sha256": "391cf690066a56ea5c04f4bee6e2478c11172692c046abbbd3d947b2a0f7ff13",
@@ -41,5 +41,8 @@
     "用户确认最终画稿，原图及此前版式保留",
     "中文名称统一；不增加专项经验",
     "仅归档，未替换运行资源或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "main-and-both-followups-confirmed-not-runtime-replaced",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

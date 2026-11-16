@@ -1,7 +1,7 @@
 {
   "id": "barista-departure",
   "title": "同事突然离职",
-  "status": "artwork-confirmed-not-runtime-replaced",
+  "status": "production-integrated-and-verified",
   "sourceOriginal": "assets/career/barista-departure.webp",
   "artwork": "design/career-events-20261115/barista-departure/barista-departure-confirmed.png",
   "sha256": "a752d1bdb867a3f0ecb6effe9102367b1aa24d39c1e8c3469bc31c306a7bd972",
@@ -32,5 +32,8 @@
     "原横版及此前标签版本保留于archive",
     "不增加拉花或手冲经验、技能调薪；不更改存档字段",
     "仅归档，未替换运行资源或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "artwork-confirmed-not-runtime-replaced",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

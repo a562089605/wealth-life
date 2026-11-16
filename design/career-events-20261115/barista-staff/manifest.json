@@ -1,7 +1,7 @@
 {
   "id": "barista-staff",
   "title": "同事临时请假",
-  "status": "artwork-confirmed-not-runtime-replaced",
+  "status": "production-integrated-and-verified",
   "confirmedBy": "用户本轮确认",
   "sourceOriginal": "assets/career/barista-staff.webp",
   "artwork": "design/career-events-20261115/barista-staff/barista-staff-confirmed.png",
@@ -31,5 +31,8 @@
     "仅归档确认画稿，未覆盖运行资源、修改存档或发布；事件代码逐卡审查后统一接入",
     "用户已确认上司认可度+1标签修订；此前店长信任版本移入archive。"
   ],
-  "careerRecognitionLabel": "上司认可度"
+  "careerRecognitionLabel": "上司认可度",
+  "archiveStatusBeforeIntegration": "artwork-confirmed-not-runtime-replaced",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

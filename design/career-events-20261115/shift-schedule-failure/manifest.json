@@ -2,7 +2,7 @@
   "id": "shift-schedule-failure",
   "parent": "shift-schedule",
   "title": "协调失败",
-  "status": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "status": "production-integrated-and-verified",
   "sourceOriginal": "assets/career/shift-schedule-failure.webp",
   "artwork": "design/career-events-20261115/shift-schedule-failure/shift-schedule-failure-confirmed.png",
   "sha256": "5c68009721d7a1e33d7b91c63b35c3b8ba95107dbfce7a79dbb9b00f3d60c969",
@@ -21,5 +21,8 @@
     "用户确认最终稿；与主卡C自己加班补上效果一致",
     "上司认可度与联系人亲密度独立；不增加拉花手冲经验",
     "原图保留；仅归档，未替换运行资源或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

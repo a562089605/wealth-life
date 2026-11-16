@@ -3,7 +3,7 @@
   "parent": "manager-decline",
   "choice": "A",
   "title": "调整见效",
-  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "status": "production-integrated-and-verified",
   "artwork": "design/career-events-20261115/manager-decline-a-success/manager-decline-a-success-confirmed.png",
   "sha256": "36cfbecd1b2d494d9560f37d3d051b6fb1275f29f62a825906180ec54d05a144",
   "story": "调整逐渐见效，顾客反馈有所改善，店里的生意也有了起色。",
@@ -25,5 +25,8 @@
     "用户确认最新无规则提示最终稿，覆盖历史仅当月+5%且次月恢复",
     "不重复结算主卡效果、不直接增加工资或奖金",
     "原稿历史保留；仅归档，未接入运行或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

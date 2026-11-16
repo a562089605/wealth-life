@@ -2,7 +2,7 @@
   "id": "shift-acting-failure",
   "parent": "shift-acting",
   "title": "忙不过来",
-  "status": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "status": "production-integrated-and-verified",
   "sourceOriginal": "assets/career/shift-acting-failure.webp",
   "artwork": "design/career-events-20261115/shift-acting-failure/shift-acting-failure-confirmed.png",
   "sha256": "aa6078e7a80c927af820f3e48f0650cd669750fb95c0797e1829676e9d0aa9a9",
@@ -14,5 +14,8 @@
     "用户最终确认压力+2/上司认可度−1，覆盖旧图经验扣减、能量扣减及旧代码仅认可度−1",
     "不扣经验，不再扣能量，保留主卡劳动收入及管理经验；主卡加后续压力合计+4、认可度净0",
     "原图保留；仅归档，未替换运行资源或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

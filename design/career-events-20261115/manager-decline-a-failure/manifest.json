@@ -3,7 +3,7 @@
   "parent": "manager-decline",
   "choice": "A",
   "title": "暂未见效",
-  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "status": "production-integrated-and-verified",
   "artwork": "design/career-events-20261115/manager-decline-a-failure/manager-decline-a-failure-confirmed.png",
   "sha256": "c529a514e6842ed3b731e9dd8e8cd4a60a037f99155ae608f7aab57b4bb4b724",
   "story": "你尝试调整了服务和经营安排，但生意暂时没有明显起色，还需要继续摸索。",
@@ -15,5 +15,8 @@
     "用户确认最终画稿",
     "不新增营业额变化或个人收入，不扣已有经验，不重复主卡结算",
     "仅归档，未接入运行或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

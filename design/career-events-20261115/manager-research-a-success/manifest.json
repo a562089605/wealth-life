@@ -3,7 +3,7 @@
   "parent": "manager-research",
   "choice": "A",
   "title": "新口味受到欢迎",
-  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "status": "production-integrated-and-verified",
   "artwork": "design/career-events-20261115/manager-research-a-success/manager-research-a-success-confirmed.png",
   "sha256": "05b33ac253717b56653851f049e7e1e3f6c85cced376c326c52bb22261b74d86",
   "story": "反复调整后，新饮品终于定下配方。推出后，顾客的反馈不错，也带动了店里的生意。",
@@ -26,5 +26,8 @@
     "满级项不增加经验，不恢复独立Coffee技能或自动增加品鉴经验",
     "不重复主卡结算；卡面隐藏内部规则说明",
     "仅归档，未接入运行或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

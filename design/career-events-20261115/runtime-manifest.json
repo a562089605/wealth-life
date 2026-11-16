@@ -1,5 +1,5 @@
 {
-  "status": "integrated-and-locally-verified",
+  "status": "production-integrated-and-verified",
   "artifacts": [
     {
       "id": "barista-busy",
@@ -204,5 +204,9 @@
       "runtime": "assets/career-events-20261116/shift-training.webp",
       "runtimeSha256": "66cc39c89b8f22ed2fa5fcce22f1e2226dcd9d9adf31ccff4d551ccb12177060"
     }
-  ]
+  ],
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "productionEvidence": "qa/career-events-20261116/production-report.json",
+  "managerNaturalDrawEnabled": false,
+  "managerTriggerProbability": null
 }

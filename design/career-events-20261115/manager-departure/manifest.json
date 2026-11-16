@@ -1,7 +1,7 @@
 {
   "id": "manager-departure",
   "title": "员工突然离职",
-  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "status": "production-integrated-and-verified",
   "historicalSourceCommit": "56e8a535a7b744ecd2a155c75b9a97e1443013d4",
   "artwork": "design/career-events-20261115/manager-departure/manager-departure-confirmed.png",
   "sha256": "ba24457d8ae13eeb7c45e15e394651958cdb32abc86ec1fd5833af9391532536",
@@ -42,5 +42,8 @@
     "用户重新确认历史规则与新画稿",
     "不增加技能调薪或专项经验，不恢复旧分支运行模块",
     "仅归档，未接入运行或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

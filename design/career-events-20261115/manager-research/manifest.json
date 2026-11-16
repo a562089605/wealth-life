@@ -1,7 +1,7 @@
 {
   "id": "manager-research",
   "title": "研发新品",
-  "status": "main-success-conditions-and-four-followups-confirmed-not-runtime-integrated",
+  "status": "production-integrated-and-verified",
   "artwork": "design/career-events-20261115/manager-research/manager-research-confirmed.png",
   "sha256": "c60088f7473831ee9a0d929919654e3298b79ecd7ce4099ded73a0a1b93f9e48",
   "story": "店里准备推出一款新饮品。你打算怎样推进研发？",
@@ -79,5 +79,8 @@
     "failure": "当月不再出现，下个月可再遇",
     "display": "不显示于卡面",
     "scope": "仅资格/完成与冷却，不确定或修改地图触发概率"
-  }
+  },
+  "archiveStatusBeforeIntegration": "main-success-conditions-and-four-followups-confirmed-not-runtime-integrated",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

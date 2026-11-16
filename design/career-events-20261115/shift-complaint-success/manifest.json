@@ -2,7 +2,7 @@
   "id": "shift-complaint-success",
   "parent": "shift-complaint",
   "title": "处理成功",
-  "status": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "status": "production-integrated-and-verified",
   "sourceOriginal": "assets/career/shift-complaint-success.webp",
   "artwork": "design/career-events-20261115/shift-complaint-success/shift-complaint-success-confirmed.png",
   "sha256": "b7e8c121a30784cd41733d7b3e53cb0cb4238775eddbba032bb5ed36d7afe2be",
@@ -13,5 +13,8 @@
   "notes": [
     "用户确认最终稿，沿现行代码，不增加压力",
     "原图保留；仅归档，未替换运行资源或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

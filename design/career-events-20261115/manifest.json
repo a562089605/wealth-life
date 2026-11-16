@@ -1,5 +1,5 @@
 {
-  "status": "29-artworks-confirmed-local-archive-not-runtime-integrated-not-published",
+  "status": "production-integrated-and-verified",
   "scope": "咖啡师5主卡；值班主管5主卡6后续；店长5主卡8后续",
   "latestRecognitionRule": "CAREER_RECOGNITION_CONFIRMED.md",
   "integrationRules": "INTEGRATION_RULES_CONFIRMED.md",
@@ -151,5 +151,9 @@
       "manifest": "design/career-events-20261115/shift-training/manifest.json",
       "sha256": "479eaf1016f390abed2ca6b305b18a7218da04b392c82f472b28096ce1194184"
     }
-  ]
+  ],
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "productionEvidence": "qa/career-events-20261116/production-report.json",
+  "managerNaturalDrawEnabled": false,
+  "managerTriggerProbability": null
 }

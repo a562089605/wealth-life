@@ -1,7 +1,7 @@
 {
   "id": "manager-decline",
   "title": "经营业绩下滑",
-  "status": "main-and-four-followups-confirmed-not-runtime-integrated",
+  "status": "production-integrated-and-verified",
   "historicalSourceCommit": "56e8a535a7b744ecd2a155c75b9a97e1443013d4",
   "artwork": "design/career-events-20261115/manager-decline/manager-decline-confirmed.png",
   "sha256": "f79758960ff1f3329b9ec5d4f2d34f21be5fdf0d7b7d7c37eba083dd74b1f754",
@@ -93,5 +93,8 @@
     "display": "不显示于卡面",
     "scope": "仅资格/完成与冷却，不确定或修改地图触发概率",
     "choiceC": "当月不再出现，下个月仍可遇到"
-  }
+  },
+  "archiveStatusBeforeIntegration": "main-and-four-followups-confirmed-not-runtime-integrated",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

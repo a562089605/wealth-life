@@ -1,0 +1,47 @@
+[
+  {
+    "file": "coffee.js",
+    "ok": true,
+    "output": ""
+  },
+  {
+    "file": "coffee-career.js",
+    "ok": true,
+    "output": ""
+  },
+  {
+    "file": "shift-lead.js",
+    "ok": true,
+    "output": ""
+  },
+  {
+    "file": "career-learning-rules.js",
+    "ok": true,
+    "output": ""
+  },
+  {
+    "file": "career-event-data.js",
+    "ok": true,
+    "output": ""
+  },
+  {
+    "file": "career-event-rules.js",
+    "ok": true,
+    "output": ""
+  },
+  {
+    "file": "career-event-integration.js",
+    "ok": true,
+    "output": ""
+  },
+  {
+    "file": "career-event-pages.js",
+    "ok": true,
+    "output": ""
+  },
+  {
+    "file": "sw.js",
+    "ok": true,
+    "output": ""
+  }
+]

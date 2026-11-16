@@ -1,7 +1,7 @@
 {
   "id": "shift-praise",
   "title": "团队表现优秀",
-  "status": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "status": "production-integrated-and-verified",
   "sourceOriginal": "assets/career/shift-praise.webp",
   "artwork": "design/career-events-20261115/shift-praise/shift-praise-confirmed.png",
   "sha256": "00b7a620c7f26047604d0b9f807c8062e6dbd522e1d766d5e828797067edb634",
@@ -17,5 +17,8 @@
     "用户确认最终稿；数值沿原代码，仅统一中文名称",
     "一次性事件奖金，不是固定月奖金或加薪",
     "原图保留；仅归档，未替换运行资源或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-replaced",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

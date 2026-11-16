@@ -1,7 +1,7 @@
 {
   "id": "barista-busy",
   "title": "周末爆单",
-  "status": "artwork-confirmed-not-runtime-replaced",
+  "status": "production-integrated-and-verified",
   "sourceOriginal": "assets/career/barista-busy.webp",
   "artwork": "design/career-events-20261115/barista-busy/barista-busy-confirmed.png",
   "sha256": "37d09d7780d91ca37731c07bc3ea605e1b7120342506bf46dd7de74b38d007c0",
@@ -31,5 +31,8 @@
     "仅归档，未替换运行资源或发布",
     "最新统一命名：managerTrust 对外显示上司认可度，与联系人亲密度独立；旧画稿文字待逐张同步，数值及存档字段不变。"
   ],
-  "careerRecognitionLabel": "上司认可度"
+  "careerRecognitionLabel": "上司认可度",
+  "archiveStatusBeforeIntegration": "artwork-confirmed-not-runtime-replaced",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

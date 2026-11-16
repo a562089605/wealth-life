@@ -40,3 +40,9 @@
 生产发布与资源核验以后续追加及production-*.json为准。
 
 本地验证完成：22套相关Node通过，另2套在原main同样失败的旧基线单列保留。职业事件浏览器12组、学习/晋升回归11组、共同兴趣回归13组及新增真实月末保存失败回滚1组均通过，零脚本错误。月末失败恢复门店流水、系数、工资、专项经验与月份，重试只支付一次事件奖金并记账一次。
+
+追加兼容校验：旧档存在已存职业事件但尚未生成选项报价时，按已保存合同工资/季节补齐报价，已有报价和已锁后续不覆盖；测试旧咖啡师35000合同与旧主管50000合同分别保留正确加班报价。临近满级预览显示实际可得XP（798→+2），满级项隐藏增加；不改变实际800封顶。
+
+
+2026-11-16 职业卡正式发布完成（覆盖此前仅归档/本地/待发布状态）：功能最终提交276af92b669517ed15ec467aa863215d651657b3已上传原main，Cloudflare成功 https://github.com/a562089605/wealth-life/runs/133100386472 。310份生产资源与本地逐字节一致，含29份新职业卡图/5模块样式及既有学习、学历教师、住房宠物、关系头像、兴趣与共同兴趣等资源。生产隔离Chromium slot945共12组通过、零脚本错误；覆盖15主卡14后续的真实DOM、存储失败整体回滚、刷新固定结果、工资奖金只发一次、专项封顶、两次跨月营业额非复利、欠时返回、跨slot旧处理器与离线刷新。生产截图production-barista-390.png、production-shiftLead-390.png、production-manager-390.png、production-research-followup-390.png为实际线上隔离页面，不是用户存档/设计预览/iPhone真机。证据qa/career-events-20261116/production-deployment.json、production-resources.json、production-report.json。22套相关Node通过，另2套旧coffee-rules/shift-lead在原main56593a4同样失败，基线证据保留，不声称全部仓库测试通过。新增465断言；本地额外学习晋升11组、共同兴趣13组及真实月末保存失败回滚/旧报价兼容/临近满级预览/普通事件样式恢复检查均通过。
+本轮29卡资源及确认规则已接入发布，原存档、旧备份、工资、学历、住房、宠物、联系人与兴趣数据保留，新增首次备份_before_career_events_20261116。咖啡师/主管自然抽取沿原流程；店长卡池/抽取流程仍未确认，managerNaturalDrawEnabled=false、managerTriggerProbability=null，只接入已保存店长事件显示/续接/结算，不宣称正常掷骰能新增店长专属卡，不恢复旧分支权重、不新增替代抽卡入口。共同兴趣和关系自然抽取保持关闭，原宠物20%保留。合伙人、教师第5入职等未确认路径仍暂缓。刷新获取新版本即可，不清除浏览器数据。最新详细规则见CAREER_EVENTS_RELEASE_20261116.md，29最终来源/SHA见design/career-events-20261115/runtime-manifest.json。

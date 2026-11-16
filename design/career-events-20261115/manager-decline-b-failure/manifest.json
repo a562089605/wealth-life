@@ -3,7 +3,7 @@
   "parent": "manager-decline",
   "choice": "B",
   "title": "还得再想想办法",
-  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "status": "production-integrated-and-verified",
   "artwork": "design/career-events-20261115/manager-decline-b-failure/manager-decline-b-failure-confirmed.png",
   "sha256": "17bf9546793fb366d0509c060c8b9a6bee3b4ad647f59add99497b1d4a5c388b",
   "story": "大家提出了一些改进办法，但尝试后，店里的生意暂时没有明显改善。",
@@ -15,5 +15,8 @@
     "用户确认最终稿",
     "不新增营业额变化、不扣已有经验、不重复主卡结算",
     "仅归档，未接入运行或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

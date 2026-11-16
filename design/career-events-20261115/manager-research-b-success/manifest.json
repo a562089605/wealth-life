@@ -3,7 +3,7 @@
   "parent": "manager-research",
   "choice": "B",
   "title": "一起做出了新口味",
-  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "status": "production-integrated-and-verified",
   "artwork": "design/career-events-20261115/manager-research-b-success/manager-research-b-success-confirmed.png",
   "sha256": "9c9c135af91cbc0afb899ceb1cdf1540e1a1700fef1dfb69f21b4196aa83b64b",
   "story": "大家分工试做，反复交流意见，终于确定了新饮品的配方。推出后，顾客的反馈不错。",
@@ -24,5 +24,8 @@
     "用户确认最终稿；B不额外增加拉花或手冲经验",
     "卡面隐藏内部规则说明，不重复主卡结算",
     "仅归档，未接入运行或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }

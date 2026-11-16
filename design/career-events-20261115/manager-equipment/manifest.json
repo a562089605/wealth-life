@@ -1,7 +1,7 @@
 {
   "id": "manager-equipment",
   "title": "设备故障",
-  "status": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "status": "production-integrated-and-verified",
   "historicalSourceCommit": "56e8a535a7b744ecd2a155c75b9a97e1443013d4",
   "artwork": "design/career-events-20261115/manager-equipment/manager-equipment-confirmed.png",
   "sha256": "da3ba88b6b98fcf26cd181f3350b1346ba7dc037bbe91d7996a979fd8b125332",
@@ -38,5 +38,8 @@
     "用户确认取消历史C服务经验−3，其余效果保留",
     "三项正常班内完成，不额外扣自由时间；维修费由门店承担一次，不扣个人钱；不在玩家效果区显示维修费用",
     "仅归档，未恢复旧运行模块、修改存档或发布"
-  ]
+  ],
+  "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-integrated",
+  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
 }
