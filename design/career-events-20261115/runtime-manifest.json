@@ -1,5 +1,5 @@
 {
-  "status": "confirmed-runtime-integrated-local-verified-pending-deployment",
+  "status": "production-integrated-and-verified",
   "artifacts": [
     {
       "id": "barista-busy",
@@ -212,8 +212,9 @@
       "sourceSha256": "dfbd8b15679b2b5f599b455ac1f20e07b2514028a69d07a5e1befee4f4c814cc"
     }
   ],
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
-  "productionEvidence": "qa/career-events-20261116/production-report.json",
+  "functionalCommit": "42df200c3f389241fd2ed937667f3d84c5ea3b7d",
+  "productionEvidence": "qa/career-review-20261117/release-summary.json",
   "managerNaturalDrawEnabled": false,
-  "managerTriggerProbability": null
+  "managerTriggerProbability": null,
+  "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md"
 }

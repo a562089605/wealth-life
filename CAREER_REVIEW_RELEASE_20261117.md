@@ -32,3 +32,13 @@
 ## 生产证据
 
 待本次部署及线上核验后追加。不能以旧版生产记录证明新版已发布。
+
+### 已发布并核验成功
+
+功能提交 `42df200c3f389241fd2ed937667f3d84c5ea3b7d` 已上传原main。Cloudflare Workers Builds成功：[发布检查](https://github.com/a562089605/wealth-life/runs/134264001042)。线上缓存 `wealth-life-career-review-20261117-1`。
+
+`qa/career-review-20261117/production-deployment.json`、`production-resources.json`及`release-summary.json`为本次生产证据。312份线上资源与本地字节一致；生产隔离Chromium共32组通过、零脚本错误：12组职业事件、6组削班新后续、11组职业学习、3组页面及实际入口。验证实际普通/淡/旺月份扣款、失败回滚、刷新续接、重复点击防护、本月结薪后次月离职、租房主卡及后续先于收入表、离线刷新及原存档字段保留。
+
+实际截图位于同目录 `production-cut-followup-390.png`、`production-barista-390.png`及`ui/production-career-390.png`、`ui/production-skills-390.png`、`ui/production-latte-390.png`、`ui/production-pour-390.png`、`ui/production-management-390.png`、`ui/production-promotion-390.png`。是实际生产页面隔离测试截图，不是设计预览、真机iPhone或用户存档。
+
+本次审查到第四张结束，第四张原稿及+$20/幸福+3保留；第五张保留原发布稿，尚待本轮后续审查。地图概率仍留待后续统一审查，不自行调整。本段覆盖本文及各旧交接/画稿文档中本批“本地/未接入/未发布”描述。

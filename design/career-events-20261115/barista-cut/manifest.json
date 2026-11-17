@@ -1,7 +1,7 @@
 {
   "id": "barista-cut",
   "title": "经理削减排班",
-  "status": "confirmed-runtime-integrated-local-verified-pending-deployment",
+  "status": "production-integrated-and-verified",
   "sourceOriginal": "assets/career/barista-cut.webp",
   "artwork": "design/career-events-20261115/barista-cut/barista-cut-confirmed.png",
   "sha256": "aca3ebd97c38a7d25c1ed3694bf255afa14041af6bd8b11bb64998e0b953ca65",
@@ -38,7 +38,7 @@
   "careerRecognitionLabel": "上司认可度",
   "archiveStatusBeforeIntegration": "artwork-confirmed-not-runtime-replaced",
   "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "functionalCommit": "42df200c3f389241fd2ed937667f3d84c5ea3b7d",
   "revision20261117": {
     "A": {
       "freeHours": 8,
@@ -61,6 +61,7 @@
     },
     "display": "不显示工作时间；真实游戏显示具体金额",
     "art": "主卡与独立后续均已确认并归档，待运行接入",
-    "runtime": "当前运行规则尚未改为新后续，不得声称已接入"
-  }
+    "runtime": "新主卡及固定B后续已接入并完成线上事务回归，见最新生产证据"
+  },
+  "productionEvidence": "qa/career-review-20261117/release-summary.json"
 }

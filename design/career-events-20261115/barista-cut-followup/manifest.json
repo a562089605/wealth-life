@@ -1,7 +1,7 @@
 {
   "id": "barista-cut-followup",
   "title": "商量后的排班",
-  "status": "confirmed-runtime-integrated-local-verified-pending-deployment",
+  "status": "production-integrated-and-verified",
   "confirmedDate": "2026-11-17",
   "artwork": "design/career-events-20261115/barista-cut-followup/barista-cut-followup-confirmed.png",
   "sha256": "dfbd8b15679b2b5f599b455ac1f20e07b2514028a69d07a5e1befee4f4c814cc",
@@ -19,8 +19,10 @@
   "display": "隐藏工作时间，运行时显示具体金额",
   "notes": [
     "独立后续属于同一次主卡，不另抽主卡或补造概率",
-    "新主卡及后续均已确认，运行模块目前仍为旧流程，待统一接入与事务回归",
-    "原保存失败回滚、刷新续接、避免重复结算要求保持"
+    "原保存失败回滚、刷新续接、避免重复结算要求保持",
+    "2026-11-17 最新运行状态：已接入原游戏并发布核验通过，旧存档保存的事件保持原报价。"
   ],
-  "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md"
+  "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md",
+  "functionalCommit": "42df200c3f389241fd2ed937667f3d84c5ea3b7d",
+  "productionEvidence": "qa/career-review-20261117/release-summary.json"
 }

@@ -1,0 +1,37 @@
+{
+  "functionalCommit": "42df200c3f389241fd2ed937667f3d84c5ea3b7d",
+  "checkedAt": "2026-11-17T18:23:04.693367+00:00",
+  "production": "https://wealth-life.a562089605.workers.dev",
+  "ok": true,
+  "matchingResources": 312,
+  "browserGroups": 32,
+  "scriptErrors": 0,
+  "reports": [
+    {
+      "file": "production-report.json",
+      "groups": 12,
+      "ok": true,
+      "scriptErrors": 0
+    },
+    {
+      "file": "production-cut-followup-report.json",
+      "groups": 6,
+      "ok": true,
+      "scriptErrors": 0
+    },
+    {
+      "file": "ui/production-report.json",
+      "groups": 3,
+      "ok": true,
+      "scriptErrors": 0
+    },
+    {
+      "file": "learning-regression/production-report.json",
+      "groups": 11,
+      "ok": true,
+      "scriptErrors": 0
+    }
+  ],
+  "scope": "Isolated Chromium slots944/945. No user saves and no real-iPhone claim.",
+  "node": "22 related suites pass; coffee-rules and shift-lead retain byte-identical baseline failure output."
+}

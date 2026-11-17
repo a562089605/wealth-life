@@ -155,5 +155,12 @@
   "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
   "productionEvidence": "qa/career-events-20261116/production-report.json",
   "managerNaturalDrawEnabled": false,
-  "managerTriggerProbability": null
+  "managerTriggerProbability": null,
+  "latestReviewRelease": {
+    "date": "2026-11-17",
+    "functionalCommit": "42df200c3f389241fd2ed937667f3d84c5ea3b7d",
+    "runtimeCardCount": 30,
+    "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md",
+    "productionEvidence": "qa/career-review-20261117/release-summary.json"
+  }
 }

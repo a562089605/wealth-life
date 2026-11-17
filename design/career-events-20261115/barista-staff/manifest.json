@@ -1,7 +1,7 @@
 {
   "id": "barista-staff",
   "title": "同事临时请假",
-  "status": "confirmed-runtime-integrated-local-verified-pending-deployment",
+  "status": "production-integrated-and-verified",
   "confirmedBy": "用户本轮确认",
   "sourceOriginal": "assets/career/barista-staff.webp",
   "artwork": "design/career-events-20261115/barista-staff/barista-staff-confirmed.png",
@@ -34,6 +34,7 @@
   "careerRecognitionLabel": "上司认可度",
   "archiveStatusBeforeIntegration": "artwork-confirmed-not-runtime-replaced",
   "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
-  "displayRevision": "2026-11-16 隐藏工作时间+8h，保留自由时间-8h；后台8小时工资小费结算不变"
+  "functionalCommit": "42df200c3f389241fd2ed937667f3d84c5ea3b7d",
+  "displayRevision": "2026-11-16 隐藏工作时间+8h，保留自由时间-8h；后台8小时工资小费结算不变",
+  "productionEvidence": "qa/career-review-20261117/release-summary.json"
 }

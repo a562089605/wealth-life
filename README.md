@@ -208,3 +208,4 @@ Cloudflare Workers现有Git集成可用根目录 `npx wrangler deploy`，wrangle
 本轮29卡资源及确认规则已接入发布，原存档、旧备份、工资、学历、住房、宠物、联系人与兴趣数据保留，新增首次备份_before_career_events_20261116。咖啡师/主管自然抽取沿原流程；店长卡池/抽取流程仍未确认，managerNaturalDrawEnabled=false、managerTriggerProbability=null，只接入已保存店长事件显示/续接/结算，不宣称正常掷骰能新增店长专属卡，不恢复旧分支权重、不新增替代抽卡入口。共同兴趣和关系自然抽取保持关闭，原宠物20%保留。合伙人、教师第5入职等未确认路径仍暂缓。刷新获取新版本即可，不清除浏览器数据。最新详细规则见CAREER_EVENTS_RELEASE_20261116.md，29最终来源/SHA见design/career-events-20261115/runtime-manifest.json。
 
 2026-11-17 职业页面与咖啡师卡修订：本批用户已授权“更新 上传 接入游戏”。确认的固定插画/右侧滚动职业与晋升卡、职业技能小图和练习档案卡、管理课程120/3h/-1/+10XP无月次数上限、其他工作机会占位、辞职本月结薪下月生效、回家收入表已增量接入。咖啡师前三卡隐藏重复工作时间；削班A压力+2，B拆固定独立后续、能量+1。旧已保存报价与收据保持。详情及最新发布证据见CAREER_REVIEW_RELEASE_20261117.md；概率留待地图板块统一审查，未改概率。
+2026-11-17 本批发布已完成：功能提交42df200c3f389241fd2ed937667f3d84c5ea3b7d，Cloudflare success，312线上资源与本地一致；生产隔离Chromium32组通过、零脚本错误，证据qa/career-review-20261117/release-summary.json。该结论覆盖本批早期“本地未发布/未接入”。第五张咖啡师卡仍保留原版待本轮审查，地图概率未改。

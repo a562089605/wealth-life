@@ -1,5 +1,5 @@
 {
-  "status": "confirmed-integrated-local-verified-pending-deployment",
+  "status": "production-integrated-and-verified",
   "confirmedDate": "2026-11-16",
   "page": "房屋→工作→我的职业",
   "layout": [
@@ -56,5 +56,7 @@
     "storedSettlement": "原存档及实际结算继续精确到分，不改变工资或奖金规则",
     "scope": "本轮职业相关页面，不宣称已批量改全游戏"
   },
-  "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md"
+  "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md",
+  "functionalCommit": "42df200c3f389241fd2ed937667f3d84c5ea3b7d",
+  "productionEvidence": "qa/career-review-20261117/release-summary.json"
 }

@@ -1,0 +1,13 @@
+{
+  "scope": "production isolated Chromium slot945; not user saves or real iPhone",
+  "steps": [
+    "Cut B fixed followup, failed main/result save rollback, refresh resume, once-only settlement and actual payroll at calendar month 1",
+    "Cut B fixed followup, failed main/result save rollback, refresh resume, once-only settlement and actual payroll at calendar month 9",
+    "Cut B fixed followup, failed main/result save rollback, refresh resume, once-only settlement and actual payroll at calendar month 11",
+    "New cut A restores energy3 and adds stress2 with eight-hour deduction",
+    "Already-saved old cut quotes and unquoted legacy records retain original effects and immediate B behavior",
+    "Unresolved B followup blocks month advance and resumes original saved card"
+  ],
+  "errors": [],
+  "ok": true
+}
