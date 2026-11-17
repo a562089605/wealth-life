@@ -9,9 +9,18 @@
  function patch(text,style,kind=''){return '<div class="painted-value '+kind+'" style="'+style+'">'+esc(text)+'</div>';}
  const image=name=>'<img class="painted-image" src="assets/pages/'+name+'-20261101.webp" width="853" height="1844" alt="'+({rest:'休息安排：人物在绿色沙发上休息，柯基睡在旁边',housing:'四种住房选择',family:'与家人同住：阳光照进绿色格纹床铺的卧室'}[name]||'生活与住房详情')+'">';
  function stats(name){
-  const free=currentCareerTime().free;
-  if(name==='rest')return [[free+'h',5.7],[Math.round(state.energy),24.3],[Math.round(state.stress),43.4],[Math.round(state.health),62.3],[Math.round(state.happiness),81.1]].map(([v,x])=>patch(v,'left:'+x+'%;top:60%;width:13.6%;height:3.1%','rest-stat')).join('');
-  return patch(Math.round(state.health),'left:26%;top:27.2%;width:15%;height:4.5%')+patch(Math.round(state.energy),'left:72%;top:27.2%;width:18%;height:4.5%')+patch(Math.round(state.happiness),'left:26%;top:39.1%;width:15%;height:4.5%')+patch(Math.round(state.stress),'left:72%;top:39.1%;width:18%;height:4.5%')+patch(free+'h','left:35%;top:52.7%;width:40%;height:5.5%');
+  const free=currentCareerTime().free+'h';
+  const health=Math.round(state.health),energy=Math.round(state.energy);
+  const happiness=Math.round(state.happiness),stress=Math.round(state.stress);
+  if(name==='rest'){
+   return [[free,7.1],[energy,25.9],[stress,43.5],[health,61.3],[happiness,79.4]]
+    .map(([value,left])=>patch(value,'left:'+left+'%;top:60%;width:14.5%;height:2.7%','rest-stat')).join('');
+  }
+  return patch(health,'left:26%;top:27.2%;width:15%;height:4%','life-stat life-stat-health')
+   +patch(energy,'left:72%;top:27.2%;width:15%;height:4%','life-stat life-stat-energy')
+   +patch(happiness,'left:26%;top:39.7%;width:15%;height:4%','life-stat life-stat-happiness')
+   +patch(stress,'left:72%;top:39.7%;width:15%;height:4%','life-stat life-stat-stress')
+   +patch(free,'left:35.5%;top:52.9%;width:29%;height:4.4%','life-stat life-stat-time');
  }
  function housingName(){return ({family:'与家人同住',shared:'合租',studio:'Studio',rent1:'小公寓',own:'自住房'})[state.housing]||'尚未选择';}
  function draw(){

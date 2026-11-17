@@ -13,7 +13,7 @@
 .painted-value,.painted-preview-cover{position:absolute;z-index:2;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#faf2db;color:#123d29;font-size:clamp(16px,6vw,44px);font-weight:750;line-height:1;white-space:nowrap}
 .painted-caption,.painted-date{font-size:clamp(10px,3vw,24px);font-weight:600}
 .painted-button-caption{background:#f5ce64;font-size:clamp(14px,4vw,30px)}
-.rest-stat{background:#faefd4;font-size:clamp(14px,4vw,32px)}
+
 .housing-rule-cover{left:22%;top:88.8%;width:60%;height:3.5%;background:#fbf2dd}
 .painted-alert{position:absolute;z-index:4;left:8%;bottom:9%;width:84%;padding:8px;border-radius:10px;background:#fff8e9;color:#804a2b;border:1px solid #caa576;font-size:13px;text-align:center;box-sizing:border-box}
 @supports not(height:100dvh){.painted-canvas{width:min(100vw,calc((100vh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))*853/1844))}}
@@ -57,4 +57,26 @@
 .painted-canvas.detail .housing-apartment-name{
  font-size:clamp(22px,7vw,34px);
  font-size:8cqw;
+}
+
+.painted-canvas.rest{container-type:inline-size;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.painted-canvas .rest-stat,.painted-canvas.life .life-stat{
+ isolation:isolate;
+ background:none;
+ font-variant-numeric:tabular-nums;
+}
+.painted-canvas .rest-stat{--stat-paper:#f8edd5;font-size:4cqw}
+.painted-canvas.life .life-stat{justify-content:flex-start;padding-inline-start:1cqw;box-sizing:border-box;font-size:7cqw}
+.painted-canvas.life .life-stat-time{font-size:7cqw;--stat-paper:#f5f2dc}
+.life-stat-health{--stat-paper:#f1f1da}
+.life-stat-energy{--stat-paper:#fff0c5}
+.life-stat-happiness{--stat-paper:#fbe7cf;color:#703319}
+.life-stat-stress{--stat-paper:#e3ebed;color:#15394b}
+.painted-canvas .rest-stat::before,.painted-canvas .life-stat::before{
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-1;
+ background:var(--stat-paper);
+ filter:blur(.75cqw);
 }
