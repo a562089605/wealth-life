@@ -1,0 +1,60 @@
+{
+  "status": "confirmed-integrated-local-verified-pending-deployment",
+  "confirmedDate": "2026-11-16",
+  "page": "房屋→工作→我的职业",
+  "layout": [
+    "固定大小插画卡片",
+    "顶部标题、月份、插画固定可见",
+    "右侧常显滚动条，拖动/点击轨道/键盘及手指原生滑动",
+    "下方全部真实DOM内容在同一内部区域滚动",
+    "无底部展开抽屉"
+  ],
+  "scope": "只改布局与视觉，游戏规则及存档不变；原插画保留",
+  "supersedes": "上一版本地底部展开/收起抽屉方案",
+  "files": [
+    {
+      "path": "career-learning-pages.js",
+      "sha256": "9f60ba54cb5137b4219e7125f22d9bf9002cc4285618fcfa50a4ab7b0483c704"
+    },
+    {
+      "path": "career-learning.css",
+      "sha256": "1bf5defcfbba41a441f4133d606b6aeebcb20701d79e528ca6dab7da54d53032"
+    },
+    {
+      "path": "qa/career-page-review-20261116/local-scroll-card-top-390.png",
+      "sha256": "a04a0f9e027b5ddc1a185f4df89a80a0aa8dc1353126ec2b9e934b15e523e2ba"
+    },
+    {
+      "path": "qa/career-page-review-20261116/local-scroll-card-bottom-390.png",
+      "sha256": "69e585d8c06949cc9c4bf9a0447692cae56c6414cd13f7c3ad48f2072b215dc4"
+    },
+    {
+      "path": "qa/career-page-review-20261116/local-scroll-card-report.json",
+      "sha256": "055b6494ef85ca56141e477e18464ab187cb0653e62e864d9051a7d2aefdc138"
+    }
+  ],
+  "latestUserRevision": [
+    "背景使用原房屋场景，不露出旧财务页",
+    "删除查看本月职业安排入口与空白正常排班弹窗",
+    "职业页保留工时及收入；职业卡仍仅地图触发",
+    "当前工作与本月工作合并为工作卡，仅工作/工资/时间/小费四行",
+    "删除职业主页收入明细按钮",
+    "沿原结薪事务自动展示实际收入表格，租房主卡及后续优先，不重复发薪"
+  ],
+  "latestVisualRevision": [
+    "暖金双层手绘感圆角边框",
+    "淡纸纹与柔和内阴影",
+    "刷色标题底纹和手绘图标",
+    "更清晰的收入数字、柔和绿色按钮",
+    "原插画、房屋背景、固定卡片与右侧滚动保持"
+  ],
+  "paydayTableEvidence": "qa/career-page-review-20261116/learning-regression/local-report.json",
+  "moneyDisplay": {
+    "status": "按用户当前页面修改指令实现",
+    "format": "职业页、结薪表、职业卡金额显示四舍五入到整数，保留千位分隔符",
+    "example": "$2,666.67 → $2,667",
+    "storedSettlement": "原存档及实际结算继续精确到分，不改变工资或奖金规则",
+    "scope": "本轮职业相关页面，不宣称已批量改全游戏"
+  },
+  "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md"
+}

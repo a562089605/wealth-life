@@ -1,0 +1,8 @@
+{
+  "scope": "Local isolated Chromium touchscreen slot947, not production or real phone",
+  "errors": [],
+  "steps": [
+    "Promotion fixed artwork, working right scrollbar, unchanged state and four viewport sizes"
+  ],
+  "ok": true
+}

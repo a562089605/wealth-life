@@ -1,0 +1,10 @@
+{
+  "scope": "Local isolated Chromium touchscreen slot947, not production or real phone",
+  "errors": [],
+  "steps": [
+    "Actual room work click, fixed card/illustration geometry through expansion and scroll, button toggle and downward touch drag",
+    "320/390/430/1280 layouts fit viewport, inner content scroll stays usable",
+    "Display interactions do not save or change game state; other learning pages keep their layout"
+  ],
+  "ok": true
+}

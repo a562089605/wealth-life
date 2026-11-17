@@ -1,10 +1,10 @@
 {
   "id": "barista-cut",
   "title": "经理削减排班",
-  "status": "production-integrated-and-verified",
+  "status": "confirmed-runtime-integrated-local-verified-pending-deployment",
   "sourceOriginal": "assets/career/barista-cut.webp",
   "artwork": "design/career-events-20261115/barista-cut/barista-cut-confirmed.png",
-  "sha256": "7bf3d71f423032e100d4df0048513853171fd0f2a7d3b35ee563193ccbadb995",
+  "sha256": "aca3ebd97c38a7d25c1ed3694bf255afa14041af6bd8b11bb64998e0b953ca65",
   "story": "门店客流减少，经理提出削减一个平常日的8小时班。",
   "options": [
     {
@@ -37,6 +37,30 @@
   ],
   "careerRecognitionLabel": "上司认可度",
   "archiveStatusBeforeIntegration": "artwork-confirmed-not-runtime-replaced",
-  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
+  "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "revision20261117": {
+    "A": {
+      "freeHours": 8,
+      "energy": 3,
+      "stress": 2,
+      "wages": "按触发时工资减少8小时",
+      "tips": "按触发月份减少8小时"
+    },
+    "B": {
+      "label": "先与经理商量",
+      "mainEffects": {},
+      "followup": {
+        "story": "经理同意只削减半个班",
+        "freeHours": 4,
+        "energy": 1,
+        "stress": 1,
+        "wages": "按触发时工资减少4小时",
+        "tips": "按触发月份减少4小时"
+      }
+    },
+    "display": "不显示工作时间；真实游戏显示具体金额",
+    "art": "主卡与独立后续均已确认并归档，待运行接入",
+    "runtime": "当前运行规则尚未改为新后续，不得声称已接入"
+  }
 }

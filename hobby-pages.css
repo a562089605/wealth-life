@@ -1,1 +1,53 @@
 .hobby-pages-open{overflow:hidden}.hobby-overlay{position:fixed;inset:0;z-index:1860;background:#f4ead2;overflow:auto;overscroll-behavior:contain;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);color:#173d2b;font-family:WealthHand,'PingFang SC',sans-serif}.hobby-paper{max-width:600px;margin:auto;min-height:100%;background:#fff5df;padding-bottom:24px}.hobby-scene{aspect-ratio:2.2;overflow:hidden;background:#ead5a8}.hobby-scene img{display:block;width:100%;height:auto}.hobby-content{padding:12px 20px 18px}.hobby-content header{display:flex;justify-content:flex-start}.hobby-content h1{text-align:center;font-size:38px;line-height:1.25;margin:12px 0}.hobby-content button{display:block;width:100%;min-height:48px;padding:12px 16px;margin:12px 0;border:2px solid #ae925b;border-radius:22px;background:#fff9ea;color:#21432a;font:24px/1.3 WealthHand,'PingFang SC',sans-serif;cursor:pointer}.hobby-content header button{width:auto;font-size:19px;margin:0;min-width:70px}.hobby-content button:disabled{opacity:.5;cursor:default}.hobby-content button:focus-visible{outline:3px solid #2f6c48;outline-offset:3px}.hobby-content .hobby-primary{background:#ffd66a;border-color:#c79432;font-size:28px}.hobby-tag{text-align:center;background:#dae3bc;border-radius:12px;padding:6px;margin:10px auto;max-width:280px;font-size:22px}.hobby-description{text-align:center;font-size:22px;line-height:1.55;margin:14px 0}.hobby-level{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0;font-size:19px}.hobby-level progress{max-width:45%;height:15px;accent-color:#72934b}.hobby-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}.hobby-stats>div{border:2px solid #dfb866;border-radius:19px;padding:12px 8px;min-width:0;text-align:center;background:#fff9e8}.hobby-stats dt{font-size:21px;margin-bottom:5px}.hobby-stats dd{margin:0;font-size:27px;overflow-wrap:anywhere}.hobby-resources{font:13px/1.6 'PingFang SC',sans-serif;text-align:center}.hobby-message{font:14px/1.6 'PingFang SC',sans-serif;text-align:center;color:#79582e;margin:8px 0}.hobby-message:empty{display:none}.hobby-list{display:grid;gap:4px}.hobby-choice strong,.hobby-choice span,.hobby-choice small{display:block}.hobby-choice strong{font-size:28px}.hobby-choice span{font-size:20px;margin:7px 0}.hobby-choice small{font-size:17px}.hobby-legacy{font-size:18px;margin:18px 0}.relationship-interest dd .contact-interest{display:block;padding:4px 0;overflow-wrap:anywhere}@media(max-width:350px){.hobby-content{padding:12px 14px}.hobby-content h1{font-size:33px}.hobby-description{font-size:20px}.hobby-stats dt{font-size:18px}.hobby-stats dd{font-size:24px}.hobby-choice small{font-size:15px}}
+
+/* Latte practice: original approved art, live paper card over the room. */
+.hobby-overlay.hobby-latte-card{display:grid;place-items:center;padding:12px;box-sizing:border-box;overflow:hidden;background:linear-gradient(#514a3528,#514a3528),url('assets/home/room-phone-20261101.webp') center/auto 135% no-repeat,#d6c9a9}
+.hobby-latte-card .hobby-paper{width:100%;max-width:560px;height:min(780px,calc(100dvh - 24px));min-height:0;padding:0;margin:0;display:flex;flex-direction:column;overflow:hidden;border:3px solid #b99a62;border-radius:29px 22px 27px 21px;box-shadow:0 12px 32px #3f3e2938;box-sizing:border-box;background:radial-gradient(#b5944b12 .7px,transparent 1px) 0 0/5px 5px,#fff5dd}
+.hobby-latte-card .hobby-paper>header{display:flex;align-items:center;gap:14px;padding:10px 14px;background:linear-gradient(110deg,#f5e7c2,#fff8e4);flex:none;border-bottom:2px solid #dac48b}
+.hobby-latte-card header button{font:18px WealthHand,sans-serif;color:#305334;border:1.5px solid #baa371;border-radius:14px 10px 16px 11px;background:#faf0d2;padding:9px 12px;min-height:42px;box-shadow:inset 0 0 0 2px #fff9e6}
+.hobby-latte-card header h1{font-size:29px;line-height:1.3;margin:0;padding:0 15px;background:linear-gradient(transparent 50%,#dce3b3b8 50%,#dce3b3b8 90%,transparent 90%)}
+.hobby-latte-card .hobby-scene{flex:none;aspect-ratio:2.35;border-bottom:4px solid #c9ac70}
+.hobby-latte-card .hobby-scene img{width:100%}
+.hobby-latte-card .hobby-content{padding:8px 17px 14px;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#91a565 #e7d9b6}
+.hobby-latte-card .hobby-tag{font-size:17px;width:fit-content;margin:8px auto;padding:5px 16px;border-radius:13px 7px 12px 8px;background:#dce5bf}
+.hobby-latte-card .hobby-description{font-size:19px;line-height:1.5;margin:10px 0;color:#45603c}
+.hobby-latte-card .hobby-level{margin:10px 0;padding:10px 6px;border:1px solid #d8c38c;border-radius:16px 11px 15px 10px;background:#faf0d3;gap:9px;font-size:18px}
+.hobby-latte-card .hobby-level progress{height:13px;max-width:40%;accent-color:#8b9e5d}
+.hobby-latte-card .hobby-stats{gap:9px;margin:12px 0}
+.hobby-latte-card .hobby-stats>div{position:relative;border:1.5px solid #cbb073;border-radius:20px 13px 19px 14px;padding:10px 6px;background:linear-gradient(120deg,#fffaf0,#f7e8bf);box-shadow:inset 0 0 0 3px #fff9e6,0 3px 0 #b8a16c20}
+.hobby-latte-card .hobby-stats dt{font-size:19px;color:#596b43;margin-bottom:4px}
+.hobby-latte-card .hobby-stats dd{font-size:25px;color:#305535}
+.hobby-latte-card .hobby-content button{font-size:21px;min-height:45px;margin:8px 0;padding:9px 12px;border:1.5px solid #a8af72;border-radius:19px 12px 20px 13px;background:linear-gradient(#edf0d0,#dfe8ba);box-shadow:inset 0 0 0 2px #fff8df80}
+.hobby-latte-card .hobby-content .hobby-primary{font-size:25px;border-color:#c5a553;background:linear-gradient(110deg,#f6d77c,#ffeab0,#f0ce70);box-shadow:inset 0 0 0 3px #fff6ce88,0 3px 0 #c5a55325}
+.hobby-latte-card .hobby-resources{font-size:12px;color:#61704d;margin:8px 0}
+@media(max-height:650px){.hobby-latte-card .hobby-scene{aspect-ratio:3}.hobby-latte-card header h1{font-size:25px}}
+.hobby-latte-card .hobby-level progress{appearance:none;border:1px solid #c5bc91;border-radius:8px;background:#e4ddbf;overflow:hidden}
+.hobby-latte-card .hobby-level progress::-webkit-progress-bar{background:#e4ddbf;border-radius:8px}
+.hobby-latte-card .hobby-level progress::-webkit-progress-value{background:linear-gradient(90deg,#83985b,#b6c185);border-radius:8px}
+.hobby-latte-card .hobby-level progress::-moz-progress-bar{background:#91a465;border-radius:8px}
+
+/* Illustrated practice dossier: live information, paper tabs and ink icons. */
+.hobby-latte-card .hobby-paper{border-color:#b49a65;box-shadow:0 14px 35px #5142284d,inset 0 0 0 3px #fffbe8;background:radial-gradient(ellipse at 15% 25%,#fffdf0cc,transparent 70%),repeating-linear-gradient(0deg,#b99a5510 0,#b99a5510 1px,transparent 1px,transparent 5px),#fbf0d3}
+.hobby-latte-card .hobby-paper>header{padding:10px 12px;gap:10px}
+.hobby-file-label{margin-left:auto;font-size:15px;color:#7f754e;border:1px solid #bbaa78;border-radius:5px 8px 5px 7px;padding:5px 7px;transform:rotate(3deg);background:#f3e7c7}
+.hobby-latte-card .hobby-scene{border-bottom:3px solid #bca16b;position:relative}
+.hobby-latte-card .hobby-scene:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 -8px 10px #f4dfb04d}
+.hobby-latte-card .hobby-content{padding:8px 18px 16px}
+.hobby-latte-card .hobby-tag{position:relative;background:#e0e7be;border:1px solid #bfc99c;border-radius:4px 8px 5px 7px;font-size:16px;padding:5px 16px;transform:rotate(-1deg);box-shadow:0 2px 0 #c3ba8f33}
+.hobby-latte-card .hobby-description{font-size:18px;margin:10px 0 12px;line-height:1.55}
+.hobby-latte-card .hobby-level{position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:8px 10px;padding:13px 14px 12px;margin:10px 0 14px;background:linear-gradient(120deg,#f2edcf,#e5e8bd);border:1.5px solid #b6bd8b;border-radius:18px 12px 20px 13px;box-shadow:inset 0 0 0 3px #fcf7df80,0 3px 0 #a7ae7926}
+.hobby-level-label{font-size:15px;color:#6d7650;grid-column:1/-1;line-height:1}
+.hobby-latte-card .hobby-level strong{font-size:27px;color:#385b37}
+.hobby-latte-card .hobby-level progress{width:100%;max-width:none;height:10px;border-color:#b2bc8a;background:#d9dfb6}
+.hobby-latte-card .hobby-level>span:last-child{font-size:16px;white-space:nowrap}
+.hobby-practice-heading{font-size:22px;line-height:1.3;margin:8px 0 10px;color:#44613c;display:flex;align-items:center;gap:12px}
+.hobby-practice-heading:after{content:'';height:3px;flex:1;border-top:1px solid #cfbc88;border-bottom:1px solid #e6d6ad;transform:rotate(-.5deg)}
+.hobby-latte-card .hobby-stats{margin:8px 0 10px;gap:10px}
+.hobby-latte-card .hobby-stats>div{display:grid;grid-template-columns:35px 1fr;gap:3px 6px;text-align:left;align-items:center;padding:11px 10px;border-color:#c7b17b;border-radius:18px 11px 19px 12px;background:linear-gradient(120deg,#fff9e6,#f4e7c1);box-shadow:inset 0 0 0 3px #fffbec,0 3px 0 #b9a77b22}
+.hobby-stat-icon{grid-row:1/3;display:flex;color:#9a7b43;align-items:center;justify-content:center;background:#efe3b9;border-radius:50%;width:34px;height:38px}
+.hobby-stat-icon svg{width:26px;height:28px;filter:drop-shadow(0 1px #fff9de)}
+.hobby-latte-card .hobby-stats dt{font-size:16px;margin:0;color:#7b7956}
+.hobby-latte-card .hobby-stats dd{font-size:24px;line-height:1.2}
+.hobby-latte-card .hobby-content .hobby-primary{border:2px solid #c0a153;border-radius:20px 13px 22px 15px;background:linear-gradient(110deg,#eaca71,#ffe7a2 48%,#efcf7a);text-shadow:0 1px #fff3cf;box-shadow:inset 0 0 0 3px #fff1b7,0 4px 0 #b699552b;font-size:25px;min-height:49px}
+.hobby-latte-card .hobby-content button:last-child{font-size:19px;background:#e7ecc9;border-color:#acb581;min-height:42px;margin-bottom:0}
+@media(max-width:350px){.hobby-latte-card .hobby-content{padding-left:12px;padding-right:12px}.hobby-latte-card .hobby-stats>div{padding:10px 7px;grid-template-columns:29px 1fr;gap:3px 5px}.hobby-stat-icon{width:28px}.hobby-latte-card .hobby-stats dt{font-size:15px}.hobby-latte-card .hobby-stats dd{font-size:21px}.hobby-file-label{font-size:13px}}

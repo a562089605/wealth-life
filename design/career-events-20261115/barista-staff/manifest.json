@@ -1,11 +1,11 @@
 {
   "id": "barista-staff",
   "title": "同事临时请假",
-  "status": "production-integrated-and-verified",
+  "status": "confirmed-runtime-integrated-local-verified-pending-deployment",
   "confirmedBy": "用户本轮确认",
   "sourceOriginal": "assets/career/barista-staff.webp",
   "artwork": "design/career-events-20261115/barista-staff/barista-staff-confirmed.png",
-  "sha256": "ead9e0aaa0a7289780218476dc009e6c30b5d75987c195b37dc0e6a1edf2445d",
+  "sha256": "56d46e8ceff945ae422b172aa00183f19ad8db369b93b27bfaa0432fe7046a26",
   "options": [
     {
       "id": "A",
@@ -33,6 +33,7 @@
   ],
   "careerRecognitionLabel": "上司认可度",
   "archiveStatusBeforeIntegration": "artwork-confirmed-not-runtime-replaced",
-  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
+  "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "displayRevision": "2026-11-16 隐藏工作时间+8h，保留自由时间-8h；后台8小时工资小费结算不变"
 }

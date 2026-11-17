@@ -1,0 +1,10 @@
+{
+  "scope": "Local isolated Chromium touchscreen slot947, not production or real phone",
+  "errors": [],
+  "steps": [
+    "Actual room work click; no expansion drawer; persistent right scrollbar supports dragging, keyboard Home/End and native touchscreen content scrolling; illustration/card geometry stays fixed",
+    "320/390/430/1280 cards fit viewport with usable inner scroll",
+    "Visual interaction leaves state untouched and preserves other learning page layouts"
+  ],
+  "ok": true
+}

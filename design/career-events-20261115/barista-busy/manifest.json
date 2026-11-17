@@ -1,10 +1,10 @@
 {
   "id": "barista-busy",
   "title": "周末爆单",
-  "status": "production-integrated-and-verified",
+  "status": "confirmed-runtime-integrated-local-verified-pending-deployment",
   "sourceOriginal": "assets/career/barista-busy.webp",
   "artwork": "design/career-events-20261115/barista-busy/barista-busy-confirmed.png",
-  "sha256": "37d09d7780d91ca37731c07bc3ea605e1b7120342506bf46dd7de74b38d007c0",
+  "sha256": "37f5889c4d2d37aa7fb10ffd898441fc7f9a01f78c85588b0054dfc3e87bb30f",
   "story": "这个周末，店里订单接连不断，吧台忙得停不下来。经理问你愿不愿意加班帮忙。",
   "options": [
     {
@@ -33,6 +33,7 @@
   ],
   "careerRecognitionLabel": "上司认可度",
   "archiveStatusBeforeIntegration": "artwork-confirmed-not-runtime-replaced",
-  "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
+  "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md",
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "displayRevision": "2026-11-17 用户确认五栏修订：隐藏工作时间+8h，保留自由时间-8h；后台结算及其余数值不变"
 }
