@@ -7,7 +7,7 @@
  function close(){page=null;document.body.classList.remove('painted-screen');const box=el('paintedView');if(box)box.hidden=true;}
  function button(action,label,style,disabled=false){return '<button type="button" class="painted-hotspot" data-painted="'+action+'" aria-label="'+esc(label)+'" style="'+style+'" '+(disabled?'disabled':'')+'>'+esc(label)+'</button>';}
  function patch(text,style,kind=''){return '<div class="painted-value '+kind+'" style="'+style+'">'+esc(text)+'</div>';}
- const image=name=>'<img class="painted-image" src="assets/pages/'+name+'-20261101.webp" width="853" height="1844" alt="'+({rest:'休息安排：人物在绿色沙发上休息，柯基睡在旁边',housing:'四种住房选择',family:'与家人同住：阳光照进绿色格纹床铺的卧室'}[name]||'生活与住房详情')+'">';
+ const image=name=>'<img class="painted-image" src="'+(name==='rest'?'assets/pages/rest-corgi-20261117.webp':'assets/pages/'+name+'-20261101.webp')+'" width="853" height="1844" alt="'+({rest:'休息安排：人物在绿色沙发上休息，柯基睡在旁边',housing:'四种住房选择',family:'与家人同住：阳光照进绿色格纹床铺的卧室'}[name]||'生活与住房详情')+'">';
  function stats(name){
   const free=currentCareerTime().free+'h';
   const health=Math.round(state.health),energy=Math.round(state.energy);
