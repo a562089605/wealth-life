@@ -25,7 +25,7 @@
 @media(orientation:landscape) and (max-height:500px){.room-screen{overflow:auto}.room-screen #roomView:not([hidden]){position:relative;min-height:900px}.room-canvas{width:416px;max-height:none}}
 
 /* Approved small-apartment art: fixed corgi, independent of adopted pets. */
-.room-apartment .room-pets{left:62%;top:83.7%;width:21%;height:4%}
+.room-apartment .room-pets,.room-default .room-pets{left:62%;top:83.7%;width:21%;height:4%}
 .room-hotspot[hidden]{display:none!important}
 
 /* Approved open-plan Studio; hotspots follow this image only. */
@@ -73,4 +73,9 @@
 @supports not (height:100dvh){.room-family .room-canvas{width:min(100vw,calc((100vh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))*935/1683))}}
 @media(orientation:landscape) and (max-height:500px){.room-family .room-canvas{width:416px;max-height:none}}
 
-.room-default .room-canvas .room-pets{left:62%;top:82%;width:25%;min-width:64px;min-height:44px;border:1px solid #22362b;background:#fffaf0;color:#22362b;font-size:clamp(14px,3.5vw,20px);font-weight:700;box-shadow:0 2px 5px #22362b40}
+.room-default .room-canvas{container-type:inline-size}
+.room-default .room-date{
+ left:22%;top:3%;width:56%;height:7.4%;border-radius:16px;background:#fff1ce;
+}
+.room-default .room-date strong{font-size:5.2cqw}
+.room-default .room-date span{font-size:3.4cqw}
