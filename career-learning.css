@@ -94,3 +94,11 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
 .career-management-card .career-scroll-body>.career-primary{width:100%;font-family:WealthHand,sans-serif;font-size:25px;min-height:49px;border:2px solid #c0a153;border-radius:20px 13px 22px 15px;background:linear-gradient(110deg,#eaca71,#ffe7a2 48%,#efcf7a);box-shadow:inset 0 0 0 3px #fff1b7,0 4px 0 #b699552b}
 .career-management-card .career-back{margin-top:9px;font-size:20px;min-height:42px}
 @media(max-width:350px){.career-management-card .career-fixed-heading h1{font-size:21px}.career-management-card .career-course-badge{font-size:11px}.career-management-card .career-management-stats .career-row{padding:10px 7px;grid-template-columns:24px 1fr;gap:3px 4px}.career-management-card .career-management-stats .career-row>span:nth-child(2){font-size:14px}.career-management-card .career-management-stats .career-row>span:last-child{font-size:22px}}
+
+.career-overlay.career-cafe-home.career-fixed{
+ background:linear-gradient(#352a1c55,#352a1c55),url('assets/home/apartment-corgi-20261104.webp') center/cover no-repeat,#d6c9a9;
+}
+.career-cafe-home.career-fixed .career-scene{aspect-ratio:3}
+.career-cafe-home.career-fixed .career-scene img{
+ inset:0;width:100%;height:100%;object-fit:cover;transform:none;
+}
