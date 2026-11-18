@@ -34,5 +34,19 @@
   ],
   "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-replaced",
   "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "delegateReview": {
+    "status": "confirmed-rules-locally-integrated-not-published",
+    "artwork": "design/career-events-20261115/shift-training/shift-training-delegate-confirmed.png",
+    "sha256": "99c37f367348750da7c3c60386822b723faa2eadc8ef1bbdbb4bba663ac1d0fe",
+    "optionB": {
+      "label": "请咖啡师同事帮忙带教",
+      "description": "请一位熟悉流程的咖啡师同事带新人，你负责交代带教重点。",
+      "energy": -1,
+      "managementXP": 5
+    },
+    "runtime": "assets/career-events-20261116/shift-training-painted-batch3-20261117.webp",
+    "runtimeSha256": "8e6db4dab85ae5863f162ad6759aca500d5fcf3d26aea54eb6544f86b19748cb",
+    "runtimeArtwork": "保留远端main最新已选插画，按本轮确认规则呈现真实文字与数值"
+  }
 }

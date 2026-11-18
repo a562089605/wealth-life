@@ -1,0 +1,49 @@
+{
+  "status": "confirmed-locally-integrated-not-published",
+  "artifacts": [
+    {
+      "source": "design/career-learning-20261115/learning-payday-illustrations-20261117/learning-banner-confirmed.png",
+      "sourceSha256": "d560a0fd1690323d3f3002fb50e7fc7ed3ed2761b8a474e84d12b293e385066f",
+      "runtime": "assets/career-learning-20261115/learning-banner.webp",
+      "runtimeSha256": "730d98917df2933e43af2cea474d82033ae945ae9d638b0f4f66192a0a8df1d3"
+    },
+    {
+      "source": "design/career-learning-20261115/learning-payday-illustrations-20261117/income-banner-confirmed.png",
+      "sourceSha256": "ffa8b9abdc0bc4ba00db29816386987db5778a43bf378958146c02ae7b9e2a48",
+      "runtime": "assets/career-learning-20261115/income-banner.webp",
+      "runtimeSha256": "2317ec9cb0b486189c4818513c8aecce7587fd0712ad5aca3105026be6ce5a98"
+    },
+    {
+      "source": "design/career-learning-20261115/learning-payday-illustrations-20261117/education-tile-confirmed.png",
+      "sourceSha256": "bd3f4fa59ba9feb58d7efe4e9bcf73887b96b76556cba48b0cfdb9d1b932cd2c",
+      "runtime": "assets/career-learning-20261115/education-tile.webp",
+      "runtimeSha256": "ebe6e1b3ea6e1394350091341d1a3724d42a324faddf77c184bfe745c02bb7a0"
+    },
+    {
+      "source": "design/career-learning-20261115/learning-payday-illustrations-20261117/skills-tile-confirmed.png",
+      "sourceSha256": "aee14c76a756f59ed62ddf0cc6a37ef07798ee48088afca7682a4fb388c3d0b0",
+      "runtime": "assets/career-learning-20261115/skills-tile.webp",
+      "runtimeSha256": "e07cbf80f940e4ea74208943f2f5bae4387199ebeeac1aabeaf7290e55b1e085"
+    },
+    {
+      "source": "design/career-learning-20261115/learning-payday-illustrations-20261117/hobbies-tile-confirmed.png",
+      "sourceSha256": "04a37c5497d97146e856d5807090362d4afdd3b723124447bf33f1ca16219974",
+      "runtime": "assets/career-learning-20261115/hobbies-tile.webp",
+      "runtimeSha256": "e4d1ddec3ff88d6790b64a154cad653bac0c042840d0d6b1a8aab1c999fec365"
+    }
+  ],
+  "localChromiumScreenshots": [
+    {
+      "file": "design/career-learning-20261115/learning-payday-illustrations-20261117/wealth-life-learning-payday-overview.png",
+      "sha256": "9117b4dcc83c3405ba78ebc18d3d58a0fa75e7290b46243006ac868f022803ca"
+    },
+    {
+      "file": "design/career-learning-20261115/learning-payday-illustrations-20261117/wealth-life-payday-scroll.png",
+      "sha256": "2302d0d5b822ca428e99a22bb2860b80ba0594e96569fd4f52405d1c43dc4a05"
+    }
+  ],
+  "notes": [
+    "学习页页首及三个入口缩略图已确认",
+    "结薪表固定标题及插画，正文使用右侧滚动条，滚动版已确认"
+  ]
+}

@@ -35,5 +35,18 @@
   ],
   "archiveStatusBeforeIntegration": "artwork-confirmed-not-runtime-replaced",
   "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "serviceXpReview": {
+    "status": "confirmed-rules-locally-integrated-not-published",
+    "artwork": "design/career-events-20261115/barista-departure/barista-departure-service-xp-confirmed.png",
+    "sha256": "5ed62795c5053dd5b48caeb32f9c48317ca500f2e18b048aa81bcfc1ba0d8a8b",
+    "showWorkHours": false,
+    "showFreeHours": true,
+    "overtimeHours": 32,
+    "serviceXp": 4,
+    "confirmedRule": "咖啡师正常班和加班按当月实际工作小时÷8，在月末结算顾客服务XP。后台保留小数；加班卡显示对应整数XP。",
+    "runtime": "assets/career-events-20261116/barista-departure-painted-batch2-20261117.webp",
+    "runtimeSha256": "59dfdfe2bd9c0ba61ad03f02b6fb4f52fc9bda125239add1ef49f68694de4f9e",
+    "runtimeArtwork": "保留远端main最新已选插画，按本轮确认规则呈现真实文字与数值"
+  }
 }

@@ -36,5 +36,17 @@
   "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md",
   "functionalCommit": "42df200c3f389241fd2ed937667f3d84c5ea3b7d",
   "displayRevision": "2026-11-16 隐藏工作时间+8h，保留自由时间-8h；后台8小时工资小费结算不变",
-  "productionEvidence": "qa/career-review-20261117/release-summary.json"
+  "productionEvidence": "qa/career-review-20261117/release-summary.json",
+  "serviceXpReview": {
+    "status": "confirmed-rules-locally-integrated-not-published",
+    "artwork": "design/career-events-20261115/barista-staff/barista-staff-service-xp-confirmed.png",
+    "sha256": "d61675f7d63252eb1125be8fcefb31717e6c122aba18e2cbea00dbe8113153ff",
+    "showWorkHours": false,
+    "showFreeHours": true,
+    "overtimeHours": 8,
+    "serviceXp": 1,
+    "runtime": "assets/career-events-20261116/barista-staff-painted-batch2-20261117.webp",
+    "runtimeSha256": "6e4c89b3f9b3686fb1bd98829063b36486707395317ab05d1df27864ed2a42a0",
+    "runtimeArtwork": "保留远端main最新已选插画，按本轮确认规则呈现真实文字与数值"
+  }
 }

@@ -24,5 +24,11 @@
   },
   "marketEvidence": "作为游戏门店薪资基准；未核实奥兰多招聘行情，不标为当地市场平均薪资或现实小费法律认定。",
   "legacy": "旧存档已得工资不降薪、不追扣，原记录与备份保留。",
-  "scope": "仅本地确认记录，工资政策修订尚未接入代码；未改SW、存档或发布。"
+  "scope": "仅本地确认记录，工资政策修订尚未接入代码；未改SW、存档或发布。",
+  "lowSeasonTipsReview": {
+    "status": "confirmed-locally-integrated-not-published",
+    "calendarMonth": 9,
+    "monthlyBaseTips": 292.5,
+    "scope": "保留9月基础小费$292.50，金额按分记账并统一显示两位小数。旧收据与职业事件小费沿原规则。"
+  }
 }

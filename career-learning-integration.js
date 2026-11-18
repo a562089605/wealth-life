@@ -10,7 +10,12 @@
  const previousCareerMissing=careerMissing;careerMissing=function(c){return R.role(c.name)==='manager'?['请在当前值班主管岗位满足条件后确认晋升店长']:previousCareerMissing(c);};
  const oldProgress=applyCareerProgression;applyCareerProgression=function(){if(R.role(state.job))return;return oldProgress();};
  completeCoffeeCareerMonth=function(s){const x=s.careerIncome,k=x&&(x.role||'barista');if(!x||!(x.baseWages>0)||!R.roles[k])return;const p=coffeeCareerData(),cycle=x.cycle;if(cycle<=p.lastCycle)return;p.lastCycle=cycle;
-  const hours=R.roles[k].weekly*4,factor=Math.max(0,Math.min(1,(hours+Math.min(0,x.workHoursDelta||0))/hours)),gains=k==='barista'?{service:roundCash(20*factor)}:{service:roundCash(15*factor),management:roundCash(15*factor)};coffeeSkillGain(gains);p[k==='barista'?'baristaMonths':k==='shiftLead'?'shiftMonths':'managerMonths']=(p[k==='barista'?'baristaMonths':k==='shiftLead'?'shiftMonths':'managerMonths']||0)+1;p.normalMonths++;if(p.normalMonths%2===0)state.coffee.managerTrust=(state.coffee.managerTrust||0)+1;s.coffeeGrowth={...gains,managerTrust:p.normalMonths%2===0?1:0};
+  const hours=R.roles[k].weekly*4;
+  const event=state.coffee.monthly;
+  // Older saved overtime pays its locked XP at event confirmation.
+  const legacyOvertime=k==='barista'&&event?.cycle===cycle&&event.status==='resolved'&&!event.serviceXpAtMonthEnd?Math.max(0,event.workHoursDelta||0):0;
+  const workedHours=Math.max(0,hours+(x.workHoursDelta||0)-legacyOvertime);
+  const factor=Math.max(0,Math.min(1,(hours+Math.min(0,x.workHoursDelta||0))/hours)),gains=k==='barista'?{service:workedHours/8}:{service:roundCash(15*factor),management:roundCash(15*factor)};coffeeSkillGain(gains);p[k==='barista'?'baristaMonths':k==='shiftLead'?'shiftMonths':'managerMonths']=(p[k==='barista'?'baristaMonths':k==='shiftLead'?'shiftMonths':'managerMonths']||0)+1;p.normalMonths++;if(p.normalMonths%2===0)state.coffee.managerTrust=(state.coffee.managerTrust||0)+1;s.coffeeGrowth={...gains,managerTrust:p.normalMonths%2===0?1:0};
   const pending=p.pending;if(pending&&state.month>=pending.effectiveCycle){const next=R.role(pending.to);if(R.working(state)&&state.job===pending.from&&next){state.job=R.roles[next].name;state.workHoursPerWeek=R.roles[next].weekly;state.annualSalary=Math.max(state.annualSalary||0,R.annual(state,next));state.salary=roundCash(state.annualSalary/12);state.careerStartedAt=state.month;p[next==='shiftLead'?'shiftMonths':'managerMonths']=0;(state.timeline??=[]).push('晋升'+R.roles[next].name+'，下个月起按新岗位结算');s.coffeePromotion={job:state.job,salary:state.salary};}p.pending=null;}
  };
  // Old pending job-event quotes remain frozen; new ordinary work does not grant specialist XP.

@@ -28,7 +28,7 @@ function enterFastTrack(){
   (state.timeline??=[]).push('第'+(state.month+1)+'个月：进入财务自由快车道');
   state.achievements=[...new Set([...(state.achievements||[]),'进入财务自由快车道'])];
   save();render();
-  showEvent('阶段升级','欢迎进入第二阶段','现有现金、资产和负债原值保留。你可以继续工作、生活，并选择更大的投资项目。',[['进入时被动收入',money(j.entryPassive)+'/月'],['进入时必要支出',money(j.entryExpenses)+'/月'],['本次收支','$0']],[['查看快车道机会',openFastProjects,true],['继续本月安排',finish,false]]);
+  showEvent('阶段升级','欢迎进入第二阶段','现有现金、资产和负债原值保留。你可以继续工作、生活，并选择更大的投资项目。',[['进入时被动收入',money(j.entryPassive)+'/月'],['进入时必要支出',money(j.entryExpenses)+'/月'],['本次收支','$0.00']],[['查看快车道机会',openFastProjects,true],['继续本月安排',finish,false]]);
 }
 function openJourney(){
   const j=journeyState();
@@ -40,7 +40,7 @@ function openJourney(){
     return;
   }
   const gs=goalStats(),cf=fastCashFlow(),covered=freedomEligible();
-  showEvent('人生阶段','第二阶段：财务自由','保留月度生活流程。满足任一路线即可通关：实现开局人生目标，或快车道项目当前新增净收入达到 $50,000/月；通关时被动收入仍需覆盖必要支出。',[['快车道新增净收入',money(cf)+' / $50,000 每月'],['开局人生目标',gs.g.name],['进入时被动收入',money(j.entryPassive)+'/月'],['当前收支安全',covered?'被动收入覆盖支出':'出现缺口，优先恢复现金流']],[['查看快车道机会',openFastProjects,true],['查看并实现人生梦想',openDreamFulfilment,false],['继续生活',finish,false]]);
+  showEvent('人生阶段','第二阶段：财务自由','保留月度生活流程。满足任一路线即可通关：实现开局人生目标，或快车道项目当前新增净收入达到 $50,000.00/月；通关时被动收入仍需覆盖必要支出。',[['快车道新增净收入',money(cf)+' / $50,000.00 每月'],['开局人生目标',gs.g.name],['进入时被动收入',money(j.entryPassive)+'/月'],['当前收支安全',covered?'被动收入覆盖支出':'出现缺口，优先恢复现金流']],[['查看快车道机会',openFastProjects,true],['查看并实现人生梦想',openDreamFulfilment,false],['继续生活',finish,false]]);
 }
 function dreamQuote(){
   const gs=goalStats(),type=gs.g.type;
@@ -78,7 +78,7 @@ function winJourney(reason,title){
 }
 function showVictory(){
   const win=journeyState().win;if(!win)return;
-  showEvent('已通关','财富人生：目标达成',win.reason==='dream'?'你进入财务自由后，实现了开局选择的人生目标。存档保留，你可以继续生活。':'你的快车道项目当前新增净收入达到 $50,000/月，并仍能覆盖必要支出。存档保留，你可以继续生活。',[['通关路线',win.title],['通关年龄',win.age+'岁'],['当时被动收入',money(win.passive)+'/月'],['当时快车道新增',money(win.fastCashFlow)+'/月']],[['继续生活',finish,true],['保存并返回存档',()=>{save();home()},false]]);
+  showEvent('已通关','财富人生：目标达成',win.reason==='dream'?'你进入财务自由后，实现了开局选择的人生目标。存档保留，你可以继续生活。':'你的快车道项目当前新增净收入达到 $50,000.00/月，并仍能覆盖必要支出。存档保留，你可以继续生活。',[['通关路线',win.title],['通关年龄',win.age+'岁'],['当时被动收入',money(win.passive)+'/月'],['当时快车道新增',money(win.fastCashFlow)+'/月']],[['继续生活',finish,true],['保存并返回存档',()=>{save();home()},false]]);
 }
 const everydayOffers=monthlyOffers;
 monthlyOffers=function(){
@@ -122,11 +122,11 @@ const journeyCard=document.createElement('button');journeyCard.id='wlJourney';jo
 function renderJourney(){
   if(!state)return;
   const j=journeyState(),fast=j.phase==='fast',eligible=freedomEligible(),ratio=Math.max(0,Math.min(1,state.passive/Math.max(1,state.expenses))),cf=fastCashFlow();
-  journeyCard.innerHTML='<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="'+(fast?'#d5aa30':'#becbc6')+'" stroke-width="6"/><circle cx="32" cy="32" r="15" fill="none" stroke="'+(fast?'#a4b7af':'#3a9b8c')+'" stroke-width="6"/><circle cx="32" cy="'+(fast?'5':'17')+'" r="5" fill="#253d43"/></svg><span><strong>'+(j.win?'已通关 · 继续人生':fast?'阶段2 · 财务自由':'阶段1 · 积累资产')+'</strong><small>'+(fast?'快车道新增 '+money(cf)+' / $50,000 每月':'被动收入 '+money(state.passive)+' / 支出 '+money(state.expenses)+'/月')+'</small><i><b style="width:'+Math.round((fast?Math.max(0,Math.min(1,cf/FAST_CASHFLOW_TARGET)):ratio)*100)+'%"></b></i><small>'+(j.win?'点击查看通关记录':fast?(eligible?'实现梦想或达到新增收入目标':'现金流出现缺口，优先恢复覆盖'):eligible?'已符合条件，点击进入第二阶段':'点击查看双阶段规则')+'</small></span><span aria-hidden="true">›</span>';
+  journeyCard.innerHTML='<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="'+(fast?'#d5aa30':'#becbc6')+'" stroke-width="6"/><circle cx="32" cy="32" r="15" fill="none" stroke="'+(fast?'#a4b7af':'#3a9b8c')+'" stroke-width="6"/><circle cx="32" cy="'+(fast?'5':'17')+'" r="5" fill="#253d43"/></svg><span><strong>'+(j.win?'已通关 · 继续人生':fast?'阶段2 · 财务自由':'阶段1 · 积累资产')+'</strong><small>'+(fast?'快车道新增 '+money(cf)+' / $50,000.00 每月':'被动收入 '+money(state.passive)+' / 支出 '+money(state.expenses)+'/月')+'</small><i><b style="width:'+Math.round((fast?Math.max(0,Math.min(1,cf/FAST_CASHFLOW_TARGET)):ratio)*100)+'%"></b></i><small>'+(j.win?'点击查看通关记录':fast?(eligible?'实现梦想或达到新增收入目标':'现金流出现缺口，优先恢复覆盖'):eligible?'已符合条件，点击进入第二阶段':'点击查看双阶段规则')+'</small></span><span aria-hidden="true">›</span>';
   if(state.dreamFulfilment?.goal===state.lifeGoal){$('lifeGoalBar').style.width='100%';$('lifeGoalProgress').textContent='梦想已实现；当前财务数值仍按实际资产显示。'}
 }
 const renderJourneyBase=render;render=function(){renderJourneyBase();if(state)renderJourney()};
-const finishJourneyBase=finish;finish=function(){finishJourneyBase();if(state&&!document.querySelector('.event-active')&&cashFlowWinReady())winJourney('cashflow','快车道新增 $50,000/月')};
+const finishJourneyBase=finish;finish=function(){finishJourneyBase();if(state&&!document.querySelector('.event-active')&&cashFlowWinReady())winJourney('cashflow','快车道新增 $50,000.00/月')};
 const oldDreamButton=$('dreamBtn').onclick;$('dreamBtn').onclick=()=>{if(journeyState().phase==='fast')openDreamFulfilment();else oldDreamButton()};
 renderJourney();
 

@@ -83,7 +83,7 @@
  // Migrated themes belong to the family housing pool, not a second map/age draw.
  const eligibleBefore=eventEligible;eventEligible=function(name){if(['父母需要帮助','父母照护'].includes(name))return false;if(state?.housing==='family'&&['家电损坏','家用电器损坏'].includes(name))return false;return eligibleBefore(name);};
  const incidentBefore=requireIncident;requireIncident=function(name,...args){if(state?.housing==='family'&&['家电损坏','家用电器损坏'].includes(name))return finish();return incidentBefore(name,...args);};
- function effectText(o,hideEmpty=false){const a=[];if(o.cash)a.push('现金 '+(o.cash>0?'+':'−')+'$'+Math.abs(o.cash));if(o.hours)a.push('自由时间 −'+o.hours+'小时');for(const [k,label]of [['health','健康度'],['energy','能量'],['happiness','幸福度'],['stress','压力']])if(o[k])a.push(label+' '+(o[k]>0?'+':'−')+Math.abs(o[k]));return a.join(' · ')||(hideEmpty?'':'不消耗时间 · 属性不变');}
+ function effectText(o,hideEmpty=false){const a=[];if(o.cash)a.push('现金 '+(o.cash>0?'+':'−')+money(Math.abs(o.cash)));if(o.hours)a.push('自由时间 −'+o.hours+'小时');for(const [k,label]of [['health','健康度'],['energy','能量'],['happiness','幸福度'],['stress','压力']])if(o[k])a.push(label+' '+(o[k]>0?'+':'−')+Math.abs(o[k]));return a.join(' · ')||(hideEmpty?'':'不消耗时间 · 属性不变');}
  function selected(r,index){
   if(!activeKey)return;
   if(deferredPlan(poolOf(r),r,index))return previewDeferred(poolOf(r),r,index);

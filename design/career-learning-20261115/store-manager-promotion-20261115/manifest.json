@@ -41,5 +41,11 @@
   },
   "effective": "全部条件满足后玩家明确确认，下个月生效",
   "presentation": "图中日期和进度是示例；实际接入以原存档数据及真实DOM呈现，不把整张设计稿当游戏截图。",
-  "preservation": "旧画稿与规则记录保留；本次未修改原项目代码、SW、存档或发布。"
+  "preservation": "旧画稿与规则记录保留；本次未修改原项目代码、SW、存档或发布。",
+  "serviceRequirementReview": {
+    "status": "confirmed-locally-integrated-not-published",
+    "level": 4,
+    "xp": 300,
+    "note": "现行晋升页使用实时条件。原确认画稿中的Lv.5为历史文案。"
+  }
 }

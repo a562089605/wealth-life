@@ -24,5 +24,18 @@
   ],
   "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-replaced",
   "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "failureReview": {
+    "status": "confirmed-rules-locally-integrated-not-published",
+    "artwork": "design/career-events-20261115/shift-schedule-failure/shift-schedule-failure-review-confirmed.png",
+    "sha256": "4ef5e00a158269917110ef727c68df875097639801d3d58c452e5ec2294cc5d3",
+    "energy": -5,
+    "stress": 3,
+    "showWorkHours": false,
+    "workHours": 8,
+    "freeHours": -8,
+    "runtime": "assets/career-events-20261116/shift-schedule-failure-painted-batch3-20261117.webp",
+    "runtimeSha256": "286d7b2e54e4ec7e7c70fdad7208615cf212451e23e08f83fa589fa0f188c764",
+    "runtimeArtwork": "保留远端main最新已选插画，按本轮确认规则呈现真实文字与数值"
+  }
 }

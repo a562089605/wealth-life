@@ -1,40 +1,40 @@
 {
-  "status": "production-integrated-and-verified",
+  "status": "merged-remote-art-with-local-career-review",
   "artifacts": [
     {
       "id": "barista-busy",
-      "source": "design/career-events-20261115/barista-busy/barista-busy-confirmed.png",
-      "sourceSha256": "37f5889c4d2d37aa7fb10ffd898441fc7f9a01f78c85588b0054dfc3e87bb30f",
-      "runtime": "assets/career-events-20261116/barista-busy.webp",
-      "runtimeSha256": "5fc160575cdf08764f6204892dbc757aff0b425753e3f756045eb2ec076c1d3f"
+      "runtime": "assets/career-events-20261116/barista-busy-painted-batch2-20261117.webp",
+      "runtimeSha256": "96d7792b87672f2484625aa66db9029e33ba2dc37d9a66576cbed74bc44bca14",
+      "status": "retained-from-remote-main",
+      "sourceCommit": "c04245c"
     },
     {
       "id": "barista-cut",
-      "source": "design/career-events-20261115/barista-cut/barista-cut-confirmed.png",
-      "sourceSha256": "aca3ebd97c38a7d25c1ed3694bf255afa14041af6bd8b11bb64998e0b953ca65",
-      "runtime": "assets/career-events-20261116/barista-cut.webp",
-      "runtimeSha256": "175ede228fc941266efe78c48027b72515e30b0e8c8d8b29d5febb2fb6a2fba0"
+      "runtime": "assets/career-events-20261116/barista-cut-painted-20261117.webp",
+      "runtimeSha256": "63bbf1b1e263fb79e56ac17e0b70cb6d45913aea8f9d250069659ac27c14d713",
+      "status": "retained-from-remote-main",
+      "sourceCommit": "7dea3ed"
     },
     {
       "id": "barista-departure",
-      "source": "design/career-events-20261115/barista-departure/barista-departure-confirmed.png",
-      "sourceSha256": "a752d1bdb867a3f0ecb6effe9102367b1aa24d39c1e8c3469bc31c306a7bd972",
-      "runtime": "assets/career-events-20261116/barista-departure.webp",
-      "runtimeSha256": "03551f35cf2ea800ea2ac64ce8bd436e7aa2a429dfb1177c4dbfd6df9be3ab19"
+      "runtime": "assets/career-events-20261116/barista-departure-painted-batch2-20261117.webp",
+      "runtimeSha256": "59dfdfe2bd9c0ba61ad03f02b6fb4f52fc9bda125239add1ef49f68694de4f9e",
+      "status": "retained-from-remote-main",
+      "sourceCommit": "c04245c"
     },
     {
       "id": "barista-staff",
-      "source": "design/career-events-20261115/barista-staff/barista-staff-confirmed.png",
-      "sourceSha256": "56d46e8ceff945ae422b172aa00183f19ad8db369b93b27bfaa0432fe7046a26",
-      "runtime": "assets/career-events-20261116/barista-staff.webp",
-      "runtimeSha256": "1382bdd163051e94041de992ff34a23d4caca55d0ac997b5b43abcd3dc492bbe"
+      "runtime": "assets/career-events-20261116/barista-staff-painted-batch2-20261117.webp",
+      "runtimeSha256": "6e4c89b3f9b3686fb1bd98829063b36486707395317ab05d1df27864ed2a42a0",
+      "status": "retained-from-remote-main",
+      "sourceCommit": "c04245c"
     },
     {
       "id": "barista-tip",
-      "source": "design/career-events-20261115/barista-tip/barista-tip-confirmed.png",
-      "sourceSha256": "3d37a9b43779ccd1870b9955f9a4cb3e6144aee6a1bdbb055f32e1ead6b3d155",
-      "runtime": "assets/career-events-20261116/barista-tip.webp",
-      "runtimeSha256": "ec1054c5a9a772aa4092c0acd3be00ad90720f8680df48af90eddfae2143c7ea"
+      "runtime": "assets/career-events-20261116/barista-tip-painted-batch2-20261117.webp",
+      "runtimeSha256": "9cf9c8def94217b0f4ab82084c6a1bc1d27ac6d69ec3a072bcaa78b4621bcc21",
+      "status": "retained-from-remote-main",
+      "sourceCommit": "c04245c"
     },
     {
       "id": "manager-decline",
@@ -129,10 +129,11 @@
     },
     {
       "id": "shift-acting",
-      "source": "design/career-events-20261115/shift-acting/shift-acting-confirmed.png",
-      "sourceSha256": "54d07b6c6d48247a9622552bab3d827e03b5ae576f9252e24b893844ba8b9273",
+      "source": "design/career-events-20261115/shift-acting/shift-acting-hide-work-hours-confirmed.png",
+      "sourceSha256": "b4ffa2cc92e06ec4ff7c600f559b0682096089899adce52aa6a52cc2eeed2acb",
       "runtime": "assets/career-events-20261116/shift-acting.webp",
-      "runtimeSha256": "b2fd296590fac4cc13f18ef33130644ba5f5681f598ee7d078ae336b8e851749"
+      "runtimeSha256": "daf9f61a2a1a95d5e6f9505868b720198496ccff3f95e3119353c151e5720a7c",
+      "status": "locally-integrated-not-published"
     },
     {
       "id": "shift-acting-failure",
@@ -178,38 +179,38 @@
     },
     {
       "id": "shift-schedule",
-      "source": "design/career-events-20261115/shift-schedule/shift-schedule-confirmed.png",
-      "sourceSha256": "5367d6798a0eb5c0b82d7f4de458afe4a3d48daf6157264dbee3010e14cf724c",
-      "runtime": "assets/career-events-20261116/shift-schedule.webp",
-      "runtimeSha256": "e09cbd7cb87dd10922399c242e99212c3a40c13507d39a39b6f9ad097b88a834"
+      "runtime": "assets/career-events-20261116/shift-schedule-painted-batch3-20261117.webp",
+      "runtimeSha256": "fe511dc4b0e12b1cccc998e994978ee87751f59ed7656df5e3f6739ec5d75c8b",
+      "status": "retained-from-remote-main",
+      "sourceCommit": "598ec01"
     },
     {
       "id": "shift-schedule-failure",
-      "source": "design/career-events-20261115/shift-schedule-failure/shift-schedule-failure-confirmed.png",
-      "sourceSha256": "5c68009721d7a1e33d7b91c63b35c3b8ba95107dbfce7a79dbb9b00f3d60c969",
-      "runtime": "assets/career-events-20261116/shift-schedule-failure.webp",
-      "runtimeSha256": "cda60e7dcaa049c9150b01e493497955319dfa7f82ce887936b7f6aa8911b7bf"
+      "runtime": "assets/career-events-20261116/shift-schedule-failure-painted-batch3-20261117.webp",
+      "runtimeSha256": "286d7b2e54e4ec7e7c70fdad7208615cf212451e23e08f83fa589fa0f188c764",
+      "status": "retained-from-remote-main",
+      "sourceCommit": "598ec01"
     },
     {
       "id": "shift-schedule-success",
-      "source": "design/career-events-20261115/shift-schedule-success/shift-schedule-success-confirmed.png",
-      "sourceSha256": "06bac3bcf6c715bf9f55dad5301613dd76b3d67ba4b881cca46c54f726e0e301",
-      "runtime": "assets/career-events-20261116/shift-schedule-success.webp",
-      "runtimeSha256": "be24f654f57347a8b293b9255593a7b66b09c6c2aa7b60183c968552efd7ba3b"
+      "runtime": "assets/career-events-20261116/shift-schedule-success-painted-batch3-20261117.webp",
+      "runtimeSha256": "7a88f8aeee59b3f80fbce9e59e34da86e2551c1ba7a08ae8342284156bd44eca",
+      "status": "retained-from-remote-main",
+      "sourceCommit": "598ec01"
     },
     {
       "id": "shift-training",
-      "source": "design/career-events-20261115/shift-training/shift-training-confirmed.png",
-      "sourceSha256": "479eaf1016f390abed2ca6b305b18a7218da04b392c82f472b28096ce1194184",
-      "runtime": "assets/career-events-20261116/shift-training.webp",
-      "runtimeSha256": "66cc39c89b8f22ed2fa5fcce22f1e2226dcd9d9adf31ccff4d551ccb12177060"
+      "runtime": "assets/career-events-20261116/shift-training-painted-batch3-20261117.webp",
+      "runtimeSha256": "8e6db4dab85ae5863f162ad6759aca500d5fcf3d26aea54eb6544f86b19748cb",
+      "status": "retained-from-remote-main",
+      "sourceCommit": "598ec01"
     },
     {
       "id": "barista-cut-followup",
-      "source": "design/career-events-20261115/barista-cut-followup/barista-cut-followup-confirmed.png",
-      "runtime": "assets/career-events-20261116/barista-cut-followup.webp",
-      "runtimeSha256": "c65e56364cb26cedf7d12d09b8f37214e1df3d892842827a9c3841af943f29b6",
-      "sourceSha256": "dfbd8b15679b2b5f599b455ac1f20e07b2514028a69d07a5e1befee4f4c814cc"
+      "runtime": "assets/career-events-20261116/barista-cut-followup-painted-20261117.webp",
+      "runtimeSha256": "ed1423fc855ae7bd4756c877abe19337c7b0134aca3fb340c4591f13c34815d4",
+      "status": "retained-from-remote-main",
+      "sourceCommit": "7dea3ed"
     }
   ],
   "functionalCommit": "42df200c3f389241fd2ed937667f3d84c5ea3b7d",

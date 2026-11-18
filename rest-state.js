@@ -11,7 +11,7 @@ function confirmExtraRest(cycle,count){
  render();openExtraRest();return true;
 }
 function openExtraRest(){if(state.health<30||isRecoveryMonth(state))return openHealthTreatment();const cycle=state.month,count=monthlyRest().entries.length,missing=restMissing();showEvent('休息','额外休息4小时','每次4h：能量+4、压力−2、健康+1、幸福度+1；最高100。可重复安排，不自动执行。',[
- ['本月剩余时间',currentCareerTime().free+'h'],['费用','$0'],...(missing.length?[['尚缺',missing.join('；')]]:[])],[['确认休息4h',()=>confirmExtraRest(cycle,count),true,!!missing.length],['返回，不休息',finish,false]]);}
+ ['本月剩余时间',currentCareerTime().free+'h'],['费用','$0.00'],...(missing.length?[['尚缺',missing.join('；')]]:[])],[['确认休息4h',()=>confirmExtraRest(cycle,count),true,!!missing.length],['返回，不休息',finish,false]]);}
 const restTimeBefore=currentCareerTime;currentCareerTime=function(){const t=restTimeBefore(),used=state.extraRest?.month===state.month?state.extraRest.entries.length*4:0;return {...t,free:Math.max(0,t.free-used),restHours:used};};
 $('wellnessBtn').onclick=openExtraRest;
 

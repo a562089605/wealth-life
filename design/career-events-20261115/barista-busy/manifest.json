@@ -36,5 +36,17 @@
   "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md",
   "functionalCommit": "42df200c3f389241fd2ed937667f3d84c5ea3b7d",
   "displayRevision": "2026-11-17 用户确认五栏修订：隐藏工作时间+8h，保留自由时间-8h；后台结算及其余数值不变",
-  "productionEvidence": "qa/career-review-20261117/release-summary.json"
+  "productionEvidence": "qa/career-review-20261117/release-summary.json",
+  "serviceXpReview": {
+    "status": "confirmed-rules-locally-integrated-not-published",
+    "artwork": "design/career-events-20261115/barista-busy/barista-busy-service-xp-confirmed.png",
+    "sha256": "93cde7c85874ec3eab024e0b94bb57ba04cf3422dd2750ef59be80cfd3be9e08",
+    "showWorkHours": false,
+    "showFreeHours": true,
+    "overtimeHours": 8,
+    "serviceXp": 1,
+    "runtime": "assets/career-events-20261116/barista-busy-painted-batch2-20261117.webp",
+    "runtimeSha256": "96d7792b87672f2484625aa66db9029e33ba2dc37d9a66576cbed74bc44bca14",
+    "runtimeArtwork": "保留远端main最新已选插画，按本轮确认规则呈现真实文字与数值"
+  }
 }

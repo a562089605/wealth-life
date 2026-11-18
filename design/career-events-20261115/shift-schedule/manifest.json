@@ -48,5 +48,17 @@
   ],
   "archiveStatusBeforeIntegration": "main-and-both-followups-confirmed-not-runtime-replaced",
   "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "workHoursDisplayReview": {
+    "status": "confirmed-rules-locally-integrated-not-published",
+    "artwork": "design/career-events-20261115/shift-schedule/shift-schedule-hide-work-hours-confirmed.png",
+    "sha256": "64da646d993fb6747fafb5ec3c2639353b6e34d2f94292ffa811902c668cfd38",
+    "option": "C",
+    "showWorkHours": false,
+    "workHours": 8,
+    "freeHours": -8,
+    "runtime": "assets/career-events-20261116/shift-schedule-painted-batch3-20261117.webp",
+    "runtimeSha256": "fe511dc4b0e12b1cccc998e994978ee87751f59ed7656df5e3f6739ec5d75c8b",
+    "runtimeArtwork": "保留远端main最新已选插画，按本轮确认规则呈现真实文字与数值"
+  }
 }

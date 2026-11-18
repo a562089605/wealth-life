@@ -63,5 +63,18 @@
     "art": "主卡与独立后续均已确认并归档，待运行接入",
     "runtime": "新主卡及固定B后续已接入并完成线上事务回归，见最新生产证据"
   },
-  "productionEvidence": "qa/career-review-20261117/release-summary.json"
+  "productionEvidence": "qa/career-review-20261117/release-summary.json",
+  "payLabelsReview": {
+    "status": "confirmed-rules-locally-integrated-not-published",
+    "artwork": "design/career-events-20261115/barista-cut/barista-cut-pay-labels-confirmed.png",
+    "sha256": "7c76e8f8769eb059e3e6de3c4a456fbb76839074311afd12ed139eb2d567a97c",
+    "labels": [
+      "工资扣减",
+      "小费扣减"
+    ],
+    "amounts": "画稿按工时计算，游戏显示锁定的具体金额",
+    "runtime": "assets/career-events-20261116/barista-cut-painted-20261117.webp",
+    "runtimeSha256": "63bbf1b1e263fb79e56ac17e0b70cb6d45913aea8f9d250069659ac27c14d713",
+    "runtimeArtwork": "保留远端main最新已选插画，按本轮确认规则呈现真实文字与数值"
+  }
 }

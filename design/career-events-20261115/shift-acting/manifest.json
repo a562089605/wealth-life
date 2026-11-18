@@ -35,5 +35,16 @@
   ],
   "archiveStatusBeforeIntegration": "main-and-both-followups-confirmed-not-runtime-replaced",
   "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "workHoursDisplayReview": {
+    "status": "confirmed-locally-integrated-not-published",
+    "artwork": "design/career-events-20261115/shift-acting/shift-acting-hide-work-hours-confirmed.png",
+    "sha256": "b4ffa2cc92e06ec4ff7c600f559b0682096089899adce52aa6a52cc2eeed2acb",
+    "option": "A",
+    "showWorkHours": false,
+    "workHours": 8,
+    "freeHours": -8,
+    "runtime": "assets/career-events-20261116/shift-acting.webp",
+    "runtimeSha256": "daf9f61a2a1a95d5e6f9505868b720198496ccff3f95e3119353c151e5720a7c"
+  }
 }

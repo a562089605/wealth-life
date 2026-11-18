@@ -24,5 +24,18 @@
   ],
   "releaseRecord": "CAREER_REVIEW_RELEASE_20261117.md",
   "functionalCommit": "42df200c3f389241fd2ed937667f3d84c5ea3b7d",
-  "productionEvidence": "qa/career-review-20261117/release-summary.json"
+  "productionEvidence": "qa/career-review-20261117/release-summary.json",
+  "payLabelsReview": {
+    "status": "confirmed-rules-locally-integrated-not-published",
+    "artwork": "design/career-events-20261115/barista-cut-followup/barista-cut-followup-pay-labels-confirmed.png",
+    "sha256": "ba579cba758bcb73c2c2965af54d7d2f960dceffe8a22711b0320afdad87cda1",
+    "labels": [
+      "工资扣减",
+      "小费扣减"
+    ],
+    "amounts": "画稿按工时计算，游戏显示锁定的具体金额",
+    "runtime": "assets/career-events-20261116/barista-cut-followup-painted-20261117.webp",
+    "runtimeSha256": "ed1423fc855ae7bd4756c877abe19337c7b0134aca3fb340c4591f13c34815d4",
+    "runtimeArtwork": "保留远端main最新已选插画，按本轮确认规则呈现真实文字与数值"
+  }
 }

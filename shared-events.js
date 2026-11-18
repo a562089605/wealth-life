@@ -28,8 +28,8 @@
  function resolveWithLeave(s,month,index,free,reserve,rates){const r=s.sharedEvents?.records[month],p=plan(s,r,index,free,reserve,rates);if(!p||!resolve(s,month,r.cardId,index,free+p.hours,reserve))return false;if(p.hours)r.leave={hours:p.hours,wages:p.wages,tips:p.tips,job:s.job};return true;}
  function leave(s){return Object.values(s.sharedEvents?.records||{}).filter(r=>r.month===s.month&&r.status==='resolved'&&r.leave).reduce((a,r)=>({hours:a.hours+r.leave.hours,wages:a.wages+r.leave.wages,tips:a.tips+r.leave.tips}),{hours:0,wages:0,tips:0});}
  const toolboxStories={
-  shop:{desc:'新买的工具刚好派上用场！店里的柜门松了，你几分钟就修好了。店长笑着递来$50：“帮了大忙，这是给你的奖励！”',art:'assets/shared/toolbox-shop-20261102.webp',hotspots:[[1550/1844*100,215/1844*100]]},
-  neighbor:{desc:'你提着新工具箱回家，正巧碰到邻居为松动的柜门发愁。你几分钟就帮忙修好了，对方坚持送你$50，感谢你解了燃眉之急。',art:'assets/shared/toolbox-neighbor-20261102.webp',hotspots:[[1575/1844*100,200/1844*100]]}
+  shop:{desc:'新买的工具刚好派上用场！店里的柜门松了，你几分钟就修好了。店长笑着递来$50.00：“帮了大忙，这是给你的奖励！”',art:'assets/shared/toolbox-shop-20261102.webp',hotspots:[[1550/1844*100,215/1844*100]]},
+  neighbor:{desc:'你提着新工具箱回家，正巧碰到邻居为松动的柜门发愁。你几分钟就帮忙修好了，对方坚持送你$50.00，感谢你解了燃眉之急。',art:'assets/shared/toolbox-neighbor-20261102.webp',hotspots:[[1575/1844*100,200/1844*100]]}
  };
  function toolboxPending(r){return r?.cardId==='toolbox'&&r.status==='resolved'&&r.choice===1&&r.followup?.status==='pending'&&!!toolboxStories[r.followup.variant];}
  function toolboxCard(r){return toolboxPending(r)?{id:'toolbox',title:'工具派上用场',...toolboxStories[r.followup.variant],choices:[choice('收下这份惊喜',0,{cash:50,happiness:2})]}:null;}
