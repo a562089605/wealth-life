@@ -96,5 +96,22 @@
   },
   "archiveStatusBeforeIntegration": "main-and-four-followups-confirmed-not-runtime-integrated",
   "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "confirmedRevision": {
+    "date": "2026-11-18",
+    "status": "integrated",
+    "displayChange": "主卡保留 A/B/C，均衡排版；C 保留选项标题及插画，隐藏后续提示和效果栏。",
+    "choiceCFollowup": {
+      "title": "上司询问改进计划",
+      "story": "上司看完经营报表后，问你打算什么时候采取行动。你说明想再观察一段时间，上司希望你尽快拿出改进计划。",
+      "managerTrust": -1,
+      "button": "知道了",
+      "settlement": "后续确认时结算一次",
+      "artwork": "design/career-events-20261115/manager-decline-c-followup/manager-decline-c-followup-confirmed-20261118.png",
+      "sha256": "a30e8e44480d828cb285c528307b46e9092e0d611ad757c1b6e07197b9af9745",
+      "status": "integrated"
+    },
+    "artwork": "design/career-events-20261115/manager-decline/manager-decline-balanced-confirmed-20261118.png",
+    "sha256": "fedacdf042519989428f995be122c451bcf58c5bf2a3df3bd3bd2e80fd8cce34"
+  }
 }

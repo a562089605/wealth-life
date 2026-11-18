@@ -45,5 +45,12 @@
   ],
   "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-integrated",
   "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "confirmedRevision": {
+    "date": "2026-11-18",
+    "artwork": "design/career-events-20261115/manager-departure/manager-departure-hide-work-hours-confirmed-20261118.png",
+    "sha256": "d5e3d593694f3db4ff2ad7bc03efa1f293d3c74f8cac8a9bcf084285f31e136f",
+    "status": "integrated",
+    "displayChange": "A 隐藏工作时间 +4h，保留自由时间 −4h；后台按 4 小时计加班工资，无额外小费。"
+  }
 }

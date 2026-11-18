@@ -82,5 +82,9 @@
   },
   "archiveStatusBeforeIntegration": "main-success-conditions-and-four-followups-confirmed-not-runtime-integrated",
   "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "review20261118": {
+    "status": "confirmed",
+    "decision": "沿用原确认稿与现行效果"
+  }
 }

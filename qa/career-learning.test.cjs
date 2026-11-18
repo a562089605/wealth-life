@@ -4,6 +4,15 @@ let s=fixture();a.deepEqual(R.missing(s),[]);s.hobbyLearning.xp.latte=299;a.ok(R
 R.payData(s,false);a.equal(R.annual(s),32000);s.coffee.skills.service.xp=400;a.equal(R.annual(s),32000);s.education='bachelor';a.equal(R.annual(s),35840);s.education='doctorate';a.equal(R.annual(s),40000);
 s=fixture();s.annualSalary=35000;R.payData(s,true);a.equal(R.annual(s),35000);s.education='bachelor';a.equal(R.annual(s),39200);a.equal(R.annual(s,'shiftLead'),49280);
 s=fixture();const before=JSON.stringify(s);a.equal(R.promote(s,R.promotionToken(s),()=>false).ok,false);a.equal(JSON.stringify(s),before);a.equal(R.promote(s,R.promotionToken(s),()=>true).ok,true);a.equal(s.job,'咖啡师 Barista');a.equal(s.coffee.progression.pending.to,'值班主管 Shift Lead');a.equal(R.promote(s,R.promotionToken(s),()=>true).ok,false);
-s=fixture();s.job='值班主管 Shift Lead';s.coffee.progression.shiftMonths=12;s.coffee.managerTrust=8;s.coffee.skills.service.xp=300;s.coffee.skills.management.xp=200;s.hobbyLearning.xp.pourOver=300;a.equal(R.missing(s).length,0);for(const [key,value]of [['service',299.5],['management',199]]){const old=s.coffee.skills[key].xp;s.coffee.skills[key].xp=value;a.ok(R.missing(s).length);s.coffee.skills[key].xp=old;}s.hobbyLearning.xp.pourOver=299;a.ok(R.missing(s).some(x=>x.startsWith('手冲')));
+s=fixture();s.job='值班主管 Shift Lead';s.coffee.progression.shiftMonths=12;s.coffee.managerTrust=10;s.coffee.skills.service.xp=400;s.coffee.skills.management.xp=400;s.hobbyLearning.xp.latte=800;s.hobbyLearning.xp.pourOver=800;a.equal(R.missing(s).length,0);for(const [key,value]of [['service',399.5],['management',399.5]]){const old=s.coffee.skills[key].xp;s.coffee.skills[key].xp=value;a.ok(R.missing(s).length);s.coffee.skills[key].xp=old;}s.hobbyLearning.xp.pourOver=799;a.ok(R.missing(s).some(x=>x.startsWith('手冲')));
+s.hobbyLearning.xp.pourOver=800;
+s.hobbyLearning.xp.latte=799;
+a.ok(R.missing(s).some(x=>x.startsWith('拉花')));
+s.hobbyLearning.xp.latte=800;
+s.coffee.managerTrust=9;
+a.ok(R.missing(s).some(x=>x.startsWith('上司认可度')));
+s.coffee.managerTrust=10;
+s.coffee.progression.shiftMonths=11;
+a.ok(R.missing(s).some(x=>x.startsWith('值班主管任职')));
 s=fixture();const opts={free:100,reserve:0,recovery:false,save:()=>false},snap=JSON.stringify(s);a.equal(R.course(s,R.courseToken(s),opts).ok,false);a.equal(JSON.stringify(s),snap);opts.save=()=>true;for(let i=0;i<3;i++){const t=R.courseToken(s);a.equal(R.course(s,t,opts).ok,true);a.equal(R.course(s,t,opts).ok,false);}a.equal(s.cash,640);a.equal(s.energy,77);a.equal(s.coffee.skills.management.xp,30);a.equal(s.coffee.progression.courses[3].hours,9);a.equal(R.courseMissing(s,opts).length,0);a.equal(R.course(s,R.courseToken(s),opts).ok,true);s.month++;s.coffee.skills.management.xp=395;a.equal(R.course(s,R.courseToken(s),opts).xp,5);a.ok(R.courseMissing(s,opts).some(x=>x.includes('满级')));a.equal(s.coffee.skills.coffee.xp,400);
 console.log('PASS career learning: one-specialty eligibility, six manager requirements, position/education pay, legacy floor, atomic promotion/course retry, stale controls, uncapped courses and max XP.');

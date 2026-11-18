@@ -111,3 +111,42 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
 .career-income-fixed .career-scene img{width:100%;height:100%;inset:0;transform:none}
 .career-income-fixed .career-fixed-heading h1{font-size:24px;padding-inline:3px}
 @media(max-width:350px){.career-income-fixed .career-fixed-heading h1{font-size:20px}}
+
+.career-manager-promotion .career-scroll-body { padding-top: 14px; }
+.career-manager-promotion #career-promotion-scroll .career-panel:first-child {
+  padding: 13px 12px 12px;
+  background: linear-gradient(145deg, #fff9e4, #f7ecc9);
+}
+.career-manager-promotion #career-promotion-scroll .career-panel:first-child h2 { margin-bottom: 8px; }
+.career-manager-promotion #career-promotion-scroll .career-panel:first-child .career-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px;
+  margin-top: 5px;
+  padding: 5px 7px;
+  border-radius: 8px;
+  background-image: none;
+  background-color: #fff9e6;
+  border: 1px solid #d8bf853b;
+}
+.career-manager-promotion #career-promotion-scroll .career-panel:first-child .career-row.career-met {
+  background-color: #eef0d7;
+  border-color: #b5be853d;
+}
+.career-manager-promotion #career-promotion-scroll .career-panel:first-child .career-row > span:first-child {
+  font-family: inherit;
+  font-size: clamp(12px, 3.6vw, 16px);
+  line-height: 1.35;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.career-manager-promotion #career-promotion-scroll .career-panel:first-child .career-row > span:last-child {
+  font-size: clamp(11px, 3.3vw, 14px);
+  line-height: 1.35;
+  white-space: nowrap;
+  padding: 4px 5px;
+  border-radius: 5px;
+  background: #fffdf0;
+  color: #365c3a;
+}
+.career-manager-promotion .career-panel:nth-child(2) .career-row { padding: 6px 0; }
+.career-manager-promotion .career-panel:nth-child(2) .career-note { font-size: 14px; line-height: 1.5; }

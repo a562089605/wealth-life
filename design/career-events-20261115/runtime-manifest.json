@@ -211,6 +211,19 @@
       "runtimeSha256": "ed1423fc855ae7bd4756c877abe19337c7b0134aca3fb340c4591f13c34815d4",
       "status": "retained-from-remote-main",
       "sourceCommit": "7dea3ed"
+    },
+    {
+      "id": "manager-decline-c-followup",
+      "runtime": "assets/career-events-20261116/manager-decline-c-followup-20261118.webp",
+      "runtimeSha256": "24359069bc8d77d90b8e3b5c54a46a7c7c024b7c7f6b0a834ad30e4e56de7c97",
+      "source": "design/career-events-20261115/manager-decline-c-followup/manager-decline-c-followup-confirmed-20261118.png",
+      "sourceSha256": "a30e8e44480d828cb285c528307b46e9092e0d611ad757c1b6e07197b9af9745",
+      "crop": [
+        42,
+        121,
+        980,
+        505
+      ]
     }
   ],
   "functionalCommit": "42df200c3f389241fd2ed937667f3d84c5ea3b7d",

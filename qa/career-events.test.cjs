@@ -1,7 +1,7 @@
 const a=require('node:assert/strict'),fs=require('fs');global.HobbyLearning=require('../hobby-learning');global.CareerLearningRules=require('../career-learning-rules');global.CareerEventData=require('../career-event-data');const E=require('../career-event-rules'),D=CareerEventData.cards;let count=0;const eq=(x,y)=>{a.deepEqual(x,y);count++};
 function seed(){return {month:2,job:'店长 Store Manager',annualSalary:58000,salary:4833.33,workHoursPerWeek:45,cash:10000,energy:80,health:80,happiness:50,stress:30,coffee:{managerTrust:8,skills:{service:{xp:200},management:{xp:200},coffee:{xp:321}}},hobbyLearning:{version:1,xp:{tasting:150,latte:795,pourOver:795},sequence:7,receipts:[]},relationshipHome:{currentManagerId:'boss1'},people:[{id:'boss1',relation:62}],pets:[{id:'cat'}],legacy:{safe:true}};}
 const opts={save:()=>true,free:80,reserve:2},clone=x=>JSON.parse(JSON.stringify(x));
-eq(Object.keys(D).length,30);eq(CareerEventData.managerNaturalDrawEnabled,false);eq(CareerEventData.managerTriggerProbability,null);
+eq(Object.keys(D).length,31);eq(CareerEventData.managerNaturalDrawEnabled,false);eq(CareerEventData.managerTriggerProbability,null);
 for(const card of ['manager-departure','manager-equipment','manager-decline','manager-research','manager-excellent'])for(let index=0;index<D[card].options.length;index++)for(const roll of [0,.9999]){
  const s=seed(),before=clone(s);eq(E.reserve(s,card,{save:()=>false,random:()=>roll}).ok,false);eq(s,before);
  const out=E.reserve(s,card,{save:()=>true,random:()=>roll});a.ok(out.ok);count++;const id=out.record.id,saved=clone(s);eq(E.choose(s,id,index,{...opts,save:()=>false}).ok,false);eq(s,saved);eq(E.choose(s,id,index,opts).ok,true);const r=s.careerEvents.groups[id];
@@ -16,5 +16,32 @@ for(const [lv,rate]of [[0,.4],[1,.5],[2,.6],[3,.7],[4,.8],[5,.9]]){for(const rol
 {const s=seed(),r=E.reserve(s,'manager-departure',opts).record;const before=clone(s);eq(E.choose(s,r.id,0,{...opts,free:5,reserve:2}).ok,false);eq(s,before);s.energy=1;eq(E.choose(s,r.id,0,opts).ok,false);s.energy=80;s.health=20;eq(E.choose(s,r.id,0,opts).ok,false);s.health=80;eq(E.choose(s,r.id,0,opts).ok,true);eq(E.earned(s).wages,148.72);eq(E.earned(s).tips,0);eq(E.earned(s).hours,4);}
 for(const card of ['manager-decline','manager-research']){const s=seed(),r=E.reserve(s,card,opts).record;s.job='值班主管 Shift Lead';const before=clone(s);eq(E.choose(s,r.id,0,opts).ok,false);eq(s,before);s.job=r.job;s.month++;eq(E.choose(s,r.id,0,opts).ok,false);}
 for(const card of ['manager-decline','manager-research']){const s=seed();s.coffee.skills.management.xp=95;const r=E.reserve(s,card,{...opts,random:()=>.55}).record;E.choose(s,r.id,1,opts);eq(r.follow.level,1);eq(r.follow.success,false);}
+for(const legacy of [false,true]){
+ const s=seed(),r=E.reserve(s,'manager-decline',{...opts,random:()=>.99}).record;
+ if(legacy)r.options[2]={label:r.options[2].label,effects:{trust:-1}};
+ const restored=clone(s);
+ eq(E.choose(restored,r.id,2,opts).ok,true);
+ eq(restored.coffee.managerTrust,legacy?7:8);
+ const pending=E.pending(restored);
+ if(legacy){eq(pending,undefined);continue;}
+ eq(pending.follow.cardId,'manager-decline-c-followup');
+ eq(pending.follow.effects.trust,-1);
+ const reloaded=clone(restored);
+ eq(E.settleFollow(reloaded,r.id,{...opts,save:()=>false}).ok,false);
+ eq(reloaded,restored);
+ eq(E.settleFollow(reloaded,r.id,opts).ok,true);
+ eq(reloaded.coffee.managerTrust,7);
+ eq(E.settleFollow(reloaded,r.id,opts).ok,false);
+}
+for(const legacy of [false,true]){
+ const s=seed(),r=E.reserve(s,'manager-research',{...opts,random:()=>.99}).record;
+ s.hobbyLearning.xp.latte=799;
+ eq(E.choose(s,r.id,0,opts).ok,true);
+ if(legacy)delete r.follow.effects.latte;
+ const restored=clone(s);
+ eq(E.settleFollow(restored,r.id,opts).ok,true);
+ eq(restored.hobbyLearning.xp.latte,legacy?799:800);
+ eq(restored.hobbyLearning.xp.pourOver,798);
+}
 for(const row of JSON.parse(fs.readFileSync('design/career-events-20261115/runtime-manifest.json')).artifacts){const hash=require('node:crypto').createHash('sha256').update(fs.readFileSync(row.runtime)).digest('hex');eq(hash,row.runtimeSha256);}
 console.log('PASS '+count+' career event assertions: all manager choices/outcomes, rollback, stale/health/time gates, fixed results, costs, capped specialties, monthly noncompounding sales and artwork hashes');

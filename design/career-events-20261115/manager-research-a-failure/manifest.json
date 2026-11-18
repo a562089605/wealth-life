@@ -19,5 +19,17 @@
   ],
   "archiveStatusBeforeIntegration": "artwork-and-rule-confirmed-not-runtime-integrated",
   "releaseRecord": "CAREER_EVENTS_RELEASE_20261116.md",
-  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3"
+  "functionalCommit": "276af92b669517ed15ec467aa863215d651657b3",
+  "confirmedRevision": {
+    "date": "2026-11-18",
+    "status": "integrated",
+    "artwork": "design/career-events-20261115/manager-research-a-failure/manager-research-a-failure-latte-confirmed-20261118.png",
+    "sha256": "6f5c2f892792598a48963c8653bc868b7c479b510994df191474b1116dce5f3f",
+    "effects": {
+      "latteXP": 3,
+      "pourOverXP": 3,
+      "managementXP": 5,
+      "stress": 1
+    }
+  }
 }
