@@ -15,7 +15,23 @@
   const r=current(),def=C.cards[r.kind];if(!def)return false;
   const owner=state,chosen=slot,id=r.id,phase=r.status,follow=phase==='followup',art=follow?r.lockedOutcome:def;
   const title=art.title,section=el('section',null,'interest-overlay');active=section;section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.setAttribute('aria-label',title);document.body.append(section);document.body.classList.add('shared-interest-open');
-  const paper=el('div',null,'interest-paper'),scene=el('div',null,'interest-scene'),img=el('img');img.src=art.art;img.alt='';scene.append(img);paper.append(scene);section.append(paper);
+  const updatedArt={
+  "assets/hobbies/events/tasting-queue.webp": "assets/hobbies/events/tasting-queue-painted-20261118.webp",
+  "assets/hobbies/events/tasting-queue-queue.webp": "assets/hobbies/events/tasting-queue-queue-painted-20261118.webp",
+  "assets/hobbies/events/tasting-queue-no-queue.webp": "assets/hobbies/events/tasting-queue-no-queue-painted-20261118.webp",
+  "assets/hobbies/events/tasting-queue-no-suitable-cafe.webp": "assets/hobbies/events/tasting-queue-no-suitable-cafe-painted-20261118.webp",
+  "assets/hobbies/events/drawing-invite.webp": "assets/hobbies/events/drawing-invite-painted-20261118.webp",
+  "assets/hobbies/events/drawing-sketch.webp": "assets/hobbies/events/drawing-sketch-painted-20261118.webp",
+  "assets/hobbies/events/drawing-card.webp": "assets/hobbies/events/drawing-card-painted-20261118.webp",
+  "assets/hobbies/events/drawing-colors.webp": "assets/hobbies/events/drawing-colors-painted-20261118.webp",
+  "assets/hobbies/events/drawing-town.webp": "assets/hobbies/events/drawing-town-painted-20261118.webp",
+  "assets/hobbies/events/photography-invite.webp": "assets/hobbies/events/photography-invite-painted-20261118.webp",
+  "assets/hobbies/events/photography-composition.webp": "assets/hobbies/events/photography-composition-painted-20261118.webp",
+  "assets/hobbies/events/photography-share.webp": "assets/hobbies/events/photography-share-painted-20261118.webp",
+  "assets/hobbies/events/photography-rain.webp": "assets/hobbies/events/photography-rain-painted-20261118.webp",
+  "assets/hobbies/events/photography-dusk.webp": "assets/hobbies/events/photography-dusk-painted-20261118.webp"
+};
+  const paper=el('div',null,'interest-paper'),scene=el('div',null,'interest-scene'),img=el('img');img.src=updatedArt[art.art]||art.art;img.alt='';scene.append(img);paper.append(scene);section.append(paper);
   const body=el('div',null,'interest-content');paper.append(body);body.append(el('p',HobbyLearning.activities[r.hobby].name+' · '+r.personName,'interest-person'),el('h1',title),el('p',follow?art.scene:def.scene,'interest-story'));
   const valid=()=>active===section&&section.isConnected&&state===owner&&slot===chosen&&state.month===r.month&&current()?.id===id&&current()?.status===phase;
   const message=el('p',null,'interest-message');message.setAttribute('role','status');
