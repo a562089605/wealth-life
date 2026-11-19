@@ -76,8 +76,14 @@
   p.row(hold,'管理身份',a.shares?(a.managing?'在店管理':'只当股东'):'等待首次入股');
   p.row(hold,'我的股份估值',money(E.valuation(a)*a.shares/100));
   const last=a.months[state.month-1];
-  p.row(hold,'最近月结分红',last?money(last.dividend):'尚无月结');
-  if(last&&!last.dividend)p.row(hold,'分红状态',last.shares?(last.reason||'本期未分红'):'本期尚未持股');
+  const monthly=p.box('最近门店月结');
+  if(last){
+   p.row(monthly,'门店净利润',money(last.profit));
+   p.row(monthly,'门店可分红金额',money(last.pool));
+   p.row(monthly,'我的分红到账',money(last.dividend));
+  }else{
+   p.row(monthly,'结算状态','尚无月结');
+  }
   if(t||a.handover){
    const pending=p.box('待交割');
    if(t){
