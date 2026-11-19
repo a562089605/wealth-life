@@ -31,7 +31,12 @@ function sampleCoffeeEvent(month,random=Math.random){const u=random();if(u<.20)r
 function ensureCoffeeMonth(){if(!coffeeWorking())return coffeeRecord();const c=coffeeData();if(c.monthly?.cycle===state.month)return c.monthly;const date=coffeeCalendar(),eventId=sampleCoffeeEvent(date.month);c.monthly={cycle:state.month,year:date.year,calendarMonth:date.month,eventId,status:eventId?'pending':'none',quoteContext:coffeeQuoteContext(date.month),quotes:null,extraWages:0,extraTips:0,workHoursDelta:0,choice:null};if(eventId)c.monthly.quotes=COFFEE_EVENTS[eventId].choices.map((x,i)=>coffeeQuote(eventId,i,c.monthly.quoteContext));save();return c.monthly}
 // Pure shared conversion. A temporary shift changes this month only, never base weekly hours.
 function careerTimeBudget(weeklyHours=40,workHoursDelta=0){return{weeklyHours,baseMonthlyWork:weeklyHours*4,monthlyWork:weeklyHours*4+workHoursDelta,baseFree:Math.max(0,260-weeklyHours*4),free:Math.max(0,260-weeklyHours*4-workHoursDelta),workHoursDelta}}
-function currentCareerTime(){const c=CAREERS.find(c=>c.name===state?.job),weekly=coffeeWorking()?COFFEE_CONFIG.weeklyHours:(state?.workHoursPerWeek??c?.weeklyHours??40),delta=coffeeRecord()?.workHoursDelta||0;return careerTimeBudget(weekly,delta)}
+function currentCareerTime(){
+ if(!state?.job||state.retired||state.unemployedMonths)return careerTimeBudget(0);
+ const c=CAREERS.find(c=>c.name===state.job);
+ const weekly=coffeeWorking()?COFFEE_CONFIG.weeklyHours:(state.workHoursPerWeek??c?.weeklyHours??40);
+ return careerTimeBudget(weekly,coffeeRecord()?.workHoursDelta||0);
+}
 function coffeeMonthlyIncome(){
  if(!state)return null;coffeeCareerData();const record=coffeeRecord(),working=coffeeWorking(),earned=record?.status==='resolved';if(!working&&!earned)return null;
  const date=coffeeCalendar(),season=coffeeSeason(date.month),base=state.job&&!state.retired&&!state.unemployedMonths?roundCash(state.salary||0):0;

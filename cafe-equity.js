@@ -36,10 +36,11 @@
  }
  const requiresManagement=s=>position(s).some(a=>a.shares>0&&a.shares<controlShare&&a.managing);
  const hasDelegatedControl=s=>position(s).some(a=>a.shares===controlShare&&!a.managing);
+ const purchaseTargets=a=>tiers.filter(tier=>tier>(a?.shares||0)&&(!a?.shares||a.managing||tier===controlShare));
  function quote(s,id,target,mode){
   const a=s.cafeEquity?.stores?.[id],shares=a?.shares||0;
   if(a?.trade)return {ok:false,reason:'已有一笔股份交易等待交割。'};
-  if(!(target===0&&shares>0)&&!(tiers.includes(target)&&target>shares))return {ok:false,reason:'请选择更高的持股档位，或卖出全部股份。'};
+  if(!(target===0&&shares>0)&&!(purchaseTargets(a).includes(target)))return {ok:false,reason:shares&&!a.managing?'目前不在店管理，只能增持至 51% 或卖出全部股份。':'请选择更高的持股档位，或卖出全部股份。'};
   const first=!shares,buy=target>shares;
   if(first&&(id!==E.storeKey(s)||!eligible(s)))return {ok:false,reason:'店长任职第二个月起可购买门店股权。'};
   if(first&&target<controlShare&&mode!=='manage')return {ok:false,reason:'持股低于 51% 时须自己管理门店。'};
@@ -155,7 +156,7 @@
   closeBooks(s,settlement,id);
  }
  const assetValue=s=>money(accounts(s).reduce((n,a)=>n+valuation(a)*a.shares/100+(a.trade?.buy?a.trade.amount:0),0));
- const api={controlShare,tiers,requiresManagement,hasDelegatedControl,eligible,current,position,valuation,quote,confirm,handover,closeMonth,deliver,assetValue};
+ const api={controlShare,tiers,purchaseTargets,requiresManagement,hasDelegatedControl,eligible,current,position,valuation,quote,confirm,handover,closeMonth,deliver,assetValue};
  root.CafeEquity=api;
  if(typeof module!=='undefined')module.exports=api;
 })(typeof window==='undefined'?globalThis:window);

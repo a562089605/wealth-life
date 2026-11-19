@@ -1,7 +1,7 @@
 // Prospective career-event ledger. No legacy company cash, profits, equity or dividends are fabricated.
 (function(root){'use strict';const D=root.CareerEventData,H=root.HobbyLearning,copy=x=>JSON.parse(JSON.stringify(x)),money=n=>Math.round((Number(n)||0)*100)/100;
  const role=s=>root.CareerLearningRules.role(s.job),working=s=>!!role(s)&&!s.retired&&!s.unemployedMonths;
- const runsStore=s=>!!s&&(role(s)==='manager'||role(s)==='partner'&&!!root.CafeEquity?.current(s)?.managing);
+ const runsStore=s=>!!s&&working(s)&&(role(s)==='manager'||role(s)==='partner'&&!!root.CafeEquity?.current(s)?.managing);
  function data(s){return s.careerEvents??={version:1,sequence:0,groups:{},stores:{},settlements:{}};}
  function storeKey(s){return String(s.coffee?.storeId||s.cafe?.store?.id||s.employerId||('coffee-employer:'+ (s.relationshipHome?.currentManagerId||s.relationshipHome?.managers?.coffee||'legacy')));}
  function store(s,key=storeKey(s)){const d=data(s);return d.stores[key]??={id:key,startedMonth:s.month,modifiers:{},completed:{},cooldowns:{},expenses:[],months:{}};}
