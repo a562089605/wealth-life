@@ -71,8 +71,8 @@
   const p=page('holdings',career),hold=p.box('我的持股'),t=a.trade;
   if(accounts.length>1)select(p,hold,accounts.map((item,i)=>[item.id,'门店 '+(i+1)]),a.id,holdings);
   p.row(hold,'当前持股',pct(a.shares));
-  if(a.shares===E.controlShare)p.row(hold,'股东身份','门店老板');
-  p.row(hold,'管理身份',a.shares?(a.managing?'自己管理':a.shares===E.controlShare?'店长管理':'只当股东'):'等待首次入股');
+  if(a.shares===E.controlShare)p.row(hold,'股东身份',a.managing?'门店老板':'门店老板（不在店管理）');
+  p.row(hold,'管理身份',a.shares?(a.managing?'自己管理':a.shares===E.controlShare?'已请店长管理':'只当股东'):'等待首次入股');
   p.row(hold,'我的股份估值',money(E.valuation(a)*a.shares/100));
   const last=a.months[state.month-1];
   const monthly=p.box('最近门店月结');
@@ -99,7 +99,7 @@
  }
  function manage(a){
   const p=page('manage',()=>holdings(a.id)),summary=p.box('次月安排');
-  p.row(summary,'当前身份',a.managing?'自己管理':a.shares===E.controlShare?'店长管理':'只当股东');
+  p.row(summary,'当前身份',a.managing?'自己管理':a.shares===E.controlShare?'已请店长管理':'只当股东');
   p.row(summary,'新身份',a.managing?'请店长管理':'自己管理');
   p.row(summary,'交接时间','本月');
   p.row(summary,'生效时间','次月');
