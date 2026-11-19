@@ -7,7 +7,7 @@
  const pct=n=>n+'%';
  function page(kind,back){
   const p=CareerPages.panel(titles[kind],'partner-'+kind,back);
-  p.section.classList.add('cafe-equity-page');
+  p.section.classList.add('cafe-equity-page','cafe-equity-'+kind);
   return p;
  }
  function show(p){CareerPages.compactCareer(p);}
@@ -16,8 +16,9 @@
  function invitation(){
   const id=Rules.storeKey(state),p=page('invitation',career),offer=p.box('当前报价');
   const ready=E.eligible(state);
+  offer.classList.add('cafe-equity-valuation');
   p.row(offer,'当期整店估值',money(E.valuation(E.current(state))));
-  status(p,ready?'可以随时回来购买。确认时锁价，次月起按新股比参与分红；估值和未来分红会随经营变化。':'店长任职第二个月起可购买门店股权。');
+  status(p,ready?'确认时锁价，次月起按新股比参与分红。估值和分红随经营变化。':'店长任职第二个月起可购买门店股权。');
   p.button('查看买入档位',()=>trade(id,'purchase'),{primary:true,disabled:!ready});
   show(p);
  }
@@ -37,6 +38,7 @@
   const q=E.quote(state,id,target,mode);
   if(!selling){
    const options=p.box('目标持股');
+   if(first)options.classList.add('cafe-equity-tiers');
    select(p,options,targets.map(tier=>[tier,pct(tier)]),target,tier=>trade(id,kind,tier,mode));
   }
   if(first&&target===E.controlShare){
@@ -44,12 +46,14 @@
    const choices=[['manage','自己管理门店 · 基础年薪 $70,000.00'],['shareholder','请店长管理 · 可另找工作']];
    select(p,roles,choices,mode,x=>trade(id,kind,target,x));
   }
-  if(first&&target<E.controlShare)p.row(p.box('管理方式'),'交割后','自己管理门店 · 基础年薪 $70,000.00');
   const moneyBox=p.box('交易明细');
-  p.row(moneyBox,'当前持股',pct(shares));
-  p.row(moneyBox,'交割后持股',pct(target));
+  if(first&&target<E.controlShare)p.row(moneyBox,'管理方式','自己管理门店');
+  if(!first){
+   p.row(moneyBox,'当前持股',pct(shares));
+   p.row(moneyBox,'交割后持股',pct(target));
+  }
   if(q.ok){
-   p.row(moneyBox,selling?'本次卖出':first?'本次买入':'本次增持',pct(Math.abs(q.target-q.from)));
+   if(!first)p.row(moneyBox,selling?'本次卖出':'本次增持',pct(Math.abs(q.target-q.from)));
    p.row(moneyBox,'当期整店估值',money(q.value));
    p.row(moneyBox,selling?'次月收款':'本次扣款',money(q.amount));
    if(q.buy)p.row(moneyBox,'扣款后现金',state.cash>=q.amount?money(state.cash-q.amount):'现金不足');

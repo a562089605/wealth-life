@@ -26,3 +26,32 @@
  .cafe-equity-page .career-row { padding-block:6px; font-size:15px; }
  .cafe-equity-page .career-row > span:last-child { font-size:15px; }
 }
+
+.career-store-manager .career-scene,
+.cafe-equity-invitation .career-scene,
+.cafe-equity-purchase .career-scene {
+ margin:10px 12px 0;
+ border:1px solid #ccb274;
+ border-radius:14px;
+ overflow:hidden;
+}
+.career-store-manager .career-panel .career-equity-entry { margin-top:8px; }
+.cafe-equity-invitation .cafe-equity-valuation .career-row > span:last-child {
+ font-size:clamp(17px,4.5vw,25px);
+ white-space:nowrap;
+}
+.cafe-equity-purchase .cafe-equity-tiers .cafe-equity-options {
+ grid-template-columns:repeat(5,minmax(0,1fr));
+ gap:4px;
+}
+.cafe-equity-purchase .cafe-equity-tiers button {
+ padding-inline:0;
+ font-size:clamp(12px,3.7vw,18px);
+}
+.cafe-equity-purchase .cafe-equity-tiers button[aria-pressed="true"],
+.cafe-equity-invitation .career-scroll-body > .career-primary:not(:disabled),
+.cafe-equity-purchase .career-scroll-body > .career-primary:not(:disabled) {
+ background:#f5d773;
+ border-color:#c9a751;
+ color:#294b32;
+}
