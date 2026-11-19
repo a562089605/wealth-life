@@ -131,7 +131,7 @@
    const card=document.createElement('article');
    card.className='cafe-equity-asset';
    const art=document.createElement('img');
-   art.src='assets/career-learning-20261115/partner-invitation.webp';
+   art.src='assets/career-learning-20261115/cafe-storefront-equity.webp';
    art.alt='';
    art.loading='lazy';
    const info=document.createElement('div'),heading=document.createElement('h3'),details=document.createElement('dl');
@@ -154,6 +154,7 @@
    }
    const button=document.createElement('button');
    button.type='button';
+   button.className='cafe-equity-asset-link';
    button.textContent='查看我的股份 →';
    button.onclick=()=>holdings(account.id,returnToAssets);
    info.append(heading,details,button);
