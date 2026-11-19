@@ -1,0 +1,96 @@
+const assert=require('node:assert/strict');
+global.HobbyLearning=require('../hobby-learning');
+global.CareerLearningRules=require('../career-learning-rules');
+global.CareerEventData=require('../career-event-data');
+global.CareerEventRules=require('../career-event-rules');
+const E=require('../cafe-equity');
+const save=()=>true, id='test-store';
+function fixture(){
+ return {month:4,job:'店长 Store Manager',cash:100000,cpiIndex:100,
+  coffee:{storeId:id,managerTrust:18,progression:{managerMonths:12},skills:{service:{xp:400},management:{xp:400}}}};
+}
+function pay(role){return role==='partner'?{baseWages:5833.33}:{baseWages:4833.33,fixedBonus:500};}
+function close(s){const settlement={month:s.month+1,careerIncome:s.job?pay(CareerLearningRules.role(s.job)):null};
+ E.closeMonth(s,settlement);
+ E.closeMonth(s,settlement);
+ s.month++;
+ E.deliver(s,settlement);
+ E.deliver(s,settlement);
+ return settlement;
+}
+const s=fixture();
+assert.equal(E.eligible(s),true);
+s.coffee.managerTrust=17;
+assert.equal(E.eligible(s),false);
+s.coffee.managerTrust=18;
+const t=E.quote(s,id,20,'manage');
+assert.equal(t.amount,40000);
+const before=structuredClone(s);
+assert.equal(E.confirm(s,t,()=>false).ok,false);
+assert.deepEqual(s,before);
+assert.equal(E.confirm(s,t,save).ok,true);
+assert.equal(E.assetValue(s),40000);
+assert.equal(s.cash,60000);
+assert.equal(E.confirm(s,t,save).ok,false);
+assert.equal(close(s).cafeDividend,undefined);
+const store=E.current(s);
+assert.equal(store.shares,20);
+assert.equal(store.cash,50000);
+assert.equal(s.annualSalary,70000);
+assert.equal(s.job,'在店管理合伙人');
+assert.equal(close(s).cafeDividend,1300);
+assert.equal(s.cash,61300);
+s.cpiIndex=108;
+assert.equal(close(s).cafeDividend,1497.33);
+const increase=E.quote(s,id,30);
+assert.equal(increase.amount,20533.33);
+assert.equal(E.confirm(s,increase,save).ok,true);
+assert.equal(E.quote(s,id,10).ok,false);
+assert.equal(close(s).cafeDividend,1497.33);
+assert.equal(store.shares,30);
+assert.deepEqual(store.lots.map(x=>x.cost),[40000,20533.33]);
+const sale=E.quote(s,id,0,'manager');
+assert.equal(E.confirm(s,sale,save).ok,true);
+const sold=close(s);
+assert.equal(sold.cafeDividend,545);
+assert.equal(s.job,'店长 Store Manager');
+assert.equal(store.shares,0);
+
+const shareholder=fixture();
+assert.equal(E.confirm(shareholder,E.quote(shareholder,id,10,'shareholder'),save).ok,true);
+close(shareholder);
+assert.equal(shareholder.job,null);
+assert.equal(close(shareholder).cafeDividend,700);
+assert.equal(E.handover(shareholder,id,save).ok,true);
+close(shareholder);
+assert.equal(shareholder.job,'在店管理合伙人');
+assert.equal(E.current(shareholder).shares,10);
+assert.equal(E.handover(shareholder,id,save).ok,true);
+assert.equal(close(shareholder).cafeDividend,650);
+assert.equal(shareholder.job,null);
+assert.equal(E.current(shareholder).shares,10);
+
+const refund=fixture();
+assert.equal(E.confirm(refund,E.quote(refund,id,10,'manage'),save).ok,true);
+refund.job=null;
+close(refund);
+assert.equal(refund.cash,100000);
+assert.equal(refund.cafeEquity.stores[id].shares,0);
+
+const reserve=fixture();
+close(reserve);
+E.current(reserve).cash=40000;
+E.current(reserve).reserve=40000;
+const m=reserve.month;
+close(reserve);
+assert.equal(E.current(reserve).months[m].reserve,43500);
+assert.equal(E.current(reserve).months[m].pool,3500);
+E.current(reserve).cash=24000;
+E.current(reserve).reserve=24000;
+const n=reserve.month;
+close(reserve);
+assert.equal(E.current(reserve).months[n].pool,0);
+assert.equal(E.current(reserve).months[n].reserve,31000);
+assert.equal(CareerLearningRules.trust(22),20);
+assert.equal(CareerLearningRules.trust(-2),0);
+console.log('PASS cafe equity eligibility, locked quotes, settlement order, dividend, management, refund and reserves');

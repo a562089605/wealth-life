@@ -1,0 +1,103 @@
+{
+  "id": "partner-invitation",
+  "confirmedDate": "2026-11-18",
+  "status": "integrated",
+  "title": "合伙邀请",
+  "entry": "我的职业",
+  "requirements": [
+    {
+      "label": "店长任职",
+      "effectiveWorkingMonths": 12
+    },
+    {
+      "label": "顾客服务",
+      "level": 5,
+      "xp": 400
+    },
+    {
+      "label": "管理技能",
+      "level": 5,
+      "xp": 400
+    },
+    {
+      "label": "上司认可度",
+      "minimum": 18
+    }
+  ],
+  "managerTrustRange": [
+    0,
+    20
+  ],
+  "layout": "原游戏奶油色纸卡、手写标题、暖窗光的蜡笔与水彩绘本插画；四项使用实时进度，达标显示绿色勾号，未达标使用淡金色。",
+  "example": "上司认可度 16／18，提示还差 2 点上司认可度；底部显示条件尚未满足。四项达标后显示已满足合伙邀请条件。",
+  "artworkStatus": "confirmed",
+  "artwork": "design/partner-invitation-20261118/partner-invitation-confirmed-20261119.png",
+  "sha256": "4e39eb92155cd58f3568e81e5d130c18f812e17bf1f486f61b0c3f11d1ce92b0",
+  "firstEquityPurchase": {
+    "confirmedDate": "2026-11-19",
+    "status": "integrated",
+    "artwork": "design/partner-invitation-20261118/first-equity-purchase-confirmed-20261119.png",
+    "sha256": "6a6f891f5651e4d3a8ab5e068bc9ba1f765b1c9b7b2663ecbcf07e99b4e1bb32",
+    "sharePrices": {
+      "10": 20000,
+      "20": 40000,
+      "30": 60000,
+      "51": 102000
+    },
+    "managementOptional": true,
+    "settlement": "确认时扣款暂存，次月交割",
+    "runtime": "assets/career-learning-20261115/partner-purchase.webp",
+    "runtimeSha256": "f779af3a3dfb1fa7d54f3ec546c32b078e9c89b8422f611ffafb76cc31e99ff1"
+  },
+  "myEquity": {
+    "confirmedDate": "2026-11-19",
+    "status": "integrated",
+    "artwork": "design/partner-invitation-20261118/my-equity-confirmed-20261119.png",
+    "sha256": "c7e9c0ee874335504091f33a85efb4fc508b7fdb40d4af87131ea76a19ea0551",
+    "display": [
+      "当前持股",
+      "管理身份",
+      "股份估值",
+      "本月已结算分红",
+      "待交割事项"
+    ],
+    "actions": [
+      "增持",
+      "卖出",
+      "切换管理身份"
+    ],
+    "pendingTrade": "同店仅一笔待交割股权交易，等待期间停用增持和卖出。",
+    "runtime": "assets/career-learning-20261115/partner-holdings.webp",
+    "runtimeSha256": "7fcaeb1726c8ed00ede60c5f4700e381fbb1c6caa66b67abdb20e5bf0c1c59d0"
+  },
+  "increaseEquity": {
+    "confirmedDate": "2026-11-19",
+    "status": "integrated",
+    "artwork": "design/partner-invitation-20261118/increase-equity-confirmed-20261119.png",
+    "sha256": "f4e3185292547b8512fb4357870869641166abccb37a35be4f43798439c5fac3",
+    "settlement": "按当期整店估值支付新增股比，确认时扣款暂存并锁价，次月交割",
+    "runtime": "assets/career-learning-20261115/partner-increase.webp",
+    "runtimeSha256": "7be1e49ff38d054cbab84f68b2c4bd44348a21617b27a0c5c38c1b5296324704"
+  },
+  "sellEquity": {
+    "confirmedDate": "2026-11-19",
+    "status": "integrated",
+    "artwork": "design/partner-invitation-20261118/sell-equity-confirmed-20261119.png",
+    "sha256": "606b3ed5374e0957a7a6f0d1c156dfc13be9e958b3c8d1ef743f54ec0f28df5c",
+    "settlement": "其他股东承接，按当期整店估值锁价，次月交割收款。",
+    "runtime": "assets/career-learning-20261115/partner-sell.webp",
+    "runtimeSha256": "dc0e3d6ead90e646c8d9502b6f801ffdd2ef32dd213ff7cbcdcabdf21753951a"
+  },
+  "switchManagement": {
+    "confirmedDate": "2026-11-19",
+    "status": "integrated",
+    "artwork": "design/partner-invitation-20261118/switch-management-confirmed-20261119.png",
+    "sha256": "b8a833a61956ffbeff40cba5195a4ae41a6bda5f13d114ee82950cf37db8ad92",
+    "settlement": "本月交接并按原合同结薪，次月切换管理身份，持股和分红权不变。",
+    "runtime": "assets/career-learning-20261115/partner-manage.webp",
+    "runtimeSha256": "0b6c1c2050f2d99e2709df84514e61e6cd2625a35d54359b55d4686e0cdcbea6"
+  },
+  "artworkConfirmedDate": "2026-11-19",
+  "runtime": "assets/career-learning-20261115/partner-invitation.webp",
+  "runtimeSha256": "aa4e3ceb78691d3d5143df77cebd42f8b899a2041c0ee2b5b48df5b2aaa241b4"
+}

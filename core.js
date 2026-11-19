@@ -50,7 +50,7 @@ function syncFinance(){
 calcMetrics=function(){
  syncFinance();const s=state||{},rr=s.retirement||{};
  const debtTotal=Object.values(s.debt||{}).reduce((n,v)=>n+v,0);
- const assetValue=(s.cash||0)+(s.emergencyFund||0)+(rr.k401Balance||0)+(rr.iraBalance||0)+(rr.brokerageBalance||0)+(s.carValue||0)+(s.homeEquity||0)+(s.homeMortgage||0)+(s.assets||[]).reduce((n,a)=>n+(a.kind==='rental'?(a.value||a.purchasePrice||0):(a.value??a.cost??0))+(a.kind==='cd'?(a.interestAccrued||0):0),0);
+ const assetValue=(globalThis.CafeEquity?.assetValue(s)||0)+(s.cash||0)+(s.emergencyFund||0)+(rr.k401Balance||0)+(rr.iraBalance||0)+(rr.brokerageBalance||0)+(s.carValue||0)+(s.homeEquity||0)+(s.homeMortgage||0)+(s.assets||[]).reduce((n,a)=>n+(a.kind==='rental'?(a.value||a.purchasePrice||0):(a.value??a.cost??0))+(a.kind==='cd'?(a.interestAccrued||0):0),0);
  const recovery=typeof isRecoveryMonth==='function'&&isRecoveryMonth(s);
  const careerIncome=!recovery&&typeof coffeeMonthlyIncome==='function'?coffeeMonthlyIncome():null;
  const salary=recovery?0:careerIncome?careerIncome.total:(s.job&&!s.retired&&!s.unemployedMonths?s.salary:0),contrib=roundCash(salary*(rr.k401Rate||0)),tax=0;
@@ -114,6 +114,7 @@ function settleMonthUnsafe(){
  pending=true;const s=state,recovery=typeof isRecoveryMonth==='function'&&isRecoveryMonth(s),recoveryTreatment=recovery?Object.values(s.treatments).find(t=>t.paid&&t.status!=='completed'&&t.startMonth===s.month):null;syncFinance();const start=s.cash,month=s.month+1,metrics=calcMetrics(),cf=metrics.remainingCF;
  // All recurring flows are paid here; purchases remain immediate actions.
  s.cash+=cf;const settlement={month,startCash:start,recovery:!!recovery,careerIncome:metrics.careerIncome?structuredClone(metrics.careerIncome):null,investmentIncomeBudget:typeof expectedInvestmentIncome==='function'?expectedInvestmentIncome():0,grossSalary:metrics.grossSalary,tax:metrics.tax,kContrib:metrics.kContrib,passive:s.passive,expenses:s.expenses,netCF:cf,prepaidExpenses:metrics.prepaidExpenses,totalMonthlyCF:metrics.monthlyCF};
+ globalThis.CafeEquity?.closeMonth(s,settlement);
  if(!recovery&&typeof applyMonthlyHealthEffects==='function')settlement.healthEffects=applyMonthlyHealthEffects(s,s.month);
  const rr=s.retirement;if(metrics.kContrib>0){rr.k401Balance+=metrics.kContrib+Math.min(metrics.kContrib,metrics.grossSalary*.03);rr.totalContrib=(rr.totalContrib||0)+metrics.kContrib}
  if(typeof settleMonthlyDebts==='function')settleMonthlyDebts(settlement);else{s.loans.forEach(l=>{const p=settleLoan(l,l.balance);l.balance=p.balance});for(const [name,l]of Object.entries(s.debtSchedules)){if(!(s.debt[name]>0)){delete s.debtSchedules[name];continue}const p=settleLoan(l,s.debt[name]);s.debt[name]=p.balance;if(p.balance===0){delete s.debt[name];delete s.debtSchedules[name]}}}
@@ -138,7 +139,12 @@ function settleMonthUnsafe(){
  if(s.study&&typeof EducationPlans!=='undefined'&&EducationPlans.modern(s.study)){EducationPlans.advance(s,month-1,recovery);completeEducation(s,month,settlement);}else if(s.study&&!recovery){s.study.progress++;completeEducation(s,month,settlement);}
  if(!recovery){s.happiness=Math.max(0,s.happiness-1);s.energy=Math.max(0,s.energy-2);s.stress=Math.min(100,s.stress+2);s.social=Math.max(0,s.social-1);s.friendship=Math.max(0,s.friendship-.5);if(s.relationship==='married')s.partnerQuality=Math.max(0,s.partnerQuality-.4);if(typeof RelationshipHomeRules==='undefined')(s.people||[]).forEach(p=>p.relation=Math.max(0,p.relation-.22));}
  s.annualInflation=Math.max(-.005,Math.min(.10,(s.economy===4?.055:s.economy===3?.015:s.economy===1?.03:.025)+(shock?.inflation||0)));if(s.worldShock?.monthsLeft>0){s.worldShock.monthsLeft--;if(!s.worldShock.monthsLeft)s.worldShock=null}const infl=Math.pow(1+s.annualInflation,1/12);s.marketIndex=(s.marketIndex||100)*(1+marketChange);s.homeIndex=(s.homeIndex||100)*(1+ec.home);s.cpiIndex=(s.cpiIndex||100)*infl;s.baseLiving=roundCash(s.baseLiving*infl);if(!s.housingLease&&s.housing!=='own')s.housingCost=roundCash(s.housingCost*(1+(infl-1)*.45));
- s._computedExpenses=null;syncFinance();if(typeof completeCashAudit==='function')completeCashAudit(settlement);settlement.endCash=s.cash;s.lastSettlement=settlement;s.history.push(settlement);if(typeof finalizeCoffeeMonth==='function')finalizeCoffeeMonth(settlement);
+ s._computedExpenses=null;syncFinance();
+ s.lastSettlement=settlement;s.history.push(settlement);
+ if(typeof finalizeCoffeeMonth==='function')finalizeCoffeeMonth(settlement);
+ globalThis.CafeEquity?.deliver(s);
+ if(typeof completeCashAudit==='function')completeCashAudit(settlement);
+ settlement.endCash=s.cash;
  if(month%12===0){s.age++;(s.people||[]).forEach(p=>p.age++);const g=goalStats();s.goalProgressHistory.push({year:month/12,age:s.age,pct:g.pct,current:g.current,target:g.target});s.yearStartNetWorth=calcMetrics().nw;s.yearStartCash=s.cash;if(!recovery&&s.job&&!s.retired&&!(typeof coffeeSalaryRole==='function'&&coffeeSalaryRole(s.job))){const growth=s.experienceYears<=5?.035:s.experienceYears<=10?.025:.015;s.salary=roundCash(s.salary*(1+growth));s.annualSalary=roundCash(s.salary*12)}}
  if(!recovery)applyCareerProgression();if(recoveryTreatment){completeTreatment(s,{id:recoveryTreatment.id,completedMonth:month-1,monthEffectsComplete:true});settlement.recoveryTreatmentId=recoveryTreatment.id;}if(typeof applyCoffeeSalaryForNextMonth==='function')applyCoffeeSalaryForNextMonth(settlement);s.turn={month:s.month,index:0,startCash:s.cash};if(save()===false)throw Error('Monthly settlement save failed');render();const showResult=()=>{if(typeof showMonthlyAudit==='function')showMonthlyAudit(settlement);else showEvent('MONTH END','第 '+month+' 月结算完成','本月已结算。',[['当前现金',money(s.cash)]],[['继续',()=>{clearModals();monthlyEvent()},true]]);};if(typeof showPetDeathNotice==='function'&&showPetDeathNotice(showResult))return;showResult();
 }

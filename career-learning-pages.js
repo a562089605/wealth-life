@@ -56,6 +56,11 @@
   p.section.classList.add('career-management-card');stats.classList.add('career-management-stats');[...stats.querySelectorAll('.career-row')].forEach((row,i)=>{const icon=node('span',null,'career-course-icon');icon.innerHTML=coffeeIcon(['money','clock','energy','management'][i]);row.prepend(icon);});compactCareer(p);const badge=node('span','课程档案','career-course-badge');p.section.querySelector('.career-fixed-heading header').append(badge);
  }
  function career(){coffeeCareerData();const k=R.role(state.job),p=panel('我的职业','career',room),work=p.box('工作'),x=coffeeMonthlyIncome();p.row(work,'工作',state.job||'未就业');p.row(work,'工资',money(x?.baseWages??(state.job&&!state.retired&&!state.unemployedMonths?state.salary:0))+'/月');p.row(work,'时间',state.job&&!state.retired?(state.workHoursPerWeek||R.roles[k]?.weekly||40)+'小时/周':'—');p.row(work,'小费',money(x?.baseTips||0)+'/月');
+  if(window.CafeEquityPages){
+   const position=CafeEquity.position(state);
+   if(k==='manager'&&!CafeEquity.current(state)?.shares&&!CafeEquity.current(state)?.trade)p.button('合伙邀请',CafeEquityPages.invitation,{parent:work});
+   if(position.length)p.button('我的股份',()=>CafeEquityPages.holdings(),{parent:work});
+  }
   const growth=p.box('职业成长'),grid=node('div',null,'career-growth');growth.append(grid);
   const serviceLevel=R.skillLevel(state,'service'),serviceXP=Math.floor(state.coffee.skills.service.xp);
   const serviceProgress=serviceLevel===5?'已满级':serviceXP+' / '+(serviceLevel*100)+' XP';
@@ -86,7 +91,7 @@
  }
  function introduction(){const r=state.town?.movement?.relationshipLifeCard;if(!r||r.kind!=='landlord-introduction'||r.status!=='pending')return false;const p=panel('牵线介绍业内人士','landlord-introduction',()=>{close();showTown();});p.content.append(node('p',r.personName+'说：“我认识另一家咖啡店的合伙人，你要是有兴趣，我可以找个时间介绍你们认识。”'));const box=p.box('好呀，谢谢你帮忙介绍！');p.row(box,'自由时间','−1小时');p.row(box,'房东亲密度','+3');p.row(box,'认识咖啡店合伙人','初始亲密度10');p.content.append(p.message);p.button('好呀，谢谢你帮忙介绍！',b=>{b.disabled=true;const result=RelationshipLifeCards.confirm(state,r.id,0,{free:Math.max(0,currentCareerTime().free-necessaryPetCareHours()),save});if(!result.ok){p.message.textContent=result.reason==='time'?'自由时间不足。':'本次未保存，请重试。';b.disabled=false;return;}close();render();finish();},{primary:true});return true;}
  openCareerMarket=opportunities;$('jobMarketBtn').onclick=opportunities;
- window.CareerPages={introduction,learning,education,skills,hobbies,management,career,promotion,adjustment,resignation,income,afterArrival,close};
+ window.CareerPages={panel,compactCareer,introduction,learning,education,skills,hobbies,management,career,promotion,adjustment,resignation,income,afterArrival,close};
  openEducation=education;openWorkAdjustment=career;openCoffeeCourses=()=>skills('career');previewCoffeePromotion=promotion;confirmCoffeePromotion=()=>R.promote(state,R.promotionToken(state),save).ok;
  $('hobbyBtn').onclick=hobbies;
  // Capture the study hotspot before the legacy listener; all other room actions remain original.

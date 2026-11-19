@@ -11,7 +11,7 @@
  function apply(s,e,record,phase){const actual=copy(e);s.coffee??={};s.coffee.skills??={};
   for(const k of ['energy','stress','happiness'])if(e[k]){const old=s[k]??50;s[k]=Math.max(0,Math.min(100,old+e[k]));actual[k]=money(s[k]-old);}
   for(const k of ['service','management','coffee'])if(e[k]){const item=s.coffee.skills[k]??={xp:0},old=item.xp||0;item.xp=Math.max(0,Math.min(400,old+e[k]));actual[k]=item.xp-old;}
-  if(e.trust){const old=s.coffee.managerTrust||0;s.coffee.managerTrust=Math.max(0,old+e.trust);actual.trust=s.coffee.managerTrust-old;}
+  if(e.trust){const old=s.coffee.managerTrust||0;const clamp=root.CareerLearningRules.trust,before=clamp(old);s.coffee.managerTrust=clamp(before+e.trust);actual.trust=s.coffee.managerTrust-before;}
   for(const k of ['latte','pourOver'])if(e[k]){const old=H.xp(s,k),gain=Math.max(0,Math.min(e[k],800-old));if(gain){const d=s.hobbyLearning??={version:1,xp:{},receipts:[],sequence:0};d.xp??={};d.xp[k]=old+gain;}actual[k]=gain;}
   if(e.storeCost){const st=store(s,record.storeId),id=record.id+':'+phase;if(!st.expenses.some(x=>x.id===id))st.expenses.push({id,month:s.month,event:record.cardId||record.eventId,amount:e.storeCost});}
   if(e.sales){const st=store(s,record.storeId),family=record.cardId==='manager-decline'?'decline':'research';if(!st.modifiers[family])st.modifiers[family]={rate:e.sales,fromMonth:s.month,receipt:record.id};st.completed[family]=record.id;}
