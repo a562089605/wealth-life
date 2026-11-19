@@ -20,9 +20,12 @@ function close(s){const settlement={month:s.month+1,careerIncome:s.job?pay(Caree
 }
 const s=fixture();
 assert.equal(E.eligible(s),true);
-s.coffee.managerTrust=17;
+s.careerStartedAt=s.month;
 assert.equal(E.eligible(s),false);
-s.coffee.managerTrust=18;
+s.careerStartedAt=s.month-1;
+s.coffee.managerTrust=0;
+s.coffee.skills={};
+assert.equal(E.eligible(s),true);
 for(const target of [10,20,30,40]){
  assert.equal(E.quote(s,id,target,'manage').amount,target*2000);
  assert.equal(E.quote(s,id,target,'shareholder').ok,false);
@@ -110,6 +113,29 @@ assert.equal(E.handover(staged,id,save).ok,true);
 assert.equal(close(staged).cafeDividend,3315);
 assert.equal(E.hasDelegatedControl(staged),true);
 assert.equal(staged.job,null);
+
+const market=fixture();
+market.careerStartedAt=market.month;
+assert.equal(E.quote(market,id,10,'manage').ok,false);
+market.marketIndex=80;
+close(market);
+assert.equal(E.eligible(market),true);
+const firstMarketQuote=E.quote(market,id,10,'manage');
+assert.equal(firstMarketQuote.amount,19000);
+assert.equal(market.cash,150000);
+market.marketIndex=120;
+close(market);
+const marketQuote=E.quote(market,id,10,'manage');
+assert.equal(marketQuote.amount,20000);
+assert.equal(E.confirm(market,firstMarketQuote,save).ok,false);
+assert.equal(E.confirm(market,marketQuote,save).ok,true);
+market.marketIndex=80;
+assert.equal(close(market).cafeDividend,undefined);
+assert.equal(E.current(market).lots[0].cost,20000);
+const strongerMarket=structuredClone(market);
+strongerMarket.marketIndex=120;
+assert.equal(close(market).cafeDividend,475);
+assert.equal(close(strongerMarket).cafeDividend,825);
 
 const reserve=fixture();
 close(reserve);

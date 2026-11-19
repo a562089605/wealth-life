@@ -2,7 +2,7 @@
 (function(){
  'use strict';
  const E=CafeEquity,Rules=CareerEventRules;
- const titles={invitation:'合伙邀请',purchase:'首次入股确认',holdings:'我的股份',
+ const titles={invitation:'门店股权购买',purchase:'首次入股确认',holdings:'我的股份',
   increase:'增持股份',sell:'卖出全部股份',manage:'切换管理身份'};
  const pct=n=>n+'%';
  function page(kind,back){
@@ -14,16 +14,11 @@
  function status(p,text){p.message.textContent=text;p.content.append(p.message);}
  const career=()=>CareerPages.career();
  function invitation(){
-  const id=Rules.storeKey(state),p=page('invitation',career),terms=p.box('邀请条件');
-  const requirements=E.requirements(state);
-  for(const r of requirements){
-   const value=r.level?'Lv.'+r.value+' / Lv.'+r.target:r.value+' / '+r.target+(r.unit||'');
-   p.row(terms,r.label,value,r.value>=r.target);
-  }
-  const ready=E.eligible(state),missing=requirements.filter(r=>r.value<r.target);
-  if(ready)status(p,'已满足合伙邀请条件。');
-  else if(missing.length===1&&missing[0].label==='上司认可度')status(p,'还差 '+(18-missing[0].value)+' 点上司认可度。');
-  p.button(ready?'查看入股方案':'条件尚未满足',()=>trade(id,'purchase'),{primary:true,disabled:!ready});
+  const id=Rules.storeKey(state),p=page('invitation',career),offer=p.box('当前报价');
+  const ready=E.eligible(state);
+  p.row(offer,'当期整店估值',money(E.valuation(E.current(state))));
+  status(p,ready?'可以随时回来购买。确认时锁价，次月起按新股比参与分红；估值和未来分红会随经营变化。':'店长任职第二个月起可购买门店股权。');
+  p.button('查看买入档位',()=>trade(id,'purchase'),{primary:true,disabled:!ready});
   show(p);
  }
  function select(p,box,choices,value,change){

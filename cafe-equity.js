@@ -9,15 +9,12 @@
  const accounts=s=>Object.values(s.cafeEquity?.stores||{});
  const current=s=>s.cafeEquity?.stores?.[E.storeKey(s)];
  const position=s=>accounts(s).filter(a=>a.shares||a.trade||a.handover);
- function requirements(s){
-  return [
-   {label:'店长任职',value:s.coffee?.progression?.managerMonths||0,target:12,unit:'个月'},
-   {label:'顾客服务',value:R.skillLevel(s,'service'),target:5,level:true},
-   {label:'管理技能',value:R.skillLevel(s,'management'),target:5,level:true},
-   {label:'上司认可度',value:R.trust(s.coffee?.managerTrust),target:18}
-  ];
+ function managerMonths(s){
+  if(Number.isFinite(s.careerStartedAt)&&s.careerStartedAt>=0&&s.careerStartedAt<=s.month)
+   return s.month-s.careerStartedAt;
+  return s.coffee?.progression?.managerMonths||0;
  }
- const eligible=s=>R.role(s.job)==='manager'&&employed(s)&&!s.pendingResignation&&requirements(s).every(x=>x.value>=x.target);
+ const eligible=s=>R.role(s.job)==='manager'&&employed(s)&&!s.pendingResignation&&managerMonths(s)>=1;
  function account(s,id){
   s.cafeEquity??={stores:{}};
   if(s.cafeEquity.stores[id])return s.cafeEquity.stores[id];
@@ -27,7 +24,7 @@
   const cash=Number.isFinite(store?.cash)?store.cash:reserveTarget;
   const reserve=Number.isFinite(store?.reserve)?Math.min(cash,store.reserve):Math.min(cash,reserveTarget);
   return s.cafeEquity.stores[id]={id,cash,reserve,loss:store?.lossCarry||0,shares,
-   managing:shares>0&&R.role(s.job)==='partner',everOwned:shares>0,
+   managing:shares>0&&R.role(s.job)==='partner',
    lots:(legacy?.lots||[]).filter(x=>Number.isFinite(x.pct)&&Number.isFinite(x.cost))
     .map(x=>({shares:money(x.pct*100),cost:x.cost,month:x.month})),
    months:{},trade:null,handover:null};
@@ -44,12 +41,12 @@
   if(a?.trade)return {ok:false,reason:'已有一笔股份交易等待交割。'};
   if(!(target===0&&shares>0)&&!(tiers.includes(target)&&target>shares))return {ok:false,reason:'请选择更高的持股档位，或卖出全部股份。'};
   const first=!shares,buy=target>shares;
-  if(first&&(id!==E.storeKey(s)||!eligible(s)))return {ok:false,reason:'当前尚未满足合伙邀请条件。'};
+  if(first&&(id!==E.storeKey(s)||!eligible(s)))return {ok:false,reason:'店长任职第二个月起可购买门店股权。'};
   if(first&&target<controlShare&&mode!=='manage')return {ok:false,reason:'持股低于 51% 时须自己管理门店。'};
   if(first&&!['manage','shareholder'].includes(mode)||!buy&&!target&&a.managing&&!['manager','leave'].includes(mode))
    return {ok:false,reason:'请选择交割后的管理身份。'};
   if(!target&&a?.handover)return {ok:false,reason:'请先完成已安排的管理交接。'};
-  const value=first&&!a?.everOwned?baseValue:valuation(a);
+  const value=valuation(a);
   return {ok:true,id,from:shares,target,buy,mode,value,amount:money(value*Math.abs(target-shares)/100),month:s.month,
    effectiveMonth:s.month+1};
  }
@@ -89,12 +86,14 @@
  }
  function closeBooks(s,settlement,storeId){
   const month=settlement.month-1,inflation=(s.cpiIndex||100)/100;
+  // Local cafe demand responds less sharply than the broader market.
+  const demand=Math.max(.85,Math.min(1.15,1+((s.marketIndex||100)/100-1)*.25));
   const targets=new Set(accounts(s).map(a=>a.id));
   if(storeId)targets.add(storeId);
   for(const id of targets){
    const a=account(s,id);
    if(a.months[month])continue;
-   const sales=E.sales(s,month,id),revenue=money(sales.revenue*inflation),materials=money(revenue*.30);
+   const sales=E.sales(s,month,id),revenue=money(sales.revenue*inflation*demand),materials=money(revenue*.30);
    const income=id===storeId?settlement.careerIncome:null;
    const management=income?money(income.baseWages+(income.fixedBonus||0)+(income.eventWages||0)+(income.eventBonus||0)):id===storeId?0:5333.33;
    const fixed=money((28000-5333.33)*inflation+management),profit=money(revenue-materials-fixed-sales.expenses);
@@ -134,7 +133,6 @@
       ledger(s,'cafeEquitySale',s.month-1,t.amount,a.id);
      }
      a.shares=t.target;
-     if(t.buy)a.everOwned=true;
      if(!t.from)job(s,a,t.mode==='manage'?'manage':'leave');
      if(!t.target&&a.managing)job(s,a,t.mode==='manager'?'manager':'leave');
     }
@@ -153,7 +151,7 @@
   closeBooks(s,settlement,id);
  }
  const assetValue=s=>money(accounts(s).reduce((n,a)=>n+valuation(a)*a.shares/100+(a.trade?.buy?a.trade.amount:0),0));
- const api={controlShare,tiers,requiresManagement,hasDelegatedControl,requirements,eligible,current,position,valuation,quote,confirm,handover,closeMonth,deliver,assetValue};
+ const api={controlShare,tiers,requiresManagement,hasDelegatedControl,eligible,current,position,valuation,quote,confirm,handover,closeMonth,deliver,assetValue};
  root.CafeEquity=api;
  if(typeof module!=='undefined')module.exports=api;
 })(typeof window==='undefined'?globalThis:window);

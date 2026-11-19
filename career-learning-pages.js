@@ -58,7 +58,7 @@
  function career(){coffeeCareerData();const k=R.role(state.job),p=panel('我的职业','career',room),work=p.box('工作'),x=coffeeMonthlyIncome();p.row(work,'工作',state.job||'未就业');p.row(work,'工资',money(x?.baseWages??(state.job&&!state.retired&&!state.unemployedMonths?state.salary:0))+'/月');p.row(work,'时间',state.job&&!state.retired?(state.workHoursPerWeek||R.roles[k]?.weekly||40)+'小时/周':'—');p.row(work,'小费',money(x?.baseTips||0)+'/月');
   if(window.CafeEquityPages){
    const position=CafeEquity.position(state);
-   if(k==='manager'&&!CafeEquity.current(state)?.shares&&!CafeEquity.current(state)?.trade)p.button('合伙邀请',CafeEquityPages.invitation,{parent:work});
+   if(CafeEquity.eligible(state)&&!CafeEquity.current(state)?.shares&&!CafeEquity.current(state)?.trade)p.button('门店股权购买',CafeEquityPages.invitation,{parent:work});
    if(position.length)p.button('我的股份',()=>CafeEquityPages.holdings(),{parent:work});
   }
   const growth=p.box('职业成长'),grid=node('div',null,'career-growth');growth.append(grid);
