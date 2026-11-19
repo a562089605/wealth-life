@@ -23,7 +23,21 @@
  const oldTime=currentCareerTime;currentCareerTime=function(){const t=oldTime();if(CareerLearningRules.role(state?.job)!=='manager')return t;const h=E.earned(state).hours;return {...t,free:Math.max(0,t.free-h),monthlyWork:(t.monthlyWork||180)+h,workHoursDelta:(t.workHoursDelta||0)+h};};
  const oldIncome=coffeeMonthlyIncome;coffeeMonthlyIncome=function(){const x=oldIncome();if(!x||CareerLearningRules.role(state?.job)!=='manager')return x;const e=E.earned(state);return {...x,extraWages:roundCash(x.extraWages+e.wages+e.bonus),eventWages:roundCash((x.eventWages||0)+e.wages),eventBonus:e.bonus,extraTips:roundCash(x.extraTips+e.tips),total:roundCash(x.total+e.wages+e.bonus+e.tips),workHoursDelta:x.workHoursDelta+e.hours,freeHours:currentCareerTime().free};};
  const oldFinalize=finalizeCoffeeMonth;finalizeCoffeeMonth=function(s){if(s.careerIncome?.role==='manager')E.book(state,s.careerIncome.cycle);return oldFinalize(s);};
- const oldWorkplace=workplaceEvent;workplaceEvent=function(){if(!mapLanding()){if(CareerLearningRules.role(state?.job))return workplaceBeforeCoffee();return oldWorkplace();}if(CareerLearningRules.role(state?.job)==='manager'&&E.pending(state))return CareerEventPages.manager();mapDrawDepth++;try{return oldWorkplace();}finally{mapDrawDepth--;}};
+ const oldWorkplace=workplaceEvent;
+ workplaceEvent=function(){
+  const role=CareerLearningRules.role(state?.job);
+  if(!mapLanding())return role?workplaceBeforeCoffee():oldWorkplace();
+  if(role==='manager'){
+   if(E.pending(state))return CareerEventPages.manager();
+   const result=E.drawManager(state,options());
+   if(!result.ok){
+    showEvent('暂未保存','职业事件尚未保存',result.reason,[],[['重试',()=>{clearModals();openTownLanding();},true]]);
+    return true;
+   }
+   if(result.record)return CareerEventPages.manager();
+  }
+  mapDrawDepth++;try{return oldWorkplace();}finally{mapDrawDepth--;}
+ };
  const oldSettle=settleMonth;settleMonth=function(){if(state&&!isRecoveryMonth(state)&&!state.requiredIncident&&!state.gameOver?.final){const role=CareerLearningRules.role(state.job);if(role==='manager'&&E.pending(state)){CareerEventPages.manager();return false;}if(state.turn?.index===9&&!document.querySelector('.event-active')&&(!townEnabled()||(state.town?.movement&&!state.town.movement.resolved&&state.town.movement.payExpected&&state.month<state.town.movement.payExpected))&&role&&(role==='barista'||role==='shiftLead')){const r=role==='barista'?ensureCoffeeMonth():ensureShiftMonth();if(r?.saveFailed){showEvent('暂未保存','职业安排尚未保存','请重试本次保存。',[],[['重试',()=>{clearModals();settleMonth();},true]]);return false;}}}return oldSettle();};
  const oldGame=openGame;openGame=function(){const result=oldGame();if(state&&!state.requiredIncident&&!isRecoveryMonth(state)&&CareerLearningRules.role(state.job)==='manager'&&E.pending(state))CareerEventPages.manager();return result;};
  const originalCareerHero=careerHero;careerHero=function(id){const d=D[id];return d?'<div class="career-hero career-event-hero"><img src="'+d.art+'" alt="" decoding="async"></div>':originalCareerHero(id);};

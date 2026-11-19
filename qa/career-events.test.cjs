@@ -1,7 +1,35 @@
 const a=require('node:assert/strict'),fs=require('fs');global.HobbyLearning=require('../hobby-learning');global.CareerLearningRules=require('../career-learning-rules');global.CareerEventData=require('../career-event-data');const E=require('../career-event-rules'),D=CareerEventData.cards;let count=0;const eq=(x,y)=>{a.deepEqual(x,y);count++};
 function seed(){return {month:2,job:'店长 Store Manager',annualSalary:58000,salary:4833.33,workHoursPerWeek:45,cash:10000,energy:80,health:80,happiness:50,stress:30,coffee:{managerTrust:8,skills:{service:{xp:200},management:{xp:200},coffee:{xp:321}}},hobbyLearning:{version:1,xp:{tasting:150,latte:795,pourOver:795},sequence:7,receipts:[]},relationshipHome:{currentManagerId:'boss1'},people:[{id:'boss1',relation:62}],pets:[{id:'cat'}],legacy:{safe:true}};}
 const opts={save:()=>true,free:80,reserve:2},clone=x=>JSON.parse(JSON.stringify(x));
-eq(Object.keys(D).length,31);eq(CareerEventData.managerNaturalDrawEnabled,false);eq(CareerEventData.managerTriggerProbability,null);
+eq(Object.keys(D).length,31);eq(CareerEventData.managerNaturalDrawEnabled,true);eq(CareerEventData.managerTriggerProbability,.35);
+{
+ const s=seed(),before=clone(s);
+ eq(E.drawManager(s,{...opts,random:()=>0,save:()=>false}).ok,false);eq(s,before);
+ eq(E.drawManager(s,{...opts,random:()=>.35}).record,undefined);
+ eq(E.drawManager(clone(s),{...opts,random:()=>0}).record,undefined);
+ s.month++;
+ const r=E.drawManager(s,{...opts,random:()=>0}).record;
+ eq(r.cardId,'manager-departure');
+ eq(E.drawManager(clone(s),{...opts,random:()=>.99}).record.id,r.id);
+ eq(E.choose(s,r.id,1,opts).ok,true);
+ eq(E.drawManager(s,{...opts,random:()=>0}).record,undefined);
+ s.month++;
+ eq(E.drawManager(s,{...opts,random:()=>0}).record.cardId,'manager-equipment');
+ s.month+=2;
+ eq(E.drawManager(s,{...opts,random:()=>0}).record.cardId,'manager-departure');
+}
+{
+ const s=seed();
+ s.pendingResignation={from:s.job};
+ eq(E.drawManager(s,{...opts,random:()=>0}).record,undefined);
+ delete s.pendingResignation;
+ eq(E.drawManager(s,{...opts,recovery:true,random:()=>0}).record,undefined);
+ s.energy=0;
+ eq(E.drawManager(s,{...opts,random:()=>.7}).record,undefined);
+ s.month++;
+ const rolls=[0,.8,0];
+ eq(E.drawManager(s,{...opts,random:()=>rolls.shift()}).record.cardId,'manager-excellent');
+}
 for(const card of ['manager-departure','manager-equipment','manager-decline','manager-research','manager-excellent'])for(let index=0;index<D[card].options.length;index++)for(const roll of [0,.9999]){
  const s=seed(),before=clone(s);eq(E.reserve(s,card,{save:()=>false,random:()=>roll}).ok,false);eq(s,before);
  const out=E.reserve(s,card,{save:()=>true,random:()=>roll});a.ok(out.ok);count++;const id=out.record.id,saved=clone(s);eq(E.choose(s,id,index,{...opts,save:()=>false}).ok,false);eq(s,saved);eq(E.choose(s,id,index,opts).ok,true);const r=s.careerEvents.groups[id];

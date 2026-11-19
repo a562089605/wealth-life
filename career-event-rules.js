@@ -25,6 +25,28 @@
   const context={annualSalary:s.annualSalary||s.salary*12,weeklyHours:45,calendarMonth:s.month%12+1},roll=random();if(!(roll>=0&&roll<1))return {ok:false,reason:'无效随机结果'};
   return transaction(s,()=>{const d=data(s),r={id:'career-manager-'+(++d.sequence),month:s.month,job:s.job,storeId:storeKey(s),cardId,status:'pending',roll,quoteContext:context,options:D.cards[cardId].options.map(o=>({...copy(o),effects:quote(s,o.effects,context)})),receipts:[]};store(s,r.storeId);d.groups[r.id]=r;return {record:r};},save);
  }
+ function drawManager(s,opts={}){
+  const {save,random=Math.random}=opts;
+  if(!D.managerNaturalDrawEnabled||role(s)!=='manager'||s.pendingResignation||guard(s,{},opts))return {ok:true};
+  const current=pending(s);
+  if(current)return {ok:true,record:current};
+  const ledger=s.careerEvents;
+  if(ledger?.managerDrawMonth===s.month||Object.values(ledger?.groups||{}).some(r=>r.month===s.month))
+   return {ok:true};
+  const st=ledger?.stores?.[storeKey(s)];
+  const candidates=['departure','equipment','decline','research','excellent'].filter(family=>{
+   const id='manager-'+family,last=st?.cooldowns?.[id];
+   return !st?.completed?.[family]&&(last==null||s.month-last>=D.managerRepeatMonths)&&
+    D.cards[id].options.some(o=>!guard(s,o.effects,opts));
+  });
+  return transaction(s,()=>{
+   data(s).managerDrawMonth=s.month;
+   if(!candidates.length||random()>=D.managerTriggerProbability)return {};
+   const family=candidates[Math.floor(random()*candidates.length)];
+   const result=reserve(s,'manager-'+family,{save:()=>true,random});
+   return result.ok?{record:result.record}:false;
+  },save);
+ }
  const managementLevel=s=>Math.max(1,root.CareerLearningRules.skillLevel(s,'management'));
  function follow(s,r,opt){const kind=opt.follow,skill=kind==='research-a'?H.level(H.xp(s,'tasting')):managementLevel(s),rate=(40+skill*10)/100,success=r.roll<rate,cardId='manager-'+kind+'-'+(success?'success':'failure');return {kind,level:skill,probability:rate,success,cardId,status:'pending',effects:quote(s,D.cards[cardId].effects,r.quoteContext)};}
  function choose(s,id,index,opts){const r=s.careerEvents?.groups?.[id],o=r?.options[index];if(!r||r.month!==s.month||r.job!==s.job||r.storeId!==storeKey(s)||r.status!=='pending'||!o)return {ok:false,reason:'事件已变化或完成'};const miss=guard(s,o.effects,opts);if(miss)return {ok:false,reason:miss};
@@ -36,5 +58,5 @@
  function earned(s,month=s.month){const rows=Object.values(s.careerEvents?.groups||{}).filter(g=>g.month===month&&g.storeId===storeKey(s));return rows.flatMap(r=>r.receipts).reduce((x,r)=>{for(const k of ['wages','tips','bonus','hours'])x[k]=money(x[k]+(r.effects[k]||0));return x;},{wages:0,tips:0,bonus:0,hours:0});}
  function sales(s,month=s.month,key=storeKey(s)){const st=s.careerEvents?.stores?.[key],season=(month%12)+1,base=season===9?42500:season>=11?60000:50000,rate=Object.values(st?.modifiers||{}).filter(m=>m.fromMonth<=month).reduce((n,m)=>n+m.rate,0);return {month,storeId:key,baseRevenue:base,modifierRate:money(rate),revenue:money(base*(1+rate)),expenses:(st?.expenses||[]).filter(e=>e.month===month).reduce((n,e)=>money(n+e.amount),0)};}
  function book(s,month){if(!s.careerEvents)return;const d=data(s),key=storeKey(s),st=d.stores[key];if(!st||st.months[month])return;st.months[month]=sales(s,month,key);d.settlements[month]={storeId:key,earnings:earned(s,month)};}
- const api={data,storeKey,store,quote,apply,guard,transaction,pending,reserve,choose,settleFollow,earned,sales,book};root.CareerEventRules=api;if(typeof module!=='undefined')module.exports=api;
+ const api={data,storeKey,store,quote,apply,guard,transaction,pending,reserve,drawManager,choose,settleFollow,earned,sales,book};root.CareerEventRules=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window==='undefined'?globalThis:window);
