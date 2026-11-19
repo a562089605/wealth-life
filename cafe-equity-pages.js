@@ -32,7 +32,8 @@
  function trade(id,kind,target,mode,returnTo=career){
   const a=E.position(state).find(x=>x.id===id),shares=a?.shares||0,first=kind==='purchase',selling=kind==='sell';
   const back=first?invitation:()=>holdings(id,returnTo),p=page(kind,back);
-  const targets=selling?[0]:E.purchaseTargets(a);
+  const targets=selling?[0]:(E.purchaseTargets?.(a)??E.tiers.filter(tier=>
+   tier>shares&&(!shares||a.managing||tier===E.controlShare)));
   target??=targets[0];
   if(first&&(target<E.controlShare||!mode))mode='manage';
   const q=E.quote(state,id,target,mode);
