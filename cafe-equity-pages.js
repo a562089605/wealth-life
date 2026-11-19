@@ -3,7 +3,7 @@
  'use strict';
  const E=CafeEquity,Rules=CareerEventRules;
  const titles={invitation:'合伙邀请',purchase:'首次入股确认',holdings:'我的股份',
-  sell:'卖出全部股份',manage:'切换管理身份'};
+  increase:'增持股份',sell:'卖出全部股份',manage:'切换管理身份'};
  const pct=n=>n+'%';
  function page(kind,back){
   const p=CareerPages.panel(titles[kind],'partner-'+kind,back);
@@ -33,23 +33,29 @@
    b.setAttribute('aria-pressed',String(key===value));
   }
  }
- function trade(id,kind,mode){
+ function trade(id,kind,target,mode){
   const a=E.position(state).find(x=>x.id===id),shares=a?.shares||0,first=kind==='purchase',selling=kind==='sell';
   const back=first?invitation:()=>holdings(id),p=page(kind,back);
-  const target=selling?0:E.controlShare;
-  if(first)mode??='manage';
+  const targets=selling?[0]:E.tiers.filter(tier=>tier>shares);
+  target??=targets[0];
+  if(first&&(target<E.controlShare||!mode))mode='manage';
   const q=E.quote(state,id,target,mode);
-  if(first||a?.managing){
+  if(!selling){
+   const options=p.box('目标持股');
+   select(p,options,targets.map(tier=>[tier,pct(tier)]),target,tier=>trade(id,kind,tier,mode));
+  }
+  if(first&&target===E.controlShare||selling&&a?.managing){
    const roles=p.box('管理身份');
    const choices=first?[['manage','自己管理门店 · 基础年薪 $70,000.00'],['shareholder','请店长管理 · 可另找工作']]
     :[['manager','转回受雇店长'],['leave','离开门店']];
-   select(p,roles,choices,mode,x=>trade(id,kind,x));
+   select(p,roles,choices,mode,x=>trade(id,kind,target,x));
   }
+  if(first&&target<E.controlShare)p.row(p.box('管理方式'),'交割后','自己管理门店 · 基础年薪 $70,000.00');
   const moneyBox=p.box('交易明细');
   p.row(moneyBox,'当前持股',pct(shares));
   p.row(moneyBox,'交割后持股',pct(target));
   if(q.ok){
-   p.row(moneyBox,selling?'本次卖出':'本次买入',pct(Math.abs(q.target-q.from)));
+   p.row(moneyBox,selling?'本次卖出':first?'本次买入':'本次增持',pct(Math.abs(q.target-q.from)));
    p.row(moneyBox,'当期整店估值',money(q.value));
    p.row(moneyBox,selling?'次月收款':'本次扣款',money(q.amount));
    if(q.buy)p.row(moneyBox,'扣款后现金',state.cash>=q.amount?money(state.cash-q.amount):'现金不足');
@@ -57,7 +63,7 @@
   }
   const insufficient=q.ok&&q.buy&&state.cash<q.amount;
   status(p,insufficient?'还差 '+money(q.amount-state.cash)+'。':q.ok?'':q.reason);
-  p.button(selling?'确认全部卖出':'确认控股',()=>{
+  p.button(selling?'确认全部卖出':first?'确认入股':'确认增持',()=>{
    const result=E.confirm(state,q,save);
    if(!result.ok){p.message.textContent=result.reason;return;}
    render();holdings(id);
@@ -91,8 +97,9 @@
    }
    if(a.handover)p.row(pending,'待切换身份',a.handover.managing?'自己管理':'请店长管理');
   }
+  if(a.shares>0&&a.shares<E.controlShare)p.button('增持',()=>trade(a.id,'increase'),{disabled:!!t});
   p.button('卖出全部股份',()=>trade(a.id,'sell'),{disabled:!!t||!a.shares});
-  p.button('切换管理身份',()=>manage(a),{disabled:!a.shares||!!a.handover||t?.target===0});
+  if(a.shares===E.controlShare)p.button('切换管理身份',()=>manage(a),{disabled:!a.shares||!!a.handover||t?.target===0});
   show(p);
  }
  function manage(a){

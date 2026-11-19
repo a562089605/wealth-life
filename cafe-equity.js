@@ -2,7 +2,7 @@
 (function(root){
  'use strict';
  const R=root.CareerLearningRules,E=root.CareerEventRules;
- const baseValue=200000,controlShare=51,reserveTarget=50000,reserveFloor=25000;
+ const baseValue=200000,controlShare=51,tiers=[10,20,30,40,controlShare],reserveTarget=50000,reserveFloor=25000;
 
  const money=n=>Math.round((n+Number.EPSILON)*100)/100;
  const employed=s=>!!s.job&&!s.retired&&!s.unemployedMonths;
@@ -37,12 +37,15 @@
   const base=rows.reduce((n,x)=>n+x.baseRevenue,0);
   return base>0?money(baseValue*rows.reduce((n,x)=>n+x.revenue,0)/base):baseValue;
  }
+ const requiresManagement=s=>position(s).some(a=>a.shares>0&&a.shares<controlShare&&a.managing);
+ const hasDelegatedControl=s=>position(s).some(a=>a.shares===controlShare&&!a.managing);
  function quote(s,id,target,mode){
   const a=s.cafeEquity?.stores?.[id],shares=a?.shares||0;
   if(a?.trade)return {ok:false,reason:'已有一笔股份交易等待交割。'};
-  if(target!==(shares?0:controlShare))return {ok:false,reason:'只能买入控股权或卖出全部股份。'};
+  if(!(target===0&&shares>0)&&!(tiers.includes(target)&&target>shares))return {ok:false,reason:'请选择更高的持股档位，或卖出全部股份。'};
   const first=!shares,buy=target>shares;
   if(first&&(id!==E.storeKey(s)||!eligible(s)))return {ok:false,reason:'当前尚未满足合伙邀请条件。'};
+  if(first&&target<controlShare&&mode!=='manage')return {ok:false,reason:'持股低于 51% 时须自己管理门店。'};
   if(first&&!['manage','shareholder'].includes(mode)||!buy&&!target&&a.managing&&!['manager','leave'].includes(mode))
    return {ok:false,reason:'请选择交割后的管理身份。'};
   if(!target&&a?.handover)return {ok:false,reason:'请先完成已安排的管理交接。'};
@@ -67,6 +70,7 @@
  function handover(s,id,save){
   const a=s.cafeEquity?.stores?.[id];
   if(!a?.shares||a.handover||a.trade?.target===0||s.retired||position(s).some(x=>x.id!==id&&(x.managing||x.handover?.managing)))return {ok:false,reason:'当前无法安排管理交接。'};
+  if(a.shares<controlShare)return {ok:false,reason:'持股达到 51% 后才可切换管理方式。'};
   if(!a.managing&&s.job&&s.pendingResignation?.from!==s.job)
    return {ok:false,reason:'请先在我的职业安排现有工作的离职。'};
   return E.transaction(s,()=>{
@@ -149,7 +153,7 @@
   closeBooks(s,settlement,id);
  }
  const assetValue=s=>money(accounts(s).reduce((n,a)=>n+valuation(a)*a.shares/100+(a.trade?.buy?a.trade.amount:0),0));
- const api={controlShare,requirements,eligible,current,position,valuation,quote,confirm,handover,closeMonth,deliver,assetValue};
+ const api={controlShare,tiers,requiresManagement,hasDelegatedControl,requirements,eligible,current,position,valuation,quote,confirm,handover,closeMonth,deliver,assetValue};
  root.CafeEquity=api;
  if(typeof module!=='undefined')module.exports=api;
 })(typeof window==='undefined'?globalThis:window);

@@ -23,7 +23,10 @@ assert.equal(E.eligible(s),true);
 s.coffee.managerTrust=17;
 assert.equal(E.eligible(s),false);
 s.coffee.managerTrust=18;
-for(const target of [10,20,30])assert.equal(E.quote(s,id,target,'manage').ok,false);
+for(const target of [10,20,30,40]){
+ assert.equal(E.quote(s,id,target,'manage').amount,target*2000);
+ assert.equal(E.quote(s,id,target,'shareholder').ok,false);
+}
 const t=E.quote(s,id,51,'manage');
 assert.equal(t.amount,102000);
 const before=structuredClone(s);
@@ -84,10 +87,29 @@ legacy.cash-=40000;
 close(legacy);
 assert.equal(legacyStore.shares,20);
 assert.equal(close(legacy).cafeDividend,1400);
-assert.equal(E.quote(legacy,id,51).ok,false);
+assert.equal(E.quote(legacy,id,51).ok,true);
 assert.equal(E.confirm(legacy,E.quote(legacy,id,0),save).ok,true);
 close(legacy);
 assert.equal(legacyStore.shares,0);
+
+const staged=fixture();
+assert.equal(E.confirm(staged,E.quote(staged,id,10,'manage'),save).ok,true);
+close(staged);
+assert.equal(E.requiresManagement(staged),true);
+assert.equal(E.handover(staged,id,save).ok,false);
+assert.equal(E.quote(staged,id,40).amount,60000);
+assert.equal(E.confirm(staged,E.quote(staged,id,40),save).ok,true);
+assert.equal(close(staged).cafeDividend,650);
+assert.equal(E.current(staged).shares,40);
+assert.equal(E.confirm(staged,E.quote(staged,id,51),save).ok,true);
+assert.equal(close(staged).cafeDividend,2600);
+assert.equal(E.current(staged).shares,51);
+assert.equal(staged.job,'在店管理合伙人');
+assert.equal(E.requiresManagement(staged),false);
+assert.equal(E.handover(staged,id,save).ok,true);
+assert.equal(close(staged).cafeDividend,3315);
+assert.equal(E.hasDelegatedControl(staged),true);
+assert.equal(staged.job,null);
 
 const reserve=fixture();
 close(reserve);

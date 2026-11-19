@@ -99,7 +99,7 @@ function settleMonthlyDebts(settlement){
 function openCareerMarket(){syncFinance();showEvent('职业市场','工作机会','每张卡同时显示薪资与资格。只查看不会辞职；申请成功才替换当前工作，申请失败仍保留原岗位。',[],[['返回',finish,true]]);
  $('eventData').innerHTML='<div class="wl-careers">'+CAREERS.map((c,i)=>({c,i})).sort((a,b)=>careerMissing(a.c).length-careerMissing(b.c).length||a.i-b.i).map(({c,i})=>{const missing=careerMissing(c);return '<div class="wl-panel"><h3>'+batchEscape(c.name)+'</h3><b>'+priceText(careerSalary(c))+'/年</b><p>'+batchEscape(EDU[c.edu].name)+' · 相关经验 '+c.minExp+' 年<br>'+batchEscape(missing.length?'尚缺：'+missing.join('；'):'资格符合，可申请')+'</p><button data-batch="applyCareer" data-i="'+i+'" '+(missing.length?'disabled':'')+'>确认申请 '+batchEscape(c.name)+'</button></div>'}).join('')+'</div>';$('eventData').style.display='block';
 }
-function applyCareer(i){const c=CAREERS[i];if(!c||careerMissing(c).length)return;
+function applyCareer(i){if(window.CafeEquity?.requiresManagement(state))return;const c=CAREERS[i];if(!c||careerMissing(c).length)return;
  if(Math.random()>=careerSuccessChance(c)){showEvent('CAREER','这次没有录取','原工作保持不变。可以返回查看其他职位。',[],[['返回职业市场',openCareerMarket,true],['继续本月',finish,false]]);return}
  state.job=c.name;state.annualSalary=careerSalary(c);state.salary=roundCash(state.annualSalary/12);state.careerStartedAt=state.month;state.lastPromotionMonth=state.month;state.unemployedMonths=0;save();showEvent('CAREER','求职成功','已确认入职，工资从本月月末计入。',[['职位',c.name],['年薪',priceText(state.annualSalary)]],[['继续',()=>completeMonthlyStep(2),true]]);
 }
