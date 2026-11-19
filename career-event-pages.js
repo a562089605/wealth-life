@@ -3,7 +3,24 @@
  function message(text){if(msg?.isConnected)msg.textContent=text;}
  function rows(e){const result=[],signedMoney=n=>(n>0?'+':'−')+money(Math.abs(n));for(const [k,label,unit]of [['wages','加班工资','$'],['tips','额外小费','$'],['bonus','奖金','$'],['hours','工作时间','h'],['energy','能量',''],['stress','压力',''],['happiness','幸福',''],['service','服务经验',' XP'],['management','管理经验',' XP'],['latte','拉花经验',' XP'],['pourOver','手冲咖啡经验',' XP'],['trust','上司认可度',''],['sales','门店营业额','%'],['storeNet','门店经营收益','$'],['monthlySaving','次月起每月减支','$'],['retain','本月最多留存','$']]){let n=e?.[k];if(!n)continue;if((k==='latte'||k==='pourOver')&&!e.actualReceipt){n=Math.max(0,Math.min(n,800-HobbyLearning.xp(state,k)));if(!n)continue;}const displayLabel=n<0&&e.hours<0?(k==='wages'?'工资扣减':k==='tips'?'小费扣减':label):label;result.push([displayLabel,unit==='$'?signedMoney(n):(n>0?'+':'−')+Math.abs(unit==='%'?Math.round(n*100):n)+unit]);if(k==='hours')result.push(['自由时间',(n>0?'−':'+')+Math.abs(n)+'h']);}return result;}
  function effects(e,hideWorkHours=false,serviceXpAtMonthEnd=false){const box=document.createElement('div');box.className='career-event-effects';for(const [label,value]of rows(e)){if(hideWorkHours&&label==='工作时间')continue;const row=document.createElement('div'),l=document.createElement('span'),v=document.createElement('strong');l.textContent=serviceXpAtMonthEnd&&label==='服务经验'?'顾客服务（月底结算）':label;v.textContent=value;row.append(l,v);box.append(row);}if(e?.storeCost&&isPartner()){const row=document.createElement('div'),label=document.createElement('span'),value=document.createElement('strong');label.textContent='门店支出';value.textContent='−'+money(e.storeCost);row.append(label,value);box.append(row);}if(!box.children.length)box.textContent='无变化';return box;}
- function screen(artId,title,story){showEvent('职业事件',title,story,[],[]);const box=$('eventData');box.replaceChildren();box.style.display='block';box.insertAdjacentHTML('afterbegin',careerHero(artId));$('eventTitle').closest('.event').classList.add('coffee-painted-event','career-event-live');msg=document.createElement('p');msg.className='career-event-message';msg.setAttribute('role','status');box.append(msg);return box;}
+ function screen(artId,title,story){
+  const partner=artId?.startsWith('partner-');
+  showEvent(partner?'合伙人事件':'职业事件',title,story,[],[]);
+  const box=$('eventData'),modal=$('eventTitle').closest('.event');
+  box.replaceChildren();
+  box.style.display='block';
+  box.insertAdjacentHTML('afterbegin',careerHero(artId));
+  modal.classList.add('coffee-painted-event','career-event-live');
+  if(partner){
+   modal.classList.add('partner-painted-card');
+   box.append($('eventType').parentElement,$('eventTitle'),$('eventDesc'));
+  }
+  msg=document.createElement('p');
+  msg.className='career-event-message';
+  msg.setAttribute('role','status');
+  box.append(msg);
+  return box;
+ }
  function button(box,label,fn,disabled=false){const b=document.createElement('button');b.type='button';b.className='career-event-option';b.disabled=disabled;b.textContent=label;const owner=state,chosen=slot,month=state.month;b.onclick=()=>{if(state!==owner||slot!==chosen||state.month!==month||!b.isConnected)return;b.disabled=true;try{fn();}finally{if(b.isConnected)b.disabled=disabled;}};box.append(b);return b;}
  function exit(box){button(box,'继续',finish);}
  function normalWork(){return false;}
@@ -21,8 +38,31 @@
   const note=isPartner()&&partnerNotes[record.cardId];
   return screen(card.id,card.title,note?[card.story,note].filter(Boolean).join(' '):card.story);
  }
- function manager(){const r=E.pending(state);if(!r)return false;const follow=r.status==='followup',d=D[follow?r.follow.cardId:r.cardId],b=storeScreen(r,d);if(follow){b.append(effects(r.follow.effects));button(b,d.confirmLabel||'确认结果',()=>{const out=E.settleFollow(state,r.id,CareerEventRuntime.options());if(!out.ok)return message(out.reason);if(d.confirmLabel)finish();else result(out.record,d);});return true;}for(let i=0;i<r.options.length;i++){const o=r.options[i],miss=E.optionGuard(state,r.cardId,o.effects,CareerEventRuntime.options()),bn=button(b,(r.options.length>1?String.fromCharCode(65+i)+'  ':'')+o.label,()=>{const out=E.choose(state,r.id,i,CareerEventRuntime.options());if(!out.ok)return message(out.reason);if(out.record.status==='followup')manager();else result(out.record,d);},!!miss);if(o.description){const p=document.createElement('p');p.textContent=o.description;bn.append(p);}if(Object.keys(o.effects).length&&!r.cardId.startsWith('partner-'))bn.append(effects(o.effects,r.cardId==='manager-departure'&&i===0));if(miss){const n=document.createElement('small');n.textContent=miss;bn.append(n);}}button(b,'稍后决定',finish);return true;}
+ function manager(){const r=E.pending(state);if(!r)return false;const follow=r.status==='followup',d=D[follow?r.follow.cardId:r.cardId],b=storeScreen(r,d);if(follow){b.append(effects(r.follow.effects));button(b,d.confirmLabel||'确认结果',()=>{const out=E.settleFollow(state,r.id,CareerEventRuntime.options());if(!out.ok)return message(out.reason);if(d.confirmLabel)finish();else result(out.record,d);});return true;}for(let i=0;i<r.options.length;i++){const o=r.options[i],miss=E.optionGuard(state,r.cardId,o.effects,CareerEventRuntime.options()),bn=button(b,(r.options.length>1?String.fromCharCode(65+i)+'  ':'')+o.label,()=>{const out=E.choose(state,r.id,i,CareerEventRuntime.options());if(!out.ok)return message(out.reason);if(out.record.status==='followup')manager();else result(out.record,d);},!!miss);if(r.cardId.startsWith('partner-'))partnerOption(bn,o,i);else if(o.description){const p=document.createElement('p');p.textContent=o.description;bn.append(p);}if(Object.keys(o.effects).length&&!r.cardId.startsWith('partner-'))bn.append(effects(o.effects,r.cardId==='manager-departure'&&i===0));if(miss){const n=document.createElement('small');n.textContent=miss;bn.append(n);}}button(b,'稍后决定',finish);return true;}
+ function partnerOption(button,option,index){
+  const letter=document.createElement('span'),copy=document.createElement('span');
+  letter.className='partner-option-letter';
+  letter.textContent=String.fromCharCode(65+index);
+  letter.setAttribute('aria-hidden','true');
+  copy.className='partner-option-copy';
+  const label=document.createElement('strong'),description=document.createElement('span');
+  label.textContent=option.label;
+  description.textContent=option.description;
+  copy.append(label,description);
+  button.classList.add('partner-painted-option');
+  button.dataset.tone=index;
+  button.replaceChildren(letter,copy);
+ }
  function result(r,d){const b=storeScreen(r,d);b.append(effects({...r.receipts.at(-1).effects,actualReceipt:true},d.id==='manager-departure'&&r.choice===0));exit(b);}
- const previousShow=showEvent;showEvent=function(...args){$('eventTitle').closest('.event').classList.remove('career-event-live');return previousShow(...args);};
+ const previousShow=showEvent;
+ showEvent=function(...args){
+  const title=$('eventTitle'),modal=title.closest('.event');
+  if(modal.classList.contains('partner-painted-card')){
+   $('eventData').before($('eventType').parentElement,title,$('eventDesc'));
+   modal.classList.remove('partner-painted-card');
+  }
+  modal.classList.remove('career-event-live');
+  return previousShow(...args);
+ };
  window.CareerEventPages={barista,shift,manager,message,rows};openShiftEvent=shift;openShiftFollow=shift;const previous=openCoffeeCareerEvent;openCoffeeCareerEvent=function(){return shiftWorking()?shift():coffeeWorking()?barista():state&&E.runsStore(state)?manager():previous();};
 })();
