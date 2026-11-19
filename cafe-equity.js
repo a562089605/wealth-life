@@ -43,8 +43,9 @@
   const first=!shares,buy=target>shares;
   if(first&&(id!==E.storeKey(s)||!eligible(s)))return {ok:false,reason:'店长任职第二个月起可购买门店股权。'};
   if(first&&target<controlShare&&mode!=='manage')return {ok:false,reason:'持股低于 51% 时须自己管理门店。'};
-  if(first&&!['manage','shareholder'].includes(mode)||!buy&&!target&&a.managing&&!['manager','leave'].includes(mode))
+  if(first&&!['manage','shareholder'].includes(mode))
    return {ok:false,reason:'请选择交割后的管理身份。'};
+  if(!buy)mode=a.managing?'manager':undefined;
   if(!target&&a?.handover)return {ok:false,reason:'请先完成已安排的管理交接。'};
   const value=valuation(a);
   return {ok:true,id,from:shares,target,buy,mode,value,amount:money(value*Math.abs(target-shares)/100),month:s.month,
@@ -134,7 +135,7 @@
      }
      a.shares=t.target;
      if(!t.from)job(s,a,t.mode==='manage'?'manage':'leave');
-     if(!t.target&&a.managing)job(s,a,t.mode==='manager'?'manager':'leave');
+     if(!t.target&&a.managing&&R.role(s.job)==='partner'&&!s.retired)job(s,a,t.mode==='leave'?'leave':'manager');
     }
     a.trade=null;
    }

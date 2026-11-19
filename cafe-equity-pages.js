@@ -39,10 +39,9 @@
    const options=p.box('目标持股');
    select(p,options,targets.map(tier=>[tier,pct(tier)]),target,tier=>trade(id,kind,tier,mode));
   }
-  if(first&&target===E.controlShare||selling&&a?.managing){
+  if(first&&target===E.controlShare){
    const roles=p.box('管理身份');
-   const choices=first?[['manage','自己管理门店 · 基础年薪 $70,000.00'],['shareholder','请店长管理 · 可另找工作']]
-    :[['manager','转回受雇店长'],['leave','离开门店']];
+   const choices=[['manage','自己管理门店 · 基础年薪 $70,000.00'],['shareholder','请店长管理 · 可另找工作']];
    select(p,roles,choices,mode,x=>trade(id,kind,target,x));
   }
   if(first&&target<E.controlShare)p.row(p.box('管理方式'),'交割后','自己管理门店 · 基础年薪 $70,000.00');
@@ -55,6 +54,7 @@
    p.row(moneyBox,selling?'次月收款':'本次扣款',money(q.amount));
    if(q.buy)p.row(moneyBox,'扣款后现金',state.cash>=q.amount?money(state.cash-q.amount):'现金不足');
    p.row(moneyBox,'交割时间','次月');
+   if(selling&&a?.managing)p.row(moneyBox,'交割后职位','受雇店长');
   }
   const insufficient=q.ok&&q.buy&&state.cash<q.amount;
   status(p,insufficient?'还差 '+money(q.amount-state.cash)+'。':q.ok?'':q.reason);
