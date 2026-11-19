@@ -55,3 +55,31 @@
  border-color:#c9a751;
  color:#294b32;
 }
+
+.cafe-equity-asset {
+ display:grid;
+ grid-template-columns:minmax(0,2fr) minmax(0,3fr);
+ align-items:center;
+ gap:14px;
+ margin:12px 0;
+ padding:12px;
+ color:#294b32;
+ background:#fff6dc;
+ border:1px solid #ccb274;
+ border-radius:16px;
+}
+.cafe-equity-asset img { width:100%; display:block; border-radius:10px; }
+.cafe-equity-asset h3 { margin:0 0 8px; color:inherit; }
+.cafe-equity-asset dl { display:grid; grid-template-columns:auto 1fr; gap:5px 10px; margin:0 0 10px; }
+.cafe-equity-asset dd { margin:0; text-align:right; font-weight:600; overflow-wrap:anywhere; }
+.cafe-equity-asset button {
+ width:100%;
+ min-height:44px;
+ color:#294b32;
+ background:#f5d773;
+ border:1px solid #c9a751;
+}
+@media (max-width:430px) {
+ .cafe-equity-asset { grid-template-columns:1fr; }
+ .cafe-equity-asset img { aspect-ratio:3; object-fit:cover; }
+}

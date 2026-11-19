@@ -29,9 +29,9 @@
    b.setAttribute('aria-pressed',String(key===value));
   }
  }
- function trade(id,kind,target,mode){
+ function trade(id,kind,target,mode,returnTo=career){
   const a=E.position(state).find(x=>x.id===id),shares=a?.shares||0,first=kind==='purchase',selling=kind==='sell';
-  const back=first?invitation:()=>holdings(id),p=page(kind,back);
+  const back=first?invitation:()=>holdings(id,returnTo),p=page(kind,back);
   const targets=selling?[0]:E.tiers.filter(tier=>tier>shares);
   target??=targets[0];
   if(first&&(target<E.controlShare||!mode))mode='manage';
@@ -39,12 +39,12 @@
   if(!selling){
    const options=p.box('目标持股');
    if(first)options.classList.add('cafe-equity-tiers');
-   select(p,options,targets.map(tier=>[tier,pct(tier)]),target,tier=>trade(id,kind,tier,mode));
+   select(p,options,targets.map(tier=>[tier,pct(tier)]),target,tier=>trade(id,kind,tier,mode,returnTo));
   }
   if(first&&target===E.controlShare){
    const roles=p.box('管理身份');
    const choices=[['manage','自己管理门店 · 基础年薪 $70,000.00'],['shareholder','请店长管理 · 可另找工作']];
-   select(p,roles,choices,mode,x=>trade(id,kind,target,x));
+   select(p,roles,choices,mode,x=>trade(id,kind,target,x,returnTo));
   }
   const moneyBox=p.box('交易明细');
   if(first&&target<E.controlShare)p.row(moneyBox,'管理方式','自己管理门店');
@@ -65,15 +65,15 @@
   p.button(selling?'确认全部卖出':first?'确认入股':'确认增持',()=>{
    const result=E.confirm(state,q,save);
    if(!result.ok){p.message.textContent=result.reason;return;}
-   render();holdings(id);
+   render();holdings(id,returnTo);
   },{primary:true,disabled:!q.ok||insufficient});
   show(p);
  }
- function holdings(id){
+ function holdings(id,returnTo=career){
   const accounts=E.position(state),a=accounts.find(x=>x.id===id)||accounts[0];
-  if(!a)return career();
-  const p=page('holdings',career),hold=p.box('我的持股'),t=a.trade;
-  if(accounts.length>1)select(p,hold,accounts.map((item,i)=>[item.id,'门店 '+(i+1)]),a.id,holdings);
+  if(!a)return returnTo();
+  const p=page('holdings',returnTo),hold=p.box('我的持股'),t=a.trade;
+  if(accounts.length>1)select(p,hold,accounts.map((item,i)=>[item.id,'门店 '+(i+1)]),a.id,selected=>holdings(selected,returnTo));
   p.row(hold,'当前持股',pct(a.shares));
   if(a.shares===E.controlShare)p.row(hold,'股东身份',a.managing?'门店老板':'门店老板（不在店管理）');
   p.row(hold,'管理身份',a.shares?(a.managing?'自己管理':a.shares===E.controlShare?'已请店长管理':'只当股东'):'等待首次入股');
@@ -96,13 +96,13 @@
    }
    if(a.handover)p.row(pending,'待切换身份',a.handover.managing?'自己管理':'请店长管理');
   }
-  if(a.shares>0&&a.shares<E.controlShare)p.button('增持',()=>trade(a.id,'increase'),{disabled:!!t});
-  p.button('卖出全部股份',()=>trade(a.id,'sell'),{disabled:!!t||!a.shares});
-  if(a.shares===E.controlShare)p.button('切换管理身份',()=>manage(a),{disabled:!a.shares||!!a.handover||t?.target===0});
+  if(a.shares>0&&a.shares<E.controlShare)p.button('增持',()=>trade(a.id,'increase',undefined,undefined,returnTo),{disabled:!!t});
+  p.button('卖出全部股份',()=>trade(a.id,'sell',undefined,undefined,returnTo),{disabled:!!t||!a.shares});
+  if(a.shares===E.controlShare)p.button('切换管理身份',()=>manage(a,returnTo),{disabled:!a.shares||!!a.handover||t?.target===0});
   show(p);
  }
- function manage(a){
-  const p=page('manage',()=>holdings(a.id)),summary=p.box('次月安排');
+ function manage(a,returnTo){
+  const p=page('manage',()=>holdings(a.id,returnTo)),summary=p.box('次月安排');
   p.row(summary,'当前身份',a.managing?'自己管理':a.shares===E.controlShare?'已请店长管理':'只当股东');
   p.row(summary,'新身份',a.managing?'请店长管理':'自己管理');
   p.row(summary,'交接时间','本月');
@@ -113,9 +113,59 @@
   p.button('确认切换',()=>{
    const result=E.handover(state,a.id,save);
    if(!result.ok){p.message.textContent=result.reason;return;}
-   render();holdings(a.id);
+   render();holdings(a.id,returnTo);
   },{primary:true});
   show(p);
  }
+ function returnToAssets(){
+  CareerPages.close();
+  $('qAssets').click();
+  $('cafeEquityAssets').scrollIntoView({block:'nearest'});
+ }
+ function renderAssetCards(){
+  const list=$('cafeEquityAssets');
+  const positions=E.position(state);
+  list.hidden=positions.length===0;
+  list.replaceChildren();
+  for(const [index,account] of positions.entries()){
+   const card=document.createElement('article');
+   card.className='cafe-equity-asset';
+   const art=document.createElement('img');
+   art.src='assets/career-learning-20261115/partner-invitation.webp';
+   art.alt='';
+   art.loading='lazy';
+   const info=document.createElement('div'),heading=document.createElement('h3'),details=document.createElement('dl');
+   heading.textContent=positions.length===1?'门店股权':'门店股权 · 门店 '+(index+1);
+   const last=account.months?.[state.month-1];
+   const rows=[
+    ['持股比例',pct(account.shares)],
+    ['当前股份估值',money(E.valuation(account)*account.shares/100)],
+    ['上月分红',last?money(last.dividend):'尚无月结']
+   ];
+   if(account.trade){
+    const trade=account.trade;
+    rows.push([trade.buy?'待交割买入':'待交割卖出',pct(trade.target)+' · '+money(trade.amount)]);
+   }
+   for(const [label,value] of rows){
+    const name=document.createElement('dt'),amount=document.createElement('dd');
+    name.textContent=label;
+    amount.textContent=value;
+    details.append(name,amount);
+   }
+   const button=document.createElement('button');
+   button.type='button';
+   button.textContent='查看我的股份 →';
+   button.onclick=()=>holdings(account.id,returnToAssets);
+   info.append(heading,details,button);
+   card.append(art,info);
+   list.append(card);
+  }
+ }
+ const priorRender=render;
+ render=function(){
+  const result=priorRender.apply(this,arguments);
+  if(state)renderAssetCards();
+  return result;
+ };
  window.CafeEquityPages={invitation,holdings};
 })();
