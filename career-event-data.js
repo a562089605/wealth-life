@@ -5,7 +5,7 @@
   "id": "partner-reserve",
   "title": "淡季前的账本",
   "story": "9 月的淡季快到了。你翻开账本，考虑要不要多留一笔营运现金。",
-  "art": "assets/career-events-20261116/partner-reserve.webp",
+  "art": "assets/career-events-20261116/partner-reserve.webp?v=20261119-painted2",
   "options": [
    {
     "label": "照常分红",
@@ -26,7 +26,7 @@
   "id": "partner-machine",
   "title": "咖啡机修还是换",
   "story": "咖啡机又闹起了脾气。维修师傅递过来两份报价。",
-  "art": "assets/career-events-20261116/partner-machine.webp",
+  "art": "assets/career-events-20261116/partner-machine.webp?v=20261119-painted2",
   "options": [
    {
     "label": "维修旧机器",
@@ -56,7 +56,7 @@
   "id": "partner-beans",
   "title": "豆商的年度报价",
   "story": "豆商带着样品来访，愿意给门店一份采购折扣。",
-  "art": "assets/career-events-20261116/partner-beans.webp",
+  "art": "assets/career-events-20261116/partner-beans.webp?v=20261119-painted2",
   "options": [
    {
     "label": "继续按月采购",
@@ -79,7 +79,7 @@
   "id": "partner-order",
   "title": "周末的大订单",
   "story": "附近公司要订一批饮品。现有排班忙不过来，你得决定怎么接单。",
-  "art": "assets/career-events-20261116/partner-order.webp",
+  "art": "assets/career-events-20261116/partner-order.webp?v=20261119-painted2",
   "options": [
    {
     "label": "自己加班接单",
@@ -108,7 +108,7 @@
   "id": "partner-bakery",
   "title": "隔壁面包店来谈合作",
   "story": "隔壁老板带来新烤的面包，想与你一起推出早餐套餐。",
-  "art": "assets/career-events-20261116/partner-bakery.webp",
+  "art": "assets/career-events-20261116/partner-bakery.webp?v=20261119-painted2",
   "options": [
    {
     "label": "小规模试卖",
