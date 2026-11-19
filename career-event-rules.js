@@ -1,6 +1,7 @@
 // Prospective career-event ledger. No legacy company cash, profits, equity or dividends are fabricated.
 (function(root){'use strict';const D=root.CareerEventData,H=root.HobbyLearning,copy=x=>JSON.parse(JSON.stringify(x)),money=n=>Math.round((Number(n)||0)*100)/100;
  const role=s=>root.CareerLearningRules.role(s.job),working=s=>!!role(s)&&!s.retired&&!s.unemployedMonths;
+ const runsStore=s=>!!s&&(role(s)==='manager'||role(s)==='partner'&&!!root.CafeEquity?.current(s)?.managing);
  function data(s){return s.careerEvents??={version:1,sequence:0,groups:{},stores:{},settlements:{}};}
  function storeKey(s){return String(s.coffee?.storeId||s.cafe?.store?.id||s.employerId||('coffee-employer:'+ (s.relationshipHome?.currentManagerId||s.relationshipHome?.managers?.coffee||'legacy')));}
  function store(s,key=storeKey(s)){const d=data(s);return d.stores[key]??={id:key,startedMonth:s.month,modifiers:{},completed:{},cooldowns:{},expenses:[],months:{}};}
@@ -20,14 +21,14 @@
  function guard(s,e,{free=0,reserve=0,recovery=false,forced=false}={}){if(!working(s))return '当前岗位已变化';if(recovery||s.health<30)return '请先处理健康与疗养';if(!forced&&e.hours>0&&free-reserve<e.hours)return '自由时间不足，需保留必要照护';if(!forced&&e.energy<0&&s.energy < -e.energy)return '能量不足';return '';}
  function transaction(s,fn,save){return root.CareerLearningRules.atomic(s,fn,save);}
  function pending(s){return Object.values(s.careerEvents?.groups||{}).find(g=>g.month===s.month&&g.status!=='resolved'&&g.storeId===storeKey(s));}
- function reserve(s,cardId,{save,random=Math.random}={}){if(role(s)!=='manager'||!working(s)||!D.cards[cardId]||!cardId.startsWith('manager-')||D.cards[cardId].effects)return {ok:false,reason:'岗位或事件不适用'};const current=pending(s);if(current)return {ok:true,record:current};
+ function reserve(s,cardId,{save,random=Math.random}={}){if(!runsStore(s)||!working(s)||!D.cards[cardId]||!cardId.startsWith('manager-')||D.cards[cardId].effects)return {ok:false,reason:'岗位或事件不适用'};const current=pending(s);if(current)return {ok:true,record:current};
   const st=s.careerEvents?.stores?.[storeKey(s)],family=cardId==='manager-decline'?'decline':cardId==='manager-research'?'research':cardId;if(st?.completed[family]||st?.cooldowns[cardId]===s.month)return {ok:false,reason:'本事件已完成'};
   const context={annualSalary:s.annualSalary||s.salary*12,weeklyHours:45,calendarMonth:s.month%12+1},roll=random();if(!(roll>=0&&roll<1))return {ok:false,reason:'无效随机结果'};
   return transaction(s,()=>{const d=data(s),r={id:'career-manager-'+(++d.sequence),month:s.month,job:s.job,storeId:storeKey(s),cardId,status:'pending',roll,quoteContext:context,options:D.cards[cardId].options.map(o=>({...copy(o),effects:quote(s,o.effects,context)})),receipts:[]};store(s,r.storeId);d.groups[r.id]=r;return {record:r};},save);
  }
  function drawManager(s,opts={}){
   const {save,random=Math.random}=opts;
-  if(!D.managerNaturalDrawEnabled||role(s)!=='manager'||s.pendingResignation||guard(s,{},opts))return {ok:true};
+  if(!D.managerNaturalDrawEnabled||!runsStore(s)||s.pendingResignation||guard(s,{},opts))return {ok:true};
   const current=pending(s);
   if(current)return {ok:true,record:current};
   const ledger=s.careerEvents;
@@ -58,5 +59,5 @@
  function earned(s,month=s.month){const rows=Object.values(s.careerEvents?.groups||{}).filter(g=>g.month===month&&g.storeId===storeKey(s));return rows.flatMap(r=>r.receipts).reduce((x,r)=>{for(const k of ['wages','tips','bonus','hours'])x[k]=money(x[k]+(r.effects[k]||0));return x;},{wages:0,tips:0,bonus:0,hours:0});}
  function sales(s,month=s.month,key=storeKey(s)){const st=s.careerEvents?.stores?.[key],season=(month%12)+1,base=season===9?42500:season>=11?60000:50000,rate=Object.values(st?.modifiers||{}).filter(m=>m.fromMonth<=month).reduce((n,m)=>n+m.rate,0);return {month,storeId:key,baseRevenue:base,modifierRate:money(rate),revenue:money(base*(1+rate)),expenses:(st?.expenses||[]).filter(e=>e.month===month).reduce((n,e)=>money(n+e.amount),0)};}
  function book(s,month){if(!s.careerEvents)return;const d=data(s),key=storeKey(s),st=d.stores[key];if(!st||st.months[month])return;st.months[month]=sales(s,month,key);d.settlements[month]={storeId:key,earnings:earned(s,month)};}
- const api={data,storeKey,store,quote,apply,guard,transaction,pending,reserve,drawManager,choose,settleFollow,earned,sales,book};root.CareerEventRules=api;if(typeof module!=='undefined')module.exports=api;
+ const api={runsStore,data,storeKey,store,quote,apply,guard,transaction,pending,reserve,drawManager,choose,settleFollow,earned,sales,book};root.CareerEventRules=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window==='undefined'?globalThis:window);

@@ -34,6 +34,31 @@ const drawId=await p.evaluate(()=>CareerEventRules.pending(state).id);
 await p.evaluate(()=>openTownLanding());
 a.equal(await p.evaluate(()=>CareerEventRules.pending(state).id),drawId);
 await step('Manager draw is map-only; reopening the career landing resumes the same saved card');
+for(const [index,id] of ['departure','equipment','decline','research','excellent'].entries()){
+ await setRole('partner');
+ await p.evaluate(index=>{
+  const id=CareerEventRules.storeKey(state);
+  state.coffee.storeId=id;
+  state.cafeEquity={stores:{[id]:{id,shares:51,managing:true,cash:50000,reserve:50000,loss:0,lots:[],months:{}}}};
+  state.townMode=true;state.roomLocation='town';state.town.movement={month:state.month,to:TOWN_TYPES.indexOf('career'),resolved:false};
+  const rolls=[0,(index+.25)/5,0],random=Math.random;
+  Math.random=()=>rolls.shift()??0;
+  try{openTownLanding();}finally{Math.random=random;}
+ },index);
+ a.equal(await p.evaluate(()=>CareerEventRules.pending(state)?.cardId),'manager-'+id);
+ await p.locator('.career-event-hero img').evaluate(img=>img.decode());
+ await p.screenshot({path:path.join(out,phase+'-partner-'+id+'-390.png')});
+ if(id==='equipment')a.match(await p.locator('#eventData').innerText(),/门店支出/);
+ await p.locator('.career-event-option').first().click();
+ if(id==='departure')a.deepEqual(await p.evaluate(()=>[coffeeMonthlyIncome().eventWages,coffeeMonthlyIncome().workHoursDelta]),[179.49,4]);
+ if(id==='excellent')a.equal(await p.evaluate(()=>coffeeMonthlyIncome().eventBonus),200);
+ if(id==='equipment')a.deepEqual(await p.evaluate(()=>[state.cash,CareerEventRules.sales(state).expenses]),[100000,500]);
+}
+await setRole('partner');
+await p.evaluate(()=>{const id=CareerEventRules.storeKey(state);state.cafeEquity={stores:{[id]:{id,shares:51,managing:false}}};state.job=null;state.townMode=true;state.town.movement={month:state.month,to:TOWN_TYPES.indexOf('career'),resolved:false};openTownLanding();});
+a.equal(await p.evaluate(()=>CareerEventRules.pending(state)),undefined);
+await step('All five managing-partner cards draw on the map, show existing art and settle costs or wages; delegated owner draws none');
+await setRole('manager');await reserve('manager','research');
 await p.evaluate(()=>{clearModals();});await p.evaluate(async()=>{await Promise.race([navigator.serviceWorker.ready,new Promise((_,reject)=>setTimeout(()=>reject(Error('SW ready timeout')),30000))]);});await p.waitForFunction(()=>!!navigator.serviceWorker.controller,{timeout:30000});await context.setOffline(true);await p.reload({waitUntil:'load'});await p.locator('#enterGame').click();await p.evaluate(()=>{slot=945;state=load(slot);openGame();CareerEventPages.manager();});a.ok(await p.locator('.career-event-option').count());await step('Installed service worker resumes saved manager event after offline refresh');a.equal(await p.evaluate(()=>CareerEventData.managerNaturalDrawEnabled),true);a.equal(await p.evaluate(()=>SharedInterestSelection.policy.naturalDrawEnabled).catch(()=>false),false);a.deepEqual(report.errors,[]);report.ok=true;
 }catch(e){report.ok=false;report.failure=e.stack;process.exitCode=1;}finally{fs.writeFileSync(path.join(out,phase+'-report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));await browser?.close();server.close();}})();
 function CareerEventDummyTitle(id){return {staff:'同事临时请假',busy:'周末爆单',cut:'经理削减排班',tip:'常客的大额小费',departure:'同事突然离职'}[id];}
