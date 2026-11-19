@@ -166,3 +166,19 @@ body:has(#home:not(.hidden) #newGame:not(.hidden) #coffeeIntro) .wl-home-brand{d
 .event.event-active.coffee-painted-event{background:#fbf0d7!important;border:2px solid #b79365!important}
 .coffee-painted-event #eventData .coffee-painted-choice{background:#fff2c9!important;border-color:#d7b46b!important}
 .coffee-painted-event #eventData .coffee-painted-choice.coffee-choice-blue{background:#e7eef0!important;border-color:#b0c5cb!important}
+
+.wl-bank-art {
+ display: block;
+ max-width: min(132px, 45%);
+ max-height: 72px;
+ object-fit: contain;
+ margin: 0 auto 8px;
+ border-radius: 9px;
+}
+.event.event-active #eventData:has(.wl-bank-card) {
+ scrollbar-width: auto;
+ scrollbar-color: #839352 #fff4cf;
+ scrollbar-gutter: stable;
+}
+.wl-bank-card button { margin: 4px 0; }
+.wl-bank-card small { display: block; color: #933821; }

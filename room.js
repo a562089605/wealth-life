@@ -39,8 +39,13 @@
  function leaveRoom(allowOverdueClean=false){
   if(state.gameOver?.final)return showGameOver();
   if(state.requiredIncident)return openRequiredIncident();
+  if(window.OwnerHousing?.saleDue())return OwnerHousing.show();
+  if(window.HomeInsurance?.checkOnLeave())return;
   if(healthTreatmentKind(state.health)||unfinishedTreatment()||isRecoveryMonth(state))return openHealthTreatment();
   if(window.EducationPlans?.current(state.study)&&EducationPlans.due(state.study)>0)return openEducation();
+  syncFinance();
+  if(unpaidLoanRows().length)return openLoanPayments();
+  if(state.housing==='own'&&state.ownerMortgage&&livingBillQuote().housing>0)return window.openLifeOverview();
   // A paused map event retains its identity and resumes instead of being re-rolled.
   if(townPending()){state.roomLocation='town';save();visible=false;syncRoom();return showTown();}
   if(necessaryBills().length)return openNecessaryBills();
@@ -70,8 +75,8 @@
  function finances(){
   showEvent('财务','资产、投资与贷款','查看现有账户，确认交易后才按原账本执行。',[],[
    ['ETF投资',()=>buyInvestment('ETF'),true],['股票投资',()=>buyInvestment('股票'),false],
-   ['基金投资',()=>buyInvestment('基金'),false],['定期存款',()=>openCD(),false],
-   ['保险与保障',()=>openInsurance(),false],['银行贷款',()=>openBankLoan(),false],['本月贷款还款',openLoanPayments,false],
+   ['基金投资',()=>buyInvestment('基金'),false],['房产投资',()=>window.v242RealEstate(),false],['定期存款',()=>openCD(),false],
+   ['保险与保障',()=>window.HomeInsurance.openMenu(),false],['银行贷款',()=>openBankLoan(),false],['本月贷款还款',openLoanPayments,false],
    ['资产总览',()=>{state.roomLocation='overview';save();visible=false;syncRoom();clearModals();el('qAssets').click();},false],
    ['返回房屋',openRoom,false]
   ]);
@@ -98,7 +103,7 @@
   return result;};
  for(const id of ['qOverview','qCareer','qLife','qAssets'])el(id).addEventListener('click',()=>{visible=false;syncRoom();},true);
  const nextBefore=el('qNext').onclick;
- el('qNext').onclick=function(...args){if(townPending())return nextBefore?.apply(this,args);return openRoom();};
+ el('qNext').onclick=function(...args){if(state.roomLocation==='home'&&townPending())return leaveRoom();if(townPending())return nextBefore?.apply(this,args);return openRoom();};
  el('hubNext').onclick=el('qNext').onclick;
- el('wlResume').onclick=()=>{el('wlCloseMenu').click();if(townPending())showTown();else openRoom();};
+ el('wlResume').onclick=()=>{el('wlCloseMenu').click();if(townPending()&&state.roomLocation==='home')leaveRoom();else if(townPending())showTown();else openRoom();};
 })();

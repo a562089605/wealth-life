@@ -24,7 +24,6 @@ function syncFinance(){
   if(s.monthlyHousing!=null){s.housingCost=s.monthlyHousing;s.housing=({'与家人同住':'family','2B2B 合租':'shared','Studio':'studio','1B1B':'rent1'})[s.housingChoice]||s.housing;}
   delete s.monthlyHousing;delete s.housingChoice;
   if(s.healthInsurance&&!s.insurance.health)s.insurance.health={active:true,monthly:220};
-  if(s.incomeProtection&&!s.insurance.income)s.insurance.income={active:true,monthly:65};
   s.assets=s.assets.filter(a=>{if(a.kind==='cd'&&a.matured){s.cash+=a.cost;return false}return true});
   s.major??=inferDomain(s.job);s.licenses??=[];if(/护士/.test(s.job||''))s.licenses.push('RN');if(/教师/.test(s.job||''))s.licenses.push('teaching');
   s.domainExperience??={};s.domainExperience[inferDomain(s.job)]??=(s.experienceYears||0)*12;
@@ -35,7 +34,8 @@ function syncFinance(){
  if(s._computedExpenses!=null&&Math.abs(s.expenses-s._computedExpenses)>.01)s.baseLiving=Math.max(0,s.baseLiving+s.expenses-s._computedExpenses);
  if(typeof PetInsurance!=='undefined')PetInsurance.sync(s);
  if(typeof PetHealth!=='undefined')PetHealth.ensure(s);
- s.healthInsurance=!!s.insurance.health?.active;s.incomeProtection=!!s.insurance.income?.active;
+ delete s.insurance.income;delete s.insurance.life;
+ s.healthInsurance=!!s.insurance.health?.active;s.incomeProtection=false;
  const securedNames=['投资房贷款','自住房贷款'];for(const k of Object.keys(s.debt))if(securedNames.includes(k)||k.startsWith('投资房 · ')||k.startsWith('银行贷款 · ')||k.startsWith('学生贷款 · '))delete s.debt[k];
  if(s.homeMortgage>0)s.debt['自住房贷款']=s.homeMortgage;
  s.assets.forEach(a=>{a.id??=assetId();if(a.kind==='rental'){a.apr??=ECONOMIES[s.economy||0].rate;a.monthsLeft??=360;a.operating??=(a.rent||0)-(a.payment||0)-(a.cf||0);a.equity=(a.value||a.purchasePrice||0)-(a.mortgage||0);a.cf=(a.rent||0)-(a.operating||0)-(a.mortgage>0?Math.min(a.monthsLeft===1?a.mortgage*(1+a.apr/12):a.payment,a.mortgage*(1+a.apr/12)):0);if(a.mortgage>0)s.debt['投资房 · '+a.id]=a.mortgage;}});
@@ -93,7 +93,14 @@ $('healthBtn').onclick=()=>buyInsurance('health');$('incomeBtn').onclick=()=>buy
 function buyInvestment(kind,requestedAmount=null){const amt=requestedAmount===null?Number(prompt('投入'+kind+'金额（美元）','200')):Number(requestedAmount);if(!Number.isFinite(amt)||amt<=0||amt>state.cash)return;state.cash-=amt;state.assets.push({id:assetId(),name:kind,kind:'market',category:kind,cost:amt,value:amt,cf:0});render();}
 function openCD(){showEvent('CD','12个月 CD','本金锁定12次月末结算，到期自动回到现金。利息不重复计入月现金流。',[['本金','$1,000.00'],['年利率','4%'],['期限','12个月']],[['存入 $1,000.00',()=>{if(state.cash<1000)return;state.cash-=1000;(state.financeLedger??=[]).push({kind:'cdPurchase',month:state.month,amount:1000});state.assets.push({id:assetId(),name:'12个月CD',kind:'cd',cost:1000,cf:0,rate:.04,maturesAt:state.month+12,interestAccrued:0});finish()},true,state.cash<1000],['取消',finish,false]])}
 function openLearning(){showEvent('LEARNING','学习与技能','选择学历学习或兴趣练习；打开菜单不会自动扣款。',[],[['学历学习',()=>$('studyBtn').click(),true,!state.study&&!EDU[state.education].next],['练习兴趣技能',()=>$('hobbyBtn').click(),false],['返回',finish,false]])}
-function openBankLoan(suggestedAmount=10000,terms=null){const amt=terms?Number(terms.amount):Number(prompt('贷款金额（美元）',String(suggestedAmount)));if(!Number.isFinite(amt)||amt<=0||Math.abs(Math.round(amt*100)-amt*100)>.00001)return;const years=terms?Number(terms.years):Number(prompt('贷款期限（年）：1 / 3 / 5 / 7','3'));if(![1,3,5,7].includes(years))return;const apr=currentBankAPR();const months=years*12,pmt=paymentFor(amt,apr,months);if(!terms?.confirmed&&!confirm('贷款 '+money(amt)+' · '+years+' 年 · APR '+(apr*100).toFixed(2)+'% · 月供 '+money(pmt)+'。确认？'))return;state.cash+=amt;state.nextLoanId=(state.nextLoanId||0)+1;state.loans.push({id:'bank-'+state.nextLoanId,type:terms?.type==='学生贷款'?'学生贷款':'银行贷款',educationTarget:terms?.educationTarget||null,principal:amt,balance:amt,apr,monthsLeft:months,payment:pmt,latePolicy:'fee5cap35',lateFeeCap:roundCash(35*(state.cpiIndex||100)/100)});state.financeLedger??=[];state.financeLedger.push({kind:'loanDisbursement',month:state.month,loanId:state.loans.at(-1).id,amount:amt});render();}
+function openBankLoan(suggestedAmount=10000,terms=null){const amt=terms?Number(terms.amount):Number(prompt('贷款金额（美元）',String(suggestedAmount)));if(!Number.isFinite(amt)||amt<=0||Math.abs(Math.round(amt*100)-amt*100)>.00001)return;const years=terms?Number(terms.years):Number(prompt('贷款期限（年）：1 / 3 / 5 / 7','3'));if(![1,3,5,7].includes(years))return;const apr=currentBankAPR();const months=years*12,pmt=paymentFor(amt,apr,months);if(!terms?.confirmed&&!confirm('贷款 '+money(amt)+' · '+years+' 年 · APR '+(apr*100).toFixed(2)+'% · 月供 '+money(pmt)+'。确认？'))return;const previous=JSON.parse(JSON.stringify(state));
+ let number=state.nextLoanId||0;
+ while(state.loans.some(loan=>loan.id==='bank-'+(number+1)))number++;
+ const loan={id:'bank-'+(number+1),type:terms?.type==='学生贷款'?'学生贷款':'银行贷款',educationTarget:terms?.educationTarget||null,originMonth:state.month,principal:amt,balance:amt,apr,monthsLeft:months,payment:pmt,latePolicy:'fee5cap35',lateFeeCap:roundCash(35*(state.cpiIndex||100)/100)};
+ state.cash=roundCash(state.cash+amt);state.nextLoanId=number+1;state.loans.push(loan);
+ (state.financeLedger??=[]).push({kind:'loanDisbursement',month:state.month,loanId:loan.id,amount:amt});
+ try{save()}catch(error){state=previous;console.error('Bank loan save failed',error);return null}
+ render();return loan;}
 $('carBtn').onclick=()=>{if(state.carOwned){showEvent('TRANSPORT','已有车辆','燃油与维护准备金每月 $150.00；汽车贷款和车险分别结算。',[['车辆资产',money(state.carValue)],['车险',state.insurance.auto?.active?'已投保':'未投保']],[['继续',finish,true]]);return}const payment=paymentFor(21000,.06,60);showEvent('TRANSPORT','购买车辆','车价 $24,000.00，首付 $3,000.00；5年车贷 APR 6%。燃油/维护 $150.00/月，车险 $165.00/月。',[],[['买车',()=>{if(state.cash<3000||state.carOwned)return;state.cash-=3000;(state.financeLedger??=[]).push({kind:'vehicleDownpayment',month:state.month,amount:3000});state.carOwned=true;state.carValue=24000;state.carRunningCost=150;state.debt['汽车贷款']=21000;state.debtSchedules['汽车贷款']={apr:.06,monthsLeft:60,payment};state.insurance.auto={name:'汽车保险',active:true,monthly:165};finish()},true,state.cash<3000],['暂时不买',finish,false]])};
 $('rentalBtn').onclick=()=>window.v242RealEstate();
 sellAsset=function(i){const a=state.assets[i];if(!a)return;if(a.kind==='cd'){showEvent('CD','本金已锁定','到期时自动回到现金。',[],[['返回',finish,true]]);return}const proceeds=a.kind==='rental'?(a.value-a.mortgage):(a.value??a.cost);if(!Number.isFinite(proceeds)||state.cash+proceeds<0)return;state.cash+=proceeds;(state.financeLedger??=[]).push({kind:'assetSale',month:state.month,amount:proceeds,assetId:a.id});state.assets.splice(i,1);syncFinance();showEvent('SALE','资产已出售','出售款已计入现金；投资房贷款已随出售清偿。',[['现金变化',money(proceeds)]],[['继续',finish,true]]);render()};
@@ -117,7 +124,11 @@ function settleMonthUnsafe(){
  if(typeof settleInvestingBatch==='function')settleInvestingBatch(settlement,month);
  for(const k of ['k401Balance','iraBalance','brokerageBalance'])rr[k]=roundCash((rr[k]||0)*(1+marketChange));
  if(s.carOwned)s.carValue=roundCash(s.carValue*.995);
- if(s.homeMortgage>0){const old=s.homeMortgage,p=settleLoan({apr:ec.rate,payment:s.housingCost,monthsLeft:360},old);s.homeMortgage=p.balance;s.homeEquity+=old-p.balance;}
+ if(s.ownerMortgage){
+  const value=roundCash((s.homeEquity+s.homeMortgage)*(1+ec.home));
+  const p=settleLoan(s.ownerMortgage,s.homeMortgage);
+  s.homeMortgage=p.balance;s.homeEquity=roundCash(value-p.balance);
+ }else if(s.homeMortgage>0){const old=s.homeMortgage,p=settleLoan({apr:ec.rate,payment:s.housingCost,monthsLeft:360},old);s.homeMortgage=p.balance;s.homeEquity+=old-p.balance;}
  if(!recovery&&s.job&&!s.retired&&!s.unemployedMonths){const d=inferDomain(s.job);s.domainExperience[d]=(s.domainExperience[d]||0)+1;s.workMonths=(s.workMonths??(s.experienceYears||0)*12)+1;s.experienceYears=Math.floor(s.workMonths/12)}
  if(!recovery&&s.burnoutMonths>0){s.burnoutMonths--;if(s.job&&!s.retired)s.salary=roundCash(s.salary*.995)}if(!recovery&&s.stress>90&&Math.random()<.12){s.burnoutMonths=3;s.energy=Math.max(0,s.energy-15);s.happiness=Math.max(0,s.happiness-8)}if(s.unemployedMonths>0)s.unemployedMonths--;if(s.romance)s.romance.months++;
  if(typeof RelationshipHomeRules!=='undefined')settlement.relationships=RelationshipHomeRules.settle(s,s.month);
@@ -155,7 +166,7 @@ function monthlyEvent(){pending=true;$('next').disabled=true;if(!state.worldShoc
 for(const [id,section] of Object.entries({qOverview:'overview',qCareer:'career',qLife:'life',qAssets:'wealth',hubCareer:'career',hubLife:'life',hubWealth:'wealth'}))$(id).onclick=()=>{$('game').classList.remove('v24-running');showV21Section(section);window.scrollTo({top:0,behavior:'instant'})};
 $('cityBtn').onclick=()=>{const old=CITIES[state.city];showEvent('CITY','考虑搬家','先查看城市，只有明确确认才扣搬家费。',[],Object.entries(CITIES).filter(([k])=>k!==state.city).map(([k,c])=>['查看 '+c.name,()=>{const cost=Math.round(1200*c.cost);showEvent('CITY',c.name,c.desc,[['搬家费用',money(cost)]],[['搬去 '+c.name,()=>{if(state.cash<cost)return;state.cash-=cost;state.baseLiving=roundCash(state.baseLiving*c.cost/old.cost);state.city=k;state.moves++;state.housing='unselected';state.housingCost=0;state._computedExpenses=null;syncFinance();finish();$('housingBtn').click()},true,state.cash<cost],['返回城市列表',()=>$('cityBtn').click(),false]])},false]).concat([['留在当前城市',finish,true]]))};
 
-function eventEligible(name){return !(name==='汽车维修'&&!state.carOwned || name==='宠物临时照护'&&!state.pets.length || name==='孩子活动费'&&!state.children || name==='室友搬走'&&state.housing!=='shared' || name==='房屋维修'&&state.housing!=='own'&&!state.assets.some(a=>a.kind==='rental') || name==='保险上涨'&&!Object.values(state.insurance).some(i=>i.active));}
+function eventEligible(name){return !(name==='汽车维修'&&!state.carOwned || name==='宠物临时照护'&&!state.pets.length || name==='孩子活动费'&&!state.children || name==='室友搬走'&&state.housing!=='shared' || name==='房屋维修'&&(state.housing==='own'||!state.assets.some(a=>a.kind==='rental')) || name==='保险上涨'&&!Object.values(state.insurance).some(i=>i.active));}
 // Education is a preview until the player explicitly pays the tuition.
 function educationUndoQuote(){
  const st=state.study;if(!st)return null;

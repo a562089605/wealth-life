@@ -117,10 +117,10 @@ main{max-width:760px;padding-left:16px;padding-right:16px}
 .event.event-active{max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;overflow-y:auto;overscroll-behavior:contain}
 .v245sheet,.v242sheet{max-height:calc(100dvh - 20px - env(safe-area-inset-top));padding-bottom:calc(24px + env(safe-area-inset-bottom));overscroll-behavior:contain}
 body{padding-bottom:calc(110px + env(safe-area-inset-bottom))}button{touch-action:manipulation;min-height:44px!important}.v24-option{overflow-wrap:anywhere}.v24-layout>*{min-width:0}
-</style><link rel="stylesheet" href="presentation.css?v=28.3-internal1"><link rel="stylesheet" href="paper.css?v=28.3-intro-20261101">
+</style><link rel="stylesheet" href="presentation.css?v=20261118-bank1"><link rel="stylesheet" href="paper.css?v=28.3-intro-20261101">
 <link rel="stylesheet" href="shift-lead.css?v=28.3-internal1"><link rel="stylesheet" href="room.css?v=20261117-room-corgi1">
 <link rel="stylesheet" href="career-selection.css?v=20261101">
-<link rel="stylesheet" href="painted-pages.css?v=20261117-status-type1">
+<link rel="stylesheet" href="painted-pages.css?v=20261118-owner1">
 <link rel="stylesheet" href="family-home.css?v=20261104-apartment1">
 <link rel="stylesheet" href="pet-adoption-entry.css?v=20261105-petcard2"><link rel="stylesheet" href="pet-pages.css?v=20261113-review1">
 <link rel="stylesheet" href="pet-events.css?v=20261106-pet35">
@@ -530,7 +530,7 @@ document.addEventListener('click',e=>{if(e.target.closest('button')?.id==='v24Lo
    const g=document.getElementById('v242REGrid'); if(!g)return;
    g.innerHTML=props.map((x,i)=>{const c=calc(x);return `<div class="v242prop"><h3>${x.name}</h3>
     <p>房价 <b>${fmt(x.price)}</b><br>首付 ${(x.down*100).toFixed(0)}% · ${fmt(c.cash)}<br>
-    30年固定房贷 ${(c.a*100).toFixed(2)}%<br>预计租金 ${fmt(x.rent)}/月<br>
+    30年固定房贷 ${(c.a*100).toFixed(2)}% · 月供 ${fmt(c.mort)}<br>预计租金 ${fmt(x.rent)}/月<br>
     预计空置 ${fmt(c.vacancy)} · HOA ${fmt(x.hoa)}<br>
     税/保险/维护约 ${fmt(c.tax+c.ins+c.maint)}/月<br>
     <b>预计净现金流 ${c.net>=0?'+':''}${fmt(c.net)}/月</b></p>
@@ -560,19 +560,19 @@ document.addEventListener('click',e=>{if(e.target.closest('button')?.id==='v24Lo
 <script id="v245-housing">
 window.v245OpenHousing=()=>document.getElementById('housingBtn').click();
 </script>
-<script src="core.js?v=20261113-monthly1"></script>
-<script src="presentation.js?v=20261104-apartment1"></script>
-<script src="flow.js?v=20261113-hobbies1"></script>
+<script src="core.js?v=20261118-owner1"></script>
+<script src="presentation.js?v=20261118-bank1"></script>
+<script src="etf-market-data.js?v=1"></script><script src="etf-market.js?v=1"></script><script src="flow.js?v=20261118-etf1"></script>
 <script src="journey.js?v=28.3-internal1"></script>
-<script src="batch.js?v=20261114-interest1"></script><script src="revision.js?v=28.3-internal1"></script>
-<script src="annual.js?v=20261113-hobbies1"></script>
+<script src="batch.js?v=20261119-sale1"></script><script src="revision.js?v=28.3-internal1"></script>
+<script src="annual.js?v=20261118-bank1"></script>
 <script src="town.js?v=20261117-art1"></script>
 <script src="coffee.js?v=20261116-events1"></script>
 <script src="shift-lead.js?v=20261116-events1"></script>
 <script src="coffee-career.js?v=20261116-events1"></script>
 <script src="recovery-rules.js?v=28.3-internal1"></script>
 <script src="time-ledger.js?v=28.3-internal1"></script>
-<script src="time-flow.js?v=20261110-relationships1"></script>
+<script src="time-flow.js?v=20261118-etf1"></script>
 <script src="medical-insurance.js?v=28.3-internal1"></script>
 <script src="recovery-ui.js?v=28.3-internal1"></script>
 <script src="pet-health.js?v=20261107-petdeadline1"></script>
@@ -585,9 +585,9 @@ window.v245OpenHousing=()=>document.getElementById('housingBtn').click();
 <script src="financial-crisis.js?v=28.3-internal1"></script>
 <script src="release-info.js?v=28.3-internal1"></script>
 <script src="career-selection.js?v=20261101"></script>
-<script src="room.js?v=20261117-room-corgi1"></script>
-<script src="housing-bills.js?v=20261104-housingsave1"></script>
-<script src="painted-pages.js?v=20261117-art1"></script>
+<script src="room.js?v=20261119-sale1"></script>
+<script src="housing-bills.js?v=20261119-sale1"></script>
+<script src="painted-pages.js?v=20261119-sale1"></script>
 <script src="family-events.js?v=20261102-family2"></script>
 <script src="shared-events.js?v=20261102-toolbox1"></script>
 <script src="apartment-events.js?v=20261104-apartment1"></script>
@@ -596,7 +596,7 @@ window.v245OpenHousing=()=>document.getElementById('housingBtn').click();
 <script src="family-home.js?v=20261115-career1"></script>
 <script src="pet-adoption-entry.js?v=20261107-petdeadline1"></script>
 <script src="pet-basic-fees.js?v=20261106-petaudit1"></script><script src="pet-insurance.js?v=20261107-petpremium55"></script><script src="pet-pages.js?v=20261113-review1"></script><script src="pet-event-cards.js?v=20261107-spider120"></script><script src="pet-events.js?v=20261107-spider120"></script>
-<script src="pet-events-ui.js?v=20261107-spider120"></script><link rel="stylesheet" href="relationship-pages.css?v=20261113-review1"><script src="relationship-rules.js?v=20261113-monthly1"></script><script src="relationship-avatars.js?v=20261113-monthly1"></script><script src="hobby-learning.js?v=20261113-hobbies1"></script><script src="relationship-ui.js?v=20261113-monthly1"></script><script src="relationship-card-data.js?v=20261115-career1"></script><script src="teacher-card-data.js?v=20261113-monthly1"></script><script src="relationship-life-cards.js?v=20261115-career1"></script><script src="relationship-life-ui.js?v=20261115-career1"></script><script src="entry-screen.js?v=20261112-entry1"></script><script src="save-slots.js?v=20261112-slots1"></script><link rel="stylesheet" href="education-pages.css?v=20261113-monthly1"><script src="education-plans.js?v=20261113-education1"></script><script src="teacher-relationships.js?v=20261113-monthly1"></script><script src="education-monthly.js?v=20261113-monthly1"></script><script src="education-pages.js?v=20261115-career1"></script><link rel="stylesheet" href="hobby-pages.css?v=20261117-career-review1"><script src="hobby-pages.js?v=20261117-career-review1"></script><link rel="stylesheet" href="shared-interest-pages.css?v=20261114-interest1"><script src="shared-interest-card-data.js?v=20261114-interest1"></script><script src="shared-interest-selection.js?v=20261114-interest1"></script><script src="shared-interest-cards.js?v=20261114-interest1"></script><script src="shared-interest-pages.js?v=20261118-event-art1"></script><link rel="stylesheet" href="career-learning.css?v=20261118-manager1"><script src="career-learning-rules.js?v=20261118-manager1"></script><script src="career-learning-integration.js?v=20261117-career-review1"></script><script src="career-learning-pages.js?v=20261118-manager1"></script><link rel="stylesheet" href="career-event-pages.css?v=20261118-event-art1"><script src="career-event-data.js?v=20261118-event-art1"></script><script src="career-event-rules.js?v=20261118-manager1"></script><script src="career-event-integration.js?v=20261117-career-review1"></script><script src="career-event-pages.js?v=20261118-manager1"></script></body></html>
+<script src="pet-events-ui.js?v=20261107-spider120"></script><link rel="stylesheet" href="relationship-pages.css?v=20261113-review1"><script src="relationship-rules.js?v=20261113-monthly1"></script><script src="relationship-avatars.js?v=20261113-monthly1"></script><script src="hobby-learning.js?v=20261113-hobbies1"></script><script src="relationship-ui.js?v=20261113-monthly1"></script><script src="relationship-card-data.js?v=20261115-career1"></script><script src="teacher-card-data.js?v=20261113-monthly1"></script><script src="relationship-life-cards.js?v=20261115-career1"></script><script src="relationship-life-ui.js?v=20261115-career1"></script><script src="entry-screen.js?v=20261112-entry1"></script><script src="save-slots.js?v=20261112-slots1"></script><link rel="stylesheet" href="education-pages.css?v=20261113-monthly1"><script src="education-plans.js?v=20261113-education1"></script><script src="teacher-relationships.js?v=20261113-monthly1"></script><script src="education-monthly.js?v=20261113-monthly1"></script><script src="education-pages.js?v=20261115-career1"></script><link rel="stylesheet" href="hobby-pages.css?v=20261117-career-review1"><script src="hobby-pages.js?v=20261117-career-review1"></script><link rel="stylesheet" href="shared-interest-pages.css?v=20261114-interest1"><script src="shared-interest-card-data.js?v=20261114-interest1"></script><script src="shared-interest-selection.js?v=20261114-interest1"></script><script src="shared-interest-cards.js?v=20261114-interest1"></script><script src="shared-interest-pages.js?v=20261118-event-art1"></script><link rel="stylesheet" href="career-learning.css?v=20261118-manager1"><script src="career-learning-rules.js?v=20261118-manager1"></script><script src="career-learning-integration.js?v=20261117-career-review1"></script><script src="career-learning-pages.js?v=20261118-manager1"></script><link rel="stylesheet" href="career-event-pages.css?v=20261118-event-art1"><script src="career-event-data.js?v=20261118-event-art1"></script><script src="career-event-rules.js?v=20261118-manager1"></script><script src="career-event-integration.js?v=20261117-career-review1"></script><script src="career-event-pages.js?v=20261118-manager1"></script><link rel="stylesheet" href="home-insurance.css?v=1"><script src="home-insurance.js?v=1"></script><link rel="stylesheet" href="etf-pages.css?v=1"><script src="etf-pages.js?v=1"></script><script src="owner-housing.js?v=2"></script></body></html>
 
 
 

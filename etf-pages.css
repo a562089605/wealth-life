@@ -1,0 +1,24 @@
+.etf-art {
+ display: block;
+ width: min(155px, 42%);
+ max-height: 75px;
+ object-fit: contain;
+ margin: 0 auto 8px;
+ border-radius: 12px;
+}
+.etf-paper {
+ color: #303b24;
+ background: #fff4d8;
+ border: 2px solid #b4a668;
+ border-radius: 15px 11px 16px 10px;
+ padding: 12px;
+ margin-bottom: 8px;
+}
+.etf-card { background: #fff9e6; border-color: #b4a668; }
+.etf-card .wl-chart { max-height: 42px; }
+.etf-paper .wl-chart { background: #fff9e6; border-radius: 10px; }
+.etf-paper .wl-chart polyline { stroke: #648043; stroke-linejoin: round; }
+.etf-paper .wl-chart circle { fill: #648043; }
+.etf-paper .wl-chart path { stroke: #b8a574; }
+.etf-price { font-size: 1.45rem; font-weight: 750; }
+.etf-price small { font-size: 0.76rem; font-weight: 550; }

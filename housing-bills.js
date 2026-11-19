@@ -2,7 +2,7 @@
 function livingBillQuote(){
  const paid=paymentReceipt(),selected=!!state.housing&&state.housing!=='unselected';
  const housing=roundCash(Math.max(0,(state.housingCost||0)-(paid.housing||0))),living=roundCash(Math.max(0,livingTotal()-(paid.living||0)));
- const q={month:state.month,selected,housing,living,total:roundCash(housing+living),blocked:housingHandoverDue()};
+ const q={month:state.month,selected,housing,living,total:roundCash(housing+living),blocked:housingHandoverDue()||!!window.OwnerHousing?.saleDue()};
  q.token=[q.month,state.housing,state.housingCost,livingTotal(),paid.housing||0,paid.living||0,state.pendingHousingMove?.requestedMonth??'',q.blocked].join('|');return q;
 }
 function confirmLivingBill(month,token){

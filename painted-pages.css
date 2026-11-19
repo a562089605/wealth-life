@@ -80,3 +80,18 @@
  background:var(--stat-paper);
  filter:blur(.75cqw);
 }
+
+.painted-canvas .owner-housing-entry {
+ position: absolute;
+ z-index: 4;
+ top: 15%;
+ left: 21%;
+ width: 58%;
+ min-height: 42px;
+ margin: 0;
+ border: 1px solid #958550;
+ border-radius: 19px;
+ background: #fff0bd;
+ color: #34452d;
+ font-size: clamp(12px, 3vw, 17px);
+}
