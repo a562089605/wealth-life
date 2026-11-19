@@ -2,8 +2,8 @@
 (function(root){
  'use strict';
  const R=root.CareerLearningRules,E=root.CareerEventRules;
- const baseValue=200000,tiers=[10,20,30,51],reserveTarget=50000,reserveFloor=25000;
- const firstPrice=shares=>money(baseValue*shares/100);
+ const baseValue=200000,controlShare=51,reserveTarget=50000,reserveFloor=25000;
+
  const money=n=>Math.round((n+Number.EPSILON)*100)/100;
  const employed=s=>!!s.job&&!s.retired&&!s.unemployedMonths;
  const accounts=s=>Object.values(s.cafeEquity?.stores||{});
@@ -40,7 +40,7 @@
  function quote(s,id,target,mode){
   const a=s.cafeEquity?.stores?.[id],shares=a?.shares||0;
   if(a?.trade)return {ok:false,reason:'已有一笔股份交易等待交割。'};
-  if(![0,...tiers].includes(target)||shares===target)return {ok:false,reason:'请选择有效的持股比例。'};
+  if(target!==(shares?0:controlShare))return {ok:false,reason:'只能买入控股权或卖出全部股份。'};
   const first=!shares,buy=target>shares;
   if(first&&(id!==E.storeKey(s)||!eligible(s)))return {ok:false,reason:'当前尚未满足合伙邀请条件。'};
   if(first&&!['manage','shareholder'].includes(mode)||!buy&&!target&&a.managing&&!['manager','leave'].includes(mode))
@@ -149,7 +149,7 @@
   closeBooks(s,settlement,id);
  }
  const assetValue=s=>money(accounts(s).reduce((n,a)=>n+valuation(a)*a.shares/100+(a.trade?.buy?a.trade.amount:0),0));
- const api={tiers,firstPrice,requirements,eligible,current,position,valuation,quote,confirm,handover,closeMonth,deliver,assetValue};
+ const api={controlShare,requirements,eligible,current,position,valuation,quote,confirm,handover,closeMonth,deliver,assetValue};
  root.CafeEquity=api;
  if(typeof module!=='undefined')module.exports=api;
 })(typeof window==='undefined'?globalThis:window);
