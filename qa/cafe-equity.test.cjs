@@ -155,4 +155,54 @@ assert.equal(E.current(reserve).months[n].pool,0);
 assert.equal(E.current(reserve).months[n].reserve,31000);
 assert.equal(CareerLearningRules.trust(22),20);
 assert.equal(CareerLearningRules.trust(-2),0);
+function partnerFixture(month=4){
+ const player=fixture();
+ player.month=month;
+ player.job='在店管理合伙人';
+ player.annualSalary=70000;
+ player.cafeEquity={stores:{[id]:{id,shares:20,managing:true,cash:50000,reserve:50000,loss:0,months:{},lots:[]}}};
+ return player;
+}
+const events=CareerEventRules,eventOpts={save,free:80};
+function reserveEvent(player,card,roll=0){
+ return events.reserve(player,'partner-'+card,{save,random:()=>roll}).record;
+}
+const retaining=partnerFixture(7);
+assert.equal(events.reserve(retaining,'manager-equipment',eventOpts).ok,false);
+assert.equal(events.choose(retaining,reserveEvent(retaining,'reserve').id,1,eventOpts).ok,true);
+assert.equal(close(retaining).cafeDividend,900);
+assert.equal(E.current(retaining).reserve,52000);
+assert.equal(E.current(retaining).months[7].retained,2000);
+assert.equal(events.reserve(retaining,'partner-reserve',eventOpts).ok,false);
+
+for(const [card,cost] of [['machine',2000],['beans',1200]]){
+ const player=partnerFixture(),account=E.current(player),event=reserveEvent(player,card);
+ account.cash=cost-25;
+ assert.match(events.choose(player,event.id,1,eventOpts).reason,/25.00/);
+ account.cash=50000;
+ assert.equal(events.choose(player,event.id,1,eventOpts).ok,true);
+ assert.equal(player.cash,150000);
+ close(player);
+ assert.equal(account.months[4].expenses,cost);
+ assert.equal(account.months[4].adjustment,0);
+ for(let month=5;month<=10;month++){
+  close(player);
+  assert.equal(account.months[month].adjustment,300);
+ }
+ close(player);
+ assert.equal(account.months[11].adjustment,0);
+}
+
+const order=partnerFixture();
+const orderEvent=reserveEvent(order,'order');
+assert.equal(events.choose(order,orderEvent.id,0,{...eventOpts,free:3}).ok,false);
+assert.equal(events.choose(order,orderEvent.id,0,eventOpts).ok,true);
+assert.equal(events.earned(order).hours,4);
+assert.equal(close(order).cafeDividend,1390);
+const bakery=partnerFixture();
+const bakeryEvent=reserveEvent(bakery,'bakery',.9999);
+assert.equal(events.choose(bakery,bakeryEvent.id,1,eventOpts).ok,true);
+close(bakery);
+assert.equal(E.current(bakery).months[4].adjustment,1300);
+assert.equal(E.current(bakery).months[4].expenses,600);
 console.log('PASS cafe equity eligibility, locked quotes, settlement order, dividend, management, refund and reserves');

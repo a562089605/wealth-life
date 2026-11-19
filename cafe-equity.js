@@ -94,10 +94,11 @@
   for(const id of targets){
    const a=account(s,id);
    if(a.months[month])continue;
+   const {adjustment,retention}=E.partnerEffects(s,month,id);
    const sales=E.sales(s,month,id),revenue=money(sales.revenue*inflation*demand),materials=money(revenue*.30);
    const income=id===storeId?settlement.careerIncome:null;
    const management=income?money(income.baseWages+(income.fixedBonus||0)+(income.eventWages||0)+(income.eventBonus||0)):id===storeId?0:5333.33;
-   const fixed=money((28000-5333.33)*inflation+management),profit=money(revenue-materials-fixed-sales.expenses);
+   const fixed=money((28000-5333.33)*inflation+management),profit=money(revenue-materials-fixed-sales.expenses+adjustment);
    const priorLoss=a.loss;
    a.loss=money(Math.max(0,priorLoss-profit));
    a.cash=money(Math.max(0,a.cash+profit));
@@ -106,11 +107,13 @@
    const contribution=money(Math.min(Math.max(0,reserveTarget-a.reserve),available*(a.reserve<reserveFloor?1:.5),Math.max(0,a.cash-a.reserve)));
    const belowFloor=a.reserve<reserveFloor;
    a.reserve=money(a.reserve+contribution);
-   const pool=belowFloor?0:money(Math.max(0,Math.min(available-contribution,a.cash-a.reserve)));
+   const distributable=belowFloor?0:money(Math.max(0,Math.min(available-contribution,a.cash-a.reserve)));
+   const retained=money(Math.min(distributable,retention)),pool=money(distributable-retained);
+   a.reserve=money(a.reserve+retained);
    a.cash=money(a.cash-pool);
    const dividend=money(pool*a.shares/100);
-   a.months[month]={month,baseRevenue:sales.baseRevenue,revenue,materials,fixed,expenses:sales.expenses,profit,pool,shares:a.shares,dividend,reserve:a.reserve,cash:a.cash,
-    reason:pool?'':belowFloor||contribution?'门店补充营运储备':'本月无可分配利润'};
+   a.months[month]={month,baseRevenue:sales.baseRevenue,revenue,materials,fixed,expenses:sales.expenses,adjustment,retained,profit,pool,shares:a.shares,dividend,reserve:a.reserve,cash:a.cash,
+    reason:pool?'':belowFloor||contribution||retained?'门店补充营运储备':'本月无可分配利润'};
    if(dividend){s.cash=money(s.cash+dividend);ledger(s,'cafeDividend',month,dividend,id);settlement.cafeDividend=money((settlement.cafeDividend||0)+dividend);}
   }
  }
