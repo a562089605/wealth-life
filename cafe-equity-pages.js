@@ -85,6 +85,11 @@
    p.row(monthly,'门店净利润',money(last.profit));
    p.row(monthly,'门店可分红金额',money(last.pool));
    p.row(monthly,'我的分红到账',money(last.dividend));
+   if(last.deferredDividend)p.row(monthly,'次月补发（含 10% 奖励）',money(roundCash(last.deferredDividend*1.10)));
+   if(last.deferredPaid)p.row(monthly,'本月已补发（含奖励）',money(last.deferredPaid));
+   if(last.payoutShortfall)p.row(monthly,'补发分红资金缺口',money(last.payoutShortfall));
+   if(last.fundingRepaid)p.row(monthly,'本月已归还补发款',money(last.fundingRepaid));
+   if(last.dividendFundingDue)p.row(monthly,'尚待归还补发款',money(last.dividendFundingDue));
   }else{
    p.row(monthly,'结算状态','尚无月结');
   }

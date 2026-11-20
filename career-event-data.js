@@ -4,19 +4,19 @@
  "partner-reserve": {
   "id": "partner-reserve",
   "title": "淡季前的账本",
-  "story": "9 月的淡季快到了。你翻开账本，考虑要不要多留一笔营运现金。",
+  "story": "淡季快到了。作为股东，你翻看着账本，盘算门店接下来的现金流。",
   "art": "assets/career-events-20261116/partner-reserve.webp?v=20261119-painted2",
   "options": [
    {
-    "label": "照常分红",
-    "description": "按现有月结规则计算分红。",
+    "label": "照常领取",
+    "description": "",
     "effects": {}
    },
    {
-    "label": "给门店多留一笔现金",
-    "description": "从本月可分配利润最多留 $2,000，补充营运储备；实际留存以月结为准。",
+    "label": "延后领一部分",
+    "description": "8 月先领 2/3，9 月补发剩下的 1/3，延后部分加 10% 奖励。",
     "effects": {
-     "retain": 2000
+     "deferDividend": true
     }
    }
   ],
@@ -25,37 +25,26 @@
  "partner-machine": {
   "id": "partner-machine",
   "title": "咖啡机修还是换",
-  "story": "咖啡机又闹起了脾气。维修师傅递过来两份报价。",
-  "art": "assets/career-events-20261116/partner-machine.webp?v=20261119-painted2",
+  "story": "咖啡机又出故障了。维修师傅递来两份报价。",
+  "art": "assets/career-events-20261116/partner-machine.webp?v=20261119-handpainted3",
   "options": [
    {
-    "label": "维修旧机器",
-    "description": "门店支付 $500。",
-    "effects": {
-     "storeCost": 500
-    }
+    "label": "临时维修",
+    "description": "门店支出 $500。",
+    "effects": {"storeCost": 500, "machineTemporaryRepair": true}
    },
    {
     "label": "更换机器",
-    "description": "门店支付 $2,000。次月起每月节省 $300，持续 6 个月。",
-    "effects": {
-     "storeCost": 2000,
-     "monthlySaving": 300,
-     "duration": 6
-    }
-   },
-   {
-    "label": "暂缓处理",
-    "description": "先维持营业，门店本月不花这笔钱。",
-    "effects": {}
+    "description": "门店支出 $2,000，24 个月免故障维修。",
+    "effects": {"storeCost": 2000, "machineWarrantyMonths": 24}
    }
   ],
   "effects": null
  },
  "partner-beans": {
   "id": "partner-beans",
-  "title": "豆商的年度报价",
-  "story": "豆商带着样品来访，愿意给门店一份采购折扣。",
+  "title": "豆商的预付报价",
+  "story": "豆商带来新豆样品，预付半年豆款可享折扣。",
   "art": "assets/career-events-20261116/partner-beans.webp?v=20261119-painted2",
   "options": [
    {
@@ -64,7 +53,7 @@
     "effects": {}
    },
    {
-    "label": "预付豆款",
+    "label": "预付半年豆款",
     "description": "门店预付 $1,200。次月起连续 6 个月，每月抵扣 $200，另省 $100。",
     "effects": {
      "storeCost": 1200,
@@ -79,13 +68,15 @@
   "id": "partner-order",
   "title": "周末的大订单",
   "story": "附近公司要订一批饮品。现有排班忙不过来，你得决定怎么接单。",
-  "art": "assets/career-events-20261116/partner-order.webp?v=20261119-painted2",
+  "art": "assets/career-events-20261116/partner-order.webp?v=20261119-reference6",
   "options": [
    {
     "label": "自己加班接单",
-    "description": "占用 4 小时自由时间，门店本月净增 $450。",
     "effects": {
      "hours": 4,
+     "paidHours": 4,
+     "energy": -8,
+     "stress": 5,
      "storeNet": 450
     }
    },
@@ -112,7 +103,7 @@
   "options": [
    {
     "label": "小规模试卖",
-    "description": "门店投入 $200，扣原料后的额外收入为 $100–$500。",
+    "description": "启动费用 $200。",
     "effects": {
      "storeCost": 200,
      "netRange": [
@@ -122,8 +113,8 @@
     }
    },
    {
-    "label": "投入正式推广",
-    "description": "门店投入 $600，扣原料后的额外收入为 $300–$1,300。",
+    "label": "正式推广",
+    "description": "启动费用 $600。",
     "effects": {
      "storeCost": 600,
      "netRange": [

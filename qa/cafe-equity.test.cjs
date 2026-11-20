@@ -10,7 +10,7 @@ function fixture(){
   coffee:{storeId:id,managerTrust:18,progression:{managerMonths:12},skills:{service:{xp:400},management:{xp:400}}}};
 }
 function pay(role){return role==='partner'?{baseWages:5833.33}:{baseWages:4833.33,fixedBonus:500};}
-function close(s){const settlement={month:s.month+1,careerIncome:s.job?pay(CareerLearningRules.role(s.job)):null};
+function close(s){const settlement={month:s.month+1,careerIncome:s.job?{...pay(CareerLearningRules.role(s.job)),eventWages:CareerEventRules.earned(s).wages}:null};
  E.closeMonth(s,settlement);
  E.closeMonth(s,settlement);
  s.month++;
@@ -173,10 +173,32 @@ function reserveEvent(player,card,roll=0){
 const retaining=partnerFixture(7);
 assert.equal(events.reserve(retaining,'manager-equipment',eventOpts).ok,false);
 assert.equal(events.choose(retaining,reserveEvent(retaining,'reserve').id,1,eventOpts).ok,true);
-assert.equal(close(retaining).cafeDividend,900);
-assert.equal(E.current(retaining).reserve,52000);
-assert.equal(E.current(retaining).months[7].retained,2000);
+assert.equal(close(retaining).cafeDividend,866.67);
+assert.equal(E.current(retaining).reserve,50000);
+assert.equal(E.current(retaining).months[7].deferredDividend,433.33);
 assert.equal(events.reserve(retaining,'partner-reserve',eventOpts).ok,false);
+assert.equal(close(retaining).cafeDividend,717.99);
+assert.equal(E.current(retaining).months[8].deferredPaid,476.66);
+assert.equal(E.current(retaining).months[8].delayReward,43.33);
+const nextAfterPayout=retaining.month;
+close(retaining);
+assert.equal(E.current(retaining).months[nextAfterPayout].deferredPaid,0);
+
+const constrained=partnerFixture(7);
+const constrainedEvent=reserveEvent(constrained,'reserve');
+assert.equal(events.choose(constrained,constrainedEvent.id,1,eventOpts).ok,true);
+close(constrained);
+events.store(constrained).expenses.push({month:8,amount:55000});
+assert.equal(close(constrained).cafeDividend,476.66);
+assert.equal(E.current(constrained).months[8].payoutShortfall,476.66);
+assert.equal(E.current(constrained).dividendFundingDue,476.66);
+events.store(constrained).expenses.push({month:9,amount:6300});
+assert.equal(close(constrained).cafeDividend,undefined);
+assert.equal(E.current(constrained).months[9].fundingRepaid,200);
+assert.equal(E.current(constrained).dividendFundingDue,276.66);
+assert.equal(close(constrained).cafeDividend,undefined);
+assert.equal(E.current(constrained).months[10].fundingRepaid,276.66);
+assert.equal(E.current(constrained).dividendFundingDue,0);
 
 for(const [card,cost] of [['machine',2000],['beans',1200]]){
  const player=partnerFixture(),account=E.current(player),event=reserveEvent(player,card);
@@ -190,18 +212,22 @@ for(const [card,cost] of [['machine',2000],['beans',1200]]){
  assert.equal(account.months[4].adjustment,0);
  for(let month=5;month<=10;month++){
   close(player);
-  assert.equal(account.months[month].adjustment,300);
+  assert.equal(account.months[month].adjustment,card==='beans'?300:0);
  }
  close(player);
  assert.equal(account.months[11].adjustment,0);
 }
 
 const order=partnerFixture();
+order.energy=80;
+order.stress=30;
 const orderEvent=reserveEvent(order,'order');
 assert.equal(events.choose(order,orderEvent.id,0,{...eventOpts,free:3}).ok,false);
 assert.equal(events.choose(order,orderEvent.id,0,eventOpts).ok,true);
-assert.equal(events.earned(order).hours,4);
-assert.equal(close(order).cafeDividend,1390);
+assert.deepEqual([events.earned(order).hours,events.earned(order).wages,order.energy,order.stress],[4,179.49,72,35]);
+assert.equal(order.cash,150000);
+assert.equal(close(order).cafeDividend,1354.1);
+assert.equal(E.current(order).months[4].profit,6770.51);
 const bakery=partnerFixture();
 const bakeryEvent=reserveEvent(bakery,'bakery',.9999);
 assert.equal(events.choose(bakery,bakeryEvent.id,1,eventOpts).ok,true);
@@ -209,3 +235,52 @@ close(bakery);
 assert.equal(E.current(bakery).months[4].adjustment,1300);
 assert.equal(E.current(bakery).months[4].expenses,600);
 console.log('PASS cafe equity eligibility, locked quotes, settlement order, dividend, management, refund and reserves');
+
+{
+ const events=CareerEventRules, card='partner-machine';
+ const options={save,random:()=>.99};
+ const s=partnerFixture(), originalMonth=s.month;
+ const initial=events.reserve(s,card,options).record;
+ assert.ok(initial);
+ assert.equal(events.eventOptions(s,initial).length,2);
+ assert.equal(events.choose(s,initial.id,2,options).ok,false);
+ assert.equal(events.choose(s,initial.id,0,{...options,save:()=>false}).ok,false);
+ assert.equal(events.sales(s).expenses,0);
+ assert.equal(events.choose(s,initial.id,0,options).ok,true);
+ assert.equal(events.sales(s).expenses,500);
+ const repaired=structuredClone(s);
+ function drawAt(offset,selection,trigger=0){
+  const visit=structuredClone(repaired);
+  visit.month=originalMonth+offset;
+  const rolls=[trigger,selection,0];
+  return events.drawManager(visit,{save,random:()=>rolls.shift()}).record?.cardId;
+ }
+ assert.equal(drawAt(1,.35),card);
+ assert.notEqual(drawAt(2,.45),card);
+ assert.equal(drawAt(3,.45),card);
+ assert.notEqual(drawAt(3,.8),card);
+ assert.equal(drawAt(3,0,.99),undefined);
+
+ const loan=partnerFixture();
+ events.store(loan).machine={dueMonth:loan.month,onLoan:true};
+ const due=events.drawManager(loan,options).record;
+ assert.equal(due.cardId,card);
+ assert.equal(events.eventOptions(loan,due).length,2);
+ E.current(loan).cash=0;
+ assert.equal(events.choose(loan,due.id,1,options).ok,false);
+ assert.equal(events.choose(loan,due.id,0,options).ok,true);
+ assert.equal(events.sales(loan).expenses,500);
+
+ const replaced=partnerFixture(), boughtAt=replaced.month;
+ const purchase=events.reserve(replaced,card,options).record;
+ assert.equal(events.choose(replaced,purchase.id,1,options).ok,true);
+ assert.equal(events.sales(replaced).expenses,2000);
+ assert.equal(events.partnerEffects(replaced,boughtAt+1,id).adjustment,0);
+ replaced.month=boughtAt+23;
+ assert.equal(events.reserve(replaced,card,options).ok,false);
+ const rolls=[0,.01,0];
+ assert.notEqual(events.drawManager(replaced,{...options,random:()=>rolls.shift()}).record?.cardId,card);
+ replaced.month++;
+ assert.equal(events.reserve(replaced,card,options).record?.cardId,card);
+ console.log('PASS espresso machine repair weights, replacement protection, saved loan follow-up and rollback');
+}

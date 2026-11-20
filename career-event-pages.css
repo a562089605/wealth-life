@@ -85,3 +85,255 @@
 .partner-option-copy > span { font-size:17px; line-height:1.4; }
 .partner-painted-option small { grid-column:2; }
 .partner-painted-card > #actions { display:none!important; }
+
+/* Illustrated option rows for partner events. */
+.partner-painted-card #eventData .illustrated-partner-option {
+ --wash:#fae7a5;
+ --rim:#eac76b;
+ --badge:#e75c30;
+ --ink:#bc3923;
+ grid-template-columns:clamp(30px,10vw,43px) minmax(0,1fr) clamp(44px,17vw,76px);
+ align-items:center;
+ gap:clamp(6px,2vw,11px);
+ margin:7px 0;
+ padding:8px 10px;
+ border:2px solid var(--rim)!important;
+ border-radius:22px 19px 20px 18px / 17px 21px 17px 20px;
+ background:radial-gradient(ellipse at 14% 19%,#fff9df90,transparent 55%),
+            radial-gradient(ellipse at 92% 89%,var(--wash),transparent 75%),#fff8e9!important;
+ box-shadow:inset 0 0 0 1px #fff8e7ad;
+}
+.partner-painted-card #eventData .illustrated-partner-option[data-tone="1"] {
+ --wash:#bdebd9;
+ --rim:#8bceb9;
+ --badge:#008fbc;
+ --ink:#ad3623;
+}
+.partner-painted-card #eventData .illustrated-partner-option[data-tone="2"] {
+ --wash:#f3dbbb;
+ --rim:#d4ae85;
+ --badge:#ac613d;
+}
+.illustrated-partner-option .partner-option-letter {
+ width:100%;
+ height:auto;
+ aspect-ratio:1;
+ background:radial-gradient(ellipse at 29% 24%,#ffffff45,transparent 55%),var(--badge);
+ transform:rotate(-6deg);
+ font:700 clamp(19px,6vw,28px)/1 WealthHand,'PingFang SC',sans-serif;
+}
+.illustrated-partner-option .partner-option-copy { gap:1px; }
+.illustrated-partner-option .partner-option-copy strong { color:#21271c; line-height:1.1; }
+.illustrated-partner-option .partner-option-copy > span {
+ color:#20384a;
+ font-size:clamp(15px,4.5vw,20px);
+ line-height:1.15;
+}
+.illustrated-partner-option .partner-option-copy > span > span { display:block; }
+.illustrated-partner-option .partner-option-copy b { color:var(--ink); white-space:nowrap; }
+.partner-option-art {
+ display:block;
+ width:100%;
+ aspect-ratio:1;
+ object-fit:contain;
+}
+
+.event.event-active[data-partner-event="partner-order"] { background:#fffcf3!important; }
+.event.event-active[data-partner-event="partner-order"] #eventTitle {
+ color:#121b13;
+ border-radius:31% 12% 24% 14% / 38% 35% 28% 31%;
+ background:radial-gradient(ellipse at center,#fae99c 38%,#fae99c88 68%,transparent 76%);
+}
+[data-partner-event="partner-order"] #eventType { color:#152820; background:#d0efdf; }
+[data-partner-event="partner-order"] #eventData .illustrated-partner-option {
+ --ink:#b82c22;
+ grid-template-columns:clamp(35px,12vw,58px) minmax(0,1fr) minmax(62px,31%);
+ gap:clamp(5px,1.8vw,12px);
+ margin:6px 0;
+ padding:7px 8px;
+ color:#402715;
+ border:0!important;
+ border-radius:16px 20px 15px 19px / 15px 14px 16px 18px;
+ background:radial-gradient(ellipse at 21% 23%,var(--wash) 12%,transparent 78%),
+            radial-gradient(ellipse at 91% 71%,var(--wash) 17%,transparent 87%),#fff8e8!important;
+ box-shadow:none;
+}
+[data-partner-event="partner-order"] #eventData .illustrated-partner-option[data-tone="0"] {
+ --wash:#f9e399;
+ --badge:#c7462c;
+}
+[data-partner-event="partner-order"] #eventData .illustrated-partner-option[data-tone="1"] {
+ --wash:#d4eac8;
+ --badge:#0783a0;
+}
+[data-partner-event="partner-order"] #eventData .illustrated-partner-option[data-tone="2"] {
+ --wash:#f6d9b3;
+ --badge:#bf5431;
+}
+[data-partner-event="partner-order"] .partner-option-copy {
+ position:relative;
+ gap:4px;
+ padding-inline-start:9px;
+}
+[data-partner-event="partner-order"] .partner-option-copy::before {
+ content:"";
+ position:absolute;
+ inset:5px auto 5px 1px;
+ width:2px;
+ border-radius:72% 35% 43% 64%;
+ background:#8c5e31;
+}
+[data-partner-event="partner-order"] .partner-option-copy strong {
+ width:fit-content;
+ color:#442818;
+ padding-bottom:4px;
+ font-size:clamp(17px,5vw,26px);
+ background:linear-gradient(177deg,transparent 78%,#d7a342 83%,#edc465 91%,transparent 94%);
+}
+[data-partner-event="partner-order"] .partner-option-copy > span {
+ color:#51351e;
+ font-size:clamp(13px,3.9vw,18px);
+ line-height:1.18;
+}
+[data-partner-event="partner-order"] .partner-option-letter {
+ border-color:#fff6db;
+}
+[data-partner-event="partner-order"] .partner-option-art { aspect-ratio:1.1; }
+
+/* These decisions use the approved card artwork as the printed surface. */
+.event.event-active.partner-reference-card > #eventData { padding:0; }
+.partner-reference-card .career-event-hero {
+ width:100%;
+ aspect-ratio:auto;
+ margin:0;
+ mask-image:none;
+}
+.partner-reference-card .career-event-hero img { width:100%; height:auto; object-fit:contain; transform:none; }
+.partner-reference-card #eventData > .row,
+.partner-reference-card #eventTitle,
+.partner-reference-card #eventDesc,
+.partner-reference-card .partner-option-letter,
+.partner-reference-card .partner-option-copy {
+ position:absolute;
+ width:1px;
+ height:1px;
+ padding:0;
+ margin:0;
+ overflow:hidden;
+ clip-path:inset(50%);
+}
+.event.event-active.partner-reference-card #eventData .illustrated-partner-option {
+ position:relative;
+ display:block;
+ width:100%;
+ aspect-ratio:auto;
+ margin:0 auto;
+ padding:0;
+ background:none!important;
+ border:0!important;
+ border-radius:0;
+}
+.partner-reference-card .partner-option-art { width:100%; height:auto; aspect-ratio:auto; object-fit:contain; }
+.event.event-active.order-reference-card #eventData .illustrated-partner-option[data-tone="0"] {
+ display:grid;
+ grid-template-columns:15% minmax(0,1fr) 32%;
+ gap:1.5%;
+ padding:9px 4% 10px;
+ background:url("assets/career-events-20261116/order-paper-strip.webp") center / 100% 100% no-repeat!important;
+}
+.order-reference-card .illustrated-partner-option[data-tone="0"]::before {
+ content:"";
+ position:absolute;
+ inset:2px 2.4%;
+ border-radius:19px 15px 20px 18px;
+ background:#fae6a5 url("assets/career-events-20261116/order-yellow-wash.webp") center / 26px auto;
+ pointer-events:none;
+}
+.order-reference-card .illustrated-partner-option[data-tone="0"] .partner-option-letter {
+ position:relative;
+ width:100%;
+ height:auto;
+ aspect-ratio:135 / 148;
+ clip-path:none;
+ transform:none;
+ border:0;
+ border-radius:0;
+ background:url("assets/career-events-20261116/order-a-badge.webp") center / contain no-repeat;
+ mask-image:radial-gradient(ellipse,#000 64%,transparent 83%);
+ color:transparent;
+}
+.order-reference-card .illustrated-partner-option[data-tone="0"] .partner-option-art {
+ position:relative;
+ width:108%;
+ max-width:none;
+ height:auto;
+ align-self:end;
+ margin-bottom:-1px;
+ margin-left:-4%;
+ object-fit:contain;
+ mask-image:radial-gradient(ellipse,#000 66%,transparent 88%);
+}
+.order-reference-card .illustrated-partner-option[data-tone="0"] .partner-option-copy {
+ position:relative;
+ clip-path:none;
+ width:auto;
+ height:auto;
+ padding:0 0 0 8px;
+ overflow:visible;
+}
+.order-reference-card .illustrated-partner-option[data-tone="0"] .partner-option-copy strong {
+ position:static;
+ font-size:clamp(16px,5.1vw,27px);
+ line-height:1.18;
+}
+.order-reference-card .illustrated-partner-option[data-tone="0"] .partner-option-copy > span {
+ font-size:clamp(13px,3.8vw,20px);
+ line-height:1.14;
+ color:#4d321d;
+}
+.order-reference-card .illustrated-partner-option[data-tone="0"] .partner-option-copy b { white-space:nowrap; }
+.partner-reference-card .career-event-option:not(.illustrated-partner-option) {
+ width:calc(100% - 16px);
+ margin:7px auto 0;
+}
+.partner-reference-card .illustrated-partner-option small {
+ position:absolute;
+ inset:auto 2% 2% auto;
+ margin:0;
+ padding:1px 4px;
+ background:#fff8e8;
+}
+
+.bakery-result-card .career-event-hero { aspect-ratio:2.15; }
+.bakery-result-summary {
+ display:grid;
+ justify-items:center;
+ gap:4px;
+ padding:10px 12px 14px;
+ margin:12px 0;
+ border-radius:20% 13% 15% 18% / 15% 23% 18% 21%;
+ background:radial-gradient(ellipse at 43% 52%,#f8e08e 25%,#fae9a7 59%,transparent 79%);
+ color:#492918;
+ text-align:center;
+ font:19px/1.25 WealthHand,'PingFang SC',sans-serif;
+}
+.bakery-result-summary img {
+ width:min(43%,160px);
+ height:auto;
+ mask-image:radial-gradient(ellipse,#000 65%,transparent 92%);
+}
+.bakery-result-summary strong { font-size:clamp(25px,7vw,35px); }
+.bakery-result-summary b { color:#bc281d; white-space:nowrap; }
+.event.event-active.bakery-result-card #eventData > .career-event-option {
+ width:min(52%,220px);
+ margin:12px auto 0;
+ padding:8px 14px;
+ border:2px solid #99501e;
+ border-radius:24px 21px 23px 20px / 21px 25px 20px 24px;
+ background:radial-gradient(ellipse at 42% 19%,#fff3c0a8,transparent 71%),
+            url("assets/career-events-20261116/order-yellow-wash.webp") center / 37px auto #f5c86e!important;
+ box-shadow:inset 0 0 0 2px #fff1c4,0 2px 0 #a8622d45;
+ color:#573219;
+ text-align:center;
+ font:clamp(21px,6vw,28px)/1.2 WealthHand,'PingFang SC',sans-serif;
+}
