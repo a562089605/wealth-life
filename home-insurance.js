@@ -61,15 +61,17 @@
   return beforeEvent.apply(this, args);
  };
 
- function openMenu() {
+ function openMenu(back=window.openRoom,backLabel='返回房屋') {
   if (state.requiredIncident) return openRequiredIncident();
   illustratedEvent('保险与保障', '保险与保障', '查看保障方案与本月保费。', [], [
    ['医疗险', openMedicalInsurance, false],
    ['宠物险', () => openInsurance('pet'), false],
    ['车险', () => openInsurance('auto'), false],
    ['房险', openPolicy, true],
-   ['返回房屋', window.openRoom, false]
+   ['收入保障', () => openInsurance('income'), false],
+   [backLabel, back, false]
   ], 'menu');
+  if($('eventTitle').textContent==='保险与保障')window.modalReturn=back;
  }
 
  function openPolicy() {

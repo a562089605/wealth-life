@@ -72,17 +72,12 @@
    ['生活活动',()=>el('lifestyleBtn').click(),false],['返回房屋',openRoom,false]
   ]);
  }
- function finances(){
-  showEvent('财务','资产、投资与贷款','查看现有账户，确认交易后才按原账本执行。',[],[
-   ['ETF投资',()=>buyInvestment('ETF'),true],['股票投资',()=>buyInvestment('股票'),false],
-   ['基金投资',()=>buyInvestment('基金'),false],['房产投资',()=>window.v242RealEstate(),false],['定期存款',()=>openCD(),false],
-   ['保险与保障',()=>window.HomeInsurance.openMenu(),false],['银行贷款',()=>openBankLoan(),false],['本月贷款还款',openLoanPayments,false],
-   ['资产总览',()=>{state.roomLocation='overview';save();visible=false;syncRoom();clearModals();el('qAssets').click();},false],
-   ['返回房屋',openRoom,false]
-  ]);
+ function openWealth(){
+  state.roomLocation='overview';save();visible=false;syncRoom();clearModals();el('qAssets').click();
  }
+ window.openFinanceAssets=()=>window.FinancePages.open(openWealth,true);
  const actions={work:()=>openWorkAdjustment(),study:learning,rest:()=>openExtraRest(),life:living,
-  relations:()=>el('networkBtn').click(),finance:finances,pets:()=>el('petBtn').click(),leave:leaveRoom,menu:()=>el('wlMenu').click()};
+  relations:()=>el('networkBtn').click(),finance:()=>window.FinancePages.open(openWealth),pets:()=>el('petBtn').click(),leave:leaveRoom,menu:()=>el('wlMenu').click()};
  document.addEventListener('click',e=>{
   const b=e.target.closest('[data-room]');if(!b||b.disabled||!visible||!activeGame())return;
   if(document.querySelector('.event-active')||!el('wlDrawer').hidden)return;

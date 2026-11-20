@@ -60,7 +60,7 @@ const priceText=money;
 const signedPercent=n=>(n>=0?'+':'')+(n*100).toFixed(2)+'%';
 function quoteChart(q){const h=q.history.slice(-121),min=Math.min(...h.map(p=>p.price))*.98,max=Math.max(...h.map(p=>p.price))*1.02,points=h.map((p,i)=>(10+i*280/Math.max(1,h.length-1)).toFixed(2)+','+(115-(p.price-min)/(max-min)*100).toFixed(2)).join(' ');return '<svg class="wl-chart" viewBox="0 0 300 130" role="img" aria-label="游戏价格历史：'+h.length+'个月点位"><path d="M10 15H290M10 65H290M10 115H290" stroke="#8b9c9f" stroke-dasharray="4 5" fill="none"/><polyline points="'+points+'" fill="none" stroke="#26877f" stroke-width="3"/><circle cx="'+(h.length===1?10:290)+'" cy="'+(115-(h.at(-1).price-min)/(max-min)*100)+'" r="4" fill="#26877f"/></svg>'}
 function returnPeriod(q,months){const last=q.history.at(-1),old=q.history.find(h=>h.month===last.month-months);return old?signedPercent(last.price/old.price-1):'记录不足'}
-function openMarket(kind='ETF'){if(kind==='ETF'&&window.ETFPages)return ETFPages.showList();const instruments=V26_INSTRUMENTS.filter(i=>i.kind===kind);showEvent('投资',kind+'品种','先查看范围与风险，再打开购买详情。所有价格为游戏模拟，不是实时行情。',[],[['返回',finish,false]]);$('eventData').innerHTML='<div class="wl-mini-grid">'+instruments.map(i=>{const q=quoteFor(i.id);return '<button class="wl-choice-card" data-v26="market" data-key="'+i.id+'" aria-label="查看 '+i.name+'"><strong>'+i.name+'</strong><b>'+priceText(q.price)+'</b><small class="'+(q.price>=q.previous?'wl-up':'wl-down')+'">较上月 '+signedPercent(q.price/q.previous-1)+'</small><small>'+i.desc+'</small><span>查看购买详情 →</span></button>'}).join('')+'</div>'; $('eventData').style.display='block'}
+function openMarket(kind='ETF',back=finish,extraActions=[]){if(kind==='ETF'&&window.ETFPages)return ETFPages.showList(back===finish?undefined:back);const instruments=V26_INSTRUMENTS.filter(i=>i.kind===kind);showEvent('投资',kind+'品种','先查看范围与风险，再打开购买详情。所有价格为游戏模拟，不是实时行情。',[],[...extraActions,['返回',back,false]]);if(back!==finish)window.modalReturn=back;$('eventData').innerHTML='<div class="wl-mini-grid">'+instruments.map(i=>{const q=quoteFor(i.id);return '<button class="wl-choice-card" data-v26="market" data-key="'+i.id+'" aria-label="查看 '+i.name+'"><strong>'+i.name+'</strong><b>'+priceText(q.price)+'</b><small class="'+(q.price>=q.previous?'wl-up':'wl-down')+'">较上月 '+signedPercent(q.price/q.previous-1)+'</small><small>'+i.desc+'</small><span>查看购买详情 →</span></button>'}).join('')+'</div>'; $('eventData').style.display='block'}
 
 function openInstrument(id){const cfg=V26_INSTRUMENTS.find(i=>i.id===id);if(!cfg)return;if(cfg.kind==='ETF'&&window.ETFPages)return ETFPages.showDetail(cfg);const q=quoteFor(id),holdings=state.assets.filter(a=>a.instrument===id),cost=holdings.reduce((n,a)=>n+a.cost,0),value=holdings.reduce((n,a)=>n+a.value,0),pct=q.price/q.previous-1;
  showEvent('投资预览',cfg.name,cfg.desc+' 当前显示游戏月度价格；开局没有1/5/10年历史，不会编造收益。',[],[['确认买入',()=>{const amount=Number($('v26InvestAmount').value);if(!Number.isFinite(amount)||amount<=0||Math.round(amount*100)!==amount*100&&Math.abs(Math.round(amount*100)-amount*100)>.00001)return;if(!spendConfirmed('investmentBuy',amount,{instrument:id,price:q.price}))return;initQuotes();state.assets.push({id:assetId(),name:cfg.name,kind:'market',category:cfg.kind,instrument:id,cost:amount,value:amount,shares:amount/q.price,entryPrice:q.price,entryMonth:state.month,cf:0});finish()},true,state.cash<=0],['返回品种列表',()=>openMarket(cfg.kind),false],['取消',finish,false]]);
@@ -116,10 +116,51 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-v26]');if(
 });
 $('lifestyleBtn').onclick=$('wellnessBtn').onclick=()=>{showEvent('生活','安排本月生活','卡片是付款及效果预览。点击确认后执行，每月安排一次。',[],[['返回，不安排',finish,false]]);$('eventData').innerHTML=lifeMarkup();$('eventData').style.display='block'};
 $('businessBtn').onclick=()=>{showEvent('机会','本月四个机会','最多选择一个，也可以全不选；本月刷新不更换机会。',[],[['返回',finish,false]]);$('eventData').innerHTML=opportunityMarkup();$('eventData').style.display='block'};
+function emergencyMonthlyExpenses(){
+ const petCosts=(state.pets||[]).reduce((sum,pet)=>sum+petMonthlyFee(pet),0);
+ return roundCash(livingBaseAmount(state)+(state.housingCost||0)+petCosts+
+  (state.carRunningCost||0)+premiumsTotal()+loanBudgetTotal());
+}
+
 // Legacy direct-transfer buttons also require a preview before changing cash.
-$('emergencyBtn').onclick=()=>{const amount=Math.max(0,Math.min(1000,state.cash));showEvent('应急金','划入应急金','这笔钱仍是你的资产；确认后才从可用现金划出。',[['划入金额',money(amount)],['剩余现金',money(state.cash-amount)]],[['确认划入',()=>{if(!spendConfirmed('emergencyTransfer',amount))return;state.emergencyFund=(state.emergencyFund||0)+amount;finish()},true,amount<=0],['取消',finish,false]])};
+$('emergencyBtn').onclick=()=>{
+ syncFinance();
+ const amount=Math.max(0,Math.min(1000,state.cash));
+ const monthly=emergencyMonthlyExpenses();
+ const housingPending=!state.housing||state.housing==='unselected';
+ const note='建议预留 3–6 个月的必要开支。遇到失业、收入中断或突发医疗费用时，这笔钱可以先用来付生活账单，减少临时借款或卖出投资的需要。'+
+  (housingPending?'住房待选，参考金额暂未计入住房费。':'');
+ const targets=monthly>0?[
+  ['每月必要开支',money(monthly)],
+  ['3–6 个月参考金额',money(monthly*3)+' 至 '+money(monthly*6)]
+ ]:[];
+ showEvent('应急金','划入应急金',note,[
+  ...targets,['划入金额',money(amount)],['剩余现金',money(state.cash-amount)]
+ ],[
+  ['确认划入',()=>{
+   if(!spendConfirmed('emergencyTransfer',amount))return;
+   state.emergencyFund=(state.emergencyFund||0)+amount;
+   finish();
+  },true,amount<=0],
+  ['取消',finish,false]
+ ]);
+};
 const payDebtBase=payDebt;payDebt=function(name){const amount=Math.max(0,Math.min(1000,state.cash,state.debt[name]||0));showEvent('还款预览',name,'确认后减少现金与贷款本金；净资产不因偿还本金改变。',[['还款金额',money(amount)],['剩余现金',money(state.cash-amount)],['剩余本金',money((state.debt[name]||0)-amount)]],[['确认还款',()=>{payDebtBase(name);finish()},true,amount<=0],['取消',finish,false]])};
-const sellBase=sellAsset;sellAsset=function(i){const a=state.assets[i];if(!a||a.kind==='cd'){sellBase(i);return}const amount=a.kind==='rental'?a.value-a.mortgage:a.value??a.cost;showEvent('出售预览',a.name,'确认后按当前游戏市值出售；投资房出售款先清偿对应房贷。',[['预计到账',priceText(amount)]],[['确认出售',()=>{if(state.assets[i]!==a)return;sellBase(i)},true,state.cash+amount<0],['取消',finish,false]])};
+const sellBase=sellAsset;
+sellAsset=function(i,back=finish){
+ const asset=state.assets[i];
+ if(!asset)return;
+ if(asset.kind==='cd')return previewCDWithdrawal(asset,back);
+ const rental=asset.kind==='rental';
+ const amount=rental?asset.value-asset.mortgage:asset.value??asset.cost;
+ showEvent('出售预览',asset.instrument==='gold'?'卖出黄金':asset.name,
+  rental?'确认后按当前游戏市值出售；投资房出售款先清偿对应房贷。':'确认后按当前游戏市值出售。',
+  [['预计到账',priceText(amount)]],[
+   ['确认出售',()=>{if(state.assets[i]===asset)sellBase(i,back)},true,state.cash+amount<0],
+   ['取消',back,false]
+  ]);
+ if(back!==finish)window.modalReturn=back;
+};
 // Keep monetary previews explicit in retained modules without a second duplicate list.
 const showFlowBase=showEvent;showEvent=function(type,title,desc,data=[],actions=[]){if((type==='HOBBY'&&title==='完成一次练习')||(type==='CAREER'&&title==='求职成功')){const practicedMonth=state.month,completedStep=type==='HOBBY'?5:2;actions=actions.map(a=>a[0]==='继续'?[a[0],()=>{if(type==='HOBBY')finish();else if(state.month===practicedMonth&&state.turn?.index===completedStep&&$('game').classList.contains('v24-running'))completeMonthlyStep(completedStep);else finish()},a[2],a[3]]:a)}if(type==='FAMILY'&&actions.some(a=>a[0]==='考虑孩子'))data=[...data,['新增育儿预算','$550.00/月，确认后从本月起生效']];if(type==='START')actions=[['开始住房安排',()=>{finish();startV24Turn(false)},true]];showFlowBase(type,title,desc,data,actions);const buttons=[...$('actions').children];buttons.forEach((b,i)=>{const label=actions[i]?.[0]||'',match=data.find(d=>label===d[0]||label==='练习 '+d[0]||label==='领养'+d[0]);if(match){b.classList.add('wl-choice-card');b.textContent='';const strong=document.createElement('strong');strong.textContent=label;const small=document.createElement('small');small.textContent=match[1];const confirm=document.createElement('span');confirm.textContent='确认选择 →';b.append(strong,small,confirm);b.setAttribute('aria-label',label)}});if(['HOBBY','PET','LIFESTYLE'].includes(type)&&buttons.some(b=>b.classList.contains('wl-choice-card')))$('eventData').innerHTML=''};
 const renderFlowBase=render;render=function(){renderFlowBase();if(!state)return;const m=calcMetrics();$('net').textContent=money(m.monthlyCF);$('networkCount').textContent=state.people.length+' 人';$('peopleNetwork').replaceChildren();for(const p of state.people){const row=document.createElement('div');row.className='asset';const title=document.createElement('strong');title.textContent=p.name+' · '+(p.status||'认识的人');const detail=document.createElement('div');detail.className='sub';detail.textContent=p.age+'岁 · '+p.job+' · '+relationStage(p)+' '+Math.round(p.relation)+'/100 · '+p.life;row.append(title,detail);$('peopleNetwork').appendChild(row)}state.assets.forEach((a,i)=>{if(!a.instrument)return;const row=document.querySelector('[data-sell="'+i+'"]')?.closest('.asset.row');if(!row)return;const q=quoteFor(a.instrument),gain=roundCash(a.value-a.cost);row.firstElementChild.innerHTML='<b>'+a.name+'</b><br><small>买入 '+priceText(a.entryPrice)+' · 当前 '+priceText(q.price)+'<br>份额 '+a.shares.toFixed(6)+' · 成本 '+priceText(a.cost)+'</small>';const result=row.querySelector('.good');result.className=gain>=0?'wl-up':'wl-down';result.textContent='市值 '+priceText(a.value)+' · 浮盈亏 '+priceText(gain)+' ('+signedPercent(a.value/a.cost-1)+')';const detail=document.createElement('button');detail.textContent='查看走势';detail.onclick=()=>openInstrument(a.instrument);row.lastElementChild.appendChild(detail)})};
@@ -129,7 +170,7 @@ const openFlowBase=openGame;openGame=function(){if(!state.paymentFlowVersion){st
 const finishFlowBase=finish;finish=function(){finishFlowBase();if(!document.querySelector('.event-active')){$('eventData').innerHTML='';$('eventData').style.display='';}};
 
 // Keep the CD purchase entry beside its balance in the wealth page.
-const renderCDEntryBase=render;render=function(){renderCDEntryBase();const box=$('v22CDs');if(!state||!box)return;const b=document.createElement('button');b.id='buyCDFromWealth';b.className='primary';b.textContent='购买 CD · 查看详情';b.onclick=openCD;box.appendChild(b)};
+const renderCDEntryBase=render;render=function(){renderCDEntryBase();const box=$('v22CDs');if(!state||!box)return;const b=document.createElement('button');b.id='buyCDFromWealth';b.className='primary';b.textContent='管理定期存款';b.onclick=openCD;box.appendChild(b)};
 
 // One loss decision and at most one payment per monthly event, saved before its notice.
 function maybeInsuredJobLoss(){
@@ -152,10 +193,10 @@ function maybeInsuredJobLoss(){
   ['停工时间',months+' 个月'],['期间工资','$0.00/月'],['一次性到账',priceText(amount)],['持续开支',priceText(state.expenses)+'/月']
  ],[['继续',finish,true]]);return true;
 }
-const k401ExplanationBase=$('k401Btn').onclick;
-$('k401Btn').onclick=()=>{k401ExplanationBase();$('eventDesc').textContent='401(k) 是雇主提供的退休账户，可从工资中定期缴费；它是账户，不是保本投资。现实中税务与雇主匹配规则因计划而异。游戏采用税前缴费：设置3%或6%后，只在有工资的月末扣除个人缴费，并加入同额雇主匹配（最高税前工资3%）。未就业、失业或退休无工资时，两项都为0。余额计入净资产，随游戏市场涨跌；当前不支持提取，也未模拟年度额度、归属期及完整税法。';appendRetirementReference('https://www.irs.gov/retirement-plans/401k-plans');const b=document.createElement('button');b.className='secondary';b.textContent='返回，不修改';b.onclick=finish;$('actions').appendChild(b)};
-const iraExplanationBase=$('iraBtn').onclick;
-$('iraBtn').onclick=()=>{iraExplanationBase();$('eventDesc').textContent='IRA 是个人退休账户，可在金融机构开设；它是账户，不是固定利息产品。现实中Traditional IRA缴费可能抵税，Roth IRA缴费不抵税、符合条件的提取可能免税。游戏暂不区分两者：点击确认将现金$500.00转入IRA，净资产不因转账改变；余额随市场涨跌，无雇主匹配。当前不支持提取，未模拟抵税、收入资格、年度额度或提前提取税费；IRA余额不是可随时支付生活费的现金。';appendRetirementReference('https://www.irs.gov/retirement-plans/individual-retirement-arrangements-iras')};
+const k401ExplanationBase=open401Account;
+open401Account=function(back){k401ExplanationBase(back);$('eventDesc').textContent='401(k) 是雇主提供的退休账户，可从工资中定期缴费；它是账户，不是保本投资。现实中税务与雇主匹配规则因计划而异。游戏采用税前缴费：设置3%或6%后，只在有工资的月末扣除个人缴费，并加入同额雇主匹配（最高税前工资3%）。未就业、失业或退休无工资时，两项都为0。余额计入净资产，随游戏市场涨跌；当前不支持提取，也未模拟年度额度、归属期及完整税法。';appendRetirementReference('https://www.irs.gov/retirement-plans/401k-plans');const b=document.createElement('button');b.className='secondary';b.textContent='返回，不修改';b.onclick=finish;$('actions').appendChild(b)};
+const iraExplanationBase=openIRAAccount;
+openIRAAccount=function(back){iraExplanationBase(back);$('eventDesc').textContent='IRA 是个人退休账户，可在金融机构开设；它是账户，不是固定利息产品。现实中Traditional IRA缴费可能抵税，Roth IRA缴费不抵税、符合条件的提取可能免税。游戏暂不区分两者：点击确认将现金$500.00转入IRA，净资产不因转账改变；余额随市场涨跌，无雇主匹配。当前不支持提取，未模拟抵税、收入资格、年度额度或提前提取税费；IRA余额不是可随时支付生活费的现金。';appendRetirementReference('https://www.irs.gov/retirement-plans/individual-retirement-arrangements-iras')};
 function appendRetirementReference(url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='查看 IRS 官方说明（现实规则）';$('eventData').appendChild(a);$('eventData').style.display='block'}
 
 // Education and hobbies are independent; never turn an empty wallet into an unexplained lock.

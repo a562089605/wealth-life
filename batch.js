@@ -25,40 +25,40 @@ function unpaidLoanRows(){
 function bankLoanArt(name){
  return '<img class="wl-bank-art" src="./assets/bank-loans/'+name+'.webp" alt="">';
 }
-function showLoanReceipt(loan){
- const goBack=window.openRoom||finish;
+function showLoanReceipt(loan,goBack=window.openRoom||finish,backLabel='返回房屋'){
  const firstDue=currentLoanCycle().items.find(row=>row.key===loan.id)?.due||0;
  showEvent('银行','贷款已到账','本月首期在出门前支付。',[
   ['本次到账','+'+priceText(loan.principal)],['放款后现金',priceText(state.cash)],
   ['还款期限',loan.monthsLeft+'个月'],['固定年利率',(loan.apr*100).toFixed(2)+'%'],
   ['本月首期',priceText(firstDue)]
  ],[
-  ['前往本月还款',()=>openLoanPayments(goBack),true],
-  ['返回房屋',goBack,false]
+  ['前往本月还款',()=>openLoanPayments(goBack,backLabel),true],
+  [backLabel,goBack,false]
  ]);
  $('eventData').insertAdjacentHTML('afterbegin',bankLoanArt('receipt'));
  window.modalReturn=goBack;
 }
-function payLoanInstallment(key,after){
+function payLoanInstallment(key,after,backLabel){
  const row=currentLoanCycle().items.find(x=>x.key===key),t=loanTargets().find(x=>x.key===key);
  if(!row||!t||row.status==='paid'||state.cash<row.due)return;
  const previous=JSON.parse(JSON.stringify(state));
  if(!spendConfirmed('loanInstallment',row.due,{loan:row.name,loanId:key,principal:row.principal,interest:row.interest}))return;
  t.set(Math.max(0,roundCash(t.balance-row.principal)));t.l.monthsLeft=Math.max(0,t.l.monthsLeft-1);row.status='paid';
- try{save()}catch(error){state=previous;console.error('Loan payment save failed',error);openLoanPayments(after);$('eventDesc').textContent='还款未能存档，请重试。';return}
- openLoanPayments(after);
+ try{save()}catch(error){state=previous;console.error('Loan payment save failed',error);openLoanPayments(after,backLabel);$('eventDesc').textContent='还款未能存档，请重试。';return}
+ openLoanPayments(after,backLabel);
 }
-function openLoanPayments(after=window.openRoom||finish){
+function openLoanPayments(after=window.openRoom||finish,backLabel='返回房屋'){
  if(typeof after!=='function')after=window.openRoom||finish;
  syncFinance();
  const rows=currentLoanCycle().items,targets=loanTargets(),unpaid=unpaidLoanRows();
  const remaining=roundCash(unpaid.reduce((sum,row)=>sum+row.due,0));
  const shortfall=roundCash(Math.max(0,remaining-state.cash));
  showEvent('本月还款','本月贷款还款',unpaid.length?'还有 '+unpaid.length+' 笔本月月供待付。出门前需逐笔付清。':'本月月供已全部结清。',[],[
-  ...(shortfall>0?[['查看筹款方式',()=>showFundingOptions(remaining,()=>openLoanPayments(after)),true]]:[]),
-  ['返回房屋',after,!shortfall]
+  ...(shortfall>0?[['查看筹款方式',()=>showFundingOptions(remaining,()=>openLoanPayments(after,backLabel)),true]]:[]),
+  [backLabel,after,!shortfall]
  ]);
  if(state.requiredIncident?.status==='unpaid')return;
+ if(backLabel!=='返回房屋')window.modalReturn=after;
  const cards=rows.map(row=>{
   const loan=targets.find(target=>target.key===row.key)?.l||state.loans.find(loan=>loan.id===row.key);
   const paid=row.status==='paid';
@@ -78,7 +78,7 @@ function openLoanPayments(after=window.openRoom||finish){
  scroller.style.display='block';
  scroller.scrollTop=0;
  for(const button of scroller.querySelectorAll('[data-batch="payLoan"]')){
-  button.onclick=event=>{event.stopPropagation();payLoanInstallment(button.dataset.key,after)};
+  button.onclick=event=>{event.stopPropagation();payLoanInstallment(button.dataset.key,after,backLabel)};
  }
 }
 function settleMonthlyDebts(settlement){
@@ -135,8 +135,8 @@ function openInvestSettings(id,after=finish){ensureInvestSettings();const cfg=V2
 const instrumentBeforeBatch=openInstrument;openInstrument=function(id){instrumentBeforeBatch(id);const cfg=V26_INSTRUMENTS.find(x=>x.id===id);if(cfg?.kind==='ETF'&&!window.ETFPages){const b=document.createElement('button');b.textContent='每月自动购买 / 分红设置';b.onclick=()=>openInvestSettings(id);$('actions').append(b);const note=document.createElement('p');const dividends=(state.financeLedger||[]).filter(x=>x.kind==='dividend'&&x.instrument===id).reduce((n,x)=>n+x.amount,0),reinvested=(state.financeLedger||[]).filter(x=>x.kind==='dividendReinvest'&&x.instrument===id).reduce((n,x)=>n+x.amount,0);note.textContent='模拟年分配率 '+(ETF_YIELDS[id]*100).toFixed(1)+'%，按月分红；价格已含除息变化。累计分红 '+priceText(dividends)+'，其中再投资 '+priceText(reinvested)+'。分红与浮动盈亏分开展示，不重复合计。';$('eventData').append(note)}};
 const BOND_TERMS=[12,36,60];
 function bondPrice(a,rate){const n=Math.max(0,a.maturesAt-state.month),r=rate/12,c=a.face*a.coupon/12;return n===0?a.face:roundCash(r?c*(1-Math.pow(1+r,-n))/r+a.face/Math.pow(1+r,n):a.face+c*n)}
-function openBonds(){const rate=ECONOMIES[state.economy||0].rate;showEvent('债券市场','政府债券','游戏中的本国政府固定息债券：每月支付票息，到期返还面值。年票息在买入时锁定；市场利率上升会使已有债券价格下降。提前出售按当前估价，可能亏损；不套用截图中的保证8%回报。',[],BOND_TERMS.map(n=>['查看 '+n+'个月债券',()=>previewBond(n),false]).concat([['返回',finish,true]]))}
-function previewBond(months){const coupon=bondYield(months),face=1000;showEvent('债券预览',months+'个月政府债券','固定年票息，按月支付；以下价格与利率为游戏模拟。',[['买入价格/面值',priceText(face)],['年票息率',(coupon*100).toFixed(2)+'%'],['每月票息',priceText(face*coupon/12)],['到期期数',months+' 次月末']],[['确认买入债券 $1,000.00',()=>{if(!spendConfirmed('bondBuy',face,{months,coupon}))return;state.assets.push({id:assetId(),name:months+'个月政府债券',kind:'bond',face,cost:face,value:face,coupon,cf:0,maturesAt:state.month+months,entryMonth:state.month});save();finish()},true,state.cash<face],['返回债券市场',openBonds,false]])}
+function openBonds(back=finish){const rate=ECONOMIES[state.economy||0].rate;showEvent('债券市场','政府债券','游戏中的本国政府固定息债券：每月支付票息，到期返还面值。年票息在买入时锁定；市场利率上升会使已有债券价格下降。提前出售按当前估价，可能亏损；不套用截图中的保证8%回报。',[],BOND_TERMS.map(n=>['查看 '+n+'个月债券',()=>previewBond(n,back),false]).concat([['返回',back,true]]));if(back!==finish)window.modalReturn=back}
+function previewBond(months,back=finish){const coupon=bondYield(months),face=1000;showEvent('债券预览',months+'个月政府债券','固定年票息，按月支付；以下价格与利率为游戏模拟。',[['买入价格/面值',priceText(face)],['年票息率',(coupon*100).toFixed(2)+'%'],['每月票息',priceText(face*coupon/12)],['到期期数',months+' 次月末']],[['确认买入债券 $1,000.00',()=>{if(!spendConfirmed('bondBuy',face,{months,coupon}))return;state.assets.push({id:assetId(),name:months+'个月政府债券',kind:'bond',face,cost:face,value:face,coupon,cf:0,maturesAt:state.month+months,entryMonth:state.month});save();back()},true,state.cash<face],['返回债券市场',()=>openBonds(back),false]])}
 function expectedInvestmentIncome(){
  let total=0;
  for(const [id,yieldRate] of Object.entries(ETF_YIELDS)){const perShare=roundCash(quoteFor(id).price*yieldRate/12),shares=(state.assets||[]).filter(a=>a.instrument===id).reduce((n,a)=>n+a.shares,0);total+=roundCash(shares*perShare)}
@@ -165,15 +165,15 @@ function completeCashAudit(s){
  s.settlementCashChange=roundCash(state.cash-s.startCash);
  s.totalMonthlyCF=roundCash(s.totalMonthlyCF-(s.investmentIncomeBudget||0)+s.dividends+s.bondInterest);
 }
+const cashAuditOut=['sharedInterestExpense','apartmentExpense','studioExpense','sharedExpense','familyExpense','ownerHomeDownpayment','housingDeposit','housingPayment','livingPayment','premiumsPayment','loanInstallment','hobbyPractice','specialistPractice','lifestyle','opportunity','tuitionPayment','investmentBuy','bondBuy','autoInvest','dividendReinvest','movingCost','emergencyTransfer','lifeIncident','socialMeal','socialCoffee','extraPrincipal','cdPurchase','vehicleDownpayment','propertyDownpayment','iraTransfer','cafeEquityDeposit'];
+const cashAuditIn=['sharedInterestIncome','apartmentIncome','studioIncome','sharedIncome','familyIncome','housingDepositRefund','emergencyWithdrawal','incomeProtectionClaim','loanDisbursement','opportunityIncome','tuitionReversal','dividend','bondInterest','bondMaturity','cdEarlyPrincipal','cdEarlyInterest','socialIncome','assetSale','ownerHomeSale','cafeDividend','cafeEquitySale','cafeEquityRefund'];
 function auditRows(s){const list=s.ledger||[],sum=k=>roundCash(list.filter(x=>x.kind===k).reduce((n,x)=>n+(x.amount||0),0));
  const loanPaid=(s.loanPayments||[]).filter(x=>x.status==='paid').reduce((n,x)=>n+x.due,0);
- const knownOut=['sharedInterestExpense','apartmentExpense','studioExpense','sharedExpense','familyExpense','ownerHomeDownpayment','housingDeposit','housingPayment','livingPayment','premiumsPayment','loanInstallment','hobbyPractice','specialistPractice','lifestyle','opportunity','tuitionPayment','investmentBuy','bondBuy','autoInvest','dividendReinvest','movingCost','emergencyTransfer','lifeIncident','socialMeal','socialCoffee','extraPrincipal','cdPurchase','vehicleDownpayment','propertyDownpayment','iraTransfer','cafeEquityDeposit'];
- const knownIn=['sharedInterestIncome','apartmentIncome','studioIncome','sharedIncome','familyIncome','housingDepositRefund','emergencyWithdrawal','incomeProtectionClaim','loanDisbursement','opportunityIncome','tuitionReversal','dividend','bondInterest','bondMaturity','socialIncome','assetSale','ownerHomeSale','cafeDividend','cafeEquitySale','cafeEquityRefund'];
- const out=roundCash(knownOut.reduce((n,k)=>n+sum(k),0)),inc=roundCash(knownIn.reduce((n,k)=>n+sum(k),0));
+ const out=roundCash(cashAuditOut.reduce((n,k)=>n+sum(k),0)),inc=roundCash(cashAuditIn.reduce((n,k)=>n+sum(k),0));
  // Purchases retained from older modules may have no ledger; show an explicit reconciliation item.
  const settlementBase=roundCash(s.grossSalary-s.tax-s.kContrib+s.passive-(s.expenses-s.prepaidExpenses)+(s.loanPayments||[]).filter(x=>x.status==='overdue').reduce((n,x)=>n+x.due,0)+(s.cdPayout||0));
  const tracked=roundCash(inc-out+settlementBase),unclassified=roundCash(s.monthCashChange-tracked);
- return [['月初现金',s.monthOpeningCash],['现金转入住房押金 −',sum('housingDeposit')],['自住房首付 −',sum('ownerHomeDownpayment')],['自住房出售净额 +',sum('ownerHomeSale')],['退回住房押金 +',sum('housingDepositRefund')],['税前工资 +',s.grossSalary],['工资税 −',s.tax],['401(k)个人缴费 −',s.kContrib],['资产净收入 +',s.passive],['应急金转回现金 +',sum('emergencyWithdrawal')],['收入保障赔款 +',sum('incomeProtectionClaim')],['贷款到账 +',sum('loanDisbursement')],['本月已付住房/基本生活/保险 −',sum('housingPayment')+sum('livingPayment')+sum('premiumsPayment')],['共同兴趣事件收入 +',sum('sharedInterestIncome')],['共同兴趣事件支出 −',sum('sharedInterestExpense')],['兴趣练习 −',sum('hobbyPractice')],['专项技能练习 −',sum('specialistPractice')],['生活安排 −',sum('lifestyle')],['关系互动 −',sum('socialMeal')+sum('socialCoffee')],['机会投入 −',sum('opportunity')],['机会一次性收入 +',sum('opportunityIncome')],['家庭事件收入 +',sum('familyIncome')],['家庭事件支出 −',sum('familyExpense')],['合租事件收入 +',sum('sharedIncome')],['合租事件支出 −',sum('sharedExpense')],['独居事件收入 +',sum('studioIncome')],['独居事件支出 −',sum('studioExpense')],['小公寓事件收入 +',sum('apartmentIncome')],['小公寓事件支出 −',sum('apartmentExpense')],['学费支出 −',sum('tuitionPayment')],['学费退回 +',sum('tuitionReversal')],['月供已支付 −',loanPaid],['额外偿还本金 −',sum('extraPrincipal')],['本次月末支付（不含已付月供） −',roundCash(s.expenses-s.prepaidExpenses-(s.loanPayments||[]).filter(x=>x.status==='overdue').reduce((n,x)=>n+x.due,0))],['股票/ETF/债券买入 −',sum('investmentBuy')+sum('bondBuy')],['CD存入本金 −',sum('cdPurchase')],['车辆首付 −',sum('vehicleDownpayment')],['投资房首付 −',sum('propertyDownpayment')],['IRA账户转入 −',sum('iraTransfer')],['出售资产到账 +',sum('assetSale')],['ETF分红到账 +',s.dividends||0],['分红再投资 −',s.dividendReinvested||0],['ETF自动购买 −',sum('autoInvest')],['债券票息 +',s.bondInterest||0],['债券到期本金返还 +',s.bondPrincipal||0],['CD到期本金及利息返还 +',s.cdPayout||0],['其他已记录支出 −',sum('movingCost')+sum('emergencyTransfer')+sum('lifeIncident')],['关系事件额外收入 +',sum('socialIncome')],['门店股份暂存款 −',sum('cafeEquityDeposit')],['门店股份出售到账 +',sum('cafeEquitySale')],['门店股份退款 +',sum('cafeEquityRefund')],['门店分红到账 +',sum('cafeDividend')],['其他现金变化（含旧模块未分类项）',unclassified],['整月现金实际变化',s.monthCashChange],['月末现金',s.endCash??state.cash]];
+ return [['月初现金',s.monthOpeningCash],['现金转入住房押金 −',sum('housingDeposit')],['自住房首付 −',sum('ownerHomeDownpayment')],['自住房出售净额 +',sum('ownerHomeSale')],['退回住房押金 +',sum('housingDepositRefund')],['税前工资 +',s.grossSalary],['工资税 −',s.tax],['401(k)个人缴费 −',s.kContrib],['资产净收入 +',s.passive],['应急金转回现金 +',sum('emergencyWithdrawal')],['收入保障赔款 +',sum('incomeProtectionClaim')],['贷款到账 +',sum('loanDisbursement')],['本月已付住房/基本生活/保险 −',sum('housingPayment')+sum('livingPayment')+sum('premiumsPayment')],['共同兴趣事件收入 +',sum('sharedInterestIncome')],['共同兴趣事件支出 −',sum('sharedInterestExpense')],['兴趣练习 −',sum('hobbyPractice')],['专项技能练习 −',sum('specialistPractice')],['生活安排 −',sum('lifestyle')],['关系互动 −',sum('socialMeal')+sum('socialCoffee')],['机会投入 −',sum('opportunity')],['机会一次性收入 +',sum('opportunityIncome')],['家庭事件收入 +',sum('familyIncome')],['家庭事件支出 −',sum('familyExpense')],['合租事件收入 +',sum('sharedIncome')],['合租事件支出 −',sum('sharedExpense')],['独居事件收入 +',sum('studioIncome')],['独居事件支出 −',sum('studioExpense')],['小公寓事件收入 +',sum('apartmentIncome')],['小公寓事件支出 −',sum('apartmentExpense')],['学费支出 −',sum('tuitionPayment')],['学费退回 +',sum('tuitionReversal')],['月供已支付 −',loanPaid],['额外偿还本金 −',sum('extraPrincipal')],['本次月末支付（不含已付月供） −',roundCash(s.expenses-s.prepaidExpenses-(s.loanPayments||[]).filter(x=>x.status==='overdue').reduce((n,x)=>n+x.due,0))],['股票/ETF/债券买入 −',sum('investmentBuy')+sum('bondBuy')],['CD存入本金 −',sum('cdPurchase')],['CD提前支取本金 +',sum('cdEarlyPrincipal')],['CD提前支取实收利息 +',sum('cdEarlyInterest')],['车辆首付 −',sum('vehicleDownpayment')],['投资房首付 −',sum('propertyDownpayment')],['IRA账户转入 −',sum('iraTransfer')],['出售资产到账 +',sum('assetSale')],['ETF分红到账 +',s.dividends||0],['分红再投资 −',s.dividendReinvested||0],['ETF自动购买 −',sum('autoInvest')],['债券票息 +',s.bondInterest||0],['债券到期本金返还 +',s.bondPrincipal||0],['CD到期本金及利息返还 +',s.cdPayout||0],['其他已记录支出 −',sum('movingCost')+sum('emergencyTransfer')+sum('lifeIncident')],['关系事件额外收入 +',sum('socialIncome')],['门店股份暂存款 −',sum('cafeEquityDeposit')],['门店股份出售到账 +',sum('cafeEquitySale')],['门店股份退款 +',sum('cafeEquityRefund')],['门店分红到账 +',sum('cafeDividend')],['其他现金变化（含旧模块未分类项）',unclassified],['整月现金实际变化',s.monthCashChange],['月末现金',s.endCash??state.cash]];
 }
 function showMonthlyAudit(s){
  showEvent('MONTH END','第 '+s.month+' 月结算完成','这是刚结束的第 '+s.month+' 月账单。住房、生活、兴趣与机会按实际付款汇总，已付款项不会重复扣除。',[],[['继续',()=>{clearModals();monthlyEvent()},true]]);

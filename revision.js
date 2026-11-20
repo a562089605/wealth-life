@@ -39,10 +39,102 @@ ETF_YIELDS.smallcap=.018;ETF_YIELDS.emerging=.028;
 const initQuotesBefore277=initQuotes;initQuotes=function(){initQuotesBefore277();for(const i of V26_INSTRUMENTS)state.marketQuotes[i.id]??={price:100,previous:100,history:[{month:state.month,price:100}]}};
 const financeBefore277=syncFinance;syncFinance=function(){if(!state)return;ensureCharacter();initQuotes();for(const a of state.assets||[])if(a.kind==='savings'){a.rate=Math.max(.005,ECONOMIES[state.economy||0].rate-.02);a.cf=roundCash(a.cost*a.rate/12)}financeBefore277()};
 const advanceBefore277=advanceQuotes;advanceQuotes=function(change,month){const old=state.marketQuotes?.treasuryfund?.price;advanceBefore277(change,month);const q=state.marketQuotes.treasuryfund;if(q&&q.history.at(-1)?.month===month){const rate=ECONOMIES[state.economy||0].rate,last=state.previousBondFundRate??rate;q.price=roundCash((old??100)*(1+rate/12-4*(rate-last)));q.history.at(-1).price=q.price;state.previousBondFundRate=rate;for(const a of state.assets)if(a.instrument==='treasuryfund')a.value=roundCash(a.shares*q.price)}};
-const marketBefore277=openMarket;openMarket=function(kind){marketBefore277(kind);for(const b of $('eventData').querySelectorAll('[data-v26=market]')){const cfg=V26_INSTRUMENTS.find(i=>i.id===b.dataset.key),q=quoteFor(cfg.id);b.insertAdjacentHTML('beforeend',quoteChart(q));}};
+const marketBefore277=openMarket;openMarket=function(kind,back,extraActions){marketBefore277(kind,back,extraActions);for(const b of $('eventData').querySelectorAll('[data-v26=market]')){const cfg=V26_INSTRUMENTS.find(i=>i.id===b.dataset.key),q=quoteFor(cfg.id);b.insertAdjacentHTML('beforeend',quoteChart(q));}};
 // New deposits and loans use the present simulated rate; signed contracts remain fixed.
-openCD=function(){const rate=Math.max(.005,ECONOMIES[state.economy||0].rate-.012);showEvent('CD','12个月 CD','固定年利率，锁定12次月末结算，到期一次返本付息。',[['本金','$1,000.00'],['年利率',(rate*100).toFixed(2)+'%'],['到期利息',priceText(1000*rate)]],[['确认存入 $1,000.00',()=>{if(!spendConfirmed('cdPurchase',1000))return;state.assets.push({id:assetId(),name:'12个月CD',kind:'cd',cost:1000,cf:0,rate,maturesAt:state.month+12,interestAccrued:0});save();finish()},true,state.cash<1000],['取消',finish,false]])};$('cdBtn')&&($('cdBtn').onclick=openCD);
-const bondsBefore277=openBonds;openBonds=function(){bondsBefore277();$('eventDesc').textContent='固定票息在买入时锁定，到期还本；提前出售按市值。正常环境设期限溢价，衰退环境允许倒挂。此处为模拟报价。';for(const [i,b]of [...$('actions').children].entries())if(i<BOND_TERMS.length)b.textContent='查看 '+BOND_TERMS[i]+'个月 · 年票息 '+(bondYield(BOND_TERMS[i])*100).toFixed(2)+'%'};
+const CD_TERMS=[6,12,24];
+const CD_PRINCIPAL=1000;
+function cdRate(months){
+ const base=ECONOMIES[state.economy||0].rate-.012;
+ return Math.max(50,Math.round((base+(months===6?-.003:months===24?.003:0))*10000))/10000;
+}
+function cdMaturityLabel(month){
+ return '第 '+(Math.floor((month-1)/12)+1)+' 年 · 第 '+((month-1)%12+1)+' 月末';
+}
+openCD=function(back=finish,illustrated=false){
+ if(typeof back!=='function')back=finish;
+ const reopen=()=>openCD(back,illustrated);
+ const holdings=state.assets.filter(asset=>asset.kind==='cd');
+ showEvent('CD','定期存款','每笔存入 $1,000.00，确认时锁定年利率。到期自动返本付息。提前支取整笔会扣除最多 3 个月的已累积利息。',[
+  ['可用现金',priceText(state.cash)],
+  ...CD_TERMS.map(months=>[months+' 个月固定年利率',(cdRate(months)*100).toFixed(2)+'%']),
+  ['现有定期存款',holdings.length+' 笔']
+ ],[
+  ...CD_TERMS.map(months=>['选择 '+months+' 个月',()=>previewCD(months,reopen),false]),
+  ...holdings.map((asset,index)=>['查看存款 '+(index+1)+' · '+priceText(asset.cost)+' · '+cdMaturityLabel(asset.maturesAt),
+   ()=>previewCDWithdrawal(asset,reopen),false]),
+  ['返回',back,false]
+ ]);
+ if($('eventTitle').textContent!=='定期存款')return;
+ window.modalReturn=back;
+ if(illustrated)window.FinancePages.renderCD(holdings);
+
+};
+function previewCD(months,back){
+ const rate=cdRate(months);
+ const maturesAt=state.month+months;
+ const interest=roundCash(CD_PRINCIPAL*rate*months/12);
+ const title=months+' 个月 CD';
+ showEvent('CD',title,'到期自动返本付息。若提前支取，只从已累积利息中扣最多 3 个月利息，本金全额退回。',[
+  ['存入本金',priceText(CD_PRINCIPAL)],['固定年利率',(rate*100).toFixed(2)+'%'],
+  ['到期时间',cdMaturityLabel(maturesAt)],['到期利息',priceText(interest)],
+  ['到期总额',priceText(CD_PRINCIPAL+interest)]
+ ],[
+  ['确认存入 '+priceText(CD_PRINCIPAL),()=>{
+   if(cdRate(months)!==rate||state.month+months!==maturesAt)return previewCD(months,back);
+   const previous=structuredClone(state);
+   if(!spendConfirmed('cdPurchase',CD_PRINCIPAL,{choice:title}))return previewCD(months,back);
+   state.assets.push({id:assetId(),name:title,kind:'cd',cost:CD_PRINCIPAL,cf:0,rate,maturesAt,interestAccrued:0});
+   commitCD(previous,back,()=>previewCD(months,back));
+  },true,state.cash<CD_PRINCIPAL],
+  ['取消',back,false]
+ ]);
+ if($('eventTitle').textContent===title)window.modalReturn=back;
+}
+function cdWithdrawalQuote(asset){
+ const accrued=Math.max(0,asset.interestAccrued||0);
+ const penalty=state.month>=asset.maturesAt?0:Math.min(accrued,Math.max(0,asset.cost*asset.rate*3/12||0));
+ const netInterest=roundCash(accrued-penalty);
+ return {accrued:roundCash(accrued),penalty:roundCash(penalty),netInterest,payout:roundCash(asset.cost+netInterest)};
+}
+function previewCDWithdrawal(asset,back=finish){
+ const title='提前支取定期存款';
+ const quote=cdWithdrawalQuote(asset);
+ showEvent('CD',title,'支取后这笔存款结束。本金全额回到现金，罚息只从已累积利息中扣除。',[
+  ['到期时间',cdMaturityLabel(asset.maturesAt)],['存款本金',priceText(asset.cost)],
+  ['已累积利息',priceText(quote.accrued)],['扣除利息',priceText(quote.penalty)],['实际到账',priceText(quote.payout)]
+ ],[
+  ['确认提前支取',()=>{
+   const index=state.assets.indexOf(asset);
+   if(index<0)return back();
+   const fresh=cdWithdrawalQuote(asset);
+   if(fresh.payout!==quote.payout||fresh.penalty!==quote.penalty)return previewCDWithdrawal(asset,back);
+   const previous=structuredClone(state);
+   state.cash=roundCash(state.cash+fresh.payout);
+   state.assets.splice(index,1);
+   const ledger=state.financeLedger??=[];
+   ledger.push({kind:'cdEarlyPrincipal',month:state.month,amount:asset.cost,assetId:asset.id,choice:asset.name});
+   if(fresh.netInterest||fresh.penalty)ledger.push({kind:'cdEarlyInterest',month:state.month,
+    amount:fresh.netInterest,assetId:asset.id,choice:asset.name,forfeitedInterest:fresh.penalty});
+   commitCD(previous,back,()=>{
+    const restored=state.assets.find(item=>item.id===asset.id);
+    if(restored)previewCDWithdrawal(restored,back);else back();
+   });
+  },true],
+  ['取消',back,false]
+ ]);
+ if($('eventTitle').textContent===title)window.modalReturn=back;
+}
+function commitCD(previous,back,retry){
+ try{save()}catch(error){
+  state=previous;
+  retry();
+  $('eventDesc').textContent='交易未保存，请重试。';
+  return;
+ }
+ back();
+}
+$('cdBtn')&&($('cdBtn').onclick=openCD);
+const bondsBefore277=openBonds;openBonds=function(back){bondsBefore277(back);$('eventDesc').textContent='固定票息在买入时锁定，到期还本；提前出售按市值。正常环境设期限溢价，衰退环境允许倒挂。此处为模拟报价。';for(const [i,b]of [...$('actions').children].entries())if(i<BOND_TERMS.length)b.textContent='查看 '+BOND_TERMS[i]+'个月 · 年票息 '+(bondYield(BOND_TERMS[i])*100).toFixed(2)+'%'};
 V26_OFFERS.push(
  {id:'microcompany',name:'收购小型订阅公司',cost:2000,cf:200,chance:.5,effects:{energy:-10,stress:8},desc:'高风险微型业务。客户流失或交接失败会损失投入；成功后月净收入已扣运营成本。'},
  {id:'laundryshare',name:'洗衣店少数股权',cost:6500,cf:105,chance:.85,effects:{stress:2},desc:'核查账目后投资，成功后按月分配净利润。'},

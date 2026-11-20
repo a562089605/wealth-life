@@ -1,0 +1,1346 @@
+#game > .event.event-active.finance-home {
+ width: min(420px, calc(100% - 20px));
+ box-sizing: border-box;
+ padding: 16px 20px;
+ border: 1px solid #b7945f;
+ border-radius: 24px !important;
+ background: #fbedd2 url("./assets/finance/paper.webp") repeat !important;
+ color: #263e2b;
+ overflow-y: auto !important;
+ overscroll-behavior: contain;
+}
+
+.finance-home #eventType,
+.finance-home #eventDesc {
+ display: none;
+}
+
+.finance-home #eventMonth {
+ margin-right: 42px;
+ margin-left: auto;
+ text-align: right;
+ color: #554629;
+}
+
+.finance-home #eventTitle {
+ font-size: clamp(24px, 7vw, 34px);
+ margin: 2px 0 6px;
+ color: inherit;
+}
+
+.event.event-active.finance-home > #eventData {
+ flex: 0 0 auto;
+ padding: 0;
+ margin: 0;
+ overflow: hidden;
+}
+
+.finance-desk {
+ display: block;
+ width: 100%;
+ height: auto;
+ border-radius: 12px;
+ mask-image: radial-gradient(ellipse 73% 79% at center, black 53%, transparent 90%);
+ mix-blend-mode: multiply;
+}
+
+.event.event-active.finance-home > #actions {
+ --finance-tile: min(35vw, 145px);
+ display: grid;
+ grid-template-columns: repeat(2, var(--finance-tile));
+ justify-content: center;
+ gap: 8px 12px;
+ max-height: none;
+ overflow: visible;
+ background: none;
+ padding: 0;
+ margin: 10px 0 0;
+}
+
+#game > .event.finance-home #actions > button {
+ display: grid;
+ place-items: center;
+ align-content: center;
+ gap: 4px;
+ min-width: 0;
+ min-height: 0;
+ width: 100%;
+ margin: 0;
+ padding: 6px;
+ border: 1px solid #b7945f;
+ border-radius: 14px;
+ background: #ffefcfa0;
+ color: #263e2b;
+ font-size: clamp(13px, 3.7vw, 16px);
+ line-height: 1.2;
+ text-align: center;
+ white-space: normal;
+}
+
+#game > .event.finance-home #actions > button:not(:last-child) {
+ aspect-ratio: 1;
+ grid-template-rows: calc(var(--finance-tile) * .59) 2.4em;
+}
+
+#game > .event.finance-home #actions > button img {
+ width: 96%;
+ height: auto;
+ max-height: calc(var(--finance-tile) * .59);
+ object-fit: contain;
+ mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent),
+  linear-gradient(to bottom, transparent, black 9%, black 91%, transparent);
+ mask-composite: intersect;
+ mix-blend-mode: multiply;
+ pointer-events: none;
+}
+
+#game > .event.finance-home #actions > button:nth-child(5),
+#game > .event.finance-home #actions > button:last-child {
+ grid-column: 1 / -1;
+ justify-self: center;
+ width: var(--finance-tile);
+}
+
+#game > .event.finance-home #actions > button:last-child {
+ min-height: 40px;
+ border-radius: 22px;
+ background: #efd27b;
+}
+
+#game > .event.finance-home #actions > button:focus-visible {
+ outline: 2px solid #315438;
+ outline-offset: 2px;
+}
+
+#game > .event.event-active.finance-bill {
+ width: min(440px, calc(100% - 20px));
+ box-sizing: border-box;
+ padding: 16px 16px 12px;
+ background: #fbedd2 url("./assets/finance/paper.webp") repeat !important;
+ color: #263e2b;
+}
+
+.finance-bill #eventType, .finance-bill #eventDesc { display: none; }
+.finance-bill #eventTitle { margin: 0 42px 8px 0; color: inherit; }
+.finance-bill .row { padding-right: 42px; }
+
+.event.event-active.finance-bill > #eventData {
+ padding: 0 7px 0 0;
+ margin: 0;
+ scrollbar-gutter: stable;
+ scrollbar-width: thin;
+ scrollbar-color: #9d8054 #eee1c4;
+}
+
+.finance-bill-desk img {
+ display: block;
+ width: 100%;
+ height: auto;
+ mix-blend-mode: multiply;
+ mask-image: radial-gradient(ellipse 74% 79%, black 54%, transparent 96%);
+}
+
+.finance-bill-highlight {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ margin: 9px 0;
+ padding: 7px 9px;
+ border-radius: 15px;
+ background: #f7d98780;
+}
+
+.finance-bill-highlight img {
+ width: 42px;
+ flex: none;
+ mix-blend-mode: multiply;
+ mask-image: radial-gradient(ellipse 71% 69%, black 45%, transparent 98%);
+}
+
+.finance-bill-highlight div {
+ min-width: 0;
+ flex: 1;
+ display: flex;
+ gap: 4px 10px;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ align-items: baseline;
+ border-left: 1px solid #aa895a;
+ padding-left: 10px;
+}
+
+.finance-bill-highlight strong {
+ font-size: clamp(17px, 5vw, 24px);
+ overflow-wrap: anywhere;
+}
+
+.finance-bill-cash img { width: 68px; }
+.finance-bill-cash div { flex-direction: column; }
+.finance-bill-cash strong { font-size: clamp(24px, 7vw, 36px); }
+
+.finance-bill-section {
+ padding: 0 9px 4px;
+ margin: 14px 0 8px;
+ border: 1px solid #bfa16d;
+ border-radius: 14px;
+}
+
+.finance-bill-section h3 {
+ display: table;
+ margin: -8px 0 3px;
+ padding: 2px 9px;
+ background: #d8d1a0;
+ border-radius: 5px 14px 6px 8px;
+ font-size: 15px;
+}
+
+.finance-bill-section p { margin: 8px 0; }
+.finance-bill-lines { margin: 0; }
+.finance-bill-lines > div {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr) minmax(0, max-content);
+ align-items: baseline;
+ gap: 8px;
+ padding: 6px 2px;
+}
+.finance-bill-lines > div + div { border-top: 1px solid #c8ad7d75; }
+.finance-bill-lines dt { overflow-wrap: anywhere; }
+.finance-bill-lines dt small { display: block; color: #5a5844; }
+.finance-bill-lines dd {
+ margin: 0;
+ font-weight: 700;
+ font-variant-numeric: tabular-nums;
+ text-align: right;
+ overflow-wrap: anywhere;
+}
+
+.finance-bill-note { display: flex; align-items: center; gap: 6px; margin: 6px 0; }
+.finance-bill-note img { width: 37px; mix-blend-mode: multiply; }
+.finance-bill-history { display: grid; gap: 7px; }
+.event.event-active.finance-bill > #actions { background: none; }
+#game > .event.finance-bill #actions > button:last-child { background: #efd27b; }
+
+
+@font-face {
+ font-family: "Finance Ink";
+ src: url("./assets/fonts/MaShanZheng-Regular.ttf") format("truetype");
+ font-display: swap;
+}
+
+#game > .event.event-active.finance-assets {
+ --asset-frame: min(100vw, 66.6667dvh, 520px);
+ position: fixed;
+ top: 50% !important;
+ left: 50% !important;
+ right: auto !important;
+ transform: translate(-50%, -50%);
+ width: var(--asset-frame);
+ height: calc(var(--asset-frame) * 1.5);
+ max-height: none !important;
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ border: 0 !important;
+ border-radius: 0 !important;
+ background: #efd4a5 url("./assets/finance/asset-scene.webp") center / 100% 100% no-repeat !important;
+ color: #283619;
+}
+
+.finance-assets > .row {
+ position: absolute;
+ inset: 13.2% 33% auto;
+ height: 1.8%;
+ padding: 0;
+ margin: 0;
+ display: grid;
+ place-items: center;
+}
+
+.finance-assets #eventMonth {
+ color: inherit;
+ font: calc(var(--asset-frame) * .029) / 1 "Finance Ink", serif;
+ white-space: nowrap;
+}
+
+.finance-assets #eventTitle,
+.finance-asset-summary dt {
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ padding: 0;
+ margin: -1px;
+ overflow: hidden;
+ clip-path: inset(50%);
+ white-space: nowrap;
+}
+
+#game > .event.finance-assets #eventClose {
+ position: absolute !important;
+ top: 7.1% !important;
+ right: 13.1% !important;
+ width: 8.2%;
+ height: 5.2%;
+ min-width: 0;
+ min-height: 0;
+ padding: 0;
+ border: 0;
+ background: transparent !important;
+ color: transparent;
+ box-shadow: none;
+}
+
+#game > .event.event-active.finance-assets > #eventData {
+ position: absolute;
+ inset: 0;
+ margin: 0;
+ padding: 0;
+ overflow: visible;
+ pointer-events: none;
+}
+
+.finance-asset-summary { margin: 0; }
+.finance-asset-summary > div {
+ position: absolute;
+ display: grid;
+ place-items: center;
+ color: #293619;
+}
+.finance-asset-summary dd {
+ margin: 0;
+ max-width: 100%;
+ font: 700 calc(var(--asset-frame) * .031) / 1 Georgia, serif;
+ font-variant-numeric: tabular-nums lining-nums;
+ overflow-wrap: anywhere;
+ text-align: center;
+}
+.finance-asset-net { inset: 29% 25.7% auto 46%; height: 4.2%; }
+.finance-asset-net dd { font-size: calc(var(--asset-frame) * .052); }
+.finance-asset-gross { inset: 35.7% 51.5% auto 31.7%; height: 2.3%; }
+.finance-asset-debt { inset: 35.7% 18.1% auto 66.5%; height: 2.3%; }
+
+.finance-asset-holdings {
+ position: absolute;
+ inset: 40.25% 14.9% 14.45% 15.15%;
+ overflow: auto;
+ overscroll-behavior: contain;
+ scrollbar-gutter: stable;
+ scrollbar-width: thin;
+ scrollbar-color: #ad701e #edc583;
+ padding: 0 1% 0 .5%;
+ pointer-events: auto;
+}
+
+.finance-asset-holdings .finance-bill-section {
+ padding: 0;
+ margin: 0 0 calc(var(--asset-frame) * .013);
+ border: 0;
+}
+
+.finance-asset-holdings .finance-bill-section h3 {
+ margin: 0;
+ padding: 0;
+ background: none;
+}
+
+.finance-asset-heading img {
+ display: block;
+ width: calc(var(--asset-frame) * .298);
+ height: auto;
+}
+
+.finance-asset-holdings .finance-bill-lines {
+ padding: 0 2.5% 0 3%;
+}
+
+.finance-asset-holdings .finance-bill-lines > div {
+ gap: 5px;
+ padding: calc(var(--asset-frame) * .004) calc(var(--asset-frame) * .012);
+ border: 0;
+ border-bottom: 1px solid #ac804b59;
+ font: calc(var(--asset-frame) * .029) / 1.13 "Finance Ink", Georgia, serif;
+}
+.finance-asset-holdings .finance-bill-lines dd {
+ font: 700 calc(var(--asset-frame) * .027) / 1.13 Georgia, serif;
+}
+.finance-asset-holdings .finance-bill-lines dt small,
+.finance-asset-holdings .finance-bill-section p {
+ font: calc(var(--asset-frame) * .022) / 1.2 system-ui, sans-serif;
+}
+
+#game > .event.finance-assets > #actions {
+ position: absolute;
+ inset: 86.85% 29.9% 6.9%;
+ display: block;
+ max-height: none;
+ margin: 0;
+ padding: 0;
+ overflow: visible;
+}
+
+#game > .event.finance-assets #actions > button:last-child {
+ width: 100%;
+ height: 100%;
+ min-height: 0;
+ margin: 0;
+ padding: 0;
+ border: 0;
+ background: transparent;
+ color: transparent;
+}
+
+#game > .event.finance-assets #eventClose:focus-visible,
+#game > .event.finance-assets #actions > button:focus-visible,
+.finance-asset-holdings:focus-visible {
+ outline: 2px solid #417048;
+ outline-offset: -2px;
+}
+
+.finance-assets > .row {
+ inset-inline: 0;
+}
+
+.finance-assets #eventMonth {
+ position: absolute;
+ left: 50%;
+ transform: translateX(-50%);
+}
+
+#game > .event.finance-assets #eventClose {
+ box-shadow: none !important;
+ outline: none;
+}
+
+#game > .event.finance-assets #eventClose:focus-visible {
+ outline: 2px solid #417048;
+}
+
+.finance-asset-summary dd {
+ white-space: nowrap;
+ overflow-wrap: normal;
+}
+.finance-asset-gross dd,
+.finance-asset-debt dd {
+ font-size: calc(var(--asset-frame) * .027);
+}
+.finance-asset-gross { right: 50.4%; }
+.finance-asset-debt { right: 16.9%; }
+
+#game > .event.event-active.finance-savings {
+ --savings-frame: min(100vw, 63.9668dvh, 520px);
+ position: fixed;
+ top: 50% !important;
+ left: 50% !important;
+ right: auto !important;
+ transform: translate(-50%, -50%);
+ width: var(--savings-frame);
+ height: calc(var(--savings-frame) * 1568 / 1003);
+ max-height: none !important;
+ padding: 0;
+ margin: 0;
+ border: 0 !important;
+ border-radius: 0 !important;
+ background: #efd4a5 url("./assets/finance/savings-scene.webp") center / 100% 100% no-repeat !important;
+ color: #283619;
+}
+
+.finance-savings #eventType,
+.finance-savings #eventDesc { display: none; }
+.finance-savings > .row {
+ position: absolute;
+ inset: 12.76% 0 auto;
+ height: 2%;
+ margin: 0;
+ padding: 0;
+ display: grid;
+ place-items: center;
+}
+
+.finance-savings #eventMonth {
+ color: inherit;
+ font: calc(var(--savings-frame) * .029) / 1 "Finance Ink", serif;
+}
+
+.finance-savings #eventTitle {
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ margin: -1px;
+ padding: 0;
+ clip-path: inset(50%);
+ overflow: hidden;
+ white-space: nowrap;
+}
+
+#game > .event.finance-savings #eventClose,
+#game > .event.finance-savings #actions > button {
+ position: absolute !important;
+ min-width: 0;
+ min-height: 0;
+ margin: 0;
+ padding: 0;
+ border: 0;
+ box-shadow: none !important;
+ border-radius: 10px;
+ background: transparent !important;
+ color: transparent;
+}
+
+#game > .event.finance-savings #eventClose {
+ top: 7% !important;
+ right: 13.5% !important;
+ width: 7.6%;
+ height: 4.8%;
+}
+
+#game > .event.finance-savings > #actions {
+ position: absolute;
+ inset: 0;
+ display: block;
+ max-height: none;
+ overflow: visible;
+ margin: 0;
+ padding: 0;
+ background: none;
+ pointer-events: none;
+}
+
+#game > .event.finance-savings #actions > button { pointer-events: auto; }
+#game > .event.finance-savings #actions > button:focus-visible,
+#game > .event.finance-savings #eventClose:focus-visible {
+ outline: 2px solid #417048;
+ outline-offset: -2px;
+}
+
+.finance-savings #eventMonth {
+ position: absolute;
+ left: 50%;
+ transform: translateX(-50%);
+ white-space: nowrap;
+}
+
+#game > .event.finance-savings #eventClose {
+ outline: none;
+}
+
+#game > .event.finance-savings #eventClose:focus-visible {
+ outline: 2px solid #417048;
+}
+
+#game > .event.event-active.finance-emergency {
+ --emergency-frame: min(100vw, 66.6667dvh, 520px);
+ position: fixed;
+ top: 50% !important;
+ left: 50% !important;
+ right: auto !important;
+ transform: translate(-50%, -50%);
+ width: var(--emergency-frame);
+ height: calc(var(--emergency-frame) * 1.5);
+ max-height: none !important;
+ margin: 0;
+ padding: 0;
+ border: 0 !important;
+ border-radius: 0 !important;
+ background: #efd4a5 url("./assets/finance/emergency-scene.webp") center / 100% 100% no-repeat !important;
+ color: #273b15;
+}
+
+.finance-emergency #eventType { display: none; }
+.finance-emergency #eventTitle, .finance-emergency #eventDesc, .emergency-values dt {
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ margin: -1px;
+ padding: 0;
+ clip-path: inset(50%);
+ overflow: hidden;
+ white-space: nowrap;
+}
+.finance-emergency > .row {
+ position: absolute;
+ inset: 13.35% 0 auto;
+ height: 2%;
+ margin: 0;
+ padding: 0;
+}
+.finance-emergency #eventMonth {
+ position: absolute;
+ left: 48.7%;
+ transform: translateX(-50%);
+ color: inherit;
+ font: calc(var(--emergency-frame) * .031) / 1 "Finance Ink", serif;
+ white-space: nowrap;
+}
+#game > .event.event-active.finance-emergency > #eventData {
+ position: absolute;
+ inset: 0;
+ padding: 0;
+ margin: 0;
+ pointer-events: none;
+ overflow: visible;
+}
+
+.emergency-values { margin: 0; }
+.emergency-values > div {
+ position: absolute;
+ right: 24.5%;
+ width: 22%;
+ height: 3%;
+ display: grid;
+ align-items: center;
+ justify-items: end;
+}
+.emergency-values dd {
+ margin: 0;
+ font: 700 calc(var(--emergency-frame) * .039) / 1 Georgia, serif;
+ white-space: nowrap;
+}
+.emergency-values .emergency-balance {
+ inset: 34.6% 24% auto 22%;
+ width: auto;
+ height: 4.6%;
+ justify-items: center;
+}
+.emergency-balance dd { font-size: calc(var(--emergency-frame) * .066); }
+.emergency-cash { top: 42.6%; }
+.emergency-pending { top: 47.2%; }
+.emergency-monthly { top: 51.7%; }
+.emergency-coverage { top: 56.2%; }
+.emergency-coverage dd { font: calc(var(--emergency-frame) * .037) / 1 "Finance Ink", serif; }
+.emergency-values .emergency-target {
+ inset: 67.7% 23% auto 37%;
+ width: auto;
+ justify-items: center;
+}
+.emergency-target dd { font-size: calc(var(--emergency-frame) * .033); }
+.emergency-housing-note {
+ position: absolute;
+ inset: 77.9% 16% auto;
+ margin: 0;
+ text-align: center;
+ font: 600 calc(var(--emergency-frame) * .027) / 1.2 system-ui, sans-serif;
+}
+
+#game > .event.finance-emergency > #actions {
+ position: absolute;
+ inset: 0;
+ display: block;
+ max-height: none;
+ overflow: visible;
+ margin: 0;
+ padding: 0;
+ background: none;
+ pointer-events: none;
+}
+#game > .event.finance-emergency #eventClose,
+#game > .event.finance-emergency #actions > button {
+ position: absolute !important;
+ min-width: 0;
+ min-height: 0;
+ margin: 0;
+ padding: 0;
+ border: 0;
+ box-shadow: none !important;
+ border-radius: 10px;
+ background: transparent !important;
+ color: transparent;
+}
+#game > .event.finance-emergency #eventClose {
+ top: 7% !important;
+ right: 16% !important;
+ width: 7%;
+ height: 5%;
+ outline: none;
+}
+#game > .event.finance-emergency #actions > button { pointer-events: auto; }
+#game > .event.finance-emergency #actions > button:disabled {
+ background: #fff0cf92 !important;
+ opacity: 1;
+}
+#game > .event.finance-emergency #actions > button:focus-visible,
+#game > .event.finance-emergency #eventClose:focus-visible {
+ outline: 2px solid #417048;
+ outline-offset: -2px;
+}
+
+#game > .event.finance-emergency #eventClose { opacity: 0; }
+#game > .event.finance-emergency #eventClose:focus-visible { opacity: 1; }
+
+#game > .event.event-active.finance-cd {
+ --cd-frame: min(100vw, 66.6667dvh, 520px);
+ position: fixed;
+ inset: 50% auto auto 50% !important;
+ transform: translate(-50%, -50%);
+ width: var(--cd-frame);
+ height: calc(var(--cd-frame) * 1.5);
+ max-height: none !important;
+ margin: 0;
+ padding: 0;
+ border: 0 !important;
+ border-radius: 0 !important;
+ background: #efd4a5 url("./assets/finance/cd-scene.webp") center / 100% 100% no-repeat !important;
+ color: #273b15;
+}
+.finance-cd #eventType { display: none; }
+.finance-cd #eventTitle, .finance-cd #eventDesc, .cd-reader-label {
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ margin: -1px;
+ padding: 0;
+ clip-path: inset(50%);
+ overflow: hidden;
+ white-space: nowrap;
+}
+.finance-cd > .row {
+ position: absolute;
+ inset: 13.35% 0 auto;
+ height: 2%;
+ margin: 0;
+ padding: 0;
+}
+.finance-cd #eventMonth {
+ position: absolute;
+ left: 48.7%;
+ transform: translateX(-50%);
+ color: inherit;
+ font: calc(var(--cd-frame) * .031) / 1 "Finance Ink", serif;
+ white-space: nowrap;
+}
+#game > .event.event-active.finance-cd > #eventData,
+#game > .event.finance-cd > #actions {
+ position: absolute;
+ inset: 0;
+ display: block;
+ max-height: none;
+ margin: 0;
+ padding: 0;
+ background: none;
+ pointer-events: none;
+ overflow: visible;
+}
+.cd-cash, .cd-rate, .cd-total, .cd-empty {
+ position: absolute;
+ display: grid;
+ place-items: center;
+ margin: 0;
+ white-space: nowrap;
+ font: 700 calc(var(--cd-frame) * .035) / 1 Georgia, serif;
+}
+.cd-cash { inset: 31.8% 23.5% auto 53%; height: 3%; font-size: calc(var(--cd-frame) * .041); }
+.cd-quote { position: absolute; top: 0; bottom: 0; width: 22%; }
+.cd-quote-0 { left: 14.65%; }
+.cd-quote-1 { left: 37.5%; }
+.cd-quote-2 { left: 60.3%; }
+.cd-rate { inset: 52.7% 0 auto; height: 2.8%; }
+.cd-total { inset: 58.45% 0 auto; height: 2.8%; }
+.cd-empty { inset: 85.4% 18% auto; height: 3%; font: calc(var(--cd-frame) * .033) / 1 "Finance Ink", serif; }
+#game > .event.finance-cd #eventClose,
+#game > .event.finance-cd #actions > .cd-hotspot {
+ position: absolute !important;
+ min-width: 0;
+ min-height: 0;
+ margin: 0;
+ padding: 0;
+ border: 0;
+ border-radius: 9px;
+ background: transparent !important;
+ color: transparent;
+ box-shadow: none !important;
+}
+#game > .event.finance-cd #eventClose {
+ inset: 7.1% 16% auto auto !important;
+ width: 7%;
+ height: 5%;
+ opacity: 0;
+}
+#game > .event.finance-cd #actions > .cd-hotspot { pointer-events: auto; }
+#game > .event.finance-cd #actions > .cd-back {
+ inset: 90.9% 31.8% 3.6% 27.7%;
+ width: auto;
+}
+#game > .event.finance-cd #eventClose:focus-visible { opacity: 1; }
+#game > .event.finance-cd #eventClose:focus-visible,
+#game > .event.finance-cd #actions > button:focus-visible {
+ outline: 2px solid #417048;
+ outline-offset: -2px;
+}
+.cd-holdings {
+ position: absolute;
+ inset: 85% 20% 11.25% 18%;
+ overflow: auto;
+ overscroll-behavior: contain;
+ scrollbar-width: thin;
+ scrollbar-color: #ad701e #edc583;
+ pointer-events: auto;
+}
+#game > .event.finance-cd .cd-holdings button {
+ display: block;
+ width: 100%;
+ min-height: 22px;
+ margin: 0 0 3px;
+ padding: 2px 4px;
+ border: 1px solid #b78942;
+ border-radius: 6px;
+ background: #fae6b6;
+ color: #273b15;
+ font-size: max(10px, calc(var(--cd-frame) * .029));
+}
+
+#game > .event.event-active.finance-etf {
+ --etf-frame: min(100vw, 66.6667dvh, 520px);
+ position: fixed;
+ inset: 50% auto auto 50% !important;
+ transform: translate(-50%, -50%);
+ width: var(--etf-frame);
+ height: calc(var(--etf-frame) * 1.5);
+ max-height: none !important;
+ margin: 0;
+ padding: 0;
+ border: 0 !important;
+ border-radius: 0 !important;
+ background: #efd4a5 url("./assets/finance/etf-scene.webp") center / 100% 100% no-repeat !important;
+ color: #273b15;
+}
+.finance-etf #eventType, .finance-etf #eventDesc { display: none; }
+.finance-etf #eventTitle {
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ margin: -1px;
+ clip-path: inset(50%);
+ overflow: hidden;
+ white-space: nowrap;
+}
+.finance-etf > .row {
+ position: absolute;
+ inset: 13.35% 0 auto;
+ height: 2%;
+ margin: 0;
+ padding: 0;
+}
+.finance-etf #eventMonth {
+ position: absolute;
+ left: 48.7%;
+ transform: translateX(-50%);
+ color: inherit;
+ font: calc(var(--etf-frame) * .031) / 1 "Finance Ink", serif;
+ white-space: nowrap;
+}
+#game > .event.finance-etf > #actions {
+ position: absolute;
+ inset: 0;
+ display: block;
+ max-height: none;
+ margin: 0;
+ padding: 0;
+ background: none;
+ pointer-events: none;
+ overflow: visible;
+}
+#game > .event.finance-etf #eventClose,
+#game > .event.finance-etf #actions > button {
+ position: absolute !important;
+ min-width: 0;
+ min-height: 0;
+ margin: 0;
+ padding: 0;
+ border: 0;
+ border-radius: 9px;
+ background: transparent !important;
+ color: transparent;
+ box-shadow: none !important;
+}
+#game > .event.finance-etf #eventClose {
+ inset: 7.1% 16% auto auto !important;
+ width: 7%;
+ height: 5%;
+ opacity: 0;
+}
+#game > .event.finance-etf #actions > button { pointer-events: auto; }
+#game > .event.finance-etf #actions > .etf-product-back {
+ inset: 90.9% 31.8% 3.6% 27.7%;
+ width: auto;
+}
+#game > .event.finance-etf #eventClose:focus-visible { opacity: 1; }
+#game > .event.finance-etf #eventClose:focus-visible,
+#game > .event.finance-etf #actions > button:focus-visible {
+ outline: 2px solid #417048;
+ outline-offset: -2px;
+}
+.etf-product-price {
+ position: absolute;
+ top: var(--etf-price-top);
+ left: 0;
+ width: 100%;
+ transform: translateY(-50%);
+ color: #273b15;
+ font: 700 calc(var(--etf-frame) * .038) / 1 Georgia, serif;
+ white-space: nowrap;
+ pointer-events: none;
+}
+
+#game > .event.event-active.finance-sp500 {
+ --sp500-frame: min(100vw, 66.6667dvh, 520px);
+ position: fixed;
+ inset: 50% auto auto 50% !important;
+ transform: translate(-50%, -50%);
+ width: var(--sp500-frame);
+ height: calc(var(--sp500-frame) * 1.5);
+ max-height: none !important;
+ margin: 0;
+ padding: 0;
+ border: 0 !important;
+ border-radius: 0 !important;
+ background: #efd4a5 url("./assets/finance/etf-sp500-scene.webp") center / 100% 100% no-repeat !important;
+ color: #273b15;
+}
+.finance-sp500 #eventType, .finance-sp500 #eventDesc { display: none; }
+.finance-sp500 #eventTitle, .sp500-values dt, .sp500-reader-label {
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ margin: -1px;
+ padding: 0;
+ clip-path: inset(50%);
+ overflow: hidden;
+ white-space: nowrap;
+}
+.finance-sp500 > .row {
+ position: absolute;
+ inset: 14% 0 auto;
+ height: 2.3%;
+ margin: 0;
+ padding: 0;
+}
+.finance-sp500 #eventMonth {
+ position: absolute;
+ left: 48.7%;
+ transform: translateX(-50%);
+ color: inherit;
+ font: calc(var(--sp500-frame) * .031) / 1 "Finance Ink", serif;
+ white-space: nowrap;
+}
+#game > .event.event-active.finance-sp500 > #eventData,
+#game > .event.finance-sp500 > #actions {
+ position: absolute;
+ inset: 0;
+ display: block;
+ max-height: none;
+ margin: 0;
+ padding: 0;
+ background: none;
+ pointer-events: none;
+ overflow: visible;
+}
+.sp500-values { margin: 0; }
+.sp500-values > div {
+ position: absolute;
+ display: grid;
+ align-items: center;
+ justify-items: end;
+}
+.sp500-values dd {
+ margin: 0;
+ color: #142c0c;
+ font: 700 calc(var(--sp500-frame) * .034) / 1 Georgia, serif;
+ white-space: nowrap;
+}
+.sp500-price { inset: 28.1% 24% auto 47%; height: 4.8%; }
+.sp500-price dd { font-size: calc(var(--sp500-frame) * .074); }
+.sp500-change { inset: 34.2% 38% auto 36%; height: 2.45%; justify-items: center !important; }
+.sp500-change dd { font: calc(var(--sp500-frame) * .035) / 1 "Finance Ink", serif; }
+.sp500-value { inset: 70.7% 55.6% auto 30%; height: 2.6%; }
+.sp500-shares { inset: 74.7% 55.6% auto 30%; height: 2.6%; }
+.sp500-cumulative { inset: 70.7% 20.6% auto 66%; height: 2.6%; }
+.sp500-dividend { inset: 74.7% 20.6% auto 66%; height: 2.6%; }
+
+.sp500-chart { position: absolute; inset: 44.6% auto auto 15.15%; width: 66%; height: 18.6%; }
+.sp500-chart .sp500-grid-line { stroke: #99a256; stroke-width: 1; opacity: .57; }
+.sp500-chart .sp500-axis { stroke: #42562b; stroke-width: 2; fill: none; }
+.sp500-chart polyline { stroke: #386721; stroke-width: 3.5; fill: none; stroke-linejoin: round; }
+.sp500-chart circle { fill: #386721; }
+.sp500-chart circle:last-of-type { fill: #fbecce; stroke: #386721; stroke-width: 3; }
+.sp500-chart text { font: 700 23px Georgia, "Finance Ink", serif; fill: #273b15; }
+.sp500-chart .sp500-single-point { font-family: "Finance Ink", serif; }
+
+#game > .event.finance-sp500 #eventClose,
+#game > .event.finance-sp500 #actions > button {
+ position: absolute !important;
+ min-width: 0;
+ min-height: 0;
+ margin: 0;
+ padding: 0;
+ border: 0;
+ border-radius: 9px;
+ background: transparent !important;
+ color: transparent;
+ box-shadow: none !important;
+}
+#game > .event.finance-sp500 #eventClose {
+ inset: 7.1% 16% auto auto !important;
+ width: 7%;
+ height: 5%;
+ opacity: 0;
+}
+#game > .event.finance-sp500 #actions > button { pointer-events: auto; height: 6%; }
+/* Primary actions already have their labels painted into the artwork. */
+#game > .event.finance-sp500 #actions > button.primary:nth-child(1) {
+ color: transparent !important;
+}
+#game > .event.finance-sp500 #actions > button:nth-child(1) { inset: 80.8% auto auto 14.6%; width: 21%; }
+#game > .event.finance-sp500 #actions > button:nth-child(2) { inset: 80.8% auto auto 37.2%; width: 19.4%; }
+#game > .event.finance-sp500 #actions > button:nth-child(3) { inset: 80.8% auto auto 58%; width: 24.8%; }
+#game > .event.finance-sp500 #actions > button:nth-child(4) { inset: 90% auto auto 27.5%; width: 40.5%; }
+#game > .event.finance-sp500 #actions > button:nth-child(2):not(:disabled) {
+ background: linear-gradient(#75a83f,#355315) !important;
+ border: 2px solid #aa792e;
+ color: #fff0c2;
+ font: calc(var(--sp500-frame) * .041) / 1 "Finance Ink", serif;
+}
+#game > .event.finance-sp500 #actions > button:disabled:not(:nth-child(2)) {
+ background: #f5e9c384 !important;
+ opacity: 1;
+}
+#game > .event.finance-sp500 #eventClose:focus-visible { opacity: 1; }
+#game > .event.finance-sp500 #eventClose:focus-visible,
+#game > .event.finance-sp500 #actions > button:focus-visible {
+ outline: 2px solid #417048;
+ outline-offset: -2px;
+}
+
+#game > .event.event-active.finance-sp500.finance-etf-buy {
+ background-image: url("./assets/finance/etf-buy-scene.webp") !important;
+}
+.finance-etf-buy > .row { top: 19.8%; }
+.etf-buy-values { margin: 0; }
+.etf-buy-values > div {
+ position: absolute;
+ display: grid;
+ align-items: center;
+ justify-items: end;
+}
+.etf-buy-values dt, .etf-buy-input label {
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ margin: -1px;
+ clip-path: inset(50%);
+ overflow: hidden;
+ white-space: nowrap;
+}
+.etf-buy-values dd {
+ margin: 0;
+ color: #142c0c;
+ font: 700 calc(var(--sp500-frame) * .049) / 1 Georgia, serif;
+ white-space: nowrap;
+}
+.etf-buy-quote { inset: 40.05% 25.8% auto 46%; height: 4.12%; }
+.etf-buy-cash { inset: 46.25% 27% auto 46%; height: 4%; }
+.etf-buy-shares { inset: 71.55% 22.5% auto 47%; height: 3.3%; }
+.etf-buy-remaining { inset: 77.1% 22.5% auto 47%; height: 3.3%; }
+.etf-buy-shares dd, .etf-buy-remaining dd { font-size: calc(var(--sp500-frame) * .043); }
+.etf-buy-input {
+ position: absolute;
+ inset: 59.65% 21.3% 32.7% 18%;
+ display: flex;
+ align-items: center;
+ gap: 3px;
+ color: #142c0c;
+ font: 700 calc(var(--sp500-frame) * .07) / 1 Georgia, serif;
+ pointer-events: auto;
+ cursor: text;
+ padding-inline: 3%;
+}
+#game .finance-etf-buy .etf-buy-input input {
+ min-width: 0;
+ width: 100%;
+ height: 100%;
+ padding: 0;
+ border: 0;
+ background: transparent;
+ color: inherit;
+ font: inherit;
+ appearance: textfield;
+}
+.etf-buy-input input::-webkit-inner-spin-button,
+.etf-buy-input input::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.etf-buy-input:focus-within {
+ outline: 2px solid #50702b;
+ border-radius: 8px;
+ outline-offset: -1px;
+}
+#game .finance-etf-buy .etf-buy-input input:focus-visible { outline: none; }
+.finance-etf-buy #etfBuyEstimate:not(.sp500-reader-label) {
+ position: absolute;
+ inset: 83.7% 23.5% auto 21%;
+ margin: 0;
+ background: #faedcd;
+ color: #883318;
+ text-align: center;
+ font: 600 calc(var(--sp500-frame) * .028) / 1.2 system-ui, sans-serif;
+}
+
+#game > .event.finance-sp500.finance-etf-buy #actions > button:nth-child(1) {
+ inset: 88.35% auto auto 15.3%;
+ width: 32.9%;
+ height: 7%;
+}
+#game > .event.finance-sp500.finance-etf-buy #actions > button:nth-child(2) {
+ inset: 88.35% auto auto 49.7%;
+ width: 32%;
+ height: 7%;
+ border: 0;
+ background: transparent !important;
+ color: transparent;
+}
+
+#game > .event.event-active.finance-sp500.finance-etf-receipt {
+ background-image: url("./assets/finance/etf-buy-success-scene.webp") !important;
+}
+.finance-etf-receipt > .row { top: 22.25%; }
+.finance-etf-receipt #eventMonth { left: 49.4%; }
+.etf-receipt-values > div {
+ inset: 47% 25% auto 48%;
+ height: 4.3%;
+ justify-items: start;
+}
+.etf-receipt-values > div:nth-child(2) { top: 54.65%; }
+.etf-receipt-values > div:nth-child(3) { top: 62.2%; }
+.etf-receipt-values > div:nth-child(4) { top: 69.85%; }
+.etf-receipt-values dd { font-size: calc(var(--sp500-frame) * .050); }
+#game > .event.finance-sp500.finance-etf-receipt #actions > button:nth-child(1) {
+ inset: 86.5% auto auto 15.3%;
+ width: 32.9%;
+ height: 7%;
+}
+#game > .event.finance-sp500.finance-etf-receipt #actions > button:nth-child(2) {
+ inset: 86.5% auto auto 49.7%;
+ width: 32%;
+ height: 7%;
+ border: 0;
+ background: transparent !important;
+ color: transparent;
+}
+
+/* The detail artwork has a shared trade row and a separate settings row. */
+.finance-sp500 .sp500-chart { height: 16.7%; }
+.finance-sp500 .sp500-value,
+.finance-sp500 .sp500-cumulative { top: 68.6%; }
+.finance-sp500 .sp500-shares,
+.finance-sp500 .sp500-dividend { top: 72.55%; }
+#game > .event.finance-sp500:not(.finance-etf-buy,.finance-etf-receipt,.finance-etf-sell,.finance-etf-settings) #actions > button {
+ height: 5.7%;
+}
+#game > .event.finance-sp500:not(.finance-etf-buy,.finance-etf-receipt,.finance-etf-sell,.finance-etf-settings) #actions > button:nth-child(1) {
+ inset: 78.5% auto auto 14.75%;
+ width: 33%;
+}
+#game > .event.finance-sp500:not(.finance-etf-buy,.finance-etf-receipt,.finance-etf-sell,.finance-etf-settings) #actions > button:nth-child(2) {
+ inset: 78.5% auto auto 48.8%;
+ width: 33%;
+}
+#game > .event.finance-sp500 #actions > button:nth-child(2):disabled {
+ opacity: 1;
+}
+#game > .event.finance-sp500:not(.finance-etf-buy,.finance-etf-receipt,.finance-etf-sell,.finance-etf-settings) #actions > button:nth-child(3) {
+ inset: 85% auto auto 14.75%;
+ width: 67%;
+}
+#game > .event.finance-sp500:not(.finance-etf-buy,.finance-etf-receipt,.finance-etf-sell,.finance-etf-settings) #actions > button:nth-child(4) {
+ inset: 91.3% auto auto 24.8%;
+ width: 46%;
+}
+
+#game > .event.event-active.finance-sp500.finance-etf-sell {
+ background-image: url("./assets/finance/etf-sell-scene.webp") !important;
+}
+.finance-etf-sell > .row { top: 19.8%; }
+.finance-etf-sell .etf-buy-input { right: 40%; }
+#game .finance-etf-sell .etf-buy-input input {
+ min-width: 0;
+ width: 100%;
+ height: 100%;
+ padding: 0;
+ border: 0;
+ background: transparent;
+ color: inherit;
+ font: inherit;
+ appearance: textfield;
+}
+#game .finance-etf-sell .etf-buy-input input:focus-visible { outline: none; }
+.etf-sell-quote { inset: 40.05% 25.8% auto 46%; height: 4.12%; }
+.etf-sell-max { inset: 46.25% 27% auto 48%; height: 4%; }
+.etf-sell-values > div:nth-child(n+3) { right: 22.6%; left: 47%; height: 3.3%; }
+.etf-sell-values > div:nth-child(3) { top: 70.1%; }
+.etf-sell-values > div:nth-child(4) { top: 74.6%; }
+.etf-sell-values > div:nth-child(5) { top: 79.05%; }
+.etf-sell-values > div:nth-child(n+3) dd { font-size: calc(var(--sp500-frame) * .043); }
+#game .finance-etf-sell #etfSellMax {
+ position: absolute;
+ inset: 60.15% 18.75% 33.9% 61.8%;
+ width: auto;
+ min-height: 0;
+ margin: 0;
+ padding: 0;
+ border: 0;
+ color: #285133;
+ font-size: calc(var(--sp500-frame) * .032);
+ font-weight: 700;
+ white-space: nowrap;
+ background: transparent;
+ box-shadow: none;
+ pointer-events: auto;
+}
+.finance-etf-sell #etfSellEstimate:not(.sp500-reader-label) {
+ position: absolute;
+ inset: 84.55% 23.5% auto 21%;
+ margin: 0;
+ background: #faedcd;
+ color: #883318;
+ text-align: center;
+ font: 600 calc(var(--sp500-frame) * .026) / 1.2 system-ui, sans-serif;
+}
+#game > .event.finance-sp500.finance-etf-sell #actions > button:nth-child(1),
+#game > .event.finance-sp500.finance-etf-sell #actions > button:nth-child(2) {
+ top: 88.35%;
+ height: 7%;
+}
+#game > .event.finance-sp500.finance-etf-sell #actions > button:nth-child(1) {
+ left: 15.3%;
+ width: 32.9%;
+}
+#game > .event.finance-sp500.finance-etf-sell #actions > button:nth-child(2) {
+ left: 49.7%;
+ width: 32%;
+ border: 0;
+ background: transparent !important;
+ color: transparent;
+}
+
+#game > .event.event-active.finance-sp500.finance-etf-settings {
+ background-image: url("./assets/finance/etf-settings-scene.webp") !important;
+}
+.finance-etf-settings > .row { display: none; }
+#game > .event.finance-sp500.finance-etf-settings #eventClose {
+ inset: 11.2% 10% auto auto !important;
+}
+#game .finance-etf-settings #batchAutoAmount,
+.etf-settings-dollar {
+ position: absolute;
+ top: 47.1%;
+ height: 5%;
+ color: #233b19;
+ font: 700 calc(var(--sp500-frame) * .045)/1 Georgia, serif;
+}
+#game .finance-etf-settings #batchAutoAmount {
+ left: 54%;
+ width: 30%;
+ margin: 0;
+ padding: 0 3%;
+ border: 0;
+ border-radius: 6px;
+ background: transparent;
+ box-shadow: none;
+ pointer-events: auto;
+ appearance: textfield;
+}
+#batchAutoAmount::-webkit-inner-spin-button { appearance: none; }
+.etf-settings-dollar { left: 51.5%; display: grid; align-items: center; }
+.etf-settings-choice {
+ position: absolute;
+ top: 72.3%;
+ left: 12.2%;
+ width: 36.4%;
+ height: 7%;
+ display: flex;
+ align-items: center;
+ padding-left: 3%;
+ border-radius: 9px;
+ cursor: pointer;
+ pointer-events: auto;
+}
+.etf-settings-choice + .etf-settings-choice { left: 51.4%; }
+.etf-settings-choice:has(input:checked) {
+ outline: 1.5px solid #54742d;
+ outline-offset: -2px;
+ background: #97bd4a35;
+}
+#game .etf-settings-choice input {
+ appearance: auto;
+ accent-color: #54742d;
+ width: calc(var(--sp500-frame) * .041);
+ height: calc(var(--sp500-frame) * .041);
+ margin: 0;
+ padding: 0;
+}
+#game > .event.finance-sp500.finance-etf-settings #actions > button {
+ top: 86.5%;
+ width: 36.5%;
+ height: 7.3%;
+}
+#game > .event.finance-sp500.finance-etf-settings #actions > button:first-child { left: 11.8%; }
+#game > .event.finance-sp500.finance-etf-settings #actions > button:nth-child(2) {
+ left: 52.2%;
+ border: 0;
+ background: transparent !important;
+ color: transparent;
+}
+
+#game > .event.event-active.finance-sp500[data-etf-detail]:not([data-etf-detail="us500"]) {
+ background-image: var(--etf-detail-art) !important;
+}
+.finance-sp500[data-etf-detail="ustotal"] {
+ --etf-detail-art: url("./assets/finance/etf-ustotal-scene.webp");
+ --etf-chart-top: 44.7%;
+ --etf-price-top: 30.8%;
+ --etf-change-top: 36%;
+}
+.finance-sp500[data-etf-detail="international"] {
+ --etf-detail-art: url("./assets/finance/etf-international-scene.webp");
+}
+.finance-sp500[data-etf-detail="world"] {
+ --etf-detail-art: url("./assets/finance/etf-world-scene.webp");
+}
+.finance-sp500[data-etf-detail="smallcap"] {
+ --etf-detail-art: url("./assets/finance/etf-smallcap-scene.webp");
+ --etf-price-top: 32%;
+ --etf-change-top: 37.7%;
+}
+.finance-sp500[data-etf-detail="emerging"] {
+ --etf-detail-art: url("./assets/finance/etf-emerging-scene.webp");
+}
+.finance-sp500[data-etf-detail]:not([data-etf-detail="us500"]) > .row { top: 14.2%; }
+.finance-sp500[data-etf-detail]:not([data-etf-detail="us500"]) .sp500-price {
+ inset: var(--etf-price-top, 30.8%) 22.8% auto 45%;
+ justify-items: center;
+}
+.finance-sp500[data-etf-detail]:not([data-etf-detail="us500"]) .sp500-change {
+ top: var(--etf-change-top, 36.6%);
+}
+.finance-sp500[data-etf-detail]:not([data-etf-detail="us500"]) .sp500-chart {
+ top: var(--etf-chart-top, 45.7%);
+ height: 15.7%;
+}
+
+.etf-trade-name {
+ position: absolute;
+ inset: 14.55% auto auto 17%;
+ width: 53%;
+ height: 4.35%;
+ display: grid;
+ place-items: center;
+ margin: 0;
+ border-radius: 8px;
+ background: linear-gradient(90deg,#e2e3ad,#d7dfa1,#e2e3ad);
+ color: #233a14;
+ font: 700 calc(var(--sp500-frame) * .046)/1.05 "Finance Ink", serif;
+ white-space: nowrap;
+}
+.etf-trade-name-long { font-size: calc(var(--sp500-frame) * .035); }
+.finance-etf-receipt .etf-trade-name { top: 16.4%; height: 5.1%; }
+.finance-etf-settings .etf-trade-name {
+ inset: 20.45% auto auto 21%;
+ width: 58%;
+ height: 3.7%;
+ background: linear-gradient(90deg,#eee8bc,#dedfa6,#eee8bc);
+}
