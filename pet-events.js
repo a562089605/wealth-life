@@ -57,7 +57,7 @@
  function samePet(p,identity){const now=[p.id,p.careId,p.species,p.type,p.adoptMonth,p.name];if(JSON.stringify(now)===identity)return true;
   // A previously absent careId may be assigned by legacy care initialization, without changing the actual pet.
   try{const old=JSON.parse(identity);return Array.isArray(old)&&old.length===now.length&&old[1]==null&&now[1]!=null&&old.every((v,i)=>i===1||JSON.stringify(v)===JSON.stringify(now[i]??null));}catch(e){return false;}}
- function execute(s,k,{free,forcedTime}={}){const r=s.petMapEvents?.records[k],q=r?.quote,p=q&&(s.pets||[])[q.petIndex];
+ function execute(s,k,{free,forcedTime,keepMoveOpen=false}={}){const r=s.petMapEvents?.records[k],q=r?.quote,p=q&&(s.pets||[])[q.petIndex];
   if(!r||r.status!=='pending'||r.month!==s.month||!q||!p||!Number.isFinite(q.cost)||q.cost<0||!Number.isFinite(q.hours)||q.hours<0||!samePet(p,q.petIdentity)||s.cash<q.cost||!Number.isFinite(free)||free<0||!r.forced&&free<q.hours)return false;
   const short=q.hours>free;if(short&&!forcedTime)return false;
   const time=short?forcedTime({id:'pet-'+k,month:s.month,hours:q.hours,available:free}):null;
@@ -67,7 +67,7 @@
   r.status='resolved';r.receipt={cost:q.cost,hours:q.hours,time};
   if(q.cost)(s.financeLedger??=[]).push({kind:'lifeIncident',month:s.month,amount:q.cost,eventId:'pet-'+k,source:'petMapEvent'});
   if(q.hours>0&&(short||q.hours===free))s.forcedTimeReturn={month:s.month,id:'pet-'+k,debt:time?.debt||0};
-  const move=s.town?.movement;if(move&&move.id===r.moveId&&!move.resolved){move.resolved=true;move.completedMonth=s.month;(s.town.history??=[]).push({id:move.id,die:move.die,to:move.to,month:s.month,type:'life',petEvent:r.id});}
+  const move=s.town?.movement;if(!keepMoveOpen&&move&&move.id===r.moveId&&!move.resolved){move.resolved=true;move.completedMonth=s.month;(s.town.history??=[]).push({id:move.id,die:move.die,to:move.to,month:s.month,type:'life',petEvent:r.id});}
   return true;}
  function atomic(s,change,save){const before=clone(s);try{if(change()===false)throw Error('invalid pet event');if(save()===false)throw Error('save failed');return true;}catch(e){for(const k of Object.keys(s))delete s[k];Object.assign(s,before);return false;}}
  const api={companions,cards,weights,illness,species,category,seen,data,key,choices,quote,cardForRecord,draw,execute,atomic};root.PetMapEvents=api;if(typeof module!=='undefined')module.exports=api;

@@ -62,7 +62,7 @@ function openTownLanding(){
  if(type==='market'){if(openBuyerOffer())return;showEvent('市场','看看当前市场','价格与报价来自现有模拟经济。查看产品不等于购买，确认后才交易。',[['模拟基准利率',(ECONOMIES[state.economy||0].rate*100).toFixed(1)+'%']],[['查看证券与资产',openTownSecurities,true],['查看固定收益产品',openBonds,false],['继续持有，离开',finish,false]]);return}
  if(type==='growth'){showEvent('学习成长','投资自己','学历、兴趣与工资仍沿用原规则；每月兴趣练习不重复收费或刷经验。',[],[['查看学历计划',openEducation,true],['练习兴趣技能',()=>$('hobbyBtn').click(),false],['本次不安排',finish,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block';return}
  if(type==='career'){if(workplaceEvent())return;openWorkAdjustment();return}
- if(type==='life'){$('lifestyleBtn').click();return}
+ if(type==='life'){if(typeof openMapLife==='function')return openMapLife(move);$('lifestyleBtn').click();return}
  if(type==='community'){$('networkBtn').click();return}
  if(type==='risk'){requireIncident(state.carOwned?'车辆必要维修':'家用电器损坏',state.carOwned?420:180);return}
  resolveTownMove();

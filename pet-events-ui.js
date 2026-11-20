@@ -38,9 +38,9 @@
   if(art&&medical&&q.cost!==q.gross)wrap.append(el('p','本次保险承担 '+priceText(q.gross-q.cost)+' · 自付 '+priceText(q.cost),'pet-map-coverage'));
   function refresh(){const now=record()?.quote;pay.disabled=!valid()||!now||state.cash<now.cost||!r.forced&&currentCareerTime().free<now.hours;}
   pay.onclick=()=>{if(!valid()||pay.disabled)return;pay.disabled=true;const free=currentCareerTime().free;
-   const ok=P.atomic(state,()=>P.execute(state,k,{free,forcedTime:x=>recordForcedEventTime(state,x)}),persist);
+   const ok=P.atomic(state,()=>P.execute(state,k,{free,forcedTime:x=>recordForcedEventTime(state,x), keepMoveOpen:!!window.mapLifeAppointmentDue?.(current())}),persist);
    if(!ok){status.textContent='暂未完成，请重试。';refresh();return;}
-   close();render();finish();
+   close();render();if(window.mapLifeAppointmentDue?.(current()))window.openMapLife(current(),true);else finish();
   };
   wrap.append(status);
   if(state.cash<q.cost){const funding=el('button','查看资金处理','pet-solid-button');funding.onclick=()=>{if(!valid())return;close();showFundingOptions(q.cost,()=>{if(state===owner&&slot===chosenSlot&&record()?.key===k)show();});};wrap.append(funding);}
@@ -49,11 +49,12 @@
  }
  const timeBefore=currentCareerTime;currentCareerTime=function(){const t=timeBefore();return state?{...t,free:Math.max(0,t.free-(state.petMapEvents?.hours[state.month]||0))}:t;};
  const landingBefore=openTownLanding;openTownLanding=function(){const move=current();if(!townEnabled()||!move||move.resolved||TOWN_TYPES[move.to]!=='life')return landingBefore();
+  if(move.mapLife)return landingBefore();
   const k=P.key(state,move);if(!state.petMapEvents?.records[k]){
    const owner=state,ok=P.atomic(state,()=>{move.opened=true;P.draw(state,move,{free:currentCareerTime().free,names:NPC_NAMES,jobs:NPC_JOBS});},persist);
    if(!ok){showEvent('生活事件','暂未保存','请重试。',[],[['重新打开',()=>{if(state===owner)openTownLanding();},true]]);return;}
   }
-  const r=record();if(r?.status==='pending')return show();if(r?.status==='resolved')return;return landingBefore();
+  const r=record();if(r?.status==='pending')return show();if(r?.status==='resolved'){if(window.mapLifeAppointmentDue?.(move))return window.openMapLife(move,true);return;}return landingBefore();
  };
  // Resolve a drawn mandatory medical/property event before a zero-time return or another finish action.
  const waitingForcedPet=()=>{const r=record(),m=current();return townEnabled()&&!state.gameOver?.final&&!state.financialCrisis?.finalConfirmed&&!isRecoveryMonth(state)&&!(state.crisis&&state.crisis.ackMonth!==state.month)&&m&&!m.resolved&&r?.status==='pending'&&r.forced&&r.month===state.month&&!state.requiredIncident&&!unfinishedTreatment()&&!healthTreatmentKind(state.health);};
