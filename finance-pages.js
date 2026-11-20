@@ -131,6 +131,52 @@
    data.scrollTop=0;
   }
 
+  function forecastInvestingCash(metrics){
+   const closingMonth=state.month+1;
+   const maturities=[];
+   const reinvestments=[];
+   const purchases=[];
+   const skipped=[];
+   let cash=roundCash(state.cash+metrics.remainingCF);
+   const distributions=expectedETFDistributions();
+   const dividendTotal=distributions.reduce((sum,[,amount])=>sum+amount,0);
+   const bonds=state.assets.filter(asset=>asset.kind==='bond');
+   const bondInterest=bonds.reduce((sum,asset)=>sum+roundCash(asset.face*asset.coupon/12),0);
+   // The recurring forecast includes these amounts. Apply them in settlement order.
+   cash=roundCash(cash-dividendTotal-bondInterest);
+   for(const asset of state.assets){
+    if(asset.kind!=='cd'||!(asset.maturesAt<=closingMonth))continue;
+    const amount=roundCash(asset.cost+(asset.interestAccrued||0)+asset.cost*asset.rate/12);
+    maturities.push(['定期存款到期本息',amount,asset.name]);
+    cash=roundCash(cash+amount);
+   }
+   for(const [id,amount] of distributions){
+    cash=roundCash(cash+amount);
+    if((state.dividendReinvest??true)&&cash>=amount){
+     const name=V26_INSTRUMENTS.find(item=>item.id===id)?.name||id;
+     reinvestments.push(['预计分红再投资',amount,name]);
+     cash=roundCash(cash-amount);
+    }
+   }
+   cash=roundCash(cash+bondInterest);
+   for(const asset of bonds){
+    if(!(asset.maturesAt<=closingMonth))continue;
+    maturities.push(['债券到期还本',asset.face,asset.name]);
+    cash=roundCash(cash+asset.face);
+   }
+   for(const [id,plan] of activeAutoInvestPlans()){
+    const name=V26_INSTRUMENTS.find(item=>item.id===id)?.name||id;
+    if(plan.amount>cash){
+     skipped.push(['预计跳过定投',priceText(plan.amount),name+' · 现金不足']);
+     continue;
+    }
+    const amount=roundCash(plan.amount);
+    purchases.push(['预计定投',amount,name]);
+    cash=roundCash(cash-amount);
+   }
+   return {cash,maturities,expenses:[...reinvestments,...purchases],skipped};
+  }
+
   function bills(){
    const metrics=calcMetrics();
    const current=state.month;
@@ -149,23 +195,27 @@
    if(state.history?.length>1)actions.push(['查看历史月份',history,false]);
    page('收支账单',[],actions);
    if($('eventTitle').textContent!=='收支账单')return;
-   const forecastIncome=metrics.grossSalary-metrics.tax-metrics.kContrib+state.passive;
+   const investing=forecastInvestingCash(metrics);
+   const sumAmounts=rows=>rows.reduce((sum,[,amount])=>sum+amount,0);
+   const forecastIncome=metrics.grossSalary-metrics.tax-metrics.kContrib+state.passive+sumAmounts(investing.maturities);
+   const forecastExpenses=metrics.remainingExpenses+sumAmounts(investing.expenses);
    const forecastRows=[
     ['预计工资（税前）',metrics.grossSalary],['预计工资税',-metrics.tax],
-    ['预计 401(k) 个人缴费',-metrics.kContrib],['预计资产净现金流',state.passive]
+    ['预计 401(k) 个人缴费',-metrics.kContrib],['预计资产净现金流',state.passive],...investing.maturities
    ].filter(([,amount])=>amount!==0);
    drawBill('<div class="finance-bill-desk">'+illustration('desk')+'</div>'+
     highlight('当前现金',state.cash,'cash','finance-bill-cash')+
     section('本月已记账',[
      ['收入及转入',totalFor(1)],['支出及转出',totalFor(-1)],['其中：已付经常支出',metrics.prepaidExpenses]
     ])+
-    section('本月预计收付',[['待收',forecastIncome],['待付',metrics.remainingExpenses]])+
-    highlight('预计月末现金',state.cash+metrics.remainingCF,'coins')+
+    section('本月预计收付',[['待收',forecastIncome],['待付',forecastExpenses]])+
+    highlight('预计月末现金',investing.cash,'coins')+
     ((!state.housing||state.housing==='unselected')?
      '<p class="finance-bill-note">'+illustration('house')+'住房待选，暂未计入住房费用。</p>':'')+
     section('本月逐笔流水',detailRows(entries),'本月尚无已记账流水。')+
     section('预计收入及扣减明细',forecastRows)+
-    section('待付明细',FinanceLedger.forecastExpenses()));
+    section('待付明细',[...FinanceLedger.forecastExpenses(),...investing.expenses])+
+    (investing.skipped.length?section('预计跳过的定投',investing.skipped):''));
   }
 
   function history(){

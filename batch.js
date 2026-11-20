@@ -137,25 +137,49 @@ const BOND_TERMS=[12,36,60];
 function bondPrice(a,rate){const n=Math.max(0,a.maturesAt-state.month),r=rate/12,c=a.face*a.coupon/12;return n===0?a.face:roundCash(r?c*(1-Math.pow(1+r,-n))/r+a.face/Math.pow(1+r,n):a.face+c*n)}
 function openBonds(back=finish){const rate=ECONOMIES[state.economy||0].rate;showEvent('债券市场','政府债券','游戏中的本国政府固定息债券：每月支付票息，到期返还面值。年票息在买入时锁定；市场利率上升会使已有债券价格下降。提前出售按当前估价，可能亏损；不套用截图中的保证8%回报。',[],BOND_TERMS.map(n=>['查看 '+n+'个月债券',()=>previewBond(n,back),false]).concat([['返回',back,true]]));if(back!==finish)window.modalReturn=back}
 function previewBond(months,back=finish){const coupon=bondYield(months),face=1000;showEvent('债券预览',months+'个月政府债券','固定年票息，按月支付；以下价格与利率为游戏模拟。',[['买入价格/面值',priceText(face)],['年票息率',(coupon*100).toFixed(2)+'%'],['每月票息',priceText(face*coupon/12)],['到期期数',months+' 次月末']],[['确认买入债券 $1,000.00',()=>{if(!spendConfirmed('bondBuy',face,{months,coupon}))return;state.assets.push({id:assetId(),name:months+'个月政府债券',kind:'bond',face,cost:face,value:face,coupon,cf:0,maturesAt:state.month+months,entryMonth:state.month});save();back()},true,state.cash<face],['返回债券市场',()=>openBonds(back),false]])}
+function etfDistributionPerShare(id,price=quoteFor(id).price){
+ return roundCash(price*ETF_YIELDS[id]/12);
+}
+function expectedETFDistributions(){
+ return Object.keys(ETF_YIELDS).map(id=>{
+  const shares=(state.assets||[]).filter(a=>a.instrument===id).reduce((sum,a)=>sum+a.shares,0);
+  return [id,roundCash(shares*etfDistributionPerShare(id))];
+ }).filter(([,amount])=>amount>0);
+}
 function expectedInvestmentIncome(){
- let total=0;
- for(const [id,yieldRate] of Object.entries(ETF_YIELDS)){const perShare=roundCash(quoteFor(id).price*yieldRate/12),shares=(state.assets||[]).filter(a=>a.instrument===id).reduce((n,a)=>n+a.shares,0);total+=roundCash(shares*perShare)}
+ let total=expectedETFDistributions().reduce((sum,[,amount])=>sum+amount,0);
  for(const a of state.assets||[])if(a.kind==='bond')total+=roundCash(a.face*a.coupon/12);
  return roundCash(total);
+}
+function activeAutoInvestPlans(){
+ return Object.entries(state.autoInvest||{}).filter(([id,plan])=>
+  Object.hasOwn(ETF_YIELDS,id)&&Number.isFinite(plan?.amount)&&roundCash(plan.amount)>0);
 }
 function settleInvestingBatch(settlement,month){ensureInvestSettings();
  const budget=settlement.investmentIncomeBudget||0;
  if(budget){state.cash=roundCash(state.cash-budget);settlement.netCF=roundCash(settlement.netCF-budget);settlement.passive=roundCash(settlement.passive-budget)}
 settlement.dividends=0;settlement.dividendReinvested=0;settlement.autoPurchases=[];settlement.bondInterest=0;settlement.bondPrincipal=0;
- for(const [id,yieldRate] of Object.entries(ETF_YIELDS)){
- const held=state.assets.filter(a=>a.instrument===id),shares=held.reduce((n,a)=>n+a.shares,0);if(!shares)continue;
- const q=quoteFor(id),perShare=roundCash(q.price*yieldRate/12),total=roundCash(shares*perShare);q.price=Math.max(.01,roundCash(q.price-perShare));if(q.history.at(-1)?.month===month)q.history.at(-1).price=q.price;
- for(const a of held)a.value=roundCash(a.shares*q.price);state.cash=roundCash(state.cash+total);settlement.dividends=roundCash(settlement.dividends+total);state.financeLedger.push({kind:'dividend',month:month-1,amount:total,instrument:id});
- if(state.dividendReinvest&&total>0&&buyUnits(id,total,'dividendReinvest'))settlement.dividendReinvested=roundCash(settlement.dividendReinvested+total);
+ for(const id of Object.keys(ETF_YIELDS)){
+  const quote=quoteFor(id);
+  const perShare=etfDistributionPerShare(id,quote.price);
+  quote.price=Math.max(.01,roundCash(quote.price-perShare));
+  if(quote.history.at(-1)?.month===month)quote.history.at(-1).price=quote.price;
+
+  const held=state.assets.filter(a=>a.instrument===id);
+  const shares=held.reduce((sum,asset)=>sum+asset.shares,0);
+  if(!shares)continue;
+  const total=roundCash(shares*perShare);
+  for(const asset of held)asset.value=roundCash(asset.shares*quote.price);
+  state.cash=roundCash(state.cash+total);
+  settlement.dividends=roundCash(settlement.dividends+total);
+  state.financeLedger.push({kind:'dividend',month:month-1,amount:total,instrument:id});
+  if(state.dividendReinvest&&total>0&&buyUnits(id,total,'dividendReinvest')){
+   settlement.dividendReinvested=roundCash(settlement.dividendReinvested+total);
+  }
  }
  const rate=ECONOMIES[state.economy||0].rate;
  state.assets=state.assets.filter(a=>{if(a.kind!=='bond')return true;const interest=roundCash(a.face*a.coupon/12);state.cash=roundCash(state.cash+interest);settlement.bondInterest=roundCash(settlement.bondInterest+interest);state.financeLedger.push({kind:'bondInterest',month:month-1,amount:interest,assetId:a.id});if(month>=a.maturesAt){state.cash=roundCash(state.cash+a.face);settlement.bondPrincipal=roundCash(settlement.bondPrincipal+a.face);state.financeLedger.push({kind:'bondMaturity',month:month-1,amount:a.face,assetId:a.id});return false}const n=a.maturesAt-month,r=bondYield(n)/12,c=a.face*a.coupon/12;a.value=roundCash(r?c*(1-Math.pow(1+r,-n))/r+a.face/Math.pow(1+r,n):a.face+c*n);return true});
- for(const [id,plan]of Object.entries(state.autoInvest)){if(!(plan.amount>0))continue;const ok=buyUnits(id,plan.amount,'autoInvest');settlement.autoPurchases.push({instrument:id,amount:plan.amount,status:ok?'purchased':'skippedInsufficientCash'});}
+ for(const [id,plan] of activeAutoInvestPlans()){const ok=buyUnits(id,plan.amount,'autoInvest');settlement.autoPurchases.push({instrument:id,amount:plan.amount,status:ok?'purchased':'skippedInsufficientCash'});}
 }
 function completeCashAudit(s){
  const ledger=(state.financeLedger||[]).filter(x=>x.month===s.month-1);s.ledger=ledger.map(x=>({...x}));
