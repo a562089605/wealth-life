@@ -24,7 +24,13 @@ CAREERS.push(
 function applyCareerProgression(){if(!state.job||state.retired||state.unemployedMonths>0)return;const months=state.domainExperience[inferDomain(state.job)]||0,c=CAREERS.find(c=>c.name===state.job),skill=c?careerSkill(c):null;const next=months>=60&&hobbyLevel(skill)>=4?2:months>=24&&hobbyLevel(skill)>=2?1:0;state.careerRanks??={};const rank=state.careerRanks[state.job]||0;if(next<=rank||state.month-(state.lastPromotionMonth??-12)<12)return;state.careerRanks[state.job]=next;state.salary=roundCash(state.salary*1.05);state.annualSalary=roundCash(state.salary*12);state.lastPromotionMonth=state.month;state.pendingCareerNotice={job:state.job,rank:next,salary:state.salary};state.timeline.push(state.job+' 晋升等级 '+next+'，经验与技能加薪5%');}
 function currentBankAPR(){const ec=ECONOMIES[state.economy||0],shock=state.worldShock?.monthsLeft>0?WORLD_SHOCKS[state.worldShock.index]:null;return Math.min(.22,Math.max(.035,ec.rate+.015+Math.max(-.01,((state.annualInflation??.025)-.025)*.5)+(shock?.rate||0)))}
 function latePaymentCharge(row,loan){return loan.latePolicy==='fee5cap35'?roundCash(Math.min(row.due*.05,loan.lateFeeCap??35)):roundCash(row.due*.03/12)}
-function bondYield(months){const base=ECONOMIES[state.economy||0].rate,years=Math.min(5,Math.max(1,months/12)),premium=(years-1)*(state.economy===3?-.001:.002);return Math.max(.005,base+premium)}
+function bondYield(months){
+ const base=ECONOMIES[state.economy||0].rate;
+ const years=Math.min(5,Math.max(1,months/12));
+ const premium=(years-1)*(state.economy===3?-.001:.002);
+ const inflationAdjustment=((state.annualInflation??.025)-.025)*.5;
+ return Math.max(.005,base+premium+inflationAdjustment);
+}
 function simulatedMarketReturn(ec,shock){const u=Math.max(.00001,Math.random()),v=Math.random(),z=Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);const annual=[.07,.11,.015,-.12,.035][state.economy||0];return Math.max(-.22,Math.min(.22,Math.pow(1+annual,1/12)-1+z*.035+(shock?.market||0)))}
 V26_INSTRUMENTS.push(
  {id:'smallcap',name:'国内小盘 ETF',kind:'ETF',desc:'分散持有小型上市公司，波动和经营风险较高。',beta:1.3,region:'us'},
@@ -134,7 +140,6 @@ function commitCD(previous,back,retry){
  back();
 }
 $('cdBtn')&&($('cdBtn').onclick=openCD);
-const bondsBefore277=openBonds;openBonds=function(back){bondsBefore277(back);$('eventDesc').textContent='固定票息在买入时锁定，到期还本；提前出售按市值。正常环境设期限溢价，衰退环境允许倒挂。此处为模拟报价。';for(const [i,b]of [...$('actions').children].entries())if(i<BOND_TERMS.length)b.textContent='查看 '+BOND_TERMS[i]+'个月 · 年票息 '+(bondYield(BOND_TERMS[i])*100).toFixed(2)+'%'};
 V26_OFFERS.push(
  {id:'microcompany',name:'收购小型订阅公司',cost:2000,cf:200,chance:.5,effects:{energy:-10,stress:8},desc:'高风险微型业务。客户流失或交接失败会损失投入；成功后月净收入已扣运营成本。'},
  {id:'laundryshare',name:'洗衣店少数股权',cost:6500,cf:105,chance:.85,effects:{stress:2},desc:'核查账目后投资，成功后按月分配净利润。'},

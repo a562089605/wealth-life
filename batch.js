@@ -133,10 +133,157 @@ function openInvestSettings(id,after=finish){ensureInvestSettings();const cfg=V2
  $('eventData').innerHTML='<label>每月购买金额（0 为停止）<input id="batchAutoAmount" type="number" inputmode="decimal" min="0" step="0.01" value="'+(state.autoInvest[id]?.amount||0)+'"></label><label class="wl-check"><input id="batchDrip" type="checkbox" '+(state.dividendReinvest?'checked':'')+'>所有 ETF 分红自动再投资（取消则留在现金）</label>';$('eventData').style.display='block';
 }
 const instrumentBeforeBatch=openInstrument;openInstrument=function(id){instrumentBeforeBatch(id);const cfg=V26_INSTRUMENTS.find(x=>x.id===id);if(cfg?.kind==='ETF'&&!window.ETFPages){const b=document.createElement('button');b.textContent='每月自动购买 / 分红设置';b.onclick=()=>openInvestSettings(id);$('actions').append(b);const note=document.createElement('p');const dividends=(state.financeLedger||[]).filter(x=>x.kind==='dividend'&&x.instrument===id).reduce((n,x)=>n+x.amount,0),reinvested=(state.financeLedger||[]).filter(x=>x.kind==='dividendReinvest'&&x.instrument===id).reduce((n,x)=>n+x.amount,0);note.textContent='模拟年分配率 '+(ETF_YIELDS[id]*100).toFixed(1)+'%，按月分红；价格已含除息变化。累计分红 '+priceText(dividends)+'，其中再投资 '+priceText(reinvested)+'。分红与浮动盈亏分开展示，不重复合计。';$('eventData').append(note)}};
-const BOND_TERMS=[12,36,60];
-function bondPrice(a,rate){const n=Math.max(0,a.maturesAt-state.month),r=rate/12,c=a.face*a.coupon/12;return n===0?a.face:roundCash(r?c*(1-Math.pow(1+r,-n))/r+a.face/Math.pow(1+r,n):a.face+c*n)}
-function openBonds(back=finish){const rate=ECONOMIES[state.economy||0].rate;showEvent('债券市场','政府债券','游戏中的本国政府固定息债券：每月支付票息，到期返还面值。年票息在买入时锁定；市场利率上升会使已有债券价格下降。提前出售按当前估价，可能亏损；不套用截图中的保证8%回报。',[],BOND_TERMS.map(n=>['查看 '+n+'个月债券',()=>previewBond(n,back),false]).concat([['返回',back,true]]));if(back!==finish)window.modalReturn=back}
-function previewBond(months,back=finish){const coupon=bondYield(months),face=1000;showEvent('债券预览',months+'个月政府债券','固定年票息，按月支付；以下价格与利率为游戏模拟。',[['买入价格/面值',priceText(face)],['年票息率',(coupon*100).toFixed(2)+'%'],['每月票息',priceText(face*coupon/12)],['到期期数',months+' 次月末']],[['确认买入债券 $1,000.00',()=>{if(!spendConfirmed('bondBuy',face,{months,coupon}))return;state.assets.push({id:assetId(),name:months+'个月政府债券',kind:'bond',face,cost:face,value:face,coupon,cf:0,maturesAt:state.month+months,entryMonth:state.month});save();back()},true,state.cash<face],['返回债券市场',()=>openBonds(back),false]])}
+const BOND_TERMS=[6,12,36,60];
+function bondPrice(bond,months,annualYield){
+ if(months<=0)return bond.face;
+ const rate=annualYield/12,coupon=bond.face*bond.coupon/12;
+ if(!rate)return roundCash(bond.face+coupon*months);
+ const discount=Math.pow(1+rate,-months);
+ return roundCash(coupon*(1-discount)/rate+bond.face*discount);
+}
+function quoteBond(months){
+ const face=1000;
+ const coupon=ECONOMIES[0].rate+Math.max(0,months/12-1)*.002;
+ return {face,coupon,price:bondPrice({face,coupon},months,bondYield(months))};
+}
+function showBondPage(type,title,description,rows,actions,back){
+ showEvent(type,title,description,rows,actions);
+ if($('eventTitle').textContent!==title)return;
+ const art=document.createElement('div');
+ art.className='bond-art';
+ if(type==='债券买入成功')art.classList.add('bond-art-purchased');
+ art.setAttribute('aria-hidden','true');
+ $('eventData').prepend(art);
+ $('eventData').style.display='';
+ window.modalReturn=back;
+}
+function bondCouponCash(bond){
+ return roundCash(bond.face*bond.coupon/12);
+}
+function bondMaturityText(bond){
+ const month=bond.maturesAt-1;
+ return '第 '+(Math.floor(month/12)+1)+' 年第 '+(month%12+1)+' 月末';
+}
+function openBonds(back=finish){
+ const quotes=BOND_TERMS.map(months=>({months,...quoteBond(months)}));
+ const actions=quotes.map(({months,price,coupon})=>[
+  months+' 个月 · '+priceText(price)+' · 年票息 '+(coupon*100).toFixed(2)+'%',
+  ()=>previewBond(months,back),false
+ ]);
+ actions.push(['我的债券',()=>showMyBonds(back),true],['返回储蓄与投资',back,false]);
+ const title='政府债券';
+ const description='买入锁定票息，到期还本。提前出售按市值。以下为本月模拟报价。';
+ showBondPage('债券市场',title,description,[],actions,back);
+ if($('eventTitle').textContent!==title)return;
+ const actionBox=$('actions');
+ const buttons=[...actionBox.querySelectorAll('button')];
+ if(buttons.length!==actions.length)return;
+ const picture=document.createElement('img');
+ picture.width=1024;
+ picture.height=1536;
+ picture.alt=title+'。'+description;
+ picture.onload=()=>{
+  if(buttons.some(button=>button.parentElement!==actionBox))return;
+  const market=document.createElement('div');
+  market.className='bond-market-art';
+  market.append(picture);
+  buttons.forEach((button,index)=>{
+   const quote=quotes[index];
+   if(quote){
+    const term=document.createElement('strong');
+    term.textContent=quote.months+' 个月';
+    const values=document.createElement('span');
+    const price=document.createElement('b');
+    price.textContent='买入价 '+priceText(quote.price);
+    const coupon=document.createElement('small');
+    coupon.textContent='年票息 '+(quote.coupon*100).toFixed(2)+'%';
+    values.append(price,coupon);
+    button.replaceChildren(term,values);
+   }else button.textContent=actions[index][0];
+   button.setAttribute('aria-label',actions[index][0]);
+   button.className=quote?'bond-market-quote':'bond-market-nav';
+   market.append(button);
+  });
+  $('eventData').replaceChildren(market);
+  $('eventData').style.display='block';
+ };
+ picture.src='assets/finance/bond-market-scene.webp';
+}
+function showMyBonds(back){
+ const market=()=>openBonds(back);
+ const holdings=state.assets.filter(asset=>asset.kind==='bond').sort((a,b)=>a.maturesAt-b.maturesAt);
+ const principal=holdings.reduce((total,bond)=>total+bond.face,0);
+ const coupon=holdings.reduce((total,bond)=>total+bondCouponCash(bond),0);
+ const actions=holdings.map(bond=>[
+  bond.name+' · '+priceText(bond.face),
+  ()=>showBondHolding(bond,back),false,false
+ ]);
+ actions.push(['返回债券市场',market,true]);
+ showBondPage('债券持仓','我的债券',holdings.length?'按到期时间排列。':'暂无政府债券持仓。',[
+  ['持有本金',priceText(principal)],['预计每月票息',priceText(coupon)]
+ ],actions,market);
+ if($('eventTitle').textContent!=='我的债券')return;
+ const buttons=[...$('actions').children];
+ holdings.forEach((bond,index)=>{
+  const note=document.createElement('small');
+  note.textContent='年票息 '+(bond.coupon*100).toFixed(2)+'% · '+bondMaturityText(bond)+'到期';
+  buttons[index].append(note);
+ });
+}
+function previewBond(months,back=finish){
+ const {coupon,face,price}=quoteBond(months),owner=state,quoteMonth=state.month;
+ const reopen=()=>previewBond(months,back),market=()=>openBonds(back);
+ let purchased=false;
+ showBondPage('债券预览',months+'个月政府债券','固定年票息，按月支付；以下价格与利率为游戏模拟。',[
+  ['买入价格',priceText(price)],['债券面值',priceText(face)],['年票息率',(coupon*100).toFixed(2)+'%'],
+  ['每月票息',priceText(face*coupon/12)],['到期期数',months+' 次月末']
+ ],[['确认买入债券 '+priceText(price),()=>{
+  if(purchased||state!==owner)return;
+  if(state.month!==quoteMonth||quoteBond(months).price!==price){reopen();return;}
+  const cash=state.cash,ledger=state.financeLedger,ledgerLength=ledger?.length,nextAssetId=state.nextAssetId;
+  if(!spendConfirmed('bondBuy',price,{months,coupon}))return;
+  const bond={id:assetId(),name:months+'个月政府债券',kind:'bond',face,cost:price,
+   value:price,coupon,cf:0,maturesAt:state.month+months,entryMonth:state.month};
+  state.assets.push(bond);
+  try{
+   if(save()===false)throw Error('save failed');
+  }catch{
+   state.assets.pop();
+   state.cash=cash;
+   if(nextAssetId===undefined)delete state.nextAssetId;
+   else state.nextAssetId=nextAssetId;
+   if(ledger)ledger.length=ledgerLength;
+   else delete state.financeLedger;
+   reopen();
+   $('eventDesc').textContent='买入未保存，请重试。';
+   return;
+  }
+  purchased=true;
+  showBondHolding(bond,back,true);
+ },true,state.cash<price],['返回债券市场',market,false]],market);
+}
+function showBondHolding(bond,back,purchased=false){
+ const market=()=>openBonds(back),holdings=()=>showMyBonds(back);
+ const monthly=bondCouponCash(bond);
+ const rows=[
+  ['买入金额',priceText(bond.cost)],['债券面值',priceText(bond.face)],
+  ['锁定年票息',(bond.coupon*100).toFixed(2)+'%'],['每月票息',priceText(monthly)]
+ ];
+ const actions=[];
+ if(purchased){
+  rows.push(['剩余期限',Math.max(0,bond.maturesAt-state.month)+' 个月'],['买入后现金',priceText(state.cash)]);
+  actions.push(['查看我的债券',holdings,true],['返回债券市场',market,false]);
+ }else{
+  const term=bond.maturesAt-bond.entryMonth;
+  rows.push(['到期时间',bondMaturityText(bond)],
+   ['到期当月到账',priceText(bond.face+monthly)+'<small>本金＋最后一期票息</small>']);
+  if(Number.isFinite(term)&&term>0)rows.push(['持有到期合计',
+   priceText(roundCash(bond.face+monthly*term))+'<small>本金＋全期票息</small>']);
+  actions.push(['返回我的债券',holdings,true]);
+ }
+ showBondPage(purchased?'债券买入成功':'债券持仓',bond.name+' · 持有中',
+  purchased?'买入成功。每月月末付息，到期返还本金。':'每月月末付息，到期返还本金。',rows,actions,purchased?market:holdings);
+}
 function etfDistributionPerShare(id,price=quoteFor(id).price){
  return roundCash(price*ETF_YIELDS[id]/12);
 }
@@ -148,7 +295,7 @@ function expectedETFDistributions(){
 }
 function expectedInvestmentIncome(){
  let total=expectedETFDistributions().reduce((sum,[,amount])=>sum+amount,0);
- for(const a of state.assets||[])if(a.kind==='bond')total+=roundCash(a.face*a.coupon/12);
+ for(const a of state.assets||[])if(a.kind==='bond')total+=bondCouponCash(a);
  return roundCash(total);
 }
 function activeAutoInvestPlans(){
@@ -177,8 +324,7 @@ settlement.dividends=0;settlement.dividendReinvested=0;settlement.autoPurchases=
    settlement.dividendReinvested=roundCash(settlement.dividendReinvested+total);
   }
  }
- const rate=ECONOMIES[state.economy||0].rate;
- state.assets=state.assets.filter(a=>{if(a.kind!=='bond')return true;const interest=roundCash(a.face*a.coupon/12);state.cash=roundCash(state.cash+interest);settlement.bondInterest=roundCash(settlement.bondInterest+interest);state.financeLedger.push({kind:'bondInterest',month:month-1,amount:interest,assetId:a.id});if(month>=a.maturesAt){state.cash=roundCash(state.cash+a.face);settlement.bondPrincipal=roundCash(settlement.bondPrincipal+a.face);state.financeLedger.push({kind:'bondMaturity',month:month-1,amount:a.face,assetId:a.id});return false}const n=a.maturesAt-month,r=bondYield(n)/12,c=a.face*a.coupon/12;a.value=roundCash(r?c*(1-Math.pow(1+r,-n))/r+a.face/Math.pow(1+r,n):a.face+c*n);return true});
+ state.assets=state.assets.filter(a=>{if(a.kind!=='bond')return true;const interest=bondCouponCash(a);state.cash=roundCash(state.cash+interest);settlement.bondInterest=roundCash(settlement.bondInterest+interest);state.financeLedger.push({kind:'bondInterest',month:month-1,amount:interest,assetId:a.id});if(month>=a.maturesAt){state.cash=roundCash(state.cash+a.face);settlement.bondPrincipal=roundCash(settlement.bondPrincipal+a.face);state.financeLedger.push({kind:'bondMaturity',month:month-1,amount:a.face,assetId:a.id});return false}const n=a.maturesAt-month;a.value=bondPrice(a,n,bondYield(n));return true});
  for(const [id,plan] of activeAutoInvestPlans()){const ok=buyUnits(id,plan.amount,'autoInvest');settlement.autoPurchases.push({instrument:id,amount:plan.amount,status:ok?'purchased':'skippedInsufficientCash'});}
 }
 function completeCashAudit(s){

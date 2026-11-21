@@ -1,0 +1,187 @@
+#game > .event.event-active:has(.bond-art) {
+  color: #22442c;
+  background: radial-gradient(ellipse at 45% 22%, #fff4d9, #f5dfb4);
+  border: 2px solid #b68342;
+  box-shadow: inset 0 0 0 4px #fff2d4, 0 15px 38px #49300d50;
+}
+
+.event:has(.bond-art) #eventTitle {
+  margin: 12px 0;
+  text-align: center;
+  color: #22442c;
+  font-family: WealthHand, 'Ma Shan Zheng', serif;
+}
+
+.event:has(.bond-art) #eventDesc { text-align: center; }
+.event:has(.bond-art) #eventData {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.bond-art {
+  grid-column: 1 / -1;
+  min-width: 0;
+  width: min(100%, 360px);
+  margin: 0 auto;
+  aspect-ratio: 715 / 310;
+  border-radius: 12px;
+  background: url('assets/finance/bond-paper.webp') center 23.6% / 143% auto no-repeat;
+  mix-blend-mode: multiply;
+}
+
+.bond-art-purchased {
+  aspect-ratio: 715 / 255;
+  background-image: url('assets/finance/bond-purchased-paper.webp');
+  background-position: center 27.2%;
+}
+
+.event:has(.bond-art) #eventData .stat {
+  text-align: center;
+  color: #22442c;
+  background: #fff1c9;
+  border: 1px solid #bf914b;
+}
+
+.event:has(.bond-art) #eventData small,
+.event:has(.bond-art) #actions small {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.78rem;
+  font-weight: normal;
+}
+
+.event:has(.bond-art) #actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.event.event-active:has(.bond-art) #actions button {
+  border: 1px solid #ad7c34;
+  background: linear-gradient(#fff0c0, #f2d486);
+  color: #22442c;
+}
+
+.event.event-active:has(.bond-art) #actions button.primary {
+  background: linear-gradient(#fce390, #efbb55) !important;
+}
+
+.event:has(.bond-art) #eventData:has(.stat small) .stat:nth-child(n+6) {
+  grid-column: 1 / -1;
+}
+
+.event:has(.bond-art) #eventData .stat:has(small) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+}
+
+.event:has(.bond-art) #eventData .stat:has(small) .value {
+  text-align: right;
+}
+
+.event:has(.bond-art) #actions button.primary::before,
+.event:has(.bond-art) #actions button.primary::after {
+  content: '❧' / '';
+  display: inline-block;
+  margin-inline: 0.45em;
+  color: #63743e;
+}
+
+.event:has(.bond-art) #actions button.primary::after {
+  transform: scaleX(-1);
+}
+
+#game > .event.event-active:has(.bond-market-art) {
+  --bond-market-width: min(100vw, 62vh, 450px);
+  width: var(--bond-market-width);
+  max-width: 100vw !important;
+  padding: 0 !important;
+  overflow: hidden;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.event:has(.bond-market-art) > .row,
+.event:has(.bond-market-art) > #eventTitle,
+.event:has(.bond-market-art) > #eventDesc,
+.event:has(.bond-market-art) > #actions {
+  display: none !important;
+}
+
+.event:has(.bond-market-art) #eventData {
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+.bond-market-art { position: relative; }
+.bond-market-art img { display: block; width: 100%; height: auto; }
+
+.event.event-active .bond-market-art button {
+  position: absolute;
+  min-height: 0 !important;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent !important;
+  color: #20471e !important;
+  box-shadow: none;
+  font: calc(var(--bond-market-width) * 0.044) / 1.03 "Finance Ink", WealthHand, serif;
+}
+
+.bond-market-art .bond-market-quote {
+  left: 15%;
+  width: 70%;
+  height: 6.8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 13% !important;
+}
+
+.bond-market-art .bond-market-quote:nth-of-type(1) { top: 54.7%; }
+.bond-market-art .bond-market-quote:nth-of-type(2) { top: 62.2%; }
+.bond-market-art .bond-market-quote:nth-of-type(3) { top: 69.7%; }
+.bond-market-art .bond-market-quote:nth-of-type(4) { top: 77.2%; }
+.bond-market-art .bond-market-quote strong { white-space: nowrap; }
+.bond-market-art .bond-market-quote span { text-align: right; }
+.bond-market-art .bond-market-quote small,
+.bond-market-art .bond-market-quote b {
+  display: block;
+  font: 700 calc(var(--bond-market-width) * 0.034) / 1.15 system-ui, sans-serif;
+  white-space: nowrap;
+}
+
+.event.event-active .bond-market-art .bond-market-nav {
+  top: 87%;
+  width: 34%;
+  height: 7.5%;
+  font-size: calc(var(--bond-market-width) * 0.04);
+}
+
+.bond-market-art .bond-market-nav:nth-of-type(5) { left: 15%; }
+.bond-market-art .bond-market-nav:nth-of-type(6) { left: 51%; }
+
+.event.event-active .bond-market-art button:focus-visible {
+  outline: 2px solid #335427;
+  outline-offset: -3px;
+}
+
+#game > .event.event-active:has(.bond-market-art) #eventClose {
+  inset: 8.3% auto auto 80%;
+  width: 8%;
+  height: 5.2%;
+  min-height: 0 !important;
+  padding: 0;
+  opacity: 0;
+}
+
+#game > .event.event-active:has(.bond-market-art) #eventClose:focus-visible {
+  opacity: 1;
+}
