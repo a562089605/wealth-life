@@ -277,9 +277,9 @@
    if(state.carValue||state.carOwned)property.push(['车辆',state.carValue||0]);
    const retirement=state.retirement||{};
    const longTerm=[
-    ['401(k)',retirement.k401Balance||0],['IRA',retirement.iraBalance||0],
-    ['普通投资账户',retirement.brokerageBalance||0]
+    ['401(k)',retirement.k401Balance||0],['IRA',retirement.iraBalance||0]
    ];
+   if(retirement.brokerageBalance)longTerm.push(['普通投资账户',retirement.brokerageBalance]);
    const deposit=heldHousingDeposit();
    const depositNote=deposit?section('其他款项',[['可退住房押金',deposit,'游戏现行净资产口径未计入押金']]):'';
    const summary='<dl class="finance-asset-summary">'+[
@@ -398,9 +398,7 @@
   }
 
   function stocks(){
-   openMarket('股票',savings,[
-    ['普通投资账户',()=>openBrokerageAccount(stocks),false]
-   ]);
+   openMarket('股票',savings);
   }
 
   function retirement(){

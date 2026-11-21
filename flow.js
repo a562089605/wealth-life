@@ -104,7 +104,7 @@ function advanceQuotes(change,month,inflation=state.annualInflation??.025){
   const regional=cfg.region==='intl'?-.22*change:cfg.region==='world'?-.08*change:0;
   let movement=(change+regional)*cfg.beta+cycle;
   if(cfg.kind==='ETF'&&window.ETFMarket){
-   movement=ETFMarket.simulatedChange(q,change,state.annualInflation??.025,cfg.beta,regional,cycle);
+   movement=ETFMarket.simulatedChange(q,change,inflation,cfg.beta,regional,cycle);
   }else if(cfg.kind==='基金'){
    const monthlyInflation=Math.pow(1+inflation,1/12)-1;
    if(cfg.region==='bond'){
@@ -129,10 +129,39 @@ const priceText=money;
 const signedPercent=n=>(n>=0?'+':'')+(n*100).toFixed(2)+'%';
 function quoteChart(q){const h=q.history.slice(-121),min=Math.min(...h.map(p=>p.price))*.98,max=Math.max(...h.map(p=>p.price))*1.02,points=h.map((p,i)=>(10+i*280/Math.max(1,h.length-1)).toFixed(2)+','+(115-(p.price-min)/(max-min)*100).toFixed(2)).join(' ');return '<svg class="wl-chart" viewBox="0 0 300 130" role="img" aria-label="游戏价格历史：'+h.length+'个月点位"><path d="M10 15H290M10 65H290M10 115H290" stroke="#8b9c9f" stroke-dasharray="4 5" fill="none"/><polyline points="'+points+'" fill="none" stroke="#26877f" stroke-width="3"/><circle cx="'+(h.length===1?10:290)+'" cy="'+(115-(h.at(-1).price-min)/(max-min)*100)+'" r="4" fill="#26877f"/></svg>'}
 function returnPeriod(q,months){const last=q.history.at(-1),old=q.history.find(h=>h.month===last.month-months);return old?signedPercent(last.price/old.price-1):'记录不足'}
-function openMarket(kind='ETF',back=finish,extraActions=[]){if(kind==='ETF'&&window.ETFPages)return ETFPages.showList(back===finish?undefined:back);if(kind==='股票'&&window.StockPages)return StockPages.open(back,extraActions);const instruments=V26_INSTRUMENTS.filter(i=>i.kind===kind);showEvent('投资',kind+'品种','先查看范围与风险，再打开购买详情。所有价格为游戏模拟，不是实时行情。',[],[...extraActions,['返回',back,false]]);if(back!==finish)window.modalReturn=back;$('eventData').innerHTML='<div class="wl-mini-grid">'+instruments.map(i=>{const q=quoteFor(i.id);return '<button class="wl-choice-card" data-v26="market" data-key="'+i.id+'" aria-label="查看 '+i.name+'"><strong>'+i.name+'</strong><b>'+priceText(q.price)+'</b><small class="'+(q.price>=q.previous?'wl-up':'wl-down')+'">较上月 '+signedPercent(q.price/q.previous-1)+'</small><small>'+i.desc+'</small><span>查看购买详情 →</span></button>'}).join('')+'</div>'; $('eventData').style.display='block';if(kind==='基金')window.FundPages?.market()}
+function openMarket(kind='ETF',back=finish,extraActions=[]){if(kind==='ETF'&&window.ETFPages)return ETFPages.showList(back===finish?undefined:back);if(kind==='股票'&&window.StockPages)return StockPages.open(back,extraActions);const instruments=V26_INSTRUMENTS.filter(i=>i.kind===kind);showEvent('投资',kind+'品种','先查看范围与风险，再打开购买详情。所有价格为游戏模拟，不是实时行情。',[],[...extraActions,['返回',back,false]]);if(back!==finish)window.modalReturn=back;$('eventData').innerHTML='<div class="wl-mini-grid">'+instruments.map(i=>{const q=quoteFor(i.id);return '<button class="wl-choice-card" data-v26="market" data-key="'+i.id+'" aria-label="查看 '+i.name+'"><strong>'+i.name+'</strong><b>'+priceText(q.price)+'</b><small class="'+(q.price>=q.previous?'wl-up':'wl-down')+'">较上月 '+signedPercent(q.price/q.previous-1)+'</small><small>'+i.desc+'</small><span>查看购买详情 →</span></button>'}).join('')+'</div>'; $('eventData').style.display='block';if(kind==='基金')window.FundPages?.market(()=>openMarket(kind,back,extraActions))}
 
-function openInstrument(id){const cfg=V26_INSTRUMENTS.find(i=>i.id===id);if(!cfg)return;if(cfg.kind==='ETF'&&window.ETFPages)return ETFPages.showDetail(cfg);const q=quoteFor(id),holdings=state.assets.filter(a=>a.instrument===id),cost=holdings.reduce((n,a)=>n+a.cost,0),value=holdings.reduce((n,a)=>n+a.value,0),pct=q.price/q.previous-1;
- showEvent('投资预览',cfg.name,cfg.desc+(cfg.kind==='基金'?'':' 当前显示游戏月度价格；开局没有1/5/10年历史，不会编造收益。'),[],[['确认买入',()=>{const amount=Number($('v26InvestAmount').value);if(!Number.isFinite(amount)||amount<=0||Math.round(amount*100)!==amount*100&&Math.abs(Math.round(amount*100)-amount*100)>.00001)return;if(!spendConfirmed('investmentBuy',amount,{instrument:id,price:q.price}))return;initQuotes();state.assets.push({id:assetId(),name:cfg.name,kind:'market',category:cfg.kind,instrument:id,cost:amount,value:amount,shares:amount/q.price,entryPrice:q.price,entryMonth:state.month,cf:0});finish()},true,state.cash<=0],['返回品种列表',()=>openMarket(cfg.kind),false],['取消',finish,false]]);
+function openInstrument(id,back){const cfg=V26_INSTRUMENTS.find(i=>i.id===id);if(!cfg)return;if(cfg.kind==='ETF'&&window.ETFPages)return ETFPages.showDetail(cfg);const q=quoteFor(id),holdings=state.assets.filter(a=>a.instrument===id),cost=holdings.reduce((n,a)=>n+a.cost,0),value=holdings.reduce((n,a)=>n+a.value,0),pct=q.price/q.previous-1;
+ const owner=state, month=state.month, price=q.price;
+ const market=back??(()=>openMarket(cfg.kind));
+ const reopen=()=>openInstrument(id,market);
+ let bought=false;
+ showEvent('投资预览',cfg.name,cfg.desc+(cfg.kind==='基金'?'':' 当前显示游戏月度价格；开局没有1/5/10年历史，不会编造收益。'),[],[['确认买入',()=>{
+  const input=$('v26InvestAmount');
+  if(bought||state!==owner||!input)return;
+  const amount=input.valueAsNumber;
+  if(!input.checkValidity()||!Number.isFinite(amount)||amount<=0||amount>state.cash)return;
+  if(state.month!==month||quoteFor(id).price!==price)return reopen();
+  if(cfg.kind!=='基金'||!window.StockPages){
+   if(buyUnits(id,amount))finish();
+   return;
+  }
+  const previous=structuredClone(state);
+  if(!buyUnits(id,amount))return;
+  try{
+   if(save()===false)throw Error('save failed');
+  }catch{
+   state=previous;
+   reopen();
+   $('v26InvestAmount').value=amount;
+   $('v26InvestAmount').dispatchEvent(new Event('input'));
+   document.querySelector('[data-invest-preview]').textContent='买入未保存，请重试。';
+   return;
+  }
+  bought=true;
+  StockPages.showFundBuyReceipt(cfg,market,amount,price);
+ },true,state.cash<=0],['返回品种列表',market,false],['取消',finish,false]]);
+ if(back)window.modalReturn=market;
  $('eventData').innerHTML='<div class="wl-quote"><p>当前价格 <b>'+priceText(q.price)+'</b><span class="'+(pct>=0?'wl-up':'wl-down')+'"> 较上月 '+signedPercent(pct)+'</span></p>'+quoteChart(q)+'<div class="wl-periods"><span>1年<br>'+returnPeriod(q,12)+'</span><span>5年<br>'+returnPeriod(q,60)+'</span><span>10年<br>'+returnPeriod(q,120)+'</span></div><p>持仓市值 '+priceText(value)+' · 成本 '+priceText(cost)+'<br><span class="'+(value>=cost?'wl-up':'wl-down')+'">浮动盈亏 '+priceText(value-cost)+(cost?'（'+signedPercent(value/cost-1)+'）':'')+'</span></p><label>本次投入金额 <input id="v26InvestAmount" type="number" min="0.01" step="0.01" inputmode="decimal" value="'+Math.max(0,Math.min(200,state.cash))+'"></label><p data-invest-preview></p><small>支持碎股；本次确认后现金减少、资产增加。买入不代表未来保证上涨。</small></div>';$('eventData').style.display='block';function update(){const amt=Number($('v26InvestAmount').value),valid=Number.isFinite(amt)&&amt>0&&amt<=state.cash&&Math.abs(Math.round(amt*100)-amt*100)<.00001;$('actions').firstElementChild.disabled=!valid;document.querySelector('[data-invest-preview]').textContent=valid?'预计买入 '+(amt/q.price).toFixed(6)+' 份 · 剩余现金 '+priceText(roundCash(state.cash-amt)):'请输入可负担且最多两位小数的正金额'}$('v26InvestAmount').oninput=update;update();if(cfg.kind==='基金')window.FundPages?.decorate('buy',cfg)
 }
 buyInvestment=kind=>openMarket(kind);window.v241Invest=kind=>openMarket(kind);

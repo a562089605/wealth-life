@@ -133,7 +133,7 @@ function settleMonthUnsafe(){
  settlement.cdPayout=(settlement.cdPayout||0)+payout;return false}return true});
  const annualInflation=Math.max(-.005,Math.min(.10,(s.economy===4?.055:s.economy===3?.015:s.economy===1?.03:.025)+(shock?.inflation||0)));
  advanceQuotes(marketChange,month,annualInflation);
- if(typeof settleInvestingBatch==='function')settleInvestingBatch(settlement,month);
+ if(typeof settleInvestingBatch==='function')settleInvestingBatch(settlement,month,annualInflation);
  for(const k of ['k401Balance','iraBalance','brokerageBalance'])rr[k]=roundCash((rr[k]||0)*(1+marketChange));
  if(s.carOwned)s.carValue=roundCash(s.carValue*.995);
  if(s.ownerMortgage){

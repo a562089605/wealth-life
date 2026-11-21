@@ -134,3 +134,40 @@
 .event:has(.stock-header) #actions button.primary::after {
   transform: scaleX(-1);
 }
+
+.stock-market-art .stock-quote-hotspot {
+  left: 13.2%;
+  width: 73.5%;
+  height: 7.2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 40% !important;
+  padding-right: 6% !important;
+  gap: 4%;
+}
+
+.stock-market-art .stock-quote-hotspot:nth-of-type(1) { top: 39.35%; }
+.stock-market-art .stock-quote-hotspot:nth-of-type(2) { top: 47.2%; }
+.stock-market-art .stock-quote-hotspot:nth-of-type(3) { top: 55.2%; }
+.stock-market-art .stock-quote-hotspot:nth-of-type(4) { top: 63.35%; }
+.stock-market-art .stock-quote-hotspot:nth-of-type(5) { top: 71.5%; }
+
+.stock-market-art .stock-quote-hotspot b,
+.stock-market-art .stock-quote-hotspot small {
+  font: 700 calc(var(--bond-market-width) * .032) / 1 Georgia, serif;
+  white-space: nowrap;
+}
+
+.stock-market-art .stock-nav-hotspot:nth-of-type(6) {
+  left: 20.5%;
+  width: 59%;
+  top: 81%;
+  height: 6.2%;
+}
+.stock-market-art .stock-nav-hotspot:nth-of-type(7) {
+  left: 24.5%;
+  width: 51%;
+  top: 88.8%;
+  height: 7.1%;
+}

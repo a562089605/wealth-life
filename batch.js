@@ -132,7 +132,7 @@ function openInvestSettings(id,after=finish){ensureInvestSettings();const cfg=V2
  showEvent('ETF 设置',cfg.name+' · 每月自动购买','确认后从本月月末起尝试购买；工资与支出结算后资金足够才执行，现金不足则跳过，不借钱、不透支。分红为游戏按月简化分配，非保证收益；除息会降低价格，再投资不等于额外获利。',[],[['确认保存设置',()=>{const amount=Number($('batchAutoAmount').value);if(!Number.isFinite(amount)||amount<0||Math.abs(roundCash(amount)-amount)>.00001)return;state.autoInvest[id]={amount};state.dividendReinvest=$('batchDrip').checked;save();after()},true],['返回详情',after,false]]);
  $('eventData').innerHTML='<label>每月购买金额（0 为停止）<input id="batchAutoAmount" type="number" inputmode="decimal" min="0" step="0.01" value="'+(state.autoInvest[id]?.amount||0)+'"></label><label class="wl-check"><input id="batchDrip" type="checkbox" '+(state.dividendReinvest?'checked':'')+'>所有 ETF 分红自动再投资（取消则留在现金）</label>';$('eventData').style.display='block';
 }
-const instrumentBeforeBatch=openInstrument;openInstrument=function(id){instrumentBeforeBatch(id);const cfg=V26_INSTRUMENTS.find(x=>x.id===id);if(cfg?.kind==='ETF'&&!window.ETFPages){const b=document.createElement('button');b.textContent='每月自动购买 / 分红设置';b.onclick=()=>openInvestSettings(id);$('actions').append(b);const note=document.createElement('p');const dividends=(state.financeLedger||[]).filter(x=>x.kind==='dividend'&&x.instrument===id).reduce((n,x)=>n+x.amount,0),reinvested=(state.financeLedger||[]).filter(x=>x.kind==='dividendReinvest'&&x.instrument===id).reduce((n,x)=>n+x.amount,0);note.textContent='模拟年分配率 '+(ETF_YIELDS[id]*100).toFixed(1)+'%，按月分红；价格已含除息变化。累计分红 '+priceText(dividends)+'，其中再投资 '+priceText(reinvested)+'。分红与浮动盈亏分开展示，不重复合计。';$('eventData').append(note)}};
+const instrumentBeforeBatch=openInstrument;openInstrument=function(id,back){instrumentBeforeBatch(id,back);const cfg=V26_INSTRUMENTS.find(x=>x.id===id);if(cfg?.kind==='ETF'&&!window.ETFPages){const b=document.createElement('button');b.textContent='每月自动购买 / 分红设置';b.onclick=()=>openInvestSettings(id);$('actions').append(b);const note=document.createElement('p');const dividends=(state.financeLedger||[]).filter(x=>x.kind==='dividend'&&x.instrument===id).reduce((n,x)=>n+x.amount,0),reinvested=(state.financeLedger||[]).filter(x=>x.kind==='dividendReinvest'&&x.instrument===id).reduce((n,x)=>n+x.amount,0);note.textContent='模拟年分配率 '+(ETF_YIELDS[id]*100).toFixed(1)+'%，按月分红；价格已含除息变化。累计分红 '+priceText(dividends)+'，其中再投资 '+priceText(reinvested)+'。分红与浮动盈亏分开展示，不重复合计。';$('eventData').append(note)}};
 const BOND_TERMS=[6,12,36,60];
 function bondPrice(bond,months,annualYield){
  if(months<=0)return bond.face;
@@ -302,7 +302,7 @@ function activeAutoInvestPlans(){
  return Object.entries(state.autoInvest||{}).filter(([id,plan])=>
   Object.hasOwn(ETF_YIELDS,id)&&Number.isFinite(plan?.amount)&&roundCash(plan.amount)>0);
 }
-function settleInvestingBatch(settlement,month){ensureInvestSettings();
+function settleInvestingBatch(settlement,month,inflation=state.annualInflation??.025){ensureInvestSettings();
  const budget=settlement.investmentIncomeBudget||0;
  if(budget){state.cash=roundCash(state.cash-budget);settlement.netCF=roundCash(settlement.netCF-budget);settlement.passive=roundCash(settlement.passive-budget)}
 settlement.dividends=0;settlement.dividendReinvested=0;settlement.autoPurchases=[];settlement.bondInterest=0;settlement.bondPrincipal=0;
@@ -324,7 +324,7 @@ settlement.dividends=0;settlement.dividendReinvested=0;settlement.autoPurchases=
    settlement.dividendReinvested=roundCash(settlement.dividendReinvested+total);
   }
  }
- state.assets=state.assets.filter(a=>{if(a.kind!=='bond')return true;const interest=bondCouponCash(a);state.cash=roundCash(state.cash+interest);settlement.bondInterest=roundCash(settlement.bondInterest+interest);state.financeLedger.push({kind:'bondInterest',month:month-1,amount:interest,assetId:a.id});if(month>=a.maturesAt){state.cash=roundCash(state.cash+a.face);settlement.bondPrincipal=roundCash(settlement.bondPrincipal+a.face);state.financeLedger.push({kind:'bondMaturity',month:month-1,amount:a.face,assetId:a.id});return false}const n=a.maturesAt-month;a.value=bondPrice(a,n,bondYield(n));return true});
+ state.assets=state.assets.filter(a=>{if(a.kind!=='bond')return true;const interest=bondCouponCash(a);state.cash=roundCash(state.cash+interest);settlement.bondInterest=roundCash(settlement.bondInterest+interest);state.financeLedger.push({kind:'bondInterest',month:month-1,amount:interest,assetId:a.id});if(month>=a.maturesAt){state.cash=roundCash(state.cash+a.face);settlement.bondPrincipal=roundCash(settlement.bondPrincipal+a.face);state.financeLedger.push({kind:'bondMaturity',month:month-1,amount:a.face,assetId:a.id});return false}const n=a.maturesAt-month;a.value=bondPrice(a,n,bondYield(n,inflation));return true});
  for(const [id,plan] of activeAutoInvestPlans()){const ok=buyUnits(id,plan.amount,'autoInvest');settlement.autoPurchases.push({instrument:id,amount:plan.amount,status:ok?'purchased':'skippedInsufficientCash'});}
 }
 function completeCashAudit(s){

@@ -114,3 +114,120 @@
 
 #eventData .fund-list button.wl-choice-card { min-height: 62px; }
 .fund-list button > span:last-child { align-self: center; margin: 0; }
+
+.event:has(.fund-management-header) #eventData {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.fund-management-header, .fund-management-header + .fund-chart { grid-column: 1 / -1; }
+.fund-management-header + .fund-chart { margin: 0; }
+.event:has(.fund-management-header) #eventData .stat {
+  border: 1px solid #bf914b;
+  border-radius: 12px;
+  background: #fff2cb;
+  text-align: center;
+}
+.event:has(.fund-management-header) #actions button {
+  border-color: #ad7c34;
+  background: linear-gradient(#fff0c0, #f2d486);
+}
+.event:has(.fund-management-header) #actions button > small { display: block; margin-top: 4px; }
+.event:has(.fund-management-header) #actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+}
+.event:has(.fund-management-header) #actions button {
+  min-width: 0;
+  white-space: normal;
+}
+
+/* Illustrations from the approved six-screen fund artwork. */
+.fund-approved-art {
+  display: block;
+  width: min(100%, 300px);
+  aspect-ratio: 300 / 94;
+  background: var(--fund-illustration) center / contain no-repeat;
+  mix-blend-mode: multiply;
+}
+.fund-approved-market { --fund-illustration: url('assets/finance/fund-approved/market.webp'); }
+.fund-approved-holdings { --fund-illustration: url('assets/finance/fund-approved/holdings.webp'); }
+.fund-approved-position {
+  --fund-illustration: url('assets/finance/fund-approved/position.webp');
+  width: 116px;
+  aspect-ratio: 116 / 48;
+}
+.fund-approved-add { --fund-illustration: url('assets/finance/fund-approved/add.webp'); }
+.fund-approved-reduce { --fund-illustration: url('assets/finance/fund-approved/reduce.webp'); }
+.fund-approved-all { --fund-illustration: url('assets/finance/fund-approved/all.webp'); }
+
+.event:is(:has(.fund-approved-market), :has(.fund-management-header)) {
+  --fund-leaf: url('assets/finance/fund-approved/leaf.webp');
+  border-radius: 18px;
+}
+.event:is(:has(.fund-approved-market), :has(.fund-management-header)) #eventTitle::before {
+  content: '';
+  display: block;
+  width: 178px;
+  aspect-ratio: 244 / 50;
+  margin: 0 auto 4px;
+  background: url('assets/finance/fund-approved/plaque.webp') center / contain no-repeat;
+  mix-blend-mode: multiply;
+}
+.event:is(:has(.fund-approved-market), :has(.fund-management-header)) #actions button {
+  position: relative;
+  padding-inline: 37px;
+  background: linear-gradient(#fff0ad, #f4ca70) !important;
+  box-shadow: inset 0 0 0 2px #fff1b79c;
+}
+.event:is(:has(.fund-approved-market), :has(.fund-management-header)) #actions button.primary {
+  background: linear-gradient(#ffe69b, #efb750) !important;
+}
+.event:is(:has(.fund-approved-market), :has(.fund-management-header)) #actions button::before,
+.event:is(:has(.fund-approved-market), :has(.fund-management-header)) #actions button::after {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  width: 25px;
+  height: 21px;
+  background: var(--fund-leaf) center / contain no-repeat;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.event:is(:has(.fund-approved-market), :has(.fund-management-header)) #actions button::before {
+  inset-inline-start: 7px;
+  transform: translateY(-50%);
+}
+.event:is(:has(.fund-approved-market), :has(.fund-management-header)) #actions button::after {
+  inset-inline-end: 7px;
+  transform: translateY(-50%) scaleX(-1);
+}
+.fund-management-header { flex-wrap: wrap; }
+.fund-management-header > .fund-approved-art:not(.fund-approved-position) {
+  margin-inline: auto;
+  flex-basis: min(100%, 300px);
+}
+.fund-management-header > strong {
+  padding-inline: 12px;
+  border-radius: 12px;
+  background: #f7d580;
+}
+.event:is(:has(.fund-approved-market), :has(.fund-management-header)) > #actions {
+  max-height: none;
+  overflow: visible;
+  background: none;
+}
+.event:is(:has(.fund-approved-market), :has(.fund-management-header)) #eventTitle::before,
+.fund-approved-art {
+  mask-image: radial-gradient(ellipse 73% 76%, black 60%, transparent 99%);
+}
+.event:is(:has(.fund-approved-market), :has(.fund-management-header)) #actions button::before,
+.event:is(:has(.fund-approved-market), :has(.fund-management-header)) #actions button::after {
+  mask-image: radial-gradient(ellipse 75% 75%, black 53%, transparent 96%);
+}
+.event:has(.fund-stage-position) #actions:has(> button:nth-child(4):last-child) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.event:has(.fund-stage-position) #actions:has(> button:nth-child(4):last-child) button {
+  padding-inline: 28px;
+}

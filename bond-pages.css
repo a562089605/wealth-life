@@ -94,7 +94,7 @@
   transform: scaleX(-1);
 }
 
-#game > .event.event-active:has(.bond-market-art) {
+#game > .event.event-active:has(:is(.bond-market-art, .stock-market-art)) {
   --bond-market-width: min(100vw, 62vh, 450px);
   width: var(--bond-market-width);
   max-width: 100vw !important;
@@ -106,24 +106,24 @@
   border-radius: 0 !important;
 }
 
-.event:has(.bond-market-art) > .row,
-.event:has(.bond-market-art) > #eventTitle,
-.event:has(.bond-market-art) > #eventDesc,
-.event:has(.bond-market-art) > #actions {
+.event:has(:is(.bond-market-art, .stock-market-art)) > .row,
+.event:has(:is(.bond-market-art, .stock-market-art)) > #eventTitle,
+.event:has(:is(.bond-market-art, .stock-market-art)) > #eventDesc,
+.event:has(:is(.bond-market-art, .stock-market-art)) > #actions {
   display: none !important;
 }
 
-.event:has(.bond-market-art) #eventData {
+.event:has(:is(.bond-market-art, .stock-market-art)) #eventData {
   max-height: none;
   margin: 0;
   padding: 0;
   overflow: visible;
 }
 
-.bond-market-art { position: relative; }
-.bond-market-art img { display: block; width: 100%; height: auto; }
+:is(.bond-market-art, .stock-market-art) { position: relative; }
+:is(.bond-market-art, .stock-market-art) img { display: block; width: 100%; height: auto; }
 
-.event.event-active .bond-market-art button {
+.event.event-active :is(.bond-market-art, .stock-market-art) button {
   position: absolute;
   min-height: 0 !important;
   padding: 0;
@@ -168,12 +168,12 @@
 .bond-market-art .bond-market-nav:nth-of-type(5) { left: 15%; }
 .bond-market-art .bond-market-nav:nth-of-type(6) { left: 51%; }
 
-.event.event-active .bond-market-art button:focus-visible {
+.event.event-active :is(.bond-market-art, .stock-market-art) button:focus-visible {
   outline: 2px solid #335427;
   outline-offset: -3px;
 }
 
-#game > .event.event-active:has(.bond-market-art) #eventClose {
+#game > .event.event-active:has(:is(.bond-market-art, .stock-market-art)) #eventClose {
   inset: 8.3% auto auto 80%;
   width: 8%;
   height: 5.2%;
@@ -182,6 +182,6 @@
   opacity: 0;
 }
 
-#game > .event.event-active:has(.bond-market-art) #eventClose:focus-visible {
+#game > .event.event-active:has(:is(.bond-market-art, .stock-market-art)) #eventClose:focus-visible {
   opacity: 1;
 }

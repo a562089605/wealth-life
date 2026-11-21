@@ -11,10 +11,10 @@
   return img;
  }
 
- function market(){
+ function market(reopen){
   const data=$('eventData'),list=data.querySelector('.wl-mini-grid');
   const art=document.createElement('div');
-  art.className='fund-art';
+  art.className='fund-art fund-approved-art fund-approved-market';
   art.setAttribute('aria-hidden','true');
   data.prepend(art);
   if(list){
@@ -22,15 +22,40 @@
    items().forEach((item,index)=>{
     const row=list.children[index];
     row.prepend(icon(item));
+    row.onclick=event=>{
+     event.stopPropagation();
+     openInstrument(item.id,reopen);
+    };
     row.querySelector('span:not(.fund-icon)').textContent='›';
    });
   }
   $('eventDesc').textContent='游戏模拟行情';
   const back=$('actions').lastElementChild;
   if(back&&window.modalReturn)back.textContent='返回储蓄与投资';
+  if(back){
+   const manage=document.createElement('button');
+   manage.type='button';
+   manage.textContent='管理基金持仓';
+   manage.onclick=()=>StockPages.showFundHoldings(reopen);
+   back.before(manage);
+  }
  }
 
- function decorate(stage,item,asset){
+ function decorateManagement(item,stage){
+  const data=$('eventData');
+  if(item)decorate('manage',item,undefined,stage==='position');
+  else data.prepend(document.createElement('div'));
+
+  const header=data.firstElementChild;
+  header.classList.add('fund-header','fund-management-header','fund-stage-'+stage);
+  const art=document.createElement('span');
+  art.className='fund-approved-art fund-approved-'+stage;
+  art.setAttribute('aria-hidden','true');
+  if(!item)header.append(art);
+  else if(stage!=='position'||item.id==='blend')header.querySelector('.fund-icon')?.replaceWith(art);
+ }
+
+ function decorate(stage,item,asset,showChart=true){
   if(!item)return;
   const header=document.createElement('div');
   header.className='fund-header';
@@ -43,6 +68,9 @@
    shares.textContent=(asset.shares||0).toLocaleString('en-US',{maximumFractionDigits:6})+' 份';
    header.append(shares);
   }
+  const data=$('eventData');
+  data.prepend(header);
+  if(!showChart)return;
   const quotes=quoteFor(item.id);
   const history=quotes.history.slice(-13);
   const chart=document.createElement('div');
@@ -50,8 +78,6 @@
   if(stage!=='buy'){
    chart.innerHTML=quoteChart({...quotes,history});
   }
-  const data=$('eventData');
-  data.prepend(header);
   if(stage!=='buy')header.after(chart);
   const caption=document.createElement('small');
   caption.className='fund-chart-caption';
@@ -85,5 +111,5 @@
    if(value)value.textContent=priceText(holdingValue(asset));
   });
  };
- window.FundPages={market,decorate,isFund};
+ window.FundPages={market,decorate,decorateManagement,isFund};
 })();

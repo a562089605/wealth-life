@@ -1,6 +1,7 @@
 (function(){
  const stocks=()=>V26_INSTRUMENTS.filter(item=>item.kind==='股票');
- const sharesText=shares=>shares.toLocaleString('en-US',{maximumFractionDigits:6})+' 股';
+ const unit=item=>item.kind==='基金'?'份':'股';
+ const formatShares=(item,shares)=>shares.toLocaleString('en-US',{maximumFractionDigits:6})+' '+unit(item);
  const iconPositions=['42.8%','51.5%','59.9%','68.7%','77.4%'];
  const openingSamples={
   nova:[91,94,92,97,103,96,93,98,104,102,98],
@@ -30,11 +31,16 @@
    '<small>近 12 个月 · 游戏模拟'+(missing?'（含开局前示例）':'')+'</small></div>';
  }
 
- function page(title,description,rows,actions,back,item,chart=false){
-  showEvent('股票投资',title,description,rows,actions);
+ function page(title,description,rows,actions,back,item,chart=false,kind=item?.kind??'股票',stage=item?'position':'holdings'){
+  showEvent(kind+'投资',title,description,rows,actions);
   if($('eventTitle').textContent!==title)return null;
   window.modalReturn=back;
   const data=$('eventData');
+  if(kind==='基金'){
+   window.FundPages.decorateManagement(item,stage);
+   data.style.display='grid';
+   return data;
+  }
   const header=document.createElement('div');
   header.className='stock-header';
   header.innerHTML=item?'<span class="stock-icon" style="--stock-icon-y:'+iconPositions[stocks().indexOf(item)]+'"></span>':
@@ -67,31 +73,67 @@
    button.prepend(icon);
    button.append(values);
   });
+  if(items.length===5&&!extraActions.length)illustrateMarket(items,buttons);
  }
 
- function showHoldings(market){
-  const reopen=()=>showHoldings(market);
-  const held=stocks().map(item=>({item,...position(item)})).filter(p=>p.shares>0);
-  if(!page('管理投资持仓',held.length?'股票持仓':'暂无股票持仓。',[
+ function illustrateMarket(items,buttons){
+  const actions=$('actions');
+  if(buttons.length!==items.length+2)return;
+  const picture=document.createElement('img');
+  picture.width=1024;
+  picture.height=1536;
+  picture.alt='股票品种。游戏模拟行情。';
+  picture.onload=()=>{
+   if(buttons.some(button=>button.parentElement!==actions))return;
+   const frame=document.createElement('div');
+   frame.className='stock-market-art';
+   frame.append(picture);
+   buttons.forEach((button,index)=>{
+    const item=items[index];
+    const label=button.getAttribute('aria-label')||button.textContent;
+    button.className=item?'stock-quote-hotspot':'stock-nav-hotspot';
+    button.replaceChildren();
+    if(item){
+     const quote=quoteFor(item.id);
+     const price=document.createElement('b');
+     const change=document.createElement('small');
+     price.textContent=priceText(quote.price);
+     change.textContent=signedPercent(quote.price/quote.previous-1);
+     button.setAttribute('aria-label',item.name+'，'+price.textContent+'，较上月 '+change.textContent);
+     button.append(price,change);
+    }else button.setAttribute('aria-label',label);
+    frame.append(button);
+   });
+   $('eventData').replaceChildren(frame);
+   $('eventData').style.display='block';
+  };
+  picture.src='assets/finance/stock-market-scene.webp';
+ }
+
+ function showHoldings(market,kind='股票'){
+  const reopen=()=>showHoldings(market,kind);
+  const held=V26_INSTRUMENTS.filter(item=>item.kind===kind).map(item=>({item,...position(item)})).filter(p=>p.shares>0);
+  if(!page(kind==='基金'?'管理基金持仓':'管理投资持仓',held.length?kind+'持仓':'暂无'+kind+'持仓。',[
    ['持仓总市值',priceText(held.reduce((sum,p)=>sum+p.value,0))],
    ['浮动盈亏',priceText(held.reduce((sum,p)=>sum+p.profit,0))]
   ],[...held.map(p=>[
-   p.item.name+' · 持有 '+sharesText(p.shares),()=>showPosition(p.item,market,reopen),false
-  ]),['返回股票品种',market,true]],market))return;
+   p.item.name+' · 持有 '+formatShares(p.item,p.shares),()=>showPosition(p.item,market,reopen),false
+  ]),['返回'+kind+'品种',market,true]],market,undefined,false,kind))return;
   const buttons=[...$('actions').children];
   held.forEach((p,index)=>{
    const note=document.createElement('small');
    note.textContent='当前价格 '+priceText(quoteFor(p.item.id).price)+' · 市值 '+priceText(p.value)+
     ' · 成本 '+priceText(p.cost)+' · 浮动盈亏 '+priceText(p.profit);
    buttons[index].append(note);
-   buttons[index].insertAdjacentHTML('beforeend',stockChart(p.item));
+   if(kind==='股票')buttons[index].insertAdjacentHTML('beforeend',stockChart(p.item));
   });
  }
 
  function showPosition(item,market,holdings){
+  const sharesText=shares=>formatShares(item,shares);
   const p=position(item);
   if(!p.shares)return holdings();
-  page(item.name+' · 股票持仓','',[
+  page(item.name+' · '+item.kind+'持仓','',[
    ['当前价格',priceText(quoteFor(item.id).price)],['当前持有',sharesText(p.shares)],
    ['持仓市值',priceText(p.value)],['持仓成本',priceText(p.cost)],
    ['浮动盈亏',priceText(p.profit)],['平均买入价',priceText(p.cost/p.shares)]
@@ -114,6 +156,8 @@
  }
 
  function trade(item,market,holdings,mode){
+  const sharesText=shares=>formatShares(item,shares);
+  const shareLabel=item.kind==='基金'?'份额':'股数';
   const all=mode==='all',selling=all||mode==='sell',adding=mode==='add';
   const back=mode==='buy'?market:()=>showPosition(item,market,holdings);
   const reopen=()=>trade(item,market,holdings,mode);
@@ -130,7 +174,7 @@
    ['持仓市值',priceText(p.value)],['持仓成本',priceText(p.cost)],['浮动盈亏',priceText(p.profit)]);
   const confirm=all?'确认全部卖出':selling?'确认减仓':adding?'确认增仓':'确认买入';
   let input,estimate,done=false;
-  const data=page(title,all?'成交后，这只股票的持仓将清空。':selling?'按买入顺序扣减持仓。':item.desc,rows,[[confirm,()=>{
+  const data=page(title,all?'成交后，这只'+item.kind+'的持仓将清空。':selling?'按买入顺序扣减持仓。':item.desc,rows,[[confirm,()=>{
    if(done||state!==owner)return;
    const current=position(item);
    if(state.month!==month||quoteFor(item.id).price!==price||current.shares!==p.shares||
@@ -162,11 +206,11 @@
    done=true;
    showReceipt(item,market,holdings,mode,transaction,price);
   },true,!all],[mode==='buy'?'返回股票品种':'返回持仓',back,false],
-   ...(mode==='buy'?[['取消',finish,false]]:[])],back,item,true);
+   ...(mode==='buy'?[['取消',finish,false]]:[])],back,item,true,item.kind,mode==='sell'?'reduce':mode);
   if(!data||all)return;
   const form=document.createElement('div');
   form.className='stock-form';
-  form.innerHTML='<label for="stockTradeAmount">'+(selling?'本次卖出股数':'本次投入金额')+'</label>'+
+  form.innerHTML='<label for="stockTradeAmount">'+(selling?'本次卖出'+shareLabel:'本次投入金额')+'</label>'+
    '<input id="stockTradeAmount" type="number" inputmode="decimal" min="'+(selling?'0.000001':'0.01')+
    '" step="'+(selling?'0.000001':'0.01')+'"><p role="status"></p>';
   data.append(form);
@@ -192,7 +236,7 @@
    const result=read();
    $('actions').firstElementChild.disabled=!result;
    if(!result){
-    estimate.textContent=selling?'请输入小于当前持仓的股数。清仓请使用「全部卖出」。':'请输入可负担且最多两位小数的正金额。';
+    estimate.textContent=selling?'请输入小于当前持仓的'+shareLabel+'。清仓请使用「全部卖出」。':'请输入可负担且最多两位小数的正金额。';
     return;
    }
    const {amount,shares,cost}=result;
@@ -203,16 +247,26 @@
  }
 
  function showReceipt(item,market,holdings,mode,transaction,price){
+  const sharesText=shares=>formatShares(item,shares);
+  const shareLabel=item.kind==='基金'?'份额':'股数';
   const {amount,shares,cost}=transaction;
   const selling=mode==='sell'||mode==='all';
   const p=position(item);
-  const result=page(item.name,mode==='all'?'卖出成功 · 已记入收支账单':selling?'减仓成功':mode==='add'?'增仓成功':'买入成功',[
-   ['成交价格',priceText(price)],[selling?'卖出股数':'买入股数',sharesText(shares)],
+  const fundPurchase=item.kind==='基金'&&mode==='buy';
+  const receiptTitle=fundPurchase?'买入成功':item.name;
+  const next=fundPurchase?()=>showPosition(item,market,holdings):holdings;
+  const result=page(receiptTitle,fundPurchase?item.name+' · 已记入收支账单':mode==='all'?'卖出成功 · 已记入收支账单':selling?'减仓成功':mode==='add'?'增仓成功':'买入成功',[
+   ['成交价格',priceText(price)],[(selling?'卖出':'买入')+shareLabel,sharesText(shares)],
    [selling?'实际到账':'本次成交金额',priceText(amount)],['成交后现金',priceText(state.cash)],
    [selling?'剩余持有':'持仓市值',selling?sharesText(p.shares):priceText(p.value)],[selling?'实现盈亏':'浮动盈亏',priceText(selling?roundCash(amount-cost):p.profit)]
-  ],[['管理投资持仓',holdings,true],['返回股票品种',market,false]],holdings,item,true);
-  result?.querySelector('.stock-header').classList.add('stock-receipt');
+  ],[[fundPurchase?'查看持仓':item.kind==='基金'?'管理基金持仓':'管理投资持仓',next,true],['返回'+item.kind+'品种',market,false]],holdings,item,true);
+  result?.querySelector('.stock-header')?.classList.add('stock-receipt');
  }
 
- window.StockPages={open};
+ function showFundBuyReceipt(item,market,amount,price){
+  const holdings=()=>showHoldings(market,'基金');
+  showReceipt(item,market,holdings,'buy',{amount,shares:amount/price},price);
+ }
+
+ window.StockPages={open,showFundBuyReceipt,showFundHoldings:market=>showHoldings(market,'基金')};
 })();

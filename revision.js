@@ -24,11 +24,11 @@ CAREERS.push(
 function applyCareerProgression(){if(!state.job||state.retired||state.unemployedMonths>0)return;const months=state.domainExperience[inferDomain(state.job)]||0,c=CAREERS.find(c=>c.name===state.job),skill=c?careerSkill(c):null;const next=months>=60&&hobbyLevel(skill)>=4?2:months>=24&&hobbyLevel(skill)>=2?1:0;state.careerRanks??={};const rank=state.careerRanks[state.job]||0;if(next<=rank||state.month-(state.lastPromotionMonth??-12)<12)return;state.careerRanks[state.job]=next;state.salary=roundCash(state.salary*1.05);state.annualSalary=roundCash(state.salary*12);state.lastPromotionMonth=state.month;state.pendingCareerNotice={job:state.job,rank:next,salary:state.salary};state.timeline.push(state.job+' 晋升等级 '+next+'，经验与技能加薪5%');}
 function currentBankAPR(){const ec=ECONOMIES[state.economy||0],shock=state.worldShock?.monthsLeft>0?WORLD_SHOCKS[state.worldShock.index]:null;return Math.min(.22,Math.max(.035,ec.rate+.015+Math.max(-.01,((state.annualInflation??.025)-.025)*.5)+(shock?.rate||0)))}
 function latePaymentCharge(row,loan){return loan.latePolicy==='fee5cap35'?roundCash(Math.min(row.due*.05,loan.lateFeeCap??35)):roundCash(row.due*.03/12)}
-function bondYield(months){
+function bondYield(months,inflation=state.annualInflation??.025){
  const base=ECONOMIES[state.economy||0].rate;
  const years=Math.min(5,Math.max(1,months/12));
  const premium=(years-1)*(state.economy===3?-.001:.002);
- const inflationAdjustment=((state.annualInflation??.025)-.025)*.5;
+ const inflationAdjustment=(inflation-.025)*.5;
  return Math.max(.005,base+premium+inflationAdjustment);
 }
 function simulatedMarketReturn(ec,shock){const u=Math.max(.00001,Math.random()),v=Math.random(),z=Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);const annual=[.07,.11,.015,-.12,.035][state.economy||0];return Math.max(-.22,Math.min(.22,Math.pow(1+annual,1/12)-1+z*.035+(shock?.market||0)))}
