@@ -131,7 +131,8 @@ function settleMonthUnsafe(){
  ledger.push({kind:'cdPrincipal',month:s.month,amount:a.cost,assetId:a.id});
  ledger.push({kind:'cdInterest',month:s.month,amount:roundCash(payout-a.cost),assetId:a.id});
  settlement.cdPayout=(settlement.cdPayout||0)+payout;return false}return true});
- advanceQuotes(marketChange,month);
+ const annualInflation=Math.max(-.005,Math.min(.10,(s.economy===4?.055:s.economy===3?.015:s.economy===1?.03:.025)+(shock?.inflation||0)));
+ advanceQuotes(marketChange,month,annualInflation);
  if(typeof settleInvestingBatch==='function')settleInvestingBatch(settlement,month);
  for(const k of ['k401Balance','iraBalance','brokerageBalance'])rr[k]=roundCash((rr[k]||0)*(1+marketChange));
  if(s.carOwned)s.carValue=roundCash(s.carValue*.995);
@@ -148,7 +149,7 @@ function settleMonthUnsafe(){
  applyPendingEducationRaises(s,month,settlement);
  if(s.study&&typeof EducationPlans!=='undefined'&&EducationPlans.modern(s.study)){EducationPlans.advance(s,month-1,recovery);completeEducation(s,month,settlement);}else if(s.study&&!recovery){s.study.progress++;completeEducation(s,month,settlement);}
  if(!recovery){s.happiness=Math.max(0,s.happiness-1);s.energy=Math.max(0,s.energy-2);s.stress=Math.min(100,s.stress+2);s.social=Math.max(0,s.social-1);s.friendship=Math.max(0,s.friendship-.5);if(s.relationship==='married')s.partnerQuality=Math.max(0,s.partnerQuality-.4);if(typeof RelationshipHomeRules==='undefined')(s.people||[]).forEach(p=>p.relation=Math.max(0,p.relation-.22));}
- s.annualInflation=Math.max(-.005,Math.min(.10,(s.economy===4?.055:s.economy===3?.015:s.economy===1?.03:.025)+(shock?.inflation||0)));if(s.worldShock?.monthsLeft>0){s.worldShock.monthsLeft--;if(!s.worldShock.monthsLeft)s.worldShock=null}const infl=Math.pow(1+s.annualInflation,1/12);s.marketIndex=(s.marketIndex||100)*(1+marketChange);s.homeIndex=(s.homeIndex||100)*(1+ec.home);s.cpiIndex=(s.cpiIndex||100)*infl;s.baseLiving=roundCash(s.baseLiving*infl);if(!s.housingLease&&s.housing!=='own')s.housingCost=roundCash(s.housingCost*(1+(infl-1)*.45));
+ s.annualInflation=annualInflation;if(s.worldShock?.monthsLeft>0){s.worldShock.monthsLeft--;if(!s.worldShock.monthsLeft)s.worldShock=null}const infl=Math.pow(1+s.annualInflation,1/12);s.marketIndex=(s.marketIndex||100)*(1+marketChange);s.homeIndex=(s.homeIndex||100)*(1+ec.home);s.cpiIndex=(s.cpiIndex||100)*infl;s.baseLiving=roundCash(s.baseLiving*infl);if(!s.housingLease&&s.housing!=='own')s.housingCost=roundCash(s.housingCost*(1+(infl-1)*.45));
  s._computedExpenses=null;syncFinance();
  s.lastSettlement=settlement;s.history.push(settlement);
  if(typeof finalizeCoffeeMonth==='function')finalizeCoffeeMonth(settlement);

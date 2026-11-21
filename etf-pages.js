@@ -65,7 +65,7 @@
   };
  }
  function sp500Chart(history,price,month) {
-  const records=(history||[]).filter(row=>Number.isFinite(row.price)&&row.price>0&&Number.isInteger(row.month)).slice(-12);
+  const records=(history||[]).filter(row=>Number.isFinite(row.price)&&row.price>0&&Number.isInteger(row.month)).slice(-13);
   const points=records.length?records:[{price,month}];
   const low=Math.min(...points.map(point=>point.price));
   const high=Math.max(...points.map(point=>point.price));
@@ -86,13 +86,21 @@
   }).join('');
   const ticks=points.map((point,index)=>'<path class="sp500-grid-line" d="M'+x(index)+' 22V228"/>').join('');
   const axisIndices=[...new Set([0,Math.floor((points.length-1)/3),Math.floor((points.length-1)*2/3),points.length-1])];
-  const labels=axisIndices.map(index=>'<text x="'+x(index)+'" y="263" text-anchor="middle">'+(points[index].month%12+1)+'月</text>').join('');
-  const circles=points.map((point,index)=>'<circle cx="'+x(index)+'" cy="'+y(point.price)+'" r="'+(index===points.length-1?6.5:4.4)+'"><title>第 '+
-   (Math.floor(point.month/12)+1)+' 年第 '+(point.month%12+1)+' 月 '+priceText(point.price)+'</title></circle>').join('');
+  const monthLabel=point=>point.simulatedOpening?'前'+Math.abs(point.month)+'月':(point.month%12+1)+'月';
+  const labels=axisIndices.map(index=>'<text x="'+x(index)+'" y="263" text-anchor="middle">'+monthLabel(points[index])+'</text>').join('');
+  const circles=points.map((point,index)=>{
+   const label=point.simulatedOpening?'开局前 '+Math.abs(point.month)+' 个月'+
+    (point.referenceDate?'（基准 '+point.referenceDate+'）':''):
+    '第 '+(Math.floor(point.month/12)+1)+' 年第 '+(point.month%12+1)+' 月';
+   return '<circle cx="'+x(index)+'" cy="'+y(point.price)+'" r="'+(index===points.length-1?6.5:4.4)+
+    '"><title>'+label+' '+priceText(point.price)+'</title></circle>';
+  }).join('');
   const trend=points.length>1?'<polyline points="'+points.map((point,index)=>x(index)+','+y(point.price)).join(' ')+'"/>':'';
   const annotation=points.length===1?'<text class="sp500-single-point" x="374" y="61" text-anchor="middle">开局仅有 1 个价格点</text>':'';
-  return '<svg class="sp500-chart" viewBox="0 0 675 282" role="img" aria-label="游戏模拟数据，'+points.length+' 个价格点">'+
-   grid+ticks+'<path class="sp500-axis" d="M74 22V228H649"/>'+labels+trend+circles+annotation+'</svg>';
+  const caption=points.some(point=>point.simulatedOpening)?
+   '<text x="649" y="299" text-anchor="end">含开局前模拟走势</text>':'';
+  return '<svg class="sp500-chart" viewBox="0 0 675 '+(caption?310:282)+'" role="img" aria-label="游戏模拟数据，'+points.length+' 个价格点">'+
+   grid+ticks+'<path class="sp500-axis" d="M74 22V228H649"/>'+labels+trend+circles+annotation+caption+'</svg>';
  }
 
  function renderIllustratedDetail(id,q,held,cumulative,dividend,openingNote){

@@ -16,10 +16,31 @@
   const mean = changes.reduce((sum, value) => sum + value, 0) / Math.max(1, changes.length);
   const variance = changes.reduce((sum, value) => sum + (value - mean) ** 2, 0) / Math.max(1, changes.length);
   const [closeDate, price] = latest;
-  return {
+  return addOpeningHistory(id,{
    price, previous: price, history: [{ month, price }],
    benchmark: { symbol: benchmark.symbol, closeDate, target, volatility: Math.sqrt(variance) }
-  };
+  });
+ }
+ function hasBenchmark(id) {
+  return Object.hasOwn(data,id);
+ }
+ function addOpeningHistory(id,quote) {
+  const opening=quote.history[0];
+  if(!hasBenchmark(id)||opening?.month!==0)return quote;
+  const closes=data[id].closes;
+  const closeDate=quote.benchmark?.closeDate;
+  const reference=closeDate?closes.filter(([day])=>day<=closeDate).slice(-13):closes.slice(0,13);
+  if(reference.length<2)return quote;
+  const anchor=reference.at(-1)[1];
+  const history=reference.slice(0,-1).map(([day,price],index)=>({
+   month:index-reference.length+1,
+   price:Math.max(.01,Math.round(opening.price*price/anchor*100)/100),
+   simulatedOpening:true,
+   ...(closeDate?{referenceDate:day}:{})
+  }));
+  if(quote.history.length===1)quote.previous=history.at(-1).price;
+  quote.history.unshift(...history);
+  return quote;
  }
  function simulatedChange(quote, marketChange, inflation, beta, regional, cycle) {
   const monthlyInflation = Math.pow(1 + Math.max(-0.99, inflation), 1 / 12) - 1;
@@ -27,5 +48,5 @@
   // The economy supplies the common real-market move; inflation converts it to nominal dollars.
   return (1 + ((marketChange + regional) * beta + cycle) * volatility) * (1 + monthlyInflation) - 1;
  }
- window.ETFMarket = { openingQuote, simulatedChange };
+ window.ETFMarket = { openingQuote, addOpeningHistory, hasBenchmark, simulatedChange };
 })();

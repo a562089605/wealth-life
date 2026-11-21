@@ -8,7 +8,7 @@
     books: card('免费书架', '路过社区书架，你发现一本一直想看的书。',
       option('坐下来读一会儿', {hours:1, happiness:4, stress:-3}), option('把书带走，下次再读', {happiness:1}), option('买一本书来交换', {cash:-12, happiness:5})),
     late: card('上班迟到了', '车刚开走。再等一班，你就要迟到了。',
-      option('等下一班公交', {hours:2, stress:3}), option('打车赶过去', {cash:-24, stress:1})),
+      option('等下一班公交', {hours:1, stress:3}), option('打车赶过去', {cash:-24, stress:1})),
     phone: card('手机摔坏了', '手机掉在地上，屏幕裂了，勉强还能用。',
       option('进店换屏', {cash:-329, stress:-2}), option('换一部新手机', {cash:-1299, happiness:6, stress:-2, next:'photo'}), option('先用着，改天再修')),
     stoodUp: card('被放飞机了', '约好的朋友临时来不了。你已经到了，接下来做什么？',
@@ -50,6 +50,14 @@
   const lateFallback = option('先通知店里会迟到', {stress:4});
   const mainCards = ['coffee','books','late','phone','stoodUp','tooth','community','movie','cake','paving'];
   const art = new Set([...mainCards,'photo','selected','email','oldFriend','reader','today','noSlot','booking','volunteer']);
+  // Button bounds in the approved 1024 × 1536 artwork.
+  const fullCards = {
+    late: {file:'late-card.png', bounds:[[32,1072,960,190],[32,1285,960,190]]},
+    phone: {file:'phone-card.webp', bounds:[[26,969,972,163],[26,1151,972,162],[26,1332,972,150]]},
+    photo: {file:'photo-card.webp', bounds:[[26,975,970,161],[26,1153,970,158],[26,1332,970,148]]},
+    selected: {file:'selected-card.webp', bounds:[[56,1198,910,221]]},
+    email: {file:'email-card.webp', bounds:[[60,1113,900,195],[60,1331,900,151]]}
+  };
   const pick = items => items[Math.floor(Math.random() * items.length)];
   const people = () => (state.people || []).filter(person => person && person.id != null);
   const friends = () => people().filter(person => /朋友|好友|书友/.test(person.status || '') ||
@@ -123,12 +131,29 @@
       month:state.month, type:'life', lifeCard:move.mapLife.id || 'booking'});
   }
 
+  let noticeTimer;
+  function showNotice(message) {
+    let notice = $('mapLifeNotice');
+    if (!notice) {
+      notice = document.createElement('div');
+      notice.id = 'mapLifeNotice';
+      notice.setAttribute('role', 'status');
+      notice.style.cssText = 'position:fixed;bottom:calc(4.5rem + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 2rem);padding:10px 16px;border-radius:12px;background:#30261e;color:#fffaf0;box-shadow:0 4px 16px #0003;z-index:10000;pointer-events:none;text-align:center';
+      document.body.append(notice);
+    }
+    notice.textContent = message;
+    clearTimeout(noticeTimer);
+    noticeTimer = setTimeout(() => notice.remove(), 3200);
+  }
+
   function accept(move, stage, step, q) {
     const record = move.mapLife;
     const free = currentCareerTime().free;
     const cash = cost(q);
     if (movement() !== move || move.resolved || record.step !== step || record.stage !== stage ||
         cash < 0 && state.cash < -cash || q.hours > free && !q.forced) return;
+    const stressBefore = state.stress || 0;
+    let notice;
     const ok = PetMapEvents.atomic(state, () => {
       if (cash) {
         state.cash = roundCash(state.cash + cash);
@@ -151,6 +176,11 @@
       if (q.appointment) data().appointment = {moveId:move.id, month:state.month};
       if (stage === 'booking') data().appointment = null;
       const next = nextStage(q, move, record);
+      if (stage === 'late' && cash < 0) {
+        const stressChange = state.stress - stressBefore;
+        notice = '打车花费 ' + priceText(-cash) + ' · 压力 +' + stressChange;
+      }
+      if (q.next === 'submission' && !next) notice = '这次照片没有入选';
       record.step++;
       if (next) record.stage = next;
       else if (stage !== 'booking' && due(move)) record.stage = 'booking';
@@ -162,6 +192,41 @@
     }
     if (move.resolved) { $('eventClose').hidden = false; clearModals(); finish(); }
     else openCard(move);
+    if (notice) showNotice(notice);
+  }
+
+  function loadFullCard(stage, entry, options) {
+    const {file, bounds} = fullCards[stage];
+    const data = $('eventData');
+    const actions = $('actions');
+    const buttons = [...actions.querySelectorAll('button')].slice(0, bounds.length);
+    if (buttons.length !== bounds.length) return;
+    const picture = document.createElement('img');
+    picture.alt = entry.title + '。' + entry.body;
+    picture.width = 1024;
+    picture.height = 1536;
+    picture.onload = () => {
+      if (buttons.some(button => button.parentElement !== actions)) return;
+      const frame = document.createElement('div');
+      frame.className = 'map-life-full-card';
+      frame.append(picture);
+      bounds.forEach(([left, top, width, height], index) => {
+        const button = buttons[index];
+        const {q, effects} = options[index];
+        button.className = 'map-life-option';
+        button.setAttribute('aria-label', q.label);
+        if (effects.length) button.setAttribute('aria-description', effects.join(' · '));
+        button.replaceChildren();
+        Object.assign(button.style, {
+          left:left / 1024 * 100 + '%', top:top / 1536 * 100 + '%',
+          width:width / 1024 * 100 + '%', height:height / 1536 * 100 + '%'
+        });
+        frame.append(button);
+      });
+      data.replaceChildren(frame);
+      data.style.display = 'block';
+    };
+    picture.src = 'assets/map-life/' + file;
   }
 
   function openCard(move) {
@@ -190,7 +255,8 @@
     }
     const boxes = options.filter(({effects}) => effects.length).map(({q,effects}) => [q.label, effects.join(' · ')]);
     showEvent('生活事件', entry.title, entry.body, boxes, actions);
-    if (art.has(stage)) {
+    if (fullCards[stage]) loadFullCard(stage, entry, options);
+    else if (art.has(stage)) {
       const picture = document.createElement('img');
       picture.src = 'assets/map-life/' + stage + '.webp';
       picture.alt = '';

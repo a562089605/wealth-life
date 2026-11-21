@@ -1,0 +1,116 @@
+#game > .event.event-active:is(:has(.fund-art), :has(.fund-header)) {
+  color: #22442c;
+  background: radial-gradient(ellipse at 45% 20%, #fff5db, #f5dfb4) !important;
+  border: 2px solid #b68342;
+  box-shadow: inset 0 0 0 4px #fff2d4, 0 15px 38px #49300d50;
+}
+
+.event:is(:has(.fund-art), :has(.fund-header)) #eventTitle {
+  margin: 8px 0;
+  text-align: center;
+  color: #22442c;
+  font-family: WealthHand, 'Ma Shan Zheng', serif;
+}
+.event:is(:has(.fund-art), :has(.fund-header)) #eventDesc { text-align: center; }
+.fund-art, .fund-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  background: url('assets/finance/fund-paper.webp') no-repeat;
+  border-radius: 8px;
+  mix-blend-mode: multiply;
+}
+
+.fund-art {
+  display: block;
+  width: min(100%, 325px);
+  aspect-ratio: 715 / 280;
+  margin: 0 auto 8px;
+  background-size: 143% auto;
+  background-position: center 24%;
+}
+
+.fund-icon {
+  width: 50px;
+  aspect-ratio: 200 / 160;
+  background-size: 512% auto;
+  background-position: 16.5% var(--fund-icon-y);
+}
+
+.fund-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.fund-header strong { font: 21px WealthHand, 'Ma Shan Zheng', serif; }
+.fund-header span:last-child:not(.fund-icon) { font-size: 0.85rem; }
+
+.event .fund-list { display: grid; grid-template-columns: 1fr; gap: 7px; }
+.event .fund-list button {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 3px 8px;
+  padding: 6px 8px;
+  background: linear-gradient(#fff4ce, #f5d994) !important;
+  border: 1px solid #b68342;
+}
+
+.fund-list .fund-icon { grid-row: 1 / span 2; }
+.fund-list button > small:nth-of-type(1) { grid-row: 2; grid-column: 3; text-align: right; }
+.fund-list button > small:nth-of-type(2) { grid-row: 2; grid-column: 2; font-size: 0.7rem; }
+.fund-list button > span:last-child { grid-row: 1 / span 2; grid-column: 4; }
+.fund-list button b { text-align: right; white-space: nowrap; }
+
+.event:has(.fund-header) .wl-quote,
+.event:has(.fund-header) .fund-chart {
+  padding: 8px;
+  background: #fff0c6;
+  border: 1px solid #bf914b;
+  border-radius: 12px;
+}
+.event:has(.fund-header) .fund-chart { margin-bottom: 8px; }
+.event:has(.fund-header) .wl-chart { height: 84px; margin-bottom: 0; }
+.event:has(.fund-header) .wl-chart polyline { stroke: #426329; }
+.event:has(.fund-header) .wl-chart circle { fill: #426329; }
+.fund-chart-caption { display: block; text-align: right; color: #465637; }
+
+.event.event-active:is(:has(.fund-art), :has(.fund-header)) #actions button.primary {
+  border-color: #ad7c34;
+  background: linear-gradient(#fce390, #efbb55) !important;
+}
+
+.fund-asset-row {
+  padding-inline: 8px;
+  border-radius: 10px;
+  border: 1px solid #d2b477;
+  background: #fff1c9;
+}
+.fund-asset-row .fund-icon { width: 35px; margin-right: 6px; vertical-align: middle; }
+
+.fund-list button > strong {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  overflow-wrap: normal;
+}
+
+.fund-list button > b {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.fund-list button > small:nth-of-type(2),
+.fund-list button > .wl-chart {
+  display: none;
+}
+
+.event.event-active:has(.fund-art) #actions button {
+  border-color: #ad7c34;
+  background: linear-gradient(#fce390, #efbb55) !important;
+}
+
+#eventData .fund-list button.wl-choice-card { min-height: 62px; }
+.fund-list button > span:last-child { align-self: center; margin: 0; }

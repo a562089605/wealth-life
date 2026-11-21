@@ -1,0 +1,218 @@
+(function(){
+ const stocks=()=>V26_INSTRUMENTS.filter(item=>item.kind==='股票');
+ const sharesText=shares=>shares.toLocaleString('en-US',{maximumFractionDigits:6})+' 股';
+ const iconPositions=['42.8%','51.5%','59.9%','68.7%','77.4%'];
+ const openingSamples={
+  nova:[91,94,92,97,103,96,93,98,104,102,98],
+  harbor:[94,95,93,94,97,98,96,99,101,100,99],
+  blue:[105,108,101,96,93,97,103,107,105,104,102],
+  orbit:[94,90,92,96,100,96,92,94,98,99,97],
+  care:[92,93,95,94,96,98,98,99,100,102,101]
+ };
+
+ function position(item){
+  const lots=state.assets.filter(asset=>asset.instrument===item.id && asset.shares>0);
+  const shares=lots.reduce((sum,lot)=>sum+lot.shares,0);
+  const cost=roundCash(lots.reduce((sum,lot)=>sum+lot.cost,0));
+  const value=roundCash(lots.reduce((sum,lot)=>sum+holdingValue(lot),0));
+  return {lots,shares,cost,value,profit:roundCash(value-cost)};
+ }
+
+ function stockChart(item){
+  const history=quoteFor(item.id).history.slice(-12);
+  // Extend short histories with illustrative pre-game prices, never used for trading.
+  const first=history[0];
+  const missing=12-history.length;
+  const opening=(openingSamples[item.id]||openingSamples.nova).slice(11-missing).map((price,i)=>({
+   month:first.month-missing+i,price:roundCash(first.price*price/100)
+  }));
+  return '<div class="stock-chart">'+quoteChart({history:[...opening,...history]})+
+   '<small>近 12 个月 · 游戏模拟'+(missing?'（含开局前示例）':'')+'</small></div>';
+ }
+
+ function page(title,description,rows,actions,back,item,chart=false){
+  showEvent('股票投资',title,description,rows,actions);
+  if($('eventTitle').textContent!==title)return null;
+  window.modalReturn=back;
+  const data=$('eventData');
+  const header=document.createElement('div');
+  header.className='stock-header';
+  header.innerHTML=item?'<span class="stock-icon" style="--stock-icon-y:'+iconPositions[stocks().indexOf(item)]+'"></span>':
+   '<span class="stock-art"></span>';
+  if(chart)header.insertAdjacentHTML('beforeend',stockChart(item));
+  data.prepend(header);
+  data.style.display='grid';
+  return data;
+ }
+
+ function open(back=finish,extraActions=[]){
+  const market=()=>open(back,extraActions);
+  const holdings=()=>showHoldings(market);
+  const items=stocks();
+  if(!page('股票品种','游戏模拟行情',[],[
+   ...items.map(item=>[item.name,()=>trade(item,market,holdings,'buy'),false]),
+   ...extraActions,['管理投资持仓',holdings,false],['返回储蓄与投资',back,true]
+  ],back))return;
+  const buttons=[...$('actions').children];
+  items.forEach((item,index)=>{
+   const quote=quoteFor(item.id);
+   const button=buttons[index];
+   button.classList.add('stock-market-row');
+   const icon=document.createElement('span');
+   icon.className='stock-icon';
+   icon.style.setProperty('--stock-icon-y',iconPositions[index]);
+   icon.setAttribute('aria-hidden','true');
+   const values=document.createElement('small');
+   values.textContent=priceText(quote.price)+' · '+signedPercent(quote.price/quote.previous-1);
+   button.prepend(icon);
+   button.append(values);
+  });
+ }
+
+ function showHoldings(market){
+  const reopen=()=>showHoldings(market);
+  const held=stocks().map(item=>({item,...position(item)})).filter(p=>p.shares>0);
+  if(!page('管理投资持仓',held.length?'股票持仓':'暂无股票持仓。',[
+   ['持仓总市值',priceText(held.reduce((sum,p)=>sum+p.value,0))],
+   ['浮动盈亏',priceText(held.reduce((sum,p)=>sum+p.profit,0))]
+  ],[...held.map(p=>[
+   p.item.name+' · 持有 '+sharesText(p.shares),()=>showPosition(p.item,market,reopen),false
+  ]),['返回股票品种',market,true]],market))return;
+  const buttons=[...$('actions').children];
+  held.forEach((p,index)=>{
+   const note=document.createElement('small');
+   note.textContent='当前价格 '+priceText(quoteFor(p.item.id).price)+' · 市值 '+priceText(p.value)+
+    ' · 成本 '+priceText(p.cost)+' · 浮动盈亏 '+priceText(p.profit);
+   buttons[index].append(note);
+   buttons[index].insertAdjacentHTML('beforeend',stockChart(p.item));
+  });
+ }
+
+ function showPosition(item,market,holdings){
+  const p=position(item);
+  if(!p.shares)return holdings();
+  page(item.name+' · 股票持仓','',[
+   ['当前价格',priceText(quoteFor(item.id).price)],['当前持有',sharesText(p.shares)],
+   ['持仓市值',priceText(p.value)],['持仓成本',priceText(p.cost)],
+   ['浮动盈亏',priceText(p.profit)],['平均买入价',priceText(p.cost/p.shares)]
+  ],[['增仓',()=>trade(item,market,holdings,'add'),true],
+   ['减仓',()=>trade(item,market,holdings,'sell'),false],
+   ['全部卖出',()=>trade(item,market,holdings,'all'),false],['返回持仓',holdings,false]],holdings,item,true);
+ }
+
+ function saleParts(lots,shares){
+  const parts=[];
+  for(const lot of lots){
+   if(shares<=0)break;
+   const sold=Math.min(shares,lot.shares);
+   const full=sold===lot.shares||lot.shares-sold<1e-10;
+   const cost=full?lot.cost:roundCash(lot.cost*sold/lot.shares);
+   parts.push({lot,sold,cost,full});
+   shares-=sold;
+  }
+  return parts;
+ }
+
+ function trade(item,market,holdings,mode){
+  const all=mode==='all',selling=all||mode==='sell',adding=mode==='add';
+  const back=mode==='buy'?market:()=>showPosition(item,market,holdings);
+  const reopen=()=>trade(item,market,holdings,mode);
+  const owner=state, month=state.month, quote=quoteFor(item.id), price=quote.price;
+  const p=position(item);
+  if(selling&&!p.shares)return back();
+  const title=mode==='buy'?item.name:(all?'全部卖出':selling?'减仓':'增仓')+' · '+item.name;
+  const rows=[['当前价格',priceText(price)],['当前持有',sharesText(p.shares)]];
+  const proceeds=roundCash(p.shares*price);
+  if(!selling)rows.push(['可用现金',priceText(state.cash)]);
+  if(all)rows.push(['预计到账',priceText(proceeds)],['预计实现盈亏',priceText(roundCash(proceeds-p.cost))],
+   ['卖出后持有',sharesText(0)],['卖出后现金',priceText(roundCash(state.cash+proceeds))]);
+  if(mode==='buy')rows.push(['较上月',signedPercent(price/quote.previous-1)],
+   ['持仓市值',priceText(p.value)],['持仓成本',priceText(p.cost)],['浮动盈亏',priceText(p.profit)]);
+  const confirm=all?'确认全部卖出':selling?'确认减仓':adding?'确认增仓':'确认买入';
+  let input,estimate,done=false;
+  const data=page(title,all?'成交后，这只股票的持仓将清空。':selling?'按买入顺序扣减持仓。':item.desc,rows,[[confirm,()=>{
+   if(done||state!==owner)return;
+   const current=position(item);
+   if(state.month!==month||quoteFor(item.id).price!==price||current.shares!==p.shares||
+    current.cost!==p.cost||current.lots.length!==p.lots.length||current.lots.some((lot,index)=>lot!==p.lots[index]))return reopen();
+   const transaction=all?{amount:proceeds,shares:p.shares,parts:p.lots.map(lot=>({lot,full:true})),cost:p.cost}:read();
+   if(!transaction)return;
+   const {amount,shares,parts,cost}=transaction;
+   const previous=structuredClone(state);
+   if(selling){
+    for(const part of parts){
+     if(part.full)state.assets.splice(state.assets.indexOf(part.lot),1);
+     else{
+      part.lot.shares-=part.sold;
+      part.lot.cost=roundCash(part.lot.cost-part.cost);
+      part.lot.value=roundCash(part.lot.shares*price);
+     }
+    }
+    state.cash=roundCash(state.cash+amount);
+    (state.financeLedger??=[]).push({kind:'assetSale',month,amount,instrument:item.id,shares,price,cost});
+   }else if(!buyUnits(item.id,amount))return;
+   try{
+    if(save()===false)throw Error('save failed');
+   }catch{
+    state=previous;
+    reopen();
+    $('eventDesc').textContent='交易未保存，请重试。';
+    return;
+   }
+   done=true;
+   showReceipt(item,market,holdings,mode,transaction,price);
+  },true,!all],[mode==='buy'?'返回股票品种':'返回持仓',back,false],
+   ...(mode==='buy'?[['取消',finish,false]]:[])],back,item,true);
+  if(!data||all)return;
+  const form=document.createElement('div');
+  form.className='stock-form';
+  form.innerHTML='<label for="stockTradeAmount">'+(selling?'本次卖出股数':'本次投入金额')+'</label>'+
+   '<input id="stockTradeAmount" type="number" inputmode="decimal" min="'+(selling?'0.000001':'0.01')+
+   '" step="'+(selling?'0.000001':'0.01')+'"><p role="status"></p>';
+  data.append(form);
+  input=form.querySelector('input');
+  estimate=form.querySelector('p');
+  input.value=selling?(p.shares>1?1:Math.floor(p.shares*500000)/1000000).toFixed(6):Math.max(0,Math.min(adding?100:200,state.cash)).toFixed(2);
+  input.addEventListener('input',update);
+  update();
+
+  function read(){
+   const value=input.valueAsNumber;
+   if(!input.checkValidity()||!Number.isFinite(value)||value<=0)return null;
+   if(!selling)return value<=state.cash?{amount:value,shares:value/price}:null;
+   if(p.shares-value<=0.0000005)return null;
+   const shares=value;
+   const amount=roundCash(shares*price);
+   if(amount<=0)return null;
+   const parts=saleParts(p.lots,shares);
+   const cost=roundCash(parts.reduce((sum,part)=>sum+part.cost,0));
+   return {shares,amount,parts,cost};
+  }
+  function update(){
+   const result=read();
+   $('actions').firstElementChild.disabled=!result;
+   if(!result){
+    estimate.textContent=selling?'请输入小于当前持仓的股数。清仓请使用「全部卖出」。':'请输入可负担且最多两位小数的正金额。';
+    return;
+   }
+   const {amount,shares,cost}=result;
+   estimate.textContent=selling?
+    '预计到账 '+priceText(amount)+' · 减仓后持有 '+sharesText(p.shares-shares)+' · 预计实现盈亏 '+priceText(roundCash(amount-cost)):
+    '预计买入 '+sharesText(shares)+' · 买入后持有 '+sharesText(p.shares+shares)+' · 买入后现金 '+priceText(roundCash(state.cash-amount));
+  }
+ }
+
+ function showReceipt(item,market,holdings,mode,transaction,price){
+  const {amount,shares,cost}=transaction;
+  const selling=mode==='sell'||mode==='all';
+  const p=position(item);
+  const result=page(item.name,mode==='all'?'卖出成功 · 已记入收支账单':selling?'减仓成功':mode==='add'?'增仓成功':'买入成功',[
+   ['成交价格',priceText(price)],[selling?'卖出股数':'买入股数',sharesText(shares)],
+   [selling?'实际到账':'本次成交金额',priceText(amount)],['成交后现金',priceText(state.cash)],
+   [selling?'剩余持有':'持仓市值',selling?sharesText(p.shares):priceText(p.value)],[selling?'实现盈亏':'浮动盈亏',priceText(selling?roundCash(amount-cost):p.profit)]
+  ],[['管理投资持仓',holdings,true],['返回股票品种',market,false]],holdings,item,true);
+  result?.querySelector('.stock-header').classList.add('stock-receipt');
+ }
+
+ window.StockPages={open};
+})();

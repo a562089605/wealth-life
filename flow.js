@@ -53,18 +53,87 @@ const V26_INSTRUMENTS=[
  {id:'harbor',name:'Harbor 消费',kind:'股票',desc:'游戏中的单一消费公司，经营表现会影响股价。',beta:1.45,region:'us',risk:'公司与市场风险'},
  {id:'blend',name:'平衡型基金',kind:'基金',desc:'游戏中股票与稳健资产混合配置，仍可能亏损。',beta:.65,region:'world',risk:'市场与利率风险'}
 ];
-function initQuotes(){if(state.marketQuotes)return;state.marketQuotes=Object.fromEntries(V26_INSTRUMENTS.map(i=>[i.id,window.ETFMarket?.openingQuote(i.id,state.month)||{price:100,previous:100,history:[{month:state.month,price:100}]}]));}
-function quoteFor(id){return state.marketQuotes?.[id]||{price:100,previous:100,history:[{month:state.month,price:100}]}}
-function advanceQuotes(change,month){initQuotes();for(const[i,cfg]of V26_INSTRUMENTS.entries()){const q=quoteFor(cfg.id);if(q.history.at(-1)?.month===month)continue;const cycle=Math.sin((month+1)*(i+2)*1.71)*.008,regional=cfg.region==='intl'?-.22*change:cfg.region==='world'?-.08*change:0;const movement=cfg.kind==='ETF'&&window.ETFMarket?ETFMarket.simulatedChange(q,change,state.annualInflation??.025,cfg.beta,regional,cycle):(change+regional)*cfg.beta+cycle;const r=Math.max(-.25,Math.min(.25,movement));q.previous=q.price;q.price=Math.max(.01,roundCash(q.price*(1+r)));q.history.push({month,price:q.price})}for(const a of state.assets)if(a.instrument){a.value=roundCash(a.shares*quoteFor(a.instrument).price)}}
+const FUND_OPENING_PRICES={
+ blend:[93,94,95,94,96,98,97,96,99,101,100,99],
+ treasuryfund:[100,101,102,101,100,99,98,98,99,100,101,101],
+ income:[94,95,96,98,97,99,101,98,97,99,101,102]
+};
+
+function defaultQuote(){
+ return {price:100,previous:100,history:[{month:state.month,price:100}]};
+}
+
+function addFundOpeningHistory(id,quote){
+ const samples=FUND_OPENING_PRICES[id],opening=quote.history[0];
+ if(!samples||opening?.month!==0)return quote;
+ const history=samples.map((price,index)=>({
+  month:index-samples.length,price:roundCash(opening.price*price/100),simulatedOpening:true
+ }));
+ if(quote.history.length===1)quote.previous=history.at(-1).price;
+ quote.history.unshift(...history);
+ return quote;
+}
+
+function initQuotes(){
+ const quotes=state.marketQuotes??={};
+ for(const item of V26_INSTRUMENTS){
+  const quote=quotes[item.id]??window.ETFMarket?.openingQuote(item.id,state.month)??defaultQuote();
+  quotes[item.id]=item.kind==='ETF'&&window.ETFMarket?
+   ETFMarket.addOpeningHistory(item.id,quote):addFundOpeningHistory(item.id,quote);
+ }
+}
+
+function quoteFor(id){
+ const quote=state.marketQuotes?.[id];
+ if(window.ETFMarket?.hasBenchmark(id)){
+  const etf=quote?ETFMarket.addOpeningHistory(id,quote):ETFMarket.openingQuote(id,state.month)??defaultQuote();
+  (state.marketQuotes??={})[id]=etf;
+  return etf;
+ }
+ if(!Object.hasOwn(FUND_OPENING_PRICES,id))return quote??defaultQuote();
+ const fund=addFundOpeningHistory(id,quote??defaultQuote());
+ (state.marketQuotes??={})[id]=fund;
+ return fund;
+}
+function advanceQuotes(change,month,inflation=state.annualInflation??.025){
+ initQuotes();
+ for(const [i,cfg] of V26_INSTRUMENTS.entries()){
+  const q=quoteFor(cfg.id);
+  if(q.history.at(-1)?.month===month)continue;
+  const cycle=Math.sin((month+1)*(i+2)*1.71)*.008;
+  const regional=cfg.region==='intl'?-.22*change:cfg.region==='world'?-.08*change:0;
+  let movement=(change+regional)*cfg.beta+cycle;
+  if(cfg.kind==='ETF'&&window.ETFMarket){
+   movement=ETFMarket.simulatedChange(q,change,state.annualInflation??.025,cfg.beta,regional,cycle);
+  }else if(cfg.kind==='基金'){
+   const monthlyInflation=Math.pow(1+inflation,1/12)-1;
+   if(cfg.region==='bond'){
+    const marketYield=ECONOMIES[state.economy||0].rate+(inflation-.025)*.5;
+    const previous=q.previousFundYield??((state.previousBondFundRate??ECONOMIES[0].rate)+((state.annualInflation??.025)-.025)*.5);
+    // A diversified treasury fund has interest-rate duration, without a maturity payout.
+    movement+=marketYield/12-4*(marketYield-previous);
+    q.previousFundYield=marketYield;
+   }else{
+    movement=(1+movement)*(1+monthlyInflation)-1;
+   }
+  }
+  const r=Math.max(-.25,Math.min(.25,movement));
+  q.previous=q.price;
+  q.price=Math.max(.01,roundCash(q.price*(1+r)));
+  q.history.push({month,price:q.price});
+  state.marketQuotes[cfg.id]=q;
+ }
+ for(const asset of state.assets)if(asset.instrument)asset.value=roundCash(asset.shares*quoteFor(asset.instrument).price);
+}
 const priceText=money;
 const signedPercent=n=>(n>=0?'+':'')+(n*100).toFixed(2)+'%';
 function quoteChart(q){const h=q.history.slice(-121),min=Math.min(...h.map(p=>p.price))*.98,max=Math.max(...h.map(p=>p.price))*1.02,points=h.map((p,i)=>(10+i*280/Math.max(1,h.length-1)).toFixed(2)+','+(115-(p.price-min)/(max-min)*100).toFixed(2)).join(' ');return '<svg class="wl-chart" viewBox="0 0 300 130" role="img" aria-label="游戏价格历史：'+h.length+'个月点位"><path d="M10 15H290M10 65H290M10 115H290" stroke="#8b9c9f" stroke-dasharray="4 5" fill="none"/><polyline points="'+points+'" fill="none" stroke="#26877f" stroke-width="3"/><circle cx="'+(h.length===1?10:290)+'" cy="'+(115-(h.at(-1).price-min)/(max-min)*100)+'" r="4" fill="#26877f"/></svg>'}
 function returnPeriod(q,months){const last=q.history.at(-1),old=q.history.find(h=>h.month===last.month-months);return old?signedPercent(last.price/old.price-1):'记录不足'}
-function openMarket(kind='ETF',back=finish,extraActions=[]){if(kind==='ETF'&&window.ETFPages)return ETFPages.showList(back===finish?undefined:back);const instruments=V26_INSTRUMENTS.filter(i=>i.kind===kind);showEvent('投资',kind+'品种','先查看范围与风险，再打开购买详情。所有价格为游戏模拟，不是实时行情。',[],[...extraActions,['返回',back,false]]);if(back!==finish)window.modalReturn=back;$('eventData').innerHTML='<div class="wl-mini-grid">'+instruments.map(i=>{const q=quoteFor(i.id);return '<button class="wl-choice-card" data-v26="market" data-key="'+i.id+'" aria-label="查看 '+i.name+'"><strong>'+i.name+'</strong><b>'+priceText(q.price)+'</b><small class="'+(q.price>=q.previous?'wl-up':'wl-down')+'">较上月 '+signedPercent(q.price/q.previous-1)+'</small><small>'+i.desc+'</small><span>查看购买详情 →</span></button>'}).join('')+'</div>'; $('eventData').style.display='block'}
+function openMarket(kind='ETF',back=finish,extraActions=[]){if(kind==='ETF'&&window.ETFPages)return ETFPages.showList(back===finish?undefined:back);if(kind==='股票'&&window.StockPages)return StockPages.open(back,extraActions);const instruments=V26_INSTRUMENTS.filter(i=>i.kind===kind);showEvent('投资',kind+'品种','先查看范围与风险，再打开购买详情。所有价格为游戏模拟，不是实时行情。',[],[...extraActions,['返回',back,false]]);if(back!==finish)window.modalReturn=back;$('eventData').innerHTML='<div class="wl-mini-grid">'+instruments.map(i=>{const q=quoteFor(i.id);return '<button class="wl-choice-card" data-v26="market" data-key="'+i.id+'" aria-label="查看 '+i.name+'"><strong>'+i.name+'</strong><b>'+priceText(q.price)+'</b><small class="'+(q.price>=q.previous?'wl-up':'wl-down')+'">较上月 '+signedPercent(q.price/q.previous-1)+'</small><small>'+i.desc+'</small><span>查看购买详情 →</span></button>'}).join('')+'</div>'; $('eventData').style.display='block';if(kind==='基金')window.FundPages?.market()}
 
 function openInstrument(id){const cfg=V26_INSTRUMENTS.find(i=>i.id===id);if(!cfg)return;if(cfg.kind==='ETF'&&window.ETFPages)return ETFPages.showDetail(cfg);const q=quoteFor(id),holdings=state.assets.filter(a=>a.instrument===id),cost=holdings.reduce((n,a)=>n+a.cost,0),value=holdings.reduce((n,a)=>n+a.value,0),pct=q.price/q.previous-1;
- showEvent('投资预览',cfg.name,cfg.desc+' 当前显示游戏月度价格；开局没有1/5/10年历史，不会编造收益。',[],[['确认买入',()=>{const amount=Number($('v26InvestAmount').value);if(!Number.isFinite(amount)||amount<=0||Math.round(amount*100)!==amount*100&&Math.abs(Math.round(amount*100)-amount*100)>.00001)return;if(!spendConfirmed('investmentBuy',amount,{instrument:id,price:q.price}))return;initQuotes();state.assets.push({id:assetId(),name:cfg.name,kind:'market',category:cfg.kind,instrument:id,cost:amount,value:amount,shares:amount/q.price,entryPrice:q.price,entryMonth:state.month,cf:0});finish()},true,state.cash<=0],['返回品种列表',()=>openMarket(cfg.kind),false],['取消',finish,false]]);
- $('eventData').innerHTML='<div class="wl-quote"><p>当前价格 <b>'+priceText(q.price)+'</b><span class="'+(pct>=0?'wl-up':'wl-down')+'"> 较上月 '+signedPercent(pct)+'</span></p>'+quoteChart(q)+'<div class="wl-periods"><span>1年<br>'+returnPeriod(q,12)+'</span><span>5年<br>'+returnPeriod(q,60)+'</span><span>10年<br>'+returnPeriod(q,120)+'</span></div><p>持仓市值 '+priceText(value)+' · 成本 '+priceText(cost)+'<br><span class="'+(value>=cost?'wl-up':'wl-down')+'">浮动盈亏 '+priceText(value-cost)+(cost?'（'+signedPercent(value/cost-1)+'）':'')+'</span></p><label>本次投入金额 <input id="v26InvestAmount" type="number" min="0.01" step="0.01" inputmode="decimal" value="'+Math.max(0,Math.min(200,state.cash))+'"></label><p data-invest-preview></p><small>支持碎股；本次确认后现金减少、资产增加。买入不代表未来保证上涨。</small></div>';$('eventData').style.display='block';function update(){const amt=Number($('v26InvestAmount').value),valid=Number.isFinite(amt)&&amt>0&&amt<=state.cash&&Math.abs(Math.round(amt*100)-amt*100)<.00001;$('actions').firstElementChild.disabled=!valid;document.querySelector('[data-invest-preview]').textContent=valid?'预计买入 '+(amt/q.price).toFixed(6)+' 份 · 剩余现金 '+priceText(roundCash(state.cash-amt)):'请输入可负担且最多两位小数的正金额'}$('v26InvestAmount').oninput=update;update()
+ showEvent('投资预览',cfg.name,cfg.desc+(cfg.kind==='基金'?'':' 当前显示游戏月度价格；开局没有1/5/10年历史，不会编造收益。'),[],[['确认买入',()=>{const amount=Number($('v26InvestAmount').value);if(!Number.isFinite(amount)||amount<=0||Math.round(amount*100)!==amount*100&&Math.abs(Math.round(amount*100)-amount*100)>.00001)return;if(!spendConfirmed('investmentBuy',amount,{instrument:id,price:q.price}))return;initQuotes();state.assets.push({id:assetId(),name:cfg.name,kind:'market',category:cfg.kind,instrument:id,cost:amount,value:amount,shares:amount/q.price,entryPrice:q.price,entryMonth:state.month,cf:0});finish()},true,state.cash<=0],['返回品种列表',()=>openMarket(cfg.kind),false],['取消',finish,false]]);
+ $('eventData').innerHTML='<div class="wl-quote"><p>当前价格 <b>'+priceText(q.price)+'</b><span class="'+(pct>=0?'wl-up':'wl-down')+'"> 较上月 '+signedPercent(pct)+'</span></p>'+quoteChart(q)+'<div class="wl-periods"><span>1年<br>'+returnPeriod(q,12)+'</span><span>5年<br>'+returnPeriod(q,60)+'</span><span>10年<br>'+returnPeriod(q,120)+'</span></div><p>持仓市值 '+priceText(value)+' · 成本 '+priceText(cost)+'<br><span class="'+(value>=cost?'wl-up':'wl-down')+'">浮动盈亏 '+priceText(value-cost)+(cost?'（'+signedPercent(value/cost-1)+'）':'')+'</span></p><label>本次投入金额 <input id="v26InvestAmount" type="number" min="0.01" step="0.01" inputmode="decimal" value="'+Math.max(0,Math.min(200,state.cash))+'"></label><p data-invest-preview></p><small>支持碎股；本次确认后现金减少、资产增加。买入不代表未来保证上涨。</small></div>';$('eventData').style.display='block';function update(){const amt=Number($('v26InvestAmount').value),valid=Number.isFinite(amt)&&amt>0&&amt<=state.cash&&Math.abs(Math.round(amt*100)-amt*100)<.00001;$('actions').firstElementChild.disabled=!valid;document.querySelector('[data-invest-preview]').textContent=valid?'预计买入 '+(amt/q.price).toFixed(6)+' 份 · 剩余现金 '+priceText(roundCash(state.cash-amt)):'请输入可负担且最多两位小数的正金额'}$('v26InvestAmount').oninput=update;update();if(cfg.kind==='基金')window.FundPages?.decorate('buy',cfg)
 }
 buyInvestment=kind=>openMarket(kind);window.v241Invest=kind=>openMarket(kind);
 
@@ -151,15 +220,21 @@ sellAsset=function(i,back=finish){
  const asset=state.assets[i];
  if(!asset)return;
  if(asset.kind==='cd')return previewCDWithdrawal(asset,back);
+ const fund=V26_INSTRUMENTS.find(item=>item.kind==='基金'&&item.id===asset.instrument);
  const rental=asset.kind==='rental';
  const amount=rental?asset.value-asset.mortgage:asset.value??asset.cost;
  showEvent('出售预览',asset.instrument==='gold'?'卖出黄金':asset.name,
   rental?'确认后按当前游戏市值出售；投资房出售款先清偿对应房贷。':'确认后按当前游戏市值出售。',
   [['预计到账',priceText(amount)]],[
-   ['确认出售',()=>{if(state.assets[i]===asset)sellBase(i,back)},true,state.cash+amount<0],
+   ['确认出售',()=>{
+    if(state.assets[i]!==asset)return;
+    sellBase(i,back);
+    if($('eventTitle').textContent==='资产已出售')window.FundPages?.decorate('sold',fund,asset);
+   },true,state.cash+amount<0],
    ['取消',back,false]
   ]);
  if(back!==finish)window.modalReturn=back;
+ window.FundPages?.decorate('sell',fund,asset);
 };
 // Keep monetary previews explicit in retained modules without a second duplicate list.
 const showFlowBase=showEvent;showEvent=function(type,title,desc,data=[],actions=[]){if((type==='HOBBY'&&title==='完成一次练习')||(type==='CAREER'&&title==='求职成功')){const practicedMonth=state.month,completedStep=type==='HOBBY'?5:2;actions=actions.map(a=>a[0]==='继续'?[a[0],()=>{if(type==='HOBBY')finish();else if(state.month===practicedMonth&&state.turn?.index===completedStep&&$('game').classList.contains('v24-running'))completeMonthlyStep(completedStep);else finish()},a[2],a[3]]:a)}if(type==='FAMILY'&&actions.some(a=>a[0]==='考虑孩子'))data=[...data,['新增育儿预算','$550.00/月，确认后从本月起生效']];if(type==='START')actions=[['开始住房安排',()=>{finish();startV24Turn(false)},true]];showFlowBase(type,title,desc,data,actions);const buttons=[...$('actions').children];buttons.forEach((b,i)=>{const label=actions[i]?.[0]||'',match=data.find(d=>label===d[0]||label==='练习 '+d[0]||label==='领养'+d[0]);if(match){b.classList.add('wl-choice-card');b.textContent='';const strong=document.createElement('strong');strong.textContent=label;const small=document.createElement('small');small.textContent=match[1];const confirm=document.createElement('span');confirm.textContent='确认选择 →';b.append(strong,small,confirm);b.setAttribute('aria-label',label)}});if(['HOBBY','PET','LIFESTYLE'].includes(type)&&buttons.some(b=>b.classList.contains('wl-choice-card')))$('eventData').innerHTML=''};

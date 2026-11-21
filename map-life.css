@@ -1,0 +1,43 @@
+.event:has(.map-life-full-card) #eventTitle,
+.event:has(.map-life-full-card) #eventDesc,
+.event:has(.map-life-full-card) #eventType,
+.event:has(.map-life-full-card) #eventMonth,
+.event:has(.map-life-full-card) #actions:empty {
+  display: none;
+}
+
+.map-life-full-card {
+  position: relative;
+  max-width: 30rem;
+  margin: auto;
+}
+
+.map-life-full-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.map-life-full-card button.map-life-option {
+  position: absolute;
+  margin: 0;
+  min-height: 0 !important;
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  background: transparent !important;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.map-life-full-card button.map-life-option:focus-visible {
+  outline: 3px solid #254337;
+  outline-offset: -4px;
+}
+
+.map-life-full-card button.map-life-option:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+  background: #4c3e3766 !important;
+}

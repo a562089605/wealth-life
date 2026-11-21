@@ -7,7 +7,7 @@ const FinanceLedger = (() => {
   opportunityIncome:'机会收入',tuitionReversal:'学费退款',dividend:'ETF分红',bondInterest:'债券票息',
   bondMaturity:'债券到期还本',socialIncome:'关系活动收入',assetSale:'出售资产净到账',
   ownerHomeSale:'出售自住房净到账',cafeDividend:'门店分红',cafeEquitySale:'门店股份出售',
-  cafeEquityRefund:'门店股份退款',relationshipReward:'关系事件收入',bonus:'奖金或项目收入',
+  cafeEquityRefund:'门店股份退款',relationshipReward:'关系事件收入',lifeReward:'摄影展奖金',bonus:'奖金或项目收入',
   cdPrincipal:'定期存款到期还本',cdInterest:'定期存款到期利息',
   cdEarlyPrincipal:'定期存款提前支取本金',cdEarlyInterest:'定期存款提前支取实收利息'
  };

@@ -44,7 +44,6 @@ V26_INSTRUMENTS.push(
 ETF_YIELDS.smallcap=.018;ETF_YIELDS.emerging=.028;
 const initQuotesBefore277=initQuotes;initQuotes=function(){initQuotesBefore277();for(const i of V26_INSTRUMENTS)state.marketQuotes[i.id]??={price:100,previous:100,history:[{month:state.month,price:100}]}};
 const financeBefore277=syncFinance;syncFinance=function(){if(!state)return;ensureCharacter();initQuotes();for(const a of state.assets||[])if(a.kind==='savings'){a.rate=Math.max(.005,ECONOMIES[state.economy||0].rate-.02);a.cf=roundCash(a.cost*a.rate/12)}financeBefore277()};
-const advanceBefore277=advanceQuotes;advanceQuotes=function(change,month){const old=state.marketQuotes?.treasuryfund?.price;advanceBefore277(change,month);const q=state.marketQuotes.treasuryfund;if(q&&q.history.at(-1)?.month===month){const rate=ECONOMIES[state.economy||0].rate,last=state.previousBondFundRate??rate;q.price=roundCash((old??100)*(1+rate/12-4*(rate-last)));q.history.at(-1).price=q.price;state.previousBondFundRate=rate;for(const a of state.assets)if(a.instrument==='treasuryfund')a.value=roundCash(a.shares*q.price)}};
 const marketBefore277=openMarket;openMarket=function(kind,back,extraActions){marketBefore277(kind,back,extraActions);for(const b of $('eventData').querySelectorAll('[data-v26=market]')){const cfg=V26_INSTRUMENTS.find(i=>i.id===b.dataset.key),q=quoteFor(cfg.id);b.insertAdjacentHTML('beforeend',quoteChart(q));}};
 // New deposits and loans use the present simulated rate; signed contracts remain fixed.
 const CD_TERMS=[6,12,24];

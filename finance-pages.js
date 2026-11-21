@@ -255,6 +255,7 @@
 
    const cash=[['可用现金',state.cash],['应急金',state.emergencyFund||0]];
    const investments=[];
+   const funds=[];
    const property=[];
    for(const asset of state.assets){
     const name=asset.name||'未命名资产';
@@ -262,6 +263,7 @@
     const label=asset.kind==='cd'?[name,value,'含已累计利息，提前支取可能扣息']:[name,value];
     if(asset.kind==='cd'||asset.kind==='savings')cash.push(label);
     else if(asset.kind==='rental')property.push(label);
+    else if(window.FundPages?.isFund(asset))funds.push([name,value,'成本 '+priceText(asset.cost)]);
     else investments.push(label);
    }
    const equity=globalThis.CafeEquity;
@@ -287,7 +289,8 @@
    drawBill(summary+
     '<div class="finance-asset-holdings" tabindex="0" role="region" aria-label="资产明细，可纵向滚动">'+
     section('现金与储蓄',cash,undefined,'cash')+
-    section('投资持仓',investments,'暂无投资持仓。','investments')+
+    (investments.length||!funds.length?section('投资持仓',investments,'暂无投资持仓。','investments'):'')+
+    (funds.length?section('基金持仓',funds):'')+
     section('实物资产',property,'暂无实物资产。','property')+
     section('长期账户',longTerm,undefined,'accounts')+depositNote+'</div>');
    $('eventData').removeAttribute('tabindex');
@@ -396,8 +399,7 @@
 
   function stocks(){
    openMarket('股票',savings,[
-    ['普通投资账户',()=>openBrokerageAccount(stocks),false],
-    ['管理投资持仓',openWealth,false]
+    ['普通投资账户',()=>openBrokerageAccount(stocks),false]
    ]);
   }
 

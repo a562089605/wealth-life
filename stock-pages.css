@@ -1,0 +1,136 @@
+#game > .event.event-active:has(.stock-header) {
+  color: #22442c;
+  background: radial-gradient(ellipse at 45% 20%, #fff5db, #f5dfb4) !important;
+  border: 2px solid #b68342;
+  box-shadow: inset 0 0 0 4px #fff2d4, 0 15px 38px #49300d50;
+}
+.event:has(.stock-header) #eventTitle {
+  margin: 10px 0;
+  text-align: center;
+  color: #22442c;
+  font-family: WealthHand, 'Ma Shan Zheng', serif;
+}
+.event:has(.stock-header) #eventDesc { text-align: center; }
+.event:has(.stock-header) #eventData {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.stock-header, .stock-form { grid-column: 1 / -1; }
+.stock-header { display: grid; gap: 6px; justify-items: center; }
+.stock-art, .stock-icon {
+  display: block;
+  background: url('assets/finance/stock-paper.webp') no-repeat;
+  mix-blend-mode: multiply;
+  border-radius: 8px;
+}
+.stock-art {
+  width: min(100%, 320px);
+  aspect-ratio: 715 / 240;
+  background-size: 143% auto;
+  background-position: center 20.9%;
+}
+.stock-icon {
+  width: 68px;
+  aspect-ratio: 160 / 100;
+  background-size: 640% auto;
+  background-position: 17.4% var(--stock-icon-y);
+}
+.stock-chart {
+  width: 100%;
+  background: #f9e9bb;
+  border: 1px solid #bd904d;
+  border-radius: 12px;
+  padding: 2px 8px 5px;
+  text-align: right;
+}
+.stock-chart .wl-chart { width: 100%; height: 76px; margin: 0; }
+.stock-chart polyline { stroke: #365824; }
+.stock-chart circle { fill: #365824; }
+.stock-chart small { color: #49553b; font-size: 0.7rem; }
+.event:has(.stock-header) #eventData .stat,
+.stock-form {
+  color: #22442c;
+  background: #fff2cb;
+  border: 1px solid #bf914b;
+  border-radius: 12px;
+  text-align: center;
+}
+.stock-form { padding: 8px; }
+.stock-form label { display: block; font-weight: 700; }
+.stock-form input { width: min(100%, 13rem); text-align: center; }
+.stock-form p { margin: 5px 0 0; font-size: 0.8rem; }
+.event:has(.stock-header) #actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+}
+.event.event-active:has(.stock-header) #actions button {
+  min-width: 0;
+  color: #22442c;
+  border: 1px solid #ad7c34;
+  background: linear-gradient(#fff0c0, #f2d486) !important;
+}
+.event.event-active:has(.stock-header) #actions button.primary {
+  background: linear-gradient(#fce390, #efbb55) !important;
+}
+.event.event-active:has(.stock-header) #actions button.stock-market-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  text-align: left;
+}
+.stock-market-row .stock-icon { width: 48px; }
+.stock-market-row small { white-space: nowrap; }
+.event:has(.stock-header) #actions button:not(.stock-market-row) > small {
+  display: block;
+  margin: 6px 0;
+  font-weight: normal;
+}
+
+.event:has(.stock-header) #actions {
+  max-height: none !important;
+  overflow: visible;
+  background: transparent;
+}
+
+.event:has(.stock-header) #actions button:disabled {
+  opacity: 0.55;
+}
+
+.event:has(.stock-header) #eventData > .stat:nth-child(even):not(:has(~ .stat)) {
+  grid-column: 1 / -1;
+}
+
+.event:has(.stock-form) #eventData > .stat {
+  padding: 7px 9px;
+}
+
+.event:has(.stock-form) .stock-chart .wl-chart {
+  height: 64px;
+}
+
+.event:has(.stock-receipt) #eventDesc {
+  width: fit-content;
+  margin: 0 auto 8px;
+  padding: 4px 14px;
+  border: 1px solid #b98b44;
+  border-radius: 12px;
+  background: #f8dda0;
+  color: #22442c;
+  font-family: WealthHand, 'Ma Shan Zheng', serif;
+  font-size: 1.2rem;
+}
+
+.event:has(.stock-header) #actions button.primary::before,
+.event:has(.stock-header) #actions button.primary::after {
+  content: '❧' / '';
+  display: inline-block;
+  margin-inline: 0.4em;
+  color: #63743e;
+}
+
+.event:has(.stock-header) #actions button.primary::after {
+  transform: scaleX(-1);
+}
