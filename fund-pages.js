@@ -29,7 +29,7 @@
     row.querySelector('span:not(.fund-icon)').textContent='›';
    });
   }
-  $('eventDesc').textContent='游戏模拟行情';
+  $('eventDesc').textContent='基金行情';
   const back=$('actions').lastElementChild;
   if(back&&window.modalReturn)back.textContent='返回储蓄与投资';
   if(back){
@@ -81,8 +81,8 @@
   if(stage!=='buy')header.after(chart);
   const caption=document.createElement('small');
   caption.className='fund-chart-caption';
-  caption.textContent=history.some(point=>point.simulatedOpening)?'近 12 个月 · 含开局前模拟净值':
-   history.length<2?'游戏模拟 · 暂无足够月度记录':'游戏模拟 · 月度净值';
+  caption.textContent=history.some(point=>point.simulatedOpening)?'近 12 个月 · 含开局前净值':
+   history.length<2?'暂无足够月度记录':'月度净值';
   if(stage==='buy'){
    data.querySelector('.wl-chart')?.remove();
    const price=data.querySelector('.wl-quote > p');

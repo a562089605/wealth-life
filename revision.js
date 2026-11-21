@@ -37,9 +37,9 @@ V26_INSTRUMENTS.push(
  {id:'emerging',name:'新兴市场 ETF',kind:'ETF',desc:'新兴经济体股票组合，包含汇率与地区风险。',beta:1.3,region:'intl'},
  {id:'treasuryfund',name:'国债基金',kind:'基金',desc:'持有多个期限的国债，利率上涨时净值可能下跌。无固定到期保本承诺。',beta:.15,region:'bond'},
  {id:'income',name:'股息平衡基金',kind:'基金',desc:'股息股票与防御资产混合配置，分配不保证。',beta:.65,region:'world'},
- {id:'blue',name:'BLUE 能源',kind:'股票',desc:'模拟能源企业，受商品价格与经营状况影响。',beta:1.6,region:'us'},
- {id:'orbit',name:'ORBIT 物流',kind:'股票',desc:'模拟运输公司，受需求、油价与融资成本影响。',beta:1.4,region:'us'},
- {id:'care',name:'CARE 医疗',kind:'股票',desc:'模拟医疗公司，存在研发、监管与公司经营风险。',beta:1.2,region:'us'}
+ {id:'blue',name:'BLUE 能源',kind:'股票',desc:'能源企业，受商品价格与经营状况影响。',beta:1.6,region:'us'},
+ {id:'orbit',name:'ORBIT 物流',kind:'股票',desc:'运输公司，受需求、油价与融资成本影响。',beta:1.4,region:'us'},
+ {id:'care',name:'CARE 医疗',kind:'股票',desc:'医疗公司，存在研发、监管与公司经营风险。',beta:1.2,region:'us'}
 );
 ETF_YIELDS.smallcap=.018;ETF_YIELDS.emerging=.028;
 const initQuotesBefore277=initQuotes;initQuotes=function(){initQuotesBefore277();for(const i of V26_INSTRUMENTS)state.marketQuotes[i.id]??={price:100,previous:100,history:[{month:state.month,price:100}]}};

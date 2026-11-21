@@ -59,7 +59,7 @@ monthlyOffers=function(){
 function openTownLanding(){
  const move=townState().movement,type=TOWN_TYPES[move.to];move.opened=true;save();
  if(type==='opportunity'){showEvent('投资机会','路过一家新项目','这次只处理一个机会。先看投入、风险与现金流，不合适可以放弃。',[],[['放弃本次机会',()=>{const o=monthlyOffers();if(!o.resolved)o.resolved='未选择';save();finish()},false]]);$('eventData').innerHTML=opportunityMarkup().replace('四个都不选，保留现金','不参与，保留现金');$('eventData').style.display='block';return}
- if(type==='market'){if(openBuyerOffer())return;showEvent('市场','看看当前市场','价格与报价来自现有模拟经济。查看产品不等于购买，确认后才交易。',[['模拟基准利率',(ECONOMIES[state.economy||0].rate*100).toFixed(1)+'%']],[['查看证券与资产',openTownSecurities,true],['查看固定收益产品',openBonds,false],['继续持有，离开',finish,false]]);return}
+ if(type==='market'){if(openBuyerOffer())return;showEvent('市场','看看当前市场','查看当前报价，确认后才交易。',[['基准利率',(ECONOMIES[state.economy||0].rate*100).toFixed(1)+'%']],[['查看证券与资产',openTownSecurities,true],['查看固定收益产品',openBonds,false],['继续持有，离开',finish,false]]);return}
  if(type==='growth'){showEvent('学习成长','投资自己','学历、兴趣与工资仍沿用原规则；每月兴趣练习不重复收费或刷经验。',[],[['查看学历计划',openEducation,true],['练习兴趣技能',()=>$('hobbyBtn').click(),false],['本次不安排',finish,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block';return}
  if(type==='career'){if(workplaceEvent())return;openWorkAdjustment();return}
  if(type==='life'){if(typeof openMapLife==='function')return openMapLife(move);$('lifestyleBtn').click();return}
@@ -84,6 +84,6 @@ $('wlResume').onclick=()=>{$('wlCloseMenu').click();if(townEnabled())showTown();
 const townMenu=document.createElement('button');townMenu.textContent='进入起步小镇';townMenu.onclick=()=>{$('wlCloseMenu').click();townStart()};document.querySelector('.wl-menu-items').append(townMenu);
 document.addEventListener('click',e=>{const button=e.target.closest('[data-town]');if(!button)return;const action=button.dataset.town;if(action==='roll')rollTown();if(action==='resume')resumeTownMove();if(action==='home')townHome();if(action==='livingFund')fundShortfall(roundCash(Math.max(0,livingTotal()-(paymentReceipt().living||0))),openTownLiving);if(action==='monthly')originalMonthlyPlay();if(action==='stage')$('wlJourney').click()});
 
-function openTownSecurities(){showEvent('证券市场','查看证券产品','查看当前价格与持仓，确认后才购买。',[],V26_INSTRUMENTS.map(i=>[i.name,()=>openInstrument(i.id),false]).concat([['离开市场',finish,true]]))}
+function openTownSecurities(){showEvent('证券市场','查看证券产品','查看当前价格与持仓，确认后才购买。',[],V26_INSTRUMENTS.map(i=>[i.name,()=>i.id==='gold'&&window.FinancePages?FinancePages.gold(openTownSecurities):openInstrument(i.id),false]).concat([['离开市场',finish,true]]))}
 
 

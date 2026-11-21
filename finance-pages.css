@@ -1344,3 +1344,90 @@
  height: 3.7%;
  background: linear-gradient(90deg,#eee8bc,#dedfa6,#eee8bc);
 }
+
+#game > .event.event-active.finance-parchment {
+ width:min(540px,calc(100% - 20px));
+ box-sizing:border-box;
+ padding:18px 20px;
+ border:1px solid #ab844a;
+ border-radius:22px !important;
+ background:#fbedd2 url("./assets/finance/paper.webp") repeat !important;
+ box-shadow:inset 0 0 0 4px #f9e4b8,inset 0 0 0 5px #c9a672,0 12px 38px #49361355;
+ color:#294632;
+ overflow-y:auto !important;
+ overscroll-behavior:contain;
+}
+.finance-parchment #eventType,.finance-parchment #eventDesc {display:none}
+.finance-parchment #eventMonth {margin:0 42px 4px 0;text-align:right;color:#655637}
+.finance-parchment #eventTitle {
+ margin:0 0 12px;text-align:center;color:#26472e;
+ font:700 30px/1.25 "Noto Serif CJK SC",serif;letter-spacing:.08em;
+}
+.finance-parchment .retirement-art {
+ display:block;width:100%;height:auto;aspect-ratio:9/4;object-fit:cover;
+ border-radius:13px;border:1px solid #c4a06a;margin-bottom:10px;
+}
+.finance-parchment .retirement-accounts {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.finance-parchment .retirement-accounts section {
+ display:flex;flex-direction:column;padding:11px;background:#fff4d9;
+ border:1px solid #d0ad76;border-radius:12px;
+}
+.finance-parchment .retirement-accounts h3 {font:700 16px/1.3 "Noto Serif CJK SC",serif;margin:0}
+.finance-parchment .retirement-accounts p,.finance-parchment .retirement-note {font-size:13px;line-height:1.45;color:#55492f}
+.finance-parchment .retirement-accounts p {margin:7px 0 9px}
+.finance-parchment .retirement-balance,.finance-parchment .retirement-age {
+ display:flex;justify-content:space-between;gap:6px;padding:5px 8px;border-radius:7px;background:#e5e8c1;
+}
+.finance-parchment .retirement-balance {margin-top:auto;font-size:13px}
+.finance-parchment .retirement-age {margin:5px 0 0;font-size:14px}
+.finance-parchment .retirement-note {margin:8px 0}
+.finance-parchment .retirement-guide {
+ margin-top:9px;padding:8px 10px;border:1px solid #d0ad76;border-radius:10px;background:#fff4d9;
+}
+.finance-parchment .retirement-guide summary {cursor:pointer;font-size:14px;font-weight:700}
+.finance-parchment .retirement-guide p {margin:8px 0 2px;font-size:13px;line-height:1.5;color:#55492f}
+.finance-parchment .retirement-guide strong {color:#294632}
+.finance-parchment #actions {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;background:none}
+#game > .event.finance-parchment #actions button {
+ width:100%;min-height:42px;margin:0;padding:6px 8px;
+ border:1px solid #a97629;border-radius:10px;
+ background:linear-gradient(#ffe28b,#edbe55);color:#25452e;
+ box-shadow:inset 0 0 0 2px #ffefaf;font-weight:700;
+}
+.finance-parchment #actions button::before {content:"❧";margin-right:.35em;color:#596637}
+@media(max-width:380px){
+ .finance-parchment .retirement-accounts h3 {font-size:14px}
+ #game > .event.event-active.finance-parchment {padding:15px}
+}
+
+.finance-parchment.retirement-transaction .retirement-art {aspect-ratio:3/1}
+.retirement-transaction .retirement-transfer-panel {
+ padding:12px;background:#fff4d9;border:1px solid #d0ad76;border-radius:12px;
+}
+.retirement-transaction .retirement-transfer-total {
+ display:flex;align-items:center;justify-content:space-between;gap:8px;
+ padding:8px 10px;background:#e5e8c1;border-radius:8px;font-size:14px;
+}
+.retirement-transaction .retirement-transfer-total strong {font-size:23px;font-variant-numeric:tabular-nums}
+.retirement-transaction .retirement-transfer-entry {display:flex;gap:8px;margin-top:5px}
+.retirement-transaction .retirement-transfer-entry input {
+ flex:1;min-width:0;padding:8px;background:#fffbef;color:#294632;border:1px solid #b98c4f;border-radius:8px;
+}
+.retirement-transaction #retirementWithdrawalAll {
+ flex:none;margin:0;padding:6px 9px;background:#f4d47d;color:#294632;border:1px solid #b98c4f;border-radius:8px;
+}
+.retirement-transaction #retirementWithdrawalPreview {margin:8px 0 0;font-size:13px;color:#55492f}
+.retirement-transaction .retirement-transfer-panel dl {margin:8px 0 0}
+.retirement-transaction .retirement-transfer-panel dl div {
+ display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid #ead4a6;padding:5px 0;
+}
+.retirement-transaction .retirement-transfer-panel dd {margin:0;font-weight:700}
+#game > .event.retirement-transaction #actions button:only-child {grid-column:1/-1}
+#game > .event.retirement-transaction #actions button:disabled {background:#e8ddbd;color:#64583d;box-shadow:none}
+
+.gold-price-chart {margin:9px 0 0;padding:8px 10px;background:#fff4d9;border:1px solid #d0ad76;border-radius:12px}
+.gold-price-chart figcaption,.gold-price-chart > div {display:flex;justify-content:space-between;gap:8px}
+.gold-price-chart figcaption span,.gold-price-chart > div {font-size:12px;color:#55492f}
+.gold-price-chart .wl-chart {display:block;width:100%;height:108px;margin:0}
+.gold-price-chart .wl-chart polyline {stroke:#3d6947}
+.gold-price-chart .wl-chart circle {fill:#3d6947}

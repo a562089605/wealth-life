@@ -4,7 +4,7 @@
  const previousShow = showEvent;
  showEvent = function(...args){
   delete eventCard.dataset.etfDetail;
-  eventCard.classList.remove('finance-home','finance-bill','finance-assets','finance-savings','finance-emergency','finance-cd','finance-etf','finance-sp500','finance-etf-buy','finance-etf-receipt','finance-etf-sell','finance-etf-settings');
+  eventCard.classList.remove('finance-home','finance-bill','finance-assets','finance-savings','finance-emergency','finance-cd','finance-etf','finance-sp500','finance-etf-buy','finance-etf-receipt','finance-etf-sell','finance-etf-settings','finance-parchment','retirement-transaction');
   $('eventData').removeAttribute('tabindex');
   $('eventData').removeAttribute('aria-label');
   return previousShow(...args);
@@ -56,7 +56,7 @@
   if(list.childElementCount)actions.insertBefore(list,back);
  }
 
- function open(openWealth,showAssets=false){
+ function open(openWealth,showAssets=false,goldBack){
   function page(title, rows, actions, back=home){
    showEvent('财务',title,'',rows,[...actions,['返回财务',back,false]]);
    if($('eventTitle').textContent===title)window.modalReturn=back;
@@ -403,60 +403,202 @@
 
   function retirement(){
    const account=state.retirement;
-   showEvent('退休账户','退休账户','',[
-    ['401(k) 余额',priceText(account.k401Balance||0)],
-    ['IRA 余额',priceText(account.iraBalance||0)],
-    ['计划退休年龄',(state.retirementAge||67)+' 岁']
-   ],[
+   showEvent('退休账户','退休账户','',[],[
     ['设置 401(k)',()=>open401Account(retirement),false],
-    ['查看 IRA',()=>openIRAAccount(retirement),false],
+    ['查看 IRA',viewIRA,false],
+    ...(state.retired?[
+     ['提取 401(k)',()=>retirementWithdraw('k401Balance','401(k)'),true,!account.k401Balance],
+     ['提取 IRA',()=>retirementWithdraw('iraBalance','IRA'),true,!account.iraBalance]
+    ]:[]),
     ['退休规划',()=>openRetirementChoice(retirement),false],
     ['返回储蓄与投资',savings,false]
    ]);
-   if($('eventTitle').textContent==='退休账户')window.modalReturn=savings;
+   if($('eventTitle').textContent!=='退休账户')return;
+   window.modalReturn=savings;
+   eventCard.classList.add('finance-parchment');
+   const data=$('eventData');
+   data.innerHTML=`<img class="retirement-art" src="${art}retirement-desk.webp" width="720" height="320" alt="">
+    <div class="retirement-accounts">
+     <section>
+      <h3>401(k) · 雇主退休账户</h3>
+      <p>设为 3% 或 6% 后，有工资的月份会在月末从税前工资扣款。雇主同额匹配，上限为税前工资的 3%。</p>
+      <div class="retirement-balance"><span>余额</span><strong>${priceText(account.k401Balance||0)}</strong></div>
+     </section>
+     <section>
+      <h3>IRA · 个人退休账户</h3>
+      <p>由玩家从可用现金手动转入，游戏里每次转入 $500.00，无雇主匹配。</p>
+      <div class="retirement-balance"><span>余额</span><strong>${priceText(account.iraBalance||0)}</strong></div>
+     </section>
+    </div>
+    <details class="retirement-guide">
+     <summary>账户怎么运作？什么时候能取？</summary>
+     <p><strong>现实中的 401(k)</strong>　账户里的钱可用于投资，取款还要符合雇主计划规定。传统税前 401(k) 取款通常缴所得税，未满 59 岁半提前取款一般还可能有 10% 额外税，符合例外时可免。</p>
+     <p><strong>现实中的 IRA</strong>　传统 IRA 可以申请提款，应税部分通常缴所得税。未满 59 岁半提前取款通常还有 10% 额外税，符合例外时可免。Roth IRA 的常规缴费本金通常可随时免税取回；收益要满足五年规则及年龄等资格条件才可免税提取。</p>
+    </details>
+    <p class="retirement-note"><strong>游戏里</strong>　两种余额都随游戏市场在月末涨跌，计入净资产。年满 60 岁并正式退休后，可按需把部分或全部余额转回现金。计划退休年龄仅供参考，提款由玩家确认，游戏不扣提款税费。</p>
+    <p class="retirement-age"><span>计划退休年龄</span><strong>${state.retirementAge||67} 岁</strong></p>`;
+   data.style.display='block';
   }
 
-  function gold(){
+  function viewIRA(){
+   openIRAAccount(retirement);
+   if($('eventTitle').textContent!=='IRA 长期投资')return;
+   eventCard.classList.add('finance-parchment','retirement-transaction');
+   const data=$('eventData');
+   const reference=data.querySelector('a');
+   const explanation=$('eventDesc').textContent;
+   data.innerHTML=`<img class="retirement-art" src="${art}retirement-ira.webp" width="900" height="300" alt="">
+    <div class="retirement-transfer-panel">
+     <div class="retirement-transfer-total"><span>IRA 余额</span><strong>${priceText(state.retirement.iraBalance||0)}</strong></div>
+     <dl><div><dt>可用现金</dt><dd>${priceText(state.cash)}</dd></div>
+      <div><dt>本次从现金转入</dt><dd>$500.00</dd></div></dl>
+     <p class="retirement-note">余额随市场涨跌，无雇主匹配。正式退休后可提款。</p>
+     ${state.cash<500?'<p class="retirement-note">可用现金不足 $500.00。</p>':''}
+    </div>
+    <details class="retirement-guide"><summary>了解 IRA 规则</summary></details>`;
+   const guide=data.querySelector('details');
+   const paragraph=document.createElement('p');
+   paragraph.textContent=explanation;
+   guide.append(paragraph);
+   if(reference)guide.append(reference);
+   data.style.display='block';
+  }
+
+  function retirementWithdraw(key,name){
+   const account=state.retirement;
+   const balance=roundCash(account[key]||0);
+   if(!state.retired||balance<=0)return retirement();
+   const title='提取 '+name;
+   showEvent('退休账户',title,'从退休账户转回可用现金，游戏不扣提款税费。',[],[
+    ['确认提款',()=>{
+     const amount=input.valueAsNumber;
+     if(!input.isConnected||!state.retired||state.retirement!==account||
+        !input.checkValidity()||amount>roundCash(account[key]))return;
+     const previous=structuredClone(state);
+     account[key]=roundCash(account[key]-amount);
+     state.cash=roundCash(state.cash+amount);
+     (state.financeLedger??=[]).push({kind:'retirementWithdrawal',month:state.month,account:name,amount});
+     try{if(save()===false)throw Error('save failed')}catch(error){
+      state=previous;
+      retirementWithdraw(key,name);
+      $('retirementWithdrawalPreview').textContent='提款未保存，请重试。';
+      return;
+     }
+     const receipt=name+' 提款成功';
+     showEvent('退休账户',receipt,'',[],[['返回退休账户',retirement,true]]);
+     if($('eventTitle').textContent!==receipt)return;
+     window.modalReturn=retirement;
+     eventCard.classList.add('finance-parchment','retirement-transaction');
+     const data=$('eventData');
+     data.innerHTML=`<img class="retirement-art" src="${art}retirement-receipt.webp" width="900" height="300" alt="">
+      <div class="retirement-transfer-panel">
+       <div class="retirement-transfer-total"><span>本次到账</span><strong>${priceText(amount)}</strong></div>
+       <dl><div><dt>账户剩余</dt><dd>${priceText(account[key])}</dd></div>
+        <div><dt>可用现金</dt><dd>${priceText(state.cash)}</dd></div></dl>
+      </div>`;
+     data.style.display='block';
+    },true,true],
+    ['返回退休账户',retirement,false]
+   ]);
+   if($('eventTitle').textContent!==title)return;
+   window.modalReturn=retirement;
+   const data=$('eventData');
+   eventCard.classList.add('finance-parchment','retirement-transaction');
+   data.innerHTML=`<img class="retirement-art" src="${art}retirement-withdraw.webp" width="900" height="300" alt="">
+    <div class="retirement-transfer-panel">
+     <div class="retirement-transfer-total"><span>可提取余额</span><strong>${priceText(balance)}</strong></div>
+     <p class="retirement-note">确认后等额转入可用现金，游戏不扣提款税费。</p>
+     <label for="retirementWithdrawalAmount">提款金额（美元）</label>
+     <div class="retirement-transfer-entry">
+      <input id="retirementWithdrawalAmount" type="number" inputmode="decimal" min="0.01" max="${balance}" step="0.01" required>
+      <button id="retirementWithdrawalAll" type="button">全部提取</button>
+     </div>
+     <p id="retirementWithdrawalPreview" aria-live="polite"></p>
+    </div>`;
+   data.style.display='block';
+   const input=$('retirementWithdrawalAmount');
+   const confirm=$('actions').firstElementChild;
+   const update=()=>{
+    confirm.disabled=!input.checkValidity();
+    const amount=input.valueAsNumber;
+    $('retirementWithdrawalPreview').textContent=confirm.disabled
+     ?'请输入 $0.01 至 '+priceText(balance)+'。'
+     :'本次到账 '+priceText(amount)+' · 账户剩余 '+priceText(roundCash(balance-amount));
+   };
+   input.oninput=update;
+   $('retirementWithdrawalAll').onclick=()=>{input.value=balance;update()};
+   update();
+  }
+
+  function goldChart(quote){
+   const history=quote.goldSeries.slice(-60);
+   const prices=history.map(point=>point.price);
+   return `<figure class="gold-price-chart">
+    <figcaption><strong>金价走势</strong><span>美元／份</span></figcaption>
+    ${quoteChart({history},' 个报价点')}
+    <div><span>区间低点 ${priceText(Math.min(...prices))}</span><span>区间高点 ${priceText(Math.max(...prices))}</span></div>
+   </figure>`;
+  }
+
+  function gold(back=savings){
    initQuotes();
    const quote=quoteFor('gold');
    const lots=state.assets.filter(asset=>asset.instrument==='gold');
    const value=lots.reduce((sum,asset)=>sum+asset.value,0);
-   showEvent('投资','黄金','游戏模拟报价按月变动。持有期间没有利息或分红，市值会涨跌。',[
-    ['当前价格',priceText(quote.price)+' / 份'],['持仓市值',priceText(value)],
-    ['可用现金',priceText(state.cash)]
-   ],[
-    ['买入黄金',goldBuy,true,state.cash<=0],
-    ...lots.map((lot,index)=>['卖出第 '+(index+1)+' 笔 · '+priceText(lot.value),()=>sellAsset(state.assets.indexOf(lot),gold),false]),
-    ['返回储蓄与投资',savings,false]
+   const reopen=()=>gold(back);
+   showEvent('投资','黄金','',[],[
+    ['买入黄金',()=>goldBuy(reopen),true,state.cash<=0],
+    ...lots.map((lot,index)=>['卖出第 '+(index+1)+' 笔 · '+priceText(lot.value),()=>sellAsset(state.assets.indexOf(lot),reopen),false]),
+    [back===savings?'返回储蓄与投资':'返回证券市场',back,false]
    ]);
-   if($('eventTitle').textContent==='黄金')window.modalReturn=savings;
+   if($('eventTitle').textContent!=='黄金')return;
+   window.modalReturn=back;
+   eventCard.classList.add('finance-parchment','retirement-transaction');
+   const data=$('eventData');
+   data.innerHTML=`<img class="retirement-art" src="${art}gold-overview.webp" width="900" height="300" alt="">
+    <div class="retirement-transfer-panel">
+     <div class="retirement-transfer-total"><span>当前价格</span><strong>${priceText(quote.price)} / 份</strong></div>
+     <dl><div><dt>持仓市值</dt><dd>${priceText(value)}</dd></div>
+      <div><dt>可用现金</dt><dd>${priceText(state.cash)}</dd></div></dl>
+     <p class="retirement-note">金价随游戏进度波动，持有期间没有利息或分红。</p>
+    </div> ${goldChart(quote)}`;
+   data.style.display='block';
   }
 
-  function goldBuy(){
+  function goldBuy(back){
    showEvent('投资','买入黄金','输入游戏金额，确认后扣除现金并计入持仓。',[],[
     ['确认买入',()=>{
-     if(!input.checkValidity())return goldBuy();
+     if(!input.isConnected||!input.checkValidity())return;
      const previous=structuredClone(state);
-     if(!buyUnits('gold',input.valueAsNumber))return goldBuy();
-     try{save()}catch(error){
+     if(!buyUnits('gold',input.valueAsNumber))return goldBuy(back);
+     try{if(save()===false)throw Error('save')}catch(error){
       state=previous;
-      goldBuy();
+      goldBuy(back);
       $('goldPreview').textContent='买入未保存，请重试。';
       return;
      }
-     gold();
+     back();
     },true],
-    ['返回黄金',gold,false]
+    ['返回黄金',back,false]
    ]);
    if($('eventTitle').textContent!=='买入黄金')return;
-   window.modalReturn=gold;
+   window.modalReturn=back;
    const data=$('eventData');
-   data.innerHTML='<div class="wl-loan-form"><label for="goldAmount">买入金额（美元）</label>'+
-    '<input id="goldAmount" type="number" inputmode="decimal" min="0.01" step="0.01">'+
-    '<p id="goldPreview"></p></div>';
+   const quote=quoteFor('gold');
+   eventCard.classList.add('finance-parchment','retirement-transaction');
+   data.innerHTML=`<img class="retirement-art" src="${art}gold-buy.webp" width="900" height="300" alt="">
+    <div class="retirement-transfer-panel">
+     <div class="retirement-transfer-total"><span>当前金价</span><strong>${priceText(quote.price)} / 份</strong></div>
+     <p class="retirement-note">可用现金 ${priceText(state.cash)}。确认时从现金扣款。</p>
+     <label for="goldAmount">买入金额（美元）</label>
+     <div class="retirement-transfer-entry">
+      <input id="goldAmount" type="number" inputmode="decimal" min="0.01" step="0.01" required>
+     </div>
+     <p id="goldPreview" class="retirement-note" aria-live="polite"></p>
+    </div>
+    ${goldChart(quote)}`;
    data.style.display='block';
    const input=$('goldAmount');
-   input.required=true;
    input.max=state.cash;
    input.value=Math.min(200,state.cash);
    const update=()=>{
@@ -485,10 +627,10 @@
    window.HomeInsurance.openMenu(back,back===home?'返回财务':'返回收支账单');
   }
 
-  if(showAssets)assets();else home();
+  if(goldBack)gold(goldBack);else if(showAssets)assets();else home();
  }
 
  V26_INSTRUMENTS.push({id:'gold',name:'黄金',kind:'黄金',beta:.45,
   desc:'价格按月波动，不产生利息或分红。'});
- window.FinancePages={open,renderCD};
+ window.FinancePages={open,renderCD,gold:back=>open(undefined,false,back)};
 })();

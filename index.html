@@ -97,7 +97,49 @@ main{max-width:760px;padding-left:16px;padding-right:16px}
 .v242prop{background:#fff;border-radius:22px;padding:16px;border:1px solid #e6dac8}
 .v242prop h3{margin:0 0 5px}.v242prop p{font-size:13px;line-height:1.55;color:#62676b}
 .v242prop button{width:100%;margin-top:8px}
-@media(max-width:560px){.v242grid{grid-template-columns:1fr}.v242sheet{max-height:91vh}}
+.v242sheet button:disabled{opacity:.5;cursor:default}
+.v242toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;flex-wrap:wrap}
+.v242detail{background:#f8edcf;border:1px solid #d9c9aa;border-radius:18px;padding:16px;margin-top:14px}
+.v242detail dl{margin:12px 0}.v242detail dl div{display:flex;justify-content:space-between;gap:12px;padding:5px 0}
+.v242detail dd{margin:0;text-align:right;font-weight:600}.v242warn{color:#815022}
+.v242actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+#v242RE .v242sheet{color:#294936;background:radial-gradient(ellipse at top,#fffae8,#f6e6bd);
+ border:1px solid #b9975e;box-shadow:inset 0 0 0 5px #fcf3d8,inset 0 0 0 6px #e0c498,0 12px 46px #36271466}
+#v242RE .v242head h2,#v242RE .v242prop h3,#v242RE .v242detail strong{font-family:"Noto Serif CJK SC",serif;color:#25452e}
+#v242RE .v242head h2{font-size:28px;letter-spacing:.08em}
+#v242RE .v242grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}
+#v242RE .v242prop,#v242RE .v242detail{background:#fff2d3;border:1px solid #d6b47c;box-shadow:inset 0 0 0 3px #f9e6ba;border-radius:17px}
+#v242RE .v242prop{padding:12px}#v242RE .v242prop::before{content:none}
+#v242RE .v242prop p{color:#4f4836;margin:8px 0}
+#v242RE .v242art{width:100%;height:auto;aspect-ratio:3/2;display:block;object-fit:cover;border-radius:10px;margin-bottom:10px}
+#v242RE .v242hero{display:flex;align-items:center;gap:14px;margin:14px 0}
+#v242RE .v242hero .v242art{width:36%;max-width:160px;margin:0}
+#v242RE button:not(#v242CloseRE){background:linear-gradient(#ffdf83,#edbe56);color:#25452e;border:1px solid #aa782a;
+ border-radius:11px;box-shadow:inset 0 0 0 2px #fff0af;font-weight:700;padding:8px 12px}
+#v242RE button:not(#v242CloseRE)::before{content:"❧";margin-right:.45em;color:#66713b}
+#v242RE .v242notice{font-size:13px;margin:4px 0;color:#5d5439}
+#v242RE .v242preview-hero{display:grid;grid-template-columns:1.25fr 1fr;align-items:center;
+ margin:16px 0 12px;border:1px solid #c7a16a;border-radius:16px;overflow:hidden;
+ background:#fff0ce;box-shadow:inset 0 0 0 4px #f9dfad}
+#v242RE .v242preview-hero .v242art{width:100%;height:auto;margin:0;border-radius:0}
+#v242RE .v242preview-copy{padding:12px}
+#v242RE .v242preview-copy h3{font:700 clamp(22px,4vw,31px)/1.2 "Noto Serif CJK SC",serif;margin:4px 0 9px;color:#25452e}
+#v242RE .v242preview-copy p{margin:4px 0;font-size:13px}
+#v242RE .v242preview-kicker{color:#765629;letter-spacing:.1em;font-weight:700}
+#v242RE .v242preview-cash{margin:0 0 12px;padding:8px 14px;border-block:1px solid #dfc38d;
+ display:flex;justify-content:space-between;gap:8px;background:#f9e8bd;font-size:14px}
+#v242RE .v242plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#v242RE .v242plan{display:flex;flex-direction:column;margin:0;padding:12px}
+#v242RE .v242plan h4{font:700 19px/1.3 "Noto Serif CJK SC",serif;margin:0 0 10px}
+#v242RE .v242plan dl{font-size:13px;margin:9px 0 10px}
+#v242RE .v242plan dl div{border-bottom:1px solid #ead4a6}
+#v242RE .v242plan .v242yield{background:#e5e8bd;border-radius:8px;padding:7px 9px;margin:0;font-size:13px}
+#v242RE .v242yield b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+#v242RE .v242plan button{margin-top:auto;min-height:42px}
+#v242RE .v242plan button:disabled:not(#v242CloseRE){opacity:1;background:#e8ddbd;color:#64583d;border-color:#beab7e;box-shadow:none}
+@media(max-width:500px){#v242RE .v242plans{grid-template-columns:1fr}}
+
+@media(max-width:560px){#v242RE .v242grid{grid-template-columns:1fr}.v242sheet{max-height:91vh}}
 </style>
 
 <style id="v245-housing-style">
@@ -130,8 +172,8 @@ body{padding-bottom:calc(110px + env(safe-area-inset-bottom))}button{touch-actio
  <div class="entry-art"><h1 class="entry-fallback-title">财富人生 <small>WEALTH LIFE</small></h1><img id="welcomeArt" src="assets/home/wealth-life-cover-window-20261117.webp" width="1024" height="1536" fetchpriority="high" alt="财富人生 Wealth Life：主角和三色柯基从窗边望向小镇。">
  <button id="enterGame" type="button" aria-label="进入游戏" disabled><span>进入游戏 →</span></button></div>
 </section>
-<div class="top"><div><h1>财富人生</h1><div class="sub">Wealth Life · 多路线人生理财模拟器 · 城市、年龄阶段与Turn-Based V28.11 七宠35张生活事件</div></div><div style="text-align:right"><span class="beta">V28.11 七宠35张生活事件</span><br><span id="saveState" class="save">自动存档</span></div></div>
-<section id="home" class="card"><h2 style="margin-top:0">开始 / 读档</h2><p class="sub">选择一个存档位。新角色以未就业毕业生身份开局，需在工作阶段主动求职；职业工资按佛州 2025 OEWS 的低位/入门工资思路建模。工作经验、求职、转行、创业和学习都是可选路线。每个存档独立保留年龄、学历、工作年限、资产、债务和进度。V19 的宏观事件、通胀和行业冲击均为教学用模拟情景，不是现实预测。</p><div class="btns" id="slots"></div><div id="newGame" class="hidden" style="margin-top:16px"><label class="label">选择教育与专业背景</label><select id="job" style="width:100%;margin-top:6px"></select><label class="label" style="display:block;margin-top:14px">选择人生目标</label><select id="lifeGoal" style="width:100%;margin-top:6px"><option value="retire39">39岁提前退休</option><option value="world50">50岁环游世界一年</option><option value="fi50">50岁财富自由</option><option value="million50">50岁净资产 $1,000,000.00</option><option value="hotel55">55岁拥有自己的精品酒店</option><option value="care60">60岁建立朋友共居养老社区</option><option value="park60">60岁开一座自己的主题乐园</option><option value="foundation55">55岁建立 $5.00M 公益基金</option></select><p id="goalPreview" class="sub" style="margin:8px 2px 0">目标会根据你的实际支出、年龄和通胀动态计算，而不是固定死一个数字。</p><div class="btns"><button class="primary" id="start">开始新人生</button><button id="cancel">取消</button></div></div></section>
+<div class="top"><div><h1>财富人生</h1><div class="sub">Wealth Life · 多路线人生理财游戏 · 城市、年龄阶段与Turn-Based V28.11 七宠35张生活事件</div></div><div style="text-align:right"><span class="beta">V28.11 七宠35张生活事件</span><br><span id="saveState" class="save">自动存档</span></div></div>
+<section id="home" class="card"><h2 style="margin-top:0">开始 / 读档</h2><p class="sub">选择一个存档位。新角色以未就业毕业生身份开局，需在工作阶段主动求职；职业工资按佛州 2025 OEWS 的低位/入门工资思路建模。工作经验、求职、转行、创业和学习都是可选路线。每个存档独立保留年龄、学历、工作年限、资产、债务和进度。游戏内的宏观事件、通胀和行业变化仅供体验。</p><div class="btns" id="slots"></div><div id="newGame" class="hidden" style="margin-top:16px"><label class="label">选择教育与专业背景</label><select id="job" style="width:100%;margin-top:6px"></select><label class="label" style="display:block;margin-top:14px">选择人生目标</label><select id="lifeGoal" style="width:100%;margin-top:6px"><option value="retire39">39岁提前退休</option><option value="world50">50岁环游世界一年</option><option value="fi50">50岁财富自由</option><option value="million50">50岁净资产 $1,000,000.00</option><option value="hotel55">55岁拥有自己的精品酒店</option><option value="care60">60岁建立朋友共居养老社区</option><option value="park60">60岁开一座自己的主题乐园</option><option value="foundation55">55岁建立 $5.00M 公益基金</option></select><p id="goalPreview" class="sub" style="margin:8px 2px 0">目标会根据你的实际支出、年龄和通胀动态计算，而不是固定死一个数字。</p><div class="btns"><button class="primary" id="start">开始新人生</button><button id="cancel">取消</button></div></div></section>
 <section id="game" class="hidden"><section id="v24Turn" class="active"></section><div id="onboardCard" class="card onboard"><div class="sectionTitle"><h2 style="margin:0">第一次玩？</h2><button id="dismissOnboard" style="min-height:34px;font-size:12px">知道了</button></div><p class="compact-note">每个月先看现金流，再处理事件。前期优先避免现金归零；投资、学习、换工作、创业都不是强制任务。你的开局目标会一直显示在最上方。</p></div><div class="card annual"><div class="sectionTitle"><div><div class="label">年度摘要 Annual Review</div><div id="annualHeadline" class="value">第 1 年 · 建立生活基础</div></div><span id="annualAge" class="pill"></span></div><div id="annualSummary" class="compact-note" style="margin-top:10px"></div></div><div class="card" style="border:2px solid #dbeafe"><div class="row"><div><div class="label">当前人生目标 Life Goal</div><div id="lifeGoalName" class="value"></div></div><div id="goalDeadline" class="pill"></div></div><div class="progress" style="margin-top:14px"><div id="lifeGoalBar" class="bar"></div></div><div id="lifeGoalProgress" class="sub" style="margin-top:8px"></div><div id="goalAdvice" class="asset" style="margin-top:8px"></div></div>
 <div id="dreamCard" class="card" style="border:2px solid #ede9fe"><div class="row"><div><div class="label">梦想工程 Dream Project</div><div id="dreamStage" class="value">尚未启动</div></div><span id="dreamCapital" class="pill"></span></div><div id="dreamDesc" class="sub" style="margin-top:8px"></div><div class="btns"><button id="dreamBtn" class="secondary">推进梦想工程</button></div></div>
 <div id="careerSummaryCard" class="card"><div class="row"><div><div class="label">职业</div><div id="jobName" class="value"></div><div id="age" class="sub" style="margin-top:3px"></div><div id="education" class="sub" style="margin-top:3px"></div></div><div style="text-align:right"><div class="label">游戏时间</div><div id="month" class="value"></div></div></div><div style="margin-top:14px" class="progress"><div id="bar" class="bar"></div></div><div id="goal" class="sub" style="margin-top:7px"></div></div>
@@ -147,7 +189,7 @@ body{padding-bottom:calc(110px + env(safe-area-inset-bottom))}button{touch-actio
 <h2 style="margin-top:0">车辆成本</h2>
 <p class="small">购买车辆后会产生汽车保险、燃油、定期保养和偶发维修。没有车辆时不会产生这些费用。</p>
 </div>
-<div id="rentalCard" class="card"><h2 style="margin-top:0">房地产投资</h2><p class="sub">出租房是投资资产，不等同于自住房。系统会计算首付、贷款利率、租金、Property Tax、Insurance、HOA、维修准备金与空置率。</p><div class="btns"><button id="rentalBtn" class="secondary">查看投资房机会</button></div></div><div id="riskCard" class="card"><h2 style="margin-top:0">风险管理与保险</h2><p class="sub">保险不是投资。它用固定保费转移低概率、高损失风险；应急金则用于短期失业和意外支出。</p><div id="riskStatus" class="asset"></div><div class="btns"><button id="emergencyBtn" class="secondary">划入 $1,000.00 应急金</button><button id="healthBtn" class="secondary">医疗保险</button><button id="incomeBtn" class="secondary">收入保障</button></div></div><div id="retirementCard" class="card"><h2 style="margin-top:0">退休与长期投资</h2><p class="sub">退休账户是长期路线，不是通关必选。你可以选择 401(k)、IRA 和普通投资账户；系统按月模拟投入与市场回报。税务规则为教学简化模型。</p><div id="retireStatus" class="asset"></div><div class="btns"><button id="k401Btn" class="secondary">设置 401(k)</button><button id="iraBtn" class="secondary">投入 IRA $500.00</button><button id="retireBtn" class="secondary">退休选择</button></div></div>
+<div id="rentalCard" class="card"><h2 style="margin-top:0">房地产投资</h2><p class="sub">出租房是投资资产，不等同于自住房。系统会计算首付、贷款利率、租金、Property Tax、Insurance、HOA、维修准备金与空置率。</p><div class="btns"><button id="rentalBtn" class="secondary">查看投资房机会</button></div></div><div id="riskCard" class="card"><h2 style="margin-top:0">风险管理与保险</h2><p class="sub">保险不是投资。它用固定保费转移低概率、高损失风险；应急金则用于短期失业和意外支出。</p><div id="riskStatus" class="asset"></div><div class="btns"><button id="emergencyBtn" class="secondary">划入 $1,000.00 应急金</button><button id="healthBtn" class="secondary">医疗保险</button><button id="incomeBtn" class="secondary">收入保障</button></div></div><div id="retirementCard" class="card"><h2 style="margin-top:0">退休与长期投资</h2><p class="sub">退休账户是长期路线，不是通关必选。你可以选择 401(k)、IRA 和普通投资账户；按月结算缴费和市场回报。税务规则为教学简化模型。</p><div id="retireStatus" class="asset"></div><div class="btns"><button id="k401Btn" class="secondary">设置 401(k)</button><button id="iraBtn" class="secondary">投入 IRA $500.00</button><button id="retireBtn" class="secondary">退休选择</button></div></div>
 <div id="bankLoanCard" class="card">
 <h2 style="margin-top:0">银行贷款</h2>
 <p class="small">需要学费、搬家或其他资金时可以申请贷款。期限越长，月供通常越低，但总利息更高。</p>
@@ -301,18 +343,59 @@ $('rentalBtn').onclick=()=>{if(!state)return;const r=RENTALS[Math.floor(Math.ran
 $('emergencyBtn').onclick=()=>{if(!state)return;const amt=Math.min(1000,state.cash);if(amt<=0){showEvent('EMERGENCY FUND','现金不足','当前没有可划入应急金的现金。',[],[['继续',finish,true]]);return;}state.cash-=amt;state.emergencyFund=(state.emergencyFund||0)+amt;showEvent('EMERGENCY FUND','增加应急金','这笔钱仍属于你的资产，但单独保留用于失业或意外支出。',[['本次划入',money(amt)],['应急金',money(state.emergencyFund)]],[['继续',finish,true]]);render()};
 $('healthBtn').onclick=()=>{if(!state)return;if(state.healthInsurance){showEvent('INSURANCE','医疗保险','你已经有医疗保险。游戏中它会降低医疗随机事件的自付金额。',[['状态','已投保'],['保费','$220.00/月']],[['继续',finish,true]]);return;}showEvent('INSURANCE','购买医疗保险','每月保费 $220.00。它不会产生收益，但会降低医疗事件的财务冲击。',[['保费','$220.00/月'],['作用','降低医疗自付风险']],[['购买',()=>{state.healthInsurance=true;state.expenses+=220;finish()},true],['暂不购买',finish,false]])};
 $('incomeBtn').onclick=()=>{if(!state)return;if(state.incomeProtection){showEvent('INSURANCE','收入保障','你已经有收入保障。游戏中失业事件发生时会提供简化的临时给付。',[['状态','已投保'],['保费','$65.00/月']],[['继续',finish,true]]);return;}showEvent('INSURANCE','购买收入保障','每月保费 $65.00。失业事件发生时，游戏会提供相当于部分月工资的简化给付。',[['保费','$65.00/月'],['失业给付','约 55% 月工资']],[['购买',()=>{state.incomeProtection=true;state.expenses+=65;finish()},true],['暂不购买',finish,false]])};
-function open401Account(back=finish){if(!state)return;if(!state.retirement)state.retirement={k401Balance:0,k401Rate:0,iraBalance:0,brokerageBalance:0,totalContrib:0};const rate=state.retirement.k401Rate||0;showEvent('RETIREMENT','401(k) 缴费设置','401(k) 从工资中按月投入。游戏简化为雇主最多匹配工资的 3%；现实计划规则因雇主而异。',[['当前缴费率',Math.round(rate*100)+'%'],['游戏雇主匹配','最高工资 3%']],[['设为 3%',()=>{state.retirement.k401Rate=.03;save();back()},true],['设为 6%',()=>{state.retirement.k401Rate=.06;save();back()},false],['暂停缴费',()=>{state.retirement.k401Rate=0;save();back()},false],['返回',back,false]]);if(back!==finish)window.modalReturn=back};
-function openIRAAccount(back=finish){if(!state)return;if(!state.retirement)state.retirement={k401Balance:0,k401Rate:0,iraBalance:0,brokerageBalance:0,totalContrib:0};showEvent('RETIREMENT','IRA 长期投资','投入 $500.00 到 IRA。游戏只模拟长期账户增长，不模拟完整税法、收入限制或年度额度。',[['投入','$500.00'],['当前 IRA',money(state.retirement.iraBalance||0)]],[['投入 $500.00',()=>{if(state.cash<500)return;state.cash-=500;(state.financeLedger??=[]).push({kind:'iraTransfer',month:state.month,amount:500});state.retirement.iraBalance=(state.retirement.iraBalance||0)+500;state.retirement.totalContrib=(state.retirement.totalContrib||0)+500;save();back()},true,state.cash<500],['取消',back,false]]);if(back!==finish)window.modalReturn=back};
+function saveRetirementChange(change,onSaved){
+ const title=$('eventTitle').textContent;
+ const previous=structuredClone(state);
+ change();
+ try{
+  if(save()===false)throw Error('save failed');
+ }catch{
+  state=previous;
+  if($('eventTitle').textContent!==title)return;
+  $('eventData').querySelector('[data-retirement-save-error]')?.remove();
+  const notice=document.createElement('p');
+  notice.dataset.retirementSaveError='';
+  notice.setAttribute('role','alert');
+  notice.textContent='操作未保存，请重试。';
+  $('eventData').prepend(notice);
+  return;
+ }
+ onSaved();
+}
+function open401Account(back=finish){
+ if(!state)return;
+ state.retirement??={k401Balance:0,k401Rate:0,iraBalance:0,brokerageBalance:0,totalContrib:0};
+ const setRate=rate=>saveRetirementChange(()=>{state.retirement.k401Rate=rate},back);
+ const rate=state.retirement.k401Rate||0;
+ showEvent('RETIREMENT','401(k) 缴费设置','401(k) 从工资中按月投入。游戏简化为雇主最多匹配工资的 3%；现实计划规则因雇主而异。',[
+  ['当前缴费率',Math.round(rate*100)+'%'],['游戏雇主匹配','最高工资 3%']
+ ],[['设为 3%',()=>setRate(.03),true],['设为 6%',()=>setRate(.06),false],['暂停缴费',()=>setRate(0),false],['返回',back,false]]);
+ if(back!==finish)window.modalReturn=back;
+}
+function openIRAAccount(back=finish){
+ if(!state)return;
+ state.retirement??={k401Balance:0,k401Rate:0,iraBalance:0,brokerageBalance:0,totalContrib:0};
+ showEvent('RETIREMENT','IRA 长期投资','投入 $500.00 到 IRA。余额随市场涨跌。游戏内无收入门槛、年度额度或完整税务规则。',[
+  ['投入','$500.00'],['当前 IRA',money(state.retirement.iraBalance||0)]
+ ],[['投入 $500.00',()=>{
+  if(state.cash<500)return;
+  saveRetirementChange(()=>{
+   spendConfirmed('iraTransfer',500);
+   state.retirement.iraBalance=roundCash((state.retirement.iraBalance||0)+500);
+   state.retirement.totalContrib=roundCash((state.retirement.totalContrib||0)+500);
+  },back);
+ },true,state.cash<500],['取消',back,false]]);
+ if(back!==finish)window.modalReturn=back;
+}
 function openRetirementChoice(back=finish){
  if(!state)return;
  const age=state.age||22;
- if(state.retired){showEvent('RETIREMENT','已退休','你已经退出工资工作。长期账户继续随市场变化；被动收入与现金承担生活支出。',[['年龄',age+' 岁'],['工资','$0.00/月']],[['继续',back,true]]);return;}
+ if(state.retired){showEvent('RETIREMENT','已退休','你已经退出工资工作。退休账户继续随市场变化，也可按需转回现金支付生活支出。',[['年龄',age+' 岁'],['工资','$0.00/月']],[['继续',back,true]]);return;}
  const requiresManagement=()=>window.CafeEquity?.requiresManagement(state);
  const blocked=requiresManagement();
  showEvent('RETIREMENT','退休选择',blocked?'持股低于 51% 时须自己管理门店。请先增持至 51% 或卖出全部股份。':'退休不是强制节点。达到 60 岁后你可以主动退出工资工作；过早退休需要足够的现金、投资和被动收入。',[['当前年龄',age+' 岁'],['计划退休年龄',(state.retirementAge||67)+' 岁']],[['60岁后退休',()=>{
   if((state.age||22)<60||requiresManagement())return;
-  state.retired=true;save();
-  showEvent('RETIREMENT','正式退休','工资收入停止。你的长期账户、现金与被动收入将成为主要财务来源。',[['退休年龄',state.age+' 岁']],[['继续',back,true]]);
+  saveRetirementChange(()=>{state.retired=true},()=>showEvent('RETIREMENT','正式退休','工资收入停止，生活支出由现金与被动收入承担。退休账户余额继续随市场变化，可在退休账户总览按需提款。',[['退休年龄',state.age+' 岁']],[['继续',back,true]]));
  },true,age<60||blocked],['继续工作',back,false]]);
  if(back!==finish)window.modalReturn=back;
 };
@@ -519,48 +602,227 @@ document.addEventListener('click',e=>{if(e.target.closest('button')?.id==='v24Lo
 </script>
 
 <div id="v242RE"><div class="v242sheet">
- <div class="v242head"><div><h2 style="margin:0">房产投资</h2><div class="small">出租物业 · 房价和现金流会受城市与经济周期影响</div></div><button id="v242CloseRE">✕</button></div>
- <div id="v242REGrid" class="v242grid"></div>
+ <div class="v242head"><div><h2 style="margin:0">房产投资</h2><div class="small">新房贷利率随通胀调整，持有期间的估值随经济周期变化</div></div><button id="v242CloseRE">✕</button></div>
+ <div id="v242REContent"></div>
 </div></div>
 
 <script id="v242-real-estate">
 (function(){
  const props=[
-  {name:'经济型公寓',price:145000,down:.20,rent:1350,hoa:180,tax:.011,maint:.007},
-  {name:'标准公寓',price:235000,down:.20,rent:2050,hoa:260,tax:.011,maint:.007},
-  {name:'高级住宅',price:390000,down:.25,rent:3150,hoa:140,tax:.011,maint:.008},
-  {name:'豪华级物业',price:650000,down:.30,rent:4800,hoa:220,tax:.011,maint:.010}
+  {name:'经济型公寓',art:'economy',price:145000,down:.20,rent:1350,hoa:180,tax:.011,maint:.007},
+  {name:'标准公寓',art:'standard',price:235000,down:.20,rent:2050,hoa:260,tax:.011,maint:.007},
+  {name:'高级住宅',art:'premium',price:390000,down:.25,rent:3150,hoa:140,tax:.011,maint:.008},
+  {name:'豪华级物业',art:'luxury',price:650000,down:.30,rent:4800,hoa:220,tax:.011,maint:.010}
  ];
  const fmt=money;
- function apr(){const s=(typeof state!=='undefined'&&state)||{};const inf=s.annualInflation||.025;return Math.min(.095,Math.max(.05,.065+(inf-.025)*.5))}
- function calc(x){
-   const a=apr(), cash=roundCash(x.price*x.down), loan=roundCash(x.price-cash), r=a/12,n=360;
-   const mort=roundCash(loan*r/(1-Math.pow(1+r,-n)));
-   const tax=roundCash(x.price*x.tax/12), maint=roundCash(x.price*x.maint/12), ins=roundCash(x.price*.004/12);
-   const vacancy=roundCash(x.rent*.05), net=roundCash(x.rent-vacancy-mort-tax-maint-ins-x.hoa);
-   return {a,loan,mort,tax,maint,ins,vacancy,net,cash};
+ const art=property=>property?`<img class="v242art" src="assets/property/${property.art}.webp" alt="" width="600" height="400">`:'';
+ const artworkFor=asset=>props.find(property=>property.name===asset.name);
+ const monthlyOwnershipCosts=property=>roundCash([property.tax,property.maint,.004]
+   .reduce((total,rate)=>total+roundCash(property.price*rate/12),0));
+ window.normalizeInvestmentProperty=function(asset){
+   const property=artworkFor(asset);
+   if(!property||asset.purchasePrice!==property.price||asset.rent!==property.rent)return;
+   const operating=roundCash(monthlyOwnershipCosts(property)+property.hoa);
+   if(asset.operating===roundCash(operating+property.rent*.05))asset.operating=operating;
+ };
+ const overlay=$('v242RE');
+ const content=$('v242REContent');
+ const available=amount=>roundCash(state.cash-amount);
+ const signed=amount=>(amount>=0?'+':'')+fmt(amount);
+ const rows=items=>'<dl>'+items.map(([label,value])=>
+   '<div><dt>'+label+'</dt><dd>'+value+'</dd></div>').join('')+'</dl>';
+ function quote(property){
+   const inflation=state.annualInflation??.025;
+   const apr=Math.min(.095,Math.max(.05,.065+(inflation-.025)*.5));
+   const down=roundCash(property.price*property.down);
+   const loan=roundCash(property.price-down);
+   const payment=roundCash(paymentFor(loan,apr,360));
+   const monthlyCosts=monthlyOwnershipCosts(property);
+   const operating=roundCash(monthlyCosts+property.hoa);
+   const fullNet=roundCash(property.rent-operating);
+   return {apr,down,loan,payment,monthlyCosts,operating,fullNet,loanNet:roundCash(fullNet-payment)};
  }
- function render(){
-   const g=document.getElementById('v242REGrid'); if(!g)return;
-   g.innerHTML=props.map((x,i)=>{const c=calc(x);return `<div class="v242prop"><h3>${x.name}</h3>
-    <p>房价 <b>${fmt(x.price)}</b><br>首付 ${(x.down*100).toFixed(0)}% · ${fmt(c.cash)}<br>
-    30年固定房贷 ${(c.a*100).toFixed(2)}% · 月供 ${fmt(c.mort)}<br>预计租金 ${fmt(x.rent)}/月<br>
-    预计空置 ${fmt(c.vacancy)} · HOA ${fmt(x.hoa)}<br>
-    税/保险/维护约 ${fmt(c.tax+c.ins+c.maint)}/月<br>
-    <b>预计净现金流 ${c.net>=0?'+':''}${fmt(c.net)}/月</b></p>
-    <button data-buyre="${i}">购买</button></div>`}).join('');
+ function affordability(amount){
+   const after=available(amount);
+   return after<0?'还差 '+fmt(-after):'付款后剩余 '+fmt(after);
  }
- window.v242RealEstate=function(){render();document.getElementById('v242RE').classList.add('open')};
- document.addEventListener('click',e=>{
-   if(e.target?.id==='v242CloseRE'||e.target?.id==='v242RE'){document.getElementById('v242RE').classList.remove('open');finish();}
-   const i=e.target?.dataset?.buyre;if(i===undefined)return;
-   const x=props[Number(i)],c=calc(x),s=(typeof state!=='undefined'&&state)||{};
-   if((s.cash||0)<c.cash){alert(`首付需要 ${fmt(c.cash)}，当前现金不足。`);return}
-   if(!confirm(`购买${x.name}？\n首付 ${fmt(c.cash)}\n贷款 ${fmt(c.loan)}\n预计净现金流 ${c.net>=0?'+':''}${fmt(c.net)}/月`))return;
-   s.cash-=c.cash;(s.financeLedger??=[]).push({kind:'propertyDownpayment',month:s.month,amount:c.cash,mortgage:c.loan});s.assets.push({id:assetId(),name:x.name,kind:'rental',cost:c.cash,purchasePrice:x.price,value:x.price,mortgage:c.loan,apr:c.a,monthsLeft:360,payment:c.mort,rent:x.rent,operating:roundCash(c.tax+c.maint+c.ins+x.hoa+c.vacancy),cf:c.net,equity:c.cash});
-   if(typeof save==='function')save();if(typeof render==='function')render();
-   document.getElementById('v242RE').classList.remove('open');finish();
-   alert('房产已加入资产。之后可在资产/房产区域查看。');
+ function list(){
+   content.innerHTML=`<div class="v242toolbar"><b>可用现金 ${fmt(state.cash)}</b>
+    <button id="v242Holdings">查看房产持仓</button></div>
+    <p class="v242notice">买入后自动出租，月末结算租金和持有成本。</p>
+    <div class="v242grid">${props.map((property,index)=>{
+     const q=quote(property);
+     const downStatus=available(q.down)<0?'首付'+affordability(q.down):'贷款购入后现金 '+fmt(available(q.down));
+     const fullStatus=available(property.price)<0?'全款'+affordability(property.price):'全款购入后现金 '+fmt(available(property.price));
+     return `<div class="v242prop">${art(property)}<h3>${property.name}</h3>
+      <p>房价 <b>${fmt(property.price)}</b><br>
+      首付 ${property.down*100}% · ${fmt(q.down)}<br>
+      30 年固定房贷 ${(q.apr*100).toFixed(2)}% · 月供 ${fmt(q.payment)}<br>
+      月租金 ${fmt(property.rent)}<br>
+      物业费（HOA） ${fmt(property.hoa)}/月<br>
+      税、保险和维护约 ${fmt(q.monthlyCosts)}/月<br>
+      <b>预计月均净现金流</b><br>贷款 ${signed(q.loanNet)} · 全款 ${signed(q.fullNet)}<br>
+      ${downStatus}<br>${fullStatus}</p>
+      <button data-buyre="${index}">查看购买方案</button></div>`;
+    }).join('')}</div>`;
+   content.querySelector('#v242Holdings').onclick=holdings;
+   for(const button of content.querySelectorAll('[data-buyre]')){
+    button.onclick=()=>purchase(props[Number(button.dataset.buyre)]);
+   }
+   scrollToTop();
+ }
+ function purchase(property){
+   syncFinance();
+   const q=quote(property);
+   content.innerHTML=`<div class="v242preview-hero">
+     ${art(property)}
+     <div class="v242preview-copy">
+      <p class="v242preview-kicker">购买预览</p>
+      <h3>${property.name}</h3>
+      <p>买入后自动出租</p>
+      <p>月租金 <b>${fmt(property.rent)}</b>，月末结算</p>
+     </div>
+    </div>
+    <div class="v242preview-cash"><span>可用现金</span><b>${fmt(state.cash)}</b></div>
+    <div class="v242plans">
+     <section class="v242detail v242plan">
+      <h4>贷款购买</h4>
+      <p class="v242yield">预计月均净现金流 <b>${signed(q.loanNet)}</b></p>
+      ${rows([
+       ['首付',fmt(q.down)],['房贷本金',fmt(q.loan)],
+       ['30 年固定利率',(q.apr*100).toFixed(2)+'%'],['月供',fmt(q.payment)],
+       ['现金',affordability(q.down)]
+      ])}
+      ${reserveNote(q.down)}
+      <button id="v242ConfirmLoan" ${available(q.down)<0?'disabled':''}>确认贷款购买</button>
+     </section>
+     <section class="v242detail v242plan">
+      <h4>全款购买</h4>
+      <p class="v242yield">预计月均净现金流 <b>${signed(q.fullNet)}</b></p>
+      ${rows([
+       ['本次扣款',fmt(property.price)],['房贷本金与月供',fmt(0)],['现金',affordability(property.price)]
+      ])}
+      ${reserveNote(property.price)}
+      <button id="v242ConfirmFull" ${available(property.price)<0?'disabled':''}>确认全款购买</button>
+     </section>
+    </div>
+    <div class="v242actions"><button id="v242Back">返回房产列表</button></div>`;
+   content.querySelector('#v242ConfirmLoan').onclick=()=>buy(property,q,false);
+   content.querySelector('#v242ConfirmFull').onclick=()=>buy(property,q,true);
+   content.querySelector('#v242Back').onclick=list;
+   scrollToTop();
+ }
+ function reserveNote(amount){
+   const after=available(amount);
+   return after>=0&&after<state.expenses
+    ?'<p class="v242warn">付款后现金低于一个月的必要开支预算（'+fmt(state.expenses)+'）。</p>':'';
+ }
+ function scrollToTop(){content.closest('.v242sheet').scrollTop=0}
+ function persist(previous){
+   try{
+    syncFinance();
+    if(save()===false)throw Error('save failed');
+   }catch(error){
+    state=previous;
+    return false;
+   }
+   render();
+   return true;
+ }
+ function buy(property,q,full){
+   const amount=full?property.price:q.down;
+   const mortgage=full?0:q.loan;
+   if(available(amount)<0)return purchase(property);
+   const previous=structuredClone(state);
+   const id=assetId();
+   if(!spendConfirmed(full?'propertyCashPurchase':'propertyDownpayment',amount,{assetId:id,mortgage}))return purchase(property);
+   state.assets.push({
+    id,name:property.name,kind:'rental',cost:amount,purchasePrice:property.price,value:property.price,
+    mortgage,apr:full?0:q.apr,monthsLeft:full?0:360,payment:full?0:q.payment,
+    rent:property.rent,operating:q.operating,cf:full?q.fullNet:q.loanNet,equity:amount
+   });
+   if(!persist(previous)){purchase(property);return showSaveError()}
+   receipt('购买成功',state.assets.find(asset=>asset.id===id),amount,true);
+ }
+ function holdings(){
+   syncFinance();
+   const properties=state.assets.filter(asset=>asset.kind==='rental');
+   content.innerHTML=`<div class="v242toolbar"><b>房产持仓</b><span>可用现金 ${fmt(state.cash)}</span></div>
+    ${properties.map((asset,index)=>`<div class="v242detail"><div class="v242hero">${art(artworkFor(asset))}<strong>${batchEscape(asset.name)}</strong></div>${rows([
+     ['当前估值',fmt(asset.value??asset.purchasePrice)],['房产净值',fmt(asset.equity)],
+     ['月租金',fmt(asset.rent)],['剩余房贷本金',fmt(asset.mortgage||0)],['预计月均净现金流',signed(asset.cf)]
+    ])}${asset.mortgage>0?`<button data-payoff="${index}">提前结清房贷</button>`:'<p>无房贷</p>'}<button data-sell-property="${index}">出售房产</button></div>`).join('')||'<p>目前没有投资房。</p>'}
+    <div class="v242actions"><button id="v242Back">返回房产列表</button></div>`;
+   for(const button of content.querySelectorAll('[data-payoff]')){
+    button.onclick=()=>payoffPreview(properties[Number(button.dataset.payoff)]);
+   }
+   for(const button of content.querySelectorAll('[data-sell-property]')){
+    button.onclick=()=>{
+     const index=state.assets.indexOf(properties[Number(button.dataset.sellProperty)]);
+     if(index<0)return holdings();
+     overlay.classList.remove('open');
+     sellAsset(index,()=>{
+      clearModals();
+      holdings();
+      overlay.classList.add('open');
+     });
+    };
+   }
+   content.querySelector('#v242Back').onclick=list;
+   scrollToTop();
+ }
+ function payoffPreview(asset){
+   const amount=roundCash(asset.mortgage||0);
+   if(amount<=0)return holdings();
+   content.innerHTML=`<div class="v242detail"><div class="v242hero">${art(artworkFor(asset))}<strong>${batchEscape(asset.name)} · 提前结清房贷</strong></div>
+    <p>一次付清剩余本金。结清后停止收取房贷月供，无提前还款费用。</p>${rows([
+     ['可用现金',fmt(state.cash)],['本次扣款',fmt(amount)],['现金',affordability(amount)],
+     ['结清后房贷余额',fmt(0)],['结清后预计月均净现金流',signed(roundCash(asset.rent-asset.operating))]
+    ])}${reserveNote(amount)}</div>
+    <div class="v242actions"><button id="v242ConfirmPayoff" ${available(amount)<0?'disabled':''}>确认结清</button>
+    <button id="v242Back">返回房产持仓</button></div>`;
+   content.querySelector('#v242ConfirmPayoff').onclick=()=>payoff(asset,amount);
+   content.querySelector('#v242Back').onclick=holdings;
+   scrollToTop();
+ }
+ function payoff(asset,amount){
+   if(!state.assets.includes(asset)||amount!==roundCash(asset.mortgage))return holdings();
+   const previous=structuredClone(state);
+   if(!spendConfirmed('extraPrincipal',amount,{assetId:asset.id,loan:asset.name}))return payoffPreview(asset);
+   asset.mortgage=0;
+   asset.payment=0;
+   asset.monthsLeft=0;
+   if(!persist(previous)){
+    payoffPreview(state.assets.find(item=>item.id===asset.id));
+    return showSaveError();
+   }
+   receipt('房贷已结清',asset,amount);
+ }
+ function showSaveError(){
+   const message=document.createElement('p');
+   message.className='v242warn';
+   message.setAttribute('role','alert');
+   message.textContent='操作未保存，请重试。';
+   content.prepend(message);
+ }
+ function receipt(title,asset,amount,purchased=false){
+   content.innerHTML=`<div class="v242detail"><div class="v242hero">${art(artworkFor(asset))}<strong>${title} · ${batchEscape(asset.name)}</strong></div>${rows([
+    ['现金扣款',fmt(amount)],['剩余现金',fmt(state.cash)],['房贷余额',fmt(asset.mortgage)],
+    ['预计月均净现金流',signed(asset.cf)]
+   ])}${purchased?'<p class="v242notice">已自动出租，租金和持有成本在月末结算。</p>':''}</div><div class="v242actions"><button id="v242Holdings">查看房产持仓</button>
+   <button id="v242Back">返回房产列表</button></div>`;
+   content.querySelector('#v242Holdings').onclick=holdings;
+   content.querySelector('#v242Back').onclick=list;
+   scrollToTop();
+ }
+ window.v242RealEstate=function(){
+   list();
+   overlay.classList.add('open');
+ };
+ overlay.addEventListener('click',event=>{
+   if(event.target!==overlay&&event.target.id!=='v242CloseRE')return;
+   overlay.classList.remove('open');
+   finish();
  });
 })();
 </script>
@@ -574,13 +836,13 @@ document.addEventListener('click',e=>{if(e.target.closest('button')?.id==='v24Lo
 <script id="v245-housing">
 window.v245OpenHousing=()=>document.getElementById('housingBtn').click();
 </script>
-<script src="core.js?v=20261121-finance-fix1"></script>
+<script src="core.js?v=20261121-audit1"></script>
 <script src="presentation.js?v=20261120-finance1"></script>
-<script src="etf-market-data.js?v=1"></script><script src="etf-market.js?v=2"></script><script src="flow.js?v=20261121-finance-fix1"></script>
-<script src="journey.js?v=28.3-internal1"></script>
-<script src="batch.js?v=20261121-finance-fix1"></script><script src="revision.js?v=20261121-finance-fix1"></script>
+<script src="etf-market-data.js?v=1"></script><script src="etf-market.js?v=2"></script><script src="flow.js?v=20261121-audit1"></script>
+<script src="journey.js?v=20261121-copy1"></script>
+<script src="batch.js?v=20261121-copy1"></script><script src="revision.js?v=20261121-copy1"></script>
 <script src="annual.js?v=20261118-bank1"></script>
-<script src="town.js?v=20261120-map-life2"></script>
+<script src="town.js?v=20261121-audit1"></script>
 <script src="coffee.js?v=20261119-career-fixes1"></script>
 <script src="shift-lead.js?v=20261119-equity1"></script>
 <script src="coffee-career.js?v=20261119-equity1"></script>
@@ -610,7 +872,7 @@ window.v245OpenHousing=()=>document.getElementById('housingBtn').click();
 <script src="family-home.js?v=20261115-career1"></script>
 <script src="pet-adoption-entry.js?v=20261107-petdeadline1"></script>
 <script src="pet-basic-fees.js?v=20261106-petaudit1"></script><script src="pet-insurance.js?v=20261107-petpremium55"></script><script src="pet-pages.js?v=20261113-review1"></script><script src="pet-event-cards.js?v=20261107-spider120"></script><script src="pet-events.js?v=20261120-map-life2"></script>
-<script src="pet-events-ui.js?v=20261120-map-life2"></script><link rel="stylesheet" href="relationship-pages.css?v=20261113-review1"><script src="relationship-rules.js?v=20261113-monthly1"></script><script src="relationship-avatars.js?v=20261113-monthly1"></script><script src="hobby-learning.js?v=20261113-hobbies1"></script><script src="relationship-ui.js?v=20261113-monthly1"></script><script src="relationship-card-data.js?v=20261115-career1"></script><script src="teacher-card-data.js?v=20261113-monthly1"></script><script src="relationship-life-cards.js?v=20261115-career1"></script><script src="relationship-life-ui.js?v=20261115-career1"></script><script src="entry-screen.js?v=20261112-entry1"></script><script src="save-slots.js?v=20261112-slots1"></script><link rel="stylesheet" href="education-pages.css?v=20261113-monthly1"><script src="education-plans.js?v=20261113-education1"></script><script src="teacher-relationships.js?v=20261113-monthly1"></script><script src="education-monthly.js?v=20261113-monthly1"></script><script src="education-pages.js?v=20261115-career1"></script><link rel="stylesheet" href="hobby-pages.css?v=20261117-career-review1"><script src="hobby-pages.js?v=20261117-career-review1"></script><link rel="stylesheet" href="shared-interest-pages.css?v=20261114-interest1"><script src="shared-interest-card-data.js?v=20261114-interest1"></script><script src="shared-interest-selection.js?v=20261114-interest1"></script><script src="shared-interest-cards.js?v=20261114-interest1"></script><script src="shared-interest-pages.js?v=20261118-event-art1"></script><link rel="stylesheet" href="career-learning.css?v=20261118-manager1"><script src="career-learning-rules.js?v=20261119-equity1"></script><script src="career-learning-integration.js?v=20261119-equity1"></script><script src="career-learning-pages.js?v=20261119-painted1"></script><link rel="stylesheet" href="career-event-pages.css?v=20261120-partner-release1"><script src="career-event-data.js?v=20261120-partner-release1"></script><script src="career-event-rules.js?v=20261120-partner-release1"></script><script src="career-event-integration.js?v=20261120-partner-release1"></script><script src="career-event-pages.js?v=20261120-partner-release1"></script><script src="cafe-equity.js?v=20261120-partner-release1"></script><script src="cafe-equity-pages.js?v=20261120-partner-release1"></script><link rel="stylesheet" href="cafe-equity.css?v=20261119-storefront1"><link rel="stylesheet" href="home-insurance.css?v=1"><script src="home-insurance.js?v=20261120-finance1"></script><link rel="stylesheet" href="etf-pages.css?v=1"><script src="etf-pages.js?v=20261120-etf-history1"></script><script src="owner-housing.js?v=2"></script><link rel="stylesheet" href="finance-pages.css?v=21"><script src="finance-ledger.js?v=3"></script><script src="finance-pages.js?v=23"></script><link rel="stylesheet" href="map-life.css?v=2"><link rel="stylesheet" href="bond-pages.css?v=5"><link rel="stylesheet" href="stock-pages.css?v=5"><script src="stock-pages.js?v=7"></script><link rel="stylesheet" href="fund-pages.css?v=4"><script src="fund-pages.js?v=5"></script><script src="map-life.js?v=4"></script></body></html>
+<script src="pet-events-ui.js?v=20261120-map-life2"></script><link rel="stylesheet" href="relationship-pages.css?v=20261113-review1"><script src="relationship-rules.js?v=20261113-monthly1"></script><script src="relationship-avatars.js?v=20261113-monthly1"></script><script src="hobby-learning.js?v=20261113-hobbies1"></script><script src="relationship-ui.js?v=20261113-monthly1"></script><script src="relationship-card-data.js?v=20261115-career1"></script><script src="teacher-card-data.js?v=20261113-monthly1"></script><script src="relationship-life-cards.js?v=20261115-career1"></script><script src="relationship-life-ui.js?v=20261115-career1"></script><script src="entry-screen.js?v=20261112-entry1"></script><script src="save-slots.js?v=20261112-slots1"></script><link rel="stylesheet" href="education-pages.css?v=20261113-monthly1"><script src="education-plans.js?v=20261113-education1"></script><script src="teacher-relationships.js?v=20261113-monthly1"></script><script src="education-monthly.js?v=20261113-monthly1"></script><script src="education-pages.js?v=20261115-career1"></script><link rel="stylesheet" href="hobby-pages.css?v=20261117-career-review1"><script src="hobby-pages.js?v=20261117-career-review1"></script><link rel="stylesheet" href="shared-interest-pages.css?v=20261114-interest1"><script src="shared-interest-card-data.js?v=20261114-interest1"></script><script src="shared-interest-selection.js?v=20261114-interest1"></script><script src="shared-interest-cards.js?v=20261114-interest1"></script><script src="shared-interest-pages.js?v=20261118-event-art1"></script><link rel="stylesheet" href="career-learning.css?v=20261118-manager1"><script src="career-learning-rules.js?v=20261119-equity1"></script><script src="career-learning-integration.js?v=20261119-equity1"></script><script src="career-learning-pages.js?v=20261119-painted1"></script><link rel="stylesheet" href="career-event-pages.css?v=20261120-partner-release1"><script src="career-event-data.js?v=20261120-partner-release1"></script><script src="career-event-rules.js?v=20261120-partner-release1"></script><script src="career-event-integration.js?v=20261120-partner-release1"></script><script src="career-event-pages.js?v=20261120-partner-release1"></script><script src="cafe-equity.js?v=20261120-partner-release1"></script><script src="cafe-equity-pages.js?v=20261120-partner-release1"></script><link rel="stylesheet" href="cafe-equity.css?v=20261119-storefront1"><link rel="stylesheet" href="home-insurance.css?v=1"><script src="home-insurance.js?v=20261120-finance1"></script><link rel="stylesheet" href="etf-pages.css?v=1"><script src="etf-pages.js?v=20261121-copy1"></script><script src="owner-housing.js?v=2"></script><link rel="stylesheet" href="finance-pages.css?v=26"><script src="finance-ledger.js?v=5"></script><script src="finance-pages.js?v=20261121-audit1"></script><link rel="stylesheet" href="map-life.css?v=2"><link rel="stylesheet" href="bond-pages.css?v=5"><link rel="stylesheet" href="stock-pages.css?v=5"><script src="stock-pages.js?v=20261121-copy1"></script><link rel="stylesheet" href="fund-pages.css?v=4"><script src="fund-pages.js?v=20261121-copy1"></script><script src="map-life.js?v=4"></script></body></html>
 
 
 

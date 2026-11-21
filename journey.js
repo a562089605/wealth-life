@@ -53,7 +53,7 @@ function openDreamFulfilment(){
   const j=journeyState();
   if(j.win){showVictory();return}
   const q=dreamQuote(),gs=q.gs;
-  const explanation=q.assetCreated?'确认后现金投入目标项目，增加同额梦想用途资产；该资产暂不模拟经营收入。':q.cashCost?'确认后实际支付旅行或公益预算，该费用不增加个人资产。':'这是财务资产目标。满足原目标即可确认，不会将退休或投资本金作为费用扣掉。';
+  const explanation=q.assetCreated?'确认后现金投入目标项目，增加同额梦想用途资产；该资产暂不产生经营收入。':q.cashCost?'确认后实际支付旅行或公益预算，该费用不增加个人资产。':'这是财务资产目标。满足原目标即可确认，不会将退休或投资本金作为费用扣掉。';
   showEvent('人生梦想',gs.g.name,explanation+' 通关还需已进入第二阶段，并保持被动收入覆盖支出。',[['原目标要求',money(gs.target)+' · '+gs.label],['当前目标进度',money(gs.current)+' · '+gs.pct.toFixed(1)+'%'],['本次现金支出',priceText(q.cashCost)],['本次新增资产',priceText(q.assetCreated)],['可用现金',priceText(state.cash)],['年龄计划',gs.g.age+'岁；超期仍可继续完成']],[['确认实现梦想',fulfilDream,true,!q.can],['返回',finish,false]]);
 }
 function fulfilDream(){

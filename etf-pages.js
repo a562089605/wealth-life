@@ -98,8 +98,8 @@
   const trend=points.length>1?'<polyline points="'+points.map((point,index)=>x(index)+','+y(point.price)).join(' ')+'"/>':'';
   const annotation=points.length===1?'<text class="sp500-single-point" x="374" y="61" text-anchor="middle">开局仅有 1 个价格点</text>':'';
   const caption=points.some(point=>point.simulatedOpening)?
-   '<text x="649" y="299" text-anchor="end">含开局前模拟走势</text>':'';
-  return '<svg class="sp500-chart" viewBox="0 0 675 '+(caption?310:282)+'" role="img" aria-label="游戏模拟数据，'+points.length+' 个价格点">'+
+   '<text x="649" y="299" text-anchor="end">含开局前记录</text>':'';
+  return '<svg class="sp500-chart" viewBox="0 0 675 '+(caption?310:282)+'" role="img" aria-label="价格走势，'+points.length+' 个价格点">'+
    grid+ticks+'<path class="sp500-axis" d="M74 22V228H649"/>'+labels+trend+circles+annotation+caption+'</svg>';
  }
 
@@ -130,7 +130,7 @@
   const opening = q.benchmark;
   const initialNote = opening && opening.closeDate.slice(0, 7) !== opening.target
    ? '开局参考 ' + opening.symbol + ' · ' + opening.closeDate + ' 收盘（本版本最新已收录月份）'
-   : opening ? '开局参考 ' + opening.symbol + ' · ' + opening.closeDate + ' 收盘' : '游戏模拟报价';
+   : opening ? '开局参考 ' + opening.symbol + ' · ' + opening.closeDate + ' 收盘' : '当前报价';
   showEvent('ETF投资', item.name, item.desc, [], [
    ['买入', () => showBuy(item,backToList), true, state.cash <= 0],
    ['卖出', () => showHoldings(item,backToList), false, !held.lots.length],

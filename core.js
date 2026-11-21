@@ -38,13 +38,14 @@ function syncFinance(){
  s.healthInsurance=!!s.insurance.health?.active;s.incomeProtection=false;
  const securedNames=['投资房贷款','自住房贷款'];for(const k of Object.keys(s.debt))if(securedNames.includes(k)||k.startsWith('投资房 · ')||k.startsWith('银行贷款 · ')||k.startsWith('学生贷款 · '))delete s.debt[k];
  if(s.homeMortgage>0)s.debt['自住房贷款']=s.homeMortgage;
- s.assets.forEach(a=>{a.id??=assetId();if(a.kind==='rental'){a.apr??=ECONOMIES[s.economy||0].rate;a.monthsLeft??=360;a.operating??=(a.rent||0)-(a.payment||0)-(a.cf||0);a.equity=(a.value||a.purchasePrice||0)-(a.mortgage||0);a.cf=(a.rent||0)-(a.operating||0)-(a.mortgage>0?Math.min(a.monthsLeft===1?a.mortgage*(1+a.apr/12):a.payment,a.mortgage*(1+a.apr/12)):0);if(a.mortgage>0)s.debt['投资房 · '+a.id]=a.mortgage;}});
+ s.assets.forEach(a=>{a.id??=assetId();if(a.kind==='rental'){window.normalizeInvestmentProperty?.(a);a.apr??=ECONOMIES[s.economy||0].rate;a.monthsLeft??=360;a.operating??=(a.rent||0)-(a.payment||0)-(a.cf||0);a.equity=(a.value||a.purchasePrice||0)-(a.mortgage||0);a.cf=roundCash((a.rent||0)-(a.operating||0)-(a.mortgage>0?Math.min(a.monthsLeft===1?a.mortgage*(1+a.apr/12):a.payment,a.mortgage*(1+a.apr/12)):0));if(a.mortgage>0)s.debt['投资房 · '+a.id]=a.mortgage;}});
  s.loans.forEach((l,i)=>{l.id??='loan-'+i;l.monthsLeft??=36;l.apr??=.055;l.payment??=paymentFor(l.balance,l.apr,l.monthsLeft);if(l.balance>0)s.debt[loanDebtName(l)]=l.balance;});
  const represented=new Set(['自住房贷款',...s.assets.filter(a=>a.kind==='rental').map(a=>'投资房 · '+a.id),...s.loans.map(l=>loanDebtName(l))]);
  s.debtSchedules??={};for(const [k,v]of Object.entries(s.debt)){if(!represented.has(k)&&v>0&&!s.debtSchedules[k])s.debtSchedules[k]={apr:.055,monthsLeft:60,payment:paymentFor(v,.055,60)};}
  const loanMonthly=typeof loanBudgetTotal==='function'?loanBudgetTotal():s.loans.reduce((n,l)=>n+(l.balance>0?Math.min(l.monthsLeft===1?l.balance*(1+l.apr/12):l.payment,l.balance*(1+l.apr/12)):0),0)+Object.entries(s.debtSchedules).reduce((n,[k,l])=>n+(s.debt[k]>0?Math.min(l.monthsLeft===1?s.debt[k]*(1+l.apr/12):l.payment,s.debt[k]*(1+l.apr/12)):0),0);
  const premiums=Object.values(s.insurance).reduce((n,i)=>n+(i.active?i.monthly:0),0);
  s.expenses=roundCash(livingBaseAmount(s)+(s.housingCost||0)+petMonthly()+premiums+(s.carRunningCost||0)+loanMonthly);s._computedExpenses=s.expenses;
+ if(typeof syncGoldMarket==='function')syncGoldMarket(s);
  s.passive=roundCash(s.assets.reduce((n,a)=>n+(a.cf||0),0)+(typeof expectedInvestmentIncome==='function'?expectedInvestmentIncome():0));s.cash=roundCash(s.cash);
 }
 function holdingValue(asset){
@@ -107,7 +108,35 @@ function openBankLoan(suggestedAmount=10000,terms=null){const amt=terms?Number(t
  render();return loan;}
 $('carBtn').onclick=()=>{if(state.carOwned){showEvent('TRANSPORT','已有车辆','燃油与维护准备金每月 $150.00；汽车贷款和车险分别结算。',[['车辆资产',money(state.carValue)],['车险',state.insurance.auto?.active?'已投保':'未投保']],[['继续',finish,true]]);return}const payment=paymentFor(21000,.06,60);showEvent('TRANSPORT','购买车辆','车价 $24,000.00，首付 $3,000.00；5年车贷 APR 6%。燃油/维护 $150.00/月，车险 $165.00/月。',[],[['买车',()=>{if(state.cash<3000||state.carOwned)return;state.cash-=3000;(state.financeLedger??=[]).push({kind:'vehicleDownpayment',month:state.month,amount:3000});state.carOwned=true;state.carValue=24000;state.carRunningCost=150;state.debt['汽车贷款']=21000;state.debtSchedules['汽车贷款']={apr:.06,monthsLeft:60,payment};state.insurance.auto={name:'汽车保险',active:true,monthly:165};finish()},true,state.cash<3000],['暂时不买',finish,false]])};
 $('rentalBtn').onclick=()=>window.v242RealEstate();
-sellAsset=function(i,back=finish){const a=state.assets[i];if(!a)return;if(a.kind==='cd'){showEvent('CD','本金已锁定','到期时自动回到现金。',[],[['返回',finish,true]]);return}const proceeds=a.kind==='rental'?(a.value-a.mortgage):(a.value??a.cost);if(!Number.isFinite(proceeds)||state.cash+proceeds<0)return;state.cash+=proceeds;(state.financeLedger??=[]).push({kind:'assetSale',month:state.month,amount:proceeds,assetId:a.id,instrument:a.instrument});state.assets.splice(i,1);syncFinance();showEvent('SALE','资产已出售',a.kind==='rental'?'出售款已计入现金；投资房贷款已随出售清偿。':'出售款已计入现金。',[['现金变化',money(proceeds)]],[['继续',back,true]]);if(back!==finish)window.modalReturn=back;render();save()};
+sellAsset=function(i,back=finish){
+ const a=state.assets[i];
+ if(!a)return;
+ if(a.kind==='cd'){
+  showEvent('CD','本金已锁定','到期时自动回到现金。',[],[['返回',finish,true]]);
+  return;
+ }
+ const proceeds=roundCash(a.kind==='rental'?a.value-a.mortgage:a.value??a.cost);
+ if(!Number.isFinite(proceeds)||state.cash+proceeds<0)return;
+ const previous=structuredClone(state);
+ state.cash=roundCash(state.cash+proceeds);
+ (state.financeLedger??=[]).push({kind:'assetSale',month:state.month,amount:proceeds,assetId:a.id,instrument:a.instrument});
+ state.assets.splice(i,1);
+ try{
+  if(save()===false)throw Error('save failed');
+ }catch{
+  state=previous;
+  const retry=()=>sellAsset(i,back);
+  showEvent('出售预览','出售未保存','现金和持仓已恢复，请重试。',[],[['重新查看出售',retry,true],['返回',back,false]]);
+  window.modalReturn=back;
+  return;
+ }
+ showEvent('SALE','资产已出售',a.kind==='rental'?'出售款已计入现金；投资房贷款已随出售清偿。':'出售款已计入现金。',[
+  ['现金变化',money(proceeds)]
+ ],[['继续',back,true]]);
+ if(back!==finish)window.modalReturn=back;
+ render();
+};
+
 payDebt=function(name){syncFinance();const owed=state.debt[name]||0,amt=Math.min(owed,state.cash,1000);if(amt<=0)return;state.cash-=amt;const loan=state.loans.find(l=>loanDebtName(l)===name),rental=state.assets.find(a=>'投资房 · '+a.id===name);if(loan)loan.balance-=amt;else if(rental)rental.mortgage-=amt;else if(name==='自住房贷款'){state.homeMortgage-=amt;state.homeEquity+=amt}else{state.debt[name]-=amt;if(state.debt[name]<=0){delete state.debt[name];delete state.debtSchedules[name]}}syncFinance();render();};
 // Qualification checks apply to the initial role's credentials and relevant experience.
 function careerMissing(c){const d=c.domain||inferDomain(c.name),miss=[];if((EDU_RANK[state.education]||0)<EDU_RANK[c.edu])miss.push('学历：'+EDU[c.edu].name);if(d!=='general'&&d!=='hospitality'&&state.major!==d)miss.push('专业：'+d);const exp=d==='general'?(state.experienceYears||0):((state.domainExperience[d]||0)/12);if(exp<c.minExp)miss.push('相关经验 '+c.minExp+' 年');if(d==='nursing'&&!state.licenses.includes('RN'))miss.push('RN 执照');if(d==='education'&&!state.licenses.includes('teaching'))miss.push('教师执照');return miss}

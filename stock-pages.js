@@ -28,7 +28,7 @@
    month:first.month-missing+i,price:roundCash(first.price*price/100)
   }));
   return '<div class="stock-chart">'+quoteChart({history:[...opening,...history]})+
-   '<small>近 12 个月 · 游戏模拟'+(missing?'（含开局前示例）':'')+'</small></div>';
+   '<small>近 12 个月'+(missing?' · 含开局前记录':'')+'</small></div>';
  }
 
  function page(title,description,rows,actions,back,item,chart=false,kind=item?.kind??'股票',stage=item?'position':'holdings'){
@@ -55,7 +55,7 @@
   const market=()=>open(back,extraActions);
   const holdings=()=>showHoldings(market);
   const items=stocks();
-  if(!page('股票品种','游戏模拟行情',[],[
+  if(!page('股票品种','股票行情',[],[
    ...items.map(item=>[item.name,()=>trade(item,market,holdings,'buy'),false]),
    ...extraActions,['管理投资持仓',holdings,false],['返回储蓄与投资',back,true]
   ],back))return;
@@ -82,7 +82,7 @@
   const picture=document.createElement('img');
   picture.width=1024;
   picture.height=1536;
-  picture.alt='股票品种。游戏模拟行情。';
+  picture.alt='股票品种';
   picture.onload=()=>{
    if(buttons.some(button=>button.parentElement!==actions))return;
    const frame=document.createElement('div');

@@ -30,7 +30,7 @@ const housingOptionsBeforeV26=housingOptions;housingOptions=function(){const fee
 function housingChoices(){const homes=housingOptions();if(state.housing&&state.housing!=='unselected'&&!homes.some(h=>h[3]===state.housing))homes.unshift([state.housing==='own'?'自住房':'当前住房（旧存档）',state.housingCost||0,0,state.housing]);return homes}
 function housingQuote(h){const current=state.housing===h[3],paid=paymentReceipt().housing||0,move=current?0:h[2],rent=Math.max(0,h[1]-paid);return{move,rent,total:roundCash(move+rent),current}}
 function confirmHousing(key){syncFinance();const h=housingChoices().find(h=>h[3]===key);if(!h)return;const q=housingQuote(h);if(state.cash<q.total)return;if(!spendConfirmed('movingCost',q.move,{housing:key}))return;if(!payMonthly('housing',q.rent))throw new Error('Housing receipt failed');state.housing=key;state.housingCost=h[1];state.paymentUpgradeNotice=false;state._computedExpenses=null;syncFinance();if(state.month===0){state.goalBaseExpenses=state.expenses;state.goalTarget=0}completeMonthlyStep(0)}
-function housingMarkup(){const homes=housingChoices();return (state.paymentUpgradeNotice?'<div class="wl-panel"><p>旧存档已花的钱保留原账。本月住房费尚未支付，请先确认；查看此页不会扣款。</p></div>':'')+'<div class="wl-mini-grid">'+homes.map(h=>{const q=housingQuote(h);return '<button class="wl-choice-card" data-v26="housing" data-key="'+h[3]+'" aria-label="确认 '+(q.current?'继续当前住房':h[0])+'" '+(q.total>0&&state.cash<q.total?'disabled':'')+'><strong>'+(q.current?'继续当前住房':h[0])+'</strong><b>'+money(h[1])+'/月</b><small>本月住房待付 '+money(q.rent)+'<br>本次搬家/添置费 '+money(q.move)+'</small><span>确认支付 '+money(q.total)+' →</span></button>'}).join('')+'</div>'+(homes.some(h=>state.cash<housingQuote(h).total)?'<button data-v26="housingFund" class="wl-secondary">现金不足，查看贷款</button>':'')+'<p class="wl-note">点击卡片确认即付款并进入下一步。与家人同住无搬入费；换住房只补本月租金差额，搬家与添置费另列且不含房租，不模拟可退押金。已付住房费不在月末再扣。</p>'}
+function housingMarkup(){const homes=housingChoices();return (state.paymentUpgradeNotice?'<div class="wl-panel"><p>旧存档已花的钱保留原账。本月住房费尚未支付，请先确认；查看此页不会扣款。</p></div>':'')+'<div class="wl-mini-grid">'+homes.map(h=>{const q=housingQuote(h);return '<button class="wl-choice-card" data-v26="housing" data-key="'+h[3]+'" aria-label="确认 '+(q.current?'继续当前住房':h[0])+'" '+(q.total>0&&state.cash<q.total?'disabled':'')+'><strong>'+(q.current?'继续当前住房':h[0])+'</strong><b>'+money(h[1])+'/月</b><small>本月住房待付 '+money(q.rent)+'<br>本次搬家/添置费 '+money(q.move)+'</small><span>确认支付 '+money(q.total)+' →</span></button>'}).join('')+'</div>'+(homes.some(h=>state.cash<housingQuote(h).total)?'<button data-v26="housingFund" class="wl-secondary">现金不足，查看贷款</button>':'')+'<p class="wl-note">点击卡片确认即付款并进入下一步。与家人同住无搬入费；换住房只补本月租金差额，搬家与添置费另列且不含房租，没有可退押金。已付住房费不在月末再扣。</p>'}
 function openHousing(){showEvent('住房','选择住房','查看不会扣款。卡片内列出本次实际付款，确认后生效。',[],[['返回',finish,false]]);$('eventData').innerHTML=housingMarkup();$('eventData').style.display='block'}
 $('housingBtn').onclick=openHousing;
 function livingMarkup(){const due=roundCash(Math.max(0,livingTotal()-(paymentReceipt().living||0)));return '<div class="wl-panel wl-cost"><h3>本月基本生活成本</h3><b class="wl-big-money">'+money(due)+'</b><p>基础生活 '+money(livingBaseAmount(state))+'<br>宠物照顾 '+money(petMonthly())+' · 车辆燃油/维护 '+money(state.carRunningCost||0)+'</p><small>本月住房已付 '+money(paymentReceipt().housing||0)+'。保险在保险步骤确认；贷款月供请在财富步骤的还款卡确认。</small><button data-v26="living" class="primary" '+(due>0&&state.cash<due?'disabled':'')+'>'+ (due?'确认支付 '+money(due):'本月已付，继续')+' →</button>'+(state.cash<due?'<button data-v26="livingFund">现金不足，查看贷款</button>':'')+'</div>'}
@@ -83,7 +83,58 @@ function initQuotes(){
  }
 }
 
+// Gold follows game progress; revisiting a screen or reloading cannot reroll a quote.
+const GOLD_STEPS_PER_MONTH=10;
+function goldProgress(s){
+ const turnStep=s.turn?.month===s.month?s.turn.index||0:0;
+ const town=s.town;
+ if(!town)return Math.min(GOLD_STEPS_PER_MONTH,turnStep);
+ const history=town.history||[];
+ let moves=town.movement?.month===s.month&&!town.movement.resolved?1:0;
+ for(let i=history.length-1;i>=0&&moves<GOLD_STEPS_PER_MONTH;i--){
+  if(history[i].month!==s.month)break;
+  moves++;
+ }
+ return Math.min(GOLD_STEPS_PER_MONTH,Math.max(turnStep,moves));
+}
+function syncGoldMarket(s,progress=goldProgress(s)){
+ const quotes=s.marketQuotes??={};
+ const q=quotes.gold??={price:100,previous:100,history:[{month:s.month,price:100}]};
+ if(!q.goldSeries){
+  const history=q.history.length?q.history:[{month:s.month,price:q.price}];
+  const first=history[0];
+  // A synthetic run-in, normalized to the first recorded price, with rallies and pullbacks.
+  const opening=[95.8,96.4,96,97.1,98.1,97.7,98.8,98.3,99.5,100.1,99.2,98.4,
+   98.9,99.6,100.8,101.1,100.5,99.7,100.1,101,100.6,99.8,99.4,99.7];
+  q.goldSeries=opening.map((index,i)=>({
+   step:first.month*GOLD_STEPS_PER_MONTH+i-opening.length,
+   price:roundCash(first.price*index/100),opening:true
+  })).concat(history.map(point=>({step:point.month*GOLD_STEPS_PER_MONTH,price:point.price}))).slice(-120);
+  q.goldMonth=s.month;
+  q.goldStep=0;
+ }
+ if(q.goldMonth!==s.month){q.goldMonth=s.month;q.goldStep=0}
+ const economy=s.economy||0;
+ const shock=s.worldShock?.monthsLeft>0?WORLD_SHOCKS[s.worldShock.index]:null;
+ const inflation=s.annualInflation??.025;
+ const realRate=(ECONOMIES[economy]?.rate??.055)-inflation;
+ // A softer real-rate backdrop and recession demand can support gold, while individual moves still vary.
+ const drift=(.03-realRate)*.035+(economy===3?.001:0)+(shock?.inflation||0)*.04;
+ while(q.goldStep<progress){
+  const step=s.month*GOLD_STEPS_PER_MONTH+(++q.goldStep);
+  const noise=Math.sin(step*127.1+91.7)*43758.5453;
+  const movement=drift+(noise-Math.floor(noise)-.5)*.018+Math.sin(step*.77)*.003;
+  q.previous=q.price;
+  q.price=Math.max(.01,roundCash(q.price*(1+movement)));
+  q.goldSeries.push({step,price:q.price});
+ }
+ if(q.goldSeries.length>120)q.goldSeries=q.goldSeries.slice(-120);
+ for(const asset of s.assets||[])if(asset.instrument==='gold')asset.value=roundCash(asset.shares*q.price);
+ return q;
+}
+
 function quoteFor(id){
+ if(id==='gold')return syncGoldMarket(state);
  const quote=state.marketQuotes?.[id];
  if(window.ETFMarket?.hasBenchmark(id)){
   const etf=quote?ETFMarket.addOpeningHistory(id,quote):ETFMarket.openingQuote(id,state.month)??defaultQuote();
@@ -98,6 +149,11 @@ function quoteFor(id){
 function advanceQuotes(change,month,inflation=state.annualInflation??.025){
  initQuotes();
  for(const [i,cfg] of V26_INSTRUMENTS.entries()){
+  if(cfg.id==='gold'){
+   const q=syncGoldMarket(state,GOLD_STEPS_PER_MONTH);
+   if(q.history.at(-1)?.month!==month)q.history.push({month,price:q.price});
+   continue;
+  }
   const q=quoteFor(cfg.id);
   if(q.history.at(-1)?.month===month)continue;
   const cycle=Math.sin((month+1)*(i+2)*1.71)*.008;
@@ -127,9 +183,9 @@ function advanceQuotes(change,month,inflation=state.annualInflation??.025){
 }
 const priceText=money;
 const signedPercent=n=>(n>=0?'+':'')+(n*100).toFixed(2)+'%';
-function quoteChart(q){const h=q.history.slice(-121),min=Math.min(...h.map(p=>p.price))*.98,max=Math.max(...h.map(p=>p.price))*1.02,points=h.map((p,i)=>(10+i*280/Math.max(1,h.length-1)).toFixed(2)+','+(115-(p.price-min)/(max-min)*100).toFixed(2)).join(' ');return '<svg class="wl-chart" viewBox="0 0 300 130" role="img" aria-label="游戏价格历史：'+h.length+'个月点位"><path d="M10 15H290M10 65H290M10 115H290" stroke="#8b9c9f" stroke-dasharray="4 5" fill="none"/><polyline points="'+points+'" fill="none" stroke="#26877f" stroke-width="3"/><circle cx="'+(h.length===1?10:290)+'" cy="'+(115-(h.at(-1).price-min)/(max-min)*100)+'" r="4" fill="#26877f"/></svg>'}
+function quoteChart(q,periodLabel='个月点位'){const h=q.history.slice(-121),min=Math.min(...h.map(p=>p.price))*.98,max=Math.max(...h.map(p=>p.price))*1.02,points=h.map((p,i)=>(10+i*280/Math.max(1,h.length-1)).toFixed(2)+','+(115-(p.price-min)/(max-min)*100).toFixed(2)).join(' ');return '<svg class="wl-chart" viewBox="0 0 300 130" role="img" aria-label="游戏价格历史：'+h.length+periodLabel+'"><path d="M10 15H290M10 65H290M10 115H290" stroke="#8b9c9f" stroke-dasharray="4 5" fill="none"/><polyline points="'+points+'" fill="none" stroke="#26877f" stroke-width="3"/><circle cx="'+(h.length===1?10:290)+'" cy="'+(115-(h.at(-1).price-min)/(max-min)*100)+'" r="4" fill="#26877f"/></svg>'}
 function returnPeriod(q,months){const last=q.history.at(-1),old=q.history.find(h=>h.month===last.month-months);return old?signedPercent(last.price/old.price-1):'记录不足'}
-function openMarket(kind='ETF',back=finish,extraActions=[]){if(kind==='ETF'&&window.ETFPages)return ETFPages.showList(back===finish?undefined:back);if(kind==='股票'&&window.StockPages)return StockPages.open(back,extraActions);const instruments=V26_INSTRUMENTS.filter(i=>i.kind===kind);showEvent('投资',kind+'品种','先查看范围与风险，再打开购买详情。所有价格为游戏模拟，不是实时行情。',[],[...extraActions,['返回',back,false]]);if(back!==finish)window.modalReturn=back;$('eventData').innerHTML='<div class="wl-mini-grid">'+instruments.map(i=>{const q=quoteFor(i.id);return '<button class="wl-choice-card" data-v26="market" data-key="'+i.id+'" aria-label="查看 '+i.name+'"><strong>'+i.name+'</strong><b>'+priceText(q.price)+'</b><small class="'+(q.price>=q.previous?'wl-up':'wl-down')+'">较上月 '+signedPercent(q.price/q.previous-1)+'</small><small>'+i.desc+'</small><span>查看购买详情 →</span></button>'}).join('')+'</div>'; $('eventData').style.display='block';if(kind==='基金')window.FundPages?.market(()=>openMarket(kind,back,extraActions))}
+function openMarket(kind='ETF',back=finish,extraActions=[]){if(kind==='ETF'&&window.ETFPages)return ETFPages.showList(back===finish?undefined:back);if(kind==='股票'&&window.StockPages)return StockPages.open(back,extraActions);const instruments=V26_INSTRUMENTS.filter(i=>i.kind===kind);showEvent('投资',kind+'品种','选择品种，查看游戏内报价与交易详情。',[],[...extraActions,['返回',back,false]]);if(back!==finish)window.modalReturn=back;$('eventData').innerHTML='<div class="wl-mini-grid">'+instruments.map(i=>{const q=quoteFor(i.id);return '<button class="wl-choice-card" data-v26="market" data-key="'+i.id+'" aria-label="查看 '+i.name+'"><strong>'+i.name+'</strong><b>'+priceText(q.price)+'</b><small class="'+(q.price>=q.previous?'wl-up':'wl-down')+'">较上月 '+signedPercent(q.price/q.previous-1)+'</small><small>'+i.desc+'</small><span>查看购买详情 →</span></button>'}).join('')+'</div>'; $('eventData').style.display='block';if(kind==='基金')window.FundPages?.market(()=>openMarket(kind,back,extraActions))}
 
 function openInstrument(id,back){const cfg=V26_INSTRUMENTS.find(i=>i.id===id);if(!cfg)return;if(cfg.kind==='ETF'&&window.ETFPages)return ETFPages.showDetail(cfg);const q=quoteFor(id),holdings=state.assets.filter(a=>a.instrument===id),cost=holdings.reduce((n,a)=>n+a.cost,0),value=holdings.reduce((n,a)=>n+a.value,0),pct=q.price/q.previous-1;
  const owner=state, month=state.month, price=q.price;
@@ -254,7 +310,8 @@ sellAsset=function(i,back=finish){
  const amount=rental?asset.value-asset.mortgage:asset.value??asset.cost;
  showEvent('出售预览',asset.instrument==='gold'?'卖出黄金':asset.name,
   rental?'确认后按当前游戏市值出售；投资房出售款先清偿对应房贷。':'确认后按当前游戏市值出售。',
-  [['预计到账',priceText(amount)]],[
+  [...(rental?[['当前估值',priceText(asset.value)],['清偿房贷',priceText(asset.mortgage||0)]]:[]),
+   [amount<0?'需补足现金':'预计到账',priceText(Math.abs(amount))]],[
    ['确认出售',()=>{
     if(state.assets[i]!==asset)return;
     sellBase(i,back);
@@ -298,9 +355,9 @@ function maybeInsuredJobLoss(){
  ],[['继续',finish,true]]);return true;
 }
 const k401ExplanationBase=open401Account;
-open401Account=function(back){k401ExplanationBase(back);$('eventDesc').textContent='401(k) 是雇主提供的退休账户，可从工资中定期缴费；它是账户，不是保本投资。现实中税务与雇主匹配规则因计划而异。游戏采用税前缴费：设置3%或6%后，只在有工资的月末扣除个人缴费，并加入同额雇主匹配（最高税前工资3%）。未就业、失业或退休无工资时，两项都为0。余额计入净资产，随游戏市场涨跌；当前不支持提取，也未模拟年度额度、归属期及完整税法。';appendRetirementReference('https://www.irs.gov/retirement-plans/401k-plans');const b=document.createElement('button');b.className='secondary';b.textContent='返回，不修改';b.onclick=finish;$('actions').appendChild(b)};
+open401Account=function(back){k401ExplanationBase(back);$('eventDesc').textContent='401(k) 是雇主提供的退休账户，可从工资中定期缴费；它是账户，不是保本投资。现实中税务与雇主匹配规则因计划而异。游戏采用税前缴费：设置3%或6%后，只在有工资的月末扣除个人缴费，并加入同额雇主匹配（最高税前工资3%）。未就业、失业或退休无工资时，两项都为0。余额计入净资产，随游戏市场涨跌；正式退休后可在退休账户总览提款。游戏内无年度额度、归属期或完整税务规则。';appendRetirementReference('https://www.irs.gov/retirement-plans/401k-plans');const b=document.createElement('button');b.className='secondary';b.textContent='返回，不修改';b.onclick=finish;$('actions').appendChild(b)};
 const iraExplanationBase=openIRAAccount;
-openIRAAccount=function(back){iraExplanationBase(back);$('eventDesc').textContent='IRA 是个人退休账户，可在金融机构开设；它是账户，不是固定利息产品。现实中Traditional IRA缴费可能抵税，Roth IRA缴费不抵税、符合条件的提取可能免税。游戏暂不区分两者：点击确认将现金$500.00转入IRA，净资产不因转账改变；余额随市场涨跌，无雇主匹配。当前不支持提取，未模拟抵税、收入资格、年度额度或提前提取税费；IRA余额不是可随时支付生活费的现金。';appendRetirementReference('https://www.irs.gov/retirement-plans/individual-retirement-arrangements-iras')};
+openIRAAccount=function(back){iraExplanationBase(back);$('eventDesc').textContent='IRA 是个人退休账户，可在金融机构开设；它是账户，不是固定利息产品。现实中Traditional IRA缴费可能抵税，Roth IRA缴费不抵税、符合条件的提取可能免税。游戏暂不区分两者：点击确认将现金$500.00转入IRA，净资产不因转账改变；余额随市场涨跌，无雇主匹配。正式退休后可在退休账户总览提款。游戏内无抵税、收入门槛、年度额度或提款税费。';appendRetirementReference('https://www.irs.gov/retirement-plans/individual-retirement-arrangements-iras')};
 function appendRetirementReference(url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='查看 IRS 官方说明（现实规则）';$('eventData').appendChild(a);$('eventData').style.display='block'}
 
 // Education and hobbies are independent; never turn an empty wallet into an unexplained lock.
