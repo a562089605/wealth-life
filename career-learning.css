@@ -228,3 +228,70 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
 .career-service-card progress::-webkit-progress-bar {background:#dfe3c1}
 .career-service-card progress::-webkit-progress-value {background:#8eaa64}
 .career-service-card progress::-moz-progress-bar {background:#8eaa64}
+
+/* Match the paper surfaces and action hierarchy used in finance and pet care. */
+:is(.hobby-latte-card,.career-management-card,.career-service-card) {
+ --skill-ink:#24402c;
+ --skill-edge:#b59659;
+ --skill-paper:#fff4d8;
+ --skill-light:#fffbea;
+ --skill-sage:#e6ebc7;
+}
+.hobby-latte-card .hobby-paper,
+:is(.career-management-card,.career-service-card).career-fixed .career-paper {
+ border:2px solid var(--skill-edge);
+ box-shadow:0 12px 28px #372e2355,0 0 0 3px #fcf2d9b3;
+ background:radial-gradient(ellipse at 20% 10%,var(--skill-light),transparent 75%),var(--skill-paper);
+}
+.hobby-latte-card .hobby-paper>header,
+:is(.career-management-card,.career-service-card) .career-fixed-heading {
+ background:#fbf1d7;
+}
+.hobby-latte-card .hobby-scene,
+:is(.career-management-card,.career-service-card).career-fixed .career-scene {
+ border-block:2px solid var(--skill-edge);
+}
+.hobby-latte-card .hobby-stats>div,
+.career-management-card .career-management-stats .career-row {
+ background:linear-gradient(125deg,#fff9e8,#f5e7bd);
+ border:1px solid #bea16b;
+ border-radius:13px;
+ box-shadow:inset 0 0 0 2px #fffdfaab,0 2px 0 #c3a57555;
+}
+.hobby-latte-card .hobby-level,
+.career-management-card .career-management-level,
+.career-service-card .career-panel {
+ background:linear-gradient(120deg,#f4f2db,var(--skill-sage));
+ border:1px solid #a6ac79;
+ border-radius:14px;
+ box-shadow:inset 0 0 0 2px #fffdeecc,0 2px 0 #a6ac794d;
+}
+.hobby-latte-card .hobby-content .hobby-primary,
+.career-management-card .career-scroll-body>.career-primary {
+ min-height:48px;
+ border:1.5px solid #987034;
+ border-radius:999px;
+ background:linear-gradient(#ffdf87,#edbd57);
+ color:#312b1a;
+ box-shadow:inset 0 0 0 2px #fff3bad9,0 3px 0 #94703980;
+ text-shadow:0 1px #fff0ab;
+}
+.hobby-latte-card .hobby-content button:last-child:not(.hobby-primary),
+:is(.career-management-card,.career-service-card).career-fixed .career-back {
+ min-height:44px;
+ border:1.5px solid #748454;
+ border-radius:999px;
+ background:#edf0d3;
+ color:var(--skill-ink);
+ box-shadow:inset 0 0 0 2px #fffcedb3;
+}
+.hobby-latte-card .hobby-content .hobby-primary:not(:disabled):active,
+.career-management-card .career-scroll-body>.career-primary:not(:disabled):active {
+ transform:translateY(2px);
+ box-shadow:inset 0 0 0 2px #fff3bad9,0 1px 0 #94703980;
+}
+.hobby-latte-card .hobby-content button:focus-visible,
+:is(.career-management-card,.career-service-card) .career-scroll-body button:focus-visible {
+ outline:2px solid #436744;
+ outline-offset:2px;
+}
