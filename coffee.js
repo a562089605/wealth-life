@@ -74,7 +74,23 @@ const salaryBeforeCoffee=careerSalary;careerSalary=function(c){return isCoffeeRo
 const startBeforeCoffee=$('start').onclick;$('start').onclick=()=>{const coffee=$('job').value==='barista';startBeforeCoffee();if(coffee){const difference=20-state.age;state.age=state.startAge=20;for(const p of state.people||[])if(p.origin==='school')p.age+=difference;coffeeData();save();render()}};
 const choicesBeforeCoffee=window.v26Choices;window.v26Choices=function(key,api){const html=choicesBeforeCoffee(key,api);if(!coffeeWorking())return html;if(key==='work'&&html!==undefined)return coffeeCareerMarkup()+html;if(key==='work')return coffeeCareerMarkup()+api.option('继续当前工作','保留当前岗位，继续本月安排。',()=>completeMonthlyStep(2),true)+api.option('查看工作调整','查看岗位或明确辞职。',openWorkAdjustment);if(key==='review')return coffeeCareerMarkup()+(html??'');return html};
 const workBeforeCoffee=openWorkAdjustment;openWorkAdjustment=function(){workBeforeCoffee();if(coffeeWorking()){$('eventData').insertAdjacentHTML('afterbegin',coffeeCareerMarkup());$('eventData').style.display='block'}};
-const workplaceBeforeCoffee=workplaceEvent;workplaceEvent=function(){if(coffeeWorking()&&townEnabled()){const r=ensureCoffeeMonth();if(r.status==='pending')return openCoffeeCareerEvent()}return workplaceBeforeCoffee()};
+const workplaceBeforeCoffee=workplaceEvent;
+workplaceEvent=function(){
+ if(coffeeWorking()&&townEnabled()){
+  const r=ensureCoffeeMonth();
+  if(r.saveFailed){
+   const owner=state, chosenSlot=slot, movement=state.town.movement;
+   showEvent('暂未保存','职业事件尚未保存','请重试保存本次职业安排。',[],[['重试',()=>{
+    if(state!==owner||slot!==chosenSlot||state.month!==r.cycle||state.town?.movement!==movement||movement.resolved)return;
+    clearModals();
+    openTownLanding();
+   },true]]);
+   return true;
+  }
+  if(r.status==='pending')return openCoffeeCareerEvent();
+ }
+ return workplaceBeforeCoffee();
+};
 const settleBeforeCoffee=settleMonth;settleMonth=function(){
  const move=state?.town?.movement,validTown=!townEnabled()||(move&&!move.resolved&&move.payExpected&&state.month<move.payExpected);
  if(coffeeWorking()&&validTown&&!(typeof isRecoveryMonth==='function'&&isRecoveryMonth(state))&&state.turn?.index===9&&!state.requiredIncident&&!document.querySelector('.event-active')&&!state.gameOver?.final){const r=ensureCoffeeMonth();if(r.status==='pending'){openCoffeeCareerEvent();return}}

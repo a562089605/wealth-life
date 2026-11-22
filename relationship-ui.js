@@ -22,22 +22,90 @@
  function meter(p){const e=node('div',null,'relationship-meter'),track=node('span',null,'relationship-track'),fill=node('i');fill.style.width=Math.max(0,Math.min(100,p.relation||0))+'%';track.append(fill);e.append(track,node('span','亲密度 '+Math.round(p.relation||0)+'/100'));return e;}
  const person=id=>state.people?.find(p=>R.identity(p)===id);
  const label=p=>(p.teacherLabel||p.supervisorTitle||R.role(p))+' · '+R.stage(p);
- function contacts(){if(!state)return;if(window.RelationshipAvatars?.needsSync(state))save();const ctx=panel('我的关系网',home);ctx.paper.append(node('p','第'+(Math.floor(state.month/12)+1)+'年 · 第'+(state.month%12+1)+'月','relationship-date'),node('p','认识的人：'+(state.people||[]).length,'relationship-ribbon'),node('p','先选择一位，再看看相处方式','relationship-note'));
-  if(!state.people?.length){const empty=node('div',null,'relationship-empty');empty.append(node('h2','还没有认识的人'),node('p','在生活中慢慢相遇，把新的故事写进这里。'));ctx.paper.append(empty);}else{const list=node('div',null,'relationship-list');for(const p of state.people){const id=R.identity(p),b=ctx.button('',()=>detail(id),'relationship-contact'),body=node('span',null,'relationship-contact-text');body.append(node('strong',p.name),node('span',label(p)),meter(p));b.append(avatar(p),body,node('span','联系 ›','relationship-contact-link'));b.setAttribute('aria-label','联系 '+p.name);list.append(b);}ctx.paper.append(list);}ctx.paper.append(ctx.button('返回房屋',home,'relationship-primary'));
+ function contacts(){if(!state)return;if(window.RelationshipAvatars?.needsSync(state))save();const ctx=panel('我的关系网',home);ctx.paper.classList.add('relationship-interaction','relationship-directory');ctx.paper.append(node('p','第'+(Math.floor(state.month/12)+1)+'年 · 第'+(state.month%12+1)+'月','relationship-subtitle'));
+  if(!state.people?.length){const empty=node('div',null,'relationship-empty');empty.append(node('h2','还没有认识的人'),node('p','在生活中慢慢相遇，把新的故事写进这里。'));ctx.paper.append(empty);}else{const list=node('div',null,'relationship-list');for(const p of state.people){const id=R.identity(p),b=ctx.button('',()=>detail(id),'relationship-contact'),body=node('span',null,'relationship-contact-text');body.append(node('strong',p.name),node('span',label(p)),meter(p));b.append(avatar(p),body,node('span','联系 ›','relationship-contact-link'));b.setAttribute('aria-label','联系 '+p.name);list.append(b);}ctx.paper.append(list);}ctx.paper.append(ctx.button('返回房屋',home,'relationship-secondary'));
  }
  function profile(p,paper){const grid=node('dl',null,'relationship-profile'),gender=({female:'女',male:'男','女':'女','男':'男'})[p.gender]||'未记录';const education=p.education||p.educationLevel,degree=typeof education==='string'?((typeof EDU==='undefined'?null:EDU[education]?.name)||education):'未记录';const role=R.role(p),rel=role==='房东'?'房东（你是房客）':role==='经理'?(p.supervisorTitle||'经理')+'（你的上司）':p.teacherLabel||role;
   for(const [k,v]of [['性别',gender],['与你的关系',rel],['职业',p.job||'未记录'],['学历',degree],['兴趣爱好','待补充']]){const row=node('div');if(k==='兴趣爱好')row.className='relationship-interest';const value=node('dd',v);if(k==='兴趣爱好'&&window.HobbyLearning){const rows=HobbyLearning.interestRows(p);if(rows.length){value.textContent='';for(const item of rows)value.append(node('span',item.name+(item.level==null?'':' · Lv.'+item.level)+(item.xp==null?' · 经验未记录':' · '+item.xp+' XP'),'contact-interest'));}}row.append(node('dt',k),value);grid.append(row);}paper.append(grid);
  }
  function outcome(p){state.socialSequence=(state.socialSequence||0)+1;const i=state.people.indexOf(p),scene=SOCIAL_SCENES[(state.month+i*2+state.socialSequence)%SOCIAL_SCENES.length],success=Math.random()<Math.max(.2,Math.min(.98,.8+attributeModifier()+(roleTrait().socialBonus||0)*.025));return {scene:scene.title,success,gain:success?scene.gain+(roleTrait().socialBonus||0):-(1+Math.floor(Math.random()*3)),happiness:success?scene.happiness:-2};}
- function execute(ctx,kind,ids,token){if(!ctx.valid())return;const result=R.confirm(state,kind,ids,token,{free:Math.max(0,currentCareerTime().free-(kind==='teacherChat'&&typeof necessaryPetCareHours==='function'?necessaryPetCareHours():0)),recovery:recovery(),outcome,save});if(!result.ok){let message=ctx.paper.querySelector('[role=status]');if(!message){message=node('p',null,'relationship-message');message.setAttribute('role','status');ctx.paper.append(message)}message.textContent=result.reason;return;}
-  const r=result.receipt,pane=panel('相处的时光',contacts);pane.paper.append(node('p','本次互动已保存','relationship-ribbon'),node('p',(r.cost?'支付 '+priceText(r.cost)+' · ':'')+'自由时间−'+r.hours+'小时 · 能量−'+r.energy,'relationship-note'));
-  for(const o of r.outcomes){const box=node('div',null,'relationship-result');box.append(node('h2',o.name+' · '+o.scene),node('p',o.success?'这次交流让彼此更了解。':'这次交流不太顺利。'),node('p','亲密度 '+(o.appliedGain>=0?'+':'')+o.appliedGain+(o.happiness?' · 幸福度 '+(o.happiness>0?'+':'')+o.happiness:'')));pane.paper.append(box);}pane.paper.append(pane.button('返回关系网',contacts,'relationship-primary'));render();
+ const actionArt={meal:'moving-meal-20261113',chat:'coworker-chat-20261113',walk:'landlord-plants-20261113',teacherChat:'teacher-01-after-class-question-20261113',visit:'moving-meal-20261113'};
+ const sceneArt={
+  '聊聊近况':'coworker-chat-20261113','共同爱好':'/assets/hobbies/events/drawing-invite-painted-20261118.webp',
+  '意见分歧':'classmate-presentation-20261113','互相鼓励':'classmate-plan-20261113',
+  '一起筹划周末':'coworker-snack-20261113','老照片与回忆':'/assets/map-life/photo.webp',
+  '与老师聊聊':actionArt.teacherChat,'与导师聊聊':actionArt.teacherChat
+ };
+ function illustration(file){
+  const frame=node('div',null,'relationship-illustration'),img=node('img');
+  img.alt='';
+  img.src=file.startsWith('/')?file.slice(1):'assets/relationships/cards/'+file+'.webp';
+  frame.append(img);
+  return frame;
  }
- function detail(id){const p=person(id);if(!p)return contacts();const ctx=panel(p.name,contacts);ctx.paper.classList.add('relationship-detail');ctx.paper.append(avatar(p,true),node('p',label(p),'relationship-ribbon'));profile(p,ctx.paper);ctx.paper.append(meter(p),node('h2','选择相处方式'),node('p','剩余自由时间 '+currentCareerTime().free+'小时','relationship-note'));
-  for(const [kind,name,crop]of (p.relationshipRole==='teacher'?[['teacherChat',p.teacherLabel==='导师'?'与导师聊聊':'与老师聊聊',[60,1245,190,100]]]:[['meal','一起吃饭',[60,1100,190,105]],['chat','聊天',[60,1245,190,100]],['walk','散步交流',[60,1385,190,95]]])){const q=R.quote(state,kind,[id],{free:Math.max(0,currentCareerTime().free-(kind==='teacherChat'&&typeof necessaryPetCareHours==='function'?necessaryPetCareHours():0)),recovery:recovery()}),token=R.token(state,kind,[id]),b=ctx.button('',()=>execute(ctx,kind,[id],token),'relationship-option '+kind,!q.ok),text=node('span');text.append(node('strong',name),node('small',(q.cost?priceText(q.cost)+' · ':'')+q.hours+'小时 · 能量−'+q.energy));b.append(slice(node('span',null,'relationship-option-art'),'contact-detail',...crop),text,node('span','›'));ctx.paper.append(b);if(!q.ok)ctx.paper.append(node('p',q.reason,'relationship-reason'));}
-  if(p.relationshipRole!=='teacher')ctx.paper.append(ctx.button('邀请做客',()=>visit([id]),'relationship-secondary',p.relation<51));ctx.paper.append(ctx.button('返回关系网',contacts,'relationship-primary'));
+ function stats(items){
+  const list=node('dl',null,'relationship-stats');
+  for(const [label,value] of items){
+   const pair=node('div');
+   pair.append(node('dt',label),node('dd',value));
+   list.append(pair);
+  }
+  return list;
  }
- function visit(ids=[]){const selected=ids.filter(id=>person(id)?.relation>=51),ctx=panel('邀请来家做客',contacts);ctx.paper.append(node('p','每场1–5位联系人，每位亲密度≥51。','relationship-note game-rule-tip'));const list=node('div',null,'relationship-guests');for(const p of state.people.filter(p=>p.relation>=51)){const id=R.identity(p),l=node('label'),input=node('input');input.type='checkbox';input.checked=selected.includes(id);input.disabled=!input.checked&&selected.length>=5;input.onchange=()=>{if(ctx.valid())visit(input.checked?[...selected,id]:selected.filter(x=>x!==id))};l.append(input,node('span',p.name+' · '+label(p)));list.append(l);}ctx.paper.append(list,node('p','已选'+selected.length+'人 · '+priceText(30*selected.length)+' · 整场3小时 · 能量−'+2*selected.length,'relationship-ribbon'));const q=R.quote(state,'visit',selected,{free:currentCareerTime().free,recovery:recovery()}),token=R.token(state,'visit',selected);if(!q.ok)ctx.paper.append(node('p',q.reason,'relationship-reason'));ctx.paper.append(ctx.button('确认邀请',()=>execute(ctx,'visit',selected,token),'relationship-primary',!q.ok),ctx.button('返回关系网',contacts,'relationship-secondary'));
+ function resources(r){
+  return stats([...(r.cost?[['花费',priceText(r.cost)]]:[]),['自由时间','−'+r.hours+' 小时'],['能量','−'+r.energy]]);
+ }
+ const signed=n=>n<0?'−'+Math.abs(n):'+'+n;
+ function freeFor(kind){
+  const reserve=kind==='teacherChat'&&typeof necessaryPetCareHours==='function'?necessaryPetCareHours():0;
+  return Math.max(0,currentCareerTime().free-reserve);
+ }
+ function confirmInteraction(kind,id,name){
+  const p=person(id);
+  if(!p)return contacts();
+  const ids=[id],back=()=>detail(id),ctx=panel(name,back);
+  const q=R.quote(state,kind,ids,{free:freeFor(kind),recovery:recovery()});
+  const token=R.token(state,kind,ids);
+  ctx.paper.classList.add('relationship-interaction','relationship-confirm');
+  ctx.paper.append(illustration(actionArt[kind]),node('p',p.name+' · '+label(p),'relationship-subtitle'),resources(q));
+  if(!q.ok)ctx.paper.append(node('p',q.reason,'relationship-reason'));
+  ctx.paper.append(ctx.button('确认'+name,()=>execute(ctx,kind,ids,token),'relationship-primary',!q.ok),
+   ctx.button('返回联系人',back,'relationship-secondary'));
+ }
+ function receiptView(r){
+  const pane=panel(r.outcomes.length===1?r.outcomes[0].scene:'做客记录',contacts);
+  pane.paper.classList.add('relationship-interaction','relationship-receipt');
+  for(const o of r.outcomes){
+   const box=node('article',null,'relationship-outcome');
+   box.dataset.tone=!o.success?'quiet':o.happiness<0?'mixed':'warm';
+   box.append(illustration(sceneArt[o.scene]||actionArt[r.kind]||actionArt.chat));
+   const content=node('div',null,'relationship-outcome-content'),p=person(o.person);
+   const who=node('div',null,'relationship-outcome-person');
+   if(p)who.append(avatar(p));
+   const identity=node('div');
+   identity.append(node(r.outcomes.length===1?'p':'h2',r.outcomes.length===1?o.name:o.name+' · '+o.scene),
+    node('small',!o.success?'互动不太顺利':o.happiness<0?'有不同看法':'互动已完成'));
+   who.append(identity);
+   content.append(who);
+   const scene=SOCIAL_SCENES.find(item=>item.title===o.scene);
+   if(o.success&&scene)content.append(node('p',scene.desc,'relationship-scene-note'));
+   content.append(stats([['亲密度',signed(o.appliedGain)],
+    ...(r.outcomes.length===1?[['幸福度',signed(r.happinessChange)]]:[])]));
+   box.append(content);
+   pane.paper.append(box);
+  }
+  if(r.outcomes.length>1)pane.paper.append(stats([['本次幸福度',signed(r.happinessChange)]]));
+  pane.paper.append(resources(r),pane.button('返回关系网',contacts,'relationship-secondary'));
+ }
+ function execute(ctx,kind,ids,token){if(!ctx.valid())return;const result=R.confirm(state,kind,ids,token,{free:freeFor(kind),recovery:recovery(),outcome,save});if(!result.ok){let message=ctx.paper.querySelector('[role=status]');if(!message){message=node('p',null,'relationship-message');message.setAttribute('role','status');ctx.paper.append(message)}message.textContent=result.reason;return;}
+  receiptView(result.receipt);
+  render();
+ }
+ function detail(id){const p=person(id);if(!p)return contacts();const ctx=panel(p.name,contacts);ctx.paper.classList.add('relationship-detail','relationship-interaction');ctx.paper.append(avatar(p,true),node('p',label(p),'relationship-ribbon'));profile(p,ctx.paper);ctx.paper.append(meter(p),node('h2','选择相处方式'),node('p','剩余自由时间 '+currentCareerTime().free+'小时','relationship-note'));
+  for(const [kind,name,crop]of (p.relationshipRole==='teacher'?[['teacherChat',p.teacherLabel==='导师'?'与导师聊聊':'与老师聊聊',[60,1245,190,100]]]:[['meal','一起吃饭',[60,1100,190,105]],['chat','聊天',[60,1245,190,100]],['walk','散步交流',[60,1385,190,95]]])){const q=R.quote(state,kind,[id],{free:freeFor(kind),recovery:recovery()}),b=ctx.button('',()=>confirmInteraction(kind,id,name),'relationship-option '+kind,!q.ok),text=node('span');text.append(node('strong',name),node('small',(q.cost?priceText(q.cost)+' · ':'')+q.hours+'小时 · 能量−'+q.energy));b.append(slice(node('span',null,'relationship-option-art'),'contact-detail',...crop),text,node('span','›'));ctx.paper.append(b);if(!q.ok)ctx.paper.append(node('p',q.reason,'relationship-reason'));}
+  if(p.relationshipRole!=='teacher')ctx.paper.append(ctx.button('邀请做客',()=>visit([id]),'relationship-primary',p.relation<51));ctx.paper.append(ctx.button('返回关系网',contacts,'relationship-secondary'));
+ }
+ function visit(ids=[]){const selected=ids.filter(id=>person(id)?.relation>=51),ctx=panel('邀请来家做客',contacts);ctx.paper.classList.add('relationship-interaction','relationship-visit');ctx.paper.append(illustration(actionArt.visit),node('p','邀请 1–5 位亲密度达到 51 的联系人。','relationship-subtitle game-rule-tip'));const list=node('div',null,'relationship-guests');for(const p of state.people.filter(p=>p.relation>=51)){const id=R.identity(p),l=node('label'),input=node('input');input.type='checkbox';input.checked=selected.includes(id);input.disabled=!input.checked&&selected.length>=5;input.onchange=()=>{if(ctx.valid())visit(input.checked?[...selected,id]:selected.filter(x=>x!==id))};l.append(input,node('span',p.name+' · '+label(p)));list.append(l);}ctx.paper.append(list,node('p','已选'+selected.length+'人 · '+priceText(30*selected.length)+' · 整场3小时 · 能量−'+2*selected.length,'relationship-ribbon'));const q=R.quote(state,'visit',selected,{free:currentCareerTime().free,recovery:recovery()}),token=R.token(state,'visit',selected);if(!q.ok)ctx.paper.append(node('p',q.reason,'relationship-reason'));ctx.paper.append(ctx.button('确认邀请',()=>execute(ctx,'visit',selected,token),'relationship-primary',!q.ok),ctx.button('返回关系网',contacts,'relationship-secondary'));
  }
  $('networkBtn').onclick=function(...args){return inHouse()?contacts():previousNetwork?.apply(this,args)};openSocialPerson=function(i){return inHouse()?state.people?.[i]?detail(R.identity(state.people[i])):contacts():previousPerson(i)};doSocial=function(...args){return inHouse()?false:previousSocial.apply(this,args)};
  const previousClear=clearModals;clearModals=function(){close();return previousClear.apply(this,arguments)};

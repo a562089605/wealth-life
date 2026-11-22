@@ -1431,3 +1431,113 @@
 .gold-price-chart .wl-chart {display:block;width:100%;height:108px;margin:0}
 .gold-price-chart .wl-chart polyline {stroke:#3d6947}
 .gold-price-chart .wl-chart circle {fill:#3d6947}
+
+/* Bank overview, styled as a page from the town ledger. */
+#game>.event.event-active.finance-debt {
+  width:min(450px,calc(100% - 26px));
+  box-sizing:border-box;
+  padding:17px clamp(14px,4.5vw,24px) 21px;
+  color:#304b38;
+  background:#f8edcf url("./assets/finance/paper.webp") repeat !important;
+  border:1px solid #9f8256 !important;
+  border-radius:23px 19px 24px 20px !important;
+  box-shadow:inset 0 0 0 4px #f8e9c4,inset 0 0 0 5px #d4b787,0 12px 30px #362a254d !important;
+}
+.finance-debt #eventType {
+  color:#395642;
+  background:#e1e8ce;
+  border:1px solid #acb694;
+  border-radius:10px 8px 11px 8px;
+  padding:4px 9px;
+}
+.finance-debt #eventMonth { color:#655e4b; }
+.finance-debt #eventClose {
+  color:#304b38;
+  background:#f7eac9 !important;
+  border:1px solid #b19764!important;
+  box-shadow:0 2px 0 #9c815946;
+}
+.finance-debt #eventTitle {
+  margin:10px 0 11px;
+  color:#294a35;
+  font:700 clamp(23px,6.5vw,31px)/1.22 "Noto Serif CJK SC","Songti SC",serif;
+}
+.finance-debt #eventDesc:empty { display:none; }
+#game>.event.finance-debt #eventData {
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:0;
+  margin:0;
+}
+.finance-debt-art {
+  display:block;
+  width:100%;
+  max-height:clamp(84px,29vw,132px);
+  object-fit:contain;
+  border:1px solid #cbb080;
+  border-radius:12px 10px 0 0;
+  box-sizing:border-box;
+  background:#f6e7c1;
+}
+#game>.event.finance-debt #eventData>.stat {
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:8px 14px;
+  flex-wrap:wrap;
+  margin:0;
+  padding:9px 12px;
+  border:1px solid #c5ae7f;
+  border-top:0;
+  border-radius:0;
+  background:#fff6e1;
+}
+.finance-debt #eventData>.stat .label { color:#625740;overflow-wrap:anywhere; }
+.finance-debt #eventData>.stat .value { color:#2e4c38;font-variant-numeric:tabular-nums; }
+#game>.event.finance-debt #eventData>.stat:nth-child(2) { background:#e9ebd0; }
+.finance-debt #eventData>.stat:nth-child(2) .value { font-size:clamp(22px,6vw,29px);font-weight:800; }
+#game>.event.finance-debt #eventData>.stat:last-child { border-radius:0 0 12px 10px; }
+#game>.event.finance-debt #actions {
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:8px;
+  padding:0 1px 3px;
+  margin:12px 0 0;
+  background:none;
+}
+#game>.event.finance-debt #actions>button {
+  position:relative;
+  width:100%;
+  min-height:44px;
+  margin:0;
+  padding:7px 38px;
+  color:#36513a;
+  background:#faf0d8;
+  border:1px solid #af9768;
+  border-radius:12px 10px 13px 10px;
+  box-shadow:inset 0 0 0 2px #fff8e5,0 2px 0 #d1bb90;
+  font-size:15px;
+  white-space:normal;
+}
+#game>.event.finance-debt #actions>button.primary {
+  color:#fff7e1!important;
+  background:linear-gradient(#527052,#39583f)!important;
+  border-color:#304e36;
+  box-shadow:inset 0 0 0 2px #c0cda34d,0 2px 0 #2f4832;
+}
+#game>.event.finance-debt #actions>button:nth-child(2) { background:#f6e5b4; }
+.finance-debt #actions>button::after,
+.finance-debt #actions>button:last-child::before {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:24px;
+  line-height:24px;
+  border-radius:50%;
+  background:#7b674327;
+  font:16px/24px sans-serif;
+}
+.finance-debt #actions>button::after { content:"→" / "";right:10px; }
+.finance-debt #actions>button.primary::after { background:#fff6d737; }
+.finance-debt #actions>button:last-child::before { content:"←" / "";left:10px; }
+.finance-debt #actions>button:last-child::after { content:none; }

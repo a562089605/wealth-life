@@ -13,3 +13,202 @@
 
 /* Monetary labels alone replace sample amounts, preserving the approved drawn icons. */
 .relationship-life-canvas{container-type:inline-size}.relationship-live-pay{position:absolute;display:flex;flex-direction:column;justify-content:center;z-index:1;background:#fff7e6;color:#103c20;font-family:WealthHand,'Songti SC',serif;pointer-events:none;align-items:center;text-align:center;box-sizing:border-box;line-height:1.08}.relationship-live-pay.pickup{left:11%;top:75.7%;width:35%;height:6.1%;font-size:4.6cqw}.relationship-live-pay.shifts{left:14%;top:81.1%;width:31%;height:6.1%;font-size:4.8cqw}.relationship-live-pay strong{font-weight:normal;font-size:5.2cqw}
+
+/* Autonomous interactions use illustrated journal pages and live receipts. */
+.relationship-paper.relationship-interaction {
+  --journal-line:#bca371;
+  --journal-ink:#274734;
+  color:var(--journal-ink);
+  padding:16px clamp(14px,4.5vw,24px) 22px;
+  background:#fbefd5 url("assets/finance/paper.webp") repeat;
+  border:1px solid #967649;
+  border-radius:23px 20px 24px 20px;
+  outline:1px solid #d3b987;
+  outline-offset:-5px;
+  box-shadow:0 4px 0 #765a4050,0 14px 34px #3e322c4a;
+}
+.relationship-interaction::before { display:none; }
+.relationship-interaction header { gap:12px; }
+.relationship-interaction .relationship-tag {
+  font:600 13px/1.2 "Noto Sans CJK SC",sans-serif;
+  color:#40583e;
+  background:#e4e8cb;
+  border:1px solid #b4bd95;
+  border-radius:10px 8px 11px 8px;
+  padding:5px 10px;
+  transform:none;
+}
+.relationship-interaction .relationship-close {
+  width:44px;
+  height:44px;
+  border:1px solid #b79760;
+  background:#f9eed4;
+  box-shadow:0 2px 0 #b7976040;
+  font:25px/1 sans-serif!important;
+}
+.relationship-interaction h1 {
+  margin:8px 0 14px;
+  text-align:left;
+  font-size:clamp(30px,9vw,41px);
+  line-height:1.12;
+}
+.relationship-interaction .relationship-subtitle {
+  margin:8px 0 12px;
+  color:#6d5e44;
+  font:13px/1.6 "Noto Sans CJK SC",sans-serif;
+}
+.relationship-interaction .relationship-list { gap:9px; margin:12px 0; }
+.relationship-interaction .relationship-contact {
+  padding:10px;
+  gap:10px;
+  background:#fff7e3;
+  box-shadow:0 2px 0 #d9c599;
+  border:1px solid var(--journal-line);
+  border-radius:13px 10px 14px 11px;
+}
+.relationship-interaction .relationship-contact::before { display:none; }
+.relationship-interaction .relationship-contact-text { gap:4px; }
+.relationship-interaction .relationship-contact-link { font-size:17px;background:#e6ebd0;border:1px solid #b5c097;padding:5px 8px; }
+.relationship-interaction .relationship-avatar:not(.large) { width:48px;height:48px; }
+.relationship-interaction .relationship-ribbon {
+  border-radius:9px;
+  background:#eee4bf;
+  font:600 14px/1.5 "Noto Sans CJK SC",sans-serif;
+}
+.relationship-interaction .relationship-profile {
+  border:1px solid var(--journal-line);
+  border-radius:12px 10px 13px 9px;
+  background:#fff7e2;
+}
+.relationship-interaction .relationship-option {
+  border-radius:12px 9px 13px 10px;
+  background:#fff6df;
+  box-shadow:0 2px 0 #d8c297;
+  min-height:70px!important;
+}
+.relationship-interaction .relationship-guests label,
+.relationship-interaction .relationship-message {
+  border:1px solid var(--journal-line);
+  border-radius:12px 9px 13px 10px;
+  background:#fff6df;
+}
+.relationship-interaction .relationship-guests label:has(input:checked) {
+  background:#e7ecd1;
+  border-color:#9faa7b;
+}
+.relationship-interaction .relationship-primary,
+.relationship-interaction .relationship-secondary {
+  min-height:46px!important;
+  position:relative;
+  margin-top:13px;
+  border:1px solid #294831;
+  border-radius:13px 11px 14px 11px;
+  padding:8px 43px;
+  font-size:22px!important;
+  color:#fff6dc;
+  background:linear-gradient(180deg,#537151,#3b593d);
+  box-shadow:inset 0 0 0 2px #c2cca149,0 3px 0 #273f2c;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.relationship-interaction .relationship-secondary {
+  color:#36523b;
+  border-color:#a89267;
+  background:#faf0d8;
+  box-shadow:inset 0 0 0 2px #fff8e6,0 2px 0 #d4bd8d;
+}
+.relationship-interaction .relationship-primary::after,
+.relationship-interaction .relationship-secondary::before {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  display:grid;
+  place-items:center;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:#fffbdf24;
+  font:17px/1 sans-serif;
+}
+.relationship-interaction .relationship-primary::after { content:"→" / "";right:12px; }
+.relationship-interaction .relationship-secondary::before { content:"←" / "";left:12px;background:#e9dec0; }
+.relationship-interaction :is(.relationship-primary,.relationship-secondary):active:not(:disabled) {
+  transform:translateY(2px);
+  box-shadow:inset 0 0 0 2px #fff6dd40;
+}
+.relationship-interaction .relationship-illustration {
+  overflow:hidden;
+  aspect-ratio:3.32;
+  border-radius:11px 9px 12px 9px;
+  background:#ead9a8;
+  border:1px solid #bda06a;
+  box-shadow:0 2px 0 #b79a6540;
+}
+.relationship-illustration img {
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:top center;
+}
+.relationship-outcome {
+  --result-paper:#f8f3d9;
+  --result-edge:#96a17b;
+  margin:0 0 13px;
+  padding:6px;
+  background:var(--result-paper);
+  border:1px solid var(--result-edge);
+  border-radius:15px 12px 16px 12px;
+  box-shadow:0 3px 0 #b09b7445,inset 0 0 0 2px #fff9e4;
+}
+.relationship-outcome[data-tone="mixed"] { --result-paper:#fcf0dc;--result-edge:#bf9774; }
+.relationship-outcome[data-tone="quiet"] { --result-paper:#f5eee8;--result-edge:#b7a0a0; }
+.relationship-outcome[data-tone="quiet"] .relationship-illustration img { filter:saturate(.73); }
+.relationship-outcome .relationship-illustration { border-color:var(--result-edge); }
+.relationship-outcome-content { padding:10px 8px 6px; }
+.relationship-outcome-person { display:flex;align-items:center;gap:10px; }
+.relationship-outcome-person>div { min-width:0;overflow-wrap:anywhere; }
+.relationship-outcome-person h2,.relationship-outcome-person p {
+  font:700 17px/1.35 "Noto Serif CJK SC",serif;
+  text-align:left;
+  margin:0;
+}
+.relationship-outcome-person small {
+  display:inline-block;
+  margin-top:3px;
+  padding:2px 6px;
+  border-radius:6px;
+  color:#42563b;
+  background:#e1e9cb;
+}
+.relationship-outcome[data-tone="mixed"] .relationship-outcome-person small {
+  color:#724b2e;
+  background:#f4dfbd;
+}
+.relationship-outcome[data-tone="quiet"] .relationship-outcome-person small {
+  color:#5d5051;
+  background:#ece2dd;
+}
+.relationship-scene-note {
+  margin:8px 0;
+  font:14px/1.55 "Noto Sans CJK SC",sans-serif;
+}
+.relationship-stats {
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px 8px;
+  margin:8px 0 0;
+  font:13px/1.4 "Noto Sans CJK SC",sans-serif;
+}
+.relationship-stats>div {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:3px 7px;
+  padding:5px 8px;
+  border:1px solid #cdb98d;
+  border-radius:7px 6px 8px 7px;
+  background:#fff8e4;
+}
+.relationship-stats dt { color:#685d43; }
+.relationship-stats dd { margin:0;color:#304f39;font-weight:700;font-variant-numeric:tabular-nums; }
+.relationship-outcome .relationship-stats>div { border-color:var(--result-edge); }

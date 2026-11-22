@@ -2,7 +2,15 @@
 (function(){'use strict';const E=CareerEventRules,D=CareerEventData.cards;let msg=null;
  function message(text){if(msg?.isConnected)msg.textContent=text;}
  function rows(e){const result=[],signedMoney=n=>(n>0?'+':'−')+money(Math.abs(n));for(const [k,label,unit]of [['wages','加班工资','$'],['tips','额外小费','$'],['bonus','奖金','$'],['hours','工作时间','h'],['energy','能量',''],['stress','压力',''],['happiness','幸福',''],['service','服务经验',' XP'],['management','管理经验',' XP'],['latte','拉花经验',' XP'],['pourOver','手冲咖啡经验',' XP'],['trust','上司认可度',''],['sales','门店营业额','%'],['storeNet','门店经营收益','$'],['monthlySaving','次月起每月减支','$'],['retain','本月最多留存','$']]){let n=e?.[k];if(!n)continue;if((k==='latte'||k==='pourOver')&&!e.actualReceipt){n=Math.max(0,Math.min(n,800-HobbyLearning.xp(state,k)));if(!n)continue;}const displayLabel=n<0&&e.hours<0?(k==='wages'?'工资扣减':k==='tips'?'小费扣减':label):label;result.push([displayLabel,unit==='$'?signedMoney(n):(n>0?'+':'−')+Math.abs(unit==='%'?Math.round(n*100):n)+unit]);if(k==='hours')result.push(['自由时间',(n>0?'−':'+')+Math.abs(n)+'h']);}return result;}
- function effects(e,hideWorkHours=false,serviceXpAtMonthEnd=false){const box=document.createElement('div');box.className='career-event-effects';for(const [label,value]of rows(e)){if(hideWorkHours&&label==='工作时间')continue;const row=document.createElement('div'),l=document.createElement('span'),v=document.createElement('strong');l.textContent=serviceXpAtMonthEnd&&label==='服务经验'?'顾客服务（月底结算）':label;v.textContent=value;row.append(l,v);box.append(row);}if(e?.storeCost&&isPartner()){const row=document.createElement('div'),label=document.createElement('span'),value=document.createElement('strong');label.textContent='门店支出';value.textContent='−'+money(e.storeCost);row.append(label,value);box.append(row);}for(const [key,label,format] of [
+ function effects(e,hideWorkHours=false,serviceXpAtMonthEnd=false){
+  if(serviceXpAtMonthEnd&&e?.service){
+   const leaveHours=currentCareerTime().familyLeaveHours||0;
+   const regularHours=CareerLearningRules.roles.barista.weekly*4-leaveHours;
+   const xp=state.coffee?.skills?.service?.xp||0;
+   const monthEndXp=hours=>Math.min(400,xp+Math.max(0,hours)/8);
+   e={...e,service:monthEndXp(regularHours+e.hours)-monthEndXp(regularHours)};
+  }
+  const box=document.createElement('div');box.className='career-event-effects';for(const [label,value]of rows(e)){if(hideWorkHours&&label==='工作时间')continue;const row=document.createElement('div'),l=document.createElement('span'),v=document.createElement('strong');l.textContent=serviceXpAtMonthEnd&&label==='服务经验'?'顾客服务（月底结算）':label;v.textContent=value;row.append(l,v);box.append(row);}if(e?.storeCost&&isPartner()){const row=document.createElement('div'),label=document.createElement('span'),value=document.createElement('strong');label.textContent='门店支出';value.textContent='−'+money(e.storeCost);row.append(label,value);box.append(row);}for(const [key,label,format] of [
   ['machineWarrantyMonths','免故障维修',n=>n+' 个月'],
   ['machineLoanRevenueRate','本月营业收入',n=>'减少 '+Math.round(n*100)+'%，下月须修或换']
  ]){if(!e?.[key])continue;const row=document.createElement('div'),name=document.createElement('span'),value=document.createElement('strong');name.textContent=label;value.textContent=format(e[key]);row.append(name,value);box.append(row);}if(!box.children.length)box.textContent='无变化';return box;}

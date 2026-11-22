@@ -9,7 +9,25 @@
  let mapDrawDepth=0;function mapLanding(){const m=state?.town?.movement;return !!(townEnabled()&&m&&!m.resolved&&m.month===state.month&&TOWN_TYPES[m.to]==='career');}
  function noDrawRecord(){return {cycle:state.month,eventId:null,status:'none'};}
  function prepareQuotes(r,id){if(r.status!=='pending'||r.quotes)return r;const result=E.transaction(state,()=>{const q={...context(),...r.quoteContext,calendarMonth:r.calendarMonth||r.quoteContext?.month||coffeeCalendar().month};const definitions=id==='barista-cut'&&!r.cutFlowVersion?COFFEE_EVENTS.cut.choices.map((c,i)=>({label:c.label,effects:{hours:c.hours,paidHours:c.hours,tipFormula:'cut',energy:c.energy,stress:c.stress}})):D[id].options;r.quotes=definitions.map(o=>{const e=E.quote(state,o.effects,q);if(id.startsWith('barista-')&&!r.serviceXpAtMonthEnd&&e.service)e.service*=2;return {...e,label:o.label};});return {};},save);return result.ok?r:failedRecord();}
- ensureCoffeeMonth=function(){if(!coffeeWorking())return coffeeRecord();if(coffeeRecord())return prepareQuotes(coffeeRecord(),'barista-'+coffeeRecord().eventId);if(!mapDrawDepth||!mapLanding())return noDrawRecord();const eventId=sampleCoffeeEvent(coffeeCalendar().month),q=context(),result=E.transaction(state,()=>{const c=coffeeData(),d=eventId&&D['barista-'+eventId];c.monthly={id:'barista-'+state.month,version:2,cycle:state.month,calendarMonth:q.calendarMonth,eventId,status:eventId?'pending':'none',quoteContext:q,cutFlowVersion:2,serviceXpAtMonthEnd:true,quotes:d?d.options.map(o=>({...E.quote(state,o.effects,q),label:o.label})):null,extraWages:0,extraTips:0,workHoursDelta:0,choice:null};return {};},save);return result.ok?coffeeRecord():failedRecord();};
+ const unsavedCoffeeDraws=new WeakMap();
+ ensureCoffeeMonth=function(){
+  if(!coffeeWorking())return coffeeRecord();
+  const existing=coffeeRecord();
+  if(existing)return prepareQuotes(existing,'barista-'+existing.eventId);
+  if(!mapDrawDepth||!mapLanding())return noDrawRecord();
+
+  let draw=unsavedCoffeeDraws.get(state);
+  if(!draw||draw.cycle!==state.month||draw.slot!==slot){
+   const q=context(),eventId=sampleCoffeeEvent(q.calendarMonth),definition=eventId&&D['barista-'+eventId];
+   const record={id:'barista-'+state.month,version:2,cycle:state.month,calendarMonth:q.calendarMonth,eventId,status:eventId?'pending':'none',quoteContext:q,cutFlowVersion:2,serviceXpAtMonthEnd:true,quotes:definition?definition.options.map(o=>({...E.quote(state,o.effects,q),label:o.label})):null,extraWages:0,extraTips:0,workHoursDelta:0,choice:null};
+   draw={cycle:state.month,slot,record};
+   unsavedCoffeeDraws.set(state,draw);
+  }
+  const result=E.transaction(state,()=>{coffeeData().monthly=draw.record;return {};},save);
+  if(!result.ok)return failedRecord();
+  unsavedCoffeeDraws.delete(state);
+  return coffeeRecord();
+ };
  ensureShiftMonth=function(){if(!shiftWorking())return shiftRecord();if(shiftRecord())return prepareQuotes(shiftRecord(),'shift-'+shiftRecord().eventId);if(!mapDrawDepth||!mapLanding())return noDrawRecord();const eventId=sampleShiftEvent(),q=context(),roll=Math.random(),result=E.transaction(state,()=>{const c=shiftData(),def=eventId&&D['shift-'+eventId];c.monthly={id:'shift-'+state.month,version:2,cycle:state.month,calendarMonth:q.calendarMonth,eventId,status:eventId?'pending':'none',quoteContext:q,followRoll:roll,choice:null,presented:false,mainApplied:false,followGenerated:false,follow:null,extraWages:0,extraTips:0,bonus:0,workHoursDelta:0,applied:[],receipts:[],quotes:def?def.options.map(o=>E.quote(state,o.effects,q)):null};return {};},save);return result.ok?shiftRecord():failedRecord();};
  function options(forced=false){return {free:currentCareerTime().free,reserve:typeof necessaryPetCareHours==='function'?necessaryPetCareHours():0,recovery:isRecoveryMonth(state),forced,save};}
  function addShift(r,phase,e){if(r.applied.includes(phase))return false;const actual=E.apply(state,e,{...r,storeId:E.storeKey(state)},phase);r.extraWages=roundCash((r.extraWages||0)+(e.wages||0));r.extraTips=roundCash((r.extraTips||0)+(e.tips||0));r.bonus=roundCash((r.bonus||0)+(e.bonus||0));r.workHoursDelta=(r.workHoursDelta||0)+(e.hours||0);r.applied.push(phase);r.receipts.push({phase,effects:actual});return true;}

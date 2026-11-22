@@ -4,7 +4,7 @@
  const previousShow = showEvent;
  showEvent = function(...args){
   delete eventCard.dataset.etfDetail;
-  eventCard.classList.remove('finance-home','finance-bill','finance-assets','finance-savings','finance-emergency','finance-cd','finance-etf','finance-sp500','finance-etf-buy','finance-etf-receipt','finance-etf-sell','finance-etf-settings','finance-parchment','retirement-transaction');
+  eventCard.classList.remove('finance-home','finance-bill','finance-debt','finance-assets','finance-savings','finance-emergency','finance-cd','finance-etf','finance-sp500','finance-etf-buy','finance-etf-receipt','finance-etf-sell','finance-etf-settings','finance-parchment','retirement-transaction');
   $('eventData').removeAttribute('tabindex');
   $('eventData').removeAttribute('aria-label');
   return previousShow(...args);
@@ -611,10 +611,18 @@
    const rows=[['总负债',priceText(metrics.debtTotal)],
     ...Object.entries(state.debt).filter(([,amount])=>amount>0)
      .map(([name,amount])=>[batchEscape(name),priceText(amount)])];
-   page('银行贷款与债务',rows,[
-    ['申请银行贷款',()=>openBankLoan(10000,{after:debt,receipt:true}),false],
+   const title='银行贷款与债务';
+   page(title,rows,[
+    ['申请银行贷款',()=>openBankLoan(10000,{after:debt,receipt:true}),true],
     ['本月贷款还款',()=>openLoanPayments(debt,'返回银行贷款与债务'),false]
    ]);
+   if($('eventTitle').textContent!==title)return;
+   eventCard.classList.add('finance-debt');
+   const illustration=document.createElement('img');
+   illustration.src=art+'bank.webp';
+   illustration.alt='';
+   illustration.className='finance-debt-art';
+   $('eventData').prepend(illustration);
   }
 
   function insurance(back=home){

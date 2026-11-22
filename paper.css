@@ -77,3 +77,104 @@ button.primary{background:#efd16d;color:#30473c;border-color:#cfb97c}
 #wlJob #coffeeIntro .coffee-paper-scene .coffee-intro-other{left:55%;width:35.5%}
 #wlJob #coffeeIntro .coffee-paper-scene button:focus-visible{outline:3px solid #30473c;outline-offset:2px}
 #coffeeIntro .coffee-intro-text{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+
+/* Home notices use the illustrated game's paper cards and warm ink. */
+#game > .event.event-active[data-home-notice] {
+  width:min(450px,calc(100% - 28px));
+  box-sizing:border-box;
+  padding:18px clamp(14px,4.5vw,24px);
+  color:#304739;
+  background:#f8edcf url("./assets/finance/paper.webp") repeat !important;
+  border:1px solid #9f8256 !important;
+  border-radius:24px 21px 25px 20px !important;
+  box-shadow:inset 0 0 0 4px #f7e7be,inset 0 0 0 5px #d0b080,0 10px 26px #302a2355 !important;
+}
+.event[data-home-notice] #eventType {
+  color:#395944;
+  background:#e0e6ca;
+  border:1px solid #aab796;
+  border-radius:12px 9px 11px 8px;
+  padding:4px 9px;
+}
+.event[data-home-notice] #eventMonth { color:#685e45; }
+.event[data-home-notice] #eventTitle {
+  margin:10px 0 7px;
+  color:#294d37;
+  font:700 clamp(22px,6vw,30px)/1.25 "Noto Serif CJK SC","Songti SC",serif;
+}
+.event[data-home-notice] #eventDesc {
+  min-height:0;
+  margin:0;
+  color:#534d3a;
+  font-size:14px;
+  line-height:1.55;
+}
+.event[data-home-notice="welcome"] #eventDesc::before {
+  content:"";
+  display:block;
+  height:clamp(74px,20vw,108px);
+  margin:2px 0 12px;
+  border:1px solid #a58b5a;
+  border-radius:15px 12px 14px 10px;
+  background:#e4dec2 url("./assets/pages/rest-corgi-20261117.webp") center 37% / 100% auto no-repeat;
+}
+.event[data-home-notice="bills"] #eventTitle {
+  padding-bottom:8px;
+  border-bottom:1px dashed #b19560;
+}
+.event[data-home-notice] #eventData:empty { display:none; }
+.event[data-home-notice] #eventClose {
+  color:#304739;
+  background:#f3e3bb !important;
+  border:1px solid #ae925f;
+  box-shadow:none;
+}
+.event[data-home-notice] #actions {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:7px;
+  margin:10px 0 0;
+  padding:0;
+  background:none;
+}
+#game > .event[data-home-notice] #actions button,
+.home-notice-checklist button {
+  min-width:0;
+  min-height:44px;
+  margin:0;
+  padding:7px 9px;
+  color:#304739;
+  background:#f8efd8;
+  border:1px solid #ba9e70;
+  border-radius:12px 9px 11px 8px;
+  box-shadow:none;
+  font-size:13px;
+  white-space:normal;
+}
+#game > .event[data-home-notice] #actions button:last-child { grid-column:1/-1; }
+#game > .event[data-home-notice="welcome"] #actions button.primary {
+  background:#e9c96d !important;
+  color:#304739 !important;
+  border-color:#a8873f;
+  box-shadow:inset 0 0 0 2px #f6dfa0;
+  font-size:16px;
+}
+#game > .event[data-home-notice="bills"] #actions button:last-child {
+  color:#3a5943;
+  background:#e2e8d1;
+  border-color:#a4af8e;
+}
+.event[data-home-notice="bills"] #eventData:not(:empty) { display:block; margin:10px 0 0; }
+.home-notice-checklist { display:grid;gap:6px;padding:2px 3px; }
+.home-notice-checklist button {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto auto;
+  align-items:center;
+  gap:8px;
+  width:100%;
+  text-align:left;
+  font-weight:600;
+}
+.home-notice-checklist strong { white-space:nowrap; color:#3a5943; }
+.home-notice-arrow { color:#6c7754; font-size:17px; }
