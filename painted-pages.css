@@ -61,9 +61,11 @@
  -webkit-text-size-adjust:100%;
  text-size-adjust:100%;
 }
-.painted-canvas.housing .housing-apartment-name{
+.painted-canvas.housing .housing-option-title{
+ left:53%;width:36%;height:3.45%;
+ box-sizing:border-box;
  justify-content:flex-start;
- padding-inline-start:.35cqw;
+ padding-inline-start:.65cqw;
  font-family:system-ui,"PingFang SC","Noto Sans CJK SC",sans-serif;
  font-size:5.4cqw;
  font-weight:900;

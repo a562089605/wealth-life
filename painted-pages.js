@@ -48,10 +48,13 @@
    html+=button('health','健康：治疗与康复','left:4%;top:23.5%;width:45%;height:11.5%')+button('rest','能量：安排休息','left:51%;top:23.5%;width:45%;height:11.5%')+button('activities','幸福度：生活活动','left:4%;top:35.5%;width:45%;height:12%')+button('rest','压力：放松减压','left:51%;top:35.5%;width:45%;height:12%');
    html+=button('housing','查看住房或更换住房','left:4%;top:64.3%;width:92%;height:7.6%')+button('life-confirm',label,'left:16%;top:89.2%;width:68%;height:5.3%',q.selected&&!q.blocked&&q.total<=0)+button('room','返回房屋','left:35%;top:95%;width:30%;height:3.5%');
   }else if(page==='housing'){
-   html+=patch('小公寓','left:53.5%;top:75.1%;width:25%;height:3.1%','housing-apartment-name');
    if(housingName()!=='尚未选择')html+=patch('当前住房：'+housingName(),'','painted-caption housing-selection-current');
    html+=button('life','返回生活','left:3%;top:2%;width:25%;height:3.6%');
-   for(const [key,y]of [['family',26],['shared',41.6],['studio',57.4],['rent1',73.1]]){if(state.housing===key)html+=patch('✓ 当前住房 · 已入住','left:54%;top:'+(y+12)+'%;width:35%;height:2%','housing-current');html+=button('housing-'+key,'查看'+({family:'与家人同住',shared:'合租',studio:'Studio',rent1:'小公寓'})[key]+'详情','left:4%;top:'+y+'%;width:92%;height:14.1%');}
+   for(const [key,name,y] of [['family','与家人同住',26],['shared','合租',41.6],['studio','Studio',57.4],['rent1','小公寓',73.1]]){
+    html+=patch(name,'top:'+(y+1.9)+'%','housing-option-title');
+    if(state.housing===key)html+=patch('✓ 当前住房 · 已入住','left:54%;top:'+(y+12)+'%;width:35%;height:2%','housing-current');
+    html+=button('housing-'+key,'查看'+name+'详情','left:4%;top:'+y+'%;width:92%;height:14.1%');
+   }
    html+='<div class="painted-preview-cover housing-rule-cover" aria-hidden="true"></div>';
    if(window.OwnerHousing)html+='<button type="button" class="owner-housing-entry" data-painted="owner-home">'+
     (state.housing==='own'?'我的自住房':state.pendingHomePurchase?'查看自住房入住预约':'查看自住房')+'</button>';
