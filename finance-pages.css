@@ -1754,3 +1754,150 @@
  background: radial-gradient(ellipse at 45% 33%, #ffe3a0, #edae50 80%) !important;
  box-shadow: inset 0 0 0 1px #8e5622, inset 0 0 0 3px #ffe0a0, inset 0 0 0 4px #c58a39;
 }
+
+
+/* Shared paper presentation for insurance and debt. */
+#game > .event.event-active:is(.finance-debt,[data-insurance-art="menu"]) {
+  width: min(350px,calc(100vw - 54px))!important;
+  box-sizing: border-box;
+  padding: 20px clamp(14px,4.1vw,24px) 23px;
+  background: #fff4d6 url("assets/finance/paper.webp") repeat!important;
+  border: 2px solid #bd975c!important;
+  border-radius: 24px!important;
+  box-shadow: inset 0 0 0 3px #fff7df,inset 0 0 0 4px #d9bb82,0 8px 24px #382a2360!important;
+  color: #21402b;
+  top: 50%!important;
+  left: 50%!important;
+  right: auto!important;
+  transform: translate(-50%,-50%);
+  border-color: #a97e42!important;
+  display: grid!important;
+  grid-template-columns: minmax(0,1fr);
+}
+#game > .event.event-active:is(.finance-debt,[data-insurance-art="menu"]) > .row {
+  justify-content: center;
+  min-height: 24px;
+  margin: 0;
+  margin-bottom: 10px;
+  order: -1;
+  padding: 0!important;
+}
+#game > .event.event-active:is(.finance-debt,[data-insurance-art="menu"]) #eventType {
+  display: none;
+}
+#game > .event.event-active:is(.finance-debt,[data-insurance-art="menu"]) #eventMonth {
+  position: static;
+  transform: none;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: #f6e1ad;
+  color: #51412a;
+  font: 16px/1.25 WealthHand,serif;
+}
+#game > .event.event-active:is(.finance-debt,[data-insurance-art="menu"]) #eventTitle {
+  position: static;
+  width: auto;
+  height: auto;
+  clip-path: none;
+  margin: 0 22px 3px;
+  text-align: center;
+  color: #20422e;
+  font: clamp(21px,6.7vw,30px)/1.2 WealthHand,serif;
+  order: -2;
+}
+#game > .event.event-active:is(.finance-debt,[data-insurance-art="menu"]) #eventClose {
+  position: absolute!important;
+  inset: 10px 10px auto auto!important;
+  width: 30px;
+  min-height: 30px!important;
+  height: 30px;
+  background: #faedcd!important;
+  border: 1px solid #b89961!important;
+  border-radius: 50%;
+  color: #425339;
+  box-shadow: inset 0 0 0 2px #fff7df,0 2px 3px #654a2430;
+}
+#game > .event.event-active:is(.finance-debt,[data-insurance-art="menu"]) #eventData {
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+#game > .event.event-active[data-insurance-art="menu"] #actions.home-insurance-menu {
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 8px;
+  margin: 9px 0 0;
+  padding: 0;
+  background: none;
+}
+#game > .event.event-active[data-insurance-art="menu"] #actions.home-insurance-menu > button[data-insurance-icon] {
+  min-height: 97px;
+  gap: 4px;
+  padding: 7px 5px;
+  color: #29452e!important;
+  font: 22px/1 WealthHand,serif;
+  border: 1px solid #b39a65!important;
+  border-radius: 13px!important;
+  background: linear-gradient(165deg,#fff8e1,#f9eac6)!important;
+  box-shadow: inset 0 0 0 2px #fff8e6,0 2px 0 #aa894432!important;
+}
+#game > .event.event-active[data-insurance-art="menu"] #actions.home-insurance-menu > button[data-insurance-icon]::before {
+  width: 61px;
+  height: 61px;
+  flex: none;
+  border-radius: 12px;
+}
+#game > .event.event-active:is(.finance-debt,[data-insurance-art="menu"]) #actions>button:last-child {
+  min-height: 42px;
+  padding: 8px 36px;
+  color: #30482e!important;
+  background: linear-gradient(#ffe29a,#efc05e)!important;
+  border: 1.5px solid #a57836!important;
+  border-radius: 999px!important;
+  box-shadow: inset 0 0 0 2px #fff3c2,0 2px 0 #ab7c424a!important;
+  font: 22px/1 WealthHand,serif;
+  justify-self: center;
+  width: min(100%,220px);
+  padding-inline: 32px;
+  margin-top: 5px;
+  font-size: 20px;
+}
+#game > .event.event-active.finance-debt .finance-debt-art {
+  max-height: 150px;
+  border: 1px solid #b69b64;
+  border-radius: 15px 15px 0 0;
+  background: #f9edcd;
+}
+#game > .event.event-active.finance-debt #eventData>.stat:nth-child(2) {
+  background: #e7ebc9;
+  border-color: #b69b64;
+}
+#game > .event.event-active.finance-debt #actions>button:not(:last-child) {
+  min-height: 47px;
+  border-radius: 999px;
+  font: 21px/1 WealthHand,serif;
+}
+#game > .event.event-active.finance-debt #actions>button.primary {
+  background: linear-gradient(#ffe29a,#efc05e)!important;
+  color: #29412c!important;
+  border-color: #a57836;
+  box-shadow: inset 0 0 0 2px #fff3c2,0 2px 0 #ab7c424a;
+}
+#game > .event.event-active.finance-debt #actions>button:last-child {
+  background: #faf1d8!important;
+  border-color: #a58d59!important;
+  box-shadow: inset 0 0 0 2px #fff8e7!important;
+}
+#game > .event.event-active:is(.finance-debt,[data-insurance-art="menu"]) #eventClose::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+}
+#game > .event.event-active[data-insurance-art="menu"] > #eventData {
+  display: block!important;
+}
+#game > .event.event-active[data-insurance-art="menu"] > #eventData::before {
+  content: "";
+  display: block;
+  height: 103px;
+  background: url("./assets/finance/insurance.webp") center / auto 100% no-repeat,radial-gradient(ellipse,#e8edc9,transparent 68%);
+}
