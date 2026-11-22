@@ -8,7 +8,7 @@
  function panel(title,art,back,month=state.month){close();clearModals();window.HobbyPages?.close();window.EducationPages?.close();window.RelationshipPages?.close();window.PetPages?.close();window.hideRoom?.();
   const owner=state,chosen=slot,cycle=state.month,section=node('section',null,'career-overlay');active=section;section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.setAttribute('aria-label',title);document.body.append(section);document.body.classList.add('career-pages-open');
   const valid=()=>state===owner&&slot===chosen&&state.month===cycle&&active===section&&section.isConnected;
-  const paper=node('div',null,'career-paper'),scene=node('div',null,'career-scene'),img=node('img');scene.dataset.art=art;img.src='assets/career-learning-20261115/'+art+'.webp';if(art==='career'){section.classList.add('career-cafe-home');img.src='assets/career-learning-20261115/career-cafe-20261117.webp';}img.alt='';scene.append(img);paper.append(scene);section.append(paper);
+  const paper=node('div',null,'career-paper'),scene=node('div',null,'career-scene'),img=node('img');scene.dataset.art=art;img.src='assets/career-learning-20261115/'+art+'.webp';if(art==='management'||art==='customer-service')img.src='assets/skill-scenes/'+art+'.webp';if(art==='career'){section.classList.add('career-cafe-home');img.src='assets/career-learning-20261115/career-cafe-20261117.webp';}img.alt='';scene.append(img);paper.append(scene);section.append(paper);
   const content=node('div',null,'career-content'),header=node('header');paper.append(content);const returnButton=node('button','← 返回');returnButton.type='button';returnButton.onclick=()=>{if(valid())back();};header.append(returnButton,node('span',date(month)));content.append(header,node('h1',title));
   const message=node('p','','career-message');message.setAttribute('role','status');
   function button(label,fn,{primary=false,disabled=false,parent=content}={}){const b=node('button',label,primary?'career-primary':'');b.type='button';b.disabled=disabled;b.onclick=()=>{if(valid())fn(b);};parent.append(b);return b;}
@@ -48,7 +48,7 @@
   p.button(origin==='career'?'返回我的职业':'返回学习',back).classList.add('career-back');
  }
  function management(notice='',back=skills){if(typeof notice!=='string')notice='';coffeeCareerData();const p=panel('管理基础课程','management',back),opts=()=>({free:currentCareerTime().free,reserve:necessaryPetCareHours(),recovery:isRecoveryMonth(state),save}),expected=R.courseToken(state),miss=R.courseMissing(state,opts()),xp=Math.max(0,state.coffee.skills.management.xp||0);
-  p.content.append(node('p','学习沟通协调、任务安排与团队管理。'),node('p','通过案例讨论和练习，积累管理知识。','career-note'));
+  p.content.append(node('p','学习沟通协调、任务安排与团队管理。','career-skill-intro'));
   const level=p.box('管理技能 Lv.'+R.skillLevel(state,'management'));level.classList.add('career-management-level');const bar=node('progress');bar.max=400;bar.value=xp;bar.setAttribute('aria-label','管理技能累计经验');level.append(bar,node('p',xp+' / 400 XP'));
   const stats=p.box('本次学习');p.row(stats,'课程费用',money(120));p.row(stats,'自由时间','−3小时');p.row(stats,'能量','−1');p.row(stats,'管理经验',R.skillLevel(state,'management')>=5?'已满级':'+'+Math.min(10,400-xp)+'XP');
   p.content.append(node('p','本月已学习 '+R.courseRows(state).length+'次','career-note'),p.message);p.message.textContent=notice||miss.join('；');
@@ -87,8 +87,11 @@
   if(R.next(state))p.button('查看晋升条件',promotion,{parent:growth});p.button('职业学习',()=>skills('career'),{parent:growth});const other=p.box('其他选择');p.button('查看其他工作机会',()=>{close();openCareerMarket();},{parent:other});p.button(state.pendingResignation?'已安排下个月离职':'申请辞职',resignation,{parent:other,disabled:!state.job});p.button('返回房屋',room).classList.add('career-back');compactCareer(p);
  }
  function serviceSkill(level,experience){
-  const p=panel('顾客服务','career',career),progress=p.box('顾客服务 Lv.'+level);
-  p.row(progress,'经验',experience);
+  const p=panel('顾客服务','customer-service',career),progress=p.box('顾客服务 Lv.'+level);
+  p.section.classList.add('career-service-card');
+  const bar=node('progress');bar.max=level===5?400:level*100;
+  bar.value=Math.floor(state.coffee.skills.service.xp);bar.setAttribute('aria-label','顾客服务经验');
+  progress.append(bar,node('p',experience,'career-service-xp'));
   p.row(progress,'经验来源','日常工作');
   p.button('返回我的职业',career).classList.add('career-back');
   compactCareer(p);
