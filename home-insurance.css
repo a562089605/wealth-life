@@ -8,3 +8,104 @@
  margin: 0.6rem auto;
  border-radius: 12px;
 }
+
+.home-insurance-menu-art { max-height: min(110px, 15dvh); }
+.event.event-active > #actions.home-insurance-menu {
+ display: grid;
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ gap: 8px;
+ max-height: none;
+ overflow: visible;
+ flex: 0 1 auto;
+}
+.event #actions.home-insurance-menu > button {
+ box-sizing: border-box;
+ width: 100%;
+ min-width: 0;
+ margin: 0;
+ padding: 8px;
+ white-space: normal;
+}
+.event #actions.home-insurance-menu > button:last-child { grid-column: 1 / -1; }
+
+/* Illustration and live controls share the same parchment surface. */
+.event[data-insurance-art], .pet-insurance-paper {
+ --insurance-paper: #fff2d4;
+ --insurance-ink: #284733;
+ --insurance-border: #c6a55d;
+ --insurance-gold: #f4d57c;
+ --insurance-art: url("./assets/finance/insurance-illustrations.webp");
+ background: radial-gradient(ellipse at top, #fff9e9, var(--insurance-paper));
+ color: var(--insurance-ink);
+ border: 2px solid var(--insurance-border);
+}
+.event[data-insurance-art] #eventTitle {
+ color: var(--insurance-ink);
+ text-align: center;
+}
+.event[data-insurance-art]:not([data-insurance-art="menu"]) #eventTitle::before,
+.pet-insurance-paper h2::before {
+ content: "";
+ display: block;
+ width: clamp(76px, 18vw, 112px);
+ aspect-ratio: 1;
+ margin: 0 auto 6px;
+ background: var(--insurance-art) var(--insurance-icon-position) / 200% 200%;
+ border-radius: 24%;
+}
+.event[data-insurance-art="medical"], [data-insurance-icon="medical"] { --insurance-icon-position: left top; }
+.pet-insurance-paper, [data-insurance-icon="pet"] { --insurance-icon-position: right top; }
+.event[data-insurance-art="auto"], [data-insurance-icon="auto"] { --insurance-icon-position: left bottom; }
+.event[data-insurance-art="home"], [data-insurance-icon="home"] { --insurance-icon-position: right bottom; }
+
+.event[data-insurance-art] #eventData .stat {
+ min-width: 0;
+ background: #fffaed;
+ border: 1px solid #dbc28a;
+ overflow-wrap: anywhere;
+}
+.event[data-insurance-picker="active"] #eventData .stat { background: #e8ecd2; }
+.event[data-insurance-art] #actions { background: transparent; overflow-x: hidden; }
+.event[data-insurance-art] #actions button, .pet-insurance-paper button {
+ border: 1px solid var(--insurance-border);
+ color: var(--insurance-ink);
+ white-space: normal;
+}
+.event[data-insurance-art] #actions button.primary, .pet-insurance-paper button {
+ background: var(--insurance-gold);
+}
+.event[data-insurance-art] #actions button.primary::after {
+ content: "";
+ display: inline-block;
+ width: 8px;
+ height: 12px;
+ margin-inline-start: 8px;
+ border-radius: 80% 0 80% 0;
+ background: #6f803d;
+}
+.event #actions.home-insurance-menu > button[data-insurance-icon] {
+ display: grid;
+ justify-items: center;
+ gap: 3px;
+ background: #fff0ca;
+ font-weight: 700;
+}
+.event #actions.home-insurance-menu > button[data-insurance-icon]::before {
+ content: "";
+ width: clamp(54px, 15vw, 90px);
+ aspect-ratio: 1;
+ background: var(--insurance-art) var(--insurance-icon-position) / 200% 200%;
+ border-radius: 22%;
+}
+.event #actions.home-insurance-menu > button:last-child { background: var(--insurance-gold); }
+.event[data-insurance-picker] #actions > button:nth-child(-n+2) {
+ display: grid;
+ gap: 2px;
+ justify-items: center;
+}
+.event[data-insurance-picker] #actions > button > span { font-size: .85em; }
+.event[data-insurance-picker] #actions > button.primary::after { display: none; }
+@media (max-height: 650px) {
+ .event[data-insurance-art] #eventTitle::before { width: 58px; }
+ .event #actions.home-insurance-menu > button[data-insurance-icon]::before { width: 48px; }
+}

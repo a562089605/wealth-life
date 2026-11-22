@@ -4,16 +4,46 @@ INSURANCE.health=['基础医疗险',200];
 function medicalCoverage(s=state){const p=s.insurance?.health;if(!p?.active)return 0;return p.coverage??1;}
 function applyPendingMedicalPolicy(s){const x=s.pendingMedicalPolicy;if(!x||x.effectiveMonth>s.month)return false;
  s.insurance??={};s.insurance.health=x.plan?{...MEDICAL_PLANS[x.plan],plan:x.plan,active:true,effectiveMonth:x.effectiveMonth}: {...s.insurance.health,active:false};delete s.pendingMedicalPolicy;return true;}
-function confirmMedicalPlan(plan){if(plan!==null&&!MEDICAL_PLANS[plan])return false;syncFinance();const old=state.insurance.health;
- if(old?.active){if(plan===old.plan){delete state.pendingMedicalPolicy;save();openMedicalInsurance();return true;}state.pendingMedicalPolicy={plan,effectiveMonth:state.month+1};save();openMedicalInsurance();return true;}
- if(plan===null){delete state.pendingMedicalPolicy;save();openMedicalInsurance();return true;}
- const p=MEDICAL_PLANS[plan],other=premiumsTotal(),due=Math.max(0,roundCash(other+p.monthly-(paymentReceipt().premiums||0)));
- if(!payMonthly('premiums',due)){showEvent('医疗保险','保费不足','付款完成后才生效，不自动借款。',[['本次应付',priceText(due)]],[['申请借款',()=>openBankLoan(Math.max(1,Math.ceil(due-state.cash)),{after:openMedicalInsurance}),true],['返回',openMedicalInsurance,false]]);return false;}
- state.insurance.health={...p,plan,active:true,effectiveMonth:state.month};syncFinance();save();openMedicalInsurance();return true;}
-function openMedicalInsurance(){syncFinance();const p=state.insurance.health,x=state.pendingMedicalPolicy;
+function medicalPremiumDue(plan){
+ return Math.max(0,roundCash(premiumsTotal()+MEDICAL_PLANS[plan].monthly-(paymentReceipt().premiums||0)));
+}
+function confirmMedicalPlan(plan,reopen=openMedicalInsurance){if(plan!==null&&!MEDICAL_PLANS[plan])return false;syncFinance();const old=state.insurance.health;
+ if(old?.active){if(plan===old.plan){delete state.pendingMedicalPolicy;save();reopen();return true;}state.pendingMedicalPolicy={plan,effectiveMonth:state.month+1};save();reopen();return true;}
+ if(plan===null){delete state.pendingMedicalPolicy;save();reopen();return true;}
+ const p=MEDICAL_PLANS[plan],due=medicalPremiumDue(plan);
+ if(!payMonthly('premiums',due)){showEvent('医疗保险','保费不足','付款完成后才生效，不自动借款。',[['本次应付',priceText(due)]],[['申请借款',()=>openBankLoan(Math.max(1,Math.ceil(due-state.cash)),{after:reopen}),true],['返回',reopen,false]]);return false;}
+ state.insurance.health={...p,plan,active:true,effectiveMonth:state.month};syncFinance();save();reopen();return true;}
+function previewMedicalPlan(plan,reopen){
+ const current=state.insurance.health;
+ const selected=MEDICAL_PLANS[plan];
+ const keeping=current?.active&&plan===current.plan;
+ const due=current?.active ? 0 : medicalPremiumDue(plan);
+ const effective=keeping?'保留当前保障':current?.active?'下月生效':'确认后立即生效';
+ const action=keeping?'确认保留当前保障':current?.active?'确认下月切换':due>0?'确认支付 '+priceText(due):'确认方案';
+ showEvent('医疗保险',selected.name+(current?.active&&!keeping?'切换预览':'投保预览'),'已发生的治疗不追溯赔付。',[
+  ...(current?.active&&!keeping?[['当前保障',current.name||'旧版医疗险']]:[]),
+  ['赔付比例',Math.round(selected.coverage*100)+'%'],
+  ['方案月保费',priceText(selected.monthly)],
+  ['本次应付',priceText(due)],
+  ['生效时间',effective]
+ ],[[action,()=>confirmMedicalPlan(plan,reopen),true],['返回医疗保障选择',reopen,false]]);
+ window.modalReturn=reopen;
+}
+function previewMedicalStop(reopen){
+ showEvent('医疗保险','确认下月停保','本月保障和已付保费保留，下月起停止保障。',[
+  ['本次应付',priceText(0)]
+ ],[['确认下月停保',()=>confirmMedicalPlan(null,reopen),true],['返回医疗保障选择',reopen,false]]);
+ window.modalReturn=reopen;
+}
+function openMedicalInsurance(back=finish){const reopen=()=>openMedicalInsurance(back);syncFinance();const p=state.insurance.health,x=state.pendingMedicalPolicy;
  showEvent('医疗保险','医疗保障选择','未投保时确认付款后立即生效；已有保障的切换或取消从下月生效，当月保障和已付保费保留。已经发生的治疗按原报价，不追溯赔付。',[
  ['当前保障',p?.active?(p.name||'旧版医疗险')+' · 赔付'+Math.round(medicalCoverage()*100)+'%':'未投保'],['月保费',priceText(p?.active?p.monthly:0)],...(x?[['下月安排',x.plan?MEDICAL_PLANS[x.plan].name:'停止保障']]:[])],
- [['基础医疗险 · $200.00/月 · 赔付80%',()=>confirmMedicalPlan('basic'),true],['全额医疗险 · $400.00/月 · 赔付100%',()=>confirmMedicalPlan('full'),false],['不购买／下月停保',()=>confirmMedicalPlan(null),false],['返回',finish,false]]);}
+ [...Object.entries(MEDICAL_PLANS).map(([plan,option])=>[
+  option.name+' · '+priceText(option.monthly)+'/月 · 赔付'+Math.round(option.coverage*100)+'%'+(p?.active&&p.plan===plan?' · 当前方案':''),
+  ()=>previewMedicalPlan(plan,reopen),!p?.active||p.plan!==plan,p?.active&&p.plan===plan&&!x
+ ]),...(p?.active?[['下月停保',()=>previewMedicalStop(reopen),false]]:[]),[back===finish?'返回':'返回保险与保障',back,false]]);
+ window.modalReturn=back;
+}
 const medicalSyncBefore=syncFinance;syncFinance=function(){if(state)applyPendingMedicalPolicy(state);return medicalSyncBefore();};
 const medicalOpenInsuranceBefore=openInsurance;openInsurance=function(type){if(type==='health')return openMedicalInsurance();return medicalOpenInsuranceBefore(type);};
 const medicalBuyInsuranceBefore=buyInsurance;buyInsurance=function(type){if(type==='health')return openMedicalInsurance();return medicalBuyInsuranceBefore(type);};

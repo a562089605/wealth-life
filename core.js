@@ -94,7 +94,7 @@ $('housingBtn').onclick=()=>{
 };
 
 function buyInsurance(type){syncFinance();const cfg=INSURANCE[type];if(!cfg)return;if(state.insurance[type]?.active){showEvent('INSURANCE',cfg[0]+'已持有','不会重复购买或重复计费。',[['保费',money(cfg[1])+'/月']],[['返回',finish,true]]);return}if(type==='auto'&&!state.carOwned)return;if(type==='pet'&&!state.pets.length)return;state.insurance[type]={name:cfg[0],active:true,monthly:cfg[1]};syncFinance();showEvent('INSURANCE',cfg[0]+'已生效','保费从本月月末开始扣除，每月只扣一次。',[['持续保费',money(cfg[1])+'/月']],[['继续',finish,true]]);render()}
-$('healthBtn').onclick=()=>buyInsurance('health');$('incomeBtn').onclick=()=>buyInsurance('income');
+$('healthBtn').onclick=()=>buyInsurance('health');
 function buyInvestment(kind,requestedAmount=null){const amt=requestedAmount===null?Number(prompt('投入'+kind+'金额（美元）','200')):Number(requestedAmount);if(!Number.isFinite(amt)||amt<=0||amt>state.cash)return;state.cash-=amt;state.assets.push({id:assetId(),name:kind,kind:'market',category:kind,cost:amt,value:amt,cf:0});render();}
 function openCD(){showEvent('CD','12个月 CD','本金锁定12次月末结算，到期自动回到现金。利息不重复计入月现金流。',[['本金','$1,000.00'],['年利率','4%'],['期限','12个月']],[['存入 $1,000.00',()=>{if(state.cash<1000)return;state.cash-=1000;(state.financeLedger??=[]).push({kind:'cdPurchase',month:state.month,amount:1000});state.assets.push({id:assetId(),name:'12个月CD',kind:'cd',cost:1000,cf:0,rate:.04,maturesAt:state.month+12,interestAccrued:0});finish()},true,state.cash<1000],['取消',finish,false]])}
 function openLearning(){showEvent('LEARNING','学习与技能','选择学历学习或兴趣练习；打开菜单不会自动扣款。',[],[['学历学习',()=>$('studyBtn').click(),true,!state.study&&!EDU[state.education].next],['练习兴趣技能',()=>$('hobbyBtn').click(),false],['返回',finish,false]])}

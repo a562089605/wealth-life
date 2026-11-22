@@ -61,15 +61,17 @@ function openLoanPayments(after=window.openRoom||finish,backLabel='返回房屋'
  if(backLabel!=='返回房屋')window.modalReturn=after;
  const cards=rows.map(row=>{
   const loan=targets.find(target=>target.key===row.key)?.l||state.loans.find(loan=>loan.id===row.key);
+  const loanIndex=state.loans.findIndex(loan=>loan.id===row.key);
+  const title=loanIndex<0?row.name:(loan.type==='学生贷款'?'学生贷款':'银行贷款')+' '+(loanIndex+1);
   const paid=row.status==='paid';
   const short=roundCash(Math.max(0,row.due-state.cash));
   const origin=Number.isInteger(loan?.originMonth)?'第 '+(Math.floor(loan.originMonth/12)+1)+' 年第 '+(loan.originMonth%12+1)+' 月借入':'';
-  return '<div class="wl-panel wl-bank-card"><h3>'+batchEscape(row.name)+'</h3><p>'+
+  return '<div class="wl-panel wl-bank-card"><h3>'+batchEscape(title)+'</h3><p>'+
    (origin?origin+'<br>':'')+(loan?.principal!=null?'借款金额 '+priceText(loan.principal)+'<br>':'')+
    '固定年利率 '+(row.apr*100).toFixed(2)+'%<br>本月月供 '+priceText(row.due)+
    ' · 本金 '+priceText(row.principal)+' · 利息 '+priceText(row.interest)+'</p>'+
-   '<button data-batch="payLoan" data-key="'+batchEscape(row.key)+'" '+(paid||short?'disabled':'')+'>'+
-   (paid?'本月已付':'支付本期 '+priceText(row.due))+'</button>'+
+   '<button data-batch="payLoan"'+(paid?' class="wl-loan-paid"':'')+' data-key="'+batchEscape(row.key)+'" '+(paid||short?'disabled':'')+'>'+
+   (paid?'本月已付 '+priceText(row.due):'支付本期 '+priceText(row.due))+'</button>'+
    (!paid&&short?'<small>现金不足，还差 '+priceText(short)+'</small>':'')+'</div>';
  }).join('');
  const scroller=$('eventData');

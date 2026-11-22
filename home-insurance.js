@@ -48,6 +48,7 @@
 
  function illustratedEvent(type, title, description, rows, actions, art) {
   showEvent(type, title, description, rows, actions);
+  if (type === '房险') return;
   const image = document.createElement('img');
   image.className = 'home-insurance-art';
   image.src = './assets/home-insurance/' + art + '.webp';
@@ -58,26 +59,82 @@
  const beforeEvent = showEvent;
  showEvent = function (...args) {
   document.querySelector('.home-insurance-art')?.remove();
-  return beforeEvent.apply(this, args);
+  $('actions').classList.remove('home-insurance-menu');
+  const panel = $('eventTitle').closest('.event');
+  delete panel.dataset.insuranceArt;
+  delete panel.dataset.insurancePicker;
+  const result = beforeEvent.apply(this, args);
+  const kind = {医疗保险:'medical',车险:'auto',房险:'home'}[args[0]];
+  if (kind && $('eventTitle').textContent === args[1]) {
+   panel.dataset.insuranceArt = kind;
+   if (args[1] === '医疗保障选择') {
+    panel.dataset.insurancePicker = state.insurance.health?.active ? 'active' : 'uninsured';
+    Array.from($('actions').children).slice(0, 2).forEach(button => {
+     const [name, ...summary] = button.textContent.split(' · ');
+     const title = document.createElement('strong');
+     title.textContent = name;
+     const terms = document.createElement('span');
+     terms.textContent = summary.join(' · ');
+     button.replaceChildren(title, terms);
+    });
+   }
+  }
+  return result;
  };
 
  function openMenu(back=window.openRoom,backLabel='返回房屋') {
   if (state.requiredIncident) return openRequiredIncident();
-  illustratedEvent('保险与保障', '保险与保障', '查看保障方案与本月保费。', [], [
-   ['医疗险', openMedicalInsurance, false],
+  const menu = () => openMenu(back, backLabel);
+  showEvent('保险与保障', '保险与保障', '查看保障方案与本月保费。', [], [
+   ['医疗险', () => openMedicalInsurance(menu), false],
    ['宠物险', () => openInsurance('pet'), false],
-   ['车险', () => openInsurance('auto'), false],
-   ['房险', openPolicy, true],
-   ['收入保障', () => openInsurance('income'), false],
+   ['车险', () => openAutoInsurance(menu), false],
+   ['房险', () => openPolicy(menu), false],
    [backLabel, back, false]
-  ], 'menu');
-  if($('eventTitle').textContent==='保险与保障')window.modalReturn=back;
+  ]);
+  if ($('eventTitle').textContent === '保险与保障') {
+   $('actions').classList.add('home-insurance-menu');
+   $('eventTitle').closest('.event').dataset.insuranceArt = 'menu';
+   ['medical','pet','auto','home'].forEach((kind,index) => {
+    $('actions').children[index].dataset.insuranceIcon = kind;
+   });
+   window.modalReturn = back;
+  }
  }
 
- function openPolicy() {
+ function openAutoInsurance(back) {
+  if (state.requiredIncident) return openRequiredIncident();
+  const policy = state.insurance.auto;
+  const [name, monthly] = INSURANCE.auto;
+  const canBuy = state.carOwned && !policy?.active;
+  const due = canBuy ? Math.max(0, roundCash(premiumsTotal() + monthly - (paymentReceipt().premiums || 0))) : 0;
+  const reopen = () => openAutoInsurance(back);
+  const owner = state;
+  const month = state.month;
+  const rows = [['当前保障', policy?.active ? '已投保' : '未投保'], ['月保费', priceText(policy?.active ? policy.monthly : monthly)]];
+  if (canBuy) rows.push(['本次应付', priceText(due)]);
+  showEvent('车险', canBuy ? name + '投保预览' : name,
+   !state.carOwned ? '拥有车辆后可投保。' : policy?.active ? '保障已生效，保费按月结算。' : '确认支付本月应付保费后生效。', rows, [
+   ...(canBuy ? [['确认投保 ' + priceText(due), () => {
+    if (state !== owner || state.month !== month || !state.carOwned || state.insurance.auto?.active ||
+        due !== Math.max(0, roundCash(premiumsTotal() + monthly - (paymentReceipt().premiums || 0)))) return reopen();
+    if (transaction(() => {
+     if (!payMonthly('premiums', due)) return false;
+     state.insurance.auto = { name, monthly, active: true };
+     syncFinance();
+     return true;
+    }, reopen)) reopen();
+   }, true, state.cash < due]] : []),
+   ['返回保险与保障', back, false]
+  ]);
+  window.modalReturn = back;
+ }
+
+ function openPolicy(returnToMenu = openMenu) {
   if (state.requiredIncident) return openRequiredIncident();
   const policy = syncPolicy();
-  const back = ['返回保险与保障', openMenu, false];
+  const back = ['返回保险与保障', returnToMenu, false];
+  const reopen = () => openPolicy(returnToMenu);
   if (state.housing !== 'own') {
    return illustratedEvent('房险', '暂不可投保', '房险仅保障玩家当前自有住房。', [], [back], 'renter');
   }
@@ -86,8 +143,8 @@
     ['基础房险', '$85/月 · 赔付80%'],
     ['全额房险', '$100/月 · 赔付100% · 免赔额$0']
    ], [
-    ['选择基础房险', () => openPurchase('basic'), false],
-    ['选择全额房险', () => openPurchase('full'), true], back
+    ['选择基础房险', () => openPurchase('basic', reopen), false],
+    ['选择全额房险', () => openPurchase('full', reopen), true], back
    ], 'plans');
   }
   const plan = plans[policy.tier];
@@ -100,29 +157,29 @@
   ];
   if (pending) rows.push(['下月安排', pending.tier ? '改为' + plans[pending.tier].name : '停止续保']);
   illustratedEvent('房险', plan.name, coverage, rows, [
-   ...(!paid ? [['确认续费 ' + priceText(plan.monthly), () => payPremium(policy.tier), true, state.cash < plan.monthly]] : []),
-   ...(!paid && state.cash < plan.monthly ? [['筹措保费', () => showFundingOptions(plan.monthly, openPolicy), false]] : []),
+   ...(!paid ? [['确认续费 ' + priceText(plan.monthly), () => payPremium(policy.tier, reopen), true, state.cash < plan.monthly]] : []),
+   ...(!paid && state.cash < plan.monthly ? [['筹措保费', () => showFundingOptions(plan.monthly, reopen), false]] : []),
    ['下月改为' + plans[policy.tier === 'basic' ? 'full' : 'basic'].name,
-    () => changePolicy(policy.tier === 'basic' ? 'full' : 'basic'), false],
-   ['下月停止续保', () => changePolicy(null), false],
-   ...(pending ? [['撤回下月变更', () => changePolicy(policy.tier), false]] : []),
+    () => previewPolicyChange(policy.tier === 'basic' ? 'full' : 'basic', reopen), false],
+   ['下月停止续保', () => previewPolicyChange(null, reopen), false],
+   ...(pending ? [['撤回下月变更', () => changePolicy(policy.tier, reopen), false]] : []),
    back
   ], 'policy');
  }
 
- function openPurchase(tier) {
+ function openPurchase(tier, back) {
   const plan = plans[tier];
   illustratedEvent('房险', '确认投保', '首期保费支付成功后，本月保障立即生效。', [
    ['保障方案', plan.name], ['本次保费', priceText(plan.monthly)],
    ['赔付比例', Math.round(plan.rate * 100) + '%'], ['免赔额', '$0']
   ], [
-   ['确认投保 ' + priceText(plan.monthly), () => payPremium(tier), true, state.cash < plan.monthly],
-   ...(state.cash < plan.monthly ? [['筹措保费', () => showFundingOptions(plan.monthly, () => openPurchase(tier)), false]] : []),
-   ['返回房险', openPolicy, false]
+   ['确认投保 ' + priceText(plan.monthly), () => payPremium(tier, back), true, state.cash < plan.monthly],
+   ...(state.cash < plan.monthly ? [['筹措保费', () => showFundingOptions(plan.monthly, () => openPurchase(tier, back)), false]] : []),
+   ['返回房险', back, false]
   ], 'confirm');
  }
 
- function payPremium(tier) {
+ function payPremium(tier, back) {
   const policy = syncPolicy();
   if (state.housing !== 'own' || state.requiredIncident ||
       policy && (policy.paidMonth === state.month || policy.tier !== tier)) return;
@@ -132,17 +189,28 @@
    state.homeInsurance = { ...policy, tier, paidMonth: state.month };
    state.homeInsuranceReceipt = { month: state.month, amount: plan.monthly };
    return true;
-  }, openPolicy)) openPolicy();
+  }, back)) back();
  }
 
- function changePolicy(tier) {
+ function previewPolicyChange(tier, back) {
+  const title = tier ? '确认下月切换房险' : '确认下月停止续保';
+  const rows = [['下月安排', tier ? plans[tier].name : '停止续保'], ['本次应付', priceText(0)]];
+  if (tier) rows.push(['新方案月保费', priceText(plans[tier].monthly)]);
+  showEvent('房险', title, '变更从下月生效，本月保单状态不受影响。', rows, [
+   [title, () => changePolicy(tier, back), true],
+   ['返回房险', back, false]
+  ]);
+  window.modalReturn = back;
+ }
+
+ function changePolicy(tier, back = openPolicy) {
   const policy = syncPolicy();
   if (!policy || state.requiredIncident) return;
   if (transaction(() => {
    if (tier === policy.tier) delete policy.change;
    else policy.change = { month: state.month + 1, tier };
    return true;
-  }, openPolicy)) openPolicy();
+  }, back)) back();
  }
 
  function checkOnLeave(random = Math.random) {

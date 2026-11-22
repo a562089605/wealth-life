@@ -116,7 +116,7 @@
   }).disabled=!q.due||state.cash<q.due;
   if(q.due>state.cash)status.textContent='现金不足，尚未扣款。';hit(ctx,e,'返回宠物资料',22,91.5,56,6,()=>openDetail(index));hit(ctx,e,'返回宠物资料',2,1,13,7,()=>openDetail(index));focusFirst(ctx);
  }
- function openInsuranceSelection(){const pets=state.pets||[];if(pets.length===1)return openPetInsurance(0);const ctx=panel('选择宠物保险'),paper=plain(ctx,'宠物保险');paper.append(textNode('p','自愿选择投保的伙伴，每只宠物单独计费，已投保的保费相加。普通生病、受伤医疗费全额赔付；疏忽照护治疗最多赔付50%，物损自付。'));
+ function openInsuranceSelection(){const pets=state.pets||[];if(pets.length===1)return openPetInsurance(0);const ctx=panel('选择宠物保险'),paper=plain(ctx,'宠物保险');paper.classList.add('pet-insurance-paper');paper.append(textNode('p','自愿选择投保的伙伴，每只宠物单独计费，已投保的保费相加。普通生病、受伤医疗费全额赔付；疏忽照护治疗最多赔付50%，物损自付。'));
   if(!pets.length)paper.append(textNode('p','领养伙伴后可选择投保。'));
   for(const [index,p]of pets.entries()){const q=PetInsurance.quote(state,index);if(q)action(ctx,paper,petName(p)+' · '+petInsuranceStatus(p)+' · '+priceText(q.monthly)+'/月',()=>{if(validPet(ctx,p,index))openPetInsurance(index);});}
   action(ctx,paper,'返回我的宠物',openOverview);focusFirst(ctx);
@@ -144,7 +144,7 @@
   hit(ctx,e,'返回宠物资料',5,90.7,90,7.2,()=>openDetail(index));hit(ctx,e,'返回宠物资料',2,1,13,7,()=>openDetail(index));focusFirst(ctx);
  }
  function insuranceSave(){backup();const k=key(slot),raw=localStorage.getItem(k),bk=k+'_before_pet_insurance_20261106';if(raw&&!localStorage.getItem(bk))localStorage.setItem(bk,raw);return save();}
- function openStopInsurance(index,q){const p=state.pets[index],ctx=panel('下月停保'),paper=plain(ctx,petName(p)+' · 下月停保');
+ function openStopInsurance(index,q){const p=state.pets[index],ctx=panel('下月停保'),paper=plain(ctx,petName(p)+' · 下月停保');paper.classList.add('pet-insurance-paper');
   paper.append(textNode('p',q.policyKey==='pet'?'这是旧版共用保单，停保会同时影响该保单保障的所有宠物。':'仅停止这位伙伴的保险。'));
   paper.append(textNode('p','本月保障保留，不退本月保费。'+calendar(state.month+1)+'起停止续保和保障。'));
   const status=message(paper);action(ctx,paper,'确认下月停保',b=>{if(paying||!validPet(ctx,p,index))return;paying=true;b.disabled=true;const result=PetInsurance.stop(state,index,q.token,insuranceSave);paying=false;

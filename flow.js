@@ -38,7 +38,7 @@ function insuranceMarkup(preselect){const items=Object.entries(INSURANCE).filter
 function insuranceDraftTotal(box){const selected=[...box.querySelectorAll('[data-insurance]:checked')].map(i=>i.dataset.insurance);const total=premiumsTotal()+selected.filter(k=>!state.insurance[k]?.active).reduce((n,k)=>n+INSURANCE[k][1],0);return{selected,due:roundCash(Math.max(0,total-(paymentReceipt().premiums||0)))}}
 function refreshInsurance(){document.querySelectorAll('.wl-insurance').forEach(box=>{const{due}=insuranceDraftTotal(box);box.querySelector('[data-insurance-total]').textContent=money(due);box.querySelector('[data-v26="insuranceConfirm"]').disabled=due>0&&due>state.cash;box.querySelector('[data-insurance-warning]').textContent=due>state.cash?'现金不足：可减少新增保单，已有保单保费仍将于月末支付。':''})}
 function openInsurance(type){showEvent('保险','保险与保障','先选方案，确认后才投保和扣款。',[],[['返回',finish,false]]);$('eventData').innerHTML=insuranceMarkup(type);$('eventData').style.display='block';refreshInsurance()}
-buyInsurance=openInsurance;$('healthBtn').onclick=()=>openInsurance('health');$('incomeBtn').onclick=()=>openInsurance('income');
+buyInsurance=openInsurance;$('healthBtn').onclick=()=>openInsurance('health');
 
 // Confirmed opening: no preset classmates; relationship lifecycle adds the already-known manager.
 makePeople=function(){return []};
