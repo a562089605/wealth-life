@@ -199,7 +199,7 @@ function openTownOpportunity(message=''){
   '<h3>'+batchEscape(project.name)+'</h3><p>'+batchEscape(project.desc)+'</p>'+
   '<div class="town-opportunity-cost">投入 <strong>'+priceText(project.cost)+'</strong></div>'+
   '<dl>'+rows.map(([label,value])=>'<div><dt>'+batchEscape(label)+'</dt><dd>'+batchEscape(value)+'</dd></div>').join('')+'</dl>'+
-  (project.id==='market-research'?'<p>成功净赚 '+priceText(project.reward-project.cost)+'。未成功无报酬，已用成本照扣。</p>':'')+
+  (project.hours&&project.reward?'<p>成功净赚 '+priceText(project.reward-project.cost)+'。未成功无报酬，已用成本照扣。</p>':'')+
   (blocked?'<p>'+batchEscape(blocked)+'</p>':'')+
   (shortfall>0?'<p>还差 '+priceText(shortfall)+'，可申请银行贷款。</p>':'')+'</div>';
  data.style.display='block';

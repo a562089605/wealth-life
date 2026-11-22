@@ -116,7 +116,7 @@ $('jobMarketBtn').onclick=openCareerMarket;
 function openWorkAdjustment(){showEvent('职业预览','调整工作','',[['当前工作',state.job||'未就业'],['税前年薪',priceText(state.annualSalary||0)]],[['查看其他工作机会',openCareerMarket,true],['确认辞职',()=>{state.job=null;state.salary=0;state.annualSalary=0;state.unemployedMonths=0;save();finish()},false,!state.job],['返回，不修改',finish,false]])}
 // Expanded saved monthly opportunity pool. Outcomes are resolved and shown before month end.
 V26_OFFERS.push(
- {id:'tutor',name:'周末辅导项目',cost:80,reward:260,chance:.8,effects:{energy:-5,social:3},desc:'支付教材和交通费，学生是否报名存在不确定性。'},
+ {id:'tutor',name:'周末辅导项目',cost:80,reward:260,chance:.8,hours:3,art:'assets/finance/weekend-tutor.webp',effects:{energy:-5},desc:'支付教材和交通费，成功接到辅导项目后获得一次性报酬。'},
  {id:'repair',name:'社区维修摊位',cost:200,reward:480,chance:.7,effects:{energy:-8},desc:'工具和材料投入，订单不足会亏损。'},
  {id:'craft',name:'手工小店',cost:450,cf:42,chance:.7,effects:{energy:-5,happiness:3},desc:'小批量制作并尝试销售；订单稳定后净分配已扣耗材。'},
  {id:'market-research',name:'付费用户访谈',cost:20,reward:90,chance:.9,hours:1,art:'assets/finance/paid-user-interview.webp',effects:{energy:-3},desc:'支付交通费，符合访谈条件才会得到报酬。'},
