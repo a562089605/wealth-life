@@ -62,8 +62,15 @@
  text-size-adjust:100%;
 }
 .painted-canvas.housing .housing-apartment-name{
- font-size:clamp(13px,4.2vw,20px);
- font-size:4.8cqw;
+ justify-content:flex-start;
+ padding-inline-start:.35cqw;
+ font-family:system-ui,"PingFang SC","Noto Sans CJK SC",sans-serif;
+ font-size:5.4cqw;
+ font-weight:900;
+ color:#073426;
+ background:#faf3de;
+ border-radius:2px;
+ box-shadow:0 0 .7cqw .2cqw #faf3de;
 }
 .painted-canvas.detail .housing-apartment-name{
  font-size:clamp(22px,7vw,34px);
@@ -92,17 +99,38 @@
  filter:blur(.75cqw);
 }
 
-.painted-canvas .owner-housing-entry {
- position: absolute;
- z-index: 4;
- top: 15%;
- left: 21%;
- width: 58%;
- min-height: 42px;
- margin: 0;
- border: 1px solid #958550;
- border-radius: 19px;
- background: #fff0bd;
- color: #34452d;
- font-size: clamp(12px, 3vw, 17px);
+.painted-canvas.housing .owner-housing-entry {
+ position:absolute;
+ z-index:4;
+ left:18.3%;
+ top:14.2%;
+ width:60.4%;
+ height:3.5%;
+ min-height:0!important;
+ margin:0;
+ padding:0 1cqw;
+ border:1px solid #acb67d;
+ border-radius:999px;
+ background:linear-gradient(110deg,#e6ebc7,#d8e1b0);
+ color:#183c2a;
+ font-size:3.8cqw;
+ font-weight:750;
+ line-height:1;
+ white-space:nowrap;
+}
+.painted-canvas.housing .owner-housing-entry::after {
+ content:"";
+ position:absolute;
+ inset:-.55cqw 0;
+}
+.painted-canvas.housing .owner-housing-entry:focus-visible {
+ outline:2px solid #315f45;
+ outline-offset:2px;
+}
+
+.painted-canvas.housing .housing-selection-current {
+ left:34%;top:20.55%;width:38%;height:2.65%;
+ background:#faf0cb;
+ box-shadow:0 0 .8cqw .3cqw #faf0cb;
+ font-size:3.7cqw;
 }
