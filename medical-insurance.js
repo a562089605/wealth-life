@@ -7,7 +7,7 @@ function applyPendingMedicalPolicy(s){const x=s.pendingMedicalPolicy;if(!x||x.ef
 function medicalPremiumDue(plan){
  return Math.max(0,roundCash(premiumsTotal()+MEDICAL_PLANS[plan].monthly-(paymentReceipt().premiums||0)));
 }
-function confirmMedicalPlan(plan,reopen=openMedicalInsurance){
+function confirmMedicalPlan(plan,reopen=openMedicalInsurance,onSaved=reopen){
  if(plan!==null&&!MEDICAL_PLANS[plan])return false;
  syncFinance();
  const old=state.insurance.health;
@@ -36,7 +36,7 @@ function confirmMedicalPlan(plan,reopen=openMedicalInsurance){
   showEvent('医疗保险','保险变更未保存','现金、保费和保单已恢复，可以返回重试。',[],[['返回医疗保障选择',reopen,true]]);
   return false;
  }
- reopen();
+ onSaved();
  return true;
 }
 function previewMedicalPlan(plan,reopen){
@@ -55,10 +55,16 @@ function previewMedicalPlan(plan,reopen){
  ],[[action,()=>confirmMedicalPlan(plan,reopen),true],['返回医疗保障选择',reopen,false]]);
  window.modalReturn=reopen;
 }
+function showMedicalStopScheduled(){
+ const returnToRoom=()=>openRoom();
+ showEvent('医疗保险','已安排下月停保','本月保障继续有效，已支付的保费保留。',[],
+  [['返回房屋',returnToRoom,true]]);
+ window.modalReturn=returnToRoom;
+}
 function previewMedicalStop(reopen){
  showEvent('医疗保险','确认下月停保','本月保障和已付保费保留，下月起停止保障。',[
   ['本次应付',priceText(0)]
- ],[['确认下月停保',()=>confirmMedicalPlan(null,reopen),true],['返回医疗保障选择',reopen,false]]);
+ ],[['确认下月停保',()=>confirmMedicalPlan(null,reopen,showMedicalStopScheduled),true],['返回医疗保障选择',reopen,false]]);
  window.modalReturn=reopen;
 }
 function openMedicalInsurance(back=finish){const reopen=()=>openMedicalInsurance(back);syncFinance();const p=state.insurance.health,x=state.pendingMedicalPolicy;
@@ -67,7 +73,7 @@ function openMedicalInsurance(back=finish){const reopen=()=>openMedicalInsurance
  [...Object.entries(MEDICAL_PLANS).map(([plan,option])=>[
   option.name+' · '+priceText(option.monthly)+'/月 · 赔付'+Math.round(option.coverage*100)+'%'+(p?.active&&p.plan===plan?' · 当前方案':''),
   ()=>previewMedicalPlan(plan,reopen),!p?.active||p.plan!==plan,p?.active&&p.plan===plan&&!x
- ]),...(p?.active?[['下月停保',()=>previewMedicalStop(reopen),false]]:[]),[back===finish?'返回':'返回保险与保障',back,false]]);
+ ]),...(p?.active?[x?.plan===null?['已安排下月停保',null,false,true]:['下月停保',()=>previewMedicalStop(reopen),false]]:[]),[back===finish?'返回':'返回保险与保障',back,false]]);
  window.modalReturn=back;
 }
 const medicalSyncBefore=syncFinance;syncFinance=function(){if(state)applyPendingMedicalPolicy(state);return medicalSyncBefore();};

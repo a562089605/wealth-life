@@ -26,8 +26,8 @@ function townCareerNotice(move){
 }
 function renderTown(){
  const game=$('game');document.body.classList.toggle('town-map',townEnabled()&&townVisible&&!game.classList.contains('hidden'));
- if(!townEnabled()||!townVisible){$('townView')?.style.setProperty('display','none','important');return}game.classList.remove('v24-running');const t=townState();let box=$('townView');if(!box){box=document.createElement('section');box.id='townView';game.append(box)}
- box.style.setProperty('display','block','important');const m=calcMetrics(),pos=townPoint(t.position),last=t.movement;
+ if(!townEnabled()||!townVisible)return;game.classList.remove('v24-running');const t=townState();let box=$('townView');if(!box){box=document.createElement('section');box.id='townView';game.append(box)}
+ const m=calcMetrics(),pos=townPoint(t.position),last=t.movement;
  const locked=townPending()||townAnimating||state.gameOver?.final;
  const die=last?.die||1;
  const barista=coffeeSalaryRole(state.job)==='barista';
