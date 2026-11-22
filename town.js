@@ -27,7 +27,7 @@ function townCareerNotice(move){
 function renderTown(){
  const game=$('game');document.body.classList.toggle('town-map',townEnabled()&&townVisible&&!game.classList.contains('hidden'));
  if(!townEnabled()||!townVisible)return;game.classList.remove('v24-running');const t=townState();let box=$('townView');if(!box){box=document.createElement('section');box.id='townView';game.append(box)}
- const m=calcMetrics(),pos=townPoint(t.position),last=t.movement;
+ const pos=townPoint(t.position),last=t.movement;
  const locked=townPending()||townAnimating||state.gameOver?.final;
  const die=last?.die||1;
  const barista=coffeeSalaryRole(state.job)==='barista';
@@ -36,10 +36,7 @@ function renderTown(){
  <span class="town-pawn" data-town-pawn style="left:${pos.x}%;top:${pos.y}%" aria-label="玩家当前位置第${t.position+1}格">${barista?`<img src="${TOWN_ART}barista.webp" alt="">`:'●'}</span>
  <img class="town-flight-die" data-town-flight alt="" hidden></div>
  <div class="town-roll-controls"><button type="button" class="town-crystal-button" data-town="roll" aria-label="掷骰子" ${locked?'disabled':''}><span aria-hidden="true">❧</span><img src="${TOWN_ART}die-${die}.webp" alt=""><span aria-hidden="true">❧</span></button></div>
- <div class="town-status"><b>${last?.die?'掷出 '+last.die+' · '+TOWN_LABELS[TOWN_TYPES[t.position]]:'从家附近出发'}</b>
- <p>现金 ${priceText(state.cash)} · 持续月结余 ${priceText(m.monthlyCF)}</p>
- <p>距离下次发薪 ${townPaydayDistance()} 格 · 停在发薪日才结算</p>
- ${townPending()&&!townAnimating?'<button data-town="resume">继续处理当前事件</button>':''}</div>`;
+ ${townPending()&&!townAnimating?'<button type="button" data-town="resume">继续处理当前事件</button>':''}`;
 
 }
 function rollTown(){
