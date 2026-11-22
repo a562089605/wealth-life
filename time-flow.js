@@ -8,6 +8,12 @@ currentCareerTime=function(){const t=timeBudgetBefore();if(!state)return t;
  const a=allocateEventTimeDebt(state,{month:state.month,baseHours:t.baseFree,recovery:!!recovery});
  return {...t,free:a.blocked||recovery?0:Math.max(0,t.baseFree-t.workHoursDelta-(t.courseHours||0)-a.applied),timeDebtApplied:a.applied||0,timeDebtBlocked:!!a.blocked};};
 
+const timeBeforeOpportunity=currentCareerTime;
+currentCareerTime=function(){
+ const time=timeBeforeOpportunity(),used=state?.opportunityTime;
+ return used&&used.month===state.month?{...time,free:Math.max(0,time.free-used.hours)}:time;
+};
+
 function explorationReturnReasons(){const reasons=[];
  if(state.energy<20)reasons.push('能量低于20');
  if(state.stress>=80)reasons.push('压力达到80或以上');

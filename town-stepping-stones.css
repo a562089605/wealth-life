@@ -3,8 +3,181 @@
 #townView .town-pawn{position:absolute;z-index:2;width:5.4%;color:#a64d3c;line-height:1;transform:translate(-50%,-96%);pointer-events:none}
 #townView .town-pawn img{display:block;width:100%;height:auto;filter:drop-shadow(0 2px 1px #39241748)}
 #townView .town-flight-die{position:absolute;z-index:3;width:11.4%;height:auto;pointer-events:none;filter:drop-shadow(0 5px 3px #422b2166)}
-#townView .town-roll-controls{text-align:center;padding:.65rem;background:#f2e5c9;border-radius:0 0 16px 16px}
-#townView .town-crystal-button{display:inline-flex;align-items:center;justify-content:center;gap:1rem;min-width:9rem;border:1px solid #c8963b;border-radius:999px;background:linear-gradient(#f6d779,#eebc4e);padding:.35rem .9rem;color:#52613c;box-shadow:0 2px 3px #6e4e2d40}
-#townView .town-crystal-button img{width:2.35rem;height:2.35rem;object-fit:contain}
-#townView .town-crystal-button span{font-size:1.4rem}
-#townView .town-crystal-button span:last-child{transform:scaleX(-1)}
+
+/* Compact, illustrated status strip on the town map. */
+body:not(.town-map) :is(.wl-town-status-title,#wlStress,#wlFreeTime,#wlEnergy) { display:none; }
+.town-map #wlHeader .wl-topline { margin-bottom:7px; }
+.town-map #wlHeader #wlDate { font-size:clamp(17px,5vw,22px); }
+.town-map #wlHeader .wl-version { font-size:9px; }
+.town-map #wlHeader .wl-totals {
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:4px 6px;
+ padding:5px 7px 7px;
+ border:1px solid #cfbc8e;
+ border-radius:14px;
+ background:#fbf1da url("assets/finance/paper.webp") repeat;
+ box-shadow:inset 0 0 0 2px #fff8e6,0 2px 0 #b79c5830;
+}
+.town-map #wlHeader .wl-town-status-title {
+ grid-column:1/-1;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:7px;
+ margin:0 0 1px;
+ padding:1px 0 4px;
+ border-bottom:1px dashed #d5c69f;
+ color:#224732;
+ font:600 14px/1.25 "Noto Sans CJK SC",sans-serif;
+}
+.town-map #wlHeader .wl-town-status-title::before,
+.town-map #wlHeader .wl-town-status-title::after {
+ content:"";
+ width:15px;
+ height:15px;
+ background:url("assets/finance/fund-approved/leaf.webp") center/contain no-repeat;
+ mask-image:radial-gradient(ellipse closest-side,#000 61%,transparent);
+ mix-blend-mode:multiply;
+}
+.town-map #wlHeader .wl-town-status-title::after { transform:scaleX(-1); }
+.town-map #wlHeader .wl-total {
+ --stat-paper:#f8edd3;
+ --stat-edge:#d6c193;
+ --stat-ink:#244832;
+ display:grid;
+ grid-template-columns:clamp(25px,8vw,34px) minmax(0,1fr);
+ grid-template-rows:auto auto;
+ justify-items:start;
+ align-content:center;
+ align-items:center;
+ gap:1px 3px;
+ min-width:0;
+ min-height:52px;
+ padding:4px;
+ border:1px solid var(--stat-edge);
+ border-radius:11px 9px 12px 10px;
+ color:var(--stat-ink);
+ background:var(--stat-paper);
+ box-shadow:inset 0 0 0 1px #fff8eb9c;
+ text-align:left;
+}
+.town-map #wlHeader .wl-total svg { display:none; }
+.town-map #wlHeader .wl-total::before {
+ content:"";
+ display:block;
+ grid-row:1/3;
+ grid-column:1;
+ width:100%;
+ aspect-ratio:1;
+ background-position:center;
+ background-size:contain;
+ background-repeat:no-repeat;
+ mask-image:radial-gradient(ellipse closest-side,#000 77%,transparent);
+ mix-blend-mode:multiply;
+}
+.town-map #wlHeader #wlInvest { --stat-paper:#eaf1df;--stat-edge:#b9cba3; }
+.town-map #wlHeader #wlCash { --stat-paper:#ffefd1;--stat-edge:#e0c179;--stat-ink:#684611; }
+.town-map #wlHeader #wlHappy { --stat-paper:#fae6dc;--stat-edge:#dfa892;--stat-ink:#783f2e; }
+.town-map #wlHeader #wlStress { --stat-paper:#e3edf3;--stat-edge:#a8c1d2;--stat-ink:#284c60; }
+.town-map #wlHeader #wlFreeTime { --stat-paper:#edf1d9;--stat-edge:#bcc99a; }
+.town-map #wlHeader #wlEnergy { --stat-paper:#fff0cb;--stat-edge:#e6c879;--stat-ink:#674619; }
+.town-map #wlInvest::before { background-image:url("assets/finance/savings.webp"); }
+.town-map #wlCash::before { background-image:url("assets/finance/bill-coins.webp"); }
+.town-map #wlHeader :is(#wlHappy,#wlStress,#wlFreeTime,#wlEnergy)::before {
+ background-image:url("assets/pages/life-monthly-bill-20261101.webp");
+ background-size:496% 1072%;
+}
+.town-map #wlHeader #wlHappy::before { background-position:6.75% 40.85%; }
+.town-map #wlHeader #wlStress::before { background-position:65.6% 40.97%; }
+.town-map #wlHeader #wlFreeTime::before { background-position:13.2% 54.07%; }
+.town-map #wlHeader #wlEnergy::before { background-position:65.2% 27.1%; }
+.town-map #wlHeader .wl-total b {
+ grid-row:2;
+ grid-column:2;
+ max-width:100%;
+ color:inherit;
+ font-size:clamp(12px,3.55vw,16px);
+ font-weight:800;
+ line-height:1.12;
+ overflow-wrap:anywhere;
+ font-variant-numeric:tabular-nums;
+}
+.town-map #wlHeader .wl-total span {
+ grid-row:1;
+ grid-column:2;
+ margin:0;
+ color:inherit;
+ font-size:10px;
+ font-weight:650;
+ line-height:1.2;
+}
+.town-map #wlJourney {
+ grid-template-columns:34px minmax(0,1fr) 14px;
+ gap:8px;
+ min-height:58px;
+ margin-top:8px;
+ padding:7px 9px;
+ border:1px solid #c6b384;
+ border-radius:13px 11px 14px 11px;
+ background:#f6edd0 url("assets/finance/paper.webp") repeat;
+ color:#315139;
+ box-shadow:inset 0 0 0 2px #fff6e3;
+}
+.town-map #wlJourney::before {
+ content:"";
+ width:34px;
+ height:34px;
+ background:url("assets/finance/fund-approved/leaf.webp") center/contain no-repeat;
+ mask-image:radial-gradient(ellipse closest-side,#000 62%,transparent);
+ mix-blend-mode:multiply;
+}
+.town-map #wlJourney svg,
+.town-map #wlJourney span>small:last-child { display:none; }
+.town-map #wlJourney strong { font:19px/1.16 WealthHand,"Songti SC",serif; }
+.town-map #wlJourney small { font-size:10px;line-height:1.5;color:#5f6249; }
+.town-map #wlJourney i { height:4px;margin:3px 0 0;background:#dedfc0; }
+.town-map #wlJourney i b { background:#82945b; }
+.town-map #wlJourney>span:last-child { font-size:20px; }
+.town-map #townView .town-toolbar { margin:0 0 5px; }
+.town-map #townView .town-toolbar>b { font:23px/1.25 WealthHand,"Songti SC",serif;color:#365239; }
+#townView .town-return-rules { flex:1 0 100%;box-sizing:border-box;margin:0 0 2px;padding:5px 8px;color:#536149;background:#eef0dd;border:1px solid #d1d7bb;border-radius:11px;font:11px/1.5 "Noto Sans CJK SC",sans-serif; }
+#townView .town-return-rules strong { margin-right:3px;color:#39543e; }
+#townView .town-return-rules span { display:block; }
+
+#townView .town-roll-controls {
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:8px;
+ padding:7px 8px 8px;
+ background:#f6ebd1 url("assets/finance/paper.webp") repeat;
+ border:1px solid #cdb689;
+ border-radius:0 0 20px 20px;
+}
+#townView .town-roll-controls button {
+ box-sizing:border-box;
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:5px;
+ min-width:0;
+ min-height:44px;
+ margin:0;
+ padding:4px 12px;
+ border:1px solid #ad8f53;
+ border-radius:999px;
+ font:600 14px/1.3 "Noto Sans CJK SC",sans-serif;
+ color:#34513a;
+}
+#townView .town-crystal-button {
+ background:linear-gradient(#f8e6ae,#efd288);
+ box-shadow:inset 0 0 0 2px #ffe8a6,0 2px 0 #ac87494d;
+}
+#townView .town-roll-controls button img { width:27px;height:27px;object-fit:contain; }
+#townView .town-return-button img { mix-blend-mode:multiply;mask-image:radial-gradient(ellipse closest-side,#000 68%,transparent); }
+#townView .town-return-button {
+ background:#e9edd7;
+ border-color:#a6ae83;
+ box-shadow:inset 0 0 0 2px #f8f6de,0 2px 0 #8d98713d;
+}

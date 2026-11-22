@@ -28,14 +28,15 @@ function renderTown(){
  const game=$('game');document.body.classList.toggle('town-map',townEnabled()&&townVisible&&!game.classList.contains('hidden'));
  if(!townEnabled()||!townVisible)return;game.classList.remove('v24-running');const t=townState();let box=$('townView');if(!box){box=document.createElement('section');box.id='townView';game.append(box)}
  const pos=townPoint(t.position),last=t.movement;
+ $('wlFreeTimeValue').textContent=currentCareerTime().free+'h';
  const locked=townPending()||townAnimating||state.gameOver?.final;
  const die=last?.die||1;
  const barista=coffeeSalaryRole(state.job)==='barista';
- box.innerHTML=`<div class="town-toolbar"><b>起步小镇 · ${townCalendar()}</b><button data-town="home" ${locked?'disabled':''}>回家安排</button></div>
+ box.innerHTML=`<div class="town-toolbar"><b>起步小镇</b><p class="town-return-rules"><strong>触发回家</strong> 自由时间用完、幸福或能量低于 20、压力达到 80 或以上。<span>现金不足时，部分付费选项不可用。</span></p></div>
  <div class="town-map-scene town-stepping-board"><img src="${TOWN_ART}board.webp" alt="沿碎石路环绕喷泉的二十四块手绘汀步石">
  <span class="town-pawn" data-town-pawn style="left:${pos.x}%;top:${pos.y}%" aria-label="玩家当前位置第${t.position+1}格">${barista?`<img src="${TOWN_ART}barista.webp" alt="">`:'●'}</span>
  <img class="town-flight-die" data-town-flight alt="" hidden></div>
- <div class="town-roll-controls"><button type="button" class="town-crystal-button" data-town="roll" aria-label="掷骰子" ${locked?'disabled':''}><span aria-hidden="true">❧</span><img src="${TOWN_ART}die-${die}.webp" alt=""><span aria-hidden="true">❧</span></button></div>
+ <div class="town-roll-controls"><button type="button" class="town-crystal-button" data-town="roll" aria-label="掷骰子" ${locked?'disabled':''}><img src="${TOWN_ART}die-${die}.webp" alt="">掷骰子</button><button type="button" class="town-return-button" data-town="home" aria-label="回家并结算本月" ${locked?'disabled':''}><img src="assets/finance/bill-house.webp" alt="">回家</button></div>
  ${townPending()&&!townAnimating?'<button type="button" data-town="resume">继续处理当前事件</button>':''}`;
 
 }
@@ -97,49 +98,116 @@ function resumeTownMove(){
  openTownLanding();
 }
 function previewTownPayday(){
- const move=townState().movement,m=calcMetrics();showEvent(move.returnReason==='home'?'回家安排':'发薪日','核对本月收支','',[['本月税前工资',priceText(m.grossSalary)],['本月持续收支结余',priceText(m.monthlyCF)],['尚待月末收付',priceText(m.remainingCF)],['预计结算后现金',priceText(state.cash+m.remainingCF)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false],['稍后处理，返回地图',()=>{clearModals();render()},false]]);$('eventClose').hidden=true;
+ const move=townState().movement,m=calcMetrics();showEvent(move.returnReason==='home'?'回家结算':'发薪日','核对本月收支','',[['本月税前工资',priceText(m.grossSalary)],['本月持续收支结余',priceText(m.monthlyCF)],['尚待月末收付',priceText(m.remainingCF)],['预计结算后现金',priceText(state.cash+m.remainingCF)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false],['稍后处理，返回地图',()=>{clearModals();render()},false]]);$('eventClose').hidden=true;
 }
 function resolveTownMove(){const t=townState(),m=t.movement;if(!m||m.resolved)return;m.resolved=true;m.completedMonth=state.month;t.history.push({id:m.id,die:m.die,to:m.to,month:state.month,type:townMoveType(m),offerId:m.offers?.ids?.[0]||null,outcome:m.offers?.resolved||null});save();render()}
 const offersBeforeTown=monthlyOffers;
+const TOWN_SMALL_DEAL_LIMIT=1500;
+function townOpportunityMove(){
+ const move=state?.town?.movement;
+ return townEnabled()&&move&&!move.resolved&&move.month===state.month&&townMoveType(move)==='opportunity'?move:null;
+}
 monthlyOffers=function(){
- if(!townEnabled()||!townPending()||townMoveType(townState().movement)!=='opportunity')return offersBeforeTown();
- const move=townState().movement;if(move.offers)return move.offers;
- const previous=state.monthlyOpportunities,seed=state.offerSeed;state.monthlyOpportunities=null;state.offerSeed=(seed||1)+move.id*104729;
- try{move.offers=structuredClone(offersBeforeTown());const recent=new Set(townState().history.filter(x=>x.offerId).slice(-3).map(x=>x.offerId));const candidates=[...move.offers.ids,...V26_OFFERS.map(x=>x.id)];move.offers.ids=[candidates.find(id=>!recent.has(id))||candidates[0]]}finally{state.monthlyOpportunities=previous;state.offerSeed=seed}
- save();return move.offers;
+ const move=townOpportunityMove();
+ return move?move.offers||{month:state.month,ids:[],resolved:null}:offersBeforeTown();
 };
-function openTownOpportunity(){
- const offer=monthlyOffers();
- const project=V26_OFFERS.find(option=>option.id===offer.ids[0]);
+function drawTownOpportunity(move,deck){
+ if(townOpportunityMove()!==move||move.offers)return;
+ const fast=journeyState().phase==='fast';
+ const pool=fast?FAST_PROJECTS:V26_OFFERS.filter(project=>
+  project.id!=='volunteer'&&(deck==='small'?project.cost<=TOWN_SMALL_DEAL_LIMIT:project.cost>TOWN_SMALL_DEAL_LIMIT));
+ const recent=new Set(townState().history.filter(x=>x.offerId).slice(-3).map(x=>x.offerId));
+ const fresh=pool.filter(project=>!recent.has(project.id)),available=fresh.length?fresh:pool;
+ const seed=Math.imul(((state.offerSeed||1)+move.id*104729+state.month*7919)>>>0,1664525)+1013904223;
+ const project=available[(seed>>>0)%available.length];
+ move.offers={month:state.month,deck,pool:fast?'fast':'regular',ids:[project.id],resolved:null};
+ if(save()===false){
+  const pending=townOpportunityMove();
+  if(pending?.id===move.id)delete pending.offers;
+  if(fast)showEvent('快车道','机会尚未保存','请重试。',[],[['重试',()=>openTownOpportunity(),true]]);
+  else openTownOpportunity('保存未成功，请重试。');
+  return;
+ }
+ openTownOpportunity();
+}
+function openTownOpportunity(message=''){
+ const move=townOpportunityMove();
+ if(!move)return;
+ if(!move.offers){
+  if(journeyState().phase==='fast')return drawTownOpportunity(move,'fast');
+  const actions=[
+   ['小机会',()=>drawTownOpportunity(move,'small'),false],
+   ['大机会',()=>drawTownOpportunity(move,'big'),false]
+  ];
+  if(state.assets.some(a=>a.kind==='rental'||V26_INSTRUMENTS.some(i=>i.id===a.instrument&&i.kind==='股票'))){
+   actions.push(['查看市场买家报价',()=>{if(!openBuyerOffer())openTownOpportunity('本月没有可用的买家报价。');},false]);
+  }
+  actions.push(['放弃这次机会',finish,false]);
+  showEvent('投资机会','选择投资机会','',[],actions);
+  if($('eventTitle').textContent!=='选择投资机会')return;
+  const data=$('eventData');
+  data.innerHTML='<div class="town-opportunity town-opportunity-picker">'+
+   '<img class="town-opportunity-art" src="./assets/finance/bill-desk.webp" alt="">'+
+   '<p>选一叠抽一张，再决定是否参与。</p>'+
+   (message?'<p class="town-opportunity-notice" role="status">'+batchEscape(message)+'</p>':'')+'</div>';
+  data.style.display='block';
+  const deckCards=[
+   ['小机会','savings',priceText(TOWN_SMALL_DEAL_LIMIT)+' 或以下'],
+   ['大机会','bank','超过 '+priceText(TOWN_SMALL_DEAL_LIMIT)]
+  ];
+  deckCards.forEach(([label,image,amount],index)=>{
+   const button=$('actions').children[index];
+   const icon=document.createElement('img'),title=document.createElement('strong'),cost=document.createElement('small');
+   icon.src='./assets/finance/'+image+'.webp';icon.alt='';
+   title.textContent=label;cost.textContent=amount;
+   button.classList.add('town-deck-choice');
+   button.setAttribute('aria-label',label);
+   cost.id='town-deck-amount-'+index;
+   button.setAttribute('aria-describedby',cost.id);
+   button.replaceChildren(icon,title,cost);
+  });
+  return;
+ }
+ const offer=move.offers,fast=offer.pool==='fast';
+ const project=(fast?FAST_PROJECTS:V26_OFFERS).find(option=>option.id===offer.ids[0]);
  if(offer.resolved||!project)return finish();
- const skip=()=>{
-  if(!offer.resolved){offer.resolved='未选择';save()}
-  finish();
- };
- showEvent('投资机会','投资机会','',[],[
-  ['确认参与',()=>takeOpportunity(project.id),true,state.cash<project.cost],
-  ['不参与，保留现金',skip,false]
- ]);
+ const owner=state,chosenSlot=slot,valid=()=>state===owner&&slot===chosenSlot&&townOpportunityMove()===move&&move.offers===offer&&!offer.resolved;
+ const shortfall=roundCash(project.cost-state.cash);
+ const blocked=fast?'':opportunityBlock(project);
+ const deckTitle=fast?'快车道':offer.deck==='small'?'小机会':offer.deck==='big'?'大机会':'投资机会';
+ const actions=[['确认参与',()=>{if(valid())takeOpportunity(project.id);},true,shortfall>0||!!blocked]];
+ if(shortfall>0)actions.push(['申请贷款',()=>{
+  if(!valid())return;
+  openBankLoan(shortfall,{returnDirect:true,after:()=>{if(valid())openTownOpportunity();}});
+ },false]);
+ actions.push(['不参与，保留现金',()=>{
+  if(!valid())return;
+  offer.resolved='未选择';save();finish();
+ },false]);
+ showEvent(deckTitle,'投资机会',message,[],actions);
  if($('eventTitle').textContent!=='投资机会')return;
  const rows=[
-  ['成功率',Math.round(opportunityChance(project)*100)+'%'],
+  ['成功率',Math.round((fast?project.chance:opportunityChance(project))*100)+'%'],
   project.cf?['成功后净收入',priceText(project.cf)+'/月']:['成功后收入',priceText(project.reward)],
-  ['失败可能损失',priceText(project.chance<1?project.cost:0)],
-  ['状态变化',effectText(project.effects)]
+  ['失败可能损失',priceText(project.chance<1?project.cost*(fast?1-project.salvage:1):0)]
  ];
+ if(project.hours)rows.push(['自由时间','−'+project.hours+' 小时']);
+ if(project.effects)rows.push(['状态变化',effectText(project.effects)]);
  const data=$('eventData');
  data.innerHTML='<div class="town-opportunity">'+
-  '<img class="town-opportunity-art" src="./assets/finance/bill-desk.webp" alt="">'+
+  '<img class="town-opportunity-art" src="'+(project.art||'./assets/finance/bill-desk.webp')+'" alt="">'+
   '<h3>'+batchEscape(project.name)+'</h3><p>'+batchEscape(project.desc)+'</p>'+
   '<div class="town-opportunity-cost">投入 <strong>'+priceText(project.cost)+'</strong></div>'+
   '<dl>'+rows.map(([label,value])=>'<div><dt>'+batchEscape(label)+'</dt><dd>'+batchEscape(value)+'</dd></div>').join('')+'</dl>'+
-  (state.cash<project.cost?'<p>现金不足，无法参与。</p>':'')+'</div>';
+  (project.id==='market-research'?'<p>成功净赚 '+priceText(project.reward-project.cost)+'。未成功无报酬，已用成本照扣。</p>':'')+
+  (blocked?'<p>'+batchEscape(blocked)+'</p>':'')+
+  (shortfall>0?'<p>还差 '+priceText(shortfall)+'，可申请银行贷款。</p>':'')+'</div>';
  data.style.display='block';
  data.scrollTop=0;
 }
 function openTownLanding(){
  const move=townState().movement,type=townMoveType(move);move.opened=true;save();
- if(type==='opportunity'){if(openBuyerOffer())return;return openTownOpportunity()}
+ if(type==='opportunity')return openTownOpportunity();
  if(type==='market'&&!move.type){if(openBuyerOffer())return;resolveTownMove();return}
  if(type==='growth'){showEvent('学习成长','投资自己','',[],[['查看学历计划',openEducation,true],['练习兴趣技能',()=>$('hobbyBtn').click(),false],['本次不安排',finish,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block';return}
  if(type==='career'){if(workplaceEvent())return;openWorkAdjustment();return}

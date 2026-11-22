@@ -339,3 +339,59 @@ body:has(#home:not(.hidden) #newGame:not(.hidden) #coffeeIntro) .wl-home-brand{d
  box-shadow: inset 0 0 0 2px #f8d991, inset 0 0 0 3px #c98b3c;
  font: clamp(17px, 5vw, 22px) / 1.2 "Finance Ink", Georgia, serif;
 }
+
+/* Matching illustrated covers for the two opportunity decks. */
+.town-opportunity-picker .town-opportunity-art { height:clamp(60px,15dvh,110px); }
+.town-opportunity-picker p { margin:0 0 7px;color:#596048; }
+.town-opportunity-picker .town-opportunity-notice { color:#874a30; }
+#game > .event:has(.town-opportunity-picker) > #actions {
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:8px;
+ padding:2px 2px 5px;
+}
+#game > .event:has(.town-opportunity-picker) #actions > button.town-deck-choice {
+ display:grid;
+ grid-template-rows:auto auto auto;
+ justify-items:center;
+ align-content:center;
+ gap:4px;
+ min-width:0;
+ width:100%;
+ padding:7px 4px 9px;
+ background:#fdf1d4 !important;
+ border:1px solid #b49e68;
+ border-radius:14px 12px 15px 12px;
+ box-shadow:inset 0 0 0 2px #fff8e7,0 2px 0 #b69b604d;
+ color:#294a32 !important;
+}
+#game > .event:has(.town-opportunity-picker) #actions > button.town-deck-choice:is(:hover,:focus-visible) {
+ background:#ebefd2 !important;
+ border-color:#8b9d64;
+}
+.town-deck-choice img {
+ display:block;
+ width:100%;
+ height:clamp(46px,16vw,83px);
+ object-fit:contain;
+ mix-blend-mode:multiply;
+ mask-image:radial-gradient(ellipse 74% 74%,#000 49%,transparent 96%);
+}
+.town-deck-choice strong {
+ padding:2px 8px;
+ background:#e6e9c6;
+ border-radius:10px 8px 10px 7px;
+ font-weight:400;
+}
+.town-deck-choice small {
+ font:600 11px/1.25 "Noto Sans CJK SC",sans-serif;
+ color:#61583e;
+}
+#game > .event:has(.town-opportunity-picker) #actions > button:not(.town-deck-choice) {
+ grid-column:1/-1;
+ min-height:44px;
+ border:1px solid #c4ac78;
+ border-radius:14px;
+ background:#f9edcf !important;
+ box-shadow:none;
+ font-size:17px;
+}

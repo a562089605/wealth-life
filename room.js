@@ -2,6 +2,13 @@
 (function(){
  let visible=false;
  const el=id=>document.getElementById(id);
+ const roomArtwork={
+  family:'assets/home/family-corgi-20261104.webp',
+  shared:'assets/home/shared-corgi-20261104.webp',
+  studio:'assets/home/studio-corgi-20261104.webp',
+  rent1:'assets/home/apartment-corgi-20261104.webp'
+ };
+ window.roomArtworkForHousing=housing=>Object.hasOwn(roomArtwork,housing)?roomArtwork[housing]:roomArtwork.rent1;
  function activeGame(){return !!state&&!el('game').classList.contains('hidden');}
  function syncRoom(){
   const active=visible&&activeGame();
@@ -20,7 +27,7 @@
   box.classList.toggle('room-family',family);
   const img=box.querySelector('.room-canvas>img');
   // Use the approved corgi scene as the default art without selecting housing.
-  const src=family?'assets/home/family-corgi-20261104.webp':shared?'assets/home/shared-corgi-20261104.webp':studio?'assets/home/studio-corgi-20261104.webp':'assets/home/apartment-corgi-20261104.webp';
+  const src=window.roomArtworkForHousing(state.housing);
   if(img.getAttribute('src')!==src)img.setAttribute('src',src);
   img.width=family?935:853;img.height=family?1683:1844;
   box.classList.toggle('room-default',!(apartment||studio||shared||family));

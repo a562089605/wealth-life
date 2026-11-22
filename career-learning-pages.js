@@ -29,11 +29,23 @@
   rail.onclick=e=>{if(e.target!==rail||!p.valid())return;scroll.scrollTop=(e.clientY-rail.getBoundingClientRect().top)/Math.max(1,rail.clientHeight)*(scroll.scrollHeight-scroll.clientHeight);};thumb.onkeydown=e=>{if(!p.valid())return;const delta={ArrowDown:64,ArrowUp:-64,PageDown:scroll.clientHeight*.8,PageUp:-scroll.clientHeight*.8};if(e.key in delta){e.preventDefault();scroll.scrollTop+=delta[e.key];}else if(e.key==='Home'||e.key==='End'){e.preventDefault();scroll.scrollTop=e.key==='Home'?0:scroll.scrollHeight;}};
  }
  function room(){close();openRoom();}
- function learning(){if(!state)return;const p=panel('学习','learning-banner',room),list=node('div',null,'career-list');p.content.append(node('p','今天，想学点什么？'),list);
-  p.choice(list,'学历学习','查看学历路线与学习进度 →','assets/career-learning-20261115/education-tile.webp',education);
-  p.choice(list,'职业技能 Skills','拉花 · 手冲咖啡 · 管理课程 →','assets/career-learning-20261115/skills-tile.webp',()=>skills('learning'));
-  p.choice(list,'兴趣爱好','咖啡品鉴 · 烘焙 · 摄影 · 绘画 →','assets/career-learning-20261115/hobbies-tile.webp',hobbies);
+ function learning(){
+  if(!state)return;
+  const roomArt=elRoomArtwork();
+  const p=panel('学习','learning-banner',room),list=node('div',null,'career-list');
+  p.section.classList.add('career-learning-menu');
+  if(roomArt)p.section.style.setProperty('--learning-room-art','url("'+roomArt+'")');
+  const header=p.content.querySelector('header'),back=header.querySelector('button');
+  back.textContent='←';
+  back.setAttribute('aria-label','返回房屋');
+  p.content.append(p.section.querySelector('.career-scene'),list);
+  p.choice(list,'学历学习','学历路线与进度','assets/career-learning-20261115/education-tile.webp',education).classList.add('learning-education');
+  p.choice(list,'职业技能','拉花、手冲与管理','assets/career-learning-20261115/skills-tile.webp',()=>skills('learning')).classList.add('learning-skills');
+  p.choice(list,'兴趣爱好','咖啡品鉴 · 烘焙 · 摄影 · 绘画','assets/career-learning-20261115/hobbies-tile.webp',hobbies).classList.add('learning-hobbies');
   p.button('返回房屋',room).classList.add('career-back');
+ }
+ function elRoomArtwork(){
+  return document.querySelector('#roomView .room-canvas>img')?.getAttribute('src');
  }
  const originalEducation=openEducation;
  function education(){if(state.study||state.education!=='highschool'||(state.educationPlans?.graduates||[]).some(g=>!g.seen)){close();return originalEducation();}const p=panel('学历学习','education',learning),list=node('div',null,'career-list');p.content.append(node('p','当前学历：高中'),node('p','选择一条适合自己的学习路线。'),list);

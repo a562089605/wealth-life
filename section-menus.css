@@ -1,0 +1,176 @@
+.career-learning-menu.career-overlay {
+ padding:12px 0 max(12px,env(safe-area-inset-bottom));
+ background:linear-gradient(#302a2470,#302a2470),var(--learning-room-art,none) center / cover no-repeat;
+}
+.career-learning-menu .career-paper {
+ --study-ink:#244630;
+ --study-line:#bca478;
+ --study-leaf:url("assets/finance/fund-approved/leaf.webp");
+ box-sizing:border-box;
+ width:min(calc(100% - 22px),440px);
+ color:var(--study-ink);
+ background:#fbf1d6 url("assets/finance/paper.webp") repeat;
+ border:1px solid #ab8e57;
+ border-radius:23px 20px 24px 19px;
+ box-shadow:inset 0 0 0 4px #fff8e3,0 9px 27px #352e294b;
+}
+.career-learning-menu .career-content { padding:12px clamp(11px,3.8vw,17px) 15px; }
+.career-learning-menu .career-content header {
+ position:relative;
+ min-height:44px;
+ justify-content:space-between;
+}
+.career-learning-menu .career-content header>button {
+ box-sizing:border-box;
+ width:44px;
+ height:44px;
+ min-height:44px;
+ padding:0;
+ border:1px solid #ac915d;
+ border-radius:50%;
+ color:#35513a;
+ background:#fbefcf;
+ box-shadow:0 2px 0 #ab905741;
+ font:23px/1 sans-serif;
+}
+.career-learning-menu .career-content header>span {
+ padding:5px 9px;
+ color:#3c543d;
+ font:600 11px/1.4 "Noto Sans CJK SC",sans-serif;
+ border:1px solid #b4bc93;
+ border-radius:14px 12px 14px 12px;
+ background:#e9edda;
+ white-space:nowrap;
+}
+.career-learning-menu .career-content h1 {
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:12px;
+ margin:-4px 0 9px;
+ color:#20472d;
+ font:clamp(38px,11vw,48px)/1.12 WealthHand,"Songti SC",serif;
+ letter-spacing:.08em;
+}
+.career-learning-menu .career-content h1::before,
+.career-learning-menu .career-content h1::after {
+ content:"";
+ width:34px;
+ height:31px;
+ flex:0 0 auto;
+ background:var(--study-leaf) center / contain no-repeat;
+ mask-image:radial-gradient(ellipse closest-side,#000 55%,transparent 100%);
+ mix-blend-mode:multiply;
+}
+.career-learning-menu .career-content h1::after { transform:scaleX(-1); }
+.career-learning-menu .career-content>.career-scene {
+ box-sizing:border-box;
+ width:100%;
+ height:clamp(88px,28vw,129px);
+ margin:0 0 12px;
+ border:1px solid #bfa878;
+ border-radius:14px 11px 14px 11px;
+ box-shadow:0 2px 0 #b2945f3b;
+}
+.career-learning-menu .career-content>.career-scene img {
+ height:100%;
+ width:100%;
+ object-fit:cover;
+ object-position:center 24%;
+ transform:none;
+}
+.career-learning-menu .career-list {
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:9px;
+}
+.career-learning-menu .career-content .career-choice {
+ --tile-paper:#fdf6e6;
+ --tile-border:#bca579;
+ box-sizing:border-box;
+ position:relative;
+ display:grid;
+ grid-template-rows:auto 1fr;
+ align-items:start;
+ gap:4px;
+ margin:0;
+ min-width:0;
+ min-height:0;
+ width:100%;
+ padding:5px;
+ border:1px solid var(--tile-border);
+ border-radius:13px 10px 14px 11px;
+ background:var(--tile-paper);
+ color:var(--study-ink);
+ box-shadow:inset 0 0 0 2px #fff9e7,0 2px 0 #ad95603a;
+ text-align:left;
+ overflow:hidden;
+}
+.career-learning-menu .career-content .learning-education { --tile-paper:#edf0da;--tile-border:#a8b18b; }
+.career-learning-menu .career-content .learning-skills { --tile-paper:#faecd3;--tile-border:#c7a574; }
+.career-learning-menu .career-content .learning-hobbies {
+ --tile-paper:#f9efdb;
+ --tile-border:#c5ae80;
+ grid-column:1/-1;
+ grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
+ grid-template-rows:auto;
+ align-items:center;
+}
+.career-learning-menu .career-content .career-choice:hover { filter:brightness(1.035); }
+.career-learning-menu .career-learning-tile {
+ display:block;
+ width:100%;
+ height:clamp(80px,25vw,115px);
+ min-height:0;
+ border-radius:9px 7px 9px 7px;
+}
+.career-learning-menu .learning-hobbies .career-learning-tile { height:clamp(70px,21vw,96px); }
+.career-learning-menu .career-learning-tile img {
+ position:static;
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ object-position:center 34%;
+}
+.career-learning-menu .learning-skills .career-learning-tile img { object-position:center 18%; }
+.career-learning-menu .career-choice>span {
+ box-sizing:border-box;
+ position:relative;
+ width:100%;
+ min-width:0;
+ padding:4px 22px 6px 6px;
+}
+.career-learning-menu .career-choice>span::after {
+ content:"›" / "";
+ position:absolute;
+ top:5px;
+ right:2px;
+ display:grid;
+ place-items:center;
+ width:19px;
+ height:19px;
+ color:#39553d;
+ border-radius:50%;
+ background:#fff9e7bb;
+ font:16px/1 sans-serif;
+}
+.career-learning-menu .career-choice strong {
+ font:clamp(20px,6vw,25px)/1.18 WealthHand,"Songti SC",serif;
+}
+.career-learning-menu .career-choice small {
+ margin-top:4px;
+ font:11px/1.45 "Noto Sans CJK SC",sans-serif;
+ color:#535d47;
+}
+.career-learning-menu .career-content>.career-back {
+ width:100%;
+ min-height:44px;
+ margin:11px 0 0;
+ padding:7px 15px;
+ border:1px solid #ab8d4f;
+ border-radius:18px 15px 19px 15px;
+ color:#2b492f;
+ background:linear-gradient(#f9de8d,#eec96e);
+ box-shadow:inset 0 0 0 2px #ffeab28c,0 2px 0 #c19d58;
+ font:22px/1.15 WealthHand,"Songti SC",serif;
+}

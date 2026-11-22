@@ -136,3 +136,7 @@
  box-shadow:0 0 .8cqw .3cqw #faf0cb;
  font-size:3.7cqw;
 }
+
+body.painted-screen #game > #paintedView.painted-room-backdrop:not([hidden]) {
+ background:linear-gradient(#30291d38,#30291d38),var(--painted-room-art) center / cover no-repeat !important;
+}

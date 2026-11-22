@@ -119,19 +119,49 @@ V26_OFFERS.push(
  {id:'tutor',name:'周末辅导项目',cost:80,reward:260,chance:.8,effects:{energy:-5,social:3},desc:'支付教材和交通费，学生是否报名存在不确定性。'},
  {id:'repair',name:'社区维修摊位',cost:200,reward:480,chance:.7,effects:{energy:-8},desc:'工具和材料投入，订单不足会亏损。'},
  {id:'craft',name:'手工小店',cost:450,cf:42,chance:.7,effects:{energy:-5,happiness:3},desc:'小批量制作并尝试销售；订单稳定后净分配已扣耗材。'},
- {id:'market-research',name:'付费用户访谈',cost:20,reward:90,chance:.9,effects:{energy:-3,social:3},desc:'支付交通费，符合访谈条件才会得到报酬。'},
+ {id:'market-research',name:'付费用户访谈',cost:20,reward:90,chance:.9,hours:1,art:'assets/finance/paid-user-interview.webp',effects:{energy:-3},desc:'支付交通费，符合访谈条件才会得到报酬。'},
  {id:'garden',name:'社区园艺服务',cost:180,cf:28,chance:.8,effects:{health:2,energy:-6},desc:'购买工具争取固定客户，收入已扣耗材。'},
  {id:'resale',name:'二手商品整理',cost:300,reward:430,chance:.65,effects:{energy:-4},desc:'购买并整备二手商品，可能积压卖不出去。'},
  {id:'design',name:'小店海报接单',cost:75,reward:210,chance:.75,effects:{energy:-5,happiness:2},desc:'支付素材授权和打样费，客户验收后才能获得收入。'},
  {id:'sound',name:'活动音响出租',cost:1600,cf:100,chance:.7,effects:{stress:3},desc:'设备和推广成本，净月收入已扣维护和空置。'}
 );
 function opportunityChance(o){const hobby=({photo:'摄影',rental:'摄影',editing:'电影创作',garden:'园艺',stall:'烹饪',tutor:'语言学习'})[o.id];return o.chance===1?1:Math.max(.05,Math.min(.95,o.chance+(hobby?Math.min(.15,hobbyLevel(hobby)*.02):0)-Math.max(0,(state.stress||0)-85)*.002))}
-takeOpportunity=function(id){const offer=monthlyOffers(),o=V26_OFFERS.find(o=>o.id===id);if(!o||offer.resolved||!offer.ids.includes(id))return;if(!spendConfirmed('opportunity',o.cost,{offer:id}))return;
- const chance=opportunityChance(o),success=Math.random()<chance;offer.resolved=o.name;offer.success=success;offer.cost=o.cost;offer.income=success?(o.reward||0):0;offer.newMonthlyIncome=success?(o.cf||0):0;offer.chance=chance;
- for(const [k,v]of Object.entries(o.effects))state[k]=Math.max(k==='stress'||k==='social'?0:0,Math.min(100,(state[k]||0)+v));
- if(success&&o.cf)state.assets.push({id:assetId(),name:o.name,kind:'business',cost:o.cost,value:o.cost,cf:o.cf});
- if(offer.income){state.cash=roundCash(state.cash+offer.income);state.financeLedger.push({kind:'opportunityIncome',month:state.month,amount:offer.income,offer:id})}
- save();showEvent('机会结果',success?'已完成：'+o.name:'未成功：'+o.name,success?'项目成功，收入或新增月净收入已记录；持续收入从本月月末到账。':'项目未成功，客户或订单未形成，本次启动投入已损失。本次投入与结果已记录。',[['本次投入',priceText(o.cost)],['实际一次性收入',priceText(offer.income)],['新增月净收入',priceText(offer.newMonthlyIncome)+'/月'],['当前被动收入',priceText(state.passive)+'/月']],[['继续',()=>completeMonthlyStep(8),true]]);
+function opportunityBlock(project){
+ if(!project.hours)return '';
+ if(currentCareerTime().free<project.hours)return '自由时间不足';
+ if(state.energy<-(project.effects.energy||0))return '能量不足';
+ return '';
+}
+const takeFastOpportunity=takeOpportunity;
+takeOpportunity=function(id){
+ const offer=monthlyOffers();
+ if(offer.pool==='fast')return takeFastOpportunity(id);
+ const project=V26_OFFERS.find(item=>item.id===id);
+ if(!project||offer.resolved||!offer.ids.includes(id)||opportunityBlock(project)||state.cash<project.cost)return;
+ const chance=opportunityChance(project),success=Math.random()<chance;
+ const result=CareerLearningRules.atomic(state,()=>{
+  if(!spendConfirmed('opportunity',project.cost,{offer:id}))return false;
+  Object.assign(offer,{resolved:project.name,success,cost:project.cost,income:success?(project.reward||0):0,newMonthlyIncome:success?(project.cf||0):0,chance});
+  for(const [key,value] of Object.entries(project.effects))state[key]=Math.max(0,Math.min(100,(state[key]||0)+value));
+  if(project.hours){
+   const used=state.opportunityTime;
+   state.opportunityTime={month:state.month,hours:(used?.month===state.month?used.hours:0)+project.hours};
+  }
+  if(success&&project.cf)state.assets.push({id:assetId(),name:project.name,kind:'business',cost:project.cost,value:project.cost,cf:project.cf});
+  if(offer.income){
+   state.cash=roundCash(state.cash+offer.income);
+   state.financeLedger.push({kind:'opportunityIncome',month:state.month,amount:offer.income,offer:id});
+  }
+  return {};
+ },save);
+ if(!result.ok){
+  if(typeof townOpportunityMove==='function'&&townOpportunityMove())return openTownOpportunity(result.reason);
+  showEvent('机会结果','机会未保存',result.reason,[],[['返回',finish,true]]);
+  return;
+ }
+ const rows=[['本次投入',priceText(project.cost)],['实际一次性收入',priceText(offer.income)],['新增月净收入',priceText(offer.newMonthlyIncome)+'/月'],['当前被动收入',priceText(state.passive)+'/月']];
+ if(project.hours)rows.splice(1,0,['已用自由时间',project.hours+' 小时'],['能量',String(project.effects.energy)]);
+ showEvent('机会结果',success?'已完成：'+project.name:'未成功：'+project.name,success?'项目成功，收入或新增月净收入已记录；持续收入从本月月末到账。':'本次投入已支付，没有产生预期收入。',rows,[['继续',()=>completeMonthlyStep(8),true]]);
 };
 // ETF monthly distributions are removed from quotes before cash/reinvestment: no free double return.
 const ETF_YIELDS={us500:.018,ustotal:.02,international:.03,world:.024};
