@@ -38,7 +38,7 @@
    html+='<div class="painted-preview-cover" style="left:30%;top:96%;width:40%;height:2.5%"></div>';
    if(missing.length)html+='<div class="painted-alert" role="status">'+esc(missing.join('；'))+'</div>';
   }else if(page==='life'){
-   html+=patch(townCalendar(),'left:12%;top:12.5%;width:29%;height:2.4%','painted-date')+stats(page);
+   html+=patch(townCalendar(),'','painted-date')+stats(page);
    billQuote=livingBillQuote();const q=billQuote,paid=paymentReceipt();
    html+=patch('当前住房：'+housingName(),'left:31%;top:65.9%;width:53%;height:3%','painted-caption life-current');
    const status=q.blocked?'待交接':!q.selected?'待选住房':q.total>0?'待支付':'已支付';

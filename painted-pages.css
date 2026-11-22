@@ -22,7 +22,18 @@
 .painted-canvas [data-painted="cancel-move"]{font-size:clamp(10px,2.7vw,20px);color:#31543c;background:#faf2db}
 .painted-canvas.life{container-type:inline-size;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .painted-canvas.life .painted-value{font-size:10cqw;font-variant-numeric:tabular-nums}
-.painted-canvas.life .painted-date{font-size:3.7cqw}
+.painted-canvas.life .painted-date{
+ left:12.7%;
+ top:12%;
+ width:26.7%;
+ height:2.45%;
+ border-radius:0;
+ background:#d9dcb5;
+ box-shadow:0 0 .55cqw .3cqw #d9dcb5;
+ color:#123d29;
+ font-size:3.65cqw;
+ font-weight:750;
+}
 .painted-canvas.life .life-current,.painted-canvas.life .painted-button-caption{font-size:4.4cqw;font-weight:700}
 .life-bill{
  position:absolute;left:6.5%;top:73.6%;width:87%;height:14.5%;z-index:2;
