@@ -5,7 +5,7 @@
  function close(){active?._careerCleanup?.();active?.remove();active=null;document.body.classList.remove('career-pages-open');}
  const priorClear=clearModals;clearModals=function(){close();return priorClear.apply(this,arguments);};
  const priorHome=home;home=function(){close();return priorHome.apply(this,arguments);};
- function panel(title,art,back,month=state.month){close();clearModals();window.HobbyPages?.close();window.EducationPages?.close();window.RelationshipPages?.close();window.PetPages?.close();window.hideRoom?.();
+ function panel(title,art,back,month=state.month,keepRoom=false){close();clearModals();window.HobbyPages?.close();window.EducationPages?.close();window.RelationshipPages?.close();window.PetPages?.close();if(!keepRoom)window.hideRoom?.();
   const owner=state,chosen=slot,cycle=state.month,section=node('section',null,'career-overlay');active=section;section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.setAttribute('aria-label',title);document.body.append(section);document.body.classList.add('career-pages-open');
   const valid=()=>state===owner&&slot===chosen&&state.month===cycle&&active===section&&section.isConnected;
   const paper=node('div',null,'career-paper'),scene=node('div',null,'career-scene'),img=node('img');scene.dataset.art=art;img.src='assets/career-learning-20261115/'+art+'.webp';if(art==='management'||art==='customer-service')img.src='assets/skill-scenes/soft/'+art+'.webp';if(art==='career'){section.classList.add('career-cafe-home');img.src='assets/career-crayon/cafe.webp';}img.alt='';scene.append(img);paper.append(scene);section.append(paper);
@@ -109,12 +109,37 @@
  function resignation(){const job=state.job,scheduled=state.pendingResignation,p=panel('辞职确认','resignation',career);if(window.CafeEquity?.requiresManagement(state)){p.content.append(node('p','持股低于 51% 时须自己管理门店。请先增持至 51% 或卖出股份。'));p.button('返回我的职业',career,{primary:true});return compactCareer(p);}p.content.append(node('p',job||'未就业'),node('h2','确定离开当前工作吗？'),node('p','本月仍正常结算应得工资，辞职从下个月开始生效。'),p.message);
   p.button(scheduled?'已安排，下个月离职':'确认辞职',b=>{if(state.job!==job||!job||state.pendingResignation||window.CafeEquity?.requiresManagement(state))return;b.disabled=true;const r=R.atomic(state,()=>{state.pendingResignation={from:job,requestedCycle:state.month,effectiveCycle:state.month+1};if(state.coffee?.progression)state.coffee.progression.pending=null;return {};},save);if(!r.ok){p.message.textContent=r.reason;b.disabled=false;return;}render();career();},{disabled:!!scheduled||!job});p.button(scheduled?'返回我的职业':'继续当前工作',career,{primary:true});compactCareer(p);
  }
- function income(receipt=null,automatic=false){const settled=receipt||state.lastSettlement,hasActual=!!settled?.careerIncome,x=hasActual?settled.careerIncome:coffeeMonthlyIncome(),month=hasActual?settled.month-1:state.month,p=panel('本月职业收入','income-banner',automatic?room:career,month);
-  p.section.classList.add('career-income-fixed');
-  if(!x){p.content.append(node('p','本月没有职业收入记录。'));p.button(automatic?'返回房屋':'返回我的职业',automatic?room:career).classList.add('career-back');compactCareer(p);return;}
-  const box=p.box('收入明细'),table=node('table',null,'career-income-table'),head=node('thead'),headRow=node('tr');table.setAttribute('aria-label',hasActual?'本月已结算职业收入':'本月预计职业收入');for(const label of ['项目','金额']){const th=node('th',label);th.scope='col';headRow.append(th);}head.append(headRow);table.append(head);const body=node('tbody');table.append(body);function entry(label,amount){const row=node('tr'),th=node('th',label);th.scope='row';row.append(th,node('td',money(amount)));body.append(row);}entry('基础工资',x.baseWages);entry('基础小费',x.baseTips);if(x.fixedBonus!=null)entry('固定奖金',x.fixedBonus);const eventWages=x.eventWages??x.extraWages;if(eventWages)entry(x.familyLeave?.hours?'工资调整（含请假）':x.eventId==='cut'&&eventWages<0?'排班工资调整':'加班工资',eventWages);if(x.eventBonus)entry('职业事件奖金',x.eventBonus);if(x.extraTips)entry('小费调整',x.extraTips);const foot=node('tfoot'),sum=node('tr'),sumLabel=node('th','税前合计');sumLabel.scope='row';sum.append(sumLabel,node('td',money(x.total)));foot.append(sum);table.append(foot);box.append(table);
+ function paintArrivalIncome(p){
+  p.section.classList.add('career-arrival-income');
+  const paper=p.section.querySelector('.career-paper');
+  const scene=paper.querySelector('.career-scene');
+  scene.querySelector('img').src='assets/career-learning-20261115/income-crayon.webp';
+  const header=p.content.querySelector('header');
+  const title=p.content.querySelector('h1');
+  header.prepend(title);
+  const closeButton=header.querySelector('button');
+  closeButton.textContent='×';
+  closeButton.setAttribute('aria-label','返回房屋');
+  const back=p.content.querySelector('.career-back');
+  paper.prepend(header);
+  p.content.prepend(scene);
+  paper.append(back);
+  p.content.tabIndex=0;
+  p.content.setAttribute('aria-label','职业收入明细');
+  closeButton.focus({preventScroll:true});
+ }
+ function income(receipt=null,automatic=false){const settled=receipt||state.lastSettlement,hasActual=!!settled?.careerIncome,x=hasActual?settled.careerIncome:coffeeMonthlyIncome(),month=hasActual?settled.month-1:state.month,p=panel('本月职业收入','income-banner',automatic?room:career,month,automatic);
+  if(!automatic)p.section.classList.add('career-income-fixed');
+  const layout=automatic?paintArrivalIncome:compactCareer;
+  if(!x){p.content.append(node('p','本月没有职业收入记录。'));p.button(automatic?'返回房屋':'返回我的职业',automatic?room:career).classList.add('career-back');layout(p);return;}
+  if(automatic){
+   const total=node('div',null,'career-arrival-total');
+   total.append(node('span','税前合计'),node('strong',money(x.total)));
+   p.content.append(total);
+  }
+  const box=p.box('收入明细'),table=node('table',null,'career-income-table'),head=node('thead'),headRow=node('tr');table.setAttribute('aria-label',hasActual?'本月已结算职业收入':'本月预计职业收入');for(const label of ['项目','金额']){const th=node('th',label);th.scope='col';headRow.append(th);}head.append(headRow);table.append(head);const body=node('tbody');table.append(body);function entry(label,amount){const row=node('tr'),th=node('th',label);th.scope='row';row.append(th,node('td',money(amount)));body.append(row);}if(automatic)head.className='career-arrival-table-head';entry('基础工资',x.baseWages);entry('基础小费',x.baseTips);if(x.fixedBonus!=null)entry('固定奖金',x.fixedBonus);const eventWages=x.eventWages??x.extraWages;if(eventWages)entry(x.familyLeave?.hours?'工资调整（含请假）':x.eventId==='cut'&&eventWages<0?'排班工资调整':'加班工资',eventWages);if(x.eventBonus)entry('职业事件奖金',x.eventBonus);if(x.extraTips)entry('小费调整',x.extraTips);if(!automatic){const foot=node('tfoot'),sum=node('tr'),sumLabel=node('th','税前合计');sumLabel.scope='row';sum.append(sumLabel,node('td',money(x.total)));foot.append(sum);table.append(foot);}box.append(table);
   const status=p.box('结算状态');status.append(node('p',hasActual?'已结算':'待月末结算'),node('p',hasActual?'本月职业收入已按月末账单结算。':'这是本月预计收入，尚未到账。','career-note'));
-  const t=p.box('工作时间');p.row(t,'基础工时',x.baseWeeklyHours+'小时/周');p.row(t,'本月临时工时',(x.workHoursDelta>0?'+':'')+x.workHoursDelta+'小时');p.row(t,'本月自由时间',x.freeHours+'小时');p.button(automatic?'返回房屋':'返回我的职业',automatic?room:career).classList.add('career-back');compactCareer(p);
+  const t=p.box('工作时间');p.row(t,'基础工时',x.baseWeeklyHours+'小时/周');p.row(t,'本月临时工时',(x.workHoursDelta>0?'+':'')+x.workHoursDelta+'小时');p.row(t,'本月自由时间',x.freeHours+'小时');p.button(automatic?'返回房屋':'返回我的职业',automatic?room:career).classList.add('career-back');layout(p);
  }
  function afterArrival(){const a=state?.homeArrival,r=state?.careerLearning?.receipts?.[state?.month-1];if(!a||a.status!=='completed'||a.fromMonth!==state.month-1||!r||r.shown||state.requiredIncident||isRecoveryMonth(state)||state.gameOver?.final)return false;
   const result=R.atomic(state,()=>{r.shown=true;return {};},save);if(!result.ok)return false;income(r.settlement,true);return true;

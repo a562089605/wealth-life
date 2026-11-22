@@ -524,3 +524,136 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
  object-fit:contain;mask-image:none;mix-blend-mode:multiply;
 }
 .career-cafe-home .career-skill-summary strong {color:#543d22}
+
+.career-overlay.career-arrival-income {
+ display: grid;
+ place-items: center;
+ overflow: hidden;
+ padding: max(10px, env(safe-area-inset-top)) 12px max(10px, env(safe-area-inset-bottom));
+}
+.career-arrival-income .career-paper {
+ display: flex;
+ flex-direction: column;
+ width: min(100%, 440px);
+ max-height: min(790px, calc(100dvh - max(10px, env(safe-area-inset-top)) - max(10px, env(safe-area-inset-bottom))));
+ margin: 0;
+ box-sizing: border-box;
+ border: 2px solid #c29451;
+ border-radius: 24px;
+ background: #fcf1d7 url("./assets/finance/paper.webp") center;
+ box-shadow: inset 0 0 0 3px #fff1ca, inset 0 0 0 5px #b88c5159, 0 12px 32px #32251950;
+ color: #2e421e;
+}
+.career-arrival-income .career-paper > header {
+ position: relative;
+ flex: none;
+ padding: 13px 47px 3px;
+ text-align: center;
+}
+.career-arrival-income h1 {
+ margin: 0 0 4px;
+ font: clamp(22px, 6.8vw, 35px) / 1.12 "WealthHand", "Finance Ink", serif;
+}
+.career-arrival-income header > span {
+ display: inline-block;
+ padding: 2px 14px;
+ border-radius: 9px 12px 8px 13px;
+ background: linear-gradient(95deg, #efd18e, #f8e3af);
+ font-size: 15px;
+}
+.career-arrival-income header > button {
+ position: absolute;
+ right: 7px;
+ top: 7px;
+ width: 44px;
+ height: 44px;
+ padding: 0;
+ border: 1px solid #b77e37;
+ border-radius: 50%;
+ background: radial-gradient(circle at 40% 25%, #ffedb8, #e7b465);
+ color: #694319;
+ font: 27px/1 Georgia, serif;
+ cursor: pointer;
+}
+.career-arrival-income .career-content {
+ min-height: 0;
+ overflow: auto;
+ overscroll-behavior: contain;
+ padding: 2px clamp(10px, 3.5vw, 16px) 7px;
+}
+.career-arrival-income .career-scene {
+ overflow: visible;
+ aspect-ratio: 2.9;
+ background: transparent;
+}
+.career-arrival-income .career-scene img {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ object-position: center;
+ transform: none;
+ mix-blend-mode: multiply;
+ mask-image: radial-gradient(ellipse 72% 82%, black 56%, transparent 96%);
+}
+.career-arrival-total {
+ width: 86%;
+ margin: 3px auto 9px;
+ padding: 5px 7px 7px;
+ box-sizing: border-box;
+ text-align: center;
+ border: 2px solid #818749;
+ border-radius: 24px;
+ background: radial-gradient(ellipse at top, #f1edc4, #dce0a9);
+ box-shadow: inset 0 0 0 2px #f6f0ca, inset 0 0 0 3px #83884d;
+}
+.career-arrival-total span { display: block; font-size: clamp(17px, 5vw, 23px); }
+.career-arrival-total strong {
+ display: block;
+ font: 700 clamp(23px, 7vw, 34px) / 1.1 Georgia, serif;
+ font-variant-numeric: tabular-nums lining-nums;
+ overflow-wrap: anywhere;
+}
+.career-arrival-income .career-panel {
+ margin: 0 0 8px;
+ padding: 7px 9px;
+ border: 1px solid #af9e57;
+ border-radius: 14px;
+ background: #fff9e348;
+ box-shadow: inset 0 0 0 2px #fbefd1, inset 0 0 0 3px #b9a35c50;
+}
+.career-arrival-income .career-panel h2 {
+ width: fit-content;
+ margin: 0 0 4px;
+ padding: 2px 14px 3px 8px;
+ border-radius: 9px 13px 8px 11px;
+ background: linear-gradient(100deg, #eac684, #f6dfa9 88%, #f6dfa970);
+ font: 21px/1.15 "WealthHand", "Finance Ink", serif;
+}
+.career-arrival-income .career-income-table { border: 0; background: transparent; font-size: 15px; }
+.career-arrival-income .career-income-table th,
+.career-arrival-income .career-income-table td { padding: 5px 2px; }
+.career-arrival-income .career-income-table td { font: 700 15px/1.25 Georgia, serif; }
+.career-arrival-income .career-arrival-table-head th {
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ padding: 0;
+ clip-path: inset(50%);
+ overflow: hidden;
+}
+.career-arrival-income .career-row { padding: 4px 2px; font-size: 15px; }
+.career-arrival-income .career-panel p { margin: 3px 0; font-size: 15px; line-height: 1.35; }
+.career-arrival-income .career-paper > .career-back {
+ flex: none;
+ align-self: center;
+ width: min(70%, 225px);
+ min-height: 44px;
+ margin: 3px 0 10px;
+ border: 1px solid #a96d2b;
+ border-radius: 15px;
+ background: linear-gradient(#f8db99, #efba61);
+ color: #3c3f1c;
+ box-shadow: inset 0 0 0 2px #f8d991, inset 0 0 0 3px #c98b3c;
+ font: 22px/1 "WealthHand", "Finance Ink", serif;
+ cursor: pointer;
+}
