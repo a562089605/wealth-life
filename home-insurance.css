@@ -109,3 +109,17 @@
  .event[data-insurance-art] #eventTitle::before { width: 58px; }
  .event #actions.home-insurance-menu > button[data-insurance-icon]::before { width: 48px; }
 }
+
+.event.event-active[data-insurance-art] {
+ background: radial-gradient(ellipse at top, #fffaf0, #faeac4) !important;
+ border: 2px solid #c6a55d !important;
+}
+.event.event-active[data-insurance-art] #actions button.primary,
+.event.event-active[data-insurance-art="menu"] #actions > button:last-child {
+ background: linear-gradient(#f9dfa0, #efc861) !important;
+ color: #284733 !important;
+}
+.event.event-active[data-insurance-art="menu"] #actions > button[data-insurance-icon] {
+ background: linear-gradient(#fffaec, #fae9be);
+ border-color: #c6a55d;
+}
