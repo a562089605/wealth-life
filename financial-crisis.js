@@ -3,13 +3,21 @@ function fundingShortage(needed){return roundCash(Math.max(0,needed-state.cash))
 function bankruptcyEligible(){const c=state.financialCrisis;return !!c&&c.month===state.month&&!['resolved','ended'].includes(c.status)&&fundingShortage(c.needed)>0&&calcMetrics().nw<500;}
 function ensureFundingCase(needed){needed=roundCash(Math.max(0,needed));let c=state.financialCrisis;if(!c||c.month!==state.month||c.needed!==needed||['resolved','ended'].includes(c.status)){c=state.financialCrisis={id:'funding-'+state.month+'-'+(state.nextFundingCase=(state.nextFundingCase||0)+1),month:state.month,needed,status:'active',finalConfirmed:false};}return c;}
 function returnToFundingBill(){const c=state.financialCrisis;if(!c)return;if(fundingShortage(c.needed)>0)return showFundingOptions(c.needed,fundingReturnAction);c.status='resolved';save();clearModals();if(fundingReturnAction)return fundingReturnAction();if(state.requiredIncident)return openRequiredIncident();if(unfinishedTreatment())return openHealthTreatment();openNecessaryBills();}
-function homeLiquidAssets(){return (state.assets||[]).map((a,i)=>({a,i})).filter(({a})=>a.source!=='map'&&a.tradeVenue!=='map'&&(a.instrument||a.source==='home'||a.tradeVenue==='home'||a.kind==='cd'&&state.month>=a.maturesAt));}
-function openFundingAssets(){const c=state.financialCrisis;showEvent('资产变现','房屋投资可交易资产','地图资产仍需遇到对应收购卡；未到期且不可退出的资产不在此列出。',[],homeLiquidAssets().map(({a,i})=>['查看出售 '+a.name,()=>sellAsset(i),false]).concat([['返回资金处理',()=>showFundingOptions(c.needed,fundingReturnAction),true]]));}
+function homeLiquidAssets(){return (state.assets||[]).map((a,i)=>({a,i})).filter(({a})=>a.source!=='map'&&a.tradeVenue!=='map'&&(a.instrument||a.source==='home'||a.tradeVenue==='home'||a.kind==='cd'));}
+function openFundingAssets(){
+ const funding=state.financialCrisis;
+ if(!funding)return;
+ const back=()=>showFundingOptions(funding.needed,fundingReturnAction);
+ showEvent('资产变现','房屋投资可变现资产','定存可提前支取，确认前会显示罚息与实际到账。地图资产仍需对应的收购机会。',[],
+  homeLiquidAssets().map(({a,i})=>[(a.kind==='cd'?'提前支取 ':'查看出售 ')+a.name,
+   ()=>sellAsset(i,openFundingAssets),false]).concat([['返回资金处理',back,true]]));
+ window.modalReturn=back;
+}
 showFundingOptions=function(needed,after){if(state.gameOver?.final)return showGameOver();const c=ensureFundingCase(needed),m=calcMetrics(),short=fundingShortage(c.needed);if(fundingReturnCaseId!==c.id){fundingReturnAction=after||null;fundingReturnCaseId=c.id;}else if(after)fundingReturnAction=after;save();
  showEvent('资金处理','处理当前资金缺口','借款增加现金和同额债务，不提高净资产。暂不处理可留在房屋，不会自动推进月份或判破产。',[
  ['当前现金',priceText(state.cash)],['待付所需现金',priceText(c.needed)],['资金缺口',priceText(short)],['净资产',priceText(m.nw)]],[
  ['申请借款',()=>openBankLoan(Math.max(1,Math.ceil(short)),{after:()=>showFundingOptions(c.needed,fundingReturnAction)}),true,short<=0],
- ['使用应急金',()=>{const amount=roundCash(Math.min(state.emergencyFund||0,fundingShortage(c.needed)));if(amount<=0)return;state.emergencyFund=roundCash(state.emergencyFund-amount);state.cash=roundCash(state.cash+amount);(state.financeLedger??=[]).push({kind:'emergencyWithdrawal',month:state.month,amount});save();showFundingOptions(c.needed,fundingReturnAction);},false,!(state.emergencyFund>0)||short<=0],
+ ['使用应急金',()=>transferEmergencyForFunding(c.needed,()=>showFundingOptions(c.needed,fundingReturnAction)),false,!(state.emergencyFund>0)||short<=0],
  ['查看可变现投资',openFundingAssets,false],['返回付款',returnToFundingBill,true,short>0],
  ...(m.nw<500&&short>0?[['放弃补救，查看破产确认',previewBankruptcy,false]]:[]),['暂不处理，返回房屋',townHome,false]]);$('eventClose').hidden=true;};
 function previewBankruptcy(){if(!bankruptcyEligible())return showFundingOptions(state.financialCrisis?.needed||0,fundingReturnAction);state.financialCrisis.status='final-confirmation';save();showEvent('破产确认','是否结束本次人生？','净资产低于$500.00且当前付款缺口尚未解决。只有你再次确认，才进入最终破产；仍可返回继续补救。',[

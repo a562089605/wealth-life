@@ -1,6 +1,14 @@
 // Local V27.8 batch: explicit choices and a single auditable cash/debt/investment state.
 const batchEscape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function loanTargets(){return [...(state.loans||[]).filter(l=>l.balance>0).map(l=>({key:l.id,name:loanDebtName(l),l,balance:l.balance,set:n=>l.balance=n})),...Object.entries(state.debtSchedules||{}).filter(([k])=>state.debt[k]>0).map(([k,l])=>({key:'legacy:'+k,name:k,l,balance:state.debt[k],set:n=>{state.debt[k]=n}}))]}
+function loanDisplayName(key,fallback){
+ const index=(state.loans||[]).findIndex(loan=>loan.id===key||loanDebtName(loan)===key);
+ if(index>=0){
+  const type=state.loans[index].type==='学生贷款'?'学生贷款':'银行贷款';
+  return type+' '+(index+1);
+ }
+ return String(fallback||'贷款').replace(/ · (?:bank|loan)-[^ ]+$/,'');
+}
 function currentLoanCycle(){
  if(state.loanCycle?.month!==state.month)state.loanCycle={month:state.month,items:[]};
  const cycle=state.loanCycle;
@@ -44,7 +52,7 @@ function payLoanInstallment(key,after,backLabel){
  const previous=JSON.parse(JSON.stringify(state));
  if(!spendConfirmed('loanInstallment',row.due,{loan:row.name,loanId:key,principal:row.principal,interest:row.interest}))return;
  t.set(Math.max(0,roundCash(t.balance-row.principal)));t.l.monthsLeft=Math.max(0,t.l.monthsLeft-1);row.status='paid';
- try{save()}catch(error){state=previous;console.error('Loan payment save failed',error);openLoanPayments(after,backLabel);$('eventDesc').textContent='还款未能存档，请重试。';return}
+ try{if(save()===false)throw Error('save failed')}catch(error){state=previous;console.error('Loan payment save failed',error);openLoanPayments(after,backLabel);$('eventDesc').textContent='还款未能存档，请重试。';return}
  openLoanPayments(after,backLabel);
 }
 function openLoanPayments(after=window.openRoom||finish,backLabel='返回房屋'){
@@ -61,8 +69,7 @@ function openLoanPayments(after=window.openRoom||finish,backLabel='返回房屋'
  if(backLabel!=='返回房屋')window.modalReturn=after;
  const cards=rows.map(row=>{
   const loan=targets.find(target=>target.key===row.key)?.l||state.loans.find(loan=>loan.id===row.key);
-  const loanIndex=state.loans.findIndex(loan=>loan.id===row.key);
-  const title=loanIndex<0?row.name:(loan.type==='学生贷款'?'学生贷款':'银行贷款')+' '+(loanIndex+1);
+  const title=loanDisplayName(row.key,row.name);
   const paid=row.status==='paid';
   const short=roundCash(Math.max(0,row.due-state.cash));
   const origin=Number.isInteger(loan?.originMonth)?'第 '+(Math.floor(loan.originMonth/12)+1)+' 年第 '+(loan.originMonth%12+1)+' 月借入':'';
@@ -131,7 +138,7 @@ const ETF_YIELDS={us500:.018,ustotal:.02,international:.03,world:.024};
 function ensureInvestSettings(){state.autoInvest??={};state.dividendReinvest??=true;}
 function buyUnits(id,amount,kind='investmentBuy'){const cfg=V26_INSTRUMENTS.find(x=>x.id===id),q=quoteFor(id);if(!cfg||!Number.isFinite(amount)||amount<=0||amount>state.cash)return false;amount=roundCash(amount);if(amount<=0||!spendConfirmed(kind,amount,{instrument:id,price:q.price}))return false;initQuotes();state.assets.push({id:assetId(),name:cfg.name,kind:'market',category:cfg.kind,instrument:id,cost:amount,value:amount,shares:amount/q.price,entryPrice:q.price,entryMonth:state.month,cf:0});return true}
 function openInvestSettings(id,after=finish){ensureInvestSettings();const cfg=V26_INSTRUMENTS.find(x=>x.id===id);if(!cfg||cfg.kind!=='ETF')return;
- showEvent('ETF 设置',cfg.name+' · 每月自动购买','确认后从本月月末起尝试购买；工资与支出结算后资金足够才执行，现金不足则跳过，不借钱、不透支。分红为游戏按月简化分配，非保证收益；除息会降低价格，再投资不等于额外获利。',[],[['确认保存设置',()=>{const amount=Number($('batchAutoAmount').value);if(!Number.isFinite(amount)||amount<0||Math.abs(roundCash(amount)-amount)>.00001)return;state.autoInvest[id]={amount};state.dividendReinvest=$('batchDrip').checked;save();after()},true],['返回详情',after,false]]);
+ showEvent('ETF 设置',cfg.name+' · 每月自动购买','确认后从本月月末起尝试购买；工资与支出结算后资金足够才执行，现金不足则跳过，不借钱、不透支。分红为游戏按月简化分配，非保证收益；除息会降低价格，再投资不等于额外获利。',[],[['确认保存设置',()=>{const amount=Number($('batchAutoAmount').value);if(!Number.isFinite(amount)||amount<0||Math.abs(roundCash(amount)-amount)>.00001)return;const previous=structuredClone(state);state.autoInvest[id]={amount};state.dividendReinvest=$('batchDrip').checked;try{if(save()===false)throw Error('save failed')}catch(error){state=previous;openInvestSettings(id,after);$('eventDesc').textContent='设置未保存，请重试。';return}after()},true],['返回详情',after,false]]);
  $('eventData').innerHTML='<label>每月购买金额（0 为停止）<input id="batchAutoAmount" type="number" inputmode="decimal" min="0" step="0.01" value="'+(state.autoInvest[id]?.amount||0)+'"></label><label class="wl-check"><input id="batchDrip" type="checkbox" '+(state.dividendReinvest?'checked':'')+'>所有 ETF 分红自动再投资（取消则留在现金）</label>';$('eventData').style.display='block';
 }
 const instrumentBeforeBatch=openInstrument;openInstrument=function(id,back){instrumentBeforeBatch(id,back);const cfg=V26_INSTRUMENTS.find(x=>x.id===id);if(cfg?.kind==='ETF'&&!window.ETFPages){const b=document.createElement('button');b.textContent='每月自动购买 / 分红设置';b.onclick=()=>openInvestSettings(id);$('actions').append(b);const note=document.createElement('p');const dividends=(state.financeLedger||[]).filter(x=>x.kind==='dividend'&&x.instrument===id).reduce((n,x)=>n+x.amount,0),reinvested=(state.financeLedger||[]).filter(x=>x.kind==='dividendReinvest'&&x.instrument===id).reduce((n,x)=>n+x.amount,0);note.textContent='年分配率 '+(ETF_YIELDS[id]*100).toFixed(1)+'%，按月分红；价格已含除息变化。累计分红 '+priceText(dividends)+'，其中再投资 '+priceText(reinvested)+'。分红与浮动盈亏分开展示，不重复合计。';$('eventData').append(note)}};
@@ -379,7 +386,25 @@ const choicesBeforeBatch=window.v26Choices;window.v26Choices=function(key,api){
 const batchRenderBase=render;render=function(){batchRenderBase();if(!state)return;for(const a of state.assets){const cfg=V26_INSTRUMENTS.find(i=>i.id===a.instrument);if(cfg)a.name=cfg.name}const box=$('assets');if(!document.getElementById('batchBondsEntry')){const b=document.createElement('button');b.id='batchBondsEntry';b.textContent='政府债券 · 查看市场';b.onclick=openBonds;box.append(b)}const debts=$('debts');const pay=document.createElement('button');pay.textContent='本月贷款还款卡';pay.onclick=openLoanPayments;debts.append(pay)};
 document.addEventListener('click',e=>{const b=e.target.closest('[data-batch]');if(!b||b.disabled)return;const k=b.dataset.batch;if(k==='loanPayments')openLoanPayments();if(k==='applyCareer'){b.disabled=true;applyCareer(+b.dataset.i)}});
 // Keep older extra-principal controls auditable, with their existing confirmation preview.
-const extraPrincipalBeforeBatch=payDebt;payDebt=function(name){extraPrincipalBeforeBatch(name);const b=$('actions').firstElementChild;if(!b||b.textContent!=='确认还款')return;const original=b.onclick;b.onclick=e=>{const before=state.cash;original(e);const amount=roundCash(before-state.cash);if(amount>0){state.financeLedger??=[];state.financeLedger.push({kind:'extraPrincipal',month:state.month,loan:name,amount});save()}}};
+const extraPrincipalBeforeBatch=payDebt;
+payDebt=function(name){
+ extraPrincipalBeforeBatch(name);
+ const button=$('actions').firstElementChild;
+ if(!button||button.textContent!=='确认还款')return;
+ const apply=button.onclick;
+ button.onclick=event=>{
+  const previous=structuredClone(state);
+  apply(event);
+  const amount=roundCash(previous.cash-state.cash);
+  if(amount<=0)return;
+  (state.financeLedger??=[]).push({kind:'extraPrincipal',month:state.month,loan:name,amount});
+  try{if(save()===false)throw Error('save failed')}catch(error){
+   state=previous;
+   payDebt(name);
+   $('eventDesc').textContent='还款未能存档，请重试。';
+  }
+ };
+};
 
 
 

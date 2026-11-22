@@ -7,12 +7,38 @@ function applyPendingMedicalPolicy(s){const x=s.pendingMedicalPolicy;if(!x||x.ef
 function medicalPremiumDue(plan){
  return Math.max(0,roundCash(premiumsTotal()+MEDICAL_PLANS[plan].monthly-(paymentReceipt().premiums||0)));
 }
-function confirmMedicalPlan(plan,reopen=openMedicalInsurance){if(plan!==null&&!MEDICAL_PLANS[plan])return false;syncFinance();const old=state.insurance.health;
- if(old?.active){if(plan===old.plan){delete state.pendingMedicalPolicy;save();reopen();return true;}state.pendingMedicalPolicy={plan,effectiveMonth:state.month+1};save();reopen();return true;}
- if(plan===null){delete state.pendingMedicalPolicy;save();reopen();return true;}
- const p=MEDICAL_PLANS[plan],due=medicalPremiumDue(plan);
- if(!payMonthly('premiums',due)){showEvent('医疗保险','保费不足','付款完成后才生效，不自动借款。',[['本次应付',priceText(due)]],[['申请借款',()=>openBankLoan(Math.max(1,Math.ceil(due-state.cash)),{after:reopen}),true],['返回',reopen,false]]);return false;}
- state.insurance.health={...p,plan,active:true,effectiveMonth:state.month};syncFinance();save();reopen();return true;}
+function confirmMedicalPlan(plan,reopen=openMedicalInsurance){
+ if(plan!==null&&!MEDICAL_PLANS[plan])return false;
+ syncFinance();
+ const old=state.insurance.health;
+ const previous=structuredClone(state);
+ if(old?.active&&plan!==old.plan){
+  state.pendingMedicalPolicy={plan,effectiveMonth:state.month+1};
+ }else if(old?.active||plan===null){
+  delete state.pendingMedicalPolicy;
+ }else{
+  const selected=MEDICAL_PLANS[plan];
+  const due=medicalPremiumDue(plan);
+  if(!payMonthly('premiums',due)){
+   showEvent('医疗保险','保费不足','付款完成后才生效，不自动借款。',[['本次应付',priceText(due)]],[
+    ['申请借款',()=>openBankLoan(Math.max(1,Math.ceil(due-state.cash)),{after:reopen}),true],
+    ['返回',reopen,false]
+   ]);
+   return false;
+  }
+  state.insurance.health={...selected,plan,active:true,effectiveMonth:state.month};
+ }
+ try{
+  syncFinance();
+  if(save()===false)throw Error('save failed');
+ }catch(error){
+  state=previous;
+  showEvent('医疗保险','保险变更未保存','现金、保费和保单已恢复，可以返回重试。',[],[['返回医疗保障选择',reopen,true]]);
+  return false;
+ }
+ reopen();
+ return true;
+}
 function previewMedicalPlan(plan,reopen){
  const current=state.insurance.health;
  const selected=MEDICAL_PLANS[plan];

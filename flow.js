@@ -261,7 +261,25 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-v26]');if(
  if(kind==='livingFund'){const due=roundCash(Math.max(0,livingTotal()-(paymentReceipt().living||0)));fundShortfall(due,()=>{finish();startV24Turn(false)})}
  if(kind==='life')chooseLife(+b.dataset.i);
  if(kind==='lifeContinue')completeMonthlyStep(3);
- if(kind==='insuranceConfirm'){const{selected,due}=insuranceDraftTotal(b.closest('.wl-insurance'));if(selected.includes('pet'))return window.PetPages.openInsuranceSelection();if(!payMonthly('premiums',due))return;for(const type of selected)if(!state.insurance[type]?.active)state.insurance[type]={name:INSURANCE[type][0],active:true,monthly:INSURANCE[type][1]};syncFinance();completeMonthlyStep(6)}
+ if(kind==='insuranceConfirm'){
+  const box=b.closest('.wl-insurance');
+  const {selected,due}=insuranceDraftTotal(box);
+  if(selected.includes('pet'))return window.PetPages.openInsuranceSelection();
+  const previous=structuredClone(state);
+  if(!payMonthly('premiums',due)){refreshInsurance();return}
+  for(const type of selected)if(!state.insurance[type]?.active)
+   state.insurance[type]={name:INSURANCE[type][0],active:true,monthly:INSURANCE[type][1]};
+  try{
+   if(state.turn?.index===6&&$('game').classList.contains('v24-running'))state.turn.index=7;
+   if(save()===false)throw Error('save failed');
+  }catch(error){
+   state=previous;
+   refreshInsurance();
+   box.querySelector('[data-insurance-warning]').textContent='保费和保单变更未保存，请重试。';
+   return;
+  }
+  completeMonthlyStep(6,true);
+ }
  if(kind==='insuranceSkip')completeMonthlyStep(6);
  if(kind==='opportunity')takeOpportunity(b.dataset.key);
  if(kind==='opportunitySkip'){const o=monthlyOffers();if(!o.resolved){o.resolved='未选择';save()}completeMonthlyStep(8)}

@@ -614,7 +614,7 @@
 .emergency-target dd { font-size: calc(var(--emergency-frame) * .033); }
 .emergency-housing-note {
  position: absolute;
- inset: 77.9% 16% auto;
+ inset: 76.5% 16% auto;
  margin: 0;
  text-align: center;
  font: 600 calc(var(--emergency-frame) * .027) / 1.2 system-ui, sans-serif;

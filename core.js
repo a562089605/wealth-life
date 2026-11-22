@@ -104,7 +104,7 @@ function openBankLoan(suggestedAmount=10000,terms=null){const amt=terms?Number(t
  const loan={id:'bank-'+(number+1),type:terms?.type==='学生贷款'?'学生贷款':'银行贷款',educationTarget:terms?.educationTarget||null,originMonth:state.month,principal:amt,balance:amt,apr,monthsLeft:months,payment:pmt,latePolicy:'fee5cap35',lateFeeCap:roundCash(35*(state.cpiIndex||100)/100)};
  state.cash=roundCash(state.cash+amt);state.nextLoanId=number+1;state.loans.push(loan);
  (state.financeLedger??=[]).push({kind:'loanDisbursement',month:state.month,loanId:loan.id,amount:amt});
- try{save()}catch(error){state=previous;console.error('Bank loan save failed',error);return null}
+ try{if(save()===false)throw Error('save failed')}catch(error){state=previous;console.error('Bank loan save failed',error);return null}
  render();return loan;}
 $('carBtn').onclick=()=>{if(state.carOwned){showEvent('TRANSPORT','已有车辆','燃油与维护准备金每月 $150.00；汽车贷款和车险分别结算。',[['车辆资产',money(state.carValue)],['车险',state.insurance.auto?.active?'已投保':'未投保']],[['继续',finish,true]]);return}const payment=paymentFor(21000,.06,60);showEvent('TRANSPORT','购买车辆','车价 $24,000.00，首付 $3,000.00；5年车贷 APR 6%。燃油/维护 $150.00/月，车险 $165.00/月。',[],[['买车',()=>{if(state.cash<3000||state.carOwned)return;state.cash-=3000;(state.financeLedger??=[]).push({kind:'vehicleDownpayment',month:state.month,amount:3000});state.carOwned=true;state.carValue=24000;state.carRunningCost=150;state.debt['汽车贷款']=21000;state.debtSchedules['汽车贷款']={apr:.06,monthsLeft:60,payment};state.insurance.auto={name:'汽车保险',active:true,monthly:165};finish()},true,state.cash<3000],['暂时不买',finish,false]])};
 $('rentalBtn').onclick=()=>window.v242RealEstate();

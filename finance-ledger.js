@@ -33,7 +33,7 @@ const FinanceLedger = (() => {
    const debit=Object.hasOwn(outgoing,row.kind)||row.direction==='out';
    const label=Object.hasOwn(incoming,row.kind)?incoming[row.kind]:Object.hasOwn(outgoing,row.kind)?outgoing[row.kind]:row.title||row.kind||'未分类记录';
    const instrument=V26_INSTRUMENTS.find(item=>item.id===row.instrument)?.name;
-   const context=[row.loan||instrument||row.choice||row.hobby||row.petName||row.species||row.title];
+   const context=[(row.loan?loanDisplayName(row.loanId??row.loan,row.loan):'')||instrument||row.choice||row.hobby||row.petName||row.species||row.title];
    if(row.kind==='loanInstallment')context.push('本金 '+priceText(row.principal)+' / 利息 '+priceText(row.interest));
    if(row.kind==='loanOverdue')context.push('计入贷款余额 '+priceText(row.capitalized||0));
    if(row.forfeitedInterest>0)context.push('扣除利息 '+priceText(row.forfeitedInterest));
@@ -47,7 +47,7 @@ const FinanceLedger = (() => {
  function reconcile(rows,change){
   if(!Number.isFinite(change))return rows;
   const gap=roundCash(change-rows.reduce((sum,row)=>sum+(row.uncategorized?0:row.amount),0));
-  return gap?[...rows,{label:'未分类现金差额',amount:gap,context:'存档未保留逐笔记录'}]:rows;
+  return gap?[...rows,{label:'未分类现金差额',amount:gap,uncategorized:true,reconciliation:true,context:'存档未保留逐笔记录'}]:rows;
  }
 
  function forecastExpenses(includeLoanPayments=true){
@@ -58,7 +58,7 @@ const FinanceLedger = (() => {
    ['住房',outstanding(state.housingCost||0,paid.housing)],
    ['基本生活及日常养护',outstanding(livingTotal(),paid.living)],
    ['有效保单保费',outstanding(premiumsTotal(),paid.premiums)],
-   ...loans.filter(()=>includeLoanPayments).map(row=>[row.name+'月供',row.due])
+   ...loans.filter(()=>includeLoanPayments).map(row=>[loanDisplayName(row.key,row.name)+'月供',row.due])
   ];
   const other=roundCash(remainingExpenses()-(includeLoanPayments?0:loans.reduce((sum,row)=>sum+row.due,0))-rows.reduce((sum,[,amount])=>sum+amount,0));
   if(other)rows.push(['其他经常支出',other]);

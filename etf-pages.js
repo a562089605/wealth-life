@@ -162,7 +162,7 @@
     if (!validAmount(amount)||quoteFor(id).price!==price) return showBuy(item,backToList);
     const previous = JSON.parse(JSON.stringify(state));
     if (!buyUnits(id, amount)) return showBuy(item,backToList);
-    try { save(); } catch (error) {
+    try { if(save()===false)throw Error('save failed'); } catch (error) {
      state = previous;
      console.error('ETF order save failed', error);
      showBuy(item,backToList);
@@ -266,7 +266,7 @@
     }
     (state.financeLedger??=[]).push({kind:'assetSale',month:state.month,amount,
      assetId,instrument:item.id,shares:soldShares,price,cost});
-    try{save()}catch(error){
+    try{if(save()===false)throw Error('save failed')}catch(error){
      state=previous;
      showSellAmount(item,assetId,backToList);
      $('etfSellEstimate').classList.remove('sp500-reader-label');

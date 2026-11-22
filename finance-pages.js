@@ -117,7 +117,7 @@
   }
 
   function detailRows(entries){
-   return entries.map(row=>[row.label,row.uncategorized?priceText(row.amount)+'（方向未标注）':
+   return entries.map(row=>[row.label,row.uncategorized&&!row.reconciliation?priceText(row.amount)+'（方向未标注）':
     (row.amount>0?'+':'')+priceText(row.amount),row.context]);
   }
 
@@ -339,7 +339,7 @@
    $('eventData').innerHTML='<dl class="emergency-values">'+[
     ['应急金余额',priceText(balance),'balance'],['可用现金',priceText(state.cash),'cash'],
     ['本月必要待付款',priceText(pending),'pending'],['每月必要开支',priceText(monthly),'monthly'],
-    ['目前可支撑',monthly>0?'约 '+(balance/monthly).toFixed(1)+' 个月':'—','coverage'],
+    ['目前可支撑',balance===0?'0 个月':monthly>0?'约 '+(balance/monthly).toFixed(1)+' 个月':'—','coverage'],
     ['3–6 个月参考金额',targets,'target']
    ].map(([label,value,key])=>'<div class="emergency-'+key+'"><dt>'+label+'</dt><dd>'+value+'</dd></div>').join('')+'</dl>'+
     (housingPending?'<p class="emergency-housing-note">住房待选，参考金额暂未计入住房费。</p>':'');
@@ -364,7 +364,7 @@
       state.cash=roundCash(state.cash+amount);
       (state.financeLedger??=[]).push({kind:'emergencyWithdrawal',month:state.month,amount});
      }
-     try{save()}catch(error){
+     try{if(save()===false)throw Error('save failed')}catch(error){
       state=previous;
       emergencyTransfer(deposit);
       $('emergencyPreview').textContent='转账未保存，请重试。';

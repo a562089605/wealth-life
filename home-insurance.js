@@ -34,7 +34,7 @@
   const previous = structuredClone(state);
   try {
    if (!update()) return false;
-   save();
+   if(save()===false)throw Error('save failed');
    return true;
   } catch (error) {
    state = previous;

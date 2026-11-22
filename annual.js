@@ -19,8 +19,14 @@ function showAnnualPlan(){if(state.requiredIncident)return openRequiredIncident(
 function startAnnual(){if(annualActive())return;if(!state.housing||state.housing==='unselected')return;state.annualPlan={life:$('yearLife').value,hobby:$('yearHobby').value,...(typeof HobbyLearning==='undefined'?{}:{hobbyVersion:1})};state.annualRun={start:state.month,target:state.month+12-state.month%12,startCash:state.cash,startNW:calcMetrics().nw,records:[],paused:false,complete:false,quarterSeen:[],preparedMonth:null};annualPlanning=false;save();clearModals();render();scheduleAnnual()}
 function showAnnualProgress(){annualPlanning=false;const r=state.annualRun;if(!r)return showAnnualPlan();showEvent('本年进度','第 '+(Math.floor(r.start/12)+1)+' 年 · 已推进 '+(state.month-r.start)+' 个月','每个月只结算一次。你可以继续剩余时间，或暂停后调整资产和安排。',[['现金',priceText(state.cash)],['距年末',Math.max(0,r.target-state.month)+'个月'],['今年现金变化',priceText(state.cash-r.startCash)]],[['继续本年',()=>{r.paused=false;save();clearModals();if(state.requiredIncident)return openRequiredIncident();if(state.crisis&&state.crisis.ackMonth!==state.month)return showRecovery();scheduleAnnual()},true],['查看补救',showRecovery,false,!state.crisis],['暂停，管理财务',()=>{pauseAnnual();clearModals();render();$('qAssets').click()},false],['改用按月试玩',useMonthly,false],['返回',()=>{pauseAnnual();finish()},false]])}
 function useMonthly(){annualPlanning=false;pauseAnnual();state.annualMode=false;save();clearModals();render();startV24Turn(false)}
-function showLiquidity(){const needed=annualRequiredCash();if(!annualActive())return;state.annualRun.paused=true;save();showEvent('资金补救','先解决资金缺口','时间停在当前月份，尚未支付的费用不会先扣。可以动用应急金、出售可变现资产、降低生活预算或查看贷款。',[['本月待付',priceText(needed)],['可用现金',priceText(state.cash)],['资金缺口',priceText(Math.max(0,needed-state.cash))]],[['使用应急金补足缺口',()=>{const amount=Math.min(state.emergencyFund||0,Math.max(0,needed-state.cash));state.emergencyFund-=amount;state.cash=roundCash(state.cash+amount);(state.financeLedger??=[]).push({kind:'emergencyWithdrawal',month:state.month,amount});save();showLiquidity()},true,!(state.emergencyFund>0)||state.cash>=needed],['出售资产筹款',showLiquidAssets,false],['降低基础生活预算10%',cutLivingBudget,false,state.costCutMonth===state.month],['查看贷款',()=>openBankLoan(Math.max(1,Math.ceil(needed-state.cash)),{after:showLiquidity}),false],['继续本年',()=>{if(state.cash<annualRequiredCash())return;state.annualRun.paused=false;save();clearModals();scheduleAnnual()},true,state.cash<needed],['暂停，保留当前进度',()=>{pauseAnnual();clearModals();render()},false]]);$('eventClose').hidden=true}
-function showLiquidAssets(){showEvent('资产变现','选择可出售资产','CD到期前不能用于生活费；其他资产按确认时的市值变现。',[],state.assets.map((a,i)=>['出售 '+a.name,()=>{annualPlanning=false;sellAsset(i)},false,a.kind==='cd']).concat([['返回资金补救',showLiquidity,true]]))}
+function showLiquidity(){const needed=annualRequiredCash();if(!annualActive())return;state.annualRun.paused=true;save();showEvent('资金补救','先解决资金缺口','时间停在当前月份，尚未支付的费用不会先扣。可以动用应急金、出售可变现资产、降低生活预算或查看贷款。',[['本月待付',priceText(needed)],['可用现金',priceText(state.cash)],['资金缺口',priceText(Math.max(0,needed-state.cash))]],[['使用应急金补足缺口',()=>transferEmergencyForFunding(needed,showLiquidity),true,!(state.emergencyFund>0)||state.cash>=needed],['出售资产筹款',()=>showLiquidAssets(),false],['降低基础生活预算10%',cutLivingBudget,false,state.costCutMonth===state.month],['查看贷款',()=>openBankLoan(Math.max(1,Math.ceil(needed-state.cash)),{after:showLiquidity}),false],['继续本年',()=>{if(state.cash<annualRequiredCash())return;state.annualRun.paused=false;save();clearModals();scheduleAnnual()},true,state.cash<needed],['暂停，保留当前进度',()=>{pauseAnnual();clearModals();render()},false]]);$('eventClose').hidden=true}
+function showLiquidAssets(back=showLiquidity){
+ const reopen=()=>showLiquidAssets(back);
+ showEvent('资产变现','选择可变现资产','提前支取定期存款前可查看扣除的利息和实际到账。',[],
+  state.assets.map((asset,index)=>[(asset.kind==='cd'?'提前支取 ':'出售 ')+asset.name,
+   ()=>sellAsset(index,reopen),false]).concat([['返回筹款',back,true]]));
+ window.modalReturn=back;
+}
 function prepareAnnualMonth(){const r=state.annualRun;if(r.preparedMonth===state.month)return true;const q=annualCost();if(state.annualPlan?.hobbyVersion===1&&q.hobbyCost){const id=HobbyLearning.hobbies.find(id=>HobbyLearning.activities[id].name===state.annualPlan.hobby),check=HobbyLearning.quote(state,id,{free:currentCareerTime().free,reserve:typeof necessaryPetCareHours==='function'?necessaryPetCareHours():0,recovery:isRecoveryMonth(state)});if(!check.ok){r.paused=true;showEvent('年度安排','兴趣安排暂未完成',({time:'自由时间不足，请先调整安排。',energy:'能量不足，请先休息。',recovery:'当前需先安心疗养。',funds:'现金不足，请先筹措费用。'})[check.reason]||'请重新查看兴趣安排。',[],[['返回',finish,true]]);return false;}}if(state.cash<annualRequiredCash()){showLiquidity();return false}payMonthly('housing',q.housing);payMonthly('living',q.living);payMonthly('premiums',q.premiums);for(const row of currentLoanCycle().items){if(row.status==='paid')continue;const t=loanTargets().find(x=>x.key===row.key);if(!t)continue;if(!spendConfirmed('loanInstallment',row.due,{loan:row.name,principal:row.principal,interest:row.interest}))throw Error('Annual loan budget changed');t.set(Math.max(0,roundCash(t.balance-row.principal)));t.l.monthsLeft=Math.max(0,t.l.monthsLeft-1);row.status='paid'}if(!monthSelection('life')){if(!spendConfirmed('lifestyle',q.lifeCost,{choice:q.life.name}))throw Error('Annual lifestyle budget changed');for(const[k,v]of Object.entries(q.life.effects))state[k]=Math.max(0,Math.min(100,state[k]+v));state.lifetimeFunSpend=(state.lifetimeFunSpend||0)+q.lifeCost;setMonthSelection('life',q.life.name)}if(q.hobbyCost&&state.annualPlan?.hobbyVersion===1){const id=HobbyLearning.hobbies.find(id=>HobbyLearning.activities[id].name===state.annualPlan.hobby),result=HobbyLearning.confirm(state,id,HobbyLearning.token(state,id),{free:currentCareerTime().free,reserve:typeof necessaryPetCareHours==='function'?necessaryPetCareHours():0,recovery:isRecoveryMonth(state),save:()=>true});if(!result.ok)throw Error('Annual hobby activity unavailable');(state.hobbyLearning.annualMonths??=[]).push(state.month);}else if(q.hobbyCost){const name=state.annualPlan.hobby;spendConfirmed('hobbyPractice',q.hobbyCost,{hobby:name});state.hobbyXP??={};state.hobbyXP[name]=(state.hobbyXP[name]||0)+35;state.hobbies[name]=hobbyLevel(name);state.happiness=Math.min(100,state.happiness+4);state.energy=Math.min(100,state.energy+2);state.stress=Math.max(0,state.stress-4);setMonthSelection('hobby',name)}r.preparedMonth=state.month;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};if(save()===false)throw Error('Annual preparation save failed');return true}
 function runAnnualMonth(){if(annualBusy||!annualActive()||state.annualRun.paused||document.querySelector('.event-active'))return;annualBusy=true;try{rebuildAnnualRecords();updateRecovery();if(state.gameOver?.final){showGameOver();return}if(state.requiredIncident){openRequiredIncident();return}if(state.crisis&&state.crisis.ackMonth!==state.month){showRecovery();return}const r=state.annualRun;if(state.month>=r.target){completeAnnual();return}const elapsed=state.month-r.start;if(elapsed>0&&elapsed%3===0&&!r.quarterSeen.includes(state.month)){r.quarterSeen.push(state.month);state.lifeRound={month:state.month,title:'这一季的机会',cashBefore:state.cash,pending:true};save();showEvent('季度机会','看看这一季的机会','最多选择一个，也可以保留现金。',[],[['这季不选择，继续',()=>{const o=monthlyOffers();if(!o.resolved)o.resolved='未选择';save();finish()},true]]);$('eventData').innerHTML=opportunityMarkup();$('eventData').style.display='block';return}if(!prepareAnnualMonth())return;clearModals();settleMonth()}catch(e){pauseAnnual();console.error('Annual step paused',e);showEvent('年度暂停','这一步未继续','已暂停自动推进，请保留存档并检查当前账目。',[],[['返回',finish,true]])}finally{annualBusy=false}}
 function completeAnnual(){const r=state.annualRun;r.complete=true;r.paused=true;state.yearReports??=[];let report=state.yearReports.find(x=>x.start===r.start);if(!report){report={start:r.start,end:state.month,cashChange:roundCash(state.cash-r.startCash),nwChange:roundCash(calcMetrics().nw-r.startNW),salary:roundCash(r.records.reduce((n,s)=>n+s.grossSalary,0)),tax:roundCash(r.records.reduce((n,s)=>n+s.tax,0)),interest:roundCash(r.records.reduce((n,s)=>n+(s.bondInterest||0),0)),months:r.records.length};state.yearReports.push(report)}save();showEvent('年度结算','这一年走过了什么','年度结果来自逐月真实账本；资产涨跌与现金变化分别计算。',[['推进月份',report.months+'个月'],['全年工资',priceText(report.salary)],['工资税',priceText(report.tax)],['现金变化',priceText(report.cashChange)],['净资产变化',priceText(report.nwChange)],['当前年龄',state.age+'岁']],[['安排下一年',()=>{clearModals();showAnnualPlan()},true],['返回总览',()=>{annualPlanning=false;finish();$('qOverview').click()},false]])}
@@ -35,9 +41,67 @@ for(const id of ['qOverview','qCareer','qLife','qAssets']){const old=$(id).oncli
 const menuYear=document.createElement('button');menuYear.textContent='切换到年度回合';menuYear.onclick=()=>{state.annualMode=true;$('wlCloseMenu').click();showAnnualPlan()};document.querySelector('.wl-menu-items').append(menuYear);
 document.addEventListener('click',e=>{const b=e.target.closest('[data-year]');if(!b)return;if(b.dataset.year==='plan')showAnnualPlan();if(b.dataset.year==='monthly')useMonthly();if(b.dataset.year==='recovery')showRecovery()});
 // A lower instalment trades a longer term for more interest; no cash is created.
-function openRestructure(back=annualActive()?showLiquidity:openLoanPayments){const list=()=>openRestructure(back);showEvent('贷款调整','选择需要重组的贷款','可延长剩余期限来降低月供。新的APR及总付款会在确认前列出；不减免余额，也不产生现金。',[],loanTargets().map(t=>['查看 '+t.name,()=>previewRestructure(t.key,back,list),false,t.l.restructuredMonth===state.month]).concat([['返回',back,true]]));window.modalReturn=back}
-function previewRestructure(key,back,list){const t=loanTargets().find(t=>t.key===key);if(!t)return;const months=Math.min(120,Math.max(24,t.l.monthsLeft+12)),apr=Math.max(t.l.apr,currentBankAPR()+.01),payment=paymentFor(t.balance,apr,months);showEvent('重组预览',t.name,'延长还款期通常会增加总利息。本游戏此方案无额外手续费，新利率从确认本期合同起使用。',[['余额',priceText(t.balance)],['原月供',priceText(t.l.payment)],['新期限',months+'个月'],['新APR',(apr*100).toFixed(2)+'%'],['新月供',priceText(payment)],['新合同预计总利息',priceText(payment*months-t.balance)]],[['确认重组',()=>{if(t.l.restructuredMonth===state.month)return;t.l.apr=apr;t.l.monthsLeft=months;t.l.payment=payment;t.l.restructuredMonth=state.month;if(state.loanCycle?.month===state.month)state.loanCycle.items=state.loanCycle.items.filter(x=>x.key!==key||x.status==='paid');save();back()},true,payment>=t.l.payment||t.l.restructuredMonth===state.month],['取消',list,false]]);window.modalReturn=list}
-function showFundingOptions(needed,after){showEvent('资金补救','筹措当前费用','可以使用应急金、出售资产或查看贷款；确认前不会替你扣款。',[['费用',priceText(needed)],['缺口',priceText(Math.max(0,needed-state.cash))]],[['从应急金补足',()=>{const amount=Math.min(state.emergencyFund||0,Math.max(0,needed-state.cash));state.emergencyFund-=amount;state.cash=roundCash(state.cash+amount);(state.financeLedger??=[]).push({kind:'emergencyWithdrawal',month:state.month,amount});save();showFundingOptions(needed,after)},true,state.emergencyFund<=0||state.cash>=needed],['出售资产',()=>{showEvent('资产变现','选择可出售资产','CD未到期不能变现。',[],state.assets.map((a,i)=>['出售 '+a.name,()=>sellAsset(i),false,a.kind==='cd']).concat([['返回筹款',()=>showFundingOptions(needed,after),true]]))},false],['查看贷款',()=>openBankLoan(Math.max(1,Math.ceil(needed-state.cash)),{after:()=>showFundingOptions(needed,after)}),false],['返回付款',()=>{clearModals();after?.()},true,state.cash<needed],['返回',finish,false]])}
+function openRestructure(back=annualActive()?showLiquidity:openLoanPayments){const list=()=>openRestructure(back);showEvent('贷款调整','选择需要重组的贷款','可延长剩余期限来降低月供。新的APR及总付款会在确认前列出；不减免余额，也不产生现金。',[],loanTargets().map(t=>['查看 '+loanDisplayName(t.key,t.name),()=>previewRestructure(t.key,back,list),false,t.l.restructuredMonth===state.month]).concat([['返回',back,true]]));window.modalReturn=back}
+function previewRestructure(key,back,list){
+ const target=loanTargets().find(loan=>loan.key===key);
+ if(!target)return list();
+ const loan=target.l;
+ const months=Math.min(120,Math.max(24,loan.monthsLeft+12));
+ const apr=Math.max(loan.apr,currentBankAPR()+.01);
+ const payment=paymentFor(target.balance,apr,months);
+ showEvent('重组预览',loanDisplayName(key,target.name),
+  '延长还款期通常会增加总利息。本游戏此方案无额外手续费，新利率从确认本期合同起使用。',[
+   ['余额',priceText(target.balance)],['原月供',priceText(loan.payment)],['新期限',months+'个月'],
+   ['新APR',(apr*100).toFixed(2)+'%'],['新月供',priceText(payment)],
+   ['新合同预计总利息',priceText(payment*months-target.balance)]
+  ],[
+   ['确认重组',()=>{
+    const current=loanTargets().find(item=>item.key===key);
+    if(current?.l!==loan||loan.restructuredMonth===state.month||current.balance!==target.balance)
+     return previewRestructure(key,back,list);
+    const previous=structuredClone(state);
+    Object.assign(loan,{apr,monthsLeft:months,payment,restructuredMonth:state.month});
+    if(state.loanCycle?.month===state.month)
+     state.loanCycle.items=state.loanCycle.items.filter(row=>row.key!==key||row.status==='paid');
+    try{if(save()===false)throw Error('save failed')}catch(error){
+     state=previous;
+     previewRestructure(key,back,list);
+     $('eventDesc').textContent='贷款变更未保存，请重试。';
+     return;
+    }
+    back();
+   },true,payment>=loan.payment||loan.restructuredMonth===state.month],
+   ['取消',list,false]
+  ]);
+ window.modalReturn=list;
+}
+function transferEmergencyForFunding(needed,after){
+ const amount=Math.min(state.emergencyFund||0,Math.max(0,needed-state.cash));
+ if(amount<=0)return after();
+ const previous=structuredClone(state);
+ state.emergencyFund=roundCash(state.emergencyFund-amount);
+ state.cash=roundCash(state.cash+amount);
+ (state.financeLedger??=[]).push({kind:'emergencyWithdrawal',month:state.month,amount});
+ try{if(save()===false)throw Error('save failed')}catch(error){
+  state=previous;
+  after();
+  $('eventDesc').textContent='转账未保存，请重试。';
+  return;
+ }
+ after();
+}
+function showFundingOptions(needed,after){
+ const reopen=()=>showFundingOptions(needed,after);
+ showEvent('资金补救','筹措当前费用','可以使用应急金、出售资产、提前支取定期存款或查看贷款。',[
+  ['费用',priceText(needed)],['缺口',priceText(Math.max(0,needed-state.cash))]
+ ],[
+  ['从应急金补足',()=>transferEmergencyForFunding(needed,reopen),true,!state.emergencyFund||state.cash>=needed],
+  ['出售资产或支取定存',()=>showLiquidAssets(reopen),false],
+  ['查看贷款',()=>openBankLoan(Math.max(1,Math.ceil(needed-state.cash)),{after:reopen}),false],
+  ['返回付款',()=>{clearModals();after?.()},true,state.cash<needed],
+  ['返回',finish,false]
+ ]);
+}
 fundShortfall=function(amount,after){showFundingOptions(amount,after)};
 const paymentsBefore278=openLoanPayments;openLoanPayments=function(...args){paymentsBefore278(...args);if(!state.requiredIncident&&loanTargets().length){const b=document.createElement('button');b.textContent='查看延长期限方案';b.onclick=()=>openRestructure(()=>openLoanPayments(...args));$('actions').append(b)}};
 const liquidityBefore278=showLiquidity;showLiquidity=function(){liquidityBefore278();if(annualActive()&&loanTargets().length){const b=document.createElement('button');b.textContent='查看贷款重组';b.onclick=()=>openRestructure();$('actions').append(b)}};

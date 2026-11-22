@@ -104,7 +104,7 @@ function cdWithdrawalQuote(asset){
 function previewCDWithdrawal(asset,back=finish){
  const title='提前支取定期存款';
  const quote=cdWithdrawalQuote(asset);
- showEvent('CD',title,'支取后这笔存款结束。本金全额回到现金，罚息只从已累积利息中扣除。',[
+ showEvent('出售预览',title,'支取后这笔存款结束。本金全额回到现金，罚息只从已累积利息中扣除。',[
   ['到期时间',cdMaturityLabel(asset.maturesAt)],['存款本金',priceText(asset.cost)],
   ['已累积利息',priceText(quote.accrued)],['扣除利息',priceText(quote.penalty)],['实际到账',priceText(quote.payout)]
  ],[
@@ -130,7 +130,7 @@ function previewCDWithdrawal(asset,back=finish){
  if($('eventTitle').textContent===title)window.modalReturn=back;
 }
 function commitCD(previous,back,retry){
- try{save()}catch(error){
+ try{if(save()===false)throw Error('save failed')}catch(error){
   state=previous;
   retry();
   $('eventDesc').textContent='交易未保存，请重试。';
