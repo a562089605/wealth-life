@@ -18,7 +18,7 @@ const TOWN_ROAD_POINTS=[{"x":28.164,"y":57.489},{"x":30.927,"y":51.355},{"x":30.
 function townPoint(i){return TOWN_ROAD_POINTS[((i%24)+24)%24]}
 function townPaydayDistance(){for(let d=1;d<=24;d++)if(TOWN_TYPES[(townState().position+d)%24]==='payday')return d}
 function townCalendar(){return '第'+(Math.floor(state.month/12)+1)+'年 · 第'+(state.month%12+1)+'月'}
-function openTownLiving(){showEvent('基本生活费','本月必要生活成本','先核对，再确认支付。已付费用保留到月末，发薪结算时不会重复扣除。',[],[['返回家中',townHome,false]]);$('eventData').innerHTML=livingMarkup().replace('data-v26="livingFund"','data-town="livingFund"').replace('保险在保险步骤确认；贷款月供请在财富步骤的还款卡确认。','保险可回家安排；月供在储蓄投资与贷款中确认。');$('eventData').style.display='block'}
+function openTownLiving(){showEvent('基本生活费','本月必要生活成本','',[],[['返回家中',townHome,false]]);$('eventData').innerHTML=livingMarkup().replace('data-v26="livingFund"','data-town="livingFund"').replace('保险在保险步骤确认；贷款月供请在财富步骤的还款卡确认。','保险可回家安排；月供在储蓄投资与贷款中确认。');$('eventData').style.display='block'}
 function townCareerNotice(move){
  if(!move.careerNotice&&state.pendingCareerNotice){move.careerNotice=structuredClone(state.pendingCareerNotice);state.pendingCareerNotice=null;save()}
  const n=move.careerNotice;if(!n||n.acknowledged)return false;
@@ -100,7 +100,7 @@ function resumeTownMove(){
  openTownLanding();
 }
 function previewTownPayday(){
- const move=townState().movement,m=calcMetrics();showEvent(move.returnReason==='home'?'回家安排':'发薪日','核对本月收支','确认后使用原有月末账本结算一次。已付费用抵扣；贷款请先查看本月还款卡，未付按原合同处理。',[['本月税前工资',priceText(m.grossSalary)],['本月持续收支结余',priceText(m.monthlyCF)],['尚待月末收付',priceText(m.remainingCF)],['预计结算后现金',priceText(state.cash+m.remainingCF)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false],['稍后处理，返回地图',()=>{clearModals();render()},false]]);$('eventClose').hidden=true;
+ const move=townState().movement,m=calcMetrics();showEvent(move.returnReason==='home'?'回家安排':'发薪日','核对本月收支','',[['本月税前工资',priceText(m.grossSalary)],['本月持续收支结余',priceText(m.monthlyCF)],['尚待月末收付',priceText(m.remainingCF)],['预计结算后现金',priceText(state.cash+m.remainingCF)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false],['稍后处理，返回地图',()=>{clearModals();render()},false]]);$('eventClose').hidden=true;
 }
 function resolveTownMove(){const t=townState(),m=t.movement;if(!m||m.resolved)return;m.resolved=true;m.completedMonth=state.month;t.history.push({id:m.id,die:m.die,to:m.to,month:state.month,type:townMoveType(m),offerId:m.offers?.ids?.[0]||null,outcome:m.offers?.resolved||null});save();render()}
 const offersBeforeTown=monthlyOffers;
@@ -113,9 +113,9 @@ monthlyOffers=function(){
 };
 function openTownLanding(){
  const move=townState().movement,type=townMoveType(move);move.opened=true;save();
- if(type==='opportunity'){if(openBuyerOffer())return;showEvent('投资机会','路过一家新项目','这次只处理一个机会。先看投入、风险与现金流，不合适可以放弃。',[],[['放弃本次机会',()=>{const o=monthlyOffers();if(!o.resolved)o.resolved='未选择';save();finish()},false]]);$('eventData').innerHTML=opportunityMarkup().replace('四个都不选，保留现金','不参与，保留现金');$('eventData').style.display='block';return}
+ if(type==='opportunity'){if(openBuyerOffer())return;showEvent('投资机会','路过一家新项目','',[],[['放弃本次机会',()=>{const o=monthlyOffers();if(!o.resolved)o.resolved='未选择';save();finish()},false]]);$('eventData').innerHTML=opportunityMarkup().replace('四个都不选，保留现金','不参与，保留现金');$('eventData').style.display='block';return}
  if(type==='market'&&!move.type){if(openBuyerOffer())return;resolveTownMove();return}
- if(type==='growth'){showEvent('学习成长','投资自己','学历、兴趣与工资仍沿用原规则；每月兴趣练习不重复收费或刷经验。',[],[['查看学历计划',openEducation,true],['练习兴趣技能',()=>$('hobbyBtn').click(),false],['本次不安排',finish,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block';return}
+ if(type==='growth'){showEvent('学习成长','投资自己','',[],[['查看学历计划',openEducation,true],['练习兴趣技能',()=>$('hobbyBtn').click(),false],['本次不安排',finish,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block';return}
  if(type==='career'){if(workplaceEvent())return;openWorkAdjustment();return}
  if(type==='life'){if(typeof openMapLife==='function')return openMapLife(move);$('lifestyleBtn').click();return}
  if(type==='community'){$('networkBtn').click();return}
@@ -123,9 +123,9 @@ function openTownLanding(){
  resolveTownMove();
 }
 function townHome(){
- showEvent('在家','安排自己的生活','原有住房、工作、保险、学习和资产继续保留。这里只查看或主动调整，不推进月份。',[],[['住房',openHousing,true],['本月基本生活费',openTownLiving,false],['工作',openWorkAdjustment,false],['学习与技能',()=>{showEvent('学习与技能','职业与学习','先预览，再确认。',[],[['学历学习',openEducation,true],['兴趣练习',()=>$('hobbyBtn').click(),false],['返回',finish,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block'},false],['生活',()=>$('lifestyleBtn').click(),false],['休息',()=>openExtraRest(),false],['关系',()=>$('networkBtn').click(),false],['保险',()=>openInsurance(),false],['储蓄投资与贷款',()=>{townVisible=false;clearModals();$('qAssets').click()},false],['返回小镇',()=>{clearModals();render()},false]]);
+ showEvent('在家','安排自己的生活','',[],[['住房',openHousing,true],['本月基本生活费',openTownLiving,false],['工作',openWorkAdjustment,false],['学习与技能',()=>{showEvent('学习与技能','职业与学习','先预览，再确认。',[],[['学历学习',openEducation,true],['兴趣练习',()=>$('hobbyBtn').click(),false],['返回',finish,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block'},false],['生活',()=>$('lifestyleBtn').click(),false],['休息',()=>openExtraRest(),false],['关系',()=>$('networkBtn').click(),false],['保险',()=>openInsurance(),false],['储蓄投资与贷款',()=>{townVisible=false;clearModals();$('qAssets').click()},false],['返回小镇',()=>{clearModals();render()},false]]);
 }
-function openTownInsurance(){showEvent('保险','本月保障安排','沿用原保险选择与保费。',[],[['返回',finish,true]]);$('eventData').innerHTML=insuranceMarkup();$('eventData').style.display='block'}
+function openTownInsurance(){showEvent('保险','本月保障安排','',[],[['返回',finish,true]]);$('eventData').innerHTML=insuranceMarkup();$('eventData').style.display='block'}
 const townRenderBefore=render;render=function(){townRenderBefore();renderTown()};
 const townHeaderBefore=refreshCardHeader;refreshCardHeader=function(){townHeaderBefore();if(townEnabled())$('qNext').innerHTML='<span>⌂</span><small>小镇</small>'};
 const townFinishBefore=finish;finish=function(){townFinishBefore();if(!townEnabled()||!townVisible||document.querySelector('.event-active'))return;const move=state.town?.movement;if(!move||move.resolved)return;if(move.payExpected&&state.month<move.payExpected)return previewTownPayday();if(!move.opened)resumeTownMove();else resolveTownMove()};
@@ -139,6 +139,6 @@ $('wlResume').onclick=()=>{$('wlCloseMenu').click();if(townEnabled())showTown();
 const townMenu=document.createElement('button');townMenu.textContent='进入起步小镇';townMenu.onclick=()=>{$('wlCloseMenu').click();townStart()};document.querySelector('.wl-menu-items').append(townMenu);
 document.addEventListener('click',e=>{const button=e.target.closest('[data-town]');if(!button)return;const action=button.dataset.town;if(action==='roll')rollTown();if(action==='resume')resumeTownMove();if(action==='home')townHome();if(action==='livingFund')fundShortfall(roundCash(Math.max(0,livingTotal()-(paymentReceipt().living||0))),openTownLiving);if(action==='monthly')originalMonthlyPlay();if(action==='stage')$('wlJourney').click()});
 
-function openTownSecurities(){showEvent('证券市场','查看证券产品','查看当前价格与持仓，确认后才购买。',[],V26_INSTRUMENTS.map(i=>[i.name,()=>i.id==='gold'&&window.FinancePages?FinancePages.gold(openTownSecurities):openInstrument(i.id),false]).concat([['离开市场',finish,true]]))}
+function openTownSecurities(){showEvent('证券市场','查看证券产品','',[],V26_INSTRUMENTS.map(i=>[i.name,()=>i.id==='gold'&&window.FinancePages?FinancePages.gold(openTownSecurities):openInstrument(i.id),false]).concat([['离开市场',finish,true]]))}
 
 

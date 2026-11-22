@@ -33,19 +33,19 @@
   p.choice(list,'学历学习','查看学历路线与学习进度 →','assets/career-learning-20261115/education-tile.webp',education);
   p.choice(list,'职业技能 Skills','拉花 · 手冲咖啡 · 管理课程 →','assets/career-learning-20261115/skills-tile.webp',()=>skills('learning'));
   p.choice(list,'兴趣爱好','咖啡品鉴 · 烘焙 · 摄影 · 绘画 →','assets/career-learning-20261115/hobbies-tile.webp',hobbies);
-  p.content.append(node('p','先查看安排，确认学习后才结算。','career-note'));p.button('返回房屋',room).classList.add('career-back');
+  p.button('返回房屋',room).classList.add('career-back');
  }
  const originalEducation=openEducation;
  function education(){if(state.study||state.education!=='highschool'||(state.educationPlans?.graduates||[]).some(g=>!g.seen)){close();return originalEducation();}const p=panel('学历学习','education',learning),list=node('div',null,'career-list');p.content.append(node('p','当前学历：高中'),node('p','选择一条适合自己的学习路线。'),list);
   for(const [id,title,sub]of [['associate','转学型副学士 AA','先读 AA，再衔接本科'],['bachelorDirect','直接读本科','查看本科课程与学习安排']])p.choice(list,title,sub+' →','assets/career-learning-20261115/education.webp',()=>{close();EducationPages.route(id);});
-  p.content.append(node('p','查看路线不报名，也不扣费。','career-note'));p.button('返回学习',learning).classList.add('career-back');
+  p.button('返回学习',learning).classList.add('career-back');
  }
- function hobbies(){const p=panel('兴趣爱好','hobbies',learning),list=node('div',null,'career-list career-hobby-grid');p.content.append(list);for(const id of H.hobbies){const a=H.activities[id],xp=H.xp(state,id);p.choice(list,a.name,'Lv.'+H.level(xp)+(xp>=800?' · 已满级':'')+' · 查看 →','assets/hobbies/'+a.art+'.webp',()=>{close();HobbyPages.detail(id);});}p.content.append(node('p','查看不扣费，确认练习后才结算。','career-note'));p.button('返回学习',learning).classList.add('career-back');}
+ function hobbies(){const p=panel('兴趣爱好','hobbies',learning),list=node('div',null,'career-list career-hobby-grid');p.content.append(list);for(const id of H.hobbies){const a=H.activities[id],xp=H.xp(state,id);p.choice(list,a.name,'Lv.'+H.level(xp)+(xp>=800?' · 已满级':'')+' · 查看 →','assets/hobbies/'+a.art+'.webp',()=>{close();HobbyPages.detail(id);});}p.button('返回学习',learning).classList.add('career-back');}
  let skillOrigin='learning';
  function skills(origin=skillOrigin){skillOrigin=origin;const back=origin==='career'?career:learning,p=panel('职业技能','skills',back),list=node('div',null,'career-list');p.section.classList.add('career-skills-room');p.content.append(list);
   for(const id of ['latte','pourOver']){const a=H.activities[id];const entry=p.choice(list,a.name,'Lv.'+H.level(H.xp(state,id))+' · 查看练习 →','assets/career-learning-20261115/skill-thumbnails-confirmed.png',()=>{close();HobbyPages.detail(id);});entry.querySelector('.career-thumb').classList.add('career-specialty-thumb',id==='latte'?'career-latte-thumb':'career-pour-thumb');}
   p.choice(list,'管理课程','管理技能 Lv.'+R.skillLevel(state,'management')+' · 查看课程 →','assets/career-learning-20261115/management.webp',management);
-  p.content.append(node('p','查看不扣费，确认学习后才结算。','career-note'));p.button(origin==='career'?'返回我的职业':'返回学习',back).classList.add('career-back');
+  p.button(origin==='career'?'返回我的职业':'返回学习',back).classList.add('career-back');
  }
  function management(notice=''){if(typeof notice!=='string')notice='';coffeeCareerData();const p=panel('管理基础课程','management',()=>skills()),opts=()=>({free:currentCareerTime().free,reserve:necessaryPetCareHours(),recovery:isRecoveryMonth(state),save}),expected=R.courseToken(state),miss=R.courseMissing(state,opts()),xp=Math.max(0,state.coffee.skills.management.xp||0);
   p.content.append(node('p','学习沟通协调、任务安排与团队管理。'),node('p','通过案例讨论和练习，积累管理知识。','career-note'));
@@ -76,7 +76,7 @@
   if(next==='manager')p.section.classList.add('career-manager-promotion');
   for(const r of R.requirements(state)){let value=r.id==='trust'?r.value+' / '+r.target:r.unit?r.value+' / '+r.target+r.unit:'Lv.'+r.value+' / Lv.'+r.target;if(r.id==='service')value+='（'+((r.target-1)*100)+' XP）';if(r.id==='specialty')value=r.detail+'；拉花 Lv.'+r.levels.latte+'｜手冲咖啡 Lv.'+r.levels.pourOver+(r.value>=r.target?' · 已满足':' · 尚未满足');p.row(box,r.label,value,r.value>=r.target);}
   const cfg=R.roles[next],pay=p.box('晋升后待遇');p.row(pay,'岗位基础年薪',money(cfg.base));p.row(pay,'按当前学历预计年薪',money(R.annual(state,next)));const calendarMonth=coffeeCalendar().month,tips=next==='manager'?coffeeSeason(calendarMonth).tips*1.5:shiftBaseTips(calendarMonth);p.row(pay,'本季基础小费',money(tips)+'/月');if(next==='manager'){p.row(pay,'固定奖金',money(500)+'/月');pay.append(node('p','当月有缺席则无固定奖金，加班不能补回。','career-note'));}p.row(pay,'每周工作',cfg.weekly+'小时');p.row(pay,'基础自由时间',(260-cfg.weekly*4)+'小时/月');pay.append(node('p','工资按最高学历加成计算。','career-note'));
-  p.content.append(node('p','满足全部条件后确认，下个月生效。','career-note'),p.message);p.message.textContent=notice||'';const miss=R.missing(state);p.button(pending?'已确认，下个月生效':miss.length?'条件尚未满足':'确认晋升，下个月生效',b=>{b.disabled=true;const r=R.promote(state,token,save);if(!r.ok){p.message.textContent=r.reason;b.disabled=false;return;}render();promotion('晋升安排已保存，下个月生效。');},{primary:true,disabled:!!pending||!!miss.length});p.button('返回我的职业',career).classList.add('career-back');compactCareer(p,true);
+  p.content.append(p.message);p.message.textContent=notice||'';const miss=R.missing(state);p.button(pending?'已确认，下个月生效':miss.length?'条件尚未满足':'确认晋升，下个月生效',b=>{b.disabled=true;const r=R.promote(state,token,save);if(!r.ok){p.message.textContent=r.reason;b.disabled=false;return;}render();promotion('晋升安排已保存，下个月生效。');},{primary:true,disabled:!!pending||!!miss.length});p.button('返回我的职业',career).classList.add('career-back');compactCareer(p,true);
  }
  const generalCareerMarket=openCareerMarket;
  function opportunities(){if(window.CafeEquity?.hasDelegatedControl(state)&&!CafeEquity.requiresManagement(state)){close();return generalCareerMarket();}const p=panel('其他工作机会','adjustment',career);p.content.append(node('p','暂时没有新的工作机会。','career-note'));p.button('返回我的职业',career).classList.add('career-back');compactCareer(p);}

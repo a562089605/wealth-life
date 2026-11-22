@@ -50,7 +50,7 @@ function openCoffeeCareerEvent(){
  if(state?.requiredIncident){openRequiredIncident();return true}if(state?.gameOver?.final){showGameOver();return true}if(!coffeeWorking()){return false}const r=ensureCoffeeMonth();
  if(r.status!=='pending'){showEvent('咖啡师职业',r.status==='none'?'本月按正常排班工作':'本月职业安排已确认',r.status==='none'?'没有额外班次，保持基础工时。':'同一张职业卡不会重复增加收入或工时。',[['本月选择',r.choice||'正常排班'],['本月自由时间',currentCareerTime().free+'h']],[['返回',finish,true]]);return true}
  const e=COFFEE_EVENTS[r.eventId],season=coffeeSeason(r.calendarMonth),time=currentCareerTime();coffeeEnsureQuotes(r);
- showEvent('咖啡师职业机会',e.name,e.desc+' 收入随本月发薪结算；确认前不改变任何数值。',[],[['暂不决定',finish,false]]);
+ showEvent('咖啡师职业机会',e.name,e.desc,[],[['暂不决定',finish,false]]);
  const box=$('eventTitle').closest('.event');box.classList.add('coffee-painted-event');
  $('eventData').innerHTML=careerHero('barista-'+r.eventId)+'<div class="coffee-event-meta"><span>'+e.category+'</span><span>'+season.name+' · 基础小费 '+priceText(season.tips)+'</span><span>自由时间 '+time.free+'h</span></div><div class="coffee-painted-options">'+r.quotes.map((c,i)=>coffeeChoiceMarkup(r,c,i,time)).join('')+'</div>';$('eventData').style.display='block';return true;
 }
@@ -63,7 +63,7 @@ function resolveCoffeeEvent(cycle,id,index){const r=coffeeRecord();if(r)coffeeEn
  const beforeStats={energy:state.energy,stress:state.stress,happiness:state.happiness};
  r.status='resolved';r.choice=c.label;r.extraWages=c.wages;r.extraTips=c.tips;r.workHoursDelta=c.hours;
  state.energy=Math.max(0,Math.min(100,state.energy+c.energy));state.stress=Math.max(0,Math.min(100,state.stress+c.stress));coffeeData().managerTrust=Math.min(20,Math.max(0,(coffeeData().managerTrust||0)+c.trust));coffeeData().customerFavor=Math.min(100,Math.max(0,coffeeData().customerFavor+(c.customer||0)));r.customerFavorDelta=c.customer||0;if(c.happiness)state.happiness=Math.max(0,Math.min(100,state.happiness+c.happiness));const actual=structuredClone(c);actual.energy=state.energy-beforeStats.energy;actual.stress=state.stress-beforeStats.stress;if(c.happiness)actual.happiness=state.happiness-beforeStats.happiness;coffeeSkillGain(actual);r.resolvedEffects=actual;save();
- showEvent('咖啡师职业结果','已确认：'+c.label,'身心与经验变化已生效，收入调整随本月发薪，仅结算一次。',careerEffectRows(actual),[['继续',finish,true]]);return true;
+ showEvent('咖啡师职业结果','已确认：'+c.label,'',careerEffectRows(actual),[['继续',finish,true]]);return true;
 }
 // Register one background and one entry role without changing other careers or old saves.
 JOBS.barista=[COFFEE_ROLE,COFFEE_CONFIG.annualSalary,2700,0,{},'highschool'];

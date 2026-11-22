@@ -329,7 +329,7 @@
     ['转回现金',()=>emergencyTransfer(false),506,1227,332,135],
     ['返回储蓄与投资',savings,285,1397,413,82]
    ];
-   showEvent('财务','应急金','建议预留 3–6 个月的必要开支。遇到失业、收入中断或突发医疗费用，可先支付必要开支，减少临时借款。',[],
+   showEvent('财务','应急金','',[],
     tiles.map(([label,action],index)=>[label,action,false,index===0?state.cash<=0:index===1?balance<=0:false]));
    if($('eventTitle').textContent!=='应急金')return;
    eventCard.classList.add('finance-emergency');
@@ -351,7 +351,7 @@
    const balance=state.emergencyFund||0;
    const limit=roundCash(Math.max(0,deposit?state.cash:balance));
    const pending=necessaryBills().reduce((sum,row)=>sum+row.due,0);
-   showEvent('应急金',title,'输入金额并查看转账后的余额。应急金不计利息，转账不改变净资产。',[],[
+   showEvent('应急金',title,'',[],[
     ['确认'+(deposit?'转入':'转回'),()=>{
      const amount=input.valueAsNumber;
      if(!input.checkValidity()||amount>(deposit?state.cash:state.emergencyFund||0))return emergencyTransfer(deposit);
@@ -421,12 +421,10 @@
     <div class="retirement-accounts">
      <section>
       <h3>401(k) · 雇主退休账户</h3>
-      <p>设为 3% 或 6% 后，有工资的月份会在月末从税前工资扣款。雇主同额匹配，上限为税前工资的 3%。</p>
       <div class="retirement-balance"><span>余额</span><strong>${priceText(account.k401Balance||0)}</strong></div>
      </section>
      <section>
       <h3>IRA · 个人退休账户</h3>
-      <p>由玩家从可用现金手动转入，游戏里每次转入 $500.00，无雇主匹配。</p>
       <div class="retirement-balance"><span>余额</span><strong>${priceText(account.iraBalance||0)}</strong></div>
      </section>
     </div>
@@ -435,7 +433,6 @@
      <p><strong>现实中的 401(k)</strong>　账户里的钱可用于投资，取款还要符合雇主计划规定。传统税前 401(k) 取款通常缴所得税，未满 59 岁半提前取款一般还可能有 10% 额外税，符合例外时可免。</p>
      <p><strong>现实中的 IRA</strong>　传统 IRA 可以申请提款，应税部分通常缴所得税。未满 59 岁半提前取款通常还有 10% 额外税，符合例外时可免。Roth IRA 的常规缴费本金通常可随时免税取回；收益要满足五年规则及年龄等资格条件才可免税提取。</p>
     </details>
-    <p class="retirement-note"><strong>游戏里</strong>　两种余额都随游戏市场在月末涨跌，计入净资产。年满 60 岁并正式退休后，可按需把部分或全部余额转回现金。计划退休年龄仅供参考，提款由玩家确认，游戏不扣提款税费。</p>
     <p class="retirement-age"><span>计划退休年龄</span><strong>${state.retirementAge||67} 岁</strong></p>`;
    data.style.display='block';
   }
@@ -452,7 +449,6 @@
      <div class="retirement-transfer-total"><span>IRA 余额</span><strong>${priceText(state.retirement.iraBalance||0)}</strong></div>
      <dl><div><dt>可用现金</dt><dd>${priceText(state.cash)}</dd></div>
       <div><dt>本次从现金转入</dt><dd>$500.00</dd></div></dl>
-     <p class="retirement-note">余额随市场涨跌，无雇主匹配。正式退休后可提款。</p>
      ${state.cash<500?'<p class="retirement-note">可用现金不足 $500.00。</p>':''}
     </div>
     <details class="retirement-guide"><summary>了解 IRA 规则</summary></details>`;
@@ -469,7 +465,7 @@
    const balance=roundCash(account[key]||0);
    if(!state.retired||balance<=0)return retirement();
    const title='提取 '+name;
-   showEvent('退休账户',title,'从退休账户转回可用现金，游戏不扣提款税费。',[],[
+   showEvent('退休账户',title,'',[],[
     ['确认提款',()=>{
      const amount=input.valueAsNumber;
      if(!input.isConnected||!state.retired||state.retirement!==account||
@@ -507,7 +503,6 @@
    data.innerHTML=`<img class="retirement-art" src="${art}retirement-withdraw.webp" width="900" height="300" alt="">
     <div class="retirement-transfer-panel">
      <div class="retirement-transfer-total"><span>可提取余额</span><strong>${priceText(balance)}</strong></div>
-     <p class="retirement-note">确认后等额转入可用现金，游戏不扣提款税费。</p>
      <label for="retirementWithdrawalAmount">提款金额（美元）</label>
      <div class="retirement-transfer-entry">
       <input id="retirementWithdrawalAmount" type="number" inputmode="decimal" min="0.01" max="${balance}" step="0.01" required>
@@ -560,13 +555,12 @@
      <div class="retirement-transfer-total"><span>当前价格</span><strong>${priceText(quote.price)} / 份</strong></div>
      <dl><div><dt>持仓市值</dt><dd>${priceText(value)}</dd></div>
       <div><dt>可用现金</dt><dd>${priceText(state.cash)}</dd></div></dl>
-     <p class="retirement-note">金价随游戏进度波动，持有期间没有利息或分红。</p>
     </div> ${goldChart(quote)}`;
    data.style.display='block';
   }
 
   function goldBuy(back){
-   showEvent('投资','买入黄金','输入游戏金额，确认后扣除现金并计入持仓。',[],[
+   showEvent('投资','买入黄金','',[],[
     ['确认买入',()=>{
      if(!input.isConnected||!input.checkValidity())return;
      const previous=structuredClone(state);
@@ -589,7 +583,7 @@
    data.innerHTML=`<img class="retirement-art" src="${art}gold-buy.webp" width="900" height="300" alt="">
     <div class="retirement-transfer-panel">
      <div class="retirement-transfer-total"><span>当前金价</span><strong>${priceText(quote.price)} / 份</strong></div>
-     <p class="retirement-note">可用现金 ${priceText(state.cash)}。确认时从现金扣款。</p>
+     <p class="retirement-note">可用现金 ${priceText(state.cash)}。</p>
      <label for="goldAmount">买入金额（美元）</label>
      <div class="retirement-transfer-entry">
       <input id="goldAmount" type="number" inputmode="decimal" min="0.01" step="0.01" required>

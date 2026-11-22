@@ -205,7 +205,6 @@
  const legacyOpenCare=openPetCare;openPetCare=function(){if(paying)return;return openDueCare();};
  function openDueCare(){if(!state)return;const ctx=panel('到期宠物照护'),paper=plain(ctx,'到期宠物照护'),s=preview(),tasks=petCareTasks(s);if(!tasks.length)paper.append(textNode('p','目前没有到期照护。'));
   for(const t of tasks){const index=s.pets.indexOf(t.pet);if(t.unsupported){paper.append(textNode('p',petName(state.pets[index])+'：旧物种待核对，原记录保留。'));continue;}action(ctx,paper,petName(state.pets[index])+' · '+(t.kind==='Annual'?'年度体检':'清洁护理'),()=>t.kind==='Annual'?openAnnual(index):openClean(index));}
-  if(tasks.some(t=>t.kind==='Clean'))paper.append(textNode('p','清洁护理可以稍后完成。月底仍逾期，每只健康−10；完成清洁护理恢复20，上限100。年度体检沿用原规则。'));
   action(ctx,paper,'返回我的宠物',openOverview);focusFirst(ctx);
  }
  window.PetPages={openOverview,openDetail,openHealth,openVetReminder,openBasicFees,openPetInsurance,openInsuranceSelection,openAdoption,openClean,openAnnual,openDueCare,close};

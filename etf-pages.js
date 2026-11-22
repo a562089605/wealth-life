@@ -13,7 +13,7 @@
 
  function showList(footer = state.roomLocation === 'home' && window.openRoom ? window.openRoom : finish, illustrated=false) {
   if(illustrated)return showIllustratedList(footer);
-  showEvent('ETF投资', 'ETF 品种', '选择一个品种查看报价、持仓和交易。', [], [['返回', footer, false]]);
+  showEvent('ETF投资', 'ETF 品种', '', [], [['返回', footer, false]]);
   if(footer!==finish)window.modalReturn=footer;
   $('eventData').innerHTML = art('market') + '<div class="wl-mini-grid etf-paper">' + etfs().map(item => {
    const q = quoteFor(item.id);
@@ -156,7 +156,7 @@
   const id = item.id;
   const price = quoteFor(id).price;
   const back = () => showDetail(item,backToList);
-  showEvent('ETF买入', item.name, '输入买入金额，确认前可查看预计份额和剩余现金。', [], [
+  showEvent('ETF买入', item.name, '', [], [
    ['确认买入', () => {
     const amount = Number($('etfBuyAmount').value);
     if (!validAmount(amount)||quoteFor(id).price!==price) return showBuy(item,backToList);
@@ -227,7 +227,7 @@
  function showHoldings(item,backToList) {
   const back = () => showDetail(item,backToList);
   const { lots } = position(item.id);
-  showEvent('ETF卖出', item.name, '选择一笔持仓，再输入想卖出的金额。', [], [['返回详情', back, false]]);
+  showEvent('ETF卖出', item.name, '', [], [['返回详情', back, false]]);
   $('eventData').innerHTML = art('detail') + '<div class="etf-paper" id="etfSellLots"></div>';
   for (const lot of lots) {
    const choice = document.createElement('button');
@@ -246,7 +246,7 @@
   const price=quoteFor(item.id).price;
   const maximum=roundCash(lot.value);
   const title='卖出 ETF';
-  showEvent('ETF卖出',title,'输入这笔持仓要卖出的金额。确认后，卖出款转入可用现金。',[
+  showEvent('ETF卖出',title,'',[
    ['ETF 品种',item.name],['当前价格',priceText(price)+' / 份'],['本笔可卖金额',priceText(maximum)]
   ],[
    ['确认卖出',()=>{
@@ -343,7 +343,7 @@
   data.replaceChildren(amount, reinvest);
   data.insertAdjacentHTML('beforeend',
    '<span class="etf-settings-dollar" aria-hidden="true">$</span>'+
-   '<p class="sp500-reader-label">月末结算后现金充足才买入。现金分红逐笔列入收支账单。</p>'+
+   ''+
    '<div role="radiogroup" aria-label="分红去向，适用于所有 ETF">'+
    '<label class="etf-settings-choice"><input type="radio" name="etfDividend" value="reinvest"><span class="sp500-reader-label">自动再投资</span></label>'+
    '<label class="etf-settings-choice"><input type="radio" name="etfDividend" value="cash"><span class="sp500-reader-label">留在现金</span></label></div>');

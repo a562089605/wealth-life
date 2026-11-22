@@ -85,7 +85,7 @@
  function openMenu(back=window.openRoom,backLabel='返回房屋') {
   if (state.requiredIncident) return openRequiredIncident();
   const menu = () => openMenu(back, backLabel);
-  showEvent('保险与保障', '保险与保障', '查看保障方案与本月保费。', [], [
+  showEvent('保险与保障', '保险与保障', '', [], [
    ['医疗险', () => openMedicalInsurance(menu), false],
    ['宠物险', () => openInsurance('pet'), false],
    ['车险', () => openAutoInsurance(menu), false],
@@ -196,7 +196,7 @@
   const title = tier ? '确认下月切换房险' : '确认下月停止续保';
   const rows = [['下月安排', tier ? plans[tier].name : '停止续保'], ['本次应付', priceText(0)]];
   if (tier) rows.push(['新方案月保费', priceText(plans[tier].monthly)]);
-  showEvent('房险', title, '变更从下月生效，本月保单状态不受影响。', rows, [
+  showEvent('房险', title, '', rows, [
    [title, () => changePolicy(tier, back), true],
    ['返回房险', back, false]
   ]);

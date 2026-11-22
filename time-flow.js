@@ -26,7 +26,7 @@ function markExplorationReturn(){if(!explorationStarted()||unfinishedCareerGroup
 }
 function openForcedTimeReturn(){if(!timeReturnPending())return false;
  const r=shiftRecord();if(r?.follow&&!r.follow.settled){openShiftFollow();return true;}
- townVisible=false;save();showEvent('本月探索结束','返回房屋结算','当前事件已完成，本月探索结束。若有欠时，将按既定规则处理。',[['返回原因',(state.forcedTimeReturn.reasons||['强制事件耗尽自由时间']).join('；')],['待扣自由时间',state.forcedTimeReturn.debt+'h']],[['返回房屋，结算本月',()=>{
+ townVisible=false;save();showEvent('本月探索结束','返回房屋结算','当前事件已完成，本月探索结束。',[['返回原因',(state.forcedTimeReturn.reasons||['强制事件耗尽自由时间']).join('；')],['待扣自由时间',state.forcedTimeReturn.debt+'h']],[['返回房屋，结算本月',()=>{
  if(!timeReturnPending())return;
  const t=townState();if(!t.movement)t.movement={id:++t.rolls,to:t.position,die:0,month:state.month,resolved:false};
  t.movement.resolved=false;t.movement.payExpected=state.month+1;t.movement.returnReason='forced-time';

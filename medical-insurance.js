@@ -46,7 +46,7 @@ function previewMedicalPlan(plan,reopen){
  const due=current?.active ? 0 : medicalPremiumDue(plan);
  const effective=keeping?'保留当前保障':current?.active?'下月生效':'确认后立即生效';
  const action=keeping?'确认保留当前保障':current?.active?'确认下月切换':due>0?'确认支付 '+priceText(due):'确认方案';
- showEvent('医疗保险',selected.name+(current?.active&&!keeping?'切换预览':'投保预览'),'已发生的治疗不追溯赔付。',[
+ showEvent('医疗保险',selected.name+(current?.active&&!keeping?'切换预览':'投保预览'),'',[
   ...(current?.active&&!keeping?[['当前保障',current.name||'旧版医疗险']]:[]),
   ['赔付比例',Math.round(selected.coverage*100)+'%'],
   ['方案月保费',priceText(selected.monthly)],
@@ -62,7 +62,7 @@ function previewMedicalStop(reopen){
  window.modalReturn=reopen;
 }
 function openMedicalInsurance(back=finish){const reopen=()=>openMedicalInsurance(back);syncFinance();const p=state.insurance.health,x=state.pendingMedicalPolicy;
- showEvent('医疗保险','医疗保障选择','未投保时确认付款后立即生效；已有保障的切换或取消从下月生效，当月保障和已付保费保留。已经发生的治疗按原报价，不追溯赔付。',[
+ showEvent('医疗保险','医疗保障选择','',[
  ['当前保障',p?.active?(p.name||'旧版医疗险')+' · 赔付'+Math.round(medicalCoverage()*100)+'%':'未投保'],['月保费',priceText(p?.active?p.monthly:0)],...(x?[['下月安排',x.plan?MEDICAL_PLANS[x.plan].name:'停止保障']]:[])],
  [...Object.entries(MEDICAL_PLANS).map(([plan,option])=>[
   option.name+' · '+priceText(option.monthly)+'/月 · 赔付'+Math.round(option.coverage*100)+'%'+(p?.active&&p.plan===plan?' · 当前方案':''),

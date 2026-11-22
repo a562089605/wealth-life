@@ -55,19 +55,19 @@
   if(allowOverdueClean!==true&&vetDue.length&&typeof PetPages!=='undefined'&&typeof PetPages.openVetReminder==='function'&&PetPages.openVetReminder(vetDue,{treat:index=>PetPages.openHealth(index),bank:()=>openBankLoan(Math.max(1,Math.ceil(vetDue.reduce((n,x)=>n+x.q.due,0)-state.cash)),{after:openRoom}),later:()=>leaveRoom(true),back:openRoom}))return;
   if(allowOverdueClean!==true&&vetDue.length)return showEvent('宠物健康','宠物需要就医','请在截止月份结束前完成治疗；三个月内未治疗，宠物将离世。现金不足可申请银行贷款。',vetDue.map(x=>[String(x.p.name||x.p.type).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),'截止第'+(Math.floor(x.q.deadlineMonth/12)+1)+'年'+(x.q.deadlineMonth%12+1)+'月末']),[['前往治疗',()=>PetPages.openHealth(vetDue[0].index),true],['前往银行贷款',()=>openBankLoan(Math.max(1,Math.ceil(vetDue.reduce((n,x)=>n+x.q.due,0)-state.cash)),{after:openRoom}),false,state.cash>=vetDue.reduce((n,x)=>n+x.q.due,0)],['稍后治疗，继续出门',()=>leaveRoom(true),false],['返回房屋',openRoom,false]]);
   const cleanDue=typeof petCareTasks==='function'?petCareTasks().filter(t=>t.kind==='Clean'):[];
-  if(allowOverdueClean!==true&&cleanDue.length)return showEvent('宠物护理','清洁护理到期','可以稍后护理并继续出门。月底仍未完成，每只到期宠物健康减少10；完成清洁护理恢复20。',cleanDue.map(t=>[t.pet.name||t.pet.type,'健康 '+PetHealth.value(t.pet)+'/100']),[['前往清洁护理',()=>openPetCare(),true],['暂不护理，继续出门',()=>leaveRoom(true),false],['返回房屋',openRoom,false]]);
+  if(allowOverdueClean!==true&&cleanDue.length)return showEvent('宠物护理','清洁护理到期','',cleanDue.map(t=>[t.pet.name||t.pet.type,'健康 '+PetHealth.value(t.pet)+'/100']),[['前往清洁护理',()=>openPetCare(),true],['暂不护理，继续出门',()=>leaveRoom(true),false],['返回房屋',openRoom,false]]);
   state.townMode=true;state.roomLocation='town';townState();save();visible=false;syncRoom();showTown();
  }
  window.leaveTownRoom=()=>townVisible?showTown():leaveRoom();
  function learning(){
-  showEvent('学习','学习与技能','先查看费用、时间与收益，再确认学习。',[],[
+  showEvent('学习','学习与技能','',[],[
    ['学历学习',openEducation,true],['职业技能课程',openCoffeeCourses,false],
    ['兴趣爱好',()=>el('hobbyBtn').click(),false],['饮品制作专项',()=>window.HobbyPages?.open('specialist'),false],['返回房屋',openRoom,false]
   ]);
  }
  function living(){
   if(window.openLifeOverview)return window.openLifeOverview();
-  showEvent('生活','本月生活安排','住房、必要账单、保险与照护沿用现有规则。查看本身不扣款。',[],[
+  showEvent('生活','本月生活安排','',[],[
    ['住房',openHousing,true],['基本生活费',openTownLiving,false],
    ['保险与保障',()=>openInsurance(),false],['宠物生活',()=>el('petBtn').click(),false],['到期宠物照护',openPetCare,false],
    ['生活活动',()=>el('lifestyleBtn').click(),false],['返回房屋',openRoom,false]

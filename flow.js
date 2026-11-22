@@ -31,13 +31,13 @@ function housingChoices(){const homes=housingOptions();if(state.housing&&state.h
 function housingQuote(h){const current=state.housing===h[3],paid=paymentReceipt().housing||0,move=current?0:h[2],rent=Math.max(0,h[1]-paid);return{move,rent,total:roundCash(move+rent),current}}
 function confirmHousing(key){syncFinance();const h=housingChoices().find(h=>h[3]===key);if(!h)return;const q=housingQuote(h);if(state.cash<q.total)return;if(!spendConfirmed('movingCost',q.move,{housing:key}))return;if(!payMonthly('housing',q.rent))throw new Error('Housing receipt failed');state.housing=key;state.housingCost=h[1];state.paymentUpgradeNotice=false;state._computedExpenses=null;syncFinance();if(state.month===0){state.goalBaseExpenses=state.expenses;state.goalTarget=0}completeMonthlyStep(0)}
 function housingMarkup(){const homes=housingChoices();return (state.paymentUpgradeNotice?'<div class="wl-panel"><p>旧存档已花的钱保留原账。本月住房费尚未支付，请先确认；查看此页不会扣款。</p></div>':'')+'<div class="wl-mini-grid">'+homes.map(h=>{const q=housingQuote(h);return '<button class="wl-choice-card" data-v26="housing" data-key="'+h[3]+'" aria-label="确认 '+(q.current?'继续当前住房':h[0])+'" '+(q.total>0&&state.cash<q.total?'disabled':'')+'><strong>'+(q.current?'继续当前住房':h[0])+'</strong><b>'+money(h[1])+'/月</b><small>本月住房待付 '+money(q.rent)+'<br>本次搬家/添置费 '+money(q.move)+'</small><span>确认支付 '+money(q.total)+' →</span></button>'}).join('')+'</div>'+(homes.some(h=>state.cash<housingQuote(h).total)?'<button data-v26="housingFund" class="wl-secondary">现金不足，查看贷款</button>':'')+'<p class="wl-note">点击卡片确认即付款并进入下一步。与家人同住无搬入费；换住房只补本月租金差额，搬家与添置费另列且不含房租，没有可退押金。已付住房费不在月末再扣。</p>'}
-function openHousing(){showEvent('住房','选择住房','查看不会扣款。卡片内列出本次实际付款，确认后生效。',[],[['返回',finish,false]]);$('eventData').innerHTML=housingMarkup();$('eventData').style.display='block'}
+function openHousing(){showEvent('住房','选择住房','',[],[['返回',finish,false]]);$('eventData').innerHTML=housingMarkup();$('eventData').style.display='block'}
 $('housingBtn').onclick=openHousing;
 function livingMarkup(){const due=roundCash(Math.max(0,livingTotal()-(paymentReceipt().living||0)));return '<div class="wl-panel wl-cost"><h3>本月基本生活成本</h3><b class="wl-big-money">'+money(due)+'</b><p>基础生活 '+money(livingBaseAmount(state))+'<br>宠物照顾 '+money(petMonthly())+' · 车辆燃油/维护 '+money(state.carRunningCost||0)+'</p><small>本月住房已付 '+money(paymentReceipt().housing||0)+'。保险在保险步骤确认；贷款月供请在财富步骤的还款卡确认。</small><button data-v26="living" class="primary" '+(due>0&&state.cash<due?'disabled':'')+'>'+ (due?'确认支付 '+money(due):'本月已付，继续')+' →</button>'+(state.cash<due?'<button data-v26="livingFund">现金不足，查看贷款</button>':'')+'</div>'}
 function insuranceMarkup(preselect){const items=Object.entries(INSURANCE).filter(([type])=>type==='auto').map(([type,c])=>{const active=!!state.insurance[type]?.active,locked=type==='auto'&&!state.carOwned||type==='pet'&&!state.pets?.length;return '<label class="wl-insurance-row"><input type="checkbox" data-insurance="'+type+'" '+(active||type===preselect?'checked ':'')+(active||locked?'disabled':'')+'><span><b>'+c[0]+'</b><small>'+ (locked?(type==='auto'?'拥有车辆后可买':'拥有宠物后可买'):active?'已投保，持续有效':'可选')+'</small></span><b>'+money(c[1])+'/月</b></label>'}).join('');return '<div class="wl-panel wl-insurance"><h3>本月保险方案</h3><p>医疗险单独选择：基础险$200.00/月赔80%，全额险$400.00/月赔100%。旧保单按原合同。</p><button data-medical-insurance>查看／选择医疗险</button><button data-pet-insurance '+(!state.pets?.length?'disabled':'')+'>查看／选择宠物保险</button>'+items+'<button data-home-insurance>查看／选择房险</button><p>本次应付 <b data-insurance-total></b><br><small>确认后支付本月尚未付的保费；以后持续按月收费。已付保费不在月末再扣。跳过仅表示不新增保单。</small></p><button data-v26="insuranceConfirm" class="primary">确认保险方案</button><button data-v26="insuranceSkip">跳过，不新增保险</button><small data-insurance-warning></small></div>'}
 function insuranceDraftTotal(box){const selected=[...box.querySelectorAll('[data-insurance]:checked')].map(i=>i.dataset.insurance);const total=premiumsTotal()+selected.filter(k=>!state.insurance[k]?.active).reduce((n,k)=>n+INSURANCE[k][1],0);return{selected,due:roundCash(Math.max(0,total-(paymentReceipt().premiums||0)))}}
 function refreshInsurance(){document.querySelectorAll('.wl-insurance').forEach(box=>{const{due}=insuranceDraftTotal(box);box.querySelector('[data-insurance-total]').textContent=money(due);box.querySelector('[data-v26="insuranceConfirm"]').disabled=due>0&&due>state.cash;box.querySelector('[data-insurance-warning]').textContent=due>state.cash?'现金不足：可减少新增保单，已有保单保费仍将于月末支付。':''})}
-function openInsurance(type){showEvent('保险','保险与保障','先选方案，确认后才投保和扣款。',[],[['返回',finish,false]]);$('eventData').innerHTML=insuranceMarkup(type);$('eventData').style.display='block';refreshInsurance()}
+function openInsurance(type){showEvent('保险','保险与保障','',[],[['返回',finish,false]]);$('eventData').innerHTML=insuranceMarkup(type);$('eventData').style.display='block';refreshInsurance()}
 buyInsurance=openInsurance;$('healthBtn').onclick=()=>openInsurance('health');
 
 // Confirmed opening: no preset classmates; relationship lifecycle adds the already-known manager.
@@ -286,8 +286,8 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-v26]');if(
  if(kind==='opportunityContinue')completeMonthlyStep(8);
  if(kind==='settle')settleMonth();
 });
-$('lifestyleBtn').onclick=$('wellnessBtn').onclick=()=>{showEvent('生活','安排本月生活','卡片是付款及效果预览。点击确认后执行，每月安排一次。',[],[['返回，不安排',finish,false]]);$('eventData').innerHTML=lifeMarkup();$('eventData').style.display='block'};
-$('businessBtn').onclick=()=>{showEvent('机会','本月四个机会','最多选择一个，也可以全不选；本月刷新不更换机会。',[],[['返回',finish,false]]);$('eventData').innerHTML=opportunityMarkup();$('eventData').style.display='block'};
+$('lifestyleBtn').onclick=$('wellnessBtn').onclick=()=>{showEvent('生活','安排本月生活','',[],[['返回，不安排',finish,false]]);$('eventData').innerHTML=lifeMarkup();$('eventData').style.display='block'};
+$('businessBtn').onclick=()=>{showEvent('机会','本月四个机会','',[],[['返回',finish,false]]);$('eventData').innerHTML=opportunityMarkup();$('eventData').style.display='block'};
 function emergencyMonthlyExpenses(){
  const petCosts=(state.pets||[]).reduce((sum,pet)=>sum+petMonthlyFee(pet),0);
  return roundCash(livingBaseAmount(state)+(state.housingCost||0)+petCosts+
@@ -317,7 +317,7 @@ $('emergencyBtn').onclick=()=>{
   ['取消',finish,false]
  ]);
 };
-const payDebtBase=payDebt;payDebt=function(name){const amount=Math.max(0,Math.min(1000,state.cash,state.debt[name]||0));showEvent('还款预览',name,'确认后减少现金与贷款本金；净资产不因偿还本金改变。',[['还款金额',money(amount)],['剩余现金',money(state.cash-amount)],['剩余本金',money((state.debt[name]||0)-amount)]],[['确认还款',()=>{payDebtBase(name);finish()},true,amount<=0],['取消',finish,false]])};
+const payDebtBase=payDebt;payDebt=function(name){const amount=Math.max(0,Math.min(1000,state.cash,state.debt[name]||0));showEvent('还款预览',name,'',[['还款金额',money(amount)],['剩余现金',money(state.cash-amount)],['剩余本金',money((state.debt[name]||0)-amount)]],[['确认还款',()=>{payDebtBase(name);finish()},true,amount<=0],['取消',finish,false]])};
 const sellBase=sellAsset;
 sellAsset=function(i,back=finish){
  const asset=state.assets[i];
@@ -373,10 +373,10 @@ function maybeInsuredJobLoss(){
  ],[['继续',finish,true]]);return true;
 }
 const k401ExplanationBase=open401Account;
-open401Account=function(back){k401ExplanationBase(back);$('eventDesc').textContent='401(k) 是雇主提供的退休账户，可从工资中定期缴费；它是账户，不是保本投资。现实中税务与雇主匹配规则因计划而异。游戏采用税前缴费：设置3%或6%后，只在有工资的月末扣除个人缴费，并加入同额雇主匹配（最高税前工资3%）。未就业、失业或退休无工资时，两项都为0。余额计入净资产，随游戏市场涨跌；正式退休后可在退休账户总览提款。游戏内无年度额度、归属期或完整税务规则。';appendRetirementReference('https://www.irs.gov/retirement-plans/401k-plans');const b=document.createElement('button');b.className='secondary';b.textContent='返回，不修改';b.onclick=finish;$('actions').appendChild(b)};
+open401Account=function(back){k401ExplanationBase(back);$('eventDesc').textContent='';appendRetirementReference('https://www.irs.gov/retirement-plans/401k-plans');const b=document.createElement('button');b.className='secondary';b.textContent='返回，不修改';b.onclick=finish;$('actions').appendChild(b)};
 const iraExplanationBase=openIRAAccount;
-openIRAAccount=function(back){iraExplanationBase(back);$('eventDesc').textContent='IRA 是个人退休账户，可在金融机构开设；它是账户，不是固定利息产品。现实中Traditional IRA缴费可能抵税，Roth IRA缴费不抵税、符合条件的提取可能免税。游戏暂不区分两者：点击确认将现金$500.00转入IRA，净资产不因转账改变；余额随市场涨跌，无雇主匹配。正式退休后可在退休账户总览提款。游戏内无抵税、收入门槛、年度额度或提款税费。';appendRetirementReference('https://www.irs.gov/retirement-plans/individual-retirement-arrangements-iras')};
-function appendRetirementReference(url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='查看 IRS 官方说明（现实规则）';$('eventData').appendChild(a);$('eventData').style.display='block'}
+openIRAAccount=function(back){iraExplanationBase(back);$('eventDesc').textContent='';appendRetirementReference('https://www.irs.gov/retirement-plans/individual-retirement-arrangements-iras')};
+function appendRetirementReference(url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='查看 IRS 官方说明（现实规则）';a.className='game-rule-tip';$('eventData').appendChild(a);$('eventData').style.display='block'}
 
 // Education and hobbies are independent; never turn an empty wallet into an unexplained lock.
 $('hobbyBtn').onclick=()=>{
