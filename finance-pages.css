@@ -242,8 +242,17 @@
  padding: 0;
  border: 0 !important;
  border-radius: 0 !important;
- background: #efd4a5 url("./assets/finance/asset-scene.webp") center / 100% 100% no-repeat !important;
+ background: transparent !important;
  color: #283619;
+}
+
+#game > .event.event-active.finance-assets::before {
+ content: "";
+ position: absolute;
+ inset: 0;
+ background: url("./assets/finance/asset-scene.webp") center / 100% 100% no-repeat;
+ clip-path: inset(6.65% 12.45% 4.45% 12.55% round 4% / 2.7%);
+ pointer-events: none;
 }
 
 .finance-assets > .row {
