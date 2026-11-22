@@ -215,3 +215,130 @@ body:has(#home:not(.hidden) #newGame:not(.hidden) #coffeeIntro) .wl-home-brand{d
  color: #34543c;
  opacity: 1;
 }
+
+#game > .event.event-active:has(.town-opportunity) {
+ top: 50% !important;
+ left: 50% !important;
+ right: auto !important;
+ transform: translate(-50%, -50%);
+ width: min(440px, calc(100% - 28px));
+ max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 26px) !important;
+ padding: 12px clamp(12px, 4vw, 23px) 10px !important;
+ background: #fbedd2 url("./assets/finance/paper.webp") center !important;
+ color: #283619;
+ border: 2px solid #b98843 !important;
+ border-radius: 22px !important;
+ box-shadow: inset 0 0 0 3px #fff1cb, inset 0 0 0 5px #b98b5480, 0 12px 32px #32251950;
+}
+.event:has(.town-opportunity) #eventType,
+.event:has(.town-opportunity) #eventDesc { display: none; }
+#game > .event:has(.town-opportunity) #eventTitle {
+ order: -2;
+ flex: none;
+ margin: 0 38px 3px;
+ text-align: center;
+ color: inherit;
+ font: clamp(26px, 8vw, 41px) / 1.1 "Finance Ink", Georgia, serif;
+}
+#game > .event:has(.town-opportunity) > .row {
+ order: -1;
+ flex: none;
+ justify-content: center;
+ padding: 0 !important;
+ margin-bottom: 4px;
+}
+.event:has(.town-opportunity) #eventMonth {
+ padding: 2px 15px;
+ border-radius: 8px 13px 8px 12px;
+ background: #f1d598;
+ color: inherit;
+ font: 15px / 1.15 "Finance Ink", Georgia, serif;
+}
+#game > .event:has(.town-opportunity) #eventClose {
+ top: 8px !important;
+ right: 8px !important;
+ border: 1px solid #b67b32;
+ background: radial-gradient(circle at 40% 25%, #ffebbf, #eac17b) !important;
+ color: #684118;
+ box-shadow: inset 0 0 0 2px #f9dca4;
+}
+#game > .event:has(.town-opportunity) > #eventData {
+ margin: 0;
+ padding: 0 3px 3px;
+}
+.town-opportunity { text-align: center; }
+.town-opportunity-art {
+ display: block;
+ width: 100%;
+ height: clamp(68px, 15dvh, 125px);
+ object-fit: contain;
+ mix-blend-mode: multiply;
+ mask-image: radial-gradient(ellipse 74% 80%, black 55%, transparent 96%);
+}
+.town-opportunity h3 {
+ width: fit-content;
+ max-width: 100%;
+ margin: 3px auto 5px;
+ padding: 4px 20px;
+ border-radius: 16px 11px 15px 12px;
+ background: linear-gradient(100deg, #d6d8a6, #efebca, #d8dbad);
+ font: clamp(20px, 6vw, 29px) / 1.15 "Finance Ink", Georgia, serif;
+}
+.town-opportunity p { margin: 6px 0; font-size: 14px; line-height: 1.4; }
+.town-opportunity-cost {
+ width: fit-content;
+ max-width: 100%;
+ margin: 8px auto;
+ padding: 5px 17px;
+ background: linear-gradient(#6f773b, #505c2a);
+ color: #fff0c2;
+ border: 2px solid #a87936;
+ border-radius: 15px;
+ box-shadow: inset 0 0 0 2px #f6d78c;
+ font: clamp(19px, 5.5vw, 27px) / 1.15 "Finance Ink", Georgia, serif;
+ overflow-wrap: anywhere;
+}
+.town-opportunity-cost strong { font-family: Georgia, serif; }
+.town-opportunity dl {
+ margin: 8px 0 0;
+ padding: 3px 8px;
+ border: 1px solid #b98b4b;
+ border-radius: 12px;
+}
+.town-opportunity dl > div {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr) fit-content(57%);
+ gap: 8px;
+ align-items: baseline;
+ padding: 5px 2px;
+ text-align: left;
+ font-size: 14px;
+}
+.town-opportunity dl > div + div { border-top: 1px solid #ac804b59; }
+.town-opportunity dd { margin: 0; text-align: right; font-weight: 700; overflow-wrap: anywhere; }
+#game > .event:has(.town-opportunity) > #actions {
+ flex: none;
+ display: grid;
+ justify-items: center;
+ gap: 0;
+ margin: 5px 0 0;
+ padding: 0;
+ background: transparent;
+}
+#game > .event:has(.town-opportunity) #actions > button { min-height: 44px; margin: 0; }
+#game > .event:has(.town-opportunity) #actions > .primary {
+ width: min(100%, 225px);
+ border: 1px solid #a96d2b;
+ border-radius: 16px;
+ background: linear-gradient(#f8db99, #efba61) !important;
+ color: #3c3f1c !important;
+ box-shadow: inset 0 0 0 2px #f8d991, inset 0 0 0 3px #c98b3c;
+ font: 23px / 1 "Finance Ink", Georgia, serif;
+}
+#game > .event:has(.town-opportunity) #actions > .secondary {
+ border: 0;
+ background: transparent;
+ color: #34431f;
+ text-decoration: underline;
+ text-underline-offset: 3px;
+}

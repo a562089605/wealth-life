@@ -108,9 +108,38 @@ monthlyOffers=function(){
  try{move.offers=structuredClone(offersBeforeTown());const recent=new Set(townState().history.filter(x=>x.offerId).slice(-3).map(x=>x.offerId));const candidates=[...move.offers.ids,...V26_OFFERS.map(x=>x.id)];move.offers.ids=[candidates.find(id=>!recent.has(id))||candidates[0]]}finally{state.monthlyOpportunities=previous;state.offerSeed=seed}
  save();return move.offers;
 };
+function openTownOpportunity(){
+ const offer=monthlyOffers();
+ const project=V26_OFFERS.find(option=>option.id===offer.ids[0]);
+ if(offer.resolved||!project)return finish();
+ const skip=()=>{
+  if(!offer.resolved){offer.resolved='未选择';save()}
+  finish();
+ };
+ showEvent('投资机会','投资机会','',[],[
+  ['确认参与',()=>takeOpportunity(project.id),true,state.cash<project.cost],
+  ['不参与，保留现金',skip,false]
+ ]);
+ if($('eventTitle').textContent!=='投资机会')return;
+ const rows=[
+  ['成功率',Math.round(opportunityChance(project)*100)+'%'],
+  project.cf?['成功后净收入',priceText(project.cf)+'/月']:['成功后收入',priceText(project.reward)],
+  ['失败可能损失',priceText(project.chance<1?project.cost:0)],
+  ['状态变化',effectText(project.effects)]
+ ];
+ const data=$('eventData');
+ data.innerHTML='<div class="town-opportunity">'+
+  '<img class="town-opportunity-art" src="./assets/finance/bill-desk.webp" alt="">'+
+  '<h3>'+batchEscape(project.name)+'</h3><p>'+batchEscape(project.desc)+'</p>'+
+  '<div class="town-opportunity-cost">投入 <strong>'+priceText(project.cost)+'</strong></div>'+
+  '<dl>'+rows.map(([label,value])=>'<div><dt>'+batchEscape(label)+'</dt><dd>'+batchEscape(value)+'</dd></div>').join('')+'</dl>'+
+  (state.cash<project.cost?'<p>现金不足，无法参与。</p>':'')+'</div>';
+ data.style.display='block';
+ data.scrollTop=0;
+}
 function openTownLanding(){
  const move=townState().movement,type=townMoveType(move);move.opened=true;save();
- if(type==='opportunity'){if(openBuyerOffer())return;showEvent('投资机会','路过一家新项目','',[],[['放弃本次机会',()=>{const o=monthlyOffers();if(!o.resolved)o.resolved='未选择';save();finish()},false]]);$('eventData').innerHTML=opportunityMarkup().replace('四个都不选，保留现金','不参与，保留现金');$('eventData').style.display='block';return}
+ if(type==='opportunity'){if(openBuyerOffer())return;return openTownOpportunity()}
  if(type==='market'&&!move.type){if(openBuyerOffer())return;resolveTownMove();return}
  if(type==='growth'){showEvent('学习成长','投资自己','',[],[['查看学历计划',openEducation,true],['练习兴趣技能',()=>$('hobbyBtn').click(),false],['本次不安排',finish,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block';return}
  if(type==='career'){if(workplaceEvent())return;openWorkAdjustment();return}
