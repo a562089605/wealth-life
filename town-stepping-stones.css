@@ -1,0 +1,10 @@
+#townView .town-stepping-board{position:relative;overflow:hidden;aspect-ratio:1122/1402}
+#townView .town-stepping-board>img:first-child{width:100%;height:100%;object-fit:fill;display:block}
+#townView .town-pawn{position:absolute;z-index:2;width:5.4%;color:#a64d3c;line-height:1;transform:translate(-50%,-96%);pointer-events:none}
+#townView .town-pawn img{display:block;width:100%;height:auto;filter:drop-shadow(0 2px 1px #39241748)}
+#townView .town-flight-die{position:absolute;z-index:3;width:11.4%;height:auto;pointer-events:none;filter:drop-shadow(0 5px 3px #422b2166)}
+#townView .town-roll-controls{text-align:center;padding:.65rem;background:#f2e5c9;border-radius:0 0 16px 16px}
+#townView .town-crystal-button{display:inline-flex;align-items:center;justify-content:center;gap:1rem;min-width:9rem;border:1px solid #c8963b;border-radius:999px;background:linear-gradient(#f6d779,#eebc4e);padding:.35rem .9rem;color:#52613c;box-shadow:0 2px 3px #6e4e2d40}
+#townView .town-crystal-button img{width:2.35rem;height:2.35rem;object-fit:contain}
+#townView .town-crystal-button span{font-size:1.4rem}
+#townView .town-crystal-button span:last-child{transform:scaleX(-1)}

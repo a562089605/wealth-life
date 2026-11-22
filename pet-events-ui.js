@@ -48,7 +48,7 @@
   const later=el('button','返回地图，稍后处理','pet-solid-button');later.onclick=()=>{if(!valid())return;close();render();};wrap.append(later);refresh();pay.disabled?later.focus({preventScroll:true}):pay.focus({preventScroll:true});return true;
  }
  const timeBefore=currentCareerTime;currentCareerTime=function(){const t=timeBefore();return state?{...t,free:Math.max(0,t.free-(state.petMapEvents?.hours[state.month]||0))}:t;};
- const landingBefore=openTownLanding;openTownLanding=function(){const move=current();if(!townEnabled()||!move||move.resolved||TOWN_TYPES[move.to]!=='life')return landingBefore();
+ const landingBefore=openTownLanding;openTownLanding=function(){const move=current();if(!townEnabled()||!move||move.resolved||townMoveType(move)!=='life')return landingBefore();
   if(move.mapLife)return landingBefore();
   const k=P.key(state,move);if(!state.petMapEvents?.records[k]){
    const owner=state,ok=P.atomic(state,()=>{move.opened=true;P.draw(state,move,{free:currentCareerTime().free,names:NPC_NAMES,jobs:NPC_JOBS});},persist);

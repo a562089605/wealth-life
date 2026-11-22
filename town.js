@@ -1,16 +1,20 @@
 // V28 candidate: town navigation shares the existing state, ledger and settlement.
-const TOWN_TYPES=['payday','opportunity','life','community','market','career','payday','growth','opportunity','life','career','opportunity','payday','community','market','growth','opportunity','life','payday','career','community','opportunity','market','growth'];
+const TOWN_LEGACY_TYPES=['payday','opportunity','life','community','market','career','payday','growth','opportunity','life','career','opportunity','payday','community','market','growth','opportunity','life','payday','career','community','opportunity','market','growth'];
+const TOWN_TYPES=['payday','opportunity','life','life','opportunity','career','payday','opportunity','opportunity','life','career','opportunity','payday','life','opportunity','life','opportunity','opportunity','payday','career','life','opportunity','opportunity','life'];
+function townMoveType(move){return move.type || TOWN_LEGACY_TYPES[move.to];}
+const TOWN_ART='assets/career/town-stepping-stones/';
+let townAnimating=false;
 const TOWN_LABELS={payday:'发薪日',opportunity:'投资机会',market:'市场',life:'生活',growth:'学习成长',career:'职业',risk:'风险事件',community:'关系／社区'};
 const TOWN_ICONS={payday:'＄',opportunity:'✦',market:'↗',life:'♥',growth:'书',career:'职',risk:'!',community:'友'};
 let townVisible=false;
 function townState(){return state.town??={version:1,position:0,rolls:0,movement:null,history:[]}}
 function townPending(){return !!state?.town?.movement&&!state.town.movement.resolved}
 function townEnabled(){return !!state?.townMode}
-function townStart(){state.townMode=true;townVisible=true;townState();save();if(!state.housing||state.housing==='unselected'){openHousing();return}showTown()}
+function townStart(){if(townAnimating)return;if(window.leaveTownRoom)return window.leaveTownRoom();}
 function showTown(){if(state.requiredIncident)return openRequiredIncident();townVisible=true;$('game').classList.remove('v24-running');clearModals();render();if(townPending())resumeTownMove()}
 function originalMonthlyPlay(){if(townPending())return;state.townMode=false;townVisible=false;save();document.body.classList.remove('town-map');clearModals();render();startV24Turn(false)}
 // 24 equally spaced paving positions on the illustrated winding street; indices keep old saves valid.
-const TOWN_ROAD_POINTS=[{"x":28.52,"y":55.278,"angle":-93.74},{"x":31.389,"y":49.761,"angle":-62.21},{"x":31.4,"y":44.092,"angle":-124.41},{"x":26.403,"y":39.561,"angle":-126.44},{"x":25.32,"y":33.896,"angle":-61.53},{"x":31.369,"y":30.483,"angle":-19.91},{"x":38.634,"y":28.819,"angle":-13.39},{"x":46.121,"y":28.181,"angle":3.95},{"x":53.511,"y":29.388,"angle":16.67},{"x":60.776,"y":31.053,"angle":12.16},{"x":68.256,"y":31.909,"angle":7.48},{"x":75.254,"y":33.899,"angle":45.52},{"x":74.793,"y":39.337,"angle":125.73},{"x":72.398,"y":44.675,"angle":60.87},{"x":78.089,"y":48.6,"angle":44.5},{"x":76.79,"y":53.576,"angle":143.81},{"x":70.721,"y":57.14,"angle":127.3},{"x":71.372,"y":62.875,"angle":75.48},{"x":67.759,"y":67.521,"angle":152.96},{"x":60.426,"y":68.68,"angle":-177.63},{"x":52.989,"y":67.648,"angle":-168.4},{"x":45.647,"y":66.226,"angle":-161.64},{"x":38.913,"y":63.518,"angle":-149.39},{"x":32.624,"y":60.172,"angle":-140.73}];
+const TOWN_ROAD_POINTS=[{"x":28.164,"y":57.489},{"x":30.927,"y":51.355},{"x":30.927,"y":45.506},{"x":26.56,"y":40.514},{"x":25.134,"y":35.021},{"x":30.838,"y":31.669},{"x":38.414,"y":29.957},{"x":46.346,"y":28.887},{"x":54.991,"y":30.1},{"x":62.478,"y":31.954},{"x":70.856,"y":33.381},{"x":77.273,"y":36.662},{"x":77.986,"y":41.013},{"x":74.153,"y":45.649},{"x":78.164,"y":50.785},{"x":77.807,"y":56.348},{"x":75.045,"y":61.484},{"x":68.984,"y":64.194},{"x":63.904,"y":67.047},{"x":57.843,"y":67.903},{"x":49.822,"y":67.832},{"x":43.316,"y":67.332},{"x":37.166,"y":65.977},{"x":31.194,"y":61.698}];
 function townPoint(i){return TOWN_ROAD_POINTS[((i%24)+24)%24]}
 function townPaydayDistance(){for(let d=1;d<=24;d++)if(TOWN_TYPES[(townState().position+d)%24]==='payday')return d}
 function townCalendar(){return '第'+(Math.floor(state.month/12)+1)+'年 · 第'+(state.month%12+1)+'月'}
@@ -24,42 +28,93 @@ function renderTown(){
  const game=$('game');document.body.classList.toggle('town-map',townEnabled()&&townVisible&&!game.classList.contains('hidden'));
  if(!townEnabled()||!townVisible){$('townView')?.style.setProperty('display','none','important');return}game.classList.remove('v24-running');const t=townState();let box=$('townView');if(!box){box=document.createElement('section');box.id='townView';game.append(box)}
  box.style.setProperty('display','block','important');const m=calcMetrics(),pos=townPoint(t.position),last=t.movement;
- box.innerHTML='<div class="town-toolbar"><b>起步小镇 · '+townCalendar()+'</b><button data-town="home">回家安排</button><button data-town="monthly" '+(townPending()?'disabled':'')+'>原按月模式</button></div><p class="town-hint">24格 · 单骰顺时针 · 停在发薪日或从地图回家时结算一个月</p><div class="town-map-scene"><img src="assets/career/town-painted-20261117.webp" alt="起步小镇手绘地图"><span class="town-place" style="left:10%;top:27%">创作室</span><span class="town-place" style="left:33%;top:24%">公司</span><span class="town-place" style="left:61%;top:24%">学校</span><span class="town-place" style="left:86%;top:32%">医院</span><span class="town-place" style="left:10%;top:43%">咖啡店</span><span class="town-place" style="left:15%;top:64%">家</span><span class="town-place" style="left:93%;top:43%">公园</span><span class="town-place" style="left:88%;top:65%">投资中心</span><span class="town-place" style="left:46%;top:81%">市场</span><span class="town-place" style="left:76%;top:79%">机会中心</span><div class="town-route" aria-label="24格移动路线">'+TOWN_TYPES.map((type,i)=>{const p=townPoint(i);return '<span class="town-node '+type+(i===t.position?' current':'')+'" style="left:'+p.x+'%;top:'+p.y+'%;--road-angle:'+p.angle+'deg" title="'+(i+1)+' '+TOWN_LABELS[type]+'"><span class="town-paving-label"><small>'+(i+1)+'</small>'+TOWN_ICONS[type]+'</span></span>'}).join('')+'<span class="town-player" style="left:'+pos.x+'%;top:'+pos.y+'%" aria-label="玩家当前位置第'+(t.position+1)+'格">●</span></div></div><div class="town-status"><b>'+(last?'掷出 '+last.die+' · 第'+(t.position+1)+'格 '+TOWN_LABELS[TOWN_TYPES[t.position]]:'从家附近出发')+'</b><p>现金 '+priceText(state.cash)+' · 持续月结余 '+priceText(m.monthlyCF)+'</p><p>距离下次发薪 <b>'+townPaydayDistance()+' 格</b> · 发薪日共4格，经过不结算</p><div class="town-vitals">'+[['健康',state.health],['精力',state.energy],['压力',state.stress],['幸福',state.happiness]].map(([name,value])=>'<span>'+name+' <b>'+Math.round(value??0)+'</b></span>').join('')+'</div>'+(!state.job&&!state.retired?'<p class="town-work-hint">尚未就业：可回家选择工作。生活费用仍会持续发生。</p>':'')+'<details class="town-legend"><summary>查看格子规则</summary><p>＄ 发薪：仅停下，确认后结算一个月。<br>✦ 机会 · ↗ 市场 · ♥ 生活 · 书 成长<br>职 职业 · ! 风险 · 友 社区<br>其余格子仅停下触发；从地图回家结束当月；房屋内切换页面不推进月份。</p></details><button class="primary" data-town="roll" '+(townPending()||state.gameOver?.final?'disabled':'')+'>掷骰子</button>'+(townPending()?'<button data-town="resume">继续处理当前事件</button>':'')+'<button data-town="stage">查看财务自由进度</button></div>';
+ const locked=townPending()||townAnimating||state.gameOver?.final;
+ const die=last?.die||1;
+ const barista=coffeeSalaryRole(state.job)==='barista';
+ box.innerHTML=`<div class="town-toolbar"><b>起步小镇 · ${townCalendar()}</b><button data-town="home" ${locked?'disabled':''}>回家安排</button></div>
+ <div class="town-map-scene town-stepping-board"><img src="${TOWN_ART}board.webp" alt="沿碎石路环绕喷泉的二十四块手绘汀步石">
+ <span class="town-pawn" data-town-pawn style="left:${pos.x}%;top:${pos.y}%" aria-label="玩家当前位置第${t.position+1}格">${barista?`<img src="${TOWN_ART}barista.webp" alt="">`:'●'}</span>
+ <img class="town-flight-die" data-town-flight alt="" hidden></div>
+ <div class="town-roll-controls"><button type="button" class="town-crystal-button" data-town="roll" aria-label="掷骰子" ${locked?'disabled':''}><span aria-hidden="true">❧</span><img src="${TOWN_ART}die-${die}.webp" alt=""><span aria-hidden="true">❧</span></button></div>
+ <div class="town-status"><b>${last?.die?'掷出 '+last.die+' · '+TOWN_LABELS[TOWN_TYPES[t.position]]:'从家附近出发'}</b>
+ <p>现金 ${priceText(state.cash)} · 持续月结余 ${priceText(m.monthlyCF)}</p>
+ <p>距离下次发薪 ${townPaydayDistance()} 格 · 停在发薪日才结算</p>
+ ${townPending()&&!townAnimating?'<button data-town="resume">继续处理当前事件</button>':''}</div>`;
+
 }
 function rollTown(){
- if(!townEnabled()||townPending()||document.querySelector('.event-active')||state.gameOver?.final)return;
+ if(!townEnabled()||townAnimating||townPending()||document.querySelector('.event-active')||state.gameOver?.final)return;
  if(!state.housing||state.housing==='unselected')return openHousing();
  if(state.requiredIncident)return openRequiredIncident();
  if(state.crisis&&state.crisis.ackMonth!==state.month)return showRecovery();
- const t=townState(),die=1+Math.floor(Math.random()*6),from=t.position,path=Array.from({length:die},(_,i)=>(from+i+1)%24);
- t.rolls++;t.position=path.at(-1);t.movement={id:t.rolls,die,from,to:t.position,path,month:state.month,payExpected:TOWN_TYPES[t.position]==='payday'?state.month+1:null,payDone:false,resolved:false};save();render();resumeTownMove();
+ const t=townState(),die=townDie(),from=t.position,path=Array.from({length:die},(_,i)=>(from+i+1)%24);
+ const prior=t.movement,to=path.at(-1),type=TOWN_TYPES[to];
+ const move={id:++t.rolls,die,from,to,path,type,month:state.month,payExpected:type==='payday'?state.month+1:null,payDone:false,resolved:false};
+ t.position=to;t.movement=move;
+ if(save()===false){t.rolls--;t.position=from;t.movement=prior;return;}
+ townAnimating=true;
+ document.querySelectorAll('#townView button').forEach(button=>{button.disabled=true;});
+ animateTownMove(move).catch(()=>{}).finally(()=>{
+  townAnimating=false;
+  if(state?.town?.movement!==move||!townVisible)return;
+  render();resumeTownMove();
+ });
+}
+function townDie(){
+ const value=new Uint8Array(1);
+ do{crypto.getRandomValues(value);}while(value[0]>=252);
+ return value[0]%6+1;
+}
+async function animateTownMove(move){
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const pawn=document.querySelector('[data-town-pawn]'),die=document.querySelector('[data-town-flight]');
+ if(!pawn||!die)return;
+ die.src=TOWN_ART+'die-'+move.die+'.webp';
+ await die.decode();
+ die.hidden=false;
+ await die.animate([
+  {left:'-12%',top:'60%',transform:'translate(-50%,-50%) rotate(0turn) scale(.84)'},
+  {left:'24%',top:'41%',transform:'translate(-50%,-50%) rotate(1.12turn) scale(.94)',offset:.42},
+  {left:'45%',top:'51%',transform:'translate(-50%,-50%) rotate(1.85turn) scale(.96)',offset:.76},
+  {left:'50%',top:'50%',transform:'translate(-50%,-50%) rotate(2turn)'}
+ ],{duration:1020,easing:'cubic-bezier(.19,.6,.34,1)',fill:'forwards'}).finished;
+ await die.animate([{opacity:1},{opacity:1,offset:.76},{opacity:0}],{duration:690,fill:'forwards'}).finished;
+ die.hidden=true;
+ for(const tile of move.path){
+  const pos=townPoint(tile);
+  const left=(parseFloat(pawn.style.left)+pos.x)/2+'%',top=(parseFloat(pawn.style.top)+pos.y)/2+'%';
+  await pawn.animate([{left:pawn.style.left,top:pawn.style.top,translate:'0 0'},
+   {left,top,translate:'0 -7px'},
+   {left:pos.x+'%',top:pos.y+'%',translate:'0 0'}],{duration:230,easing:'ease-in-out'}).finished;
+  pawn.style.left=pos.x+'%';pawn.style.top=pos.y+'%';
+ }
 }
 function resumeTownMove(){
- const t=townState(),move=t.movement;if(!move||move.resolved)return;
+ const t=townState(),move=t.movement;if(townAnimating||!move||move.resolved)return;
  if(state.requiredIncident)return openRequiredIncident();
  if(state.gameOver?.final)return showGameOver();
  if(state.crisis&&state.crisis.ackMonth!==state.month)return showRecovery();
  if(move.payExpected&&state.month<move.payExpected)return previewTownPayday();
- if(move.payExpected){move.payDone=true;if(townCareerNotice(move))return}
- if(TOWN_TYPES[move.to]==='payday'){resolveTownMove();return}
+ if(move.payExpected){move.payDone=true;if(townCareerNotice(move))return;}
+ if(townMoveType(move)==='payday'){resolveTownMove();return}
  openTownLanding();
 }
 function previewTownPayday(){
- const move=townState().movement,m=calcMetrics();showEvent('发薪日','核对本月收支','确认后使用原有月末账本结算一次。已付费用抵扣；贷款请先查看本月还款卡，未付按原合同处理。',[['本月税前工资',priceText(m.grossSalary)],['本月持续收支结余',priceText(m.monthlyCF)],['尚待月末收付',priceText(m.remainingCF)],['预计结算后现金',priceText(state.cash+m.remainingCF)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false],['稍后处理，返回地图',()=>{clearModals();render()},false]]);$('eventClose').hidden=true;
+ const move=townState().movement,m=calcMetrics();showEvent(move.returnReason==='home'?'回家安排':'发薪日','核对本月收支','确认后使用原有月末账本结算一次。已付费用抵扣；贷款请先查看本月还款卡，未付按原合同处理。',[['本月税前工资',priceText(m.grossSalary)],['本月持续收支结余',priceText(m.monthlyCF)],['尚待月末收付',priceText(m.remainingCF)],['预计结算后现金',priceText(state.cash+m.remainingCF)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false],['稍后处理，返回地图',()=>{clearModals();render()},false]]);$('eventClose').hidden=true;
 }
-function resolveTownMove(){const t=townState(),m=t.movement;if(!m||m.resolved)return;m.resolved=true;m.completedMonth=state.month;t.history.push({id:m.id,die:m.die,to:m.to,month:state.month,type:TOWN_TYPES[m.to],offerId:m.offers?.ids?.[0]||null,outcome:m.offers?.resolved||null});save();render()}
+function resolveTownMove(){const t=townState(),m=t.movement;if(!m||m.resolved)return;m.resolved=true;m.completedMonth=state.month;t.history.push({id:m.id,die:m.die,to:m.to,month:state.month,type:townMoveType(m),offerId:m.offers?.ids?.[0]||null,outcome:m.offers?.resolved||null});save();render()}
 const offersBeforeTown=monthlyOffers;
 monthlyOffers=function(){
- if(!townEnabled()||!townPending()||TOWN_TYPES[townState().movement.to]!=='opportunity')return offersBeforeTown();
+ if(!townEnabled()||!townPending()||townMoveType(townState().movement)!=='opportunity')return offersBeforeTown();
  const move=townState().movement;if(move.offers)return move.offers;
  const previous=state.monthlyOpportunities,seed=state.offerSeed;state.monthlyOpportunities=null;state.offerSeed=(seed||1)+move.id*104729;
  try{move.offers=structuredClone(offersBeforeTown());const recent=new Set(townState().history.filter(x=>x.offerId).slice(-3).map(x=>x.offerId));const candidates=[...move.offers.ids,...V26_OFFERS.map(x=>x.id)];move.offers.ids=[candidates.find(id=>!recent.has(id))||candidates[0]]}finally{state.monthlyOpportunities=previous;state.offerSeed=seed}
  save();return move.offers;
 };
 function openTownLanding(){
- const move=townState().movement,type=TOWN_TYPES[move.to];move.opened=true;save();
- if(type==='opportunity'){showEvent('投资机会','路过一家新项目','这次只处理一个机会。先看投入、风险与现金流，不合适可以放弃。',[],[['放弃本次机会',()=>{const o=monthlyOffers();if(!o.resolved)o.resolved='未选择';save();finish()},false]]);$('eventData').innerHTML=opportunityMarkup().replace('四个都不选，保留现金','不参与，保留现金');$('eventData').style.display='block';return}
- if(type==='market'){if(openBuyerOffer())return;showEvent('市场','看看当前市场','查看当前报价，确认后才交易。',[['基准利率',(ECONOMIES[state.economy||0].rate*100).toFixed(1)+'%']],[['查看证券与资产',openTownSecurities,true],['查看固定收益产品',openBonds,false],['继续持有，离开',finish,false]]);return}
+ const move=townState().movement,type=townMoveType(move);move.opened=true;save();
+ if(type==='opportunity'){if(openBuyerOffer())return;showEvent('投资机会','路过一家新项目','这次只处理一个机会。先看投入、风险与现金流，不合适可以放弃。',[],[['放弃本次机会',()=>{const o=monthlyOffers();if(!o.resolved)o.resolved='未选择';save();finish()},false]]);$('eventData').innerHTML=opportunityMarkup().replace('四个都不选，保留现金','不参与，保留现金');$('eventData').style.display='block';return}
+ if(type==='market'&&!move.type){if(openBuyerOffer())return;resolveTownMove();return}
  if(type==='growth'){showEvent('学习成长','投资自己','学历、兴趣与工资仍沿用原规则；每月兴趣练习不重复收费或刷经验。',[],[['查看学历计划',openEducation,true],['练习兴趣技能',()=>$('hobbyBtn').click(),false],['本次不安排',finish,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block';return}
  if(type==='career'){if(workplaceEvent())return;openWorkAdjustment();return}
  if(type==='life'){if(typeof openMapLife==='function')return openMapLife(move);$('lifestyleBtn').click();return}

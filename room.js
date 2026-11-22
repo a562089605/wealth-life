@@ -58,6 +58,7 @@
   if(allowOverdueClean!==true&&cleanDue.length)return showEvent('宠物护理','清洁护理到期','可以稍后护理并继续出门。月底仍未完成，每只到期宠物健康减少10；完成清洁护理恢复20。',cleanDue.map(t=>[t.pet.name||t.pet.type,'健康 '+PetHealth.value(t.pet)+'/100']),[['前往清洁护理',()=>openPetCare(),true],['暂不护理，继续出门',()=>leaveRoom(true),false],['返回房屋',openRoom,false]]);
   state.townMode=true;state.roomLocation='town';townState();save();visible=false;syncRoom();showTown();
  }
+ window.leaveTownRoom=()=>townVisible?showTown():leaveRoom();
  function learning(){
   showEvent('学习','学习与技能','先查看费用、时间与收益，再确认学习。',[],[
    ['学历学习',openEducation,true],['职业技能课程',openCoffeeCourses,false],
