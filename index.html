@@ -182,6 +182,72 @@ body{padding-bottom:calc(110px + env(safe-area-inset-bottom))}button{touch-actio
 <link rel="stylesheet" href="pet-adoption-entry.css?v=20261105-petcard2"><link rel="stylesheet" href="pet-pages.css?v=20261113-review1">
 <link rel="stylesheet" href="pet-events.css?v=20261106-pet35">
 <link rel="stylesheet" href="entry-screen.css?v=20261121-picturebook1"><link rel="stylesheet" href="save-slots.css?v=20261112-slots1">
+<style>
+/* Room pages share the warm, rounded frame of the pet adoption card. */
+body {
+ --room-card-edge:#b99a61;
+ --room-card-inner:#fff9e8;
+ --room-card-paper:#fff5dd;
+ --room-card-ink:#294b32;
+ --room-card-shadow:0 6px 18px #543a2440;
+}
+.painted-screen #paintedView:has(.painted-canvas:is(.life,.rest)):not([hidden]) {
+ background:radial-gradient(ellipse at 50% 35%,#f5e6c5,#c6b28b);
+}
+#paintedView .painted-canvas:is(.life,.rest) {
+ width:min(calc(100vw - 20px),calc((100dvh - 20px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))*853/1844));
+ overflow:hidden;
+ border-radius:18px;
+ box-shadow:var(--room-card-shadow);
+}
+.painted-canvas:is(.life,.rest)::after {
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:5;
+ border:1.5px solid var(--room-card-edge);
+ border-radius:inherit;
+ box-shadow:inset 0 0 0 2px #fff9e8aa;
+ pointer-events:none;
+}
+.painted-canvas.life .painted-date {
+ left:9.4%;top:11.5%;width:33.2%;height:3.4%;border-radius:999px;background:#dfe7bf;
+}
+.painted-canvas.life .life-stat::before {filter:none;border-radius:5px}
+.painted-canvas.life .life-bill {
+ border:1px solid #c2aa74;
+ box-shadow:inset 0 0 0 1px var(--room-card-inner);
+}
+.career-overlay:has(.career-scene[data-art="learning-banner"]) .career-paper,
+.career-cafe-home.career-fixed .career-paper,
+.relationship-overlay[aria-label="我的关系网"] .relationship-paper,
+#game > .card.event.event-active.finance-home {
+ border:1.5px solid var(--room-card-edge);
+ border-radius:24px;
+ box-shadow:inset 0 0 0 2px var(--room-card-inner),var(--room-card-shadow);
+}
+.career-overlay:has(.career-scene[data-art="learning-banner"]) .career-content {
+ background:radial-gradient(ellipse at top left,var(--room-card-inner),var(--room-card-paper));
+}
+.career-overlay:has(.career-scene[data-art="learning-banner"]) h1 {
+ font-family:WealthHand,'PingFang SC',sans-serif;
+ color:var(--room-card-ink);
+}
+.career-overlay:has(.career-scene[data-art="learning-banner"]) .career-choice,
+.career-cafe-home.career-fixed .career-panel,
+.relationship-overlay[aria-label="我的关系网"] .relationship-contact,
+#game > .event.finance-home #actions > button:not(:last-child) {
+ border:1px solid var(--room-card-edge);
+ border-radius:15px;
+ box-shadow:inset 0 0 0 1px var(--room-card-inner),0 2px 0 #a9854933;
+}
+.career-overlay:has(.career-scene[data-art="learning-banner"]) .career-choice {
+ background:#fff5de;
+}
+.career-cafe-home .career-scene[data-art="career"] {
+ background:#efe0b9 url("assets/career-learning-20261115/career.webp") center 36%/cover no-repeat;
+}
+</style>
 </head><body class="entry-cover"><main>
 <section id="welcomeScreen" aria-label="财富人生游戏封面">
  <div class="entry-art"><h1 class="entry-fallback-title">财富人生 <small>WEALTH LIFE</small></h1><img id="welcomeArt" src="assets/home/wealth-life-cover-riverside-town-20261121.webp" width="853" height="1280" fetchpriority="high" alt="财富人生 Wealth Life：石板路通往喷泉，沿街有咖啡馆和书店的河畔小镇。">
