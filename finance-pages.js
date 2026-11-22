@@ -4,7 +4,7 @@
  const previousShow = showEvent;
  showEvent = function(...args){
   delete eventCard.dataset.etfDetail;
-  eventCard.classList.remove('finance-home','finance-bill','finance-debt','finance-assets','finance-savings','finance-emergency','finance-cd','finance-etf','finance-sp500','finance-etf-buy','finance-etf-receipt','finance-etf-sell','finance-etf-settings','finance-parchment','retirement-transaction');
+  eventCard.classList.remove('finance-home','finance-bill','finance-bill-current','finance-debt','finance-assets','finance-savings','finance-emergency','finance-cd','finance-etf','finance-sp500','finance-etf-buy','finance-etf-receipt','finance-etf-sell','finance-etf-settings','finance-parchment','retirement-transaction');
   $('eventData').removeAttribute('tabindex');
   $('eventData').removeAttribute('aria-label');
   return previousShow(...args);
@@ -211,19 +211,22 @@
     ['预计工资（税前）',metrics.grossSalary],['预计工资税',-metrics.tax],
     ['预计 401(k) 个人缴费',-metrics.kContrib],['预计资产净现金流',state.passive],...investing.maturities
    ].filter(([,amount])=>amount!==0);
+   eventCard.classList.add('finance-bill-current');
    drawBill('<div class="finance-bill-desk">'+illustration('desk')+'</div>'+
     highlight('当前现金',state.cash,'cash','finance-bill-cash')+
+    '<div class="finance-bill-forecast" role="group" aria-label="本月预计收付">'+
+    lines([['待收',forecastIncome],['待付',forecastExpenses]])+'</div>'+
+    '<div class="finance-bill-ledger">'+
     section('本月已记账',[
      ['收入及转入',totalFor(1)],['支出及转出',totalFor(-1)],['其中：已付经常支出',metrics.prepaidExpenses]
     ])+
-    section('本月预计收付',[['待收',forecastIncome],['待付',forecastExpenses]])+
-    highlight('预计月末现金',investing.cash,'coins')+
+    section('本月逐笔流水',detailRows(entries),'本月尚无已记账流水。')+
+    '<section class="finance-bill-section finance-bill-closing"><h3>预计月末现金</h3><strong>'+priceText(investing.cash)+'</strong></section>'+
     ((!state.housing||state.housing==='unselected')?
      '<p class="finance-bill-note">'+illustration('house')+'住房待选，暂未计入住房费用。</p>':'')+
-    section('本月逐笔流水',detailRows(entries),'本月尚无已记账流水。')+
     section('预计收入及扣减明细',forecastRows)+
     section('待付明细',[...FinanceLedger.forecastExpenses(),...investing.expenses])+
-    (investing.skipped.length?section('预计跳过的定投',investing.skipped):''));
+    (investing.skipped.length?section('预计跳过的定投',investing.skipped):'')+'</div>');
   }
 
   function history(){
