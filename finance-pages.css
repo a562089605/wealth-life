@@ -113,45 +113,95 @@
 }
 
 #game > .event.event-active.finance-bill {
- width: min(440px, calc(100% - 20px));
+ top: 50% !important;
+ left: 50% !important;
+ right: auto !important;
+ transform: translate(-50%, -50%);
+ width: min(440px, calc(100% - 32px));
+ max-height: min(760px, calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 32px)) !important;
+ display: flex !important;
+ flex-direction: column;
  box-sizing: border-box;
- padding: 16px 16px 12px;
- background: #fbedd2 url("./assets/finance/paper.webp") repeat !important;
- color: #263e2b;
+ margin: 0;
+ padding: 15px clamp(12px, 4vw, 22px) 14px !important;
+ overflow: hidden;
+ border: 2px solid #cb9b56 !important;
+ border-radius: 20px !important;
+ background: #fbedd2 url("./assets/finance/paper.webp") center !important;
+ box-shadow: inset 0 0 0 4px #f5dcb0, 0 12px 32px #32251950;
+ color: #283619;
 }
 
 .finance-bill #eventType, .finance-bill #eventDesc { display: none; }
-.finance-bill #eventTitle { margin: 0 42px 8px 0; color: inherit; }
-.finance-bill .row { padding-right: 42px; }
+#game > .event.finance-bill #eventTitle {
+ order: -2;
+ flex: none;
+ margin: 0 32px 2px;
+ color: inherit;
+ text-align: center;
+ font: clamp(25px, 7vw, 38px) / 1.12 "Finance Ink", Georgia, serif;
+}
 
-.event.event-active.finance-bill > #eventData {
- padding: 0 7px 0 0;
+#game > .event.finance-bill > .row {
+ order: -1;
+ flex: none;
+ justify-content: center;
+ padding: 0 !important;
+ margin: 0 32px 7px;
+}
+
+.finance-bill #eventMonth {
+ padding: 2px 14px;
+ border-radius: 45% 28% 42% 22% / 30% 40% 35% 45%;
+ background: #f0d596;
+ color: inherit;
+ font: 15px / 1.2 "Finance Ink", Georgia, serif;
+}
+
+#game > .event.finance-bill #eventClose {
+ top: 8px !important;
+ right: 8px !important;
+ border: 1px solid #b67b32;
+ background: radial-gradient(circle at 40% 25%, #ffebbf, #eac17b) !important;
+ color: #684118;
+ box-shadow: inset 0 0 0 2px #f9dca4;
+}
+
+#game > .event.event-active.finance-bill > #eventData {
+ flex: 1 1 auto;
+ min-height: 0;
+ max-height: none;
+ overflow: auto;
+ overscroll-behavior: contain;
+ padding: 2px 4px 5px;
  margin: 0;
- scrollbar-gutter: stable;
  scrollbar-width: thin;
- scrollbar-color: #9d8054 #eee1c4;
+ scrollbar-color: #b88e53 #f4e5c5;
 }
 
 .finance-bill-desk img {
  display: block;
  width: 100%;
- height: auto;
+ max-height: 135px;
+ object-fit: contain;
  mix-blend-mode: multiply;
- mask-image: radial-gradient(ellipse 74% 79%, black 54%, transparent 96%);
+ mask-image: radial-gradient(ellipse 72% 79%, black 55%, transparent 96%);
 }
 
 .finance-bill-highlight {
  display: flex;
  align-items: center;
  gap: 8px;
- margin: 9px 0;
- padding: 7px 9px;
- border-radius: 15px;
- background: #f7d98780;
+ margin: 8px 0 12px;
+ padding: 6px 9px;
+ border: 1px solid #9c9a59;
+ border-radius: 12px;
+ background: linear-gradient(105deg, #e5e6ba, #f4edcb, #ebedc9);
+ box-shadow: inset 0 0 0 2px #f8f2d8, inset 0 0 0 3px #a7a27070;
 }
 
 .finance-bill-highlight img {
- width: 42px;
+ width: 38px;
  flex: none;
  mix-blend-mode: multiply;
  mask-image: radial-gradient(ellipse 71% 69%, black 45%, transparent 98%);
@@ -161,22 +211,19 @@
  min-width: 0;
  flex: 1;
  display: flex;
- gap: 4px 10px;
+ gap: 2px 8px;
  flex-wrap: wrap;
  justify-content: space-between;
  align-items: baseline;
- border-left: 1px solid #aa895a;
- padding-left: 10px;
 }
 
+.finance-bill-highlight span { font: clamp(16px, 4.5vw, 21px) / 1.15 "Finance Ink", Georgia, serif; }
 .finance-bill-highlight strong {
- font-size: clamp(17px, 5vw, 24px);
+ font: 700 clamp(18px, 5.5vw, 27px) / 1.15 Georgia, serif;
+ font-variant-numeric: lining-nums tabular-nums;
  overflow-wrap: anywhere;
 }
-
-.finance-bill-cash img { width: 68px; }
-.finance-bill-cash div { flex-direction: column; }
-.finance-bill-cash strong { font-size: clamp(24px, 7vw, 36px); }
+.finance-bill-cash img { width: 48px; }
 
 .finance-bill-section {
  padding: 0 9px 4px;
@@ -192,6 +239,20 @@
  background: #d8d1a0;
  border-radius: 5px 14px 6px 8px;
  font-size: 15px;
+}
+
+.finance-bill .finance-bill-section {
+ margin: 10px 0 13px;
+ padding: 0 0 0 3px;
+ border: 0;
+}
+
+.finance-bill .finance-bill-section h3 {
+ margin: 0 0 3px -3px;
+ padding: 3px 14px 4px;
+ border-radius: 7px 13px 6px 11px;
+ background: linear-gradient(100deg, #e8c383, #f3db9e 80%, #f5e3b600);
+ font: clamp(17px, 4.8vw, 22px) / 1.1 "Finance Ink", Georgia, serif;
 }
 
 .finance-bill-section p { margin: 8px 0; }
@@ -214,11 +275,51 @@
  overflow-wrap: anywhere;
 }
 
+.finance-bill .finance-bill-lines > div {
+ grid-template-columns: minmax(0, 1fr) fit-content(52%);
+ border: 0;
+ border-bottom: 1px solid #ac804b59;
+ font-size: 14px;
+ line-height: 1.25;
+}
+.finance-bill .finance-bill-lines dd {
+ font-family: Georgia, serif;
+ font-variant-numeric: lining-nums tabular-nums;
+}
+.finance-bill .finance-bill-section p { font-size: 13px; }
+
 .finance-bill-note { display: flex; align-items: center; gap: 6px; margin: 6px 0; }
 .finance-bill-note img { width: 37px; mix-blend-mode: multiply; }
 .finance-bill-history { display: grid; gap: 7px; }
-.event.event-active.finance-bill > #actions { background: none; }
-#game > .event.finance-bill #actions > button:last-child { background: #efd27b; }
+#game > .event.event-active.finance-bill > #actions {
+ flex: none;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ margin: 6px 0 0;
+ padding: 3px 0 0;
+ background: none;
+ border: 0;
+}
+
+#game > .event.finance-bill #actions > button:last-child {
+ width: min(100%, 210px);
+ min-height: 44px;
+ margin: 0;
+ border: 1px solid #a96d2b;
+ border-radius: 13px;
+ background: linear-gradient(#f8db99, #efba61) !important;
+ color: #3c3f1c;
+ box-shadow: inset 0 0 0 2px #f8d991, inset 0 0 0 3px #c98b3c;
+ font: 22px / 1 "Finance Ink", Georgia, serif;
+}
+
+.finance-bill-options {
+ display: grid;
+ gap: 6px;
+ margin: 10px 0 2px;
+}
+#game > .event.finance-bill .finance-bill-options > button { margin: 0; }
 
 
 @font-face {

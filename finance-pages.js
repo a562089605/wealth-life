@@ -121,13 +121,21 @@
     (row.amount>0?'+':'')+priceText(row.amount),row.context]);
   }
 
-  function drawBill(content,label='账单明细，可纵向滚动'){
+  function drawBill(content){
    eventCard.classList.add('finance-bill');
    const data=$('eventData');
    data.innerHTML=content;
    data.style.display='block';
    data.tabIndex=0;
-   data.setAttribute('aria-label',label);
+   data.setAttribute('aria-label','账单明细，可纵向滚动');
+   const options=Array.from($('actions').children).slice(0,-1);
+   if(options.length){
+    const group=document.createElement('div');
+    group.className='finance-bill-options';
+    group.append(...options);
+    data.append(group);
+   }
+   eventCard.scrollTop=0;
    data.scrollTop=0;
   }
 
@@ -286,15 +294,15 @@
     ['净资产',metrics.nw,'net'],['总资产',metrics.assetValue,'gross'],['总负债',metrics.debtTotal,'debt']
    ].map(([label,value,key])=>'<div class="finance-asset-'+key+'"><dt>'+label+
     '</dt><dd>'+priceText(value)+'</dd></div>').join('')+'</dl>';
-   drawBill(summary+
+   const data=$('eventData');
+   data.style.display='block';
+   data.innerHTML=summary+
     '<div class="finance-asset-holdings" tabindex="0" role="region" aria-label="资产明细，可纵向滚动">'+
     section('现金与储蓄',cash,undefined,'cash')+
     (investments.length||!funds.length?section('投资持仓',investments,'暂无投资持仓。','investments'):'')+
     (funds.length?section('基金持仓',funds):'')+
     section('实物资产',property,'暂无实物资产。','property')+
-    section('长期账户',longTerm,undefined,'accounts')+depositNote+'</div>');
-   $('eventData').removeAttribute('tabindex');
-   $('eventData').removeAttribute('aria-label');
+    section('长期账户',longTerm,undefined,'accounts')+depositNote+'</div>';
    eventCard.classList.add('finance-assets');
   }
 
