@@ -47,12 +47,12 @@
   p.choice(list,'管理课程','管理技能 Lv.'+R.skillLevel(state,'management')+' · 查看课程 →','assets/career-learning-20261115/management.webp',management);
   p.button(origin==='career'?'返回我的职业':'返回学习',back).classList.add('career-back');
  }
- function management(notice=''){if(typeof notice!=='string')notice='';coffeeCareerData();const p=panel('管理基础课程','management',()=>skills()),opts=()=>({free:currentCareerTime().free,reserve:necessaryPetCareHours(),recovery:isRecoveryMonth(state),save}),expected=R.courseToken(state),miss=R.courseMissing(state,opts()),xp=Math.max(0,state.coffee.skills.management.xp||0);
+ function management(notice='',back=skills){if(typeof notice!=='string')notice='';coffeeCareerData();const p=panel('管理基础课程','management',back),opts=()=>({free:currentCareerTime().free,reserve:necessaryPetCareHours(),recovery:isRecoveryMonth(state),save}),expected=R.courseToken(state),miss=R.courseMissing(state,opts()),xp=Math.max(0,state.coffee.skills.management.xp||0);
   p.content.append(node('p','学习沟通协调、任务安排与团队管理。'),node('p','通过案例讨论和练习，积累管理知识。','career-note'));
   const level=p.box('管理技能 Lv.'+R.skillLevel(state,'management'));level.classList.add('career-management-level');const bar=node('progress');bar.max=400;bar.value=xp;bar.setAttribute('aria-label','管理技能累计经验');level.append(bar,node('p',xp+' / 400 XP'));
   const stats=p.box('本次学习');p.row(stats,'课程费用',money(120));p.row(stats,'自由时间','−3小时');p.row(stats,'能量','−1');p.row(stats,'管理经验',R.skillLevel(state,'management')>=5?'已满级':'+'+Math.min(10,400-xp)+'XP');
   p.content.append(node('p','本月已学习 '+R.courseRows(state).length+'次','career-note'),p.message);p.message.textContent=notice||miss.join('；');
-  p.button(R.skillLevel(state,'management')>=5?'已满级':'确认学习',b=>{b.disabled=true;const r=R.course(state,expected,opts());if(!r.ok){p.message.textContent=r.reason;b.disabled=false;return;}render();management('本次课程已保存。');},{primary:true,disabled:!!miss.length});p.button('返回职业技能',()=>skills()).classList.add('career-back');
+  p.button(R.skillLevel(state,'management')>=5?'已满级':'确认学习',b=>{b.disabled=true;const r=R.course(state,expected,opts());if(!r.ok){p.message.textContent=r.reason;b.disabled=false;return;}render();management('本次课程已保存。',back);},{primary:true,disabled:!!miss.length});p.button(back===career?'返回我的职业':'返回职业技能',back).classList.add('career-back');
   p.section.classList.add('career-management-card');stats.classList.add('career-management-stats');[...stats.querySelectorAll('.career-row')].forEach((row,i)=>{const icon=node('span',null,'career-course-icon');icon.innerHTML=coffeeIcon(['money','clock','energy','management'][i]);row.prepend(icon);});compactCareer(p);const badge=node('span','课程档案','career-course-badge');p.section.querySelector('.career-fixed-heading header').append(badge);
  }
  function career(){coffeeCareerData();const k=R.role(state.job),p=panel('我的职业','career',room),work=p.box('工作'),x=coffeeMonthlyIncome();p.row(work,'工作',state.job||'未就业');p.row(work,'工资',money(x?.baseWages??(state.job&&!state.retired&&!state.unemployedMonths?state.salary:0))+'/月');p.row(work,'时间',state.job&&!state.retired?(state.workHoursPerWeek||R.roles[k]?.weekly||40)+'小时/周':'—');p.row(work,'小费',money(x?.baseTips||0)+'/月');
@@ -65,12 +65,33 @@
    if(CafeEquity.eligible(state)&&!CafeEquity.current(state)?.shares&&!CafeEquity.current(state)?.trade)p.button('门店股权购买',CafeEquityPages.invitation,{parent:work}).classList.add('career-equity-entry');
    if(position.length)p.button('我的股份',()=>CafeEquityPages.holdings(),{parent:work});
   }
-  const growth=p.box('职业成长'),grid=node('div',null,'career-growth');growth.append(grid);
+  const growth=p.box('职业成长'),list=node('div',null,'career-skill-list');growth.append(list);
   const serviceLevel=R.skillLevel(state,'service'),serviceXP=Math.floor(state.coffee.skills.service.xp);
-  const serviceProgress=serviceLevel===5?'已满级':serviceXP+' / '+(serviceLevel*100)+' XP';
-  const serviceNote=k==='barista'?' · 实际工时每8小时 +1 XP，月末结算':' · 通过日常工作积累';
-  for(const [name,lv,note]of [['拉花',R.specialty(state,'latte'),'专门练习提升'],['手冲咖啡',R.specialty(state,'pourOver'),'专门练习提升'],['顾客服务',serviceLevel,serviceProgress+serviceNote],['管理技能',R.skillLevel(state,'management'),'岗位实践与管理课程']]){const cell=node('div');cell.append(node('strong',name+' Lv.'+lv),node('small',note));grid.append(cell);}
+  const serviceProgress=serviceLevel===5?serviceXP+' XP · 已满级':serviceXP+' / '+(serviceLevel*100)+' XP';
+  const managementXP=Math.floor(state.coffee.skills.management.xp);
+  const entries=['latte','pourOver'].map(id=>[
+   H.activities[id].name,R.specialty(state,id),H.xp(state,id)+' XP',id==='latte'?'coffee':'service',
+   ()=>{close();HobbyPages.detail(id,'',career);}
+  ]);
+  entries.push(['顾客服务',serviceLevel,serviceProgress,'customer',()=>serviceSkill(serviceLevel,serviceProgress)]);
+  entries.push(['管理技能',R.skillLevel(state,'management'),managementXP+' / 400 XP','management',()=>management('',career)]);
+  for(const [name,level,experience,iconName,open] of entries){
+   const entry=p.button('',open,{parent:list});entry.classList.add('career-skill-entry');
+   const icon=node('span',null,'career-skill-icon');icon.innerHTML=coffeeIcon(iconName);
+   const summary=node('span',null,'career-skill-summary');
+   summary.append(node('strong',name),node('small',experience));
+   const rank=node('span','Lv. '+level,'career-skill-level');
+   const arrow=node('span','›','career-skill-arrow');arrow.setAttribute('aria-hidden','true');
+   entry.append(icon,summary,rank,arrow);
+  }
   if(R.next(state))p.button('查看晋升条件',promotion,{parent:growth});p.button('职业学习',()=>skills('career'),{parent:growth});const other=p.box('其他选择');p.button('查看其他工作机会',()=>{close();openCareerMarket();},{parent:other});p.button(state.pendingResignation?'已安排下个月离职':'申请辞职',resignation,{parent:other,disabled:!state.job});p.button('返回房屋',room).classList.add('career-back');compactCareer(p);
+ }
+ function serviceSkill(level,experience){
+  const p=panel('顾客服务','career',career),progress=p.box('顾客服务 Lv.'+level);
+  p.row(progress,'经验',experience);
+  p.row(progress,'经验来源','日常工作');
+  p.button('返回我的职业',career).classList.add('career-back');
+  compactCareer(p);
  }
  function promotion(notice=''){if(typeof notice!=='string')notice='';coffeeCareerData();const next=R.next(state);if(!next)return career();const p=panel(next==='manager'?'晋升店长':'晋升值班主管',next==='manager'?'manager-promotion':'shift-promotion',career),box=p.box('晋升条件'),token=R.promotionToken(state),pending=state.coffee.progression.pending;
   if(next==='manager')p.section.classList.add('career-manager-promotion');
@@ -103,3 +124,4 @@
  document.addEventListener('click',e=>{const b=e.target.closest('[data-room="study"]');if(!b||b.disabled||document.querySelector('.event-active')||!$('wlDrawer').hidden)return;e.stopImmediatePropagation();learning();},true);
  const auditBefore=showMonthlyAudit;showMonthlyAudit=function(s){if(s.careerIncome&&state?.homeArrival&&state.month>=state.homeArrival.targetMonth&&state.homeArrival.fromMonth===s.month-1){state.homeArrival.status='ready';save();return openRoom();}return auditBefore(s);};
 })();
+
