@@ -117,13 +117,13 @@ function openWorkAdjustment(){showEvent('职业预览','调整工作','',[['当�
 // Expanded saved monthly opportunity pool. Outcomes are resolved and shown before month end.
 V26_OFFERS.push(
  {id:'tutor',name:'周末辅导项目',cost:80,reward:260,chance:.8,hours:3,art:'assets/finance/weekend-tutor.webp',effects:{energy:-5},desc:'支付教材和交通费，成功接到辅导项目后获得一次性报酬。'},
- {id:'repair',name:'社区维修摊位',cost:200,reward:480,chance:.7,effects:{energy:-8},desc:'工具和材料投入，订单不足会亏损。'},
- {id:'craft',name:'手工小店',cost:450,cf:42,chance:.7,effects:{energy:-5,happiness:3},desc:'小批量制作并尝试销售；订单稳定后净分配已扣耗材。'},
+ {id:'repair',name:'社区维修摊位',cost:200,reward:480,chance:.7,art:'assets/finance/opportunity-repair.webp',hours:4,effects:{energy:-8},desc:'购置工具和材料，在周末集市接维修订单。'},
+ {id:'craft',name:'手工小店',cost:450,cf:42,chance:.7,art:'assets/finance/opportunity-craft.webp',hours:5,recovery:250,effects:{energy:-5},successEffects:{happiness:3},desc:'出资购买缝纫机并试机。签约后由店主负责制作、销售和日常保养，从当月月底起按月支付租金。'},
  {id:'market-research',name:'付费用户访谈',cost:20,reward:90,chance:.9,hours:1,art:'assets/finance/paid-user-interview.webp',effects:{energy:-3},desc:'支付交通费，符合访谈条件才会得到报酬。'},
- {id:'garden',name:'社区园艺服务',cost:180,cf:28,chance:.8,effects:{health:2,energy:-6},desc:'购买工具争取固定客户，收入已扣耗材。'},
- {id:'resale',name:'二手商品整理',cost:300,reward:430,chance:.65,effects:{energy:-4},desc:'购买并整备二手商品，可能积压卖不出去。'},
- {id:'design',name:'小店海报接单',cost:75,reward:210,chance:.75,effects:{energy:-5,happiness:2},desc:'支付素材授权和打样费，客户验收后才能获得收入。'},
- {id:'sound',name:'活动音响出租',cost:1600,cf:100,chance:.7,effects:{stress:3},desc:'设备和推广成本，净月收入已扣维护和空置。'}
+ {id:'garden',name:'社区园艺服务',cost:180,cf:28,chance:.8,art:'assets/finance/opportunity-garden.webp',hours:3,recovery:100,effects:{health:2,energy:-6},desc:'购置并布置共享工具。园艺小组负责日常养护，签约后按月支付工具租金。'},
+ {id:'resale',name:'二手商品整理',cost:300,reward:430,chance:.65,art:'assets/finance/opportunity-resale.webp',hours:3,recovery:180,effects:{energy:-4},desc:'收购并整备旧物，在跳蚤市场出售。滞销时打包转卖给二手店。'},
+ {id:'design',name:'小店海报接单',cost:75,reward:210,chance:.75,art:'assets/finance/opportunity-design.webp',hours:3,effects:{energy:-5,happiness:2},desc:'支付素材授权和打样费，为镇上的面包店设计海报，验收通过后付款。'},
+ {id:'sound',name:'活动音响出租',cost:1600,cf:100,chance:.7,art:'assets/finance/opportunity-sound.webp',hours:4,recovery:1000,effects:{energy:-5,stress:3},desc:'购置音响、联系场地并试音。签约后，场地方负责搬运、调试和日常维护。'}
 );
 function opportunityChance(o){const hobby=({photo:'摄影',rental:'摄影',editing:'电影创作',garden:'园艺',stall:'烹饪',tutor:'语言学习'})[o.id];return o.chance===1?1:Math.max(.05,Math.min(.95,o.chance+(hobby?Math.min(.15,hobbyLevel(hobby)*.02):0)-Math.max(0,(state.stress||0)-85)*.002))}
 function opportunityBlock(project){
@@ -141,8 +141,8 @@ takeOpportunity=function(id){
  const chance=opportunityChance(project),success=Math.random()<chance;
  const result=CareerLearningRules.atomic(state,()=>{
   if(!spendConfirmed('opportunity',project.cost,{offer:id}))return false;
-  Object.assign(offer,{resolved:project.name,success,cost:project.cost,income:success?(project.reward||0):0,newMonthlyIncome:success?(project.cf||0):0,chance});
-  for(const [key,value] of Object.entries(project.effects))state[key]=Math.max(0,Math.min(100,(state[key]||0)+value));
+  Object.assign(offer,{resolved:project.name,success,cost:project.cost,income:success?(project.reward||0):(project.recovery||0),newMonthlyIncome:success?(project.cf||0):0,chance});
+  for(const [key,value] of Object.entries({...project.effects,...(success?project.successEffects:{})}))state[key]=Math.max(0,Math.min(100,(state[key]||0)+value));
   if(project.hours){
    const used=state.opportunityTime;
    state.opportunityTime={month:state.month,hours:(used?.month===state.month?used.hours:0)+project.hours};
@@ -150,7 +150,7 @@ takeOpportunity=function(id){
   if(success&&project.cf)state.assets.push({id:assetId(),name:project.name,kind:'business',cost:project.cost,value:project.cost,cf:project.cf});
   if(offer.income){
    state.cash=roundCash(state.cash+offer.income);
-   state.financeLedger.push({kind:'opportunityIncome',month:state.month,amount:offer.income,offer:id});
+   state.financeLedger.push({kind:'opportunityIncome',month:state.month,amount:offer.income,offer:id,...(!success?{recovery:true}:{})});
   }
   return {};
  },save);
@@ -159,9 +159,11 @@ takeOpportunity=function(id){
   showEvent('机会结果','机会未保存',result.reason,[],[['返回',finish,true]]);
   return;
  }
- const rows=[['本次投入',priceText(project.cost)],['实际一次性收入',priceText(offer.income)],['新增月净收入',priceText(offer.newMonthlyIncome)+'/月'],['当前被动收入',priceText(state.passive)+'/月']];
+ const rows=[['本次投入',priceText(project.cost)],[!success&&project.recovery?'转卖回收':'实际一次性收入',priceText(offer.income)],['新增月净收入',priceText(offer.newMonthlyIncome)+'/月'],['当前被动收入',priceText(state.passive)+'/月']];
+ if(!success&&project.recovery)rows.push(['本次净损失',priceText(project.cost-offer.income)]);
+ if(success&&project.successEffects)rows.push(['成功后状态变化',effectText(project.successEffects)]);
  if(project.hours)rows.splice(1,0,['已用自由时间',project.hours+' 小时'],['能量',String(project.effects.energy)]);
- showEvent('机会结果',success?'已完成：'+project.name:'未成功：'+project.name,success?'项目成功，收入或新增月净收入已记录；持续收入从本月月末到账。':'本次投入已支付，没有产生预期收入。',rows,[['继续',()=>completeMonthlyStep(8),true]]);
+ showEvent('机会结果',success?'已完成：'+project.name:'未成功：'+project.name,success?'项目成功，收入或新增月净收入已记录；持续收入从本月月末到账。':(project.recovery?'项目未达成，转卖回收款已到账。':'本次投入已支付，没有产生预期收入。'),rows,[['继续',()=>completeMonthlyStep(8),true]]);
 };
 // ETF monthly distributions are removed from quotes before cash/reinvestment: no free double return.
 const ETF_YIELDS={us500:.018,ustotal:.02,international:.03,world:.024};
