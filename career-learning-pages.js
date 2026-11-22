@@ -65,24 +65,25 @@
    if(CafeEquity.eligible(state)&&!CafeEquity.current(state)?.shares&&!CafeEquity.current(state)?.trade)p.button('门店股权购买',CafeEquityPages.invitation,{parent:work}).classList.add('career-equity-entry');
    if(position.length)p.button('我的股份',()=>CafeEquityPages.holdings(),{parent:work});
   }
-  const growth=p.box('职业成长'),list=node('div',null,'career-skill-list');growth.append(list);
+  const growth=p.box('职业成长'),list=node('div',null,'career-skill-list');growth.classList.add('career-growth-options');growth.append(list);
   const serviceLevel=R.skillLevel(state,'service'),serviceXP=Math.floor(state.coffee.skills.service.xp);
   const serviceProgress=serviceLevel===5?serviceXP+' XP · 已满级':serviceXP+' / '+(serviceLevel*100)+' XP';
   const managementXP=Math.floor(state.coffee.skills.management.xp);
   const entries=['latte','pourOver'].map(id=>[
-   H.activities[id].name,R.specialty(state,id),H.xp(state,id)+' XP',id==='latte'?'coffee':'service',
+   H.activities[id].name,R.specialty(state,id),H.xp(state,id)+' XP',id,
    ()=>{close();HobbyPages.detail(id,'',career);}
   ]);
-  entries.push(['顾客服务',serviceLevel,serviceProgress,'customer',()=>serviceSkill(serviceLevel,serviceProgress)]);
+  entries.push(['顾客服务',serviceLevel,serviceProgress,'customer-service',()=>serviceSkill(serviceLevel,serviceProgress)]);
   entries.push(['管理技能',R.skillLevel(state,'management'),managementXP+' / 400 XP','management',()=>management('',career)]);
-  for(const [name,level,experience,iconName,open] of entries){
+  for(const [name,level,experience,art,open] of entries){
    const entry=p.button('',open,{parent:list});entry.classList.add('career-skill-entry');
-   const icon=node('span',null,'career-skill-icon');icon.innerHTML=coffeeIcon(iconName);
+   const illustration=node('img',null,'career-skill-illustration');
+   illustration.src='assets/skill-scenes/soft/'+art+'.webp';illustration.alt='';
    const summary=node('span',null,'career-skill-summary');
    summary.append(node('strong',name),node('small',experience));
    const rank=node('span','Lv. '+level,'career-skill-level');
    const arrow=node('span','›','career-skill-arrow');arrow.setAttribute('aria-hidden','true');
-   entry.append(icon,summary,rank,arrow);
+   entry.append(illustration,summary,rank,arrow);
   }
   if(R.next(state))p.button('查看晋升条件',promotion,{parent:growth});p.button('职业学习',()=>skills('career'),{parent:growth});const other=p.box('其他选择');p.button('查看其他工作机会',()=>{close();openCareerMarket();},{parent:other});p.button(state.pendingResignation?'已安排下个月离职':'申请辞职',resignation,{parent:other,disabled:!state.job});p.button('返回房屋',room).classList.add('career-back');compactCareer(p);
  }

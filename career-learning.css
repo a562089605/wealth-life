@@ -360,3 +360,43 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
 .career-cafe-home .career-skill-icon {
  width:clamp(27px,8vw,34px);
 }
+
+.career-cafe-home .career-content .career-skill-list .career-skill-entry {
+ min-height:55px;
+ padding:4px 8px 4px 4px;
+ border-color:#bba475;
+ border-radius:13px 16px 13px 15px;
+ background:linear-gradient(110deg,#fff8e4,#f8e9bb);
+ box-shadow:inset 0 0 0 1px #fffbee,0 1px 0 #bea4774d;
+}
+.career-cafe-home .career-content .career-skill-list .career-skill-entry:hover {
+ background:linear-gradient(110deg,#fff9e8,#f8e5ac);
+}
+.career-skill-illustration {
+ display:block;
+ width:clamp(43px,15vw,60px);
+ height:45px;
+ object-fit:cover;
+ object-position:center 57%;
+ border-radius:12px 10px 12px 10px;
+ mask-image:radial-gradient(ellipse at center,#000 48%,#000b 71%,transparent 100%);
+}
+.career-cafe-home .career-skill-summary strong {
+ font-family:WealthHand,"Kaiti SC",KaiTi,serif;
+ font-size:clamp(17px,5vw,21px);
+ font-weight:400;
+ line-height:1.05;
+}
+.career-cafe-home .career-skill-level {
+ border:1px solid #a6ae77;
+ border-radius:999px;
+ background:#e7ebc5;
+ color:#3a5438;
+}
+.career-cafe-home .career-growth-options > button {
+ border:1px solid #aab080;
+ border-radius:999px;
+ background:#e9edcb;
+ box-shadow:inset 0 0 0 1px #fff7df;
+ font-size:clamp(13px,4vw,16px);
+}
