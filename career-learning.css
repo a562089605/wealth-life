@@ -400,3 +400,69 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
  box-shadow:inset 0 0 0 1px #fff7df;
  font-size:clamp(13px,4vw,16px);
 }
+
+/* My Career follows the illustrated header and pastel cards used by Life and Rest. */
+.career-cafe-home.career-fixed .career-paper {
+ position:relative;
+ max-width:460px;
+ background:#fff6e1;
+}
+.career-cafe-home.career-fixed .career-scene {
+ aspect-ratio:1.72;
+ max-height:30dvh;
+ border-bottom:0;
+ box-shadow:none;
+}
+.career-cafe-home.career-fixed .career-scene img {object-position:center 56%}
+.career-cafe-home.career-fixed .career-scene::after {
+ content:"";position:absolute;inset:auto 0 0;height:21px;
+ background:linear-gradient(transparent,#fff6e1);
+ pointer-events:none;
+}
+.career-cafe-home.career-fixed .career-fixed-heading {
+ position:absolute;inset:0 0 auto;z-index:2;
+ padding:0;border:0;background:none;pointer-events:none;
+}
+.career-cafe-home .career-fixed-heading header {
+ display:grid;grid-template-columns:minmax(0,1fr);justify-content:stretch;justify-items:center;gap:2px;width:clamp(119px,37vw,150px);padding-top:56px;
+}
+.career-cafe-home .career-fixed-heading header button {
+ position:absolute;top:8px;left:10px;pointer-events:auto;
+ min-height:44px;border-radius:999px;background:#fff8e3;
+ box-shadow:0 1px 3px #442a235c;
+}
+.career-cafe-home .career-fixed-heading h1 {
+ padding:4px 13px 2px;background:#fff8e6;
+ border-radius:14px 14px 0 0;
+ font-size:clamp(23px,7vw,32px);
+ line-height:1;
+}
+.career-cafe-home .career-fixed-heading header>span {
+ margin-top:-2px;padding:4px 13px 5px;
+ border-radius:0 0 14px 14px;
+ background:#fff8e6;color:#506045;
+ font-size:12px;
+}
+.career-cafe-home.career-fixed .career-scroll-body {
+ padding-top:0;
+}
+.career-cafe-home.career-fixed .career-panel {
+ border:1px solid #d2b77c;
+ border-radius:16px;
+ background:#fff8e6;
+ box-shadow:0 2px 4px #9a743019;
+}
+.career-cafe-home.career-fixed .career-panel::before {display:none}
+.career-cafe-home .career-job-summary > .career-row:nth-of-type(2) {background:#f9e7aa;border-color:#d4ba75}
+.career-cafe-home .career-job-summary > .career-row:nth-of-type(3) {background:#e7ecce;border-color:#b5bf88}
+.career-cafe-home .career-job-summary > .career-row:nth-of-type(4) {background:#fce6ce;border-color:#dbb48e}
+.career-cafe-home .career-content .career-skill-list .career-skill-entry {
+ background:var(--career-option-paper,#f9edc8);
+ border-color:var(--career-option-edge,#d2b77c);
+}
+.career-cafe-home .career-skill-entry:nth-child(2) {--career-option-paper:#f9e9d3;--career-option-edge:#daba99}
+.career-cafe-home .career-skill-entry:nth-child(3) {--career-option-paper:#eef0d7;--career-option-edge:#b7bf8e}
+.career-cafe-home .career-skill-entry:nth-child(4) {--career-option-paper:#e8eeec;--career-option-edge:#adc2bd}
+.career-cafe-home .career-content .career-skill-list .career-skill-entry:hover {
+ box-shadow:inset 0 0 0 2px #fffbee,0 1px 0 #bea4774d;
+}
