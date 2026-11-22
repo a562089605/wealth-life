@@ -207,10 +207,10 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
 .career-skill-arrow {font-size:21px;line-height:1;color:#6e5430}
 
 .career-management-card.career-fixed .career-scene,
-.career-service-card.career-fixed .career-scene {aspect-ratio:2.05}
+.career-service-card.career-fixed .career-scene {aspect-ratio:1.72}
 .career-management-card.career-fixed .career-scene img,
 .career-service-card.career-fixed .career-scene img {
- inset:0;width:100%;height:100%;object-fit:cover;object-position:center 82%;transform:none;
+ inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:none;
 }
 .career-management-card .career-scroll-body>.career-skill-intro {
  margin:0 0 10px;text-align:center;color:#536744;font-size:17px;
@@ -220,7 +220,7 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
 .career-service-card .career-scroll-body {padding-right:16px}
 .career-service-card .career-panel {background:linear-gradient(120deg,#fff7df,#e9ebc8)}
 .career-service-card .career-service-xp {margin:4px 0 2px;text-align:right;color:#536744}
-.career-service-card.career-fixed .career-scene img {object-position:center 62%}
+.career-service-card.career-fixed .career-scene img {object-position:center}
 .career-service-card progress {
  display:block;height:9px;appearance:none;overflow:hidden;
  border:1px solid #b7be91;border-radius:8px;background:#dfe3c1;
