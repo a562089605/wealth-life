@@ -140,3 +140,14 @@
 body.painted-screen #game > #paintedView.painted-room-backdrop:not([hidden]) {
  background:linear-gradient(#30291d38,#30291d38),var(--painted-room-art) center / cover no-repeat !important;
 }
+
+.painted-canvas.detail .housing-payment-status {
+ position:absolute;z-index:2;left:28%;top:81.85%;width:44%;height:3.3%;
+ display:flex;align-items:center;justify-content:center;gap:1cqw;
+ box-sizing:border-box;border:1px solid #c0a873;border-radius:7px;
+ color:#614c2e;background:#fbefcb;
+ font-size:3.45cqw;line-height:1;font-weight:700;white-space:nowrap;
+}
+.painted-canvas.detail .housing-payment-status.is-paid {
+ background:#e8edcf;border-color:#8c9e63;color:#214932;
+}

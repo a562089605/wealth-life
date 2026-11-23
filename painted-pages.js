@@ -75,7 +75,11 @@
    if(!family){
     html+=patch(money(occupied?heldHousingDeposit():q.deposit),'left:27%;top:'+(studio?82.4:83.2)+'%;width:19%;height:3.1%','housing-small');
     html+=patch(occupied?((paymentReceipt().housing||0)>=q.monthly?'已支付':'待支付'):money(q.first?q.total:q.monthly+q.deposit),'left:53%;top:'+(studio?82.4:83.2)+'%;width:23%;height:3.1%','housing-small');
-   }else if(occupied)html+=patch((paymentReceipt().housing||0)>=q.monthly?'✓ 本月住房费已支付':'本月住房费待支付','left:30%;top:82.3%;width:40%;height:2.5%','painted-caption');
+   }else if(occupied){
+    const paid=(paymentReceipt().housing||0)>=q.monthly;
+    html+='<div class="housing-payment-status'+(paid?' is-paid':'')+'" role="status">'+
+     (paid?'<span aria-hidden="true">✓</span> 本月住房已支付':'本月住房待支付')+'</div>';
+   }
    const primaryTop=family&&!occupied?84.2:studio?88.5:occupied?88.5:90.2;
    const secondaryTop=family&&!occupied?91:studio?94:occupied?94:95;
    // Occupied artwork already prints 更换住房; only changing booking/confirmation labels need a caption.
