@@ -71,20 +71,25 @@
    const booked=state.pendingHousingMove?.key===detailKey;
    const label=occupied?'更换住房':booked?'已预约下月入住':q.scheduled?'预约下月入住':'确认入住';
    const monthlyTop=family?(occupied?76:75.1):studio?(occupied?75.8:74.5):76;
+   const printedRent={family:500,shared:900,studio:1400,rent1:1600}[detailKey];
    const monthlyLabel=money(q.monthly)+' / 月';
-   if(family&&occupied){
-    html+=q.monthly===500
-     ?'<span class="housing-printed-rent">'+esc(monthlyLabel)+'</span>'
-     :patch(monthlyLabel,'','housing-family-rent');
-   }else html+=patch(monthlyLabel,'left:26%;top:'+monthlyTop+'%;width:48%;height:5.2%','housing-rent');
+   html+=q.monthly===printedRent&&(!family||occupied)
+    ?'<span class="housing-printed-rent">'+esc(monthlyLabel)+'</span>'
+    :patch(monthlyLabel,'top:'+(monthlyTop-.55)+'%','housing-detail-rent');
+   const paid=(paymentReceipt().housing||0)>=q.monthly;
    if(!family){
-    html+=patch(money(occupied?heldHousingDeposit():q.deposit),'left:27%;top:'+(studio?82.4:83.2)+'%;width:19%;height:3.1%','housing-small');
-    html+=patch(occupied?((paymentReceipt().housing||0)>=q.monthly?'已支付':'待支付'):money(q.first?q.total:q.monthly+q.deposit),'left:53%;top:'+(studio?82.4:83.2)+'%;width:23%;height:3.1%','housing-small');
-   }else if(occupied){
-    const paid=(paymentReceipt().housing||0)>=q.monthly;
-    html+='<div class="housing-payment-status'+(paid?' is-paid':'')+'" role="status">'+
-     (paid?'<span aria-hidden="true">✓</span> 本月住房已支付':'本月住房待支付')+'</div>';
+    const detailsTop=studio?82.4:83.2,deposit=occupied?heldHousingDeposit():q.deposit;
+    const total=q.first?q.total:q.monthly+q.deposit;
+    html+=deposit===printedRent
+     ?'<span class="housing-printed-rent">'+esc((occupied?'押金已缴 ':'押金 ')+money(deposit))+'</span>'
+     :patch(money(deposit),'left:27%;top:'+(occupied?83.2:detailsTop)+'%;width:19%;height:3.1%','housing-small');
+    if(!occupied)html+=total===2*printedRent
+     ?'<span class="housing-printed-rent">'+esc('搬入时合计 '+money(total))+'</span>'
+     :patch(money(total),'left:53%;top:'+detailsTop+'%;width:23%;height:3.1%','housing-small');
    }
+   if(occupied)html+='<div class="housing-payment-status'+(family?'':' housing-payment-compact')+(paid?' is-paid':'')+
+    '" style="top:'+(family?81.85:81.55)+'%" role="status">'+
+    (paid?'<span aria-hidden="true">✓</span> 本月住房已支付':'本月住房待支付')+'</div>';
    const primaryTop=family&&!occupied?84.2:studio?88.5:occupied?88.5:90.2;
    const secondaryTop=family&&!occupied?91:studio?94:occupied?94:95;
    // Occupied artwork already prints 更换住房; only changing booking/confirmation labels need a caption.
