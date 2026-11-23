@@ -144,10 +144,24 @@ body.painted-screen #game > #paintedView.painted-room-backdrop:not([hidden]) {
 .painted-canvas.detail .housing-payment-status {
  position:absolute;z-index:2;left:28%;top:81.85%;width:44%;height:3.3%;
  display:flex;align-items:center;justify-content:center;gap:1cqw;
- box-sizing:border-box;border:1px solid #c0a873;border-radius:7px;
+ box-sizing:border-box;border:0;border-radius:999px;
  color:#614c2e;background:#fbefcb;
  font-size:3.45cqw;line-height:1;font-weight:700;white-space:nowrap;
 }
 .painted-canvas.detail .housing-payment-status.is-paid {
- background:#e8edcf;border-color:#8c9e63;color:#214932;
+ background:#d9e6b7;color:#214932;
+}
+
+.painted-canvas.detail .housing-family-rent {
+ left:26%;top:75.45%;width:49%;height:6.1%;
+ background:#fbedb7;
+ border-radius:2px;
+ box-shadow:0 0 1.35cqw .6cqw #fbedb7;
+ font-size:8.2cqw;
+ font-weight:800;
+ color:#103c2c;
+}
+.housing-printed-rent {
+ position:absolute;width:1px;height:1px;overflow:hidden;
+ clip-path:inset(50%);white-space:nowrap;
 }

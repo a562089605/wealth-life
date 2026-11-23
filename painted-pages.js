@@ -71,7 +71,12 @@
    const booked=state.pendingHousingMove?.key===detailKey;
    const label=occupied?'更换住房':booked?'已预约下月入住':q.scheduled?'预约下月入住':'确认入住';
    const monthlyTop=family?(occupied?76:75.1):studio?(occupied?75.8:74.5):76;
-   html+=patch(money(q.monthly)+' / 月','left:26%;top:'+monthlyTop+'%;width:48%;height:5.2%','housing-rent');
+   const monthlyLabel=money(q.monthly)+' / 月';
+   if(family&&occupied){
+    html+=q.monthly===500
+     ?'<span class="housing-printed-rent">'+esc(monthlyLabel)+'</span>'
+     :patch(monthlyLabel,'','housing-family-rent');
+   }else html+=patch(monthlyLabel,'left:26%;top:'+monthlyTop+'%;width:48%;height:5.2%','housing-rent');
    if(!family){
     html+=patch(money(occupied?heldHousingDeposit():q.deposit),'left:27%;top:'+(studio?82.4:83.2)+'%;width:19%;height:3.1%','housing-small');
     html+=patch(occupied?((paymentReceipt().housing||0)>=q.monthly?'已支付':'待支付'):money(q.first?q.total:q.monthly+q.deposit),'left:53%;top:'+(studio?82.4:83.2)+'%;width:23%;height:3.1%','housing-small');
