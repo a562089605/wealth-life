@@ -32,17 +32,25 @@
  function learning(){
   if(!state)return;
   const roomArt=elRoomArtwork();
-  const p=panel('学习','learning-banner',room),list=node('div',null,'career-list');
-  p.section.classList.add('career-learning-menu');
+  const p=panel('学习','learning-banner',room);
+  p.section.classList.add('career-study-story');
   if(roomArt)p.section.style.setProperty('--learning-room-art','url("'+roomArt+'")');
-  const header=p.content.querySelector('header'),back=header.querySelector('button');
-  back.textContent='←';
-  back.setAttribute('aria-label','返回房屋');
-  p.content.append(p.section.querySelector('.career-scene'),list);
-  p.choice(list,'学历学习','学历路线与进度','assets/career-learning-20261115/education-tile.webp',education).classList.add('learning-education');
-  p.choice(list,'职业技能','拉花、手冲与管理','assets/career-learning-20261115/skills-tile.webp',()=>skills('learning')).classList.add('learning-skills');
-  p.choice(list,'兴趣爱好','咖啡品鉴 · 烘焙 · 摄影 · 绘画','assets/career-learning-20261115/hobbies-tile.webp',hobbies).classList.add('learning-hobbies');
-  p.button('返回房屋',room).classList.add('career-back');
+  const scene=p.section.querySelector('.career-scene');
+  const month=p.content.querySelector('header > span');
+  const title=p.content.querySelector('h1');
+  p.content.replaceChildren(title,month);
+  scene.remove();
+  title.className='career-study-heading';
+  month.className='career-study-date';
+  if(state.month===0)month.classList.add('career-study-art-date');
+  for(const [label,action,key] of [
+   ['学历学习',education,'education'],['职业技能',()=>skills('learning'),'skills'],
+   ['兴趣爱好',hobbies,'hobbies'],['返回房屋',room,'back']
+  ]){
+   const button=p.button(label,action);
+   button.className='career-study-target career-study-'+key;
+  }
+  p.content.querySelector('button').focus({preventScroll:true});
  }
  function elRoomArtwork(){
   return document.querySelector('#roomView .room-canvas>img')?.getAttribute('src');
@@ -97,7 +105,9 @@
    const arrow=node('span','›','career-skill-arrow');arrow.setAttribute('aria-hidden','true');
    entry.append(illustration,summary,rank,arrow);
   }
-  if(R.next(state))p.button('查看晋升条件',promotion,{parent:growth});p.button('职业学习',()=>skills('career'),{parent:growth});const other=p.box('其他选择');p.button('查看其他工作机会',()=>{close();openCareerMarket();},{parent:other});p.button(state.pendingResignation?'已安排下个月离职':'申请辞职',resignation,{parent:other,disabled:!state.job});p.button('返回房屋',room).classList.add('career-back');compactCareer(p);
+  if(R.next(state))p.button('查看晋升条件',promotion,{parent:growth});p.button('职业学习',()=>skills('career'),{parent:growth});const other=p.box('其他选择');p.button('查看其他工作机会',()=>{close();openCareerMarket();},{parent:other});p.button(state.pendingResignation?'已安排下个月离职':'申请辞职',resignation,{parent:other,disabled:!state.job});p.button('返回房屋',room).classList.add('career-back');
+  p.section.classList.add('career-story-profile');
+  compactCareer(p);
  }
  function serviceSkill(level,experience){
   const p=panel('顾客服务','customer-service',career),progress=p.box('顾客服务 Lv.'+level);

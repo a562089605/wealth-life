@@ -657,3 +657,130 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
  font: 22px/1 "WealthHand", "Finance Ink", serif;
  cursor: pointer;
 }
+
+/* Storybook study menu. The artwork establishes placement; the controls remain live. */
+.career-overlay.career-study-story {
+ display:grid;
+ place-items:center;
+ background:linear-gradient(#514a3545,#514a3545),var(--learning-room-art,url("./assets/home/room-phone-20261101.webp")) center / cover no-repeat,#d6c9a9;
+}
+.career-study-story .career-paper {
+ width:min(100%, 460px);
+ margin:0;
+ border:0;
+ border-radius:20px;
+ background:#fff4d7 url("./assets/career-crayon/study-story.webp") center / 100% 100% no-repeat;
+}
+.career-study-story .career-content {
+ position:relative;
+ container-type:inline-size;
+ aspect-ratio:2 / 3;
+ padding:0;
+}
+.career-study-story .career-study-heading {
+ position:absolute;
+ width:1px;
+ height:1px;
+ margin:0;
+ overflow:hidden;
+ clip-path:inset(50%);
+}
+.career-study-date {
+ position:absolute;
+ inset:9.9% 33% auto;
+ min-height:3.55%;
+ display:grid;
+ place-items:center;
+ border-radius:11px;
+ background:#fbefcf;
+ box-shadow:0 0 4px 2px #fbefcf;
+ color:#304b2e;
+ font:600 3.18cqw/1 system-ui,sans-serif;
+ white-space:nowrap;
+}
+.career-study-art-date {opacity:0}
+.career-study-story .career-study-target {
+ position:absolute;
+ left:2.6%;
+ width:94.8%;
+ min-height:0;
+ padding:0;
+ border:0;
+ border-radius:20px;
+ background:transparent;
+ color:transparent;
+ font-size:0;
+}
+.career-study-story .career-study-target:hover {background:#fff8df22}
+.career-study-story .career-study-target:focus-visible {outline-offset:-3px}
+.career-study-education {top:41%;height:14%}
+.career-study-skills {top:56%;height:15%}
+.career-study-hobbies {top:72%;height:17.5%}
+.career-study-story .career-study-back {top:90.3%;left:14%;width:72%;height:7.7%}
+
+.career-story-profile.career-fixed .career-paper {
+ border:0;
+ border-radius:20px;
+ background:#fff4d7 url("./assets/finance/paper.webp") center;
+}
+.career-story-profile.career-fixed .career-fixed-heading {
+ background:none;
+ border:0;
+}
+.career-story-profile.career-fixed .career-fixed-heading h1 {
+ background:none;
+ color:#304b2b;
+}
+.career-story-profile.career-fixed .career-scene {
+ border:0;
+ mask-image:linear-gradient(#000 84%,transparent);
+}
+.career-story-profile.career-fixed .career-scroll-body {
+ padding:6px 24px 14px 12px;
+}
+.career-story-profile.career-fixed .career-panel {
+ margin:4px 0 12px;
+ padding:5px 3px 8px;
+ border:0;
+ background:none;
+ box-shadow:none;
+}
+.career-story-profile.career-fixed .career-panel h2 { color:#304b2b; }
+.career-story-profile.career-fixed .career-job-summary > .career-row {
+ border:0;
+ border-radius:15px 19px 14px 18px;
+ box-shadow:none;
+}
+.career-story-profile .career-content .career-skill-list .career-skill-entry {
+ border:0;
+ border-radius:19px 22px 17px 21px;
+ box-shadow:none;
+ transform:none;
+}
+.career-story-profile .career-content .career-skill-entry:nth-child(even) .career-skill-illustration {
+ grid-column:-2 / -1;
+ grid-row:1;
+}
+.career-story-profile .career-content .career-skill-entry:nth-child(even) {
+ grid-template-columns:minmax(0,1fr) auto auto minmax(58px,28%);
+}
+.career-story-profile .career-skill-entry:nth-child(even) .career-skill-summary {
+ grid-column:1;
+ grid-row:1;
+}
+.career-story-profile .career-skill-entry:nth-child(even) .career-skill-level {
+ grid-column:2;
+ grid-row:1;
+}
+.career-story-profile .career-skill-entry:nth-child(even) .career-skill-arrow {
+ grid-column:3;
+ grid-row:1;
+}
+.career-story-profile.career-fixed .career-back {
+ display:block;
+ width:min(100%,260px);
+ margin:10px auto 0;
+ border:1px solid #b1843c;
+ background:linear-gradient(#ffe49a,#f2ca63);
+ color:#304b2b;
+}
