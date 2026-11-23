@@ -77,7 +77,17 @@ body:not(.town-map) :is(.wl-town-status-title,#wlStress,#wlFreeTime,#wlEnergy) {
  mix-blend-mode:multiply;
 }
 .town-map #wlHeader #wlInvest { --stat-paper:#eaf1df;--stat-edge:#b9cba3; }
-.town-map #wlHeader #wlCash { --stat-paper:#ffefd1;--stat-edge:#e0c179;--stat-ink:#684611; }
+.town-map #wlHeader #wlCash {
+ --stat-paper:#ffefd1;
+ --stat-edge:#e0c179;
+ --stat-ink:#684611;
+ grid-template-columns:clamp(19px,6vw,27px) minmax(0,1fr);
+ padding-inline-end:6px;
+}
+.town-map #wlHeader #wlCashValue {
+ font-size:clamp(11px,3.15vw,14px);
+ min-width:0;
+}
 .town-map #wlHeader #wlHappy { --stat-paper:#fae6dc;--stat-edge:#dfa892;--stat-ink:#783f2e; }
 .town-map #wlHeader #wlStress { --stat-paper:#e3edf3;--stat-edge:#a8c1d2;--stat-ink:#284c60; }
 .town-map #wlHeader #wlFreeTime { --stat-paper:#edf1d9;--stat-edge:#bcc99a; }
