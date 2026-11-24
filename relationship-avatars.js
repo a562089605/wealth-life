@@ -42,7 +42,14 @@
   if(count)s.relationshipAvatars={...(s.relationshipAvatars||{}),version:1,used:[...taken]};
   return count;
  }
+ // Story contacts keep a fixed portrait across new and existing saves.
+ const regularPortraits=new Map(['oat','americano'].map(key=>{
+  const id='regular-'+key;
+  return ['coffee-regular-'+key,{id,role:'regular',file:'assets/relationships/avatars/'+id+'.webp'}];
+ }));
  function portrait(p){
+  const regular=regularPortraits.get(p.id);
+  if(regular)return regular;
   const assigned=byId.get(p.relationshipAvatarId);
   if(assigned)return assigned;
   const g=group(p);
