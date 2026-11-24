@@ -217,12 +217,12 @@
   const data = $('eventData');
   const illustration = document.createElement('img');
   illustration.className = 'insurance-premium-art';
-  illustration.src = 'assets/home-insurance/premium-pay-crayon.webp';
+  illustration.src = 'assets/home-insurance/premium-compact.webp';
   illustration.alt = '';
-  illustration.width = 800;
-  illustration.height = 298;
+  illustration.width = 400;
+  illustration.height = 236;
   data.lastElementChild?.classList.add('insurance-premium-total');
-  data.prepend(illustration);
+  $('eventTitle').append(illustration);
   window.modalReturn = back;
  }
 
