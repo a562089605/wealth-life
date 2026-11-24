@@ -1,12 +1,13 @@
 #game > .card.event.event-active.finance-home {
  width:min(440px,calc(100% - 16px),calc((100dvh - 32px) * 2 / 3));
- padding:0;
- border:0;
+ padding:0 !important;
+ border:0 !important;
  border-radius:0 !important;
- box-shadow:none;
+ box-shadow:none !important;
  background:transparent !important;
  overflow:visible !important;
  container-type:inline-size;
+ gap:0 !important;
 }
 .finance-home #eventType,
 .finance-home #eventDesc { display:none; }
@@ -35,7 +36,7 @@
 #game > .event.finance-home > #eventData {
  flex:0 0 auto;
  max-height:none;
- padding:0;
+ padding:0 !important;
  margin:0;
  overflow:visible;
 }
@@ -46,7 +47,7 @@
  display:block;
  max-height:none;
  margin:0;
- padding:0;
+ padding:0 !important;
  overflow:visible;
  background:none;
  pointer-events:none;
@@ -64,10 +65,10 @@
  left:var(--left);
  right:auto;
  margin:0;
- padding:0;
- border:0;
+ padding:0 !important;
+ border:0 !important;
  border-radius:12px;
- box-shadow:none;
+ box-shadow:none !important;
  background:none !important;
  color:transparent;
  font-size:0;
@@ -80,7 +81,7 @@
 .finance-home #actions > button:nth-child(4) { --top:54.9%; --left:50.7%; --width:46%; --height:20.2%; }
 .finance-home #actions > button:nth-child(5) { --top:76%; --left:3.3%; --width:93.4%; --height:13.3%; }
 .finance-home #actions > button:nth-child(6) { --top:90.3%; --left:27.8%; --width:44%; --height:8%; }
-.finance-home #eventClose { --top:0%; --left:86.5%; --width:13%; --height:9%; z-index:2; }
+#game > .card.event.finance-home #eventClose { --top:0%; --left:86.5%; --width:13%; --height:9%; z-index:2; border-radius:0; }
 #game > .card.event.finance-home #actions > button:focus-visible,
 #game > .card.event.finance-home #eventClose:focus-visible {
  outline:2px solid #315438;
