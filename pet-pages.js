@@ -165,7 +165,25 @@
   if(q.owned)status.textContent='已拥有该种宠物，同种不可重复领养。';else if(state.cash<q.total)status.textContent='现金不足，尚未扣款。';
   action(ctx,form,'暂不领养，返回选择',()=>selection(id));hit(ctx,e,'返回选择',15,3,9,7,()=>selection(id));focusFirst(ctx);
  }
- function openSuccess(index,q){const p=state.pets[index],id=spec(p),ctx=panel('领养成功'),e=canvas(ctx,'success-'+id);box(e,petName(p)+' · '+q.name,26,38.7,49,3.3,'pet-name');box(e,priceText(q.total),65,69.7,27,5.5,'pet-gold');box(e,priceText(state.cash),55,75,37,4.5,'pet-status');box(e,priceText(q.monthly),73,80.2,18,4.5,'pet-status');hit(ctx,e,'查看我的宠物',5,87.2,90,6.5,openOverview);hit(ctx,e,'返回房屋',32,94.7,35,4.5,room);focusFirst(ctx);}
+ function openSuccess(index,q){
+  const p=state.pets[index],id=spec(p),ctx=panel('领养成功'),e=canvas(ctx,'success-'+id);
+  box(e,petName(p)+' · '+q.name,26,38.7,49,3.3,'pet-name');
+  const receipt=textNode('dl','','pet-success-receipt');
+  receipt.setAttribute('aria-label','费用结算');
+  for(const [kind,label,amount] of [
+   ['paid','本次已支付',q.total],
+   ['cash','当前现金',state.cash],
+   ['monthly','每月基础养护',q.monthly]
+  ]){
+   const row=textNode('div','','pet-success-row pet-success-'+kind);
+   row.append(textNode('dt',label),textNode('dd',priceText(amount)));
+   receipt.append(row);
+  }
+  e.append(receipt);
+  hit(ctx,e,'查看我的宠物',5,87.2,90,6.5,openOverview);
+  hit(ctx,e,'返回房屋',32,94.7,35,4.5,room);
+  focusFirst(ctx);
+ }
  function openClean(index){const p=state.pets?.[index],c=p&&cfg(p);if(!c)return openDetail(index);const ctx=panel(c.name+'清洁护理'),paper=plain(ctx,'清洁护理'),id=spec(p),rules=PET_CARE_RULES[id],recovery=isRecoveryMonth(state),count=state.petCareCoupons||0,ready=due(p,'Clean').length>0;
   paper.classList.add('pet-coupon-paper');paper.append(textNode('p',calendar(state.month),'pet-coupon-date'));
   const identity=textNode('div',null,'pet-coupon-identity'),photo=textNode('span',null,'pet-coupon-thumb');photo.style.backgroundImage='url("'+asset('clean-'+id)+'")';identity.append(photo,textNode('strong',petName(p)+' · '+c.name),textNode('p',ready?'护理已到期':'下次清洁：'+calendar(preview().pets[index].care?.nextClean)));paper.append(identity);
