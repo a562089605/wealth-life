@@ -866,3 +866,11 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
  background-image:url("assets/finance/paper.webp");
  background-blend-mode:multiply;
 }
+
+.career-education-route .career-scene {aspect-ratio:2.42;}
+.career-education-route .career-scene img {width:100%;height:100%;object-fit:cover;object-position:50% 62%;}
+.career-education-route .career-content {background:#fff6df url('assets/finance/paper.webp') repeat;}
+.career-education-route .career-education-level {display:table;padding:.3em .75em;border-radius:999px;background:#e2e8be;margin:0 0 1em;}
+.career-education-route .career-list > button {position:relative;padding-right:35px;border-radius:18px;background:#eef0d2;}
+.career-education-route .career-list > button:nth-child(2) {background:#f8e9c2;}
+.career-education-route .career-list > button::after {content:'›';position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:24px;color:#506735;}

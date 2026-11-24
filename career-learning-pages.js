@@ -56,8 +56,13 @@
   return document.querySelector('#roomView .room-canvas>img')?.getAttribute('src');
  }
  const originalEducation=openEducation;
- function education(){if(state.study||state.education!=='highschool'||(state.educationPlans?.graduates||[]).some(g=>!g.seen)){close();return originalEducation();}const p=panel('学历学习','education',learning),list=node('div',null,'career-list');p.content.append(node('p','当前学历：高中'),node('p','选择一条适合自己的学习路线。'),list);
-  for(const [id,title,sub]of [['associate','转学型副学士 AA','先读 AA，再衔接本科'],['bachelorDirect','直接读本科','查看本科课程与学习安排']])p.choice(list,title,sub+' →','assets/career-learning-20261115/education.webp',()=>{close();EducationPages.route(id);});
+ function education(){if(state.study||state.education!=='highschool'||(state.educationPlans?.graduates||[]).some(g=>!g.seen)){close();return originalEducation();}const p=panel('学历学习','education-route-banner',learning),list=node('div',null,'career-list');
+  p.section.classList.add('career-education-route');
+  p.content.append(node('p','当前学历：高中','career-education-level'),list);
+  for(const [id,title,sub,art]of [
+   ['associate','转学型副学士 AA','先读 AA，再衔接本科','education-route-aa'],
+   ['bachelorDirect','直接读本科','查看本科课程与学习安排','education-route-bachelor']
+  ])p.choice(list,title,sub,'assets/career-learning-20261115/'+art+'.webp',()=>{close();EducationPages.route(id);});
   p.button('返回学习',learning).classList.add('career-back');
  }
  function hobbies(){const p=panel('兴趣爱好','hobbies',learning),list=node('div',null,'career-list career-hobby-grid');p.content.append(list);for(const id of H.hobbies){const a=H.activities[id],xp=H.xp(state,id);p.choice(list,a.name,'Lv.'+H.level(xp)+(xp>=800?' · 已满级':'')+' · 查看 →','assets/hobbies/'+a.art+'.webp',()=>{close();HobbyPages.detail(id);});}p.button('返回学习',learning).classList.add('career-back');}
