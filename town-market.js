@@ -11,12 +11,13 @@ const TOWN_MARKET_DEALS={
 };
 const TOWN_MARKET_CARDS=Object.entries(TOWN_MARKET_DEALS).map(([id,deal])=>({id,cost:deal.down??(deal.unit?deal.price*deal.limit:deal.price)}));
 function townMarketHoldings(s=state){return s.townHoldings??=[];}
-function townMarketMonthlyIncome(s=state){
+function townMarketMonthlyIncome(s=state,{forecast=false}={}){
  return townMarketHoldings(s).reduce((total,holding)=>{
   const deal=TOWN_MARKET_DEALS[holding.deal];
   if(deal?.lease)return total+townLeaseNet(holding,deal,s.month);
   if(deal?.net)return total+deal.net;
   if(!deal?.maximum)return total;
+  if(forecast)return total+deal.maximum/2;
   const monthlyRoll=Math.imul((s.offerSeed||1)+s.month*7919+holding.id,1664525)>>>0;
   return total+monthlyRoll%(deal.maximum+1);
  },0);

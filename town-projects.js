@@ -20,6 +20,14 @@ function townProjectTime(hours,energy=0){
  state.opportunityTime={month:state.month,hours:(used?.month===state.month?used.hours:0)+hours};
  state.energy-=energy;
 }
+function townProjectPassiveIncome(s=state){
+ return (s.townProjects||[]).reduce((total,item)=>{
+  const project=TOWN_PROJECTS[item.id];
+  if(!project||item.status!=='active'||item.lastPaidMonth>=s.month||(item.due&&item.due<=s.month))return total;
+  if(item.id==='charging')return total+project.monthly*project.chance+project.fallback*(1-project.chance);
+  return total+(project.monthly||0);
+ },0);
+}
 function settleTownProjects(s,settlement){
  for(const item of townProjects(s)){
   const p=TOWN_PROJECTS[item.id],closedMonth=settlement.month-1;
@@ -94,6 +102,11 @@ function openTownProjectOffer(move,id){
    project?.status==='waiting'?'可在小镇「地图持仓」查看进度。':'月末结算，可在小镇「地图持仓」查看。';
   showEvent('大机会',note,text,[],[['继续',finish,true]]);
  }
+ function fund(cost){
+  if(!active())return;
+  const shortfall=roundCash(cost-state.cash);
+  if(shortfall>0)openBankLoan(shortfall,{returnDirect:true,after:()=>{if(active())openTownOpportunity();}});
+ }
  const rows=[['本次投入',priceText(p.cost)]];
  const money=(label,value)=>rows.push([label,priceText(value)]);
  const actions=[];
@@ -119,15 +132,16 @@ function openTownProjectOffer(move,id){
    rows.length=0;
    for(const [bid,probability] of p.bids){
     rows.push([priceText(bid),Math.round(probability*100)+'% 中标 · 净赚 '+priceText(p.payout-bid)]);
-    actions.push(['出价 '+priceText(bid),()=>choose(bid,probability),false,!ready(bid)]);
+    actions.push(ready(bid)
+     ?['出价 '+priceText(bid),()=>choose(bid,probability),false]
+     :['申请贷款 · 出价 '+priceText(bid),()=>fund(bid),false]);
    }
    break;
  }
  if(id!=='auction'){
   actions.push([({truck:'买下检车',chamber:'认购',vending:'买'})[id]||'确认参与',()=>choose(p.cost,1),true,!ready(p.cost)]);
+  if(state.cash<p.cost)actions.push(['申请贷款',()=>fund(p.cost),false]);
  }
- const shortfall=roundCash(p.cost-state.cash);
- if(shortfall>0)actions.push(['申请贷款',()=>{if(active())openBankLoan(shortfall,{returnDirect:true,after:()=>{if(active())openTownOpportunity();}});},false]);
  actions.push([({chamber:'不认购',vending:'不买'})[id]||'放弃',()=>choose(null),false]);
  showTownProject(id,p.name,p.description,rows,actions);
 }

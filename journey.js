@@ -13,9 +13,17 @@ function journeyState(){
   state.gameProgress??={version:1,phase:'rat',entryMonth:null,entryPassive:0,entryExpenses:0,win:null};
   return state.gameProgress;
 }
+function journeyMapPassiveIncome(){
+  const market=typeof townMarketMonthlyIncome==='function'?townMarketMonthlyIncome(state,{forecast:true}):0;
+  const projects=typeof townProjectPassiveIncome==='function'?townProjectPassiveIncome(state):0;
+  return roundCash(market+projects);
+}
+function journeyPassiveIncome(){
+  return roundCash(state.passive+journeyMapPassiveIncome());
+}
 function freedomEligible(){
   syncFinance();
-  return !!state.housing&&state.housing!=='unselected'&&state.expenses>0&&state.passive>state.expenses;
+  return !!state.housing&&state.housing!=='unselected'&&state.expenses>0&&journeyPassiveIncome()>state.expenses;
 }
 function fastCashFlow(){
   return roundCash(state.assets.reduce((sum,a)=>sum+(a.fastTrack?Number(a.cf)||0:0),0));
@@ -23,7 +31,7 @@ function fastCashFlow(){
 function enterFastTrack(){
   const j=journeyState();
   if(j.phase!=='rat'||!freedomEligible())return;
-  j.phase='fast';j.entryMonth=state.month;j.entryPassive=state.passive;j.entryExpenses=state.expenses;
+  j.phase='fast';j.entryMonth=state.month;j.entryPassive=journeyPassiveIncome();j.entryExpenses=state.expenses;
   j.entryNetWorth=calcMetrics().nw;
   (state.timeline??=[]).push('第'+(state.month+1)+'个月：进入财务自由快车道');
   state.achievements=[...new Set([...(state.achievements||[]),'进入财务自由快车道'])];
@@ -36,7 +44,7 @@ function openJourney(){
   syncFinance();
   if(j.phase==='rat'){
     const eligible=freedomEligible();
-    showEvent('人生阶段','第一阶段：积累资产','通过资产建立被动收入。被动收入必须严格大于必要月支出，且已确定住房，才能确认进入第二阶段。工资、借款到账和投资浮盈不计入被动收入。',[['被动收入',priceText(state.passive)+'/月'],['必要生活/保费/月供',priceText(state.expenses)+'/月'],['离严格超过还差',priceText(Math.max(0,roundCash(state.expenses-state.passive+.01)))+'/月'],['下一阶段','财务自由 · 快车道']],[['确认进入财务自由',enterFastTrack,true,!eligible],['返回继续积累',finish,false]]);
+    showEvent('人生阶段','第一阶段：积累资产','通过资产建立被动收入。被动收入必须严格大于必要月支出，且已确定住房，才能确认进入第二阶段。地图持仓按预计月净收入计入，浮动收入按平均值估算。工资、借款到账、投资浮盈和一次性回款不计入。',[['被动收入',priceText(journeyPassiveIncome())+'/月'],['其中地图持仓净收入',priceText(journeyMapPassiveIncome())+'/月'],['必要生活/保费/月供',priceText(state.expenses)+'/月'],['离严格超过还差',priceText(Math.max(0,roundCash(state.expenses-journeyPassiveIncome()+.01)))+'/月'],['下一阶段','财务自由 · 快车道']],[['确认进入财务自由',enterFastTrack,true,!eligible],['返回继续积累',finish,false]]);
     if($('eventTitle').textContent==='第一阶段：积累资产'){
       const art=document.createElement('img');
       art.className='journey-stage-art';
@@ -83,7 +91,7 @@ function cashFlowWinReady(){return journeyState().phase==='fast'&&!journeyState(
 function winJourney(reason,title){
   const j=journeyState();if(j.win)return;
   syncFinance();
-  j.win={reason,title,month:state.month,age:state.age,fastCashFlow:fastCashFlow(),passive:state.passive,expenses:state.expenses,netWorth:calcMetrics().nw};
+  j.win={reason,title,month:state.month,age:state.age,fastCashFlow:fastCashFlow(),passive:journeyPassiveIncome(),expenses:state.expenses,netWorth:calcMetrics().nw};
   (state.timeline??=[]).push('第'+(state.month+1)+'个月：通关 · '+title);
   state.achievements=[...new Set([...(state.achievements||[]),'财富人生通关：'+title])];
   save();render();showVictory();
@@ -135,8 +143,8 @@ function openFastProjects(){
 const journeyCard=document.createElement('button');journeyCard.id='wlJourney';journeyCard.type='button';journeyCard.setAttribute('aria-label','查看人生阶段');$('wlHeader').appendChild(journeyCard);journeyCard.onclick=openJourney;
 function renderJourney(){
   if(!state)return;
-  const j=journeyState(),fast=j.phase==='fast',eligible=freedomEligible(),ratio=Math.max(0,Math.min(1,state.passive/Math.max(1,state.expenses))),cf=fastCashFlow();
-  journeyCard.innerHTML='<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="'+(fast?'#d5aa30':'#becbc6')+'" stroke-width="6"/><circle cx="32" cy="32" r="15" fill="none" stroke="'+(fast?'#a4b7af':'#3a9b8c')+'" stroke-width="6"/><circle cx="32" cy="'+(fast?'5':'17')+'" r="5" fill="#253d43"/></svg><span><strong>'+(j.win?'已通关 · 继续人生':fast?'阶段2 · 财务自由':'阶段1 · 积累资产')+'</strong><small>'+(fast?'快车道新增 '+money(cf)+' / $50,000.00 每月':'被动收入 '+money(state.passive)+' / 支出 '+money(state.expenses)+'/月')+'</small><i><b style="width:'+Math.round((fast?Math.max(0,Math.min(1,cf/FAST_CASHFLOW_TARGET)):ratio)*100)+'%"></b></i><small>'+(j.win?'点击查看通关记录':fast?(eligible?'实现梦想或达到新增收入目标':'现金流出现缺口，优先恢复覆盖'):eligible?'已符合条件，点击进入第二阶段':'点击查看双阶段规则')+'</small></span><span aria-hidden="true">›</span>';
+  const j=journeyState(),fast=j.phase==='fast',eligible=freedomEligible(),ratio=Math.max(0,Math.min(1,journeyPassiveIncome()/Math.max(1,state.expenses))),cf=fastCashFlow();
+  journeyCard.innerHTML='<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="'+(fast?'#d5aa30':'#becbc6')+'" stroke-width="6"/><circle cx="32" cy="32" r="15" fill="none" stroke="'+(fast?'#a4b7af':'#3a9b8c')+'" stroke-width="6"/><circle cx="32" cy="'+(fast?'5':'17')+'" r="5" fill="#253d43"/></svg><span><strong>'+(j.win?'已通关 · 继续人生':fast?'阶段2 · 财务自由':'阶段1 · 积累资产')+'</strong><small>'+(fast?'快车道新增 '+money(cf)+' / $50,000.00 每月':'被动收入 '+money(journeyPassiveIncome())+' / 支出 '+money(state.expenses)+'/月')+'</small><i><b style="width:'+Math.round((fast?Math.max(0,Math.min(1,cf/FAST_CASHFLOW_TARGET)):ratio)*100)+'%"></b></i><small>'+(j.win?'点击查看通关记录':fast?(eligible?'实现梦想或达到新增收入目标':'现金流出现缺口，优先恢复覆盖'):eligible?'已符合条件，点击进入第二阶段':'点击查看双阶段规则')+'</small></span><span aria-hidden="true">›</span>';
   if(state.dreamFulfilment?.goal===state.lifeGoal){$('lifeGoalBar').style.width='100%';$('lifeGoalProgress').textContent='梦想已实现；当前财务数值仍按实际资产显示。'}
 }
 const renderJourneyBase=render;render=function(){renderJourneyBase();if(state)renderJourney()};
