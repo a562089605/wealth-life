@@ -13,7 +13,10 @@
   {id:'movie',title:'家庭电影夜',desc:'家人挑好了一部老电影，招呼你一起看。灯光调暗，大家窝进沙发，给今晚留一点轻松的时间。',choices:[choice('一起看，今晚就放松一下',3,{happiness:5,stress:-4}),choice('今晚不想看电影')]},
   {id:'portrait',title:'拍一张全家福',desc:'翻看旧相册时，才发现上次一家人合照已经是很久以前。家人提议：“找个时间，再一起拍张全家福吧。”',choices:[choice('去照相馆，认真拍一张',3,{cash:-350,happiness:6}),choice('在家用手机，留下这一刻',2,{happiness:3})]},
   {id:'teacher',title:'小老师',desc:'家人想和远方的亲友视频聊天，却找不到通话按钮，拿着手机问你：“这个怎么弄呀？”',choices:[choice('耐心教一教，让家人自己试试',2,{happiness:4,energy:-1}),choice('帮忙拨通，陪着聊一会儿',1,{happiness:2})]},
-  {id:'flowers',title:'一起逛花市',desc:'家人听说附近的花市开得正热闹，邀你一起去走走。挑几盆喜欢的花草，也给家里添一点新颜色。',choices:[choice('一起逛，挑些花草带回家',3,{cash:-60,happiness:5,stress:-3}),choice('陪家人逛逛，看看花也开心',3,{happiness:3,stress:-2})]}
+  {id:'flowers',title:'一起逛花市',desc:'家人听说附近的花市开得正热闹，邀你一起去走走。挑几盆喜欢的花草，也给家里添一点新颜色。',choices:[choice('一起逛，挑些花草带回家',3,{cash:-60,happiness:5,stress:-3}),choice('陪家人逛逛，看看花也开心',3,{happiness:3,stress:-2})]},
+  {id:'breakfast',title:'给你留了早餐',desc:'早出门的这天，家人在桌上留了早餐和一张纸条。',art:'assets/family/breakfast-20261124.webp',hotspots:[[67,15,3,94],[83,15,3,94]],choices:[choice('坐下来吃完再出门',1,{energy:4,happiness:2}),choice('带上早餐路上吃',0,{energy:2})]},
+  {id:'dumplings',title:'周末一起包饺子',desc:'家人备好了馅料，想多包一些冻起来，忙时也有现成的吃。',art:'assets/family/dumplings-20261124.webp',hotspots:[[70,13,3,94],[84,13,3,94]],choices:[choice('一起包，多备几顿',2,{energy:-2,happiness:4}),choice('今天先忙自己的事')]},
+  {id:'supplies',title:'轮到我买日用品',desc:'家里的洗衣液和纸巾快用完了，家人问你这次能不能搭把手。',art:'assets/family/supplies-20261124.webp',hotspots:[[67,14,3,94],[82,15,3,94]],choices:[choice('下单送到家',0,{cash:-30,stress:-2}),choice('按清单去附近店里买',1,{cash:-20,stress:-2}),choice('这次先请家人代买',0,{fallback:true})]}
  ];
  function data(s){return s.familyEvents??={version:1,seen:{},records:{}};}
  function eligible(s){const seen=s.familyEvents?.seen||{};const available=cards.filter(c=>seen[c.id]==null||s.month-seen[c.id]>6);const unseen=available.filter(c=>seen[c.id]==null);return unseen.length?unseen:available;}
@@ -25,7 +28,7 @@
   const c=pool[Math.min(pool.length-1,Math.floor(random()*pool.length))];
   r.cardId=c.id;r.status='pending';r.presented=false;d.seen[c.id]=s.month;return r;
  }
- function missing(s,r,index,free,reserve=0){const c=cards.find(c=>c.id===r?.cardId),o=c?.choices[index];if(!o||r.status!=='pending'||r.month!==s.month)return ['此选项已失效'];const a=[];if(s.cash+(o.cash||0)<0)a.push('现金不足');if(free<o.hours)a.push('自由时间不足');else if(o.hours&&free-o.hours<reserve)a.push('需保留必要宠物照护时间');return a;}
+ function missing(s,r,index,free,reserve=0){const c=cards.find(c=>c.id===r?.cardId),o=c?.choices[index];if(!o||r.status!=='pending'||r.month!==s.month)return ['此选项已失效'];if(o.fallback&&c.choices.some((choice,i)=>!choice.fallback&&!missing(s,r,i,free,reserve).length))return ['仍有可用的购买方式'];const a=[];if(s.cash+(o.cash||0)<0)a.push('现金不足');if(free<o.hours)a.push('自由时间不足');else if(o.hours&&free-o.hours<reserve)a.push('需保留必要宠物照护时间');return a;}
  function resolve(s,month,id,index,free,reserve=0){const r=s.familyEvents?.records[month];if(!r||r.cardId!==id||missing(s,r,index,free,reserve).length)return false;
   const o=cards.find(c=>c.id===id).choices[index];r.status='resolved';r.choice=index;r.hours=o.hours;r.effects={};
   for(const k of ['cash','energy','stress','happiness']){if(!o[k])continue;const before=s[k]||0;s[k]=k==='cash'?Math.round((before+o[k])*100)/100:Math.max(0,Math.min(100,before+o[k]));r.effects[k]=s[k]-before;}

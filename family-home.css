@@ -43,3 +43,6 @@
 
 
 .family-face:is([data-pool=studio],[data-pool=apartment]){max-width:min(480px,calc((100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px)) * .55556))}
+
+.family-fallback{display:block;width:min(94%,450px);min-height:44px;margin:8px auto 12px;padding:8px 12px;border:2px solid #506840;border-radius:14px;background:#e4ebc6;color:#284830;font-weight:700;cursor:pointer}
+.family-fallback:focus-visible{outline:3px solid #fff4cd;outline-offset:2px}
