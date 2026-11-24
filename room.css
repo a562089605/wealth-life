@@ -120,4 +120,6 @@
 #roomView:is(.room-default,.room-apartment):not(.room-school-apartment) .room-date::before {
  inset-inline: -10%;
  background: linear-gradient(#fff3d9,#fcedce);
+ inset-block-end: -27%;
+ mask-image: linear-gradient(to right,transparent,#000 8% 92%,transparent),linear-gradient(transparent,#000 10% 90%,transparent);
 }
