@@ -99,7 +99,9 @@ function resumeTownMove(){
  openTownLanding();
 }
 function previewTownPayday(){
- const move=townState().movement,m=calcMetrics();showEvent(move.returnReason==='home'?'回家结算':'发薪日','核对本月收支','',[['本月税前工资',priceText(m.grossSalary)],['本月持续收支结余',priceText(m.monthlyCF)],['尚待月末收付',priceText(m.remainingCF)],['预计结算后现金',priceText(state.cash+m.remainingCF)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false],['稍后处理，返回地图',()=>{clearModals();render()},false]]);$('eventClose').hidden=true;
+ const move=townState().movement,m=calcMetrics();showEvent(move.returnReason==='home'?'回家结算':'发薪日','核对本月收支','',[['本月税前工资',priceText(m.grossSalary)],['本月持续收支结余',priceText(m.monthlyCF)],['尚待月末收付',priceText(m.remainingCF)],['预计结算后现金',priceText(state.cash+m.remainingCF)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false],['稍后处理，返回地图',()=>{clearModals();render()},false]]);
+ $('eventClose').hidden=true;
+ if(move.returnReason!=='home')$('eventTitle').closest('.event').dataset.townPayday='';
 }
 function resolveTownMove(){const t=townState(),m=t.movement;if(!m||m.resolved)return;m.resolved=true;m.completedMonth=state.month;t.history.push({id:m.id,die:m.die,to:m.to,month:state.month,type:townMoveType(m),offerId:m.offers?.ids?.[0]||null,outcome:m.offers?.resolved||null});save();render()}
 const offersBeforeTown=monthlyOffers;
@@ -249,3 +251,46 @@ document.addEventListener('click',e=>{const button=e.target.closest('[data-town]
 function openTownSecurities(){showEvent('证券市场','查看证券产品','',[],V26_INSTRUMENTS.map(i=>[i.name,()=>i.id==='gold'&&window.FinancePages?FinancePages.gold(openTownSecurities):openInstrument(i.id),false]).concat([['离开市场',finish,true]]))}
 
 
+
+const townPaydayStyles=document.createElement('style');
+townPaydayStyles.textContent=`
+#game > .event.event-active[data-town-payday] {
+ width:min(460px,calc(100vw - 24px))!important;
+ max-height:calc(100dvh - 24px);
+ overflow:auto;
+ box-sizing:border-box;
+ padding:14px;
+ background:#fff3d6 url("assets/finance/paper.webp") repeat!important;
+ border:2px solid #566d3d!important;
+ border-radius:26px 23px 27px 24px!important;
+ box-shadow:inset 0 0 0 4px #fff6dd,inset 0 0 0 5px #c6a052,0 8px 22px #33352145!important;
+ color:#284531;
+}
+[data-town-payday] #eventType {
+ background:#e1e8ba;color:#315538;border-radius:999px;font:18px WealthHand,sans-serif;
+}
+[data-town-payday] #eventTitle {
+ margin:8px 0;text-align:center;color:#25492c;font:clamp(25px,7vw,38px)/1.2 WealthHand,serif;
+}
+#game > .event.event-active[data-town-payday] #eventDesc {
+ display:block;width:100%;aspect-ratio:2;margin:0 0 9px;border-radius:15px;
+ background:url("assets/finance/town-payday.webp") center/cover no-repeat;
+}
+[data-town-payday] #eventData {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+[data-town-payday] #eventData .stat {
+ min-width:0;margin:0;padding:8px;background:#f9e9b8;border:1px solid #b19a57;border-radius:13px;
+}
+[data-town-payday] #eventData .stat:is(:first-child,:last-child) {background:#e8edc7;border-color:#8b9f67}
+[data-town-payday] #eventData .label {font-size:clamp(11px,3.1vw,14px);color:#415435}
+[data-town-payday] #eventData .value {font-size:clamp(16px,4.4vw,22px);color:#25492c;overflow-wrap:anywhere}
+#game > .event.event-active[data-town-payday] #actions {margin-top:10px;gap:6px}
+#game > .event.event-active[data-town-payday] #actions button {
+ border:1.5px solid #66794a;border-radius:999px;min-height:41px;
+ background:#fff6df;color:#264a2e;font:clamp(16px,4.6vw,22px)/1.2 WealthHand,sans-serif;
+}
+#game > .event.event-active[data-town-payday] #actions button.primary {
+ background:#ffcf56 url("assets/finance/paper.webp") repeat;background-blend-mode:multiply;
+ border-color:#997025;font-weight:bold;
+}
+`;
+document.head.append(townPaydayStyles);
