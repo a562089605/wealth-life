@@ -1119,3 +1119,26 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
 .career-education-option strong{font:700 clamp(16px,4.1vw,23px)/1.2 WealthHand,KaiTi,serif}
 .career-education-option small{white-space:pre-line;font:clamp(12px,3.35vw,15px)/1.45 sans-serif}
 .career-education-compare{white-space:pre-line;text-align:center;color:#405539;font-size:clamp(12px,3.5vw,15px);margin:10px 0 0}
+
+.career-hobby-menu .career-paper{
+ display:flex;
+ flex-direction:column;
+ max-height:calc(100dvh - 24px);
+}
+.career-hobby-menu .career-scene,
+.career-hobby-menu .career-content > :is(header,h1,.career-back){flex:none}
+.career-hobby-menu .career-content{
+ display:flex;
+ flex-direction:column;
+ min-height:0;
+}
+.career-hobby-menu .career-hobby-grid{
+ grid-auto-rows:max-content;
+ align-content:start;
+ min-height:0;
+ overflow-y:auto;
+ overscroll-behavior:contain;
+ scrollbar-gutter:stable;
+ scrollbar-width:thin;
+ scrollbar-color:#91a565 #e7d9b6;
+}

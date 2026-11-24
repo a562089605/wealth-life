@@ -46,6 +46,16 @@ window.SchoolCareer=(()=>{
  const thresholds=[30,70,120,180,250];
  const xp=(s,id)=>s.schoolCareer?.skills?.[id]??0;
  const level=(s,id)=>thresholds.filter(target=>xp(s,id)>=target).length;
+ const practiceXP=10;
+ const allowanceMilestones=[{level:3,xp:thresholds[2],monthly:50},{level:5,xp:thresholds[4],monthly:100}];
+ function skillAllowanceForXP(value){
+  return allowanceMilestones.reduce((amount,milestone)=>value>=milestone.xp?milestone.monthly:amount,0);
+ }
+ function skillAllowance(s){
+  if(!working(s))return 0;
+  return Object.keys(skills).reduce((amount,id)=>amount+
+   (id==='administration'&&s.job===stages[0].name?0:skillAllowanceForXP(xp(s,id))),0);
+ }
  const openClasses=[
   {id:'experiment',title:'四年级科学公开课',choices:['老师当场做一遍','先看看全班的数据','请第三组再试一次'],answer:2,feedback:'学生统一放车条件后复测，只有路面发生变化。'},
   {id:'methods',title:'二年级-进位加法公开课',choices:['用小棒摆给大家看','在黑板上重算一遍','让同桌对照算式找差别'],answer:0,feedback:'学生看到十根散棒捆成一捆，理解了进位的 1 表示一个十。'},
@@ -146,7 +156,7 @@ window.SchoolCareer=(()=>{
  const role=job=>stages.find(stage=>stage.name===job);
  const working=s=>!!role(s.job)&&!s.retired&&!s.unemployedMonths;
  const entry=(s,job=s.job)=>s.schoolCareer?.records?.[job]??{months:0,reviews:{}};
- const record=(s,job=s.job)=>((s.schoolCareer??={records:{}}).records[job]??={months:0,reviews:{}});
+ const record=(s,job=s.job)=>(((s.schoolCareer??={}).records??={})[job]??={months:0,reviews:{}});
  const year=s=>Math.floor((s.month+5)/12);
  const hasMasters=s=>s.schoolCareer?.leadershipDegree===true||
   (EDU_RANK[s.education]??0)>=EDU_RANK.master;
@@ -214,7 +224,7 @@ window.SchoolCareer=(()=>{
    if(d.practice?.month!==s.month)d.practice={month:s.month,hours:0,done:{}};
    d.practice.hours+=skills[id].hours;
    d.practice.done[id]=true;
-   (d.skills??={})[id]=Math.min(xp(s,id)+10,thresholds.at(-1));
+   (d.skills??={})[id]=Math.min(xp(s,id)+practiceXP,thresholds.at(-1));
    s.energy-=2;
    return {};
   },save).ok;
@@ -313,7 +323,7 @@ window.SchoolCareer=(()=>{
   settlement.schoolPromotion={job:s.job,annualSalary:s.annualSalary};
  }
  return {stages,role,working,entry,year,hasMasters,canInterview,completeInterview,interviewStatus,requirements,apply,closeMonth,deliver,
-  skills,thresholds,xp,level,practiceBlock,practice,openClasses,canTeach,drawOpenClass,resolveOpenClass,openClassPasses,openClassRecord,requiredOpenClassPasses,
+  skills,thresholds,xp,level,practiceXP,allowanceMilestones,skillAllowanceForXP,skillAllowance,practiceBlock,practice,openClasses,canTeach,drawOpenClass,resolveOpenClass,openClassPasses,openClassRecord,requiredOpenClassPasses,
   interview,scenarios,collaborationPassed,collaborate,assess,reviewTasks,reviewType,schoolYear,improvement,improve,projectSteps,projectProgress,advanceProject};
 })();
 

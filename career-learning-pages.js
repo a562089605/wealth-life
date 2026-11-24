@@ -83,7 +83,7 @@
   p.content.append(node('p','同等进修速度下，两条路线读到本科用时相同。\n本科毕业后均可继续读硕士。','career-education-compare'));
   p.button('返回学习',learning).classList.add('career-back');
  }
- function hobbies(){const p=panel('兴趣爱好','hobbies',learning),list=node('div',null,'career-list career-hobby-grid');p.content.append(list);for(const id of H.hobbies){const a=H.activities[id],xp=H.xp(state,id);p.choice(list,a.name,'Lv.'+H.level(xp)+(xp>=800?' · 已满级':'')+' · 查看 →','assets/hobbies/'+a.art+'.webp',()=>{close();HobbyPages.detail(id);});}p.button('返回学习',learning).classList.add('career-back');}
+ function hobbies(){const p=panel('兴趣爱好','hobbies',learning),list=node('div',null,'career-list career-hobby-grid');p.section.classList.add('career-hobby-menu');p.content.append(list);for(const id of H.hobbies){const a=H.activities[id],xp=H.xp(state,id);p.choice(list,a.name,'Lv.'+H.level(xp)+(xp>=800?' · 已满级':'')+' · 查看 →','assets/hobbies/'+a.art+'.webp',()=>{close();HobbyPages.detail(id);});}p.button('返回学习',learning).classList.add('career-back');}
  let skillOrigin='learning';
  function skills(origin=skillOrigin){
   skillOrigin=origin;
@@ -166,10 +166,11 @@
  }
  function schoolWork(){
   const S=SchoolCareer,working=S.working(state),p=panel('我的职业','school',room);
+  const allowance=S.skillAllowance(state),monthlySalary=working?roundCash(state.salary+allowance):0;
   if(state.job==='小学校长'){
    const box=p.box('工作'),time=currentCareerTime();
    p.row(box,'岗位',state.job);
-   p.row(box,'工资',money(working?state.annualSalary:0)+'/年');
+   p.row(box,'工资',money(monthlySalary*12)+'/年');
    p.row(box,'本月工作时间',time.monthlyWork+' 小时');
    p.row(box,'本月自由时间',time.free+' 小时');
    const growth=p.box('职业成长');
@@ -190,7 +191,7 @@
   img.width=941;img.height=1672;
   card.append(img);p.content.append(card);
   const values={
-   date:date(state.month),job:state.job,salary:money(working?state.salary:0)+'/月',
+   date:date(state.month),job:state.job,salary:money(monthlySalary)+'/月',
    hours:working?currentCareerTime().monthlyWork+'小时':'—',
    free:working?currentCareerTime().free+'小时':'—',
    instruction:'教学设计 Lv.'+S.level(state,'instruction'),
@@ -227,23 +228,32 @@
   if(!S.working(state))return career();
   const p=panel('小学教师职业技能','school',career);
   if(notice)p.content.append(node('p',notice));
+  p.row(p.box('税前月薪'),'当前技能津贴',money(S.skillAllowance(state))+'/月');
   for(const [id,skill] of Object.entries(S.skills)){
    const box=p.box(skill.name),level=S.level(state,id);
    const progress=level===S.thresholds.length?'已满级':S.xp(state,id)+' / '+S.thresholds[level]+' XP';
    p.row(box,'Lv.'+level,progress);
+   if(id!=='administration'||state.job!=='小学教师'){
+    const current=S.skillAllowanceForXP(S.xp(state,id)),next=S.allowanceMilestones.find(m=>m.monthly>current);
+    if(current)p.row(box,'技能津贴','+'+money(current)+'/月');
+    if(next)box.append(node('p','再练 '+Math.ceil((next.xp-S.xp(state,id))/S.practiceXP)+' 次达 Lv.'+next.level+'，月津贴增至 '+money(next.monthly)+'。'));
+   }
    const blocked=S.practiceBlock(state,id);
    if(blocked)box.append(node('p',blocked));
    const list=node('div',null,'school-option-list');
    box.append(list);
    const card=p.button('',()=>{
     if(state.job!==job||state.month!==month)return schoolSkills();
-    schoolSkills(S.practice(state,id)?'练习已保存。':'本次未保存，请重试。');
+    const before=S.skillAllowance(state);
+    if(!S.practice(state,id))return schoolSkills('本次未保存，请重试。');
+    const increase=S.skillAllowance(state)-before;
+    schoolSkills(increase?skill.name+'达到 Lv.'+S.level(state,id)+'，下次发薪起每月多领 '+money(increase)+'。':'练习已保存。');
    },{parent:list,disabled:!!blocked});
    const art=node('img');
    art.src='assets/school-career/skill-'+id+'.webp';
    art.alt='';
    const detail=node('span');
-   detail.append(node('strong',skill.practice),node('small',skill.hours+' 小时 · 能量 −2 · +10 XP'));
+   detail.append(node('strong',skill.practice),node('small',skill.hours+' 小时 · 能量 −2 · +'+S.practiceXP+' XP'));
    card.append(art,detail);
   }
   p.button('返回我的职业',career);

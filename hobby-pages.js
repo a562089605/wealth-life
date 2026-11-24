@@ -22,7 +22,7 @@
   if(!skills){const old=[...new Set([...Object.keys(state.hobbies||{}),...Object.keys(state.hobbyXP||{})])];if(old.length){const history=node('details',null,'hobby-legacy');history.append(node('summary','原有兴趣记录'));for(const name of old)history.append(node('p',name+(Number.isFinite(state.hobbies?.[name])?' · Lv.'+state.hobbies[name]:'')+(Number.isFinite(state.hobbyXP?.[name])?' · '+state.hobbyXP[name]+' XP':' · 经验未记录')));ctx.content.append(history);}}
   ctx.button(skills?'返回房屋':'饮品制作专项',skills?room:()=>menu('specialist'));if(!skills)ctx.button('返回房屋',room);
  }
- function detail(id,notice='',returnToCareer=null){if(!state||!H.activities[id])return;const a=H.activities[id],back=returnToCareer||(()=>menu(a.kind)),art=id==='latte'?'assets/career-crayon/cafe.webp':'assets/practice-crayon/'+id+'.webp',ctx=panel(a.name,art,back),n=H.xp(state,id),lv=H.level(n),expected=H.token(state,id),q=H.quote(state,id,options());
+ function detail(id,notice='',returnToCareer=null){if(!state||!H.activities[id])return;const a=H.activities[id],back=returnToCareer||(()=>menu(a.kind)),art=a.practiceArt||(id==='latte'?'assets/career-crayon/cafe.webp':'assets/practice-crayon/'+id+'.webp'),ctx=panel(a.name,art,back),n=H.xp(state,id),lv=H.level(n),expected=H.token(state,id),q=H.quote(state,id,options());
   ctx.content.closest('.hobby-overlay').classList.add('hobby-latte-card','hobby-crayon-card');
   const progress=node('div',null,'hobby-level');progress.append(node('strong','Lv.'+lv+(n>=800?' · 已满级':'')));
   if(n<800){const start=H.thresholds[lv],end=H.thresholds[lv+1],bar=node('progress');bar.max=end-start;bar.value=n-start;bar.setAttribute('aria-label','当前等级经验');progress.append(bar,node('span',(n-start)+' / '+(end-start)+' XP'));}ctx.content.append(progress);

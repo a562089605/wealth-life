@@ -31,10 +31,11 @@ function renderTown(){
  $('wlFreeTimeValue').textContent=currentCareerTime().free+'h';
  const locked=townPending()||townAnimating||state.gameOver?.final;
  const die=last?.die||1;
- const barista=coffeeSalaryRole(state.job)==='barista';
+ const pawnArt=globalThis.SchoolCareer?.role(state.job) ? 'teacher.webp'
+  : coffeeSalaryRole(state.job)==='barista' ? 'barista.webp' : null;
  box.innerHTML=`<div class="town-toolbar"><b>起步小镇</b><p class="town-return-rules"><strong>触发回家</strong> 自由时间用完、幸福或能量低于 20、压力达到 80 或以上。<span>现金不足时，部分付费选项不可用。</span></p></div>
  <div class="town-map-scene town-stepping-board"><img src="${TOWN_ART}board.webp" alt="沿碎石路环绕喷泉的二十四块手绘汀步石">
- <span class="town-pawn" data-town-pawn style="left:${pos.x}%;top:${pos.y}%" aria-label="玩家当前位置第${t.position+1}格">${barista?`<img src="${TOWN_ART}barista.webp" alt="">`:'●'}</span>
+ <span class="town-pawn" data-town-pawn style="left:${pos.x}%;top:${pos.y}%" aria-label="玩家当前位置第${t.position+1}格">${pawnArt?`<img src="${TOWN_ART}${pawnArt}" alt="">`:'●'}</span>
  <img class="town-flight-die" data-town-flight alt="" hidden></div>
  <div class="town-roll-controls"><button type="button" class="town-crystal-button" data-town="roll" aria-label="掷骰子" ${locked?'disabled':''}><img src="${TOWN_ART}die-${die}.webp" alt="">掷骰子</button><button type="button" class="town-return-button" data-town="home" aria-label="回家并结算本月" ${locked?'disabled':''}><img src="assets/finance/bill-house.webp" alt="">回家</button></div>
  <div class="town-asset-controls"><button type="button" data-town="holdings" ${locked?'disabled':''}>地图资产</button></div>
@@ -99,7 +100,7 @@ function resumeTownMove(){
  openTownLanding();
 }
 function previewTownPayday(){
- const move=townState().movement,m=calcMetrics(),mapForecast=townMonthForecast(),remaining=roundCash(m.remainingCF+mapForecast);showEvent(move.returnReason==='home'?'回家结算':'发薪日','核对本月收支','地图浮动收益按平均值估算，以月底实际到账为准。',[['本月税前工资',priceText(m.grossSalary)],['基础持续收支结余',priceText(m.monthlyCF)],['地图资产预计本月净收付',priceText(mapForecast)],['尚待月末收付',priceText(remaining)],['预计结算后现金',priceText(state.cash+remaining)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false]]);
+ const move=townState().movement,m=calcMetrics(),mapForecast=townMonthForecast(),remaining=roundCash(m.remainingCF+mapForecast);showEvent(move.returnReason==='home'?'回家结算':'发薪日','核对本月收支','地图浮动收益按平均值估算，以月底实际到账为准。',[['本月税前工资',priceText(m.grossSalary)],...(m.schoolSkillAllowance?[['其中：技能津贴',priceText(m.schoolSkillAllowance)]]:[]),['基础持续收支结余',priceText(m.monthlyCF)],['地图资产预计本月净收付',priceText(mapForecast)],['尚待月末收付',priceText(remaining)],['预计结算后现金',priceText(state.cash+remaining)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false]]);
  $('eventClose').hidden=true;
  if(move.returnReason!=='home')$('eventTitle').closest('.event').dataset.townPayday='';
 }
@@ -228,7 +229,7 @@ function openTownLanding(){
  if(type==='opportunity')return openTownOpportunity();
  if(type==='market'&&!move.type){if(openBuyerOffer())return;resolveTownMove();return}
  if(type==='growth'){showEvent('学习成长','投资自己','',[],[['查看学历计划',openEducation,true],['练习兴趣技能',()=>$('hobbyBtn').click(),false],['本次不安排',finish,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block';return}
- if(type==='career'){if(workplaceEvent())return;openWorkAdjustment();return}
+ if(type==='career'){if(window.SchoolMapCards?.open(move)||workplaceEvent())return;openWorkAdjustment();return}
  if(type==='life'){if(typeof openMapLife==='function')return openMapLife(move);$('lifestyleBtn').click();return}
  if(type==='community'){$('networkBtn').click();return}
  if(type==='risk'){requireIncident(state.carOwned?'车辆必要维修':'家用电器损坏',state.carOwned?420:180);return}
