@@ -1,6 +1,16 @@
 {
   "name": "wealth-life",
+  "main": "save-worker.js",
   "compatibility_date": "2026-10-17",
   "workers_dev": true,
-  "assets": { "directory": ".", "not_found_handling": "404-page" }
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/private-save"]
+  },
+  "durable_objects": {
+    "bindings": [{"name": "PLAYER_SAVES", "class_name": "PlayerSaves"}]
+  },
+  "migrations": [{"tag": "private-saves-v1", "new_sqlite_classes": ["PlayerSaves"]}]
 }

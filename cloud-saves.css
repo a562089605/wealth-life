@@ -1,0 +1,24 @@
+#home.cloud-save-locked #slots,
+#home.cloud-save-locked #newGame,
+#home.cloud-save-locked #savePageHeader,
+#home.cloud-save-locked .save-page-summary { display: none !important; }
+.cloud-save-panel {
+  margin: 12px 0;
+  padding: clamp(14px, 4vw, 24px);
+  background: #fff5dd;
+  border: 1px solid #c3a56b;
+  border-radius: 18px;
+  color: #28462d;
+}
+.cloud-save-panel h2 { margin: 0; font-size: clamp(22px, 5vw, 30px); overflow-wrap: anywhere; }
+.cloud-save-panel p { margin-block: 6px; line-height: 1.5; }
+.cloud-save-panel form { display: grid; gap: 10px; margin-top: 12px; }
+.cloud-save-panel label { display: grid; gap: 4px; min-width: 0; }
+.cloud-save-panel input { box-sizing: border-box; width: 100%; min-height: 44px; font-size: 16px; }
+.cloud-save-panel button { min-height: 44px; max-width: 100%; white-space: normal; }
+.cloud-save-panel > button { margin: 6px 6px 0 0; }
+.cloud-save-panel .cloud-save-status:empty { display: none; }
+.cloud-save-conflicts { display: grid; gap: 6px; margin-top: 12px; }
+.cloud-save-conflicts button { margin: 4px 6px 0 0; }
+
+.cloud-save-panel [hidden] { display: none !important; }

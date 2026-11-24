@@ -7,3 +7,5 @@ qa*.json
 wrangler.jsonc
 
 assets/pets/originals/
+
+save-worker.js
