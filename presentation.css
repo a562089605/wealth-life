@@ -395,3 +395,78 @@ body:has(#home:not(.hidden) #newGame:not(.hidden) #coffeeIntro) .wl-home-brand{d
  box-shadow:none;
  font-size:17px;
 }
+
+#game > .event.event-active:has(.journey-stage-art) {
+ top:50% !important;
+ left:50% !important;
+ right:auto !important;
+ transform:translate(-50%,-50%);
+ width:min(440px,calc(100% - 24px));
+ padding:14px clamp(12px,4vw,20px) !important;
+ border:1px solid #c6aa73 !important;
+ background:#fcf0d4 url("./assets/finance/paper.webp") center !important;
+ color:#324623;
+ box-shadow:inset 0 0 0 3px #fff2d0,0 12px 32px #32251950;
+}
+#game > .event:has(.journey-stage-art) #eventTitle {
+ margin:4px 0 8px;
+ color:inherit;
+ font:clamp(24px,7vw,35px)/1.15 WealthHand,"Finance Ink",serif;
+}
+.event:has(.journey-stage-art) #eventType {background:#e2e7bf;color:#344727}
+.event:has(.journey-stage-art) #eventDesc { display:none; }
+.journey-stage-copy {
+ grid-column:1/-1;
+ font-size:14px;
+ line-height:1.45;
+ margin:0 0 4px;
+}
+#game > .event:has(.journey-stage-art) #eventData {
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:6px;
+ padding:0 2px 3px;
+ margin:0;
+}
+.journey-stage-art {
+ grid-column:1/-1;
+ display:block;
+ width:100%;
+ max-height:clamp(58px,16dvh,124px);
+ object-fit:contain;
+ mix-blend-mode:multiply;
+ mask-image:radial-gradient(ellipse 74% 82%, #000 56%, transparent 96%);
+}
+.event:has(.journey-stage-art) #eventData .stat {
+ min-width:0;
+ padding:7px 8px;
+ border:0;
+ border-radius:13px 16px 12px 15px;
+ background:linear-gradient(110deg,#e8e7c1,#f4eac8);
+}
+.event:has(.journey-stage-art) #eventData .stat .value {
+ font-size:clamp(13px,4.2vw,20px);
+ overflow-wrap:anywhere;
+}
+#game > .event:has(.journey-stage-art) #actions {
+ display:grid;
+ gap:5px;
+ margin:5px 0 0;
+ padding:0;
+ background:none;
+}
+#game > .event:has(.journey-stage-art) #actions > button {
+ width:100%;
+ min-height:44px;
+ margin:0;
+ border:1px solid #b9ac75;
+ border-radius:15px;
+ color:#364927;
+ font:clamp(17px,5vw,22px)/1.1 WealthHand,"Finance Ink",serif;
+}
+#game > .event:has(.journey-stage-art) #actions > .primary {
+ background:linear-gradient(#ffe49c,#efc763) !important;
+}
+#game > .event:has(.journey-stage-art) #actions > .secondary {
+ background:linear-gradient(#e9eccb,#d8e2ae);
+}

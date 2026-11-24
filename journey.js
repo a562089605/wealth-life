@@ -37,6 +37,18 @@ function openJourney(){
   if(j.phase==='rat'){
     const eligible=freedomEligible();
     showEvent('人生阶段','第一阶段：积累资产','通过资产建立被动收入。被动收入必须严格大于必要月支出，且已确定住房，才能确认进入第二阶段。工资、借款到账和投资浮盈不计入被动收入。',[['被动收入',priceText(state.passive)+'/月'],['必要生活/保费/月供',priceText(state.expenses)+'/月'],['离严格超过还差',priceText(Math.max(0,roundCash(state.expenses-state.passive+.01)))+'/月'],['下一阶段','财务自由 · 快车道']],[['确认进入财务自由',enterFastTrack,true,!eligible],['返回继续积累',finish,false]]);
+    if($('eventTitle').textContent==='第一阶段：积累资产'){
+      const art=document.createElement('img');
+      art.className='journey-stage-art';
+      art.src='./assets/finance/asset-growth-crayon.webp';
+      art.alt='';
+      const description=$('eventDesc');
+      const copy=document.createElement('p');
+      copy.className='journey-stage-copy';
+      copy.textContent=description.textContent;
+      description.textContent='';
+      $('eventData').prepend(art,copy);
+    }
     return;
   }
   const gs=goalStats(),cf=fastCashFlow(),covered=freedomEligible();
