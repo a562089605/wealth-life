@@ -10,14 +10,14 @@ function completeMonthlyStep(index,alreadySaved=false){if(!alreadySaved){if(stat
 function monthSelection(name){return state.monthChoices?.month===state.month?state.monthChoices[name]:null}
 function setMonthSelection(name,value){if(state.monthChoices?.month!==state.month)state.monthChoices={month:state.month};state.monthChoices[name]=value}
 function fundShortfall(amount,after){openBankLoan(Math.max(1,Math.ceil(amount-state.cash)),{after})}
-const V26_STATS={health:'健康',energy:'精力',happiness:'幸福',stress:'压力',social:'社交'};
+const V26_STATS={health:'健康',energy:'能量',happiness:'幸福',stress:'压力',social:'社交'};
 const V26_LIFE=[
  {name:'运动 / 户外',cost:25,desc:'散步、轻运动或户外活动。',effects:{health:4,energy:-3,happiness:2,stress:-6}},
  {name:'宅家休息',cost:45,desc:'留出时间休息，吃点喜欢的食物。',effects:{energy:8,happiness:4,stress:-6}},
- {name:'朋友聚餐',cost:85,desc:'维持友情，也要付出精力。',effects:{energy:-2,happiness:7,social:6}},
+ {name:'朋友聚餐',cost:85,desc:'维持友情，也需要花些能量。',effects:{energy:-2,happiness:7,social:6}},
  {name:'兴趣爱好',cost:120,desc:'为自己喜欢的事情留出时间。',effects:{energy:3,happiness:8,stress:-5}},
  {name:'周末短途旅行',cost:380,desc:'换个环境放松。',effects:{energy:6,happiness:14,stress:-8}},
- {name:'演唱会 / 主题乐园',cost:210,desc:'享受体验，但会消耗精力。',effects:{energy:-6,happiness:11,stress:-4}},
+ {name:'演唱会 / 主题乐园',cost:210,desc:'享受体验，但会消耗能量。',effects:{energy:-6,happiness:11,stress:-4}},
  {name:'升级手机',cost:950,desc:'新鲜感带来短期快乐。',effects:{happiness:7}},
  {name:'品质餐厅',cost:150,desc:'和重要的人吃一顿更好的晚餐。',effects:{energy:-2,happiness:8,social:6}},
  {name:'本月简单生活',cost:0,desc:'不额外消费，但缺少休息与娱乐。',effects:{energy:-1,happiness:-3}}
