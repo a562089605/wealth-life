@@ -243,3 +243,44 @@ body.painted-screen #game > #paintedView.painted-room-backdrop:not([hidden]) {
  border-radius:15px;padding:5px 10px 5px 5px;text-align:left;
 }
 .housing-alternatives .housing-thumbnail {display:block;aspect-ratio:1.4}
+
+.painted-screen #paintedView:has(.shared-reservation-page):not([hidden]) {
+ align-items: flex-start;
+ overflow-y: auto;
+ background: #fff2d7;
+}
+.shared-reservation-page {
+ width: min(100%, 480px);
+ flex: none;
+ container-type: inline-size;
+ min-height: 100%;
+ background: #fff1d3 url('assets/pages/shared-reservation-crayon.webp') center top / 100% auto no-repeat;
+ color: #25432c;
+}
+.shared-reservation-content {
+ padding: 121cqw 17% 3.2cqw;
+ text-align: center;
+}
+.shared-reservation-content h2 { margin: 0; font: 7cqw/1.15 WealthHand, KaiTi, serif; }
+.shared-monthly-rent { display: block; font-size: 8cqw; line-height: 1.12; margin: 1.4cqw 0; font-variant-numeric: tabular-nums; }
+.shared-reservation-content dl { display: grid; grid-template-columns: 1fr 1fr; margin: 1.4cqw 0; font-size: 3.6cqw; }
+.shared-reservation-content dl > div { min-width: 0; }
+.shared-reservation-content dl > div + div { border-inline-start: 1px solid #b9ae73; }
+.shared-reservation-content dd { margin: 0; font-size: 4.7cqw; font-weight: 750; overflow-wrap: anywhere; }
+.shared-reservation-content p { margin: 1.5cqw 0; font-size: 3.8cqw; }
+.shared-reservation-content button {
+ display: block;
+ width: 100%;
+ min-height: 44px;
+ margin: 1.4cqw 0 0;
+ border: 1.5px solid #52643a;
+ border-radius: 24px;
+ background: #fff3d9;
+ color: #25432c;
+ box-shadow: none;
+ font-size: max(14px, 4.7cqw);
+ font-weight: 750;
+}
+.shared-reservation-content button:focus-visible { outline: 3px solid #315f45; outline-offset: 2px; }
+.shared-reservation-content .shared-reservation-note { font-size: max(12px, 3.8cqw); }
+.shared-reservation-content .shared-reservation-primary { background: #f4cf62; }

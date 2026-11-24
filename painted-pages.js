@@ -43,6 +43,20 @@
    (q.housing>0?action('rent-pay','交本月'+expense+' · '+money(q.housing),'housing-primary'):'<p role="status" class="housing-paid">✓ 本月'+expense+'已支付</p>')+
    action('housing-list','更换住房')+(kind==='own'&&window.OwnerHousing?action('owner-home','管理自住房'):'')+action('life','返回生活');
  }
+ function sharedReservation(){
+  const choice=housingChoices().find(option=>option[3]==='shared'),q=housingQuote(choice);
+  const booked=state.pendingHousingMove?.key==='shared',short=state.cash<q.total;
+  const total=q.first?q.total:q.monthly+q.deposit;
+  const label=booked?'已预约下月入住':q.scheduled?'预约下月入住':'确认入住';
+  const action=(id,title,cls='',disabled=false)=>'<button type="button" class="'+cls+'" data-painted="'+id+'"'+(disabled?' disabled':'')+'>'+esc(title)+'</button>';
+  return '<article class="shared-reservation-page" aria-label="合租 · 自己的房间，共享生活空间"><div class="shared-reservation-content">'+
+   '<h2>住房费用</h2><strong class="shared-monthly-rent">'+esc(money(q.monthly))+' / 月</strong>'+
+   '<dl><div><dt>押金</dt><dd>'+esc(money(q.deposit))+'</dd></div><div><dt>搬入时合计</dt><dd>'+esc(money(total))+'</dd></div></dl>'+
+   (booked?action('cancel-move','已预约下月入住 · 取消预约','shared-reservation-note'):'<p class="shared-reservation-note">'+(q.scheduled?'下月搬入 · 预约不扣款':'确认后入住')+'</p>')+
+   (short?'<p role="status">可用现金不足，尚需 '+esc(money(q.total-state.cash))+'</p>'+action('funding','筹措住房资金'):'')+
+   action('detail-confirm',label,'shared-reservation-primary',booked||short)+
+   action('housing','返回住房选择')+'</div></article>';
+ }
  function draw(){
   const active=!!page&&!!state&&!el('game').classList.contains('hidden');
   document.body.classList.toggle('painted-screen',active);
@@ -60,6 +74,7 @@
    return;
   }
   const current=state.housing===detailKey;
+  if(page==='detail'&&detailKey==='shared'&&!current){box.innerHTML=sharedReservation();return;}
   let html=image(page==='life'?'life-monthly-bill':page==='detail'?detailAssets[detailKey][current?1:0]:page);
   if(page==='rest'){
    const missing=restMissing();restQuote={cycle:state.month,count:monthlyRest().entries.length};
