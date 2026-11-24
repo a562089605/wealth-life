@@ -190,10 +190,10 @@
   return { month: state.month, regular, home, tier, total: roundCash(regular + home) };
  }
 
- function openPremiumPayment(back, after = back, skip) {
+ function openPremiumPayment(back, after = back) {
   if (state.requiredIncident) return openRequiredIncident();
   const bill = premiumBill();
-  const reopen = () => openPremiumPayment(back, after, skip);
+  const reopen = () => openPremiumPayment(back, after);
   const insufficient = state.cash < bill.total;
   showEvent('保险与保障', '支付本月保费', '', [
    ...(bill.regular ? [['有效保单保费', priceText(bill.regular)]] : []),
@@ -211,7 +211,6 @@
     }, reopen)) after();
    }, true]] : []),
    ...(insufficient ? [['资金不足，查看补救', () => showFundingOptions(bill.total, reopen), true]] : []),
-   ...(skip ? [['暂不续房险，继续出门', skip, false]] : []),
    ['返回', back, false]
   ]);
   window.modalReturn = back;

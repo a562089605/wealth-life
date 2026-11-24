@@ -61,12 +61,7 @@
   if(state.gameOver?.final)return showGameOver();
   if(state.requiredIncident)return openRequiredIncident();
   if(window.OwnerHousing?.saleDue())return OwnerHousing.show();
-  if(window.HomeInsurance && state.homeDamageCheckedMonth!==state.month){
-   const premium=HomeInsurance.premiumBill();
-   if(premium.home)return HomeInsurance.openPremiumPayment(openRoom,()=>leaveRoom(allowOverdueClean),()=>{
-    if(!HomeInsurance.checkOnLeave())leaveRoom(allowOverdueClean);
-   });
-  }
+  if(window.HomeInsurance?.premiumBill().home>0)return HomeInsurance.openPremiumPayment(openRoom,()=>leaveRoom(allowOverdueClean));
   if(window.HomeInsurance?.checkOnLeave())return;
 
   if(healthTreatmentKind(state.health)||unfinishedTreatment()||isRecoveryMonth(state))return openHealthTreatment();
@@ -76,7 +71,7 @@
   const bill=livingBillQuote();
   if(!bill.selected||bill.blocked||bill.housing>0)return window.openLifeOverview();
   // A paused map event retains its identity and resumes instead of being re-rolled.
-  if(townPending() && HomeInsurance.premiumBill().regular>0)return HomeInsurance.openPremiumPayment(openRoom,()=>leaveRoom(allowOverdueClean));
+  if(townPending() && HomeInsurance.premiumBill().total>0)return HomeInsurance.openPremiumPayment(openRoom,()=>leaveRoom(allowOverdueClean));
   if(townPending()){state.roomLocation='town';save();visible=false;syncRoom();return showTown();}
   if(necessaryBills().length)return openNecessaryBills();
   const reasons=explorationReturnReasons();
@@ -88,7 +83,7 @@
   if(allowOverdueClean!==true&&cleanDue.length)return showEvent('宠物护理','清洁护理到期','',cleanDue.map(t=>[t.pet.name||t.pet.type,'健康 '+PetHealth.value(t.pet)+'/100']),[['前往清洁护理',()=>openPetCare(),true],['暂不护理，继续出门',()=>leaveRoom(true),false],['返回房屋',openRoom,false]]);
   state.townMode=true;state.roomLocation='town';townState();save();visible=false;syncRoom();showTown();
  }
- window.leaveTownRoom=()=>townVisible?showTown():leaveRoom();
+ window.leaveTownRoom=()=>townVisible&&state.roomLocation!=='home'?showTown():leaveRoom();
  function learning(){
   showEvent('学习','学习与技能','',[],[
    ['学历学习',openEducation,true],['职业技能课程',openCoffeeCourses,false],
