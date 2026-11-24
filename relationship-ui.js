@@ -101,7 +101,17 @@
   receiptView(result.receipt);
   render();
  }
- function detail(id){const p=person(id);if(!p)return contacts();const ctx=panel(p.name,contacts);ctx.paper.classList.add('relationship-detail','relationship-interaction');ctx.paper.append(avatar(p,true),node('p',label(p),'relationship-ribbon'));profile(p,ctx.paper);ctx.paper.append(meter(p),node('h2','选择相处方式'),node('p','剩余自由时间 '+currentCareerTime().free+'小时','relationship-note'));
+ function detail(id){const p=person(id);if(!p)return contacts();const ctx=panel(p.name,contacts);
+  ctx.paper.classList.add('relationship-detail','relationship-interaction','relationship-crayon');
+  const heading=ctx.paper.querySelector('h1'),hero=node('div',null,'relationship-detail-hero');
+  const identity=node('div',null,'relationship-detail-identity');
+  heading.before(hero);
+  identity.append(heading,node('p',label(p),'relationship-ribbon'));
+  hero.append(avatar(p,true),identity);
+  profile(p,ctx.paper);
+  const actionsHeading=node('div',null,'relationship-detail-actions-heading');
+  actionsHeading.append(node('h2','选择相处方式'),node('p','剩余自由时间 '+currentCareerTime().free+'小时','relationship-note'));
+  ctx.paper.append(meter(p),actionsHeading);
   for(const [kind,name,crop]of (p.relationshipRole==='teacher'?[['teacherChat',p.teacherLabel==='导师'?'与导师聊聊':'与老师聊聊',[60,1245,190,100]]]:[['meal','一起吃饭',[60,1100,190,105]],['chat','聊天',[60,1245,190,100]],['walk','散步交流',[60,1385,190,95]]])){const q=R.quote(state,kind,[id],{free:freeFor(kind),recovery:recovery()}),b=ctx.button('',()=>confirmInteraction(kind,id,name),'relationship-option '+kind,!q.ok),text=node('span');text.append(node('strong',name),node('small',(q.cost?priceText(q.cost)+' · ':'')+q.hours+'小时 · 能量−'+q.energy));b.append(slice(node('span',null,'relationship-option-art'),'contact-detail',...crop),text,node('span','›'));ctx.paper.append(b);if(!q.ok)ctx.paper.append(node('p',q.reason,'relationship-reason'));}
   if(p.relationshipRole!=='teacher')ctx.paper.append(ctx.button('邀请做客',()=>visit([id]),'relationship-primary',p.relation<51));ctx.paper.append(ctx.button('返回关系网',contacts,'relationship-secondary'));
  }

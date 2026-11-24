@@ -212,3 +212,140 @@
 .relationship-stats dt { color:#685d43; }
 .relationship-stats dd { margin:0;color:#304f39;font-weight:700;font-variant-numeric:tabular-nums; }
 .relationship-outcome .relationship-stats>div { border-color:var(--result-edge); }
+
+/* The contact detail is a cream-paper journal with a crayon window vignette. */
+.relationship-paper.relationship-crayon {
+  --contact-ink: #28442d;
+  --contact-line: #b78d59;
+  padding: 14px clamp(12px, 4vw, 20px) 18px;
+  color: var(--contact-ink);
+  border-color: var(--contact-line);
+  border-radius: 22px 20px 23px 19px;
+  background: radial-gradient(#b3875520 .55px, transparent .8px) 0 0 / 4px 5px, #fff5de;
+}
+.relationship-crayon::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 auto auto;
+  width: 60%;
+  height: 154px;
+  border-radius: 0 18px 0 0;
+  background: url('assets/relationships/contact-window-crayon.webp') center right / cover no-repeat;
+  mask-image: linear-gradient(90deg, transparent, #000 34%), linear-gradient(#000 82%, transparent);
+  mask-composite: intersect;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.relationship-crayon .relationship-tag {
+  color: var(--contact-ink);
+  background: #dce3ad;
+  transform: none;
+}
+.relationship-crayon .relationship-close {
+  color: var(--contact-ink);
+  background: #fff3d7;
+}
+.relationship-detail-hero {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  min-height: 87px;
+  margin: 4px 0 10px;
+}
+.relationship-crayon .relationship-avatar.large {
+  width: clamp(66px, 19vw, 86px);
+  height: clamp(66px, 19vw, 86px);
+  margin: 0;
+  border-color: var(--contact-line);
+}
+.relationship-detail-identity {
+  min-width: 0;
+  max-width: 60%;
+  padding: 2px 4px;
+  background: linear-gradient(90deg, #fff5ded9, #fff5de82);
+  border-radius: 12px;
+}
+.relationship-crayon .relationship-detail-identity h1 {
+  margin: 0 0 4px;
+  text-align: left;
+}
+.relationship-crayon .relationship-detail-identity .relationship-ribbon {
+  width: fit-content;
+  margin: 0;
+  padding: 3px 9px;
+  background: #dce4b2;
+  font-size: 18px;
+  border-radius: 15px 13px 14px 12px;
+}
+.relationship-crayon .relationship-profile {
+  margin: 0 0 9px;
+  gap: 8px 13px;
+  padding: 11px 12px;
+  border: 1px solid #be9962;
+  background: #fff9e5bf;
+  border-radius: 17px 14px 18px 15px;
+}
+.relationship-crayon .relationship-profile dt {
+  color: var(--contact-ink);
+  margin-bottom: 2px;
+}
+.relationship-crayon .relationship-interest dt,
+.relationship-detail-actions-heading h2 {
+  width: fit-content;
+  padding-inline: 5px;
+  background: linear-gradient(transparent 40%, #f2ce82a6 40% 93%, transparent 93%);
+}
+.relationship-crayon > .relationship-meter { margin: 8px 0; }
+.relationship-detail-actions-heading { text-align: center; }
+.relationship-detail-actions-heading h2 {
+  margin: 9px auto 3px;
+  background: linear-gradient(transparent 40%, #dbe4ad 40% 92%, transparent 92%);
+}
+.relationship-crayon .relationship-note {
+  display: inline-block;
+  margin: 0 0 3px;
+  padding: 1px 8px;
+  background: #f8e6bb;
+  border-radius: 12px;
+}
+.relationship-crayon .relationship-option {
+  margin-top: 7px;
+  min-height: 67px !important;
+  padding: 5px 10px;
+  border: 1px solid var(--contact-line);
+  border-radius: 14px 12px 15px 13px;
+  background: #fff4d8;
+  box-shadow: 0 2px 0 #b68e582b;
+}
+.relationship-crayon .relationship-option.walk { background: #eef0d1; }
+.relationship-crayon .relationship-option-art { height: 51px; }
+.relationship-crayon .relationship-option small { margin-top: 2px; }
+.relationship-crayon .relationship-option:disabled {
+  opacity: 1;
+  filter: none;
+  background: #eee7d9;
+  color: #53604b;
+}
+.relationship-crayon .relationship-option:disabled .relationship-option-art {
+  opacity: .7;
+  filter: saturate(.65);
+}
+.relationship-crayon .relationship-reason {
+  display: table;
+  padding: 1px 7px;
+  border-radius: 8px;
+  background: #f6dfa9;
+}
+.relationship-crayon :is(.relationship-primary,.relationship-secondary) {
+  min-height: 46px !important;
+  margin-top: 8px;
+  padding-block: 6px;
+}
+.relationship-crayon .relationship-primary:disabled {
+  opacity: 1;
+  filter: none;
+  background: #717e68;
+  color: #fffae8;
+}
