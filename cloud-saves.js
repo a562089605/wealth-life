@@ -3,14 +3,16 @@
  const maxSlots=100, sessionKey='wealthLife_cloud_session', countKey='wealthLife_slotCount';
  const legacyKey=key, localSave=save, localBuild=buildHome;
  const homePanel=$('home'), slots=$('slots'), newGame=$('newGame');
- let account=null, ledger={}, transmitting=false, changingCode=false, conflicts={}, retryTimer, showEntry;
+ let account=null, ledger={}, transmitting=false, changingAccount=false, conflicts={}, retryTimer, showEntry;
  const readJSON=(storage,k,fallback)=>{try{return JSON.parse(storage.getItem(k))??fallback;}catch{return fallback;}};
  const node=(tag,label,cls)=>{const e=document.createElement(tag);if(label)e.textContent=label;if(cls)e.className=cls;return e;};
  const panel=node('section','','cloud-save-panel'), heading=node('h2','私人存档'), status=node('p','','cloud-save-status');
  status.setAttribute('role','status');
  panel.append(heading,status);
  slots.before(panel);
- const accountCache=()=>account.name+(account.generation?':generation:'+account.generation:'');
+ const normalizeName=value=>value.normalize('NFKC').trim().toLowerCase();
+ const validName=name=>/^[\p{L}\p{N}_-]{2,24}$/u.test(name);
+ const accountCache=()=>(account.accountKey??account.name)+(account.generation?':generation:'+account.generation:'');
  const slotKey=(name,id)=>'wealthLifeCloud:'+name+':slot:'+id;
  const metaKey=name=>'wealthLifeCloud:'+name+':sync';
  const setStatus=text=>{status.textContent=text;};
@@ -82,7 +84,7 @@
   panel.append(section);
  }
  async function flush(){
-  if(!account||transmitting||changingCode)return;
+  if(!account||transmitting||changingAccount)return;
   transmitting=true;
   const owner=account;
   try{
@@ -128,7 +130,7 @@
   heading.textContent='私人存档 · '+account.name;
   const out=node('button','退出私人存档','secondary');out.type='button';
   out.onclick=()=>{
-   if(transmitting||changingCode){setStatus('正在处理，请稍后再退出。');return;}
+   if(transmitting||changingAccount){setStatus('正在处理，请稍后再退出。');return;}
    if(Object.values(ledger).some(entry=>entry.pending)&&!confirm('此设备还有未同步的进度。退出后，可用同一账号回来继续同步。现在退出？'))return;
    for(const id of Object.keys(ledger))if(!ledger[id].pending)writeSlot(accountCache(),id,null);
    clearTimeout(retryTimer);sessionStorage.removeItem(sessionKey);account=null;state=null;ledger={};conflicts={};showEntry();
@@ -143,18 +145,18 @@
   const changeConfirm=node('button','保存新存档码','primary');changeConfirm.type='submit';
   codeForm.append(codeLabel,confirmLabel,changeConfirm);
   change.onclick=()=>{
-   if(changingCode)return;
+   if(changingAccount)return;
    codeForm.hidden=!codeForm.hidden;
    change.textContent=codeForm.hidden?'更改私人存档码':'取消更改存档码';
    if(!codeForm.hidden)newCode.focus();else codeForm.reset();
   };
   codeForm.onsubmit=async event=>{
    event.preventDefault();
-   if(changingCode||transmitting){setStatus('正在同步，请稍候再修改。');return;}
+   if(changingAccount||transmitting){setStatus('正在同步，请稍候再修改。');return;}
    const next=newCode.value.trim();
    if(next.length<8||next.length>72||next!==confirmation.value.trim()){setStatus('请填写两次相同的新存档码，长度为 8–72 个字符。');return;}
    if(next===account.code){setStatus('请使用和当前不同的存档码。');return;}
-   changingCode=changeConfirm.disabled=true;
+   changingAccount=changeConfirm.disabled=true;
    try{
     let result;
     try{result=await request('change-code',account,{newCode:next});}
@@ -168,9 +170,49 @@
     sessionStorage.setItem(sessionKey,JSON.stringify(account));
     showAccount();setStatus('存档码已更改。其他设备下次请用新码登入。');
    }catch(error){setStatus(error.message==='rate'?'尝试次数过多，请过一分钟再试。':'未能确认更改，请稍后重试，或用新码重新登录。');}
-   finally{changingCode=changeConfirm.disabled=false;if(Object.values(ledger).some(entry=>entry.pending))flush();}
+   finally{changingAccount=changeConfirm.disabled=false;if(Object.values(ledger).some(entry=>entry.pending))flush();}
   };
   panel.append(change,codeForm);
+  const rename=node('button','更改用户名','secondary');rename.type='button';
+  const nameForm=node('form');nameForm.hidden=true;
+  const nameLabel=node('label','新用户名'),newName=node('input');
+  newName.required=true;newName.maxLength=48;newName.autocomplete='off';
+  newName.autocapitalize='off';newName.spellcheck=false;
+  nameLabel.append(newName);
+  const renameConfirm=node('button','保存新用户名','primary');renameConfirm.type='submit';
+  nameForm.append(nameLabel,renameConfirm);
+  rename.onclick=()=>{
+   if(changingAccount)return;
+   nameForm.hidden=!nameForm.hidden;
+   rename.textContent=nameForm.hidden?'更改用户名':'取消更改用户名';
+   if(nameForm.hidden)nameForm.reset();else newName.focus();
+  };
+  nameForm.onsubmit=async event=>{
+   event.preventDefault();
+   if(changingAccount||transmitting){setStatus('正在同步，请稍候再修改。');return;}
+   const next=normalizeName(newName.value);
+   if(!validName(next)){setStatus('用户名须为 2–24 个字符，可用文字、数字、下划线或连字符。');return;}
+   if(next===account.name){setStatus('请使用和当前不同的用户名。');return;}
+   changingAccount=renameConfirm.disabled=true;
+   try{
+    let result;
+    try{result=await request('change-name',account,{newName:next});}
+    catch(error){
+     if(error.message!=='network' && !(error instanceof TypeError) && error.name!=='AbortError')throw error;
+     const check=await request('read',{name:next,code:account.code});
+     if(check.accountKey===account.accountKey && (check.generation??0)===account.generation)result={changed:true,name:next};
+    }
+    if(result?.error==='taken'){setStatus('这个用户名已被占用，请换一个。');return;}
+    if(result?.error==='busy'){setStatus('正在处理账号更改，请稍后重试。');return;}
+    if(!result?.changed)throw Error('network');
+    account={...account,name:result.name};
+    sessionStorage.setItem(sessionKey,JSON.stringify(account));
+    showAccount();setStatus('用户名已更改。其他设备请用新用户名和原存档码登录。');
+   }catch(error){
+    setStatus(error.message==='rate'?'尝试次数过多，请过一分钟再试。':'未能确认更改，请稍后重试，或用新用户名和原存档码登录。');
+   }finally{changingAccount=renameConfirm.disabled=false;if(Object.values(ledger).some(entry=>entry.pending))flush();}
+  };
+  panel.append(rename,nameForm);
   const raw=legacyEntries();
   if(raw.length){
    const button=node('button','导入这台设备的旧存档（'+raw.length+' 笔）','secondary');
@@ -213,7 +255,7 @@
     const result=await request(action,access);
     if(result.error==='taken'){setStatus('这个用户名已有人使用。已有账号请输入私人存档码。');return;}
     if(!Array.isArray(result.slots))throw Error('network');
-    account={...access,generation:result.generation??0};ledger=readJSON(localStorage,metaKey(accountCache()),{});conflicts={};
+    account={...access,generation:result.generation??0,accountKey:result.accountKey??access.name};ledger=readJSON(localStorage,metaKey(accountCache()),{});conflicts={};
     applyRemote(result.slots);sessionStorage.setItem(sessionKey,JSON.stringify(account));
     homePanel.classList.remove('cloud-save-locked');
     setStatus(action==='create'?'私人存档已建立。其他设备可用同一个用户名和你设定的存档码登录。':'已进入私人存档。');
@@ -225,8 +267,8 @@
    }finally{signIn.disabled=create.disabled=false;}
   }
   function submit(action){
-   const normalized=name.value.normalize('NFKC').trim().toLowerCase();
-   if(!/^[\p{L}\p{N}_-]{2,24}$/u.test(normalized)){setStatus('用户名须为 2–24 个字符，可用文字、数字、下划线或连字符。');return;}
+   const normalized=normalizeName(name.value);
+   if(!validName(normalized)){setStatus('用户名须为 2–24 个字符，可用文字、数字、下划线或连字符。');return;}
    const secret=code.value.trim();
    if(secret.length<8||secret.length>72){setStatus('请输入 8–72 个字符的私人存档码。第一次建档请设定自己的存档码。');return;}
    enter(action,{name:normalized,code:secret});
