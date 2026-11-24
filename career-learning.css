@@ -751,31 +751,70 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
  border-radius:15px 19px 14px 18px;
  box-shadow:none;
 }
+.career-story-profile .career-content .career-skill-list {
+ gap:8px;
+}
 .career-story-profile .career-content .career-skill-list .career-skill-entry {
+ display:grid;
+ grid-template-columns:minmax(0,33%) minmax(0,1fr) auto;
+ grid-template-areas:"art title arrow" "art level arrow";
+ grid-template-rows:auto auto;
+ align-content:center;
+ align-items:center;
+ column-gap:8px;
+ row-gap:2px;
+ min-height:clamp(68px,21vw,94px);
+ padding:7px 10px;
  border:0;
- border-radius:19px 22px 17px 21px;
+ border-radius:37% 30% 24% 26% / 30% 31% 32% 39%;
+ background:linear-gradient(105deg,var(--career-option-paper,#f9e2a8),#fff7e4a6);
  box-shadow:none;
  transform:none;
 }
-.career-story-profile .career-content .career-skill-entry:nth-child(even) .career-skill-illustration {
- grid-column:-2 / -1;
- grid-row:1;
+.career-story-profile .career-content .career-skill-list .career-skill-entry:hover {
+ box-shadow:none;
+ filter:brightness(1.025);
 }
-.career-story-profile .career-content .career-skill-entry:nth-child(even) {
- grid-template-columns:minmax(0,1fr) auto auto minmax(58px,28%);
+.career-story-profile .career-content .career-skill-list .career-skill-entry:nth-child(even) {
+ grid-template-columns:minmax(0,1fr) minmax(0,33%) auto;
+ grid-template-areas:"title art arrow" "level art arrow";
+ padding-inline-start:16px;
 }
-.career-story-profile .career-skill-entry:nth-child(even) .career-skill-summary {
- grid-column:1;
- grid-row:1;
+.career-story-profile .career-skill-entry .career-skill-illustration {
+ grid-area:art;
+ width:100%;
+ height:clamp(51px,16vw,76px);
+ object-fit:contain;
+ mask-image:radial-gradient(ellipse,#000 55%,transparent 99%);
+ mix-blend-mode:multiply;
 }
-.career-story-profile .career-skill-entry:nth-child(even) .career-skill-level {
- grid-column:2;
- grid-row:1;
+.career-story-profile .career-skill-entry .career-skill-summary {
+ grid-area:title;
+ align-self:end;
+ min-width:0;
 }
-.career-story-profile .career-skill-entry:nth-child(even) .career-skill-arrow {
- grid-column:3;
- grid-row:1;
+.career-story-profile .career-skill-entry .career-skill-summary strong {
+ color:#304b2b;
+ font-size:clamp(18px,6vw,27px);
+ line-height:1.1;
 }
+.career-story-profile .career-skill-entry .career-skill-summary small {
+ color:#4d5d40;
+ font-size:13px;
+ line-height:1.25;
+ overflow-wrap:anywhere;
+}
+.career-story-profile .career-skill-entry .career-skill-level {
+ grid-area:level;
+ justify-self:start;
+ align-self:start;
+ padding:0;
+ border:0;
+ background:none;
+ color:#4d5d40;
+ font-size:12px;
+}
+.career-story-profile .career-skill-entry .career-skill-arrow {grid-area:arrow;color:#304b2b}
 .career-story-profile.career-fixed .career-back {
  display:block;
  width:min(100%,260px);
