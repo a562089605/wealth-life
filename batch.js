@@ -116,6 +116,9 @@ $('jobMarketBtn').onclick=openCareerMarket;
 function openWorkAdjustment(){showEvent('职业预览','调整工作','',[['当前工作',state.job||'未就业'],['税前年薪',priceText(state.annualSalary||0)]],[['查看其他工作机会',openCareerMarket,true],['确认辞职',()=>{state.job=null;state.salary=0;state.annualSalary=0;state.unemployedMonths=0;save();finish()},false,!state.job],['返回，不修改',finish,false]])}
 // Expanded saved monthly opportunity pool. Outcomes are resolved and shown before month end.
 V26_OFFERS.push(
+ {id:'weekend-coffee',name:'周末咖啡摊',cost:120,reward:300,recovery:70,chance:.75,hours:4,effects:{energy:-6},art:'assets/finance/weekend-coffee-stall.webp',fallbackLabel:'客流冷清到账',fallbackNote:'客流比预期少，卖出的咖啡仍有营业收入。',desc:'周末集市空出一个摊位。你可以付摊位费、买咖啡豆和纸杯，备好几壶手冲等客人上门。'},
+ {id:'pet-photos',name:'周末宠物摄影',cost:90,reward:240,recovery:50,chance:.8,hours:3,effects:{energy:-4},art:'assets/finance/weekend-pet-photos.webp',fallbackLabel:'客户取消保留定金',fallbackNote:'客户临时取消，你保留预约定金，已付的租用和准备费用照扣。',desc:'一位镇民约你给自家柯基拍照。你先预订场地、租设备和准备道具，顺利交付后收齐定金与尾款。'},
+ {id:'bakery-bulk',name:'面包店团购',cost:35,reward:125,chance:.85,hours:2,effects:{energy:-3},art:'assets/finance/bakery-group-buy.webp',desc:'镇上的面包店请你统计邻居的团购订单。凑够数量后，面包店统一烘焙并支付组织费。'},
  {id:'tutor',name:'周末辅导项目',cost:80,reward:260,chance:.8,hours:3,art:'assets/finance/weekend-tutor.webp',effects:{energy:-5},desc:'支付教材和交通费，成功接到辅导项目后获得一次性报酬。'},
  {id:'repair',name:'社区维修摊位',cost:200,reward:480,chance:.7,art:'assets/finance/opportunity-repair.webp',hours:4,effects:{energy:-8},desc:'购置工具和材料，在周末集市接维修订单。'},
  {id:'craft',name:'手工小店',cost:450,cf:42,chance:.7,art:'assets/finance/opportunity-craft.webp',hours:5,recovery:250,effects:{energy:-5},successEffects:{happiness:3},desc:'出资购买缝纫机并试机。签约后由店主负责制作、销售和日常保养，从当月月底起按月支付租金。'},
@@ -159,12 +162,12 @@ takeOpportunity=function(id){
   showEvent('机会结果','机会未保存',result.reason,[],[['返回',finish,true]]);
   return;
  }
- const rows=[['本次投入',priceText(project.cost)],[!success&&project.recovery?'转卖回收':'实际一次性收入',priceText(offer.income)],['新增月净收入',priceText(offer.newMonthlyIncome)+'/月'],['当前被动收入',priceText(state.passive)+'/月']];
+ const rows=[['本次投入',priceText(project.cost)],[!success&&project.recovery?(project.fallbackLabel||'转卖回收'):'实际一次性收入',priceText(offer.income)],['新增月净收入',priceText(offer.newMonthlyIncome)+'/月'],['当前被动收入',priceText(state.passive)+'/月']];
  if(!success&&project.recovery)rows.push(['本次净损失',priceText(project.cost-offer.income)]);
  if(success&&project.successEffects)rows.push(['成功后状态变化',effectText(project.successEffects)]);
  if(project.hours)rows.splice(1,0,['已用自由时间',project.hours+' 小时'],['能量',String(project.effects.energy)]);
  if(success)showOpportunityCompletion(project,rows);
- else showEvent('机会结果','未成功：'+project.name,project.recovery?'项目未达成，转卖回收款已到账。':'本次投入已支付，没有产生预期收入。',rows,[['继续',()=>completeMonthlyStep(8),true]]);
+ else showEvent('机会结果','未成功：'+project.name,project.recovery?(project.fallbackNote||'项目未达成，转卖回收款已到账。'):'本次投入已支付，没有产生预期收入。',rows,[['继续',()=>completeMonthlyStep(8),true]]);
 };
 // ETF monthly distributions are removed from quotes before cash/reinvestment: no free double return.
 const ETF_YIELDS={us500:.018,ustotal:.02,international:.03,world:.024};

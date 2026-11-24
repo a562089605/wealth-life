@@ -117,7 +117,7 @@ function drawTownOpportunity(move,deck){
  const fast=journeyState().phase==='fast';
  const marketCards=TOWN_MARKET_CARDS.filter(card=>TOWN_MARKET_DEALS[card.id].unit||!townMarketHoldings().some(holding=>holding.deal===card.id));
  const pool=fast?FAST_PROJECTS:[...V26_OFFERS,...marketCards].filter(project=>
-  project.id!=='volunteer'&&(deck==='small'?project.cost<=TOWN_SMALL_DEAL_LIMIT:project.cost>TOWN_SMALL_DEAL_LIMIT));
+  !['volunteer','stall','microcompany'].includes(project.id)&&(deck==='small'?project.cost<=TOWN_SMALL_DEAL_LIMIT:project.cost>TOWN_SMALL_DEAL_LIMIT));
  const recent=new Set(townState().history.filter(x=>x.offerId).slice(-3).map(x=>x.offerId));
  const fresh=pool.filter(project=>!recent.has(project.id)),available=fresh.length?fresh:pool;
  const seed=townMarketRoll(move);
@@ -201,7 +201,7 @@ function openTownOpportunity(message=''){
   project.cf?['成功后净收入',priceText(project.cf)+'/月']:['成功后收入',priceText(project.reward)],
   ['失败可能损失',priceText(project.chance<1?(fast?project.cost*(1-project.salvage):project.cost-(project.recovery||0)):0)]
  ];
- if(project.recovery)rows.push(['未成功时转卖回收',priceText(project.recovery)]);
+ if(project.recovery)rows.push([project.fallbackLabel||'未成功时转卖回收',priceText(project.recovery)]);
  if(project.successEffects)rows.push(['成功后状态变化',effectText(project.successEffects)]);
  if(project.hours)rows.push(['自由时间','−'+project.hours+' 小时']);
  if(project.effects)rows.push(['状态变化',effectText(project.effects)]);
@@ -211,7 +211,7 @@ function openTownOpportunity(message=''){
   '<h3>'+batchEscape(project.name)+'</h3><p>'+batchEscape(project.desc)+'</p>'+
   '<div class="town-opportunity-cost">投入 <strong>'+priceText(project.cost)+'</strong></div>'+
   '<dl>'+rows.map(([label,value])=>'<div><dt>'+batchEscape(label)+'</dt><dd>'+batchEscape(value)+'</dd></div>').join('')+'</dl>'+
-  (project.hours&&project.reward?'<p>成功净赚 '+priceText(project.reward-project.cost)+(project.recovery?'。滞销时清仓回收。':'。未成功无报酬，已用成本照扣。')+'</p>':'')+
+  (project.hours&&project.reward?'<p>成功净赚 '+priceText(project.reward-project.cost)+(project.recovery?(project.fallbackNote?'。'+project.fallbackNote:'。滞销时清仓回收。'):'。未成功无报酬，已用成本照扣。')+'</p>':'')+
   (blocked?'<p>'+batchEscape(blocked)+'</p>':'')+
   (shortfall>0?'<p>还差 '+priceText(shortfall)+'，可申请银行贷款。</p>':'')+'</div>';
  data.style.display='block';
