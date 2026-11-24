@@ -44,6 +44,13 @@ export default {
     }
     if (!body || typeof body.name !== 'string' || typeof body.code !== 'string') return respond({ error: 'input' }, 400);
     const name = body.name.normalize('NFKC').trim().toLowerCase();
+    if (body.action === 'owner-reset-yumi') {
+      if (name !== 'yumi' || !/^[0-9a-f]{64}$/.test(body.code) ||
+          hex(await crypto.subtle.digest('SHA-256', encoder.encode(body.code))) !== '3ea29888db9a447bcb00817a77bbda648f10e1e561ad7514e8d0535cf810902b') {
+        return respond({error:'credentials'},401);
+      }
+      return env.PLAYER_SAVES.get(env.PLAYER_SAVES.idFromName('yumi')).fetch(new Request(url.origin + '/internal/reset-yumi', {method:'POST'}));
+    }
     if (!/^[\p{L}\p{N}_-]{2,24}$/u.test(name) || !validCode(body.code)) return respond({ error: 'input' }, 400);
     return env.PLAYER_SAVES.get(env.PLAYER_SAVES.idFromName(name)).fetch(new Request(url.origin + '/internal', {
       method: 'POST', body: JSON.stringify({ ...body, name })
@@ -53,14 +60,28 @@ export default {
 
 export class PlayerSaves {
   constructor(ctx) {
+    this.storage = ctx.storage;
     this.sql = ctx.storage.sql;
+    this.sql.exec('CREATE TABLE IF NOT EXISTS save_generation (id INTEGER PRIMARY KEY CHECK(id=1), generation INTEGER NOT NULL)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS account (id INTEGER PRIMARY KEY CHECK(id = 1), secret TEXT NOT NULL)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS attempts (id INTEGER PRIMARY KEY CHECK(id = 1), started INTEGER NOT NULL, failures INTEGER NOT NULL)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS saves (slot INTEGER PRIMARY KEY, revision INTEGER NOT NULL, data TEXT)');
   }
 
   async fetch(request) {
-    const { action, code, newCode, slot, revision, data } = await request.json();
+    if (new URL(request.url).pathname === '/internal/reset-yumi') {
+      return this.storage.transactionSync(() => {
+        if (this.sql.exec('SELECT generation FROM save_generation WHERE id=1').toArray().length) return respond({reset:true,alreadyApplied:true});
+        const count = this.sql.exec('SELECT count(*) AS count FROM saves WHERE data IS NOT NULL').toArray()[0].count;
+        this.sql.exec('DELETE FROM saves');
+        this.sql.exec('DELETE FROM account');
+        this.sql.exec('DELETE FROM attempts');
+        this.sql.exec('INSERT INTO save_generation (id,generation) VALUES (1,1)');
+        return respond({reset:true,removedSlots:count});
+      });
+    }
+    const { action, code, newCode, slot, revision, data, generation } = await request.json();
+    const currentGeneration = this.sql.exec('SELECT generation FROM save_generation WHERE id=1').toArray()[0]?.generation ?? 0;
     const lookup = () => this.sql.exec('SELECT secret FROM account WHERE id = 1').toArray()[0]?.secret;
     let secret = lookup();
     const now = Date.now(), windowMs = 60000;
@@ -70,7 +91,7 @@ export class PlayerSaves {
       const candidate = await newSecret(code);
       this.sql.exec('INSERT OR IGNORE INTO account (id, secret) VALUES (1, ?)', candidate);
       secret = lookup();
-      if (secret === candidate) return respond({slots:[]});
+      if (secret === candidate) return respond({slots:[],generation:currentGeneration});
     }
     if (!await matchesSecret(secret,code) || secret !== lookup()) {
       this.sql.exec(`INSERT INTO attempts (id,started,failures) VALUES (1,?,1)
@@ -86,7 +107,8 @@ export class PlayerSaves {
       this.sql.exec('UPDATE account SET secret=? WHERE id=1',replacement);
       return respond({changed:true});
     }
-    if (action === 'create' || action === 'read') return respond({ slots: this.sql.exec('SELECT slot, revision, data FROM saves ORDER BY slot').toArray() });
+    if (action === 'create' || action === 'read') return respond({ generation:currentGeneration, slots: this.sql.exec('SELECT slot, revision, data FROM saves ORDER BY slot').toArray() });
+    if (action === 'write' && (generation??0)!==currentGeneration) return respond({error:'credentials'},401);
     if (action !== 'write' || !Number.isInteger(slot) || slot < 1 || slot > maxSlots ||
         !Number.isSafeInteger(revision) || revision < 0 || (data !== null && typeof data !== 'string')) {
       return respond({ error: 'input' }, 400);

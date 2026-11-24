@@ -10,11 +10,12 @@
  status.setAttribute('role','status');
  panel.append(heading,status);
  slots.before(panel);
+ const accountCache=()=>account.name+(account.generation?':generation:'+account.generation:'');
  const slotKey=(name,id)=>'wealthLifeCloud:'+name+':slot:'+id;
  const metaKey=name=>'wealthLifeCloud:'+name+':sync';
  const setStatus=text=>{status.textContent=text;};
  const notify=text=>{setStatus(text);const label=$('saveState');if(label)label.textContent=text;};
- function persist(){localStorage.setItem(metaKey(account.name),JSON.stringify(ledger));}
+ function persist(){localStorage.setItem(metaKey(accountCache()),JSON.stringify(ledger));}
  async function request(action,access,detail={}){
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
   try{
@@ -29,12 +30,12 @@
   if(raw===null)localStorage.removeItem(slotKey(name,id));
   else localStorage.setItem(slotKey(name,id),raw);
  }
- key=function(id){return account?slotKey(account.name,id):slotKey('signed-out',id);};
+ key=function(id){return account?slotKey(accountCache(),id):slotKey('signed-out',id);};
  slotCount=function(){
   if(!account)return 3;
-  return Math.min(maxSlots,Math.max(3,Number(localStorage.getItem(slotKey(account.name,'count')))||3));
+  return Math.min(maxSlots,Math.max(3,Number(localStorage.getItem(slotKey(accountCache(),'count')))||3));
  };
- setSlotCount=function(n){if(account)localStorage.setItem(slotKey(account.name,'count'),String(Math.min(maxSlots,Math.max(3,n))));};
+ setSlotCount=function(n){if(account)localStorage.setItem(slotKey(accountCache(),'count'),String(Math.min(maxSlots,Math.max(3,n))));};
  function recordSave(id){
   if(!account)return;
   ledger[id]={revision:ledger[id]?.revision??0,pending:true};
@@ -45,7 +46,7 @@
  save=function(){const result=localSave.apply(this,arguments);if(result!==false&&state)recordSave(slot);return result;};
  window.deleteCloudSaveSlot=function(id){localStorage.removeItem(key(id));recordSave(id);};
  function setSlotFromCloud(row){
-  writeSlot(account.name,row.slot,row.data);
+  writeSlot(accountCache(),row.slot,row.data);
   ledger[row.slot]={revision:row.revision,pending:false};
   setSlotCount(Math.max(slotCount(),row.slot));
  }
@@ -129,7 +130,7 @@
   out.onclick=()=>{
    if(transmitting||changingCode){setStatus('正在处理，请稍后再退出。');return;}
    if(Object.values(ledger).some(entry=>entry.pending)&&!confirm('此设备还有未同步的进度。退出后，可用同一账号回来继续同步。现在退出？'))return;
-   for(const id of Object.keys(ledger))if(!ledger[id].pending)writeSlot(account.name,id,null);
+   for(const id of Object.keys(ledger))if(!ledger[id].pending)writeSlot(accountCache(),id,null);
    clearTimeout(retryTimer);sessionStorage.removeItem(sessionKey);account=null;state=null;ledger={};conflicts={};showEntry();
   };
   const change=node('button','更改私人存档码','secondary');change.type='button';
@@ -163,7 +164,7 @@
      if(Array.isArray(check.slots))result={changed:true};
     }
     if(!result?.changed)throw Error('network');
-    account={name:account.name,code:next};
+    account={...account,code:next};
     sessionStorage.setItem(sessionKey,JSON.stringify(account));
     showAccount();setStatus('存档码已更改。其他设备下次请用新码登入。');
    }catch(error){setStatus(error.message==='rate'?'尝试次数过多，请过一分钟再试。':'未能确认更改，请稍后重试，或用新码重新登录。');}
@@ -178,7 +179,7 @@
     if(raw.length>empty.length){setStatus('存档位不足，旧存档仍保留在本机。');return;}
     if(!confirm('把这台设备的旧存档复制到「'+account.name+'」？现有云端存档会保留。'))return;
     try{
-     raw.forEach((data,i)=>{writeSlot(account.name,empty[i],data);setSlotCount(Math.max(slotCount(),empty[i]));recordSave(empty[i]);});
+     raw.forEach((data,i)=>{writeSlot(accountCache(),empty[i],data);setSlotCount(Math.max(slotCount(),empty[i]));recordSave(empty[i]);});
      localStorage.setItem('wealthLifeCloud:legacyImported',account.name);
     }catch{setStatus('本机空间不足，旧存档仍保留。');return;}
     button.remove();buildHome();flush();
@@ -212,8 +213,8 @@
     const result=await request(action,access);
     if(result.error==='taken'){setStatus('这个用户名已有人使用。已有账号请输入私人存档码。');return;}
     if(!Array.isArray(result.slots))throw Error('network');
-    account=access;ledger=readJSON(localStorage,metaKey(account.name),{});conflicts={};
-    applyRemote(result.slots);sessionStorage.setItem(sessionKey,JSON.stringify(access));
+    account={...access,generation:result.generation??0};ledger=readJSON(localStorage,metaKey(accountCache()),{});conflicts={};
+    applyRemote(result.slots);sessionStorage.setItem(sessionKey,JSON.stringify(account));
     homePanel.classList.remove('cloud-save-locked');
     setStatus(action==='create'?'私人存档已建立。其他设备可用同一个用户名和你设定的存档码登录。':'已进入私人存档。');
     showAccount();buildHome();
