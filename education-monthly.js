@@ -2,7 +2,7 @@
 (function(root){'use strict';
  const E=root.EducationPlans,old={...E},copy=s=>JSON.parse(JSON.stringify(s)),cents=n=>Math.round(n*100),money=n=>n/100;
  const make=(name,from,cost,books,months,units)=>({name,from,cost,books,tuition:cost-books,months:{slow:months,fast:months*2/3},units,rates:{slow:40,fast:60}});
- const routes={associate:make('转学型副学士 AA','highschool',8600,2400,36,1440),bachelor:make('本科','associate',15200,2400,36,1440),bachelorDirect:make('本科','highschool',30300,4800,72,2880),master:make('硕士','bachelor',15800,2400,36,1440),doctorate:make('专业博士','master',78600,3600,54,2160)};
+ const routes={associate:make('副学士 AA','highschool',8600,2400,36,1440),bachelor:make('本科','associate',15200,2400,36,1440),bachelorDirect:make('本科','highschool',30300,4800,72,2880),master:make('硕士','bachelor',15800,2400,36,1440),doctorate:make('专业博士','master',78600,3600,54,2160)};
  routes.bachelorDirect.target='bachelor';
  const current=st=>st?.version===4&&!!routes[st.route];
  const projection=(st,pace)=>current(st)?Math.ceil(Math.max(0,st.requiredUnits-st.completedUnits)/E.hours(pace)):old.projection(st,pace);

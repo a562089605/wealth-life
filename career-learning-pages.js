@@ -65,9 +65,8 @@
   const price=value=>'$'+value.toLocaleString('en-US',{maximumFractionDigits:2});
   const transferTotal=associate.cost+bachelor.cost;
   for(const [id,title,lines,image] of [
-   ['associate','转学型副学士 AA',[
-    '先拿 AA，可就业或衔接本科',
-    '汽车技师、影视剪辑助理等岗位须达到 AA 学历门槛',
+   ['associate','副学士 AA（就业型或转学型）',[
+    '毕业后可申请要求副学士学历的岗位，如汽车技师、助理剪辑师，也可继续升读本科。',
     'AA '+price(associate.cost)+' · 读到本科共 '+price(transferTotal),
     '读到本科比直读省 '+price(bachelorDirect.cost-transferTotal)
    ],'aa'],
