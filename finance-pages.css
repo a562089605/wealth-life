@@ -785,10 +785,12 @@
 #game > .event.finance-emergency #eventClose:focus-visible { opacity: 1; }
 
 #game > .event.event-active.finance-cd {
- --cd-frame: min(100vw, 66.6667dvh, 520px);
+ /* Keep the original illustration coordinates for the cash, terms and buttons. */
+ --cd-frame: min(132vw, 70dvh, 590px);
  position: fixed;
  inset: 50% auto auto 50% !important;
- transform: translate(-50%, -50%);
+ transform: translate(-48.45%, -52.55%);
+ clip-path: inset(6.55% 15.4% 1.45% 12.3% round 5% / 3.3%);
  width: var(--cd-frame);
  height: calc(var(--cd-frame) * 1.5);
  max-height: none !important;
