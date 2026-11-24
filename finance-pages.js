@@ -561,7 +561,7 @@
    window.modalReturn=back;
    eventCard.classList.add('finance-parchment','retirement-transaction');
    const data=$('eventData');
-   data.innerHTML=`<img class="retirement-art" src="${art}gold-overview.webp" width="900" height="300" alt="">
+   data.innerHTML=`<img class="retirement-art gold-overview-art" src="${art}gold-overview-crayon.webp" width="900" height="277" alt="">
     <div class="retirement-transfer-panel">
      <div class="retirement-transfer-total"><span>当前价格</span><strong>${priceText(quote.price)} / 份</strong></div>
      <dl><div><dt>持仓市值</dt><dd>${priceText(value)}</dd></div>
