@@ -54,13 +54,6 @@
 .painted-canvas [data-painted="cancel-move"]{min-height:0!important}
 
 .painted-canvas.housing,.painted-canvas.detail{container-type:inline-size}
-.painted-canvas .housing-apartment-name{
- box-sizing:border-box;
- padding-inline:1cqw;
- font-weight:700;
- -webkit-text-size-adjust:100%;
- text-size-adjust:100%;
-}
 .painted-canvas.housing .housing-option-title{
  left:53%;width:36%;height:3.45%;
  box-sizing:border-box;
@@ -74,11 +67,6 @@
  border-radius:2px;
  box-shadow:0 0 .7cqw .2cqw #faf3de;
 }
-.painted-canvas.detail .housing-apartment-name{
- font-size:clamp(22px,7vw,34px);
- font-size:8cqw;
-}
-
 .painted-canvas.rest{container-type:inline-size;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .painted-canvas .rest-stat,.painted-canvas.life .life-stat{
  isolation:isolate;
@@ -169,4 +157,12 @@ body.painted-screen #game > #paintedView.painted-room-backdrop:not([hidden]) {
 .painted-canvas.detail .housing-payment-status.housing-payment-compact {
  left:51%;width:28%;height:4.15%;
  font-size:2.85cqw;gap:.5cqw;
+}
+
+.painted-canvas.detail .housing-deposit-value {
+ left:26.5%;width:19.5%;height:2.35%;
+ border-radius:0;background:#fff8de;
+ box-shadow:0 0 .6cqw .25cqw #fff8de;
+ color:#143e2d;
+ font-size:3.4cqw;font-weight:750;
 }

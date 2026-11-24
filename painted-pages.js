@@ -3,7 +3,7 @@
  const el=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  let page=null,restQuote=null;
  let detailKey='family',billQuote=null;
- const detailAssets={family:['family','family-occupied-500'],shared:['shared-reservation-900','shared-occupied-900'],studio:['studio-reservation-1400','studio-occupied-1400'],rent1:['one-bedroom-reservation-1600','one-bedroom-occupied-1600']};
+ const detailAssets={family:['family','family-occupied-500'],shared:['shared-reservation-900','shared-occupied-900'],studio:['studio-reservation-1400','studio-occupied-1400'],rent1:['one-bedroom-reservation-1600-inlaid','one-bedroom-occupied-1600-inlaid']};
  function close(){page=null;document.body.classList.remove('painted-screen');const box=el('paintedView');if(box)box.hidden=true;}
  function button(action,label,style,disabled=false){return '<button type="button" class="painted-hotspot" data-painted="'+action+'" aria-label="'+esc(label)+'" style="'+style+'" '+(disabled?'disabled':'')+'>'+esc(label)+'</button>';}
  function patch(text,style,kind=''){return '<div class="painted-value '+kind+'" style="'+style+'">'+esc(text)+'</div>';}
@@ -67,7 +67,7 @@
   }else if(page==='detail'){
    const h=housingChoices().find(x=>x[3]===detailKey),q=housingQuote(h),occupied=q.current;
    const family=detailKey==='family',studio=detailKey==='studio';
-   if(detailKey==='rent1')html+=patch('小公寓','left:27%;top:7.5%;width:45%;height:7%','housing-apartment-name');
+   if(detailKey==='rent1')html+='<span class="housing-printed-rent">小公寓</span>';
    const booked=state.pendingHousingMove?.key===detailKey;
    const label=occupied?'更换住房':booked?'已预约下月入住':q.scheduled?'预约下月入住':'确认入住';
    const monthlyTop=family?(occupied?76:75.1):studio?(occupied?75.8:74.5):76;
@@ -82,7 +82,7 @@
     const total=q.first?q.total:q.monthly+q.deposit;
     html+=deposit===printedRent
      ?'<span class="housing-printed-rent">'+esc((occupied?'押金已缴 ':'押金 ')+money(deposit))+'</span>'
-     :patch(money(deposit),'left:27%;top:'+(occupied?83.2:detailsTop)+'%;width:19%;height:3.1%','housing-small');
+     :patch(money(deposit),'top:'+(occupied?83.3:detailsTop)+'%','housing-deposit-value');
     if(!occupied)html+=total===2*printedRent
      ?'<span class="housing-printed-rent">'+esc('搬入时合计 '+money(total))+'</span>'
      :patch(money(total),'left:53%;top:'+detailsTop+'%;width:23%;height:3.1%','housing-small');
