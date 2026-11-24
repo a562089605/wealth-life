@@ -1903,3 +1903,75 @@
   height: 103px;
   background: url("./assets/finance/insurance.webp") center / auto 100% no-repeat,radial-gradient(ellipse,#e8edc9,transparent 68%);
 }
+
+/* CD purchase confirmation, shared by all available terms. */
+#game > .event.event-active:has(.cd-confirm-total) {
+  background: radial-gradient(#b3875520 .55px, transparent .85px) 0 0 / 4px 5px, #fff6e0;
+  border: 2px solid #bd945c;
+  border-radius: 22px 19px 24px 20px;
+  color: #28452e;
+}
+.event:has(.cd-confirm-total) #eventType {
+  background: #dce4ad;
+  color: #28452e;
+  padding: 3px 11px;
+  border-radius: 14px;
+}
+.event:has(.cd-confirm-total) #eventTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-block: 5px 9px;
+  color: #28452e;
+  font: clamp(26px, 6vw, 38px)/1.15 WealthHand, KaiTi, serif;
+}
+.event:has(.cd-confirm-total) #eventTitle::after {
+  content: "";
+  display: block;
+  width: clamp(84px, 30vw, 150px);
+  margin-left: auto;
+  flex-shrink: 0;
+  aspect-ratio: 365 / 192;
+  background: url('assets/finance/cd-confirm-crayon.webp') center / contain no-repeat;
+  mix-blend-mode: multiply;
+  mask-image: radial-gradient(ellipse farthest-side, #000 77%, transparent 100%);
+}
+.event:has(.cd-confirm-total) #eventDesc {
+  padding: 9px 12px;
+  color: #3c5134;
+  background: #f8e8c6;
+  border-radius: 12px;
+  line-height: 1.5;
+}
+.event:has(.cd-confirm-total) #eventData {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.event:has(.cd-confirm-total) #eventData > .stat {
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid #c2aa6e;
+  border-radius: 14px 12px 15px 12px;
+  background: #eaf0cc;
+}
+.event:has(.cd-confirm-total) #eventData > .stat:is(:nth-child(2), :nth-child(3)) {
+  background: #f9e4d1;
+}
+.event:has(.cd-confirm-total) #eventData .stat.cd-confirm-total {
+  grid-column: 1 / -1;
+  background: #ffe7a5;
+}
+.event:has(.cd-confirm-total) #eventData :is(.label, .value) { color: #28452e; }
+.event:has(.cd-confirm-total) #eventData .value {
+  font-size: clamp(15px, 4.3vw, 21px);
+  overflow-wrap: anywhere;
+}
+.event:has(.cd-confirm-total) #eventData .cd-confirm-total .value { font-size: clamp(21px, 5.5vw, 28px); }
+.event:has(.cd-confirm-total) #actions > button {
+  border: 1px solid #c29a56;
+  border-radius: 13px;
+  color: #28452e;
+  background: #fff4d8;
+}
+.event:has(.cd-confirm-total) #actions > button.primary { background: #f4cd56; font-weight: 700; }

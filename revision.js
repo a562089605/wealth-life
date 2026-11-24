@@ -93,7 +93,10 @@ function previewCD(months,back){
   },true,state.cash<CD_PRINCIPAL],
   ['取消',back,false]
  ]);
- if($('eventTitle').textContent===title)window.modalReturn=back;
+ if($('eventTitle').textContent===title){
+  $('eventData').lastElementChild?.classList.add('cd-confirm-total');
+  window.modalReturn=back;
+ }
 }
 function cdWithdrawalQuote(asset){
  const accrued=Math.max(0,asset.interestAccrued||0);
