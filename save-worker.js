@@ -44,13 +44,6 @@ export default {
     }
     if (!body || typeof body.name !== 'string' || typeof body.code !== 'string') return respond({ error: 'input' }, 400);
     const name = body.name.normalize('NFKC').trim().toLowerCase();
-    if (body.action === 'owner-reset-yumi') {
-      if (name !== 'yumi' || !/^[0-9a-f]{64}$/.test(body.code) ||
-          hex(await crypto.subtle.digest('SHA-256', encoder.encode(body.code))) !== '3ea29888db9a447bcb00817a77bbda648f10e1e561ad7514e8d0535cf810902b') {
-        return respond({error:'credentials'},401);
-      }
-      return env.PLAYER_SAVES.get(env.PLAYER_SAVES.idFromName('yumi')).fetch(new Request(url.origin + '/internal/reset-yumi', {method:'POST'}));
-    }
     if (!/^[\p{L}\p{N}_-]{2,24}$/u.test(name) || !validCode(body.code)) return respond({ error: 'input' }, 400);
     return env.PLAYER_SAVES.get(env.PLAYER_SAVES.idFromName(name)).fetch(new Request(url.origin + '/internal', {
       method: 'POST', body: JSON.stringify({ ...body, name })
@@ -60,7 +53,6 @@ export default {
 
 export class PlayerSaves {
   constructor(ctx) {
-    this.storage = ctx.storage;
     this.sql = ctx.storage.sql;
     this.sql.exec('CREATE TABLE IF NOT EXISTS save_generation (id INTEGER PRIMARY KEY CHECK(id=1), generation INTEGER NOT NULL)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS account (id INTEGER PRIMARY KEY CHECK(id = 1), secret TEXT NOT NULL)');
@@ -69,17 +61,6 @@ export class PlayerSaves {
   }
 
   async fetch(request) {
-    if (new URL(request.url).pathname === '/internal/reset-yumi') {
-      return this.storage.transactionSync(() => {
-        if (this.sql.exec('SELECT generation FROM save_generation WHERE id=1').toArray().length) return respond({reset:true,alreadyApplied:true});
-        const count = this.sql.exec('SELECT count(*) AS count FROM saves WHERE data IS NOT NULL').toArray()[0].count;
-        this.sql.exec('DELETE FROM saves');
-        this.sql.exec('DELETE FROM account');
-        this.sql.exec('DELETE FROM attempts');
-        this.sql.exec('INSERT INTO save_generation (id,generation) VALUES (1,1)');
-        return respond({reset:true,removedSlots:count});
-      });
-    }
     const { action, code, newCode, slot, revision, data, generation } = await request.json();
     const currentGeneration = this.sql.exec('SELECT generation FROM save_generation WHERE id=1').toArray()[0]?.generation ?? 0;
     const lookup = () => this.sql.exec('SELECT secret FROM account WHERE id = 1').toArray()[0]?.secret;
