@@ -103,7 +103,7 @@ function previewTownPayday(){
 }
 function resolveTownMove(){const t=townState(),m=t.movement;if(!m||m.resolved)return;m.resolved=true;m.completedMonth=state.month;t.history.push({id:m.id,die:m.die,to:m.to,month:state.month,type:townMoveType(m),offerId:m.offers?.ids?.[0]||null,outcome:m.offers?.resolved||null});save();render()}
 const offersBeforeTown=monthlyOffers;
-const TOWN_SMALL_DEAL_LIMIT=1500;
+const TOWN_SMALL_DEAL_LIMIT=3000;
 function townOpportunityMove(){
  const move=state?.town?.movement;
  return townEnabled()&&move&&!move.resolved&&move.month===state.month&&townMoveType(move)==='opportunity'?move:null;
@@ -157,7 +157,7 @@ function openTownOpportunity(message=''){
    (message?'<p class="town-opportunity-notice" role="status">'+batchEscape(message)+'</p>':'')+'</div>';
   data.style.display='block';
   const deckCards=[
-   ['小机会','savings',priceText(TOWN_SMALL_DEAL_LIMIT)+' 或以下'],
+   ['小机会','savings',priceText(0)+'–'+priceText(TOWN_SMALL_DEAL_LIMIT)],
    ['大机会','bank','超过 '+priceText(TOWN_SMALL_DEAL_LIMIT)]
   ];
   deckCards.forEach(([label,image,amount],index)=>{
