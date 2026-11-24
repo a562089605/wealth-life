@@ -74,6 +74,14 @@ function openMedicalInsurance(back=finish){const reopen=()=>openMedicalInsurance
   option.name+' · '+priceText(option.monthly)+'/月 · 赔付'+Math.round(option.coverage*100)+'%'+(p?.active&&p.plan===plan?' · 当前方案':''),
   ()=>previewMedicalPlan(plan,reopen),!p?.active||p.plan!==plan,p?.active&&p.plan===plan&&!x
  ]),...(p?.active?[x?.plan===null?['已安排下月停保',null,false,true]:['下月停保',()=>previewMedicalStop(reopen),false]]:[]),[back===finish?'返回':'返回保险与保障',back,false]]);
+ if(globalThis.showRedrawnEventArt?.('医疗保障选择','medical')){
+  Object.keys(MEDICAL_PLANS).forEach((plan,index)=>{
+   const button=$('actions').children[index];
+   const illustration=document.createElement('img');illustration.alt='';
+   illustration.src='assets/confirmed-redraws/medical-'+plan+'.webp';
+   button.prepend(illustration);
+  });
+ }
  window.modalReturn=back;
 }
 const medicalSyncBefore=syncFinance;syncFinance=function(){if(state)applyPendingMedicalPolicy(state);return medicalSyncBefore();};

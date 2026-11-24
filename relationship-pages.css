@@ -354,3 +354,5 @@
 .relationship-crayon .contact-interest + .contact-interest { margin-top: 3px; }
 
 .relationship-directory .relationship-list{max-height:min(48dvh,430px);overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-color:#839459 #f4e8ca;padding:2px 6px 2px 2px}
+
+.relationship-directory-art{display:block;width:100%;max-height:145px;object-fit:cover;border-radius:11px}

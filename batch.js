@@ -278,6 +278,7 @@ function showMyBonds(back){
   ['持有本金',priceText(principal)],['预计每月票息',priceText(coupon)]
  ],actions,market);
  if($('eventTitle').textContent!=='我的债券')return;
+ globalThis.showRedrawnEventArt?.('我的债券','bond');
  const buttons=[...$('actions').children];
  holdings.forEach((bond,index)=>{
   const note=document.createElement('small');

@@ -37,7 +37,7 @@ function openForcedTimeReturn(){if(!timeReturnPending())return false;
  const t=townState();if(!t.movement)t.movement={id:++t.rolls,to:t.position,die:0,month:state.month,resolved:false};
  t.movement.resolved=false;t.movement.payExpected=state.month+1;t.movement.returnReason='forced-time';
  clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth();
- },true]]);$('eventClose').hidden=true;return true;}
+ },true]]);globalThis.showRedrawnEventArt?.('返回房屋结算','return-home');$('eventClose').hidden=true;return true;}
 const timeFinishBefore=finish;finish=function(){markExplorationReturn();if(timeReturnPending()){clearModals();pending=false;openForcedTimeReturn();return;}return timeFinishBefore();};
 const timeRollBefore=rollTown;rollTown=function(){if(document.querySelector('.event-active'))return;if(markExplorationReturn()||timeReturnPending())return openForcedTimeReturn();const reasons=explorationReturnReasons();if(reasons.length){showEvent('暂时不能出门','先在房屋调整状态',reasons.join('；')+'。本次没有推进月份。',[],[['返回房屋',townHome,true]]);return;}const before=state.town?.rolls||0;const result=timeRollBefore();if((state.town?.rolls||0)>before){state.town.explorationMonth=state.month;save();}return result;};
 const timeResumeBefore=resumeTownMove;resumeTownMove=function(){if(timeReturnPending())return openForcedTimeReturn();return timeResumeBefore();};
