@@ -248,3 +248,48 @@ function openTownLeaseOffer(move,holding){
   earlyExit?'本月租金照常结算。':renewing?renewalNote:'签约后，从本月月底开始收租。',
   earlyExit?'租客因工作调动，希望月底搬走。':'');
 }
+function townFlowerOrderCandidate(move){
+ if(state.month%12!==11||state.flowerOrderMonth===state.month||move.marketQuote)return null;
+ return townMarketHoldings().find(holding=>holding.deal==='flower-equity'&&holding.moveId!==move.id);
+}
+function openTownFlowerOrder(move,holding){
+ const cost=60,reward=150,chance=.8;
+ const id='flower-holiday-order',title='花店节日预订单',owner=state,chosenSlot=slot;
+ function resolve(participating){
+  if(state!==owner||slot!==chosenSlot||townOpportunityMove()!==move||move.offers||
+   townFlowerOrderCandidate(move)!==holding||(participating&&state.cash<cost))return;
+  const result=CareerLearningRules.atomic(state,()=>{
+   if(participating&&!spendConfirmed('opportunity',cost,{offer:id}))return false;
+   const delivered=participating&&townMarketRoll(move)%100<chance*100;
+   if(delivered){
+    state.cash=roundCash(state.cash+reward);
+    (state.financeLedger??=[]).push({kind:'opportunityIncome',month:state.month,amount:reward,offer:id});
+   }
+   const outcome=participating?(delivered?'交付成功':'交付失败'):'不参与';
+   state.flowerOrderMonth=state.month;
+   move.offers={month:state.month,pool:'map-market',ids:[id],resolved:outcome};
+   move.resolved=true;
+   move.completedMonth=state.month;
+   townState().history.push({id:move.id,die:move.die,to:move.to,month:state.month,type:townMoveType(move),offerId:id,outcome});
+   return {delivered,outcome};
+  },save);
+  if(!result.ok){
+   openTownOpportunity(result.reason);
+   $('eventDesc').textContent=result.reason;
+   return;
+  }
+  if(!participating)return finish();
+  showEvent('地图专用',result.outcome,
+   result.delivered?'花束已按时验收，市集已结款。':'花束未能按时通过验收，花材费已经支出。',
+   [['到账',priceText(result.delivered?reward:0)],[result.delivered?'本次净赚':'本次净亏',priceText(result.delivered?reward-cost:cost)]],
+   [['继续',finish,true]]);
+ }
+ showEvent('地图专用',title,'',[],[['参与订单',()=>resolve(true),true,state.cash<cost],['不参与',()=>resolve(false),false]]);
+ const rows=[['你分摊的花材费',priceText(cost)],['基础交付成功率',Math.round(chance*100)+'%'],
+  ['成功额外到账',priceText(reward)],['未成功额外到账',priceText(0)]];
+ $('eventData').innerHTML='<div class="town-opportunity town-market-card"><img class="town-opportunity-art" src="assets/finance/map-flower-holiday-order.webp" alt=""><h3>街角花店</h3>'+
+  '<p>镇上的节日市集订了一批花束。店主想请你分摊花材费，花束按时验收后才结款。</p><dl>'+
+  rows.map(([label,value])=>'<div><dt>'+label+'</dt><dd>'+value+'</dd></div>').join('')+
+  '</dl><p>月度分成照常。</p></div>';
+ $('eventData').style.display='block';
+}

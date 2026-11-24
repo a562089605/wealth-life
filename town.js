@@ -139,6 +139,8 @@ function openTownOpportunity(message=''){
   if(journeyState().phase==='fast')return drawTownOpportunity(move,'fast');
   const leaseHolding=townLeaseCandidate(move);
   if(leaseHolding&&!move.marketQuote)return openTownLeaseOffer(move,leaseHolding);
+  const flowerHolding=townFlowerOrderCandidate(move);
+  if(flowerHolding)return openTownFlowerOrder(move,flowerHolding);
   const quote=townMarketQuote(move);
   if(quote){
    const holding=townMarketHoldings().find(item=>item.id===quote.holdingId);
