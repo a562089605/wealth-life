@@ -167,20 +167,31 @@ function townLeaseCandidate(move){
   const lease=TOWN_MARKET_DEALS[holding.deal].lease;
   if(!lease||holding.moveId===move.id||holding.lastLeaseOffer===state.month)return false;
   const remaining=holding.leaseEnd-state.month;
-  return remaining<=0||(lease.initial&&remaining===1&&(!holding.renewalStart||state.month>=holding.renewalStart));
+  return townLeaseEarlyExit(holding)||remaining<=0||(lease.initial&&remaining===1&&(!holding.renewalStart||state.month>=holding.renewalStart));
  });
+}
+function townLeaseEarlyExit(holding){
+ return holding.deal==='school-flat'&&holding.leaseEnd-state.month===3&&holding.earlyExitOfferedFor!==holding.leaseEnd;
 }
 function openTownLeaseOffer(move,holding){
  const deal=TOWN_MARKET_DEALS[holding.deal],lease=deal.lease;
+ const earlyExit=townLeaseEarlyExit(holding);
  const station=!!lease.initial,renewing=station&&holding.leaseEnd>state.month;
  const start=Math.max(state.month,holding.leaseEnd),cost=lease.subsidy||0;
- const approve=renewing?'续租':'签约',decline=renewing?'不续租':'再等等';
+ const approve=earlyExit?'同意退租':renewing?'续租':'签约',decline=earlyExit?'按原约':renewing?'不续租':'再等等';
  const owner=state,chosenSlot=slot;
  function choose(accepted){
   if(state!==owner||slot!==chosenSlot||townOpportunityMove()!==move||
    move.offers||townLeaseCandidate(move)!==holding||(accepted&&state.cash<cost))return;
   const result=CareerLearningRules.atomic(state,()=>{
-   if(accepted){
+   if(earlyExit){
+    holding.earlyExitOfferedFor=holding.leaseEnd;
+    if(accepted){
+     holding.leaseEnd=state.month+1;
+     state.cash=roundCash(state.cash+deal.rent);
+     (state.financeLedger??=[]).push({kind:'opportunityIncome',month:state.month,amount:deal.rent,offer:'school-flat-early-exit'});
+    }
+   }else if(accepted){
     if(cost&&!spendConfirmed('opportunity',cost,{offer:holding.deal}))return false;
     if(station){
      holding.previousLeaseNet=townLeaseNet(holding,deal,state.month);
@@ -201,16 +212,21 @@ function openTownLeaseOffer(move,holding){
    $('eventDesc').textContent=result.reason;
   }
  }
- const title=renewing?'商铺续租报价':station?'商铺租客申请':'租客申请';
- const rows=station?[
+ const title=earlyExit?'租客提前退租':renewing?'商铺续租报价':station?'商铺租客申请':'租客申请';
+ const rows=earlyExit?[
+  ['原租约剩余',(holding.leaseEnd-state.month)+'个月'],
+  ['提前解约补偿',priceText(deal.rent)+'（一个月租金）'],
+  ['下月起空置支出',priceText(lease.vacancy)+'／月'],
+  ['按原约月净租金',priceText(deal.net)]
+ ]:station?[
   [renewing?'续租期限':'租期',lease.term+'个月'],
   [renewing?'续租月租金':'每月租金',priceText(lease.rent)],
   [renewing?'续租后月净租金':'每月净租金',priceText(lease.net)],
   ['一次性装修补贴',priceText(cost)],['空置每月支出',priceText(lease.vacancy)]
  ]:[['申请人','小学老师'],['租期',lease.term+'个月'],['每月租金',priceText(deal.rent)],['每月净租金',priceText(deal.net)]];
  showEvent('地图专用',title,'',[],[[approve,()=>choose(true),true,state.cash<cost],[decline,()=>choose(false),false]]);
- $('eventData').innerHTML='<div class="town-opportunity town-market-card"><img class="town-opportunity-art" src="assets/finance/map-'+holding.deal+'-lease.webp" alt=""><h3>'+deal.name+'</h3><dl>'+
+ $('eventData').innerHTML='<div class="town-opportunity town-market-card"><img class="town-opportunity-art" src="assets/finance/map-'+holding.deal+(earlyExit?'-early-exit':'-lease')+'.webp" alt=""><h3>'+deal.name+'</h3>'+(earlyExit?'<p>租客因工作调动，希望月底搬走。</p>':'')+'<dl>'+
   rows.map(([label,value])=>'<div><dt>'+label+'</dt><dd>'+value+'</dd></div>').join('')+
-  '</dl><p>'+(renewing?'新租约从现有租约到期后开始。':'签约后，从本月月底开始收租。')+'</p></div>';
+  '</dl><p>'+(earlyExit?'本月租金照常结算。':renewing?'新租约从现有租约到期后开始。':'签约后，从本月月底开始收租。')+'</p></div>';
  $('eventData').style.display='block';
 }
