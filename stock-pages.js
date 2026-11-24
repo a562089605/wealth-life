@@ -254,7 +254,11 @@
    const result=read();
    $('actions').firstElementChild.disabled=!result;
    if(!result){
-    if(novaBuy){
+    estimate.textContent=selling?'请输入小于当前持仓的'+shareLabel+'。清仓请使用「全部卖出」。':'请输入可负担且最多两位小数的正金额。';
+    return;
+   }
+   const {amount,shares,cost}=result;
+   if(novaBuy){
     estimate.replaceChildren(
      '预计买入 '+sharesText(shares)+' · 买入后持有 '+sharesText(p.shares+shares),
      document.createElement('br'),
@@ -262,10 +266,6 @@
     );
     return;
    }
-   estimate.textContent=selling?'请输入小于当前持仓的'+shareLabel+'。清仓请使用「全部卖出」。':'请输入可负担且最多两位小数的正金额。';
-    return;
-   }
-   const {amount,shares,cost}=result;
    estimate.textContent=selling?
     '预计到账 '+priceText(amount)+' · 减仓后持有 '+sharesText(p.shares-shares)+' · 预计实现盈亏 '+priceText(roundCash(amount-cost)):
     '预计买入 '+sharesText(shares)+' · 买入后持有 '+sharesText(p.shares+shares)+' · 买入后现金 '+priceText(roundCash(state.cash-amount));
