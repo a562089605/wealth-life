@@ -17,8 +17,20 @@
  const target=mode==='graduation'?graduate.target:st?.route||st?.target||routeChoice||EDU[state.education]?.next,r=st&&!E.current(st)?E.legacyRoutes[target]:E.routes[target];
  const valid=()=>state===owner&&slot===chosen&&state.month===month&&overlay===section&&(!st? !state.study:state.study?.id===id&&state.study?.revision===revision);
  const section=node('section',null,'education-overlay');overlay=section;section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.setAttribute('aria-label',({enroll:'学历学习',progress:'学习进度',pace:'更改学习安排',pause:'暂停学习',resume:'恢复学习',withdraw:'退出学习',refund:'撤销本月报名',graduation:'毕业完成'})[mode]);document.body.append(section);document.body.classList.add('education-open');
- const paper=node('div',null,'education-paper'),scene=node('div',null,'education-scene'),img=node('img');img.src='assets/education/'+assets[mode==='enroll'?(r?target:'progress'):mode==='progress'&&st?.paused?'paused':mode]+'.webp';if(E.current(st)&&mode==='progress')img.src='assets/education/'+({associate:'transfer-aa',bachelorDirect:'bachelor',bachelor:'bachelor',master:'master',doctorate:'doctorate'}[st.route])+'-monthly-header.webp';img.alt='学历学习手绘场景';scene.append(img);paper.append(scene);section.append(paper);
- const back=node('button',E.current(st)&&mode==='progress'?'返回房屋':'返回');back.setAttribute('aria-label',mode==='enroll'||mode==='progress'||mode==='graduation'?'返回房屋':'返回学习进度');back.onclick=()=>{if(valid()){if(['enroll','progress','graduation'].includes(mode))returnRoom();else show('progress');}};scene.append(back);
+ const paper=node('div',null,'education-paper'),scene=node('div',null,'education-scene'),img=node('img');
+ const progress=mode==='progress';
+ img.src=progress?'assets/education/progress-crayon.webp':'assets/education/'+assets[mode==='enroll'?(r?target:'progress'):mode]+'.webp';
+ img.alt=progress?'暖色蜡笔插画：在书桌学习，柯基在旁休息。':'学历学习手绘场景';
+ scene.append(img);paper.append(scene);section.append(paper);
+ const back=node('button',progress?'← 返回房屋':'返回');back.type='button';
+ back.setAttribute('aria-label',mode==='enroll'||progress||mode==='graduation'?'返回房屋':'返回学习进度');
+ back.onclick=()=>{if(valid()){if(['enroll','progress','graduation'].includes(mode))returnRoom();else show('progress');}};
+ if(progress){
+  paper.classList.add('education-progress-paper');
+  const heading=node('header',null,'education-progress-heading');
+  heading.append(back,node('h1','学习进度'));
+  paper.prepend(heading);
+ }else scene.append(back);
  const content=node('div',null,'education-content');paper.append(content);const message=node('p',null,'education-message');message.setAttribute('role','status');
  function panel(){const p=node('div',null,'education-panel');content.append(p);return p;}
  function note(text,parent=content){parent.append(node('p',text,'education-notice'));}
@@ -32,7 +44,14 @@
  else if(mode==='graduation'){const p=node('progress',null,'education-progress');p.max=1;p.value=1;course.append(p);note('本次学习计划已完成。',course);}
  else if(st){const p=node('progress',null,'education-progress');p.max=st.requiredUnits;p.value=st.completedUnits;course.append(node('span',st.paused?'学习已暂停':st.pace==='fast'?'加快进修':'轻松进修','education-badge'),node('div','课程完成 '+Math.min(100,Math.floor(st.completedUnits/st.requiredUnits*100))+'%','education-progress-count'),p);note('已学习 '+st.elapsedMonths+' 个月 · '+(st.paused?'进度保留': '预计还需 '+E.projection(st,st.pace)+' 个月'),course);
  if(st.pending)note('已安排：下月'+(st.pending.paused?'暂停学习':st.paused?'恢复学习':st.pending.pace==='fast'?'改为加快进修':'改为轻松进修')+'。',course);
- if(mode==='progress'){const times=panel();times.append(node('h3','本月学习安排'));for(const [label,value]of [['学习预留',isRecoveryMonth(state)?0:E.reserved(state)],['剩余自由时间',currentCareerTime().free]]){const row=node('div',null,'education-row');row.append(node('span',label),node('strong',value+' 小时'));times.append(row);}if(E.current(st)){const paid=st.paidCents/100;note('课程总费用 '+money(st.receipt.tuition)+'（含书籍费 '+money(st.receipt.books)+'）');note('已缴 '+money(paid)+' · 剩余 '+money(E.balance(st)));note(E.due(st)>0?'本期应缴 '+money(E.due(st)):'本月学费已缴清');}else note('原课程学杂费 '+money(st.receipt.tuition)+' · 已支付，按原合同继续');}
+ if(mode==='progress'){const times=panel();times.classList.add('education-study-times');times.append(node('h3','本月学习安排'));for(const [label,value]of [['学习预留',isRecoveryMonth(state)?0:E.reserved(state)],['剩余自由时间',currentCareerTime().free]]){const row=node('div',null,'education-row');row.append(node('span',label),node('strong',value+' 小时'));times.append(row);}const tuition=panel();tuition.classList.add('education-study-tuition');
+ if(E.current(st)){
+  const paid=st.paidCents/100,due=E.due(st);
+  note('课程总费用 '+money(st.receipt.tuition)+'（含书籍费 '+money(st.receipt.books)+'）',tuition);
+  note('已缴 '+money(paid)+' · 剩余 '+money(E.balance(st)),tuition);
+  if(due>0)note('本期应缴 '+money(due),tuition);
+ }else note('原课程学杂费 '+money(st.receipt.tuition)+' · 已支付，按原合同继续',tuition);
+ }
  else if(mode==='pace'||mode==='resume'){content.append(node('h3',mode==='resume'?'选择恢复后的安排':'选择下月的安排'));blocked=options(mode==='resume');}
  else if(mode==='refund'){content.append(node('p','本次可退回 '+money(st.receipt.tuition),'education-price'));}}
  content.append(message);const actions=node('div',null,'education-actions');content.append(actions);
