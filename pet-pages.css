@@ -41,6 +41,7 @@
 .pet-monthly-hero{padding:0;border-radius:0}.pet-monthly-hero .pet-crop{height:100%;aspect-ratio:auto}
 .pet-annual-name,.pet-annual-date{background:#e9e3aa;border-radius:40%;font-weight:bold}.pet-annual-name{font-size:6cqw}.pet-annual-date{font-size:4.1cqw}
 .pet-annual-value{background:#fff0cf;font-size:7cqw;font-weight:bold;border-radius:30%}
+.pet-annual-fee{font-size:min(5.2cqw,calc(35cqw / var(--pet-fee-length)));white-space:nowrap;font-variant-numeric:tabular-nums}
 .pet-annual-action-label{background:#f1dfb0;font-size:4.8cqw;font-weight:bold}
 .pet-illustrated .pet-annual-ready{background:#ffd66b30;border:1px solid #c69b48;border-radius:40px}
 

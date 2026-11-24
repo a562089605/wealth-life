@@ -203,7 +203,11 @@
   e.setAttribute('role','group');e.setAttribute('aria-label',petName(p)+'，年度体检，每年一次，下次体检：'+calendar(cp.care?.nextAnnual)+'，体检费用 '+priceText(cost)+'，自由时间 '+hours+' 小时');
   box(e,petName(p),34,36.5,32,4.8,'pet-annual-name');
   if(cp.care?.nextAnnual!==12)box(e,'下次体检：'+calendar(cp.care?.nextAnnual),20,55.2,61,4.4,'pet-annual-date');
-  if(cost!==rule.annual)box(e,priceText(cost),24,67.8,23,4.9,'pet-annual-value');
+  if(cost!==rule.annual){
+   const amount=priceText(cost);
+   const fee=box(e,amount,24,67.8,23,4.9,'pet-annual-value pet-annual-fee');
+   fee.style.setProperty('--pet-fee-length',amount.length);
+  }
   if(hours!==rule.annualHours)box(e,hours+'小时',69,67.8,23,4.9,'pet-annual-value');
   if(ready)box(e,'核对体检费用',25,81.1,50,4.8,'pet-annual-action-label');
   hit(ctx,e,ready?'核对体检费用':'尚未到期',8,79.5,84,7.8,()=>{if(validPet(ctx,p,index))openCareConfirm(index,'Annual','annual');},ready?'pet-annual-ready':'').disabled=!ready;
