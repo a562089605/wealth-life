@@ -52,7 +52,8 @@
   if(window.EducationPlans?.current(state.study)&&EducationPlans.due(state.study)>0)return openEducation();
   syncFinance();
   if(unpaidLoanRows().length)return openLoanPayments();
-  if(state.housing==='own'&&state.ownerMortgage&&livingBillQuote().housing>0)return window.openLifeOverview();
+  const bill=livingBillQuote();
+  if(!bill.selected||bill.blocked||bill.housing>0)return window.openLifeOverview();
   // A paused map event retains its identity and resumes instead of being re-rolled.
   if(townPending()){state.roomLocation='town';save();visible=false;syncRoom();return showTown();}
   if(necessaryBills().length)return openNecessaryBills();
