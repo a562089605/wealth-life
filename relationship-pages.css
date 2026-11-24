@@ -349,3 +349,6 @@
   background: #717e68;
   color: #fffae8;
 }
+
+.relationship-crayon .contact-interest { display: block; }
+.relationship-crayon .contact-interest + .contact-interest { margin-top: 3px; }
