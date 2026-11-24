@@ -9,3 +9,4 @@ wrangler.jsonc
 assets/pets/originals/
 
 save-worker.js
+release-metadata.json

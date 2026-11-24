@@ -3,7 +3,6 @@
  const maxSlots=100, sessionKey='wealthLife_cloud_session', countKey='wealthLife_slotCount';
  const legacyKey=key, localSave=save, localBuild=buildHome;
  const homePanel=$('home'), slots=$('slots'), newGame=$('newGame');
- const updates=typeof recentUpdates==='undefined'?null:recentUpdates;
  let account=null, ledger={}, transmitting=false, changingCode=false, conflicts={}, retryTimer, showEntry;
  const readJSON=(storage,k,fallback)=>{try{return JSON.parse(storage.getItem(k))??fallback;}catch{return fallback;}};
  const node=(tag,label,cls)=>{const e=document.createElement(tag);if(label)e.textContent=label;if(cls)e.className=cls;return e;};
@@ -123,7 +122,6 @@
  }
  buildHome=refresh;
  function showAccount(){
-  if(updates)homePanel.append(updates);
   panel.classList.remove('cloud-save-journal');
   panel.replaceChildren(heading,status);
   heading.textContent='私人存档 · '+account.name;
@@ -208,7 +206,6 @@
   signIn.type='submit';create.type='button';
   form.append(nameLabel,codeLabel,signIn,create);
   sheet.append(heading,node('p','手机和平板可继续同一份进度','cloud-save-journal-intro'),status,form);
-  if(updates)sheet.append(updates);
   async function enter(action,access){
    signIn.disabled=create.disabled=true;
    try{
