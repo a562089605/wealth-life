@@ -432,7 +432,12 @@
     "health": 0
    }
   ]
- }
+ },
+ {"id":"close-door","title":"下班，把门关上","desc":"工作文件还摊在客厅，进卧室后终于可以先放下。","art":"assets/apartment/close-door-20261124-apartment-five1.webp","hotspots":[[70.2,13.1,3.8,92.4],[84.3,13,3.8,92.4]],"choices":[{"label":"把文件收好，安心休息","cash":0,"hours":1,"happiness":0,"energy":0,"stress":-3,"health":0},{"label":"直接进卧室歇一会儿","cash":0,"hours":0,"happiness":0,"energy":0,"stress":-1,"health":0}]},
+ {"id":"meal-prep","title":"多煮两份，明天也有饭","desc":"厨房腾得出地方，今晚可以顺手备好接下来两顿饭。","art":"assets/apartment/meal-prep-20261124-apartment-five1.webp","hotspots":[[70.2,13.1,3.8,92.4],[84.3,13,3.8,92.4]],"choices":[{"label":"多买些食材，一次备齐","cash":-8,"hours":1,"happiness":0,"energy":0,"stress":-4,"health":0},{"label":"今天只做一人份","cash":0,"hours":0,"happiness":0,"energy":0,"stress":0,"health":0}]},
+ {"id":"neighbor-soup","title":"一碗汤，两个门牌","desc":"邻居敲门送来一碗刚煮好的汤。","art":"assets/apartment/neighbor-soup-20261124-apartment-five1.webp","hotspots":[[70.2,13.1,3.8,92.4],[84.3,13,3.8,92.4]],"choices":[{"label":"热杯茶，请邻居进来聊会儿","cash":0,"hours":1,"happiness":4,"energy":0,"stress":0,"health":0},{"label":"在门口道谢，留着晚饭喝","cash":0,"hours":0,"happiness":2,"energy":0,"stress":0,"health":0}]},
+ {"id":"wrong-parcel","title":"门口的快递拿错了","desc":"拆箱前看了一眼标签，才发现包裹是隔壁楼的。","art":"assets/apartment/wrong-parcel-20261124-apartment-five1.webp","hotspots":[[70.2,13.1,3.8,92.4],[84.3,13,3.8,92.4]],"choices":[{"label":"现在送过去，省得对方等","cash":0,"hours":1,"happiness":2,"energy":0,"stress":0,"health":0},{"label":"留言给物业，请他们转交","cash":0,"hours":0,"happiness":0,"energy":0,"stress":0,"health":0}]},
+ {"id":"streetlight","title":"窗帘挡不住路灯","desc":"夜里路灯正好照进卧室，拉上窗帘还是亮。","art":"assets/apartment/streetlight-20261124-apartment-five1.webp","hotspots":[[70.2,13.1,3.8,92.4],[84.3,13,3.8,92.4]],"choices":[{"label":"添一层遮光帘","cash":-28,"hours":0,"happiness":0,"energy":0,"stress":-3,"health":0},{"label":"把床挪离窗边","cash":0,"hours":1,"happiness":0,"energy":0,"stress":-2,"health":0}]}
 ];
  function data(s){return s.apartmentEvents??={version:1,seen:{},records:{}};}
  function eligible(s){const seen=s.apartmentEvents?.seen||{},pool=cards.filter(c=>seen[c.id]==null||s.month-seen[c.id]>6),unseen=pool.filter(c=>seen[c.id]==null);return unseen.length?unseen:pool;}
