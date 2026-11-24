@@ -125,6 +125,7 @@ function drawTownOpportunity(move,deck){
  const seed=townMarketRoll(move);
  const project=available[(seed>>>0)%available.length];
  move.offers={month:state.month,deck,pool:fast?'fast':Object.hasOwn(TOWN_MARKET_DEALS,project.id)?'map-market':Object.hasOwn(TOWN_PROJECTS,project.id)?'map-project':'regular',ids:[project.id],resolved:null};
+ if(move.offers.pool==='map-market'&&project.id==='valley-stock')move.offers.unitPrice=valleyStockBuyPrice(seed);
  if(save()===false){
   const pending=townOpportunityMove();
   if(pending?.id===move.id)delete pending.offers;

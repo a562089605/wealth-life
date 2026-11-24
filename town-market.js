@@ -55,6 +55,20 @@ function townMarketRoll(move){
  seed=Math.imul(seed^(seed>>>16),0x45d9f3b);
  return (seed^(seed>>>16))>>>0;
 }
+function valleyStockBuyPrice(roll){
+ const dealId='valley-stock';
+ const base=TOWN_MARKET_DEALS[dealId].price;
+ const history=townState().history;
+ const lastOffer=history.findLast(entry=>entry.offerId===dealId&&(entry.outcome==='买'||entry.outcome==='不买'));
+ const lastSale=history.findLast(entry=>entry.offerId===dealId&&entry.outcome==='卖');
+ if(!lastOffer&&!lastSale&&!townMarketHoldings().some(holding=>holding.deal===dealId))return base;
+
+ const previous=lastOffer?.unitPrice??base;
+ const anchor=lastSale?.unitPrice??previous;
+ const prices=[-3,-2,-1,0,1,2,3].map(change=>anchor+change)
+  .filter(price=>price>=3&&price<=10&&price!==previous);
+ return prices[Math.floor(roll/17)%prices.length];
+}
 function townMarketQuote(move){
  if(move.marketQuote!==undefined)return move.marketQuote;
  const eligible=townMarketHoldings().filter(h=>h.moveId!==move.id);
@@ -78,7 +92,7 @@ function openTownMarketTrade(move,dealId,quote=null){
  const valid=()=>state===owner&&slot===chosenSlot&&townOpportunityMove()===move&&
   (selling?move.marketQuote===quote&&!move.offers:move.offers===offer&&!offer.resolved);
  const alreadyOwned=!selling&&!deal.unit&&townMarketHoldings().some(item=>item.deal===dealId);
- const cashPrice=selling?quote.price:(deal.down??deal.price);
+ const cashPrice=selling?quote.price:(offer?.unitPrice??deal.down??deal.price);
  const limit=deal.unit?(selling?holding.quantity:deal.limit):1;
  let quantity=deal.unit?Math.min(limit,selling?limit:Math.max(1,Math.floor(state.cash/cashPrice)),deal.defaultQuantity??(deal.unit==='股'?20:10)):1;
  const amount=()=>roundCash(cashPrice*quantity-(holding?.debt??0));
@@ -95,14 +109,15 @@ function openTownMarketTrade(move,dealId,quote=null){
      if(!holding.quantity)state.townHoldings=townMarketHoldings().filter(item=>item!==holding);
     }else{
      if(!spendConfirmed('opportunity',amount(),{offer:dealId}))return false;
-     townMarketHoldings().push({id:move.id,moveId:move.id,deal:dealId,unitCost:deal.price,quantity,debt:deal.price-(deal.down??deal.price),...(deal.lease?{leaseEnd:state.month+(deal.lease.initial||0)}:{})});
+     townMarketHoldings().push({id:move.id,moveId:move.id,deal:dealId,unitCost:deal.unit?cashPrice:deal.price,quantity,debt:deal.price-(deal.down??deal.price),...(deal.lease?{leaseEnd:state.month+(deal.lease.initial||0)}:{})});
     }
     if(selling)(state.financeLedger??=[]).push({kind:amount()<0?'opportunity':'opportunityIncome',month:state.month,amount:Math.abs(amount()),offer:dealId});
    }
    move.offers={month:state.month,pool:'map-market',deck:offer?.deck,ids:[dealId],resolved:acceptTrade?accept:decline};
    move.resolved=true;
    move.completedMonth=state.month;
-   townState().history.push({id:move.id,die:move.die,to:move.to,month:state.month,type:townMoveType(move),offerId:dealId,outcome:move.offers.resolved});
+   townState().history.push({id:move.id,die:move.die,to:move.to,month:state.month,type:townMoveType(move),offerId:dealId,outcome:move.offers.resolved,
+    ...(dealId==='valley-stock'&&(!selling||acceptTrade)?{unitPrice:cashPrice}:{})});
    return {};
   },save);
   if(!result.ok){
