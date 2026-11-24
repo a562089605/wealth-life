@@ -470,3 +470,43 @@ body:has(#home:not(.hidden) #newGame:not(.hidden) #coffeeIntro) .wl-home-brand{d
 #game > .event:has(.journey-stage-art) #actions > .secondary {
  background:linear-gradient(#e9eccb,#d8e2ae);
 }
+
+/* The Valley Foods buyer quote uses the approved crayon art and live settlement rows. */
+#game > .event:has(.town-valley-buyer) {
+ border-color: #9d8d52 !important;
+}
+.town-valley-buyer .town-opportunity-art {
+ height: clamp(110px, 24dvh, 188px);
+ margin: 2px auto 0;
+ mask-image: radial-gradient(ellipse 72% 85%, black 57%, transparent 99%);
+}
+.town-valley-buyer h3 {
+ background: linear-gradient(95deg, #dae1b3, #e4e7c4, #d7deb0);
+}
+.town-valley-buyer dl {
+ overflow: hidden;
+ padding: 0;
+ border-color: #a99c6d;
+ background: #fff6df8c;
+}
+.town-valley-buyer dl > div {
+ align-items: center;
+ padding: 7px 10px;
+}
+.town-valley-buyer dd { font-variant-numeric: tabular-nums; }
+.town-valley-buyer .town-trade-quantity-row { background: #f7df9f80; }
+.town-valley-buyer .town-trade-total-row { background: #dce6b982; }
+.town-valley-buyer .town-market-quantity { gap: clamp(3px, 1.4vw, 7px); white-space: nowrap; }
+.town-valley-buyer .town-market-quantity button {
+ min-width: 36px;
+ min-height: 36px;
+ padding: 3px 6px;
+ border: 1px solid #aa9b69;
+ background: #fff3d5;
+ color: inherit;
+}
+#game > .event:has(.town-valley-buyer) #actions > button:not(.primary) {
+ border-color: #899358;
+ background: #f6edce !important;
+ box-shadow: inset 0 0 0 2px #fff6dd;
+}

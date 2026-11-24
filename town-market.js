@@ -135,13 +135,16 @@ function openTownMarketTrade(move,dealId,quote=null){
  }
  showEvent('地图专用',title,'',[],[[accept,()=>settle(true),true],[decline,()=>settle(false),false]]);
  const data=$('eventData');
- const art='assets/finance/map-'+dealId+(selling&&!deal.lease?'-sell':'-buy')+'.webp';
- data.innerHTML='<div class="town-opportunity town-market-card"><img class="town-opportunity-art" src="'+art+'" alt=""><h3>'+deal.name+'</h3><dl></dl></div>';
+ const valleyBuyer=selling&&dealId==='valley-stock';
+ const art=valleyBuyer?'assets/finance/map-valley-buyer-crayon.webp':
+  'assets/finance/map-'+dealId+(selling&&!deal.lease?'-sell':'-buy')+'.webp';
+ data.innerHTML='<div class="town-opportunity town-market-card'+(valleyBuyer?' town-valley-buyer':'')+'"><img class="town-opportunity-art" src="'+art+'" alt=""><h3>'+deal.name+'</h3><dl></dl></div>';
  data.style.display='block';
  const list=data.querySelector('dl');
  const action=$('actions');
- function row(label,value){
+ function row(label,value,kind){
   const block=document.createElement('div'),term=document.createElement('dt'),detail=document.createElement('dd');
+  if(kind)block.className=kind;
   term.textContent=label;
   if(value instanceof Node)detail.append(value);else detail.textContent=value;
   block.append(term,detail);list.append(block);
@@ -160,7 +163,7 @@ function openTownMarketTrade(move,dealId,quote=null){
     button.onclick=()=>{quantity+=delta;update();controlFocus(delta)};
     control.append(button);
    }
-   row((selling?'卖出':'买入')+(deal.unit==='股'?'股数':'份数'),control);
+   row((selling?'卖出':'买入')+(deal.unit==='股'?'股数':'份数'),control,'town-trade-quantity-row');
   }else if(selling){
    if(deal.share){row('出售份额',deal.share+'%');row('原入股金额',priceText(holding.unitCost));}
    row('买家出价',priceText(quote.price));
@@ -177,8 +180,8 @@ function openTownMarketTrade(move,dealId,quote=null){
    }
   }
   if(selling){
-   if(!deal.share)row(amount()<0?'需补差额':'一共到账',priceText(Math.abs(amount())));
-   row(profit()<0?'本次净亏':profit()>0?'本次净赚':'本次盈亏',priceText(Math.abs(profit())));
+   if(!deal.share)row(amount()<0?'需补差额':'一共到账',priceText(Math.abs(amount())),'town-trade-total-row');
+   row(profit()<0?'本次净亏':profit()>0?'本次净赚':'本次盈亏',priceText(Math.abs(profit())),'town-trade-total-row');
   }else if(deal.unit)row('一共',priceText(amount()));
   action.querySelector('button').disabled=selling?amount()<0&&state.cash< -amount():alreadyOwned||state.cash<amount();
  }
