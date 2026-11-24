@@ -11,7 +11,7 @@
    if(!e[k])continue;const v=e[k],row=el('div');row.append(el('dt',label),el('dd',k==='cash'?(v>0?'+':'−')+money(Math.abs(v)):k==='hours'?'−'+v+'小时':(v>0?'+':'−')+Math.abs(v)+(k==='xp'?' XP':'')));d.append(row);
   }return d;
  }
- function open(){if(!waiting()||blocked())return false;close();clearModals();window.RelationshipPages?.close();window.HobbyPages?.close();window.hideRoom?.();
+ function open(){if(!waiting()||blocked())return false;if(window.townHousingBlocked?.())return true;close();clearModals();window.RelationshipPages?.close();window.HobbyPages?.close();window.hideRoom?.();
   const r=current(),def=C.cards[r.kind];if(!def)return false;
   const owner=state,chosen=slot,id=r.id,phase=r.status,follow=phase==='followup',art=follow?r.lockedOutcome:def;
   const title=art.title,section=el('section',null,'interest-overlay');active=section;section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.setAttribute('aria-label',title);document.body.append(section);document.body.classList.add('shared-interest-open');

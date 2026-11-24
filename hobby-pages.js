@@ -22,8 +22,9 @@
   if(!skills){const old=[...new Set([...Object.keys(state.hobbies||{}),...Object.keys(state.hobbyXP||{})])];if(old.length){const history=node('details',null,'hobby-legacy');history.append(node('summary','原有兴趣记录'));for(const name of old)history.append(node('p',name+(Number.isFinite(state.hobbies?.[name])?' · Lv.'+state.hobbies[name]:'')+(Number.isFinite(state.hobbyXP?.[name])?' · '+state.hobbyXP[name]+' XP':' · 经验未记录')));ctx.content.append(history);}}
   ctx.button(skills?'返回房屋':'饮品制作专项',skills?room:()=>menu('specialist'));if(!skills)ctx.button('返回房屋',room);
  }
- function detail(id,notice='',returnToCareer=null){if(!state||!H.activities[id])return;const a=H.activities[id],back=returnToCareer||(()=>menu(a.kind)),art=a.practiceArt||(id==='latte'?'assets/career-crayon/cafe.webp':'assets/practice-crayon/'+id+'.webp'),ctx=panel(a.name,art,back),n=H.xp(state,id),lv=H.level(n),expected=H.token(state,id),q=H.quote(state,id,options());
+ function detail(id,notice='',returnToCareer=null){if(!state||!H.activities[id])return;const a=H.activities[id],back=returnToCareer||(()=>menu(a.kind)),art=a.kind==='hobby'?'assets/hobby-review/'+id+'.webp':a.practiceArt||(id==='latte'?'assets/career-crayon/cafe.webp':'assets/practice-crayon/'+id+'.webp'),ctx=panel(a.name,art,back),n=H.xp(state,id),lv=H.level(n),expected=H.token(state,id),q=H.quote(state,id,options());
   ctx.content.closest('.hobby-overlay').classList.add('hobby-latte-card','hobby-crayon-card');
+  if(a.kind==='hobby')ctx.content.closest('.hobby-overlay').classList.add('personal-hobby-card');
   const progress=node('div',null,'hobby-level');progress.append(node('strong','Lv.'+lv+(n>=800?' · 已满级':'')));
   if(n<800){const start=H.thresholds[lv],end=H.thresholds[lv+1],bar=node('progress');bar.max=end-start;bar.value=n-start;bar.setAttribute('aria-label','当前等级经验');progress.append(bar,node('span',(n-start)+' / '+(end-start)+' XP'));}ctx.content.append(progress);
   const grid=node('dl',null,'hobby-stats'),stats=[['费用',money(a.cost)],['自由时间','−'+a.hours+'小时'],['能量','−'+a.energy],[a.name==='咖啡品鉴'?'品鉴经验':a.name==='手冲咖啡'?'手冲经验':a.name+'经验',n>=800?'已满级':'+'+Math.min(a.xp,800-n)+' XP']];
@@ -32,8 +33,20 @@
   const resources=node('p','现金 '+money(state.cash)+' · 自由时间 '+currentCareerTime().free+'小时 · 能量 '+Math.round(state.energy),'hobby-resources');ctx.content.append(resources);
   const status=node('p',notice||(!q.ok&&q.reason!=='max'?blockedText[q.reason]:''),'hobby-message');status.setAttribute('role','status');ctx.content.append(status);
   ctx.button(n>=800?'已满级':a.action,b=>{b.disabled=true;const r=H.confirm(state,id,expected,options());if(!r.ok){status.textContent=blockedText[r.reason]||'本次未完成';b.disabled=false;return;}render();detail(id,'本次练习已保存。',returnToCareer);},true,!q.ok);
-  ctx.button(returnToCareer?'返回我的职业':a.kind==='hobby'?'返回兴趣爱好':'返回职业技能',back);
-  {const paper=ctx.content.parentElement,header=ctx.content.querySelector('header'),title=ctx.content.querySelector('h1');header.append(title,node('span','练习档案','hobby-file-label'));paper.prepend(header);
+  if(a.kind!=='hobby'||returnToCareer)ctx.button(returnToCareer?'返回我的职业':a.kind==='hobby'?'返回兴趣爱好':'返回职业技能',back);
+  if(a.kind==='hobby'){
+   const header=ctx.content.querySelector('header'),title=ctx.content.querySelector('h1');
+   header.querySelector('button').textContent='← 返回兴趣爱好';
+   header.append(title);ctx.content.parentElement.prepend(header);
+   const icons=['cost','time','energy','xp','happiness','stress'];
+   [...grid.children].forEach((cell,i)=>{
+    const icon=node('img',null,'personal-hobby-stat-icon');
+    icon.src='assets/hobby-review/stat-'+icons[i]+'.webp';icon.alt='';
+    cell.insertBefore(icon,cell.lastElementChild);
+   });
+   ctx.content.tabIndex=0;
+   ctx.content.setAttribute('aria-label',a.name+'练习，可上下滑动');
+  }else{const paper=ctx.content.parentElement,header=ctx.content.querySelector('header'),title=ctx.content.querySelector('h1');header.append(title,node('span','练习档案','hobby-file-label'));paper.prepend(header);
    const level=ctx.content.querySelector('.hobby-level');level.prepend(node('span','当前等级','hobby-level-label'));
    const grid=ctx.content.querySelector('.hobby-stats'),caption=node('h2','本次练习','hobby-practice-heading');grid.before(caption);
    const icons=['cost','time','energy','xp'],paths={cost:'<path d="M9 4h14l-3 7c10 8 12 19-4 19S2 19 12 11Z"/><path d="M11 11h10M19 16c-7-3-9 4-3 5s4 7-3 4m3-12v15"/>',time:'<circle cx="16" cy="17" r="12"/><path d="M16 9v9l6 3M12 2h8"/>',energy:'<path d="M12 3h8v4h6v23H6V7h6Z"/><path d="m18 11-7 10h6l-3 7 8-11h-6Z"/>',xp:'<path d="M16 9C10 4 4 6 3 7v21c5-3 9-2 13 1 4-3 8-4 13-1V7c-4-2-9-2-13 2Zm0 0v20M7 12l5 1M7 17l5 1M20 13l5-1M20 18l5-1"/>'};

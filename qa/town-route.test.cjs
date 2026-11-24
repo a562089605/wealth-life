@@ -6,9 +6,21 @@ const source = fs.readFileSync(require('node:path').join(__dirname, '../town.js'
 async function verify() {
   let randomBytes = [];
   let resumeCalls = 0;
+  let billOpens = 0;
+  let landings = 0;
   const c = {
     save: () => true,
     render() {},
+    clearModals() {},
+    openGame() {},
+    syncFinance() {},
+    livingBillQuote: () => ({
+      selected: !!c.state.housing,
+      blocked: !!c.state.handoverDue,
+      housing: c.state.monthlyPayments?.month === c.state.month ? 0 : 500,
+    }),
+    window: {openLifeOverview() { billOpens++; }},
+    openTownLanding() { landings++; },
     resumeTownMove() { resumeCalls++; },
     document: {querySelector: () => null, querySelectorAll: () => []},
     matchMedia: () => ({matches: true}),
@@ -16,10 +28,10 @@ async function verify() {
   };
   vm.createContext(c);
   const start = source.indexOf('const TOWN_LEGACY_TYPES=');
-  const end = source.indexOf('function townStart');
+  const gate = source.indexOf('function townHousingBlocked()');
   const roll = source.indexOf('function rollTown()');
   const resume = source.indexOf('function resumeTownMove()');
-  vm.runInContext(source.slice(start, end) + source.slice(roll, resume), c);
+  vm.runInContext(source.slice(start, source.indexOf('function townStart', gate)) + source.slice(roll, resume), c);
 
   vm.runInContext('townVisible=true', c);
   const types = Array.from(vm.runInContext('TOWN_TYPES', c));
@@ -42,7 +54,7 @@ async function verify() {
 
   for (let from=0; from<24; from++) {
     for (let die=1; die<=6; die++) {
-      c.state={townMode:true, housing:'family', month:11, town:{position:from, rolls:0, movement:null, history:[]}};
+      c.state={townMode:true, housing:'family', month:11, monthlyPayments:{month:11}, town:{position:from, rolls:0, movement:null, history:[]}};
       randomBytes=[die-1];
       const before=resumeCalls;
       c.rollTown();
@@ -60,13 +72,35 @@ async function verify() {
       assert.equal(town.rolls,1);
     }
   }
-  c.state={townMode:true,housing:'family',month:0,town:{position:0,rolls:0,movement:null,history:[]}};
+  c.state={townMode:true,housing:'family',month:0,monthlyPayments:{month:0},town:{position:0,rolls:0,movement:null,history:[]}};
   c.save=()=>false;
   randomBytes=[2];
   c.rollTown();
   assert.equal(c.state.town.position,0);
   assert.equal(c.state.town.movement,null);
   assert.equal(c.state.town.rolls,0);
+  vm.runInContext(source.slice(resume, source.indexOf('function previewTownPayday()')), c);
+  const pending = {id: 9, type: 'life', month: 1, resolved: false};
+  c.state = {
+    townMode: true, roomLocation: 'town', housing: 'family', month: 1,
+    monthlyPayments: {month: 0}, town: {movement: pending},
+  };
+  const load = source.indexOf('const townOpenBefore=openGame;');
+  vm.runInContext(source.slice(load, source.indexOf('const townShowBefore=', load)), c);
+  c.openGame();
+  assert.equal(billOpens, 1, 'prior-month receipt must open the bill');
+  assert.equal(landings, 0);
+  assert.equal(c.state.town.movement, pending);
+  assert.equal(pending.resolved, false);
+  c.state.monthlyPayments.month = 1;
+  c.state.handoverDue = true;
+  c.resumeTownMove();
+  assert.equal(billOpens, 2, 'handover still blocks the pending event');
+  assert.equal(landings, 0);
+  c.state.handoverDue = false;
+  c.resumeTownMove();
+  assert.equal(landings, 1, 'current-month payment resumes the same event');
+  assert.equal(c.state.town.movement, pending);
   console.log('PASS: equal die distribution, rejection sampling, 144 landings, double-click and save rollback');
 }
 verify().catch(error=>{console.error(error);process.exitCode=1;});

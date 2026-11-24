@@ -6,6 +6,7 @@
  function close(){active?.remove();active=null;document.body.classList.remove('relationship-card-open');}
  const canOpen=()=>!!state&&!state.requiredIncident&&!state.gameOver?.final&&!unfinishedTreatment()&&!healthTreatmentKind(state.health)&&!isRecoveryMonth(state);
  function open(){const r=current();if(!waiting()||!canOpen())return false;
+  if(window.townHousingBlocked?.())return true;
   close();clearModals();window.PetPages?.close();window.RelationshipPages?.close();const owner=state,chosen=slot,id=r.id,phase=r.status,def=C.cards[r.kind];if(!def)return false;if(def.introduction&&window.CareerPages)return CareerPages.introduction();
   const f=phase==='followup'?r.followup:null,options=f?f.options:r.quotes,boxes=f?f.boxes:r.boxes||(r.version===1?[[3,52,94,20],[3,72.5,94,23]]:def.boxes),title=f?f.title:r.title||def.title;
   const node=el('section',null,'relationship-life-overlay');active=node;node.setAttribute('role','dialog');node.setAttribute('aria-modal','true');node.setAttribute('aria-label',title);document.body.append(node);document.body.classList.add('relationship-card-open');

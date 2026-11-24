@@ -1,8 +1,8 @@
-// Confirmed shared-interest data. Natural map draw is disabled.
+// Shared-interest events use the town life category draw.
 (function(root){
  const data={
   "version": 1,
-  "naturalDrawEnabled": false,
+  "naturalDrawEnabled": true,
   "triggerProbability": null,
   "cards": [
     {

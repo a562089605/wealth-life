@@ -37,7 +37,7 @@ async function reload(){await p.reload({waitUntil:'networkidle'});await p.locato
  report.steps.push('All23 runtime artwork resources decode');
  await p.evaluate(async()=>{await navigator.serviceWorker.ready});await p.waitForFunction(()=>!!navigator.serviceWorker.controller);const locked=await p.evaluate(()=>SharedInterestCards.current(state).lockedOutcome.id);await context.setOffline(true);await reload();a.equal(await p.evaluate(()=>SharedInterestCards.current(state).lockedOutcome.id),locked);a.equal(await p.locator('.interest-overlay').count(),1);await p.locator('.interest-action').first().click();a.equal(await p.evaluate(()=>state.sharedInterestCards.receipts.length),2);await context.setOffline(false);
  report.steps.push('Installed service worker supports offline refresh, saved followup and exactly-once settlement');
- a.equal(await p.evaluate(()=>SharedInterestCardData.naturalDrawEnabled),false);a.equal(await p.evaluate(()=>SharedInterestCardData.triggerProbability),null);a.ok(await p.evaluate(()=>localStorage.getItem(key(943)+'_before_shared_interest_20261114')!==null));
+ a.equal(await p.evaluate(()=>SharedInterestCardData.naturalDrawEnabled),true);a.equal(await p.evaluate(()=>SharedInterestCardData.triggerProbability),null);a.ok(await p.evaluate(()=>localStorage.getItem(key(943)+'_before_shared_interest_20261114')!==null));
  report.steps.push('Natural map draw stays disabled with null probability, original save backup retained');
  a.deepEqual(report.errors,[]);report.ok=true;
 }catch(e){report.ok=false;report.failure=e.stack;process.exitCode=1;}finally{fs.writeFileSync(path.join(out,phase+'-report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));await browser?.close();server.close();}})();

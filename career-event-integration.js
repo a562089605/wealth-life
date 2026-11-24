@@ -79,8 +79,10 @@
  const oldGame=openGame;
  openGame=function(){
   const result=oldGame();
-  if(state&&!state.requiredIncident&&!isRecoveryMonth(state)&&E.runsStore(state)&&E.pending(state))
+  if(state&&!state.requiredIncident&&!isRecoveryMonth(state)&&E.runsStore(state)&&E.pending(state)){
+   if(window.townPending?.()&&window.townHousingBlocked?.())return result;
    CareerEventPages.manager();
+  }
   else showDueMachine();
   return result;
  };

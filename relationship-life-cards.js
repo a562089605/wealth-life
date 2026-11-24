@@ -1,4 +1,4 @@
-// Relationship card eligibility, saved map records and settlement.
+// Relationship event eligibility, saved records and outcomes.
 (function(root){'use strict';
  const D=root.RelationshipCardData||(typeof require==='function'?require('./relationship-card-data'):null);
  const copy=x=>JSON.parse(JSON.stringify(x)),clamp=n=>Math.max(0,Math.min(100,n));
@@ -52,6 +52,10 @@
   if(c.aircon&&opts.hasAirConditioner!==true)return false;
   return true;
  }
+ function mapCandidates(s){
+  return regularCandidates(s).concat(Object.values(cards).filter(c=>!c.regular).flatMap(c=>
+   (s.people||[]).filter(p=>eligible(s,p,c)).map(p=>({kind:c.id,personId:p.id}))));
+ }
  function atomic(s,fn,save){const before=copy(s);try{const result=fn();if(result===false||save()===false)throw Error('save');return result;}catch(e){for(const k of Object.keys(s))delete s[k];Object.assign(s,before);return false;}}
  function makeStudent(s,id,courseId){const gender=Math.random()<.5?'female':'male',names=gender==='female'?['林悦','陈曦','许宁','苏晴','江月']:['林泽','陈远','许言','周明','江川'];let name=names.find(n=>!s.people?.some(p=>p.name===n))||'同学'+((s.people?.length||0)+1);return {id,name,gender,origin:'school',relationshipRole:'classmate',status:'同学',job:'学生',education:s.education,studyProjectId:courseId,relation:10,metMonth:s.month,lastContactMonth:s.month,city:s.city};}
  function reserveLegacy(s){const r=s.town?.movement?.relationshipLifeCard;if(r?.version===1&&['pending','followup'].includes(r.status)&&!used(s,r.personId,r.kind))data(s).used.push({id:r.id,personId:r.personId,kind:r.kind,month:r.month});}
@@ -74,7 +78,7 @@
    data(s).used.push({id:r.id,personId:pid,kind,month:s.month});m.relationshipLifeCard=r;m.opened=true;return r;},opts.save)||null;
  }
  function apply(s,p,q){s.cash=Math.round((s.cash+(q.cash||0))*100)/100;for(const k of ['energy','happiness','stress'])s[k]=clamp(s[k]+(q[k]||0));p.relation=clamp(p.relation+(q.intimacy||0));p.lastContactMonth=s.month;if(q.careCoupons)s.petCareCoupons=(s.petCareCoupons||0)+q.careCoupons;}
- function finishMove(s,m,r){r.status='resolved';m.resolved=true;m.completedMonth=s.month;(s.town.history??=[]).push({id:m.id,to:m.to,month:s.month,type:cards[r.kind]?.regular?(m.type||'community'):'community',relationshipCard:r.kind});}
+ function finishMove(s,m,r){r.status='resolved';m.resolved=true;m.completedMonth=s.month;(s.town.history??=[]).push({id:m.id,to:m.to,month:s.month,type:m.type||'community',relationshipCard:r.kind});}
  function confirm(s,id,index,opts){const m=s.town?.movement,r=m?.relationshipLifeCard,p=s.people?.find(p=>p.id===r?.personId)||r?.newRegular,q=r?.quotes?.[index];
   if(!r||!m||m.resolved||r.id!==id||!['pending','followup'].includes(r.status)||r.month!==s.month||r.moveId!==m.id||!p||!Number.isInteger(index)||!q||!Number.isFinite(opts.free)||opts.free<0||typeof opts.save!=='function')return {ok:false,reason:'stale'};
   if(r.status==='followup')return {ok:false,reason:'followup'};
@@ -109,5 +113,5 @@
   if(r.leaseKey&&s.relationshipHome?.leaseKey!==r.leaseKey)return {ok:false,reason:'lease'};
   return atomic(s,()=>{if(r.followup.key==='classmate'){if(!r.newClassmate||s.people.some(p=>p.id===r.newClassmate.id))throw Error('contact');s.people.push(copy(r.newClassmate));}else apply(s,p,r.followup.options[0]);r.followupReceipt={key:r.followup.key,month:s.month,newPersonId:r.newClassmate?.id};finishMove(s,m,r);return {ok:true};},opts.save)||{ok:false,reason:'save'};
  }
- const api={cards,spec,data,eligible,used,create,saveCard,regularCandidates,drawRegular,confirm,confirmFollowup,enroll,makeStudent,reserveLegacy,payQuote,coffeeRole,bossLabel};root.RelationshipLifeCards=api;if(typeof module!=='undefined')module.exports=api;
+ const api={cards,spec,data,eligible,used,create,saveCard,mapCandidates,regularCandidates,drawRegular,confirm,confirmFollowup,enroll,makeStudent,reserveLegacy,payQuote,coffeeRole,bossLabel};root.RelationshipLifeCards=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window==='undefined'?globalThis:window);

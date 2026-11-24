@@ -82,7 +82,7 @@
   p.content.append(node('p','同等进修速度下，两条路线读到本科用时相同。\n本科毕业后均可继续读硕士。','career-education-compare'));
   p.button('返回学习',learning).classList.add('career-back');
  }
- function hobbies(){const p=panel('兴趣爱好','hobbies',learning),list=node('div',null,'career-list career-hobby-grid');p.section.classList.add('career-hobby-menu');p.content.append(list);for(const id of H.hobbies){const a=H.activities[id],xp=H.xp(state,id);p.choice(list,a.name,'Lv.'+H.level(xp)+(xp>=800?' · 已满级':'')+' · 查看 →','assets/hobbies/'+a.art+'.webp',()=>{close();HobbyPages.detail(id);});}p.button('返回学习',learning).classList.add('career-back');}
+ function hobbies(){const p=panel('个人爱好','hobbies',learning),list=node('div',null,'career-list career-hobby-grid');p.section.classList.add('career-hobby-menu');p.section.querySelector('.career-scene img').src='assets/hobby-review/overview.webp';p.content.append(list);for(const id of H.hobbies){const a=H.activities[id],xp=H.xp(state,id);p.choice(list,a.name,'Lv.'+H.level(xp)+(xp>=800?' · 已满级':'')+' · 查看 →','assets/hobby-review/'+id+'-icon.webp',()=>{close();HobbyPages.detail(id);});}p.button('返回学习',learning).classList.add('career-back');}
  let skillOrigin='learning';
  function skills(origin=skillOrigin){
   skillOrigin=origin;

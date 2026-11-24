@@ -7,6 +7,7 @@
  function close(){active?.remove();active=null;document.body.classList.remove('pet-pages-open');}
  function persist(){const k=key(slot),raw=localStorage.getItem(k);for(const suffix of ['_before_pet_events_20261105','_before_pet35_20261106']){const bk=k+suffix;if(raw&&!localStorage.getItem(bk))localStorage.setItem(bk,raw);}return save();}
  function show(){close();const r=record();if(!r||r.status!=='pending')return false;
+  if(window.townHousingBlocked?.())return true;
   clearModals();window.PetPages?.close();window.PetAdoptionEntry?.close();const owner=state,chosenSlot=slot,k=r.key,q=r.quote;
   const node=el('section','','pet-pages-overlay pet-map-overlay');node.setAttribute('role','dialog');node.setAttribute('aria-modal','true');node.setAttribute('aria-label',q.title);document.body.append(node);active=node;document.body.classList.add('pet-pages-open');
   const valid=()=>active===node&&node.isConnected&&state===owner&&slot===chosenSlot&&record()?.key===k&&record()?.status==='pending'&&state.month===r.month;
@@ -74,13 +75,48 @@
   return true;
  }
  const timeBefore=currentCareerTime;currentCareerTime=function(){const t=timeBefore();return state?{...t,free:Math.max(0,t.free-(state.petMapEvents?.hours[state.month]||0))}:t;};
- const landingBefore=openTownLanding;openTownLanding=function(){const move=current();if(!townEnabled()||!move||move.resolved||townMoveType(move)!=='life')return landingBefore();
-  if(move.mapLife)return landingBefore();
-  const k=P.key(state,move);if(!state.petMapEvents?.records[k]){
-   const owner=state,ok=P.atomic(state,()=>{move.opened=true;P.draw(state,move,{free:currentCareerTime().free,names:NPC_NAMES,jobs:NPC_JOBS});},persist);
-   if(!ok){showEvent('生活事件','暂未保存','请重试。',[],[['重新打开',()=>{if(state===owner)openTownLanding();},true]]);return;}
+ const pick=pool=>pool[Math.floor(Math.random()*pool.length)];
+ const landingBefore=openTownLanding;openTownLanding=function(){
+  const move=current();
+  if(!townEnabled()||!move||move.resolved||townMoveType(move)!=='life')return landingBefore();
+  if(move.relationshipLifeCard)return window.RelationshipLifePages.open();
+  if(move.sharedInterestCard)return window.SharedInterestPages.open();
+  if(move.mapLife)return window.openMapLife(move);
+  const existing=record();
+  if(existing?.status==='pending')return show();
+  if(window.mapLifeAppointmentDue?.(move))return window.openMapLife(move,true);
+  if(existing?.status==='resolved')return resolveTownMove();
+  if(existing||move.opened)return window.openMapLife(move);
+
+  const petOpts={free:currentCareerTime().free,names:NPC_NAMES,jobs:NPC_JOBS,selected:true};
+  const relationships=window.RelationshipLifeCards;
+  const interests=window.SharedInterestSelection;
+  const contacts=window.RelationshipLifePages?.canOpen()?relationships.mapCandidates(state):[];
+  const categories=[
+   [window.hasMapLifeCard(),()=>window.openMapLife(move)],
+   [P.canDraw(state,petOpts),()=>attemptPet()],
+   [contacts.length,()=>{const card=pick(contacts);return saveSelection(
+    ()=>relationships.saveCard(state,card.kind,card.personId,move.id,{save}),
+    ()=>window.RelationshipLifePages.open());}],
+   [interests.groups(state).length,()=>{const {card,personId}=interests.choose(state);return saveSelection(
+    ()=>window.SharedInterestCards.saveCard(state,card.id,personId,move.id,{save}).ok,
+    ()=>window.SharedInterestPages.open());}]
+  ].filter(([available])=>available);
+  if(!categories.length)return resolveTownMove();
+  const owner=state;
+  function saveSelection(prepare,open){
+   if(state!==owner||current()?.id!==move.id||current().opened||current().resolved)return;
+   if(prepare())return open();
+   return showEvent('生活事件','暂未保存','请重试。',[],[['重新打开',()=>saveSelection(prepare,open),true]]);
   }
-  const r=record();if(r?.status==='pending')return show();if(r?.status==='resolved'){if(window.mapLifeAppointmentDue?.(move))return window.openMapLife(move,true);return;}return landingBefore();
+  function attemptPet(){
+   return saveSelection(()=>P.atomic(state,()=>{
+    const target=current();
+    if(P.draw(state,target,petOpts).status!=='pending')return false;
+    target.opened=true;
+   },persist),show);
+  }
+  return pick(categories)[1]();
  };
  // Resolve a drawn mandatory medical/property event before a zero-time return or another finish action.
  const waitingForcedPet=()=>{const r=record(),m=current();return townEnabled()&&!state.gameOver?.final&&!state.financialCrisis?.finalConfirmed&&!isRecoveryMonth(state)&&!(state.crisis&&state.crisis.ackMonth!==state.month)&&m&&!m.resolved&&r?.status==='pending'&&r.forced&&r.month===state.month&&!state.requiredIncident&&!unfinishedTreatment()&&!healthTreatmentKind(state.health);};

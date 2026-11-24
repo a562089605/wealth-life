@@ -1142,3 +1142,6 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
  scrollbar-width:thin;
  scrollbar-color:#91a565 #e7d9b6;
 }
+
+.career-hobby-menu .career-paper { border-color:#87543c; }
+.career-hobby-menu .career-hobby-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }

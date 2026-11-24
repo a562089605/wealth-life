@@ -72,7 +72,7 @@
     if (id === 'late') return state.job && !state.retired && !state.unemployedMonths;
     if (id === 'stoodUp') return people().length > 0;
     if (id === 'cake') return friends().length > 0;
-    if (id === 'tooth') return !data().appointment;
+    if (id === 'tooth') return !state.mapLife?.appointment;
     return true;
   }
 
@@ -81,9 +81,11 @@
     return appointment && (state.month > appointment.month || move.id > appointment.moveId);
   }
 
+  const availableCards = () => mainCards.filter(id => state.mapLife?.seen?.[id] !== state.month && eligible(id));
+
   function createRecord(move, appointmentOnly) {
     const store = data();
-    const available = mainCards.filter(id => store.seen[id] !== state.month && eligible(id));
+    const available = availableCards();
     const id = appointmentOnly ? null : pick(available);
     if (!id && !due(move)) return false;
     const person = id === 'stoodUp' ? pick(people()) : id === 'cake' ? pick(friends()) : null;
@@ -309,9 +311,10 @@
   };
 
   window.mapLifeAppointmentDue = move => !!move && !move.resolved && !!state.mapLife?.appointment && due(move);
+  window.hasMapLifeCard = () => availableCards().length > 0;
   window.openMapLife = function (move, appointmentOnly = false) {
     if (!move.mapLife) {
-      const hasCard = mainCards.some(id => data().seen[id] !== state.month && eligible(id));
+      const hasCard = availableCards().length > 0;
       if (!hasCard && !due(move)) return resolveTownMove();
       const ok = PetMapEvents.atomic(state, () => createRecord(move, appointmentOnly), persist);
       if (!ok) return showEvent('生活事件', '暂未保存', '请重试。', [], [['重试', () => window.openMapLife(movement(), appointmentOnly), true]]);

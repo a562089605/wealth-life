@@ -135,3 +135,17 @@
  box-shadow:inset 0 0 0 2px #ffec9d;
 }
 .hobby-crayon-card .hobby-content button:last-child {border:2px solid #657645}
+
+.personal-hobby-card .hobby-paper { border-color:#87543c; }
+.personal-hobby-card .hobby-paper > header { grid-template-columns:1fr; justify-items:center; }
+.personal-hobby-card .hobby-paper > header button { background:#e8edc5; }
+.personal-hobby-card .hobby-scene { aspect-ratio:3.1; }
+.personal-hobby-card .hobby-stats { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+.personal-hobby-card .hobby-stats > div {
+ display:flex; flex-direction:column; align-items:center; text-align:center;
+ justify-content:space-between; padding:6px 3px; background-color:#fff3d4;
+}
+.personal-hobby-card .hobby-stats dt { color:#425634; font-size:clamp(13px,3.6vw,18px); }
+.personal-hobby-card .hobby-stats dd { font-size:clamp(14px,4vw,21px); }
+.personal-hobby-stat-icon { display:block; width:min(72px,90%); aspect-ratio:2; object-fit:contain; mix-blend-mode:multiply; }
+.personal-hobby-card .hobby-content button.hobby-primary:last-child { background-color:#ffcf55; }

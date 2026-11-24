@@ -1,7 +1,7 @@
 const a=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto'),path=require('node:path');
 const D=require('../shared-interest-card-data'),S=require('../shared-interest-selection'),H=require('../hobby-learning');
 const root=path.resolve(__dirname,'..');
-a.equal(D.cards.length,20);a.equal(D.naturalDrawEnabled,false);a.equal(D.triggerProbability,null);
+a.equal(D.cards.length,20);a.equal(D.naturalDrawEnabled,true);a.equal(D.triggerProbability,null);
 let artwork=0;
 for(const c of D.cards){
  a.equal(D.cards.filter(x=>x.hobby===c.hobby).length,5);
@@ -37,6 +37,6 @@ let photos=0;for(let i=0;i<12000;i++)if(S.choose(sample,random).hobby==='photogr
 a.ok(photos>5700&&photos<6300);
 // The prepared modules must not activate the production map or alter resource loading.
 a.ok(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('shared-interest-selection.js'));
-a.equal(D.naturalDrawEnabled,false);
+a.equal(D.naturalDrawEnabled,true);
 a.equal(H.activities.drawing.cost,25);
-console.log(JSON.stringify({ok:true,mainCards:20,followups:3,artworkHashes:artwork,sampleDraws:12000,photographyDraws:photos,naturalDrawEnabled:false}));
+console.log(JSON.stringify({ok:true,mainCards:20,followups:3,artworkHashes:artwork,sampleDraws:12000,photographyDraws:photos,naturalDrawEnabled:true}));

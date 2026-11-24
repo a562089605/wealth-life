@@ -44,13 +44,19 @@
   const id='map-pet-friend-'+s.month+'-'+(s.petMapEvents.nextContact=(s.petMapEvents.nextContact||0)+1),pick=a=>a[Math.min(a.length-1,Math.floor(random()*a.length))];
   const unused=names.filter(n=>!(s.people||[]).some(p=>p.name===n));
   return {id,name:pick(unused.length?unused:names),gender:random()<.5?'female':'male',age:Math.max(18,(s.age||22)+pick([-2,-1,0,2])),job:pick(jobs),status:'养宠物的朋友',origin:'pet-social',city:s.city,relation:10,lastInteractionMonth:s.month};}
- function draw(s,move,{free,random=Math.random,names=[],jobs=[]}={}){const d=data(s),k=key(s,move);if(d.records[k])return d.records[k];
-  const pools=Object.fromEntries(Object.keys(weights).map(id=>[id,choices(s,id,free)]));if(!names.length||!jobs.length)pools.social=[];
+ function drawPools(s,{free,names=[],jobs=[]}){
+  const pools=Object.fromEntries(Object.keys(weights).map(id=>[id,choices(s,id,free)]));
+  if(!names.length||!jobs.length)pools.social=[];
+  return pools;
+ }
+ function canDraw(s,opts){return Object.values(drawPools(s,opts)).some(pool=>pool.length);}
+ function draw(s,move,{free,random=Math.random,names=[],jobs=[],selected=false}={}){const d=data(s),k=key(s,move);if(d.records[k])return d.records[k];
+  const pools=drawPools(s,{free,names,jobs});
   const base=Object.entries(weights).filter(([id])=>pools[id].length),otherWeight=base.reduce((n,[id,w])=>n+(id==='unwell'?0:w),0),factor=p=>Health?Health.illnessFactor(p,otherWeight):1;
   const eligible=Object.fromEntries(base.map(([id,w])=>[id,id==='unwell'?w*pools[id].reduce((n,x)=>n+factor(x.p),0)/pools[id].length:w]));
   let r={key:k,month:s.month,moveId:move.id,status:'legacy'};
-  // Historical life subtype share: pets 20/100; unavailable share returns to daily life.
-  if(Object.keys(eligible).length&&random()<.2){const id=weighted(eligible,random),pool=pools[id],x=id==='unwell'&&Health?pool[weighted(Object.fromEntries(pool.map((x,i)=>[i,factor(x.p)])),random)]:pool[Math.min(pool.length-1,Math.floor(random()*pool.length))];r={...r,id,status:'pending',forced:!['companion','social','surprise'].includes(id),quote:quote(s,id,x)};
+  // Keep the legacy standalone odds for existing callers.
+  if(Object.keys(eligible).length&&(selected||random()<.2)){const id=weighted(eligible,random),pool=pools[id],x=id==='unwell'&&Health?pool[weighted(Object.fromEntries(pool.map((x,i)=>[i,factor(x.p)])),random)]:pool[Math.min(pool.length-1,Math.floor(random()*pool.length))];r={...r,id,status:'pending',forced:!['companion','social','surprise'].includes(id),quote:quote(s,id,x)};
    if(id==='social')r.quote.contact=contact(s,{names,jobs},random);
    if(id!=='companion')d.seen[s.month+':'+id]=true;
   }d.records[k]=r;return r;}
@@ -70,5 +76,5 @@
   const move=s.town?.movement;if(!keepMoveOpen&&move&&move.id===r.moveId&&!move.resolved){move.resolved=true;move.completedMonth=s.month;(s.town.history??=[]).push({id:move.id,die:move.die,to:move.to,month:s.month,type:'life',petEvent:r.id});}
   return true;}
  function atomic(s,change,save){const before=clone(s);try{if(change()===false)throw Error('invalid pet event');if(save()===false)throw Error('save failed');return true;}catch(e){for(const k of Object.keys(s))delete s[k];Object.assign(s,before);return false;}}
- const api={companions,cards,weights,illness,species,category,seen,data,key,choices,quote,cardForRecord,draw,execute,atomic};root.PetMapEvents=api;if(typeof module!=='undefined')module.exports=api;
+ const api={companions,cards,weights,illness,species,category,seen,data,key,choices,quote,cardForRecord,canDraw,draw,execute,atomic};root.PetMapEvents=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
