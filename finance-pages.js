@@ -63,36 +63,20 @@
   }
 
   function home(){
-   const tiles=[
-    ['收支账单','ledger',bills],
-    ['资产总览','assets',assets],
-    ['储蓄与投资','savings',savings],
-    ['银行贷款与债务','bank',debt],
-    ['保险与保障','insurance',insurance]
-   ];
    showEvent('财务','财务','',[],[
-    ...tiles.map(([title,,action])=>[title,action,false]),
+    ['收支账单',bills,false],
+    ['资产总览',assets,false],
+    ['储蓄与投资',savings,false],
+    ['银行贷款与债务',debt,false],
+    ['保险与保障',insurance,false],
     ['返回房屋',openRoom,false]
    ]);
    if($('eventTitle').textContent!=='财务')return;
    window.modalReturn=openRoom;
    eventCard.classList.add('finance-home');
    const data=$('eventData');
-   data.innerHTML='<img class="finance-desk" src="'+art+'desk.webp" width="780" height="242" alt="">';
+   data.innerHTML='<img class="finance-home-art" src="'+art+'home-crayon.webp" width="900" height="1350" alt="">';
    data.style.display='block';
-   for(const [index,[,image]] of tiles.entries()){
-    const button=$('actions').children[index];
-    const icon=document.createElement('img');
-    icon.src=art+image+'.webp';
-    icon.alt='';
-    button.prepend(icon);
-    if(image==='bank'){
-     button.setAttribute('aria-label',tiles[index][0]);
-     const label=document.createElement('span');
-     label.append('银行贷款',document.createElement('br'),'与债务');
-     button.replaceChildren(icon,label);
-    }
-   }
   }
 
   function lines(rows){

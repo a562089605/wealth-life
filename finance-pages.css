@@ -1,115 +1,90 @@
-#game > .event.event-active.finance-home {
- width: min(420px, calc(100% - 20px));
- box-sizing: border-box;
- padding: 16px 20px;
- border: 1px solid #b7945f;
- border-radius: 24px !important;
- background: #fbedd2 url("./assets/finance/paper.webp") repeat !important;
- color: #263e2b;
- overflow-y: auto !important;
- overscroll-behavior: contain;
+#game > .card.event.event-active.finance-home {
+ width:min(440px,calc(100% - 16px),calc((100dvh - 32px) * 2 / 3));
+ padding:0;
+ border:0;
+ border-radius:0 !important;
+ box-shadow:none;
+ background:transparent !important;
+ overflow:visible !important;
+ container-type:inline-size;
 }
-
 .finance-home #eventType,
-.finance-home #eventDesc {
- display: none;
-}
-
-.finance-home #eventMonth {
- margin-right: 42px;
- margin-left: auto;
- text-align: right;
- color: #554629;
-}
-
+.finance-home #eventDesc { display:none; }
 .finance-home #eventTitle {
- font-size: clamp(24px, 7vw, 34px);
- margin: 2px 0 6px;
- color: inherit;
+ position:absolute;
+ width:1px;
+ height:1px;
+ margin:0;
+ clip-path:inset(50%);
+ overflow:hidden;
 }
-
-.event.event-active.finance-home > #eventData {
- flex: 0 0 auto;
- padding: 0;
- margin: 0;
- overflow: hidden;
+#game > .event.finance-home #eventMonth {
+ position:absolute;
+ top:9.6%;
+ left:29%;
+ right:29%;
+ height:4%;
+ display:grid;
+ place-items:center;
+ margin:0;
+ color:#505320;
+ font:bold 4.4cqw WealthHand,'PingFang SC',sans-serif;
+ white-space:nowrap;
+ z-index:1;
 }
-
-.finance-desk {
- display: block;
- width: 100%;
- height: auto;
- border-radius: 12px;
- mask-image: radial-gradient(ellipse 73% 79% at center, black 53%, transparent 90%);
- mix-blend-mode: multiply;
+#game > .event.finance-home > #eventData {
+ flex:0 0 auto;
+ max-height:none;
+ padding:0;
+ margin:0;
+ overflow:visible;
 }
-
-.event.event-active.finance-home > #actions {
- --finance-tile: min(35vw, 145px);
- display: grid;
- grid-template-columns: repeat(2, var(--finance-tile));
- justify-content: center;
- gap: 8px 12px;
- max-height: none;
- overflow: visible;
- background: none;
- padding: 0;
- margin: 10px 0 0;
+.finance-home-art { display:block; width:100%; height:auto; }
+#game > .event.finance-home > #actions {
+ position:absolute;
+ inset:0;
+ display:block;
+ max-height:none;
+ margin:0;
+ padding:0;
+ overflow:visible;
+ background:none;
+ pointer-events:none;
 }
-
-#game > .event.finance-home #actions > button {
- display: grid;
- place-items: center;
- align-content: center;
- gap: 4px;
- min-width: 0;
- min-height: 0;
- width: 100%;
- margin: 0;
- padding: 6px;
- border: 1px solid #b7945f;
- border-radius: 14px;
- background: #ffefcfa0;
- color: #263e2b;
- font-size: clamp(13px, 3.7vw, 16px);
- line-height: 1.2;
- text-align: center;
- white-space: normal;
+#game > .card.event.finance-home #actions > button,
+#game > .card.event.finance-home #eventClose {
+ position:absolute;
+ box-sizing:border-box;
+ display:block;
+ min-height:0;
+ min-width:0;
+ height:var(--height);
+ width:var(--width);
+ top:var(--top);
+ left:var(--left);
+ right:auto;
+ margin:0;
+ padding:0;
+ border:0;
+ border-radius:12px;
+ box-shadow:none;
+ background:none !important;
+ color:transparent;
+ font-size:0;
+ aspect-ratio:auto;
+ pointer-events:auto;
 }
-
-#game > .event.finance-home #actions > button:not(:last-child) {
- aspect-ratio: 1;
- grid-template-rows: calc(var(--finance-tile) * .59) 2.4em;
-}
-
-#game > .event.finance-home #actions > button img {
- width: 96%;
- height: auto;
- max-height: calc(var(--finance-tile) * .59);
- object-fit: contain;
- mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent),
-  linear-gradient(to bottom, transparent, black 9%, black 91%, transparent);
- mask-composite: intersect;
- mix-blend-mode: multiply;
- pointer-events: none;
-}
-
-#game > .event.finance-home #actions > button:nth-child(5),
-#game > .event.finance-home #actions > button:last-child {
- grid-column: 1 / -1;
- justify-self: center;
- width: var(--finance-tile);
-}
-
-#game > .event.finance-home #actions > button:last-child {
- min-height: 40px;
- border-radius: 22px;
- background: #efd27b;
-}
-
-#game > .event.finance-home #actions > button:focus-visible {
- outline: 2px solid #315438;
- outline-offset: 2px;
+.finance-home #actions > button:nth-child(1) { --top:35.3%; --left:3.3%; --width:46%; --height:18.8%; }
+.finance-home #actions > button:nth-child(2) { --top:35.3%; --left:50.7%; --width:46%; --height:18.8%; }
+.finance-home #actions > button:nth-child(3) { --top:54.9%; --left:3.3%; --width:46%; --height:20.2%; }
+.finance-home #actions > button:nth-child(4) { --top:54.9%; --left:50.7%; --width:46%; --height:20.2%; }
+.finance-home #actions > button:nth-child(5) { --top:76%; --left:3.3%; --width:93.4%; --height:13.3%; }
+.finance-home #actions > button:nth-child(6) { --top:90.3%; --left:27.8%; --width:44%; --height:8%; }
+.finance-home #eventClose { --top:0%; --left:86.5%; --width:13%; --height:9%; z-index:2; }
+#game > .card.event.finance-home #actions > button:focus-visible,
+#game > .card.event.finance-home #eventClose:focus-visible {
+ outline:2px solid #315438;
+ outline-offset:-3px;
 }
 
 #game > .event.event-active.finance-bill {
