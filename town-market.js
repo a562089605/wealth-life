@@ -107,6 +107,10 @@ function openTownMarketTrade(move,dealId,quote=null){
  const title=selling?(deal.share?'花店份额收购报价':deal.type+'买家报价'):deal.share?'街角花店入股':'地图'+deal.type+'买入';
  function settle(acceptTrade){
   if(!valid()||(acceptTrade&&(selling?amount()<0&&state.cash< -amount():alreadyOwned||state.cash<amount())))return;
+  if(selling&&deal.unit&&!acceptTrade){
+   const result=CareerLearningRules.atomic(state,()=>{move.marketQuote=null;return {};},save);
+   return openTownOpportunity(result.ok?'':result.reason);
+  }
   const result=CareerLearningRules.atomic(state,()=>{
    if(acceptTrade){
     if(selling){

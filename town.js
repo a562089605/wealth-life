@@ -145,14 +145,14 @@ function openTownOpportunity(message=''){
   const flowerHolding=townFlowerOrderCandidate(move);
   if(flowerHolding)return openTownFlowerOrder(move,flowerHolding);
   const quote=townMarketQuote(move);
-  if(quote){
-   const holding=townMarketHoldings().find(item=>item.id===quote.holdingId);
-   if(holding)return openTownMarketTrade(move,holding.deal,quote);
-  }
+  const holding=quote&&townMarketHoldings().find(item=>item.id===quote.holdingId);
+  if(holding&&!TOWN_MARKET_DEALS[holding.deal].unit)return openTownMarketTrade(move,holding.deal,quote);
   const actions=[
    ['小机会',()=>drawTownOpportunity(move,'small'),false],
    ['大机会',()=>drawTownOpportunity(move,'big'),false]
   ];
+  if(holding)actions.push(['查看买家报价 · '+TOWN_MARKET_DEALS[holding.deal].name,
+   ()=>openTownMarketTrade(move,holding.deal,quote),false]);
   if((townMarketHoldings().length||townBusinessAssets().length||townProjects().some(item=>item.status!=='closed')))actions.push(['地图资产',()=>openTownMarketHoldings(()=>openTownOpportunity()),false]);
   actions.push(['放弃这次机会',finish,false]);
   showEvent('投资机会','选择投资机会','',[],actions);
