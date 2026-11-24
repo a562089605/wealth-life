@@ -2001,3 +2001,46 @@
 #game > .event.finance-original #actions > button:focus-visible,
 #game > .event.finance-original #eventClose:focus-visible,
 .finance-original-scroll:focus-visible { outline:2px solid #56672e; outline-offset:-2px; }
+
+#game > .card.event.event-active.finance-approved-tall {
+ width:min(440px,calc(100vw - 12px),calc((100dvh - 24px) * 2 / 3));
+}
+#game > .event.finance-approved-tall #eventMonth {
+ top:8.2%;
+ left:33%;
+ width:34%;
+ height:3.5%;
+}
+#game > .event.finance-approved-savings #eventMonth { top:9%; }
+#game > .event.finance-approved-insurance #eventMonth { top:8.5%; }
+#game > .card.event.finance-approved-tall #actions > button {
+ position:absolute;
+ right:auto;
+ bottom:auto;
+}
+.finance-approved-debt-total {
+ inset:41% 21% 54.1% 40%;
+ border-radius:14px;
+}
+.finance-approved-debt-list {
+ position:absolute;
+ inset:55.4% 5.5% 30.8%;
+ background:#fff0ca url("./assets/finance/paper.webp") center;
+ padding:3px 10px;
+ font:3.5cqw/1.25 WealthHand,serif;
+}
+.finance-approved-debt-list .finance-bill-lines > div { padding:3px 2px; font:inherit; }
+.finance-approved-premium {
+ inset:40.5% 16% 54.35% 42%;
+ border-radius:14px;
+}
+.finance-approved-paid {
+ position:absolute;
+ inset:80.9% 4.5% 10.4%;
+ display:grid;
+ place-items:center;
+ background:#f3ddb0 url("./assets/finance/paper.webp") center;
+ border:1px solid #ae8a59;
+ border-radius:14px;
+ font:bold 4.5cqw WealthHand,serif;
+}

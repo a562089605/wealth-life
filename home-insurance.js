@@ -101,6 +101,11 @@
     $('actions').children[index].dataset.insuranceIcon = kind;
    });
    window.modalReturn = back;
+   if(backLabel==='返回财务'&&window.FinancePages?.illustratedInsurance){
+    $('actions').classList.remove('home-insurance-menu');
+    delete $('eventTitle').closest('.event').dataset.insuranceArt;
+    window.FinancePages.illustratedInsurance(bill.total);
+   }
   }
  }
 

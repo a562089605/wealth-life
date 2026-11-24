@@ -38,7 +38,7 @@
   stopDetailScroll?.();
   stopDetailScroll=null;
   delete eventCard.dataset.etfDetail;
-  eventCard.classList.remove('finance-original','finance-original-bills','finance-original-assets','finance-home','finance-bill','finance-bill-current','finance-debt','finance-assets','finance-savings','finance-emergency','finance-cd','finance-etf','finance-sp500','finance-etf-buy','finance-etf-receipt','finance-etf-sell','finance-etf-settings','finance-parchment','retirement-transaction');
+  eventCard.classList.remove('finance-original','finance-original-bills','finance-original-assets','finance-approved-tall','finance-approved-savings','finance-approved-debt','finance-approved-insurance','finance-home','finance-bill','finance-bill-current','finance-debt','finance-assets','finance-savings','finance-emergency','finance-cd','finance-etf','finance-sp500','finance-etf-buy','finance-etf-receipt','finance-etf-sell','finance-etf-settings','finance-parchment','retirement-transaction');
   $('eventData').removeAttribute('tabindex');
   $('eventData').removeAttribute('aria-label');
   return previousShow(...args);
@@ -54,6 +54,25 @@
     style.height=height/frameHeight*100+'%';
    });
   }
+
+ function approvedTallCard(kind,content,targets){
+  eventCard.classList.add('finance-original','finance-approved-tall','finance-approved-'+kind);
+  const data=$('eventData');
+  data.style.display='block';
+  data.innerHTML='<img class="finance-original-art" src="'+art+kind+'-approved.webp" width="1024" height="1536" alt="">'+content;
+  positionActions(targets.map(box=>[null,null,...box]),1024,1536);
+  data.querySelectorAll('.finance-original-scroll').forEach(showDetailScroll);
+ }
+
+ function illustratedInsurance(total){
+  const hasDue=total>0;
+  const targets=[[38,741,468,233],[518,741,468,233],[38,986,468,229],[518,986,468,229]];
+  if(hasDue)targets.push([40,1236,943,148]);
+  targets.push([266,1399,493,106]);
+  approvedTallCard('insurance',
+   '<strong class="finance-original-amount finance-approved-premium" aria-label="本月待付保费">'+priceText(total)+'</strong>'+
+   (hasDue?'':'<span class="finance-approved-paid">本月暂无待付保费</span>'),targets);
+ }
 
  function renderCD(holdings){
   eventCard.classList.add('finance-cd');
@@ -341,23 +360,21 @@
   }
 
   function savings(){
-   const tiles=[
-    ['应急金',emergency,212,461,255,188],
-    ['定期存款',()=>openCD(savings,true),534,461,256,188],
-    ['ETF投资',()=>window.ETFPages.showList(savings,true),195,722,276,168],
-    ['股票投资',stocks,533,722,275,168],
-    ['基金投资',()=>openMarket('基金',savings),195,899,276,166],
-    ['政府债券',()=>openBonds(savings),533,899,275,166],
-    ['房产投资',()=>{clearModals();window.v242RealEstate();},195,1074,276,165],
-    ['退休账户',retirement,533,1074,275,165],
-    ['黄金',gold,347,1249,308,175],
-    ['返回财务',home,300,1435,400,89]
+   const actions=[
+    ['应急金',emergency],['定期存款',()=>openCD(savings,true)],
+    ['ETF投资',()=>window.ETFPages.showList(savings,true)],['股票投资',stocks],
+    ['基金投资',()=>openMarket('基金',savings)],['政府债券',()=>openBonds(savings)],
+    ['房产投资',()=>{clearModals();window.v242RealEstate();}],['退休账户',retirement],
+    ['黄金',gold],['返回财务',home]
    ];
-   showEvent('财务','储蓄与投资','',[],tiles.map(([label,action])=>[label,action,false]));
+   showEvent('财务','储蓄与投资','',[],actions);
    if($('eventTitle').textContent!=='储蓄与投资')return;
-   eventCard.classList.add('finance-savings');
    window.modalReturn=home;
-   positionActions(tiles,1003,1568);
+   approvedTallCard('savings','',[
+    [34,537,472,169],[517,537,472,169],[34,717,472,156],[517,717,472,156],
+    [34,884,472,165],[517,884,472,165],[34,1061,472,161],[517,1061,472,161],
+    [33,1234,957,151],[281,1404,457,105]
+   ]);
   }
 
   function emergency(){
@@ -650,21 +667,18 @@
 
   function debt(){
    const metrics=calcMetrics();
-   const rows=[['总负债',priceText(metrics.debtTotal)],
-    ...Object.entries(state.debt).filter(([,amount])=>amount>0)
-     .map(([name,amount])=>[batchEscape(name),priceText(amount)])];
+   const rows=Object.entries(state.debt).filter(([,amount])=>amount>0);
    const title='银行贷款与债务';
-   page(title,rows,[
+   page(title,[],[
     ['申请银行贷款',()=>openBankLoan(10000,{after:debt,receipt:true}),true],
     ['本月贷款还款',()=>openLoanPayments(debt,'返回银行贷款与债务'),false]
    ]);
    if($('eventTitle').textContent!==title)return;
-   eventCard.classList.add('finance-debt');
-   const illustration=document.createElement('img');
-   illustration.src=art+'bank.webp';
-   illustration.alt='';
-   illustration.className='finance-debt-art';
-   $('eventData').prepend(illustration);
+   approvedTallCard('debt',
+    '<strong class="finance-original-amount finance-approved-debt-total" aria-label="总负债">'+priceText(metrics.debtTotal)+'</strong>'+
+    (rows.length?'<div class="finance-original-scroll finance-approved-debt-list" tabindex="0" aria-label="债务明细">'+lines(rows)+'</div>':''),[
+    [32,1101,957,123],[32,1240,957,123],[211,1390,591,115]
+   ]);
   }
 
   function insurance(back=home){
@@ -676,5 +690,5 @@
 
  V26_INSTRUMENTS.push({id:'gold',name:'黄金',kind:'黄金',beta:.45,
   desc:'价格按月波动，不产生利息或分红。'});
- window.FinancePages={open,renderCD,gold:back=>open(undefined,false,back)};
+ window.FinancePages={open,renderCD,illustratedInsurance,gold:back=>open(undefined,false,back)};
 })();
