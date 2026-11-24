@@ -174,7 +174,7 @@
    ['持仓市值',priceText(p.value)],['持仓成本',priceText(p.cost)],['浮动盈亏',priceText(p.profit)]);
   const confirm=all?'确认全部卖出':selling?'确认减仓':adding?'确认增仓':'确认买入';
   let input,estimate,done=false;
-  const data=page(title,all?'成交后，这只'+item.kind+'的持仓将清空。':selling?'按买入顺序扣减持仓。':item.desc,rows,[[confirm,()=>{
+  const data=page(title,all?'成交后，这只'+item.kind+'的持仓将清空。':selling?'按买入顺序扣减持仓。':item.id==='nova'&&mode==='buy'?'':item.desc,rows,[[confirm,()=>{
    if(done||state!==owner)return;
    const current=position(item);
    if(state.month!==month||quoteFor(item.id).price!==price||current.shares!==p.shares||
@@ -208,6 +208,24 @@
   },true,!all],[mode==='buy'?'返回股票品种':'返回持仓',back,false],
    ...(mode==='buy'?[['取消',finish,false]]:[])],back,item,true,item.kind,mode==='sell'?'reduce':mode);
   if(!data||all)return;
+  const novaBuy=item.id==='nova'&&mode==='buy';
+  if(novaBuy){
+   const header=data.querySelector('.stock-header');
+   const art=document.createElement('img');
+   art.className='nova-buy-art';
+   art.src='assets/finance/nova-buy-crayon.webp';
+   art.alt='窗边书桌上，复古电脑的屏幕亮着芯片图案';
+   art.width=820;
+   art.height=244;
+   header.querySelector('.stock-icon').replaceWith(art);
+
+   const [priceRow, , , changeRow]=data.querySelectorAll(':scope > .stat');
+   const priceBand=document.createElement('div');
+   priceBand.className='nova-buy-price';
+   priceBand.append(priceRow,changeRow);
+   header.querySelector('.stock-chart').before(priceBand);
+   header.classList.add('nova-buy-header');
+  }
   const form=document.createElement('div');
   form.className='stock-form';
   form.innerHTML='<label for="stockTradeAmount">'+(selling?'本次卖出'+shareLabel:'本次投入金额')+'</label>'+
@@ -236,7 +254,15 @@
    const result=read();
    $('actions').firstElementChild.disabled=!result;
    if(!result){
-    estimate.textContent=selling?'请输入小于当前持仓的'+shareLabel+'。清仓请使用「全部卖出」。':'请输入可负担且最多两位小数的正金额。';
+    if(novaBuy){
+    estimate.replaceChildren(
+     '预计买入 '+sharesText(shares)+' · 买入后持有 '+sharesText(p.shares+shares),
+     document.createElement('br'),
+     '买入后现金 '+priceText(roundCash(state.cash-amount))
+    );
+    return;
+   }
+   estimate.textContent=selling?'请输入小于当前持仓的'+shareLabel+'。清仓请使用「全部卖出」。':'请输入可负担且最多两位小数的正金额。';
     return;
    }
    const {amount,shares,cost}=result;

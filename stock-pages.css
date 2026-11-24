@@ -171,3 +171,85 @@
   top: 88.8%;
   height: 7.1%;
 }
+
+#game > .event.event-active:has(.nova-buy-header) {
+  background: #fff3d6 url("assets/finance/paper.webp") repeat !important;
+  border: 2px solid #385439;
+  border-radius: 19px 23px 17px 22px;
+  box-shadow: inset 0 0 0 2px #fff7e1, 0 15px 38px #49300d50;
+}
+.event:has(.nova-buy-header) #eventTitle {
+  font-size: clamp(1.65rem, 5vw, 2.25rem);
+  margin: 4px 0 8px;
+}
+.event:has(.nova-buy-header) #eventData {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+.nova-buy-header { gap: 7px; margin-bottom: 5px; }
+.nova-buy-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 136px;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid #a08756;
+  border-radius: 12px 9px 11px 8px;
+}
+.nova-buy-price {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  padding: 5px 10px;
+  background: #e3e8b9;
+  border-radius: 8px 11px 8px 12px;
+}
+.event:has(.nova-buy-header) #eventData .nova-buy-price .stat,
+.event:has(.nova-buy-header) #eventData > .stat {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 7px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  text-align: left;
+}
+.event:has(.nova-buy-header) #eventData > .stat { border-bottom: 1px solid #9fa77880; }
+.event:has(.nova-buy-header) .stat .label { color: #385439; }
+.event:has(.nova-buy-header) .stat .value { margin: 0; font-size: .95rem; }
+.event:has(.nova-buy-header) .nova-buy-price .stat:first-child .value { font-size: 1.35rem; }
+.nova-buy-header .stock-chart {
+  background: #fff4d6b3;
+  border-color: #a6aa78;
+  text-align: center;
+}
+.event:has(.nova-buy-header) .stock-form {
+  padding: 7px 3px 1px;
+  background: transparent;
+  border: 0;
+}
+.event:has(.nova-buy-header) .stock-form label { margin-bottom: 3px; }
+.event:has(.nova-buy-header) .stock-form input {
+  min-height: 37px;
+  border: 1.5px solid #476445;
+  border-radius: 8px 10px 7px 9px;
+  background: #fff8e4;
+  color: #22442c;
+  font-weight: 700;
+}
+.event:has(.nova-buy-header) #actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.event.event-active:has(.nova-buy-header) #actions button {
+  border: 1.5px solid #476445;
+  border-radius: 12px 9px 11px 8px;
+  background: #fff3d6 !important;
+}
+.event.event-active:has(.nova-buy-header) #actions button.primary {
+  grid-column: 1 / -1;
+  background: linear-gradient(#ffe28a, #f4bd4e) !important;
+}
