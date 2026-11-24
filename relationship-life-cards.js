@@ -1,4 +1,4 @@
-// Confirmed relationship cards: explicit saved map records only. No natural draw/weight.
+// Relationship card eligibility, saved map records and settlement.
 (function(root){'use strict';
  const D=root.RelationshipCardData||(typeof require==='function'?require('./relationship-card-data'):null);
  const copy=x=>JSON.parse(JSON.stringify(x)),clamp=n=>Math.max(0,Math.min(100,n));
@@ -12,8 +12,36 @@
  function payQuote(s,c){const monthly=Number(s.salary),weekly=Number(s.workHoursPerWeek)||40;if(!Number.isFinite(monthly)||monthly<=0||weekly<=0)throw Error('invalid salary');const money=n=>Math.round(n*100)/100,hourly=monthly/(52/12*weekly),wages=money(hourly*(c.payMode==='pickup'?2:40)*1.5),month=s.month%12+1,seasonTips=month===9?225:month>=11?450:300,multiplier=/值班主管|Shift Lead/i.test(s.job||'')?1.3:1,tips=c.payMode==='shifts'?money(seasonTips/23*(3*1.5+2)*multiplier):0;return {cash:money(wages+tips),wages,tips,payContext:{monthly,weekly,calendarMonth:month}};}
  const contactPet=s=>(s.pets||[]).find(p=>['dog','cat'].includes(p.species)||['狗','柯基','猫','银渐层'].includes(p.type));
  function used(s,pid,kind){return (s.relationshipLife?.used||[]).some(r=>r.personId===pid&&r.kind===kind)||(s.relationshipLife?.receipts||[]).some(r=>r.personId===pid&&r.kind===kind);}
+ const regulars={
+  oat:{name:'林乔',gender:'female'},
+  americano:{name:'周屿',gender:'male'}
+ };
+ const regularId=key=>'coffee-regular-'+key;
+ function regularProfile(s,key){
+  return {id:regularId(key),...regulars[key],origin:'coffee-regular',relationshipRole:'regular',
+   status:'熟客',relation:10,metMonth:s.month,lastContactMonth:s.month,city:s.city};
+ }
+ function regularCandidates(s){
+  return Object.values(cards).flatMap(c=>{
+   if(!c.regular)return [];
+   const id=regularId(c.regular),person=s.people?.find(p=>p.id===id);
+   const available=c.regularMeet
+    ? !person&&coffeeRole(s)&&!s.retired&&!s.unemployedMonths&&!used(s,id,c.id)
+    : eligible(s,person,c);
+   return available?[{kind:c.id,personId:id}]:[];
+  });
+ }
+ function drawRegular(s,moveId,opts){
+  const choices=regularCandidates(s);
+  if(!choices.length)return null;
+  const random=opts.random||Math.random;
+  if(random()>=1/3)return null;
+  const pick=choices[Math.floor(random()*choices.length)];
+  return saveCard(s,pick.kind,pick.personId,moveId,opts);
+ }
  function eligible(s,p,c,opts={}){
   if(!p||!c||role(p)!==c.role||!Number.isFinite(p.relation)||p.relation<c.minIntimacy||used(s,p.id,c.id))return false;
+  if(c.regular&&(c.regularMeet||p.id!==regularId(c.regular)))return false;
   if(c.role==='教师'&&(!s.study||s.study.paused||p.studyProjectId!==project(s)))return false;
   if(c.role==='同学'&&(!s.study||s.study.paused||!project(s)))return false;
   if(c.role==='经理'&&(!s.job||s.retired||s.unemployedMonths||p.id!==s.relationshipHome?.currentManagerId))return false;
@@ -30,8 +58,12 @@
  function enroll(s,study){const id=study.id||study.receipt?.id;if(!id)throw Error('missing study identity');const d=data(s);if(d.courses[id])return;s.people??=[];const pid='relationship-classmate-'+id;const p=s.people.find(p=>p.id===pid)||makeStudent(s,pid,id);if(!s.people.includes(p))s.people.push(p);d.courses[id]=p.id;}
  // Legacy call remains a pure v1 quote builder for existing integrations; new code must use saveCard.
  function create(s,pid,moveId){const c=cards['manager-experience'],p=s.people?.find(p=>p.id===pid);if(!eligible(s,p,c))return null;return {id:s.month+':'+moveId+':'+c.id,version:1,kind:c.id,month:s.month,moveId,personId:pid,personName:p.name,status:'pending',quotes:copy(c.options),art:spec.art};}
- function saveCard(s,kind,pid,moveId,opts){const m=s.town?.movement,c=cards[kind],p=s.people?.find(p=>p.id===pid);if(!m||m.id!==moveId||m.resolved||m.relationshipLifeCard||m.month!==s.month||m.opened||s.petMapEvents?.records?.[s.month+':'+moveId]||!eligible(s,p,c,opts)||typeof opts?.save!=='function')return null;
-  return atomic(s,()=>{const r={id:s.month+':'+moveId+':'+kind,version:2,kind,month:s.month,moveId,personId:pid,personName:p.name,status:'pending',quotes:copy(c.options),art:c.art,title:c.title,boxes:copy(c.boxes),role:c.role,studyProjectId:['同学','教师'].includes(c.role)?project(s):null,leaseKey:c.currentLandlord?s.relationshipHome?.leaseKey:null};
+ function saveCard(s,kind,pid,moveId,opts){const m=s.town?.movement,c=cards[kind],p=s.people?.find(p=>p.id===pid);
+  const petEvent=s.petMapEvents?.records?.[s.month+':'+moveId];
+  const afterPetDraw=c?.regular&&petEvent?.status==='legacy'&&!m?.mapLife;
+  const meeting=c?.regularMeet&&pid===regularId(c.regular)&&!p&&coffeeRole(s)&&!s.retired&&!s.unemployedMonths&&!used(s,pid,kind);if(!m||m.id!==moveId||m.resolved||m.relationshipLifeCard||m.month!==s.month||((m.opened||petEvent)&&!afterPetDraw)||(!meeting&&!eligible(s,p,c,opts))||typeof opts?.save!=='function')return null;
+  return atomic(s,()=>{const r={id:s.month+':'+moveId+':'+kind,version:2,kind,month:s.month,moveId,personId:pid,personName:meeting?'咖啡厅常客':p.name,status:'pending',quotes:copy(c.options),art:c.art,title:c.title,boxes:copy(c.boxes),role:c.role,studyProjectId:['同学','教师'].includes(c.role)?project(s):null,leaseKey:c.currentLandlord?s.relationshipHome?.leaseKey:null};
+   if(meeting)r.newRegular=regularProfile(s,c.regular);
    if(c.role==='教师')r.role=p.teacherLabel||'老师';
    if(c.payMode)Object.assign(r.quotes[0],payQuote(s,c));
    if(c.coffeeOnly){r.sourceJob=s.job;r.role=bossLabel(s);}
@@ -42,8 +74,8 @@
    data(s).used.push({id:r.id,personId:pid,kind,month:s.month});m.relationshipLifeCard=r;m.opened=true;return r;},opts.save)||null;
  }
  function apply(s,p,q){s.cash=Math.round((s.cash+(q.cash||0))*100)/100;for(const k of ['energy','happiness','stress'])s[k]=clamp(s[k]+(q[k]||0));p.relation=clamp(p.relation+(q.intimacy||0));p.lastContactMonth=s.month;if(q.careCoupons)s.petCareCoupons=(s.petCareCoupons||0)+q.careCoupons;}
- function finishMove(s,m,r){r.status='resolved';m.resolved=true;m.completedMonth=s.month;(s.town.history??=[]).push({id:m.id,to:m.to,month:s.month,type:'community',relationshipCard:r.kind});}
- function confirm(s,id,index,opts){const m=s.town?.movement,r=m?.relationshipLifeCard,p=s.people?.find(p=>p.id===r?.personId),q=r?.quotes?.[index];
+ function finishMove(s,m,r){r.status='resolved';m.resolved=true;m.completedMonth=s.month;(s.town.history??=[]).push({id:m.id,to:m.to,month:s.month,type:cards[r.kind]?.regular?(m.type||'community'):'community',relationshipCard:r.kind});}
+ function confirm(s,id,index,opts){const m=s.town?.movement,r=m?.relationshipLifeCard,p=s.people?.find(p=>p.id===r?.personId)||r?.newRegular,q=r?.quotes?.[index];
   if(!r||!m||m.resolved||r.id!==id||!['pending','followup'].includes(r.status)||r.month!==s.month||r.moveId!==m.id||!p||!Number.isInteger(index)||!q||!Number.isFinite(opts.free)||opts.free<0||typeof opts.save!=='function')return {ok:false,reason:'stale'};
   if(r.status==='followup')return {ok:false,reason:'followup'};
   if(![q.hours,q.energy,q.intimacy,q.happiness,q.stress,q.cash].every(Number.isFinite)||q.hours<0)return {ok:false,reason:'quote'};
@@ -56,7 +88,15 @@
   if(def?.contactPets&&!(s.pets||[]).some(p=>JSON.stringify([p.careId,p.id,p.species,p.type,p.adoptMonth])===r.petIdentity))return {ok:false,reason:'pet'};
   if(r.version===2){if(r.studyProjectId&&project(s)!==r.studyProjectId)return {ok:false,reason:'study'};if(r.leaseKey&&s.relationshipHome?.leaseKey!==r.leaseKey)return {ok:false,reason:'lease'};}
   const result=atomic(s,()=>{const d=data(s);if(!d.used.some(x=>x.id===r.id))d.used.push({id:r.id,personId:r.personId,kind:r.kind,month:s.month});let time=null;if(q.hours>opts.free){if(!opts.forcedTime)throw Error('missing time adapter');time=opts.forcedTime({id:'relationship-'+r.id,month:s.month,hours:q.hours,available:opts.free});if(!time||!Number.isFinite(time.used))throw Error('invalid time adapter');}
-   const usedHours=time?time.used:q.hours,prior=p.relation;if(def?.introduction){if(!r.newIndustryContact||s.people.some(p=>p.id===r.newIndustryContact.id))throw Error('contact');s.people.push(copy(r.newIndustryContact));}apply(s,p,q);d.hours[s.month]=(d.hours[s.month]||0)+usedHours;
+   const usedHours=time?time.used:q.hours,prior=p.relation;
+   if(q.newRegular){
+    s.people??=[];
+    if(!r.newRegular||s.people.some(person=>person.id===r.personId))throw Error('contact');
+    const contact=copy(r.newRegular);
+    root.HobbyLearning?.generate(contact);
+    s.people.push(contact);
+   }
+   if(def?.introduction){if(!r.newIndustryContact||s.people.some(p=>p.id===r.newIndustryContact.id))throw Error('contact');s.people.push(copy(r.newIndustryContact));}apply(s,p,q);d.hours[s.month]=(d.hours[s.month]||0)+usedHours;
    if(q.studyMonths){if(root.EducationPlans?.current(s.study)&&!root.EducationPlans.settleHelp(s))throw Error('funds');if(!s.study||!Number.isFinite(s.study.total)||!Number.isFinite(s.study.progress)||s.study.total<=s.study.progress)throw Error('study');if(root.EducationPlans?.modern(s.study)){if(!root.EducationPlans?.help(s,q.studyMonths))throw Error('study');}else s.study.total=Math.max(s.study.progress,s.study.total-q.studyMonths);if(s.study.progress>=s.study.total){if(!opts.graduate)throw Error('missing graduation adapter');opts.graduate(s);}}
    if(q.cash)(s.financeLedger??=[]).push({id:r.id,kind:q.cash>0?'relationshipReward':'relationshipExpense',source:'relationshipLife',incomeKind:def?.payMode||def?.incomeKind||'relationship',wages:q.wages||0,tips:q.tips||0,instant:true,eventId:r.id,month:s.month,amount:Math.abs(q.cash),personId:p.id});
    r.choice=index;r.receipt={...copy(q),used:usedHours,time,appliedIntimacy:p.relation-prior};d.receipts.push({id:r.id,kind:r.kind,personId:p.id,month:s.month,choice:index,...r.receipt});
@@ -69,5 +109,5 @@
   if(r.leaseKey&&s.relationshipHome?.leaseKey!==r.leaseKey)return {ok:false,reason:'lease'};
   return atomic(s,()=>{if(r.followup.key==='classmate'){if(!r.newClassmate||s.people.some(p=>p.id===r.newClassmate.id))throw Error('contact');s.people.push(copy(r.newClassmate));}else apply(s,p,r.followup.options[0]);r.followupReceipt={key:r.followup.key,month:s.month,newPersonId:r.newClassmate?.id};finishMove(s,m,r);return {ok:true};},opts.save)||{ok:false,reason:'save'};
  }
- const api={cards,spec,data,eligible,used,create,saveCard,confirm,confirmFollowup,enroll,makeStudent,reserveLegacy,payQuote,coffeeRole,bossLabel};root.RelationshipLifeCards=api;if(typeof module!=='undefined')module.exports=api;
+ const api={cards,spec,data,eligible,used,create,saveCard,regularCandidates,drawRegular,confirm,confirmFollowup,enroll,makeStudent,reserveLegacy,payQuote,coffeeRole,bossLabel};root.RelationshipLifeCards=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window==='undefined'?globalThis:window);

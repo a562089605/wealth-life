@@ -254,7 +254,13 @@ function openTownOpportunity(message=''){
  data.scrollTop=0;
 }
 function openTownLanding(){
- const move=townState().movement,type=townMoveType(move);move.opened=true;save();
+ const move=townState().movement,type=townMoveType(move);
+ const petEvent=state.petMapEvents?.records?.[state.month+':'+move.id];
+ const relationshipLanding=type==='community'&&!move.opened||
+    type==='life'&&!move.mapLife&&(!move.opened||petEvent?.status==='legacy')&&!window.mapLifeAppointmentDue?.(move);
+ if(relationshipLanding&&window.RelationshipLifePages?.canOpen()&&
+    window.RelationshipLifeCards?.drawRegular(state,move.id,{save})&&window.RelationshipLifePages.open())return;
+ move.opened=true;save();
  if(type==='opportunity')return openTownOpportunity();
  if(type==='market'&&!move.type){if(openBuyerOffer())return;resolveTownMove();return}
  if(type==='growth'){showEvent('学习成长','投资自己','',[],[['查看学历计划',openEducation,true],['练习兴趣技能',()=>$('hobbyBtn').click(),false],['本次不安排',finish,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block';return}
