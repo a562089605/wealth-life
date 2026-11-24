@@ -209,3 +209,65 @@
 .insurance-plan-paper button[data-v26="insuranceConfirm"] { background: #f3cf60; color: #28462d; font-weight: 700; }
 .insurance-plan-paper button[data-v26="insuranceSkip"] { background: #fff5db; color: #28462d; border: 1px solid #d1ac72; }
 .insurance-plan-paper [data-insurance-warning]:empty { display: none; }
+
+#game > .event.event-active:has(.insurance-premium-art) {
+  background: #fff4d8 url("assets/finance/paper.webp") repeat !important;
+  color: #29472c;
+  border: 2px solid #3e5835;
+  border-radius: 20px 17px 23px 18px;
+  box-shadow: inset 0 0 0 3px #fff4d8, inset 0 0 0 4px #778451, 0 12px 30px #292c2140;
+}
+.event:has(.insurance-premium-art) #eventTitle {
+  text-align: center;
+  color: #29472c;
+  font: 700 clamp(25px,6vw,36px)/1.15 WealthHand, KaiTi, serif;
+  margin: 6px 0 12px;
+}
+.event:has(.insurance-premium-art) #eventData {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 7px;
+}
+.insurance-premium-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 14px 11px 13px 12px;
+}
+.event:has(.insurance-premium-art) #eventData > .stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  padding: 6px 10px;
+  border: 1px solid #c6af78;
+  border-radius: 10px 12px 9px 11px;
+  background: #fff4d7;
+}
+.event:has(.insurance-premium-art) #eventData .label {color: #3b5336}
+.event:has(.insurance-premium-art) #eventData .value {margin: 0;overflow-wrap: anywhere;font-variant-numeric: tabular-nums}
+.event:has(.insurance-premium-art) #eventData > .insurance-premium-total {
+  background: #e2e9b7;
+  border-color: #a4ac72;
+  font-weight: 700;
+}
+.event:has(.insurance-premium-art) #eventData .insurance-premium-total .value {font-size: clamp(22px,6vw,32px)}
+#game > .event.event-active:has(.insurance-premium-art) #actions {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 6px;
+}
+#game > .event.event-active:has(.insurance-premium-art) #actions button {
+  min-width: 0;
+  border: 1.5px solid #47633d;
+  border-radius: 12px 10px 13px 10px;
+  background: #fff4d9 !important;
+  color: #29472c;
+}
+#game > .event.event-active:has(.insurance-premium-art) #actions button.primary {
+  background: linear-gradient(#ffe386,#f3be4e) !important;
+  font-weight: 700;
+}

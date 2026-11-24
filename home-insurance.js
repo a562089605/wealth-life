@@ -213,6 +213,16 @@
    ...(insufficient ? [['资金不足，查看补救', () => showFundingOptions(bill.total, reopen), true]] : []),
    ['返回', back, false]
   ]);
+  if ($('eventTitle').textContent !== '支付本月保费') return;
+  const data = $('eventData');
+  const illustration = document.createElement('img');
+  illustration.className = 'insurance-premium-art';
+  illustration.src = 'assets/home-insurance/premium-pay-crayon.webp';
+  illustration.alt = '';
+  illustration.width = 800;
+  illustration.height = 298;
+  data.lastElementChild?.classList.add('insurance-premium-total');
+  data.prepend(illustration);
   window.modalReturn = back;
  }
 
