@@ -1106,3 +1106,16 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
  background: #f8d580;
  color: #294b34;
 }
+
+.career-education-route .career-paper{border:2px solid #3e5c39;border-radius:21px 18px 22px 19px}
+.career-education-route .career-scene{aspect-ratio:2.85}
+.career-education-route .career-content{padding:clamp(10px,3vw,18px)}
+.career-education-route .career-content h1{color:#2f4b2c;font-family:WealthHand,KaiTi,serif;margin:9px 0 8px}
+.career-education-route .career-list>button.career-education-option{display:grid;grid-template-columns:minmax(58px,30%) minmax(0,1fr);gap:0;padding:0 22px 0 0;border-color:#6c8450;box-shadow:inset 0 0 0 1px #a7b979}
+.career-education-route .career-list>button.career-education-option:nth-child(2){border-color:#bd9a41;box-shadow:inset 0 0 0 1px #dec480}
+.career-education-option .career-thumb{width:100%;height:100%;min-height:0}
+.career-education-option .career-thumb img{width:100%;height:100%;inset:0;object-fit:cover}
+.career-education-option>span{padding:9px 7px;overflow-wrap:anywhere}
+.career-education-option strong{font:700 clamp(16px,4.1vw,23px)/1.2 WealthHand,KaiTi,serif}
+.career-education-option small{white-space:pre-line;font:clamp(12px,3.35vw,15px)/1.45 sans-serif}
+.career-education-compare{white-space:pre-line;text-align:center;color:#405539;font-size:clamp(12px,3.5vw,15px);margin:10px 0 0}

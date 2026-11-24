@@ -59,10 +59,28 @@
  function education(){if(state.study||state.education!=='highschool'||(state.educationPlans?.graduates||[]).some(g=>!g.seen)){close();return originalEducation();}const p=panel('学历学习','education-route-banner',learning),list=node('div',null,'career-list');
   p.section.classList.add('career-education-route');
   p.content.append(node('p','当前学历：高中','career-education-level'),list);
-  for(const [id,title,sub,art]of [
-   ['associate','转学型副学士 AA','先读 AA，再衔接本科','education-route-aa'],
-   ['bachelorDirect','直接读本科','查看本科课程与学习安排','education-route-bachelor']
-  ])p.choice(list,title,sub,'assets/career-learning-20261115/'+art+'.webp',()=>{close();EducationPages.route(id);});
+  const art='assets/career-learning-20261115/education-crayon-';
+  p.section.querySelector('.career-scene img').src=art+'banner.webp';
+  const {associate,bachelor,bachelorDirect}=EducationPlans.routes;
+  const price=value=>'$'+value.toLocaleString('en-US',{maximumFractionDigits:2});
+  const transferTotal=associate.cost+bachelor.cost;
+  for(const [id,title,lines,image] of [
+   ['associate','转学型副学士 AA',[
+    '先拿 AA，可就业或衔接本科',
+    '汽车技师、影视剪辑助理等岗位须达到 AA 学历门槛',
+    'AA '+price(associate.cost)+' · 读到本科共 '+price(transferTotal),
+    '读到本科比直读省 '+price(bachelorDirect.cost-transferTotal)
+   ],'aa'],
+   ['bachelorDirect','直接读本科',[
+    '高中直读本科，省去转学步骤',
+    '毕业后达到小学教师、机械工程师等岗位的学历门槛',
+    '总费用 '+price(bachelorDirect.cost)+' · 中途不授 AA'
+   ],'bachelor']
+  ]){
+   const choice=p.choice(list,title,lines.join('\n'),art+image+'.webp',()=>{close();EducationPages.route(id);});
+   choice.classList.add('career-education-option');
+  }
+  p.content.append(node('p','同等进修速度下，两条路线读到本科用时相同。\n本科毕业后均可继续读硕士。','career-education-compare'));
   p.button('返回学习',learning).classList.add('career-back');
  }
  function hobbies(){const p=panel('兴趣爱好','hobbies',learning),list=node('div',null,'career-list career-hobby-grid');p.content.append(list);for(const id of H.hobbies){const a=H.activities[id],xp=H.xp(state,id);p.choice(list,a.name,'Lv.'+H.level(xp)+(xp>=800?' · 已满级':'')+' · 查看 →','assets/hobbies/'+a.art+'.webp',()=>{close();HobbyPages.detail(id);});}p.button('返回学习',learning).classList.add('career-back');}
