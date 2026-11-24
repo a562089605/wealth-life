@@ -43,9 +43,13 @@
    close();render();if(window.mapLifeAppointmentDue?.(current()))window.openMapLife(current(),true);else finish();
   };
   wrap.append(status);
-  if(state.cash<q.cost){const funding=el('button','查看资金处理','pet-solid-button');funding.onclick=()=>{if(!valid())return;close();showFundingOptions(q.cost,()=>{if(state===owner&&slot===chosenSlot&&record()?.key===k)show();});};wrap.append(funding);}
+  let funding;
+  if(state.cash<q.cost){funding=el('button','查看资金处理','pet-solid-button');funding.onclick=()=>{if(!valid())return;close();showFundingOptions(q.cost,()=>{if(state===owner&&slot===chosenSlot&&record()?.key===k)show();});};wrap.append(funding);}
   if(!r.forced&&currentCareerTime().free<q.hours)status.textContent='自由时间不足。';
-  const later=el('button','返回地图，稍后处理','pet-solid-button');later.onclick=()=>{if(!valid())return;close();render();};wrap.append(later);refresh();pay.disabled?later.focus({preventScroll:true}):pay.focus({preventScroll:true});return true;
+  refresh();
+  node.tabIndex=-1;
+  (pay.disabled?(funding||node):pay).focus({preventScroll:true});
+  return true;
  }
  const timeBefore=currentCareerTime;currentCareerTime=function(){const t=timeBefore();return state?{...t,free:Math.max(0,t.free-(state.petMapEvents?.hours[state.month]||0))}:t;};
  const landingBefore=openTownLanding;openTownLanding=function(){const move=current();if(!townEnabled()||!move||move.resolved||townMoveType(move)!=='life')return landingBefore();

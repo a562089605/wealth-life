@@ -99,7 +99,7 @@ function resumeTownMove(){
  openTownLanding();
 }
 function previewTownPayday(){
- const move=townState().movement,m=calcMetrics(),mapForecast=townMonthForecast(),remaining=roundCash(m.remainingCF+mapForecast);showEvent(move.returnReason==='home'?'回家结算':'发薪日','核对本月收支','地图浮动收益按平均值估算，以月底实际到账为准。',[['本月税前工资',priceText(m.grossSalary)],['基础持续收支结余',priceText(m.monthlyCF)],['地图资产预计本月净收付',priceText(mapForecast)],['尚待月末收付',priceText(remaining)],['预计结算后现金',priceText(state.cash+remaining)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false],['稍后处理，返回地图',()=>{clearModals();render()},false]]);
+ const move=townState().movement,m=calcMetrics(),mapForecast=townMonthForecast(),remaining=roundCash(m.remainingCF+mapForecast);showEvent(move.returnReason==='home'?'回家结算':'发薪日','核对本月收支','地图浮动收益按平均值估算，以月底实际到账为准。',[['本月税前工资',priceText(m.grossSalary)],['基础持续收支结余',priceText(m.monthlyCF)],['地图资产预计本月净收付',priceText(mapForecast)],['尚待月末收付',priceText(remaining)],['预计结算后现金',priceText(state.cash+remaining)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false]]);
  $('eventClose').hidden=true;
  if(move.returnReason!=='home')$('eventTitle').closest('.event').dataset.townPayday='';
 }
