@@ -37,10 +37,17 @@
 .painted-canvas.life .life-current,.painted-canvas.life .painted-button-caption{font-size:4.4cqw;font-weight:700}
 .life-bill{
  position:absolute;left:6.5%;top:73.6%;width:87%;height:14.5%;z-index:2;
- box-sizing:border-box;padding:1.2% 2%;border-radius:12px;
- background:#faf2dc;color:#163e2b;
+ box-sizing:border-box;padding:1.2% 2%;isolation:isolate;
+ border:0;background:none;box-shadow:none;
+ color:#163e2b;
  display:flex;flex-direction:column;justify-content:space-between;
  font-size:3.8cqw;line-height:1.15;
+}
+.life-bill::before{
+ content:"";position:absolute;z-index:-1;inset:-4% -1.4% -1%;
+ background:linear-gradient(#faf2dc,#f9f0d8);
+ mask-image:linear-gradient(to right,transparent,#000 3% 97%,transparent),linear-gradient(transparent,#000 4% 96%,transparent);
+ mask-composite:intersect;pointer-events:none;
 }
 .life-bill header,.life-bill>div,.life-bill footer{
  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);align-items:center;gap:1.5cqw;
@@ -200,8 +207,9 @@ body.painted-screen #game > #paintedView.painted-room-backdrop:not([hidden]) {
 .painted-canvas.life .life-payment-button {
  left:16%;top:89%;width:68%;height:5.3%;
 }
-.painted-canvas.life .life-payment-button:disabled {
+.painted-canvas.life .life-payment-complete {
  background:#dce8bd;color:#24492e;border-color:#85975c;box-shadow:none;cursor:default;
+ opacity:1;
 }
 .painted-canvas.detail button.housing-payment-status.housing-payment-family {
  left:20%;top:81.6%;width:60%;height:5%;background:#f8d478;

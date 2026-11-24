@@ -75,9 +75,9 @@
 
 .room-default .room-canvas{container-type:inline-size}
 .room-default .room-date{
- left:22%;top:3%;width:56%;height:7.4%;border-radius:16px;background:#fff1ce;
+ left:31%;top:3.5%;width:38%;height:6%;
 }
-.room-default .room-date strong{font-size:5.2cqw}
+.room-default .room-date strong{font-size:4.8cqw}
 .room-default .room-date span{font-size:3.4cqw}
 
 
@@ -105,3 +105,13 @@
 #roomView.room-school-apartment .room-pets{left:61.7%;top:84.8%;width:23%;height:4.1%}
 #roomView.room-school-apartment .room-menu{top:2.6%;right:3.5%;width:10%;height:4.2%;background:transparent;color:transparent;border:0}
 #roomView.room-school-apartment .room-leave{left:13%;top:93%;width:74%;height:6%}
+.room-canvas .room-date{background:none;isolation:isolate}
+.room-date::before{
+ content:"";position:absolute;z-index:-1;inset:-4% 2%;pointer-events:none;
+ background:linear-gradient(#fff3d9,#fff2d9);
+ mask-image:linear-gradient(to right,transparent,#000 10% 90%,transparent),linear-gradient(transparent,#000 14% 86%,transparent);
+ mask-composite:intersect;
+}
+.room-date strong{font-variant-numeric:tabular-nums}
+
+#roomView.room-school-apartment .room-date::before{display:none}

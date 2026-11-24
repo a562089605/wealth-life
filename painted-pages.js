@@ -87,8 +87,12 @@
    html+=patch('当前住房：'+housingName(),'left:31%;top:65.9%;width:53%;height:3%','painted-caption life-current');
    const status=q.blocked?'待交接':!q.selected?'待选住房':q.total>0?'待支付':'已支付';
    html+='<div class="life-bill" aria-live="polite"><header><strong>本月生活账单</strong><span>'+status+'</span></header><div><span>'+(livingTotal()>livingBaseAmount(state)?'基本生活及日常养护':'基本生活费')+'</span><b>'+esc(money(livingTotal()))+(q.living<=0?' · 已支付':paid.living>0?' · 待付 '+esc(money(q.living)):'')+'</b></div><div><span>'+esc(state.housing==='family'?'与家人同住 · 家用':state.housing==='own'?'自住房房贷':housingName()+'租金')+'</span><b>'+(!q.selected?'待选择':q.blocked?'待交接':esc(money(state.housingCost||0))+(q.housing<=0?' · 已支付':paid.housing>0?' · 待付 '+esc(money(q.housing)):''))+'</b></div><footer><strong>本月待付</strong><b>'+(!q.selected?'先选择住房':q.blocked?'先办理交接':esc(money(q.total)))+'</b></footer></div>';
-   const label=q.blocked?'办理住房交接':!q.selected?'先选择住房':q.total<=0?'本月已支付':state.cash<q.total?'资金不足 · 查看补救':'确认支付本月生活账单';
-   html+='<button type="button" class="life-payment-button" data-painted="life-confirm"'+(q.selected&&!q.blocked&&q.total<=0?' disabled':'')+'>'+esc(label)+'</button>';
+   if(q.selected&&!q.blocked&&q.total<=0){
+    html+='<p class="life-payment-button life-payment-complete">本月已支付</p>';
+   }else{
+    const label=q.blocked?'办理住房交接':!q.selected?'先选择住房':state.cash<q.total?'资金不足 · 查看补救':'确认支付本月生活账单';
+    html+='<button type="button" class="life-payment-button" data-painted="life-confirm">'+esc(label)+'</button>';
+   }
    html+=button('health','健康：治疗与康复','left:4%;top:23.5%;width:45%;height:11.5%')+button('rest','能量：安排休息','left:51%;top:23.5%;width:45%;height:11.5%')+button('activities','幸福度：生活活动','left:4%;top:35.5%;width:45%;height:12%')+button('rest','压力：放松减压','left:51%;top:35.5%;width:45%;height:12%');
    html+=button('current-home',q.selected?'查看当前住房详情':'选择住房','left:4%;top:64.3%;width:92%;height:7.6%')+button('room','返回房屋','left:35%;top:95%;width:30%;height:3.5%');
   }else if(page==='housing'){

@@ -37,7 +37,20 @@
 .pet-monthly-amount{background:radial-gradient(ellipse,#eee6ad 65%,#f8edc9);border-radius:40%;font-size:8cqw;font-weight:bold}
 .pet-monthly-note{background:#fff0ce;font-size:4.4cqw;line-height:1.4;text-align:left;justify-content:flex-start;padding:0}
 .pet-monthly-due-label{background:#fff0ce;font-size:6.4cqw;font-weight:bold}
-.pet-monthly-pay-label{background:#ffda74;font-size:6cqw;font-weight:bold}
+.pet-illustrated .pet-inlaid-pay,
+.pet-illustrated .pet-inlaid-pay:disabled,
+.pet-illustrated .pet-inlaid-pay:focus-visible {
+ display:grid;place-items:center;isolation:isolate;
+ background:transparent!important;opacity:1;color:#244529;
+ font-size:min(5.5cqw,calc(101cqw / var(--pet-pay-length)));
+ font-weight:750;line-height:1.2;white-space:nowrap;
+}
+.pet-inlaid-pay::before {
+ content:"";position:absolute;z-index:-1;inset:12% 17%;pointer-events:none;
+ background:linear-gradient(#f9df86,#ebc653);
+ mask-image:linear-gradient(to right,transparent,#000 8% 92%,transparent),linear-gradient(transparent,#000 18% 82%,transparent);
+ mask-composite:intersect;
+}
 .pet-monthly-hero{padding:0;border-radius:0}.pet-monthly-hero .pet-crop{height:100%;aspect-ratio:auto}
 .pet-annual-name,.pet-annual-date{background:#e9e3aa;border-radius:40%;font-weight:bold}.pet-annual-name{font-size:6cqw}.pet-annual-date{font-size:4.1cqw}
 .pet-annual-value{background:#fff0cf;font-size:7cqw;font-weight:bold;border-radius:30%}
@@ -47,7 +60,19 @@
 
 .pet-insurance-name,.pet-insurance-state{background:#e9e3aa;border-radius:40%;font-size:5.7cqw;font-weight:bold}.pet-insurance-state{font-size:5cqw}
 .pet-insurance-value{background:#fff0cf;font-size:6.8cqw;font-weight:bold;border-radius:30%}.pet-insurance-total-label{background:#fff0cf;font-size:5.3cqw;font-weight:bold}
-.pet-insurance-note{background:#fff0d0;font-size:2.9cqw}.pet-insurance-pay-label{background:#ffda74;font-size:5.4cqw;font-weight:bold}
+.pet-insurance-note{background:#fff0d0;font-size:2.9cqw}
+.pet-insurance-premium{
+ isolation:isolate;overflow:visible;background:none;
+ font-size:min(6.5cqw,calc(37cqw / var(--pet-premium-length)));
+ white-space:nowrap;font-variant-numeric:tabular-nums;
+}
+.pet-insurance-premium::before{
+ content:"";position:absolute;z-index:-1;inset:-22% -7%;
+ background:#fff3d5;
+ mask-image:linear-gradient(to right,transparent,#000 12% 88%,transparent),linear-gradient(transparent,#000 15% 85%,transparent);
+ mask-composite:intersect;
+}
+.pet-insurance-pay::before{inset:10% 16%;background:linear-gradient(#f9e38d,#f2ce51)}
 .pet-insurance-overlay{flex-direction:column;align-items:center}.pet-insurance-overlay>.pet-message{position:static;flex:none;width:min(100%,480px);max-width:480px;box-sizing:border-box;margin:8px auto 0;padding:10px 14px;border:1px solid #bd994e;border-radius:14px;background:#fff2d4;color:#385035;font:14px/1.5 Georgia,'Songti SC',serif}
 
 .pet-health-status{font-size:3.4cqw}.pet-tile-health{color:#52603b;font-size:13px}
@@ -206,3 +231,14 @@
 .pet-coupon-paper > .pet-solid-button {border:1.5px solid #436040;background:#f4c857;font:700 22px/1.2 WealthHand,serif}
 .pet-coupon-navigation {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
 .pet-coupon-navigation .pet-solid-button {padding:5px;border:1.5px solid #436040;background:#fff4da;font:700 clamp(15px,4vw,20px)/1.2 WealthHand,serif}
+.pet-premium-card{width:min(100%,480px);margin:auto;flex:none;container-type:inline-size}
+.pet-premium-card .pet-illustrated{width:100%;margin:0 0 13cqw;background:#fff4d9}
+.pet-premium-card .pet-page-art:not(.pet-premium-footer){clip-path:inset(0 0 20% 0)}
+.pet-premium-card .pet-premium-footer{position:absolute;inset:0;clip-path:inset(80% 0 0 0);pointer-events:none;transform:translateY(13cqw)}
+.pet-premium-card .pet-premium-shift{transform:translateY(13cqw)}
+.pet-premium-card .pet-premium-pay,.pet-premium-card .pet-premium-pay:disabled{
+ border:1px solid #aa8747;border-radius:999px;background:linear-gradient(#fae39b,#efd067);
+ color:#244529;font-size:clamp(13px,5.4cqw,25px);font-weight:750;opacity:1;
+}
+.pet-premium-card .pet-premium-pay:disabled{background:#e3ebc5;border-color:#8a995a}
+.pet-premium-card .pet-premium-pay:focus-visible{background:#fae39b!important}

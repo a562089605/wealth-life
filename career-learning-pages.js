@@ -131,7 +131,7 @@
    const arrow=node('span','›','career-skill-arrow');arrow.setAttribute('aria-hidden','true');
    entry.append(illustration,summary,rank,arrow);
   }
-  if(R.next(state))p.button('查看晋升条件',promotion,{parent:growth});p.button('职业学习',()=>skills('career'),{parent:growth});const other=p.box('其他选择');p.button('查看其他工作机会',()=>{close();openCareerMarket();},{parent:other});p.button(state.pendingResignation?'已安排下个月离职':'申请辞职',resignation,{parent:other,disabled:!state.job});p.button('返回房屋',room).classList.add('career-back');
+  if(R.next(state))p.button('查看晋升条件',promotion,{parent:growth});const other=p.box('其他选择');p.button('查看其他工作机会',()=>{close();openCareerMarket();},{parent:other});p.button(state.pendingResignation?'已安排下个月离职':'申请辞职',resignation,{parent:other,disabled:!state.job});p.button('返回房屋',room).classList.add('career-back');
   window.showRoomBehindPanel?.();
   p.section.classList.add('career-story-profile');
   compactCareer(p);
