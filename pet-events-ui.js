@@ -13,6 +13,8 @@
   const wrap=el('div','','pet-map-wrap');node.append(wrap);wrap.append(el('p',q.petName,'pet-map-name'));
   const card=el('div','','pet-map-card');wrap.append(card);const picture=el('img','','pet-map-art');picture.alt=q.title;
   const art=P.cardForRecord(r),medical=q.medical??['unwell','injury'].includes(r.id);
+  const inlineMedical=!!art&&medical&&r.id==='unwell'&&r.forced;
+  if(inlineMedical){card.classList.add('pet-map-inline-medical');card.style.setProperty('--pet-art-height',(art.buttonBox[1]*1.5)+'cqw');}
   if(art){picture.src=art.art;card.dataset.card=art.id;card.append(picture);}else{
    card.classList.add('pet-map-generic');card.append(el('p','生活事件卡·宠物','pet-map-category'),el('h2',q.title));const hero=el('div','','pet-map-portrait');picture.src='assets/pets/success-'+q.species+'-20261104.webp';hero.append(picture);card.append(hero,el('p',q.petName+(r.id==='unwell'?'有些不舒服，带它去看看医生吧。':r.id==='injury'?'玩耍时受伤了，带它去处理伤口吧。':'不小心弄坏了家里的东西，需要收拾和更换。')));
   }
@@ -30,12 +32,16 @@
    const summary=[['自由时间',q.hours+'小时'],['能量',q.energy||0],['幸福度',q.happiness||0],['压力',q.stress||0]];
    if(q.gross)summary.unshift([medical?'预计自付':'本次费用',priceText(q.cost)]);
    card.append(el('p',summary.map(([k,v])=>k+' '+v).join('；'),'pet-map-accessible'));
-   if(medical&&q.cost!==(art.printedCost??art.cost)){const display=art.printedCost===undefined?priceText(q.cost):priceText(q.cost).replace(/\.00$/,'');const amount=el('span',display,'pet-map-medical-price');const box=art.priceBox;['left','top','width','height'].forEach((k,i)=>amount.style[k]=box[i]+'%');if(r.id==='injury'||r.id==='accident')amount.classList.add('pet-map-injury-price');card.append(amount);}
+   if(medical&&(inlineMedical||q.cost!==(art.printedCost??art.cost))){const display=inlineMedical||art.printedCost===undefined?priceText(q.cost):priceText(q.cost).replace(/\.00$/,'');const amount=el('span',display,'pet-map-medical-price');const box=art.priceBox;['left','top','width','height'].forEach((k,i)=>amount.style[k]=box[i]+'%');if(inlineMedical){amount.style.setProperty('--pet-price-top',(box[1]*1.5)+'cqw');amount.style.height=(box[3]*1.5)+'cqw';}if(r.id==='injury'||r.id==='accident')amount.classList.add('pet-map-injury-price');card.append(amount);}
   }
   const pay=el('button',q.button,art?'pet-hit pet-map-confirm':'pet-solid-button');pay.type='button';controls.append(pay);
   if(art)['left','top','width','height'].forEach((k,i)=>pay.style[k]=art.buttonBox[i]+'%');
   if(art&&q.contact){const c=q.contact;wrap.append(el('p','新朋友：'+c.name+' · '+(c.gender==='female'?'女':'男')+' · '+c.age+'岁 · '+c.job,'pet-map-contact'));}
-  if(art&&medical&&q.cost!==q.gross)wrap.append(el('p','本次保险承担 '+priceText(q.gross-q.cost)+' · 自付 '+priceText(q.cost),'pet-map-coverage'));
+  if(inlineMedical){
+   pay.className='pet-solid-button pet-map-inline-pay';
+   pay.removeAttribute('style');
+   card.insertBefore(el('p','本次保险承担 '+priceText(q.gross-q.cost)+' · 自付 '+priceText(q.cost),'pet-map-coverage'),pay);
+  }else if(art&&medical&&q.cost!==q.gross)wrap.append(el('p','本次保险承担 '+priceText(q.gross-q.cost)+' · 自付 '+priceText(q.cost),'pet-map-coverage'));
   function refresh(){const now=record()?.quote;pay.disabled=!valid()||!now||state.cash<now.cost||!r.forced&&currentCareerTime().free<now.hours;}
   pay.onclick=()=>{if(!valid()||pay.disabled)return;pay.disabled=true;const free=currentCareerTime().free;
    const ok=P.atomic(state,()=>P.execute(state,k,{free,forcedTime:x=>recordForcedEventTime(state,x), keepMoveOpen:!!window.mapLifeAppointmentDue?.(current())}),persist);

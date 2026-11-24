@@ -303,3 +303,11 @@
   background: #f1edcf !important;
   color: #22442c;
 }
+
+.event:has(.fund-approved-market) .fund-approved-market{--fund-illustration:url('assets/finance/fund-approved/chooser-hero.webp');width:min(100%,460px);aspect-ratio:732/255}
+.event #eventData .fund-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+.event #eventData .fund-list button{display:flex;flex-direction:column;justify-content:flex-start;gap:5px;padding:5px;min-width:0;text-align:center;border-radius:12px;background:#fff0ce!important}
+.fund-list .fund-chooser-image{width:100%;aspect-ratio:1.12;object-fit:cover;border-radius:8px;mix-blend-mode:multiply}
+.event #eventData .fund-list button > strong,.event #eventData .fund-list button > b{font-size:clamp(11px,2.9vw,19px);line-height:1.2;white-space:normal;overflow-wrap:anywhere}
+.event #eventData .fund-list button > small{font-size:clamp(9px,2.35vw,13px);text-align:center}
+.event #eventData .fund-list button > span:last-child{display:none}

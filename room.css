@@ -102,3 +102,15 @@
 }
 .room-canvas .room-bill-due {background:#ffe9ac;border-color:#9e7f3c}
 .room-canvas .room-bill:focus-visible {outline:2px solid #285d41;outline-offset:2px}
+
+.room-canvas{container-type:inline-size}
+.room-status{position:absolute;top:11%;left:4%;width:92%;margin:0;display:grid;grid-template-columns:1.25fr repeat(4,minmax(0,1fr));gap:1.2cqw;color:#264632}
+.room-status div{min-width:0;display:grid;justify-items:center;align-content:center;padding:1cqw .5cqw;border:1px solid #bba068;border-radius:2.4cqw;background:#fff1cd;box-shadow:0 2px 1px #46331a55;text-align:center}
+.room-status div:nth-child(2){background:#fbe0cf}
+.room-status div:nth-child(3){background:#e1eaf0}
+.room-status div:nth-child(4){background:#e8edd1}
+.room-status div:nth-child(5){background:#fae7ad}
+.room-status dt{font-size:clamp(9px,2.65cqw,15px);font-weight:600;line-height:1.15}
+.room-status dt span{display:block;font-size:clamp(12px,4cqw,22px)}
+.room-status dd{max-width:100%;margin:.35cqw 0 0;font-size:var(--room-value-size,4cqw);line-height:1.15;font-weight:800;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.room-canvas .room-bill{top:calc(11% + max(48px,13cqw))}

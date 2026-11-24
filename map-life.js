@@ -246,7 +246,8 @@
     if (art.has(stage)) {
       const picture = document.createElement('img');
       picture.className = 'map-life-story-art';
-      picture.src = 'assets/map-life/' + stage + '.webp';
+      picture.src = 'assets/map-life/' + (stage === 'coffee' ? 'coffee-confirmed' : stage) + '.webp';
+      if (stage === 'coffee') story.classList.add('map-life-coffee');
       picture.alt = '';
       story.append(picture);
     }

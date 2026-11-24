@@ -113,3 +113,8 @@
  font:700 3.45cqw/1 WealthHand,"Finance Ink",serif;
  white-space:nowrap;
 }
+
+.event:has(.map-life-coffee){border:2px solid #b3894a;background:#fff4dc}
+.map-life-coffee .map-life-story-art{width:100%;max-width:none;border-radius:14px}
+.map-life-coffee .map-life-story-option{border-color:#b28b44;background:#f7d777;color:#233b28}
+.map-life-coffee .map-life-story-option+button{border-color:#8b995d;background:#e7ebcb}

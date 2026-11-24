@@ -22,7 +22,19 @@
    billButton.type='button';
    billButton.className='room-bill';
    billButton.dataset.room='bill';
-   box.querySelector('.room-date').after(billButton);
+   const stats=document.createElement('dl');
+   stats.className='room-status';
+   stats.setAttribute('aria-label','当前状态');
+   for(const [label,icon] of [['可用现金','🪙'],['幸福度','♥'],['压力','〰'],['自由时间','◷'],['能量','ϟ']]){
+    const cell=document.createElement('div'), term=document.createElement('dt');
+    const symbol=document.createElement('span');
+    symbol.setAttribute('aria-hidden','true');
+    symbol.textContent=icon;
+    term.append(symbol,label);
+    cell.append(term,document.createElement('dd'));
+    stats.append(cell);
+   }
+   box.querySelector('.room-date').after(stats,billButton);
    el('game').append(box);
   }
   const apartment=state.housing==='rent1',studio=state.housing==='studio',shared=state.housing==='shared',family=state.housing==='family';
@@ -37,6 +49,12 @@
   img.width=family?935:853;img.height=family?1683:1844;
   box.classList.toggle('room-default',!(apartment||studio||shared||family));
   el('roomHousingTitle').textContent=(family?'与家人同住':shared?'合租':studio?'Studio':apartment?'小公寓':'房屋')+' · 本月安排';
+  const values=[priceText(state.cash),state.happiness??0,state.stress??0,currentCareerTime().free+'小时',state.energy??0];
+  box.querySelectorAll('.room-status dd').forEach((entry,index)=>{
+   const value=String(values[index]);
+   entry.textContent=value;
+   entry.style.setProperty('--room-value-size',Math.min(4,30/Math.max(1,value.length))+'cqw');
+  });
   const bill=livingBillQuote();
   const billButton=box.querySelector('.room-bill');
   const expense=family?'家用':state.housing==='own'?'房贷':'房租';

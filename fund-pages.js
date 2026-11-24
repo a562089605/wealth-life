@@ -21,7 +21,11 @@
    list.classList.add('fund-list');
    items().forEach((item,index)=>{
     const row=list.children[index];
-    row.prepend(icon(item));
+    const illustration=document.createElement('img');
+    illustration.className='fund-chooser-image';
+    illustration.alt='';
+    illustration.src='assets/finance/fund-approved/chooser-'+item.id+'.webp';
+    row.prepend(illustration);
     row.onclick=event=>{
      event.stopPropagation();
      openInstrument(item.id,reopen);
