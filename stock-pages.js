@@ -3,6 +3,13 @@
  const unit=item=>item.kind==='基金'?'份':'股';
  const formatShares=(item,shares)=>shares.toLocaleString('en-US',{maximumFractionDigits:6})+' '+unit(item);
  const iconPositions=['42.8%','51.5%','59.9%','68.7%','77.4%'];
+ const buyArtwork={
+  nova:'窗边书桌上，复古电脑的屏幕亮着芯片图案',
+  harbor:'社区杂货铺的果篮、牛奶和购物袋',
+  blue:'山坡上的风力涡轮和太阳能板',
+  orbit:'小镇配送车、包裹和路线图',
+  care:'诊所窗边的急救箱和听诊器'
+ };
  const openingSamples={
   nova:[91,94,92,97,103,96,93,98,104,102,98],
   harbor:[94,95,93,94,97,98,96,99,101,100,99],
@@ -172,9 +179,10 @@
    ['卖出后持有',sharesText(0)],['卖出后现金',priceText(roundCash(state.cash+proceeds))]);
   if(mode==='buy')rows.push(['较上月',signedPercent(price/quote.previous-1)],
    ['持仓市值',priceText(p.value)],['持仓成本',priceText(p.cost)],['浮动盈亏',priceText(p.profit)]);
+  const artwork=mode==='buy'?buyArtwork[item.id]:null;
   const confirm=all?'确认全部卖出':selling?'确认减仓':adding?'确认增仓':'确认买入';
   let input,estimate,done=false;
-  const data=page(title,all?'成交后，这只'+item.kind+'的持仓将清空。':selling?'按买入顺序扣减持仓。':item.id==='nova'&&mode==='buy'?'':item.desc,rows,[[confirm,()=>{
+  const data=page(title,all?'成交后，这只'+item.kind+'的持仓将清空。':selling?'按买入顺序扣减持仓。':artwork?'':item.desc,rows,[[confirm,()=>{
    if(done||state!==owner)return;
    const current=position(item);
    if(state.month!==month||quoteFor(item.id).price!==price||current.shares!==p.shares||
@@ -208,23 +216,22 @@
   },true,!all],[mode==='buy'?'返回股票品种':'返回持仓',back,false],
    ...(mode==='buy'?[['取消',finish,false]]:[])],back,item,true,item.kind,mode==='sell'?'reduce':mode);
   if(!data||all)return;
-  const novaBuy=item.id==='nova'&&mode==='buy';
-  if(novaBuy){
+  if(artwork){
    const header=data.querySelector('.stock-header');
    const art=document.createElement('img');
-   art.className='nova-buy-art';
-   art.src='assets/finance/nova-buy-crayon.webp';
-   art.alt='窗边书桌上，复古电脑的屏幕亮着芯片图案';
+   art.className='stock-buy-art';
+   art.src='assets/finance/'+item.id+'-buy-crayon.webp';
+   art.alt=artwork;
    art.width=820;
    art.height=244;
    header.querySelector('.stock-icon').replaceWith(art);
 
    const [priceRow, , , changeRow]=data.querySelectorAll(':scope > .stat');
    const priceBand=document.createElement('div');
-   priceBand.className='nova-buy-price';
+   priceBand.className='stock-buy-price';
    priceBand.append(priceRow,changeRow);
    header.querySelector('.stock-chart').before(priceBand);
-   header.classList.add('nova-buy-header');
+   header.classList.add('stock-buy-header');
   }
   const form=document.createElement('div');
   form.className='stock-form';
@@ -258,7 +265,7 @@
     return;
    }
    const {amount,shares,cost}=result;
-   if(novaBuy){
+   if(artwork){
     estimate.replaceChildren(
      '预计买入 '+sharesText(shares)+' · 买入后持有 '+sharesText(p.shares+shares),
      document.createElement('br'),
