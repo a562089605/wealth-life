@@ -52,6 +52,7 @@
   const art = new Set([...mainCards,'photo','selected','email','oldFriend','reader','today','noSlot','booking','volunteer']);
   // Button bounds in the approved 1024 × 1536 artwork.
   const fullCards = {
+    books: {file:'books-crayon-card.webp', bounds:[[59,895,900,177],[59,1088,900,181],[59,1287,900,181]]},
     late: {file:'late-card.png', bounds:[[32,1072,960,190],[32,1285,960,190]]},
     phone: {file:'phone-card.webp', bounds:[[26,969,972,163],[26,1151,972,162],[26,1332,972,150]]},
     photo: {file:'photo-card.webp', bounds:[[26,975,970,161],[26,1153,970,158],[26,1332,970,148]]},
@@ -198,18 +199,24 @@
   function loadFullCard(stage, entry, options) {
     const {file, bounds} = fullCards[stage];
     const data = $('eventData');
-    const actions = $('actions');
-    const buttons = [...actions.querySelectorAll('button')].slice(0, bounds.length);
+    const list = data.querySelector('.map-life-story-options');
+    const buttons = list ? [...list.children].slice(0, bounds.length) : [];
     if (buttons.length !== bounds.length) return;
     const picture = document.createElement('img');
     picture.alt = entry.title + '。' + entry.body;
     picture.width = 1024;
     picture.height = 1536;
     picture.onload = () => {
-      if (buttons.some(button => button.parentElement !== actions)) return;
+      if (!list.isConnected || buttons.some(button => button.parentElement !== list)) return;
       const frame = document.createElement('div');
       frame.className = 'map-life-full-card';
       frame.append(picture);
+      if (stage === 'books' && state.month !== 0) {
+        const date = document.createElement('span');
+        date.className = 'map-life-books-date';
+        date.textContent = $('eventMonth').textContent;
+        frame.append(date);
+      }
       bounds.forEach(([left, top, width, height], index) => {
         const button = buttons[index];
         const {q, effects} = options[index];
@@ -227,6 +234,40 @@
       data.style.display = 'block';
     };
     picture.src = 'assets/map-life/' + file;
+  }
+
+  function renderStoryChoices(stage, options) {
+    const data = $('eventData');
+    const actions = $('actions');
+    const buttons = [...actions.querySelectorAll('button')].slice(0, options.length);
+    if (buttons.length !== options.length) return;
+    const story = document.createElement('div');
+    story.className = 'map-life-story';
+    if (art.has(stage)) {
+      const picture = document.createElement('img');
+      picture.className = 'map-life-story-art';
+      picture.src = 'assets/map-life/' + stage + '.webp';
+      picture.alt = '';
+      story.append(picture);
+    }
+    const list = document.createElement('div');
+    list.className = 'map-life-story-options';
+    buttons.forEach((button, index) => {
+      const {q, effects} = options[index];
+      const name = document.createElement('strong');
+      name.textContent = q.label;
+      button.className = 'map-life-story-option';
+      button.replaceChildren(name);
+      if (effects.length) {
+        const detail = document.createElement('span');
+        detail.textContent = effects.join(' · ');
+        button.append(detail);
+      }
+      list.append(button);
+    });
+    story.append(list);
+    data.replaceChildren(story);
+    data.style.display = 'block';
   }
 
   function openCard(move) {
@@ -253,17 +294,10 @@
       const need = Math.min(...options.filter(({amount}) => amount < 0 && state.cash < -amount).map(({amount}) => -amount));
       actions.push(['查看资金处理', () => showFundingOptions(need, () => { if (movement() === move && !move.resolved) openCard(move); }), false]);
     }
-    const boxes = options.filter(({effects}) => effects.length).map(({q,effects}) => [q.label, effects.join(' · ')]);
-    showEvent('生活事件', entry.title, entry.body, boxes, actions);
-    if (fullCards[stage]) loadFullCard(stage, entry, options);
-    else if (art.has(stage)) {
-      const picture = document.createElement('img');
-      picture.src = 'assets/map-life/' + stage + '.webp';
-      picture.alt = '';
-      picture.style.cssText = 'display:block;width:100%;max-width:30rem;margin:0 auto 12px;border-radius:12px';
-      $('eventData').prepend(picture);
-      $('eventData').style.display = 'block';
-    }
+    showEvent('生活事件', entry.title, entry.body, [], actions);
+    if ($('eventTitle').textContent !== entry.title) return;
+    renderStoryChoices(stage, options);
+    if (fullCards[stage]?.bounds.length === options.length) loadFullCard(stage, entry, options);
     $('eventClose').hidden = true;
   }
 

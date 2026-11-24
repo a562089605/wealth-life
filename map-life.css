@@ -41,3 +41,75 @@
   opacity: 1;
   background: #4c3e3766 !important;
 }
+
+#game > .event.event-active:has(.map-life-story,.map-life-full-card) {
+ top:50% !important;
+ left:50% !important;
+ right:auto !important;
+ transform:translate(-50%,-50%);
+ width:min(440px,calc(100% - 24px));
+ padding:12px 14px !important;
+ border:1px solid #c6aa73 !important;
+ background:#fff2d7 url("./assets/finance/paper.webp") center !important;
+ color:#314724;
+ box-shadow:0 12px 32px #32251950;
+}
+#game > .event:has(.map-life-story,.map-life-full-card) > #eventData {
+ margin:0;
+ padding:0 2px 4px;
+}
+#game > .event:has(.map-life-story,.map-life-full-card) > #actions:empty,
+#game > .event:has(.map-life-full-card) > .row { display:none; }
+#game > .event:has(.map-life-story) #eventTitle {
+ margin:4px 0 5px;
+ color:inherit;
+ font:clamp(23px,7vw,33px)/1.16 WealthHand,"Finance Ink",serif;
+}
+#game > .event:has(.map-life-story) #eventDesc { margin:0 0 6px; font-size:14px; line-height:1.45; }
+.event:has(.map-life-story) #eventType { background:#e3e8c7; color:#344725; }
+.map-life-story-art {
+ display:block;
+ width:100%;
+ max-height:clamp(84px,23dvh,172px);
+ object-fit:contain;
+ margin:0 auto 6px;
+ border-radius:12px;
+ mix-blend-mode:multiply;
+ mask-image:radial-gradient(ellipse 77% 84%,#000 60%,transparent 98%);
+}
+.map-life-story-options { display:grid; gap:6px; }
+#game > .event .map-life-story-option {
+ display:grid;
+ gap:2px;
+ width:100%;
+ min-height:48px;
+ margin:0;
+ padding:6px 10px;
+ border:1px solid #bbc18a75;
+ border-radius:13px 17px 14px 15px;
+ background:#e9edc8;
+ color:#314724;
+ text-align:left;
+ white-space:normal;
+}
+#game > .event .map-life-story-option:nth-child(3n+2) { background:#f5e6c5; }
+#game > .event .map-life-story-option:nth-child(3n+3) { background:#f7e2a9; }
+.map-life-story-option strong { font:20px/1.1 WealthHand,"Finance Ink",serif; }
+.map-life-story-option span { font-size:13px; line-height:1.3; }
+.map-life-story-option:focus-visible { outline:3px solid #45603c; outline-offset:-3px; }
+.map-life-full-card {container-type:inline-size}
+.map-life-books-date {
+ position:absolute;
+ top:5.7%;
+ left:63.5%;
+ width:25%;
+ height:3.5%;
+ display:grid;
+ place-items:center;
+ border-radius:9px;
+ background:#fff0cf;
+ box-shadow:0 0 5px 3px #fff0cf;
+ color:#364725;
+ font:700 3.45cqw/1 WealthHand,"Finance Ink",serif;
+ white-space:nowrap;
+}
