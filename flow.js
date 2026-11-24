@@ -34,7 +34,33 @@ function housingMarkup(){const homes=housingChoices();return (state.paymentUpgra
 function openHousing(){showEvent('住房','选择住房','',[],[['返回',finish,false]]);$('eventData').innerHTML=housingMarkup();$('eventData').style.display='block'}
 $('housingBtn').onclick=openHousing;
 function livingMarkup(){const due=roundCash(Math.max(0,livingTotal()-(paymentReceipt().living||0)));return '<div class="wl-panel wl-cost"><h3>本月基本生活成本</h3><b class="wl-big-money">'+money(due)+'</b><p>基础生活 '+money(livingBaseAmount(state))+'<br>宠物照顾 '+money(petMonthly())+' · 车辆燃油/维护 '+money(state.carRunningCost||0)+'</p><small>本月住房已付 '+money(paymentReceipt().housing||0)+'。保险在保险步骤确认；贷款月供请在财富步骤的还款卡确认。</small><button data-v26="living" class="primary" '+(due>0&&state.cash<due?'disabled':'')+'>'+ (due?'确认支付 '+money(due):'本月已付，继续')+' →</button>'+(state.cash<due?'<button data-v26="livingFund">现金不足，查看贷款</button>':'')+'</div>'}
-function insuranceMarkup(preselect){const items=Object.entries(INSURANCE).filter(([type])=>type==='auto').map(([type,c])=>{const active=!!state.insurance[type]?.active,locked=type==='auto'&&!state.carOwned||type==='pet'&&!state.pets?.length;return '<label class="wl-insurance-row"><input type="checkbox" data-insurance="'+type+'" '+(active||type===preselect?'checked ':'')+(active||locked?'disabled':'')+'><span><b>'+c[0]+'</b><small>'+ (locked?(type==='auto'?'拥有车辆后可买':'拥有宠物后可买'):active?'已投保，持续有效':'可选')+'</small></span><b>'+money(c[1])+'/月</b></label>'}).join('');return '<div class="wl-panel wl-insurance"><h3>本月保险方案</h3><p>医疗险单独选择：基础险$200.00/月赔80%，全额险$400.00/月赔100%。旧保单按原合同。</p><button data-medical-insurance>查看／选择医疗险</button><button data-pet-insurance '+(!state.pets?.length?'disabled':'')+'>查看／选择宠物保险</button>'+items+'<button data-home-insurance>查看／选择房险</button><p>本次应付 <b data-insurance-total></b><br><small>确认后支付本月尚未付的保费；以后持续按月收费。已付保费不在月末再扣。跳过仅表示不新增保单。</small></p><button data-v26="insuranceConfirm" class="primary">确认保险方案</button><button data-v26="insuranceSkip">跳过，不新增保险</button><small data-insurance-warning></small></div>'}
+function insuranceMarkup(preselect){
+ const [name,monthly]=INSURANCE.auto;
+ const active=!!state.insurance.auto?.active,locked=!state.carOwned;
+ const art=kind=>'<span class="insurance-plan-art insurance-plan-art-'+kind+'" aria-hidden="true"></span>';
+ return `<div class="wl-panel wl-insurance insurance-plan-paper">
+  <h3>本月保险方案${art('shield')}</h3>
+  <button type="button" class="insurance-plan-choice" data-medical-insurance>
+   ${art('medical')}<span><strong>查看／选择医疗险</strong><small>基础险 $200.00/月 · 赔80%<br>全额险 $400.00/月 · 赔100%<br>旧保单按原合同</small></span>
+  </button>
+  <button type="button" class="insurance-plan-choice" data-pet-insurance ${!state.pets?.length?'disabled':''}>
+   ${art('pet')}<strong>查看／选择宠物保险</strong>
+  </button>
+  <label class="wl-insurance-row insurance-plan-choice">
+   <input type="checkbox" data-insurance="auto" ${active||preselect==='auto'?'checked':''} ${active||locked?'disabled':''}>
+   ${art('auto')}<span><strong>${name}</strong><small>${locked?'拥有车辆后可买':active?'已投保，持续有效':'可选'}</small></span>
+   <b class="insurance-plan-rate">${money(monthly)}/月</b>
+  </label>
+  <button type="button" class="insurance-plan-choice" data-home-insurance>
+   ${art('home')}<strong>查看／选择房险</strong>
+  </button>
+  <div class="insurance-plan-total"><span>本次应付</span><b data-insurance-total aria-live="polite"></b></div>
+  <p class="insurance-plan-note">确认后支付本月尚未付的保费。已付保费不会重复扣除。跳过仅表示不新增保单。</p>
+  <button type="button" data-v26="insuranceConfirm" class="primary">确认保险方案，并付款</button>
+  <button type="button" data-v26="insuranceSkip">跳过，不新增保险</button>
+  <small data-insurance-warning role="status"></small>
+ </div>`;
+}
 function insuranceDraftTotal(box){const selected=[...box.querySelectorAll('[data-insurance]:checked')].map(i=>i.dataset.insurance);const total=premiumsTotal()+selected.filter(k=>!state.insurance[k]?.active).reduce((n,k)=>n+INSURANCE[k][1],0);return{selected,due:roundCash(Math.max(0,total-(paymentReceipt().premiums||0)))}}
 function refreshInsurance(){document.querySelectorAll('.wl-insurance').forEach(box=>{const{due}=insuranceDraftTotal(box);box.querySelector('[data-insurance-total]').textContent=money(due);box.querySelector('[data-v26="insuranceConfirm"]').disabled=due>0&&due>state.cash;box.querySelector('[data-insurance-warning]').textContent=due>state.cash?'现金不足：可减少新增保单，已有保单保费仍将于月末支付。':''})}
 function openInsurance(type){showEvent('保险','保险与保障','',[],[['返回',finish,false]]);$('eventData').innerHTML=insuranceMarkup(type);$('eventData').style.display='block';refreshInsurance()}
