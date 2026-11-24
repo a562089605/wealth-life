@@ -100,6 +100,7 @@
  function renderCard(move, card) {
   showEvent('职业事件', card.title, card.story, [], []);
   if ($('eventTitle').textContent !== card.title) return;
+  $('actions').replaceChildren();
   const box = $('eventData');
   const art = document.createElement('div');
   const image = document.createElement('img');
