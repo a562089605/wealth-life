@@ -149,3 +149,142 @@
 .personal-hobby-card .hobby-stats dd { font-size:clamp(14px,4vw,21px); }
 .personal-hobby-stat-icon { display:block; width:min(72px,90%); aspect-ratio:2; object-fit:contain; mix-blend-mode:multiply; }
 .personal-hobby-card .hobby-content button.hobby-primary:last-child { background-color:#ffcf55; }
+
+/* Career practice cards use the approved frame and artwork with live controls. */
+.approved-skill-card .hobby-paper {
+  width:min(100%, 490px);
+  display:block;
+  container-type:inline-size;
+  max-height:calc(100dvh - 20px);
+  overflow:auto;
+  overscroll-behavior:contain;
+  padding:9px 13px 14px;
+  border:0;
+  border-radius:24px;
+  background:#f9efd8 url("assets/finance/paper.webp");
+  color:#354026;
+  box-shadow:0 16px 48px #3c2c2b4a;
+  position:relative;
+}
+.approved-skill-card .hobby-paper::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  border:24px solid transparent;
+  border-image:url("assets/approved-skills/frame.webp") 27 / 24px round;
+  pointer-events:none;
+}
+.approved-skill-card .hobby-paper > header {
+  position:relative;
+  display:grid;
+  justify-items:center;
+  gap:2px;
+  margin:0 0 6px;
+}
+.approved-skill-card header button {
+  font:18px/1.2 WealthHand,serif;
+  border:0;
+  border-radius:999px;
+  background:#5b652e url("assets/finance/paper.webp");
+  background-blend-mode:multiply;
+  color:#fff9e2;
+  min-height:32px;
+  padding:4px 14px;
+}
+.approved-skill-card h1 {
+  display:flex;
+  align-items:center;
+  gap:5px;
+  text-align:center;
+  color:#374826;
+  font-size:clamp(26px, 9cqw, 43px);
+  line-height:1.12;
+  margin:0;
+}
+.approved-skill-card h1::before,.approved-skill-card h1::after,
+.approved-skill-card .hobby-primary::before,.approved-skill-card .hobby-primary::after {
+  content:"";
+  display:block;
+  flex:0 0 clamp(28px, 13cqw, 60px);
+  aspect-ratio:1.53;
+  background:url("assets/approved-skills/leaf.webp") center/contain no-repeat;
+  mix-blend-mode:multiply;
+}
+.approved-skill-card h1::after,.approved-skill-card .hobby-primary::after {transform:scaleX(-1)}
+.approved-skill-card .hobby-scene {
+  position:relative;
+  aspect-ratio:3;
+  border:0;
+  border-radius:15px;
+  overflow:hidden;
+}
+.approved-skill-card .hobby-scene img {width:100%;height:100%;object-fit:cover}
+.approved-skill-card .hobby-content {position:relative;display:grid;gap:6px;padding:6px 0 0;overflow:visible;max-height:none}
+.approved-skill-progress,.approved-skill-stats>div,.approved-skill-note {
+  border:1.5px solid #92802f;
+  background:#fff5df66;
+  border-radius:12px;
+}
+.approved-skill-progress {
+  padding:5px clamp(16px,12cqw,55px) 8px;
+  background-image:url("assets/approved-skills/leaf.webp"),url("assets/approved-skills/leaf.webp");
+  background-position:left 3px center,right 3px center;
+  background-size:clamp(18px,9cqw,40px) auto;
+  background-repeat:no-repeat;
+  background-blend-mode:multiply;
+}
+.approved-skill-caption {display:flex;align-items:center;gap:12px;font-size:clamp(13px,4.5cqw,20px);font-weight:750}
+.approved-skill-caption strong,.approved-skill-stats dd {
+  color:#613916;
+  background:#f7ce94 url("assets/finance/paper.webp");
+  background-blend-mode:multiply;
+  border-radius:999px;
+  padding:0 10px;
+}
+.approved-skill-progress progress {
+  display:block;
+  appearance:none;
+  width:100%;
+  height:10px;
+  margin-top:4px;
+  border:1.5px solid #948347;
+  border-radius:999px;
+  overflow:hidden;
+  background:#f6e8c8;
+  accent-color:#72763a;
+}
+.approved-skill-progress progress::-webkit-progress-bar {background:#f6e8c8}
+.approved-skill-progress progress::-webkit-progress-value {background:#77783f}
+.approved-skill-progress progress::-moz-progress-bar {background:#77783f}
+.approved-skill-stats {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin:0}
+.approved-skill-stats>div {display:grid;justify-items:center;padding:3px 4px 4px}
+.approved-skill-stats dt {font:clamp(16px,5.2cqw,23px)/1.1 WealthHand,serif}
+.approved-skill-stats img {display:block;width:clamp(58px,22cqw,105px);aspect-ratio:2.3;object-fit:contain;mix-blend-mode:multiply}
+.approved-skill-stats dd {min-width:62%;margin:0;text-align:center;font-weight:750;font-size:clamp(14px,4.7cqw,21px)}
+.approved-skill-note,.approved-skill-status {margin:0;padding:5px;text-align:center;font-size:clamp(11px,3.5cqw,15px);overflow-wrap:anywhere}
+.approved-skill-status:empty {display:none}
+.approved-skill-card .hobby-content .hobby-primary {
+  justify-self:center;
+  width:max-content;
+  margin-top:1px;
+  padding:5px 23px;
+  min-height:42px;
+  border:2px solid #9c621f;
+  border-radius:999px;
+  box-shadow:inset 0 0 0 2px #ffe39c;
+  background:#df931f url("assets/finance/paper.webp");
+  background-blend-mode:multiply;
+  color:#fffaf0;
+  font:24px/1.2 WealthHand,serif;
+  position:relative;
+}
+.approved-skill-card .hobby-primary::before,.approved-skill-card .hobby-primary::after {
+  position:absolute;
+  width:clamp(26px,12cqw,54px);
+  right:calc(100% + 5px);
+  top:50%;
+  translate:0 -50%;
+}
+.approved-skill-card .hobby-primary::after {right:auto;left:calc(100% + 5px)}
+.hobby-overlay.approved-skill-card {display:flex;align-items:center;padding:10px;background:#2c261d66}
+.approved-skill-card .hobby-paper {min-height:0;margin:auto}

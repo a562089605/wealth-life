@@ -22,15 +22,69 @@
   if(!skills){const old=[...new Set([...Object.keys(state.hobbies||{}),...Object.keys(state.hobbyXP||{})])];if(old.length){const history=node('details',null,'hobby-legacy');history.append(node('summary','原有兴趣记录'));for(const name of old)history.append(node('p',name+(Number.isFinite(state.hobbies?.[name])?' · Lv.'+state.hobbies[name]:'')+(Number.isFinite(state.hobbyXP?.[name])?' · '+state.hobbyXP[name]+' XP':' · 经验未记录')));ctx.content.append(history);}}
   ctx.button(skills?'返回房屋':'饮品制作专项',skills?room:()=>menu('specialist'));if(!skills)ctx.button('返回房屋',room);
  }
- function detail(id,notice='',returnToCareer=null){if(!state||!H.activities[id])return;const a=H.activities[id],back=returnToCareer||(()=>menu(a.kind)),art=a.kind==='hobby'?'assets/hobby-review/'+id+'.webp':a.practiceArt||(id==='latte'?'assets/career-crayon/cafe.webp':'assets/practice-crayon/'+id+'.webp'),ctx=panel(a.name,art,back),n=H.xp(state,id),lv=H.level(n),expected=H.token(state,id),q=H.quote(state,id,options());
+ function skill({id,title,back,backLabel,level,xp,max,progressText,stats=[],note,notice='',action,disabled=false,confirm}){
+  const ctx=panel(title,'assets/approved-skills/'+id+'.webp',back);
+  const {content}=ctx,section=content.closest('.hobby-overlay');
+  section.classList.add('approved-skill-card');
+  const header=content.querySelector('header');
+  header.querySelector('button').textContent='← '+backLabel;
+  header.append(content.querySelector('h1'));
+  content.parentElement.prepend(header);
+
+  const progress=node('div',null,'approved-skill-progress');
+  const caption=node('div',null,'approved-skill-caption');
+  caption.append(node('strong','Lv.'+level),node('span',progressText||xp+' / '+max+' XP'));
+  const track=node('progress');
+  track.max=max;track.value=xp;track.setAttribute('aria-label',title+'经验');
+  progress.append(caption,track);content.append(progress);
+  if(stats.length){
+   const grid=node('dl',null,'approved-skill-stats');
+   stats.forEach(([label,value],index)=>{
+    const cell=node('div'),icon=node('img');
+    icon.src='assets/approved-skills/'+['cost','time','energy','xp'][index]+'.webp';icon.alt='';
+    cell.append(node('dt',label),icon,node('dd',value));grid.append(cell);
+   });
+   content.append(grid);
+  }
+  if(note)content.append(node('p',note,'approved-skill-note'));
+  const status=node('p',notice,'approved-skill-status');
+  status.setAttribute('role','status');content.append(status);
+  if(action)ctx.button(action,b=>{
+   b.disabled=true;
+   const error=confirm();
+   if(error){status.textContent=error;b.disabled=false;}
+  },true,disabled);
+  content.tabIndex=0;
+  content.setAttribute('aria-label',title+'，可上下滑动');
+  return ctx;
+ }
+ function detail(id,notice='',returnToCareer=null){
+  if(!state||!H.activities[id])return;
+  const a=H.activities[id],back=returnToCareer||(()=>menu(a.kind));
+  const n=H.xp(state,id),lv=H.level(n),expected=H.token(state,id),q=H.quote(state,id,options());
+  const resourcesText='现金 '+money(state.cash)+' · 自由时间 '+currentCareerTime().free+'小时 · 能量 '+Math.round(state.energy);
+  const stats=[['费用',money(a.cost)],['自由时间','−'+a.hours+'小时'],['能量','−'+a.energy],[a.name==='咖啡品鉴'?'品鉴经验':a.name==='手冲咖啡'?'手冲经验':a.name+'经验',n>=800?'已满级':'+'+Math.min(a.xp,800-n)+' XP']];
+  if(id==='latte'||id==='pourOver'){
+   const start=H.thresholds[lv],end=H.thresholds[lv+1];
+   return skill({id,title:a.name,back,backLabel:returnToCareer?'返回我的职业':'返回职业技能',
+    level:lv,xp:n>=800?1:n-start,max:n>=800?1:end-start,progressText:n>=800?'已满级':'',
+    stats,note:resourcesText,notice:notice||(!q.ok&&q.reason!=='max'?blockedText[q.reason]:''),
+    action:n>=800?'已满级':a.action,disabled:!q.ok,confirm(){
+     const result=H.confirm(state,id,expected,options());
+     if(!result.ok)return blockedText[result.reason]||'本次未完成';
+     render();detail(id,'本次练习已保存。',returnToCareer);
+    }});
+  }
+  const art=a.kind==='hobby'?'assets/hobby-review/'+id+'.webp':a.practiceArt||'assets/practice-crayon/'+id+'.webp';
+  const ctx=panel(a.name,art,back);
   ctx.content.closest('.hobby-overlay').classList.add('hobby-latte-card','hobby-crayon-card');
   if(a.kind==='hobby')ctx.content.closest('.hobby-overlay').classList.add('personal-hobby-card');
   const progress=node('div',null,'hobby-level');progress.append(node('strong','Lv.'+lv+(n>=800?' · 已满级':'')));
   if(n<800){const start=H.thresholds[lv],end=H.thresholds[lv+1],bar=node('progress');bar.max=end-start;bar.value=n-start;bar.setAttribute('aria-label','当前等级经验');progress.append(bar,node('span',(n-start)+' / '+(end-start)+' XP'));}ctx.content.append(progress);
-  const grid=node('dl',null,'hobby-stats'),stats=[['费用',money(a.cost)],['自由时间','−'+a.hours+'小时'],['能量','−'+a.energy],[a.name==='咖啡品鉴'?'品鉴经验':a.name==='手冲咖啡'?'手冲经验':a.name+'经验',n>=800?'已满级':'+'+Math.min(a.xp,800-n)+' XP']];
+  const grid=node('dl',null,'hobby-stats');
   if(a.kind==='hobby')stats.push(['幸福度','+4'],['压力','−4']);
   for(const [label,value]of stats){const box=node('div');box.append(node('dt',label),node('dd',value));grid.append(box);}ctx.content.append(grid);
-  const resources=node('p','现金 '+money(state.cash)+' · 自由时间 '+currentCareerTime().free+'小时 · 能量 '+Math.round(state.energy),'hobby-resources');ctx.content.append(resources);
+  const resources=node('p',resourcesText,'hobby-resources');ctx.content.append(resources);
   const status=node('p',notice||(!q.ok&&q.reason!=='max'?blockedText[q.reason]:''),'hobby-message');status.setAttribute('role','status');ctx.content.append(status);
   ctx.button(n>=800?'已满级':a.action,b=>{b.disabled=true;const r=H.confirm(state,id,expected,options());if(!r.ok){status.textContent=blockedText[r.reason]||'本次未完成';b.disabled=false;return;}render();detail(id,'本次练习已保存。',returnToCareer);},true,!q.ok);
   if(a.kind!=='hobby'||returnToCareer)ctx.button(returnToCareer?'返回我的职业':a.kind==='hobby'?'返回兴趣爱好':'返回职业技能',back);
@@ -57,6 +111,6 @@
  const originalCourses=openCoffeeCourses;openCoffeeCourses=function(){originalCourses();if(!state)return;const owner=state,chosen=slot,month=state.month,box=node('section',null,'wl-panel');box.append(node('h3','饮品制作专项'));const b=node('button','拉花与手冲咖啡');b.type='button';b.onclick=()=>{if(state===owner&&slot===chosen&&state.month===month&&box.isConnected)menu('specialist');};box.append(b);$('eventData').append(box);};
  // New annual selections use the same activity quote; preserve existing old plans.
  const prepareBefore=prepareAnnualMonth;prepareAnnualMonth=function(){if(!state||state.annualPlan?.hobbyVersion!==1)return prepareBefore();const before=JSON.parse(JSON.stringify(state));try{return prepareBefore();}catch(e){for(const k of Object.keys(state))delete state[k];Object.assign(state,before);throw e;}};
- window.HobbyPages={open:menu,detail,close};
+ window.HobbyPages={open:menu,detail,skill,close};
 })();
 

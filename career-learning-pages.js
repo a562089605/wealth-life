@@ -110,13 +110,20 @@
   p.button(origin==='career'?'返回我的职业':'返回学习',back).classList.add('career-back');
   heading.querySelector('button').focus({preventScroll:true});
  }
- function management(notice='',back=skills){if(typeof notice!=='string')notice='';coffeeCareerData();const p=panel('管理基础课程','management',back),opts=()=>({free:currentCareerTime().free,reserve:necessaryPetCareHours(),recovery:isRecoveryMonth(state),save}),expected=R.courseToken(state),miss=R.courseMissing(state,opts()),xp=Math.max(0,state.coffee.skills.management.xp||0);
-  p.content.append(node('p','学习沟通协调、任务安排与团队管理。','career-skill-intro'));
-  const level=p.box('管理技能 Lv.'+R.skillLevel(state,'management'));level.classList.add('career-management-level');const bar=node('progress');bar.max=400;bar.value=xp;bar.setAttribute('aria-label','管理技能累计经验');level.append(bar,node('p',xp+' / 400 XP'));
-  const stats=p.box('本次学习');p.row(stats,'课程费用',money(120));p.row(stats,'自由时间','−3小时');p.row(stats,'能量','−1');p.row(stats,'管理经验',R.skillLevel(state,'management')>=5?'已满级':'+'+Math.min(10,400-xp)+'XP');
-  p.content.append(node('p','本月已学习 '+R.courseRows(state).length+'次','career-note'),p.message);p.message.textContent=notice||miss.join('；');
-  p.button(R.skillLevel(state,'management')>=5?'已满级':'确认学习',b=>{b.disabled=true;const r=R.course(state,expected,opts());if(!r.ok){p.message.textContent=r.reason;b.disabled=false;return;}render();management('本次课程已保存。',back);},{primary:true,disabled:!!miss.length});p.button(back===career?'返回我的职业':'返回职业技能',back).classList.add('career-back');
-  p.section.classList.add('career-management-card');stats.classList.add('career-management-stats');[...stats.querySelectorAll('.career-row')].forEach((row,i)=>{const icon=node('span',null,'career-course-icon');icon.innerHTML=coffeeIcon(['money','clock','energy','management'][i]);row.prepend(icon);});compactCareer(p);const badge=node('span','课程档案','career-course-badge');p.section.querySelector('.career-fixed-heading header').append(badge);
+ function management(notice='',back=skills){
+  coffeeCareerData();
+  const opts=()=>({free:currentCareerTime().free,reserve:necessaryPetCareHours(),recovery:isRecoveryMonth(state),save});
+  const expected=R.courseToken(state),missing=R.courseMissing(state,opts());
+  const xp=Math.max(0,state.coffee.skills.management.xp||0),level=R.skillLevel(state,'management');
+  return HobbyPages.skill({id:'management',title:'管理基础课程',back,backLabel:back===career?'返回我的职业':'返回职业技能',
+   xp,max:400,level,stats:[['课程费用',money(120)],['自由时间','−3小时'],['能量','−1'],
+   ['管理经验',level>=5?'已满级':'+'+Math.min(10,400-xp)+' XP']],
+   note:'本月已学习 '+R.courseRows(state).length+' 次',notice:(typeof notice==='string'&&notice)||missing.join('；'),
+   action:level>=5?'已满级':'确认学习',disabled:!!missing.length,confirm(){
+    const result=R.course(state,expected,opts());
+    if(!result.ok)return result.reason;
+    render();management('本次课程已保存。',back);
+   }});
  }
  function career(){if(SchoolCareer.role(state.job)){if(showReadySchoolPromotion(schoolWork))return;return schoolWork();}coffeeCareerData();const k=R.role(state.job),p=panel('我的职业','career',room,state.month,true),work=p.box('工作'),x=coffeeMonthlyIncome();work.classList.add('career-job-summary');p.row(work,'岗位',state.job||'未就业');p.row(work,'工资',money(x?.baseWages??(state.job&&!state.retired&&!state.unemployedMonths?state.salary:0))+'/月');p.row(work,'时间',state.job&&!state.retired?(state.workHoursPerWeek||R.roles[k]?.weekly||40)+'小时/周':'—');p.row(work,'小费',money(x?.baseTips||0)+'/月');
   if(k==='manager'){
@@ -154,14 +161,9 @@
   compactCareer(p);
  }
  function serviceSkill(level,experience){
-  const p=panel('顾客服务','customer-service',career),progress=p.box('顾客服务 Lv.'+level);
-  p.section.classList.add('career-service-card');
-  const bar=node('progress');bar.max=level===5?400:level*100;
-  bar.value=Math.floor(state.coffee.skills.service.xp);bar.setAttribute('aria-label','顾客服务经验');
-  progress.append(bar,node('p',experience,'career-service-xp'));
-  p.row(progress,'经验来源','日常工作');
-  p.button('返回我的职业',career).classList.add('career-back');
-  compactCareer(p);
+  return HobbyPages.skill({id:'service',title:'顾客服务',back:career,backLabel:'返回我的职业',
+   level,xp:Math.floor(state.coffee.skills.service.xp),max:level===5?400:level*100,
+   progressText:experience,note:'经验来源 · 日常工作'});
  }
  function schoolWork(){
   const S=SchoolCareer,working=S.working(state),p=panel('我的职业','school',room);
