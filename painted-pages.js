@@ -23,6 +23,26 @@
    +patch(free,'left:35.5%;top:52.9%;width:29%;height:4.4%','life-stat life-stat-time');
  }
  function housingName(){return ({family:'与家人同住',shared:'合租',studio:'Studio',rent1:'小公寓',own:'自住房'})[state.housing]||'尚未选择';}
+ const housingTitles={family:'与家人同住',shared:'合租',studio:'Studio',rent1:'小公寓'};
+ function housingArt(key){
+  const name=detailAssets[key]?.[0];
+  return name?'assets/pages/'+name+'-20261101.webp':window.roomArtworkForHousing(key);
+ }
+ function housingPanel(list){
+  const kind=state.housing, q=rentQuote=livingBillQuote();
+  const action=(id,label,cls='')=>'<button type="button" class="'+cls+'" data-painted="'+id+'">'+esc(label)+'</button>';
+  if(list){
+   const options=Object.entries(housingTitles).filter(([key])=>key!==kind);
+   return '<h1>更换住房</h1><div class="housing-alternatives">'+options.map(([key,name])=>
+    '<button type="button" data-painted="housing-'+key+'"><span class="housing-thumbnail" style="background-image:url('+housingArt(key)+')"></span><strong>'+esc(name)+'</strong><span aria-hidden="true">›</span></button>'
+   ).join('')+'</div>'+(window.OwnerHousing&&kind!=='own'?action('owner-home',state.pendingHomePurchase?'查看自住房入住预约':'查看自住房'):'')+action('current-home','返回当前住房');
+  }
+  const expense=kind==='family'?'家用':kind==='own'?'房贷':'房租';
+  return '<h1>当前住房</h1><h2>'+esc(housingName())+'</h2><div class="housing-hero" style="background-image:url('+housingArt(kind)+')"></div>'+
+   '<div class="housing-monthly"><span>本月'+expense+'</span><strong>'+esc(money(state.housingCost||0))+'</strong></div>'+
+   (q.housing>0?action('rent-pay','交本月'+expense+' · '+money(q.housing),'housing-primary'):'<p role="status" class="housing-paid">✓ 本月'+expense+'已支付</p>')+
+   action('housing-list','更换住房')+(kind==='own'&&window.OwnerHousing?action('owner-home','管理自住房'):'')+action('life','返回生活');
+ }
  function draw(){
   const active=!!page&&!!state&&!el('game').classList.contains('hidden');
   document.body.classList.toggle('painted-screen',active);
@@ -34,6 +54,11 @@
   if(roomArt)box.style.setProperty('--painted-room-art','url("'+roomArt+'")');
   else box.style.removeProperty('--painted-room-art');
   box.classList.toggle('painted-room-backdrop',!!roomArt);
+  if(page==='current' || (page==='housing' && livingBillQuote().selected)){
+   box.setAttribute('aria-label',page==='current'?'当前住房':'更换住房');
+   box.innerHTML='<div class="housing-flow">'+housingPanel(page==='housing')+'</div>';
+   return;
+  }
   const current=state.housing===detailKey;
   let html=image(page==='life'?'life-monthly-bill':page==='detail'?detailAssets[detailKey][current?1:0]:page);
   if(page==='rest'){
@@ -52,14 +77,9 @@
    html+=button('health','健康：治疗与康复','left:4%;top:23.5%;width:45%;height:11.5%')+button('rest','能量：安排休息','left:51%;top:23.5%;width:45%;height:11.5%')+button('activities','幸福度：生活活动','left:4%;top:35.5%;width:45%;height:12%')+button('rest','压力：放松减压','left:51%;top:35.5%;width:45%;height:12%');
    html+=button('current-home',q.selected?'查看当前住房详情':'选择住房','left:4%;top:64.3%;width:92%;height:7.6%')+button('room','返回房屋','left:35%;top:95%;width:30%;height:3.5%');
   }else if(page==='housing'){
-   if(housingName()!=='尚未选择'){
-    html+=patch('当前住房：'+housingName(),'','painted-caption housing-selection-current');
-    html+=button('current-home','查看当前住房详情','left:8%;top:19.4%;width:84%;height:6%');
-   }
    html+=button('life','返回生活','left:3%;top:2%;width:25%;height:3.6%');
    for(const [key,name,y] of [['family','与家人同住',26],['shared','合租',41.6],['studio','Studio',57.4],['rent1','小公寓',73.1]]){
     html+=patch(name,'top:'+(y+1.9)+'%','housing-option-title');
-    if(state.housing===key)html+=patch('✓ 当前住房 · 已入住','left:54%;top:'+(y+12)+'%;width:35%;height:2%','housing-current');
     html+=button('housing-'+key,'查看'+name+'详情','left:4%;top:'+y+'%;width:92%;height:14.1%');
    }
    html+='<div class="painted-preview-cover housing-rule-cover" aria-hidden="true"></div>';
@@ -123,17 +143,16 @@
  el('qLife').onclick=()=>openLifeOverview();
  const roomBefore=window.openRoom;window.openRoom=function(){close();return roomBefore();};townHome=window.openRoom;
  openExtraRest=function(){if(state.health<30||isRecoveryMonth(state))return openHealthTreatment();open('rest');};
- openHousing=function(){if(window.OwnerHousing?.saleDue())return OwnerHousing.show();if(housingHandoverDue())return openHousingHandover();open('housing');};el('housingBtn').onclick=openHousing;
+ openHousing=function(){if(window.OwnerHousing?.saleDue())return OwnerHousing.show();if(housingHandoverDue())return openHousingHandover();return livingBillQuote().selected?openCurrentHome():openHousingSelection();};el('housingBtn').onclick=openHousing;
  function openDetail(key){detailKey=key;if(!detailAssets[key])return openHousingSelection();open('detail');}
  function openCurrentHome(){
   if(window.OwnerHousing?.saleDue()||housingHandoverDue())return openHousing();
-  if(state.housing==='own'&&window.OwnerHousing)return OwnerHousing.show();
-  return openDetail(state.housing);
+  return livingBillQuote().selected?open('current'):openHousingSelection();
  }
  function confirmRent(){
   if(window.OwnerHousing?.saleDue()||housingHandoverDue())return openHousing();
   const q=rentQuote,key=detailKey;
-  if(!q||page!=='detail'||state.housing!==key)return;
+  if(!q||(page!=='current'&&(page!=='detail'||state.housing!==key)))return;
   const fresh=livingBillQuote();
   if(q.month!==fresh.month||q.token!==fresh.token)return draw();
   if(state.cash<q.housing)return showFundingOptions(q.housing,()=>openCurrentHome());
@@ -147,13 +166,13 @@
  }
  // Native handover retains its atomic ledger and refund logic; return to the new life bill afterward.
  const handoverBefore=confirmHousingHandover;confirmHousingHandover=function(){const r=handoverBefore();if(r===true)openLifeOverview();return r;};
- const actions={'owner-home':()=>window.OwnerHousing.show(),room:()=>openRoom(),life:()=>openLifeOverview(),rest:()=>openExtraRest(),housing:()=>openHousing(),living:()=>openTownLiving(),health:()=>openHealthTreatment(),activities:()=>el('lifestyleBtn').click(),
-  'cancel-move':()=>{cancelHousingMove();draw();},'life-confirm':confirmLife,'current-home':openCurrentHome,'rent-pay':confirmRent,'detail-confirm':()=>{const key=detailKey;if(confirmHousing(key)!==false){if(state.housing===key)openDetail(key);else openHousingSelection();}else draw();},
+ const actions={'owner-home':()=>window.OwnerHousing.show(),room:()=>openRoom(),life:()=>openLifeOverview(),rest:()=>openExtraRest(),housing:()=>openHousingSelection(),'housing-list':()=>openHousingSelection(),living:()=>openTownLiving(),health:()=>openHealthTreatment(),activities:()=>el('lifestyleBtn').click(),
+  'cancel-move':()=>{cancelHousingMove();draw();},'life-confirm':confirmLife,'current-home':openCurrentHome,'rent-pay':confirmRent,'detail-confirm':()=>{const key=detailKey;if(confirmHousing(key)!==false){if(state.housing===key)openCurrentHome();else openHousingSelection();}else draw();},
   'rest-confirm':()=>{const quote=restQuote;const result=confirmExtraRest(quote.cycle,quote.count);draw();return result;},
   funding:()=>{const h=housingChoices().find(x=>x[3]===detailKey);showFundingOptions(housingQuote(h).total,()=>openDetail(detailKey));}
  };
  document.addEventListener('click',e=>{const b=e.target.closest('[data-painted]');if(!b||b.disabled||!page||document.querySelector('.event-active')||!el('wlDrawer').hidden)return;
-  const action=b.dataset.painted;if(action.startsWith('housing-')){const key=action.slice(8);openDetail(key);return;}
+  const action=b.dataset.painted;if(action!=='housing-list'&&action.startsWith('housing-')){const key=action.slice(8);openDetail(key);return;}
   if(action==='rest-confirm'||action==='detail-confirm')b.disabled=true;
   actions[action]?.();
  });

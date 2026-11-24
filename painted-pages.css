@@ -210,3 +210,36 @@ body.painted-screen #game > #paintedView.painted-room-backdrop:not([hidden]) {
  left:49%;width:33%;font-size:3.1cqw;
 }
 .painted-canvas.life .life-payment-button:focus-visible {outline:2px solid #315f45;outline-offset:2px}
+
+.housing-flow {
+ box-sizing:border-box;width:min(calc(100% - 24px),440px);max-height:calc(100% - 24px);
+ overflow:auto;padding:16px;display:grid;gap:9px;
+ border:2px solid #738357;border-radius:24px;
+ background:#fff4d9 url("assets/finance/paper.webp") repeat;color:#21492f;
+}
+.housing-flow h1,.housing-flow h2 {margin:0;text-align:center;color:inherit}
+.housing-flow h1 {font:clamp(27px,8vw,37px)/1.2 WealthHand,serif}
+.housing-flow h2 {font-size:19px}
+.housing-flow .housing-hero,.housing-flow .housing-thumbnail {
+ background-size:115% auto;background-position:center 39%;background-repeat:no-repeat;
+ border-radius:14px;background-color:#eadbb8;
+}
+.housing-flow .housing-hero {aspect-ratio:1.8;border:1px solid #b4a36b}
+.housing-flow .housing-monthly {
+ display:flex;align-items:center;justify-content:space-between;
+ padding:9px 13px;border-radius:13px;background:#e7edcb;
+}
+.housing-flow button,.housing-flow .housing-paid {
+ min-height:44px;margin:0;padding:7px 12px;border:1px solid #7c8c5b;border-radius:999px;
+ background:#fff6df;color:#21492f;line-height:1.2;
+ font-family:inherit;font-size:16px;font-weight:700;text-align:center;
+}
+.housing-flow button {cursor:pointer}
+.housing-flow .housing-primary {background:#f8d478;border-color:#9c7632}
+.housing-flow .housing-paid {min-height:0;background:#dfe8c0}
+.housing-alternatives {display:grid;gap:8px}
+.housing-alternatives button {
+ display:grid;grid-template-columns:35% 1fr auto;gap:10px;align-items:center;
+ border-radius:15px;padding:5px 10px 5px 5px;text-align:left;
+}
+.housing-alternatives .housing-thumbnail {display:block;aspect-ratio:1.4}
