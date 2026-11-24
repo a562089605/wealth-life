@@ -69,7 +69,7 @@
   syncFinance();
   if(unpaidLoanRows().length)return openLoanPayments();
   const bill=livingBillQuote();
-  if(!bill.selected||bill.blocked||bill.housing>0)return window.openLifeOverview();
+  if(!bill.selected||bill.blocked||bill.total>0)return window.openLifeOverview();
   // A paused map event retains its identity and resumes instead of being re-rolled.
   if(townPending() && HomeInsurance.premiumBill().total>0)return HomeInsurance.openPremiumPayment(openRoom,()=>leaveRoom(allowOverdueClean));
   if(townPending()){state.roomLocation='town';save();visible=false;syncRoom();return showTown();}

@@ -187,3 +187,26 @@ body.painted-screen #game > #paintedView.painted-room-backdrop:not([hidden]) {
  outline:2px solid #315f45;
  outline-offset:2px;
 }
+
+.painted-canvas.life .life-payment-button,
+.painted-canvas.detail button.housing-payment-status {
+ position:absolute;z-index:4;display:flex;align-items:center;justify-content:center;
+ box-sizing:border-box;margin:0;padding:2px 4px;
+ border:1px solid #997338;border-radius:999px;
+ background:#f8d478;color:#23452d;
+ font-size:clamp(12px,4.1cqw,21px);font-weight:750;line-height:1.15;
+ box-shadow:inset 0 0 0 2px #ffe8ad;cursor:pointer;
+}
+.painted-canvas.life .life-payment-button {
+ left:16%;top:89%;width:68%;height:5.3%;
+}
+.painted-canvas.life .life-payment-button:disabled {
+ background:#dce8bd;color:#24492e;border-color:#85975c;box-shadow:none;cursor:default;
+}
+.painted-canvas.detail button.housing-payment-status.housing-payment-family {
+ left:20%;top:81.6%;width:60%;height:5%;background:#f8d478;
+}
+.painted-canvas.detail button.housing-payment-status.housing-payment-compact {
+ left:49%;width:33%;font-size:3.1cqw;
+}
+.painted-canvas.life .life-payment-button:focus-visible {outline:2px solid #315f45;outline-offset:2px}
