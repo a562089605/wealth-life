@@ -92,3 +92,16 @@
 .room-status dt span{display:block;font-size:clamp(12px,4cqw,22px)}
 .room-cash-icon{display:block;width:1em;height:1em;margin:.075em auto}
 .room-status dd{max-width:100%;margin:.35cqw 0 0;font-size:var(--room-value-size,4cqw);line-height:1.15;font-weight:800;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+
+#roomView.room-school-apartment .room-date{left:27%;top:4.1%;width:46%;height:5.7%;background:transparent;border-radius:0}
+#roomView.room-school-apartment .room-date strong{font-family:MaShanZheng,serif;font-size:5.1cqw}
+#roomView.room-school-apartment .room-date span{font-size:3.1cqw}
+#roomView.room-school-apartment .room-work{left:3.5%;top:36%;width:19.5%;height:4%}
+#roomView.room-school-apartment .room-study{left:26.5%;top:28.5%;width:21%;height:4%}
+#roomView.room-school-apartment .room-rest{left:57.5%;top:28.7%;width:19.5%;height:4%}
+#roomView.room-school-apartment .room-life{left:79.5%;top:27%;width:20.5%;height:4%}
+#roomView.room-school-apartment .room-relations{left:73.4%;top:58.2%;width:22%;height:4%}
+#roomView.room-school-apartment .room-finance{left:13%;top:75.1%;width:20%;height:4.2%}
+#roomView.room-school-apartment .room-pets{left:61.7%;top:84.8%;width:23%;height:4.1%}
+#roomView.room-school-apartment .room-menu{top:2.6%;right:3.5%;width:10%;height:4.2%;background:transparent;color:transparent;border:0}
+#roomView.room-school-apartment .room-leave{left:13%;top:93%;width:74%;height:6%}

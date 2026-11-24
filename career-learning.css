@@ -923,3 +923,186 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
  margin-top:9px;min-height:44px;border:1.5px solid #728351;border-radius:999px;background:#fff5da;
 }
 .career-skills-heading button:focus-visible {outline:2px solid #467d40;outline-offset:2px}
+
+.career-school .career-fixed-heading h1{font-size:clamp(15px,4.7vw,22px);text-align:center}
+.career-school .career-scene img{object-position:center 53%}
+.career-school .school-option-list{display:grid;gap:9px;margin:8px 0 12px}
+.career-school .school-option-list button{display:grid;grid-template-columns:36% minmax(0,1fr);align-items:center;gap:10px;width:100%;margin:0;padding:5px 9px 5px 5px;text-align:left;line-height:1.35;border:1px solid #bea46b;border-radius:13px;background:#f7edcc;color:#294637;white-space:normal}
+.career-school .school-option-list button.school-skill-option{background:#e9edcc}
+.career-school .school-option-list img{width:100%;aspect-ratio:1.55;object-fit:cover;border-radius:8px;display:block}
+
+.career-school .school-option-list strong,.career-school .school-option-list small{display:block}
+.career-school .school-option-list small{font-size:.73em;margin-top:4px}
+.career-school .school-option-list button:disabled{opacity:.66}
+.career-school.career-fixed .career-scene img[src$="/classroom.webp"]{width:100%;height:100%;left:0;top:0;object-fit:cover;transform:none}
+
+.school-work-page.career-fixed .career-scene img{width:100%;height:100%;left:0;top:0;object-fit:cover;transform:none}
+.school-work-skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;text-align:center}
+.school-work-skills div{min-width:0;padding:5px 1px;border:1px solid #c9bd89;border-radius:10px;background:#efedc8;font-size:clamp(11px,3.1vw,14px)}
+.school-work-skills img{display:block;width:100%;height:42px;object-fit:contain;mix-blend-mode:multiply}
+.school-work-skills strong{display:block;font-size:.86em}
+.school-work-skills .school-work-locked{background:#e9e2cf}
+.school-work-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.school-work-actions button{flex:1 1 auto}
+.school-work-page .school-work-actions button{flex:1 1 0;width:auto;min-width:0;padding-inline:4px;font-size:clamp(12px,3.6vw,16px)}
+
+.school-work-illustrated .career-paper{width:min(100%,440px);background:#fff6dd}
+.school-work-illustrated .career-content{padding:0 0 12px}
+.school-work-illustrated .career-content>.career-panel{margin:12px}
+.school-work-art{position:relative;container-type:inline-size}
+.school-work-art>img{display:block;width:100%;height:auto}
+.school-work-value{position:absolute;display:flex;align-items:center;justify-content:flex-end;height:3.4%;right:15.4%;width:25%;color:#234a34;font-size:3.8cqw;white-space:nowrap}
+.school-work-date{top:4.6%;right:5.8%;width:23%;font-size:3.35cqw}
+.school-work-job{top:41.65%}
+.school-work-salary{top:46.12%}
+.school-work-hours{top:50.48%}
+.school-work-free{top:54.95%}
+.school-work-instruction,.school-work-communication,.school-work-administration{top:76.78%;width:24%;height:2.85%;justify-content:center;font-size:2.85cqw}
+.school-work-instruction{right:66.9%}
+.school-work-communication{right:40.7%}
+.school-work-administration{right:12.4%;font-size:2.7cqw}
+.school-work-art .school-work-hit{position:absolute;min-height:0;padding:0;border:0;background:transparent;box-shadow:none}
+.school-work-hit:focus-visible{outline:2px solid #315f45;outline-offset:-3px}
+.school-work-hit:disabled{background:#f6e8bd99}
+.school-work-hit-back{left:5.4%;top:3.4%;width:19.7%;height:5.8%}
+.school-work-hit-skills{left:8.3%;top:81.3%;width:38.6%;height:6.6%}
+.school-work-hit-promotion{left:48.8%;top:81.3%;width:38.9%;height:6.6%}
+.school-work-hit-home{left:16.5%;top:91%;width:67%;height:6.7%}
+
+.school-scenario .career-scene {
+ aspect-ratio: 2.9;
+ height: auto;
+}
+.school-scenario.career-promotion-fixed .career-scene img {
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ transform: none;
+ object-fit: cover;
+}
+.school-scenario .school-scenario-label {
+ width: fit-content;
+ margin: .65rem auto .25rem;
+ padding: .25rem .85rem;
+ border: 1px solid #a68950;
+ border-radius: 999px;
+ background: #ebebce;
+ color: #294b34;
+ font-weight: 700;
+}
+.school-scenario .school-scenario-prompt {
+ line-height: 1.6;
+}
+.school-scenario-options {
+ display: grid;
+ gap: .65rem;
+ margin-block: 1rem;
+}
+.school-scenario .school-scenario-options button {
+ display: grid;
+ grid-template-columns: 2.4rem minmax(0, 1fr);
+ align-items: start;
+ gap: .65rem;
+ width: 100%;
+ margin: 0;
+ padding: .75rem;
+ border: 1px solid #a68950;
+ border-radius: 13px;
+ background: #fff6e3;
+ text-align: left;
+}
+.school-scenario .school-scenario-options button:focus-visible {
+ outline: 2px solid #365b40;
+ outline-offset: 2px;
+}
+.school-scenario-letter {
+ display: grid;
+ place-items: center;
+ padding: .35rem;
+ border-radius: .45rem;
+ background: #365b40;
+ color: #fff6e3;
+ font: bold 1.2rem Georgia, serif;
+}
+.school-scenario-choice {
+ display: grid;
+ gap: .3rem;
+ color: #284634;
+ line-height: 1.55;
+}
+.school-scenario-choice strong {
+ font-size: 1.05rem;
+}
+.school-scenario-choice > span {
+ font-size: .9rem;
+}
+
+.school-painted-improvement .career-paper {
+ width: min(95vw, 540px);
+}
+.school-painted-improvement .career-content {
+ padding: 0;
+}
+.school-improvement-art {
+ position: relative;
+ container-type: inline-size;
+}
+.school-improvement-art > img {
+ display: block;
+ width: 100%;
+ height: auto;
+}
+.school-improvement-art .school-improvement-hit {
+ position: absolute;
+ min-height: 0;
+ margin: 0;
+ padding: 0;
+ border: 0;
+ border-radius: 12px;
+ background: transparent;
+ box-shadow: none;
+}
+.school-improvement-art .school-improvement-hit:focus-visible {
+ outline: 2px solid #3d5b31;
+ outline-offset: 2px;
+}
+.school-improvement-year,
+.school-improvement-job {
+ position: absolute;
+ display: grid;
+ place-items: center;
+ border-radius: 18px;
+ background: #f5e7c4;
+ color: #294b34;
+ font: bold 4.2cqw 'Ma Shan Zheng', serif;
+}
+.school-improvement-year {
+ inset: 2.65% 4.2% auto 78%;
+ height: 4.25%;
+}
+.school-improvement-job {
+ inset: 28.6% 4.2% auto 66%;
+ height: 4.2%;
+}
+.school-painted-improvement .career-message:empty {
+ display: none;
+}
+
+.school-painted-value {
+ position: absolute;
+ display: grid;
+ place-items: center;
+ border-radius: .8em;
+ background: #f7e7b9;
+ color: #294b34;
+ font: bold 4.2cqw 'Ma Shan Zheng', serif;
+}
+.school-painted-step {
+ border: 1px solid #c4aa71;
+ color: #655d44;
+ font-size: 3.5cqw;
+}
+.school-painted-step-ready {
+ background: #f8d580;
+ color: #294b34;
+}

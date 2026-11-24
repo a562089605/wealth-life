@@ -35,13 +35,15 @@
    el('game').append(box);
   }
   const apartment=state.housing==='rent1',studio=state.housing==='studio',shared=state.housing==='shared',family=state.housing==='family';
+  const schoolApartment=apartment&&!!window.SchoolCareer?.role(state.job);
+  box.classList.toggle('room-school-apartment',schoolApartment);
   box.classList.toggle('room-apartment',apartment);
   box.classList.toggle('room-studio',studio);
   box.classList.toggle('room-shared',shared);
   box.classList.toggle('room-family',family);
   const img=box.querySelector('.room-canvas>img');
   // Use the approved corgi scene as the default art without selecting housing.
-  const src=window.roomArtworkForHousing(state.housing);
+  const src=schoolApartment?'assets/school-career/teacher-apartment.webp':window.roomArtworkForHousing(state.housing);
   if(img.getAttribute('src')!==src)img.setAttribute('src',src);
   img.width=family?935:853;img.height=family?1683:1844;
   box.classList.toggle('room-default',!(apartment||studio||shared||family));

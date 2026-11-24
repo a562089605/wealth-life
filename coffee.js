@@ -33,6 +33,11 @@ function ensureCoffeeMonth(){if(!coffeeWorking())return coffeeRecord();const c=c
 function careerTimeBudget(weeklyHours=40,workHoursDelta=0){return{weeklyHours,baseMonthlyWork:weeklyHours*4,monthlyWork:weeklyHours*4+workHoursDelta,baseFree:Math.max(0,260-weeklyHours*4),free:Math.max(0,260-weeklyHours*4-workHoursDelta),workHoursDelta}}
 function currentCareerTime(){
  if(!state?.job||state.retired||state.unemployedMonths)return careerTimeBudget(0);
+ if(['小学教师','资深小学教师','年级组长'].includes(state.job)){
+  const {month}=coffeeCalendar();
+  const weeklyHours=month===6||month===7?0:month===12?24:40;
+  return careerTimeBudget(weeklyHours);
+ }
  const c=CAREERS.find(c=>c.name===state.job);
  const weekly=coffeeWorking()?COFFEE_CONFIG.weeklyHours:(state.workHoursPerWeek??c?.weeklyHours??40);
  return careerTimeBudget(weekly,coffeeRecord()?.workHoursDelta||0);

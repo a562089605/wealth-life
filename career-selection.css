@@ -24,3 +24,34 @@ body:has(#careerSelection) main{max-width:460px!important;padding:12px!important
 @media(max-width:370px){#careerSelection{padding:18px 16px}.career-character{max-width:270px}#careerSelection h2{font-size:23px}}
 
 #newGame:has(#coffeeIntro)>:not(#wlJob){display:none!important}
+
+#careerSelection.teacher-overview{position:relative;min-height:0;padding:0;overflow:hidden}
+#wlJob .teacher-overview img{display:block;width:100%;height:auto}
+#wlJob #careerSelection.teacher-overview button{position:absolute;min-height:0;padding:0;margin:0;border:0;border-radius:10px;background:transparent;box-shadow:none}
+#wlJob .teacher-overview-back{left:1%;top:1%;width:26%;height:9%}
+#wlJob .teacher-overview-choose{left:9%;top:90%;width:41%;height:9%}
+#wlJob .teacher-overview-other{left:51%;top:90%;width:40%;height:9%}
+
+body:has(#home:not(.hidden) #newGame:not(.hidden) .teacher-overview){
+ padding-bottom:0;
+ background:#f6efdc;
+}
+body:has(#home:not(.hidden) #newGame:not(.hidden) .teacher-overview)::before{display:none}
+body:has(#home:not(.hidden) #newGame:not(.hidden) .teacher-overview) main{
+ box-sizing:border-box;
+ min-height:0;
+ max-width:924px!important;
+ padding:max(4px,env(safe-area-inset-top)) max(4px,env(safe-area-inset-right)) max(4px,env(safe-area-inset-bottom)) max(4px,env(safe-area-inset-left))!important;
+}
+#home:has(#newGame:not(.hidden) .teacher-overview){
+ width:100%;
+ margin:0!important;
+ border:0;
+ background:transparent!important;
+ box-shadow:none;
+}
+#careerSelection.teacher-overview{
+ max-width:min(900px,calc(94.72dvh - 8px));
+ margin-inline:auto;
+ border-radius:16px;
+}
