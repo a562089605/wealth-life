@@ -116,6 +116,11 @@ $('jobMarketBtn').onclick=openCareerMarket;
 function openWorkAdjustment(){showEvent('职业预览','调整工作','',[['当前工作',state.job||'未就业'],['税前年薪',priceText(state.annualSalary||0)]],[['查看其他工作机会',openCareerMarket,true],['确认辞职',()=>{state.job=null;state.salary=0;state.annualSalary=0;state.unemployedMonths=0;save();finish()},false,!state.job],['返回，不修改',finish,false]])}
 // Expanded saved monthly opportunity pool. Outcomes are resolved and shown before month end.
 V26_OFFERS.push(
+ {id:'laundry-equipment',name:'社区洗衣设备出租',cost:3200,cf:135,recovery:2300,chance:.85,hours:4,effects:{energy:-4},art:'assets/finance/big-laundry-equipment.webp',desc:'镇上的洗衣店想增设设备。你负责购买并安装，店方承担运营、水电和日常维护。'},
+ {id:'station-lockers',name:'车站储物柜',cost:5000,cf:230,recovery:3600,chance:.8,hours:5,effects:{energy:-4},art:'assets/finance/big-station-lockers.webp',desc:'小镇车站想增设行李柜。你负责购置和安装，车站管理柜位并按月付租金。'},
+ {id:'community-solar',name:'社区屋顶太阳能',cost:8000,cf:320,recovery:7650,chance:.8,hours:6,effects:{energy:-4},art:'assets/finance/big-community-solar.webp',fallbackLabel:'取消安装退回',fallbackNote:'场地方未签约，取消安装并退回预算，只扣勘察费。',desc:'社区中心想用屋顶发电。你出资安装设备，场地方按合同购电，月净收入已扣维护费。'},
+ {id:'book-clearance',name:'旧书店库存收购',cost:3600,reward:4500,recovery:3000,chance:.75,hours:6,effects:{energy:-6},art:'assets/finance/big-book-clearance.webp',fallbackLabel:'清仓转卖到账',desc:'旧书店搬迁，店主想一次出清库存。你可以整批收购，再转卖给二手书商。'},
+ {id:'subscription-takeover',name:'收购小型订阅公司',cost:4000,cf:200,recovery:3500,chance:.5,hours:6,effects:{energy:-10,stress:8},art:'assets/finance/big-subscription-takeover.webp',fallbackLabel:'交接失败退回',fallbackNote:'客户转签未达成，收购款退回，只扣审核费。',desc:'镇上的店铺每月付费刊登消息。原团队继续运营，客户同意转签后才完成收购。'},
  {id:'weekend-coffee',name:'周末咖啡摊',cost:120,reward:300,recovery:70,chance:.75,hours:4,effects:{energy:-6},art:'assets/finance/weekend-coffee-stall.webp',fallbackLabel:'客流冷清到账',fallbackNote:'客流比预期少，卖出的咖啡仍有营业收入。',desc:'周末集市空出一个摊位。你可以付摊位费、买咖啡豆和纸杯，备好几壶手冲等客人上门。'},
  {id:'pet-photos',name:'周末宠物摄影',cost:90,reward:240,recovery:50,chance:.8,hours:3,effects:{energy:-4},art:'assets/finance/weekend-pet-photos.webp',fallbackLabel:'客户取消保留定金',fallbackNote:'客户临时取消，你保留预约定金，已付的租用和准备费用照扣。',desc:'一位镇民约你给自家柯基拍照。你先预订场地、租设备和准备道具，顺利交付后收齐定金与尾款。'},
  {id:'bakery-bulk',name:'面包店团购',cost:35,reward:125,chance:.85,hours:2,effects:{energy:-3},art:'assets/finance/bakery-group-buy.webp',desc:'镇上的面包店请你统计邻居的团购订单。凑够数量后，面包店统一烘焙并支付组织费。'},

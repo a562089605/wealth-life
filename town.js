@@ -37,7 +37,7 @@ function renderTown(){
  <span class="town-pawn" data-town-pawn style="left:${pos.x}%;top:${pos.y}%" aria-label="玩家当前位置第${t.position+1}格">${barista?`<img src="${TOWN_ART}barista.webp" alt="">`:'●'}</span>
  <img class="town-flight-die" data-town-flight alt="" hidden></div>
  <div class="town-roll-controls"><button type="button" class="town-crystal-button" data-town="roll" aria-label="掷骰子" ${locked?'disabled':''}><img src="${TOWN_ART}die-${die}.webp" alt="">掷骰子</button><button type="button" class="town-return-button" data-town="home" aria-label="回家并结算本月" ${locked?'disabled':''}><img src="assets/finance/bill-house.webp" alt="">回家</button></div>
- ${townMarketHoldings().length?'<button type="button" data-town="holdings" '+(locked?'disabled':'')+'>地图持仓</button>':''}
+ ${(townMarketHoldings().length||townProjects().some(item=>item.status!=='closed'))?'<button type="button" data-town="holdings" '+(locked?'disabled':'')+'>地图持仓</button>':''}
  ${townPending()&&!townAnimating?'<button type="button" data-town="resume">继续处理当前事件</button>':''}`;
 
 }
@@ -116,13 +116,13 @@ function drawTownOpportunity(move,deck){
  if(townOpportunityMove()!==move||move.offers)return;
  const fast=journeyState().phase==='fast';
  const marketCards=TOWN_MARKET_CARDS.filter(card=>TOWN_MARKET_DEALS[card.id].unit||!townMarketHoldings().some(holding=>holding.deal===card.id));
- const pool=fast?FAST_PROJECTS:[...V26_OFFERS,...marketCards].filter(project=>
+ const pool=fast?FAST_PROJECTS:[...V26_OFFERS,...marketCards,...TOWN_PROJECT_CARDS].filter(project=>
   !['volunteer','stall','microcompany'].includes(project.id)&&(deck==='small'?project.cost<=TOWN_SMALL_DEAL_LIMIT:project.cost>TOWN_SMALL_DEAL_LIMIT));
  const recent=new Set(townState().history.filter(x=>x.offerId).slice(-3).map(x=>x.offerId));
  const fresh=pool.filter(project=>!recent.has(project.id)),available=fresh.length?fresh:pool;
  const seed=townMarketRoll(move);
  const project=available[(seed>>>0)%available.length];
- move.offers={month:state.month,deck,pool:fast?'fast':Object.hasOwn(TOWN_MARKET_DEALS,project.id)?'map-market':'regular',ids:[project.id],resolved:null};
+ move.offers={month:state.month,deck,pool:fast?'fast':Object.hasOwn(TOWN_MARKET_DEALS,project.id)?'map-market':Object.hasOwn(TOWN_PROJECTS,project.id)?'map-project':'regular',ids:[project.id],resolved:null};
  if(save()===false){
   const pending=townOpportunityMove();
   if(pending?.id===move.id)delete pending.offers;
@@ -150,7 +150,7 @@ function openTownOpportunity(message=''){
    ['小机会',()=>drawTownOpportunity(move,'small'),false],
    ['大机会',()=>drawTownOpportunity(move,'big'),false]
   ];
-  if(townMarketHoldings().length)actions.push(['地图持仓',()=>openTownMarketHoldings(()=>openTownOpportunity()),false]);
+  if((townMarketHoldings().length||townProjects().some(item=>item.status!=='closed')))actions.push(['地图持仓',()=>openTownMarketHoldings(()=>openTownOpportunity()),false]);
   actions.push(['放弃这次机会',finish,false]);
   showEvent('投资机会','选择投资机会','',[],actions);
   if($('eventTitle').textContent!=='选择投资机会')return;
@@ -177,6 +177,7 @@ function openTownOpportunity(message=''){
   });
   return;
  }
+ if(move.offers.pool==='map-project'&&!move.offers.resolved)return openTownProjectOffer(move,move.offers.ids[0]);
  if(move.offers.pool==='map-market'&&!move.offers.resolved)return openTownMarketTrade(move,move.offers.ids[0]);
  const offer=move.offers,fast=offer.pool==='fast';
  const project=(fast?FAST_PROJECTS:V26_OFFERS).find(option=>option.id===offer.ids[0]);

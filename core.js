@@ -156,6 +156,7 @@ function settleMonthUnsafe(){
   (s.financeLedger??=[]).push({month:s.month,kind:mapIncome<0?'opportunity':'opportunityIncome',amount:Math.abs(mapIncome)});
  }
 
+ if(typeof settleTownProjects==='function')settleTownProjects(s,settlement);
  globalThis.CafeEquity?.closeMonth(s,settlement);
  if(!recovery&&typeof applyMonthlyHealthEffects==='function')settlement.healthEffects=applyMonthlyHealthEffects(s,s.month);
  const rr=s.retirement;if(metrics.kContrib>0){rr.k401Balance+=metrics.kContrib+Math.min(metrics.kContrib,metrics.grossSalary*.03);rr.totalContrib=(rr.totalContrib||0)+metrics.kContrib}

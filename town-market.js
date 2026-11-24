@@ -149,7 +149,19 @@ function openTownMarketHoldings(back){
    deal.lease?townLeaseHoldingText(holding,deal):'每月净租金 '+priceText(deal.net);
   return [deal.name,detail];
  });
- showEvent('地图专用','地图持仓','',rows.length?rows:[['目前没有地图持仓','—']],[['返回',back,true]]);
+ const actions=[];
+ for(const item of townProjects().filter(project=>project.status!=='closed')){
+  const project=TOWN_PROJECTS[item.id];
+  const detail=item.status==='waiting'?'剩余 '+Math.max(0,item.due-state.month)+' 个月':
+   item.status==='ready'?'等待选择':
+   item.id==='charging'?'月底按用量结算':
+   item.id==='vending'?'本月预计 '+priceText(item.restockMonth===state.month?project.selfMonthly:project.monthly):
+   '每月 '+priceText(project.monthly)+(item.due?' · 剩余 '+(item.due-state.month)+' 个月':'');
+  rows.push([project.name,detail]);
+  if(item.status==='ready'||item.id==='vending')actions.push([project.name,()=>openTownProjectDecision(item),false]);
+ }
+ actions.push(['返回',back,true]);
+ showEvent('地图专用','地图持仓','',rows.length?rows:[['目前没有地图持仓','—']],actions);
 }
 
 function townLeaseNet(holding,deal,month){
