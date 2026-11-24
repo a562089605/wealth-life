@@ -823,3 +823,14 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
  background:linear-gradient(#ffe49a,#f2ca63);
  color:#304b2b;
 }
+
+:is(.career-management-card,.career-service-card).career-fixed .career-paper {
+ border:2px solid #829352;border-radius:22px;
+ background:#fff5da url("assets/finance/paper.webp") repeat;
+}
+:is(.career-management-card,.career-service-card).career-fixed .career-scene {
+ aspect-ratio:2.6;border-bottom-color:#a8ac70;
+}
+.career-management-card .career-management-stats .career-row {background:#fff1c9;border-color:#ccb272}
+.career-management-card .career-management-stats .career-row:nth-of-type(2) {background:#e9edc7;border-color:#aab47e}
+.career-management-card .career-management-stats .career-row:nth-of-type(3) {background:#f9e1ca;border-color:#d7ac87}
