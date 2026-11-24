@@ -137,6 +137,8 @@ function openTownOpportunity(message=''){
  if(!move)return;
  if(!move.offers){
   if(journeyState().phase==='fast')return drawTownOpportunity(move,'fast');
+  const leaseHolding=townLeaseCandidate(move);
+  if(leaseHolding&&!move.marketQuote)return openTownLeaseOffer(move,leaseHolding);
   const quote=townMarketQuote(move);
   if(quote){
    const holding=townMarketHoldings().find(item=>item.id===quote.holdingId);

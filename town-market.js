@@ -1,4 +1,8 @@
 const TOWN_MARKET_DEALS={
+ 'valley-stock':{name:'山谷食品公司',type:'股票',unit:'股',price:6,limit:50,bids:[3,5,8,10]},
+ 'steady-fund':{name:'小镇稳健基金',type:'基金',unit:'份',price:25,limit:20,defaultQuantity:8,bids:[23,24,26,27]},
+ 'school-flat':{name:'学校旁小公寓',type:'出租房',price:22000,down:4400,rent:360,net:160,bids:[20000,21500,24000,26000],lease:{term:12,vacancy:200}},
+ 'station-shop':{name:'车站便利店铺面',type:'商铺',price:55000,down:11000,rent:850,net:330,bids:[49000,53000,59000,64000],lease:{initial:2,term:12,rent:800,net:280,subsidy:300,vacancy:520}},
  'river-stock':{name:'河畔运输公司',type:'股票',unit:'股',price:10,limit:50},
  'river-fund':{name:'河畔综合基金',type:'基金',unit:'份',price:20,limit:25},
  'river-home':{name:'河畔一居室',type:'出租房',price:30000,down:6000,rent:450,net:180,bids:[27000,29000,34000,37000]},
@@ -10,6 +14,7 @@ function townMarketHoldings(s=state){return s.townHoldings??=[];}
 function townMarketMonthlyIncome(s=state){
  return townMarketHoldings(s).reduce((total,holding)=>{
   const deal=TOWN_MARKET_DEALS[holding.deal];
+  if(deal?.lease)return total+townLeaseNet(holding,deal,s.month);
   if(deal?.net)return total+deal.net;
   if(!deal?.maximum)return total;
   const monthlyRoll=Math.imul((s.offerSeed||1)+s.month*7919+holding.id,1664525)>>>0;
@@ -47,7 +52,7 @@ function openTownMarketTrade(move,dealId,quote=null){
  const alreadyOwned=!selling&&!deal.unit&&townMarketHoldings().some(item=>item.deal===dealId);
  const cashPrice=selling?quote.price:(deal.down??deal.price);
  const limit=deal.unit?(selling?holding.quantity:deal.limit):1;
- let quantity=deal.unit?Math.min(limit,selling?limit:Math.max(1,Math.floor(state.cash/cashPrice)),deal.unit==='股'?20:10):1;
+ let quantity=deal.unit?Math.min(limit,selling?limit:Math.max(1,Math.floor(state.cash/cashPrice)),deal.defaultQuantity??(deal.unit==='股'?20:10)):1;
  const amount=()=>roundCash(cashPrice*quantity-(holding?.debt??0));
  const profit=()=>roundCash(selling?(quote.price-holding.unitCost)*quantity:0);
  const buyLabel=deal.share?'入股':'买',accept=selling?'卖':buyLabel,decline=selling?'不卖':'不'+buyLabel;
@@ -62,7 +67,7 @@ function openTownMarketTrade(move,dealId,quote=null){
      if(!holding.quantity)state.townHoldings=townMarketHoldings().filter(item=>item!==holding);
     }else{
      if(!spendConfirmed('opportunity',amount(),{offer:dealId}))return false;
-     townMarketHoldings().push({id:move.id,moveId:move.id,deal:dealId,unitCost:deal.price,quantity,debt:deal.price-(deal.down??deal.price)});
+     townMarketHoldings().push({id:move.id,moveId:move.id,deal:dealId,unitCost:deal.price,quantity,debt:deal.price-(deal.down??deal.price),...(deal.lease?{leaseEnd:state.month+(deal.lease.initial||0)}:{})});
     }
     if(selling)(state.financeLedger??=[]).push({kind:amount()<0?'opportunity':'opportunityIncome',month:state.month,amount:Math.abs(amount()),offer:dealId});
    }
@@ -81,7 +86,7 @@ function openTownMarketTrade(move,dealId,quote=null){
  }
  showEvent('地图专用',title,'',[],[[accept,()=>settle(true),true],[decline,()=>settle(false),false]]);
  const data=$('eventData');
- const art='assets/finance/map-'+dealId+(selling?'-sell':'-buy')+'.webp';
+ const art='assets/finance/map-'+dealId+(selling&&!deal.lease?'-sell':'-buy')+'.webp';
  data.innerHTML='<div class="town-opportunity town-market-card"><img class="town-opportunity-art" src="'+art+'" alt=""><h3>'+deal.name+'</h3><dl></dl></div>';
  data.style.display='block';
  const list=data.querySelector('dl');
@@ -115,7 +120,12 @@ function openTownMarketTrade(move,dealId,quote=null){
    row('入股金额',priceText(deal.price));row('持有份额',deal.share+'%');row('预计月分成','$0–$'+deal.maximum);
   }else{
    row(deal.type==='出租房'?'房屋总价':'商铺总价',priceText(deal.price));row('本次首付',priceText(deal.down));
-   row('每月租金',priceText(deal.rent));row('每月净租金',priceText(deal.net));
+   if(deal.lease&&!deal.lease.initial){
+    row('当前状态','空置');row('空置每月支出',priceText(deal.lease.vacancy));row('出租后月净租金',priceText(deal.net));
+   }else{
+    row('每月租金',priceText(deal.rent));row('每月净租金',priceText(deal.net));
+    if(deal.lease)row('剩余租期',deal.lease.initial+'个月');
+   }
   }
   if(selling){
    if(!deal.share)row(amount()<0?'需补差额':'一共到账',priceText(Math.abs(amount())));
@@ -135,8 +145,72 @@ function openTownMarketHoldings(back){
  const rows=townMarketHoldings().map(holding=>{
   const deal=TOWN_MARKET_DEALS[holding.deal];
   const detail=deal.unit?holding.quantity+' '+deal.unit+' · 成本 '+priceText(holding.unitCost)+'／'+deal.unit:
-   deal.share?deal.share+'% · 预计月分成 $0–$'+deal.maximum:'每月净租金 '+priceText(deal.net);
+   deal.share?deal.share+'% · 预计月分成 $0–$'+deal.maximum:
+   deal.lease?townLeaseHoldingText(holding,deal):'每月净租金 '+priceText(deal.net);
   return [deal.name,detail];
  });
  showEvent('地图专用','地图持仓','',rows.length?rows:[['目前没有地图持仓','—']],[['返回',back,true]]);
+}
+
+function townLeaseNet(holding,deal,month){
+ if(month>=holding.leaseEnd)return -deal.lease.vacancy;
+ if(holding.renewalStart===undefined)return deal.net;
+ return month>=holding.renewalStart?deal.lease.net:holding.previousLeaseNet;
+}
+function townLeaseHoldingText(holding,deal){
+ const net=townLeaseNet(holding,deal,state.month);
+ if(net<0)return '空置 · 每月支出 '+priceText(-net);
+ return '剩余 '+(holding.leaseEnd-state.month)+' 个月 · 月净租金 '+priceText(net);
+}
+function townLeaseCandidate(move){
+ return townMarketHoldings().find(holding=>{
+  const lease=TOWN_MARKET_DEALS[holding.deal].lease;
+  if(!lease||holding.moveId===move.id||holding.lastLeaseOffer===state.month)return false;
+  const remaining=holding.leaseEnd-state.month;
+  return remaining<=0||(lease.initial&&remaining===1&&(!holding.renewalStart||state.month>=holding.renewalStart));
+ });
+}
+function openTownLeaseOffer(move,holding){
+ const deal=TOWN_MARKET_DEALS[holding.deal],lease=deal.lease;
+ const station=!!lease.initial,renewing=station&&holding.leaseEnd>state.month;
+ const start=Math.max(state.month,holding.leaseEnd),cost=lease.subsidy||0;
+ const approve=renewing?'续租':'签约',decline=renewing?'不续租':'再等等';
+ const owner=state,chosenSlot=slot;
+ function choose(accepted){
+  if(state!==owner||slot!==chosenSlot||townOpportunityMove()!==move||
+   move.offers||townLeaseCandidate(move)!==holding||(accepted&&state.cash<cost))return;
+  const result=CareerLearningRules.atomic(state,()=>{
+   if(accepted){
+    if(cost&&!spendConfirmed('opportunity',cost,{offer:holding.deal}))return false;
+    if(station){
+     holding.previousLeaseNet=townLeaseNet(holding,deal,state.month);
+     holding.renewalStart=start;
+    }
+    holding.leaseEnd=start+lease.term;
+   }
+   holding.lastLeaseOffer=state.month;
+   move.offers={month:state.month,pool:'map-market',ids:[holding.deal],resolved:accepted?approve:decline};
+   move.resolved=true;
+   move.completedMonth=state.month;
+   townState().history.push({id:move.id,die:move.die,to:move.to,month:state.month,type:townMoveType(move),offerId:holding.deal,outcome:move.offers.resolved});
+   return {};
+  },save);
+  if(result.ok)finish();
+  else{
+   openTownOpportunity(result.reason);
+   $('eventDesc').textContent=result.reason;
+  }
+ }
+ const title=renewing?'商铺续租报价':station?'商铺租客申请':'租客申请';
+ const rows=station?[
+  [renewing?'续租期限':'租期',lease.term+'个月'],
+  [renewing?'续租月租金':'每月租金',priceText(lease.rent)],
+  [renewing?'续租后月净租金':'每月净租金',priceText(lease.net)],
+  ['一次性装修补贴',priceText(cost)],['空置每月支出',priceText(lease.vacancy)]
+ ]:[['申请人','小学老师'],['租期',lease.term+'个月'],['每月租金',priceText(deal.rent)],['每月净租金',priceText(deal.net)]];
+ showEvent('地图专用',title,'',[],[[approve,()=>choose(true),true,state.cash<cost],[decline,()=>choose(false),false]]);
+ $('eventData').innerHTML='<div class="town-opportunity town-market-card"><img class="town-opportunity-art" src="assets/finance/map-'+holding.deal+'-lease.webp" alt=""><h3>'+deal.name+'</h3><dl>'+
+  rows.map(([label,value])=>'<div><dt>'+label+'</dt><dd>'+value+'</dd></div>').join('')+
+  '</dl><p>'+(renewing?'新租约从现有租约到期后开始。':'签约后，从本月月底开始收租。')+'</p></div>';
+ $('eventData').style.display='block';
 }

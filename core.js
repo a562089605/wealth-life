@@ -153,7 +153,7 @@ function settleMonthUnsafe(){
  if(mapIncome){
   s.cash=roundCash(s.cash+mapIncome);
   settlement.netCF=roundCash(settlement.netCF+mapIncome);
-  (s.financeLedger??=[]).push({month:s.month,kind:'opportunityIncome',amount:mapIncome});
+  (s.financeLedger??=[]).push({month:s.month,kind:mapIncome<0?'opportunity':'opportunityIncome',amount:Math.abs(mapIncome)});
  }
 
  globalThis.CafeEquity?.closeMonth(s,settlement);
