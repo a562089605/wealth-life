@@ -185,15 +185,47 @@
   focusFirst(ctx);
  }
  function openClean(index){const p=state.pets?.[index],c=p&&cfg(p);if(!c)return openDetail(index);const ctx=panel(c.name+'清洁护理'),paper=plain(ctx,'清洁护理'),id=spec(p),rules=PET_CARE_RULES[id],recovery=isRecoveryMonth(state),count=state.petCareCoupons||0,ready=due(p,'Clean').length>0;
-  paper.classList.add('pet-coupon-paper');paper.append(textNode('p',calendar(state.month),'pet-coupon-date'));
-  const identity=textNode('div',null,'pet-coupon-identity'),photo=textNode('span',null,'pet-coupon-thumb');photo.style.backgroundImage='url("'+asset('clean-'+id)+'")';identity.append(photo,textNode('strong',petName(p)+' · '+c.name),textNode('p',ready?'护理已到期':'下次清洁：'+calendar(preview().pets[index].care?.nextClean)));paper.append(identity);
+  paper.classList.add('pet-coupon-paper');
+  const heading=textNode('header',null,'pet-coupon-heading');
+  heading.append(paper.querySelector('h2'),textNode('p',calendar(state.month),'pet-coupon-date'));
+  paper.prepend(heading);
+  const identity=textNode('div',null,'pet-coupon-identity');
+  const photo=textNode('span',null,'pet-coupon-thumb'+(id==='dog'?' pet-coupon-art':''));
+  const cleanArt=method=>'assets/pets/clean-care-'+method+'.webp';
+  photo.style.backgroundImage='url("'+(id==='dog'?cleanArt('portrait'):asset('clean-'+id))+'")';
+  const petInfo=textNode('div');
+  petInfo.append(textNode('strong',petName(p)+' · '+c.name),
+   textNode('p',ready?'护理已到期':'下次清洁：'+calendar(preview().pets[index].care?.nextClean)));
+  identity.append(photo,petInfo);
+  paper.append(identity);
   let selected=recovery?'pro':'self';const buttons=[],factor=(state.cpiIndex||100)/100;
   const amount=m=>m==='coupon'?0:roundCash(rules[m]*factor),hours=m=>recovery?0:rules[(m==='coupon'?'pro':m)+'Hours'];
   const label=m=>m==='coupon'?'使用护理券':['dog','cat'].includes(id)?m==='self'?'自己洗澡':'外出洗澡':m==='self'?'自行清洁':'专业清洁';
-  for(const m of ['self','pro','coupon']){const b=textNode('button',null,'pet-coupon-option'),mark=textNode('span','○','pet-coupon-radio'),art=textNode('span',m==='coupon'?'护理券':'','pet-coupon-thumb'+(m==='coupon'?' ticket':''));if(m!=='coupon')art.style.backgroundImage='url("'+asset('clean-'+id)+'")';const body=textNode('span',null,'pet-coupon-body');body.append(textNode('strong',label(m)),textNode('span',m==='coupon'?'剩余'+count+'次':m==='self'?'自己动手，细心照顾。':'交给专业人员清洁照顾。'),textNode('span','费用：'+priceText(amount(m))),textNode('b','自由时间−'+hours(m)+'小时'),textNode('span',m==='coupon'?'使用后剩余'+Math.max(0,count-1)+'次 · 隔'+rules.proMonths+'个月再护理':'护理后，隔'+rules[(m==='self'?'self':'pro')+'Months']+'个月再护理'));b.append(mark,art,body);b.type='button';b.disabled=m==='self'&&recovery||m==='coupon'&&count<1;b.onclick=()=>{if(validPet(ctx,p,index)){selected=m;update();}};buttons.push({m,b,mark});paper.append(b);}
+  for(const m of ['self','pro','coupon']){
+   const b=textNode('button',null,'pet-coupon-option');
+   const mark=textNode('span','○','pet-coupon-radio');
+   const illustrated=id==='dog'||m==='coupon';
+   const art=textNode('span',null,'pet-coupon-thumb'+(illustrated?' pet-coupon-art':''));
+   mark.setAttribute('aria-hidden','true');
+   art.style.backgroundImage='url("'+(illustrated?cleanArt(m):asset('clean-'+id))+'")';
+   const body=textNode('span',null,'pet-coupon-body');
+   body.append(textNode('strong',label(m)));
+   if(m==='coupon')body.append(textNode('span','剩余 '+count+' 次'+(count?' · 使用后剩余 '+(count-1)+' 次':'')));
+   body.append(textNode('b',priceText(amount(m))+' · '+hours(m)+'小时'),
+    textNode('span',rules[(m==='self'?'self':'pro')+'Months']+'个月后再护理'));
+   b.append(mark,art,body);
+   b.type='button';
+   b.disabled=m==='self'&&recovery||m==='coupon'&&count<1;
+   b.onclick=()=>{if(validPet(ctx,p,index)){selected=m;update();}};
+   buttons.push({m,b,mark});
+   paper.append(b);
+  }
   const helper=textNode('p',needsVet(p)?'需要先就医，治疗后再安排护理':ready?'完成护理：健康+20（上限100）':'尚未到期，仅可预览，不提前使用护理券','pet-coupon-helper'),summary=textNode('p',null,'pet-coupon-summary');paper.append(helper,summary);
   const confirm=action(ctx,paper,'确认选择',()=>{if(validPet(ctx,p,index))openCareConfirm(index,'Clean',selected);},!ready||needsVet(p));
-  action(ctx,paper,'返回宠物资料',()=>openDetail(index));action(ctx,paper,'返回我的宠物',openOverview);
+  const navigation=textNode('div',null,'pet-coupon-navigation');
+  action(ctx,navigation,'返回宠物资料',()=>openDetail(index));
+  action(ctx,navigation,'返回我的宠物',openOverview);
+  paper.append(navigation);
   function update(){for(const {m,b,mark}of buttons){b.classList.toggle('selected',m===selected);b.setAttribute('aria-pressed',String(m===selected));mark.textContent=m===selected?'✓':'○';}summary.textContent=label(selected)+' · '+priceText(amount(selected))+' · 自由时间−'+hours(selected)+'小时';confirm.textContent=selected==='coupon'?'确认使用护理券':'确认选择';}update();focusFirst(ctx);
  }
 

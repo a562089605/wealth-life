@@ -78,9 +78,6 @@
 .pet-vet-other-pets{margin:0 auto}
 
 /* Confirmed three-option grooming page; all amounts, dates and coupon counts are live. */
-.pet-coupon-paper{font-family:WealthHand,'Songti SC',serif!important;background:#fff4d9!important;border:2px solid #c4a15c!important;border-radius:28px!important;padding:20px 14px!important}.pet-coupon-paper h2{font-size:34px!important;margin:4px 0 8px!important}.pet-coupon-date{text-align:right;font-size:18px}.pet-coupon-identity{border:1px solid #c4a15c;border-radius:18px;padding:12px;min-height:90px;background:#fff8e5}.pet-coupon-identity>.pet-coupon-thumb{float:left;margin-right:14px}.pet-coupon-identity strong{font-size:25px}.pet-coupon-identity p{font-size:17px;line-height:1.4}.pet-coupon-option{display:flex;align-items:center;gap:9px;width:100%;margin:12px 0;padding:12px 9px!important;text-align:left;border:1.5px solid #c5a45d!important;border-radius:20px!important;background:#fff6dd!important;color:#21432d;cursor:pointer;font:inherit}.pet-coupon-option.selected{background:#e6edbf!important;box-shadow:inset 0 0 0 3px #cedc9d}.pet-coupon-option:disabled{opacity:.5;cursor:default}.pet-coupon-option:focus-visible{outline:3px solid #47723b;outline-offset:2px}.pet-coupon-radio{font-size:25px;color:#547039;flex-shrink:0}.pet-coupon-thumb{display:block;flex:0 0 80px;width:80px;height:88px;border-radius:13px;background-size:290% 900%;background-position:8% 18%;background-color:#f0e8c5}.pet-coupon-thumb.ticket{display:grid;place-items:center;border:2px dashed #ba923f;background:#ffe6a2;transform:rotate(-5deg);font-size:22px;color:#30452b}.pet-coupon-body{display:grid;gap:3px;min-width:0;font-size:17px;line-height:1.35}.pet-coupon-body strong{font-size:26px}.pet-coupon-body b{font-weight:normal}.pet-coupon-helper{text-align:center;font-size:17px!important}.pet-coupon-summary{padding:12px;background:#ffe8ab;border:1px solid #c5a45d;border-radius:16px;text-align:center;font-size:21px!important}.pet-coupon-paper>.pet-solid-button{font-family:inherit;font-size:24px!important;min-height:48px}@media(max-width:350px){.pet-coupon-thumb{flex-basis:61px;width:61px;height:75px}.pet-coupon-body{font-size:15px}.pet-coupon-body strong{font-size:23px}.pet-coupon-option{gap:6px}}
-.pet-coupon-thumb{background-size:290% auto;background-position:14% 22%}
-.pet-coupon-thumb.ticket{background-image:url('assets/pets/care-coupon-preview-20261113.webp');background-size:330% auto;background-position:17% 70%;color:transparent;font-size:0;border:0;transform:none}
 
 /* Replace the complete printed receipt rows with one live, readable list. */
 .pet-success-receipt {
@@ -164,3 +161,48 @@
 .pet-care-confirm .pet-message:empty { display: none; }
 .pet-care-confirm .pet-solid-button { background: #f5cf61; }
 .pet-care-confirm .pet-care-confirm-back { background: #fff4da; }
+
+.pet-paper.pet-coupon-paper {
+  width:min(100%,500px);
+  padding:clamp(10px,3vw,18px);
+  border:2px solid #436040;
+  border-radius:23px 19px 25px 20px;
+  background:#fff3d6 url("assets/finance/paper.webp") repeat;
+  color:#304829;
+}
+.pet-coupon-heading,.pet-coupon-identity {display:flex;align-items:center;gap:10px}
+.pet-coupon-heading {justify-content:space-between;margin-bottom:9px}
+.pet-coupon-paper .pet-coupon-heading h2 {margin:0;font:700 clamp(25px,6vw,36px)/1.1 WealthHand,serif}
+.pet-coupon-date {margin:0;font-size:14px;text-align:right}
+.pet-coupon-identity {padding:7px 10px;border:1px solid #ad9564;border-radius:14px;background:#fff5de}
+.pet-coupon-identity strong {font:700 22px/1.2 WealthHand,serif;overflow-wrap:anywhere}
+.pet-coupon-identity p {width:fit-content;margin:4px 0 0;padding:2px 7px;border-radius:7px;background:#f5deb2;font-size:14px}
+.pet-coupon-option {
+  display:grid;
+  grid-template-columns:1.25em minmax(58px,34%) minmax(0,1fr);
+  align-items:center;
+  gap:8px;
+  width:100%;
+  margin-top:8px;
+  padding:7px;
+  text-align:left;
+  border:1px solid #ac966a;
+  border-radius:14px 12px 16px 11px;
+  background:#fff4dc;
+  color:inherit;
+  cursor:pointer;
+}
+.pet-coupon-option.selected {background:#e7edc3;border:2px solid #657d45;padding:6px}
+.pet-coupon-option:disabled {opacity:.7;cursor:default;color:#55604b;background:#f3ecd9}
+.pet-coupon-option:focus-visible {outline:2px solid #47723b;outline-offset:2px}
+.pet-coupon-radio {font-size:21px;text-align:center;color:#557641}
+.pet-coupon-thumb {display:block;width:100%;aspect-ratio:1.6;border-radius:8px;background-repeat:no-repeat;background-size:290% auto;background-position:14% 22%}
+.pet-coupon-identity .pet-coupon-thumb {flex:0 0 70px;aspect-ratio:1.27}
+.pet-coupon-thumb.pet-coupon-art {background-size:contain;background-position:center;mix-blend-mode:multiply}
+.pet-coupon-body {display:grid;gap:2px;line-height:1.25;font-size:clamp(13px,3.5vw,16px);overflow-wrap:anywhere}
+.pet-coupon-body strong {font:700 clamp(18px,4.8vw,26px)/1.15 WealthHand,serif}
+.pet-coupon-helper {margin:9px 0;text-align:center;font-size:14px}
+.pet-coupon-summary {margin:8px 0;padding:7px 8px;border-radius:9px;background:#f8e2a5;text-align:center;font-size:15px}
+.pet-coupon-paper > .pet-solid-button {border:1.5px solid #436040;background:#f4c857;font:700 22px/1.2 WealthHand,serif}
+.pet-coupon-navigation {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.pet-coupon-navigation .pet-solid-button {padding:5px;border:1.5px solid #436040;background:#fff4da;font:700 clamp(15px,4vw,20px)/1.2 WealthHand,serif}
