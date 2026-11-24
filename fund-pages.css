@@ -231,3 +231,75 @@
 .event:has(.fund-stage-position) #actions:has(> button:nth-child(4):last-child) button {
   padding-inline: 28px;
 }
+
+/* Fund buy preview keeps the chart, holdings and order readable on one paper card. */
+#game > .event.event-active:has(.fund-buy-panel) {
+  background: #fff3d9 url('assets/finance/paper.webp') center / 520px auto repeat !important;
+  border-color: #ad8e53;
+}
+.event:has(.fund-buy-panel) .fund-header { margin: 10px 0 8px; }
+.event:has(.fund-buy-panel) .fund-header strong { font-size: 24px; }
+.event:has(.fund-buy-panel) .fund-header .fund-icon { width: 62px; }
+.fund-buy-panel { display: grid; gap: 9px; text-align: left; }
+.event:has(.fund-buy-panel) .fund-buy-panel .wl-quote {
+  background: #fff5dc80;
+  border-color: #a3a06a;
+  padding: 9px;
+}
+.fund-buy-panel .investment-price { margin: 0 0 4px; }
+.event:has(.fund-buy-panel) .fund-buy-panel .wl-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: 300 / 130;
+}
+.fund-buy-panel .fund-chart-caption { text-align: center; margin-bottom: 7px; }
+.fund-buy-panel .wl-periods {
+  padding: 6px 0;
+  border-radius: 8px;
+  background: #e3e8c498;
+}
+.fund-buy-panel .wl-periods > span + span { border-inline-start: 1px solid #a9ae805e; }
+.fund-buy-panel dl { margin: 0; }
+.fund-buy-panel dd { margin: 0; font-variant-numeric: tabular-nums; }
+.fund-buy-holdings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 7px 0;
+  border: 1px solid #b6b68a;
+  border-radius: 10px;
+  background: #e7e9cc;
+  text-align: center;
+  font-size: .85rem;
+}
+.fund-buy-holdings > div { min-width: 0; padding: 0 4px; overflow-wrap: anywhere; }
+.fund-buy-holdings > div + div { border-inline-start: 1px solid #aeb08480; }
+.fund-buy-holdings dd { font-weight: 700; }
+.fund-buy-order { overflow: hidden; border: 1px solid #b9b284; border-radius: 12px; }
+.fund-buy-input { padding: 8px 10px; background: #f7dfa480; }
+.fund-buy-input label { display: grid; gap: 5px; font-weight: 700; }
+.event .fund-buy-input #v26InvestAmount {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 7px 11px;
+  border: 1px solid #879565;
+  border-radius: 9px;
+  background: #fff7e4;
+  color: #22442c;
+  font-size: 1.1rem;
+}
+.fund-buy-estimate { background: #e7eacb; }
+.fund-buy-estimate > div { display: flex; justify-content: space-between; gap: 8px; padding: 6px 10px; }
+.fund-buy-estimate > div + div { border-top: 1px solid #aeb58480; }
+.fund-buy-estimate dd { font-weight: 700; text-align: right; overflow-wrap: anywhere; }
+.fund-buy-panel [data-invest-preview] { margin: 0; padding: 5px 10px; color: #82452d; }
+.fund-buy-panel [data-invest-preview]:empty { padding: 0; }
+.fund-buy-panel > small { color: #465637; }
+.event.event-active:has(.fund-buy-panel) > #actions { background: transparent; }
+.event.event-active:has(.fund-buy-panel) #actions button:not(.primary) {
+  border-color: #9ca574;
+  background: #f1edcf !important;
+  color: #22442c;
+}

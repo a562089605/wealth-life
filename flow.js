@@ -218,7 +218,35 @@ function openInstrument(id,back){const cfg=V26_INSTRUMENTS.find(i=>i.id===id);if
   StockPages.showFundBuyReceipt(cfg,market,amount,price);
  },true,state.cash<=0],['返回品种列表',market,false],['取消',finish,false]]);
  if(back)window.modalReturn=market;
- $('eventData').innerHTML='<div class="wl-quote"><p>当前价格 <b>'+priceText(q.price)+'</b><span class="'+(pct>=0?'wl-up':'wl-down')+'"> 较上月 '+signedPercent(pct)+'</span></p>'+quoteChart(q)+'<div class="wl-periods"><span>1年<br>'+returnPeriod(q,12)+'</span><span>5年<br>'+returnPeriod(q,60)+'</span><span>10年<br>'+returnPeriod(q,120)+'</span></div><p>持仓市值 '+priceText(value)+' · 成本 '+priceText(cost)+'<br><span class="'+(value>=cost?'wl-up':'wl-down')+'">浮动盈亏 '+priceText(value-cost)+(cost?'（'+signedPercent(value/cost-1)+'）':'')+'</span></p><label>本次投入金额 <input id="v26InvestAmount" type="number" min="0.01" step="0.01" inputmode="decimal" value="'+Math.max(0,Math.min(200,state.cash))+'"></label><p data-invest-preview></p><small>支持碎股；本次确认后现金减少、资产增加。买入不代表未来保证上涨。</small></div>';$('eventData').style.display='block';function update(){const amt=Number($('v26InvestAmount').value),valid=Number.isFinite(amt)&&amt>0&&amt<=state.cash&&Math.abs(Math.round(amt*100)-amt*100)<.00001;$('actions').firstElementChild.disabled=!valid;document.querySelector('[data-invest-preview]').textContent=valid?'预计买入 '+(amt/q.price).toFixed(6)+' 份 · 剩余现金 '+priceText(roundCash(state.cash-amt)):'请输入可负担且最多两位小数的正金额'}$('v26InvestAmount').oninput=update;update();if(cfg.kind==='基金')window.FundPages?.decorate('buy',cfg)
+ const fund=cfg.kind==='基金';
+ const input='<label>本次投入金额 <input id="v26InvestAmount" type="number" min="0.01" step="0.01" inputmode="decimal" value="'+Math.max(0,Math.min(200,state.cash))+'"></label>';
+ const gain='<span class="'+(value>=cost?'wl-up':'wl-down')+'">'+priceText(value-cost)+(cost?'（'+signedPercent(value/cost-1)+'）':'')+'</span>';
+ const chart='<p class="investment-price">当前价格 <b>'+priceText(q.price)+'</b><span class="'+(pct>=0?'wl-up':'wl-down')+'"> 较上月 '+signedPercent(pct)+'</span></p>'+
+  quoteChart(q)+'<div class="wl-periods"><span>1年<br>'+returnPeriod(q,12)+'</span><span>5年<br>'+returnPeriod(q,60)+'</span><span>10年<br>'+returnPeriod(q,120)+'</span></div>';
+ const note='<small>支持碎股；本次确认后现金减少、资产增加。买入不代表未来保证上涨。</small>';
+ const status='<p data-invest-preview role="status"></p>';
+ const holdingRows='<dl class="fund-buy-holdings"><div><dt>持仓市值</dt><dd>'+priceText(value)+'</dd></div><div><dt>成本</dt><dd>'+priceText(cost)+'</dd></div><div><dt>浮动盈亏</dt><dd>'+gain+'</dd></div></dl>';
+ const estimateRows='<dl class="fund-buy-estimate" aria-live="polite"><div><dt>预计买入</dt><dd data-fund-shares></dd></div><div><dt>剩余现金</dt><dd data-fund-cash></dd></div></dl>';
+ const data=$('eventData');
+ data.innerHTML=fund
+  ? '<div class="fund-buy-panel"><div class="wl-quote">'+chart+'</div>'+holdingRows+
+    '<div class="fund-buy-order"><div class="fund-buy-input">'+input+'</div>'+estimateRows+status+'</div>'+note+'</div>'
+  : '<div class="wl-quote">'+chart+'<p>持仓市值 '+priceText(value)+' · 成本 '+priceText(cost)+'<br>浮动盈亏 '+gain+'</p>'+input+status+note+'</div>';
+ data.style.display='block';
+ function update(){
+  const amt=Number($('v26InvestAmount').value),valid=Number.isFinite(amt)&&amt>0&&amt<=state.cash&&Math.abs(Math.round(amt*100)-amt*100)<.00001;
+  $('actions').firstElementChild.disabled=!valid;
+  const shares=valid?(amt/q.price).toFixed(6)+' 份':'',cash=valid?priceText(roundCash(state.cash-amt)):'';
+  const message=data.querySelector('[data-invest-preview]');
+  if(fund){
+   data.querySelector('[data-fund-shares]').textContent=shares||'—';
+   data.querySelector('[data-fund-cash]').textContent=cash||'—';
+  }
+  message.textContent=valid?(fund?'':'预计买入 '+shares+' · 剩余现金 '+cash):'请输入可负担且最多两位小数的正金额';
+ }
+ $('v26InvestAmount').oninput=update;
+ update();
+ if(fund)window.FundPages?.decorate('buy',cfg);
 }
 buyInvestment=kind=>openMarket(kind);window.v241Invest=kind=>openMarket(kind);
 
