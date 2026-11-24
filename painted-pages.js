@@ -38,10 +38,13 @@
    ).join('')+'</div>'+(window.OwnerHousing&&kind!=='own'?action('owner-home',state.pendingHomePurchase?'查看自住房入住预约':'查看自住房'):'')+action('current-home','返回当前住房');
   }
   const expense=kind==='family'?'家用':kind==='own'?'房贷':'房租';
-  return '<h1>当前住房</h1><h2>'+esc(housingName())+'</h2><div class="housing-hero" style="background-image:url('+housingArt(kind)+')"></div>'+
-   '<div class="housing-monthly"><span>本月'+expense+'</span><strong>'+esc(money(state.housingCost||0))+'</strong></div>'+
-   (q.housing>0?action('rent-pay','交本月'+expense+' · '+money(q.housing),'housing-primary'):'<p role="status" class="housing-paid">✓ 本月'+expense+'已支付</p>')+
-   action('housing-list','更换住房')+(kind==='own'&&window.OwnerHousing?action('owner-home','管理自住房'):'')+action('life','返回生活');
+  const art=kind==='family'?'assets/pages/family-current-redraw.webp':housingArt(kind);
+  const monthly='<div class="housing-monthly"><span>本月'+expense+'</span><strong>'+esc(money(state.housingCost||0))+'</strong></div>';
+  const payment=q.housing>0?action('rent-pay','交本月'+expense+' · '+money(q.housing),'housing-primary'):'<p role="status" class="housing-paid">✓ 本月'+expense+'已支付</p>';
+  return '<h1>当前住房</h1><h2>'+esc(housingName())+'</h2><div class="housing-hero" style="background-image:url('+art+')"></div>'+
+   (kind==='family'?'<section class="housing-family-bill">'+monthly+payment+'</section>':monthly+payment)+
+   action('housing-list','更换住房',kind==='family'?'housing-primary':'')+
+   (kind==='own'&&window.OwnerHousing?action('owner-home','管理自住房'):'')+action('life','返回生活');
  }
  function sharedReservation(){
   const choice=housingChoices().find(option=>option[3]==='shared'),q=housingQuote(choice);
@@ -70,7 +73,7 @@
   box.classList.toggle('painted-room-backdrop',!!roomArt);
   if(page==='current' || (page==='housing' && livingBillQuote().selected)){
    box.setAttribute('aria-label',page==='current'?'当前住房':'更换住房');
-   box.innerHTML='<div class="housing-flow">'+housingPanel(page==='housing')+'</div>';
+   box.innerHTML='<div class="housing-flow'+(page==='current'&&state.housing==='family'?' housing-family-current':'')+'">'+housingPanel(page==='housing')+'</div>';
    return;
   }
   const current=state.housing===detailKey;
