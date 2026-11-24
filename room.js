@@ -21,12 +21,18 @@
    const stats=document.createElement('dl');
    stats.className='room-status';
    stats.setAttribute('aria-label','当前状态');
-   for(const [label,icon] of [['可用现金',null],['幸福度','♥'],['压力','〰'],['自由时间','◷'],['能量','ϟ']]){
-    const cell=document.createElement('div'), term=document.createElement('dt');
+   const metrics=[
+    ['可用现金','<g transform="translate(1 1) scale(.92)"><circle cx="13" cy="3" r="2.2"/><path fill-rule="evenodd" d="M5.1 9.5 4.8 6l4 2c1.2-.6 2.5-.8 4-.8 4.1 0 7 2.2 7.5 5.3 1.1.1 1.7-.5 1.6-1.2-.1-.5-.6-.5-.8-.3l-.8-1.1c1-.8 2.6-.5 3 1 .4 1.6-.9 3.3-2.9 3.1-.3 2-1.4 3.4-3 4.3l-.6 3.1h-3l-.5-1.9c-1 .1-2.1.1-3.1-.1l-.6 2H6.5l-.7-3.4a7.3 7.3 0 0 1-2.1-2.2H2a1 1 0 0 1-1-1v-2.9a1 1 0 0 1 1-1h1.5c.4-.5.9-1 1.6-1.4Zm2.9 3a.85.85 0 1 0-1.7 0 .85.85 0 0 0 1.7 0Zm3.1-3.1a.65.65 0 1 0 0 1.3h3.7a.65.65 0 1 0 0-1.3h-3.7Z"/></g>'],
+    ['幸福度','<path d="M12 21 3.7 12.8A5.6 5.6 0 0 1 12 5.2a5.6 5.6 0 0 1 8.3 7.6Z" fill="currentColor"/>'],
+    ['压力','<path d="M3 12c3-5 5 5 9 0s6 5 9 0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>'],
+    ['自由时间','<circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 6.5v5.7h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>'],
+    ['能量','<path d="M11.5 2.5 5.5 13h5l-1 8.5 9-12h-5l1.5-7Z" fill="currentColor"/>']
+   ];
+   for(const [label,icon] of metrics){
+    const cell=document.createElement('div'),term=document.createElement('dt');
     const symbol=document.createElement('span');
     symbol.setAttribute('aria-hidden','true');
-    if(icon)symbol.textContent=icon;
-    else symbol.innerHTML='<svg class="room-cash-icon" viewBox="0 0 24 24" fill="currentColor" focusable="false"><circle cx="13" cy="3" r="2.2"/><path fill-rule="evenodd" d="M5.1 9.5 4.8 6l4 2c1.2-.6 2.5-.8 4-.8 4.1 0 7 2.2 7.5 5.3 1.1.1 1.7-.5 1.6-1.2-.1-.5-.6-.5-.8-.3l-.8-1.1c1-.8 2.6-.5 3 1 .4 1.6-.9 3.3-2.9 3.1-.3 2-1.4 3.4-3 4.3l-.6 3.1h-3l-.5-1.9c-1 .1-2.1.1-3.1-.1l-.6 2H6.5l-.7-3.4a7.3 7.3 0 0 1-2.1-2.2H2a1 1 0 0 1-1-1v-2.9a1 1 0 0 1 1-1h1.5c.4-.5.9-1 1.6-1.4Zm2.9 3a.85.85 0 1 0-1.7 0 .85.85 0 0 0 1.7 0Zm3.1-3.1a.65.65 0 1 0 0 1.3h3.7a.65.65 0 1 0 0-1.3h-3.7Z"/></svg>';
+    symbol.innerHTML='<svg viewBox="0 0 24 24" fill="currentColor" focusable="false">'+icon+'</svg>';
     term.append(symbol,label);
     cell.append(term,document.createElement('dd'));
     stats.append(cell);
