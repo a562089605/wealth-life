@@ -50,7 +50,7 @@
   if(!box){box=document.createElement('section');box.id='paintedView';el('game').append(box);}
   const labels={rest:'休息安排',life:'生活安排',housing:'住房选择',detail:'住房详情'};
   box.hidden=false;box.setAttribute('aria-label',labels[page]);
-  const roomArt=page==='life'||page==='rest'?window.roomArtworkForHousing?.(state.housing):null;
+  const roomArt=['life','rest','current'].includes(page)?window.roomArtworkForHousing?.(state.housing):null;
   if(roomArt)box.style.setProperty('--painted-room-art','url("'+roomArt+'")');
   else box.style.removeProperty('--painted-room-art');
   box.classList.toggle('painted-room-backdrop',!!roomArt);
