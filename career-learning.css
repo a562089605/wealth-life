@@ -834,3 +834,35 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
 .career-management-card .career-management-stats .career-row {background:#fff1c9;border-color:#ccb272}
 .career-management-card .career-management-stats .career-row:nth-of-type(2) {background:#e9edc7;border-color:#aab47e}
 .career-management-card .career-management-stats .career-row:nth-of-type(3) {background:#f9e1ca;border-color:#d7ac87}
+
+:is(.career-management-card,.career-service-card).career-fixed .career-paper {
+ border:3px solid #526a3d;
+ border-radius:28px 25px 29px 24px;
+}
+:is(.career-management-card,.career-service-card) .career-fixed-heading {
+ border-bottom:0;
+ background:transparent;
+}
+:is(.career-management-card,.career-service-card).career-fixed .career-scene {
+ aspect-ratio:1.92;
+ margin-inline:8px;
+ border:0;
+ border-radius:12px 10px 15px 11px;
+}
+:is(.career-management-card,.career-service-card).career-fixed .career-back {
+ border:2px solid #657645;
+ border-radius:999px;
+ background:#fff6dc;
+}
+.career-management-card .career-scroll-body>.career-primary {
+ border-color:#a47725;
+ border-radius:999px;
+ background:#ffcf55 url("assets/finance/paper.webp") repeat;
+ background-blend-mode:multiply;
+ box-shadow:inset 0 0 0 2px #ffec9d;
+}
+.career-management-card .career-management-stats .career-row {
+ border-radius:13px;
+ background-image:url("assets/finance/paper.webp");
+ background-blend-mode:multiply;
+}
