@@ -149,6 +149,13 @@ function settleMonthUnsafe(){
  s.cash+=cf;const settlement={month,startCash:start,recovery:!!recovery,careerIncome:metrics.careerIncome?structuredClone(metrics.careerIncome):null,investmentIncomeBudget:typeof expectedInvestmentIncome==='function'?expectedInvestmentIncome():0,grossSalary:metrics.grossSalary,tax:metrics.tax,kContrib:metrics.kContrib,passive:s.passive,expenses:s.expenses,netCF:cf,prepaidExpenses:metrics.prepaidExpenses,totalMonthlyCF:metrics.monthlyCF};
  settlement.cashExpenseLines=FinanceLedger.forecastExpenses(false);
  settlement.cashAssetLines=s.assets.filter(asset=>asset.cf).map(asset=>[asset.name+'净现金流',asset.cf]);
+ const mapIncome=typeof townMarketMonthlyIncome==='function'?townMarketMonthlyIncome(s):0;
+ if(mapIncome){
+  s.cash=roundCash(s.cash+mapIncome);
+  settlement.netCF=roundCash(settlement.netCF+mapIncome);
+  (s.financeLedger??=[]).push({month:s.month,kind:'opportunityIncome',amount:mapIncome});
+ }
+
  globalThis.CafeEquity?.closeMonth(s,settlement);
  if(!recovery&&typeof applyMonthlyHealthEffects==='function')settlement.healthEffects=applyMonthlyHealthEffects(s,s.month);
  const rr=s.retirement;if(metrics.kContrib>0){rr.k401Balance+=metrics.kContrib+Math.min(metrics.kContrib,metrics.grossSalary*.03);rr.totalContrib=(rr.totalContrib||0)+metrics.kContrib}
