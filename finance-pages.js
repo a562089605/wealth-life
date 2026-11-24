@@ -1,8 +1,39 @@
 (function(){
  const art = './assets/finance/';
  const eventCard = $('eventTitle').closest('.event');
+ let stopDetailScroll;
+ function showDetailScroll(scroller){
+  const rail=document.createElement('div');
+  const thumb=document.createElement('span');
+  rail.className='finance-detail-scroll';
+  rail.setAttribute('aria-hidden','true');
+  rail.append(thumb);
+  eventCard.append(rail);
+  const update=()=>{
+   const max=scroller.scrollHeight-scroller.clientHeight;
+   rail.hidden=max<=0;
+   if(rail.hidden)return;
+   const area=scroller.getBoundingClientRect(),card=eventCard.getBoundingClientRect();
+   const height=Math.max(18,area.height*scroller.clientHeight/scroller.scrollHeight);
+   rail.style.top=area.top-card.top+'px';
+   rail.style.height=area.height+'px';
+   thumb.style.height=height+'px';
+   thumb.style.translate='0 '+((area.height-height)*scroller.scrollTop/max)+'px';
+  };
+  const observer=new ResizeObserver(update);
+  observer.observe(scroller);
+  scroller.addEventListener('scroll',update,{passive:true});
+  stopDetailScroll=()=>{
+   observer.disconnect();
+   scroller.removeEventListener('scroll',update);
+   rail.remove();
+  };
+  update();
+ }
  const previousShow = showEvent;
  showEvent = function(...args){
+  stopDetailScroll?.();
+  stopDetailScroll=null;
   delete eventCard.dataset.etfDetail;
   eventCard.classList.remove('finance-home','finance-bill','finance-bill-current','finance-debt','finance-assets','finance-savings','finance-emergency','finance-cd','finance-etf','finance-sp500','finance-etf-buy','finance-etf-receipt','finance-etf-sell','finance-etf-settings','finance-parchment','retirement-transaction');
   $('eventData').removeAttribute('tabindex');
@@ -196,7 +227,7 @@
     ['预计 401(k) 个人缴费',-metrics.kContrib],['预计资产净现金流',state.passive],...investing.maturities
    ].filter(([,amount])=>amount!==0);
    eventCard.classList.add('finance-bill-current');
-   drawBill('<div class="finance-bill-desk">'+illustration('desk')+'</div>'+
+   drawBill('<div class="finance-bill-desk">'+'<img src="'+art+'bills-crayon.webp" alt="">'+'</div>'+
     highlight('当前现金',state.cash,'cash','finance-bill-cash')+
     '<div class="finance-bill-forecast" role="group" aria-label="本月预计收付">'+
     lines([['待收',forecastIncome],['待付',forecastExpenses]])+'</div>'+
@@ -211,6 +242,7 @@
     section('预计收入及扣减明细',forecastRows)+
     section('待付明细',[...FinanceLedger.forecastExpenses(),...investing.expenses])+
     (investing.skipped.length?section('预计跳过的定投',investing.skipped):'')+'</div>');
+   showDetailScroll($('eventData'));
   }
 
   function history(){
@@ -278,12 +310,12 @@
    const deposit=heldHousingDeposit();
    const depositNote=deposit?section('其他款项',[['可退住房押金',deposit,'游戏现行净资产口径未计入押金']]):'';
    const summary='<dl class="finance-asset-summary">'+[
-    ['净资产',metrics.nw,'net'],['总资产',metrics.assetValue,'gross'],['总负债',metrics.debtTotal,'debt']
+    ['可用现金',state.cash,'liquid'],['净资产',metrics.nw,'net'],['总资产',metrics.assetValue,'gross'],['总负债',metrics.debtTotal,'debt']
    ].map(([label,value,key])=>'<div class="finance-asset-'+key+'"><dt>'+label+
     '</dt><dd>'+priceText(value)+'</dd></div>').join('')+'</dl>';
    const data=$('eventData');
    data.style.display='block';
-   data.innerHTML=summary+
+   data.innerHTML='<div class="finance-bill-desk">'+'<img src="'+art+'assets-crayon.webp" alt="">'+'</div>'+summary+
     '<div class="finance-asset-holdings" tabindex="0" role="region" aria-label="资产明细，可纵向滚动">'+
     section('现金与储蓄',cash,undefined,'cash')+
     (investments.length||!funds.length?section('投资持仓',investments,'暂无投资持仓。','investments'):'')+
@@ -291,6 +323,7 @@
     section('实物资产',property,'暂无实物资产。','property')+
     section('长期账户',longTerm,undefined,'accounts')+depositNote+'</div>';
    eventCard.classList.add('finance-assets');
+   showDetailScroll(data.querySelector('.finance-asset-holdings'));
   }
 
   function savings(){

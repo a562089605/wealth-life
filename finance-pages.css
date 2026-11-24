@@ -88,7 +88,7 @@
  outline-offset:-3px;
 }
 
-#game > .event.event-active.finance-bill {
+#game > .event.event-active:is(.finance-bill,.finance-assets) {
  top: 50% !important;
  left: 50% !important;
  right: auto !important;
@@ -108,8 +108,8 @@
  color: #283619;
 }
 
-.finance-bill #eventType, .finance-bill #eventDesc { display: none; }
-#game > .event.finance-bill #eventTitle {
+:is(.finance-bill,.finance-assets) #eventType, :is(.finance-bill,.finance-assets) #eventDesc { display: none; }
+#game > .event:is(.finance-bill,.finance-assets) #eventTitle {
  order: -2;
  flex: none;
  margin: 0 32px 2px;
@@ -118,7 +118,7 @@
  font: clamp(25px, 7vw, 38px) / 1.12 "Finance Ink", Georgia, serif;
 }
 
-#game > .event.finance-bill > .row {
+#game > .event:is(.finance-bill,.finance-assets) > .row {
  order: -1;
  flex: none;
  justify-content: center;
@@ -126,7 +126,7 @@
  margin: 0 32px 7px;
 }
 
-.finance-bill #eventMonth {
+:is(.finance-bill,.finance-assets) #eventMonth {
  padding: 2px 14px;
  border-radius: 45% 28% 42% 22% / 30% 40% 35% 45%;
  background: #f0d596;
@@ -134,7 +134,7 @@
  font: 15px / 1.2 "Finance Ink", Georgia, serif;
 }
 
-#game > .event.finance-bill #eventClose {
+#game > .event:is(.finance-bill,.finance-assets) #eventClose {
  top: 8px !important;
  right: 8px !important;
  border: 1px solid #b67b32;
@@ -304,212 +304,49 @@
  font-display: swap;
 }
 
-#game > .event.event-active.finance-assets {
- --asset-frame: min(100vw, 66.6667dvh, 520px);
- position: fixed;
- top: 50% !important;
- left: 50% !important;
- right: auto !important;
- transform: translate(-50%, -50%);
- width: var(--asset-frame);
- height: calc(var(--asset-frame) * 1.5);
- max-height: none !important;
- box-sizing: border-box;
- margin: 0;
- padding: 0;
- border: 0 !important;
- border-radius: 0 !important;
- background: transparent !important;
- color: #283619;
-}
-
-#game > .event.event-active.finance-assets::before {
- content: "";
- position: absolute;
- inset: 0;
- background: url("./assets/finance/asset-scene.webp") center / 100% 100% no-repeat;
- clip-path: inset(6.65% 12.45% 4.45% 12.55% round 4% / 2.7%);
- pointer-events: none;
-}
-
-.finance-assets > .row {
- position: absolute;
- inset: 13.2% 33% auto;
- height: 1.8%;
- padding: 0;
- margin: 0;
- display: grid;
- place-items: center;
-}
-
-.finance-assets #eventMonth {
- color: inherit;
- font: calc(var(--asset-frame) * .029) / 1 "Finance Ink", serif;
- white-space: nowrap;
-}
-
-.finance-assets #eventTitle,
-.finance-asset-summary dt {
- position: absolute;
- width: 1px;
- height: 1px;
- padding: 0;
- margin: -1px;
- overflow: hidden;
- clip-path: inset(50%);
- white-space: nowrap;
-}
-
-#game > .event.finance-assets #eventClose {
- position: absolute !important;
- top: 7.1% !important;
- right: 13.1% !important;
- width: 8.2%;
- height: 5.2%;
- min-width: 0;
- min-height: 0;
- padding: 0;
- border: 0;
- background: transparent !important;
- color: transparent;
- box-shadow: none;
-}
-
 #game > .event.event-active.finance-assets > #eventData {
- position: absolute;
- inset: 0;
- margin: 0;
- padding: 0;
- overflow: visible;
- pointer-events: none;
+ display:flex !important;
+ flex:1 1 auto;
+ flex-direction:column;
+ min-height:0;
+ max-height:none;
+ gap:8px;
+ padding:0;
+ margin:0;
+ overflow:hidden;
 }
-
-.finance-asset-summary { margin: 0; }
+.finance-assets .finance-bill-desk { flex:none; }
+.finance-asset-summary {
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:6px;
+ flex:none;
+ margin:0;
+}
 .finance-asset-summary > div {
- position: absolute;
- display: grid;
- place-items: center;
- color: #293619;
+ padding:5px;
+ border:1px solid #b86b37;
+ border-radius:10px;
+ background:#f3dc9b80;
+ text-align:center;
 }
+.finance-asset-summary dt { font:16px/1.2 "Finance Ink", serif; }
 .finance-asset-summary dd {
- margin: 0;
- max-width: 100%;
- font: 700 calc(var(--asset-frame) * .031) / 1 Georgia, serif;
- font-variant-numeric: tabular-nums lining-nums;
- overflow-wrap: anywhere;
- text-align: center;
+ margin:2px 0 0;
+ font:bold clamp(14px,4vw,24px)/1.15 Georgia,serif;
+ overflow-wrap:anywhere;
 }
-.finance-asset-net { inset: 29% 25.7% auto 46%; height: 4.2%; }
-.finance-asset-net dd { font-size: calc(var(--asset-frame) * .052); }
-.finance-asset-gross { inset: 35.7% 51.5% auto 31.7%; height: 2.3%; }
-.finance-asset-debt { inset: 35.7% 18.1% auto 66.5%; height: 2.3%; }
-
 .finance-asset-holdings {
- position: absolute;
- inset: 40.25% 14.9% 14.45% 15.15%;
- overflow: auto;
- overscroll-behavior: contain;
- scrollbar-gutter: stable;
- scrollbar-width: thin;
- scrollbar-color: #ad701e #edc583;
- padding: 0 1% 0 .5%;
- pointer-events: auto;
+ flex:1 1 auto;
+ min-height:0;
+ padding:0 5px 0 0;
+ overflow-y:auto;
+ overscroll-behavior:contain;
+ scrollbar-width:thin;
+ scrollbar-color:#a96632 #f4e2b0;
 }
-
-.finance-asset-holdings .finance-bill-section {
- padding: 0;
- margin: 0 0 calc(var(--asset-frame) * .013);
- border: 0;
-}
-
-.finance-asset-holdings .finance-bill-section h3 {
- margin: 0;
- padding: 0;
- background: none;
-}
-
-.finance-asset-heading img {
- display: block;
- width: calc(var(--asset-frame) * .298);
- height: auto;
-}
-
-.finance-asset-holdings .finance-bill-lines {
- padding: 0 2.5% 0 3%;
-}
-
-.finance-asset-holdings .finance-bill-lines > div {
- gap: 5px;
- padding: calc(var(--asset-frame) * .004) calc(var(--asset-frame) * .012);
- border: 0;
- border-bottom: 1px solid #ac804b59;
- font: calc(var(--asset-frame) * .029) / 1.13 "Finance Ink", Georgia, serif;
-}
-.finance-asset-holdings .finance-bill-lines dd {
- font: 700 calc(var(--asset-frame) * .027) / 1.13 Georgia, serif;
-}
-.finance-asset-holdings .finance-bill-lines dt small,
-.finance-asset-holdings .finance-bill-section p {
- font: calc(var(--asset-frame) * .022) / 1.2 system-ui, sans-serif;
-}
-
-#game > .event.finance-assets > #actions {
- position: absolute;
- inset: 86.85% 29.9% 6.9%;
- display: block;
- max-height: none;
- margin: 0;
- padding: 0;
- overflow: visible;
-}
-
-#game > .event.finance-assets #actions > button:last-child {
- width: 100%;
- height: 100%;
- min-height: 0;
- margin: 0;
- padding: 0;
- border: 0;
- background: transparent;
- color: transparent;
-}
-
-#game > .event.finance-assets #eventClose:focus-visible,
-#game > .event.finance-assets #actions > button:focus-visible,
-.finance-asset-holdings:focus-visible {
- outline: 2px solid #417048;
- outline-offset: -2px;
-}
-
-.finance-assets > .row {
- inset-inline: 0;
-}
-
-.finance-assets #eventMonth {
- position: absolute;
- left: 50%;
- transform: translateX(-50%);
-}
-
-#game > .event.finance-assets #eventClose {
- box-shadow: none !important;
- outline: none;
-}
-
-#game > .event.finance-assets #eventClose:focus-visible {
- outline: 2px solid #417048;
-}
-
-.finance-asset-summary dd {
- white-space: nowrap;
- overflow-wrap: normal;
-}
-.finance-asset-gross dd,
-.finance-asset-debt dd {
- font-size: calc(var(--asset-frame) * .027);
-}
-.finance-asset-gross { right: 50.4%; }
-.finance-asset-debt { right: 16.9%; }
+.finance-asset-heading img { display:block; max-width:140px; height:auto; }
+.finance-asset-holdings:focus-visible { outline:2px solid #417048; outline-offset:-2px; }
 
 #game > .event.event-active.finance-savings {
  --savings-frame: min(100vw, 63.9668dvh, 520px);
@@ -1991,3 +1828,46 @@
 #game > .event.event-active:has(.gold-overview-art) #actions button.primary:not(:disabled) {
   background:linear-gradient(#ffe28a,#f4bf4f) !important;
 }
+
+/* Current finance cards share the approved crayon frame. */
+#game > .event.event-active:is(.finance-bill-current,.finance-assets) {
+ border-color:#b36839 !important;
+ color:#4a5023;
+}
+:is(.finance-bill-current,.finance-assets) .finance-bill-desk img {
+ max-height:min(145px,21dvh);
+ object-fit:cover;
+ mask-image:none;
+ border-radius:12px;
+}
+:is(.finance-bill-current,.finance-assets) .finance-bill-section {
+ border-color:#b87944;
+}
+#game > .event:is(.finance-bill-current,.finance-assets) #actions > button:last-child {
+ background:#536229 !important;
+ color:#fff3d2;
+ border-radius:22px;
+}
+#game > .event.finance-bill-current > #eventData,
+.finance-asset-holdings { scrollbar-gutter:stable; }
+#game > .event.finance-bill-current > #eventData::-webkit-scrollbar,
+.finance-asset-holdings::-webkit-scrollbar { width:7px; }
+#game > .event.finance-bill-current > #eventData::-webkit-scrollbar-thumb,
+.finance-asset-holdings::-webkit-scrollbar-thumb { background:#a96632; border-radius:5px; }
+
+.finance-detail-scroll {
+ position:absolute;
+ right:6px;
+ width:5px;
+ border-radius:4px;
+ background:#e9cfa7;
+ pointer-events:none;
+}
+.finance-detail-scroll span {
+ display:block;
+ width:100%;
+ border-radius:inherit;
+ background:#a96632;
+}
+#game > .event.finance-bill-current > #eventData,
+.finance-asset-holdings { scrollbar-width:none; }
