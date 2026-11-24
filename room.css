@@ -83,15 +83,17 @@
 
 .room-canvas{container-type:inline-size}
 .room-status{position:absolute;top:11%;left:4%;width:92%;margin:0;display:grid;grid-template-columns:1.25fr repeat(4,minmax(0,1fr));gap:1.2cqw;color:#264632}
-.room-status div{min-width:0;display:grid;justify-items:center;align-content:center;padding:1cqw .5cqw;border:1px solid #bba068;border-radius:2.4cqw;background:#fff1cd;box-shadow:0 2px 1px #46331a55;text-align:center}
+.room-status div{min-width:0;display:grid;justify-items:center;align-content:start;padding:1cqw .5cqw;border:1px solid #bba068;border-radius:2.4cqw;background:#fff1cd;box-shadow:0 2px 1px #46331a55;text-align:center}
 .room-status div:nth-child(2){background:#fbe0cf}
 .room-status div:nth-child(3){background:#e1eaf0}
 .room-status div:nth-child(4){background:#e8edd1}
 .room-status div:nth-child(5){background:#fae7ad}
 .room-status dt{font-size:clamp(9px,2.65cqw,15px);font-weight:600;line-height:1.15}
-.room-status dt span{display:block;font-size:clamp(12px,4cqw,22px)}
-.room-cash-icon{display:block;width:1em;height:1em;margin:.075em auto}
+.room-status dt span{display:flex;align-items:center;justify-content:center;height:1.15em;font-size:clamp(12px,4cqw,22px);line-height:1}
+.room-cash-icon{display:block;width:1em;height:1em}
 .room-status dd{max-width:100%;margin:.35cqw 0 0;font-size:var(--room-value-size,4cqw);line-height:1.15;font-weight:800;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.room-status div:nth-child(4) dt{font-size:clamp(8px,2.45cqw,14px)}
+.room-status div:nth-child(4) dd{font-size:min(var(--room-value-size,4cqw),3.15cqw);white-space:nowrap}
 
 #roomView.room-school-apartment .room-date{left:27%;top:4.1%;width:46%;height:5.7%;background:transparent;border-radius:0}
 #roomView.room-school-apartment .room-date strong{font-family:MaShanZheng,serif;font-size:5.1cqw}
