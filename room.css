@@ -115,3 +115,9 @@
 .room-date strong{font-variant-numeric:tabular-nums}
 
 #roomView.room-school-apartment .room-date::before{display:none}
+
+/* Cover the preprinted apartment caption through both decorative dashes. */
+#roomView:is(.room-default,.room-apartment):not(.room-school-apartment) .room-date::before {
+ inset-inline: -10%;
+ background: linear-gradient(#fff3d9,#fcedce);
+}
