@@ -5,6 +5,15 @@ function livingBillQuote(){
  const q={month:state.month,selected,housing,living,total:roundCash(housing+living),blocked:housingHandoverDue()||!!window.OwnerHousing?.saleDue()};
  q.token=[q.month,state.housing,state.housingCost,livingTotal(),paid.housing||0,paid.living||0,state.pendingHousingMove?.requestedMonth??'',q.blocked].join('|');return q;
 }
+function confirmCurrentRent(month,token){
+ const ok=housingTransaction(()=>{
+  syncFinance();const q=livingBillQuote();
+  if(q.month!==month||q.token!==token||!q.selected||q.blocked||q.housing<=0)return false;
+  return payMonthly('housing',q.housing);
+ });
+ if(ok)render();
+ return ok;
+}
 function confirmLivingBill(month,token){
  const ok=housingTransaction(()=>{
   syncFinance();const q=livingBillQuote();
