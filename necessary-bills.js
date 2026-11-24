@@ -3,7 +3,7 @@ function necessaryBills(){syncFinance();const paid=paymentReceipt(),rows=[];
  const add=(kind,name,due,action)=>{due=roundCash(Math.max(0,due));if(due>.005)rows.push({kind,name,due,action});};
  add('housing','本月住房',(state.housingCost||0)-(paid.housing||0),openHousing);
  add('living','基本生活及日常养护',livingTotal()-(paid.living||0),openTownLiving);
- add('premiums','有效保单保费',premiumsTotal()-(paid.premiums||0),()=>openInsurance());
+ add('premiums','支付本月保费',premiumsTotal()-(paid.premiums||0),()=>HomeInsurance.openPremiumPayment(openNecessaryBills,()=>necessaryBills().length?openNecessaryBills():isRecoveryMonth(state)?townHome():leaveTownRoom()));
  for(const l of currentLoanCycle().items)if(l.status!=='paid')add('loan',l.name+'月供',l.due,openLoanPayments);
  if(state.carOwned&&!state.insurance.auto?.active)rows.push({kind:'auto',name:'有效车险或停用车辆',due:0,action:()=>openInsurance('auto')});
  if(petCareTasks().some(t=>t.kind!=='Clean'))rows.push({kind:'petCare',name:'到期宠物照护',due:0,action:openPetCare});

@@ -85,11 +85,13 @@
  function openMenu(back=window.openRoom,backLabel='返回房屋') {
   if (state.requiredIncident) return openRequiredIncident();
   const menu = () => openMenu(back, backLabel);
-  showEvent('保险与保障', '保险与保障', '', [], [
+  const bill = premiumBill();
+  showEvent('保险与保障', '保险与保障', '', [['本月待付保费', priceText(bill.total)]], [
    ['医疗险', () => openMedicalInsurance(menu), false],
    ['宠物险', () => openInsurance('pet'), false],
    ['车险', () => openAutoInsurance(menu), false],
    ['房险', () => openPolicy(menu), false],
+   ...(bill.total > 0 ? [['支付本月保费', () => openPremiumPayment(menu), true]] : []),
    [backLabel, back, false]
   ]);
   if ($('eventTitle').textContent === '保险与保障') {
@@ -179,16 +181,56 @@
   ], 'confirm');
  }
 
+ function premiumBill() {
+  syncFinance();
+  const policy = syncPolicy();
+  const tier = policy && policy.paidMonth !== state.month ? policy.tier : null;
+  const home = tier ? plans[tier].monthly : 0;
+  const regular = Math.max(0, roundCash(premiumsTotal() - (paymentReceipt().premiums || 0)));
+  return { month: state.month, regular, home, tier, total: roundCash(regular + home) };
+ }
+
+ function openPremiumPayment(back, after = back, skip) {
+  if (state.requiredIncident) return openRequiredIncident();
+  const bill = premiumBill();
+  const reopen = () => openPremiumPayment(back, after, skip);
+  const insufficient = state.cash < bill.total;
+  showEvent('保险与保障', '支付本月保费', '', [
+   ...(bill.regular ? [['有效保单保费', priceText(bill.regular)]] : []),
+   ...(bill.home ? [['房险续费', priceText(bill.home)]] : []),
+   ['本月待付', priceText(bill.total)]
+  ], [
+   ...(bill.total && !insufficient ? [['确认支付 ' + priceText(bill.total), () => {
+    const current = premiumBill();
+    if (current.month !== bill.month || current.regular !== bill.regular ||
+        current.tier !== bill.tier || state.cash < current.total) return reopen();
+    if (transaction(() => {
+     if (!payMonthly('premiums', current.regular)) return false;
+     if (current.home && !recordHomePremium(current.tier)) return false;
+     return true;
+    }, reopen)) after();
+   }, true]] : []),
+   ...(insufficient ? [['资金不足，查看补救', () => showFundingOptions(bill.total, reopen), true]] : []),
+   ...(skip ? [['暂不续房险，继续出门', skip, false]] : []),
+   ['返回', back, false]
+  ]);
+  window.modalReturn = back;
+ }
+
+ function recordHomePremium(tier) {
+  const amount = plans[tier].monthly;
+  if (!spendConfirmed('homeInsurancePremium', amount, { tier })) return false;
+  state.homeInsurance = { ...state.homeInsurance, tier, paidMonth: state.month };
+  state.homeInsuranceReceipt = { month: state.month, amount };
+  return true;
+ }
+
  function payPremium(tier, back) {
   const policy = syncPolicy();
   if (state.housing !== 'own' || state.requiredIncident ||
       policy && (policy.paidMonth === state.month || policy.tier !== tier)) return;
-  const plan = plans[tier];
   if (transaction(() => {
-   if (!spendConfirmed('homeInsurancePremium', plan.monthly, { tier })) return false;
-   state.homeInsurance = { ...policy, tier, paidMonth: state.month };
-   state.homeInsuranceReceipt = { month: state.month, amount: plan.monthly };
-   return true;
+   return recordHomePremium(tier);
   }, back)) back();
  }
 
@@ -292,5 +334,5 @@
  document.addEventListener('click', event => {
   if (event.target.closest('[data-home-insurance]')) openPolicy();
  });
- window.HomeInsurance = { openMenu, openPolicy, checkOnLeave };
+ window.HomeInsurance = { openMenu, openPolicy, checkOnLeave, premiumBill, openPremiumPayment };
 })();

@@ -61,7 +61,14 @@
   if(state.gameOver?.final)return showGameOver();
   if(state.requiredIncident)return openRequiredIncident();
   if(window.OwnerHousing?.saleDue())return OwnerHousing.show();
+  if(window.HomeInsurance && state.homeDamageCheckedMonth!==state.month){
+   const premium=HomeInsurance.premiumBill();
+   if(premium.home)return HomeInsurance.openPremiumPayment(openRoom,()=>leaveRoom(allowOverdueClean),()=>{
+    if(!HomeInsurance.checkOnLeave())leaveRoom(allowOverdueClean);
+   });
+  }
   if(window.HomeInsurance?.checkOnLeave())return;
+
   if(healthTreatmentKind(state.health)||unfinishedTreatment()||isRecoveryMonth(state))return openHealthTreatment();
   if(window.EducationPlans?.current(state.study)&&EducationPlans.due(state.study)>0)return openEducation();
   syncFinance();
@@ -69,6 +76,7 @@
   const bill=livingBillQuote();
   if(!bill.selected||bill.blocked||bill.housing>0)return window.openLifeOverview();
   // A paused map event retains its identity and resumes instead of being re-rolled.
+  if(townPending() && HomeInsurance.premiumBill().regular>0)return HomeInsurance.openPremiumPayment(openRoom,()=>leaveRoom(allowOverdueClean));
   if(townPending()){state.roomLocation='town';save();visible=false;syncRoom();return showTown();}
   if(necessaryBills().length)return openNecessaryBills();
   const reasons=explorationReturnReasons();
