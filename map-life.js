@@ -284,7 +284,7 @@
       if (q.treatment) effects.push('治疗费 $240');
       else if (q.cash) effects.push((q.cash > 0 ? '+' : '−') + priceText(Math.abs(q.cash)));
       if (q.hours) effects.push('自由时间 −' + q.hours + ' 小时');
-      for (const [key, label] of [['energy','能量'],['happiness','幸福'],['stress','压力'],['intimacy','亲密度']]) {
+      for (const [key, label] of [['energy','能量'],['happiness','幸福度'],['stress','压力'],['intimacy','亲密度']]) {
         if (q[key]) effects.push(label + ' ' + (q[key] > 0 ? '+' : '−') + Math.abs(q[key]));
       }
       return {q, effects, amount:cost(q)};

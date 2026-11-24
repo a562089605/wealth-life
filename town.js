@@ -69,17 +69,46 @@ async function animateTownMove(move){
  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  const pawn=document.querySelector('[data-town-pawn]'),die=document.querySelector('[data-town-flight]');
  if(!pawn||!die)return;
- die.src=TOWN_ART+'die-'+move.die+'.webp';
- await die.decode();
+ const faces=Array.from({length:6},(_,index)=>TOWN_ART+'die-'+(index+1)+'.webp');
+ const result=faces[move.die-1];
+ await Promise.all(faces.map(src=>{
+  const preview=new Image();
+  preview.src=src;
+  return preview.decode().catch(()=>{});
+ }));
+ const position=(left,top,turns,scale=1)=>({
+  left:left+'%',top:top+'%',transform:'translate(-50%,-50%) rotate('+turns+'turn) scale('+scale+')'
+ });
+ let faceIndex=0;
+ die.src=faces[faceIndex];
  die.hidden=false;
- await die.animate([
-  {left:'-12%',top:'60%',transform:'translate(-50%,-50%) rotate(0turn) scale(.84)'},
-  {left:'24%',top:'41%',transform:'translate(-50%,-50%) rotate(1.12turn) scale(.94)',offset:.42},
-  {left:'45%',top:'51%',transform:'translate(-50%,-50%) rotate(1.85turn) scale(.96)',offset:.76},
-  {left:'50%',top:'50%',transform:'translate(-50%,-50%) rotate(2turn)'}
- ],{duration:1020,easing:'cubic-bezier(.19,.6,.34,1)',fill:'forwards'}).finished;
- await die.animate([{opacity:1},{opacity:1,offset:.76},{opacity:0}],{duration:690,fill:'forwards'}).finished;
- die.hidden=true;
+ const cycling=setInterval(()=>{
+  faceIndex=(faceIndex+1)%faces.length;
+  die.src=faces[faceIndex];
+ },90);
+ try{
+  await die.animate([
+   position(-5,56,0,.84),
+   {...position(24,35,.86,.96),offset:.42},
+   position(45.4,55,1.76)
+  ],{duration:1020,easing:'ease-out',fill:'forwards'}).finished;
+ }catch(error){
+  die.hidden=true;
+  throw error;
+ }finally{
+  clearInterval(cycling);
+  die.src=result;
+ }
+ try{
+  await die.animate([
+   position(45.4,55,1.76),
+   {...position(48,52.1,1.9),offset:.42},
+   position(50,55,2)
+  ],{duration:460,easing:'ease-in-out',fill:'forwards'}).finished;
+  await die.animate([{opacity:1},{opacity:1,offset:.78},{opacity:0}],{duration:760,fill:'forwards'}).finished;
+ }finally{
+  die.hidden=true;
+ }
  for(const tile of move.path){
   const pos=townPoint(tile);
   const left=(parseFloat(pawn.style.left)+pos.x)/2+'%',top=(parseFloat(pawn.style.top)+pos.y)/2+'%';

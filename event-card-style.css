@@ -1,0 +1,102 @@
+/* The approved pet card supplies the paper, brown border and leaf palette. */
+#game > .event.event-active.career-event-live,
+#game > .event.event-active:has(.map-life-story),
+.pet-map-card.storybook-card {
+  border: 3px double #805437 !important;
+  border-radius: 22px !important;
+  color: #25402b;
+  background: #fff2d8 url("assets/finance/paper.webp") center / 480px auto repeat !important;
+}
+.storybook-card {
+  box-sizing: border-box;
+  padding: 13px;
+  aspect-ratio: auto;
+  box-shadow: inset 0 0 0 2px #a5724440;
+}
+.storybook-card h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 4px 0 9px;
+  color: #233e25;
+  font: clamp(22px, 6vw, 32px)/1.2 WealthHand, Georgia, serif;
+}
+.storybook-card h2::before,
+.storybook-card h2::after {
+  content: "";
+  width: clamp(21px, 8%, 36px);
+  aspect-ratio: 1;
+  flex: none;
+  background: url("assets/finance/fund-approved/leaf.webp") center / contain no-repeat;
+  mix-blend-mode: multiply;
+}
+.storybook-card h2::after { transform: scaleX(-1); }
+.storybook-card .pet-map-category {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: #43573b;
+  color: #fff4da;
+}
+.storybook-event-art {
+  position: relative;
+  aspect-ratio: 960 / 744;
+  overflow: hidden;
+  border-radius: 13px;
+}
+.storybook-event-art img {
+  position: absolute;
+  top: -26.6cqw;
+  left: -3.4%;
+  width: 106.7%;
+  max-width: none;
+}
+.storybook-card .storybook-event-copy {
+  margin: 8px 0;
+  color: #604129;
+  line-height: 1.45;
+}
+.storybook-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 115px), 1fr));
+  gap: 6px;
+  margin: 8px 0;
+}
+.storybook-values > div,
+.career-event-live .career-event-effects > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 8px;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid #c7ac72;
+  border-radius: 10px;
+  background: #fff2cf;
+}
+.storybook-values dt { color: #604129; }
+.storybook-values dd {
+  margin: 0;
+  color: #254b2d;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.storybook-values dt::before { display: inline-block; margin-inline-end: .28em; }
+.storybook-values [data-stat="幸福度"] dt::before { content: "♥"; color: #a84237; }
+.storybook-values [data-stat="压力"] dt::before { content: "☁"; color: #a75839; }
+.storybook-values [data-stat="能量"] dt::before { content: "ϟ"; color: #946315; }
+.storybook-values [data-stat="自由时间"] dt::before { content: "◷"; color: #58632d; }
+.storybook-values [data-stat="健康度"] dt::before { content: "✚"; color: #526c42; }
+.storybook-values [data-stat="亲密度"] dt::before { content: "❧"; color: #526c42; }
+.storybook-card .pet-solid-button,
+#game .event:has(.map-life-story) .map-life-story-option,
+#game .event.career-event-live .career-event-option {
+  border-color: #ad8549;
+  background: #fbedd0;
+  color: #29462e;
+}
+.storybook-card .pet-solid-button { background: #efc55e; }

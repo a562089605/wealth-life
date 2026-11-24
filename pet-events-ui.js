@@ -13,30 +13,46 @@
   const wrap=el('div','','pet-map-wrap');node.append(wrap);wrap.append(el('p',q.petName,'pet-map-name'));
   const card=el('div','','pet-map-card');wrap.append(card);const picture=el('img','','pet-map-art');picture.alt=q.title;
   const art=P.cardForRecord(r),medical=q.medical??['unwell','injury'].includes(r.id);
+  const gift=art?.id==='dog-surprise';
+  const illustrated=!!art&&!gift;
   const inlineMedical=!!art&&medical&&r.id==='unwell'&&r.forced;
   if(inlineMedical){card.classList.add('pet-map-inline-medical');card.style.setProperty('--pet-art-height',(art.buttonBox[1]*1.5)+'cqw');}
-  if(art){picture.src=art.art;card.dataset.card=art.id;card.append(picture);}else{
-   card.classList.add('pet-map-generic');card.append(el('p','生活事件卡·宠物','pet-map-category'),el('h2',q.title));const hero=el('div','','pet-map-portrait');picture.src='assets/pets/success-'+q.species+'-20261104.webp';hero.append(picture);card.append(hero,el('p',q.petName+(r.id==='unwell'?'有些不舒服，带它去看看医生吧。':r.id==='injury'?'玩耍时受伤了，带它去处理伤口吧。':'不小心弄坏了家里的东西，需要收拾和更换。')));
+  if(gift){
+   card.classList.add('pet-map-generic','storybook-card');
+   const hero=el('div','','storybook-event-art');
+   picture.src=art.art;picture.alt='';hero.append(picture);
+   card.append(el('p','生活事件卡 · 宠物','pet-map-category'),el('h2',q.title),hero,
+    el('p','刚回到家，柯基就叼来了最喜欢的玩具。它轻轻放在你脚边，抬头望着你。','storybook-event-copy'));
+  }else if(art){picture.src=art.art;card.dataset.card=art.id;card.append(picture);}else{
+   card.classList.add('pet-map-generic','storybook-card');card.append(el('p','生活事件卡·宠物','pet-map-category'),el('h2',q.title));const hero=el('div','','pet-map-portrait');picture.src='assets/pets/success-'+q.species+'-20261104.webp';hero.append(picture);card.append(hero,el('p',q.petName+(r.id==='unwell'?'有些不舒服，带它去看看医生吧。':r.id==='injury'?'玩耍时受伤了，带它去处理伤口吧。':'不小心弄坏了家里的东西，需要收拾和更换。')));
   }
   const status=el('p','','pet-message');status.setAttribute('role','status');
-  const controls=art?card:el('div','','pet-map-summary');if(controls!==card)card.append(controls);
-  if(!art){
+  const controls=illustrated?card:el('div','','pet-map-summary');if(controls!==card)card.append(controls);
+  if(!illustrated){
    if(['unwell','injury'].includes(r.id)&&q.coverage!==null)controls.append(el('p','宠物保险已生效','pet-map-insurance'));
-   const stats=el('dl','','pet-map-stats'),rows=[];
-   if(q.cost)rows.push([['unwell','injury'].includes(r.id)?'预计自付':'本次费用',priceText(q.cost)]);
-   rows.push(['自由时间','−'+q.hours+'小时'],['能量',(q.energy>0?'+':'')+q.energy],['压力',(q.stress>0?'+':'')+q.stress]);if(q.happiness)rows.push(['幸福度','+'+q.happiness]);
-   for(const [label,value]of rows){stats.append(el('dt',label),el('dd',value));}controls.append(stats);
+   const stats=el('dl','','storybook-values'),rows=[];
+   if(q.cost)rows.push([medical?'预计自付':'本次费用',priceText(q.cost)]);
+   const signed=n=>(n<0?'−':'+')+Math.abs(n);
+   for(const [label,value] of [['幸福度',q.happiness],['压力',q.stress],['能量',q.energy]]){
+    if(value)rows.push([label,signed(value)]);
+   }
+   if(q.hours)rows.push(['自由时间',signed(-q.hours)+' 小时']);
+   for(const [label,value] of rows){
+    const row=el('div','');row.setAttribute('data-stat',label);
+    row.append(el('dt',label),el('dd',value));stats.append(row);
+   }
+   if(rows.length)controls.append(stats);
    if(q.contact){const c=q.contact;controls.append(el('p','新朋友：'+c.name+' · '+(c.gender==='female'?'女':'男')+' · '+c.age+'岁 · '+c.job),el('p','初始亲密度 10'));}
   }
-  if(art){
+  if(illustrated){
    const summary=[['自由时间',q.hours+'小时'],['能量',q.energy||0],['幸福度',q.happiness||0],['压力',q.stress||0]];
    if(q.gross)summary.unshift([medical?'预计自付':'本次费用',priceText(q.cost)]);
    card.append(el('p',summary.map(([k,v])=>k+' '+v).join('；'),'pet-map-accessible'));
    if(medical&&(inlineMedical||q.cost!==(art.printedCost??art.cost))){const display=inlineMedical||art.printedCost===undefined?priceText(q.cost):priceText(q.cost).replace(/\.00$/,'');const amount=el('span',display,'pet-map-medical-price');const box=art.priceBox;['left','top','width','height'].forEach((k,i)=>amount.style[k]=box[i]+'%');if(inlineMedical){amount.style.setProperty('--pet-price-top',(box[1]*1.5)+'cqw');amount.style.height=(box[3]*1.5)+'cqw';}if(r.id==='injury'||r.id==='accident')amount.classList.add('pet-map-injury-price');card.append(amount);}
   }
-  const pay=el('button',q.button,art?'pet-hit pet-map-confirm':'pet-solid-button');pay.type='button';controls.append(pay);
-  if(art)['left','top','width','height'].forEach((k,i)=>pay.style[k]=art.buttonBox[i]+'%');
-  if(art&&q.contact){const c=q.contact;wrap.append(el('p','新朋友：'+c.name+' · '+(c.gender==='female'?'女':'男')+' · '+c.age+'岁 · '+c.job,'pet-map-contact'));}
+  const pay=el('button',q.button,illustrated?'pet-hit pet-map-confirm':'pet-solid-button');pay.type='button';controls.append(pay);
+  if(illustrated)['left','top','width','height'].forEach((k,i)=>pay.style[k]=art.buttonBox[i]+'%');
+  if(illustrated&&q.contact){const c=q.contact;wrap.append(el('p','新朋友：'+c.name+' · '+(c.gender==='female'?'女':'男')+' · '+c.age+'岁 · '+c.job,'pet-map-contact'));}
   if(inlineMedical){
    pay.className='pet-solid-button pet-map-inline-pay';
    pay.removeAttribute('style');

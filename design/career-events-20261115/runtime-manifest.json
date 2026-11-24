@@ -4,35 +4,35 @@
     {
       "id": "barista-busy",
       "runtime": "assets/career-events-20261116/barista-busy-painted-batch2-20261117.webp",
-      "runtimeSha256": "96d7792b87672f2484625aa66db9029e33ba2dc37d9a66576cbed74bc44bca14",
+      "runtimeSha256": "ddbff7ecfed8c4f075f3f357567bc8b05dc33b141a6765c67abc9b7c6ba8c9f7",
       "status": "retained-from-remote-main",
       "sourceCommit": "c04245c"
     },
     {
       "id": "barista-cut",
       "runtime": "assets/career-events-20261116/barista-cut-painted-20261117.webp",
-      "runtimeSha256": "63bbf1b1e263fb79e56ac17e0b70cb6d45913aea8f9d250069659ac27c14d713",
+      "runtimeSha256": "ed8a9e13c21b4b29e0890491c41aa194b1ea282934745c4b3673dfad15a62d7e",
       "status": "retained-from-remote-main",
       "sourceCommit": "7dea3ed"
     },
     {
       "id": "barista-departure",
       "runtime": "assets/career-events-20261116/barista-departure-painted-batch2-20261117.webp",
-      "runtimeSha256": "59dfdfe2bd9c0ba61ad03f02b6fb4f52fc9bda125239add1ef49f68694de4f9e",
+      "runtimeSha256": "e5ae5a39bfebc6ae7ef87da42b05fbf00b2623650580ebdaadcfb8575268b63b",
       "status": "retained-from-remote-main",
       "sourceCommit": "c04245c"
     },
     {
       "id": "barista-staff",
       "runtime": "assets/career-events-20261116/barista-staff-painted-batch2-20261117.webp",
-      "runtimeSha256": "6e4c89b3f9b3686fb1bd98829063b36486707395317ab05d1df27864ed2a42a0",
+      "runtimeSha256": "f4a846ddca83c73fa678cbf2a2795c150901c11b95469c0e8be86951d4c052c8",
       "status": "retained-from-remote-main",
       "sourceCommit": "c04245c"
     },
     {
       "id": "barista-tip",
       "runtime": "assets/career-events-20261116/barista-tip-painted-batch2-20261117.webp",
-      "runtimeSha256": "9cf9c8def94217b0f4ab82084c6a1bc1d27ac6d69ec3a072bcaa78b4621bcc21",
+      "runtimeSha256": "21ac596c1dfa474afd82782e44f9abbd10e728d3ee0975d92b29e5b91b038ac0",
       "status": "retained-from-remote-main",
       "sourceCommit": "c04245c"
     },
@@ -41,7 +41,7 @@
       "source": "design/career-events-20261115/manager-decline/manager-decline-confirmed.png",
       "sourceSha256": "f79758960ff1f3329b9ec5d4f2d34f21be5fdf0d7b7d7c37eba083dd74b1f754",
       "runtime": "assets/career-events-20261116/manager-decline.webp",
-      "runtimeSha256": "748bc87136c477c9f270bcd6e3b3c962c56e45340a2ffb68fe364cbd8c2180c9"
+      "runtimeSha256": "210e755d1c10d0fb64810a209ef09ca3166d65ccf3596eab09f9f85af1dee1cf"
     },
     {
       "id": "manager-decline-a-failure",
@@ -104,7 +104,7 @@
       "source": "design/career-events-20261115/manager-research-a-failure/manager-research-a-failure-confirmed.png",
       "sourceSha256": "c5128a3ba71c5db4837997a0854ae4483a90167e0775d0c3363474a17ca0c211",
       "runtime": "assets/career-events-20261116/manager-research-a-failure.webp",
-      "runtimeSha256": "3a5b4da6c4f951a5bb8dd4df7d3a265f8c11807b57ff45a61308cac884ae4e1e"
+      "runtimeSha256": "cd7357c13e97c8b08ed3253fc1aafb71caa2ea673af98154fd9f9240649f9d5a"
     },
     {
       "id": "manager-research-a-success",
@@ -180,42 +180,42 @@
     {
       "id": "shift-schedule",
       "runtime": "assets/career-events-20261116/shift-schedule-painted-batch3-20261117.webp",
-      "runtimeSha256": "fe511dc4b0e12b1cccc998e994978ee87751f59ed7656df5e3f6739ec5d75c8b",
+      "runtimeSha256": "a92831fc7786791fbd0ad12d3876c08fce9fb832a4769a9c79f21901cbb83c17",
       "status": "retained-from-remote-main",
       "sourceCommit": "598ec01"
     },
     {
       "id": "shift-schedule-failure",
       "runtime": "assets/career-events-20261116/shift-schedule-failure-painted-batch3-20261117.webp",
-      "runtimeSha256": "286d7b2e54e4ec7e7c70fdad7208615cf212451e23e08f83fa589fa0f188c764",
+      "runtimeSha256": "7fe7ea8a113b1aa9706ac9855143f84baa59d365881c92896bb74c7443550c1d",
       "status": "retained-from-remote-main",
       "sourceCommit": "598ec01"
     },
     {
       "id": "shift-schedule-success",
       "runtime": "assets/career-events-20261116/shift-schedule-success-painted-batch3-20261117.webp",
-      "runtimeSha256": "7a88f8aeee59b3f80fbce9e59e34da86e2551c1ba7a08ae8342284156bd44eca",
+      "runtimeSha256": "680c5922ab994891d5039b30de228daeb2825b90c26e2f2449f90253b5951d40",
       "status": "retained-from-remote-main",
       "sourceCommit": "598ec01"
     },
     {
       "id": "shift-training",
       "runtime": "assets/career-events-20261116/shift-training-painted-batch3-20261117.webp",
-      "runtimeSha256": "8e6db4dab85ae5863f162ad6759aca500d5fcf3d26aea54eb6544f86b19748cb",
+      "runtimeSha256": "4fb7ba9aacf01ccac388bad390cfee4a3dc39ea0ad7667fbdea1bfbcdb363bcf",
       "status": "retained-from-remote-main",
       "sourceCommit": "598ec01"
     },
     {
       "id": "barista-cut-followup",
       "runtime": "assets/career-events-20261116/barista-cut-followup-painted-20261117.webp",
-      "runtimeSha256": "ed1423fc855ae7bd4756c877abe19337c7b0134aca3fb340c4591f13c34815d4",
+      "runtimeSha256": "12af4b256dcfcd21f08c8d2e62084e2bf5d6f074dbeb1b170087773961ce6a92",
       "status": "retained-from-remote-main",
       "sourceCommit": "7dea3ed"
     },
     {
       "id": "manager-decline-c-followup",
       "runtime": "assets/career-events-20261116/manager-decline-c-followup-20261118.webp",
-      "runtimeSha256": "24359069bc8d77d90b8e3b5c54a46a7c7c024b7c7f6b0a834ad30e4e56de7c97",
+      "runtimeSha256": "d9526fd2fca84ccb3c949c8465f98a6a664b335da24c1dfffba5238a075c6956",
       "source": "design/career-events-20261115/manager-decline-c-followup/manager-decline-c-followup-confirmed-20261118.png",
       "sourceSha256": "a30e8e44480d828cb285c528307b46e9092e0d611ad757c1b6e07197b9af9745",
       "crop": [

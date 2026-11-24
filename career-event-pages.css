@@ -418,3 +418,39 @@
  color:#354524;
  box-shadow:inset 0 0 0 2px #ffe1a2;
 }
+
+.career-event-live .career-event-hero:has(img[src$="/barista-cut-followup-painted-20261117.webp"]) {
+ aspect-ratio: 936 / 454;
+}
+.career-event-live .career-event-hero img[src$="/barista-cut-followup-painted-20261117.webp"] {
+ display: block;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ transform: none;
+}
+
+.career-event-live .career-event-hero:has(img[src*="/manager-"]) {
+ aspect-ratio: 2 / 1;
+}
+.career-event-live .career-event-hero img[src*="/manager-"] {
+ display: block;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ object-position: center;
+ transform: none;
+}
+
+.manager-career-card #actions:empty { display: none; }
+.manager-career-card #eventDesc { margin-block: 6px 10px; }
+.manager-career-card .career-event-option { margin-block: 8px; padding: 10px 12px; }
+.manager-career-card .career-event-effects { gap: 6px; margin-top: 6px; }
+.manager-career-card .career-event-effects > div { padding: 6px 8px; }
+.manager-career-card .career-event-effects > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (max-width: 420px) {
+ .manager-career-card .career-event-effects { grid-template-columns: repeat(2, minmax(0, 1fr)); font-size: 16px; }
+ .manager-career-card .career-event-effects strong { font-size: 16px; }
+}
+
+.order-reference-card .illustrated-partner-option .partner-option-copy b.order-net-gain { color: #365d36; }

@@ -1,7 +1,7 @@
 // All changing text and controls are real DOM; approved artwork is reused only for the illustration header.
 (function(){'use strict';const E=CareerEventRules,D=CareerEventData.cards;let msg=null;
  function message(text){if(msg?.isConnected)msg.textContent=text;}
- function rows(e){const result=[],signedMoney=n=>(n>0?'+':'−')+money(Math.abs(n));for(const [k,label,unit]of [['wages','加班工资','$'],['tips','额外小费','$'],['bonus','奖金','$'],['hours','工作时间','h'],['energy','能量',''],['stress','压力',''],['happiness','幸福',''],['service','服务经验',' XP'],['management','管理经验',' XP'],['latte','拉花经验',' XP'],['pourOver','手冲咖啡经验',' XP'],['trust','上司认可度',''],['sales','门店营业额','%'],['storeNet','门店经营收益','$'],['monthlySaving','次月起每月减支','$'],['retain','本月最多留存','$']]){let n=e?.[k];if(!n)continue;if((k==='latte'||k==='pourOver')&&!e.actualReceipt){n=Math.max(0,Math.min(n,800-HobbyLearning.xp(state,k)));if(!n)continue;}const displayLabel=n<0&&e.hours<0?(k==='wages'?'工资扣减':k==='tips'?'小费扣减':label):label;result.push([displayLabel,unit==='$'?signedMoney(n):(n>0?'+':'−')+Math.abs(unit==='%'?Math.round(n*100):n)+unit]);if(k==='hours')result.push(['自由时间',(n>0?'−':'+')+Math.abs(n)+'h']);}return result;}
+ function rows(e){const result=[],signedMoney=n=>(n>0?'+':'−')+money(Math.abs(n));for(const [k,label,unit]of [['wages','加班工资','$'],['tips','额外小费','$'],['bonus','奖金','$'],['hours','工作时间','h'],['energy','能量',''],['stress','压力',''],['happiness','幸福度',''],['service','服务经验',' XP'],['management','管理经验',' XP'],['latte','拉花经验',' XP'],['pourOver','手冲咖啡经验',' XP'],['trust','上司认可度',''],['sales','门店营业额','%'],['storeNet','门店经营收益','$'],['monthlySaving','次月起每月减支','$'],['retain','本月最多留存','$']]){let n=e?.[k];if(!n)continue;if((k==='latte'||k==='pourOver')&&!e.actualReceipt){n=Math.max(0,Math.min(n,800-HobbyLearning.xp(state,k)));if(!n)continue;}const displayLabel=n<0&&e.hours<0?(k==='wages'?'工资扣减':k==='tips'?'小费扣减':label):label;result.push([displayLabel,unit==='$'?signedMoney(n):(n>0?'+':'−')+Math.abs(unit==='%'?Math.round(n*100):n)+unit]);if(k==='hours')result.push(['自由时间',(n>0?'−':'+')+Math.abs(n)+'h']);}return result;}
  function effects(e,hideWorkHours=false,serviceXpAtMonthEnd=false){
   if(serviceXpAtMonthEnd&&e?.service){
    const leaveHours=currentCareerTime().familyLeaveHours||0;
@@ -10,7 +10,7 @@
    const monthEndXp=hours=>Math.min(400,xp+Math.max(0,hours)/8);
    e={...e,service:monthEndXp(regularHours+e.hours)-monthEndXp(regularHours)};
   }
-  const box=document.createElement('div');box.className='career-event-effects';for(const [label,value]of rows(e)){if(hideWorkHours&&label==='工作时间')continue;const row=document.createElement('div'),l=document.createElement('span'),v=document.createElement('strong');l.textContent=serviceXpAtMonthEnd&&label==='服务经验'?'顾客服务（月底结算）':label;v.textContent=value;row.append(l,v);box.append(row);}if(e?.storeCost&&isPartner()){const row=document.createElement('div'),label=document.createElement('span'),value=document.createElement('strong');label.textContent='门店支出';value.textContent='−'+money(e.storeCost);row.append(label,value);box.append(row);}for(const [key,label,format] of [
+  const box=document.createElement('div');box.className='career-event-effects';for(const [label,value]of rows(e)){if(hideWorkHours&&label==='工作时间')continue;const row=document.createElement('div'),l=document.createElement('span'),v=document.createElement('strong');l.textContent=serviceXpAtMonthEnd&&label==='服务经验'?'顾客服务（月底结算）':label;v.textContent=value;row.append(l,v);box.append(row);}if(e?.storeCost&&(isPartner()||CareerLearningRules.role(state.job)==='manager')){const row=document.createElement('div'),label=document.createElement('span'),value=document.createElement('strong');label.textContent='门店支出';value.textContent='−'+money(e.storeCost);row.append(label,value);box.append(row);}for(const [key,label,format] of [
   ['machineWarrantyMonths','免故障维修',n=>n+' 个月'],
   ['machineLoanRevenueRate','本月营业收入',n=>'减少 '+Math.round(n*100)+'%，下月须修或换']
  ]){if(!e?.[key])continue;const row=document.createElement('div'),name=document.createElement('span'),value=document.createElement('strong');name.textContent=label;value.textContent=format(e[key]);row.append(name,value);box.append(row);}if(!box.children.length)box.textContent='无变化';return box;}
@@ -21,7 +21,14 @@
   box.replaceChildren();
   box.style.display='block';
   box.insertAdjacentHTML('afterbegin',careerHero(artId));
+  if(referenceCards.includes(artId)){
+   box.querySelector('.career-event-hero img').src='assets/career-events-20261116/'+artId.slice('partner-'.length)+'-reference-header.webp';
+  }
   modal.classList.add('coffee-painted-event','career-event-live');
+  if(artId?.startsWith('manager-')){
+   modal.classList.add('manager-career-card');
+   $('actions').replaceChildren();
+  }
   if(partner){
    modal.classList.add('partner-painted-card');
    modal.dataset.partnerEvent=artId;
@@ -47,10 +54,10 @@
    const miss=CareerEventRules.guard(state,quote,CareerEventRuntime.options());
    const panel=document.createElement('section');
    panel.className='career-rush-choice';
-   if(index===0)panel.append(effects(quote,false,record.serviceXpAtMonthEnd));
+   if(index===0)panel.append(effects(quote,true,record.serviceXpAtMonthEnd));
    else {
     const note=document.createElement('p');
-    note.textContent='维持原排班，收入、工时与状态无额外变化。';
+    note.textContent='还是好好休息吧';
     panel.append(note);
    }
    if(miss){
@@ -82,17 +89,18 @@
   return screen(card.id,card.title,story);
  }
  function requireEventChoice(box){
+  $('actions').replaceChildren();
   box.closest('.event').classList.add('career-choice-required');
   $('eventClose').hidden=true;
  }
  const referenceCards=['partner-order','partner-reserve','partner-bakery'];
- function manager(){const r=E.pending(state);if(!r)return false;const follow=r.status==='followup',d=D[follow?r.follow.cardId:r.cardId],b=storeScreen(r,d);if(follow){b.append(effects(r.follow.effects));button(b,d.confirmLabel||'确认结果',()=>{const out=E.settleFollow(state,r.id,CareerEventRuntime.options());if(!out.ok)return message(out.reason);if(d.confirmLabel)finish();else result(out.record,d);});return true;}if(r.cardId==='partner-machine'||r.cardId==='partner-order')requireEventChoice(b);
+ function manager(){const r=E.pending(state);if(!r)return false;const follow=r.status==='followup',d=D[follow?r.follow.cardId:r.cardId],b=storeScreen(r,d);if(follow){b.append(effects(r.follow.effects));button(b,d.confirmLabel||'确认结果',()=>{const out=E.settleFollow(state,r.id,CareerEventRuntime.options());if(!out.ok)return message(out.reason);if(d.confirmLabel)finish();else result(out.record,d);});return true;}const requiresChoice=r.cardId.startsWith('manager-')||['partner-machine','partner-order','partner-beans','partner-bakery','partner-reserve'].includes(r.cardId);if(requiresChoice)requireEventChoice(b);
  if(referenceCards.includes(r.cardId)){
   const modal=b.closest('.event');
   modal.classList.add('partner-reference-card');
   if(r.cardId==='partner-order')modal.classList.add('order-reference-card');
-  b.querySelector('.career-event-hero img').src='assets/career-events-20261116/'+r.cardId.slice('partner-'.length)+'-reference-header.webp';
- }const options=E.eventOptions(state,r);for(let i=0;i<options.length;i++){const o=options[i],miss=E.optionGuard(state,r.cardId,o.effects,CareerEventRuntime.options()),bn=button(b,(options.length>1?String.fromCharCode(65+i)+'  ':'')+o.label,()=>{const out=E.choose(state,r.id,i,CareerEventRuntime.options());if(!out.ok)return message(out.reason);if(out.record.status==='followup')manager();else result(out.record,d);},!!miss);if(r.cardId.startsWith('partner-'))partnerOption(bn,o,i,r.cardId);else if(o.description){const p=document.createElement('p');p.textContent=o.description;bn.append(p);}if(Object.keys(o.effects).length&&!r.cardId.startsWith('partner-'))bn.append(effects(o.effects,r.cardId==='manager-departure'&&i===0));if(miss){const n=document.createElement('small');n.textContent=miss;bn.append(n);}}if(r.cardId!=='partner-machine'&&r.cardId!=='partner-order')button(b,'稍后决定',finish);return true;}
+
+ }const options=E.eventOptions(state,r);for(let i=0;i<options.length;i++){const o=options[i],miss=E.optionGuard(state,r.cardId,o.effects,CareerEventRuntime.options()),bn=button(b,(options.length>1?String.fromCharCode(65+i)+'  ':'')+o.label,()=>{const out=E.choose(state,r.id,i,CareerEventRuntime.options());if(!out.ok)return message(out.reason);if(out.record.status==='followup')manager();else result(out.record,d);},!!miss);if(r.cardId.startsWith('partner-'))partnerOption(bn,o,i,r.cardId);else if(o.description){const p=document.createElement('p');p.textContent=o.description;bn.append(p);}if(Object.values(o.effects).some(Boolean)&&!r.cardId.startsWith('partner-'))bn.append(effects(o.effects,r.cardId==='manager-departure'&&i===0));if(miss){const n=document.createElement('small');n.textContent=miss;bn.append(n);}}if(!requiresChoice)button(b,'稍后决定',finish);return true;}
  function partnerOption(button,option,index,cardId){
   const letter=document.createElement('span'),copy=document.createElement('span');
   letter.className='partner-option-letter';
@@ -123,6 +131,7 @@
     if(/^\$|%$/.test(text)){
      const amount=document.createElement('b');
      amount.textContent=text;
+     if(cardId==='partner-order'&&piece.includes('门店')&&piece.includes('净增'))amount.classList.add('order-net-gain');
      line.append(amount);
     }else line.append(text);
    }
@@ -189,13 +198,13 @@
  }
  function restoreEventHeader(){
   const title=$('eventTitle'),modal=title.closest('.event');
+  if(modal.matches('.career-weekend-rush,.career-choice-required'))$('eventClose').hidden=false;
   if(modal.classList.contains('partner-painted-card')){
    $('eventData').before($('eventType').parentElement,title,$('eventDesc'));
    modal.classList.remove('partner-painted-card','partner-reference-card','order-reference-card','bakery-result-card','career-choice-required');
    delete modal.dataset.partnerEvent;
   }
-  if(modal.classList.contains('career-weekend-rush'))$('eventClose').hidden=false;
-  modal.classList.remove('career-event-live','career-weekend-rush','career-choice-required');
+  modal.classList.remove('career-event-live','career-weekend-rush','career-choice-required','manager-career-card');
  }
  const previousShow=showEvent;
  showEvent=function(...args){restoreEventHeader();return previousShow(...args);};

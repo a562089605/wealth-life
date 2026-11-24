@@ -68,7 +68,7 @@ function resolveCoffeeEvent(cycle,id,index){const r=coffeeRecord();if(r)coffeeEn
  const beforeStats={energy:state.energy,stress:state.stress,happiness:state.happiness};
  r.status='resolved';r.choice=c.label;r.extraWages=c.wages;r.extraTips=c.tips;r.workHoursDelta=c.hours;
  state.energy=Math.max(0,Math.min(100,state.energy+c.energy));state.stress=Math.max(0,Math.min(100,state.stress+c.stress));coffeeData().managerTrust=Math.min(20,Math.max(0,(coffeeData().managerTrust||0)+c.trust));coffeeData().customerFavor=Math.min(100,Math.max(0,coffeeData().customerFavor+(c.customer||0)));r.customerFavorDelta=c.customer||0;if(c.happiness)state.happiness=Math.max(0,Math.min(100,state.happiness+c.happiness));const actual=structuredClone(c);actual.energy=state.energy-beforeStats.energy;actual.stress=state.stress-beforeStats.stress;if(c.happiness)actual.happiness=state.happiness-beforeStats.happiness;coffeeSkillGain(actual);r.resolvedEffects=actual;save();
- showEvent('咖啡师职业结果','已确认：'+c.label,'',careerEffectRows(actual),[['继续',finish,true]]);return true;
+ finish();return true;
 }
 // Register one background and one entry role without changing other careers or old saves.
 JOBS.barista=[COFFEE_ROLE,COFFEE_CONFIG.annualSalary,2700,0,{},'highschool'];
