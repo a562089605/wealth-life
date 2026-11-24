@@ -18,6 +18,11 @@
   if(!box){
    box=document.createElement('section');box.id='roomView';box.setAttribute('aria-label','房屋：本月安排');
    box.innerHTML='<div class="room-canvas"><img src="assets/home/apartment-corgi-20261104.webp" width="853" height="1844" alt="温暖的手绘房间：人物坐在绿沙发阅读，柯基在地毯上休息。地毯上的三色柯基旁有宠物入口。"><div class="room-date"><strong id="roomCalendar"></strong><span id="roomHousingTitle">房屋 · 本月安排</span></div><button type="button" class="room-menu" data-room="menu" aria-label="打开游戏菜单">☰</button><button type="button" class="room-hotspot room-work" data-room="work" aria-label="工作">工作</button><button type="button" class="room-hotspot room-study" data-room="study" aria-label="学习">学习</button><button type="button" class="room-hotspot room-rest" data-room="rest" aria-label="休息">休息</button><button type="button" class="room-hotspot room-life" data-room="life" aria-label="生活">生活</button><button type="button" class="room-hotspot room-relations" data-room="relations" aria-label="关系">关系</button><button type="button" class="room-hotspot room-finance" data-room="finance" aria-label="财务">财务</button><button type="button" class="room-hotspot room-pets" data-room="pets" aria-label="宠物">宠物</button><button type="button" class="room-hotspot room-leave" data-room="leave" aria-label="确认完成，现在出门">确认完成，现在出门</button></div>';
+   const billButton=document.createElement('button');
+   billButton.type='button';
+   billButton.className='room-bill';
+   billButton.dataset.room='bill';
+   box.querySelector('.room-date').after(billButton);
    el('game').append(box);
   }
   const apartment=state.housing==='rent1',studio=state.housing==='studio',shared=state.housing==='shared',family=state.housing==='family';
@@ -32,6 +37,15 @@
   img.width=family?935:853;img.height=family?1683:1844;
   box.classList.toggle('room-default',!(apartment||studio||shared||family));
   el('roomHousingTitle').textContent=(family?'与家人同住':shared?'合租':studio?'Studio':apartment?'小公寓':'房屋')+' · 本月安排';
+  const bill=livingBillQuote();
+  const billButton=box.querySelector('.room-bill');
+  const expense=family?'家用':state.housing==='own'?'房贷':'房租';
+  if(bill.blocked)billButton.textContent='办理住房交接';
+  else if(!bill.selected)billButton.textContent='先选择住房';
+  else if(bill.housing>0)billButton.textContent='交'+expense+'和生活费 · '+money(bill.total);
+  else if(bill.living>0)billButton.textContent='交本月生活费 · '+money(bill.living);
+  else billButton.textContent='本月生活账单 · 已支付';
+  billButton.classList.toggle('room-bill-due',bill.total>0||!bill.selected||bill.blocked);
   box.hidden=false;el('roomCalendar').textContent=townCalendar();
  }
  window.openRoom=function(){
@@ -85,7 +99,7 @@
   state.roomLocation='overview';save();visible=false;syncRoom();clearModals();el('qAssets').click();
  }
  window.openFinanceAssets=()=>window.FinancePages.open(openWealth,true);
- const actions={work:()=>openWorkAdjustment(),study:learning,rest:()=>openExtraRest(),life:living,
+ const actions={work:()=>openWorkAdjustment(),study:learning,rest:()=>openExtraRest(),life:living,bill:living,
   relations:()=>el('networkBtn').click(),finance:()=>window.FinancePages.open(openWealth),pets:()=>el('petBtn').click(),leave:leaveRoom,menu:()=>el('wlMenu').click()};
  document.addEventListener('click',e=>{
   const b=e.target.closest('[data-room]');if(!b||b.disabled||!visible||!activeGame())return;
