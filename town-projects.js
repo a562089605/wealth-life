@@ -1,8 +1,8 @@
 const TOWN_PROJECTS={
- orchard:{name:'果园采收分成',cost:4800,description:'果园缺一笔采收周转金。你出资，果农负责采摘和销售，采收季结束后结算。',hours:2,duration:3,chance:.7,payout:6500,fallback:3600},
- advertising:{name:'集市广告位经营权',cost:3600,description:'集市开放一年的广告位经营权。商家已签约，集市方负责更换和维护。',duration:12,monthly:370},
+ orchard:{name:'果园采收分成',cost:4800,description:'果园缺一笔采收周转金。你出资，果农负责采摘和销售，采收季结束后结算。',hours:2,duration:3,chance:.7,payout:6100,fallback:3600},
+ advertising:{name:'集市广告位经营权',cost:3600,description:'集市开放一年的广告位经营权。商家已签约，集市方负责更换和维护。',duration:12,monthly:330},
  postoffice:{name:'旧邮局改造',cost:21000,description:'旧邮局搬走了。你可以买下旧址，改成适合出租的小工作室。',duration:2,sale:24000,monthly:260},
- chamber:{name:'商会建设债券',cost:6000,description:'镇商会要给集市修一条遮雨走廊，邀请镇民认购建设债券。',duration:12,monthly:40},
+ chamber:{name:'商会建设债券',cost:6000,description:'镇商会要给集市修一条遮雨走廊，邀请镇民认购建设债券。',duration:12,monthly:20},
  charging:{name:'社区充电站联营',cost:10500,description:'运营商想在镇口加装充电桩。你出资，运营商负责收费和维护。',monthly:310,fallback:-90,chance:.7},
  truck:{name:'旧货车整修转售',cost:5200,description:'镇上的送货车退役了。买下并检车后，你可以直接转卖、先修再卖，或租给本地配送队。',sale:5500,repair:1200,chance:.8,payout:7600,monthly:180},
  vending:{name:'社区自助售货机',cost:7800,description:'体育馆开放售货机点位。你可以买下设备，自行补货或委托运营。',monthly:220,selfMonthly:340,hours:3,energy:4},
@@ -25,8 +25,11 @@ function townProjectPassiveIncome(s=state){
   const project=TOWN_PROJECTS[item.id];
   if(!project||item.status!=='active'||item.lastPaidMonth>=s.month||(item.due&&item.due<=s.month))return total;
   if(item.id==='charging')return total+project.monthly*project.chance+project.fallback*(1-project.chance);
-  return total+(project.monthly||0);
+  return total+townProjectContractMonthly(item,project);
  },0);
+}
+function townProjectContractMonthly(item,project){
+ return item.monthly??(item.id==='chamber'?40:item.id==='advertising'?370:project.monthly||0);
 }
 function townProjectMonth(item,s,month,forecast=false){
  const project=TOWN_PROJECTS[item.id],closedMonth=month-1;
@@ -36,7 +39,7 @@ function townProjectMonth(item,s,month,forecast=false){
   if(item.id==='postoffice')status='ready';
   if(item.id==='orchard'){amount=item.payout;status='closed';}
  }else if(status==='active'){
-  amount=project.monthly;
+  amount=townProjectContractMonthly(item,project);
   if(item.id==='charging'){
    const roll=(Math.imul((s.offerSeed||1)+closedMonth*7919+item.moveId,2654435761)>>>0)%100;
    amount=forecast?project.monthly*project.chance+project.fallback*(1-project.chance):
@@ -89,6 +92,7 @@ function openTownProjectOffer(move,id){
      const status=['orchard','postoffice'].includes(id)?'waiting':['truck','vending'].includes(id)?'ready':'active';
      const item={id,moveId:move.id,status,started:state.month};
      if(p.duration)item.due=state.month+p.duration;
+     if(id==='chamber'||id==='advertising')item.monthly=p.monthly;
      if(id==='orchard'){
       townProjectTime(p.hours);
       item.payout=townMarketRoll(move)%100<p.chance*100?p.payout:p.fallback;

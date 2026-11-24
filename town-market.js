@@ -1,6 +1,6 @@
 const TOWN_MARKET_DEALS={
- 'valley-stock':{name:'山谷食品公司',type:'股票',unit:'股',price:6,limit:50,bids:[3,5,8,10]},
- 'steady-fund':{name:'小镇稳健基金',type:'基金',unit:'份',price:25,limit:20,defaultQuantity:8,bids:[23,24,26,27]},
+ 'valley-stock':{name:'山谷食品公司',type:'股票',unit:'股',price:6,limit:50},
+ 'steady-fund':{name:'小镇稳健基金',type:'基金',unit:'份',price:25,limit:20,defaultQuantity:8},
  'school-flat':{name:'学校旁小公寓',type:'出租房',price:22000,down:4400,rent:360,net:160,bids:[20000,21500,24000,26000],lease:{term:12,vacancy:200}},
  'station-shop':{name:'车站便利店铺面',type:'商铺',price:55000,down:11000,rent:850,net:330,bids:[49000,53000,59000,64000],lease:{initial:2,term:12,rent:800,net:280,subsidy:300,vacancy:520,renovation:{cost:600,net:360}}},
  'river-stock':{name:'河畔运输公司',type:'股票',unit:'股',price:10,limit:50},
@@ -55,19 +55,24 @@ function townMarketRoll(move){
  seed=Math.imul(seed^(seed>>>16),0x45d9f3b);
  return (seed^(seed>>>16))>>>0;
 }
-function valleyStockBuyPrice(roll){
- const dealId='valley-stock';
- const base=TOWN_MARKET_DEALS[dealId].price;
- const history=townState().history;
- const lastOffer=history.findLast(entry=>entry.offerId===dealId&&(entry.outcome==='买'||entry.outcome==='不买'));
- const lastSale=history.findLast(entry=>entry.offerId===dealId&&entry.outcome==='卖');
- if(!lastOffer&&!lastSale&&!townMarketHoldings().some(holding=>holding.deal===dealId))return base;
-
- const previous=lastOffer?.unitPrice??base;
- const anchor=lastSale?.unitPrice??previous;
- const prices=[-3,-2,-1,0,1,2,3].map(change=>anchor+change)
-  .filter(price=>price>=3&&price<=10&&price!==previous);
- return prices[Math.floor(roll/17)%prices.length];
+function townSecurityPrice(dealId,move,side){
+ const deal=TOWN_MARKET_DEALS[dealId],stock=deal.type==='股票';
+ const market=Math.max(.01,(state.marketIndex||100)/100);
+ const inflation=Math.max(.01,(state.cpiIndex||100)/100);
+ const base=deal.price*Math.pow(market,{'valley-stock':.95,'river-stock':1.2,'steady-fund':.35,'river-fund':.7}[dealId])*inflation;
+ const roll=townMarketRoll(move);
+ // Individual share offers vary more than diversified fund quotes.
+ const spread=stock?.08:.015;
+ const local=(Math.floor(roll/17)%2001)/1000-1;
+ const lastSale=townState().history.findLast(entry=>entry.offerId===dealId&&entry.outcome==='卖'&&entry.unitPrice>0);
+ const saleSignal=lastSale?Math.max(-.03,Math.min(.03,(lastSale.unitPrice/base-1)*.15)):0;
+ const sellerDiscount=side==='sell'?(stock?.02:.005):0;
+ let price=Math.max(.01,roundCash(base*(1+local*spread+saleSignal-sellerDiscount)));
+ if(side==='buy'){
+  const lastOffer=townState().history.findLast(entry=>entry.offerId===dealId&&(entry.outcome==='买'||entry.outcome==='不买'));
+  if(price===(lastOffer?.unitPrice??(lastOffer?deal.price:null)))price=roundCash(price+(local<0&&price>.01?-.01:.01));
+ }
+ return price;
 }
 function townMarketQuote(move){
  if(move.marketQuote!==undefined)return move.marketQuote;
@@ -77,7 +82,8 @@ function townMarketQuote(move){
  if(!holding)return null;
  const index=Math.floor(roll/13)%4;
  const multiplier=[.75,.9,1.12,1.3][index];
- const price=TOWN_MARKET_DEALS[holding.deal].bids?.[index]??roundCash(holding.unitCost*multiplier);
+ const deal=TOWN_MARKET_DEALS[holding.deal];
+ const price=deal.unit?townSecurityPrice(holding.deal,move,'sell'):(deal.bids?.[index]??roundCash(holding.unitCost*multiplier));
  const offer={holdingId:holding.id,price};
  const result=CareerLearningRules.atomic(state,()=>{move.marketQuote=offer;return {};},save);
  return result.ok?offer:null;
@@ -117,7 +123,7 @@ function openTownMarketTrade(move,dealId,quote=null){
    move.resolved=true;
    move.completedMonth=state.month;
    townState().history.push({id:move.id,die:move.die,to:move.to,month:state.month,type:townMoveType(move),offerId:dealId,outcome:move.offers.resolved,
-    ...(dealId==='valley-stock'&&(!selling||acceptTrade)?{unitPrice:cashPrice}:{})});
+    ...(deal.unit&&(!selling||acceptTrade)?{unitPrice:cashPrice}:{})});
    return {};
   },save);
   if(!result.ok){
@@ -200,7 +206,7 @@ function openTownMarketHoldings(back){
    item.status==='ready'?'等待选择':
    item.id==='charging'?'月底按用量结算':
    item.id==='vending'?'本月预计 '+priceText(item.restockMonth===state.month?project.selfMonthly:project.monthly):
-   '每月 '+priceText(project.monthly)+(item.due?' · 剩余 '+(item.due-state.month)+' 个月':'');
+   '每月 '+priceText(townProjectContractMonthly(item,project))+(item.due?' · 剩余 '+(item.due-state.month)+' 个月':'');
   rows.push([project.name,detail]);
   if(item.status==='ready'||item.id==='vending')actions.push([project.name,()=>openTownProjectDecision(item),false]);
  }
