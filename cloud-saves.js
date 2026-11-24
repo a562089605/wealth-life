@@ -3,6 +3,7 @@
  const maxSlots=100, sessionKey='wealthLife_cloud_session', draftKey='wealthLife_cloud_registration', countKey='wealthLife_slotCount';
  const legacyKey=key, localSave=save, localBuild=buildHome;
  const homePanel=$('home'), slots=$('slots'), newGame=$('newGame');
+ const updates=typeof recentUpdates==='undefined'?null:recentUpdates;
  let account=null, ledger={}, transmitting=false, conflicts={}, retryTimer, showEntry;
  const readJSON=(storage,k,fallback)=>{try{return JSON.parse(storage.getItem(k))??fallback;}catch{return fallback;}};
  const node=(tag,label,cls)=>{const e=document.createElement(tag);if(label)e.textContent=label;if(cls)e.className=cls;return e;};
@@ -122,6 +123,8 @@
  }
  buildHome=refresh;
  function showAccount(createdCode){
+  if(updates)homePanel.append(updates);
+  panel.classList.remove('cloud-save-journal');
   panel.replaceChildren(heading,status);
   heading.textContent='私人存档 · '+account.name;
   const out=node('button','退出私人存档','secondary');out.type='button';
@@ -165,7 +168,11 @@
  showEntry=function(){
   homePanel.classList.add('cloud-save-locked');
   buildHome();
-  panel.replaceChildren(heading,status);
+  panel.classList.add('cloud-save-journal');
+  const hero=node('header','','cloud-save-journal-hero');
+  hero.append(node('p','《财富人生》','cloud-save-journal-brand'));
+  const sheet=node('div','','cloud-save-journal-sheet');
+  panel.replaceChildren(hero,sheet);
   heading.textContent='私人存档';
   setStatus('');
   const form=node('form'), name=node('input'), code=node('input');
@@ -176,7 +183,8 @@
   const signIn=node('button','进入我的存档','primary'),create=node('button','建立私人存档','secondary');
   signIn.type='submit';create.type='button';
   form.append(nameLabel,codeLabel,signIn,create);
-  panel.append(node('p','手机或平板使用同一个用户名和私人存档码，就能继续同一份进度。'),form);
+  sheet.append(heading,node('p','手机和平板可继续同一份进度','cloud-save-journal-intro'),status,form);
+  if(updates)sheet.append(updates);
   async function enter(action,access){
    signIn.disabled=create.disabled=true;
    try{
