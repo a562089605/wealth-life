@@ -646,12 +646,13 @@
 }
 
 #game > .event.event-active.finance-emergency {
- --emergency-frame: min(100vw, 66.6667dvh, 520px);
+ --emergency-frame: min(132vw, 70dvh, 590px);
  position: fixed;
  top: 50% !important;
  left: 50% !important;
  right: auto !important;
- transform: translate(-50%, -50%);
+ transform: translate(-48.45%, -52.55%);
+ clip-path: inset(6.55% 15.4% 1.45% 12.3% round 5% / 3.3%);
  width: var(--emergency-frame);
  height: calc(var(--emergency-frame) * 1.5);
  max-height: none !important;
@@ -908,10 +909,11 @@
 }
 
 #game > .event.event-active.finance-etf {
- --etf-frame: min(100vw, 66.6667dvh, 520px);
+ --etf-frame: min(132vw, 70dvh, 590px);
  position: fixed;
  inset: 50% auto auto 50% !important;
- transform: translate(-50%, -50%);
+ transform: translate(-48.45%, -52.55%);
+ clip-path: inset(6.55% 15.4% 1.45% 12.3% round 5% / 3.3%);
  width: var(--etf-frame);
  height: calc(var(--etf-frame) * 1.5);
  max-height: none !important;
@@ -1001,10 +1003,11 @@
 }
 
 #game > .event.event-active.finance-sp500 {
- --sp500-frame: min(100vw, 66.6667dvh, 520px);
+ --sp500-frame: min(132vw, 70dvh, 590px);
  position: fixed;
  inset: 50% auto auto 50% !important;
- transform: translate(-50%, -50%);
+ transform: translate(-48.45%, -52.55%);
+ clip-path: inset(6.55% 15.4% 1.45% 12.3% round 5% / 3.3%);
  width: var(--sp500-frame);
  height: calc(var(--sp500-frame) * 1.5);
  max-height: none !important;
@@ -1339,6 +1342,10 @@
 }
 
 #game > .event.event-active.finance-sp500.finance-etf-settings {
+ /* This card has a wider paper panel than the ETF trade artwork. */
+ --sp500-frame: min(110vw, 70dvh, 590px);
+ transform: translate(-50%, -53.55%);
+ clip-path: inset(9.5% 6.3% 2.4% 6.3% round 5% / 3.3%);
  background-image: url("./assets/finance/etf-settings-scene.webp") !important;
 }
 .finance-etf-settings > .row { display: none; }

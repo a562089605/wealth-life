@@ -122,6 +122,10 @@
 
 :is(.bond-market-art, .stock-market-art) { position: relative; }
 :is(.bond-market-art, .stock-market-art) img { display: block; width: 100%; height: auto; }
+/* Remove the surrounding room from the market illustrations, keeping the button coordinates. */
+.bond-market-art > img { clip-path: inset(7.4% 10.7% 2.4% 10.7% round 5% / 3.3%); }
+.stock-market-art > img { clip-path: inset(7.75% 10.5% 2.7% 10.3% round 5% / 3.3%); }
+
 
 .event.event-active :is(.bond-market-art, .stock-market-art) button {
   position: absolute;
