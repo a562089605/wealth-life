@@ -51,7 +51,10 @@
   const regular=regularPortraits.get(p.id);
   if(regular)return regular;
   const assigned=byId.get(p.relationshipAvatarId);
-  if(assigned)return assigned;
+  if(assigned){
+   const redrawn=['manager','petfriend','landlord','teacher'].includes(assigned.role);
+   return redrawn?{...assigned,file:'assets/relationships/avatars-crayon/'+assigned.id+'.webp'}:assigned;
+  }
   const g=group(p);
   const choices=revised.filter(a=>a.role===g?.role&&(!g.gender||a.gender===g.gender));
   if(!choices.length)return null;
