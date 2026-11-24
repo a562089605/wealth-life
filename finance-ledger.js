@@ -33,13 +33,13 @@ const FinanceLedger = (() => {
    const debit=Object.hasOwn(outgoing,row.kind)||row.direction==='out';
    const label=Object.hasOwn(incoming,row.kind)?incoming[row.kind]:Object.hasOwn(outgoing,row.kind)?outgoing[row.kind]:row.title||row.kind||'未分类记录';
    const instrument=V26_INSTRUMENTS.find(item=>item.id===row.instrument)?.name;
-   const context=[(row.loan?loanDisplayName(row.loanId??row.loan,row.loan):'')||instrument||row.choice||row.hobby||row.petName||row.species||row.title];
+   const context=[(row.loan?loanDisplayName(row.loanId??row.loan,row.loan):'')||instrument||row.choice||row.hobby||row.petName||row.species||(row.offer?null:row.title)];
    if(row.kind==='loanInstallment')context.push('本金 '+priceText(row.principal)+' / 利息 '+priceText(row.interest));
    if(row.kind==='loanOverdue')context.push('计入贷款余额 '+priceText(row.capitalized||0));
    if(row.forfeitedInterest>0)context.push('扣除利息 '+priceText(row.forfeitedInterest));
    if(row.insurancePaid>0)context.push('保险承担 '+priceText(row.insurancePaid));
    const amount=Number.isFinite(row.amount)?row.amount:0;
-   return {label:row.kind==='loanOverdue'?'贷款逾期（未扣现金）':label,
+   return {label:row.offer&&row.title&&(row.kind==='opportunity'||row.kind==='opportunityIncome')?row.title:row.kind==='loanOverdue'?'贷款逾期（未扣现金）':label,
     amount:debit?-amount:amount,uncategorized:!credit&&!debit&&amount!==0,context:context.filter(Boolean).join(' · ')};
   });
  }

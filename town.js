@@ -37,7 +37,7 @@ function renderTown(){
  <span class="town-pawn" data-town-pawn style="left:${pos.x}%;top:${pos.y}%" aria-label="玩家当前位置第${t.position+1}格">${barista?`<img src="${TOWN_ART}barista.webp" alt="">`:'●'}</span>
  <img class="town-flight-die" data-town-flight alt="" hidden></div>
  <div class="town-roll-controls"><button type="button" class="town-crystal-button" data-town="roll" aria-label="掷骰子" ${locked?'disabled':''}><img src="${TOWN_ART}die-${die}.webp" alt="">掷骰子</button><button type="button" class="town-return-button" data-town="home" aria-label="回家并结算本月" ${locked?'disabled':''}><img src="assets/finance/bill-house.webp" alt="">回家</button></div>
- ${(townMarketHoldings().length||townProjects().some(item=>item.status!=='closed'))?'<button type="button" data-town="holdings" '+(locked?'disabled':'')+'>地图持仓</button>':''}
+ <div class="town-asset-controls"><button type="button" data-town="holdings" ${locked?'disabled':''}>地图资产</button></div>
  ${townPending()&&!townAnimating?'<button type="button" data-town="resume">继续处理当前事件</button>':''}`;
 
 }
@@ -99,7 +99,7 @@ function resumeTownMove(){
  openTownLanding();
 }
 function previewTownPayday(){
- const move=townState().movement,m=calcMetrics();showEvent(move.returnReason==='home'?'回家结算':'发薪日','核对本月收支','',[['本月税前工资',priceText(m.grossSalary)],['本月持续收支结余',priceText(m.monthlyCF)],['尚待月末收付',priceText(m.remainingCF)],['预计结算后现金',priceText(state.cash+m.remainingCF)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false],['稍后处理，返回地图',()=>{clearModals();render()},false]]);
+ const move=townState().movement,m=calcMetrics(),mapForecast=townMonthForecast(),remaining=roundCash(m.remainingCF+mapForecast);showEvent(move.returnReason==='home'?'回家结算':'发薪日','核对本月收支','地图浮动收益按平均值估算，以月底实际到账为准。',[['本月税前工资',priceText(m.grossSalary)],['基础持续收支结余',priceText(m.monthlyCF)],['地图资产预计本月净收付',priceText(mapForecast)],['尚待月末收付',priceText(remaining)],['预计结算后现金',priceText(state.cash+remaining)]],[['确认结算本月',()=>{if(state.month>=move.payExpected)return resumeTownMove();clearModals();pending=false;state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth()},true],['查看/支付贷款月供',openLoanPayments,false],['稍后处理，返回地图',()=>{clearModals();render()},false]]);
  $('eventClose').hidden=true;
  if(move.returnReason!=='home')$('eventTitle').closest('.event').dataset.townPayday='';
 }
@@ -152,7 +152,7 @@ function openTownOpportunity(message=''){
    ['小机会',()=>drawTownOpportunity(move,'small'),false],
    ['大机会',()=>drawTownOpportunity(move,'big'),false]
   ];
-  if((townMarketHoldings().length||townProjects().some(item=>item.status!=='closed')))actions.push(['地图持仓',()=>openTownMarketHoldings(()=>openTownOpportunity()),false]);
+  if((townMarketHoldings().length||townBusinessAssets().length||townProjects().some(item=>item.status!=='closed')))actions.push(['地图资产',()=>openTownMarketHoldings(()=>openTownOpportunity()),false]);
   actions.push(['放弃这次机会',finish,false]);
   showEvent('投资机会','选择投资机会','',[],actions);
   if($('eventTitle').textContent!=='选择投资机会')return;
@@ -246,7 +246,7 @@ for(const id of ['qOverview','qCareer','qLife','qAssets']){const previous=$(id).
 $('qNext').onclick=$('hubNext').onclick=()=>townEnabled()?showTown():continueLife();
 $('wlResume').onclick=()=>{$('wlCloseMenu').click();if(townEnabled())showTown();else continueLife()};
 const townMenu=document.createElement('button');townMenu.textContent='进入起步小镇';townMenu.onclick=()=>{$('wlCloseMenu').click();townStart()};document.querySelector('.wl-menu-items').append(townMenu);
-document.addEventListener('click',e=>{const button=e.target.closest('[data-town]');if(!button)return;const action=button.dataset.town;if(action==='roll')rollTown();if(action==='resume')resumeTownMove();if(action==='home')townHome();if(action==='livingFund')fundShortfall(roundCash(Math.max(0,livingTotal()-(paymentReceipt().living||0))),openTownLiving);if(action==='monthly')originalMonthlyPlay();if(action==='holdings')openTownMarketHoldings(finish);if(action==='stage')$('wlJourney').click()});
+document.addEventListener('click',e=>{const button=e.target.closest('[data-town]');if(!button)return;const action=button.dataset.town;if(action==='roll')rollTown();if(action==='resume')resumeTownMove();if(action==='home')townHome();if(action==='livingFund')fundShortfall(roundCash(Math.max(0,livingTotal()-(paymentReceipt().living||0))),openTownLiving);if(action==='monthly')originalMonthlyPlay();if(action==='holdings')openTownMarketHoldings(()=>{clearModals();render()});if(action==='stage')$('wlJourney').click()});
 
 function openTownSecurities(){showEvent('证券市场','查看证券产品','',[],V26_INSTRUMENTS.map(i=>[i.name,()=>i.id==='gold'&&window.FinancePages?FinancePages.gold(openTownSecurities):openInstrument(i.id),false]).concat([['离开市场',finish,true]]))}
 
@@ -254,6 +254,9 @@ function openTownSecurities(){showEvent('证券市场','查看证券产品','',[
 
 const townPaydayStyles=document.createElement('style');
 townPaydayStyles.textContent=`
+#townView .town-asset-controls {display:flex;justify-content:center;padding:6px 0 12px;}
+#townView .town-asset-controls button {min-height:44px;padding:5px 16px;border:1px solid #b8ae85;border-radius:999px;background:#fbf2d8;color:#284836;font-size:.86rem;}
+
 #game > .event.event-active[data-town-payday] {
  width:min(460px,calc(100vw - 24px))!important;
  max-height:calc(100dvh - 24px);

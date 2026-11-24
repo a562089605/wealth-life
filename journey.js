@@ -44,7 +44,7 @@ function openJourney(){
   syncFinance();
   if(j.phase==='rat'){
     const eligible=freedomEligible();
-    showEvent('人生阶段','第一阶段：积累资产','通过资产建立被动收入。被动收入必须严格大于必要月支出，且已确定住房，才能确认进入第二阶段。地图持仓按预计月净收入计入，浮动收入按平均值估算。工资、借款到账、投资浮盈和一次性回款不计入。',[['被动收入',priceText(journeyPassiveIncome())+'/月'],['其中地图持仓净收入',priceText(journeyMapPassiveIncome())+'/月'],['必要生活/保费/月供',priceText(state.expenses)+'/月'],['离严格超过还差',priceText(Math.max(0,roundCash(state.expenses-journeyPassiveIncome()+.01)))+'/月'],['下一阶段','财务自由 · 快车道']],[['确认进入财务自由',enterFastTrack,true,!eligible],['返回继续积累',finish,false]]);
+    showEvent('人生阶段','第一阶段：积累资产','通过资产建立被动收入。被动收入必须严格大于必要月支出，且已确定住房，才能确认进入第二阶段。地图资产按预计月净收入计入，浮动收入按平均值估算。工资、借款到账、投资浮盈和一次性回款不计入。',[['被动收入',priceText(journeyPassiveIncome())+'/月'],['其中地图资产净收入',priceText(journeyMapPassiveIncome())+'/月'],['必要生活/保费/月供',priceText(state.expenses)+'/月'],['离严格超过还差',priceText(Math.max(0,roundCash(state.expenses-journeyPassiveIncome()+.01)))+'/月'],['下一阶段','财务自由 · 快车道']],[['确认进入财务自由',enterFastTrack,true,!eligible],['返回继续积累',finish,false]]);
     if($('eventTitle').textContent==='第一阶段：积累资产'){
       const art=document.createElement('img');
       art.className='journey-stage-art';

@@ -30,6 +30,7 @@ function syncFinance(){
   s.carValue??=s.carOwned?24000:0;s.carRunningCost??=s.carOwned?150:0;
   s.taxRate??=.15;s.schemaVersion=247;s.yearStartNetWorth??=5000;
  }
+ if(typeof migrateTownBusinessAssets==='function')migrateTownBusinessAssets(s);
  // Changes made by retained life modules adjust only the non-financial living budget.
  if(s._computedExpenses!=null&&Math.abs(s.expenses-s._computedExpenses)>.01)s.baseLiving=Math.max(0,s.baseLiving+s.expenses-s._computedExpenses);
  if(typeof PetInsurance!=='undefined')PetInsurance.sync(s);
@@ -149,11 +150,11 @@ function settleMonthUnsafe(){
  s.cash+=cf;const settlement={month,startCash:start,recovery:!!recovery,careerIncome:metrics.careerIncome?structuredClone(metrics.careerIncome):null,investmentIncomeBudget:typeof expectedInvestmentIncome==='function'?expectedInvestmentIncome():0,grossSalary:metrics.grossSalary,tax:metrics.tax,kContrib:metrics.kContrib,passive:s.passive,expenses:s.expenses,netCF:cf,prepaidExpenses:metrics.prepaidExpenses,totalMonthlyCF:metrics.monthlyCF};
  settlement.cashExpenseLines=FinanceLedger.forecastExpenses(false);
  settlement.cashAssetLines=s.assets.filter(asset=>asset.cf).map(asset=>[asset.name+'净现金流',asset.cf]);
- const mapIncome=typeof townMarketMonthlyIncome==='function'?townMarketMonthlyIncome(s):0;
- if(mapIncome){
-  s.cash=roundCash(s.cash+mapIncome);
-  settlement.netCF=roundCash(settlement.netCF+mapIncome);
-  (s.financeLedger??=[]).push({month:s.month,kind:mapIncome<0?'opportunity':'opportunityIncome',amount:Math.abs(mapIncome)});
+ if(typeof townMarketMonthlyFlows==='function'){
+  for(const flow of townMarketMonthlyFlows(s)){
+   townProjectCredit(s,flow.id,flow.amount,s.month,flow.title);
+   settlement.netCF=roundCash(settlement.netCF+flow.amount);
+  }
  }
 
  if(typeof settleTownProjects==='function')settleTownProjects(s,settlement);

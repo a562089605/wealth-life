@@ -11,16 +11,43 @@ const TOWN_MARKET_DEALS={
 };
 const TOWN_MARKET_CARDS=Object.entries(TOWN_MARKET_DEALS).map(([id,deal])=>({id,cost:deal.down??(deal.unit?deal.price*deal.limit:deal.price)}));
 function townMarketHoldings(s=state){return s.townHoldings??=[];}
-function townMarketMonthlyIncome(s=state,{forecast=false}={}){
- return townMarketHoldings(s).reduce((total,holding)=>{
-  const deal=TOWN_MARKET_DEALS[holding.deal];
-  if(deal?.lease)return total+townLeaseNet(holding,deal,s.month);
-  if(deal?.net)return total+deal.net;
-  if(!deal?.maximum)return total;
-  if(forecast)return total+deal.maximum/2;
-  const monthlyRoll=Math.imul((s.offerSeed||1)+s.month*7919+holding.id,1664525)>>>0;
-  return total+monthlyRoll%(deal.maximum+1);
- },0);
+function townBusinessAssets(s=state){return s.townBusinessAssets??=[];}
+function migrateTownBusinessAssets(s){
+ if(s.townBusinessMigrationDone||typeof V26_OFFERS==='undefined'||!s.town)return;
+ s.townBusinessMigrationDone=true;
+ const history=[...(s.town.history||[])];
+ const current=s.town.movement;
+ if(current&&!current.resolved&&current.offers?.pool==='regular'&&current.offers.success){
+  history.push({offerId:current.offers.ids[0],outcome:current.offers.resolved});
+ }
+ const migrated=new Set();
+ for(const project of V26_OFFERS.filter(item=>item.cf)){
+  const count=history.filter(move=>move.offerId===project.id&&move.outcome===project.name).length;
+  const matches=s.assets.filter(asset=>asset.kind==='business'&&asset.name===project.name&&asset.cost===project.cost&&asset.cf===project.cf);
+  if(count&&matches.length===count)for(const asset of matches){
+   townBusinessAssets(s).push({...asset,offerId:project.id});
+   migrated.add(asset);
+  }
+ }
+ if(migrated.size)s.assets=s.assets.filter(asset=>!migrated.has(asset));
+}
+function townMarketMonthlyFlows(s=state,{forecast=false}={}){
+ return [
+  ...townMarketHoldings(s).flatMap(holding=>{
+   const deal=TOWN_MARKET_DEALS[holding.deal];
+   if(!deal)return [];
+   let amount=deal.lease?townLeaseNet(holding,deal,s.month):deal.net||0;
+   if(deal.maximum){
+    const roll=Math.imul((s.offerSeed||1)+s.month*7919+holding.id,1664525)>>>0;
+    amount=forecast?deal.maximum/2:roll%(deal.maximum+1);
+   }
+   return amount?[{id:holding.deal,amount,title:deal.name}]:[];
+  }),
+  ...townBusinessAssets(s).map(asset=>({id:asset.offerId,amount:asset.cf,title:asset.name}))
+ ];
+}
+function townMarketMonthlyIncome(s=state,options){
+ return roundCash(townMarketMonthlyFlows(s,options).reduce((total,flow)=>total+flow.amount,0));
 }
 function townMarketRoll(move){
  let seed=((state.offerSeed||1)+move.id*104729+state.month*7919)>>>0;
@@ -150,6 +177,7 @@ function openTownMarketHoldings(back){
    deal.lease?townLeaseHoldingText(holding,deal):'每月净租金 '+priceText(deal.net);
   return [deal.name,detail];
  });
+ for(const asset of townBusinessAssets())rows.push([asset.name,'每月净收入 '+priceText(asset.cf)+' · 投入 '+priceText(asset.cost)]);
  const actions=[];
  for(const item of townProjects().filter(project=>project.status!=='closed')){
   const project=TOWN_PROJECTS[item.id];
@@ -162,7 +190,7 @@ function openTownMarketHoldings(back){
   if(item.status==='ready'||item.id==='vending')actions.push([project.name,()=>openTownProjectDecision(item),false]);
  }
  actions.push(['返回',back,true]);
- showEvent('地图专用','地图持仓','',rows.length?rows:[['目前没有地图持仓','—']],actions);
+ showEvent('地图专用','地图资产','',rows.length?rows:[['目前没有地图资产','—']],actions);
 }
 
 function townLeaseNet(holding,deal,month){

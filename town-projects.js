@@ -10,10 +10,10 @@ const TOWN_PROJECTS={
 };
 const TOWN_PROJECT_CARDS=Object.entries(TOWN_PROJECTS).map(([id,project])=>({id,cost:project.cost}));
 function townProjects(s=state){return s.townProjects??=[];}
-function townProjectCredit(s,id,amount,month=s.month){
+function townProjectCredit(s,id,amount,month=s.month,title){
  if(!amount)return;
  s.cash=roundCash(s.cash+amount);
- (s.financeLedger??=[]).push({kind:amount<0?'opportunity':'opportunityIncome',month,amount:Math.abs(amount),offer:id});
+ (s.financeLedger??=[]).push({kind:amount<0?'opportunity':'opportunityIncome',month,amount:Math.abs(amount),offer:id,...(title?{title}:{})});
 }
 function townProjectTime(hours,energy=0){
  const used=state.opportunityTime;
@@ -28,32 +28,41 @@ function townProjectPassiveIncome(s=state){
   return total+(project.monthly||0);
  },0);
 }
+function townProjectMonth(item,s,month,forecast=false){
+ const project=TOWN_PROJECTS[item.id],closedMonth=month-1;
+ if(!project||item.lastPaidMonth>=closedMonth||item.status==='closed')return null;
+ let status=item.status,amount=0;
+ if(status==='waiting'&&month>=item.due){
+  if(item.id==='postoffice')status='ready';
+  if(item.id==='orchard'){amount=item.payout;status='closed';}
+ }else if(status==='active'){
+  amount=project.monthly;
+  if(item.id==='charging'){
+   const roll=(Math.imul((s.offerSeed||1)+closedMonth*7919+item.moveId,2654435761)>>>0)%100;
+   amount=forecast?project.monthly*project.chance+project.fallback*(1-project.chance):
+    roll<project.chance*100?project.monthly:project.fallback;
+  }
+  if(item.id==='vending'&&item.restockMonth===closedMonth)amount=project.selfMonthly;
+  if(item.due&&month>=item.due){
+   if(item.id==='chamber')amount+=project.cost;
+   status='closed';
+  }
+ }
+ return {status,amount,title:project.name+(item.id==='chamber'&&status==='closed'?' · 本金及末期利息':'')};
+}
+function townMonthForecast(s=state){
+ const market=townMarketMonthlyIncome(s,{forecast:true});
+ const projects=townProjects(s).reduce((total,item)=>total+(townProjectMonth(item,s,s.month+1,true)?.amount||0),0);
+ return roundCash(market+projects);
+}
 function settleTownProjects(s,settlement){
  for(const item of townProjects(s)){
-  const p=TOWN_PROJECTS[item.id],closedMonth=settlement.month-1;
-  if(item.lastPaidMonth>=closedMonth||item.status==='closed')continue;
-  let amount=0;
-  if(item.status==='waiting'&&settlement.month>=item.due){
-   if(item.id==='postoffice')item.status='ready';
-   if(item.id==='orchard'){
-    amount=item.payout;
-    item.status='closed';
-   }
-  }else if(item.status==='active'){
-   amount=p.monthly;
-   if(item.id==='charging'){
-    const roll=(Math.imul((s.offerSeed||1)+closedMonth*7919+item.moveId,2654435761)>>>0)%100;
-    if(roll>=p.chance*100)amount=p.fallback;
-   }
-   if(item.id==='vending'&&item.restockMonth===closedMonth)amount=p.selfMonthly;
-   if(item.due&&settlement.month>=item.due){
-    if(item.id==='chamber')amount+=p.cost;
-    item.status='closed';
-   }
-  }
-  item.lastPaidMonth=closedMonth;
-  townProjectCredit(s,item.id,amount,closedMonth);
-  settlement.netCF=roundCash(settlement.netCF+amount);
+  const flow=townProjectMonth(item,s,settlement.month);
+  if(!flow)continue;
+  item.status=flow.status;
+  item.lastPaidMonth=settlement.month-1;
+  townProjectCredit(s,item.id,flow.amount,item.lastPaidMonth,flow.title);
+  settlement.netCF=roundCash(settlement.netCF+flow.amount);
  }
 }
 function showTownProject(id,title,description,rows,actions){
@@ -99,7 +108,7 @@ function openTownProjectOffer(move,id){
   const project=townProjects().find(item=>item.moveId===move.id&&item.id===id);
   if(project?.status==='ready')return openTownProjectDecision(project);
   const text=id==='auction'?(note==='未中标'?'没有扣款。':'转卖净赚 '+priceText(p.payout-cost)+'。'):
-   project?.status==='waiting'?'可在小镇「地图持仓」查看进度。':'月末结算，可在小镇「地图持仓」查看。';
+   project?.status==='waiting'?'可在小镇「地图资产」查看进度。':'月末结算，可在小镇「地图资产」查看。';
   showEvent('大机会',note,text,[],[['继续',finish,true]]);
  }
  function fund(cost){

@@ -146,6 +146,7 @@ takeOpportunity=function(id){
  if(offer.pool==='fast')return takeFastOpportunity(id);
  const project=V26_OFFERS.find(item=>item.id===id);
  if(!project||offer.resolved||!offer.ids.includes(id)||opportunityBlock(project)||state.cash<project.cost)return;
+ const mapPurchase=typeof townOpportunityMove==='function'&&townOpportunityMove()?.offers===offer;
  const chance=opportunityChance(project),success=Math.random()<chance;
  const result=CareerLearningRules.atomic(state,()=>{
   if(!spendConfirmed('opportunity',project.cost,{offer:id}))return false;
@@ -155,7 +156,11 @@ takeOpportunity=function(id){
    const used=state.opportunityTime;
    state.opportunityTime={month:state.month,hours:(used?.month===state.month?used.hours:0)+project.hours};
   }
-  if(success&&project.cf)state.assets.push({id:assetId(),name:project.name,kind:'business',cost:project.cost,value:project.cost,cf:project.cf});
+  if(success&&project.cf){
+   const asset={id:assetId(),name:project.name,kind:'business',cost:project.cost,value:project.cost,cf:project.cf};
+   if(mapPurchase)townBusinessAssets().push({...asset,offerId:project.id});
+   else state.assets.push(asset);
+  }
   if(offer.income){
    state.cash=roundCash(state.cash+offer.income);
    state.financeLedger.push({kind:'opportunityIncome',month:state.month,amount:offer.income,offer:id,...(!success?{recovery:true}:{})});
@@ -167,7 +172,7 @@ takeOpportunity=function(id){
   showEvent('机会结果','机会未保存',result.reason,[],[['返回',finish,true]]);
   return;
  }
- const rows=[['本次投入',priceText(project.cost)],[!success&&project.recovery?(project.fallbackLabel||'转卖回收'):'实际一次性收入',priceText(offer.income)],['新增月净收入',priceText(offer.newMonthlyIncome)+'/月'],['当前被动收入',priceText(state.passive)+'/月']];
+ const rows=[['本次投入',priceText(project.cost)],[!success&&project.recovery?(project.fallbackLabel||'转卖回收'):'实际一次性收入',priceText(offer.income)],['新增月净收入',priceText(offer.newMonthlyIncome)+'/月'],[mapPurchase?'地图预计月净收入':'当前被动收入',priceText(mapPurchase?journeyMapPassiveIncome():state.passive)+'/月']];
  if(!success&&project.recovery)rows.push(['本次净损失',priceText(project.cost-offer.income)]);
  if(success&&project.successEffects)rows.push(['成功后状态变化',effectText(project.successEffects)]);
  if(project.hours)rows.splice(1,0,['已用自由时间',project.hours+' 小时'],['能量',String(project.effects.energy)]);
@@ -388,12 +393,15 @@ function completeCashAudit(s){
 const cashAuditOut=['sharedInterestExpense','apartmentExpense','studioExpense','sharedExpense','familyExpense','ownerHomeDownpayment','housingDeposit','housingPayment','livingPayment','premiumsPayment','loanInstallment','hobbyPractice','specialistPractice','lifestyle','opportunity','tuitionPayment','investmentBuy','bondBuy','autoInvest','dividendReinvest','movingCost','emergencyTransfer','lifeIncident','socialMeal','socialCoffee','extraPrincipal','cdPurchase','vehicleDownpayment','propertyDownpayment','propertyCashPurchase','iraTransfer','cafeEquityDeposit'];
 const cashAuditIn=['sharedInterestIncome','apartmentIncome','studioIncome','sharedIncome','familyIncome','housingDepositRefund','emergencyWithdrawal','retirementWithdrawal','incomeProtectionClaim','loanDisbursement','opportunityIncome','tuitionReversal','dividend','bondInterest','bondMaturity','cdEarlyPrincipal','cdEarlyInterest','socialIncome','assetSale','ownerHomeSale','cafeDividend','cafeEquitySale','cafeEquityRefund'];
 function auditRows(s){const list=s.ledger||[],sum=k=>roundCash(list.filter(x=>x.kind===k).reduce((n,x)=>n+(x.amount||0),0));
+ const mapRows=list.filter(x=>x.offer&&x.title&&(x.kind==='opportunity'||x.kind==='opportunityIncome'));
+ const mapIn=mapRows.filter(x=>x.kind==='opportunityIncome').reduce((total,x)=>total+x.amount,0);
+ const mapOut=mapRows.filter(x=>x.kind==='opportunity').reduce((total,x)=>total+x.amount,0);
  const loanPaid=(s.loanPayments||[]).filter(x=>x.status==='paid').reduce((n,x)=>n+x.due,0);
  const out=roundCash(cashAuditOut.reduce((n,k)=>n+sum(k),0)),inc=roundCash(cashAuditIn.reduce((n,k)=>n+sum(k),0));
  // Purchases retained from older modules may have no ledger; show an explicit reconciliation item.
  const settlementBase=roundCash(s.grossSalary-s.tax-s.kContrib+s.passive-(s.expenses-s.prepaidExpenses)+(s.loanPayments||[]).filter(x=>x.status==='overdue').reduce((n,x)=>n+x.due,0)+(s.cdPayout||0));
  const tracked=roundCash(inc-out+settlementBase),unclassified=roundCash(s.monthCashChange-tracked);
- return [['月初现金',s.monthOpeningCash],['现金转入住房押金 −',sum('housingDeposit')],['自住房首付 −',sum('ownerHomeDownpayment')],['自住房出售净额 +',sum('ownerHomeSale')],['退回住房押金 +',sum('housingDepositRefund')],['税前工资 +',s.grossSalary],['工资税 −',s.tax],['401(k)个人缴费 −',s.kContrib],['资产净收入 +',s.passive],['应急金转回现金 +',sum('emergencyWithdrawal')],['退休账户提款 +',sum('retirementWithdrawal')],['收入保障赔款 +',sum('incomeProtectionClaim')],['贷款到账 +',sum('loanDisbursement')],['本月已付住房/基本生活/保险 −',sum('housingPayment')+sum('livingPayment')+sum('premiumsPayment')],['共同兴趣事件收入 +',sum('sharedInterestIncome')],['共同兴趣事件支出 −',sum('sharedInterestExpense')],['兴趣练习 −',sum('hobbyPractice')],['专项技能练习 −',sum('specialistPractice')],['生活安排 −',sum('lifestyle')],['关系互动 −',sum('socialMeal')+sum('socialCoffee')],['机会投入 −',sum('opportunity')],['机会一次性收入 +',sum('opportunityIncome')],['家庭事件收入 +',sum('familyIncome')],['家庭事件支出 −',sum('familyExpense')],['合租事件收入 +',sum('sharedIncome')],['合租事件支出 −',sum('sharedExpense')],['独居事件收入 +',sum('studioIncome')],['独居事件支出 −',sum('studioExpense')],['小公寓事件收入 +',sum('apartmentIncome')],['小公寓事件支出 −',sum('apartmentExpense')],['学费支出 −',sum('tuitionPayment')],['学费退回 +',sum('tuitionReversal')],['月供已支付 −',loanPaid],['额外偿还本金 −',sum('extraPrincipal')],['本次月末支付（不含已付月供） −',roundCash(s.expenses-s.prepaidExpenses-(s.loanPayments||[]).filter(x=>x.status==='overdue').reduce((n,x)=>n+x.due,0))],['股票/ETF/债券买入 −',sum('investmentBuy')+sum('bondBuy')],['CD存入本金 −',sum('cdPurchase')],['CD提前支取本金 +',sum('cdEarlyPrincipal')],['CD提前支取实收利息 +',sum('cdEarlyInterest')],['车辆首付 −',sum('vehicleDownpayment')],['投资房首付 −',sum('propertyDownpayment')],['投资房全款 −',sum('propertyCashPurchase')],['IRA账户转入 −',sum('iraTransfer')],['出售资产到账 +',sum('assetSale')],['ETF分红到账 +',s.dividends||0],['分红再投资 −',s.dividendReinvested||0],['ETF自动购买 −',sum('autoInvest')],['债券票息 +',s.bondInterest||0],['债券到期本金返还 +',s.bondPrincipal||0],['CD到期本金及利息返还 +',s.cdPayout||0],['其他已记录支出 −',sum('movingCost')+sum('emergencyTransfer')+sum('lifeIncident')],['关系事件额外收入 +',sum('socialIncome')],['门店股份暂存款 −',sum('cafeEquityDeposit')],['门店股份出售到账 +',sum('cafeEquitySale')],['门店股份退款 +',sum('cafeEquityRefund')],['门店分红到账 +',sum('cafeDividend')],['其他现金变化（含旧模块未分类项）',unclassified],['整月现金实际变化',s.monthCashChange],['月末现金',s.endCash??state.cash]];
+ return [['月初现金',s.monthOpeningCash],['现金转入住房押金 −',sum('housingDeposit')],['自住房首付 −',sum('ownerHomeDownpayment')],['自住房出售净额 +',sum('ownerHomeSale')],['退回住房押金 +',sum('housingDepositRefund')],['税前工资 +',s.grossSalary],['工资税 −',s.tax],['401(k)个人缴费 −',s.kContrib],['资产净收入 +',s.passive],['应急金转回现金 +',sum('emergencyWithdrawal')],['退休账户提款 +',sum('retirementWithdrawal')],['收入保障赔款 +',sum('incomeProtectionClaim')],['贷款到账 +',sum('loanDisbursement')],['本月已付住房/基本生活/保险 −',sum('housingPayment')+sum('livingPayment')+sum('premiumsPayment')],['共同兴趣事件收入 +',sum('sharedInterestIncome')],['共同兴趣事件支出 −',sum('sharedInterestExpense')],['兴趣练习 −',sum('hobbyPractice')],['专项技能练习 −',sum('specialistPractice')],['生活安排 −',sum('lifestyle')],['关系互动 −',sum('socialMeal')+sum('socialCoffee')],['机会投入 −',roundCash(sum('opportunity')-mapOut)],['机会一次性收入 +',roundCash(sum('opportunityIncome')-mapIn)],...mapRows.map(x=>[x.title+(x.kind==='opportunity'?' · 地图支出 −':' · 地图到账 +'),x.amount]),['家庭事件收入 +',sum('familyIncome')],['家庭事件支出 −',sum('familyExpense')],['合租事件收入 +',sum('sharedIncome')],['合租事件支出 −',sum('sharedExpense')],['独居事件收入 +',sum('studioIncome')],['独居事件支出 −',sum('studioExpense')],['小公寓事件收入 +',sum('apartmentIncome')],['小公寓事件支出 −',sum('apartmentExpense')],['学费支出 −',sum('tuitionPayment')],['学费退回 +',sum('tuitionReversal')],['月供已支付 −',loanPaid],['额外偿还本金 −',sum('extraPrincipal')],['本次月末支付（不含已付月供） −',roundCash(s.expenses-s.prepaidExpenses-(s.loanPayments||[]).filter(x=>x.status==='overdue').reduce((n,x)=>n+x.due,0))],['股票/ETF/债券买入 −',sum('investmentBuy')+sum('bondBuy')],['CD存入本金 −',sum('cdPurchase')],['CD提前支取本金 +',sum('cdEarlyPrincipal')],['CD提前支取实收利息 +',sum('cdEarlyInterest')],['车辆首付 −',sum('vehicleDownpayment')],['投资房首付 −',sum('propertyDownpayment')],['投资房全款 −',sum('propertyCashPurchase')],['IRA账户转入 −',sum('iraTransfer')],['出售资产到账 +',sum('assetSale')],['ETF分红到账 +',s.dividends||0],['分红再投资 −',s.dividendReinvested||0],['ETF自动购买 −',sum('autoInvest')],['债券票息 +',s.bondInterest||0],['债券到期本金返还 +',s.bondPrincipal||0],['CD到期本金及利息返还 +',s.cdPayout||0],['其他已记录支出 −',sum('movingCost')+sum('emergencyTransfer')+sum('lifeIncident')],['关系事件额外收入 +',sum('socialIncome')],['门店股份暂存款 −',sum('cafeEquityDeposit')],['门店股份出售到账 +',sum('cafeEquitySale')],['门店股份退款 +',sum('cafeEquityRefund')],['门店分红到账 +',sum('cafeDividend')],['其他现金变化（含旧模块未分类项）',unclassified],['整月现金实际变化',s.monthCashChange],['月末现金',s.endCash??state.cash]];
 }
 function showMonthlyAudit(s){
  showEvent('MONTH END','第 '+s.month+' 月结算完成','这是刚结束的第 '+s.month+' 月账单。住房、生活、兴趣与机会按实际付款汇总，已付款项不会重复扣除。',[],[['继续',()=>{clearModals();monthlyEvent()},true]]);
