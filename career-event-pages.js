@@ -36,7 +36,35 @@
  function button(box,label,fn,disabled=false){const b=document.createElement('button');b.type='button';b.className='career-event-option';b.disabled=disabled;b.textContent=label;const owner=state,chosen=slot,month=state.month;b.onclick=()=>{if(state!==owner||slot!==chosen||state.month!==month||!b.isConnected)return;b.disabled=true;try{fn();}finally{if(b.isConnected)b.disabled=disabled;}};box.append(b);return b;}
  function exit(box){button(box,'继续',finish);}
  function normalWork(){return false;}
- function barista(){const r=ensureCoffeeMonth();if(r.saveFailed){const b=screen(null,'暂未保存','本次职业安排尚未保存，请重试。');button(b,'重试',barista);return true;}if(!r.eventId)return normalWork();if(r.eventId==='cut'&&r.follow){const d=D[r.follow.artId],b=screen(d.id,d.title,d.story);b.append(effects(r.follow.settled?{...r.resolvedEffects,actualReceipt:true}:r.follow.effects,true));if(r.follow.settled)exit(b);else button(b,'确认结果',()=>settleCoffeeCutFollow(r.cycle));return true;}const d=D['barista-'+r.eventId],b=screen(d.id,d.title,d.story||COFFEE_EVENTS[r.eventId].desc);if(r.status!=='pending'){b.append(effects({...r.resolvedEffects,actualReceipt:true},(['staff','busy','cut'].includes(r.eventId)||r.eventId==='departure'&&r.serviceXpAtMonthEnd),r.serviceXpAtMonthEnd));exit(b);return true;}for(let i=0;i<d.options.length;i++){const e=r.quotes[i],miss=E.guard(state,e,CareerEventRuntime.options()),buttonNode=button(b,String.fromCharCode(65+i)+'  '+(e.label||d.options[i].label),()=>resolveCoffeeEvent(r.cycle,r.eventId,i),!!miss);if(r.eventId==='cut'&&i===1&&r.cutFlowVersion){const dialogue=document.createElement('p');dialogue.textContent=d.options[i].description;buttonNode.append(dialogue);}else buttonNode.append(effects(e,(['staff','busy','cut'].includes(r.eventId)||r.eventId==='departure'&&r.serviceXpAtMonthEnd),r.serviceXpAtMonthEnd));if(miss){const note=document.createElement('small');note.textContent=miss;buttonNode.append(note);}}button(b,'稍后决定',finish);return true;}
+ function busyChoices(box,record,card){
+  const modal=box.closest('.event');
+  modal.classList.add('career-weekend-rush');
+  requireEventChoice(box);
+  $('actions').replaceChildren();
+  box.querySelector('.career-event-hero img').src='assets/career-events-20261116/barista-busy-crayon.webp';
+  card.options.forEach((option,index)=>{
+   const quote=record.quotes[index];
+   const miss=CareerEventRules.guard(state,quote,CareerEventRuntime.options());
+   const panel=document.createElement('section');
+   panel.className='career-rush-choice';
+   if(index===0)panel.append(effects(quote,false,record.serviceXpAtMonthEnd));
+   else {
+    const note=document.createElement('p');
+    note.textContent='维持原排班，收入、工时与状态无额外变化。';
+    panel.append(note);
+   }
+   if(miss){
+    const note=document.createElement('p');
+    note.textContent=miss;
+    panel.append(note);
+   }
+   button(panel,quote.label||option.label,()=>resolveCoffeeEvent(record.cycle,record.eventId,index),!!miss);
+   box.append(panel);
+  });
+  box.querySelector('.career-event-option:not(:disabled)')?.focus({preventScroll:true});
+  return true;
+ }
+ function barista(){const r=ensureCoffeeMonth();if(r.saveFailed){const b=screen(null,'暂未保存','本次职业安排尚未保存，请重试。');button(b,'重试',barista);return true;}if(!r.eventId)return normalWork();if(r.eventId==='cut'&&r.follow){const d=D[r.follow.artId],b=screen(d.id,d.title,d.story);b.append(effects(r.follow.settled?{...r.resolvedEffects,actualReceipt:true}:r.follow.effects,true));if(r.follow.settled)exit(b);else button(b,'确认结果',()=>settleCoffeeCutFollow(r.cycle));return true;}const d=D['barista-'+r.eventId],b=screen(d.id,d.title,d.story||COFFEE_EVENTS[r.eventId].desc);if(r.status!=='pending'){b.append(effects({...r.resolvedEffects,actualReceipt:true},(['staff','busy','cut'].includes(r.eventId)||r.eventId==='departure'&&r.serviceXpAtMonthEnd),r.serviceXpAtMonthEnd));exit(b);return true;}if(r.eventId==='busy')return busyChoices(b,r,d);for(let i=0;i<d.options.length;i++){const e=r.quotes[i],miss=E.guard(state,e,CareerEventRuntime.options()),buttonNode=button(b,String.fromCharCode(65+i)+'  '+(e.label||d.options[i].label),()=>resolveCoffeeEvent(r.cycle,r.eventId,i),!!miss);if(r.eventId==='cut'&&i===1&&r.cutFlowVersion){const dialogue=document.createElement('p');dialogue.textContent=d.options[i].description;buttonNode.append(dialogue);}else buttonNode.append(effects(e,(['staff','busy','cut'].includes(r.eventId)||r.eventId==='departure'&&r.serviceXpAtMonthEnd),r.serviceXpAtMonthEnd));if(miss){const note=document.createElement('small');note.textContent=miss;buttonNode.append(note);}}button(b,'稍后决定',finish);return true;}
  function shift(){const r=ensureShiftMonth();if(r.saveFailed){const b=screen(null,'暂未保存','本次职业安排尚未保存，请重试。');button(b,'重试',shift);return true;}if(!r.eventId)return normalWork();const d=D['shift-'+r.eventId];if(r.followGenerated){const f=r.follow,id=f.artId||'shift-'+r.eventId+'-'+(f.success?'success':'failure'),fd=D[id],b=screen(id,fd.title,fd.story||f.desc),receipt=r.receipts?.find(x=>x.phase==='follow');b.append(effects(receipt?{...receipt.effects,actualReceipt:true}:f.effects,id==='shift-schedule-failure'));if(f.settled)exit(b);else button(b,'确认结果',()=>settleShiftFollow(r.cycle,r.eventId));return true;}const b=screen(d.id,d.title,d.story||SHIFT_EVENTS[r.eventId].desc);if(r.status!=='pending'){const e=(r.receipts||[]).reduce((a,x)=>{for(const [k,v]of Object.entries(x.effects))if(typeof v==='number')a[k]=(a[k]||0)+v;return a;},{});b.append(effects({...e,actualReceipt:true},r.eventId==='schedule'||r.eventId==='acting'));button(b,r.eventId==='praise'?'开心接受':'继续',()=>{const result=E.transaction(state,()=>{r.presented=true;return {};},save);if(result.ok)finish();else message(result.reason);});return true;}for(let i=0;i<d.options.length;i++){const e=r.quotes?.[i]||{},miss=E.guard(state,e,CareerEventRuntime.options()),bn=button(b,(d.options.length>1?String.fromCharCode(65+i)+'  ':'')+(e.label||d.options[i].label),()=>resolveShiftEvent(r.cycle,r.eventId,i),!!miss);if((!e.label||e.label===d.options[i].label)&&d.options[i].description){const p=document.createElement('p');p.textContent=d.options[i].description;bn.append(p);}if(Object.keys(e).length)bn.append(effects(e,r.eventId==='schedule'&&i===2||r.eventId==='acting'&&i===0));if(miss){const n=document.createElement('small');n.textContent=miss;bn.append(n);}}button(b,'稍后决定',finish);return true;}
  const partnerNotes={
   'manager-departure':'亲自交接会占用自由时间。额外工资由门店支付，计入本月经营成本。',
@@ -166,7 +194,8 @@
    modal.classList.remove('partner-painted-card','partner-reference-card','order-reference-card','bakery-result-card','career-choice-required');
    delete modal.dataset.partnerEvent;
   }
-  modal.classList.remove('career-event-live');
+  if(modal.classList.contains('career-weekend-rush'))$('eventClose').hidden=false;
+  modal.classList.remove('career-event-live','career-weekend-rush','career-choice-required');
  }
  const previousShow=showEvent;
  showEvent=function(...args){restoreEventHeader();return previousShow(...args);};

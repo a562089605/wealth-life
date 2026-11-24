@@ -337,3 +337,84 @@
  text-align:center;
  font:clamp(21px,6vw,28px)/1.2 WealthHand,'PingFang SC',sans-serif;
 }
+
+#game > .event.event-active.career-weekend-rush {
+ top:50% !important;
+ left:50% !important;
+ right:auto !important;
+ transform:translate(-50%,-50%);
+ width:min(440px,calc(100% - 24px));
+ padding:12px 14px !important;
+ border:2px solid #a6a76c !important;
+ background:#fff1d2 url("./assets/finance/paper.webp") center !important;
+ color:#354524;
+ box-shadow:inset 0 0 0 3px #fff1d0,0 12px 32px #32251950;
+}
+.career-weekend-rush #eventType,
+.career-weekend-rush #actions:empty { display:none; }
+#game > .event.career-weekend-rush > .row {
+ order:-1;
+ justify-content:center;
+ padding:0 !important;
+ margin:0;
+}
+#game > .event.career-weekend-rush #eventTitle {
+ order:-2;
+ margin:0;
+ text-align:center;
+ font:clamp(26px,8vw,38px)/1.1 WealthHand,'PingFang SC',serif;
+}
+.career-weekend-rush #eventMonth {
+ padding:2px 14px;
+ margin:4px 0;
+ background:#f0d191;
+ border-radius:12px;
+ color:inherit;
+}
+.career-weekend-rush #eventDesc { font-size:14px; line-height:1.35; margin:4px 0 8px; }
+#game > .event.career-weekend-rush #eventData { margin:0; padding:0 2px; }
+.career-weekend-rush .career-event-hero {
+ position:relative;
+ overflow:hidden;
+ aspect-ratio:915 / 395;
+ margin:0 0 8px;
+ border:0;
+ border-radius:12px;
+}
+.career-weekend-rush .career-event-hero img {
+ position:absolute;
+ inset:auto;
+ top:-97.47%;
+ left:-6%;
+ width:111.91%;
+ max-width:none;
+ height:auto;
+ transform:none;
+}
+.career-rush-choice {
+ margin:0 0 6px;
+ padding:6px 9px;
+ border-radius:15px 17px 14px 16px;
+ background:#f3e8bf;
+}
+.career-rush-choice p { margin:4px 0; font-size:14px; }
+.career-weekend-rush .career-rush-choice .career-event-effects {
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));
+ gap:3px 6px;
+ margin:0;
+ font:14px/1.3 system-ui,sans-serif;
+}
+.career-weekend-rush .career-event-effects > div { gap:2px 4px; padding:4px 6px; }
+.career-weekend-rush .career-event-effects strong { font:700 14px/1.3 system-ui,sans-serif; }
+#game > .event.career-weekend-rush .career-rush-choice .career-event-option {
+ width:min(100%,230px);
+ min-height:44px;
+ padding:4px 8px;
+ margin:5px auto 0;
+ text-align:center;
+ border:1px solid #b47d32;
+ border-radius:15px;
+ background:linear-gradient(#fbe093,#efbf5d);
+ color:#354524;
+ box-shadow:inset 0 0 0 2px #ffe1a2;
+}
