@@ -85,6 +85,8 @@
 
 /* Crayon practice cards share the rounded, hand-drawn frame of the latte reference. */
 .hobby-crayon-card .hobby-paper {
+ height:auto;
+ max-height:calc(100dvh - 24px);
  border:3px solid #526a3d;
  border-radius:28px 25px 29px 24px;
 }

@@ -237,28 +237,28 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
  --skill-light:#fffbea;
  --skill-sage:#e6ebc7;
 }
-.hobby-latte-card .hobby-paper,
+.hobby-latte-card:not(.hobby-crayon-card) .hobby-paper,
 :is(.career-management-card,.career-service-card).career-fixed .career-paper {
  border:2px solid var(--skill-edge);
  box-shadow:0 12px 28px #372e2355,0 0 0 3px #fcf2d9b3;
  background:radial-gradient(ellipse at 20% 10%,var(--skill-light),transparent 75%),var(--skill-paper);
 }
-.hobby-latte-card .hobby-paper>header,
+.hobby-latte-card:not(.hobby-crayon-card) .hobby-paper>header,
 :is(.career-management-card,.career-service-card) .career-fixed-heading {
  background:#fbf1d7;
 }
-.hobby-latte-card .hobby-scene,
+.hobby-latte-card:not(.hobby-crayon-card) .hobby-scene,
 :is(.career-management-card,.career-service-card).career-fixed .career-scene {
  border-block:2px solid var(--skill-edge);
 }
-.hobby-latte-card .hobby-stats>div,
+.hobby-latte-card:not(.hobby-crayon-card) .hobby-stats>div,
 .career-management-card .career-management-stats .career-row {
  background:linear-gradient(125deg,#fff9e8,#f5e7bd);
  border:1px solid #bea16b;
  border-radius:13px;
  box-shadow:inset 0 0 0 2px #fffdfaab,0 2px 0 #c3a57555;
 }
-.hobby-latte-card .hobby-level,
+.hobby-latte-card:not(.hobby-crayon-card) .hobby-level,
 .career-management-card .career-management-level,
 .career-service-card .career-panel {
  background:linear-gradient(120deg,#f4f2db,var(--skill-sage));
@@ -266,7 +266,7 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
  border-radius:14px;
  box-shadow:inset 0 0 0 2px #fffdeecc,0 2px 0 #a6ac794d;
 }
-.hobby-latte-card .hobby-content .hobby-primary,
+.hobby-latte-card:not(.hobby-crayon-card) .hobby-content .hobby-primary,
 .career-management-card .career-scroll-body>.career-primary {
  min-height:48px;
  border:1.5px solid #987034;
@@ -276,7 +276,7 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
  box-shadow:inset 0 0 0 2px #fff3bad9,0 3px 0 #94703980;
  text-shadow:0 1px #fff0ab;
 }
-.hobby-latte-card .hobby-content button:last-child:not(.hobby-primary),
+.hobby-latte-card:not(.hobby-crayon-card) .hobby-content button:last-child:not(.hobby-primary),
 :is(.career-management-card,.career-service-card).career-fixed .career-back {
  min-height:44px;
  border:1.5px solid #748454;
