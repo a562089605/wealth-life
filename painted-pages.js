@@ -76,7 +76,7 @@
    html+=q.monthly===printedRent&&(!family||occupied)
     ?'<span class="housing-printed-rent">'+esc(monthlyLabel)+'</span>'
     :patch(monthlyLabel,'top:'+(monthlyTop-.55)+'%','housing-detail-rent');
-   const paid=(paymentReceipt().housing||0)>=q.monthly;
+   const bill=occupied?livingBillQuote():null;
    if(!family){
     const detailsTop=studio?82.4:83.2,deposit=occupied?heldHousingDeposit():q.deposit;
     const total=q.first?q.total:q.monthly+q.deposit;
@@ -87,9 +87,16 @@
      ?'<span class="housing-printed-rent">'+esc('搬入时合计 '+money(total))+'</span>'
      :patch(money(total),'left:53%;top:'+detailsTop+'%;width:23%;height:3.1%','housing-small');
    }
-   if(occupied)html+='<div class="housing-payment-status'+(family?'':' housing-payment-compact')+(paid?' is-paid':'')+
-    '" style="top:'+(family?81.85:81.55)+'%" role="status">'+
-    (paid?'<span aria-hidden="true">✓</span> 本月住房已支付':'本月住房待支付')+'</div>';
+   if(bill){
+    const placement=family?' housing-payment-family':' housing-payment-compact';
+    const statusClass='housing-payment-status'+placement;
+    if(bill.blocked||bill.housing>0){
+     const paymentLabel=bill.blocked?'查看住房交接':family?'住房待缴 '+money(bill.housing)+' ›':'待缴 · 查看账单 ›';
+     html+='<button type="button" class="'+statusClass+'" data-painted="life">'+esc(paymentLabel)+'</button>';
+    }else{
+     html+='<div class="'+statusClass+' is-paid" role="status"><span aria-hidden="true">✓</span> 本月住房已支付</div>';
+    }
+   }
    const primaryTop=family&&!occupied?84.2:studio?88.5:occupied?88.5:90.2;
    const secondaryTop=family&&!occupied?91:studio?94:occupied?94:95;
    // Occupied artwork already prints 更换住房; only changing booking/confirmation labels need a caption.

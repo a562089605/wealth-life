@@ -155,7 +155,7 @@ body.painted-screen #game > #paintedView.painted-room-backdrop:not([hidden]) {
 }
 
 .painted-canvas.detail .housing-payment-status.housing-payment-compact {
- left:51%;width:28%;height:4.15%;
+ left:51%;top:81.55%;width:28%;height:4.15%;
  font-size:2.85cqw;gap:.5cqw;
 }
 
@@ -165,4 +165,25 @@ body.painted-screen #game > #paintedView.painted-room-backdrop:not([hidden]) {
  box-shadow:0 0 .6cqw .25cqw #fff8de;
  color:#143e2d;
  font-size:3.4cqw;font-weight:750;
+}
+
+
+.painted-canvas.detail .housing-payment-status.housing-payment-family {
+ left:25%;top:81.45%;width:50%;height:4.2%;
+ background:#faf3db;
+}
+
+.painted-canvas.detail .housing-payment-status.housing-payment-family.is-paid {
+ background:#d9e6b7;
+}
+
+.painted-canvas.detail button.housing-payment-status {
+ cursor:pointer;
+ background:#f8dfa0;
+ border:1px solid #a9803e;
+}
+
+.painted-canvas.detail button.housing-payment-status:focus-visible {
+ outline:2px solid #315f45;
+ outline-offset:2px;
 }
