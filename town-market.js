@@ -2,7 +2,7 @@ const TOWN_MARKET_DEALS={
  'valley-stock':{name:'山谷食品公司',type:'股票',unit:'股',price:6,limit:50,bids:[3,5,8,10]},
  'steady-fund':{name:'小镇稳健基金',type:'基金',unit:'份',price:25,limit:20,defaultQuantity:8,bids:[23,24,26,27]},
  'school-flat':{name:'学校旁小公寓',type:'出租房',price:22000,down:4400,rent:360,net:160,bids:[20000,21500,24000,26000],lease:{term:12,vacancy:200}},
- 'station-shop':{name:'车站便利店铺面',type:'商铺',price:55000,down:11000,rent:850,net:330,bids:[49000,53000,59000,64000],lease:{initial:2,term:12,rent:800,net:280,subsidy:300,vacancy:520}},
+ 'station-shop':{name:'车站便利店铺面',type:'商铺',price:55000,down:11000,rent:850,net:330,bids:[49000,53000,59000,64000],lease:{initial:2,term:12,rent:800,net:280,subsidy:300,vacancy:520,renovation:{cost:600,net:360}}},
  'river-stock':{name:'河畔运输公司',type:'股票',unit:'股',price:10,limit:50},
  'river-fund':{name:'河畔综合基金',type:'基金',unit:'份',price:20,limit:25},
  'river-home':{name:'河畔一居室',type:'出租房',price:30000,down:6000,rent:450,net:180,bids:[27000,29000,34000,37000]},
@@ -155,7 +155,7 @@ function openTownMarketHoldings(back){
 function townLeaseNet(holding,deal,month){
  if(month>=holding.leaseEnd)return -deal.lease.vacancy;
  if(holding.renewalStart===undefined)return deal.net;
- return month>=holding.renewalStart?deal.lease.net:holding.previousLeaseNet;
+ return month>=holding.renewalStart?(holding.renewalNet??deal.lease.net):holding.previousLeaseNet;
 }
 function townLeaseHoldingText(holding,deal){
  const net=townLeaseNet(holding,deal,state.month);
@@ -180,9 +180,11 @@ function openTownLeaseOffer(move,holding){
  const start=Math.max(state.month,holding.leaseEnd),cost=lease.subsidy||0;
  const approve=earlyExit?'同意退租':renewing?'续租':'签约',decline=earlyExit?'按原约':renewing?'不续租':'再等等';
  const owner=state,chosenSlot=slot;
- function choose(accepted){
+ const renovation=renewing?lease.renovation:null;
+ function choose(accepted,renovate=false){
+  const charge=renovate?renovation.cost:cost;
   if(state!==owner||slot!==chosenSlot||townOpportunityMove()!==move||
-   move.offers||townLeaseCandidate(move)!==holding||(accepted&&state.cash<cost))return;
+   move.offers||townLeaseCandidate(move)!==holding||(accepted&&state.cash<charge))return;
   const result=CareerLearningRules.atomic(state,()=>{
    if(earlyExit){
     holding.earlyExitOfferedFor=holding.leaseEnd;
@@ -192,15 +194,16 @@ function openTownLeaseOffer(move,holding){
      (state.financeLedger??=[]).push({kind:'opportunityIncome',month:state.month,amount:deal.rent,offer:'school-flat-early-exit'});
     }
    }else if(accepted){
-    if(cost&&!spendConfirmed('opportunity',cost,{offer:holding.deal}))return false;
+    if(charge&&!spendConfirmed('opportunity',charge,{offer:holding.deal}))return false;
     if(station){
      holding.previousLeaseNet=townLeaseNet(holding,deal,state.month);
      holding.renewalStart=start;
+     holding.renewalNet=renovate?renovation.net:lease.net;
     }
     holding.leaseEnd=start+lease.term;
    }
    holding.lastLeaseOffer=state.month;
-   move.offers={month:state.month,pool:'map-market',ids:[holding.deal],resolved:accepted?approve:decline};
+   move.offers={month:state.month,pool:'map-market',ids:[holding.deal],resolved:renovate?'翻新续租':accepted?approve:decline};
    move.resolved=true;
    move.completedMonth=state.month;
    townState().history.push({id:move.id,die:move.die,to:move.to,month:state.month,type:townMoveType(move),offerId:holding.deal,outcome:move.offers.resolved});
@@ -224,9 +227,24 @@ function openTownLeaseOffer(move,holding){
   [renewing?'续租后月净租金':'每月净租金',priceText(lease.net)],
   ['一次性装修补贴',priceText(cost)],['空置每月支出',priceText(lease.vacancy)]
  ]:[['申请人','小学老师'],['租期',lease.term+'个月'],['每月租金',priceText(deal.rent)],['每月净租金',priceText(deal.net)]];
- showEvent('地图专用',title,'',[],[[approve,()=>choose(true),true,state.cash<cost],[decline,()=>choose(false),false]]);
- $('eventData').innerHTML='<div class="town-opportunity town-market-card"><img class="town-opportunity-art" src="assets/finance/map-'+holding.deal+(earlyExit?'-early-exit':'-lease')+'.webp" alt=""><h3>'+deal.name+'</h3>'+(earlyExit?'<p>租客因工作调动，希望月底搬走。</p>':'')+'<dl>'+
-  rows.map(([label,value])=>'<div><dt>'+label+'</dt><dd>'+value+'</dd></div>').join('')+
-  '</dl><p>'+(earlyExit?'本月租金照常结算。':renewing?'新租约从现有租约到期后开始。':'签约后，从本月月底开始收租。')+'</p></div>';
- $('eventData').style.display='block';
+ function renderLeaseCard(title,rows,actions,art,note,description=''){
+  showEvent('地图专用',title,'',[],actions);
+  $('eventData').innerHTML='<div class="town-opportunity town-market-card"><img class="town-opportunity-art" src="assets/finance/'+art+'" alt=""><h3>'+deal.name+'</h3>'+
+   (description?'<p>'+description+'</p>':'')+'<dl>'+
+   rows.map(([label,value])=>'<div><dt>'+label+'</dt><dd>'+value+'</dd></div>').join('')+
+   '</dl><p>'+note+'</p></div>';
+  $('eventData').style.display='block';
+ }
+ const actions=[[approve,()=>choose(true),true,state.cash<cost],[decline,()=>choose(false),false]];
+ const renewalNote='新租约从现有租约到期后开始。';
+ if(renovation)actions.push(['查看翻新方案',()=>renderLeaseCard('商铺翻新换提租',[
+  ['一次性翻新费',priceText(renovation.cost)],['新租约',lease.term+'个月'],
+  ['不翻新月净租金',priceText(lease.net)],['翻新后月净租金',priceText(renovation.net)],
+  ['原价续租装修补贴',priceText(cost)]
+ ],[['翻新续租',()=>choose(true,true),true,state.cash<renovation.cost],
+    ['原价续租',()=>choose(true),false,state.cash<cost]],
+ 'map-station-shop-renovation.webp',renewalNote),false]);
+ renderLeaseCard(title,rows,actions,'map-'+holding.deal+(earlyExit?'-early-exit':'-lease')+'.webp',
+  earlyExit?'本月租金照常结算。':renewing?renewalNote:'签约后，从本月月底开始收租。',
+  earlyExit?'租客因工作调动，希望月底搬走。':'');
 }
