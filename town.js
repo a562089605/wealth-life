@@ -273,7 +273,7 @@ townPaydayStyles.textContent=`
  margin:8px 0;text-align:center;color:#25492c;font:clamp(25px,7vw,38px)/1.2 WealthHand,serif;
 }
 #game > .event.event-active[data-town-payday] #eventDesc {
- display:block;width:100%;aspect-ratio:2;margin:0 0 9px;border-radius:15px;
+ display:block!important;width:100%;aspect-ratio:2;margin:0 0 9px;border-radius:15px;
  background:url("assets/finance/town-payday.webp") center/cover no-repeat;
 }
 [data-town-payday] #eventData {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
