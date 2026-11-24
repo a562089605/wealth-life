@@ -2,9 +2,10 @@
  'use strict';
 
  const artRoot = 'assets/school-career/map/';
+ const skills = [['communication', '沟通协调'], ['instruction', '教学设计'], ['administration', '学校管理']];
  const stats = [
   ['hours', '自由时间', ' 小时'], ['energy', '能量', ''], ['stress', '压力', ''],
-  ['happiness', '幸福度', ''], ['communication', '沟通协调', ' XP']
+  ['happiness', '幸福度', ''], ...skills.map(([key, label]) => [key, label, ' XP'])
  ];
 
  function draw(move, deck) {
@@ -26,7 +27,7 @@
   const effects = option.effects;
   const hours = effects.hours || 0;
   const forced = card.options.length === 1;
-  if (state.town?.movement !== move || move.resolved || hours > free && !forced) return;
+  if (state.town?.movement !== move || move.resolved || move.schoolAnnouncement || hours > free && !forced) return;
   const ok = PetMapEvents.atomic(state, () => {
    const school = state.schoolCareer ??= {};
    if (hours) {
@@ -42,24 +43,58 @@
    for (const stat of ['energy','stress','happiness']) {
     if (effects[stat]) state[stat] = Math.max(0, Math.min(100, state[stat] + effects[stat]));
    }
-   if (effects.communication) {
-    (school.skills ??= {}).communication = Math.min(
-     SchoolCareer.thresholds.at(-1), SchoolCareer.xp(state, 'communication') + effects.communication
+   for (const [skill] of skills) {
+    if (!effects[skill]) continue;
+    (school.skills ??= {})[skill] = Math.min(
+     SchoolCareer.thresholds.at(-1), SchoolCareer.xp(state, skill) + effects[skill]
     );
    }
-   move.resolved = true;
-   move.completedMonth = state.month;
-   (state.town.history ??= []).push({id:move.id, die:move.die, to:move.to,
-    month:state.month, type:'career', offerId:card.id, outcome:option.label});
+   if (option.announcement) {
+    const isClosed = Math.random() < 0.5;
+    const result = isClosed ? option.announcement.closed : option.announcement.open;
+    const stress = state.stress;
+    state.stress = Math.max(0, Math.min(100, stress + result.stress));
+    move.schoolAnnouncement = {closed:isClosed, story:result.story,
+     stress:state.stress - stress, choice:option.label};
+   } else {
+    complete(move, card, option.label);
+   }
   }, save);
-  if (!ok) {
-   showEvent('职业事件', '暂未保存', '本次选择尚未生效，请重试。', [],
-    [['返回卡片', () => open(state.town.movement), true]]);
-   $('eventClose').hidden = true;
-   return;
-  }
+  if (!ok) return retry('本次選擇尚未生效，請重試。');
+  if (move.schoolAnnouncement) return renderAnnouncement(move, card);
   clearModals();
   finish();
+ }
+
+ function complete(move, card, choice) {
+  move.resolved = true;
+  move.completedMonth = state.month;
+  (state.town.history ??= []).push({id:move.id, die:move.die, to:move.to,
+   month:state.month, type:'career', offerId:card.id, outcome:choice,
+   ...(move.schoolAnnouncement ? {schoolClosed:move.schoolAnnouncement.closed} : {})});
+ }
+
+ function retry(message) {
+  showEvent('職業事件', '暫未保存', message, [],
+   [['重試', () => open(state.town.movement), true]]);
+  $('eventClose').hidden = true;
+ }
+
+ function renderAnnouncement(move, card) {
+  const result = move.schoolAnnouncement;
+  const owner = state, chosenSlot = slot, month = state.month;
+  const rows = result.stress ? [['壓力', (result.stress > 0 ? '+' : '−') + Math.abs(result.stress)]] : [];
+  showEvent('縣市政府公告', result.closed ? '明天停課' : '明天照常上課', result.story, rows,
+   [['繼續', () => {
+    if (state !== owner || slot !== chosenSlot || state.month !== month ||
+        state.town?.movement !== move || move.resolved) return;
+    if (!PetMapEvents.atomic(state, () => complete(move, card, result.choice), save)) {
+     return retry('公告已保留，請重試。');
+    }
+    clearModals();
+    finish();
+   }, true]]);
+  $('eventClose').hidden = true;
  }
 
  function renderCard(move, card) {
@@ -91,7 +126,7 @@
    for (const [key, label, unit] of stats) {
     let value = option.effects[key] || 0;
     if (key === 'hours') value = -value;
-    if (key === 'communication') value = Math.min(value, Math.max(0,
+    if (unit === ' XP') value = Math.min(value, Math.max(0,
      SchoolCareer.thresholds.at(-1) - SchoolCareer.xp(state, key)));
     if (!value) continue;
     const row = document.createElement('div');
@@ -121,7 +156,8 @@
   const deck = schoolMapCards[state.job];
   if (!deck || !SchoolCareer.working(state) || !move || move.resolved) return false;
   const card = draw(move, deck);
-  if (card) renderCard(move, card);
+  if (card && move.schoolAnnouncement) renderAnnouncement(move, card);
+  else if (card) renderCard(move, card);
   else {
    showEvent('职业事件', '暂未保存', '职业卡尚未保存，请重试。', [],
     [['重试', () => open(state.town.movement), true]]);
