@@ -243,10 +243,14 @@ function openTownLeaseOffer(move,holding){
   ['原价续租装修补贴',priceText(cost)]
  ],[['翻新续租',()=>choose(true,true),true,state.cash<renovation.cost],
     ['原价续租',()=>choose(true),false,state.cash<cost]],
- 'map-station-shop-renovation.webp',renewalNote),false]);
- renderLeaseCard(title,rows,actions,'map-'+holding.deal+(earlyExit?'-early-exit':'-lease')+'.webp',
-  earlyExit?'本月租金照常结算。':renewing?renewalNote:'签约后，从本月月底开始收租。',
-  earlyExit?'租客因工作调动，希望月底搬走。':'');
+ 'scene-station-renovation.webp',renewalNote,
+ '租客拿来一张门面草图。他想换掉褪色的遮阳棚，也愿意在新租约里多付一些租金。'),false]);
+ const scene=earlyExit?['map-school-flat-early-exit.webp','租客因工作调动，希望月底搬走。']:
+  renewing?['scene-station-renewal.webp','便利店的租客想继续做车站的生意。他愿意再签一年，希望你补贴一笔店面整理费。']:
+  station?['scene-station-application.webp','一位曾在站前摆摊的店主看中了空出来的铺面。他想把生意搬进室内，开一家便利店。']:
+  ['scene-school-application.webp','附近小学的一位老师来看房。她想找个步行就能上班的住处，愿意先签一年。'];
+ renderLeaseCard(title,rows,actions,scene[0],
+  earlyExit?'本月租金照常结算。':renewing?renewalNote:'签约后，从本月月底开始收租。',scene[1]);
 }
 function townFlowerOrderCandidate(move){
  if(state.month%12!==11||state.flowerOrderMonth===state.month||move.marketQuote)return null;
