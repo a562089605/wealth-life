@@ -232,7 +232,29 @@ const V26_OFFERS=[
 ];
 function monthlyOffers(){if(state.monthlyOpportunities?.month===state.month)return state.monthlyOpportunities;state.offerSeed??=Math.floor(Math.random()*1000000);let x=(state.offerSeed+state.month*7919)>>>0;const rand=()=>{x=(1664525*x+1013904223)>>>0;return x/4294967296},pool=[...V26_OFFERS];for(let i=pool.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}state.monthlyOpportunities={month:state.month,ids:pool.slice(0,4).map(o=>o.id),resolved:null};save();return state.monthlyOpportunities}
 function opportunityMarkup(){const offer=monthlyOffers();if(offer.resolved)return '<div class="wl-panel"><h3>本月已处理：'+offer.resolved+'</h3><p>每月最多选择一个机会。刷新与返回不会重置结果。</p><button data-v26="opportunityContinue" class="primary">继续月度确认 →</button></div>';return '<div class="wl-mini-grid wl-three">'+offer.ids.map(id=>{const o=V26_OFFERS.find(o=>o.id===id),blocked=typeof opportunityBlock==='function'?opportunityBlock(o):'';return '<button class="wl-choice-card" data-v26="opportunity" data-key="'+id+'" aria-label="确认机会 '+o.name+'" '+(state.cash<o.cost||blocked?'disabled':'')+'><strong>'+o.name+'</strong><b>投入 '+money(o.cost)+'</b><small>'+o.desc+'</small><small>成功率 '+Math.round((typeof opportunityChance==='function'?opportunityChance(o):o.chance)*100)+'%<br>'+(o.cf?'成功后净收入 '+money(o.cf)+'/月':'成功后收入 '+money(o.reward))+'<br>失败可能损失 '+money(o.chance<1?o.cost-(o.recovery||0):0)+'<br>'+(o.hours?'自由时间 −'+o.hours+' 小时<br>':'')+effectText(o.effects)+(o.successEffects?'<br>成功后 '+effectText(o.successEffects):'')+(o.recovery?'<br>未成功时转卖回收 '+money(o.recovery):'')+(blocked?'<br>'+blocked:'')+'</small><span>确认选择 →</span></button>'}).join('')+'</div><button data-v26="opportunitySkip" class="wl-secondary">四个都不选，保留现金 →</button>'}
-function takeOpportunity(id){const offer=monthlyOffers(),o=V26_OFFERS.find(o=>o.id===id);if(offer.resolved||!offer.ids.includes(id)||!o)return;if(!spendConfirmed('opportunity',o.cost,{offer:id}))return;const success=Math.random()<o.chance;offer.resolved=o.name;offer.success=success;for(const[k,v]of Object.entries(o.effects))state[k]=Math.max(k==='stress'||k==='social'?0:0,Math.min(100,(state[k]||0)+v));if(success&&o.cf)state.assets.push({id:assetId(),name:o.name,kind:'business',cost:o.cost,value:o.cost,cf:o.cf});if(success&&o.reward){state.cash=roundCash(state.cash+o.reward);state.financeLedger.push({kind:'opportunityIncome',month:state.month,amount:o.reward,offer:id})}save();showEvent('机会结果',success?'已完成：'+o.name:'未成功：'+o.name,success?'本次选择的费用与收益已记录。':'前期投入已经支付，没有产生预期收入。',[['本次投入',money(o.cost)],['本次收入',money(success?(o.reward||0):0)],['新增月收入',money(success?(o.cf||0):0)]],[['继续',()=>completeMonthlyStep(8),true]])}
+function showOpportunityCompletion(project, rows) {
+ const note=project.cf?'持续收入从本月月末到账。':'';
+ showEvent('机会结果',project.name,note,rows,[['继续',()=>completeMonthlyStep(8),true]]);
+ const title=$('eventTitle'),card=title.closest('.event');
+ card.dataset.opportunityCompletion='true';
+ const image=document.createElement('img');
+ image.className='opportunity-completion-art';
+ image.src='assets/opportunity-results/'+project.id+'.webp';
+ image.alt='';
+ $('eventData').prepend(image);
+ const status=document.createElement('span');
+ status.className='opportunity-completion-badge';
+ status.textContent='已完成';
+ title.append(status);
+ const icons={'本次投入':'money','已用自由时间':'clock','能量':'energy','实际一次性收入':'money','本次收入':'money','新增月净收入':'management','新增月收入':'management','当前被动收入':'money','成功后状态变化':'happiness'};
+ for(const [index,tile] of [...$('eventData').querySelectorAll('.stat')].entries()){
+  const glyph=document.createElement('span');
+  glyph.className='opportunity-completion-icon';
+  glyph.innerHTML=coffeeIcon(icons[rows[index][0]]||'trust');
+  tile.prepend(glyph);
+ }
+}
+function takeOpportunity(id){const offer=monthlyOffers(),o=V26_OFFERS.find(o=>o.id===id);if(offer.resolved||!offer.ids.includes(id)||!o)return;if(!spendConfirmed('opportunity',o.cost,{offer:id}))return;const success=Math.random()<o.chance;offer.resolved=o.name;offer.success=success;for(const[k,v]of Object.entries(o.effects))state[k]=Math.max(k==='stress'||k==='social'?0:0,Math.min(100,(state[k]||0)+v));if(success&&o.cf)state.assets.push({id:assetId(),name:o.name,kind:'business',cost:o.cost,value:o.cost,cf:o.cf});if(success&&o.reward){state.cash=roundCash(state.cash+o.reward);state.financeLedger.push({kind:'opportunityIncome',month:state.month,amount:o.reward,offer:id})}save();const rows=[['本次投入',money(o.cost)],['本次收入',money(success?(o.reward||0):0)],['新增月收入',money(success?(o.cf||0):0)]];if(success)showOpportunityCompletion(o,rows);else showEvent('机会结果','未成功：'+o.name,'前期投入已经支付，没有产生预期收入。',rows,[['继续',()=>completeMonthlyStep(8),true]])}
 // Month-end events remain life/work incidents; monthly business choices are only the saved three offers.
 monthlyEvent=function(){pending=true;if(maybeInsuredJobLoss())return;if(workplaceEvent())return;if(!state.worldShock&&maybeWorldShock())return;if(maybeDreamStory())return;if(Math.random()<.25&&maybePeopleStory())return;const pool=LIFE.filter(e=>eventEligible(e[0]));if(Math.random()<.3&&pool.length){const e=pool[Math.floor(Math.random()*pool.length)],cost=e[0]==='医疗自付额'&&state.healthInsurance?0:e[2];showEvent('生活事件',e[0],e[1]+' 本次需要处理并支付费用。',[['本次费用',money(cost)],['可用现金',money(state.cash)]],[['确认支付 '+money(cost),()=>{payRequiredIncident(e[0],cost)},true],['筹措费用',()=>openIncidentFunding(e[0],cost),false]]);return}finish()};
 

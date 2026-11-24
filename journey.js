@@ -123,7 +123,9 @@ takeOpportunity=function(id){
   const a={id:assetId(),name:p.name,kind:success?p.kind:'business',cost:p.cost,value,cf,fastTrack:true,fastProject:id,acquiredMonth:state.month};
   if(a.kind==='rental')Object.assign(a,{purchasePrice:p.cost,mortgage:0,apr:.065,monthsLeft:0,payment:0,rent:p.rent,operating:p.operating});
   state.assets.push(a);offers.resolved=p.name;offers.success=success;syncFinance();save();render();
-  showEvent('快车道结果',success?'项目已加入资产':'项目整合未成功',success?'投资额从现金转入资产。净收入从本月月末起计入被动现金流。':'现金已投入，资产按可出售残值入账；没有新增经营收入。',[['投入',money(p.cost)],['资产当前价值',money(value)],['新增净收入',money(cf)+'/月']],[['继续',()=>completeMonthlyStep(8),true]]);
+  const rows=[['投入',money(p.cost)],['资产当前价值',money(value)],['新增净收入',money(cf)+'/月']];
+  if(success)showOpportunityCompletion(p,rows);
+  else showEvent('快车道结果','项目整合未成功','现金已投入，资产按可出售残值入账；没有新增经营收入。',rows,[['继续',()=>completeMonthlyStep(8),true]]);
 };
 function openFastProjects(){
   if(journeyState().phase!=='fast'){openJourney();return}

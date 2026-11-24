@@ -163,7 +163,8 @@ takeOpportunity=function(id){
  if(!success&&project.recovery)rows.push(['本次净损失',priceText(project.cost-offer.income)]);
  if(success&&project.successEffects)rows.push(['成功后状态变化',effectText(project.successEffects)]);
  if(project.hours)rows.splice(1,0,['已用自由时间',project.hours+' 小时'],['能量',String(project.effects.energy)]);
- showEvent('机会结果',success?'已完成：'+project.name:'未成功：'+project.name,success?'项目成功，收入或新增月净收入已记录；持续收入从本月月末到账。':(project.recovery?'项目未达成，转卖回收款已到账。':'本次投入已支付，没有产生预期收入。'),rows,[['继续',()=>completeMonthlyStep(8),true]]);
+ if(success)showOpportunityCompletion(project,rows);
+ else showEvent('机会结果','未成功：'+project.name,project.recovery?'项目未达成，转卖回收款已到账。':'本次投入已支付，没有产生预期收入。',rows,[['继续',()=>completeMonthlyStep(8),true]]);
 };
 // ETF monthly distributions are removed from quotes before cash/reinvestment: no free double return.
 const ETF_YIELDS={us500:.018,ustotal:.02,international:.03,world:.024};
