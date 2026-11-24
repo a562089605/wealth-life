@@ -96,7 +96,7 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
 @media(max-width:350px){.career-management-card .career-fixed-heading h1{font-size:21px}.career-management-card .career-course-badge{font-size:11px}.career-management-card .career-management-stats .career-row{padding:10px 7px;grid-template-columns:24px 1fr;gap:3px 4px}.career-management-card .career-management-stats .career-row>span:nth-child(2){font-size:14px}.career-management-card .career-management-stats .career-row>span:last-child{font-size:22px}}
 
 .career-overlay.career-cafe-home.career-fixed{
- background:linear-gradient(#352a1c55,#352a1c55),url('assets/home/apartment-corgi-20261104.webp') center/cover no-repeat,#d6c9a9;
+ background:transparent;
 }
 .career-cafe-home.career-fixed .career-scene{aspect-ratio:3}
 .career-cafe-home.career-fixed .career-scene img{

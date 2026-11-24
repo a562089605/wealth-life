@@ -101,7 +101,7 @@
   p.button(R.skillLevel(state,'management')>=5?'已满级':'确认学习',b=>{b.disabled=true;const r=R.course(state,expected,opts());if(!r.ok){p.message.textContent=r.reason;b.disabled=false;return;}render();management('本次课程已保存。',back);},{primary:true,disabled:!!miss.length});p.button(back===career?'返回我的职业':'返回职业技能',back).classList.add('career-back');
   p.section.classList.add('career-management-card');stats.classList.add('career-management-stats');[...stats.querySelectorAll('.career-row')].forEach((row,i)=>{const icon=node('span',null,'career-course-icon');icon.innerHTML=coffeeIcon(['money','clock','energy','management'][i]);row.prepend(icon);});compactCareer(p);const badge=node('span','课程档案','career-course-badge');p.section.querySelector('.career-fixed-heading header').append(badge);
  }
- function career(){coffeeCareerData();const k=R.role(state.job),p=panel('我的职业','career',room),work=p.box('工作'),x=coffeeMonthlyIncome();work.classList.add('career-job-summary');p.row(work,'岗位',state.job||'未就业');p.row(work,'工资',money(x?.baseWages??(state.job&&!state.retired&&!state.unemployedMonths?state.salary:0))+'/月');p.row(work,'时间',state.job&&!state.retired?(state.workHoursPerWeek||R.roles[k]?.weekly||40)+'小时/周':'—');p.row(work,'小费',money(x?.baseTips||0)+'/月');
+ function career(){coffeeCareerData();const k=R.role(state.job),p=panel('我的职业','career',room,state.month,true),work=p.box('工作'),x=coffeeMonthlyIncome();work.classList.add('career-job-summary');p.row(work,'岗位',state.job||'未就业');p.row(work,'工资',money(x?.baseWages??(state.job&&!state.retired&&!state.unemployedMonths?state.salary:0))+'/月');p.row(work,'时间',state.job&&!state.retired?(state.workHoursPerWeek||R.roles[k]?.weekly||40)+'小时/周':'—');p.row(work,'小费',money(x?.baseTips||0)+'/月');
   if(k==='manager'){
    p.section.classList.add('career-store-manager');
    p.section.querySelector('.career-scene img').src=CareerEventData.cards['manager-equipment'].art;
@@ -132,6 +132,7 @@
    entry.append(illustration,summary,rank,arrow);
   }
   if(R.next(state))p.button('查看晋升条件',promotion,{parent:growth});p.button('职业学习',()=>skills('career'),{parent:growth});const other=p.box('其他选择');p.button('查看其他工作机会',()=>{close();openCareerMarket();},{parent:other});p.button(state.pendingResignation?'已安排下个月离职':'申请辞职',resignation,{parent:other,disabled:!state.job});p.button('返回房屋',room).classList.add('career-back');
+  window.showRoomBehindPanel?.();
   p.section.classList.add('career-story-profile');
   compactCareer(p);
  }

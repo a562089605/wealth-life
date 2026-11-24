@@ -63,6 +63,10 @@
   render();syncRoom();
  };
  window.hideRoom=function(){visible=false;syncRoom();};
+ window.showRoomBehindPanel=function(){
+  if(state?.roomLocation!=='home'||townVisible||!activeGame())return;
+  visible=true;syncRoom();
+ };
  function leaveRoom(allowOverdueClean=false){
   if(state.gameOver?.final)return showGameOver();
   if(state.requiredIncident)return openRequiredIncident();
