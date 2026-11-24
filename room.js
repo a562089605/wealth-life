@@ -18,23 +18,20 @@
   if(!box){
    box=document.createElement('section');box.id='roomView';box.setAttribute('aria-label','房屋：本月安排');
    box.innerHTML='<div class="room-canvas"><img src="assets/home/apartment-corgi-20261104.webp" width="853" height="1844" alt="温暖的手绘房间：人物坐在绿沙发阅读，柯基在地毯上休息。地毯上的三色柯基旁有宠物入口。"><div class="room-date"><strong id="roomCalendar"></strong><span id="roomHousingTitle">房屋 · 本月安排</span></div><button type="button" class="room-menu" data-room="menu" aria-label="打开游戏菜单">☰</button><button type="button" class="room-hotspot room-work" data-room="work" aria-label="工作">工作</button><button type="button" class="room-hotspot room-study" data-room="study" aria-label="学习">学习</button><button type="button" class="room-hotspot room-rest" data-room="rest" aria-label="休息">休息</button><button type="button" class="room-hotspot room-life" data-room="life" aria-label="生活">生活</button><button type="button" class="room-hotspot room-relations" data-room="relations" aria-label="关系">关系</button><button type="button" class="room-hotspot room-finance" data-room="finance" aria-label="财务">财务</button><button type="button" class="room-hotspot room-pets" data-room="pets" aria-label="宠物">宠物</button><button type="button" class="room-hotspot room-leave" data-room="leave" aria-label="确认完成，现在出门">确认完成，现在出门</button></div>';
-   const billButton=document.createElement('button');
-   billButton.type='button';
-   billButton.className='room-bill';
-   billButton.dataset.room='bill';
    const stats=document.createElement('dl');
    stats.className='room-status';
    stats.setAttribute('aria-label','当前状态');
-   for(const [label,icon] of [['可用现金','🪙'],['幸福度','♥'],['压力','〰'],['自由时间','◷'],['能量','ϟ']]){
+   for(const [label,icon] of [['可用现金',null],['幸福度','♥'],['压力','〰'],['自由时间','◷'],['能量','ϟ']]){
     const cell=document.createElement('div'), term=document.createElement('dt');
     const symbol=document.createElement('span');
     symbol.setAttribute('aria-hidden','true');
-    symbol.textContent=icon;
+    if(icon)symbol.textContent=icon;
+    else symbol.innerHTML='<svg class="room-cash-icon" viewBox="0 0 24 24" fill="currentColor" focusable="false"><circle cx="13" cy="3" r="2.2"/><path fill-rule="evenodd" d="M5.1 9.5 4.8 6l4 2c1.2-.6 2.5-.8 4-.8 4.1 0 7 2.2 7.5 5.3 1.1.1 1.7-.5 1.6-1.2-.1-.5-.6-.5-.8-.3l-.8-1.1c1-.8 2.6-.5 3 1 .4 1.6-.9 3.3-2.9 3.1-.3 2-1.4 3.4-3 4.3l-.6 3.1h-3l-.5-1.9c-1 .1-2.1.1-3.1-.1l-.6 2H6.5l-.7-3.4a7.3 7.3 0 0 1-2.1-2.2H2a1 1 0 0 1-1-1v-2.9a1 1 0 0 1 1-1h1.5c.4-.5.9-1 1.6-1.4Zm2.9 3a.85.85 0 1 0-1.7 0 .85.85 0 0 0 1.7 0Zm3.1-3.1a.65.65 0 1 0 0 1.3h3.7a.65.65 0 1 0 0-1.3h-3.7Z"/></svg>';
     term.append(symbol,label);
     cell.append(term,document.createElement('dd'));
     stats.append(cell);
    }
-   box.querySelector('.room-date').after(stats,billButton);
+   box.querySelector('.room-date').after(stats);
    el('game').append(box);
   }
   const apartment=state.housing==='rent1',studio=state.housing==='studio',shared=state.housing==='shared',family=state.housing==='family';
@@ -55,15 +52,6 @@
    entry.textContent=value;
    entry.style.setProperty('--room-value-size',Math.min(4,30/Math.max(1,value.length))+'cqw');
   });
-  const bill=livingBillQuote();
-  const billButton=box.querySelector('.room-bill');
-  const expense=family?'家用':state.housing==='own'?'房贷':'房租';
-  if(bill.blocked)billButton.textContent='办理住房交接';
-  else if(!bill.selected)billButton.textContent='先选择住房';
-  else if(bill.housing>0)billButton.textContent='交'+expense+'和生活费 · '+money(bill.total);
-  else if(bill.living>0)billButton.textContent='交本月生活费 · '+money(bill.living);
-  else billButton.textContent='本月生活账单 · 已支付';
-  billButton.classList.toggle('room-bill-due',bill.total>0||!bill.selected||bill.blocked);
   box.hidden=false;el('roomCalendar').textContent=townCalendar();
  }
  window.openRoom=function(){
@@ -120,7 +108,7 @@
   state.roomLocation='overview';save();visible=false;syncRoom();clearModals();el('qAssets').click();
  }
  window.openFinanceAssets=()=>window.FinancePages.open(openWealth,true);
- const actions={work:()=>openWorkAdjustment(),study:learning,rest:()=>openExtraRest(),life:living,bill:living,
+ const actions={work:()=>openWorkAdjustment(),study:learning,rest:()=>openExtraRest(),life:living,
   relations:()=>el('networkBtn').click(),finance:()=>window.FinancePages.open(openWealth),pets:()=>el('petBtn').click(),leave:leaveRoom,menu:()=>el('wlMenu').click()};
  document.addEventListener('click',e=>{
   const b=e.target.closest('[data-room]');if(!b||b.disabled||!visible||!activeGame())return;
