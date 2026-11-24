@@ -105,3 +105,62 @@
 .pet-success-paid dd {font-size:5.05cqw}
 .pet-success-cash {--receipt-icon-y:77.85%;background:#e7eac9}
 .pet-success-monthly {--receipt-icon-y:83.55%;border-top:1px dashed #d4c49b;border-radius:0}
+
+.pet-paper.pet-care-confirm {
+  color: #30492b;
+  border: 2px solid #bb8a43;
+  background: radial-gradient(#b387551a .55px, transparent .85px) 0 0 / 4px 5px, #fff6e1;
+  border-radius: 21px 18px 22px 19px;
+  padding: clamp(12px, 4vw, 20px);
+}
+.pet-care-confirm h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 9px;
+  font: clamp(20px, 5.5vw, 29px)/1.25 WealthHand, KaiTi, serif;
+  overflow-wrap: anywhere;
+}
+.pet-care-confirm-corgi h2::after {
+  content: "";
+  flex: 0 0 clamp(70px, 24vw, 124px);
+  aspect-ratio: 483 / 264;
+  margin-inline-start: auto;
+  background: url('assets/pets/care-confirm-corgi.webp') center / contain no-repeat;
+  mix-blend-mode: multiply;
+  mask-image: radial-gradient(ellipse farthest-side, #000 75%, transparent 100%);
+}
+.pet-care-confirm-service {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 8px;
+  padding: 8px 10px;
+  background: #e3e8ba;
+  border-radius: 12px;
+  font-weight: 700;
+}
+.pet-care-confirm-metrics {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+}
+.pet-care-confirm-metrics div {
+  flex: 1;
+  min-width: 0;
+  padding: 7px 5px;
+  text-align: center;
+  border: 1px solid #b7b984;
+  border-radius: 12px;
+  background: #fff0d2;
+}
+.pet-care-confirm-metrics dt { font-size: 13px; }
+.pet-care-confirm-metrics dd {
+  margin: 3px 0 0;
+  font-size: clamp(13px, 4.4vw, 20px);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.pet-care-confirm .pet-message:empty { display: none; }
+.pet-care-confirm .pet-solid-button { background: #f5cf61; }
+.pet-care-confirm .pet-care-confirm-back { background: #fff4da; }
