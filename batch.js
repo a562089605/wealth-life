@@ -45,6 +45,7 @@ function showLoanReceipt(loan,goBack=window.openRoom||finish,backLabel='返回�
  ]);
  $('eventData').insertAdjacentHTML('afterbegin',bankLoanArt('receipt'));
  window.modalReturn=goBack;
+ if($('eventTitle').textContent==='贷款已到账')window.ApprovedBankCards?.receipt();
 }
 function payLoanInstallment(key,after,backLabel){
  const row=currentLoanCycle().items.find(x=>x.key===key),t=loanTargets().find(x=>x.key===key);
@@ -89,6 +90,8 @@ function openLoanPayments(after=window.openRoom||finish,backLabel='返回房屋'
  for(const button of scroller.querySelectorAll('[data-batch="payLoan"]')){
   button.onclick=event=>{event.stopPropagation();payLoanInstallment(button.dataset.key,after,backLabel)};
  }
+ if($('eventTitle').textContent==='本月贷款还款')window.ApprovedBankCards?.repayment();
+
 }
 function settleMonthlyDebts(settlement){
  const rows=currentLoanCycle().items;settlement.loanPayments=rows.map(x=>({...x}));

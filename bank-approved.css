@@ -1,0 +1,172 @@
+#game > .event.event-active[data-bank-approved] {
+ position:fixed;
+ top:50% !important;
+ left:50% !important;
+ right:auto !important;
+ transform:translate(-50%,-50%);
+ box-sizing:border-box;
+ width:min(440px,calc(100vw - 12px),calc((100dvh - 24px) * 2 / 3));
+ aspect-ratio:2/3;
+ height:auto;
+ max-height:none !important;
+ padding:0 !important;
+ border:0 !important;
+ border-radius:0 !important;
+ box-shadow:none !important;
+ background:transparent !important;
+ overflow:hidden !important;
+ container-type:inline-size;
+ color:#42491f;
+}
+.bank-approved-frame { display:block; width:100%; height:auto; pointer-events:none; }
+[data-bank-approved] > #eventTitle,
+[data-bank-approved] > #eventDesc,
+[data-bank-approved] #eventType,
+[data-bank-approved] .wl-bank-art,
+[data-bank-approved="form"] .wl-loan-form > label,
+[data-bank-approved="form"] .wl-bank-results span,
+[data-bank-approved="receipt"] .stat .label {
+ position:absolute !important;
+ width:1px !important;
+ height:1px !important;
+ overflow:hidden;
+ clip-path:inset(50%);
+}
+#game > .event[data-bank-approved] #eventMonth {
+ position:absolute;
+ z-index:1;
+ inset:8.8% 32% auto;
+ height:3%;
+ margin:0;
+ text-align:center;
+ background:#ffedb5 url("./assets/finance/paper.webp") center;
+ font:bold 4cqw/1 WealthHand,serif;
+}
+#game > .event[data-bank-approved] > #eventData,
+#game > .event[data-bank-approved] > #actions {
+ position:absolute;
+ inset:0;
+ margin:0;
+ padding:0 !important;
+ max-height:none;
+ overflow:visible;
+ pointer-events:none;
+ background:none;
+}
+#game > .event[data-bank-approved] .bank-approved-slot {
+ position:absolute;
+ left:var(--bank-x);
+ top:var(--bank-y);
+ width:var(--bank-w);
+ height:var(--bank-h);
+ margin:0;
+ min-width:0;
+ min-height:0;
+ box-sizing:border-box;
+ pointer-events:auto;
+}
+#game > .event[data-bank-approved] .bank-art-button,
+#game > .event[data-bank-approved] #actions button.bank-approved-slot,
+#game > .event[data-bank-approved] #eventClose {
+ color:transparent;
+ padding:0;
+ border:0 !important;
+ box-shadow:none !important;
+ background:transparent !important;
+}
+#game > .event[data-bank-approved="repayment"] #actions button:first-child:not(:last-child) {
+ color:#fff2cb;
+ background:#66672d !important;
+}
+#game > .event[data-bank-approved] #eventClose { inset:1% 1% auto auto; width:11%;height:8%;z-index:3; }
+#game > .event[data-bank-approved] button:focus-visible { outline:2px solid #59692d; outline-offset:-2px; }
+[data-bank-approved] .bank-approved-slot:disabled { background:#e8d8b39c !important; }
+[data-bank-approved] .wl-loan-form,
+[data-bank-approved] .wl-bank-results,
+[data-bank-approved] .stat { position:static; margin:0; padding:0; background:none; border:0; }
+[data-bank-approved] .wl-input-money,
+[data-bank-approved] #wlLoanYears,
+[data-bank-approved] .wl-bank-results b,
+[data-bank-approved] .stat .value {
+ display:grid;
+ place-items:center;
+ color:#45471b;
+ background:#f8e2a1 url("./assets/finance/paper.webp") center;
+ border-radius:9px;
+ font:bold 3.8cqw/1.1 system-ui,sans-serif;
+ text-align:center;
+}
+[data-bank-approved] .wl-input-money { grid-template-columns:auto minmax(0,1fr); padding:0 2px; }
+[data-bank-approved] .wl-input-money input { font:inherit; width:100%; padding:0; background:none; }
+[data-bank-approved] #wlLoanRange { accent-color:#6d7330; }
+[data-bank-approved] .wl-loan-rules {
+ position:absolute;
+ z-index:3;
+ inset:auto 6% 20% auto;
+ max-width:88%;
+ pointer-events:auto;
+ padding:2px 5px;
+ background:#ffefd0;
+ font-size:3cqw;
+}
+[data-bank-approved] #wlLoanError { position:absolute; top:78.5%; left:4%; margin:0; color:#913f2b; font-size:3cqw; }
+#game > .event[data-bank-approved="repayment"] > #eventData {
+ display:block;
+ inset:39% 4.6% 16.5%;
+ overflow:auto;
+ overscroll-behavior:contain;
+ scrollbar-width:none;
+ pointer-events:auto;
+ padding:5px 12px 5px 5px !important;
+ background:#ffefc7 url("./assets/finance/paper.webp") center;
+ border:1px solid #ba8246;
+ border-radius:13px;
+ font-size:3.6cqw;
+}
+[data-bank-approved="repayment"] .wl-bank-card { padding:7px; margin:5px 0; }
+[data-bank-approved="repayment"] .wl-bank-card button { min-height:34px; }
+.bank-approved-scroll-rail {
+ position:absolute;
+ top:40%;
+ bottom:18%;
+ right:5%;
+ width:5px;
+ z-index:1;
+ border-radius:5px;
+ pointer-events:none;
+ background:#edcf8e;
+}
+.bank-approved-scroll-rail span { position:absolute; width:100%; border-radius:5px; background:#a76a2b; }
+#game > .event[data-bank-approved] > .row { display:contents !important; }
+#game > .event[data-bank-approved]::before,
+#game > .event[data-bank-approved]::after,
+#game > .event[data-bank-approved] > .row::before,
+#game > .event[data-bank-approved] > .row::after { content:none !important; }
+#game > .event[data-bank-approved] #actions button.bank-approved-slot { color:transparent !important; }
+#game > .event[data-bank-approved="repayment"] #actions button:first-child:not(:last-child) { color:#fff2cb !important; }
+[data-bank-approved] #wlLoanRange {
+ appearance:none;
+ padding:0;
+ border:0;
+ border-radius:10px;
+ background:#d7aa62;
+ height:1.9% !important;
+ top:45.8% !important;
+}
+[data-bank-approved] #wlLoanRange::-webkit-slider-thumb {
+ appearance:none;
+ width:22px;
+ height:22px;
+ border:2px solid #756a32;
+ border-radius:50%;
+ background:#ffe6a4;
+}
+[data-bank-approved="form"] .wl-bank-results > div,
+[data-bank-approved="receipt"] #eventData > .stat { display:contents; }
+[data-bank-approved="form"] .wl-loan-form::before {
+ content:"";
+ position:absolute;
+ inset:43.8% 20% 50.6%;
+ border-radius:8px;
+ background:#fff0c9 url("./assets/finance/paper.webp") center;
+}

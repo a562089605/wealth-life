@@ -51,6 +51,8 @@
   $('eventData').style.display='block';window.modalReturn=after;window.modalReturnDirect=!!config.returnDirect;
   function update(){$('wlLoanError').textContent='';const amt=Number($('wlLoanAmount').value),years=Number($('wlLoanYears').value),apr=currentBankAPR(),valid=Number.isFinite(amt)&&amt>0&&Math.abs(Math.round(amt*100)-amt*100)<.00001,pmt=valid?paymentFor(amt,apr,years*12):0;$('wlLoanApr').textContent=(apr*100).toFixed(2)+'%';$('wlLoanPayment').textContent=money(pmt)+'/月';$('wlLoanInterest').textContent=money(Math.max(0,pmt*years*12-amt));$('wlLoanNote').textContent=valid?'贷款到账不会提高净资产。按当前工资和资产收入，新增月供后的持续收支结余约 '+money(calcMetrics().monthlyCF-pmt)+'/月；学费不增加收入。新合同逾期费为未付月供5%，最高$35.00（随物价调整）；未付利息及费用加入余额，固定APR不变。':'请输入大于0的金额。';$('actions').firstElementChild.disabled=!valid;}
   $('wlLoanRange').oninput=()=>{$('wlLoanAmount').value=$('wlLoanRange').value;update()};$('wlLoanAmount').oninput=()=>{$('wlLoanRange').max=Math.max(100000,Number($('wlLoanAmount').value)||0);$('wlLoanRange').value=$('wlLoanAmount').value;update()};$('wlLoanYears').onchange=update;update();
+  if($('eventTitle').textContent==='银行贷款')window.ApprovedBankCards?.form();
+
  }
  openBankLoan=function(suggested=10000,config={}){loanForm(suggested,config.after||null,config)};
  showEvent=function(type,title,desc,data=[],actions=[]){window.modalReturn=null;window.modalReturnDirect=false;$('eventData').style.display='';if(type==='HOUSING')actions=actions.map(a=>a[0]==='申请银行贷款后选择住房'?[a[0],()=>{finish();const amount=Math.max(1,Math.ceil(Math.min(...housingOptions().map(h=>h[2]))-state.cash));loanForm(amount,()=>$('housingBtn').click())},a[2],a[3]]:a);showBase(type,title,desc,data,actions)};
