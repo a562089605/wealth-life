@@ -16,6 +16,7 @@
    const area=scroller.getBoundingClientRect(),card=eventCard.getBoundingClientRect();
    const height=Math.max(18,area.height*scroller.clientHeight/scroller.scrollHeight);
    rail.style.top=area.top-card.top+'px';
+   rail.style.right=(card.right-area.right)+'px';
    rail.style.height=area.height+'px';
    thumb.style.height=height+'px';
    thumb.style.translate='0 '+((area.height-height)*scroller.scrollTop/max)+'px';
@@ -23,7 +24,9 @@
   const observer=new ResizeObserver(update);
   observer.observe(scroller);
   scroller.addEventListener('scroll',update,{passive:true});
+  const previousStop=stopDetailScroll;
   stopDetailScroll=()=>{
+   previousStop?.();
    observer.disconnect();
    scroller.removeEventListener('scroll',update);
    rail.remove();
@@ -35,7 +38,7 @@
   stopDetailScroll?.();
   stopDetailScroll=null;
   delete eventCard.dataset.etfDetail;
-  eventCard.classList.remove('finance-home','finance-bill','finance-bill-current','finance-debt','finance-assets','finance-savings','finance-emergency','finance-cd','finance-etf','finance-sp500','finance-etf-buy','finance-etf-receipt','finance-etf-sell','finance-etf-settings','finance-parchment','retirement-transaction');
+  eventCard.classList.remove('finance-original','finance-original-bills','finance-original-assets','finance-home','finance-bill','finance-bill-current','finance-debt','finance-assets','finance-savings','finance-emergency','finance-cd','finance-etf','finance-sp500','finance-etf-buy','finance-etf-receipt','finance-etf-sell','finance-etf-settings','finance-parchment','retirement-transaction');
   $('eventData').removeAttribute('tabindex');
   $('eventData').removeAttribute('aria-label');
   return previousShow(...args);
@@ -200,6 +203,19 @@
    return {cash,maturities,expenses:[...reinvestments,...purchases],skipped};
   }
 
+  function originalSection(key,label,content,total){
+   return '<section class="finance-original-section '+key+'" aria-label="'+label+'">'+
+    '<div class="finance-original-scroll" tabindex="0">'+content+'</div>'+
+    '<p class="finance-original-total"><span>'+label+'合计</span><strong>'+priceText(total)+'</strong></p></section>';
+  }
+  function originalCard(kind,content){
+   eventCard.classList.add('finance-original','finance-original-'+kind);
+   const data=$('eventData');
+   data.style.display='block';
+   data.innerHTML='<img class="finance-original-art" src="'+art+kind+'-original.webp" width="640" height="853" alt="">'+content;
+   data.querySelectorAll('.finance-original-scroll').forEach(showDetailScroll);
+  }
+
   function bills(){
    const metrics=calcMetrics();
    const current=state.month;
@@ -210,12 +226,9 @@
    const totalFor=sign=>entries.reduce((sum,row)=>sum+(!row.uncategorized&&Math.sign(row.amount)===sign?Math.abs(row.amount):0),0);
    const loanDue=unpaidLoanRows().reduce((sum,row)=>sum+row.due,0);
    const premiumsDue=Math.max(0,premiumsTotal()-(paymentReceipt().premiums||0));
-   const actions=[];
+   const actions=[['查看历史账单',history,false]];
    if(loanDue)actions.push(['处理本月月供',()=>openLoanPayments(bills,'返回收支账单'),true]);
    if(premiumsDue)actions.push(['查看保险与保障',()=>insurance(bills),false]);
-   const previous=state.lastSettlement||state.history?.at(-1);
-   if(previous)actions.push(['查看上月实收实付',()=>lastBill(previous),false]);
-   if(state.history?.length>1)actions.push(['查看历史月份',history,false]);
    page('收支账单',[],actions);
    if($('eventTitle').textContent!=='收支账单')return;
    const investing=forecastInvestingCash(metrics);
@@ -226,23 +239,23 @@
     ['预计工资（税前）',metrics.grossSalary],['预计工资税',-metrics.tax],
     ['预计 401(k) 个人缴费',-metrics.kContrib],['预计资产净现金流',state.passive],...investing.maturities
    ].filter(([,amount])=>amount!==0);
-   eventCard.classList.add('finance-bill-current');
-   drawBill('<div class="finance-bill-desk">'+'<img src="'+art+'bills-crayon.webp" alt="">'+'</div>'+
-    highlight('当前现金',state.cash,'cash','finance-bill-cash')+
-    '<div class="finance-bill-forecast" role="group" aria-label="本月预计收付">'+
-    lines([['待收',forecastIncome],['待付',forecastExpenses]])+'</div>'+
-    '<div class="finance-bill-ledger">'+
-    section('本月已记账',[
-     ['收入及转入',totalFor(1)],['支出及转出',totalFor(-1)],['其中：已付经常支出',metrics.prepaidExpenses]
-    ])+
+   const income=totalFor(1)+forecastIncome;
+   const expenses=totalFor(-1)+forecastExpenses;
+   const incomeRows=lines([['已收及转入',totalFor(1)],...forecastRows,['当前现金',state.cash]]);
+   const expenseRows=lines([['已付及转出',totalFor(-1)],['其中：已付经常支出',metrics.prepaidExpenses],
+    ...FinanceLedger.forecastExpenses(),...investing.expenses,['预计月末现金',investing.cash]])+
     section('本月逐笔流水',detailRows(entries),'本月尚无已记账流水。')+
-    '<section class="finance-bill-section finance-bill-closing"><h3>预计月末现金</h3><strong>'+priceText(investing.cash)+'</strong></section>'+
-    ((!state.housing||state.housing==='unselected')?
-     '<p class="finance-bill-note">'+illustration('house')+'住房待选，暂未计入住房费用。</p>':'')+
-    section('预计收入及扣减明细',forecastRows)+
-    section('待付明细',[...FinanceLedger.forecastExpenses(),...investing.expenses])+
-    (investing.skipped.length?section('预计跳过的定投',investing.skipped):'')+'</div>');
-   showDetailScroll($('eventData'));
+    ((!state.housing||state.housing==='unselected')?'<p>住房待选，暂未计入住房费用。</p>':'')+
+    (investing.skipped.length?section('预计跳过的定投',investing.skipped):'');
+   originalCard('bills',originalSection('income','收入',incomeRows,income)+
+    originalSection('expenses','支出',expenseRows,expenses)+
+    '<strong class="finance-original-amount balance" aria-label="本月收支结余">'+priceText(income-expenses)+'</strong>');
+   const buttons=$('actions');
+   const options=document.createElement('div');
+   options.className='finance-original-options';
+   options.append(...Array.from(buttons.children).slice(1,-1));
+   const scroll=$('eventData').querySelector('.expenses .finance-original-scroll');
+   scroll.append(options);
   }
 
   function history(){
@@ -251,7 +264,12 @@
    if($('eventTitle').textContent!==title)return;
    const data=$('eventData');
    drawBill('<div class="finance-bill-history"></div>');
-   for(const settlement of [...state.history].reverse()){
+   const historyRows=[...(state.history||[])];
+   if(state.lastSettlement&&!historyRows.some(row=>row.month===state.lastSettlement.month)){
+    historyRows.push(state.lastSettlement);
+   }
+   if(!historyRows.length)data.firstElementChild.textContent='暂无历史账单。';
+   for(const settlement of historyRows.reverse()){
     const button=document.createElement('button');
     button.type='button';
     button.textContent='第 '+settlement.month+' 月实际账单';
@@ -309,21 +327,17 @@
    if(retirement.brokerageBalance)longTerm.push(['普通投资账户',retirement.brokerageBalance]);
    const deposit=heldHousingDeposit();
    const depositNote=deposit?section('其他款项',[['可退住房押金',deposit,'游戏现行净资产口径未计入押金']]):'';
-   const summary='<dl class="finance-asset-summary">'+[
-    ['可用现金',state.cash,'liquid'],['净资产',metrics.nw,'net'],['总资产',metrics.assetValue,'gross'],['总负债',metrics.debtTotal,'debt']
-   ].map(([label,value,key])=>'<div class="finance-asset-'+key+'"><dt>'+label+
-    '</dt><dd>'+priceText(value)+'</dd></div>').join('')+'</dl>';
-   const data=$('eventData');
-   data.style.display='block';
-   data.innerHTML='<div class="finance-bill-desk">'+'<img src="'+art+'assets-crayon.webp" alt="">'+'</div>'+summary+
-    '<div class="finance-asset-holdings" tabindex="0" role="region" aria-label="资产明细，可纵向滚动">'+
-    section('现金与储蓄',cash,undefined,'cash')+
-    (investments.length||!funds.length?section('投资持仓',investments,'暂无投资持仓。','investments'):'')+
+   const holdings=section('现金与储蓄',cash)+
+    (investments.length||!funds.length?section('投资持仓',investments,'暂无投资持仓。'):'')+
     (funds.length?section('基金持仓',funds):'')+
-    section('实物资产',property,'暂无实物资产。','property')+
-    section('长期账户',longTerm,undefined,'accounts')+depositNote+'</div>';
-   eventCard.classList.add('finance-assets');
-   showDetailScroll(data.querySelector('.finance-asset-holdings'));
+    section('实物资产',property,'暂无实物资产。')+section('长期账户',longTerm)+depositNote;
+   const debts=Object.entries(state.debt||{}).filter(([,amount])=>amount>0);
+   if(state.homeMortgage>0)debts.push(['住房按揭',state.homeMortgage]);
+   originalCard('assets',
+    '<strong class="finance-original-amount liquid" aria-label="可用现金">'+priceText(state.cash)+'</strong>'+
+    '<strong class="finance-original-amount net" aria-label="净资产">'+priceText(metrics.nw)+'</strong>'+
+    originalSection('holdings','资产',holdings,metrics.assetValue)+
+    originalSection('liabilities','负债',debts.length?lines(debts):'<p>暂无负债。</p>',metrics.debtTotal));
   }
 
   function savings(){

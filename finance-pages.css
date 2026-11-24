@@ -1871,3 +1871,133 @@
 }
 #game > .event.finance-bill-current > #eventData,
 .finance-asset-holdings { scrollbar-width:none; }
+
+/* Original approved card art, with live values in the corresponding panels. */
+#game > .card.event.event-active.finance-original {
+ width:min(520px,calc(100vw - 12px),calc((100dvh - 24px) * 640 / 853));
+ max-height:none !important;
+ height:auto;
+ padding:0 !important;
+ border:0 !important;
+ border-radius:0 !important;
+ box-shadow:none !important;
+ background:transparent !important;
+ gap:0 !important;
+ overflow:visible !important;
+ container-type:inline-size;
+ color:#403c17;
+}
+.finance-original #eventType,
+.finance-original #eventDesc { display:none; }
+.finance-original #eventTitle {
+ position:absolute;
+ width:1px;
+ height:1px;
+ margin:0;
+ clip-path:inset(50%);
+ overflow:hidden;
+}
+#game > .event.finance-original #eventMonth {
+ position:absolute;
+ z-index:1;
+ top:9.55%;
+ left:33%;
+ width:34%;
+ height:3.4%;
+ display:grid;
+ place-items:center;
+ margin:0;
+ background:#ffedb5 url("./assets/finance/paper.webp") center;
+ color:#505320;
+ font:bold 4.1cqw/1 WealthHand,serif;
+ white-space:nowrap;
+}
+#game > .event.finance-original > #eventData {
+ flex:none;
+ max-height:none;
+ padding:0 !important;
+ margin:0;
+ overflow:visible !important;
+}
+.finance-original-art { display:block; width:100%; height:auto; }
+.finance-original-section {
+ position:absolute;
+ display:flex;
+ flex-direction:column;
+ min-height:0;
+ background:#ffedc3 url("./assets/finance/paper.webp") center;
+ font:3.15cqw/1.25 WealthHand,serif;
+}
+.finance-original-bills .income { inset:42.5% 8.6% 47.7% 37%; }
+.finance-original-bills .expenses { inset:59.8% 8.6% 27.7% 37%; }
+.finance-original-assets .holdings { inset:53.5% 6.8% 33.9% 21.4%; }
+.finance-original-assets .liabilities { inset:72.3% 6.8% 15.2% 21.4%; }
+.finance-original-scroll {
+ flex:1 1 auto;
+ min-height:0;
+ padding:0 8px 0 3px;
+ overflow:auto;
+ overscroll-behavior:contain;
+ scrollbar-width:none;
+}
+.finance-original-scroll .finance-bill-section { padding:0; margin:0; border:0; }
+.finance-original-scroll .finance-bill-section h3 { margin:3px 0; padding:0; font:inherit; }
+.finance-original-scroll .finance-bill-lines > div { padding:2px 0; gap:3px; font:inherit; }
+.finance-original-scroll .finance-bill-lines dd { font:bold 3.05cqw/1.2 system-ui,sans-serif; }
+.finance-original-scroll p { margin:2px 0; }
+.finance-original-total {
+ display:flex;
+ justify-content:space-between;
+ gap:3px;
+ margin:0;
+ padding:1px 5px;
+ border-radius:12px;
+ background:#efcf73aa;
+ color:#474d1b;
+}
+.finance-original-total strong { font-weight:700; }
+.finance-original-amount {
+ position:absolute;
+ display:grid;
+ place-items:center;
+ background:#f6df94 url("./assets/finance/paper.webp") center;
+ color:#4d571f;
+ font:700 5cqw/1 system-ui,sans-serif;
+ white-space:nowrap;
+}
+.finance-original .balance { inset:82% 17.6% 13.5% 47.4%; border-radius:15px; }
+.finance-original .liquid { inset:42% 53.5% 54.5% 23%; border-radius:9px; }
+.finance-original .net { inset:41.8% 6% 54.5% 69.4%; border-radius:9px; }
+.finance-original-options button { min-height:28px; margin:2px; }
+#game > .event.finance-original > #actions {
+ position:absolute;
+ inset:0;
+ display:block;
+ max-height:none;
+ margin:0;
+ padding:0;
+ overflow:visible;
+ background:none;
+ pointer-events:none;
+}
+#game > .card.event.finance-original #actions > button,
+#game > .card.event.finance-original #eventClose {
+ position:absolute;
+ display:block;
+ min-height:0;
+ min-width:0;
+ margin:0;
+ padding:0 !important;
+ border:0 !important;
+ box-shadow:none !important;
+ background:none !important;
+ color:transparent;
+ pointer-events:auto;
+}
+#game > .event.finance-original #eventClose { inset:1% 1% auto auto; width:11%; height:8%; }
+#game > .event.finance-original-bills #actions > button:first-child { inset:89.6% auto auto 11%; width:42%; height:8%; }
+#game > .event.finance-original-bills #actions > button:last-child { inset:89.6% auto auto 54%; width:34%; height:8%; }
+#game > .event.finance-original-assets #actions > button { inset:89% auto auto 27.7%; width:44%; height:8%; }
+#game > .event.finance-original #actions > button:focus-visible,
+#game > .event.finance-original #eventClose:focus-visible,
+.finance-original-scroll:focus-visible { outline:2px solid #56672e; outline-offset:-2px; }
