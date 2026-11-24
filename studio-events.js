@@ -445,7 +445,12 @@
     "health": 0
    }
   ]
- }
+ },
+ {"id":"desk","title":"一张桌子，两种用法","desc":"吃饭时，唯一的桌子还摊着电脑和笔记。","art":"assets/studio/desk-20261124-studio-five1.webp","hotspots":[[70.4,13,3.8,92.4],[84.5,13,3.8,92.4]],"choices":[{"label":"收好桌面，坐下来吃","cash":0,"hours":1,"happiness":0,"energy":0,"stress":-3,"health":0},{"label":"腾出一角，先吃饭","cash":0,"hours":0,"happiness":0,"energy":0,"stress":0,"health":0}]},
+ {"id":"sheets","title":"床单晾不下","desc":"晾衣架挂满了，刚洗的床单没地方晾。","art":"assets/studio/sheets-20261124-studio-five1.webp","hotspots":[[70.4,13,3.8,92.4],[84.5,13,3.8,92.4]],"choices":[{"label":"去自助洗衣店烘干","cash":-6,"hours":0,"happiness":0,"energy":0,"stress":-2,"health":0},{"label":"在家腾出位置慢慢晾","cash":0,"hours":1,"happiness":0,"energy":0,"stress":-1,"health":0}]},
+ {"id":"ventilate","title":"晚饭的香味没散","desc":"厨房和床在同一间，煎完晚饭，屋里还有油烟味。","art":"assets/studio/ventilate-20261124-studio-five1.webp","hotspots":[[70.4,13,3.8,92.4],[84.5,13,3.8,92.4]],"choices":[{"label":"开窗通风，顺手擦一遍灶台","cash":0,"hours":1,"happiness":0,"energy":0,"stress":-3,"health":0},{"label":"先开窗，灶台明天再收拾","cash":0,"hours":0,"happiness":0,"energy":0,"stress":-1,"health":0}]},
+ {"id":"books","title":"楼下有人送书","desc":"大堂摆了个纸箱，邻居把读完的书留给大家。","art":"assets/studio/books-20261124-studio-five1.webp","hotspots":[[70.4,13,3.8,92.4],[84.5,13,3.8,92.4]],"choices":[{"label":"挑一本喜欢的，回屋读几页","cash":0,"hours":1,"happiness":3,"energy":0,"stress":0,"health":0},{"label":"把纸箱扶正，留给下一位","cash":0,"hours":0,"happiness":0,"energy":0,"stress":0,"health":0}]},
+ {"id":"night-off","title":"给自己放个假","desc":"今晚没有约，也没有非做不可的事。","art":"assets/studio/night-off-20261124-studio-five1.webp","hotspots":[[69.8,13.2,3.8,92.4],[84.1,13.1,3.8,92.4]],"choices":[{"label":"冲个热水澡，早点休息","cash":0,"hours":1,"happiness":0,"energy":3,"stress":-2,"health":0},{"label":"点份喜欢的甜品","cash":-12,"hours":0,"happiness":3,"energy":0,"stress":0,"health":0}]}
 ];
  function data(s){return s.studioEvents??={version:1,seen:{},records:{}};}
  function eligible(s){const seen=s.studioEvents?.seen||{},pool=cards.filter(c=>seen[c.id]==null||s.month-seen[c.id]>6),unseen=pool.filter(c=>seen[c.id]==null);return unseen.length?unseen:pool;}
