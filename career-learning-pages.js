@@ -67,10 +67,31 @@
  }
  function hobbies(){const p=panel('兴趣爱好','hobbies',learning),list=node('div',null,'career-list career-hobby-grid');p.content.append(list);for(const id of H.hobbies){const a=H.activities[id],xp=H.xp(state,id);p.choice(list,a.name,'Lv.'+H.level(xp)+(xp>=800?' · 已满级':'')+' · 查看 →','assets/hobbies/'+a.art+'.webp',()=>{close();HobbyPages.detail(id);});}p.button('返回学习',learning).classList.add('career-back');}
  let skillOrigin='learning';
- function skills(origin=skillOrigin){skillOrigin=origin;const back=origin==='career'?career:learning,p=panel('职业技能','skills',back),list=node('div',null,'career-list');p.section.classList.add('career-skills-room');p.content.append(list);
-  for(const id of ['latte','pourOver']){const a=H.activities[id];const entry=p.choice(list,a.name,'Lv.'+H.level(H.xp(state,id))+' · 查看练习 →','assets/career-learning-20261115/skill-thumbnails-confirmed.png',()=>{close();HobbyPages.detail(id);});entry.querySelector('.career-thumb').classList.add('career-specialty-thumb',id==='latte'?'career-latte-thumb':'career-pour-thumb');}
-  p.choice(list,'管理课程','管理技能 Lv.'+R.skillLevel(state,'management')+' · 查看课程 →','assets/career-learning-20261115/management.webp',management);
+ function skills(origin=skillOrigin){
+  skillOrigin=origin;
+  const back=origin==='career'?career:learning;
+  const p=panel('职业技能','skills',back);
+  const art='assets/career-learning-20261115/';
+  p.section.classList.add('career-skills-room');
+  const paper=p.section.querySelector('.career-paper');
+  const scene=paper.querySelector('.career-scene');
+  scene.querySelector('img').src=art+'skills-crayon-banner.webp';
+  const heading=node('div',null,'career-skills-heading');
+  heading.append(p.content.querySelector('header'),p.content.querySelector('h1'));
+  paper.prepend(heading);
+  const list=node('div',null,'career-list');
+  p.content.append(list);
+  function skillChoice(title,level,thumbnail,open){
+   const entry=p.choice(list,title,'Lv.'+level,art+thumbnail,open);
+   const arrow=node('span','›','career-skills-arrow');
+   arrow.setAttribute('aria-hidden','true');
+   entry.append(arrow);
+  }
+  skillChoice(H.activities.latte.name,H.level(H.xp(state,'latte')),'skills-crayon-latte.webp',()=>{close();HobbyPages.detail('latte');});
+  skillChoice(H.activities.pourOver.name,H.level(H.xp(state,'pourOver')),'skills-crayon-pour.webp',()=>{close();HobbyPages.detail('pourOver');});
+  skillChoice('管理课程',R.skillLevel(state,'management'),'skills-crayon-management.webp',()=>management());
   p.button(origin==='career'?'返回我的职业':'返回学习',back).classList.add('career-back');
+  heading.querySelector('button').focus({preventScroll:true});
  }
  function management(notice='',back=skills){if(typeof notice!=='string')notice='';coffeeCareerData();const p=panel('管理基础课程','management',back),opts=()=>({free:currentCareerTime().free,reserve:necessaryPetCareHours(),recovery:isRecoveryMonth(state),save}),expected=R.courseToken(state),miss=R.courseMissing(state,opts()),xp=Math.max(0,state.coffee.skills.management.xp||0);
   p.content.append(node('p','学习沟通协调、任务安排与团队管理。','career-skill-intro'));
