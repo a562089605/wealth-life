@@ -125,7 +125,11 @@ function drawTownOpportunity(move,deck){
  const seed=townMarketRoll(move);
  const project=available[(seed>>>0)%available.length];
  move.offers={month:state.month,deck,pool:fast?'fast':Object.hasOwn(TOWN_MARKET_DEALS,project.id)?'map-market':Object.hasOwn(TOWN_PROJECTS,project.id)?'map-project':'regular',ids:[project.id],resolved:null};
- if(move.offers.pool==='map-market'&&TOWN_MARKET_DEALS[project.id].unit)move.offers.unitPrice=townSecurityPrice(project.id,move,'buy');
+ if(move.offers.pool==='map-market'&&TOWN_MARKET_DEALS[project.id].unit){
+  const holding=townMarketHoldings().find(item=>item.deal===project.id&&item.quantity>0);
+  if(holding)move.offers.buyerQuote={holdingId:holding.id,price:townSecurityPrice(project.id,move,'sell')};
+  else move.offers.unitPrice=townSecurityPrice(project.id,move,'buy');
+ }
  if(save()===false){
   const pending=townOpportunityMove();
   if(pending?.id===move.id)delete pending.offers;
@@ -151,8 +155,6 @@ function openTownOpportunity(message=''){
    ['小机会',()=>drawTownOpportunity(move,'small'),false],
    ['大机会',()=>drawTownOpportunity(move,'big'),false]
   ];
-  if(holding)actions.push(['查看买家报价 · '+TOWN_MARKET_DEALS[holding.deal].name,
-   ()=>openTownMarketTrade(move,holding.deal,quote),false]);
   if((townMarketHoldings().length||townBusinessAssets().length||townProjects().some(item=>item.status!=='closed')))actions.push(['地图资产',()=>openTownMarketHoldings(()=>openTownOpportunity()),false]);
   actions.push(['放弃这次机会',finish,false]);
   showEvent('投资机会','选择投资机会','',[],actions);
@@ -181,7 +183,7 @@ function openTownOpportunity(message=''){
   return;
  }
  if(move.offers.pool==='map-project'&&!move.offers.resolved)return openTownProjectOffer(move,move.offers.ids[0]);
- if(move.offers.pool==='map-market'&&!move.offers.resolved)return openTownMarketTrade(move,move.offers.ids[0]);
+ if(move.offers.pool==='map-market'&&!move.offers.resolved)return openTownMarketTrade(move,move.offers.ids[0],move.offers.buyerQuote);
  const offer=move.offers,fast=offer.pool==='fast';
  const project=(fast?FAST_PROJECTS:V26_OFFERS).find(option=>option.id===offer.ids[0]);
  if(offer.resolved||!project)return finish();

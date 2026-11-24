@@ -83,7 +83,8 @@ function townMarketQuote(move){
  const index=Math.floor(roll/13)%4;
  const multiplier=[.75,.9,1.12,1.3][index];
  const deal=TOWN_MARKET_DEALS[holding.deal];
- const price=deal.unit?townSecurityPrice(holding.deal,move,'sell'):(deal.bids?.[index]??roundCash(holding.unitCost*multiplier));
+ if(deal.unit)return null;
+ const price=deal.bids?.[index]??roundCash(holding.unitCost*multiplier);
  const offer={holdingId:holding.id,price};
  const result=CareerLearningRules.atomic(state,()=>{move.marketQuote=offer;return {};},save);
  return result.ok?offer:null;
@@ -93,10 +94,12 @@ function openTownMarketTrade(move,dealId,quote=null){
  const deal=TOWN_MARKET_DEALS[dealId];
  const selling=!!quote;
  const holding=selling?townMarketHoldings().find(h=>h.id===quote.holdingId):null;
- if(!deal||(selling&&(!holding||move.marketQuote!==quote)))return;
  const owner=state,chosenSlot=slot,offer=move.offers;
+ if(!deal||(selling&&(!holding||holding.deal!==dealId)))return;
  const valid=()=>state===owner&&slot===chosenSlot&&townOpportunityMove()===move&&
-  (selling?move.marketQuote===quote&&!move.offers:move.offers===offer&&!offer.resolved);
+  (offer?move.offers===offer&&!offer.resolved&&(!selling||offer.buyerQuote===quote):
+   selling&&move.marketQuote===quote&&!move.offers);
+ if(!valid())return;
  const alreadyOwned=!selling&&!deal.unit&&townMarketHoldings().some(item=>item.deal===dealId);
  const cashPrice=selling?quote.price:(offer?.unitPrice??deal.down??deal.price);
  const limit=deal.unit?(selling?holding.quantity:deal.limit):1;
@@ -107,10 +110,6 @@ function openTownMarketTrade(move,dealId,quote=null){
  const title=selling?(deal.share?'花店份额收购报价':deal.type+'买家报价'):deal.share?'街角花店入股':'地图'+deal.type+'买入';
  function settle(acceptTrade){
   if(!valid()||(acceptTrade&&(selling?amount()<0&&state.cash< -amount():alreadyOwned||state.cash<amount())))return;
-  if(selling&&deal.unit&&!acceptTrade){
-   const result=CareerLearningRules.atomic(state,()=>{move.marketQuote=null;return {};},save);
-   return openTownOpportunity(result.ok?'':result.reason);
-  }
   const result=CareerLearningRules.atomic(state,()=>{
    if(acceptTrade){
     if(selling){
@@ -137,7 +136,7 @@ function openTownMarketTrade(move,dealId,quote=null){
   }
   finish();
  }
- showEvent('地图专用',title,'',[],[[accept,()=>settle(true),true],[decline,()=>settle(false),false]]);
+ showEvent('地图专用',title,selling&&deal.unit?'有买家想按当前报价收购你持有的'+deal.name+'。':'',[],[[accept,()=>settle(true),true],[decline,()=>settle(false),false]]);
  const data=$('eventData');
  const valleyBuyer=selling&&dealId==='valley-stock';
  const art=valleyBuyer?'assets/finance/map-valley-buyer-crayon.webp':
