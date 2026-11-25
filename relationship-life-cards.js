@@ -67,6 +67,7 @@
   const afterPetDraw=c?.regular&&petEvent?.status==='legacy'&&!m?.mapLife;
   const meeting=c?.regularMeet&&pid===regularId(c.regular)&&!p&&coffeeRole(s)&&!s.retired&&!s.unemployedMonths&&!used(s,pid,kind);if(!m||m.id!==moveId||m.resolved||m.relationshipLifeCard||m.month!==s.month||((m.opened||petEvent)&&!afterPetDraw)||(!meeting&&!eligible(s,p,c,opts))||typeof opts?.save!=='function')return null;
   return atomic(s,()=>{const r={id:s.month+':'+moveId+':'+kind,version:2,kind,month:s.month,moveId,personId:pid,personName:meeting?'咖啡厅常客':p.name,status:'pending',quotes:copy(c.options),art:c.art,title:c.title,boxes:copy(c.boxes),role:c.role,studyProjectId:['同学','教师'].includes(c.role)?project(s):null,leaseKey:c.currentLandlord?s.relationshipHome?.leaseKey:null};
+   if(c.story)r.story=c.story;
    if(meeting)r.newRegular=regularProfile(s,c.regular);
    if(c.role==='教师')r.role=p.teacherLabel||'老师';
    if(c.payMode)Object.assign(r.quotes[0],payQuote(s,c));

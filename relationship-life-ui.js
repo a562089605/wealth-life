@@ -63,7 +63,7 @@
   close();clearModals();window.PetPages?.close();window.RelationshipPages?.close();const owner=state,chosen=slot,id=r.id,phase=r.status,def=C.cards[r.kind];if(!def)return false;if(def.introduction&&window.CareerPages)return CareerPages.introduction();
   const f=phase==='followup'?r.followup:null,options=f?f.options:r.quotes,boxes=f?f.boxes:r.boxes||(r.version===1?[[3,52,94,20],[3,72.5,94,23]]:def.boxes),title=f?f.title:r.title||def.title;
   const node=el('section',null,'relationship-life-overlay');active=node;node.setAttribute('role','dialog');node.setAttribute('aria-modal','true');node.setAttribute('aria-label',title);document.body.append(node);document.body.classList.add('relationship-card-open');
-  const redrawKey=f?.key||(!f&&r.kind),redraw=redraws[redrawKey];
+  const redrawKey=f?.key||(!f&&r.kind),redraw=(!f&&r.story)||redraws[redrawKey];
   const art=f?f.art:r.art;
   const cardArtFolder='assets/relationships/cards/';
   const outcomeArt={
@@ -76,10 +76,10 @@
   }[art]||boxes;
   const wrap=el('div',null,'relationship-life-wrap'),canvas=el('div',null,'relationship-life-canvas'),img=el('img');img.src=art;img.alt=title+'。'+options.map(q=>q.label+'：'+(q.newRegular?'熟客加入关系网，初始亲密度10':'')+[['hours','自由时间−'],['cash','金钱'],['energy','能量'],['stress','压力'],['happiness','幸福'],['intimacy','亲密度'],['studyMonths','学习剩余时间−'],['careCoupons','免费外出护理次数＋']].filter(([k])=>q[k]).map(([k,label])=>label+(q[k]>0&&!['hours','studyMonths'].includes(k)?'+':'')+q[k]+(k==='hours'?'小时':k==='studyMonths'?'个月':'')).join('，')).join('；');if(redraw){
    canvas.classList.add('relationship-redraw');
-   img.src='assets/relationships/redraw/'+redrawKey+'.webp';
+   if(!r.story||f)img.src='assets/relationships/redraw/'+redrawKey+'.webp';
    img.alt='';
    canvas.append(el('p','关系生活卡 · '+def.role,'relationship-redraw-tag'),el('h2',title),img);
-   if(!f){
+   if(!f&&!r.story){
     const conditions=[def.minIntimacy&&'亲密度 ≥'+def.minIntimacy,def.coffeeOnly&&'咖啡店限定'].filter(Boolean);
     if(conditions.length)canvas.append(el('p',conditions.join(' · '),'relationship-redraw-note'));
    }
@@ -99,7 +99,12 @@
   if(!f&&options[0]?.studyMonths&&EducationPlans.current(state.study))wrap.append(el('p','接受帮助前，需先付清剩余学费 '+EducationPlans.balance(state.study).toLocaleString('en-US',{style:'currency',currency:'USD'})+'；结清与帮助效果一并保存。','relationship-life-person'));
   const msg=el('p',null,'relationship-life-message');msg.setAttribute('role','status');
   const valid=()=>active===node&&node.isConnected&&state===owner&&slot===chosen&&current()?.id===id&&current()?.status===phase&&state.month===r.month;
-  options.forEach((q,i)=>{const b=el('button',null,redraw?'relationship-redraw-option':'relationship-life-hit');b.type='button';if(redraw){drawOption(b,q,def);}else{b.setAttribute('aria-label',q.label);b.append(el('span',q.label,'relationship-sr'));const box=visualBoxes[i];['left','top','width','height'].forEach((k,j)=>b.style[k]=box[j]+'%');}b.onclick=()=>{if(!valid())return;b.disabled=true;const opts={free:currentCareerTime().free,forcedTime:x=>recordForcedEventTime(state,x),graduate:()=>completeEducation(state,state.month,{},true),save};const result=f?C.confirmFollowup(state,id,opts):C.confirm(state,id,i,opts);if(!result.ok){msg.textContent=({funds:'现金不足，请先筹措费用。',time:'自由时间不足，无法完成这个选项。',energy:'能量不足，暂不能接受。',job:'当前工作或上司已变化，不能结算这张工作卡。',pet:'当前没有适用的外出宠物。',study:'学习计划已变化，当前卡片暂不能结算。',lease:'当前租约已变化，当前卡片暂不能结算。'})[result.reason]||'本次未保存，结算已恢复，请重试。';b.disabled=false;if(result.reason==='funds'&&!wrap.querySelector('.relationship-funding')){const fund=el('button','筹措本次费用','relationship-funding');fund.onclick=()=>{if(!valid())return;close();showFundingOptions(Math.max(-q.cash,q.studyMonths&&EducationPlans.current(state.study)?EducationPlans.balance(state.study):0),()=>{if(state===owner&&slot===chosen)open();});};wrap.append(fund);}return;}close();if(result.followup){open();return;}render();finish();};canvas.append(b);});wrap.append(msg);node.append(wrap);
+  options.forEach((q,i)=>{const b=el('button',null,redraw?'relationship-redraw-option':'relationship-life-hit');b.type='button';if(redraw){drawOption(b,q,def);}else{b.setAttribute('aria-label',q.label);b.append(el('span',q.label,'relationship-sr'));const box=visualBoxes[i];['left','top','width','height'].forEach((k,j)=>b.style[k]=box[j]+'%');}b.onclick=()=>{if(!valid())return;b.disabled=true;const opts={free:currentCareerTime().free,forcedTime:x=>recordForcedEventTime(state,x),graduate:()=>completeEducation(state,state.month,{},true),save};const result=f?C.confirmFollowup(state,id,opts):C.confirm(state,id,i,opts);if(!result.ok){msg.textContent=({funds:'现金不足，请先筹措费用。',time:'自由时间不足，无法完成这个选项。',energy:'能量不足，暂不能接受。',job:'当前工作或上司已变化，不能结算这张工作卡。',pet:'当前没有适用的外出宠物。',study:'学习计划已变化，当前卡片暂不能结算。',lease:'当前租约已变化，当前卡片暂不能结算。'})[result.reason]||'本次未保存，结算已恢复，请重试。';b.disabled=false;if(result.reason==='funds'&&!wrap.querySelector('.relationship-funding')){const fund=el('button','筹措本次费用','relationship-funding');fund.onclick=()=>{if(!valid())return;close();showFundingOptions(Math.max(-q.cash,q.studyMonths&&EducationPlans.current(state.study)?EducationPlans.balance(state.study):0),()=>{if(state===owner&&slot===chosen)open();});};wrap.append(fund);}return;}close();if(result.followup){open();return;}render();if(result.receipt?.resultText){
+   const resultCard=el('section',null,'relationship-life-overlay');active=resultCard;resultCard.setAttribute('role','dialog');resultCard.setAttribute('aria-modal','true');resultCard.setAttribute('aria-label',title);
+   const panel=el('div',null,'relationship-life-wrap relationship-redraw');
+   const next=el('button','继续','relationship-redraw-option');next.type='button';next.onclick=()=>{close();finish();};
+   panel.append(el('h2',title),el('p',result.receipt.resultText,'relationship-redraw-story'),next);resultCard.append(panel);document.body.append(resultCard);document.body.classList.add('relationship-card-open');next.focus();
+  }else finish();};canvas.append(b);});wrap.append(msg);node.append(wrap);
   const buttons=[...canvas.querySelectorAll('button')];node.onkeydown=e=>{if(e.key==='Tab'){const first=buttons[0],last=buttons.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}};buttons[0]?.focus({preventScroll:true});return true;
  }
  const beforeTime=currentCareerTime;currentCareerTime=function(){const t=beforeTime();return !state?t:{...t,free:Math.max(0,t.free-(state.relationshipLife?.hours?.[state.month]||0))};};
