@@ -18,7 +18,7 @@
   {id:'dumplings',title:'周末一起包饺子',desc:'家人备好了馅料，想多包一些冻起来，忙时也有现成的吃。',art:'assets/family/dumplings-20261125-clean-label.webp',hotspots:[[70.3,13.1,3.8,92.4],[84.5,12.8,3.8,92.4]],choices:[choice('一起包，多备几顿',2,{energy:-2,happiness:4}),choice('今天先忙自己的事')]},
   {id:'supplies',title:'外出采购',desc:'洗衣液见底了，纸巾也只剩最后一卷。家人托你回家时带一点，先够这几天用就行。如果有空，也可以去超市把接下来要用的备齐。',art:'assets/family/supplies-20261125-outdoor.webp',hotspots:[[65.3,14.3,3.2,93.6],[81.2,16.2,3.2,93.6]],choices:[choice('先买应急的',0,{cash:-12,stress:-1}),choice('去超市采购',1,{cash:-22,stress:-4}),choice('这次请家人帮忙买',0,{fallback:true})]},
   {id:'family-tasting',title:'爸妈快回来了',desc:'爸妈今天旅行回来。出门前，你听他们说这趟带了不少东西。眼看火车快到站了，你想着，要不要去接他们，顺手帮忙提行李。',art:'assets/family/parents-return-20261125.webp',hotspots:[[65.4,14.2,3.2,93.6],[81.3,16,3.2,93.6]],choices:[choice('去车站接爸妈，帮忙提行李',1,{happiness:3}),choice('在家泡好茶，等爸妈回来',0,{happiness:1,stress:1})]},
-  {id:'balcony-tomato',title:'阳台上的第一颗番茄',desc:'家人种的番茄终于红了，招呼你来摘第一颗。',art:'assets/family/balcony-tomato-20261124.webp',hotspots:[[70,13.4,3.8,92.4],[84.5,12.5,3.8,92.4]],choices:[choice('一起摘番茄，顺手给小苗换盆',1,{happiness:3}),choice('摘下番茄，留到晚饭一起吃',0,{happiness:1})]}
+  {id:'balcony-tomato',title:'收获季',desc:'阳台上第一颗番茄红了。家人招呼你过来看：“快看，咱们种的番茄熟了！”',art:'assets/family/harvest-season-20261125.webp',hotspots:[[70.3,13.3,3.6,92.8],[84.7,13,3.6,92.8]],choices:[choice('摘下来，今晚加道菜',0,{happiness:3}),choice('拍张照，给第一次收获留个纪念',0,{happiness:1,stress:-2})]}
  ];
  function data(s){return s.familyEvents??={version:1,seen:{},records:{}};}
  function eligible(s){const seen=s.familyEvents?.seen||{};const available=cards.filter(c=>seen[c.id]==null||s.month-seen[c.id]>6);const unseen=available.filter(c=>seen[c.id]==null);return unseen.length?unseen:available;}
