@@ -60,9 +60,11 @@ calcMetrics=function(){
  const recovery=typeof isRecoveryMonth==='function'&&isRecoveryMonth(s);
  const careerIncome=!recovery&&typeof coffeeMonthlyIncome==='function'?coffeeMonthlyIncome():null;
  const schoolSkillAllowance=recovery?0:(globalThis.SchoolCareer?.skillAllowance?.(s)||0);
- const salary=recovery?0:careerIncome?careerIncome.total:(s.job&&!s.retired&&!s.unemployedMonths?roundCash(s.salary+schoolSkillAllowance):0),contrib=roundCash(salary*(rr.k401Rate||0)),tax=0;
- const recurring=careerIncome?careerIncome.recurring:salary,recurringContrib=roundCash(recurring*(rr.k401Rate||0)),recurringTax=0;
- return{careerIncome,schoolSkillAllowance,debtTotal,assetValue,nw:assetValue-debtTotal,investable:assetValue-(s.carValue||0)-(s.homeEquity||0)-(s.homeMortgage||0)-debtTotal,monthlyExpenses:roundCash(remainingExpenses()+paidThisMonth()),grossSalary:salary,tax,kContrib:contrib,monthlyCF:roundCash(recurring-recurringTax-recurringContrib+(s.passive||0)-remainingExpenses()-paidThisMonth()),remainingExpenses:remainingExpenses(),prepaidExpenses:paidThisMonth(),remainingCF:roundCash(salary-tax-contrib+(s.passive||0)-remainingExpenses())};
+ const regularSalary=recovery?0:careerIncome?careerIncome.total:(s.job&&!s.retired&&!s.unemployedMonths?roundCash(s.salary+schoolSkillAllowance):0);
+ const schoolAnnualBonus=regularSalary>0?(globalThis.SchoolCareer?.awardDue(s)||0):0;
+ const salary=roundCash(regularSalary+schoolAnnualBonus),contrib=roundCash(salary*(rr.k401Rate||0)),tax=0;
+ const recurring=careerIncome?careerIncome.recurring:regularSalary,recurringContrib=roundCash(recurring*(rr.k401Rate||0)),recurringTax=0;
+ return{careerIncome,schoolSkillAllowance,schoolAnnualBonus,debtTotal,assetValue,nw:assetValue-debtTotal,investable:assetValue-(s.carValue||0)-(s.homeEquity||0)-(s.homeMortgage||0)-debtTotal,monthlyExpenses:roundCash(remainingExpenses()+paidThisMonth()),grossSalary:salary,tax,kContrib:contrib,monthlyCF:roundCash(recurring-recurringTax-recurringContrib+(s.passive||0)-remainingExpenses()-paidThisMonth()),remainingExpenses:remainingExpenses(),prepaidExpenses:paidThisMonth(),remainingCF:roundCash(salary-tax-contrib+(s.passive||0)-remainingExpenses())};
 };
 const savedRender=render;
 render=function(){if(!state)return;syncFinance();savedRender();const m=calcMetrics();$('net').textContent=money(m.monthlyCF);$('net').className='value '+(m.monthlyCF>=0?'good':'bad');$('salary').textContent=money(m.grossSalary)+'/月（税前）';$('annualSalary').textContent='年薪 '+money(state.annualSalary||0)+' · 游戏税款 '+money(m.tax)+'/月';if(window.refreshV24Turn)window.refreshV24Turn();};
@@ -148,7 +150,8 @@ function settleMonthUnsafe(){
  if(!state||pending)return;if(state.housing==='unselected'||!state.housing){$('housingBtn').click();return}if(state.turn?.index!==9){window.startV24Turn?.(false);return}
  pending=true;const s=state,recovery=typeof isRecoveryMonth==='function'&&isRecoveryMonth(s),recoveryTreatment=recovery?Object.values(s.treatments).find(t=>t.paid&&t.status!=='completed'&&t.startMonth===s.month):null;syncFinance();const start=s.cash,month=s.month+1,metrics=calcMetrics(),cf=metrics.remainingCF;
  // All recurring flows are paid here; purchases remain immediate actions.
- s.cash+=cf;const settlement={month,startCash:start,recovery:!!recovery,careerIncome:metrics.careerIncome?structuredClone(metrics.careerIncome):null,investmentIncomeBudget:typeof expectedInvestmentIncome==='function'?expectedInvestmentIncome():0,grossSalary:metrics.grossSalary,schoolSkillAllowance:metrics.schoolSkillAllowance,tax:metrics.tax,kContrib:metrics.kContrib,passive:s.passive,expenses:s.expenses,netCF:cf,prepaidExpenses:metrics.prepaidExpenses,totalMonthlyCF:metrics.monthlyCF};
+ s.cash+=cf;const settlement={month,startCash:start,recovery:!!recovery,careerIncome:metrics.careerIncome?structuredClone(metrics.careerIncome):null,investmentIncomeBudget:typeof expectedInvestmentIncome==='function'?expectedInvestmentIncome():0,grossSalary:metrics.grossSalary,schoolSkillAllowance:metrics.schoolSkillAllowance,schoolAnnualBonus:metrics.schoolAnnualBonus,tax:metrics.tax,kContrib:metrics.kContrib,passive:s.passive,expenses:s.expenses,netCF:cf,prepaidExpenses:metrics.prepaidExpenses,totalMonthlyCF:metrics.monthlyCF};
+ if(metrics.schoolAnnualBonus)globalThis.SchoolCareer.settleAnnualAwards(s);
  settlement.cashExpenseLines=FinanceLedger.forecastExpenses(false);
  settlement.cashAssetLines=s.assets.filter(asset=>asset.cf).map(asset=>[asset.name+'净现金流',asset.cf]);
  if(typeof townMarketMonthlyFlows==='function'){

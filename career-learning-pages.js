@@ -221,6 +221,7 @@
   if(working&&state.job==='小学副校长')p.button('全校改进项目 · '+Number(S.projectProgress(state)===3)+'/1',schoolProject);
   const track=p.box('小学教师晋升路线');
   for(const {name,base,allowance=0} of S.stages)p.row(track,name,money(base+allowance)+'/年'+(allowance?'（含 '+money(allowance)+' 岗位津贴）':''));
+  p.button('职业历程',schoolHistory,{parent:track});
   const other=p.box('其他选择');
   p.button('查看其他工作机会',()=>{close();openCareerMarket();},{parent:other});
   p.button(state.pendingResignation?'已安排下个月离职':'申请辞职',resignation,{parent:other});
@@ -271,7 +272,14 @@
  }
  function schoolHistory(){
   const p=panel('职业历程','school',career);
-  schoolArtwork(p,'approved-history','小学教师、资深小学教师、年级组长、小学副校长、小学校长（当前岗位）');
+  if(state.job==='小学校长')schoolArtwork(p,'approved-history','小学教师至小学校长的职业路线');
+  else p.row(p.box('小学教师职业线'),'当前岗位',state.job);
+  const history=Object.values(state.schoolCareer?.reviewHistory??{}).sort((a,b)=>b.year-a.year);
+  if(history.length){
+   const box=p.box('历年考核');
+   for(const review of history)p.row(box,'第 '+review.year+' 学年 · '+review.job,
+    review.rating+(review.bonus?' · 税前绩效奖 '+money(review.bonus):''));
+  }
   p.button('返回职业页',career);
   compactCareer(p,true);
  }
@@ -280,7 +288,13 @@
   const label=management?'管理跟进':'教学改进';
   const box=p.box(management?'年度管理考核':'年度教学考核');
   p.row(box,management?'日常管理':'日常教学','随上班自动记录');
-  p.row(box,label,'本学年 '+Number(!!S.improvement(state))+'/1');
+  const task=S.reviewTasks(state)[S.improvement(state)?.index]?.[0];
+  p.row(box,label,task?'已完成 · '+task:'本学年待完成');
+  const goal=S.excellence(state);
+  p.row(box,'本学年考核','5 月结算');
+  for(const target of goal.targets)p.row(box,'优秀目标 · '+target.name+' Lv.'+target.level,
+   target.xp>=target.target?'已达标 ✓':target.xp+' / '+target.target+' XP');
+  p.row(box,'优秀绩效奖','税前 '+money(goal.bonus));
   const check=S.requirements(state).find(([name])=>name.startsWith('年度'));
   if(check)p.row(box,check[0],check[1]);
   p.button(label,schoolImprovement,{parent:box});
@@ -373,7 +387,13 @@
   const box=p.box('第 '+result.year+' 学年');
   p.row(box,'日常'+label,result.daily?'已完成':'未完成');
   p.row(box,management?'管理跟进':'教学改进',result.task?'已完成 · '+result.task:'未完成');
-  p.row(box,'考核结果',result.passed?'合格':'未合格',result.passed);
+  p.row(box,'考核结果',result.rating??(result.passed?'合格':'未合格'),result.passed);
+  for(const target of result.targets??[])p.row(box,'优秀目标 · '+target.name,
+   target.xp>=target.target?'已达标 ✓':target.xp+' / '+target.target+' XP');
+  if(result.bonus){
+   const paid=state.schoolCareer?.annualAwards?.['school-'+(result.year-1)]?.paidMonth!=null;
+   p.row(box,'年度绩效奖','税前 '+money(result.bonus)+(paid?' · 已发放':' · 随下次发薪结算'));
+  }
   const total=result.total;
   if(total!=null)p.row(box,'晋升进度',total+'/'+result.target);
   p.button('继续',()=>{close();back();},{primary:true});
@@ -425,7 +445,8 @@
   for(const [choice,label] of card.choices.entries())q.button('ABC'[choice]+' · '+label,()=>{
    const result=S.resolveOpenClass(state,attempt,choice);
    if(!result){q.message.textContent='本次未保存，请重试。';return;}
-   const feedback=(result.passed?'公开课通过。':'公开课未通过。')+result.feedback;
+   const reward=result.instructionXP?'教学设计 +'+result.instructionXP+' XP。':'';
+   const feedback=(result.passed?'公开课通过。':'公开课未通过。')+reward+result.feedback;
    if(!showReadySchoolPromotion(()=>schoolPromotion(feedback)))schoolPromotion(feedback);
   });
   q.content.append(q.message);

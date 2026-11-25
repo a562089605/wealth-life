@@ -64,6 +64,7 @@ window.SchoolCareer=(()=>{
   {id:'materials',title:'一年级-图形拼搭公开课',choices:['停下来示范材料流程','逐桌补齐材料','每桌指定一位材料员'],answer:2,feedback:'材料员负责领还，其他同学可以先画方案。'},
  ];
  const requiredOpenClassPasses=3;
+ const openClassXP=5;
  const openClassRecord=s=>entry(s,stages[0].name);
  const openClassPasses=r=>r.openClassPasses??(r.task?1:0);
  const canTeach=s=>working(s)&&stages.slice(0,2).includes(role(s.job))&&
@@ -90,12 +91,18 @@ window.SchoolCareer=(()=>{
   const result=CareerLearningRules.atomic(s,()=>{
    const row=record(s,stages[0].name);
    row.openClassPasses=openClassPasses(r)+Number(passed);
-   if(passed)(row.passedClasses??=[]).push(card.id);
+   let instructionXP=0;
+   if(passed){
+    (row.passedClasses??=[]).push(card.id);
+    const before=xp(s,'instruction');
+    instructionXP=Math.max(0,Math.min(openClassXP,thresholds.at(-1)-before));
+    if(instructionXP)(s.schoolCareer.skills??={}).instruction=before+instructionXP;
+   }
    row.taskAttempt=s.month;
    row.openClassResult={id:card.id,choice,month:s.month,passed};
-   return {};
+   return {instructionXP};
   },save);
-  return result.ok?{passed,feedback:passed?card.feedback:'之后的教学月可以再试。'}:null;
+  return result.ok?{passed,instructionXP:result.instructionXP,feedback:passed?card.feedback:'之后的教学月可以再试。'}:null;
  }
  const scenarios={
   sports:{label:"年级协作",title:"运动会调课安排",answer:1,
@@ -233,6 +240,27 @@ window.SchoolCareer=(()=>{
  const reviewType=s=>role(s.job)===stages[3]?'management':'teaching';
  const reviewTasks=s=>!role(s.job)?.reviews?[]:reviewType(s)==='management'?managementTasks:teachingTasks;
  const improvement=s=>s.schoolCareer?.improvements?.[reviewType(s)]?.[schoolYear(s)];
+ const excellenceRules={
+  '小学教师':{bonus:300,skills:[['instruction',2]]},
+  '资深小学教师':{bonus:400,skills:[['instruction',2],['communication',2]]},
+  '小学副校长':{bonus:500,skills:[['administration',3]]}
+ };
+ function excellence(s){
+  const rule=excellenceRules[s.job];
+  if(!rule)return null;
+  const targets=rule.skills.map(([id,level])=>({
+   name:skills[id].name,level,xp:xp(s,id),target:thresholds[level-1]
+  }));
+  return {bonus:rule.bonus,targets,met:targets.every(t=>t.xp>=t.target)};
+ }
+ const awardDue=s=>Object.values(s.schoolCareer?.annualAwards??{})
+  .filter(award=>award.paidMonth==null&&award.earnedMonth<s.month)
+  .reduce((total,award)=>total+award.amount,0);
+ function settleAnnualAwards(s){
+  for(const award of Object.values(s.schoolCareer?.annualAwards??{})){
+   if(award.paidMonth==null&&award.earnedMonth<s.month)award.paidMonth=s.month;
+  }
+ }
  function improve(s,index){
   const task=reviewTasks(s)[index];
   if(!working(s)||!task||improvement(s)||isRecoveryMonth(s)||
@@ -298,13 +326,18 @@ window.SchoolCareer=(()=>{
   if(![6,7,12].includes(calendar.month))(row.dailyTeaching??={})[key]=true;
   if(calendar.month!==5)return;
   const id='school-'+key;
-  if(Object.hasOwn(row.reviews,id))return;
+  if(stages.some(stage=>Object.hasOwn(entry(s,stage.name).reviews??{},id)))return;
   const type=reviewType(s),daily=type==='management'||row.dailyTeaching?.[key]===true;
   const task=reviewTasks(s)[improvement(s)?.index]?.[0]||null;
   row.reviews[id]=daily&&!!task;
   const reviewCheck=requirements(s).find(([name])=>name.startsWith('年度'));
-  const result={year:key+1,type,daily,task,passed:row.reviews[id],
+  const goal=excellence(s),excellent=row.reviews[id]&&goal.met;
+  const bonus=excellent?goal.bonus:0;
+  const rating=excellent?'优秀':row.reviews[id]?'合格':'未合格';
+  const result={year:key+1,type,daily,task,passed:row.reviews[id],rating,bonus,job:s.job,targets:goal.targets,
    total:Number(reviewCheck?.[1].split(' / ')[0]||0),target:type==='management'||role(s.job)===stages[0]?2:3};
+  (s.schoolCareer.reviewHistory??={})[id]=result;
+  if(bonus)(s.schoolCareer.annualAwards??={})[id]={amount:bonus,earnedMonth:s.month};
   settlement.schoolReview=result;
   s.schoolCareer.latestReview=result;
  }
@@ -324,7 +357,7 @@ window.SchoolCareer=(()=>{
  }
  return {stages,role,working,entry,year,hasMasters,canInterview,completeInterview,interviewStatus,requirements,apply,closeMonth,deliver,
   skills,thresholds,xp,level,practiceXP,allowanceMilestones,skillAllowanceForXP,skillAllowance,practiceBlock,practice,openClasses,canTeach,drawOpenClass,resolveOpenClass,openClassPasses,openClassRecord,requiredOpenClassPasses,
-  interview,scenarios,collaborationPassed,collaborate,assess,reviewTasks,reviewType,schoolYear,improvement,improve,projectSteps,projectProgress,advanceProject};
+  interview,scenarios,collaborationPassed,collaborate,assess,reviewTasks,reviewType,schoolYear,improvement,improve,excellence,awardDue,settleAnnualAwards,projectSteps,projectProgress,advanceProject};
 })();
 
 {

@@ -61,7 +61,11 @@
   const markupBefore=coffeeIncomeMarkup;coffeeIncomeMarkup=function(x,heading){const html=markupBefore(x,heading);return !x.familyLeave?html:html+'<p class="wl-note">'+(x.apartmentLeave?'小公寓事件请假 ':x.studioLeave?'独居事件请假 ':x.sharedLeave?'合租事件请假 ':'家庭照护请假 ')+x.familyLeave.hours+'h：工资 −'+priceText(x.familyLeave.wages)+'，小费 −'+priceText(x.familyLeave.tips)+'（已计入上方收入调整）</p>';};
  }
  if(typeof calcMetrics==='function'){
-  const metricsBefore=calcMetrics;calcMetrics=function(){const m=metricsBefore();if(!state||m.careerIncome||isRecoveryMonth(state))return m;const l=housingLeave();if(!l.hours||!state.job||state.retired||state.unemployedMonths)return m;const gross=Math.max(0,m.grossSalary-l.wages-l.tips),contrib=roundCash(gross*(state.retirement?.k401Rate||0)),lost=roundCash(m.grossSalary-gross-(m.kContrib-contrib));return {...m,grossSalary:gross,kContrib:contrib,remainingCF:roundCash(m.remainingCF-lost),monthlyCF:roundCash(m.monthlyCF-lost)};};
+  const metricsBefore=calcMetrics;calcMetrics=function(){const m=metricsBefore();if(!state||m.careerIncome||isRecoveryMonth(state))return m;const l=housingLeave();if(!l.hours||!state.job||state.retired||state.unemployedMonths)return m;const bonus=m.schoolAnnualBonus||0,regular=m.grossSalary-bonus,rate=state.retirement?.k401Rate||0;
+   const afterLeave=Math.max(0,regular-l.wages-l.tips),gross=roundCash(afterLeave+bonus);
+   const contrib=roundCash(gross*rate),lost=roundCash(m.grossSalary-gross-(m.kContrib-contrib));
+   const recurringLost=roundCash(regular-afterLeave-roundCash(regular*rate)+roundCash(afterLeave*rate));
+   return {...m,grossSalary:gross,kContrib:contrib,remainingCF:roundCash(m.remainingCF-lost),monthlyCF:roundCash(m.monthlyCF-recurringLost)};};
  }
  const settleBefore=settleMonth;settleMonth=function(){
   if(activeKey||settling)return;
