@@ -356,3 +356,24 @@
 .relationship-directory .relationship-list{max-height:min(48dvh,430px);overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-color:#839459 #f4e8ca;padding:2px 6px 2px 2px}
 
 .relationship-directory-art{display:block;width:100%;max-height:145px;object-fit:cover;border-radius:11px}
+
+.relationship-redraw{background:#fff3d8;color:#20391e;border:3px double #9f642e;border-radius:22px;padding:clamp(10px,3vw,18px);font-family:WealthHand,'Songti SC',serif;box-sizing:border-box}
+.relationship-redraw .relationship-redraw-tag{display:table;margin:0 auto 6px;padding:2px 16px;border-radius:20px;background:#38552e;color:#fff9e5;font-size:clamp(14px,4.4cqw,22px)}
+.relationship-redraw h2{text-align:center;font-size:clamp(23px,7.3cqw,40px);line-height:1.16;margin:5px 0 12px}
+.relationship-redraw>img{border-radius:15px}
+.relationship-redraw-story{text-align:center;margin:10px 0;line-height:1.5;font-size:clamp(15px,4.1cqw,21px);color:#493421}
+.relationship-redraw-note{display:block;text-align:center;margin:5px 0;color:#515634;font-size:clamp(13px,3.6cqw,18px)}
+.relationship-redraw .relationship-redraw-option{display:block;width:100%;box-sizing:border-box;min-height:44px;margin:8px 0 0;padding:8px 7px;border-radius:15px;border:1px solid #b68c48;background:#ffe9a6;color:#20391e;font-family:inherit;cursor:pointer}
+.relationship-redraw .relationship-redraw-option+.relationship-redraw-option{background:#e2eaba;border-color:#87985c}
+.relationship-redraw-option:focus-visible{outline:3px solid #37633c;outline-offset:2px}
+.relationship-redraw-label{display:block;text-align:center;font-size:clamp(16px,5.4cqw,28px);line-height:1.25}
+.relationship-redraw-effects{margin-top:7px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.relationship-redraw-effects[data-count="1"]{grid-template-columns:minmax(0,1fr)}
+.relationship-redraw-effects[data-count="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.relationship-redraw-metric{display:flex;justify-content:center;align-items:center;gap:4px;min-width:0}
+.relationship-redraw-icon{font:clamp(18px,6cqw,34px)/1 serif;color:#587638}
+.relationship-redraw-icon.stress{color:#c85e37}.relationship-redraw-icon.happiness{color:#c4443a}
+.relationship-redraw-effect-text{display:grid;text-align:left;font-size:clamp(12px,3.35cqw,17px);line-height:1.2;min-width:0}
+.relationship-redraw-effect-text strong{font:700 clamp(14px,4.4cqw,25px)/1.1 system-ui,sans-serif;overflow-wrap:anywhere}
+.relationship-redraw-effect-text small{font-size:.65em}
+.relationship-redraw-icon img{display:block;width:clamp(21px,7cqw,36px);height:auto}
