@@ -44,7 +44,7 @@ function renderTown(){
  <div class="town-map-scene town-stepping-board"><img src="${TOWN_ART}board.webp" alt="沿碎石路环绕喷泉的二十四块手绘汀步石">
  <span class="town-pawn" data-town-pawn style="left:${pos.x}%;top:${pos.y}%" aria-label="玩家当前位置第${t.position+1}格">${pawnArt?`<img src="${TOWN_ART}${pawnArt}" alt="">`:'●'}</span>
  <img class="town-flight-die" data-town-flight alt="" hidden></div>
- <div class="town-roll-controls"><button type="button" class="town-crystal-button" data-town="roll" aria-label="掷骰子" ${locked?'disabled':''}><img src="${TOWN_ART}die-${die}.webp" alt="">掷骰子</button><button type="button" class="town-return-button" data-town="home" aria-label="回家并结算本月" ${locked?'disabled':''}><img src="assets/finance/bill-house.webp" alt="">回家</button></div>
+ <div class="town-roll-controls"><button type="button" class="town-crystal-button" data-town="roll" aria-label="掷骰子" ${locked?'disabled':''}><img src="${TOWN_ART}crystal-die-${die}.webp" alt="">掷骰子</button><button type="button" class="town-return-button" data-town="home" aria-label="回家并结算本月" ${locked?'disabled':''}><img src="assets/finance/bill-house.webp" alt="">回家</button></div>
  <div class="town-asset-controls"><button type="button" data-town="holdings" ${locked?'disabled':''}>地图资产</button></div>
  ${townPending()&&!townAnimating?'<button type="button" data-town="resume">继续处理当前事件</button>':''}`;
 
@@ -76,7 +76,7 @@ async function animateTownMove(move){
  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  const pawn=document.querySelector('[data-town-pawn]'),die=document.querySelector('[data-town-flight]');
  if(!pawn||!die)return;
- const faces=Array.from({length:6},(_,index)=>TOWN_ART+'die-'+(index+1)+'.webp');
+ const faces=Array.from({length:6},(_,index)=>TOWN_ART+'crystal-die-'+(index+1)+'.webp');
  const result=faces[move.die-1];
  await Promise.all(faces.map(src=>{
   const preview=new Image();
