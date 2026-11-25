@@ -2,10 +2,11 @@
 (function(root){'use strict';
  const D=root.SharedInterestCardData||(typeof require==='function'?require('./shared-interest-card-data'):null);
  const S=root.SharedInterestSelection||(typeof require==='function'?require('./shared-interest-selection'):null);
+ const forceTime=root.recordForcedEventTime||(typeof require==='function'?require('./time-ledger').recordForcedEventTime:null);
  const H=root.HobbyLearning||(typeof require==='function'?require('./hobby-learning'):null);
  const cards=Object.fromEntries(D.cards.map(c=>[c.id,c])),copy=x=>JSON.parse(JSON.stringify(x)),clamp=x=>Math.max(0,Math.min(100,x));
  const current=s=>s.town?.movement?.sharedInterestCard;
- const hours=s=>(s.sharedInterestCards?.receipts||[]).filter(r=>r.month===s.month).reduce((n,r)=>n+r.effects.hours,0);
+ const hours=s=>(s.sharedInterestCards?.receipts||[]).filter(r=>r.month===s.month).reduce((n,r)=>n+(r.time?.used??r.effects.hours),0);
  function data(s){return s.sharedInterestCards??={version:1,used:[],receipts:[]};}
  function atomic(s,fn,save){const before=copy(s);try{const result=fn();if(save()===false)throw Error('save');return result;}catch(e){for(const k of Object.keys(s))delete s[k];Object.assign(s,before);return {ok:false,reason:'save'};}}
  function eligible(s,kind,pid){return S.groups(s).some(g=>g.people.some(p=>p.personId===pid&&p.cards.some(c=>c.id===kind)));}
@@ -29,12 +30,13 @@
   // Reserve enough resources for the already-locked second stage before accepting B.
   const followup=r.status==='pending'&&index===cards[r.kind]?.followup?.choice;
   if(followup&&!r.lockedOutcome)return fail('stale');
-  const next=followup?r.lockedOutcome.effects:{},requiredHours=effects.hours+(next.hours||0),requiredCash=effects.cash+(next.cash||0),requiredEnergy=effects.energy+(next.energy||0);
+  const next=followup?r.lockedOutcome.effects:{},requiredCash=effects.cash+(next.cash||0),requiredEnergy=effects.energy+(next.energy||0);
   if(!Number.isFinite(s.cash)||s.cash+requiredCash<0)return fail('funds');
-  if(!Number.isFinite(opts.free)||opts.free<requiredHours||(requiredHours>0&&(!Number.isFinite(opts.reserve??0)||opts.free-requiredHours<(opts.reserve||0))))return fail('time');
+  if(!Number.isFinite(opts.free)||opts.free<0||!Number.isFinite(opts.reserve??0))return fail('time');
+  const available=Math.max(0,opts.free-Math.max(0,opts.reserve||0));
   if(!Number.isFinite(s.energy)||s.energy+requiredEnergy<0)return fail('energy');
   effects.xp=Math.min(effects.xp,Math.max(0,800-H.xp(s,r.hobby)));
-  return {ok:true,label:q.label,effects,followup};
+  return {ok:true,label:q.label,effects,followup,available};
  }
  function confirm(s,id,index,expectedPhase,opts={}){
   const r=current(s),m=s.town?.movement;
@@ -49,6 +51,12 @@
    p.relation=clamp((p.relation||0)+e.intimacy);if(e.intimacy)p.lastContactMonth=s.month;
    if(e.xp){const beforeXP=H.xp(s,r.hobby);s.hobbyLearning??={version:1,xp:{},sequence:0,receipts:[]};s.hobbyLearning.xp??={};s.hobbyLearning.xp[r.hobby]=beforeXP+e.xp;}
    const receipt={id:receiptId,eventId:r.id,month:s.month,kind:r.kind,personId:r.personId,phase:r.status,choice:index,effects:copy(e),appliedIntimacy:p.relation-prior};
+   if(e.hours>0&&e.hours>=q.available){
+    const time=forceTime(s,{id:'shared-interest-'+receiptId,month:s.month,hours:e.hours,available:q.available});
+    receipt.time=time;
+    const prior=s.forcedTimeReturn?.month===s.month?s.forcedTimeReturn:null;
+    s.forcedTimeReturn={...prior,month:s.month,id:prior?.id||time.id,debt:(prior?.debt||0)+time.debt};
+   }
    d.receipts.push(receipt);
    if(e.cash)(s.financeLedger??=[]).push({id:receiptId,kind:e.cash>0?'sharedInterestIncome':'sharedInterestExpense',eventId:r.id,month:s.month,amount:Math.abs(e.cash),personId:p.id});
    if(r.status==='pending')r.choice=index;
