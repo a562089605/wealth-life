@@ -18,7 +18,8 @@
   {id:'dumplings',title:'周末一起包饺子',desc:'家人备好了馅料，想多包一些冻起来，忙时也有现成的吃。',art:'assets/family/dumplings-20261125-clean-label.webp',hotspots:[[70.3,13.1,3.8,92.4],[84.5,12.8,3.8,92.4]],choices:[choice('一起包，多备几顿',2,{energy:-2,happiness:4}),choice('今天先忙自己的事')]},
   {id:'supplies',title:'外出采购',desc:'洗衣液见底了，纸巾也只剩最后一卷。家人托你回家时带一点，先够这几天用就行。如果有空，也可以去超市把接下来要用的备齐。',art:'assets/family/supplies-20261125-outdoor.webp',hotspots:[[65.3,14.3,3.2,93.6],[81.2,16.2,3.2,93.6]],choices:[choice('先买应急的',0,{cash:-12,stress:-1}),choice('去超市采购',1,{cash:-22,stress:-4}),choice('这次请家人帮忙买',0,{fallback:true})]},
   {id:'family-tasting',title:'爸妈快回来了',desc:'爸妈今天旅行回来。出门前，你听他们说这趟带了不少东西。眼看火车快到站了，你想着，要不要去接他们，顺手帮忙提行李。',art:'assets/family/parents-return-20261125.webp',hotspots:[[65.4,14.2,3.2,93.6],[81.3,16,3.2,93.6]],choices:[choice('去车站接爸妈，帮忙提行李',1,{happiness:3}),choice('在家泡好茶，等爸妈回来',0,{happiness:1,stress:1})]},
-  {id:'balcony-tomato',title:'收获季',desc:'阳台上第一颗番茄红了。家人招呼你过来看：“快看，咱们种的番茄熟了！”',art:'assets/family/harvest-season-20261125.webp',hotspots:[[70.3,13.3,3.6,92.8],[84.7,13,3.6,92.8]],choices:[choice('摘下来，今晚加道菜',0,{happiness:3}),choice('拍张照，给第一次收获留个纪念',0,{happiness:1,stress:-2})]}
+  {id:'balcony-tomato',title:'收获季',desc:'阳台上第一颗番茄红了。家人招呼你过来看：“快看，咱们种的番茄熟了！”',art:'assets/family/harvest-season-20261125.webp',hotspots:[[70.3,13.3,3.6,92.8],[84.7,13,3.6,92.8]],choices:[choice('摘下来，今晚加道菜',0,{happiness:3}),choice('拍张照，给第一次收获留个纪念',0,{happiness:1,stress:-2})]},
+  {id:'family-moving-day',title:'搬家日',desc:'新家的钥匙拿到了，旧家也收拾得差不多了。爸妈问你：家具和纸箱是咱们自己搬，还是请搬家公司来搬？',art:'assets/family/moving-day-20261125.webp',hotspots:[[61.2,16.4,3,94],[79.2,18,3,94]],choices:[choice('全家自己搬',4,{energy:-4,happiness:3}),choice('请搬家公司',1,{cash:-120,happiness:3}),choice('这次先由爸妈安排',0,{fallback:true})]}
  ];
  function data(s){return s.familyEvents??={version:1,seen:{},records:{}};}
  function eligible(s){const seen=s.familyEvents?.seen||{};const available=cards.filter(c=>seen[c.id]==null||s.month-seen[c.id]>6);const unseen=available.filter(c=>seen[c.id]==null);return unseen.length?unseen:available;}
@@ -30,7 +31,7 @@
   const c=pool[Math.min(pool.length-1,Math.floor(random()*pool.length))];
   r.cardId=c.id;r.status='pending';r.presented=false;d.seen[c.id]=s.month;return r;
  }
- function missing(s,r,index,free,reserve=0){const c=cards.find(c=>c.id===r?.cardId),o=c?.choices[index];if(!o||r.status!=='pending'||r.month!==s.month)return ['此选项已失效'];if(o.fallback&&c.choices.some((choice,i)=>!choice.fallback&&!missing(s,r,i,free,reserve).length))return ['仍有可用的购买方式'];const a=[];if(s.cash+(o.cash||0)<0)a.push('现金不足');if(free<o.hours)a.push('自由时间不足');else if(o.hours&&free-o.hours<reserve)a.push('需保留必要宠物照护时间');return a;}
+ function missing(s,r,index,free,reserve=0){const c=cards.find(c=>c.id===r?.cardId),o=c?.choices[index];if(!o||r.status!=='pending'||r.month!==s.month)return ['此选项已失效'];if(o.fallback&&c.choices.some((choice,i)=>!choice.fallback&&!missing(s,r,i,free,reserve).length))return [c.id==='supplies'?'仍有可用的购买方式':'仍有可用选项'];const a=[];if(s.cash+(o.cash||0)<0)a.push('现金不足');if(free<o.hours)a.push('自由时间不足');else if(o.hours&&free-o.hours<reserve)a.push('需保留必要宠物照护时间');return a;}
  function resolve(s,month,id,index,free,reserve=0){const r=s.familyEvents?.records[month];if(!r||r.cardId!==id||missing(s,r,index,free,reserve).length)return false;
   const o=cards.find(c=>c.id===id).choices[index];r.status='resolved';r.choice=index;r.hours=o.hours;r.effects={};
   for(const k of ['cash','energy','stress','happiness']){if(!o[k])continue;const before=s[k]||0;s[k]=k==='cash'?Math.round((before+o[k])*100)/100:Math.max(0,Math.min(100,before+o[k]));r.effects[k]=s[k]-before;}
