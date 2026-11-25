@@ -1145,3 +1145,156 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
 
 .career-hobby-menu .career-paper { border-color:#87543c; }
 .career-hobby-menu .career-hobby-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+
+/* Approved barista page artwork. Player data stays in the original controls. */
+.career-approved-profile.career-fixed .career-paper {
+ width:min(100%,440px);
+ border:2px solid #ac602d !important;
+ border-radius:17px !important;
+ overflow:hidden;
+ container-type:inline-size;
+}
+.career-approved-profile.career-fixed .career-fixed-heading {
+ position:relative;
+ aspect-ratio:1024/418;
+ padding:0;
+ background:url("./assets/career-crayon/profile-header.webp") center/100% 100% no-repeat;
+}
+.career-approved-profile .career-scene { display:none !important; }
+.career-approved-profile .career-fixed-heading header { display:contents; }
+.career-approved-profile.career-fixed .career-fixed-heading h1 {
+ position:absolute;
+ width:1px;
+ height:1px;
+ overflow:hidden;
+ clip-path:inset(50%);
+}
+.career-approved-profile.career-fixed .career-fixed-heading header > button {
+ position:absolute;
+ inset:11% auto auto 4%;
+ width:17%;
+ height:17%;
+ min-height:36px !important;
+ padding:0;
+ color:transparent;
+ background:transparent;
+ border:0;
+ box-shadow:none;
+}
+.career-approved-profile .career-fixed-heading header > span {
+ position:absolute;
+ inset:23.5% 38% auto;
+ background:#faebc6 url("./assets/finance/paper.webp") center;
+ color:#484522;
+ white-space:nowrap;
+ text-align:center;
+ font:bold 3.8cqw/1.3 WealthHand,serif;
+}
+.career-approved-profile.career-fixed .career-scroll-body { padding:3px 23px 5px 10px; }
+.career-approved-profile.career-fixed .career-panel { padding:0; margin:0 0 7px; }
+.career-approved-profile.career-fixed .career-job-summary {
+ position:relative;
+ display:grid;
+ aspect-ratio:909/253;
+ padding:0;
+ margin:0 0 7px;
+ background:url("./assets/career-crayon/profile-work.webp") center/100% 100% no-repeat;
+}
+.career-approved-profile .career-job-summary > h2,
+.career-approved-profile .career-job-summary > .career-row > span:first-child,
+.career-approved-profile .career-growth-options > h2 > .career-heading-icon,
+.career-approved-profile .career-skill-illustration,
+.career-approved-profile .career-skill-summary strong,
+.career-approved-profile .career-skill-arrow {
+ position:absolute;
+ width:1px !important;
+ height:1px !important;
+ overflow:hidden;
+ clip-path:inset(50%);
+}
+.career-approved-profile.career-fixed .career-job-summary > .career-row {
+ position:absolute;
+ display:grid;
+ place-items:center;
+ padding:0;
+ margin:0;
+ background:none;
+}
+.career-approved-profile .career-job-summary > .career-row > span:last-child {
+ width:100%;
+ text-align:center;
+ color:#3f4b25;
+ border-radius:8px;
+ background:var(--career-value, #efedc0);
+ font:700 3.45cqw/1.25 system-ui,sans-serif;
+}
+.career-approved-profile .career-job-summary > .career-row:nth-of-type(1) { inset:31% 3% 50% 48%; }
+.career-approved-profile .career-job-summary > .career-row:nth-of-type(2) { inset:75% 65% 8% 4%; --career-value:#f6dfa1; }
+.career-approved-profile .career-job-summary > .career-row:nth-of-type(3) { inset:75% 34% 8% 37%; --career-value:#e8e9b6; }
+.career-approved-profile .career-job-summary > .career-row:nth-of-type(4) { inset:75% 2% 8% 69%; --career-value:#f9debd; }
+.career-approved-profile.career-fixed .career-growth-options > h2 {
+ width:100%;
+ height:7.7cqw;
+ margin:0 0 3px;
+ color:transparent;
+ background:url("./assets/career-crayon/profile-growth.webp") center/100% 100% no-repeat;
+}
+.career-approved-profile .career-content .career-skill-list { gap:4px; }
+.career-approved-profile .career-content .career-skill-list .career-skill-entry:nth-child(n) {
+ display:block;
+ position:relative;
+ width:100%;
+ aspect-ratio:883/112;
+ min-height:42px;
+ padding:0;
+ overflow:hidden;
+ background:var(--skill-art) center/100% 100% no-repeat !important;
+}
+.career-approved-profile .career-skill-entry:nth-child(1) { --skill-art:url("./assets/career-crayon/profile-latte.webp"); --career-value:#f8e2aa; }
+.career-approved-profile .career-skill-entry:nth-child(2) { --skill-art:url("./assets/career-crayon/profile-pour.webp"); --career-value:#e9eac5; }
+.career-approved-profile .career-skill-entry:nth-child(3) { --skill-art:url("./assets/career-crayon/profile-service.webp"); --career-value:#f9dcc0; }
+.career-approved-profile .career-skill-entry:nth-child(4) { --skill-art:url("./assets/career-crayon/profile-management.webp"); --career-value:#e7e9bf; }
+.career-approved-profile.career-fixed .career-skill-entry .career-skill-summary,
+.career-approved-profile.career-fixed .career-skill-entry .career-skill-level {
+ position:absolute;
+ left:32.5%;
+ right:21%;
+ text-align:left;
+ background:var(--career-value);
+ border-radius:6px;
+ padding:0 3px;
+ font:600 2.9cqw/1.12 system-ui,sans-serif;
+}
+.career-approved-profile .career-skill-entry .career-skill-summary { top:42%; }
+.career-approved-profile .career-skill-entry .career-skill-summary small { font:inherit; }
+.career-approved-profile .career-skill-entry .career-skill-level { top:68%; }
+.career-approved-profile.career-fixed .career-paper > .career-back {
+ width:100%;
+ flex:none;
+ aspect-ratio:1024/168;
+ min-height:44px;
+ margin:0;
+ padding:0;
+ border:0;
+ border-radius:0;
+ color:transparent;
+ background:url("./assets/career-crayon/profile-footer.webp") center/100% 100% no-repeat !important;
+}
+.career-approved-profile .career-scroll-rail[hidden] { display:none; }
+.career-approved-profile.career-fixed .career-paper {
+ height:min(735px,calc((100vw - 24px) * 1.68),calc(100dvh - 24px));
+}
+.career-approved-profile.career-fixed .career-job-summary > .career-row:nth-of-type(1) {
+ inset:33% 2% 49% 43%;
+ background:#efedc0;
+}
+.career-approved-profile.career-fixed .career-job-summary > .career-row:nth-of-type(2),
+.career-approved-profile.career-fixed .career-job-summary > .career-row:nth-of-type(3),
+.career-approved-profile.career-fixed .career-job-summary > .career-row:nth-of-type(4) {
+ top:74%;
+ bottom:6%;
+ background:var(--career-value);
+}
+.career-approved-profile.career-fixed .career-job-summary > .career-row:nth-of-type(2) { inset-inline:2% 65%; }
+.career-approved-profile.career-fixed .career-job-summary > .career-row:nth-of-type(3) { inset-inline:36% 34%; }
+.career-approved-profile.career-fixed .career-job-summary > .career-row:nth-of-type(4) { inset-inline:68% 1%; }
