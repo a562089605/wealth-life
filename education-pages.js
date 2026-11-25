@@ -19,7 +19,7 @@
  const section=node('section',null,'education-overlay');overlay=section;section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.setAttribute('aria-label',({enroll:'学历学习',progress:'学习进度',pace:'更改学习安排',pause:'暂停学习',resume:'恢复学习',withdraw:'退出学习',refund:'撤销本月报名',graduation:'毕业完成'})[mode]);document.body.append(section);document.body.classList.add('education-open');
  const paper=node('div',null,'education-paper'),scene=node('div',null,'education-scene'),img=node('img');
  const progress=mode==='progress';
- img.src=progress?'assets/education/progress-crayon.webp':'assets/education/'+assets[mode==='enroll'?(r?target:'progress'):mode]+'.webp';
+ img.src=progress?'assets/learning-redraw/progress.webp':'assets/education/'+assets[mode==='enroll'?(r?target:'progress'):mode]+'.webp';
  img.alt=progress?'暖色蜡笔插画：在书桌学习，柯基在旁休息。':'学历学习手绘场景';
  scene.append(img);paper.append(scene);section.append(paper);
  const back=node('button',progress?'← 返回房屋':'返回');back.type='button';
@@ -47,8 +47,10 @@
  if(mode==='progress'){const times=panel();times.classList.add('education-study-times');times.append(node('h3','本月学习安排'));for(const [label,value]of [['学习预留',isRecoveryMonth(state)?0:E.reserved(state)],['剩余自由时间',currentCareerTime().free]]){const row=node('div',null,'education-row');row.append(node('span',label),node('strong',value+' 小时'));times.append(row);}const tuition=panel();tuition.classList.add('education-study-tuition');
  if(E.current(st)){
   const paid=st.paidCents/100,due=E.due(st);
-  note('课程总费用 '+money(st.receipt.tuition)+'（含书籍费 '+money(st.receipt.books)+'）',tuition);
-  note('已缴 '+money(paid)+' · 剩余 '+money(E.balance(st)),tuition);
+  note('课程总费用 '+money(st.receipt.tuition),tuition);
+  note('（含书籍费 '+money(st.receipt.books)+'）',tuition);
+  const totals=node('div',null,'education-fee-totals');
+  note('已缴 '+money(paid),totals);note('剩余 '+money(E.balance(st)),totals);tuition.append(totals);
   if(due>0)note('本期应缴 '+money(due),tuition);
  }else note('原课程学杂费 '+money(st.receipt.tuition)+' · 已支付，按原合同继续',tuition);
  }

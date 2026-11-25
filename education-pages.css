@@ -43,3 +43,12 @@
  border-color: #d8ad78;
 }
 .education-progress-paper .education-actions button:disabled { background: #dfe7c9; }
+
+.education-progress-paper{border:5px double #375b36;background-color:#fff4d9}
+.education-progress-heading h1{width:fit-content;margin:2px auto 8px;border-bottom:4px solid #e6b84d}
+.education-progress-paper .education-scene img{display:block;width:100%;height:auto}
+.education-progress-paper .education-panel{border-color:#958258}
+.education-progress-paper .education-study-times{border-color:#809457}
+.education-progress-paper .education-row strong{border-radius:20px;background:#d9e6aa;padding:0 10px}
+.education-progress-paper .education-study-tuition{border-color:#b28b55;background:#fae5bb}
+.education-fee-totals{display:flex;justify-content:center;flex-wrap:wrap;gap:0 14px;margin-top:6px;border-top:1px dashed #b28b55}

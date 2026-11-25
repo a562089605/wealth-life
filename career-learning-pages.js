@@ -82,17 +82,17 @@
   p.content.append(node('p','同等进修速度下，两条路线读到本科用时相同。\n本科毕业后均可继续读硕士。','career-education-compare'));
   p.button('返回学习',learning).classList.add('career-back');
  }
- function hobbies(){const p=panel('个人爱好','hobbies',learning),list=node('div',null,'career-list career-hobby-grid');p.section.classList.add('career-hobby-menu');p.section.querySelector('.career-scene img').src='assets/hobby-review/overview.webp';p.content.append(list);for(const id of H.hobbies){const a=H.activities[id],xp=H.xp(state,id);p.choice(list,a.name,'Lv.'+H.level(xp)+(xp>=800?' · 已满级':'')+' · 查看 →','assets/hobby-review/'+id+'-icon.webp',()=>{close();HobbyPages.detail(id);});}p.button('返回学习',learning).classList.add('career-back');}
+ function hobbies(){const p=panel('个人爱好','hobbies',learning),list=node('div',null,'career-list career-hobby-grid');p.section.classList.add('career-hobby-menu');const paper=p.section.querySelector('.career-paper'),heading=node('div',null,'career-skills-heading');heading.append(p.content.querySelector('header'),p.content.querySelector('h1'));paper.prepend(heading);paper.querySelector('.career-scene img').src='assets/learning-redraw/hobbies.webp';p.content.append(list);for(const id of H.hobbies){const a=H.activities[id],xp=H.xp(state,id);p.choice(list,a.name,'Lv.'+H.level(xp)+(xp>=800?' · 已满级':''),'assets/learning-redraw/'+id+'.webp',()=>{close();HobbyPages.detail(id);});const arrow=node('span','›','career-skills-arrow');arrow.setAttribute('aria-hidden','true');list.lastElementChild.append(arrow);}p.button('返回学习',learning).classList.add('career-back');}
  let skillOrigin='learning';
  function skills(origin=skillOrigin){
   skillOrigin=origin;
   const back=origin==='career'?career:learning;
   const p=panel('职业技能','skills',back);
-  const art='assets/career-learning-20261115/';
+  const art='assets/learning-redraw/';
   p.section.classList.add('career-skills-room');
   const paper=p.section.querySelector('.career-paper');
   const scene=paper.querySelector('.career-scene');
-  scene.querySelector('img').src=art+'skills-crayon-banner.webp';
+  scene.querySelector('img').src=art+'skills.webp';
   const heading=node('div',null,'career-skills-heading');
   heading.append(p.content.querySelector('header'),p.content.querySelector('h1'));
   paper.prepend(heading);
@@ -104,9 +104,9 @@
    arrow.setAttribute('aria-hidden','true');
    entry.append(arrow);
   }
-  skillChoice(H.activities.latte.name,H.level(H.xp(state,'latte')),'skills-crayon-latte.webp',()=>{close();HobbyPages.detail('latte');});
-  skillChoice(H.activities.pourOver.name,H.level(H.xp(state,'pourOver')),'skills-crayon-pour.webp',()=>{close();HobbyPages.detail('pourOver');});
-  skillChoice('管理课程',R.skillLevel(state,'management'),'skills-crayon-management.webp',()=>management());
+  skillChoice(H.activities.latte.name,H.level(H.xp(state,'latte')),'latte.webp',()=>{close();HobbyPages.detail('latte');});
+  skillChoice(H.activities.pourOver.name,H.level(H.xp(state,'pourOver')),'pour.webp',()=>{close();HobbyPages.detail('pourOver');});
+  skillChoice('管理课程',R.skillLevel(state,'management'),'management.webp',()=>management());
   p.button(origin==='career'?'返回我的职业':'返回学习',back).classList.add('career-back');
   heading.querySelector('button').focus({preventScroll:true});
  }

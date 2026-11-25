@@ -1298,3 +1298,17 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
 .career-approved-profile.career-fixed .career-job-summary > .career-row:nth-of-type(2) { inset-inline:2% 65%; }
 .career-approved-profile.career-fixed .career-job-summary > .career-row:nth-of-type(3) { inset-inline:36% 34%; }
 .career-approved-profile.career-fixed .career-job-summary > .career-row:nth-of-type(4) { inset-inline:68% 1%; }
+
+:is(.career-skills-room,.career-hobby-menu) .career-paper{border:5px double #375b36;background-color:#fff4d9;overflow-y:auto;overscroll-behavior:contain}
+:is(.career-skills-room,.career-hobby-menu) .career-content{flex:none;overflow:visible}
+.career-hobby-menu .career-scene{aspect-ratio:3.5;margin:0 10px;border-radius:14px}
+.career-hobby-menu .career-content{padding:8px 10px 12px}
+.career-hobby-menu .career-hobby-grid{overflow:visible;scrollbar-gutter:auto;gap:5px;padding:5px;background:#e6edbf;border-radius:13px}
+.career-hobby-menu .career-hobby-grid .career-choice{display:grid;grid-template-columns:minmax(32px,40%) minmax(0,1fr) auto;align-items:center;gap:3px;min-height:58px;padding:4px;border:1px solid #829353;border-radius:11px;background:#fff4d9;text-align:left}
+.career-hobby-menu .career-choice .career-thumb{width:100%;height:49px;aspect-ratio:auto}
+.career-hobby-menu .career-choice .career-thumb img{width:100%;height:100%;object-fit:cover;inset:0}
+.career-hobby-menu .career-choice>span{padding:0;min-width:0}
+.career-hobby-menu .career-choice strong{font:700 clamp(13px,3.6vw,21px)/1.14 WealthHand,KaiTi,serif;overflow-wrap:anywhere}
+.career-hobby-menu .career-choice small{display:inline-block;margin-top:3px;padding:1px 4px;border-radius:9px;background:#d5e3a4;font:600 clamp(10px,2.9vw,14px)/1.2 system-ui,sans-serif;color:#294b2e}
+.career-hobby-menu .career-choice>.career-skills-arrow{font-size:17px;color:#365b36}
+.career-hobby-menu .career-content .career-back{background:#f9da83}
