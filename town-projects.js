@@ -62,6 +62,10 @@ function settleTownProjects(s,settlement){
  for(const item of townProjects(s)){
   const flow=townProjectMonth(item,s,settlement.month);
   if(!flow)continue;
+  if(item.status==='active'){
+   const principal=item.id==='chamber'&&flow.status==='closed'?TOWN_PROJECTS.chamber.cost:0;
+   settlement.dreamMapIncome=(settlement.dreamMapIncome||0)+flow.amount-principal;
+  }
   item.status=flow.status;
   item.lastPaidMonth=settlement.month-1;
   townProjectCredit(s,item.id,flow.amount,item.lastPaidMonth,flow.title);

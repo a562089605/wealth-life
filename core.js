@@ -56,7 +56,7 @@ function holdingValue(asset){
 calcMetrics=function(){
  syncFinance();const s=state||{},rr=s.retirement||{};
  const debtTotal=Object.values(s.debt||{}).reduce((n,v)=>n+v,0);
- const assetValue=(globalThis.CafeEquity?.assetValue(s)||0)+(s.cash||0)+(s.emergencyFund||0)+(rr.k401Balance||0)+(rr.iraBalance||0)+(rr.brokerageBalance||0)+(s.carValue||0)+(s.homeEquity||0)+(s.homeMortgage||0)+(s.assets||[]).reduce((n,a)=>n+holdingValue(a),0);
+ const assetValue=(globalThis.CafeEquity?.assetValue(s)||0)+(s.cash||0)+(s.emergencyFund||0)+(typeof DreamGoals!=='undefined'?DreamGoals.balance(s):0)+(rr.k401Balance||0)+(rr.iraBalance||0)+(rr.brokerageBalance||0)+(s.carValue||0)+(s.homeEquity||0)+(s.homeMortgage||0)+(s.assets||[]).reduce((n,a)=>n+holdingValue(a),0);
  const recovery=typeof isRecoveryMonth==='function'&&isRecoveryMonth(s);
  const careerIncome=!recovery&&typeof coffeeMonthlyIncome==='function'?coffeeMonthlyIncome():null;
  const schoolSkillAllowance=recovery?0:(globalThis.SchoolCareer?.skillAllowance?.(s)||0);
@@ -157,6 +157,7 @@ function settleMonthUnsafe(){
  if(typeof townMarketMonthlyFlows==='function'){
   for(const flow of townMarketMonthlyFlows(s)){
    townProjectCredit(s,flow.id,flow.amount,s.month,flow.title);
+   settlement.dreamMapIncome=(settlement.dreamMapIncome||0)+flow.amount;
    settlement.netCF=roundCash(settlement.netCF+flow.amount);
   }
  }
@@ -200,9 +201,11 @@ function settleMonthUnsafe(){
  globalThis.SchoolCareer?.deliver(s,settlement);
  globalThis.CafeEquity?.deliver(s);
  if(typeof completeCashAudit==='function')completeCashAudit(settlement);
+ if(typeof DreamGoals!=='undefined')DreamGoals.recordMonth(s,settlement);
+ const dreamWon=typeof recordSavingsVictory==='function'&&recordSavingsVictory();
  settlement.endCash=s.cash;
  if(month%12===0){s.age++;(s.people||[]).forEach(p=>p.age++);const g=goalStats();s.goalProgressHistory.push({year:month/12,age:s.age,pct:g.pct,current:g.current,target:g.target});s.yearStartNetWorth=calcMetrics().nw;s.yearStartCash=s.cash;if(!recovery&&s.job&&!s.retired&&!globalThis.SchoolCareer?.role(s.job)&&!(typeof coffeeSalaryRole==='function'&&coffeeSalaryRole(s.job))){const growth=s.experienceYears<=5?.035:s.experienceYears<=10?.025:.015;s.salary=roundCash(s.salary*(1+growth));s.annualSalary=roundCash(s.salary*12)}}
- if(!recovery&&!globalThis.SchoolCareer?.role(s.job))applyCareerProgression();if(recoveryTreatment){completeTreatment(s,{id:recoveryTreatment.id,completedMonth:month-1,monthEffectsComplete:true});settlement.recoveryTreatmentId=recoveryTreatment.id;}if(typeof applyCoffeeSalaryForNextMonth==='function')applyCoffeeSalaryForNextMonth(settlement);s.turn={month:s.month,index:0,startCash:s.cash};if(save()===false)throw Error('Monthly settlement save failed');render();const showAudit=()=>{if(typeof showMonthlyAudit==='function')showMonthlyAudit(settlement);else showEvent('MONTH END','第 '+month+' 月结算完成','本月已结算。',[['当前现金',money(s.cash)]],[['继续',()=>{clearModals();monthlyEvent()},true]]);};const showNext=()=>{if(!globalThis.CareerPages?.showReadySchoolPromotion(showAudit))showAudit();};const showResult=()=>{if(settlement.schoolReview&&globalThis.CareerPages?.schoolReviewResult)CareerPages.schoolReviewResult(settlement.schoolReview,showNext);else showNext();};if(typeof showPetDeathNotice==='function'&&showPetDeathNotice(showResult))return;showResult();
+ if(!recovery&&!globalThis.SchoolCareer?.role(s.job))applyCareerProgression();if(recoveryTreatment){completeTreatment(s,{id:recoveryTreatment.id,completedMonth:month-1,monthEffectsComplete:true});settlement.recoveryTreatmentId=recoveryTreatment.id;}if(typeof applyCoffeeSalaryForNextMonth==='function')applyCoffeeSalaryForNextMonth(settlement);s.turn={month:s.month,index:0,startCash:s.cash};if(save()===false)throw Error('Monthly settlement save failed');render();const showAudit=()=>{if(typeof showMonthlyAudit==='function')showMonthlyAudit(settlement);else showEvent('MONTH END','第 '+month+' 月结算完成','本月已结算。',[['当前现金',money(s.cash)]],[['继续',()=>{clearModals();monthlyEvent()},true]]);};const showNext=()=>{if(!globalThis.CareerPages?.showReadySchoolPromotion(showAudit))showAudit();};const showReview=()=>{if(settlement.schoolReview&&globalThis.CareerPages?.schoolReviewResult)CareerPages.schoolReviewResult(settlement.schoolReview,showNext);else showNext();};const showResult=()=>dreamWon?showVictory(showReview):showReview();if(typeof showPetDeathNotice==='function'&&showPetDeathNotice(showResult))return;showResult();
 }
 // Settlement owns its synchronous lock; a stale event flag cannot strand the month.
 let settlementInProgress=false;
