@@ -54,6 +54,7 @@
    }
    button.append(effects);
   }
+  if(q.newRegular)button.append(el('span','熟客加入关系网','relationship-redraw-note'));
   if(q.followup==='moving-meal')button.append(el('span','后续 · 搬完家，一起吃顿饭','relationship-redraw-note'));
  }
  function close(){active?.remove();active=null;document.body.classList.remove('relationship-card-open');}
@@ -78,7 +79,7 @@
    canvas.classList.add('relationship-redraw');
    if(!r.story||f)img.src='assets/relationships/redraw/'+redrawKey+'.webp';
    img.alt='';
-   canvas.append(el('p','关系生活卡 · '+def.role,'relationship-redraw-tag'),el('h2',title),img);
+   canvas.append(el('p',def.regular?'熟客关系卡':'关系生活卡 · '+def.role,'relationship-redraw-tag'),el('h2',title),img);
    if(!f&&!r.story){
     const conditions=[def.minIntimacy&&'亲密度 ≥'+def.minIntimacy,def.coffeeOnly&&'咖啡店限定'].filter(Boolean);
     if(conditions.length)canvas.append(el('p',conditions.join(' · '),'relationship-redraw-note'));
