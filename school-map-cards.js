@@ -60,7 +60,7 @@
     complete(move, card, option.label);
    }
   }, save);
-  if (!ok) return retry('本次選擇尚未生效，請重試。');
+  if (!ok) return retry('本次选择尚未生效，请重试。');
   if (move.schoolAnnouncement) return renderAnnouncement(move, card);
   clearModals();
   finish();
@@ -75,21 +75,21 @@
  }
 
  function retry(message) {
-  showEvent('職業事件', '暫未保存', message, [],
-   [['重試', () => open(state.town.movement), true]]);
+  showEvent('职业事件', '暂未保存', message, [],
+   [['重试', () => open(state.town.movement), true]]);
   $('eventClose').hidden = true;
  }
 
  function renderAnnouncement(move, card) {
   const result = move.schoolAnnouncement;
   const owner = state, chosenSlot = slot, month = state.month;
-  const rows = result.stress ? [['壓力', (result.stress > 0 ? '+' : '−') + Math.abs(result.stress)]] : [];
-  showEvent('縣市政府公告', result.closed ? '明天停課' : '明天照常上課', result.story, rows,
-   [['繼續', () => {
+  const rows = result.stress ? [['压力', (result.stress > 0 ? '+' : '−') + Math.abs(result.stress)]] : [];
+  showEvent('县市政府公告', result.closed ? '明天停课' : '明天照常上课', result.story, rows,
+   [['继续', () => {
     if (state !== owner || slot !== chosenSlot || state.month !== month ||
         state.town?.movement !== move || move.resolved) return;
     if (!PetMapEvents.atomic(state, () => complete(move, card, result.choice), save)) {
-     return retry('公告已保留，請重試。');
+     return retry('公告已保留，请重试。');
     }
     clearModals();
     finish();
