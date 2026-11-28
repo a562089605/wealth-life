@@ -52,7 +52,7 @@ function enterFastTrack(){
     render();
     if(won)return showVictory();
   }else{save();render();}
-  showEvent('阶段升级','欢迎进入第二阶段','现有现金、资产和负债原值保留。你可以继续工作、生活，并选择更大的投资项目。',[['进入时被动收入',money(j.entryPassive)+'/月'],['进入时必要支出',money(j.entryExpenses)+'/月'],['本次收支','$0.00']],[['查看快车道机会',openFastProjects,true],['继续本月安排',finish,false]]);
+  showEvent('阶段升级','欢迎进入第二阶段','现有现金、资产和负债原值保留。你可以继续工作、生活，并选择更大的投资项目。',[['进入时被动收入',money(j.entryPassive)+'/月'],['进入时必要支出',money(j.entryExpenses)+'/月'],['本次收支','$0.00']],[['进入快车道地图',openFastProjects,true],['继续本月安排',finish,false]]);
 }
 function openJourney(){
   const j=journeyState();
@@ -77,7 +77,7 @@ function openJourney(){
     return;
   }
   const gs=goalStats(),cf=fastCashFlow(),covered=freedomEligible();
-  showEvent('人生阶段','第二阶段：财务自由','保留月度生活流程。满足任一路线即可通关：实现开局人生目标，或快车道项目当前新增净收入达到 $50,000.00/月；通关时被动收入仍需覆盖必要支出。',[['快车道新增净收入',money(cf)+' / $50,000.00 每月'],['开局人生目标',gs.g.name],['进入时被动收入',money(j.entryPassive)+'/月'],['当前收支安全',covered?'被动收入覆盖支出':'出现缺口，优先恢复现金流']],[['查看快车道机会',openFastProjects,true],['查看并实现人生梦想',openDreamFulfilment,false],['继续生活',finish,false]]);
+  showEvent('人生阶段','第二阶段：财务自由','保留月度生活流程。满足任一路线即可通关：实现开局人生目标，或快车道项目当前新增净收入达到 $50,000.00/月；通关时被动收入仍需覆盖必要支出。',[['快车道新增净收入',money(cf)+' / $50,000.00 每月'],['开局人生目标',gs.g.name],['进入时被动收入',money(j.entryPassive)+'/月'],['当前收支安全',covered?'被动收入覆盖支出':'出现缺口，优先恢复现金流']],[['进入快车道地图',openFastProjects,true],['查看并实现人生梦想',openDreamFulfilment,false],['继续生活',finish,false]]);
 }
 function dreamQuote(){
   const gs=goalStats(),type=gs.g.type;
@@ -136,7 +136,7 @@ function recordSavingsVictory(){
   const goal=DreamGoals.progress(state),j=journeyState();
   if(!goal?.ready||j.phase!=='fast'||j.win)return false;
   const f=DreamGoals.freedom(state);
-  if(!f.ready||!f.homeReady)return false;
+  if(!f.ready||!f.homeReady||!fastIncomeCoverage())return false;
   recordJourneyWin('dreamSavings',goal.g.name);
   Object.assign(j.win,{savings:goal.current,netIncome:f.income,necessaryExpenses:f.expenses});
   return true;
@@ -173,6 +173,7 @@ function openSavingsDream(notice='',manage=false){
     ['同期必要支出',money(f.expenses)],
     ['可用储备（现金及应急金）',money(f.reserve)+' / '+money(f.required)]
   ];
+  if(j.phase==='fast'&&j.projectSoldMonth!=null)rows.push(['现有资产预计月净收入',money(journeyPassiveIncome())+'/月']);
   if(f.homeExpenses)rows.push(['全款入住后预计必要支出',money(f.homeExpenses)+'/月 · '+(f.homeReady?'已达标':'待达标')]);
   const actions=[
     ['存入梦想专款',()=>transfer('deposit'),true,state.cash<=0],
@@ -181,8 +182,8 @@ function openSavingsDream(notice='',manage=false){
   if(j.win)actions.push(['查看通关记录',showVictory,false]);
   else if(j.phase==='rat')actions.push(['进入财富自由快车道',enterFastTrack,false,!f.ready]);
   else{
-    actions.push(['确认梦想通关',finishGoal,true,!(f.ready&&f.homeReady&&progress.ready)]);
-    actions.push(['查看快车道机会',openFastProjects,false]);
+    actions.push(['确认梦想通关',finishGoal,true,!(f.ready&&f.homeReady&&fastIncomeCoverage()&&progress.ready)]);
+    if(!townPending())actions.push(['进入快车道地图',openFastProjects,false]);
   }
   actions.push(['返回',finish,false]);
   showEvent('我的梦想',progress.g.name,progress.g.desc+' 连续结算 12 个月后，资产净收入覆盖同期必要支出，并备有 6 个月必要支出的储备，即可进入快车道。梦想专款与生活储备分开计算。'+(notice?' '+notice:''),rows,actions);
@@ -238,23 +239,70 @@ opportunityMarkup=function(){
   }).join('')+'</div><button data-v26="opportunitySkip" class="wl-secondary">本月不投资，保留现金 →</button>';
 };
 const everydayTakeOpportunity=takeOpportunity;
-takeOpportunity=function(id){
+takeOpportunity=function(id,back){
   const offers=monthlyOffers();if(offers.pool!=='fast'){everydayTakeOpportunity(id);return}
   const p=FAST_PROJECTS.find(p=>p.id===id);if(!p||offers.resolved||!offers.ids.includes(id))return;
+  const snapshot=JSON.stringify(state);
   if(!spendConfirmed('fastInvestment',p.cost,{project:id}))return;
   const success=Math.random()<p.chance;
   const value=success?p.cost:roundCash(p.cost*p.salvage),cf=success?p.cf:0;
   const a={id:assetId(),name:p.name,kind:success?p.kind:'business',cost:p.cost,value,cf,fastTrack:true,fastProject:id,acquiredMonth:state.month};
   if(a.kind==='rental')Object.assign(a,{purchasePrice:p.cost,mortgage:0,apr:.065,monthsLeft:0,payment:0,rent:p.rent,operating:p.operating});
-  state.assets.push(a);offers.resolved=p.name;offers.success=success;syncFinance();save();render();
+  state.assets.push(a);offers.resolved=p.name;offers.success=success;syncFinance();if(!persistDreamChange(snapshot,()=>{if(back)openFastBoardProjects('本次投资未保存，请重试。');else openFastProjects();}))return;render();
   const rows=[['投入',money(p.cost)],['资产当前价值',money(value)],['新增净收入',money(cf)+'/月']];
+  if(back){showEvent('快车道结果',success?'项目已买入':'项目整合未成功',p.name,rows,[['继续走格',back,true]]);return;}
   if(success)showOpportunityCompletion(p,rows);
   else showEvent('快车道结果','项目整合未成功','现金已投入，资产按可出售残值入账；没有新增经营收入。',rows,[['继续',()=>completeMonthlyStep(8),true]]);
 };
 function openFastProjects(){
   if(journeyState().phase!=='fast'){openJourney();return}
+  if(DreamGoals.selected(state)&&typeof switchFastBoard==='function'&&!townPending())return switchFastBoard(true);
   showEvent('快车道','本月大型机会','阶段切换沿用本月最多一个机会的限制。',[],[['返回',finish,false]]);
   $('eventData').innerHTML=opportunityMarkup();$('eventData').style.display='block';
+}
+function fastIncomeCoverage(income=journeyPassiveIncome(),afterSale=false){
+  if(!afterSale&&journeyState().projectSoldMonth==null)return true;
+  const goal=DreamGoals.freedom(state);
+  return income>=Math.max(state.expenses,goal.homeExpenses);
+}
+function openFastBoardProjects(notice=''){
+  const offers=monthlyOffers(),owner=state,month=state.month,activeSlot=slot;
+  const valid=()=>state===owner&&slot===activeSlot&&state.month===month&&state.monthlyOpportunities===offers&&!offers.resolved;
+  if(offers.pool!=='fast'||offers.resolved){
+    return showEvent('项目交易所','本月项目机会已处理','下个月更新报价。',[],[['继续走格',finish,true]]);
+  }
+  const projects=offers.ids.map(id=>FAST_PROJECTS.find(p=>p.id===id)).filter(Boolean).slice(0,3);
+  const rows=projects.map(p=>[p.name,'投入 '+money(p.cost)+' · 月净收入 '+money(p.cf)+' · 成功率 '+Math.round(p.chance*100)+'%']);
+  const actions=projects.map(p=>['查看 '+p.name,()=>{
+    if(!valid())return;
+    showEvent('项目交易所',p.name,p.desc,[['投入',money(p.cost)],['成功后月净收入',money(p.cf)],['失败残值',p.chance<1?money(p.cost*p.salvage):'无整合失败风险'],['退出','可在资产管理格按当前净值出售']],[['确认买入',()=>{if(valid())takeOpportunity(p.id,finish)},true,state.cash<p.cost],['返回报价',()=>openFastBoardProjects(),false]]);
+  },false]);
+  actions.push(['跳过，继续走格',finish,true]);
+  showEvent('项目交易所','本月大型项目',notice||'每月最多买入一个项目。报价在本月内保留。',rows,actions);
+}
+function openFastAssetManagement(page=0){
+  syncFinance();
+  const listed=state.assets.filter(a=>a.fastTrack),j=journeyState(),owner=state,month=state.month,activeSlot=slot;
+  const sold=j.projectSoldMonth===month;
+  const valid=()=>state===owner&&slot===activeSlot&&state.month===month&&j.projectSoldMonth!==month;
+  function preview(a){
+    if(!valid()||!state.assets.includes(a))return;
+    const after=roundCash(journeyPassiveIncome()-(a.cf||0));
+    sellAsset(state.assets.indexOf(a),()=>openFastAssetManagement(page),[
+      ['每月减少的项目净收入',money(a.cf||0)],['出售后预计月净收入',money(after)],
+      ['出售后预计收入覆盖',fastIncomeCoverage(after,true)?'仍覆盖必要支出':'低于必要支出']
+    ]);
+  }
+  const pageSize=8,pages=Math.max(1,Math.ceil(listed.length/pageSize));
+  page=Math.min(page,pages-1);
+  const visible=listed.slice(page*pageSize,(page+1)*pageSize);
+  const rows=[['快车道持有项目',String(listed.length)],['项目每月净收入',money(fastCashFlow())],['本月出售额度',sold?'已使用':'剩余 1 次']];
+  if(pages>1)rows.push(['项目列表',(page+1)+' / '+pages+' 页']);
+  const actions=visible.map(a=>['出售 '+a.name+' · '+money(a.value??a.cost),()=>preview(a),false,sold]);
+  if(page>0)actions.push(['上一页',()=>openFastAssetManagement(page-1),false]);
+  if(page+1<pages)actions.push(['下一页',()=>openFastAssetManagement(page+1),false]);
+  actions.push(['继续走格',finish,true]);
+  showEvent('资产管理处','持有项目与退出','出售前可以查看实收金额和收入变化。',rows,actions);
 }
 const journeyCard=document.createElement('button');journeyCard.id='wlJourney';journeyCard.type='button';journeyCard.setAttribute('aria-label','查看人生阶段');$('wlHeader').appendChild(journeyCard);journeyCard.onclick=openJourney;
 function renderJourney(){

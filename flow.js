@@ -395,7 +395,7 @@ $('emergencyBtn').onclick=()=>{
 };
 const payDebtBase=payDebt;payDebt=function(name){const amount=Math.max(0,Math.min(1000,state.cash,state.debt[name]||0));showEvent('还款预览',name,'',[['还款金额',money(amount)],['剩余现金',money(state.cash-amount)],['剩余本金',money((state.debt[name]||0)-amount)]],[['确认还款',()=>{payDebtBase(name);finish()},true,amount<=0],['取消',finish,false]])};
 const sellBase=sellAsset;
-sellAsset=function(i,back=finish){
+sellAsset=function(i,back=finish,extraRows=[]){
  const asset=state.assets[i];
  if(!asset)return;
  if(asset.kind==='cd')return previewCDWithdrawal(asset,back);
@@ -405,7 +405,7 @@ sellAsset=function(i,back=finish){
  showEvent('出售预览',asset.instrument==='gold'?'卖出黄金':asset.name,
   rental?'确认后按当前游戏市值出售；投资房出售款先清偿对应房贷。':'确认后按当前游戏市值出售。',
   [...(rental?[['当前估值',priceText(asset.value)],['清偿房贷',priceText(asset.mortgage||0)]]:[]),
-   [amount<0?'需补足现金':'预计到账',priceText(Math.abs(amount))]],[
+   [amount<0?'需补足现金':'预计到账',priceText(Math.abs(amount))],...extraRows],[
    ['确认出售',()=>{
     if(state.assets[i]!==asset)return;
     sellBase(i,back);

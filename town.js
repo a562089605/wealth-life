@@ -22,8 +22,41 @@ function showTown(){if(state.requiredIncident)return openRequiredIncident();if(s
 function originalMonthlyPlay(){if(townPending())return;state.townMode=false;townVisible=false;save();document.body.classList.remove('town-map');clearModals();render();startV24Turn(false)}
 // 24 equally spaced paving positions on the illustrated winding street; indices keep old saves valid.
 const TOWN_ROAD_POINTS=[{"x":31.667,"y":52.616},{"x":31.944,"y":46.657},{"x":27.917,"y":40.988},{"x":26.806,"y":34.884},{"x":32.639,"y":30.959},{"x":40.0,"y":29.36},{"x":47.639,"y":28.052},{"x":55.278,"y":29.215},{"x":62.917,"y":31.25},{"x":70.0,"y":33.43},{"x":76.944,"y":36.628},{"x":77.222,"y":42.006},{"x":74.722,"y":47.529},{"x":78.056,"y":53.052},{"x":77.222,"y":58.43},{"x":74.444,"y":63.808},{"x":69.444,"y":67.878},{"x":64.306,"y":70.494},{"x":58.333,"y":71.512},{"x":51.389,"y":72.384},{"x":44.167,"y":71.076},{"x":38.056,"y":69.041},{"x":33.056,"y":64.39},{"x":29.167,"y":59.157}];
-function townPoint(i){return TOWN_ROAD_POINTS[((i%24)+24)%24]}
-function townPaydayDistance(){for(let d=1;d<=24;d++)if(TOWN_TYPES[(townState().position+d)%24]==='payday')return d}
+// Centers of the painted stones, clockwise from the southwest tile.
+const FAST_BOARD_STONES=[
+ [275,775,'fastProjects'],[199,736,'fastDream'],[160,677,'fastAssets'],[170,613,'fastProjects'],
+ [205,555,'payday'],[275,520,'quiet'],[354,493,'fastProjects'],[438,479,'payday'],
+ [525,471,'quiet'],[612,473,'fastDream'],[697,480,'fastAssets'],[780,497,'fastProjects'],
+ [860,524,'quiet'],[914,570,'payday'],[937,630,'quiet'],[919,682,'fastAssets'],
+ [857,726,'fastDream'],[777,760,'fastProjects'],[702,787,'payday'],[620,801,'quiet'],
+ [534,809,'fastAssets'],[443,809,'quiet'],[359,803,'payday']
+];
+const onFastBoard=()=>state?.town?.board==='fast'&&state.gameProgress?.phase==='fast';
+function townPoint(i){
+ if(!onFastBoard())return TOWN_ROAD_POINTS[((i%24)+24)%24];
+ const [x,y]=FAST_BOARD_STONES[i];return {x:x/1122*100,y:y/1402*100};
+}
+function townPaydayDistance(){
+ const types=onFastBoard()?FAST_BOARD_STONES.map(stone=>stone[2]):TOWN_TYPES;
+ for(let d=1;d<=types.length;d++)if(types[(townState().position+d)%types.length]==='payday')return d;
+}
+function switchFastBoard(fast){
+ if(!state||townPending()||townAnimating||state.gameOver?.final)return;
+ if(fast&&state.gameProgress?.phase!=='fast')return;
+ if(state.requiredIncident)return openRequiredIncident();
+ if(state.roomLocation==='home'){
+  leaveTownRoom();
+  if(!townVisible)return;
+ }
+ const t=townState(),previous={...t},oldMode=state.townMode,oldLocation=state.roomLocation;
+ if(onFastBoard()!==fast){
+  if(fast){t.smallTownPosition=t.position;t.position=t.fastPosition??0;t.board='fast';}
+  else{t.fastPosition=t.position;t.position=t.smallTownPosition??0;delete t.board;}
+ }
+ state.townMode=true;state.roomLocation='town';
+ if(save()===false){state.town=previous;state.townMode=oldMode;state.roomLocation=oldLocation;return;}
+ townVisible=true;clearModals();render();
+}
 function townCalendar(){return '第'+(Math.floor(state.month/12)+1)+'年 · 第'+(state.month%12+1)+'月'}
 function openTownLiving(){showEvent('基本生活费','本月必要生活成本','',[],[['返回家中',townHome,false]]);$('eventData').innerHTML=livingMarkup().replace('data-v26="livingFund"','data-town="livingFund"').replace('保险在保险步骤确认；贷款月供请在财富步骤的还款卡确认。','保险可回家安排；月供在储蓄投资与贷款中确认。');$('eventData').style.display='block'}
 function townCareerNotice(move){
@@ -40,12 +73,23 @@ function renderTown(){
  const die=last?.die||1;
  const pawnArt=globalThis.SchoolCareer?.role(state.job) ? 'teacher.webp'
   : coffeeSalaryRole(state.job)==='barista' ? 'barista.webp' : null;
+ if(onFastBoard()){
+  box.innerHTML=`<div class="town-map-scene town-stepping-board fast-track-board">
+   <img src="assets/finance/fast-track-board.webp" alt="快车道环形地图，设有投资、资产管理、梦想和结算格">
+   <span class="town-pawn fast-track-pawn" data-town-pawn style="left:${pos.x}%;top:${pos.y}%" aria-label="当前位置第${t.position+1}格">●</span>
+   <img class="town-flight-die" data-town-flight alt="" hidden>
+   <button type="button" class="fast-board-roll" data-town="roll" aria-label="掷骰子" ${locked?'disabled':''}></button>
+   <button type="button" class="fast-board-return" data-town="fast-return" aria-label="返回小镇" ${locked?'disabled':''}></button>
+   <img class="fast-board-face" src="${TOWN_ART}crystal-die-${die}.webp" alt="骰子 ${die} 点">
+  </div>${townPending()&&!townAnimating?'<button type="button" data-town="resume">继续处理当前事件</button>':''}`;
+  return;
+ }
  box.innerHTML=`<div class="town-toolbar"><b><img class="town-approved-title" src="assets/confirmed-20261128/town-title.webp" alt="起步小镇"></b><p class="town-return-rules"><img class="town-approved-house" src="assets/confirmed-20261128/town-return-house.webp" alt=""><strong>触发回家</strong> 自由时间用完、幸福或能量低于 20、压力达到 80 或以上。<span>现金不足时，部分付费选项不可用。</span></p></div>
  <div class="town-map-scene town-stepping-board"><img src="assets/confirmed-20261128/town-board.webp" alt="沿碎石路环绕喷泉的二十四块手绘汀步石">
  <span class="town-pawn" data-town-pawn style="left:${pos.x}%;top:${pos.y}%" aria-label="玩家当前位置第${t.position+1}格">${pawnArt?`<img src="${TOWN_ART}${pawnArt}" alt="">`:'●'}</span>
  <img class="town-flight-die" data-town-flight alt="" hidden></div>
  <div class="town-roll-controls"><button type="button" class="town-crystal-button" data-town="roll" aria-label="掷骰子" ${locked?'disabled':''}><img src="${TOWN_ART}crystal-die-${die}.webp" alt="">掷骰子</button><button type="button" class="town-return-button" data-town="home" aria-label="回家并结算本月" ${locked?'disabled':''}><img src="assets/finance/bill-house.webp" alt="">回家</button></div>
- <div class="town-asset-controls"><button type="button" data-town="holdings" ${locked?'disabled':''}>地图资产</button></div>
+ <div class="town-asset-controls"><button type="button" data-town="holdings" ${locked?'disabled':''}>地图资产</button>${state.gameProgress?.phase==='fast'?'<button type="button" data-town="fast-enter" '+(locked?'disabled':'')+'>进入快车道</button>':''}</div>
  ${townPending()&&!townAnimating?'<button type="button" data-town="resume">继续处理当前事件</button>':''}`;
 
 }
@@ -54,8 +98,10 @@ function rollTown(){
  if(state.requiredIncident)return openRequiredIncident();
  if(townHousingBlocked())return;
  if(state.crisis&&state.crisis.ackMonth!==state.month)return showRecovery();
- const t=townState(),die=townDie(),from=t.position,path=Array.from({length:die},(_,i)=>(from+i+1)%24);
- const prior=t.movement,to=path.at(-1),type=TOWN_TYPES[to];
+ const t=townState(),die=townDie(),from=t.position,fast=onFastBoard();
+ const length=fast?FAST_BOARD_STONES.length:TOWN_TYPES.length;
+ const path=Array.from({length:die},(_,i)=>(from+i+1)%length);
+ const prior=t.movement,to=path.at(-1),type=fast?FAST_BOARD_STONES[to][2]:TOWN_TYPES[to];
  const move={id:++t.rolls,die,from,to,path,type,month:state.month,payExpected:type==='payday'?state.month+1:null,payDone:false,resolved:false};
  t.position=to;t.movement=move;
  if(save()===false){t.rolls--;t.position=from;t.movement=prior;return;}
@@ -154,7 +200,7 @@ monthlyOffers=function(){
 };
 function drawTownOpportunity(move,deck){
  if(townOpportunityMove()!==move||move.offers)return;
- const fast=journeyState().phase==='fast';
+ const fast=onFastBoard();
  const marketCards=TOWN_MARKET_CARDS.filter(card=>TOWN_MARKET_DEALS[card.id].unit||!townMarketHoldings().some(holding=>holding.deal===card.id));
  const pool=fast?FAST_PROJECTS:[...V26_OFFERS,...marketCards,...TOWN_PROJECT_CARDS].filter(project=>
   !['volunteer','stall','microcompany'].includes(project.id)&&(deck==='small'?project.cost<=TOWN_SMALL_DEAL_LIMIT:project.cost>TOWN_SMALL_DEAL_LIMIT));
@@ -266,10 +312,13 @@ function openTownLanding(){
  if(type==='community'&&!move.opened&&window.RelationshipLifePages?.canOpen()&&
     window.RelationshipLifeCards?.drawRegular(state,move.id,{save})&&window.RelationshipLifePages.open())return;
  move.opened=true;save();
+ if(type==='fastProjects')return openFastBoardProjects();
+ if(type==='fastAssets')return openFastAssetManagement();
+ if(type==='fastDream')return openJourney();
  if(type==='opportunity')return openTownOpportunity();
  if(type==='market'&&!move.type){if(openBuyerOffer())return;resolveTownMove();return}
  if(type==='growth'){showEvent('学习成长','投资自己','',[],[['查看学历计划',openEducation,true],['练习兴趣技能',()=>$('hobbyBtn').click(),false],['本次不安排',finish,false]]);$('eventData').innerHTML=learningCareerCard();$('eventData').style.display='block';return}
- if(type==='career'){if(window.SchoolMapCards?.open(move)||workplaceEvent())return;openWorkAdjustment();return}
+ if(type==='career'){if(state.job&&!state.retired&&!state.unemployedMonths&&(window.SchoolMapCards?.open(move)||workplaceEvent()))return;resolveTownMove();return}
  if(type==='life'){if(typeof openMapLife==='function')return openMapLife(move);$('lifestyleBtn').click();return}
  if(type==='community'){$('networkBtn').click();return}
  if(type==='risk'){requireIncident(state.carOwned?'车辆必要维修':'家用电器损坏',state.carOwned?420:180);return}
@@ -290,7 +339,7 @@ for(const id of ['qOverview','qCareer','qLife','qAssets']){const previous=$(id).
 $('qNext').onclick=$('hubNext').onclick=()=>townEnabled()?showTown():continueLife();
 $('wlResume').onclick=()=>{$('wlCloseMenu').click();if(townEnabled())showTown();else continueLife()};
 const townMenu=document.createElement('button');townMenu.textContent='进入起步小镇';townMenu.onclick=()=>{$('wlCloseMenu').click();townStart()};document.querySelector('.wl-menu-items').append(townMenu);
-document.addEventListener('click',e=>{const button=e.target.closest('[data-town]');if(!button)return;const action=button.dataset.town;if(action==='roll')rollTown();if(action==='resume'&&!townHousingBlocked())resumeTownMove();if(action==='home')townHome();if(action==='livingFund')fundShortfall(roundCash(Math.max(0,livingTotal()-(paymentReceipt().living||0))),openTownLiving);if(action==='monthly')originalMonthlyPlay();if(action==='holdings')openTownMarketHoldings(()=>{clearModals();render()});if(action==='stage')$('wlJourney').click()});
+document.addEventListener('click',e=>{const button=e.target.closest('[data-town]');if(!button)return;const action=button.dataset.town;if(action==='roll')rollTown();if(action==='resume'&&!townHousingBlocked())resumeTownMove();if(action==='home')townHome();if(action==='livingFund')fundShortfall(roundCash(Math.max(0,livingTotal()-(paymentReceipt().living||0))),openTownLiving);if(action==='monthly')originalMonthlyPlay();if(action==='holdings')openTownMarketHoldings(()=>{clearModals();render()});if(action==='stage')$('wlJourney').click();if(action==='fast-enter')switchFastBoard(true);if(action==='fast-return')switchFastBoard(false)});
 
 function openTownSecurities(){showEvent('证券市场','查看证券产品','',[],V26_INSTRUMENTS.map(i=>[i.name,()=>i.id==='gold'&&window.FinancePages?FinancePages.gold(openTownSecurities):openInstrument(i.id),false]).concat([['离开市场',finish,true]]))}
 
@@ -298,6 +347,13 @@ function openTownSecurities(){showEvent('证券市场','查看证券产品','',[
 
 const townPaydayStyles=document.createElement('style');
 townPaydayStyles.textContent=`
+#townView .town-stepping-board.fast-track-board{aspect-ratio:1122/1402}
+#townView .fast-track-board>.fast-board-face{position:absolute;left:12%;top:87%;width:15%;height:11%;object-fit:contain;background:#fff3d5 url("assets/finance/paper.webp");border-radius:15px;pointer-events:none}
+#townView .fast-track-board>button{position:absolute;top:88%;height:10%;border:0;border-radius:20px;background:transparent;min-height:44px;box-shadow:none}
+#townView .fast-board-roll{left:29%;width:33%}
+#townView .fast-board-return{left:64%;width:29%}
+#townView .fast-track-board>button:focus-visible{outline:3px solid #315139}
+#townView .fast-track-board>.fast-track-pawn{width:5%;height:auto;aspect-ratio:1;background:#fff2c1;border:2px solid #294b34;border-radius:50%;display:grid;place-items:center;color:#315139;z-index:2;transform:translate(-50%,-50%)}
 #townView .town-asset-controls {display:flex;justify-content:center;padding:6px 0 12px;}
 #townView .town-asset-controls button {min-height:44px;padding:5px 16px;border:1px solid #b8ae85;border-radius:999px;background:#fbf2d8;color:#284836;font-size:.86rem;}
 

@@ -119,12 +119,17 @@ sellAsset=function(i,back=finish){
   showEvent('CD','本金已锁定','到期时自动回到现金。',[],[['返回',finish,true]]);
   return;
  }
+ const trackingSale=a.fastTrack&&state.gameProgress?.phase==='fast';
+ if(trackingSale&&state.gameProgress.projectSoldMonth===state.month){
+  return showEvent('资产管理处','本月已出售一个快车道项目','下个月可继续出售。',[],[['返回',back,true]]);
+ }
  const proceeds=roundCash(a.kind==='rental'?a.value-a.mortgage:a.value??a.cost);
  if(!Number.isFinite(proceeds)||state.cash+proceeds<0)return;
  const previous=structuredClone(state);
  state.cash=roundCash(state.cash+proceeds);
  (state.financeLedger??=[]).push({kind:'assetSale',month:state.month,amount:proceeds,assetId:a.id,instrument:a.instrument});
  state.assets.splice(i,1);
+ if(trackingSale)state.gameProgress.projectSoldMonth=state.month;
  try{
   if(save()===false)throw Error('save failed');
  }catch{

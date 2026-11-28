@@ -144,9 +144,9 @@ function opportunityBlock(project){
  return '';
 }
 const takeFastOpportunity=takeOpportunity;
-takeOpportunity=function(id){
+takeOpportunity=function(id,back){
  const offer=monthlyOffers();
- if(offer.pool==='fast')return takeFastOpportunity(id);
+ if(offer.pool==='fast')return takeFastOpportunity(id,back);
  const project=V26_OFFERS.find(item=>item.id===id);
  if(!project||offer.resolved||!offer.ids.includes(id)||opportunityBlock(project)||state.cash<project.cost)return;
  const mapPurchase=typeof townOpportunityMove==='function'&&townOpportunityMove()?.offers===offer;
