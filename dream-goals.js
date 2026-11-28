@@ -7,8 +7,8 @@ const DreamGoals=(()=>{
   dreamRest:{name:'躺平',target:144000,desc:'按每月 $4,000，备足三年自由生活费。'},
   dreamSchool:{name:'捐一座学校',target:46600000,desc:'建校资金 $38,600,000，加首年运营经费 $8,000,000。'},
   dreamTravel:{name:'世界那么大我想去看看（环球旅行）',target:72000,desc:'一年旅费 $60,000，加返程生活储备 $12,000。'},
-  dreamPark:{name:'建造属于自己的游乐园',target:104000000,desc:'备齐区域主题乐园的全额建设资金。'},
-  dreamCruise:{name:'拥有一艘可以航行全球的邮轮',target:610000000,desc:'邮轮 $600,000,000，加首航预算 $10,000,000。'},
+  dreamPark:{name:'建造属于自己的游乐园',target:80000000,desc:'备齐区域主题乐园的全额建设资金。'},
+  dreamCruise:{name:'拥有一艘可以航行全球的邮轮',target:450000000,desc:'邮轮 $440,000,000，加首航预算 $10,000,000。'},
   dreamScholarship:{name:'建一笔助学基金',target:100000,desc:'备齐 $100,000 基金本金，年度发放目标 $3,000。'},
   dreamRetire:{name:'提前退休，自由安排时间',target:240000,desc:'按每月 $4,000，备足五年退休过渡金。'}
  };
