@@ -71,3 +71,30 @@
  font-size:inherit;
  text-align:left;
 }
+
+/* Warm room and gold orbit from the approved storyboard, driven by the existing draw. */
+.family-home-event .family-backdrop {
+ background:linear-gradient(#3a241a80,#4c351c55),
+  var(--family-room-art,url("assets/confirmed-20261128/housing-draw-texture.webp")) center / cover;
+}
+.family-stage::before {
+ content:"";
+ position:absolute;
+ inset:38% 8% 20%;
+ border:2px solid #f8cd7266;
+ border-radius:50%;
+ transform:rotate(-14deg) scale(.82);
+ box-shadow:0 0 24px #ffbc66a0,inset 0 0 16px #ffe5aa75;
+ opacity:0;
+ transition:opacity .35s,transform .5s;
+ pointer-events:none;
+}
+.orbiting .family-stage::before {opacity:1;transform:rotate(-14deg) scale(1)}
+.flipping .family-stage::before {opacity:.6;transform:rotate(10deg) scale(.74)}
+#familyHomeEvent .confirmed-family-face .family-choice {
+ background:#e7ebc6!important;
+ color:#263e23!important;
+ padding:8px 12px!important;
+ margin:8px 0 0!important;
+ border:1px solid #9da669!important;
+}

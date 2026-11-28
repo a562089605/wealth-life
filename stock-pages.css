@@ -253,3 +253,13 @@
   grid-column: 1 / -1;
   background: linear-gradient(#ffe28a, #f4bd4e) !important;
 }
+
+.stock-market-art::after {
+ content:"";
+ position:absolute;
+ inset:16% 16% auto 14%;
+ height:17%;
+ border-radius:8px;
+ background:url("assets/confirmed-20261128/stock-banner.webp") center / cover no-repeat;
+ pointer-events:none;
+}

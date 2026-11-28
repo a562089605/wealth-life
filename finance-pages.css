@@ -2057,3 +2057,17 @@
  border-radius:10px;
  pointer-events:none;
 }
+
+/* The approved illustrations occupy the art band above the live quote controls. */
+#game > .event:is(.finance-emergency,.finance-cd,.finance-etf)::after {
+ content:"";
+ position:absolute;
+ inset:16.5% 16.5% auto 13.5%;
+ height:12%;
+ border-radius:8px;
+ background:var(--confirmed-asset-banner) center / cover no-repeat;
+ pointer-events:none;
+}
+.finance-emergency {--confirmed-asset-banner:url("./assets/confirmed-20261128/emergency-banner.webp")}
+.finance-cd {--confirmed-asset-banner:url("./assets/confirmed-20261128/cd-banner.webp")}
+.finance-etf {--confirmed-asset-banner:url("./assets/confirmed-20261128/etf-banner.webp")}

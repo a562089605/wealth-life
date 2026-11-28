@@ -109,3 +109,35 @@
  grid-column:1/-1;
  border-radius:16px;
 }
+
+.approved-save-delete {
+ width:min(340px,calc(100% - 32px));
+ max-height:calc(100dvh - 24px);
+ box-sizing:border-box;
+ border:2px solid #c59b4d;
+ border-radius:24px;
+ padding:20px;
+ text-align:center;
+ color:#234328;
+ background:#fff3d5 url("assets/finance/paper.webp");
+ box-shadow:0 8px 36px #5136185c;
+}
+.approved-save-delete::backdrop {background:#301f15a6}
+.approved-save-delete h2 {margin:0;font:700 29px WealthHand,KaiTi,serif}
+.approved-save-delete img {display:block;width:min(72%,190px);margin:.65rem auto;mix-blend-mode:multiply}
+.approved-save-delete form > div {display:flex;gap:.55rem}
+.approved-save-delete button {flex:1;min-height:44px;border:1px solid #969a63;border-radius:24px;background:#dce5ac;color:#243a23}
+.approved-save-delete button[value="delete"] {border-color:#a75637;background:#e59672;color:#4e2115}
+#game > .event.event-active.approved-save-retry {
+ width:min(360px,calc(100% - 28px));
+ border:2px solid #c59b4d;
+ background:#fff3d5 url("assets/finance/paper.webp");
+}
+.approved-save-retry > #eventTitle::after {
+ content:"";
+ display:block;
+ height:88px;
+ margin:5px 0;
+ background:url("assets/confirmed-20261128/retry-emblem.webp") center / contain no-repeat;
+ mix-blend-mode:multiply;
+}

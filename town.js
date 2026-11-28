@@ -21,7 +21,7 @@ function townStart(){if(townAnimating)return;if(window.leaveTownRoom)return wind
 function showTown(){if(state.requiredIncident)return openRequiredIncident();if(state.roomLocation==='home'&&window.leaveTownRoom)return window.leaveTownRoom();if(townHousingBlocked())return;townVisible=true;$('game').classList.remove('v24-running');clearModals();render();if(townPending())resumeTownMove()}
 function originalMonthlyPlay(){if(townPending())return;state.townMode=false;townVisible=false;save();document.body.classList.remove('town-map');clearModals();render();startV24Turn(false)}
 // 24 equally spaced paving positions on the illustrated winding street; indices keep old saves valid.
-const TOWN_ROAD_POINTS=[{"x":28.164,"y":57.489},{"x":30.927,"y":51.355},{"x":30.927,"y":45.506},{"x":26.56,"y":40.514},{"x":25.134,"y":35.021},{"x":30.838,"y":31.669},{"x":38.414,"y":29.957},{"x":46.346,"y":28.887},{"x":54.991,"y":30.1},{"x":62.478,"y":31.954},{"x":70.856,"y":33.381},{"x":77.273,"y":36.662},{"x":77.986,"y":41.013},{"x":74.153,"y":45.649},{"x":78.164,"y":50.785},{"x":77.807,"y":56.348},{"x":75.045,"y":61.484},{"x":68.984,"y":64.194},{"x":63.904,"y":67.047},{"x":57.843,"y":67.903},{"x":49.822,"y":67.832},{"x":43.316,"y":67.332},{"x":37.166,"y":65.977},{"x":31.194,"y":61.698}];
+const TOWN_ROAD_POINTS=[{"x":31.667,"y":52.616},{"x":31.944,"y":46.657},{"x":27.917,"y":40.988},{"x":26.806,"y":34.884},{"x":32.639,"y":30.959},{"x":40.0,"y":29.36},{"x":47.639,"y":28.052},{"x":55.278,"y":29.215},{"x":62.917,"y":31.25},{"x":70.0,"y":33.43},{"x":76.944,"y":36.628},{"x":77.222,"y":42.006},{"x":74.722,"y":47.529},{"x":78.056,"y":53.052},{"x":77.222,"y":58.43},{"x":74.444,"y":63.808},{"x":69.444,"y":67.878},{"x":64.306,"y":70.494},{"x":58.333,"y":71.512},{"x":51.389,"y":72.384},{"x":44.167,"y":71.076},{"x":38.056,"y":69.041},{"x":33.056,"y":64.39},{"x":29.167,"y":59.157}];
 function townPoint(i){return TOWN_ROAD_POINTS[((i%24)+24)%24]}
 function townPaydayDistance(){for(let d=1;d<=24;d++)if(TOWN_TYPES[(townState().position+d)%24]==='payday')return d}
 function townCalendar(){return '第'+(Math.floor(state.month/12)+1)+'年 · 第'+(state.month%12+1)+'月'}
@@ -40,8 +40,8 @@ function renderTown(){
  const die=last?.die||1;
  const pawnArt=globalThis.SchoolCareer?.role(state.job) ? 'teacher.webp'
   : coffeeSalaryRole(state.job)==='barista' ? 'barista.webp' : null;
- box.innerHTML=`<div class="town-toolbar"><b>起步小镇</b><p class="town-return-rules"><strong>触发回家</strong> 自由时间用完、幸福或能量低于 20、压力达到 80 或以上。<span>现金不足时，部分付费选项不可用。</span></p></div>
- <div class="town-map-scene town-stepping-board"><img src="${TOWN_ART}board.webp" alt="沿碎石路环绕喷泉的二十四块手绘汀步石">
+ box.innerHTML=`<div class="town-toolbar"><b><img class="town-approved-title" src="assets/confirmed-20261128/town-title.webp" alt="起步小镇"></b><p class="town-return-rules"><img class="town-approved-house" src="assets/confirmed-20261128/town-return-house.webp" alt=""><strong>触发回家</strong> 自由时间用完、幸福或能量低于 20、压力达到 80 或以上。<span>现金不足时，部分付费选项不可用。</span></p></div>
+ <div class="town-map-scene town-stepping-board"><img src="assets/confirmed-20261128/town-board.webp" alt="沿碎石路环绕喷泉的二十四块手绘汀步石">
  <span class="town-pawn" data-town-pawn style="left:${pos.x}%;top:${pos.y}%" aria-label="玩家当前位置第${t.position+1}格">${pawnArt?`<img src="${TOWN_ART}${pawnArt}" alt="">`:'●'}</span>
  <img class="town-flight-die" data-town-flight alt="" hidden></div>
  <div class="town-roll-controls"><button type="button" class="town-crystal-button" data-town="roll" aria-label="掷骰子" ${locked?'disabled':''}><img src="${TOWN_ART}crystal-die-${die}.webp" alt="">掷骰子</button><button type="button" class="town-return-button" data-town="home" aria-label="回家并结算本月" ${locked?'disabled':''}><img src="assets/finance/bill-house.webp" alt="">回家</button></div>

@@ -1,4 +1,24 @@
 // Presentation only: decorate the original save buttons, retaining their existing handlers.
+function openSaveDeleteConfirmation(slotNumber,remove){
+ const dialog=document.createElement('dialog');
+ if(typeof dialog.showModal!=='function'){
+  if(confirm(`确定删除存档 ${slotNumber}？此操作无法撤销。`))remove();
+  return;
+ }
+ dialog.className='approved-save-delete';
+ dialog.setAttribute('aria-labelledby','approved-save-delete-title');
+ dialog.innerHTML='<form method="dialog"><h2 id="approved-save-delete-title">删除存档</h2>'+
+  '<img src="assets/confirmed-20261128/delete-emblem.webp" alt=""><p></p>'+
+  '<div><button value="cancel" autofocus>取消</button><button value="delete">确认删除</button></div></form>';
+ dialog.querySelector('p').textContent=`确定删除存档 ${String(slotNumber).padStart(2,'0')}？此操作无法撤销。`;
+ dialog.addEventListener('close',()=>{
+  const confirmed=dialog.returnValue==='delete';
+  dialog.remove();
+  if(confirmed)remove();
+ },{once:true});
+ document.body.append(dialog);
+ dialog.showModal();
+}
 (function(){'use strict';
  const home=document.getElementById('home'),slots=document.getElementById('slots'),newGame=document.getElementById('newGame');if(!home||!slots||!newGame)return;
  const make=(tag,text,cls)=>{const e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e;};

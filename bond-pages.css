@@ -189,3 +189,13 @@
 #game > .event.event-active:has(:is(.bond-market-art, .stock-market-art)) #eventClose:focus-visible {
   opacity: 1;
 }
+
+.bond-market-art::after {
+ content:"";
+ position:absolute;
+ inset:16% 15% auto;
+ height:13%;
+ border-radius:8px;
+ background:url("assets/confirmed-20261128/bond-banner.webp") center / cover no-repeat;
+ pointer-events:none;
+}

@@ -481,7 +481,7 @@
    window.modalReturn=savings;
    eventCard.classList.add('finance-parchment');
    const data=$('eventData');
-   data.innerHTML=`<img class="retirement-art" src="${art}retirement-desk.webp" width="720" height="320" alt="">
+   data.innerHTML=`<img class="retirement-art" src="assets/confirmed-20261128/retirement-banner.webp" width="720" height="320" alt="">
     <div class="retirement-accounts">
      <section>
       <h3>401(k) · 雇主退休账户</h3>
@@ -614,7 +614,7 @@
    window.modalReturn=back;
    eventCard.classList.add('finance-parchment','retirement-transaction');
    const data=$('eventData');
-   data.innerHTML=`<img class="retirement-art gold-overview-art" src="${art}gold-overview-crayon.webp" width="900" height="277" alt="">
+   data.innerHTML=`<img class="retirement-art gold-overview-art" src="assets/confirmed-20261128/gold-banner.webp" width="900" height="277" alt="">
     <div class="retirement-transfer-panel">
      <div class="retirement-transfer-total"><span>当前价格</span><strong>${priceText(quote.price)} / 份</strong></div>
      <dl><div><dt>持仓市值</dt><dd>${priceText(value)}</dd></div>
