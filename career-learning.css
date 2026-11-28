@@ -1312,3 +1312,12 @@ body.career-pages-open{overflow:hidden}.career-overlay{position:fixed;inset:0;z-
 .career-hobby-menu .career-choice small{display:inline-block;margin-top:3px;padding:1px 4px;border-radius:9px;background:#d5e3a4;font:600 clamp(10px,2.9vw,14px)/1.2 system-ui,sans-serif;color:#294b2e}
 .career-hobby-menu .career-choice>.career-skills-arrow{font-size:17px;color:#365b36}
 .career-hobby-menu .career-content .career-back{background:#f9da83}
+
+.career-approved-profile.career-fixed .career-fixed-heading::after {
+ content:"";
+ position:absolute;
+ inset:34% 2% 2%;
+ border-radius:10px;
+ background:url("./assets/confirmed-20261128/barista-career-page.webp") center / cover no-repeat;
+ pointer-events:none;
+}

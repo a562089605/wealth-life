@@ -79,6 +79,8 @@
   const current=state.housing===detailKey;
   if(page==='detail'&&detailKey==='shared'&&!current){box.innerHTML=sharedReservation();return;}
   let html=image(page==='life'?'life-monthly-bill':page==='detail'?detailAssets[detailKey][current?1:0]:page);
+  const approvedScene=page==='rest'?'rest-extra':page==='life'?'life-overview':page==='detail'&&detailKey==='rent1'?'housing-apartment-detail':null;
+  if(approvedScene)html+='<img class="painted-approved-scene painted-scene-'+approvedScene+'" src="assets/confirmed-20261128/'+approvedScene+'.webp" alt="">';
   if(page==='rest'){
    const missing=restMissing();restQuote={cycle:state.month,count:monthlyRest().entries.length};
    html+=stats(page)+button('room','返回房屋','left:3%;top:2.2%;width:25%;height:4%')+button('rest-confirm','确认休息4小时','left:11%;top:84.7%;width:78%;height:5%',!!missing.length)+button('room','返回房屋','left:11%;top:90.5%;width:78%;height:5%');

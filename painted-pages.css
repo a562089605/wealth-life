@@ -310,3 +310,8 @@ body.painted-screen #game > #paintedView.painted-room-backdrop:not([hidden]) {
 }
 .housing-family-current [data-painted="housing-list"]{background:#f3cf71}
 .housing-family-current [data-painted="life"]{background:#fff4db;border-color:#899765}
+
+.painted-approved-scene {position:absolute;object-fit:cover;pointer-events:none;border-radius:3%}
+.painted-scene-rest-extra {left:4%;top:18%;width:92%;height:28%}
+.painted-scene-housing-apartment-detail {left:6%;top:22%;width:88%;height:39%}
+.painted-scene-life-overview {left:52%;top:1.2%;width:46%;height:17.8%}
