@@ -71,7 +71,10 @@
  }
  function openDetail(index){const p=state.pets?.[index];if(!p)return openOverview();const c=cfg(p);if(!c){const ctx=panel('宠物资料'),paper=plain(ctx,'宠物资料待核对');paper.append(textNode('p',petName(p)+'：保留旧记录，不重新领养或收费。'));action(ctx,paper,'查看原照护',()=>{close();legacyOpenCare();});action(ctx,paper,'返回我的宠物',openOverview);return;}
   const ctx=panel(c.name+'的资料'),e=canvas(ctx,'detail-actions');ctx.node.classList.add('pet-detail-overlay');
-  if(spec(p)!=='dog'){const hero=box(e,'',0,9,100,25.4,'pet-detail-hero');hero.append(portrait(asset('success-'+spec(p))));}
+  const hero=box(e,'',0,9,100,25.4,'pet-detail-hero');
+  if(spec(p)==='dog'){
+   const img=textNode('img','','pet-approved-dog-hero');img.src='assets/confirmed-20261128/pet-dog-profile.webp';img.alt='';hero.append(img);
+  }else hero.append(portrait(asset('success-'+spec(p))));
   box(e,petName(p)+' · '+c.name,22,35.1,56,4.2,'pet-name');
   hit(ctx,e,'每月费用',4,44.5,92,9.5,()=>{if(validPet(ctx,p,index))openBasicFees(index);});
   hit(ctx,e,'日常照顾',4,54.7,92,9.3,()=>{if(validPet(ctx,p,index))openClean(index);});
@@ -186,7 +189,7 @@
   cash.append(textNode('span','可用现金'),textNode('strong',money(state.cash)));
   header.append(textNode('span',calendar(state.month)),cash);
   const art=textNode('img','','pet-page-art');
-  art.src='assets/pets/adoption-redraw/'+id+'.webp';
+  art.src=id==='dog'?'assets/confirmed-20261128/pet-dog-adoption.webp':'assets/pets/adoption-redraw/'+id+'.webp';
   art.width=941;art.height=604;art.alt=q.name+' · 取名与费用';
   e.append(header,art);
   const form=textNode('div','','pet-adoption-form');

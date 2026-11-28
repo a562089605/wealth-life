@@ -29,9 +29,9 @@
 | 学习进度 | [education-progress-approved.png](map-cards/education-progress-approved.png) | `1060ce1c3d6c41770d91067eeb77b663b368dc1b91f11f79eb010b26f3878646` | [education-progress.webp](../../assets/confirmed-20261128/education-progress.webp) |
 | 我的关系网 | [relationship-directory-approved.png](map-cards/relationship-directory-approved.png) | `8606138efa9f040503737860a0f030be2b8d57c577ffde7ed788dffbb017e033` | [relationship-directory.webp](../../assets/confirmed-20261128/relationship-directory.webp) |
 | 我的职业 · 咖啡师 | [barista-career-page-approved.png](map-cards/barista-career-page-approved.png) | `0c53a051bbfc2bf865dea1cd442a9a074eca867d56343ee68656aa2aff9913b6` | 待接入 |
-| 宠物资料 · 柯基 | [pet-dog-profile-approved.png](map-cards/pet-dog-profile-approved.png) | `727f3701b9c3ee3b1719685f85cdbaa2113c2213b9077d9d31877e47467a1544` | 待接入 |
+| 宠物资料 · 柯基 | [pet-dog-profile-approved.png](map-cards/pet-dog-profile-approved.png) | `727f3701b9c3ee3b1719685f85cdbaa2113c2213b9077d9d31877e47467a1544` | [pet-dog-profile.webp](../../assets/confirmed-20261128/pet-dog-profile.webp) |
 | 储蓄与投资 | [finance-savings-approved.png](map-cards/finance-savings-approved.png) | `88d13cee72b04ef481ec54bc15c4234bce5cf2a4b86ce010b67a45829c1f8fd9` | 待接入 |
-| 柯基 · 取名与费用 | [pet-dog-adoption-approved.png](map-cards/pet-dog-adoption-approved.png) | `e6d17da9a47d504064108762cb9006f0d462b9b894982b4c261949bf410ce15e` | 待接入 |
+| 柯基 · 取名与费用 | [pet-dog-adoption-approved.png](map-cards/pet-dog-adoption-approved.png) | `e6d17da9a47d504064108762cb9006f0d462b9b894982b4c261949bf410ce15e` | [pet-dog-adoption.webp](../../assets/confirmed-20261128/pet-dog-adoption.webp) |
 | 生活总览 · 橙云修订稿 | [life-overview-approved.png](map-cards/life-overview-approved.png) | `85f5e2b601e67b6857f4cc6be4b708d7c696aed0cf21dc70eaf046d1207b81ad` | 待接入 |
 | 应急金、定期存款、退休账户 | [savings-retirement-approved.png](asset-pages/savings-retirement-approved.png) | `a6da5ce20e6984466e0cc6e518f82f170ffcb7a15625f1451f60069b3392602d` | 待接入 |
 | ETF、股票、基金、政府债券 | [securities-approved.png](asset-pages/securities-approved.png) | `98bef2c410e3e6bce6d8600667c893e5ce7b024b7c837b7888b806364c1ec28b` | 待接入 |
