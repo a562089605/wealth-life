@@ -537,7 +537,7 @@ function openRetirementChoice(back=finish){
 $('k401Btn').onclick=()=>open401Account();
 $('iraBtn').onclick=()=>openIRAAccount();
 $('retireBtn').onclick=()=>openRetirementChoice();
-$('dismissOnboard').onclick=()=>{state.onboardDone=true;save();render()};$('qNext').onclick=()=>$('next').click();$('qOverview').onclick=()=>document.querySelector('#game .card').scrollIntoView({behavior:'smooth'});$('qLife').onclick=()=>$('lifestyleStatus').closest('.card').scrollIntoView({behavior:'smooth'});$('qAssets').onclick=()=>$('assets').closest('.card').scrollIntoView({behavior:'smooth'});$('saveExit').onclick=()=>{save();home()};$('restart').onclick=()=>{if(confirm(`删除存档 ${slot} 并重新开始？`)){window.deleteCloudSaveSlot(slot);state=null;home()}};
+$('dismissOnboard').onclick=()=>{state.onboardDone=true;save();render()};$('qNext').onclick=()=>$('next').click();$('qOverview').onclick=()=>document.querySelector('#game .card').scrollIntoView({behavior:'smooth'});$('qLife').onclick=()=>$('lifestyleStatus').closest('.card').scrollIntoView({behavior:'smooth'});$('qAssets').onclick=()=>$('assets').closest('.card').scrollIntoView({behavior:'smooth'});$('saveExit').onclick=()=>{save();home()};$('restart').onclick=()=>{const selected=slot,owner=state;openSaveDeleteConfirmation(selected,()=>{if(slot!==selected||state!==owner)return;window.deleteCloudSaveSlot(selected);state=null;home()});};
 
 // V21 UI: simple top-level categories; existing simulation systems remain underneath.
 let v21Section='overview';
