@@ -59,7 +59,8 @@
   eventCard.classList.add('finance-original','finance-approved-tall','finance-approved-'+kind);
   const data=$('eventData');
   data.style.display='block';
-  data.innerHTML='<img class="finance-original-art" src="'+art+kind+'-approved.webp" width="1024" height="1536" alt="">'+content;
+  const background=kind==='savings'?'assets/confirmed-20261128/finance-savings.webp':art+kind+'-approved.webp';
+  data.innerHTML='<img class="finance-original-art" src="'+background+'" width="1024" height="1536" alt="">'+content;
   positionActions(targets.map(box=>[null,null,...box]),1024,1536);
   data.querySelectorAll('.finance-original-scroll').forEach(showDetailScroll);
  }
@@ -232,6 +233,10 @@
    const data=$('eventData');
    data.style.display='block';
    data.innerHTML='<img class="finance-original-art" src="'+art+kind+'-original.webp" width="640" height="853" alt="">'+content;
+   const scene=document.createElement('img');
+   scene.className='confirmed-finance-scene';scene.alt='';
+   scene.src='assets/confirmed-20261128/finance-'+(kind==='bills'?'ledger':'assets')+'-character.webp';
+   data.append(scene);
    data.querySelectorAll('.finance-original-scroll').forEach(showDetailScroll);
   }
 

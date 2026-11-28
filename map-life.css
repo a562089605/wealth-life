@@ -118,3 +118,7 @@
 .map-life-coffee .map-life-story-art{width:100%;max-width:none;border-radius:14px}
 .map-life-coffee .map-life-story-option{border-color:#b28b44;background:#f7d777;color:#233b28}
 .map-life-coffee .map-life-story-option+button{border-color:#8b995d;background:#e7ebcb}
+
+.map-life-confirmed-effects {display:flex;flex-wrap:wrap;gap:.25rem .6rem}
+.map-life-confirmed-effects > span {display:inline-flex;align-items:center;gap:.2rem}
+.map-life-confirmed-effects img {width:1.45em;height:1.45em;object-fit:contain;mix-blend-mode:multiply}

@@ -2046,3 +2046,14 @@
  border-radius:14px;
  font:bold 4.5cqw WealthHand,serif;
 }
+
+.finance-original .confirmed-finance-scene {
+ position:absolute;
+ left:3%;
+ top:13%;
+ width:94%;
+ height:22%;
+ object-fit:cover;
+ border-radius:10px;
+ pointer-events:none;
+}

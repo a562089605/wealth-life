@@ -224,7 +224,7 @@
         const {q, effects} = options[index];
         button.className = 'map-life-option';
         button.setAttribute('aria-label', q.label);
-        if (effects.length) button.setAttribute('aria-description', effects.join(' · '));
+        if (effects.length) button.setAttribute('aria-description', effects.map(effect => effect.text).join(' · '));
         button.replaceChildren();
         Object.assign(button.style, {
           left:left / 1024 * 100 + '%', top:top / 1536 * 100 + '%',
@@ -263,7 +263,15 @@
       button.replaceChildren(name);
       if (effects.length) {
         const detail = document.createElement('span');
-        detail.textContent = effects.join(' · ');
+        detail.className = 'map-life-confirmed-effects';
+        for(const {icon,text} of effects){
+          const effect=document.createElement('span');
+          const image=document.createElement('img');
+          image.src='assets/confirmed-20261128/effect-'+icon+'.webp';
+          image.alt='';
+          effect.append(image,text);
+          detail.append(effect);
+        }
         button.append(detail);
       }
       list.append(button);
@@ -283,11 +291,11 @@
       : entry.options;
     const options = choices.map(q => {
       const effects = [];
-      if (q.treatment) effects.push('治疗费 $240');
-      else if (q.cash) effects.push((q.cash > 0 ? '+' : '−') + priceText(Math.abs(q.cash)));
-      if (q.hours) effects.push('自由时间 −' + q.hours + ' 小时');
+      if (q.treatment) effects.push({icon:'treatment',text:'治疗费 $240'});
+      else if (q.cash) effects.push({icon:'cash',text:(q.cash > 0 ? '+' : '−') + priceText(Math.abs(q.cash))});
+      if (q.hours) effects.push({icon:'hours',text:'自由时间 −' + q.hours + ' 小时'});
       for (const [key, label] of [['energy','能量'],['happiness','幸福度'],['stress','压力'],['intimacy','亲密度']]) {
-        if (q[key]) effects.push(label + ' ' + (q[key] > 0 ? '+' : '−') + Math.abs(q[key]));
+        if (q[key]) effects.push({icon:key,text:label + ' ' + (q[key] > 0 ? '+' : '−') + Math.abs(q[key])});
       }
       return {q, effects, amount:cost(q)};
     });
