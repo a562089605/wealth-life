@@ -21,7 +21,7 @@
   if(gift){
    card.classList.add('pet-map-generic','storybook-card');
    const hero=el('div','','storybook-event-art');
-   picture.src=art.art;picture.alt='';hero.append(picture);
+   picture.src='assets/confirmed-20261128/dog-surprise.webp';picture.alt='';hero.append(picture);
    card.append(el('p','生活事件卡 · 宠物','pet-map-category'),el('h2',q.title),hero,
     el('p','刚回到家，柯基就叼来了最喜欢的玩具。它轻轻放在你脚边，抬头望着你。','storybook-event-copy'));
   }else if(art){picture.src=art.art;card.dataset.card=art.id;card.append(picture);}else{

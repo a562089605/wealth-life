@@ -105,7 +105,7 @@
   const art = document.createElement('div');
   const image = document.createElement('img');
   art.className = 'career-hero career-event-hero';
-  image.src = artRoot + card.id + '.webp';
+  image.src = card.id === 'group-discussion' ? 'assets/confirmed-20261128/group-discussion.webp' : artRoot + card.id + '.webp';
   image.alt = '';
   art.append(image);
   box.replaceChildren(art);

@@ -3,10 +3,10 @@
  let visible=false;
  const el=id=>document.getElementById(id);
  const roomArtwork={
-  family:'assets/home/family-corgi-20261104.webp',
-  shared:'assets/home/shared-corgi-20261104.webp',
-  studio:'assets/home/studio-corgi-20261104.webp',
-  rent1:'assets/home/apartment-corgi-20261104.webp'
+  family:'assets/confirmed-20261128/room-family.webp',
+  shared:'assets/confirmed-20261128/room-shared.webp',
+  studio:'assets/confirmed-20261128/room-studio.webp',
+  rent1:'assets/confirmed-20261128/room-apartment.webp'
  };
  window.roomArtworkForHousing=housing=>Object.hasOwn(roomArtwork,housing)?roomArtwork[housing]:roomArtwork.rent1;
  function activeGame(){return !!state&&!el('game').classList.contains('hidden');}
@@ -17,7 +17,7 @@
   if(!active){if(box)box.hidden=true;return;}
   if(!box){
    box=document.createElement('section');box.id='roomView';box.setAttribute('aria-label','房屋：本月安排');
-   box.innerHTML='<div class="room-canvas"><img src="assets/home/apartment-corgi-20261104.webp" width="853" height="1844" alt="温暖的手绘房间：人物坐在绿沙发阅读，柯基在地毯上休息。地毯上的三色柯基旁有宠物入口。"><div class="room-date"><strong id="roomCalendar"></strong><span id="roomHousingTitle">房屋 · 本月安排</span></div><button type="button" class="room-menu" data-room="menu" aria-label="打开游戏菜单">☰</button><button type="button" class="room-hotspot room-work" data-room="work" aria-label="工作">工作</button><button type="button" class="room-hotspot room-study" data-room="study" aria-label="学习">学习</button><button type="button" class="room-hotspot room-rest" data-room="rest" aria-label="休息">休息</button><button type="button" class="room-hotspot room-life" data-room="life" aria-label="生活">生活</button><button type="button" class="room-hotspot room-relations" data-room="relations" aria-label="关系">关系</button><button type="button" class="room-hotspot room-finance" data-room="finance" aria-label="财务">财务</button><button type="button" class="room-hotspot room-pets" data-room="pets" aria-label="宠物">宠物</button><button type="button" class="room-hotspot room-leave" data-room="leave" aria-label="确认完成，现在出门">确认完成，现在出门</button></div>';
+   box.innerHTML='<div class="room-canvas"><img src="assets/confirmed-20261128/room-apartment.webp" width="853" height="1844" alt="温暖的手绘房间：人物坐在绿沙发阅读，柯基在地毯上休息。地毯上的三色柯基旁有宠物入口。"><div class="room-date"><strong id="roomCalendar"></strong><span id="roomHousingTitle">房屋 · 本月安排</span></div><button type="button" class="room-menu" data-room="menu" aria-label="打开游戏菜单">☰</button><button type="button" class="room-hotspot room-work" data-room="work" aria-label="工作">工作</button><button type="button" class="room-hotspot room-study" data-room="study" aria-label="学习">学习</button><button type="button" class="room-hotspot room-rest" data-room="rest" aria-label="休息">休息</button><button type="button" class="room-hotspot room-life" data-room="life" aria-label="生活">生活</button><button type="button" class="room-hotspot room-relations" data-room="relations" aria-label="关系">关系</button><button type="button" class="room-hotspot room-finance" data-room="finance" aria-label="财务">财务</button><button type="button" class="room-hotspot room-pets" data-room="pets" aria-label="宠物">宠物</button><button type="button" class="room-hotspot room-leave" data-room="leave" aria-label="确认完成，现在出门">确认完成，现在出门</button></div>';
    const stats=document.createElement('dl');
    stats.className='room-status';
    stats.setAttribute('aria-label','当前状态');

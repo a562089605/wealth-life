@@ -128,7 +128,7 @@
    window.modalReturn=openRoom;
    eventCard.classList.add('finance-home');
    const data=$('eventData');
-   data.innerHTML='<img class="finance-home-art" src="'+art+'home-crayon.webp" width="900" height="1350" alt="">';
+   data.innerHTML='<img class="finance-home-art" src="assets/confirmed-20261128/finance-home.webp" width="1024" height="1536" alt="">';
    data.style.display='block';
   }
 

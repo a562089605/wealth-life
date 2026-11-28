@@ -139,7 +139,8 @@ function openTownMarketTrade(move,dealId,quote=null){
  showEvent('地图专用',title,selling&&deal.unit?'有买家想按当前报价收购你持有的'+deal.name+'。':'',[],[[accept,()=>settle(true),true],[decline,()=>settle(false),false]]);
  const data=$('eventData');
  const valleyBuyer=selling&&dealId==='valley-stock';
- const art=valleyBuyer?'assets/finance/map-valley-buyer-crayon.webp':
+ const art=valleyBuyer?'assets/confirmed-20261128/valley-buyer.webp':
+  !selling&&dealId==='school-flat'?'assets/confirmed-20261128/school-flat-purchase.webp':
   'assets/finance/map-'+dealId+(selling&&!deal.lease?'-sell':'-buy')+'.webp';
  data.innerHTML='<div class="town-opportunity town-market-card'+(valleyBuyer?' town-valley-buyer':'')+'"><img class="town-opportunity-art" src="'+art+'" alt=""><h3>'+deal.name+'</h3><dl></dl></div>';
  data.style.display='block';
@@ -297,7 +298,7 @@ function openTownLeaseOffer(move,holding){
  ]:[['申请人','小学老师'],['租期',lease.term+'个月'],['每月租金',priceText(deal.rent)],['每月净租金',priceText(deal.net)]];
  function renderLeaseCard(title,rows,actions,art,note,description=''){
   showEvent('地图专用',title,'',[],actions);
-  $('eventData').innerHTML='<div class="town-opportunity town-market-card"><img class="town-opportunity-art" src="assets/finance/'+art+'" alt=""><h3>'+deal.name+'</h3>'+
+  $('eventData').innerHTML='<div class="town-opportunity town-market-card"><img class="town-opportunity-art" src="'+art+'" alt=""><h3>'+deal.name+'</h3>'+
    (description?'<p>'+description+'</p>':'')+'<dl>'+
    rows.map(([label,value])=>'<div><dt>'+label+'</dt><dd>'+value+'</dd></div>').join('')+
    '</dl><p>'+note+'</p></div>';
@@ -311,13 +312,13 @@ function openTownLeaseOffer(move,holding){
   ['原价续租装修补贴',priceText(cost)]
  ],[['翻新续租',()=>choose(true,true),true,state.cash<renovation.cost],
     ['原价续租',()=>choose(true),false,state.cash<cost]],
- 'scene-station-renovation.webp',renewalNote,
+ 'assets/finance/scene-station-renovation.webp',renewalNote,
  '租客拿来一张门面草图。他想换掉褪色的遮阳棚，也愿意在新租约里多付一些租金。'),false]);
  const scene=earlyExit?['map-school-flat-early-exit.webp','租客因工作调动，希望月底搬走。']:
   renewing?['scene-station-renewal.webp','便利店的租客想继续做车站的生意。他愿意再签一年，希望你补贴一笔店面整理费。']:
   station?['scene-station-application.webp','一位曾在站前摆摊的店主看中了空出来的铺面。他想把生意搬进室内，开一家便利店。']:
   ['scene-school-application.webp','附近小学的一位老师来看房。她想找个步行就能上班的住处，愿意先签一年。'];
- renderLeaseCard(title,rows,actions,scene[0],
+ renderLeaseCard(title,rows,actions,station||earlyExit?'assets/finance/'+scene[0]:'assets/confirmed-20261128/school-flat-lease-application.webp',
   earlyExit?'本月租金照常结算。':renewing?renewalNote:'签约后，从本月月底开始收租。',scene[1]);
 }
 function townFlowerOrderCandidate(move){

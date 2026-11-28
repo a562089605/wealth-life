@@ -21,10 +21,12 @@
 }
 #game > .event.finance-home #eventMonth {
  position:absolute;
- top:9.6%;
- left:29%;
- right:29%;
- height:4%;
+ top:31.2%;
+ left:23%;
+ right:23%;
+ height:5%;
+ background:#e5e7b4;
+ border-radius:999px;
  display:grid;
  place-items:center;
  margin:0;
@@ -75,12 +77,12 @@
  aspect-ratio:auto;
  pointer-events:auto;
 }
-.finance-home #actions > button:nth-child(1) { --top:35.3%; --left:3.3%; --width:46%; --height:18.8%; }
-.finance-home #actions > button:nth-child(2) { --top:35.3%; --left:50.7%; --width:46%; --height:18.8%; }
-.finance-home #actions > button:nth-child(3) { --top:54.9%; --left:3.3%; --width:46%; --height:20.2%; }
-.finance-home #actions > button:nth-child(4) { --top:54.9%; --left:50.7%; --width:46%; --height:20.2%; }
-.finance-home #actions > button:nth-child(5) { --top:76%; --left:3.3%; --width:93.4%; --height:13.3%; }
-.finance-home #actions > button:nth-child(6) { --top:90.3%; --left:27.8%; --width:44%; --height:8%; }
+.finance-home #actions > button:nth-child(1) { --top:37%; --left:2.8%; --width:46.5%; --height:18.7%; }
+.finance-home #actions > button:nth-child(2) { --top:37%; --left:50.7%; --width:46.5%; --height:18.7%; }
+.finance-home #actions > button:nth-child(3) { --top:56.7%; --left:2.8%; --width:46.5%; --height:18.5%; }
+.finance-home #actions > button:nth-child(4) { --top:56.7%; --left:50.7%; --width:46.5%; --height:18.5%; }
+.finance-home #actions > button:nth-child(5) { --top:76.1%; --left:2.8%; --width:94.5%; --height:12.5%; }
+.finance-home #actions > button:nth-child(6) { --top:90%; --left:27%; --width:46%; --height:7.5%; }
 #game > .card.event.finance-home #eventClose { --top:0%; --left:86.5%; --width:13%; --height:9%; z-index:2; border-radius:0; }
 #game > .card.event.finance-home #actions > button:focus-visible,
 #game > .card.event.finance-home #eventClose:focus-visible {

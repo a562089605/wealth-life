@@ -64,7 +64,7 @@
   close();clearModals();window.PetPages?.close();window.RelationshipPages?.close();const owner=state,chosen=slot,id=r.id,phase=r.status,def=C.cards[r.kind];if(!def)return false;if(def.introduction&&window.CareerPages)return CareerPages.introduction();
   const f=phase==='followup'?r.followup:null,options=f?f.options:r.quotes,boxes=f?f.boxes:r.boxes||(r.version===1?[[3,52,94,20],[3,72.5,94,23]]:def.boxes),title=f?f.title:r.title||def.title;
   const node=el('section',null,'relationship-life-overlay');active=node;node.setAttribute('role','dialog');node.setAttribute('aria-modal','true');node.setAttribute('aria-label',title);document.body.append(node);document.body.classList.add('relationship-card-open');
-  const redrawKey=f?.key||(!f&&r.kind),redraw=(!f&&r.story)||redraws[redrawKey];
+  const redrawKey=f?.key||(!f&&r.kind),approvedScene=!f&&r.kind==='coworker-bookshelf',redraw=(!f&&r.story)||redraws[redrawKey]||(approvedScene?'同事请你帮忙搬家。':'');
   const art=f?f.art:r.art;
   const cardArtFolder='assets/relationships/cards/';
   const outcomeArt={
@@ -78,6 +78,7 @@
   const wrap=el('div',null,'relationship-life-wrap'),canvas=el('div',null,'relationship-life-canvas'),img=el('img');img.src=art;img.alt=title+'。'+options.map(q=>q.label+'：'+(q.newRegular?'熟客加入关系网，初始亲密度10':'')+[['hours','自由时间−'],['cash','金钱'],['energy','能量'],['stress','压力'],['happiness','幸福'],['intimacy','亲密度'],['studyMonths','学习剩余时间−'],['careCoupons','免费外出护理次数＋']].filter(([k])=>q[k]).map(([k,label])=>label+(q[k]>0&&!['hours','studyMonths'].includes(k)?'+':'')+q[k]+(k==='hours'?'小时':k==='studyMonths'?'个月':'')).join('，')).join('；');if(redraw){
    canvas.classList.add('relationship-redraw');
    if(!r.story||f)img.src='assets/relationships/redraw/'+redrawKey+'.webp';
+   if(approvedScene)img.src='assets/confirmed-20261128/coworker-bookshelf.webp';
    img.alt='';
    canvas.append(el('p',def.regular?'熟客关系卡':'关系生活卡 · '+def.role,'relationship-redraw-tag'),el('h2',title),img);
    if(!f&&!r.story){

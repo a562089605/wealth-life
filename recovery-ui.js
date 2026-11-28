@@ -1,3 +1,13 @@
+function showConfirmedEventArt(title,name){
+ const heading=$('eventTitle');
+ if(heading.textContent!==title)return;
+ const img=document.createElement('img');
+ img.className='confirmed-event-art';
+ img.src='assets/confirmed-20261128/'+name+'.webp';
+ img.alt='';
+ $('eventData').prepend(img);
+ $('eventData').style.display='grid';
+}
 function unfinishedTreatment(){return Object.values(state.treatments||{}).find(t=>t.status!=='completed')}
 function ensureHealthTreatment(){let t=unfinishedTreatment();if(t)return t;const kind=healthTreatmentKind(state.health);if(!kind)return null;
  const startMonth=state.month+(explorationStarted()?1:0),id='treatment-'+state.month+'-'+kind;
@@ -6,13 +16,13 @@ function openHealthTreatment(){if(state.requiredIncident){openRequiredIncident()
  if(t.paid){continueTreatment(t);return true;}
  showEvent('医疗与康复',t.quote.kind==='special'?'严重健康问题':'整月康复安排','',[
  ['治疗与康复总费用',priceText(t.quote.gross)],['保险承担',priceText(t.quote.gross-t.quote.due)],['本次自付',priceText(t.quote.due)],['支付后现金',priceText(state.cash-t.quote.due)],['康复月份','第'+(Math.floor(t.startMonth/12)+1)+'年·第'+(t.startMonth%12+1)+'月']],
- [['确认支付并安排康复',()=>{const result=payTreatment(state,t.id);if(!result.paid){openHealthTreatment();return;}save();continueTreatment(t);},true,state.cash<t.quote.due],['查看资金补救',()=>showFundingOptions(t.quote.due,openHealthTreatment),false],['筹措治疗费用',()=>openBankLoan(Math.max(1,Math.ceil(t.quote.due-state.cash)),{after:openHealthTreatment}),false]]);$('eventClose').hidden=true;return true;}
+ [['确认支付并安排康复',()=>{const result=payTreatment(state,t.id);if(!result.paid){openHealthTreatment();return;}save();continueTreatment(t);},true,state.cash<t.quote.due],['查看资金补救',()=>showFundingOptions(t.quote.due,openHealthTreatment),false],['筹措治疗费用',()=>openBankLoan(Math.max(1,Math.ceil(t.quote.due-state.cash)),{after:openHealthTreatment}),false]]);showConfirmedEventArt(t.quote.kind==='special'?'严重健康问题':'整月康复安排','recovery-arrangement');$('eventClose').hidden=true;return true;}
 function continueTreatment(t){
  if(t.startMonth>state.month){const prior=timeReturnPending()?state.forcedTimeReturn:null;state.forcedTimeReturn={month:state.month,id:prior?.id||t.id,debt:prior?.debt||0,reasons:[...(prior?.reasons||[]),'健康过低，治疗已安排']};save();
  if(unfinishedCareerGroup()){const r=shiftRecord();if(r?.follow&&!r.follow.settled)openShiftFollow();else if(r?.status==='pending')openShiftEvent();else openCoffeeCareerEvent();return;}openForcedTimeReturn();return;}
  showEvent('整月康复','完成本月康复','',[
  ['疗程费用','已支付'],['康复后状态','健康30、能量至少60、压力最多40；幸福度保留']],
- [['确认执行本月康复',()=>{if(!isRecoveryMonth(state))return;clearModals();pending=false;const town=townState();town.movement={id:++town.rolls,to:town.position,die:0,month:state.month,resolved:false,payExpected:state.month+1,returnReason:'recovery'};state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth();},true],['查看必要账单与资金',townHome,false]]);$('eventClose').hidden=true;
+ [['确认执行本月康复',()=>{if(!isRecoveryMonth(state))return;clearModals();pending=false;const town=townState();town.movement={id:++town.rolls,to:town.position,die:0,month:state.month,resolved:false,payExpected:state.month+1,returnReason:'recovery'};state.turn={month:state.month,index:9,startCash:state.turn?.month===state.month?state.turn.startCash:state.cash};save();settleMonth();},true],['查看必要账单与资金',townHome,false]]);showConfirmedEventArt('完成本月康复','recovery-execution');$('eventClose').hidden=true;
 }
 const healthRollBefore=rollTown;rollTown=function(){if(unfinishedTreatment()||healthTreatmentKind(state.health))return openHealthTreatment();return healthRollBefore();};
 const healthTownBefore=showTown;showTown=function(){if(unfinishedTreatment()||healthTreatmentKind(state.health))return openHealthTreatment();return healthTownBefore();};

@@ -2,7 +2,7 @@
 (function(){'use strict';
  const home=document.getElementById('home'),slots=document.getElementById('slots'),newGame=document.getElementById('newGame');if(!home||!slots||!newGame)return;
  const make=(tag,text,cls)=>{const e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e;};
- const header=make('header',null,'save-page-header');header.id='savePageHeader';const art=make('img',null,'save-page-art');art.src='assets/career/town.webp';art.alt='';art.setAttribute('aria-hidden','true');
+ const header=make('header',null,'save-page-header');header.id='savePageHeader';const art=make('img',null,'save-page-art');art.src='assets/confirmed-20261128/save-slots.webp';art.alt='';art.setAttribute('aria-hidden','true');
  const heading=make('div',null,'save-page-heading');heading.append(make('p','财富人生 · WEALTH LIFE','save-page-eyebrow'),make('h2','我的人生存档'),make('p','挑一段人生，接着往前走。','save-page-intro'));header.append(art,heading);slots.before(header);
  const summary=make('p',null,'save-page-summary');header.after(summary);
  function decorate(){const rows=[...slots.querySelectorAll('.saveRow')];let occupied=0;

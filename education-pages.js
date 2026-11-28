@@ -19,7 +19,7 @@
  const section=node('section',null,'education-overlay');overlay=section;section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.setAttribute('aria-label',({enroll:'学历学习',progress:'学习进度',pace:'更改学习安排',pause:'暂停学习',resume:'恢复学习',withdraw:'退出学习',refund:'撤销本月报名',graduation:'毕业完成'})[mode]);document.body.append(section);document.body.classList.add('education-open');
  const paper=node('div',null,'education-paper'),scene=node('div',null,'education-scene'),img=node('img');
  const progress=mode==='progress';
- img.src=progress?'assets/learning-redraw/progress.webp':'assets/education/'+assets[mode==='enroll'?(r?target:'progress'):mode]+'.webp';
+ img.src=progress?'assets/confirmed-20261128/education-progress.webp':'assets/education/'+assets[mode==='enroll'?(r?target:'progress'):mode]+'.webp';
  img.alt=progress?'暖色蜡笔插画：在书桌学习，柯基在旁休息。':'学历学习手绘场景';
  scene.append(img);paper.append(scene);section.append(paper);
  const back=node('button',progress?'← 返回房屋':'返回');back.type='button';

@@ -1,0 +1,51 @@
+# 2026-11-28 画风确认归档
+
+| 确认稿 | 原图 | SHA-256 | 游戏用图 |
+|---|---|---|---|
+| 合租 | [housing-shared-corgi-review.png](housing-shared-corgi-review.png) | `2d7c387b095149e40bc92bc1f3c87a4dc935989269469cf8dcb36f9ac406c244` | [room-shared.webp](../../assets/confirmed-20261128/room-shared.webp) |
+| Studio 开放式单间 | [housing-studio-corgi-review.png](housing-studio-corgi-review.png) | `4ce7ba80391bacb7cb4057e649de0aeb5b0651b3ec50beb400003304705db70c` | [room-studio.webp](../../assets/confirmed-20261128/room-studio.webp) |
+| 小公寓 | [housing-apartment-corgi-review.png](housing-apartment-corgi-review.png) | `6d0201e0062429c3d6b10e16a71d0328309109f813f52b385c0a19899607b81c` | [room-apartment.webp](../../assets/confirmed-20261128/room-apartment.webp) |
+| 家庭住房 | [housing-family-corgi-review.png](housing-family-corgi-review.png) | `489cf45248a7565a7db69cc83b5ae5daf132b8b8826d127c617287d471cfce34` | [room-family.webp](../../assets/confirmed-20261128/room-family.webp) |
+| 温暖小惊喜 | [cake-approved.png](map-cards/cake-approved.png) | `6590ec860de971f19964199403de0f5a731faf5a3f166676c094ab6577a8b467` | [cake.webp](../../assets/confirmed-20261128/cake.webp) |
+| 地图卡七枚效果图标 | [effect-icons-approved.png](map-cards/effect-icons-approved.png) | `e6c0a1163947add10595e25cd272ab17d2f61e30f8e1fdb03d396cc8b68453c9` | 待接入 |
+| 果园采收分成 | [orchard-approved.png](map-cards/orchard-approved.png) | `86c3a5336c62b270f6e0cfb80e8c1a0e4fe53786519cca354c2af6da68c7736c` | [orchard.webp](../../assets/confirmed-20261128/orchard.webp) |
+| 豆商的预付报价 | [partner-beans-approved.png](map-cards/partner-beans-approved.png) | `743373cfdbae838a8cadcf94371ca2bd955894beb3c51180c951c7b87d0174b9` | [partner-beans.webp](../../assets/confirmed-20261128/partner-beans.webp) |
+| 常客的大额小费 | [barista-tip-approved.png](map-cards/barista-tip-approved.png) | `c0fab1601b4ab6c95dae9a4a5f437c3630ec5f265584bb0d3d661bb2f5e0f28d` | [barista-tip.webp](../../assets/confirmed-20261128/barista-tip.webp) |
+| 大家都要发言 | [group-discussion-approved.png](map-cards/group-discussion-approved.png) | `2196baab5c11785d950d9556f408775a4edee3f15daee4c0fbca1f59ea1af118` | [group-discussion.webp](../../assets/confirmed-20261128/group-discussion.webp) |
+| 帮同事搬家 | [coworker-bookshelf-approved.png](map-cards/coworker-bookshelf-approved.png) | `5a9a460e748fe9c24f4ee34f006de669ac180b83a33b043945f53f2a6e914ef7` | [coworker-bookshelf.webp](../../assets/confirmed-20261128/coworker-bookshelf.webp) |
+| 它把宝贝送给你 | [dog-surprise-approved.png](map-cards/dog-surprise-approved.png) | `0ba7e064376b3b1f049f28946f7b1be257b9ca111ee7d861337af0f30038c423` | [dog-surprise.webp](../../assets/confirmed-20261128/dog-surprise.webp) |
+| 把春天画下来 | [drawing-invite-approved.png](map-cards/drawing-invite-approved.png) | `094c9bb54f7373990cec8865e4315aac1d0f66f65641c1a65a33463c8d3a66f9` | [drawing-invite.webp](../../assets/confirmed-20261128/drawing-invite.webp) |
+| 合租 · 今晚一起做饭 | [shared-cook-approved.png](map-cards/shared-cook-approved.png) | `53c7abd0a8cd049b110f9c4a5c50483e88ce9a442ae0be7e84967e58cc332e8e` | [shared-cook.webp](../../assets/confirmed-20261128/shared-cook.webp) |
+| Studio · 晨光正好 | [studio-morning-approved.png](map-cards/studio-morning-approved.png) | `0389ec73186c1fcd80643efe6f72e14701249ba42b669d21256889e54bdde7cd` | [studio-morning.webp](../../assets/confirmed-20261128/studio-morning.webp) |
+| 小公寓 · 新居的第一束花 | [apartment-flowers-approved.png](map-cards/apartment-flowers-approved.png) | `c6bd25f9a3f178c80329a51340ff628b75e95c5539a3b41e1e18a00dfc6a8ccb` | [apartment-flowers.webp](../../assets/confirmed-20261128/apartment-flowers.webp) |
+| 家庭住房 · 灯下话家常 | [family-lamplight-approved.png](map-cards/family-lamplight-approved.png) | `ed41789b0352b7ca2ec445c1d1a36b96484c6ee2884e5a597e7212175ca301aa` | [family-lamplight.webp](../../assets/confirmed-20261128/family-lamplight.webp) |
+| 月度结算 | [finance-settlement-approved.png](map-cards/finance-settlement-approved.png) | `5b7989db0ca8e9c45f207dc5cdfa6cefff0ea2d5e5a48e256221154d776e2069` | [finance-settlement.webp](../../assets/confirmed-20261128/finance-settlement.webp) |
+| 收支明细 · 人物校准稿 | [finance-ledger-character-approved.png](map-cards/finance-ledger-character-approved.png) | `fd7a5672df145288cc7203dfefc4a1fc87c375c5786af6a095735dddb372e047` | 待接入 |
+| 资产总览 · 人物校准稿 | [finance-assets-character-approved.png](map-cards/finance-assets-character-approved.png) | `2cd134fa7d56112bd150b3991a6ce019fd0b5ce06cb8e3ae295bc17434688f8f` | 待接入 |
+| 财务首页 · 人物校准稿 | [finance-home-character-approved.png](map-cards/finance-home-character-approved.png) | `98a96852461251de93d5038e25222e9d3c8cfa6bb5db5ed34a2ed9441b73baea` | [finance-home.webp](../../assets/confirmed-20261128/finance-home.webp) |
+| 山谷食品公司 · 股票买家报价 | [valley-buyer-approved.png](map-cards/valley-buyer-approved.png) | `2ed78db1aa3777dff02fae39e665121a9eeeac9011e45890ddaba5e4de86f72d` | [valley-buyer.webp](../../assets/confirmed-20261128/valley-buyer.webp) |
+| 额外休息 4 小时 | [rest-extra-approved.png](map-cards/rest-extra-approved.png) | `1513c0940e6d55e191cefe7343fc6ceb9b7a9b9e63b1e9582c91b1c2c484e629` | 待接入 |
+| 小公寓详情 | [housing-apartment-detail-approved.png](map-cards/housing-apartment-detail-approved.png) | `9936c600bfeb7a1c27062b0b8b3a7a473819089659b8296df666e213dfbd17bf` | 待接入 |
+| 学习进度 | [education-progress-approved.png](map-cards/education-progress-approved.png) | `1060ce1c3d6c41770d91067eeb77b663b368dc1b91f11f79eb010b26f3878646` | [education-progress.webp](../../assets/confirmed-20261128/education-progress.webp) |
+| 我的关系网 | [relationship-directory-approved.png](map-cards/relationship-directory-approved.png) | `8606138efa9f040503737860a0f030be2b8d57c577ffde7ed788dffbb017e033` | [relationship-directory.webp](../../assets/confirmed-20261128/relationship-directory.webp) |
+| 我的职业 · 咖啡师 | [barista-career-page-approved.png](map-cards/barista-career-page-approved.png) | `0c53a051bbfc2bf865dea1cd442a9a074eca867d56343ee68656aa2aff9913b6` | 待接入 |
+| 宠物资料 · 柯基 | [pet-dog-profile-approved.png](map-cards/pet-dog-profile-approved.png) | `727f3701b9c3ee3b1719685f85cdbaa2113c2213b9077d9d31877e47467a1544` | 待接入 |
+| 储蓄与投资 | [finance-savings-approved.png](map-cards/finance-savings-approved.png) | `88d13cee72b04ef481ec54bc15c4234bce5cf2a4b86ce010b67a45829c1f8fd9` | 待接入 |
+| 柯基 · 取名与费用 | [pet-dog-adoption-approved.png](map-cards/pet-dog-adoption-approved.png) | `e6d17da9a47d504064108762cb9006f0d462b9b894982b4c261949bf410ce15e` | 待接入 |
+| 生活总览 · 橙云修订稿 | [life-overview-approved.png](map-cards/life-overview-approved.png) | `85f5e2b601e67b6857f4cc6be4b708d7c696aed0cf21dc70eaf046d1207b81ad` | 待接入 |
+| 应急金、定期存款、退休账户 | [savings-retirement-approved.png](asset-pages/savings-retirement-approved.png) | `a6da5ce20e6984466e0cc6e518f82f170ffcb7a15625f1451f60069b3392602d` | 待接入 |
+| ETF、股票、基金、政府债券 | [securities-approved.png](asset-pages/securities-approved.png) | `98bef2c410e3e6bce6d8600667c893e5ce7b024b7c837b7888b806364c1ec28b` | 待接入 |
+| 房产投资、黄金 | [property-gold-approved.png](asset-pages/property-gold-approved.png) | `ab692390791f941351c6e56783f84a6a42b438cce64618d5c82cf95ec7268e96` | 待接入 |
+| 应急金 · 调整稿 | [emergency-approved.png](asset-pages/emergency-approved.png) | `e3e93107431ff7fb77f43e5bd1b1668f795df07421fa4d111778441162d144c8` | 待接入 |
+| 游戏封面 | [entry-cover-approved.png](map-cards/entry-cover-approved.png) | `63deb97092712e809b458ce46d80a13c36e43b9e539a6c5fc80f99f541a89722` | [entry-cover.webp](../../assets/confirmed-20261128/entry-cover.webp) |
+| 我的人生存档 | [save-slots-approved.png](map-cards/save-slots-approved.png) | `b9828f42788d5dda2d848cabb5a2cfc9cf1c7d626e7f75ed503446db4e907e2b` | [save-slots.webp](../../assets/confirmed-20261128/save-slots.webp) |
+| 起步小镇 · 地图 | [town-map-approved.png](map-cards/town-map-approved.png) | `841a90a2ca1bad7171cd4ddf1e64295d2745bd4890d77428f12f995bcc7a15d9` | 待接入 |
+| 回家抽卡 · 三帧转场示意 | [housing-draw-storyboard-approved.png](map-cards/housing-draw-storyboard-approved.png) | `35d07a8a9e6bc9717ba9398dd031b8d768cdb710b13d38a112a616642b99e811` | 待接入 |
+| 暂未保存与删除存档 | [general-dialogs-approved.png](map-cards/general-dialogs-approved.png) | `afc9f96aa442509708f0bf59b3953c4b8268876e23e88ced39c0eb8ff2b94f33` | 待接入 |
+| 整月康复安排 | [recovery-arrangement-approved.png](map-cards/recovery-arrangement-approved.png) | `866760e8c9f0793341a0787c9aef4a9b323d02ddafba742f0e730e58e860470c` | [recovery-arrangement.webp](../../assets/confirmed-20261128/recovery-arrangement.webp) |
+| 完成本月康复 | [recovery-execution-approved.png](map-cards/recovery-execution-approved.png) | `79315663b4d6d64e4333357c55bd7839752bc442cf45f34528c5dfa6da1c8167` | [recovery-execution.webp](../../assets/confirmed-20261128/recovery-execution.webp) |
+| 核对照护费用 | [pet-care-fee-approved.png](map-cards/pet-care-fee-approved.png) | `f78ff0861cf4a2cb99e2d3ab6be52a0ae5e580382a322a07496c9b1e5fae662e` | [pet-care-fee.webp](../../assets/confirmed-20261128/pet-care-fee.webp) |
+| 购买车辆 | [vehicle-purchase-approved.png](map-cards/vehicle-purchase-approved.png) | `e58d02a4cf9fea01af7862ffcf4df156693228de080d8a88836190f0f2746289` | [vehicle-purchase.webp](../../assets/confirmed-20261128/vehicle-purchase.webp) |
+| 已有车辆（白色奔驰 G 级） | [vehicle-owned-white-g-approved.jpg](map-cards/vehicle-owned-white-g-approved.jpg) | `7bd3f578b7ca8634b6009038d697d0af60c8adfc39ae32355011f8c122dddd93` | [vehicle-owned-white-g.webp](../../assets/confirmed-20261128/vehicle-owned-white-g.webp) |
+| 地图出租房买入 · 学校旁小公寓 | [school-flat-purchase-approved.png](map-cards/school-flat-purchase-approved.png) | `73b50ab89cd62f300cd45e16804c77881175e20b8b6395248366495f485eb49b` | [school-flat-purchase.webp](../../assets/confirmed-20261128/school-flat-purchase.webp) |
+| 租客申请 · 学校旁小公寓 | [school-flat-lease-application-approved.png](map-cards/school-flat-lease-application-approved.png) | `95fd03564381471a3f5197000e7ff174dedcc80a1933daa5ba4a6af71138ed48` | [school-flat-lease-application.webp](../../assets/confirmed-20261128/school-flat-lease-application.webp) |

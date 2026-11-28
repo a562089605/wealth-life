@@ -74,7 +74,7 @@ function settleTownProjects(s,settlement){
 }
 function showTownProject(id,title,description,rows,actions){
  showEvent('大机会',title,description,[],actions);
- const art='assets/finance/big-'+id+'.webp';
+ const art=id==='orchard'?'assets/confirmed-20261128/orchard.webp':'assets/finance/big-'+id+'.webp';
  $('eventData').innerHTML='<div class="town-opportunity town-market-card"><img class="town-opportunity-art" src="'+art+'" alt=""><dl>'+
   rows.map(([label,value])=>'<div><dt>'+batchEscape(label)+'</dt><dd>'+batchEscape(value)+'</dd></div>').join('')+'</dl></div>';
  $('eventData').style.display='block';

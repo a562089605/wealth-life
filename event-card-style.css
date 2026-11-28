@@ -100,3 +100,12 @@
   color: #29462e;
 }
 .storybook-card .pet-solid-button { background: #efc55e; }
+
+/* Keep live quotes and actions in the existing scrollable event card. */
+.confirmed-event-art {
+ display:block;
+ width:100%;
+ height:auto;
+ grid-column:1/-1;
+ border-radius:16px;
+}

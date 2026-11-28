@@ -324,7 +324,7 @@ townPaydayStyles.textContent=`
 }
 [data-town-payday] #eventDesc::before {
  content:"";display:block;width:100%;aspect-ratio:2;margin-bottom:7px;border-radius:15px;
- background:url("assets/finance/town-payday.webp") center/cover no-repeat;
+ background:url("assets/confirmed-20261128/finance-settlement.webp") center/cover no-repeat;
 }
 [data-town-payday] #eventData {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
 [data-town-payday] #eventData .stat {

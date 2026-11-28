@@ -125,3 +125,7 @@
  inset-block-end: -27%;
  mask-image: linear-gradient(to right,transparent,#000 8% 92%,transparent),linear-gradient(transparent,#000 10% 90%,transparent);
 }
+
+/* The approved room calendar contains a sample date. Cover the entire label with the live calendar. */
+#roomView:not(.room-school-apartment) .room-date {left:23%;width:54%;top:2.9%;height:7.5%}
+#roomView.room-family .room-date {left:25%;width:50%;top:1.9%;height:7.7%}

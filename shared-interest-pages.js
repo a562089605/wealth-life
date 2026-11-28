@@ -23,7 +23,7 @@
   const title=art.title,section=el('section',null,'interest-overlay');active=section;section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.setAttribute('aria-label',title);document.body.append(section);document.body.classList.add('shared-interest-open');
   const paper=el('div',null,'interest-paper'),scene=el('div',null,'interest-scene'),img=el('img');
   const artId=follow?def.id+'-'+art.id:def.id;
-  img.src=def.id==='baking-burnt'?'assets/hobbies/events/baking-earring-crayon.webp':'assets/hobbies/events/crayon/'+artId+'.webp';
+  img.src=artId==='drawing-invite'?'assets/confirmed-20261128/drawing-invite.webp':def.id==='baking-burnt'?'assets/hobbies/events/baking-earring-crayon.webp':'assets/hobbies/events/crayon/'+artId+'.webp';
   img.alt='';scene.append(img);paper.append(scene);section.append(paper);
   const body=el('div',null,'interest-content'),heading=el('h1',title);
   const category=el('p','共同兴趣事件卡 · '+HobbyLearning.activities[r.hobby].name,'interest-person');
