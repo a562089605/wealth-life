@@ -104,8 +104,11 @@
   const t=currentCareerTime(),working=!!state.job&&!state.retired&&!state.unemployedMonths&&!isRecoveryMonth(state);
   const coffee=typeof coffeeWorking==='function'&&coffeeWorking(),shift=typeof shiftWorking==='function'&&shiftWorking(),manager=window.CareerLearningRules?.role(state.job)==='manager';
   const q=typeof coffeeQuoteContext==='function'?coffeeQuoteContext():{annualSalary:state.annualSalary||state.salary*12,weeklyHours:t.weeklyHours};
-  const wageRate=working&&q.weeklyHours>0?q.annualSalary/(52*q.weeklyHours):0;
-  const tipRate=working&&(coffee||shift||manager)?coffeeSeason(coffeeCalendar().month).tips/23/8*(manager?1.5:shift?1.3:1):0;
+  const role=window.CareerLearningRules?.role(state.job);
+  const rates=working&&role?window.CareerLearningRules.shiftRates(q.annualSalary,t.weeklyHours,
+   coffee||shift||manager?coffeeSeason(coffeeCalendar().month).tips*(manager?1.5:shift?1.3:1):0):null;
+  const wageRate=rates?.wage??(working&&q.weeklyHours>0?q.annualSalary/(52*q.weeklyHours):0);
+  const tipRate=rates?.tip??0;
   return {working,availableWorkHours:t.monthlyWork??t.weeklyHours*4,wageRate,tipRate};
  }
  function carePlan(r,index){return F.carePlan(state,r,index,currentCareerTime().free,necessaryPetCareHours(),payRates());}

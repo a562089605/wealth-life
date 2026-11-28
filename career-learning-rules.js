@@ -7,6 +7,19 @@
  const educationRate=e=>({associate:.08,bachelor:.12,master:.18,doctorate:.25,professional:.25}[e]||0); // preserve latest released education policy
  function payData(s,existing=true){if(s.careerLearning?.version===1)return s.careerLearning;const k=role(s.job),annual=Number(s.annualSalary)||(Number(s.salary)||0)*12;return s.careerLearning={version:1,payFloors:k&&existing?{[k]:cash(annual/(1+educationRate(s.education)))}:{},receipts:{}};}
  function annual(s,k=role(s.job)){const cfg=roles[k];if(!cfg)return null;const floor=s.careerLearning?.payFloors?.[k]||0;return cash(Math.max(cfg.base,floor)*(1+educationRate(s.education)));}
+ const monthlyHours=weeklyHours=>weeklyHours*4;
+ function shiftRates(annualSalary,weeklyHours,monthlyTips=0){
+  const hours=monthlyHours(weeklyHours);
+  return hours>0?{wage:annualSalary/12/hours,tip:monthlyTips/hours}:{wage:0,tip:0};
+ }
+ function promotionAnnual(s,k){
+  return cash(Math.max(annual(s,k),Number(s.annualSalary)||(Number(s.salary)||0)*12));
+ }
+ function promotedPay(s,k){
+  const amount=promotionAnnual(s,k),d=payData(s);
+  d.payFloors[k]=Math.max(d.payFloors[k]||0,amount/(1+educationRate(s.education)));
+  return amount;
+ }
  function skillLevel(s,k){const xp=Math.max(0,Number(s.coffee?.skills?.[k]?.xp)||0);return k==='management'&&xp===0?0:Math.min(5,1+Math.floor(xp/100));}
  function specialty(s,id){const H=root.HobbyLearning;return H?H.level(H.xp(s,id)):0;}
  const working=s=>!!role(s.job)&&!s.retired&&!s.unemployedMonths;
@@ -23,5 +36,5 @@
  function courseMissing(s,{free,reserve=0,recovery=false}={}){const a=[];if(skillLevel(s,'management')>=5)a.push('管理技能已满级');if(recovery||s.health<30)a.push('当前需先安心疗养');if(s.cash<120)a.push('现金不足');if(!Number.isFinite(free)||free-3<reserve)a.push('自由时间不足，需保留必要宠物照护');if(s.energy<1)a.push('能量不足');return a;}
  const courseToken=s=>JSON.stringify([s.month,courseRows(s).length,s.coffee?.skills?.management?.xp||0]);
  function course(s,expected,opts){if(expected!==courseToken(s))return {ok:false,reason:'页面已过期，请重新打开。'};const miss=courseMissing(s,opts);if(miss.length)return {ok:false,reason:miss.join('；')};return atomic(s,()=>{const p=s.coffee.progression,entries=courseRows(s),xp=Math.min(10,400-(s.coffee.skills.management.xp||0));s.coffee.skills.management.xp+=xp;s.energy-=1;s.cash=cash(s.cash-120);entries.push({id:'management',hours:3,cost:120,xp});p.courses[s.month]={entries,hours:entries.reduce((n,r)=>n+(r.hours||0),0),cost:entries.reduce((n,r)=>n+(r.cost||0),0)};(s.financeLedger??=[]).push({kind:'coffeeCourse',month:s.month,amount:120,id:'management',sequence:entries.length});return {xp};},opts.save);}
- const api={roles,role,trust,educationRate,payData,annual,skillLevel,specialty,working,requirements,next,missing,atomic,promote,promotionToken,courseRows,courseMissing,courseToken,course};root.CareerLearningRules=api;if(typeof module!=='undefined')module.exports=api;
+ const api={roles,role,trust,educationRate,payData,annual,monthlyHours,shiftRates,promotionAnnual,promotedPay,skillLevel,specialty,working,requirements,next,missing,atomic,promote,promotionToken,courseRows,courseMissing,courseToken,course};root.CareerLearningRules=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window==='undefined'?globalThis:window);

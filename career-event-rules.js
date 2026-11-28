@@ -6,7 +6,13 @@
  function storeKey(s){return String(s.coffee?.storeId||s.cafe?.store?.id||s.employerId||('coffee-employer:'+ (s.relationshipHome?.currentManagerId||s.relationshipHome?.managers?.coffee||'legacy')));}
  function store(s,key=storeKey(s)){const d=data(s);return d.stores[key]??={id:key,startedMonth:s.month,modifiers:{},completed:{},cooldowns:{},expenses:[],months:{}};}
  function quote(s,raw={},context){const e=copy(raw),q=context||{annualSalary:s.annualSalary||s.salary*12,weeklyHours:s.workHoursPerWeek||40,calendarMonth:s.month%12+1},tips=q.calendarMonth===9?225:q.calendarMonth>=11?450:300;
-  if(e.paidHours){e.wages=money(q.annualSalary/(52*q.weeklyHours)*e.paidHours*(e.paidHours>0?1.5:1));const h=e.paidHours,m=q.weeklyHours===40&&role(s)==='shiftLead'?1.3:1;e.tips=e.tipFormula==='barista-staff'?money(tips/23*1.5*m):e.tipFormula==='barista-busy'?money(50*tips/300*m):e.tipFormula==='barista-departure'?money(tips/23*5*m):e.tipFormula==='cut'?money(tips/23*h/8*m):e.tipFormula==='shift'?money(tips/23*1.3):0;}
+  if(e.paidHours){
+   const h=e.paidHours,m=role(s)==='shiftLead'?1.3:1;
+   const rates=root.CareerLearningRules.shiftRates(q.annualSalary,q.weeklyHours,tips*m);
+   const shiftTips=rates.tip*8;
+   e.wages=money(rates.wage*h*(h>0?1.5:1));
+   e.tips=e.tipFormula==='barista-staff'?money(shiftTips*1.5):e.tipFormula==='barista-busy'?money(50*tips/300*m):e.tipFormula==='barista-departure'?money(shiftTips*5):e.tipFormula==='cut'?money(rates.tip*h):e.tipFormula==='shift'?money(shiftTips):0;
+  }
   delete e.paidHours;delete e.tipFormula;if(e.storeRefund){e.storeCost=money(s.coffee?.lastDrinkPrice??5);delete e.storeRefund;}return e;
  }
  function apply(s,e,record,phase){const actual=copy(e);s.coffee??={};s.coffee.skills??={};

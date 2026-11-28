@@ -5,18 +5,18 @@
  captureCoffeePayMilestones=function(s=state){return s.coffeePay||{version:1,skillRates:{},educationRate:0,lastAppliedMonth:-1};};
  const oldAnnual=coffeeAnnualPay;coffeeAnnualPay=function(s=state,k=coffeeSalaryRole(s.job)){return R.roles[k]?R.annual(s,k):oldAnnual(s,k);};
  applyCoffeeSalaryForNextMonth=function(settlement){const k=R.role(state.job);if(!k||state.retired)return false;const d=R.payData(state);if(d.lastAppliedMonth===state.month)return false;const before=state.annualSalary||state.salary*12,value=R.annual(state,k);d.lastAppliedMonth=state.month;state.annualSalary=value;state.salary=roundCash(value/12);if(before!==value)settlement.coffeeSalaryChange={before,after:value,effectiveMonth:state.month};if(settlement.coffeePromotion)settlement.coffeePromotion.salary=state.salary;return true;};
- coffeePromotionMissing=()=>R.missing(state);coffeePromotedAnnual=()=>R.annual(state,'shiftLead');
+ coffeePromotionMissing=()=>R.missing(state);coffeePromotedAnnual=()=>R.promotionAnnual(state,'shiftLead');
  const previousCareerSalary=careerSalary;careerSalary=function(c){const k=R.role(c.name);return k?R.annual(state,k):previousCareerSalary(c);};
  const previousCareerMissing=careerMissing;careerMissing=function(c){return R.role(c.name)==='manager'?['请在当前值班主管岗位满足条件后确认晋升店长']:previousCareerMissing(c);};
  const oldProgress=applyCareerProgression;applyCareerProgression=function(){if(R.role(state.job))return;return oldProgress();};
  completeCoffeeCareerMonth=function(s){const x=s.careerIncome,k=x&&(x.role||'barista');if(!x||!(x.baseWages>0)||!R.roles[k])return;const p=coffeeCareerData(),cycle=x.cycle;if(cycle<=p.lastCycle)return;p.lastCycle=cycle;
-  const hours=R.roles[k].weekly*4;
+  const hours=R.monthlyHours(R.roles[k].weekly);
   const event=state.coffee.monthly;
   // Older saved overtime pays its locked XP at event confirmation.
   const legacyOvertime=k==='barista'&&event?.cycle===cycle&&event.status==='resolved'&&!event.serviceXpAtMonthEnd?Math.max(0,event.workHoursDelta||0):0;
   const workedHours=Math.max(0,hours+(x.workHoursDelta||0)-legacyOvertime);
   const factor=Math.max(0,Math.min(1,(hours+Math.min(0,x.workHoursDelta||0))/hours)),gains=k==='barista'?{service:workedHours/8}:{service:roundCash((k==='partner'?10:15)*factor),management:roundCash(15*factor)};coffeeSkillGain(gains);p[k==='barista'?'baristaMonths':k==='shiftLead'?'shiftMonths':k==='partner'?'partnerMonths':'managerMonths']=(p[k==='barista'?'baristaMonths':k==='shiftLead'?'shiftMonths':k==='partner'?'partnerMonths':'managerMonths']||0)+1;p.normalMonths++;const trust=R.trust(state.coffee.managerTrust);state.coffee.managerTrust=R.trust(trust+(p.normalMonths%2===0?1:0));s.coffeeGrowth={...gains,managerTrust:state.coffee.managerTrust-trust};
-  const pending=p.pending;if(pending&&state.month>=pending.effectiveCycle){const next=R.role(pending.to);if(R.working(state)&&state.job===pending.from&&next){state.job=R.roles[next].name;state.workHoursPerWeek=R.roles[next].weekly;state.annualSalary=Math.max(state.annualSalary||0,R.annual(state,next));state.salary=roundCash(state.annualSalary/12);state.careerStartedAt=state.month;p[next==='shiftLead'?'shiftMonths':'managerMonths']=0;(state.timeline??=[]).push('晋升'+R.roles[next].name+'，下个月起按新岗位结算');s.coffeePromotion={job:state.job,salary:state.salary};}p.pending=null;}
+  const pending=p.pending;if(pending&&state.month>=pending.effectiveCycle){const next=R.role(pending.to);if(R.working(state)&&state.job===pending.from&&next){state.annualSalary=R.promotedPay(state,next);state.job=R.roles[next].name;state.workHoursPerWeek=R.roles[next].weekly;state.salary=roundCash(state.annualSalary/12);state.careerStartedAt=state.month;p[next==='shiftLead'?'shiftMonths':'managerMonths']=0;(state.timeline??=[]).push('晋升'+R.roles[next].name+'，下个月起按新岗位结算');s.coffeePromotion={job:state.job,salary:state.salary};}p.pending=null;}
  };
  // Old pending job-event quotes remain frozen; new ordinary work does not grant specialist XP.
  const courseGuard=coffeeCourseMissing;coffeeCourseMissing=function(c){return c.id==='management'?R.courseMissing(state,{free:currentCareerTime().free,reserve:necessaryPetCareHours(),recovery:isRecoveryMonth(state)}):['该课程已调整，请从职业技能页面查看。'];};
