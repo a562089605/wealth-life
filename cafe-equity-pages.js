@@ -47,8 +47,7 @@
    const choices=[['manage','自己管理门店 · 基础年薪 $70,000.00'],['shareholder','请店长管理 · 可另找工作']];
    select(p,roles,choices,mode,x=>trade(id,kind,target,x,returnTo));
   }
-  const moneyBox=p.box('交易明细');
-  if(first&&target<E.controlShare)p.row(moneyBox,'管理方式','自己管理门店');
+  const moneyBox=p.box(selling?'交易明细':'交割摘要');
   if(!first){
    p.row(moneyBox,'当前持股',pct(shares));
    p.row(moneyBox,'交割后持股',pct(target));
@@ -59,7 +58,18 @@
    p.row(moneyBox,selling?'次月收款':'本次扣款',money(q.amount));
    if(q.buy)p.row(moneyBox,'扣款后现金',state.cash>=q.amount?money(state.cash-q.amount):'现金不足');
    p.row(moneyBox,'交割时间','次月');
+   if(q.buy){
+    const managing=first?q.mode==='manage':a?.handover?.managing??a?.managing;
+    p.row(moneyBox,'交割后身份',managing?'在店管理合伙人':'股东（由店长管理）');
+   }
    if(selling&&a?.managing)p.row(moneyBox,'交割后职位','受雇店长');
+  }
+  if(first){
+   const agreement=p.box('这家店的合伙协议');
+   const note=document.createElement('p');
+   note.className='career-note';
+   note.textContent='担任店长满 1 个月后可入股。持股低于 '+pct(E.controlShare)+' 时需在店管理，达到 '+pct(E.controlShare)+' 后可自己管理或请店长管理。在店管理有岗位工资，分红取决于门店利润和营运储备，有些月份可能没有分红。';
+   agreement.append(note);
   }
   const insufficient=q.ok&&q.buy&&state.cash<q.amount;
   status(p,insufficient?'还差 '+money(q.amount-state.cash)+'。':q.ok?'':q.reason);
