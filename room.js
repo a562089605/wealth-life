@@ -68,7 +68,7 @@
   visible=true;townVisible=false;state.roomLocation='home';save();
   clearModals();el('game').classList.remove('v24-running');
   document.body.classList.remove('town-map');
-  render();syncRoom();
+  render();syncRoom();window.DreamOpening?.welcome();
  };
  window.hideRoom=function(){visible=false;syncRoom();};
  window.showRoomBehindPanel=function(){

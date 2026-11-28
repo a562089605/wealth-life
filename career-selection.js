@@ -25,8 +25,8 @@
   const b=e.target.closest('[data-career-selection]');
   if(!b||b.disabled||el('home').classList.contains('hidden')||el('newGame').classList.contains('hidden'))return;
   switch(b.dataset.careerSelection){
-   case 'browse':if(el('job').value==='teacher'){el('wlJob').innerHTML=teacherOverview();el('wlJob').querySelector('button').focus();break;}el('wlJob').innerHTML=approvedDetails().replace('data-coffee-intro="back"','data-career-selection="back"').replace('← 返回存档','← 返回职业选择');break;
-   case 'choose':el('start').click();break;
+   case 'browse':if(el('job').value==='teacher'){el('wlJob').innerHTML=teacherOverview();el('wlJob').querySelector('button').focus();break;}el('wlJob').innerHTML=approvedDetails().replace('data-coffee-intro="back"','data-career-selection="back"').replace('data-coffee-intro="choose"','data-career-selection="choose"').replace('← 返回存档','← 返回职业选择');break;
+   case 'choose':window.DreamOpening.choose();break;
    case 'back':el('job').dispatchEvent(new Event('change',{bubbles:true}));el('wlJob').querySelector('[data-career-selection=browse]')?.focus();break;
    case 'home':el('cancel').click();break;
    case 'prev':case 'next':{
