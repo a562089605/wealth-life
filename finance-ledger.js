@@ -3,7 +3,7 @@ const FinanceLedger = (() => {
  const incoming={
   sharedInterestIncome:'共同兴趣收入',apartmentIncome:'小公寓事件收入',studioIncome:'独居事件收入',
   sharedIncome:'合租事件收入',familyIncome:'家庭事件收入',housingDepositRefund:'退回住房押金',
-  emergencyWithdrawal:'应急金转回',retirementWithdrawal:'退休账户提款',incomeProtectionClaim:'收入保障赔款',loanDisbursement:'贷款到账',
+  emergencyWithdrawal:'应急金转回',dreamSavingsWithdrawal:'梦想专款转回现金',retirementWithdrawal:'退休账户提款',incomeProtectionClaim:'收入保障赔款',loanDisbursement:'贷款到账',
   opportunityIncome:'机会收入',tuitionReversal:'学费退款',dividend:'ETF分红',bondInterest:'债券票息',
   bondMaturity:'债券到期还本',socialIncome:'关系活动收入',assetSale:'出售资产净到账',
   ownerHomeSale:'出售自住房净到账',cafeDividend:'门店分红',cafeEquitySale:'门店股份出售',
@@ -18,7 +18,7 @@ const FinanceLedger = (() => {
   premiumsPayment:'保费',loanInstallment:'个人贷款还款',hobbyPractice:'兴趣练习',
   specialistPractice:'专项练习',lifestyle:'生活活动',opportunity:'机会投入',tuitionPayment:'学费',
   investmentBuy:'买入投资',bondBuy:'买入债券',autoInvest:'自动投资',dividendReinvest:'分红再投资',
-  movingCost:'搬家支出',emergencyTransfer:'划入应急金',lifeIncident:'生活事件支出',socialMeal:'聚餐',
+  dreamSavingsDeposit:'存入梦想专款',movingCost:'搬家支出',emergencyTransfer:'划入应急金',lifeIncident:'生活事件支出',socialMeal:'聚餐',
   socialCoffee:'咖啡与社交',extraPrincipal:'额外偿还本金',cdPurchase:'定期存款本金',
   vehicleDownpayment:'车辆首付',propertyDownpayment:'投资房首付',propertyCashPurchase:'投资房全款',iraTransfer:'转入 IRA',
   brokerageTransfer:'转入普通投资账户',cafeEquityDeposit:'门店股份暂存',relationshipExpense:'关系事件支出',

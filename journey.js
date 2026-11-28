@@ -119,7 +119,7 @@ function recordJourneyWin(reason,title){
 }
 function showVictory(back=finish){
   const win=journeyState().win;if(!win)return;
-  showEvent('已通关','财富人生：目标达成',win.reason==='dreamSavings'?'梦想资金已备齐，财富自由达标。存档保留，你可以继续生活。':win.reason==='dream'?'你进入财务自由后，实现了开局选择的人生目标。存档保留，你可以继续生活。':'你的快车道项目当前新增净收入达到 $50,000.00/月，并仍能覆盖必要支出。存档保留，你可以继续生活。',[['通关路线',win.title],['通关年龄',win.age+'岁'],...(win.reason==='dreamSavings'?[['梦想资金',money(win.savings)],['过去12个月资产净收入',money(win.netIncome)],['过去12个月必要支出',money(win.necessaryExpenses)]]:[['当时被动收入',money(win.passive)+'/月'],['当时快车道新增',money(win.fastCashFlow)+'/月']])],[['继续生活',back,true],...(win.reason==='dreamSavings'?[['管理梦想专款',()=>openSavingsDream('',true),false]]:[]),['保存并返回存档',()=>{save();home()},false]]);
+  showEvent('已通关','财富人生：目标达成',win.reason==='dreamSavings'?'通关时已备齐梦想资金，并达到财富自由。你可以继续生活。':win.reason==='dream'?'你进入财务自由后，实现了开局选择的人生目标。存档保留，你可以继续生活。':'你的快车道项目当前新增净收入达到 $50,000.00/月，并仍能覆盖必要支出。存档保留，你可以继续生活。',[['通关路线',win.title],['通关年龄',win.age+'岁'],...(win.reason==='dreamSavings'?[['梦想资金',money(win.savings)],['过去12个月资产净收入',money(win.netIncome)],['过去12个月必要支出',money(win.necessaryExpenses)]]:[['当时被动收入',money(win.passive)+'/月'],['当时快车道新增',money(win.fastCashFlow)+'/月']])],[['继续生活',back,true],...(win.reason==='dreamSavings'?[['管理梦想专款',()=>openSavingsDream('',true),false]]:[]),['保存并返回存档',()=>{save();home()},false]]);
 }
 
 function persistDreamChange(snapshot){
@@ -201,8 +201,8 @@ function openSavingsDream(notice='',manage=false){
 function renderSavingsDream(){
   const j=journeyState(),g=DreamGoals.progress(state),f=DreamGoals.freedom(state);
   const ratio=f.expenses?Math.max(0,Math.min(100,100*f.income/f.expenses)):0;
-  const title=j.win?'梦想资金已备齐 · 游戏通关':j.phase==='fast'?'第二阶段 · 快车道':f.ready?'可进入快车道':'第一阶段 · 积累资产';
-  const moneyLine='已存 '+money(g.current)+' · 还差 '+money(g.remaining)+' · '+g.pct.toFixed(1)+'%';
+  const title=j.win?'已通关 · 查看记录':j.phase==='fast'?'第二阶段 · 快车道':f.ready?'可进入快车道':'第一阶段 · 积累资产';
+  const moneyLine='当前已存 '+money(g.current)+' · 还差 '+money(g.remaining)+' · '+g.pct.toFixed(1)+'%';
   const freedomLine='财富自由 · '+f.months+'/12 月 · 覆盖 '+(f.expenses?Math.max(0,100*f.income/f.expenses).toFixed(0):'0')+'%';
   journeyCard.innerHTML='<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="none" stroke="#82945b" stroke-width="5"/><circle cx="32" cy="32" r="8" fill="#315139"/></svg><span><strong>'+title+'</strong><small>'+freedomLine+
     '</small><i><b style="width:'+ratio+'%"></b></i><strong>'+g.g.name+'</strong><small>'+moneyLine+
